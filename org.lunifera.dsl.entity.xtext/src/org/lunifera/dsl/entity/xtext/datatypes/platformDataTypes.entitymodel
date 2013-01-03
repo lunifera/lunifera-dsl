@@ -1,0 +1,23 @@
+package org.lunifera.platformDataTypes {
+    import org.joda.time.*
+
+    datatype String jvmType String
+    datatype Clob jvmType String
+
+    datatype Integer jvmType Long
+    datatype Long jvmType Long
+    datatype PrimitiveLong jvmType long
+
+    datatype Decimal jvmType java.math.BigDecimal
+
+    datatype Boolean jvmType Boolean
+    datatype PrimitiveBoolean jvmType boolean
+
+    datatype DateTime jvmType DateTime
+    datatype Time jvmType LocalTime
+    datatype Date jvmType LocalDate
+    datatype Period jvmType Period
+
+    datatype Binary jvmType byte[]
+    datatype Blob jvmType byte[]
+}

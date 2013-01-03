@@ -46,7 +46,7 @@
 			<email>hans-georg.gloeckler@uni-ulm.de</email>
 			<timezone>+2</timezone>
 		</developer>
-        <developer>
+		<developer>
 			<id>rhandsch</id>
 			<name>Robert Handschmann</name>
 			<email>robert.handschmann@gmail.com</email>
@@ -134,6 +134,170 @@
 		</repository>
 	</repositories>
 
+	<profiles>
+		<profile>
+			<id>prepare-for-next-release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>org.eclipse.tycho:tycho-versions-plugin:set-version</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-versions-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<executions>
+							<execution>
+								<id>change-next-release</id>
+								<goals>
+									<goal>set-version</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<newVersion>${next-release}</newVersion>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>testAll</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.dsl.p2.target.juno</module>
+				<module>org.lunifera.dsl.entity.xtext.tests</module>
+				<module>org.lunifera.dsl.organization.xtext.tests</module>
+			</modules>
+			<repositories>
+				<repository>
+					<id>latest_lunifera_built_p2</id>
+					<url>file://${basedir}/../org.lunifera.dsl.p2.repo.juno/target/repository</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<layout>p2</layout>
+				</repository>
+			</repositories>
+		</profile>
+		<profile>
+			<id>entityModelDSL</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.dsl.p2.target.juno</module>
+				<module>org.lunifera.dsl.entity.xtext.semantic</module>
+				<!-- <module>org.lunifera.feature.tools.modeling.entities</module>
+				<module>org.lunifera.dsl.entity.xtext</module>
+				<module>org.lunifera.dsl.entity.xtext.tests</module> -->
+			</modules>
+		</profile>
+
+		<profile>
+			<id>organizationModeling</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.dsl.lunifera.p2.target.juno</module>
+
+				<module>org.lunifera.dsl.feature.tools.modeling.organizations</module>
+				<module>org.lunifera.dsl.organization.xtext</module>
+				<module>org.lunifera.dsl.organization.xtext.tests</module>
+				<module>org.lunifera.dsl.organization.xtext.ui</module>
+				<module>org.lunifera.dsl.organization.xtext.semantic</module>
+				<module>org.lunifera.dsl.feature.tools.modeling.ui</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>p2-juno</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.dsl.lunifera.p2.target.juno</module>
+
+				<!-- exclusive for P2 -->
+				<module>org.dsl.lunifera.p2.repo.juno</module>
+
+				<!-- P2 features -->
+				<module>org.lunifera.dsl.feature.tools.modeling.all</module>
+				<module>org.lunifera.dsl.feature.tools.modeling.all.headless</module>
+				<module>org.lunifera.dsl.feature.tools.modeling.entities</module>
+				<module>org.lunifera.dsl.feature.tools.modeling.organizations</module>
+				<module>org.lunifera.dsl.feature.tools.modeling.entities.headless</module>
+				<module>org.lunifera.dsl.feature.tools.modeling.organizations.headless</module>
+				<module>org.lunifera.dsl.feature.tools.modeling.ui</module>
+				<module>org.lunifera.dsl.feature.eclipse.ide.setup</module>
+				<!-- end P2 features -->
+
+				<!-- P2 bundles -->
+				<module>org.lunifera.dsl.entity.xtext.semantic</module>
+				<module>org.lunifera.dsl.entity.xtext</module>
+				<module>org.lunifera.dsl.entity.xtext.tests</module>
+				<module>org.lunifera.dsl.entity.xtext.ui</module>
+				<module>org.lunifera.dsl.organization.xtext</module>
+				<module>org.lunifera.dsl.organization.xtext.semantic</module>
+				<module>org.lunifera.dsl.organization.xtext.tests</module>
+				<module>org.lunifera.dsl.organization.xtext.ui</module>
+				<!-- end P2 bundles -->
+			</modules>
+		</profile>
+
+		<!-- This profile is used to gather code coverage for Sonar -->
+		<profile>
+			<id>codeCoverage</id>
+			<properties>
+				<!-- Properties to enable jacoco code coverage analysis -->
+				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+				<sonar.jacoco.reportPath>../org.demo.camp.nantes.parent/target/jacoco.exec</sonar.jacoco.reportPath>
+			</properties>
+
+			<build>
+				<plugins>
+					<!-- Enabling use of jacoco -->
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>0.5.8.201207111220</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<!-- Where to put jacoco coverage report -->
+									<destFile>${sonar.jacoco.reportPath}</destFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>fornax</id>
@@ -145,20 +309,23 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
-		<!-- <pluginRepository> -->
-		<!-- <id>fornax-snapshots</id> -->
-		<!-- <url>http://www.fornax-platform.org/archiva/repository/snapshots/</url> -->
-		<!-- <snapshots> -->
-		<!-- <enabled>true</enabled> -->
-		<!-- </snapshots> -->
-		<!-- </pluginRepository> -->
+		<pluginRepository>
+			<id>xtend</id>
+			<url>http://build.eclipse.org/common/xtend/maven</url>
+		</pluginRepository>
 		<pluginRepository>
 			<id>tycho-snapshots</id>
 			<url>https://oss.sonatype.org/content/groups/public/</url>
 		</pluginRepository>
 		<pluginRepository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven</url>
+			<id>vaadin-snapshots</id>
+			<url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
 
@@ -212,8 +379,16 @@
 					<artifactId>target-platform-configuration</artifactId>
 					<version>${tycho-version}</version>
 					<configuration>
-						<resolver>p2</resolver>
-						<pomDependencies>consider</pomDependencies>
+						<!-- <resolver>p2</resolver> -->
+						<!-- <pomDependencies>consider</pomDependencies> -->
+						<ignoreTychoRepositories>true</ignoreTychoRepositories>
+						<target>
+							<artifact>
+								<groupId>org.lunifera</groupId>
+								<artifactId>org.dsl.lunifera.p2.target.juno</artifactId>
+								<version>${project.version}</version>
+							</artifact>
+						</target>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -268,12 +443,10 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
 	<organization>
 		<name>Lunifera.org</name>
 		<url>www.lunifera.org</url>
 	</organization>
-	<modules>
-		<module>org.lunifera.dsl.p2.repo.juno</module>
-		<module>org.lunifera.dsl.p2.target.juno</module>
-	</modules>
+
 </project>

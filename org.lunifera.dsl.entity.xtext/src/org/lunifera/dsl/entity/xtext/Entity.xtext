@@ -1,0 +1,149 @@
+/**
+ * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * IP: ideas, code and semantics also used from Xbase, Xcore and Xtend projects
+ * 
+ * Contributors:
+ *    	Hans Georg Glöckler - initial implementation
+ * 		Florian Pirchner - Xbase integration
+ */
+grammar org.lunifera.dsl.entity.xtext.EntityGrammar with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
+
+import "http://www.lunifera.org/dsl/entity/v1"
+import "http://www.eclipse.org/emf/2002/Ecore"
+import "http://www.eclipse.org/emf/2002/GenModel" as genmodel
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+import "http://www.eclipse.org/Xtext/Xbase/XAnnotations" as xannotation
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+
+LEntityModel:
+	(genSettings=LGenSettings)?
+	packages+=LPackage*;
+
+LPackage:
+	{LPackage}
+	'package' name=QualifiedName ('{'
+		(imports+=LImport)*
+		(compilers+=LCompilerType)*
+		(types+=LType)*
+	'}')?;
+
+LImport:
+	'import' importedNamespace=LQualifiedNameWithWildCard;
+
+LGenSettings:
+	{LGenSettings}
+	'generator settings' '{'
+	((noSource?='no source')? &
+	('compilerType=' compilerType=[LCompilerType|LFQN])? &
+	(lifecycle?='checked lifecycle')? &
+	(propertyChangeSupport?='add propertyChangeSupport')?)
+	'}';
+
+LCompilerType:
+	'compiler' name=ID '{'
+	('description:' description=STRING)?
+	'}';
+
+LDataType:
+	'datatype' name=ID 
+	'jvmType' jvmTypeReference=JvmTypeReference
+;
+
+/* Future:
+ * 
+LScalarType:
+	LDataType | LEnum;
+LType:
+    LScalarType | LEntity;
+ */
+
+LType:
+    LDataType | LEnum | LEntity;
+
+LEntity:
+	annotations+=LAnnotationDef*
+	((abstract?='abstract')? &
+	(cachable?='cachable')? &
+	(embeddable?='embeddable')?)
+	'entity' name=ValidIDWithKeywords ('extends' superType=[LEntity])? ('{'
+	entityMembers+=EntityMember* '}')?;
+
+EntityMember returns LEntityMember:
+	{LEntityMember}
+	annotations+=LAnnotationDef*
+	({LProperty.annotationInfo=current}
+		'var' ((id?='id') | (version?='version') | (transient?='transient'))? type=[LType]/*[LScalarType]*/
+		multiplicity=LMultiplicity? 
+		name=ValidIDWithKeywords ('=' defaultValueLiteral=STRING)?
+		(notnull?='notnull')?
+		('('singularName=ValidIDWithKeywords')')?
+	| {LRefers.annotationInfo=current}
+		'refers' type=[LEntity|LFQN]
+		multiplicity=LMultiplicity?
+		name=ValidIDWithKeywords
+		((lazy?='lazy')? & (notnull?='notnull')?)
+		('('singularName=ValidIDWithKeywords')')?
+		('opposite' opposite=[LRefers|LFQN])?
+	| {LContains.annotationInfo=current}
+		'contains' ((lazy?='lazy')? & (notnull?='notnull')?)
+		type=[LEntity|LFQN]
+		multiplicity=LMultiplicity?
+		name=ValidIDWithKeywords
+		('('singularName=ValidIDWithKeywords')')?
+		('opposite' opposite=[LContainer|LFQN])?
+	| {LContainer.annotationInfo=current}
+		'container' ((lazy?='lazy')?)
+		type=[LEntity|LFQN]
+		name=ValidIDWithKeywords
+ 		('opposite' opposite=[LContains|LFQN])?
+	| {LOperation.annotationInfo=current}
+		(modifier=LModifier)?
+		'def' type=JvmTypeReference name=ValidIDWithKeywords '('
+		(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' body=XExpression)
+		;
+
+LModifier:
+	final?='final'? & static?='static'? & visibility=LVisibility;
+
+LEnum:
+	'enum' name=ID
+	('{'
+	(literals+=LEnumLiteral ((',')? literals+=LEnumLiteral)*)?
+	'}')?;
+
+LEnumLiteral:
+	name=ID;
+
+LAnnotationDef:
+	(exclude?='exclude')? annotation=XAnnotation;
+
+enum LVisibility:
+	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
+
+LQualifiedNameWithWildCard:
+	QualifiedName ('.' '*')?;
+
+LFQN:
+	ID ('.' ID)*;
+
+LMultiplicity:
+	'['
+	(lower=LowerBound) ('..' upper=UpperBound)?
+	']';
+
+ValidIDWithKeywords:
+	'cachable' | 'embeddable' | 'id' | 'transient' | 'version' |
+	'contains' | 'refers' | 'settings' | 'lazy' |
+	'notnull' | 'entity' | ID;
+
+enum LowerBound:
+	MANY='*' | OPTIONAL='?' | ATLEASTONE='+' | ZERO='0' | ONE='1';
+
+enum UpperBound:
+	MANY='*' | ONE='1';
+	

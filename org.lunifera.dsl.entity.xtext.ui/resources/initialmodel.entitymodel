@@ -1,0 +1,78 @@
+/*
+ * Copyright (c) 2011 - 2012, lunifera.org
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
+package org.lunifera.demo {
+
+	/**
+	 * The library
+	 */
+	entity Library {
+		// properties      
+		var String name
+		var String[*] manyNames
+		var List<String>[*] manymanyNames
+	
+		// contains 0:1 and 0:n
+		contains BookIndex index opposite library
+		contains Book[*] books opposite library
+	}
+	
+	/** 
+	 * An extended version of library
+	 **/
+	entity ExtendedLibrary extends Library {
+		// embedds the address
+		embedds Address address
+	  
+		// simple references
+		refers Book lastLendedBook
+		refers Book[*] allLendedBooks
+		
+		var SomeEnum anEnum 
+	   
+		/**  
+		 * Calculates the count of lended books
+		 */
+		def Integer determineLendedBooksCount () {
+			return getAllLendedBooks().size
+		}
+	}
+		
+	entity Book {
+		var String name
+		container Library library opposite books
+	}
+	
+	entity BookIndex {
+		var String name
+		container Library library opposite index
+	}
+	
+	enum SomeEnum {
+		ONE, TWO
+	}
+	
+	embeddable entity Address {
+		var String street
+		var int number
+		var String postalcode
+		refers Country country
+	
+		embedds Info info
+	}
+	
+	entity Country {
+		var String value
+		
+		embedds Info info
+	}
+	
+	embeddable entity Info {
+		var String shortText
+		var String longText
+	}
+}
