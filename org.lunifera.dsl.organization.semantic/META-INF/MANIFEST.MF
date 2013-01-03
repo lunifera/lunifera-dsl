@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Semantic model of organization
+Bundle-SymbolicName: org.lunifera.dsl.organization.semantic;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Vendor: lunifera.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.9.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.4.0"
+Export-Package: org.lunifera.dsl.organization.semantic.model,
+ org.lunifera.dsl.organization.semantic.model.impl,
+ org.lunifera.dsl.organization.semantic.model.util

@@ -1,0 +1,39 @@
+	code Lunifera
+	name "Lunifera.org"
+	
+	People
+		person id florianpirchner
+		{
+			first name "Florian"
+			last name "Pirchner"
+		}
+		person id haglo
+		{
+			first name "Hans-George"
+			last name "Glockler"
+		}
+	
+	Units
+		unit id GitHub
+		{
+			name "GitHub Source Repository"
+		}
+	
+	Business Roles
+		role id systemAnalyst
+		{
+			name "System Analyst"
+			
+		}
+		role id javaProgrammer
+		{
+			name "Java Programmer"
+			
+		}
+
+	
+	Workers
+		worker person lunifera.people.florianpirchner
+		{
+			playRoles (lunifera.roles.javaProgrammer)
+		}
