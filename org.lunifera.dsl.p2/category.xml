@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.lunifera.feature.tools.modeling.entities" version="0.0.0">
+      <category name="lunifera-modeling-dsls"/>
+   </feature>
+   <feature id="org.lunifera.feature.tools.modeling.organizations" version="0.0.0">
+      <category name="lunifera-modeling-dsls"/>
+   </feature>
+   <feature id="org.lunifera.feature.tools.modeling.ui" version="0.0.0">
+      <category name="lunifera-modeling-dsls"/>
+   </feature>
+   <feature id="org.lunifera.feature.tools.modeling.entities.headless" version="0.0.0">
+      <category name="lunifera-modeling-dsls-headless"/>
+   </feature>
+   <feature id="org.lunifera.feature.tools.modeling.organizations.headless" version="0.0.0">
+      <category name="lunifera-modeling-dsls-headless"/>
+   </feature>
+   <feature id="org.lunifera.feature.tools.modeling.all" version="0.0.0">
+      <category name="lunifera-modeling-dsls"/>
+   </feature>
+   <feature id="org.lunifera.feature.tools.modeling.all.headless" version="0.0.0">
+      <category name="lunifera-modeling-dsls-headless"/>
+   </feature>
+   <category-def name="lunifera-modeling-dsls" label="Lunifera Modeling DSLs"/>
+   <category-def name="lunifera-modeling-dsls-headless" label="Lunifera Modeling DSLs - Target Platform"/>
+</site>
