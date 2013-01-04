@@ -22,7 +22,6 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: 
- org.lunifera.dsl.organization.generator;x-internal:=true,
  org.lunifera.dsl.organization.xtext,
  org.lunifera.dsl.organization.xtext.formatting;x-internal:=true,
  org.lunifera.dsl.organization.xtext.generator;x-internal:=true,

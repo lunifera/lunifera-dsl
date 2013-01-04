@@ -5,7 +5,7 @@
     editorDirectory="/org.lunifera.dsl.organization.semantic.editor/src" modelPluginID="org.lunifera.dsl.organization.semantic"
     forceOverwrite="true" modelName="Organization" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.lunifera.dsl.organization.semantic.edit"
-    editorPluginID="org.lunifera.dsl.organization.semantic.editor" runtimeVersion="2.9"
+    editorPluginID="org.lunifera.dsl.organization.semantic.editor" runtimeVersion="2.8"
     language="">
   <genPackages prefix="Organization" basePackage="org.lunifera.dsl.organization.semantic"
       disposableProviderFactory="true" ecorePackage="OrganizationDsl.ecore#/">
