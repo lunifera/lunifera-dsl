@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="org.lunifera.p2.target.juno" sequenceNumber="57">
+<locations>
+
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.apache.derby" version="10.5.1.1_v201108232300"/>
+<unit id="org.apache.derby.source" version="10.5.1.1_v201108232300"/>
+<unit id="org.junit" version="4.10.0.v4_10_0_v20120426-0900"/>
+<unit id="org.slf4j.api" version="1.6.4.v20120130-2120"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository"/>
+</location>
+
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.persistence.sdk.feature.group" version="2.4.0.v20120613-r11652"/>
+<unit id="org.eclipse.xtend.m2e.feature.group" version="2.3.1.v201208210947"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.1.v201208210947"/>
+<repository location="http://download.eclipse.org/releases/juno"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.gemini.jpa.feature.feature.group" version="1.1.0.RELEASE"/>
+<repository location="http://download.eclipse.org/gemini/updates/jpa/1.1.0"/>
+</location>
+</locations>
+
+</target>
