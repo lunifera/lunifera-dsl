@@ -1,0 +1,28 @@
+«IMPORT org::lunifera::eclipse::ui::wizards»
+
+«DEFINE main FOR LuniferaMainProjectInfo»
+«EXPAND pom FOR this»
+«ENDDEFINE»
+
+«DEFINE pom FOR LuniferaMainProjectInfo»
+«FILE "pom.xml"-»
+/*
+ * This is an example modeling project created by Lunifera Tools.
+ */
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.lunifera</groupId>
+	<artifactId>org.lunifera.example</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<name>TODO: Ask the name in Eclipse UI Plugin</name>
+	<version>0.0.1-SNAPSHOT</version>
+
+</project>
+
+«ENDFILE»
+«ENDDEFINE»
+
+
