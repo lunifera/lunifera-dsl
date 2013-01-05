@@ -13,11 +13,16 @@
  */
 package org.lunifera.dsl.organization.xtext.ui.outline;
 
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
-import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
 import org.eclipse.xtext.ui.label.StylerFactory;
-import org.lunifera.dsl.organization.semantic.model.OrganizationModel;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnitType;
+import org.lunifera.dsl.organization.semantic.model.BusinessRole;
+import org.lunifera.dsl.organization.semantic.model.Group;
+import org.lunifera.dsl.organization.semantic.model.Organization;
+import org.lunifera.dsl.organization.semantic.model.OrganizationUnit;
+import org.lunifera.dsl.organization.semantic.model.Partnership;
+import org.lunifera.dsl.organization.semantic.model.Person;
+import org.lunifera.dsl.organization.semantic.model.Worker;
 
 import com.google.inject.Inject;
 
@@ -30,20 +35,82 @@ public class OrganizationGrammarOutlineTreeProvider extends
 	@Inject
 	private StylerFactory stylerFactory;
 
+	private VirtualOutlineNode personsGroup;
+	private VirtualOutlineNode groupsGroup;
+	private VirtualOutlineNode bRolesGroup;
+	private VirtualOutlineNode partenershipsGroup;
+	private VirtualOutlineNode unitsGroup;
+	private VirtualOutlineNode workersGroup;
+
 	/**
 	 * Skip the root node.
 	 * 
 	 * @param parentNode
 	 * @param model
 	 */
-	protected void _createChildren(DocumentRootNode parentNode,
-			OrganizationModel model) {
-		if (model.getOrganization() != null) {
-			createNode(parentNode, model.getOrganization());
-		} else {
-			for (OrganizationUnitType type : model.getOrganizationUnitTypes()) {
-				createNode(parentNode, type);
-			}
+	protected void _createChildren(IOutlineNode parentNode,
+			Organization organization) {
+		for (Person element : organization.getPersons()) {
+			createNode(getPersonGroup(parentNode), element);
+		}
+		for (Group element : organization.getGroups()) {
+			createNode(getGroupsGroup(parentNode), element);
+		}
+		for (Partnership element : organization.getPartnerships()) {
+			createNode(getPartnershipsGroup(parentNode), element);
+		}
+		for (BusinessRole element : organization.getRoles()) {
+			createNode(getRolesGroup(parentNode), element);
+		}
+		for (OrganizationUnit element : organization.getUnits()) {
+			createNode(getUnitsGroup(parentNode), element);
+		}
+		for (Worker element : organization.getWorkers()) {
+			createNode(getWorkersGroup(parentNode), element);
 		}
 	}
+
+	public VirtualOutlineNode getPersonGroup(IOutlineNode parentNode) {
+		if (personsGroup == null) {
+			personsGroup = new VirtualOutlineNode(parentNode, null, "Persons",
+					false);
+		}
+		return personsGroup;
+	}
+	public VirtualOutlineNode getGroupsGroup(IOutlineNode parentNode) {
+		if (groupsGroup == null) {
+			groupsGroup = new VirtualOutlineNode(parentNode, null, "Groups",
+					false);
+		}
+		return groupsGroup;
+	}
+	public VirtualOutlineNode getRolesGroup(IOutlineNode parentNode) {
+		if (bRolesGroup == null) {
+			bRolesGroup = new VirtualOutlineNode(parentNode, null, "Roles",
+					false);
+		}
+		return bRolesGroup;
+	}
+	public VirtualOutlineNode getUnitsGroup(IOutlineNode parentNode) {
+		if (unitsGroup == null) {
+			unitsGroup = new VirtualOutlineNode(parentNode, null, "Units",
+					false);
+		}
+		return unitsGroup;
+	}
+	public VirtualOutlineNode getPartnershipsGroup(IOutlineNode parentNode) {
+		if (partenershipsGroup == null) {
+			partenershipsGroup = new VirtualOutlineNode(parentNode, null, "Partnerships",
+					false);
+		}
+		return partenershipsGroup;
+	}
+	public VirtualOutlineNode getWorkersGroup(IOutlineNode parentNode) {
+		if (workersGroup == null) {
+			workersGroup = new VirtualOutlineNode(parentNode, null, "Workers",
+					false);
+		}
+		return workersGroup;
+	}
+
 }

@@ -14,6 +14,7 @@
 package org.lunifera.dsl.organization.xtext.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import org.lunifera.dsl.organization.semantic.model.BusinessRole;
 import org.lunifera.dsl.organization.semantic.model.Group;
@@ -35,6 +36,9 @@ import com.google.inject.Inject;
 public class OrganizationGrammarLabelProvider extends
 		DefaultEObjectLabelProvider {
 
+	@Inject
+	IQualifiedNameProvider nameProvider;
+	
 	@Inject
 	public OrganizationGrammarLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
@@ -69,8 +73,15 @@ public class OrganizationGrammarLabelProvider extends
 	}
 	
 	String image(OrganizationUnitType ele){
-		return "oranizationunittype.png";
+		return "organizationunittype.png";
 	}
 	
-	
+
+	public Object text(Worker element) {
+		return nameProvider.getFullyQualifiedName(element).getLastSegment();
+	}
+
+	public Object text(Partnership element) {
+		return nameProvider.getFullyQualifiedName(element).getLastSegment();
+	}
 }
