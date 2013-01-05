@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.organization.xtext.ui
-Bundle-Vendor: Lunifera.org
+Bundle-Vendor: My Company
 Bundle-Version: 0.0.1.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.organization.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -16,10 +16,10 @@ Require-Bundle: org.lunifera.dsl.organization.xtext;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare
-xecutionEnvironment: JavaSE-1.6
-Bundle-Activator: org.lunifera.dsl.organization.xtext.ui.internal.OrganizationGrammarActivator
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.lunifera.dsl.organization.xtext.ui.contentassist,
  org.lunifera.dsl.organization.xtext.ui.contentassist.antlr,
  org.lunifera.dsl.organization.xtext.ui.internal
-Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Activator: org.lunifera.dsl.organization.xtext.ui.internal.OrganizationGrammarActivator

@@ -174,7 +174,7 @@
 				<module>org.lunifera.dsl.entity.xtext.tests</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
 				<module>org.lunifera.dsl.organization.xtext</module>
-				<module>org.lunifera.dsl.organization.xtext.tests</module>
+<!-- 				<module>org.lunifera.dsl.organization.xtext.tests</module> -->
 				<module>org.lunifera.dsl.organization.xtext.ui</module>
 				<module>org.lunifera.dsl.organization.semantic</module>
 				<!-- end P2 bundles -->

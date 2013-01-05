@@ -10,8 +10,8 @@
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="organizationmodel"
-            id="org.lunifera.dsl.organization.xtext.OrganizationDsl"
-            name="OrganizationDsl Editor">
+            id="org.lunifera.dsl.organization.xtext.OrganizationGrammar"
+            name="OrganizationGrammar Editor">
         </editor>
     </extension>
     <extension
@@ -21,27 +21,27 @@
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+                    definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="org.lunifera.dsl.organization.xtext.OrganizationDsl.validate">
+            commandId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.validate">
          <activeWhen>
             <reference
-                    definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+                    definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
             </reference>
          </activeWhen>
       </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+        <definition id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.lunifera.dsl.organization.xtext.OrganizationDsl" 
+                        value="org.lunifera.dsl.organization.xtext.OrganizationGrammar" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -50,35 +50,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-              category="org.lunifera.eclipse.ui.preferences.RootPreferencePage"
-              class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-              id="org.lunifera.dsl.organization.xtext.OrganizationDsl"
-              name="OrganizationDsl">
-            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationDsl"/>
+            class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.lunifera.dsl.organization.xtext.OrganizationGrammar"
+            name="OrganizationGrammar">
+            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationGrammar"/>
         </page>
         <page
-            category="org.lunifera.dsl.organization.xtext.OrganizationDsl"
+            category="org.lunifera.dsl.organization.xtext.OrganizationGrammar"
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="org.lunifera.dsl.organization.xtext.OrganizationDsl.coloring"
+            id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.coloring"
             name="Syntax Coloring">
-            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationDsl"/>
+            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationGrammar"/>
         </page>
         <page
-            category="org.lunifera.dsl.organization.xtext.OrganizationDsl"
+            category="org.lunifera.dsl.organization.xtext.OrganizationGrammar"
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="org.lunifera.dsl.organization.xtext.OrganizationDsl.templates"
+            id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.templates"
             name="Templates">
-            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationDsl"/>
+            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationGrammar"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-              category="org.lunifera.eclipse.ui.rootPropertyPage"
-              class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-              id="org.lunifera.dsl.organization.xtext.OrganizationDsl"
-              name="OrganizationDsl">
-            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationDsl"/>
+            class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.lunifera.dsl.organization.xtext.OrganizationGrammar"
+            name="OrganizationGrammar">
+            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationGrammar"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -88,14 +86,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationDsl"
-            label="OrganizationDsl"/>
+            id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationGrammar"
+            label="OrganizationGrammar"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="org.lunifera.dsl.organization.xtext.OrganizationDsl.validate"
+            id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.validate"
             name="Validate">
       </command>
     </extension>
@@ -103,12 +101,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="org.lunifera.dsl.organization.xtext.OrganizationDsl.validate"
+                 commandId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+                    definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -118,7 +116,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+                	<reference definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -130,7 +128,7 @@
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+                    definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -142,53 +140,39 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="luniOrganization">
+			type="organizationmodel">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="luniOrganization">
+            uriExtension="organizationmodel">
         </resourceServiceProvider>
     </extension>
 
+
+	<!-- marker definitions for org.lunifera.dsl.organization.xtext.OrganizationGrammar -->
 	<extension
-		point="org.eclipse.emf.ecore.extension_parser">
-		<parser
-			class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="organization">
-		</parser>
+	        id="organizationgrammar.check.fast"
+	        name="OrganizationGrammar Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.fast"/>
+	    <persistent value="true"/>
 	</extension>
-	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
-        <resourceServiceProvider
-            class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="organization">
-        </resourceServiceProvider>
-    </extension>
-
-
-    <!-- marker definitions for org.lunifera.dsl.organization.xtext.OrganizationDsl -->
-    <extension
-            id="organizationdsl.check.fast"
-            name="OrganizationDsl Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.fast"/>
-        <persistent value="true"/>
-    </extension>
-    <extension
-            id="organizationdsl.check.normal"
-            name="OrganizationDsl Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.normal"/>
-        <persistent value="true"/>
-    </extension>
-    <extension
-            id="organizationdsl.check.expensive"
-            name="OrganizationDsl Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.expensive"/>
-        <persistent value="true"/>
-    </extension>
+	<extension
+	        id="organizationgrammar.check.normal"
+	        name="OrganizationGrammar Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.normal"/>
+	    <persistent value="true"/>
+	</extension>
+	<extension
+	        id="organizationgrammar.check.expensive"
+	        name="OrganizationGrammar Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.expensive"/>
+	    <persistent value="true"/>
+	</extension>
 
    <extension
          point="org.eclipse.xtext.builder.participant">
@@ -199,21 +183,21 @@
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="org.lunifera.dsl.organization.xtext.OrganizationDsl"
+            category="org.lunifera.dsl.organization.xtext.OrganizationGrammar"
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.lunifera.dsl.organization.xtext.OrganizationDsl.compiler.preferencePage"
+            id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationDsl"/>
+            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationGrammar"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="org.lunifera.dsl.organization.xtext.OrganizationDsl"
+            category="org.lunifera.dsl.organization.xtext.OrganizationGrammar"
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.lunifera.dsl.organization.xtext.OrganizationDsl.compiler.propertyPage"
+            id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationDsl"/>
+            <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationGrammar"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -229,7 +213,7 @@
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+					definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -249,17 +233,17 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened"/>
+					<reference definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-    <!-- quickfix marker resolution generator for org.lunifera.dsl.organization.xtext.OrganizationDsl -->
+    <!-- quickfix marker resolution generator for org.lunifera.dsl.organization.xtext.OrganizationGrammar -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.lunifera.dsl.organization.xtext.ui.organizationdsl.check.fast">
+            markerType="org.lunifera.dsl.organization.xtext.ui.organizationgrammar.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -267,7 +251,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.lunifera.dsl.organization.xtext.ui.organizationdsl.check.normal">
+            markerType="org.lunifera.dsl.organization.xtext.ui.organizationgrammar.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -275,7 +259,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.lunifera.dsl.organization.xtext.ui.organizationdsl.check.expensive">
+            markerType="org.lunifera.dsl.organization.xtext.ui.organizationgrammar.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -285,11 +269,11 @@
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
+			class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+					definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -301,7 +285,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="org.lunifera.dsl.organization.xtext.OrganizationDsl.Editor.opened">
+                     definitionId="org.lunifera.dsl.organization.xtext.OrganizationGrammar.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -309,28 +293,28 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="org.lunifera.dsl.organization.xtext.OrganizationDsl"
+	        category="org.lunifera.dsl.organization.xtext.OrganizationGrammar"
 	        class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.lunifera.dsl.organization.xtext.OrganizationDsl.refactoring"
+	        id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationDsl"/>
+	        <keywordReference id="org.lunifera.dsl.organization.xtext.ui.keyword_OrganizationGrammar"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.lunifera.dsl.organization.xtext.OrganizationDsl.compare.contentViewers"
+    <viewer id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.compare.contentViewers"
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="organizationmodel">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.lunifera.dsl.organization.xtext.OrganizationDsl.compare.contentMergeViewers"
+    <viewer id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.compare.contentMergeViewers"
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="organizationmodel" label="OrganizationDsl Compare">
+            extensions="organizationmodel" label="OrganizationGrammar Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.lunifera.dsl.organization.xtext.OrganizationDsl.editors.documentProviders"
+    <provider id="org.lunifera.dsl.organization.xtext.OrganizationGrammar.editors.documentProviders"
             class="org.lunifera.dsl.organization.xtext.ui.OrganizationGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="organizationmodel">
     </provider>

@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.organization.xtext
-Bundle-Vendor: Lunifera.org
+Bundle-Vendor: My Company
 Bundle-Version: 0.0.1.qualifier
-Bundle-SymbolicName: org.lunifera.dsl.organization.xtext;singleton:=true
+Bundle-SymbolicName: org.lunifera.dsl.organization.xtext; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
@@ -12,24 +12,21 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.lunifera.dsl.organization.semantic;bundle-version="0.0.1";visibility:=reexport,
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
  org.antlr.runtime,
- org.eclipse.xtext.common.types,
- org.lunifera.dsl.organization.semantic;bundle-version="0.0.1";visibility:=reexport
+ org.eclipse.xtext.common.types
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: 
- org.lunifera.dsl.organization.xtext,
- org.lunifera.dsl.organization.xtext.formatting;x-internal:=true,
- org.lunifera.dsl.organization.xtext.generator;x-internal:=true,
- org.lunifera.dsl.organization.xtext.naming;x-internal:=true,
- org.lunifera.dsl.organization.xtext.parser.antlr;x-internal:=true,
- org.lunifera.dsl.organization.xtext.parser.antlr.internal;x-internal:=true,
- org.lunifera.dsl.organization.xtext.scoping;x-internal:=true,
- org.lunifera.dsl.organization.xtext.serializer;x-internal:=true,
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.lunifera.dsl.organization.xtext,
  org.lunifera.dsl.organization.xtext.services,
- org.lunifera.dsl.organization.xtext.validation;x-internal:=true
-
+ org.lunifera.dsl.organization.xtext.serializer,
+ org.lunifera.dsl.organization.xtext.parser.antlr,
+ org.lunifera.dsl.organization.xtext.parser.antlr.internal,
+ org.lunifera.dsl.organization.xtext.validation,
+ org.lunifera.dsl.organization.xtext.scoping,
+ org.lunifera.dsl.organization.xtext.generator,
+ org.lunifera.dsl.organization.xtext.formatting
