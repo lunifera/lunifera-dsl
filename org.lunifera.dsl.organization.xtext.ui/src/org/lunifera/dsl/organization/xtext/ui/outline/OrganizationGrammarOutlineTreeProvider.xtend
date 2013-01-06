@@ -95,8 +95,8 @@ class OrganizationGrammarOutlineTreeProvider extends DefaultOutlineTreeProvider 
 
 	def EClassImpl createNodeClass(String name, int id) {
 		val EClassImpl eClass = EcoreFactory::eINSTANCE.createEClass() as EClassImpl
-		eClass.setClassifierID(9000)
-		eClass.classifierID
+		eClass.classifierID = id
+		eClass.name = name
 		return eClass
 	}
 
