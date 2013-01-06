@@ -35,7 +35,7 @@ public class LuniferaNewOrganizationModelWizardPage extends
 		super("Lunifera", selection);
 		setTitle("Organization Model File");
 		setFileName("new_organization_model");
-		setFileExtension("organization");
+		setFileExtension("organizationmodel");
 		setDescription("This wizard creates a new file with *.organizationModel extension that can be opened by a multi-page editor.");
 	}
 
