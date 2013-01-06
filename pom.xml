@@ -17,6 +17,7 @@
 		<tycho-version>0.16.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<tychoExtrasVersion>0.16.0</tychoExtrasVersion>
 	</properties>
 
 	<organization>
@@ -99,7 +100,7 @@
 				<module>org.lunifera.dsl.target.juno</module>
 
 				<!-- exclusive for P2 -->
-<!-- 				<module>org.lunifera.dsl.p2</module> -->
+				<module>org.lunifera.dsl.p2</module>
 
 				<!-- P2 features -->
 				<module>org.lunifera.dsl.feature.entities</module>
@@ -155,7 +156,7 @@
 				<module>org.lunifera.dsl.target.kepler</module>
 
 				<!-- exclusive for P2 -->
-<!-- 				<module>org.lunifera.dsl.p2</module> -->
+				<module>org.lunifera.dsl.p2</module>
 
 				<!-- P2 features -->
 				<module>org.lunifera.dsl.feature.entities</module>
@@ -256,6 +257,11 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>
@@ -286,6 +292,19 @@
 					<configuration>
 						<encoding>UTF-8</encoding>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-source-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<executions>
+						<execution>
+							<id>plugin-source</id>
+							<goals>
+								<goal>plugin-source</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>

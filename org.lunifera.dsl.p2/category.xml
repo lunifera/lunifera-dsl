@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature id="org.lunifera.feature.tools.modeling.entities" version="0.0.0">
-      <category name="lunifera-modeling-dsls"/>
+   <feature id="org.lunifera.dsl.feature.eclipse.ui" version="0.0.0">
+      <category name="lunifera-dsls"/>
    </feature>
-   <feature id="org.lunifera.feature.tools.modeling.organizations" version="0.0.0">
-      <category name="lunifera-modeling-dsls"/>
+   <feature id="org.lunifera.dsl.feature.eclipse.ui.source" version="0.0.0">
+      <category name="lunifera-dsls"/>
    </feature>
-   <feature id="org.lunifera.feature.tools.modeling.ui" version="0.0.0">
-      <category name="lunifera-modeling-dsls"/>
+   <feature id="org.lunifera.dsl.feature.entities" version="0.0.0">
+      <category name="lunifera-dsls"/>
    </feature>
-   <feature id="org.lunifera.feature.tools.modeling.entities.headless" version="0.0.0">
-      <category name="lunifera-modeling-dsls-headless"/>
+   <feature id="org.lunifera.dsl.feature.entities.source" version="0.0.0">
+      <category name="lunifera-dsls"/>
    </feature>
-   <feature id="org.lunifera.feature.tools.modeling.organizations.headless" version="0.0.0">
-      <category name="lunifera-modeling-dsls-headless"/>
+   <feature id="org.lunifera.dsl.feature.entities.headless" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
    </feature>
-   <feature id="org.lunifera.feature.tools.modeling.all" version="0.0.0">
-      <category name="lunifera-modeling-dsls"/>
+   <feature id="org.lunifera.dsl.feature.entities.headless.source" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
    </feature>
-   <feature id="org.lunifera.feature.tools.modeling.all.headless" version="0.0.0">
-      <category name="lunifera-modeling-dsls-headless"/>
+   <feature id="org.lunifera.dsl.feature.organizations" version="0.0.0">
+      <category name="lunifera-dsls"/>
    </feature>
-   <category-def name="lunifera-modeling-dsls" label="Lunifera Modeling DSLs"/>
-   <category-def name="lunifera-modeling-dsls-headless" label="Lunifera Modeling DSLs - Target Platform"/>
+   <feature id="org.lunifera.dsl.feature.organizations.source" version="0.0.0">
+      <category name="lunifera-dsls"/>
+   </feature>
+   <feature id="org.lunifera.dsl.feature.organizations.headless" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
+   </feature>
+   <feature id="org.lunifera.dsl.feature.organizations.headless.source" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
+   </feature>
+   <category-def name="lunifera-dsls" label="Lunifera DSLs"/>
+   <category-def name="lunifera-dsls-headless" label="Lunifera DSLs - Headless for Target Platform"/>
 </site>
