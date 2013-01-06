@@ -81,7 +81,7 @@
 						</goals>
 						<configuration>
 							<workflowEngine>mwe2</workflowEngine>
-							<workflowDescriptor>src/org/lunifera/dsl/organization/xtext/GenerateOrganizationDsl.mwe2</workflowDescriptor>
+							<workflowDescriptor>src/org/lunifera/dsl/organization/xtext/GenerateOrganizationGrammar.mwe2</workflowDescriptor>
 							<timestampFileName>xtext-generator.timestamp</timestampFileName>
 						</configuration>
 					</execution>
