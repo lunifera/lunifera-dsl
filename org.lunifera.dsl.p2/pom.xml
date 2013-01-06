@@ -15,14 +15,14 @@
 		<!-- This was added to ensure that P2 will only be generated AFTER tests 
 			be run. -->
 		<dependency>
-			<groupId>org.lunifera</groupId>
+			<groupId>org.lunifera.dsl</groupId>
 			<artifactId>
 		org.lunifera.dsl.entity.xtext.tests
 		</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.lunifera</groupId>
+			<groupId>org.lunifera.dsl</groupId>
 			<artifactId>
 		org.lunifera.dsl.organization.xtext.tests
 		</artifactId>
