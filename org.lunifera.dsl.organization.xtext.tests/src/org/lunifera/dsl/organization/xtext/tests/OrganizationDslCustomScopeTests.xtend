@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.scoping.IScopeProvider
 import org.junit.Before
 import org.junit.Test
-import org.lunifera.dsl.organization.semantic.model.Organization
+import org.lunifera.dsl.organization.semantic.model.OOrganization
+import org.lunifera.dsl.organization.semantic.model.OPartnership
+import org.lunifera.dsl.organization.semantic.model.OWorker
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage
-import org.lunifera.dsl.organization.semantic.model.Partnership
-import org.lunifera.dsl.organization.semantic.model.Worker
 import org.lunifera.dsl.organization.xtext.tests.utils.CustomParseHelper
 
 import static org.junit.Assert.*
@@ -27,12 +27,12 @@ import static org.junit.Assert.*
 class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
 	
 	
-	@Inject CustomParseHelper<Organization> parser
+	@Inject CustomParseHelper<OOrganization> parser
 	
 	@Inject IScopeProvider scopeProvider
-	
-	private Organization orgModel1
-	private Organization orgModel2
+	 
+	private OOrganization orgModel1
+	private OOrganization orgModel2
 
 	@Before
 	override void before(){
@@ -62,8 +62,8 @@ class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
 	@Test
 	def void ensureOnlyInternalWorkersProposalsForPartnershipResponsible(){
 		
-		val reference = OrganizationPackage::eINSTANCE.partnership_Responsible
-		val partner = orgModel1.elements.filter(typeof(Partnership)).head
+		val reference = OrganizationPackage::eINSTANCE.OPartnership_Responsible
+		val partner = orgModel1.elements.filter(typeof(OPartnership)).head
 		assertNotNull(partner)
 		
 		var scope = scopeProvider.getScope(partner, reference)
@@ -79,8 +79,8 @@ class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
 	@Test
 	def void ensureOnlyInternalUnitProposalsForWorker(){
 		
-		val reference = OrganizationPackage::eINSTANCE.worker_AllocationUnit
-		val worker = orgModel1.elements.filter(typeof(Worker)).head
+		val reference = OrganizationPackage::eINSTANCE.OWorker_AllocationUnit
+		val worker = orgModel1.elements.filter(typeof(OWorker)).head
 		assertNotNull(worker)
 		
 		var scope = scopeProvider.getScope(worker, reference)
@@ -96,8 +96,8 @@ class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
 	@Test
 	def void ensureOnlyInternalRolesProposalsForWorker(){
 
-		val reference = OrganizationPackage::eINSTANCE.worker_PlayRoles
-		val worker = orgModel1.elements.filter(typeof(Worker)).head
+		val reference = OrganizationPackage::eINSTANCE.OWorker_PlayRoles
+		val worker = orgModel1.elements.filter(typeof(OWorker)).head
 		assertNotNull(worker)
 		
 		var scope = scopeProvider.getScope(worker, reference)
@@ -113,8 +113,8 @@ class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
 	@Test
 	def void ensureOnlyInternalPersonProposalsForWorker(){
 		
-		val reference = OrganizationPackage::eINSTANCE.worker_Person
-		val worker = orgModel1.elements.filter(typeof(Worker)).head
+		val reference = OrganizationPackage::eINSTANCE.OWorker_Person
+		val worker = orgModel1.elements.filter(typeof(OWorker)).head
 		assertNotNull(worker)
 		
 		var scope = scopeProvider.getScope(worker, reference)
@@ -130,8 +130,8 @@ class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
 	@Test
 	def void ensureOnlyExternalCompaniesProposalsForPartnerCompany(){
 		
-		val reference = OrganizationPackage::eINSTANCE.partnership_Company
-		val partner = orgModel1.elements.filter(typeof(Worker)).head
+		val reference = OrganizationPackage::eINSTANCE.OPartnership_Company
+		val partner = orgModel1.elements.filter(typeof(OWorker)).head
 		assertNotNull(partner)
 		
 		var scope = scopeProvider.getScope(partner, reference)

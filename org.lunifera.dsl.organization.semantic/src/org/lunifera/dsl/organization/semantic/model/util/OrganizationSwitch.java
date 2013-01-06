@@ -11,17 +11,22 @@ package org.lunifera.dsl.organization.semantic.model.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.lunifera.dsl.organization.semantic.model.BusinessRole;
-import org.lunifera.dsl.organization.semantic.model.Group;
-import org.lunifera.dsl.organization.semantic.model.Organization;
-import org.lunifera.dsl.organization.semantic.model.OrganizationMember;
-import org.lunifera.dsl.organization.semantic.model.OrganizationModel;
+import org.lunifera.dsl.organization.semantic.model.*;
+import org.lunifera.dsl.organization.semantic.model.OBusinessRole;
+import org.lunifera.dsl.organization.semantic.model.ODescribed;
+import org.lunifera.dsl.organization.semantic.model.OGroup;
+import org.lunifera.dsl.organization.semantic.model.OHierarchyRoot;
+import org.lunifera.dsl.organization.semantic.model.ONamed;
+import org.lunifera.dsl.organization.semantic.model.OOrganization;
+import org.lunifera.dsl.organization.semantic.model.OOrganizationMember;
+import org.lunifera.dsl.organization.semantic.model.OOrganizationModel;
+import org.lunifera.dsl.organization.semantic.model.OPartnership;
+import org.lunifera.dsl.organization.semantic.model.OPerson;
+import org.lunifera.dsl.organization.semantic.model.OPersonRole;
+import org.lunifera.dsl.organization.semantic.model.OUnit;
+import org.lunifera.dsl.organization.semantic.model.OUnitRole;
+import org.lunifera.dsl.organization.semantic.model.OWorker;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnit;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnitType;
-import org.lunifera.dsl.organization.semantic.model.Partnership;
-import org.lunifera.dsl.organization.semantic.model.Person;
-import org.lunifera.dsl.organization.semantic.model.Worker;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,70 +85,113 @@ public class OrganizationSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case OrganizationPackage.ORGANIZATION_MODEL: {
-				OrganizationModel organizationModel = (OrganizationModel)theEObject;
-				T result = caseOrganizationModel(organizationModel);
+			case OrganizationPackage.ONAMED: {
+				ONamed oNamed = (ONamed)theEObject;
+				T result = caseONamed(oNamed);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.ORGANIZATION: {
-				Organization organization = (Organization)theEObject;
-				T result = caseOrganization(organization);
+			case OrganizationPackage.ODESCRIBED: {
+				ODescribed oDescribed = (ODescribed)theEObject;
+				T result = caseODescribed(oDescribed);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.ORGANIZATION_UNIT: {
-				OrganizationUnit organizationUnit = (OrganizationUnit)theEObject;
-				T result = caseOrganizationUnit(organizationUnit);
-				if (result == null) result = caseOrganizationMember(organizationUnit);
+			case OrganizationPackage.OORGANIZATION_MODEL: {
+				OOrganizationModel oOrganizationModel = (OOrganizationModel)theEObject;
+				T result = caseOOrganizationModel(oOrganizationModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.ORGANIZATION_UNIT_TYPE: {
-				OrganizationUnitType organizationUnitType = (OrganizationUnitType)theEObject;
-				T result = caseOrganizationUnitType(organizationUnitType);
-				if (result == null) result = caseOrganizationMember(organizationUnitType);
+			case OrganizationPackage.OHIERARCHY_ROOT: {
+				OHierarchyRoot oHierarchyRoot = (OHierarchyRoot)theEObject;
+				T result = caseOHierarchyRoot(oHierarchyRoot);
+				if (result == null) result = caseONamed(oHierarchyRoot);
+				if (result == null) result = caseODescribed(oHierarchyRoot);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.BUSINESS_ROLE: {
-				BusinessRole businessRole = (BusinessRole)theEObject;
-				T result = caseBusinessRole(businessRole);
-				if (result == null) result = caseOrganizationMember(businessRole);
+			case OrganizationPackage.OORGANIZATION: {
+				OOrganization oOrganization = (OOrganization)theEObject;
+				T result = caseOOrganization(oOrganization);
+				if (result == null) result = caseONamed(oOrganization);
+				if (result == null) result = caseODescribed(oOrganization);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.PERSON: {
-				Person person = (Person)theEObject;
-				T result = casePerson(person);
-				if (result == null) result = caseOrganizationMember(person);
+			case OrganizationPackage.OUNIT: {
+				OUnit oUnit = (OUnit)theEObject;
+				T result = caseOUnit(oUnit);
+				if (result == null) result = caseOOrganizationMember(oUnit);
+				if (result == null) result = caseONamed(oUnit);
+				if (result == null) result = caseODescribed(oUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.WORKER: {
-				Worker worker = (Worker)theEObject;
-				T result = caseWorker(worker);
-				if (result == null) result = caseOrganizationMember(worker);
+			case OrganizationPackage.OBUSINESS_ROLE: {
+				OBusinessRole oBusinessRole = (OBusinessRole)theEObject;
+				T result = caseOBusinessRole(oBusinessRole);
+				if (result == null) result = caseOOrganizationMember(oBusinessRole);
+				if (result == null) result = caseONamed(oBusinessRole);
+				if (result == null) result = caseODescribed(oBusinessRole);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.GROUP: {
-				Group group = (Group)theEObject;
-				T result = caseGroup(group);
-				if (result == null) result = caseOrganizationMember(group);
+			case OrganizationPackage.OPERSON_ROLE: {
+				OPersonRole oPersonRole = (OPersonRole)theEObject;
+				T result = caseOPersonRole(oPersonRole);
+				if (result == null) result = caseOBusinessRole(oPersonRole);
+				if (result == null) result = caseOOrganizationMember(oPersonRole);
+				if (result == null) result = caseONamed(oPersonRole);
+				if (result == null) result = caseODescribed(oPersonRole);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.PARTNERSHIP: {
-				Partnership partnership = (Partnership)theEObject;
-				T result = casePartnership(partnership);
-				if (result == null) result = caseOrganizationMember(partnership);
+			case OrganizationPackage.OUNIT_ROLE: {
+				OUnitRole oUnitRole = (OUnitRole)theEObject;
+				T result = caseOUnitRole(oUnitRole);
+				if (result == null) result = caseOBusinessRole(oUnitRole);
+				if (result == null) result = caseOOrganizationMember(oUnitRole);
+				if (result == null) result = caseONamed(oUnitRole);
+				if (result == null) result = caseODescribed(oUnitRole);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OrganizationPackage.ORGANIZATION_MEMBER: {
-				OrganizationMember organizationMember = (OrganizationMember)theEObject;
-				T result = caseOrganizationMember(organizationMember);
+			case OrganizationPackage.OPERSON: {
+				OPerson oPerson = (OPerson)theEObject;
+				T result = caseOPerson(oPerson);
+				if (result == null) result = caseOOrganizationMember(oPerson);
+				if (result == null) result = caseONamed(oPerson);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OrganizationPackage.OWORKER: {
+				OWorker oWorker = (OWorker)theEObject;
+				T result = caseOWorker(oWorker);
+				if (result == null) result = caseOOrganizationMember(oWorker);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OrganizationPackage.OGROUP: {
+				OGroup oGroup = (OGroup)theEObject;
+				T result = caseOGroup(oGroup);
+				if (result == null) result = caseOOrganizationMember(oGroup);
+				if (result == null) result = caseONamed(oGroup);
+				if (result == null) result = caseODescribed(oGroup);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OrganizationPackage.OPARTNERSHIP: {
+				OPartnership oPartnership = (OPartnership)theEObject;
+				T result = caseOPartnership(oPartnership);
+				if (result == null) result = caseOOrganizationMember(oPartnership);
+				if (result == null) result = caseONamed(oPartnership);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OrganizationPackage.OORGANIZATION_MEMBER: {
+				OOrganizationMember oOrganizationMember = (OOrganizationMember)theEObject;
+				T result = caseOOrganizationMember(oOrganizationMember);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -152,152 +200,212 @@ public class OrganizationSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ONamed</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ONamed</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOrganizationModel(OrganizationModel object) {
+	public T caseONamed(ONamed object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Organization</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ODescribed</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Organization</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ODescribed</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOrganization(Organization object) {
+	public T caseODescribed(ODescribed object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Unit</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OOrganization Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Unit</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OOrganization Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOrganizationUnit(OrganizationUnit object) {
+	public T caseOOrganizationModel(OOrganizationModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Unit Type</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OHierarchy Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Unit Type</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OHierarchy Root</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOrganizationUnitType(OrganizationUnitType object) {
+	public T caseOHierarchyRoot(OHierarchyRoot object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Business Role</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OOrganization</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Business Role</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OOrganization</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBusinessRole(BusinessRole object) {
+	public T caseOOrganization(OOrganization object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Person</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OUnit</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Person</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OUnit</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePerson(Person object) {
+	public T caseOUnit(OUnit object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Worker</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OBusiness Role</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Worker</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OBusiness Role</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWorker(Worker object) {
+	public T caseOBusinessRole(OBusinessRole object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Group</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OPerson Role</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Group</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OPerson Role</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGroup(Group object) {
+	public T caseOPersonRole(OPersonRole object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partnership</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OUnit Role</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partnership</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OUnit Role</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePartnership(Partnership object) {
+	public T caseOUnitRole(OUnitRole object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OPerson</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OPerson</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOrganizationMember(OrganizationMember object) {
+	public T caseOPerson(OPerson object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OWorker</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OWorker</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOWorker(OWorker object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OGroup</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OGroup</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOGroup(OGroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OPartnership</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OPartnership</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOPartnership(OPartnership object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OOrganization Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OOrganization Member</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOOrganizationMember(OOrganizationMember object) {
 		return null;
 	}
 

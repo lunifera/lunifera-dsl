@@ -12,13 +12,13 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Element</b></em>'.
+ * A representation of the model object '<em><b>OOrganization Member</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOrganizationElement()
+ * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOOrganizationMember()
  * @model abstract="true"
  * @generated
  */
-public interface OrganizationElement extends EObject {
-} // OrganizationElement
+public interface OOrganizationMember extends EObject {
+} // OOrganizationMember

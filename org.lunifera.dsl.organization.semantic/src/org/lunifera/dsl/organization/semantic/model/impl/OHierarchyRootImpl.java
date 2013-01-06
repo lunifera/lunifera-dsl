@@ -8,28 +8,39 @@
  */
 package org.lunifera.dsl.organization.semantic.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.lunifera.dsl.organization.semantic.model.BusinessRole;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.lunifera.dsl.organization.semantic.model.ODescribed;
+import org.lunifera.dsl.organization.semantic.model.OHierarchyRoot;
+import org.lunifera.dsl.organization.semantic.model.OOrganization;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Business Role</b></em>'.
+ * An implementation of the model object '<em><b>OHierarchy Root</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.BusinessRoleImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.BusinessRoleImpl#getLongName <em>Long Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.BusinessRoleImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OHierarchyRootImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OHierarchyRootImpl#getLongName <em>Long Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OHierarchyRootImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OHierarchyRootImpl#getOrganizations <em>Organizations</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class BusinessRoleImpl extends OrganizationMemberImpl implements BusinessRole {
+public class OHierarchyRootImpl extends MinimalEObjectImpl.Container implements OHierarchyRoot {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -91,11 +102,21 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getOrganizations() <em>Organizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrganizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<OOrganization> organizations;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BusinessRoleImpl() {
+	protected OHierarchyRootImpl() {
 		super();
 	}
 
@@ -106,7 +127,7 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OrganizationPackage.Literals.BUSINESS_ROLE;
+		return OrganizationPackage.Literals.OHIERARCHY_ROOT;
 	}
 
 	/**
@@ -127,7 +148,7 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.BUSINESS_ROLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OHIERARCHY_ROOT__NAME, oldName, name));
 	}
 
 	/**
@@ -148,7 +169,7 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 		String oldLongName = longName;
 		longName = newLongName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.BUSINESS_ROLE__LONG_NAME, oldLongName, longName));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OHIERARCHY_ROOT__LONG_NAME, oldLongName, longName));
 	}
 
 	/**
@@ -169,7 +190,33 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.BUSINESS_ROLE__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OHIERARCHY_ROOT__DESCRIPTION, oldDescription, description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<OOrganization> getOrganizations() {
+		if (organizations == null) {
+			organizations = new EObjectContainmentEList<OOrganization>(OOrganization.class, this, OrganizationPackage.OHIERARCHY_ROOT__ORGANIZATIONS);
+		}
+		return organizations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case OrganizationPackage.OHIERARCHY_ROOT__ORGANIZATIONS:
+				return ((InternalEList<?>)getOrganizations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -180,12 +227,14 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrganizationPackage.BUSINESS_ROLE__NAME:
+			case OrganizationPackage.OHIERARCHY_ROOT__NAME:
 				return getName();
-			case OrganizationPackage.BUSINESS_ROLE__LONG_NAME:
+			case OrganizationPackage.OHIERARCHY_ROOT__LONG_NAME:
 				return getLongName();
-			case OrganizationPackage.BUSINESS_ROLE__DESCRIPTION:
+			case OrganizationPackage.OHIERARCHY_ROOT__DESCRIPTION:
 				return getDescription();
+			case OrganizationPackage.OHIERARCHY_ROOT__ORGANIZATIONS:
+				return getOrganizations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -195,17 +244,22 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrganizationPackage.BUSINESS_ROLE__NAME:
+			case OrganizationPackage.OHIERARCHY_ROOT__NAME:
 				setName((String)newValue);
 				return;
-			case OrganizationPackage.BUSINESS_ROLE__LONG_NAME:
+			case OrganizationPackage.OHIERARCHY_ROOT__LONG_NAME:
 				setLongName((String)newValue);
 				return;
-			case OrganizationPackage.BUSINESS_ROLE__DESCRIPTION:
+			case OrganizationPackage.OHIERARCHY_ROOT__DESCRIPTION:
 				setDescription((String)newValue);
+				return;
+			case OrganizationPackage.OHIERARCHY_ROOT__ORGANIZATIONS:
+				getOrganizations().clear();
+				getOrganizations().addAll((Collection<? extends OOrganization>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,14 +273,17 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.BUSINESS_ROLE__NAME:
+			case OrganizationPackage.OHIERARCHY_ROOT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.BUSINESS_ROLE__LONG_NAME:
+			case OrganizationPackage.OHIERARCHY_ROOT__LONG_NAME:
 				setLongName(LONG_NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.BUSINESS_ROLE__DESCRIPTION:
+			case OrganizationPackage.OHIERARCHY_ROOT__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
+				return;
+			case OrganizationPackage.OHIERARCHY_ROOT__ORGANIZATIONS:
+				getOrganizations().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -240,14 +297,50 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.BUSINESS_ROLE__NAME:
+			case OrganizationPackage.OHIERARCHY_ROOT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case OrganizationPackage.BUSINESS_ROLE__LONG_NAME:
+			case OrganizationPackage.OHIERARCHY_ROOT__LONG_NAME:
 				return LONG_NAME_EDEFAULT == null ? longName != null : !LONG_NAME_EDEFAULT.equals(longName);
-			case OrganizationPackage.BUSINESS_ROLE__DESCRIPTION:
+			case OrganizationPackage.OHIERARCHY_ROOT__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case OrganizationPackage.OHIERARCHY_ROOT__ORGANIZATIONS:
+				return organizations != null && !organizations.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ODescribed.class) {
+			switch (derivedFeatureID) {
+				case OrganizationPackage.OHIERARCHY_ROOT__LONG_NAME: return OrganizationPackage.ODESCRIBED__LONG_NAME;
+				case OrganizationPackage.OHIERARCHY_ROOT__DESCRIPTION: return OrganizationPackage.ODESCRIBED__DESCRIPTION;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ODescribed.class) {
+			switch (baseFeatureID) {
+				case OrganizationPackage.ODESCRIBED__LONG_NAME: return OrganizationPackage.OHIERARCHY_ROOT__LONG_NAME;
+				case OrganizationPackage.ODESCRIBED__DESCRIPTION: return OrganizationPackage.OHIERARCHY_ROOT__DESCRIPTION;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -270,4 +363,4 @@ public class BusinessRoleImpl extends OrganizationMemberImpl implements Business
 		return result.toString();
 	}
 
-} //BusinessRoleImpl
+} //OHierarchyRootImpl

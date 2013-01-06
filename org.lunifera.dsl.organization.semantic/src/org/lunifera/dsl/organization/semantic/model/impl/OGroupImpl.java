@@ -15,27 +15,29 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.lunifera.dsl.organization.semantic.model.Group;
+import org.lunifera.dsl.organization.semantic.model.ODescribed;
+import org.lunifera.dsl.organization.semantic.model.OGroup;
+import org.lunifera.dsl.organization.semantic.model.ONamed;
+import org.lunifera.dsl.organization.semantic.model.OWorker;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.Worker;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Group</b></em>'.
+ * An implementation of the model object '<em><b>OGroup</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.GroupImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.GroupImpl#getLongName <em>Long Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.GroupImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.GroupImpl#getWorkers <em>Workers</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OGroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OGroupImpl#getLongName <em>Long Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OGroupImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OGroupImpl#getWorkers <em>Workers</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class GroupImpl extends OrganizationMemberImpl implements Group {
+public class OGroupImpl extends OOrganizationMemberImpl implements OGroup {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -104,14 +106,14 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Worker> workers;
+	protected EList<OWorker> workers;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GroupImpl() {
+	protected OGroupImpl() {
 		super();
 	}
 
@@ -122,7 +124,7 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OrganizationPackage.Literals.GROUP;
+		return OrganizationPackage.Literals.OGROUP;
 	}
 
 	/**
@@ -143,7 +145,7 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.GROUP__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OGROUP__NAME, oldName, name));
 	}
 
 	/**
@@ -164,7 +166,7 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 		String oldLongName = longName;
 		longName = newLongName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.GROUP__LONG_NAME, oldLongName, longName));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OGROUP__LONG_NAME, oldLongName, longName));
 	}
 
 	/**
@@ -185,7 +187,7 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.GROUP__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OGROUP__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -193,9 +195,9 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Worker> getWorkers() {
+	public EList<OWorker> getWorkers() {
 		if (workers == null) {
-			workers = new EObjectResolvingEList<Worker>(Worker.class, this, OrganizationPackage.GROUP__WORKERS);
+			workers = new EObjectResolvingEList<OWorker>(OWorker.class, this, OrganizationPackage.OGROUP__WORKERS);
 		}
 		return workers;
 	}
@@ -208,13 +210,13 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrganizationPackage.GROUP__NAME:
+			case OrganizationPackage.OGROUP__NAME:
 				return getName();
-			case OrganizationPackage.GROUP__LONG_NAME:
+			case OrganizationPackage.OGROUP__LONG_NAME:
 				return getLongName();
-			case OrganizationPackage.GROUP__DESCRIPTION:
+			case OrganizationPackage.OGROUP__DESCRIPTION:
 				return getDescription();
-			case OrganizationPackage.GROUP__WORKERS:
+			case OrganizationPackage.OGROUP__WORKERS:
 				return getWorkers();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -229,18 +231,18 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrganizationPackage.GROUP__NAME:
+			case OrganizationPackage.OGROUP__NAME:
 				setName((String)newValue);
 				return;
-			case OrganizationPackage.GROUP__LONG_NAME:
+			case OrganizationPackage.OGROUP__LONG_NAME:
 				setLongName((String)newValue);
 				return;
-			case OrganizationPackage.GROUP__DESCRIPTION:
+			case OrganizationPackage.OGROUP__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case OrganizationPackage.GROUP__WORKERS:
+			case OrganizationPackage.OGROUP__WORKERS:
 				getWorkers().clear();
-				getWorkers().addAll((Collection<? extends Worker>)newValue);
+				getWorkers().addAll((Collection<? extends OWorker>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -254,16 +256,16 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.GROUP__NAME:
+			case OrganizationPackage.OGROUP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.GROUP__LONG_NAME:
+			case OrganizationPackage.OGROUP__LONG_NAME:
 				setLongName(LONG_NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.GROUP__DESCRIPTION:
+			case OrganizationPackage.OGROUP__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case OrganizationPackage.GROUP__WORKERS:
+			case OrganizationPackage.OGROUP__WORKERS:
 				getWorkers().clear();
 				return;
 		}
@@ -278,16 +280,62 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.GROUP__NAME:
+			case OrganizationPackage.OGROUP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case OrganizationPackage.GROUP__LONG_NAME:
+			case OrganizationPackage.OGROUP__LONG_NAME:
 				return LONG_NAME_EDEFAULT == null ? longName != null : !LONG_NAME_EDEFAULT.equals(longName);
-			case OrganizationPackage.GROUP__DESCRIPTION:
+			case OrganizationPackage.OGROUP__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case OrganizationPackage.GROUP__WORKERS:
+			case OrganizationPackage.OGROUP__WORKERS:
 				return workers != null && !workers.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ONamed.class) {
+			switch (derivedFeatureID) {
+				case OrganizationPackage.OGROUP__NAME: return OrganizationPackage.ONAMED__NAME;
+				default: return -1;
+			}
+		}
+		if (baseClass == ODescribed.class) {
+			switch (derivedFeatureID) {
+				case OrganizationPackage.OGROUP__LONG_NAME: return OrganizationPackage.ODESCRIBED__LONG_NAME;
+				case OrganizationPackage.OGROUP__DESCRIPTION: return OrganizationPackage.ODESCRIBED__DESCRIPTION;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ONamed.class) {
+			switch (baseFeatureID) {
+				case OrganizationPackage.ONAMED__NAME: return OrganizationPackage.OGROUP__NAME;
+				default: return -1;
+			}
+		}
+		if (baseClass == ODescribed.class) {
+			switch (baseFeatureID) {
+				case OrganizationPackage.ODESCRIBED__LONG_NAME: return OrganizationPackage.OGROUP__LONG_NAME;
+				case OrganizationPackage.ODESCRIBED__DESCRIPTION: return OrganizationPackage.OGROUP__DESCRIPTION;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -310,4 +358,4 @@ public class GroupImpl extends OrganizationMemberImpl implements Group {
 		return result.toString();
 	}
 
-} //GroupImpl
+} //OGroupImpl

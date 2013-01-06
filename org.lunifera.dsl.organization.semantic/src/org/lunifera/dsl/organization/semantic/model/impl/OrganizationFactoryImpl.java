@@ -13,17 +13,19 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.lunifera.dsl.organization.semantic.model.BusinessRole;
-import org.lunifera.dsl.organization.semantic.model.Group;
-import org.lunifera.dsl.organization.semantic.model.Organization;
+import org.lunifera.dsl.organization.semantic.model.*;
+import org.lunifera.dsl.organization.semantic.model.OGroup;
+import org.lunifera.dsl.organization.semantic.model.OHierarchyRoot;
+import org.lunifera.dsl.organization.semantic.model.OOrganization;
+import org.lunifera.dsl.organization.semantic.model.OOrganizationModel;
+import org.lunifera.dsl.organization.semantic.model.OPartnership;
+import org.lunifera.dsl.organization.semantic.model.OPerson;
+import org.lunifera.dsl.organization.semantic.model.OPersonRole;
+import org.lunifera.dsl.organization.semantic.model.OUnit;
+import org.lunifera.dsl.organization.semantic.model.OUnitRole;
+import org.lunifera.dsl.organization.semantic.model.OWorker;
 import org.lunifera.dsl.organization.semantic.model.OrganizationFactory;
-import org.lunifera.dsl.organization.semantic.model.OrganizationModel;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnit;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnitType;
-import org.lunifera.dsl.organization.semantic.model.Partnership;
-import org.lunifera.dsl.organization.semantic.model.Person;
-import org.lunifera.dsl.organization.semantic.model.Worker;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,15 +71,16 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case OrganizationPackage.ORGANIZATION_MODEL: return createOrganizationModel();
-			case OrganizationPackage.ORGANIZATION: return createOrganization();
-			case OrganizationPackage.ORGANIZATION_UNIT: return createOrganizationUnit();
-			case OrganizationPackage.ORGANIZATION_UNIT_TYPE: return createOrganizationUnitType();
-			case OrganizationPackage.BUSINESS_ROLE: return createBusinessRole();
-			case OrganizationPackage.PERSON: return createPerson();
-			case OrganizationPackage.WORKER: return createWorker();
-			case OrganizationPackage.GROUP: return createGroup();
-			case OrganizationPackage.PARTNERSHIP: return createPartnership();
+			case OrganizationPackage.OORGANIZATION_MODEL: return createOOrganizationModel();
+			case OrganizationPackage.OHIERARCHY_ROOT: return createOHierarchyRoot();
+			case OrganizationPackage.OORGANIZATION: return createOOrganization();
+			case OrganizationPackage.OUNIT: return createOUnit();
+			case OrganizationPackage.OPERSON_ROLE: return createOPersonRole();
+			case OrganizationPackage.OUNIT_ROLE: return createOUnitRole();
+			case OrganizationPackage.OPERSON: return createOPerson();
+			case OrganizationPackage.OWORKER: return createOWorker();
+			case OrganizationPackage.OGROUP: return createOGroup();
+			case OrganizationPackage.OPARTNERSHIP: return createOPartnership();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -88,9 +91,9 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OrganizationModel createOrganizationModel() {
-		OrganizationModelImpl organizationModel = new OrganizationModelImpl();
-		return organizationModel;
+	public OOrganizationModel createOOrganizationModel() {
+		OOrganizationModelImpl oOrganizationModel = new OOrganizationModelImpl();
+		return oOrganizationModel;
 	}
 
 	/**
@@ -98,9 +101,9 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Organization createOrganization() {
-		OrganizationImpl organization = new OrganizationImpl();
-		return organization;
+	public OHierarchyRoot createOHierarchyRoot() {
+		OHierarchyRootImpl oHierarchyRoot = new OHierarchyRootImpl();
+		return oHierarchyRoot;
 	}
 
 	/**
@@ -108,9 +111,9 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OrganizationUnit createOrganizationUnit() {
-		OrganizationUnitImpl organizationUnit = new OrganizationUnitImpl();
-		return organizationUnit;
+	public OOrganization createOOrganization() {
+		OOrganizationImpl oOrganization = new OOrganizationImpl();
+		return oOrganization;
 	}
 
 	/**
@@ -118,9 +121,9 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OrganizationUnitType createOrganizationUnitType() {
-		OrganizationUnitTypeImpl organizationUnitType = new OrganizationUnitTypeImpl();
-		return organizationUnitType;
+	public OUnit createOUnit() {
+		OUnitImpl oUnit = new OUnitImpl();
+		return oUnit;
 	}
 
 	/**
@@ -128,9 +131,9 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BusinessRole createBusinessRole() {
-		BusinessRoleImpl businessRole = new BusinessRoleImpl();
-		return businessRole;
+	public OPersonRole createOPersonRole() {
+		OPersonRoleImpl oPersonRole = new OPersonRoleImpl();
+		return oPersonRole;
 	}
 
 	/**
@@ -138,9 +141,9 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Person createPerson() {
-		PersonImpl person = new PersonImpl();
-		return person;
+	public OUnitRole createOUnitRole() {
+		OUnitRoleImpl oUnitRole = new OUnitRoleImpl();
+		return oUnitRole;
 	}
 
 	/**
@@ -148,9 +151,9 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Worker createWorker() {
-		WorkerImpl worker = new WorkerImpl();
-		return worker;
+	public OPerson createOPerson() {
+		OPersonImpl oPerson = new OPersonImpl();
+		return oPerson;
 	}
 
 	/**
@@ -158,9 +161,9 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Group createGroup() {
-		GroupImpl group = new GroupImpl();
-		return group;
+	public OWorker createOWorker() {
+		OWorkerImpl oWorker = new OWorkerImpl();
+		return oWorker;
 	}
 
 	/**
@@ -168,9 +171,19 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Partnership createPartnership() {
-		PartnershipImpl partnership = new PartnershipImpl();
-		return partnership;
+	public OGroup createOGroup() {
+		OGroupImpl oGroup = new OGroupImpl();
+		return oGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OPartnership createOPartnership() {
+		OPartnershipImpl oPartnership = new OPartnershipImpl();
+		return oPartnership;
 	}
 
 	/**

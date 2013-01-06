@@ -18,9 +18,11 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.lunifera.dsl.organization.semantic.model.OPartnership;
+import org.lunifera.dsl.organization.semantic.model.OUnit;
+import org.lunifera.dsl.organization.semantic.model.OWorker;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.Partnership;
-import org.lunifera.dsl.organization.semantic.model.Worker;
+import org.lunifera.dsl.organization.semantic.model.util.OrganizationUtil;
 
 import com.google.inject.Inject;
 
@@ -33,12 +35,15 @@ public class OrganizationGrammarQualifiedNameProvider extends
 	@Inject
 	private IQualifiedNameProvider qualifiedNameProvider;
 
-	protected QualifiedName qualifiedName(Worker e) {
+	@Inject
+	private OrganizationUtil util;
+
+	protected QualifiedName qualifiedName(OWorker e) {
 
 		String name = null;
 
 		List<INode> nodes = NodeModelUtils.findNodesForFeature(e,
-				OrganizationPackage.Literals.WORKER__PERSON);
+				OrganizationPackage.Literals.OWORKER__PERSON);
 
 		if (!nodes.isEmpty()) {
 			INode first = nodes.get(0);
@@ -59,12 +64,12 @@ public class OrganizationGrammarQualifiedNameProvider extends
 		return super.qualifiedName(e);
 	}
 
-	protected QualifiedName qualifiedName(Partnership e) {
+	protected QualifiedName qualifiedName(OPartnership e) {
 
 		String name = null;
 
 		List<INode> nodes = NodeModelUtils.findNodesForFeature(e,
-				OrganizationPackage.Literals.PARTNERSHIP__COMPANY);
+				OrganizationPackage.Literals.OPARTNERSHIP__COMPANY);
 
 		if (!nodes.isEmpty()) {
 			INode first = nodes.get(0);

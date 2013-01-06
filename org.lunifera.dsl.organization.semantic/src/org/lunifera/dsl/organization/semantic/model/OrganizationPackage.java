@@ -62,51 +62,14 @@ public interface OrganizationPackage extends EPackage {
 	OrganizationPackage eINSTANCE = org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationModelImpl <em>Model</em>}' class.
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.ONamed <em>ONamed</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationModelImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganizationModel()
+	 * @see org.lunifera.dsl.organization.semantic.model.ONamed
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getONamed()
 	 * @generated
 	 */
-	int ORGANIZATION_MODEL = 0;
-
-	/**
-	 * The feature id for the '<em><b>Organization</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_MODEL__ORGANIZATION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Organization Unit Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_MODEL__ORGANIZATION_UNIT_TYPES = 1;
-
-	/**
-	 * The number of structural features of the '<em>Model</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_MODEL_FEATURE_COUNT = 2;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationImpl <em>Organization</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganization()
-	 * @generated
-	 */
-	int ORGANIZATION = 1;
+	int ONAMED = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -115,7 +78,26 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION__NAME = 0;
+	int ONAMED__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>ONamed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONAMED_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.ODescribed <em>ODescribed</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.ODescribed
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getODescribed()
+	 * @generated
+	 */
+	int ODESCRIBED = 1;
 
 	/**
 	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
@@ -124,7 +106,154 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION__LONG_NAME = 1;
+	int ODESCRIBED__LONG_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ODESCRIBED__DESCRIPTION = 1;
+
+	/**
+	 * The number of structural features of the '<em>ODescribed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ODESCRIBED_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationModelImpl <em>OOrganization Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OOrganizationModelImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOOrganizationModel()
+	 * @generated
+	 */
+	int OORGANIZATION_MODEL = 2;
+
+	/**
+	 * The feature id for the '<em><b>Business Roles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OORGANIZATION_MODEL__BUSINESS_ROLES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OORGANIZATION_MODEL__ROOT = 1;
+
+	/**
+	 * The number of structural features of the '<em>OOrganization Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OORGANIZATION_MODEL_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OHierarchyRootImpl <em>OHierarchy Root</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OHierarchyRootImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOHierarchyRoot()
+	 * @generated
+	 */
+	int OHIERARCHY_ROOT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OHIERARCHY_ROOT__NAME = ONAMED__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OHIERARCHY_ROOT__LONG_NAME = ONAMED_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OHIERARCHY_ROOT__DESCRIPTION = ONAMED_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Organizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OHIERARCHY_ROOT__ORGANIZATIONS = ONAMED_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>OHierarchy Root</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OHIERARCHY_ROOT_FEATURE_COUNT = ONAMED_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationImpl <em>OOrganization</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OOrganizationImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOOrganization()
+	 * @generated
+	 */
+	int OORGANIZATION = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OORGANIZATION__NAME = ONAMED__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OORGANIZATION__LONG_NAME = ONAMED_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OORGANIZATION__DESCRIPTION = ONAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -133,16 +262,7 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION__VERSION = 2;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION__DESCRIPTION = 3;
+	int OORGANIZATION__VERSION = ONAMED_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -151,127 +271,45 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION__ELEMENTS = 4;
+	int OORGANIZATION__ELEMENTS = ONAMED_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Organization</em>' class.
+	 * The number of structural features of the '<em>OOrganization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION_FEATURE_COUNT = 5;
+	int OORGANIZATION_FEATURE_COUNT = ONAMED_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationMemberImpl <em>Member</em>}' class.
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationMemberImpl <em>OOrganization Member</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationMemberImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganizationMember()
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OOrganizationMemberImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOOrganizationMember()
 	 * @generated
 	 */
-	int ORGANIZATION_MEMBER = 9;
+	int OORGANIZATION_MEMBER = 13;
 
 	/**
-	 * The number of structural features of the '<em>Member</em>' class.
+	 * The number of structural features of the '<em>OOrganization Member</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION_MEMBER_FEATURE_COUNT = 0;
+	int OORGANIZATION_MEMBER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl <em>Unit</em>}' class.
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OUnitImpl <em>OUnit</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganizationUnit()
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OUnitImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOUnit()
 	 * @generated
 	 */
-	int ORGANIZATION_UNIT = 2;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.BusinessRoleImpl <em>Business Role</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.BusinessRoleImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getBusinessRole()
-	 * @generated
-	 */
-	int BUSINESS_ROLE = 4;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.PersonImpl <em>Person</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.PersonImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getPerson()
-	 * @generated
-	 */
-	int PERSON = 5;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.WorkerImpl <em>Worker</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.WorkerImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getWorker()
-	 * @generated
-	 */
-	int WORKER = 6;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.GroupImpl <em>Group</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.GroupImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getGroup()
-	 * @generated
-	 */
-	int GROUP = 7;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.PartnershipImpl <em>Partnership</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.PartnershipImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getPartnership()
-	 * @generated
-	 */
-	int PARTNERSHIP = 8;
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OrganizationModel <em>Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Model</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationModel
-	 * @generated
-	 */
-	EClass getOrganizationModel();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.organization.semantic.model.OrganizationModel#getOrganization <em>Organization</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Organization</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationModel#getOrganization()
-	 * @see #getOrganizationModel()
-	 * @generated
-	 */
-	EReference getOrganizationModel_Organization();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.organization.semantic.model.OrganizationModel#getOrganizationUnitTypes <em>Organization Unit Types</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Organization Unit Types</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationModel#getOrganizationUnitTypes()
-	 * @see #getOrganizationModel()
-	 * @generated
-	 */
-	EReference getOrganizationModel_OrganizationUnitTypes();
+	int OUNIT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -280,7 +318,25 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION_UNIT__NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 0;
+	int OUNIT__NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUNIT__LONG_NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUNIT__DESCRIPTION = OORGANIZATION_MEMBER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' reference.
@@ -289,197 +345,7 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANIZATION_UNIT__PARENT = ORGANIZATION_MEMBER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_UNIT__LONG_NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_UNIT__DESCRIPTION = ORGANIZATION_MEMBER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Types</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_UNIT__TYPES = ORGANIZATION_MEMBER_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the '<em>Unit</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_UNIT_FEATURE_COUNT = ORGANIZATION_MEMBER_FEATURE_COUNT + 5;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitTypeImpl <em>Unit Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitTypeImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganizationUnitType()
-	 * @generated
-	 */
-	int ORGANIZATION_UNIT_TYPE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_UNIT_TYPE__NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_UNIT_TYPE__LONG_NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_UNIT_TYPE__DESCRIPTION = ORGANIZATION_MEMBER_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Unit Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANIZATION_UNIT_TYPE_FEATURE_COUNT = ORGANIZATION_MEMBER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_ROLE__NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_ROLE__LONG_NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_ROLE__DESCRIPTION = ORGANIZATION_MEMBER_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Business Role</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUSINESS_ROLE_FEATURE_COUNT = ORGANIZATION_MEMBER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSON__NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>First Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSON__FIRST_NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Middle Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSON__MIDDLE_NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Last Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSON__LAST_NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Email</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSON__EMAIL = ORGANIZATION_MEMBER_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the '<em>Person</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSON_FEATURE_COUNT = ORGANIZATION_MEMBER_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Person</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKER__PERSON = ORGANIZATION_MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Allocation Unit</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKER__ALLOCATION_UNIT = ORGANIZATION_MEMBER_FEATURE_COUNT + 1;
+	int OUNIT__PARENT = OORGANIZATION_MEMBER_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Play Roles</b></em>' reference list.
@@ -488,16 +354,35 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKER__PLAY_ROLES = ORGANIZATION_MEMBER_FEATURE_COUNT + 2;
+	int OUNIT__PLAY_ROLES = OORGANIZATION_MEMBER_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the '<em>Worker</em>' class.
+	 * The feature id for the '<em><b>Sub Units</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKER_FEATURE_COUNT = ORGANIZATION_MEMBER_FEATURE_COUNT + 3;
+	int OUNIT__SUB_UNITS = OORGANIZATION_MEMBER_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>OUnit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUNIT_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 6;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl <em>OBusiness Role</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOBusinessRole()
+	 * @generated
+	 */
+	int OBUSINESS_ROLE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -506,7 +391,7 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 0;
+	int OBUSINESS_ROLE__NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
@@ -515,7 +400,7 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__LONG_NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 1;
+	int OBUSINESS_ROLE__LONG_NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -524,25 +409,26 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__DESCRIPTION = ORGANIZATION_MEMBER_FEATURE_COUNT + 2;
+	int OBUSINESS_ROLE__DESCRIPTION = OORGANIZATION_MEMBER_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Workers</b></em>' reference list.
+	 * The number of structural features of the '<em>OBusiness Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__WORKERS = ORGANIZATION_MEMBER_FEATURE_COUNT + 3;
+	int OBUSINESS_ROLE_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Group</em>' class.
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonRoleImpl <em>OPerson Role</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OPersonRoleImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOPersonRole()
 	 * @generated
-	 * @ordered
 	 */
-	int GROUP_FEATURE_COUNT = ORGANIZATION_MEMBER_FEATURE_COUNT + 4;
+	int OPERSON_ROLE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -551,7 +437,264 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTNERSHIP__NAME = ORGANIZATION_MEMBER_FEATURE_COUNT + 0;
+	int OPERSON_ROLE__NAME = OBUSINESS_ROLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON_ROLE__LONG_NAME = OBUSINESS_ROLE__LONG_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON_ROLE__DESCRIPTION = OBUSINESS_ROLE__DESCRIPTION;
+
+	/**
+	 * The number of structural features of the '<em>OPerson Role</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON_ROLE_FEATURE_COUNT = OBUSINESS_ROLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OUnitRoleImpl <em>OUnit Role</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OUnitRoleImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOUnitRole()
+	 * @generated
+	 */
+	int OUNIT_ROLE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUNIT_ROLE__NAME = OBUSINESS_ROLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUNIT_ROLE__LONG_NAME = OBUSINESS_ROLE__LONG_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUNIT_ROLE__DESCRIPTION = OBUSINESS_ROLE__DESCRIPTION;
+
+	/**
+	 * The number of structural features of the '<em>OUnit Role</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUNIT_ROLE_FEATURE_COUNT = OBUSINESS_ROLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl <em>OPerson</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOPerson()
+	 * @generated
+	 */
+	int OPERSON = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON__NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>First Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON__FIRST_NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Middle Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON__MIDDLE_NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Last Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON__LAST_NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Email</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON__EMAIL = OORGANIZATION_MEMBER_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>OPerson</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERSON_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 5;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OWorkerImpl <em>OWorker</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OWorkerImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOWorker()
+	 * @generated
+	 */
+	int OWORKER = 10;
+
+	/**
+	 * The feature id for the '<em><b>Person</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OWORKER__PERSON = OORGANIZATION_MEMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Allocation Unit</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OWORKER__ALLOCATION_UNIT = OORGANIZATION_MEMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Play Roles</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OWORKER__PLAY_ROLES = OORGANIZATION_MEMBER_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>OWorker</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OWORKER_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OGroupImpl <em>OGroup</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OGroupImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOGroup()
+	 * @generated
+	 */
+	int OGROUP = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OGROUP__NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Long Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OGROUP__LONG_NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OGROUP__DESCRIPTION = OORGANIZATION_MEMBER_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Workers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OGROUP__WORKERS = OORGANIZATION_MEMBER_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>OGroup</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OGROUP_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl <em>OPartnership</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl
+	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOPartnership()
+	 * @generated
+	 */
+	int OPARTNERSHIP = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPARTNERSHIP__NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Company</b></em>' reference.
@@ -560,7 +703,7 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTNERSHIP__COMPANY = ORGANIZATION_MEMBER_FEATURE_COUNT + 1;
+	int OPARTNERSHIP__COMPANY = OORGANIZATION_MEMBER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Responsible</b></em>' reference.
@@ -569,7 +712,7 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTNERSHIP__RESPONSIBLE = ORGANIZATION_MEMBER_FEATURE_COUNT + 2;
+	int OPARTNERSHIP__RESPONSIBLE = OORGANIZATION_MEMBER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Agreement</b></em>' attribute.
@@ -578,459 +721,398 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTNERSHIP__AGREEMENT = ORGANIZATION_MEMBER_FEATURE_COUNT + 3;
+	int OPARTNERSHIP__AGREEMENT = OORGANIZATION_MEMBER_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Partnership</em>' class.
+	 * The number of structural features of the '<em>OPartnership</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARTNERSHIP_FEATURE_COUNT = ORGANIZATION_MEMBER_FEATURE_COUNT + 4;
-
+	int OPARTNERSHIP_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 4;
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.Organization <em>Organization</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.ONamed <em>ONamed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Organization</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Organization
+	 * @return the meta object for class '<em>ONamed</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.ONamed
 	 * @generated
 	 */
-	EClass getOrganization();
+	EClass getONamed();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Organization#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.ONamed#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Organization#getName()
-	 * @see #getOrganization()
+	 * @see org.lunifera.dsl.organization.semantic.model.ONamed#getName()
+	 * @see #getONamed()
 	 * @generated
 	 */
-	EAttribute getOrganization_Name();
+	EAttribute getONamed_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Organization#getLongName <em>Long Name</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.ODescribed <em>ODescribed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ODescribed</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.ODescribed
+	 * @generated
+	 */
+	EClass getODescribed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.ODescribed#getLongName <em>Long Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Long Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Organization#getLongName()
-	 * @see #getOrganization()
+	 * @see org.lunifera.dsl.organization.semantic.model.ODescribed#getLongName()
+	 * @see #getODescribed()
 	 * @generated
 	 */
-	EAttribute getOrganization_LongName();
+	EAttribute getODescribed_LongName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Organization#getVersion <em>Version</em>}'.
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.ODescribed#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.ODescribed#getDescription()
+	 * @see #getODescribed()
+	 * @generated
+	 */
+	EAttribute getODescribed_Description();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OOrganizationModel <em>OOrganization Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OOrganization Model</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganizationModel
+	 * @generated
+	 */
+	EClass getOOrganizationModel();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.organization.semantic.model.OOrganizationModel#getBusinessRoles <em>Business Roles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Business Roles</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganizationModel#getBusinessRoles()
+	 * @see #getOOrganizationModel()
+	 * @generated
+	 */
+	EReference getOOrganizationModel_BusinessRoles();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.organization.semantic.model.OOrganizationModel#getRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Root</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganizationModel#getRoot()
+	 * @see #getOOrganizationModel()
+	 * @generated
+	 */
+	EReference getOOrganizationModel_Root();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OHierarchyRoot <em>OHierarchy Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OHierarchy Root</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OHierarchyRoot
+	 * @generated
+	 */
+	EClass getOHierarchyRoot();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.organization.semantic.model.OHierarchyRoot#getOrganizations <em>Organizations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Organizations</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OHierarchyRoot#getOrganizations()
+	 * @see #getOHierarchyRoot()
+	 * @generated
+	 */
+	EReference getOHierarchyRoot_Organizations();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OOrganization <em>OOrganization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OOrganization</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganization
+	 * @generated
+	 */
+	EClass getOOrganization();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OOrganization#getVersion <em>Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Version</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Organization#getVersion()
-	 * @see #getOrganization()
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganization#getVersion()
+	 * @see #getOOrganization()
 	 * @generated
 	 */
-	EAttribute getOrganization_Version();
+	EAttribute getOOrganization_Version();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Organization#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Organization#getDescription()
-	 * @see #getOrganization()
-	 * @generated
-	 */
-	EAttribute getOrganization_Description();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.organization.semantic.model.Organization#getElements <em>Elements</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.organization.semantic.model.OOrganization#getElements <em>Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Elements</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Organization#getElements()
-	 * @see #getOrganization()
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganization#getElements()
+	 * @see #getOOrganization()
 	 * @generated
 	 */
-	EReference getOrganization_Elements();
+	EReference getOOrganization_Elements();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnit <em>Unit</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OUnit <em>OUnit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Unit</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnit
+	 * @return the meta object for class '<em>OUnit</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OUnit
 	 * @generated
 	 */
-	EClass getOrganizationUnit();
+	EClass getOUnit();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getName()
-	 * @see #getOrganizationUnit()
-	 * @generated
-	 */
-	EAttribute getOrganizationUnit_Name();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.OUnit#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Parent</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getParent()
-	 * @see #getOrganizationUnit()
+	 * @see org.lunifera.dsl.organization.semantic.model.OUnit#getParent()
+	 * @see #getOUnit()
 	 * @generated
 	 */
-	EReference getOrganizationUnit_Parent();
+	EReference getOUnit_Parent();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getLongName <em>Long Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Long Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getLongName()
-	 * @see #getOrganizationUnit()
-	 * @generated
-	 */
-	EAttribute getOrganizationUnit_LongName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getDescription()
-	 * @see #getOrganizationUnit()
-	 * @generated
-	 */
-	EAttribute getOrganizationUnit_Description();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getTypes <em>Types</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Types</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnit#getTypes()
-	 * @see #getOrganizationUnit()
-	 * @generated
-	 */
-	EReference getOrganizationUnit_Types();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnitType <em>Unit Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Unit Type</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnitType
-	 * @generated
-	 */
-	EClass getOrganizationUnitType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnitType#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnitType#getName()
-	 * @see #getOrganizationUnitType()
-	 * @generated
-	 */
-	EAttribute getOrganizationUnitType_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnitType#getLongName <em>Long Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Long Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnitType#getLongName()
-	 * @see #getOrganizationUnitType()
-	 * @generated
-	 */
-	EAttribute getOrganizationUnitType_LongName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnitType#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnitType#getDescription()
-	 * @see #getOrganizationUnitType()
-	 * @generated
-	 */
-	EAttribute getOrganizationUnitType_Description();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.BusinessRole <em>Business Role</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Business Role</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.BusinessRole
-	 * @generated
-	 */
-	EClass getBusinessRole();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.BusinessRole#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.BusinessRole#getName()
-	 * @see #getBusinessRole()
-	 * @generated
-	 */
-	EAttribute getBusinessRole_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.BusinessRole#getLongName <em>Long Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Long Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.BusinessRole#getLongName()
-	 * @see #getBusinessRole()
-	 * @generated
-	 */
-	EAttribute getBusinessRole_LongName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.BusinessRole#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.BusinessRole#getDescription()
-	 * @see #getBusinessRole()
-	 * @generated
-	 */
-	EAttribute getBusinessRole_Description();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.Person <em>Person</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Person</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Person
-	 * @generated
-	 */
-	EClass getPerson();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Person#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Person#getName()
-	 * @see #getPerson()
-	 * @generated
-	 */
-	EAttribute getPerson_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Person#getFirstName <em>First Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>First Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Person#getFirstName()
-	 * @see #getPerson()
-	 * @generated
-	 */
-	EAttribute getPerson_FirstName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Person#getMiddleName <em>Middle Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Middle Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Person#getMiddleName()
-	 * @see #getPerson()
-	 * @generated
-	 */
-	EAttribute getPerson_MiddleName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Person#getLastName <em>Last Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Last Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Person#getLastName()
-	 * @see #getPerson()
-	 * @generated
-	 */
-	EAttribute getPerson_LastName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Person#getEmail <em>Email</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Email</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Person#getEmail()
-	 * @see #getPerson()
-	 * @generated
-	 */
-	EAttribute getPerson_Email();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.Worker <em>Worker</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Worker</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Worker
-	 * @generated
-	 */
-	EClass getWorker();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.Worker#getPerson <em>Person</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Person</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Worker#getPerson()
-	 * @see #getWorker()
-	 * @generated
-	 */
-	EReference getWorker_Person();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.Worker#getAllocationUnit <em>Allocation Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Allocation Unit</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Worker#getAllocationUnit()
-	 * @see #getWorker()
-	 * @generated
-	 */
-	EReference getWorker_AllocationUnit();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.organization.semantic.model.Worker#getPlayRoles <em>Play Roles</em>}'.
+	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.organization.semantic.model.OUnit#getPlayRoles <em>Play Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Play Roles</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Worker#getPlayRoles()
-	 * @see #getWorker()
+	 * @see org.lunifera.dsl.organization.semantic.model.OUnit#getPlayRoles()
+	 * @see #getOUnit()
 	 * @generated
 	 */
-	EReference getWorker_PlayRoles();
+	EReference getOUnit_PlayRoles();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.Group <em>Group</em>}'.
+	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.organization.semantic.model.OUnit#getSubUnits <em>Sub Units</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Group</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Group
+	 * @return the meta object for the reference list '<em>Sub Units</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OUnit#getSubUnits()
+	 * @see #getOUnit()
 	 * @generated
 	 */
-	EClass getGroup();
+	EReference getOUnit_SubUnits();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Group#getName <em>Name</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OBusinessRole <em>OBusiness Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Group#getName()
-	 * @see #getGroup()
+	 * @return the meta object for class '<em>OBusiness Role</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OBusinessRole
 	 * @generated
 	 */
-	EAttribute getGroup_Name();
+	EClass getOBusinessRole();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Group#getLongName <em>Long Name</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OPersonRole <em>OPerson Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Long Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Group#getLongName()
-	 * @see #getGroup()
+	 * @return the meta object for class '<em>OPerson Role</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OPersonRole
 	 * @generated
 	 */
-	EAttribute getGroup_LongName();
+	EClass getOPersonRole();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Group#getDescription <em>Description</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OUnitRole <em>OUnit Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Group#getDescription()
-	 * @see #getGroup()
+	 * @return the meta object for class '<em>OUnit Role</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OUnitRole
 	 * @generated
 	 */
-	EAttribute getGroup_Description();
+	EClass getOUnitRole();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.organization.semantic.model.Group#getWorkers <em>Workers</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OPerson <em>OPerson</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OPerson</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OPerson
+	 * @generated
+	 */
+	EClass getOPerson();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OPerson#getFirstName <em>First Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>First Name</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OPerson#getFirstName()
+	 * @see #getOPerson()
+	 * @generated
+	 */
+	EAttribute getOPerson_FirstName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OPerson#getMiddleName <em>Middle Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Middle Name</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OPerson#getMiddleName()
+	 * @see #getOPerson()
+	 * @generated
+	 */
+	EAttribute getOPerson_MiddleName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OPerson#getLastName <em>Last Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Last Name</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OPerson#getLastName()
+	 * @see #getOPerson()
+	 * @generated
+	 */
+	EAttribute getOPerson_LastName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OPerson#getEmail <em>Email</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Email</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OPerson#getEmail()
+	 * @see #getOPerson()
+	 * @generated
+	 */
+	EAttribute getOPerson_Email();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OWorker <em>OWorker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OWorker</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OWorker
+	 * @generated
+	 */
+	EClass getOWorker();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.OWorker#getPerson <em>Person</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Person</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OWorker#getPerson()
+	 * @see #getOWorker()
+	 * @generated
+	 */
+	EReference getOWorker_Person();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.OWorker#getAllocationUnit <em>Allocation Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Allocation Unit</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OWorker#getAllocationUnit()
+	 * @see #getOWorker()
+	 * @generated
+	 */
+	EReference getOWorker_AllocationUnit();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.organization.semantic.model.OWorker#getPlayRoles <em>Play Roles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Play Roles</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OWorker#getPlayRoles()
+	 * @see #getOWorker()
+	 * @generated
+	 */
+	EReference getOWorker_PlayRoles();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OGroup <em>OGroup</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OGroup</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OGroup
+	 * @generated
+	 */
+	EClass getOGroup();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.organization.semantic.model.OGroup#getWorkers <em>Workers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Workers</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Group#getWorkers()
-	 * @see #getGroup()
+	 * @see org.lunifera.dsl.organization.semantic.model.OGroup#getWorkers()
+	 * @see #getOGroup()
 	 * @generated
 	 */
-	EReference getGroup_Workers();
+	EReference getOGroup_Workers();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.Partnership <em>Partnership</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OPartnership <em>OPartnership</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Partnership</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Partnership
+	 * @return the meta object for class '<em>OPartnership</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership
 	 * @generated
 	 */
-	EClass getPartnership();
+	EClass getOPartnership();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Partnership#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Partnership#getName()
-	 * @see #getPartnership()
-	 * @generated
-	 */
-	EAttribute getPartnership_Name();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.Partnership#getCompany <em>Company</em>}'.
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.OPartnership#getCompany <em>Company</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Company</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Partnership#getCompany()
-	 * @see #getPartnership()
+	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership#getCompany()
+	 * @see #getOPartnership()
 	 * @generated
 	 */
-	EReference getPartnership_Company();
+	EReference getOPartnership_Company();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.Partnership#getResponsible <em>Responsible</em>}'.
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.OPartnership#getResponsible <em>Responsible</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Responsible</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Partnership#getResponsible()
-	 * @see #getPartnership()
+	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership#getResponsible()
+	 * @see #getOPartnership()
 	 * @generated
 	 */
-	EReference getPartnership_Responsible();
+	EReference getOPartnership_Responsible();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.Partnership#getAgreement <em>Agreement</em>}'.
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OPartnership#getAgreement <em>Agreement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Agreement</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.Partnership#getAgreement()
-	 * @see #getPartnership()
+	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership#getAgreement()
+	 * @see #getOPartnership()
 	 * @generated
 	 */
-	EAttribute getPartnership_Agreement();
+	EAttribute getOPartnership_Agreement();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OrganizationMember <em>Member</em>}'.
+	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OOrganizationMember <em>OOrganization Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Member</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationMember
+	 * @return the meta object for class '<em>OOrganization Member</em>'.
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganizationMember
 	 * @generated
 	 */
-	EClass getOrganizationMember();
+	EClass getOOrganizationMember();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1055,40 +1137,14 @@ public interface OrganizationPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationModelImpl <em>Model</em>}' class.
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.ONamed <em>ONamed</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationModelImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganizationModel()
+		 * @see org.lunifera.dsl.organization.semantic.model.ONamed
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getONamed()
 		 * @generated
 		 */
-		EClass ORGANIZATION_MODEL = eINSTANCE.getOrganizationModel();
-
-		/**
-		 * The meta object literal for the '<em><b>Organization</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ORGANIZATION_MODEL__ORGANIZATION = eINSTANCE.getOrganizationModel_Organization();
-
-		/**
-		 * The meta object literal for the '<em><b>Organization Unit Types</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ORGANIZATION_MODEL__ORGANIZATION_UNIT_TYPES = eINSTANCE.getOrganizationModel_OrganizationUnitTypes();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationImpl <em>Organization</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganization()
-		 * @generated
-		 */
-		EClass ORGANIZATION = eINSTANCE.getOrganization();
+		EClass ONAMED = eINSTANCE.getONamed();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1096,7 +1152,17 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ORGANIZATION__NAME = eINSTANCE.getOrganization_Name();
+		EAttribute ONAMED__NAME = eINSTANCE.getONamed_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.ODescribed <em>ODescribed</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.ODescribed
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getODescribed()
+		 * @generated
+		 */
+		EClass ODESCRIBED = eINSTANCE.getODescribed();
 
 		/**
 		 * The meta object literal for the '<em><b>Long Name</b></em>' attribute feature.
@@ -1104,7 +1170,69 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ORGANIZATION__LONG_NAME = eINSTANCE.getOrganization_LongName();
+		EAttribute ODESCRIBED__LONG_NAME = eINSTANCE.getODescribed_LongName();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ODESCRIBED__DESCRIPTION = eINSTANCE.getODescribed_Description();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationModelImpl <em>OOrganization Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OOrganizationModelImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOOrganizationModel()
+		 * @generated
+		 */
+		EClass OORGANIZATION_MODEL = eINSTANCE.getOOrganizationModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Business Roles</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OORGANIZATION_MODEL__BUSINESS_ROLES = eINSTANCE.getOOrganizationModel_BusinessRoles();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OORGANIZATION_MODEL__ROOT = eINSTANCE.getOOrganizationModel_Root();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OHierarchyRootImpl <em>OHierarchy Root</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OHierarchyRootImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOHierarchyRoot()
+		 * @generated
+		 */
+		EClass OHIERARCHY_ROOT = eINSTANCE.getOHierarchyRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Organizations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OHIERARCHY_ROOT__ORGANIZATIONS = eINSTANCE.getOHierarchyRoot_Organizations();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationImpl <em>OOrganization</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OOrganizationImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOOrganization()
+		 * @generated
+		 */
+		EClass OORGANIZATION = eINSTANCE.getOOrganization();
 
 		/**
 		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
@@ -1112,15 +1240,7 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ORGANIZATION__VERSION = eINSTANCE.getOrganization_Version();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORGANIZATION__DESCRIPTION = eINSTANCE.getOrganization_Description();
+		EAttribute OORGANIZATION__VERSION = eINSTANCE.getOOrganization_Version();
 
 		/**
 		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
@@ -1128,25 +1248,17 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ORGANIZATION__ELEMENTS = eINSTANCE.getOrganization_Elements();
+		EReference OORGANIZATION__ELEMENTS = eINSTANCE.getOOrganization_Elements();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl <em>Unit</em>}' class.
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OUnitImpl <em>OUnit</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganizationUnit()
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OUnitImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOUnit()
 		 * @generated
 		 */
-		EClass ORGANIZATION_UNIT = eINSTANCE.getOrganizationUnit();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORGANIZATION_UNIT__NAME = eINSTANCE.getOrganizationUnit_Name();
+		EClass OUNIT = eINSTANCE.getOUnit();
 
 		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
@@ -1154,175 +1266,7 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ORGANIZATION_UNIT__PARENT = eINSTANCE.getOrganizationUnit_Parent();
-
-		/**
-		 * The meta object literal for the '<em><b>Long Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORGANIZATION_UNIT__LONG_NAME = eINSTANCE.getOrganizationUnit_LongName();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORGANIZATION_UNIT__DESCRIPTION = eINSTANCE.getOrganizationUnit_Description();
-
-		/**
-		 * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ORGANIZATION_UNIT__TYPES = eINSTANCE.getOrganizationUnit_Types();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitTypeImpl <em>Unit Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitTypeImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganizationUnitType()
-		 * @generated
-		 */
-		EClass ORGANIZATION_UNIT_TYPE = eINSTANCE.getOrganizationUnitType();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORGANIZATION_UNIT_TYPE__NAME = eINSTANCE.getOrganizationUnitType_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Long Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORGANIZATION_UNIT_TYPE__LONG_NAME = eINSTANCE.getOrganizationUnitType_LongName();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORGANIZATION_UNIT_TYPE__DESCRIPTION = eINSTANCE.getOrganizationUnitType_Description();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.BusinessRoleImpl <em>Business Role</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.BusinessRoleImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getBusinessRole()
-		 * @generated
-		 */
-		EClass BUSINESS_ROLE = eINSTANCE.getBusinessRole();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUSINESS_ROLE__NAME = eINSTANCE.getBusinessRole_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Long Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUSINESS_ROLE__LONG_NAME = eINSTANCE.getBusinessRole_LongName();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUSINESS_ROLE__DESCRIPTION = eINSTANCE.getBusinessRole_Description();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.PersonImpl <em>Person</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.PersonImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getPerson()
-		 * @generated
-		 */
-		EClass PERSON = eINSTANCE.getPerson();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PERSON__NAME = eINSTANCE.getPerson_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>First Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PERSON__FIRST_NAME = eINSTANCE.getPerson_FirstName();
-
-		/**
-		 * The meta object literal for the '<em><b>Middle Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PERSON__MIDDLE_NAME = eINSTANCE.getPerson_MiddleName();
-
-		/**
-		 * The meta object literal for the '<em><b>Last Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PERSON__LAST_NAME = eINSTANCE.getPerson_LastName();
-
-		/**
-		 * The meta object literal for the '<em><b>Email</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PERSON__EMAIL = eINSTANCE.getPerson_Email();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.WorkerImpl <em>Worker</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.WorkerImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getWorker()
-		 * @generated
-		 */
-		EClass WORKER = eINSTANCE.getWorker();
-
-		/**
-		 * The meta object literal for the '<em><b>Person</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WORKER__PERSON = eINSTANCE.getWorker_Person();
-
-		/**
-		 * The meta object literal for the '<em><b>Allocation Unit</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WORKER__ALLOCATION_UNIT = eINSTANCE.getWorker_AllocationUnit();
+		EReference OUNIT__PARENT = eINSTANCE.getOUnit_Parent();
 
 		/**
 		 * The meta object literal for the '<em><b>Play Roles</b></em>' reference list feature.
@@ -1330,41 +1274,131 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORKER__PLAY_ROLES = eINSTANCE.getWorker_PlayRoles();
+		EReference OUNIT__PLAY_ROLES = eINSTANCE.getOUnit_PlayRoles();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.GroupImpl <em>Group</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.GroupImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getGroup()
-		 * @generated
-		 */
-		EClass GROUP = eINSTANCE.getGroup();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Sub Units</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GROUP__NAME = eINSTANCE.getGroup_Name();
+		EReference OUNIT__SUB_UNITS = eINSTANCE.getOUnit_SubUnits();
 
 		/**
-		 * The meta object literal for the '<em><b>Long Name</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl <em>OBusiness Role</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOBusinessRole()
+		 * @generated
+		 */
+		EClass OBUSINESS_ROLE = eINSTANCE.getOBusinessRole();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonRoleImpl <em>OPerson Role</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OPersonRoleImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOPersonRole()
+		 * @generated
+		 */
+		EClass OPERSON_ROLE = eINSTANCE.getOPersonRole();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OUnitRoleImpl <em>OUnit Role</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OUnitRoleImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOUnitRole()
+		 * @generated
+		 */
+		EClass OUNIT_ROLE = eINSTANCE.getOUnitRole();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl <em>OPerson</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOPerson()
+		 * @generated
+		 */
+		EClass OPERSON = eINSTANCE.getOPerson();
+
+		/**
+		 * The meta object literal for the '<em><b>First Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GROUP__LONG_NAME = eINSTANCE.getGroup_LongName();
+		EAttribute OPERSON__FIRST_NAME = eINSTANCE.getOPerson_FirstName();
 
 		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Middle Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GROUP__DESCRIPTION = eINSTANCE.getGroup_Description();
+		EAttribute OPERSON__MIDDLE_NAME = eINSTANCE.getOPerson_MiddleName();
+
+		/**
+		 * The meta object literal for the '<em><b>Last Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERSON__LAST_NAME = eINSTANCE.getOPerson_LastName();
+
+		/**
+		 * The meta object literal for the '<em><b>Email</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERSON__EMAIL = eINSTANCE.getOPerson_Email();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OWorkerImpl <em>OWorker</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OWorkerImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOWorker()
+		 * @generated
+		 */
+		EClass OWORKER = eINSTANCE.getOWorker();
+
+		/**
+		 * The meta object literal for the '<em><b>Person</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OWORKER__PERSON = eINSTANCE.getOWorker_Person();
+
+		/**
+		 * The meta object literal for the '<em><b>Allocation Unit</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OWORKER__ALLOCATION_UNIT = eINSTANCE.getOWorker_AllocationUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Play Roles</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OWORKER__PLAY_ROLES = eINSTANCE.getOWorker_PlayRoles();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OGroupImpl <em>OGroup</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OGroupImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOGroup()
+		 * @generated
+		 */
+		EClass OGROUP = eINSTANCE.getOGroup();
 
 		/**
 		 * The meta object literal for the '<em><b>Workers</b></em>' reference list feature.
@@ -1372,25 +1406,17 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GROUP__WORKERS = eINSTANCE.getGroup_Workers();
+		EReference OGROUP__WORKERS = eINSTANCE.getOGroup_Workers();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.PartnershipImpl <em>Partnership</em>}' class.
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl <em>OPartnership</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.PartnershipImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getPartnership()
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOPartnership()
 		 * @generated
 		 */
-		EClass PARTNERSHIP = eINSTANCE.getPartnership();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARTNERSHIP__NAME = eINSTANCE.getPartnership_Name();
+		EClass OPARTNERSHIP = eINSTANCE.getOPartnership();
 
 		/**
 		 * The meta object literal for the '<em><b>Company</b></em>' reference feature.
@@ -1398,7 +1424,7 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PARTNERSHIP__COMPANY = eINSTANCE.getPartnership_Company();
+		EReference OPARTNERSHIP__COMPANY = eINSTANCE.getOPartnership_Company();
 
 		/**
 		 * The meta object literal for the '<em><b>Responsible</b></em>' reference feature.
@@ -1406,7 +1432,7 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PARTNERSHIP__RESPONSIBLE = eINSTANCE.getPartnership_Responsible();
+		EReference OPARTNERSHIP__RESPONSIBLE = eINSTANCE.getOPartnership_Responsible();
 
 		/**
 		 * The meta object literal for the '<em><b>Agreement</b></em>' attribute feature.
@@ -1414,17 +1440,17 @@ public interface OrganizationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARTNERSHIP__AGREEMENT = eINSTANCE.getPartnership_Agreement();
+		EAttribute OPARTNERSHIP__AGREEMENT = eINSTANCE.getOPartnership_Agreement();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationMemberImpl <em>Member</em>}' class.
+		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationMemberImpl <em>OOrganization Member</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationMemberImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOrganizationMember()
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OOrganizationMemberImpl
+		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOOrganizationMember()
 		 * @generated
 		 */
-		EClass ORGANIZATION_MEMBER = eINSTANCE.getOrganizationMember();
+		EClass OORGANIZATION_MEMBER = eINSTANCE.getOOrganizationMember();
 
 	}
 

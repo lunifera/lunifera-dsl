@@ -12,17 +12,22 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.lunifera.dsl.organization.semantic.model.BusinessRole;
-import org.lunifera.dsl.organization.semantic.model.Group;
-import org.lunifera.dsl.organization.semantic.model.Organization;
-import org.lunifera.dsl.organization.semantic.model.OrganizationMember;
-import org.lunifera.dsl.organization.semantic.model.OrganizationModel;
+import org.lunifera.dsl.organization.semantic.model.*;
+import org.lunifera.dsl.organization.semantic.model.OBusinessRole;
+import org.lunifera.dsl.organization.semantic.model.ODescribed;
+import org.lunifera.dsl.organization.semantic.model.OGroup;
+import org.lunifera.dsl.organization.semantic.model.OHierarchyRoot;
+import org.lunifera.dsl.organization.semantic.model.ONamed;
+import org.lunifera.dsl.organization.semantic.model.OOrganization;
+import org.lunifera.dsl.organization.semantic.model.OOrganizationMember;
+import org.lunifera.dsl.organization.semantic.model.OOrganizationModel;
+import org.lunifera.dsl.organization.semantic.model.OPartnership;
+import org.lunifera.dsl.organization.semantic.model.OPerson;
+import org.lunifera.dsl.organization.semantic.model.OPersonRole;
+import org.lunifera.dsl.organization.semantic.model.OUnit;
+import org.lunifera.dsl.organization.semantic.model.OUnitRole;
+import org.lunifera.dsl.organization.semantic.model.OWorker;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnit;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnitType;
-import org.lunifera.dsl.organization.semantic.model.Partnership;
-import org.lunifera.dsl.organization.semantic.model.Person;
-import org.lunifera.dsl.organization.semantic.model.Worker;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,44 +86,60 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl {
 	protected OrganizationSwitch<Adapter> modelSwitch =
 		new OrganizationSwitch<Adapter>() {
 			@Override
-			public Adapter caseOrganizationModel(OrganizationModel object) {
-				return createOrganizationModelAdapter();
+			public Adapter caseONamed(ONamed object) {
+				return createONamedAdapter();
 			}
 			@Override
-			public Adapter caseOrganization(Organization object) {
-				return createOrganizationAdapter();
+			public Adapter caseODescribed(ODescribed object) {
+				return createODescribedAdapter();
 			}
 			@Override
-			public Adapter caseOrganizationUnit(OrganizationUnit object) {
-				return createOrganizationUnitAdapter();
+			public Adapter caseOOrganizationModel(OOrganizationModel object) {
+				return createOOrganizationModelAdapter();
 			}
 			@Override
-			public Adapter caseOrganizationUnitType(OrganizationUnitType object) {
-				return createOrganizationUnitTypeAdapter();
+			public Adapter caseOHierarchyRoot(OHierarchyRoot object) {
+				return createOHierarchyRootAdapter();
 			}
 			@Override
-			public Adapter caseBusinessRole(BusinessRole object) {
-				return createBusinessRoleAdapter();
+			public Adapter caseOOrganization(OOrganization object) {
+				return createOOrganizationAdapter();
 			}
 			@Override
-			public Adapter casePerson(Person object) {
-				return createPersonAdapter();
+			public Adapter caseOUnit(OUnit object) {
+				return createOUnitAdapter();
 			}
 			@Override
-			public Adapter caseWorker(Worker object) {
-				return createWorkerAdapter();
+			public Adapter caseOBusinessRole(OBusinessRole object) {
+				return createOBusinessRoleAdapter();
 			}
 			@Override
-			public Adapter caseGroup(Group object) {
-				return createGroupAdapter();
+			public Adapter caseOPersonRole(OPersonRole object) {
+				return createOPersonRoleAdapter();
 			}
 			@Override
-			public Adapter casePartnership(Partnership object) {
-				return createPartnershipAdapter();
+			public Adapter caseOUnitRole(OUnitRole object) {
+				return createOUnitRoleAdapter();
 			}
 			@Override
-			public Adapter caseOrganizationMember(OrganizationMember object) {
-				return createOrganizationMemberAdapter();
+			public Adapter caseOPerson(OPerson object) {
+				return createOPersonAdapter();
+			}
+			@Override
+			public Adapter caseOWorker(OWorker object) {
+				return createOWorkerAdapter();
+			}
+			@Override
+			public Adapter caseOGroup(OGroup object) {
+				return createOGroupAdapter();
+			}
+			@Override
+			public Adapter caseOPartnership(OPartnership object) {
+				return createOPartnershipAdapter();
+			}
+			@Override
+			public Adapter caseOOrganizationMember(OOrganizationMember object) {
+				return createOOrganizationMemberAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -141,142 +162,198 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OrganizationModel <em>Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.ONamed <em>ONamed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationModel
+	 * @see org.lunifera.dsl.organization.semantic.model.ONamed
 	 * @generated
 	 */
-	public Adapter createOrganizationModelAdapter() {
+	public Adapter createONamedAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.Organization <em>Organization</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.ODescribed <em>ODescribed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.Organization
+	 * @see org.lunifera.dsl.organization.semantic.model.ODescribed
 	 * @generated
 	 */
-	public Adapter createOrganizationAdapter() {
+	public Adapter createODescribedAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnit <em>Unit</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OOrganizationModel <em>OOrganization Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnit
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganizationModel
 	 * @generated
 	 */
-	public Adapter createOrganizationUnitAdapter() {
+	public Adapter createOOrganizationModelAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OrganizationUnitType <em>Unit Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OHierarchyRoot <em>OHierarchy Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationUnitType
+	 * @see org.lunifera.dsl.organization.semantic.model.OHierarchyRoot
 	 * @generated
 	 */
-	public Adapter createOrganizationUnitTypeAdapter() {
+	public Adapter createOHierarchyRootAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.BusinessRole <em>Business Role</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OOrganization <em>OOrganization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.BusinessRole
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganization
 	 * @generated
 	 */
-	public Adapter createBusinessRoleAdapter() {
+	public Adapter createOOrganizationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.Person <em>Person</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OUnit <em>OUnit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.Person
+	 * @see org.lunifera.dsl.organization.semantic.model.OUnit
 	 * @generated
 	 */
-	public Adapter createPersonAdapter() {
+	public Adapter createOUnitAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.Worker <em>Worker</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OBusinessRole <em>OBusiness Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.Worker
+	 * @see org.lunifera.dsl.organization.semantic.model.OBusinessRole
 	 * @generated
 	 */
-	public Adapter createWorkerAdapter() {
+	public Adapter createOBusinessRoleAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.Group <em>Group</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OPersonRole <em>OPerson Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.Group
+	 * @see org.lunifera.dsl.organization.semantic.model.OPersonRole
 	 * @generated
 	 */
-	public Adapter createGroupAdapter() {
+	public Adapter createOPersonRoleAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.Partnership <em>Partnership</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OUnitRole <em>OUnit Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.Partnership
+	 * @see org.lunifera.dsl.organization.semantic.model.OUnitRole
 	 * @generated
 	 */
-	public Adapter createPartnershipAdapter() {
+	public Adapter createOUnitRoleAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OrganizationMember <em>Member</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OPerson <em>OPerson</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationMember
+	 * @see org.lunifera.dsl.organization.semantic.model.OPerson
 	 * @generated
 	 */
-	public Adapter createOrganizationMemberAdapter() {
+	public Adapter createOPersonAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OWorker <em>OWorker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.organization.semantic.model.OWorker
+	 * @generated
+	 */
+	public Adapter createOWorkerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OGroup <em>OGroup</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.organization.semantic.model.OGroup
+	 * @generated
+	 */
+	public Adapter createOGroupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OPartnership <em>OPartnership</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership
+	 * @generated
+	 */
+	public Adapter createOPartnershipAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OOrganizationMember <em>OOrganization Member</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.organization.semantic.model.OOrganizationMember
+	 * @generated
+	 */
+	public Adapter createOOrganizationMemberAdapter() {
 		return null;
 	}
 

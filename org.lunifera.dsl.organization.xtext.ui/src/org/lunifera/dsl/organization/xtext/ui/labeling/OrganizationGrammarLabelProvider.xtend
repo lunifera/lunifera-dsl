@@ -16,14 +16,13 @@ import com.google.inject.Inject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
-import org.lunifera.dsl.organization.semantic.model.BusinessRole
-import org.lunifera.dsl.organization.semantic.model.Group
-import org.lunifera.dsl.organization.semantic.model.Organization
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnit
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnitType
-import org.lunifera.dsl.organization.semantic.model.Partnership
-import org.lunifera.dsl.organization.semantic.model.Person
-import org.lunifera.dsl.organization.semantic.model.Worker
+import org.lunifera.dsl.organization.semantic.model.OBusinessRole
+import org.lunifera.dsl.organization.semantic.model.OGroup
+import org.lunifera.dsl.organization.semantic.model.OOrganization
+import org.lunifera.dsl.organization.semantic.model.OPartnership
+import org.lunifera.dsl.organization.semantic.model.OPerson
+import org.lunifera.dsl.organization.semantic.model.OUnit
+import org.lunifera.dsl.organization.semantic.model.OWorker
 
 /**
  * Provides labels for a EObjects.
@@ -36,48 +35,43 @@ class OrganizationGrammarLabelProvider extends DefaultEObjectLabelProvider {
 	IQualifiedNameProvider nameProvider;
 
 	@Inject
-	new(AdapterFactoryLabelProvider delegate) {
+	new(AdapterFactoryLabelProvider delegate) { 
 		super(delegate);
 	}
 
-	def String image(Organization ele){
+	def String image(OOrganization ele){
 		return "organization.png";
 	}
 	
-	def String image(OrganizationUnit ele){
+	def String image(OUnit ele){
 		return "organizationunit.png";
 	}
 	
-	def String image(Person ele){
+	def String image(OPerson ele){
 		return "person.png";
 	}
 	
-	def String image(Worker ele){
+	def String image(OWorker ele){
 		return "worker.png";
 	}
 	
-	def String image(Group ele){
+	def String image(OGroup ele){
 		return "group.png";
 	}
 	
-	def String image(BusinessRole ele){
+	def String image(OBusinessRole ele){
 		return "role.png";
 	}
 	
-	def String image(Partnership ele){
+	def String image(OPartnership ele){
 		return "partnership.png";
 	}
 	
-	def String image(OrganizationUnitType ele){
-		return "organizationunittype.png";
-	}
-	
-
-	def Object text(Worker element) {
+	def Object text(OWorker element) {
 		return nameProvider.getFullyQualifiedName(element).getLastSegment();
 	}
 
-	def Object text(Partnership element) {
+	def Object text(OPartnership element) {
 		return nameProvider.getFullyQualifiedName(element).getLastSegment();
 	}
 }

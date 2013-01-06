@@ -9,26 +9,25 @@
 package org.lunifera.dsl.organization.semantic.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.lunifera.dsl.organization.semantic.model.OrganizationMember;
+import org.lunifera.dsl.organization.semantic.model.OPersonRole;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Member</b></em>'.
+ * An implementation of the model object '<em><b>OPerson Role</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public abstract class OrganizationMemberImpl extends MinimalEObjectImpl.Container implements OrganizationMember {
+public class OPersonRoleImpl extends OBusinessRoleImpl implements OPersonRole {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OrganizationMemberImpl() {
+	protected OPersonRoleImpl() {
 		super();
 	}
 
@@ -39,7 +38,7 @@ public abstract class OrganizationMemberImpl extends MinimalEObjectImpl.Containe
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OrganizationPackage.Literals.ORGANIZATION_MEMBER;
+		return OrganizationPackage.Literals.OPERSON_ROLE;
 	}
 
-} //OrganizationMemberImpl
+} //OPersonRoleImpl

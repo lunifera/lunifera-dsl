@@ -8,36 +8,30 @@
  */
 package org.lunifera.dsl.organization.semantic.model.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.lunifera.dsl.organization.semantic.model.OBusinessRole;
+import org.lunifera.dsl.organization.semantic.model.ODescribed;
+import org.lunifera.dsl.organization.semantic.model.ONamed;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnit;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnitType;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Unit</b></em>'.
+ * An implementation of the model object '<em><b>OBusiness Role</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl#getLongName <em>Long Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OrganizationUnitImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl#getLongName <em>Long Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OrganizationUnitImpl extends OrganizationMemberImpl implements OrganizationUnit {
+public abstract class OBusinessRoleImpl extends OOrganizationMemberImpl implements OBusinessRole {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,16 +51,6 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParent()
-	 * @generated
-	 * @ordered
-	 */
-	protected OrganizationUnit parent;
 
 	/**
 	 * The default value of the '{@link #getLongName() <em>Long Name</em>}' attribute.
@@ -109,21 +93,11 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTypes() <em>Types</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<OrganizationUnitType> types;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OrganizationUnitImpl() {
+	protected OBusinessRoleImpl() {
 		super();
 	}
 
@@ -134,7 +108,7 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OrganizationPackage.Literals.ORGANIZATION_UNIT;
+		return OrganizationPackage.Literals.OBUSINESS_ROLE;
 	}
 
 	/**
@@ -155,45 +129,7 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.ORGANIZATION_UNIT__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OrganizationUnit getParent() {
-		if (parent != null && parent.eIsProxy()) {
-			InternalEObject oldParent = (InternalEObject)parent;
-			parent = (OrganizationUnit)eResolveProxy(oldParent);
-			if (parent != oldParent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.ORGANIZATION_UNIT__PARENT, oldParent, parent));
-			}
-		}
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OrganizationUnit basicGetParent() {
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParent(OrganizationUnit newParent) {
-		OrganizationUnit oldParent = parent;
-		parent = newParent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.ORGANIZATION_UNIT__PARENT, oldParent, parent));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OBUSINESS_ROLE__NAME, oldName, name));
 	}
 
 	/**
@@ -214,7 +150,7 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 		String oldLongName = longName;
 		longName = newLongName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.ORGANIZATION_UNIT__LONG_NAME, oldLongName, longName));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OBUSINESS_ROLE__LONG_NAME, oldLongName, longName));
 	}
 
 	/**
@@ -235,19 +171,7 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.ORGANIZATION_UNIT__DESCRIPTION, oldDescription, description));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<OrganizationUnitType> getTypes() {
-		if (types == null) {
-			types = new EObjectResolvingEList<OrganizationUnitType>(OrganizationUnitType.class, this, OrganizationPackage.ORGANIZATION_UNIT__TYPES);
-		}
-		return types;
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OBUSINESS_ROLE__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -258,17 +182,12 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrganizationPackage.ORGANIZATION_UNIT__NAME:
+			case OrganizationPackage.OBUSINESS_ROLE__NAME:
 				return getName();
-			case OrganizationPackage.ORGANIZATION_UNIT__PARENT:
-				if (resolve) return getParent();
-				return basicGetParent();
-			case OrganizationPackage.ORGANIZATION_UNIT__LONG_NAME:
+			case OrganizationPackage.OBUSINESS_ROLE__LONG_NAME:
 				return getLongName();
-			case OrganizationPackage.ORGANIZATION_UNIT__DESCRIPTION:
+			case OrganizationPackage.OBUSINESS_ROLE__DESCRIPTION:
 				return getDescription();
-			case OrganizationPackage.ORGANIZATION_UNIT__TYPES:
-				return getTypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -278,25 +197,17 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrganizationPackage.ORGANIZATION_UNIT__NAME:
+			case OrganizationPackage.OBUSINESS_ROLE__NAME:
 				setName((String)newValue);
 				return;
-			case OrganizationPackage.ORGANIZATION_UNIT__PARENT:
-				setParent((OrganizationUnit)newValue);
-				return;
-			case OrganizationPackage.ORGANIZATION_UNIT__LONG_NAME:
+			case OrganizationPackage.OBUSINESS_ROLE__LONG_NAME:
 				setLongName((String)newValue);
 				return;
-			case OrganizationPackage.ORGANIZATION_UNIT__DESCRIPTION:
+			case OrganizationPackage.OBUSINESS_ROLE__DESCRIPTION:
 				setDescription((String)newValue);
-				return;
-			case OrganizationPackage.ORGANIZATION_UNIT__TYPES:
-				getTypes().clear();
-				getTypes().addAll((Collection<? extends OrganizationUnitType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -310,20 +221,14 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.ORGANIZATION_UNIT__NAME:
+			case OrganizationPackage.OBUSINESS_ROLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.ORGANIZATION_UNIT__PARENT:
-				setParent((OrganizationUnit)null);
-				return;
-			case OrganizationPackage.ORGANIZATION_UNIT__LONG_NAME:
+			case OrganizationPackage.OBUSINESS_ROLE__LONG_NAME:
 				setLongName(LONG_NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.ORGANIZATION_UNIT__DESCRIPTION:
+			case OrganizationPackage.OBUSINESS_ROLE__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
-				return;
-			case OrganizationPackage.ORGANIZATION_UNIT__TYPES:
-				getTypes().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -337,18 +242,60 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.ORGANIZATION_UNIT__NAME:
+			case OrganizationPackage.OBUSINESS_ROLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case OrganizationPackage.ORGANIZATION_UNIT__PARENT:
-				return parent != null;
-			case OrganizationPackage.ORGANIZATION_UNIT__LONG_NAME:
+			case OrganizationPackage.OBUSINESS_ROLE__LONG_NAME:
 				return LONG_NAME_EDEFAULT == null ? longName != null : !LONG_NAME_EDEFAULT.equals(longName);
-			case OrganizationPackage.ORGANIZATION_UNIT__DESCRIPTION:
+			case OrganizationPackage.OBUSINESS_ROLE__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case OrganizationPackage.ORGANIZATION_UNIT__TYPES:
-				return types != null && !types.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ONamed.class) {
+			switch (derivedFeatureID) {
+				case OrganizationPackage.OBUSINESS_ROLE__NAME: return OrganizationPackage.ONAMED__NAME;
+				default: return -1;
+			}
+		}
+		if (baseClass == ODescribed.class) {
+			switch (derivedFeatureID) {
+				case OrganizationPackage.OBUSINESS_ROLE__LONG_NAME: return OrganizationPackage.ODESCRIBED__LONG_NAME;
+				case OrganizationPackage.OBUSINESS_ROLE__DESCRIPTION: return OrganizationPackage.ODESCRIBED__DESCRIPTION;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ONamed.class) {
+			switch (baseFeatureID) {
+				case OrganizationPackage.ONAMED__NAME: return OrganizationPackage.OBUSINESS_ROLE__NAME;
+				default: return -1;
+			}
+		}
+		if (baseClass == ODescribed.class) {
+			switch (baseFeatureID) {
+				case OrganizationPackage.ODESCRIBED__LONG_NAME: return OrganizationPackage.OBUSINESS_ROLE__LONG_NAME;
+				case OrganizationPackage.ODESCRIBED__DESCRIPTION: return OrganizationPackage.OBUSINESS_ROLE__DESCRIPTION;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -371,4 +318,4 @@ public class OrganizationUnitImpl extends OrganizationMemberImpl implements Orga
 		return result.toString();
 	}
 
-} //OrganizationUnitImpl
+} //OBusinessRoleImpl

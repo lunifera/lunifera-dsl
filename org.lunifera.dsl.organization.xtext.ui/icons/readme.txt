@@ -25,9 +25,9 @@ Icons:
 oldname						newName
 chart_organisation.png		organization.png
 bricks.png					organizationunit.png
-user_suit.png				person.png
-shield.png					worker.png
+user_suit.png				person.png, persons.png
+shield.png					worker.png, workers.png
 box.png						group.png
 plugin.png					role.png
-asterisk_orange.png			partnership.png
+asterisk_orange.png			partnership.png, partnerships.png
 chart_line.png				oranizationunittype.png

@@ -16,28 +16,28 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.lunifera.dsl.organization.semantic.model.BusinessRole;
+import org.lunifera.dsl.organization.semantic.model.OPerson;
+import org.lunifera.dsl.organization.semantic.model.OPersonRole;
+import org.lunifera.dsl.organization.semantic.model.OUnit;
+import org.lunifera.dsl.organization.semantic.model.OWorker;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnit;
-import org.lunifera.dsl.organization.semantic.model.Person;
-import org.lunifera.dsl.organization.semantic.model.Worker;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Worker</b></em>'.
+ * An implementation of the model object '<em><b>OWorker</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.WorkerImpl#getPerson <em>Person</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.WorkerImpl#getAllocationUnit <em>Allocation Unit</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.WorkerImpl#getPlayRoles <em>Play Roles</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OWorkerImpl#getPerson <em>Person</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OWorkerImpl#getAllocationUnit <em>Allocation Unit</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OWorkerImpl#getPlayRoles <em>Play Roles</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WorkerImpl extends OrganizationMemberImpl implements Worker {
+public class OWorkerImpl extends OOrganizationMemberImpl implements OWorker {
 	/**
 	 * The cached value of the '{@link #getPerson() <em>Person</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -46,7 +46,7 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * @generated
 	 * @ordered
 	 */
-	protected Person person;
+	protected OPerson person;
 
 	/**
 	 * The cached value of the '{@link #getAllocationUnit() <em>Allocation Unit</em>}' reference.
@@ -56,7 +56,7 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * @generated
 	 * @ordered
 	 */
-	protected OrganizationUnit allocationUnit;
+	protected OUnit allocationUnit;
 
 	/**
 	 * The cached value of the '{@link #getPlayRoles() <em>Play Roles</em>}' reference list.
@@ -66,14 +66,14 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<BusinessRole> playRoles;
+	protected EList<OPersonRole> playRoles;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WorkerImpl() {
+	protected OWorkerImpl() {
 		super();
 	}
 
@@ -84,7 +84,7 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OrganizationPackage.Literals.WORKER;
+		return OrganizationPackage.Literals.OWORKER;
 	}
 
 	/**
@@ -92,13 +92,13 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Person getPerson() {
+	public OPerson getPerson() {
 		if (person != null && person.eIsProxy()) {
 			InternalEObject oldPerson = (InternalEObject)person;
-			person = (Person)eResolveProxy(oldPerson);
+			person = (OPerson)eResolveProxy(oldPerson);
 			if (person != oldPerson) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.WORKER__PERSON, oldPerson, person));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.OWORKER__PERSON, oldPerson, person));
 			}
 		}
 		return person;
@@ -109,7 +109,7 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Person basicGetPerson() {
+	public OPerson basicGetPerson() {
 		return person;
 	}
 
@@ -118,11 +118,11 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPerson(Person newPerson) {
-		Person oldPerson = person;
+	public void setPerson(OPerson newPerson) {
+		OPerson oldPerson = person;
 		person = newPerson;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.WORKER__PERSON, oldPerson, person));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OWORKER__PERSON, oldPerson, person));
 	}
 
 	/**
@@ -130,13 +130,13 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OrganizationUnit getAllocationUnit() {
+	public OUnit getAllocationUnit() {
 		if (allocationUnit != null && allocationUnit.eIsProxy()) {
 			InternalEObject oldAllocationUnit = (InternalEObject)allocationUnit;
-			allocationUnit = (OrganizationUnit)eResolveProxy(oldAllocationUnit);
+			allocationUnit = (OUnit)eResolveProxy(oldAllocationUnit);
 			if (allocationUnit != oldAllocationUnit) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.WORKER__ALLOCATION_UNIT, oldAllocationUnit, allocationUnit));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.OWORKER__ALLOCATION_UNIT, oldAllocationUnit, allocationUnit));
 			}
 		}
 		return allocationUnit;
@@ -147,7 +147,7 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OrganizationUnit basicGetAllocationUnit() {
+	public OUnit basicGetAllocationUnit() {
 		return allocationUnit;
 	}
 
@@ -156,11 +156,11 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAllocationUnit(OrganizationUnit newAllocationUnit) {
-		OrganizationUnit oldAllocationUnit = allocationUnit;
+	public void setAllocationUnit(OUnit newAllocationUnit) {
+		OUnit oldAllocationUnit = allocationUnit;
 		allocationUnit = newAllocationUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.WORKER__ALLOCATION_UNIT, oldAllocationUnit, allocationUnit));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OWORKER__ALLOCATION_UNIT, oldAllocationUnit, allocationUnit));
 	}
 
 	/**
@@ -168,9 +168,9 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<BusinessRole> getPlayRoles() {
+	public EList<OPersonRole> getPlayRoles() {
 		if (playRoles == null) {
-			playRoles = new EObjectResolvingEList<BusinessRole>(BusinessRole.class, this, OrganizationPackage.WORKER__PLAY_ROLES);
+			playRoles = new EObjectResolvingEList<OPersonRole>(OPersonRole.class, this, OrganizationPackage.OWORKER__PLAY_ROLES);
 		}
 		return playRoles;
 	}
@@ -183,13 +183,13 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrganizationPackage.WORKER__PERSON:
+			case OrganizationPackage.OWORKER__PERSON:
 				if (resolve) return getPerson();
 				return basicGetPerson();
-			case OrganizationPackage.WORKER__ALLOCATION_UNIT:
+			case OrganizationPackage.OWORKER__ALLOCATION_UNIT:
 				if (resolve) return getAllocationUnit();
 				return basicGetAllocationUnit();
-			case OrganizationPackage.WORKER__PLAY_ROLES:
+			case OrganizationPackage.OWORKER__PLAY_ROLES:
 				return getPlayRoles();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -204,15 +204,15 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrganizationPackage.WORKER__PERSON:
-				setPerson((Person)newValue);
+			case OrganizationPackage.OWORKER__PERSON:
+				setPerson((OPerson)newValue);
 				return;
-			case OrganizationPackage.WORKER__ALLOCATION_UNIT:
-				setAllocationUnit((OrganizationUnit)newValue);
+			case OrganizationPackage.OWORKER__ALLOCATION_UNIT:
+				setAllocationUnit((OUnit)newValue);
 				return;
-			case OrganizationPackage.WORKER__PLAY_ROLES:
+			case OrganizationPackage.OWORKER__PLAY_ROLES:
 				getPlayRoles().clear();
-				getPlayRoles().addAll((Collection<? extends BusinessRole>)newValue);
+				getPlayRoles().addAll((Collection<? extends OPersonRole>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -226,13 +226,13 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.WORKER__PERSON:
-				setPerson((Person)null);
+			case OrganizationPackage.OWORKER__PERSON:
+				setPerson((OPerson)null);
 				return;
-			case OrganizationPackage.WORKER__ALLOCATION_UNIT:
-				setAllocationUnit((OrganizationUnit)null);
+			case OrganizationPackage.OWORKER__ALLOCATION_UNIT:
+				setAllocationUnit((OUnit)null);
 				return;
-			case OrganizationPackage.WORKER__PLAY_ROLES:
+			case OrganizationPackage.OWORKER__PLAY_ROLES:
 				getPlayRoles().clear();
 				return;
 		}
@@ -247,14 +247,14 @@ public class WorkerImpl extends OrganizationMemberImpl implements Worker {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.WORKER__PERSON:
+			case OrganizationPackage.OWORKER__PERSON:
 				return person != null;
-			case OrganizationPackage.WORKER__ALLOCATION_UNIT:
+			case OrganizationPackage.OWORKER__ALLOCATION_UNIT:
 				return allocationUnit != null;
-			case OrganizationPackage.WORKER__PLAY_ROLES:
+			case OrganizationPackage.OWORKER__PLAY_ROLES:
 				return playRoles != null && !playRoles.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //WorkerImpl
+} //OWorkerImpl

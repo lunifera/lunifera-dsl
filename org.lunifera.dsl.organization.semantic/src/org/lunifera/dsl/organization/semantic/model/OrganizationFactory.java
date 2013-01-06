@@ -28,85 +28,94 @@ public interface OrganizationFactory extends EFactory {
 	OrganizationFactory eINSTANCE = org.lunifera.dsl.organization.semantic.model.impl.OrganizationFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Model</em>'.
+	 * Returns a new object of class '<em>OOrganization Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model</em>'.
+	 * @return a new object of class '<em>OOrganization Model</em>'.
 	 * @generated
 	 */
-	OrganizationModel createOrganizationModel();
+	OOrganizationModel createOOrganizationModel();
 
 	/**
-	 * Returns a new object of class '<em>Organization</em>'.
+	 * Returns a new object of class '<em>OHierarchy Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Organization</em>'.
+	 * @return a new object of class '<em>OHierarchy Root</em>'.
 	 * @generated
 	 */
-	Organization createOrganization();
+	OHierarchyRoot createOHierarchyRoot();
 
 	/**
-	 * Returns a new object of class '<em>Unit</em>'.
+	 * Returns a new object of class '<em>OOrganization</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Unit</em>'.
+	 * @return a new object of class '<em>OOrganization</em>'.
 	 * @generated
 	 */
-	OrganizationUnit createOrganizationUnit();
+	OOrganization createOOrganization();
 
 	/**
-	 * Returns a new object of class '<em>Unit Type</em>'.
+	 * Returns a new object of class '<em>OUnit</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Unit Type</em>'.
+	 * @return a new object of class '<em>OUnit</em>'.
 	 * @generated
 	 */
-	OrganizationUnitType createOrganizationUnitType();
+	OUnit createOUnit();
 
 	/**
-	 * Returns a new object of class '<em>Business Role</em>'.
+	 * Returns a new object of class '<em>OPerson Role</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Business Role</em>'.
+	 * @return a new object of class '<em>OPerson Role</em>'.
 	 * @generated
 	 */
-	BusinessRole createBusinessRole();
+	OPersonRole createOPersonRole();
 
 	/**
-	 * Returns a new object of class '<em>Person</em>'.
+	 * Returns a new object of class '<em>OUnit Role</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Person</em>'.
+	 * @return a new object of class '<em>OUnit Role</em>'.
 	 * @generated
 	 */
-	Person createPerson();
+	OUnitRole createOUnitRole();
 
 	/**
-	 * Returns a new object of class '<em>Worker</em>'.
+	 * Returns a new object of class '<em>OPerson</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Worker</em>'.
+	 * @return a new object of class '<em>OPerson</em>'.
 	 * @generated
 	 */
-	Worker createWorker();
+	OPerson createOPerson();
 
 	/**
-	 * Returns a new object of class '<em>Group</em>'.
+	 * Returns a new object of class '<em>OWorker</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Group</em>'.
+	 * @return a new object of class '<em>OWorker</em>'.
 	 * @generated
 	 */
-	Group createGroup();
+	OWorker createOWorker();
 
 	/**
-	 * Returns a new object of class '<em>Partnership</em>'.
+	 * Returns a new object of class '<em>OGroup</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Partnership</em>'.
+	 * @return a new object of class '<em>OGroup</em>'.
 	 * @generated
 	 */
-	Partnership createPartnership();
+	OGroup createOGroup();
+
+	/**
+	 * Returns a new object of class '<em>OPartnership</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>OPartnership</em>'.
+	 * @generated
+	 */
+	OPartnership createOPartnership();
 
 	/**
 	 * Returns the package supported by this factory.

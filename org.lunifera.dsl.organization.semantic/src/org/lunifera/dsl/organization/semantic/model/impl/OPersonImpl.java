@@ -11,27 +11,28 @@ package org.lunifera.dsl.organization.semantic.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.lunifera.dsl.organization.semantic.model.ONamed;
+import org.lunifera.dsl.organization.semantic.model.OPerson;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.Person;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Person</b></em>'.
+ * An implementation of the model object '<em><b>OPerson</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PersonImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PersonImpl#getFirstName <em>First Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PersonImpl#getMiddleName <em>Middle Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PersonImpl#getLastName <em>Last Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PersonImpl#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl#getFirstName <em>First Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl#getMiddleName <em>Middle Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPersonImpl#getEmail <em>Email</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PersonImpl extends OrganizationMemberImpl implements Person {
+public class OPersonImpl extends OOrganizationMemberImpl implements OPerson {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -137,7 +138,7 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PersonImpl() {
+	protected OPersonImpl() {
 		super();
 	}
 
@@ -148,7 +149,7 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OrganizationPackage.Literals.PERSON;
+		return OrganizationPackage.Literals.OPERSON;
 	}
 
 	/**
@@ -169,7 +170,7 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PERSON__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPERSON__NAME, oldName, name));
 	}
 
 	/**
@@ -190,7 +191,7 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 		String oldFirstName = firstName;
 		firstName = newFirstName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PERSON__FIRST_NAME, oldFirstName, firstName));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPERSON__FIRST_NAME, oldFirstName, firstName));
 	}
 
 	/**
@@ -211,7 +212,7 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 		String oldMiddleName = middleName;
 		middleName = newMiddleName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PERSON__MIDDLE_NAME, oldMiddleName, middleName));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPERSON__MIDDLE_NAME, oldMiddleName, middleName));
 	}
 
 	/**
@@ -232,7 +233,7 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 		String oldLastName = lastName;
 		lastName = newLastName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PERSON__LAST_NAME, oldLastName, lastName));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPERSON__LAST_NAME, oldLastName, lastName));
 	}
 
 	/**
@@ -253,7 +254,7 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 		String oldEmail = email;
 		email = newEmail;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PERSON__EMAIL, oldEmail, email));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPERSON__EMAIL, oldEmail, email));
 	}
 
 	/**
@@ -264,15 +265,15 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrganizationPackage.PERSON__NAME:
+			case OrganizationPackage.OPERSON__NAME:
 				return getName();
-			case OrganizationPackage.PERSON__FIRST_NAME:
+			case OrganizationPackage.OPERSON__FIRST_NAME:
 				return getFirstName();
-			case OrganizationPackage.PERSON__MIDDLE_NAME:
+			case OrganizationPackage.OPERSON__MIDDLE_NAME:
 				return getMiddleName();
-			case OrganizationPackage.PERSON__LAST_NAME:
+			case OrganizationPackage.OPERSON__LAST_NAME:
 				return getLastName();
-			case OrganizationPackage.PERSON__EMAIL:
+			case OrganizationPackage.OPERSON__EMAIL:
 				return getEmail();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -286,19 +287,19 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrganizationPackage.PERSON__NAME:
+			case OrganizationPackage.OPERSON__NAME:
 				setName((String)newValue);
 				return;
-			case OrganizationPackage.PERSON__FIRST_NAME:
+			case OrganizationPackage.OPERSON__FIRST_NAME:
 				setFirstName((String)newValue);
 				return;
-			case OrganizationPackage.PERSON__MIDDLE_NAME:
+			case OrganizationPackage.OPERSON__MIDDLE_NAME:
 				setMiddleName((String)newValue);
 				return;
-			case OrganizationPackage.PERSON__LAST_NAME:
+			case OrganizationPackage.OPERSON__LAST_NAME:
 				setLastName((String)newValue);
 				return;
-			case OrganizationPackage.PERSON__EMAIL:
+			case OrganizationPackage.OPERSON__EMAIL:
 				setEmail((String)newValue);
 				return;
 		}
@@ -313,19 +314,19 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.PERSON__NAME:
+			case OrganizationPackage.OPERSON__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.PERSON__FIRST_NAME:
+			case OrganizationPackage.OPERSON__FIRST_NAME:
 				setFirstName(FIRST_NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.PERSON__MIDDLE_NAME:
+			case OrganizationPackage.OPERSON__MIDDLE_NAME:
 				setMiddleName(MIDDLE_NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.PERSON__LAST_NAME:
+			case OrganizationPackage.OPERSON__LAST_NAME:
 				setLastName(LAST_NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.PERSON__EMAIL:
+			case OrganizationPackage.OPERSON__EMAIL:
 				setEmail(EMAIL_EDEFAULT);
 				return;
 		}
@@ -340,18 +341,50 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.PERSON__NAME:
+			case OrganizationPackage.OPERSON__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case OrganizationPackage.PERSON__FIRST_NAME:
+			case OrganizationPackage.OPERSON__FIRST_NAME:
 				return FIRST_NAME_EDEFAULT == null ? firstName != null : !FIRST_NAME_EDEFAULT.equals(firstName);
-			case OrganizationPackage.PERSON__MIDDLE_NAME:
+			case OrganizationPackage.OPERSON__MIDDLE_NAME:
 				return MIDDLE_NAME_EDEFAULT == null ? middleName != null : !MIDDLE_NAME_EDEFAULT.equals(middleName);
-			case OrganizationPackage.PERSON__LAST_NAME:
+			case OrganizationPackage.OPERSON__LAST_NAME:
 				return LAST_NAME_EDEFAULT == null ? lastName != null : !LAST_NAME_EDEFAULT.equals(lastName);
-			case OrganizationPackage.PERSON__EMAIL:
+			case OrganizationPackage.OPERSON__EMAIL:
 				return EMAIL_EDEFAULT == null ? email != null : !EMAIL_EDEFAULT.equals(email);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ONamed.class) {
+			switch (derivedFeatureID) {
+				case OrganizationPackage.OPERSON__NAME: return OrganizationPackage.ONAMED__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ONamed.class) {
+			switch (baseFeatureID) {
+				case OrganizationPackage.ONAMED__NAME: return OrganizationPackage.OPERSON__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -378,4 +411,4 @@ public class PersonImpl extends OrganizationMemberImpl implements Person {
 		return result.toString();
 	}
 
-} //PersonImpl
+} //OPersonImpl

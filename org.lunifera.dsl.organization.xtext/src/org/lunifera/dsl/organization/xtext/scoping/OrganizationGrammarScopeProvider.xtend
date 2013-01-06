@@ -20,9 +20,9 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.eclipse.xtext.scoping.impl.ScopeBasedSelectable
 import org.eclipse.xtext.scoping.impl.SelectableBasedScope
-import org.lunifera.dsl.organization.semantic.model.Organization
+import org.lunifera.dsl.organization.semantic.model.OOrganization
+import org.lunifera.dsl.organization.semantic.model.OPartnership
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage
-import org.lunifera.dsl.organization.semantic.model.Partnership
 
 /**
  * This class contains custom scoping description.
@@ -33,11 +33,11 @@ import org.lunifera.dsl.organization.semantic.model.Partnership
  */
 class OrganizationGrammarScopeProvider extends AbstractDeclarativeScopeProvider {
 
-	def IScope scope_Partnership_company(Partnership context,
+	def IScope scope_Partnership_company(OPartnership context,
 			EReference reference) {
 		val IScope unfilteredScope = delegateGetScope(context, reference);
-		val Organization orgNameToFix = (context.eContainer()
-				.eContainer() as Organization);
+		val OOrganization orgNameToFix = (context.eContainer()
+				.eContainer() as OOrganization);
  
 		val IScope filtered = SelectableBasedScope::createScope(IScope::NULLSCOPE,
 				new ScopeBasedSelectable(unfilteredScope),
@@ -49,16 +49,16 @@ class OrganizationGrammarScopeProvider extends AbstractDeclarativeScopeProvider 
 						val boolean result = !eObject.equals(orgNameToFix);
 						return result;
 					], 
-				OrganizationPackage::eINSTANCE.getOrganization(), true);
+				OrganizationPackage::eINSTANCE.getOOrganization(), true);
 
 		return filtered;
 	}
 	
-	def IScope scope_Partnership_responsible( Partnership context,
+	def IScope scope_Partnership_responsible(OPartnership context,
 			EReference reference) {
 		val IScope unfilteredScope = delegateGetScope(context, reference);
-		val Organization orgNameToFix = (context.eContainer()
-				.eContainer() as Organization);
+		val OOrganization orgNameToFix = (context.eContainer()
+				.eContainer() as OOrganization);
 		val IScope filtered = SelectableBasedScope::createScope(IScope::NULLSCOPE,
 				new ScopeBasedSelectable(unfilteredScope),
 				[IEObjectDescription input |
@@ -70,7 +70,7 @@ class OrganizationGrammarScopeProvider extends AbstractDeclarativeScopeProvider 
 								.equals(orgNameToFix);
 						return result;
 					], 
-					OrganizationPackage::eINSTANCE.getWorker(), true);
+					OrganizationPackage::eINSTANCE.getOWorker(), true);
 
 		return filtered;
 	}

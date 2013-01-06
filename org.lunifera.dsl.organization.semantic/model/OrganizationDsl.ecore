@@ -1,69 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://www.lunifera.org/dsl/organization/v1" nsPrefix="model">
-  <eClassifiers xsi:type="ecore:EClass" name="OrganizationModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="organization" eType="#//Organization"
+  <eClassifiers xsi:type="ecore:EClass" name="ONamed" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ODescribed" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OOrganizationModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="businessRoles" upperBound="-1"
+        eType="#//OBusinessRole" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//OHierarchyRoot"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="organizationUnitTypes"
-        upperBound="-1" eType="#//OrganizationUnitType" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Organization">
-    <eOperations name="getUnits" upperBound="-1" eType="#//OrganizationUnit"/>
-    <eOperations name="getRoles" upperBound="-1" eType="#//BusinessRole"/>
-    <eOperations name="getPersons" upperBound="-1" eType="#//Person"/>
-    <eOperations name="getWorkers" upperBound="-1" eType="#//Worker"/>
-    <eOperations name="getGroups" upperBound="-1" eType="#//Group"/>
-    <eOperations name="getPartnerships" upperBound="-1" eType="#//Partnership"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OHierarchyRoot" eSuperTypes="#//ONamed #//ODescribed">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organizations" upperBound="-1"
+        eType="#//OOrganization" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OOrganization" eSuperTypes="#//ONamed #//ODescribed">
+    <eOperations name="getUnits" upperBound="-1" eType="#//OUnit"/>
+    <eOperations name="getRoles" upperBound="-1" eType="#//OPersonRole"/>
+    <eOperations name="getPersons" upperBound="-1" eType="#//OPerson"/>
+    <eOperations name="getWorkers" upperBound="-1" eType="#//OWorker"/>
+    <eOperations name="getGroups" upperBound="-1" eType="#//OGroup"/>
+    <eOperations name="getPartnerships" upperBound="-1" eType="#//OPartnership"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//OrganizationMember" containment="true"/>
+        eType="#//OOrganizationMember" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OrganizationUnit" eSuperTypes="#//OrganizationMember">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//OrganizationUnit"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
-        eType="#//OrganizationUnitType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OUnit" eSuperTypes="#//OOrganizationMember #//ONamed #//ODescribed">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//OUnit"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="playRoles" unique="false"
+        upperBound="-1" eType="#//OUnitRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subUnits" upperBound="-1"
+        eType="#//OUnit"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OrganizationUnitType" eSuperTypes="#//OrganizationMember">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessRole" eSuperTypes="#//OrganizationMember">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//OrganizationMember">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OBusinessRole" abstract="true" eSuperTypes="#//OOrganizationMember #//ONamed #//ODescribed"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OPersonRole" eSuperTypes="#//OBusinessRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OUnitRole" eSuperTypes="#//OBusinessRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OPerson" eSuperTypes="#//OOrganizationMember #//ONamed">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="middleName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Worker" eSuperTypes="#//OrganizationMember">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="#//Person"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocationUnit" eType="#//OrganizationUnit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OWorker" eSuperTypes="#//OOrganizationMember">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="#//OPerson"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocationUnit" eType="#//OUnit"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="playRoles" unique="false"
-        upperBound="-1" eType="#//BusinessRole"/>
+        upperBound="-1" eType="#//OPersonRole"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//OrganizationMember">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OGroup" eSuperTypes="#//OOrganizationMember #//ONamed #//ODescribed">
     <eStructuralFeatures xsi:type="ecore:EReference" name="workers" unique="false"
-        upperBound="-1" eType="#//Worker"/>
+        upperBound="-1" eType="#//OWorker"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Partnership" eSuperTypes="#//OrganizationMember">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="company" eType="#//Organization"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="responsible" eType="#//Worker"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OPartnership" eSuperTypes="#//OOrganizationMember #//ONamed">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="company" eType="#//OOrganization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="responsible" eType="#//OWorker"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="agreement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OrganizationMember" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OOrganizationMember" abstract="true"/>
 </ecore:EPackage>

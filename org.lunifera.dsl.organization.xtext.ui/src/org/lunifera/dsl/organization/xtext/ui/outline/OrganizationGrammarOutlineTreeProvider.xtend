@@ -12,15 +12,27 @@
  */
 package org.lunifera.dsl.organization.xtext.ui.outline
 
+import com.google.inject.Inject
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EcoreFactory
+import org.eclipse.emf.ecore.impl.EClassImpl
+import org.eclipse.emf.ecore.impl.EReferenceImpl
+import org.eclipse.xtext.ui.IImageHelper
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
-import org.lunifera.dsl.organization.semantic.model.BusinessRole
-import org.lunifera.dsl.organization.semantic.model.Group
-import org.lunifera.dsl.organization.semantic.model.Organization
-import org.lunifera.dsl.organization.semantic.model.OrganizationUnit
-import org.lunifera.dsl.organization.semantic.model.Partnership
-import org.lunifera.dsl.organization.semantic.model.Person
-import org.lunifera.dsl.organization.semantic.model.Worker
+import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode
+import org.lunifera.dsl.organization.semantic.model.OBusinessRole
+import org.lunifera.dsl.organization.semantic.model.OGroup
+import org.lunifera.dsl.organization.semantic.model.OOrganization
+import org.lunifera.dsl.organization.semantic.model.OOrganizationModel
+import org.lunifera.dsl.organization.semantic.model.OPartnership
+import org.lunifera.dsl.organization.semantic.model.OPerson
+import org.lunifera.dsl.organization.semantic.model.OUnit
+import org.lunifera.dsl.organization.semantic.model.OWorker
+import org.lunifera.dsl.organization.semantic.model.OrganizationPackage
+import org.lunifera.dsl.organization.semantic.model.util.OrganizationUtil
 
 /**
  * Customization of the default outline structure.
@@ -28,12 +40,65 @@ import org.lunifera.dsl.organization.semantic.model.Worker
  * see http://www.eclipse.org/Xtext/documentation.html#outline
  */
 class OrganizationGrammarOutlineTreeProvider extends DefaultOutlineTreeProvider {
-	private VirtualOutlineNode personsGroup;
-	private VirtualOutlineNode groupsGroup;
-	private VirtualOutlineNode bRolesGroup;
-	private VirtualOutlineNode partenershipsGroup;
-	private VirtualOutlineNode unitsGroup;
-	private VirtualOutlineNode workersGroup;
+
+	@Inject extension OrganizationUtil
+
+	@Inject
+	private IImageHelper imageHelper;
+
+	EPackage syntheticPackage
+
+	// persons group
+	EClassImpl personGroupEClass
+	EReferenceImpl personGroup_ParentReference
+
+	// worker group
+	EClassImpl workerGroupEClass
+	EReferenceImpl workerGroup_ParentReference
+
+	// partnerships group
+	EClassImpl partnershipGroupEClass
+	EReferenceImpl partnershipGroup_ParentReference
+
+	new() {
+		val EcoreFactory factory = EcoreFactory::eINSTANCE
+		syntheticPackage = factory.createEPackage
+		syntheticPackage.name = "synthetic"
+		syntheticPackage.nsPrefix = "synthetic"
+		syntheticPackage.nsURI = "http://www.lunifera.org/dsl/organization/synthetic"
+
+		// persons group
+		personGroupEClass = "Persons".createNodeClass(9000)
+		syntheticPackage.EClassifiers += personGroupEClass
+		personGroup_ParentReference = personGroupEClass.createParentReference
+
+		// workers group
+		workerGroupEClass = "Workers".createNodeClass(9001)
+		syntheticPackage.EClassifiers += workerGroupEClass
+		workerGroup_ParentReference = workerGroupEClass.createParentReference
+
+		// partnerships group
+		partnershipGroupEClass = "Partnerships".createNodeClass(9002)
+		syntheticPackage.EClassifiers += partnershipGroupEClass
+		partnershipGroup_ParentReference = partnershipGroupEClass.createParentReference
+	}
+
+	def EReferenceImpl createParentReference(EClass owner) {
+		val EReferenceImpl reference = EcoreFactory::eINSTANCE.createEReference() as EReferenceImpl;
+		reference.setFeatureID(9000);
+		owner.getEStructuralFeatures().add(reference);
+		reference.EType = OrganizationPackage::eINSTANCE.OOrganization
+		reference.name = "parent"
+		reference.upperBound = 1
+		return reference
+	}
+
+	def EClassImpl createNodeClass(String name, int id) {
+		val EClassImpl eClass = EcoreFactory::eINSTANCE.createEClass() as EClassImpl
+		eClass.setClassifierID(9000)
+		eClass.classifierID
+		return eClass
+	}
 
 	/**
 	 * Skip the root node.
@@ -41,66 +106,95 @@ class OrganizationGrammarOutlineTreeProvider extends DefaultOutlineTreeProvider 
 	 * @param parentNode
 	 * @param model
 	 */
-	def void _createChildren(IOutlineNode parentNode, Organization organization) {
-		for (Person element : organization.getPersons()) {
-			createNode(getPersonGroup(parentNode), element);
+	def void _createChildren(DocumentRootNode parentNode, OOrganizationModel model) {
+		if (model.root != null) {
+			createNode(parentNode, model.root);
 		}
-		for (Group element : organization.getGroups()) {
-			createNode(getGroupsGroup(parentNode), element);
-		}
-		for (Partnership element : organization.getPartnerships()) {
-			createNode(getPartnershipsGroup(parentNode), element);
-		}
-		for (BusinessRole element : organization.getRoles()) {
-			createNode(getRolesGroup(parentNode), element);
-		}
-		for (OrganizationUnit element : organization.getUnits()) {
-			createNode(getUnitsGroup(parentNode), element);
-		}
-		for (Worker element : organization.getWorkers()) {
-			createNode(getWorkersGroup(parentNode), element);
+		for (OBusinessRole role : model.businessRoles) {
+			createNode(parentNode, role);
 		}
 	}
 
-	def VirtualOutlineNode getPersonGroup(IOutlineNode parentNode) {
-		if (personsGroup == null) {
-			personsGroup = new VirtualOutlineNode(parentNode, null, "Persons", false);
+	def void _createChildren(IOutlineNode parentNode, OOrganization model) {
+		for (OUnit unit : model.units.filter([it.parent == null])) {
+			createNode(parentNode, unit);
 		}
-		return personsGroup;
+
+		val EObject personsGroup = syntheticPackage.EFactoryInstance.create(personGroupEClass)
+		personsGroup.eSet(personGroup_ParentReference, model)
+		new VirtualOutlineNode(personsGroup, parentNode, imageHelper.getImage("persons.png"), "Persons", false);
+
+		val EObject workersGroup = syntheticPackage.EFactoryInstance.create(workerGroupEClass)
+		workersGroup.eSet(workerGroup_ParentReference, model)
+		new VirtualOutlineNode(workersGroup, parentNode, imageHelper.getImage("workers.png"), "Workers", false);
+
+		for (OGroup group : model.groups) {
+			createNode(parentNode, group);
+		}
+
+		val EObject partnershipsGroup = syntheticPackage.EFactoryInstance.create(partnershipGroupEClass)
+		partnershipsGroup.eSet(partnershipGroup_ParentReference, model)
+		new VirtualOutlineNode(partnershipsGroup, parentNode, imageHelper.getImage("partnerships.png"), "Partnerships",
+			false);
 	}
 
-	def VirtualOutlineNode getGroupsGroup(IOutlineNode parentNode) {
-		if (groupsGroup == null) {
-			groupsGroup = new VirtualOutlineNode(parentNode, null, "Groups", false);
+	override void _createChildren(IOutlineNode parentNode, EObject eObject) {
+		if (eObject.eClass == personGroupEClass) {
+			val OOrganization organization = eObject.eGet(personGroup_ParentReference) as OOrganization
+			for (OPerson person : organization.persons) {
+				createNode(parentNode, person)
+			}
+		} else if (eObject.eClass == workerGroupEClass) {
+			val OOrganization organization = eObject.eGet(workerGroup_ParentReference) as OOrganization
+			for (OWorker worker : organization.workers) {
+				createNode(parentNode, worker)
+			}
+		} else if (eObject.eClass == partnershipGroupEClass) {
+			val OOrganization organization = eObject.eGet(personGroup_ParentReference) as OOrganization
+			for (OPartnership partnership : organization.partnerships) {
+				createNode(parentNode, partnership)
+			}
+		} else {
+			super._createChildren(parentNode, eObject)
 		}
-		return groupsGroup;
 	}
 
-	def VirtualOutlineNode getRolesGroup(IOutlineNode parentNode) {
-		if (bRolesGroup == null) {
-			bRolesGroup = new VirtualOutlineNode(parentNode, null, "Roles", false);
+	override boolean _isLeaf(EObject eObject) {
+		switch (eObject.eClass) {
+			case personGroupEClass: {
+				val OOrganization organization = eObject.eGet(personGroup_ParentReference) as OOrganization
+				return organization.persons.empty
+			}
+			case workerGroupEClass: {
+				val OOrganization organization = eObject.eGet(workerGroup_ParentReference) as OOrganization
+				return organization.workers.empty
+			}
+			case partnershipGroupEClass: {
+				val OOrganization organization = eObject.eGet(partnershipGroup_ParentReference) as OOrganization
+				return organization.partnerships.empty
+			}
 		}
-		return bRolesGroup;
+
+		return super._isLeaf(eObject)
 	}
 
-	def VirtualOutlineNode getUnitsGroup(IOutlineNode parentNode) {
-		if (unitsGroup == null) {
-			unitsGroup = new VirtualOutlineNode(parentNode, null, "Units", false);
-		}
-		return unitsGroup;
+	def boolean _isLeaf(OUnit unit) {
+		return unit.subUnits.empty
 	}
 
-	def VirtualOutlineNode getPartnershipsGroup(IOutlineNode parentNode) {
-		if (partenershipsGroup == null) {
-			partenershipsGroup = new VirtualOutlineNode(parentNode, null, "Partnerships", false);
-		}
-		return partenershipsGroup;
+	def boolean _isLeaf(OGroup group) {
+		return group.workers.empty
 	}
 
-	def VirtualOutlineNode getWorkersGroup(IOutlineNode parentNode) {
-		if (workersGroup == null) {
-			workersGroup = new VirtualOutlineNode(parentNode, null, "Workers", false);
+	def void _createChildren(IOutlineNode parentNode, OUnit unit) {
+		for (OUnit child : unit.subUnits) {
+			createNode(parentNode, child);
 		}
-		return workersGroup;
+	}
+
+	def void _createChildren(IOutlineNode parentNode, OGroup group) {
+		for (OWorker child : group.workers) {
+			createNode(parentNode, child);
+		}
 	}
 }

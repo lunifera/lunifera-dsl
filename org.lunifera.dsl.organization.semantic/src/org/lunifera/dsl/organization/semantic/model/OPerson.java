@@ -11,51 +11,24 @@ package org.lunifera.dsl.organization.semantic.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Person</b></em>'.
+ * A representation of the model object '<em><b>OPerson</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.Person#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.Person#getFirstName <em>First Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.Person#getMiddleName <em>Middle Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.Person#getLastName <em>Last Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.Person#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.OPerson#getFirstName <em>First Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.OPerson#getMiddleName <em>Middle Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.OPerson#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.OPerson#getEmail <em>Email</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getPerson()
+ * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOPerson()
  * @model
  * @generated
  */
-public interface Person extends OrganizationMember {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getPerson_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.Person#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
+public interface OPerson extends OOrganizationMember, ONamed {
 	/**
 	 * Returns the value of the '<em><b>First Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -66,14 +39,14 @@ public interface Person extends OrganizationMember {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getPerson_FirstName()
+	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOPerson_FirstName()
 	 * @model
 	 * @generated
 	 */
 	String getFirstName();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.Person#getFirstName <em>First Name</em>}' attribute.
+	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.OPerson#getFirstName <em>First Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>First Name</em>' attribute.
@@ -92,14 +65,14 @@ public interface Person extends OrganizationMember {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Middle Name</em>' attribute.
 	 * @see #setMiddleName(String)
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getPerson_MiddleName()
+	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOPerson_MiddleName()
 	 * @model
 	 * @generated
 	 */
 	String getMiddleName();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.Person#getMiddleName <em>Middle Name</em>}' attribute.
+	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.OPerson#getMiddleName <em>Middle Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Middle Name</em>' attribute.
@@ -118,14 +91,14 @@ public interface Person extends OrganizationMember {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getPerson_LastName()
+	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOPerson_LastName()
 	 * @model
 	 * @generated
 	 */
 	String getLastName();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.Person#getLastName <em>Last Name</em>}' attribute.
+	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.OPerson#getLastName <em>Last Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Last Name</em>' attribute.
@@ -144,14 +117,14 @@ public interface Person extends OrganizationMember {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Email</em>' attribute.
 	 * @see #setEmail(String)
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getPerson_Email()
+	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOPerson_Email()
 	 * @model
 	 * @generated
 	 */
 	String getEmail();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.Person#getEmail <em>Email</em>}' attribute.
+	 * Sets the value of the '{@link org.lunifera.dsl.organization.semantic.model.OPerson#getEmail <em>Email</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Email</em>' attribute.
@@ -160,4 +133,4 @@ public interface Person extends OrganizationMember {
 	 */
 	void setEmail(String value);
 
-} // Person
+} // OPerson

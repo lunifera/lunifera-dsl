@@ -8,17 +8,16 @@
  */
 package org.lunifera.dsl.organization.semantic.model;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Member</b></em>'.
+ * A representation of the model object '<em><b>OUnit Role</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOrganizationMember()
- * @model abstract="true"
+ * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOUnitRole()
+ * @model
  * @generated
  */
-public interface OrganizationMember extends EObject {
-} // OrganizationMember
+public interface OUnitRole extends OBusinessRole {
+} // OUnitRole

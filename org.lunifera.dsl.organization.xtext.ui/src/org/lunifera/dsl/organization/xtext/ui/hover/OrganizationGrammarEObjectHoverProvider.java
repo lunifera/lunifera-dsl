@@ -15,10 +15,10 @@ import javax.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
-import org.lunifera.dsl.organization.semantic.model.Organization;
-import org.lunifera.dsl.organization.semantic.model.Partnership;
-import org.lunifera.dsl.organization.semantic.model.Person;
-import org.lunifera.dsl.organization.semantic.model.Worker;
+import org.lunifera.dsl.organization.semantic.model.OOrganization;
+import org.lunifera.dsl.organization.semantic.model.OPartnership;
+import org.lunifera.dsl.organization.semantic.model.OPerson;
+import org.lunifera.dsl.organization.semantic.model.OWorker;
 
 public class OrganizationGrammarEObjectHoverProvider extends
 		DefaultEObjectHoverProvider {
@@ -53,30 +53,30 @@ public class OrganizationGrammarEObjectHoverProvider extends
 		String label = qualifiedNameProvider.getFullyQualifiedName(o)
 				.toString();
 
-		if (o instanceof Organization) {
+		if (o instanceof OOrganization) {
 
-			return retrieveHoverFirstLineOrganization((Organization) o, label);
+			return retrieveHoverFirstLineOrganization((OOrganization) o, label);
 		}
 
-		if (o instanceof Worker) {
+		if (o instanceof OWorker) {
 
-			return retrieveHoverFirstLineWorker((Worker) o, label);
+			return retrieveHoverFirstLineWorker((OWorker) o, label);
 		}
 
-		if (o instanceof Person) {
+		if (o instanceof OPerson) {
 
-			return retrieveHoverFirstLinePerson((Person) o, label);
+			return retrieveHoverFirstLinePerson((OPerson) o, label);
 		}
 
-		if (o instanceof Partnership) {
+		if (o instanceof OPartnership) {
 
-			return retrieveHoverFirstLinePartnership((Partnership) o, label);
+			return retrieveHoverFirstLinePartnership((OPartnership) o, label);
 		}
 
 		return super.getFirstLine(o);
 	}
 
-	public String retrieveHoverFirstLineOrganization(Organization o,
+	public String retrieveHoverFirstLineOrganization(OOrganization o,
 			String label) {
 		StringBuilder documentation = new StringBuilder();
 		documentation.append(HTML_TAG_OPEN_BOLD).append(HTML_TAG_OPEN_ITALIC)
@@ -91,7 +91,7 @@ public class OrganizationGrammarEObjectHoverProvider extends
 		return documentation.toString();
 	}
 
-	public String retrieveHoverFirstLineWorker(Worker o, String label) {
+	public String retrieveHoverFirstLineWorker(OWorker o, String label) {
 		StringBuilder documentation = new StringBuilder();
 		documentation.append(HTML_TAG_OPEN_BOLD).append(HTML_TAG_OPEN_ITALIC)
 				.append(label).append(HTML_TAG_CLOSE_ITALIC).append(" - ")
@@ -106,7 +106,7 @@ public class OrganizationGrammarEObjectHoverProvider extends
 		return documentation.toString();
 	}
 
-	public String retrieveHoverFirstLinePartnership(Partnership o, String label) {
+	public String retrieveHoverFirstLinePartnership(OPartnership o, String label) {
 		StringBuilder documentation = new StringBuilder();
 		documentation.append(HTML_TAG_OPEN_BOLD).append(HTML_TAG_OPEN_ITALIC)
 				.append(label).append(HTML_TAG_CLOSE_ITALIC).append(" - ")
@@ -120,7 +120,7 @@ public class OrganizationGrammarEObjectHoverProvider extends
 		return documentation.toString();
 	}
 
-	public String retrieveHoverFirstLinePerson(Person o, String label) {
+	public String retrieveHoverFirstLinePerson(OPerson o, String label) {
 		StringBuilder documentation = new StringBuilder();
 		documentation.append(HTML_TAG_OPEN_BOLD).append(HTML_TAG_OPEN_ITALIC)
 				.append(label).append(HTML_TAG_CLOSE_ITALIC).append(" - ")

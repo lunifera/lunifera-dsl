@@ -13,12 +13,18 @@ grammar org.lunifera.dsl.organization.xtext.OrganizationGrammar with org.eclipse
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.lunifera.org/dsl/organization/v1"
 
-OrganizationModel:
-	((organization=Organization) |
-	(organizationUnitTypes+=OrganizationUnitType*))
+OrganizationModel returns OOrganizationModel:
+	((root=HierarchyRoot)? &
+	(businessRoles+=BusinessRole)*)
 ;
 
-Organization:
+HierarchyRoot returns OHierarchyRoot:
+	'hierachy' name=ID '{'
+		organizations+=Organization*
+	'}'
+;
+
+Organization returns OOrganization:
 	'organization' name=ID ('{'
 		(('name' longName=STRING)? &
 		('version' version=Fqn)? &
@@ -26,32 +32,39 @@ Organization:
 		(elements+=OrganizationMember)*)
 	'}')?;
 
-OrganizationUnitType:
-	'unit-type' name=ID ('{' 
+UnitRole returns OUnitRole:
+	'business-role' name=ID ('{'
 		(('name' longName=STRING)? & 
 		('description' description=STRING)?) 
 	'}')?
 ;
 
-OrganizationMember:
-	OrganizationUnit | BusinessRole | Person | Worker | Group | Partnership | OrganizationUnitType;
+PersonRole returns OPersonRole:
+	'person-role' name=ID ('{'
+		(('name' longName=STRING)? & 
+		('description' description=STRING)?) 
+	'}')?
+;
 
-OrganizationUnit:
-	'unit' name=Fqn ('subunit of' parent=[OrganizationUnit|Fqn])?
+BusinessRole returns OBusinessRole:
+	UnitRole | PersonRole
+;
+
+OrganizationMember returns OOrganizationMember:
+	Unit | Person | Worker | Group | Partnership;
+
+Unit returns OUnit:
+	'unit' name=Fqn ('subunit-of' parent=[OUnit|Fqn])?
 	('{'
 		(('name' longName=STRING)? &
 		('description' description=STRING)? &
-		('type' types+=[OrganizationUnitType])?)
-	'}')?;
-	
-BusinessRole:
-	'role' name=Fqn
-	('{'
-		(('name' longName=STRING)? &
-		('description' description=STRING)?)
+		('playRoles' '('playRoles+=[OUnitRole|Fqn] (',' playRoles+=[OUnitRole|Fqn])* ')')? &
+		('sub-units' '('subUnits+=[OUnit|Fqn] (',' subUnits+=[OUnit|Fqn])* ')')?)
 	'}')?;
 
-Person:
+
+
+Person returns OPerson:
 	'person' name=ID
 	('{'
 		(('first name' firstName=STRING)? &
@@ -61,25 +74,25 @@ Person:
 	'}')?
 ;
 
-Worker:
+Worker returns OWorker:
 // must filter persons. must show only Partners and Own Company persons.
-	'worker' person=[Person|Fqn] ('{' 
-		(('allocatedOn' allocationUnit=[OrganizationUnit|Fqn])? & 
-    	('playRoles' '('playRoles+=[BusinessRole|Fqn] (',' playRoles+=[BusinessRole|Fqn])* ')')?) 
+	'worker' person=[OPerson|Fqn] ('{' 
+		(('allocatedOn' allocationUnit=[OUnit|Fqn])? & 
+    	('playRoles' '('playRoles+=[OPersonRole|Fqn] (',' playRoles+=[OPersonRole|Fqn])* ')')?) 
 	'}')?
 ;
 
-Group:
+Group returns OGroup:
 	'group' name=ID ('{'
 		(('name' longName=STRING)? &
 		('description' description=STRING)?)
-		('worker' workers+=[Worker|Fqn])* 
+		('worker' workers+=[OWorker|Fqn])* 
 	'}')?
 ;
 
-Partnership:
-	'partnership' 'with' company=[Organization|Fqn] ('{' 
-		('responsible' responsible=[Worker|Fqn])? 
+Partnership returns OPartnership:
+	'partnership' 'with' company=[OOrganization|Fqn] ('{' 
+		('responsible' responsible=[OWorker|Fqn])? 
 		('agreement'agreement=STRING)? 
 	'}')?;
 

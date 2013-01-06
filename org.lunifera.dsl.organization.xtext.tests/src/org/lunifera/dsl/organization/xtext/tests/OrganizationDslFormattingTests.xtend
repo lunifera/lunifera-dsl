@@ -14,15 +14,15 @@ import javax.inject.Inject
 import org.eclipse.xtext.resource.SaveOptions
 import org.eclipse.xtext.serializer.ISerializer
 import org.junit.Test
-import org.lunifera.dsl.organization.semantic.model.Organization
+import org.lunifera.dsl.organization.semantic.model.OOrganization
 import org.lunifera.dsl.organization.xtext.tests.utils.CustomParseHelper
 
-import static org.junit.Assert.*
+import static extension org.junit.Assert.*
 
 class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
 	
 	
-	@Inject extension CustomParseHelper<Organization>
+	@Inject extension CustomParseHelper<OOrganization>
 	
 	@Inject extension ISerializer
 	

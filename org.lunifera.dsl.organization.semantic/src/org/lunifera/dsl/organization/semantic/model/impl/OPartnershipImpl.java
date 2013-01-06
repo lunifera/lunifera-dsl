@@ -12,28 +12,29 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.lunifera.dsl.organization.semantic.model.Organization;
+import org.lunifera.dsl.organization.semantic.model.ONamed;
+import org.lunifera.dsl.organization.semantic.model.OOrganization;
+import org.lunifera.dsl.organization.semantic.model.OPartnership;
+import org.lunifera.dsl.organization.semantic.model.OWorker;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
-import org.lunifera.dsl.organization.semantic.model.Partnership;
-import org.lunifera.dsl.organization.semantic.model.Worker;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Partnership</b></em>'.
+ * An implementation of the model object '<em><b>OPartnership</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PartnershipImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PartnershipImpl#getCompany <em>Company</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PartnershipImpl#getResponsible <em>Responsible</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.PartnershipImpl#getAgreement <em>Agreement</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl#getCompany <em>Company</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl#getResponsible <em>Responsible</em>}</li>
+ *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl#getAgreement <em>Agreement</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PartnershipImpl extends OrganizationMemberImpl implements Partnership {
+public class OPartnershipImpl extends OOrganizationMemberImpl implements OPartnership {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,7 +63,7 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * @generated
 	 * @ordered
 	 */
-	protected Organization company;
+	protected OOrganization company;
 
 	/**
 	 * The cached value of the '{@link #getResponsible() <em>Responsible</em>}' reference.
@@ -72,7 +73,7 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * @generated
 	 * @ordered
 	 */
-	protected Worker responsible;
+	protected OWorker responsible;
 
 	/**
 	 * The default value of the '{@link #getAgreement() <em>Agreement</em>}' attribute.
@@ -99,7 +100,7 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PartnershipImpl() {
+	protected OPartnershipImpl() {
 		super();
 	}
 
@@ -110,7 +111,7 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OrganizationPackage.Literals.PARTNERSHIP;
+		return OrganizationPackage.Literals.OPARTNERSHIP;
 	}
 
 	/**
@@ -131,7 +132,7 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PARTNERSHIP__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPARTNERSHIP__NAME, oldName, name));
 	}
 
 	/**
@@ -139,13 +140,13 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Organization getCompany() {
+	public OOrganization getCompany() {
 		if (company != null && company.eIsProxy()) {
 			InternalEObject oldCompany = (InternalEObject)company;
-			company = (Organization)eResolveProxy(oldCompany);
+			company = (OOrganization)eResolveProxy(oldCompany);
 			if (company != oldCompany) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.PARTNERSHIP__COMPANY, oldCompany, company));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.OPARTNERSHIP__COMPANY, oldCompany, company));
 			}
 		}
 		return company;
@@ -156,7 +157,7 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Organization basicGetCompany() {
+	public OOrganization basicGetCompany() {
 		return company;
 	}
 
@@ -165,11 +166,11 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCompany(Organization newCompany) {
-		Organization oldCompany = company;
+	public void setCompany(OOrganization newCompany) {
+		OOrganization oldCompany = company;
 		company = newCompany;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PARTNERSHIP__COMPANY, oldCompany, company));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPARTNERSHIP__COMPANY, oldCompany, company));
 	}
 
 	/**
@@ -177,13 +178,13 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Worker getResponsible() {
+	public OWorker getResponsible() {
 		if (responsible != null && responsible.eIsProxy()) {
 			InternalEObject oldResponsible = (InternalEObject)responsible;
-			responsible = (Worker)eResolveProxy(oldResponsible);
+			responsible = (OWorker)eResolveProxy(oldResponsible);
 			if (responsible != oldResponsible) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.PARTNERSHIP__RESPONSIBLE, oldResponsible, responsible));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrganizationPackage.OPARTNERSHIP__RESPONSIBLE, oldResponsible, responsible));
 			}
 		}
 		return responsible;
@@ -194,7 +195,7 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Worker basicGetResponsible() {
+	public OWorker basicGetResponsible() {
 		return responsible;
 	}
 
@@ -203,11 +204,11 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setResponsible(Worker newResponsible) {
-		Worker oldResponsible = responsible;
+	public void setResponsible(OWorker newResponsible) {
+		OWorker oldResponsible = responsible;
 		responsible = newResponsible;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PARTNERSHIP__RESPONSIBLE, oldResponsible, responsible));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPARTNERSHIP__RESPONSIBLE, oldResponsible, responsible));
 	}
 
 	/**
@@ -228,7 +229,7 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 		String oldAgreement = agreement;
 		agreement = newAgreement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PARTNERSHIP__AGREEMENT, oldAgreement, agreement));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OPARTNERSHIP__AGREEMENT, oldAgreement, agreement));
 	}
 
 	/**
@@ -239,15 +240,15 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrganizationPackage.PARTNERSHIP__NAME:
+			case OrganizationPackage.OPARTNERSHIP__NAME:
 				return getName();
-			case OrganizationPackage.PARTNERSHIP__COMPANY:
+			case OrganizationPackage.OPARTNERSHIP__COMPANY:
 				if (resolve) return getCompany();
 				return basicGetCompany();
-			case OrganizationPackage.PARTNERSHIP__RESPONSIBLE:
+			case OrganizationPackage.OPARTNERSHIP__RESPONSIBLE:
 				if (resolve) return getResponsible();
 				return basicGetResponsible();
-			case OrganizationPackage.PARTNERSHIP__AGREEMENT:
+			case OrganizationPackage.OPARTNERSHIP__AGREEMENT:
 				return getAgreement();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -261,16 +262,16 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrganizationPackage.PARTNERSHIP__NAME:
+			case OrganizationPackage.OPARTNERSHIP__NAME:
 				setName((String)newValue);
 				return;
-			case OrganizationPackage.PARTNERSHIP__COMPANY:
-				setCompany((Organization)newValue);
+			case OrganizationPackage.OPARTNERSHIP__COMPANY:
+				setCompany((OOrganization)newValue);
 				return;
-			case OrganizationPackage.PARTNERSHIP__RESPONSIBLE:
-				setResponsible((Worker)newValue);
+			case OrganizationPackage.OPARTNERSHIP__RESPONSIBLE:
+				setResponsible((OWorker)newValue);
 				return;
-			case OrganizationPackage.PARTNERSHIP__AGREEMENT:
+			case OrganizationPackage.OPARTNERSHIP__AGREEMENT:
 				setAgreement((String)newValue);
 				return;
 		}
@@ -285,16 +286,16 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.PARTNERSHIP__NAME:
+			case OrganizationPackage.OPARTNERSHIP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case OrganizationPackage.PARTNERSHIP__COMPANY:
-				setCompany((Organization)null);
+			case OrganizationPackage.OPARTNERSHIP__COMPANY:
+				setCompany((OOrganization)null);
 				return;
-			case OrganizationPackage.PARTNERSHIP__RESPONSIBLE:
-				setResponsible((Worker)null);
+			case OrganizationPackage.OPARTNERSHIP__RESPONSIBLE:
+				setResponsible((OWorker)null);
 				return;
-			case OrganizationPackage.PARTNERSHIP__AGREEMENT:
+			case OrganizationPackage.OPARTNERSHIP__AGREEMENT:
 				setAgreement(AGREEMENT_EDEFAULT);
 				return;
 		}
@@ -309,16 +310,48 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.PARTNERSHIP__NAME:
+			case OrganizationPackage.OPARTNERSHIP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case OrganizationPackage.PARTNERSHIP__COMPANY:
+			case OrganizationPackage.OPARTNERSHIP__COMPANY:
 				return company != null;
-			case OrganizationPackage.PARTNERSHIP__RESPONSIBLE:
+			case OrganizationPackage.OPARTNERSHIP__RESPONSIBLE:
 				return responsible != null;
-			case OrganizationPackage.PARTNERSHIP__AGREEMENT:
+			case OrganizationPackage.OPARTNERSHIP__AGREEMENT:
 				return AGREEMENT_EDEFAULT == null ? agreement != null : !AGREEMENT_EDEFAULT.equals(agreement);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ONamed.class) {
+			switch (derivedFeatureID) {
+				case OrganizationPackage.OPARTNERSHIP__NAME: return OrganizationPackage.ONAMED__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ONamed.class) {
+			switch (baseFeatureID) {
+				case OrganizationPackage.ONAMED__NAME: return OrganizationPackage.OPARTNERSHIP__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -339,4 +372,4 @@ public class PartnershipImpl extends OrganizationMemberImpl implements Partnersh
 		return result.toString();
 	}
 
-} //PartnershipImpl
+} //OPartnershipImpl
