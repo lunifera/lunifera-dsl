@@ -4,34 +4,38 @@ hierachy Kwiee {
 
 		unit HQ_Austria {
 			name "Headquater Austria"
-			description "The headquater of austria" playRoles ( Accounting , Controlling , Sales , Inventory , Purchase )
+			description "The headquater of austria"
+			playRoles ( Accounting , Controlling , Sales , Inventory , Purchase )
 		}
 
 		unit Sales_West subunit-of HQ_Austria {
 			name "Sales Unit West"
-			description "A unit in the west of austria thats main focus is the selling of goods" playRoles ( Sales , Inventory ,
-			Controlling )
+			description "A unit in the west of austria thats main focus is the selling of goods"
+			playRoles ( Sales , Inventory , Controlling )
 		}
 
 		unit Sales_East subunit-of HQ_Austria {
 			name "Sales Unit East"
-			description "A unit in the east of austria thats main focus is the selling of goods" playRoles ( Sales , Inventory )
+			description "A unit in the east of austria thats main focus is the selling of goods"
+			playRoles ( Sales , Inventory )
 		}
 
 		unit Inventory_Center_1 subunit-of Sales_East {
 			name "Inventory Center 1"
-			description "The main focus of that unit is the storage of goods" playRoles ( Inventory )
+			description "The main focus of that unit is the storage of goods"
+			playRoles ( Inventory )
 		}
 
 		unit Inventory_Center_2 subunit-of Sales_East {
 			name "Inventory Center 2"
-			description "The main focus of that unit is the storage of goods" playRoles ( Inventory )
+			description "The main focus of that unit is the storage of goods"
+			playRoles ( Inventory )
 		}
 
 		unit Purchasing_Central subunit-of HQ_Austria {
 			name "Purchasing central"
-			description "This unit handles all purchase activities of Kwiee austria in the center of the country." playRoles (
-			Purchase , Inventory )
+			description "This unit handles all purchase activities of Kwiee austria in the center of the country."
+			playRoles ( Purchase , Inventory )
 		}
 
 		person FP {
@@ -58,9 +62,9 @@ hierachy Kwiee {
 		}
 
 		group Workgroup_Core {
-			name "Core Group" 
-			
-			worker CG 
+			name "Core Group"
+
+			worker CG
 			worker FP
 		}
 	}
