@@ -17,14 +17,14 @@
 		<dependency>
 			<groupId>org.lunifera</groupId>
 			<artifactId>
-		org.lunifera.metamodel.dsl.entity.tests
+		org.lunifera.dsl.entity.xtext.tests
 		</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.lunifera</groupId>
 			<artifactId>
-		org.lunifera.metamodel.dsl.organization.en.tests
+		org.lunifera.dsl.organization.xtext.tests
 		</artifactId>
 			<version>${project.version}</version>
 		</dependency>
