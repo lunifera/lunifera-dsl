@@ -18,8 +18,8 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 import org.lunifera.dsl.organization.semantic.model.OBusinessRole
 import org.lunifera.dsl.organization.semantic.model.OGroup
+import org.lunifera.dsl.organization.semantic.model.OHierarchyRoot
 import org.lunifera.dsl.organization.semantic.model.OOrganization
-import org.lunifera.dsl.organization.semantic.model.OPartnership
 import org.lunifera.dsl.organization.semantic.model.OPerson
 import org.lunifera.dsl.organization.semantic.model.OUnit
 import org.lunifera.dsl.organization.semantic.model.OWorker
@@ -38,15 +38,19 @@ class OrganizationGrammarLabelProvider extends DefaultEObjectLabelProvider {
 	new(AdapterFactoryLabelProvider delegate) { 
 		super(delegate);
 	}
+	
+	def String image(OHierarchyRoot ele){
+		return "hierarchy.png";
+	}
 
 	def String image(OOrganization ele){
 		return "organization.png";
 	}
 	
 	def String image(OUnit ele){
-		return "organizationunit.png";
+		return "report.png";
 	}
-	
+
 	def String image(OPerson ele){
 		return "person.png";
 	}
@@ -63,15 +67,15 @@ class OrganizationGrammarLabelProvider extends DefaultEObjectLabelProvider {
 		return "role.png";
 	}
 	
-	def String image(OPartnership ele){
-		return "partnership.png";
-	}
+//	def String image(OPartnership ele){
+//		return "partnership.png";
+//	}
 	
 	def Object text(OWorker element) {
 		return nameProvider.getFullyQualifiedName(element).getLastSegment();
 	}
 
-	def Object text(OPartnership element) {
-		return nameProvider.getFullyQualifiedName(element).getLastSegment();
-	}
+//	def Object text(OPartnership element) {
+//		return nameProvider.getFullyQualifiedName(element).getLastSegment();
+//	}
 }

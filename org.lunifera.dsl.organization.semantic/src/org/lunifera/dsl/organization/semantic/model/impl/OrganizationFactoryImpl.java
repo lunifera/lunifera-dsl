@@ -13,12 +13,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.lunifera.dsl.organization.semantic.model.*;
 import org.lunifera.dsl.organization.semantic.model.OGroup;
 import org.lunifera.dsl.organization.semantic.model.OHierarchyRoot;
 import org.lunifera.dsl.organization.semantic.model.OOrganization;
 import org.lunifera.dsl.organization.semantic.model.OOrganizationModel;
-import org.lunifera.dsl.organization.semantic.model.OPartnership;
 import org.lunifera.dsl.organization.semantic.model.OPerson;
 import org.lunifera.dsl.organization.semantic.model.OPersonRole;
 import org.lunifera.dsl.organization.semantic.model.OUnit;
@@ -80,7 +78,6 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 			case OrganizationPackage.OPERSON: return createOPerson();
 			case OrganizationPackage.OWORKER: return createOWorker();
 			case OrganizationPackage.OGROUP: return createOGroup();
-			case OrganizationPackage.OPARTNERSHIP: return createOPartnership();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -174,16 +171,6 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
 	public OGroup createOGroup() {
 		OGroupImpl oGroup = new OGroupImpl();
 		return oGroup;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OPartnership createOPartnership() {
-		OPartnershipImpl oPartnership = new OPartnershipImpl();
-		return oPartnership;
 	}
 
 	/**

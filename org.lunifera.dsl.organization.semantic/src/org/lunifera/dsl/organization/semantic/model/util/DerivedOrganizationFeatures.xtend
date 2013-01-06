@@ -11,13 +11,12 @@ import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.EList
 import org.lunifera.dsl.organization.semantic.model.OGroup
 import org.lunifera.dsl.organization.semantic.model.OOrganization
-import org.lunifera.dsl.organization.semantic.model.OPartnership
 import org.lunifera.dsl.organization.semantic.model.OPerson
 import org.lunifera.dsl.organization.semantic.model.OPersonRole
 import org.lunifera.dsl.organization.semantic.model.OUnit
 import org.lunifera.dsl.organization.semantic.model.OWorker
 
-class DerivedReferenceHelper {
+class DerivedOrganizationFeatures {
  
 	OOrganization organization
 
@@ -35,10 +34,6 @@ class DerivedReferenceHelper {
 
 	def EList<OGroup> getGroups() {
 		return new BasicEList(organization.elements.filter(typeof(OGroup)).toList)
-	}
-
-	def EList<OPartnership> getPartnerships() {
-		return new BasicEList(organization.elements.filter(typeof(OPartnership)).toList)
 	}
 
 	def EList<OPerson> getPersons() {

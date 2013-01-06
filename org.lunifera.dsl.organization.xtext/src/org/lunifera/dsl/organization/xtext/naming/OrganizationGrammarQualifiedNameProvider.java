@@ -18,8 +18,6 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.lunifera.dsl.organization.semantic.model.OPartnership;
-import org.lunifera.dsl.organization.semantic.model.OUnit;
 import org.lunifera.dsl.organization.semantic.model.OWorker;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
 import org.lunifera.dsl.organization.semantic.model.util.OrganizationUtil;
@@ -64,30 +62,30 @@ public class OrganizationGrammarQualifiedNameProvider extends
 		return super.qualifiedName(e);
 	}
 
-	protected QualifiedName qualifiedName(OPartnership e) {
-
-		String name = null;
-
-		List<INode> nodes = NodeModelUtils.findNodesForFeature(e,
-				OrganizationPackage.Literals.OPARTNERSHIP__COMPANY);
-
-		if (!nodes.isEmpty()) {
-			INode first = nodes.get(0);
-			name = NodeModelUtils.getTokenText(first);
-			QualifiedName qualifiedNameFromConverter = converter
-					.toQualifiedName(name);
-
-			if (e.eContainer() != null) {
-				QualifiedName parentsQualifiedName = getFullyQualifiedName(e
-						.eContainer());
-				if (parentsQualifiedName != null) {
-					return parentsQualifiedName
-							.append(qualifiedNameFromConverter);
-				} else
-					return qualifiedNameFromConverter;
-			}
-		}
-		return super.qualifiedName(e);
-	}
+	// protected QualifiedName qualifiedName(OPartnership e) {
+	//
+	// String name = null;
+	//
+	// List<INode> nodes = NodeModelUtils.findNodesForFeature(e,
+	// OrganizationPackage.Literals.OPARTNERSHIP__COMPANY);
+	//
+	// if (!nodes.isEmpty()) {
+	// INode first = nodes.get(0);
+	// name = NodeModelUtils.getTokenText(first);
+	// QualifiedName qualifiedNameFromConverter = converter
+	// .toQualifiedName(name);
+	//
+	// if (e.eContainer() != null) {
+	// QualifiedName parentsQualifiedName = getFullyQualifiedName(e
+	// .eContainer());
+	// if (parentsQualifiedName != null) {
+	// return parentsQualifiedName
+	// .append(qualifiedNameFromConverter);
+	// } else
+	// return qualifiedNameFromConverter;
+	// }
+	// }
+	// return super.qualifiedName(e);
+	// }
 
 }

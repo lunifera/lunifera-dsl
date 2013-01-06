@@ -12,7 +12,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.lunifera.dsl.organization.semantic.model.*;
 import org.lunifera.dsl.organization.semantic.model.OBusinessRole;
 import org.lunifera.dsl.organization.semantic.model.ODescribed;
 import org.lunifera.dsl.organization.semantic.model.OGroup;
@@ -21,7 +20,6 @@ import org.lunifera.dsl.organization.semantic.model.ONamed;
 import org.lunifera.dsl.organization.semantic.model.OOrganization;
 import org.lunifera.dsl.organization.semantic.model.OOrganizationMember;
 import org.lunifera.dsl.organization.semantic.model.OOrganizationModel;
-import org.lunifera.dsl.organization.semantic.model.OPartnership;
 import org.lunifera.dsl.organization.semantic.model.OPerson;
 import org.lunifera.dsl.organization.semantic.model.OPersonRole;
 import org.lunifera.dsl.organization.semantic.model.OUnit;
@@ -132,10 +130,6 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseOGroup(OGroup object) {
 				return createOGroupAdapter();
-			}
-			@Override
-			public Adapter caseOPartnership(OPartnership object) {
-				return createOPartnershipAdapter();
 			}
 			@Override
 			public Adapter caseOOrganizationMember(OOrganizationMember object) {
@@ -326,20 +320,6 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOGroupAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.organization.semantic.model.OPartnership <em>OPartnership</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership
-	 * @generated
-	 */
-	public Adapter createOPartnershipAdapter() {
 		return null;
 	}
 

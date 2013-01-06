@@ -84,14 +84,6 @@ public interface OOrganization extends ONamed, ODescribed {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	EList<OPersonRole> getRoles();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
 	EList<OPerson> getPersons();
 
 	/**
@@ -109,13 +101,5 @@ public interface OOrganization extends ONamed, ODescribed {
 	 * @generated
 	 */
 	EList<OGroup> getGroups();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	EList<OPartnership> getPartnerships();
 
 } // OOrganization

@@ -71,4 +71,20 @@ public interface OOrganizationModel extends EObject {
 	 */
 	void setRoot(OHierarchyRoot value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<OUnitRole> getUnitRoles();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<OPersonRole> getPersonRoles();
+
 } // OOrganizationModel

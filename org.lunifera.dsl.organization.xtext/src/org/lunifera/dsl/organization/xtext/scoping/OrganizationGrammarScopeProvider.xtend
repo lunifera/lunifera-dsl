@@ -12,17 +12,7 @@
  */
 package org.lunifera.dsl.organization.xtext.scoping
 
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.xtext.resource.IEObjectDescription
-import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
-import org.eclipse.xtext.scoping.impl.ScopeBasedSelectable
-import org.eclipse.xtext.scoping.impl.SelectableBasedScope
-import org.lunifera.dsl.organization.semantic.model.OOrganization
-import org.lunifera.dsl.organization.semantic.model.OPartnership
-import org.lunifera.dsl.organization.semantic.model.OrganizationPackage
 
 /**
  * This class contains custom scoping description.
@@ -33,46 +23,46 @@ import org.lunifera.dsl.organization.semantic.model.OrganizationPackage
  */
 class OrganizationGrammarScopeProvider extends AbstractDeclarativeScopeProvider {
 
-	def IScope scope_Partnership_company(OPartnership context,
-			EReference reference) {
-		val IScope unfilteredScope = delegateGetScope(context, reference);
-		val OOrganization orgNameToFix = (context.eContainer()
-				.eContainer() as OOrganization);
- 
-		val IScope filtered = SelectableBasedScope::createScope(IScope::NULLSCOPE,
-				new ScopeBasedSelectable(unfilteredScope),
-				[IEObjectDescription input |
-						var EObject eObject = input.getEObjectOrProxy();
-						if (eObject.eIsProxy()) {
-							eObject = EcoreUtil::resolve(eObject, context);
-						}
-						val boolean result = !eObject.equals(orgNameToFix);
-						return result;
-					], 
-				OrganizationPackage::eINSTANCE.getOOrganization(), true);
-
-		return filtered;
-	}
-	
-	def IScope scope_Partnership_responsible(OPartnership context,
-			EReference reference) {
-		val IScope unfilteredScope = delegateGetScope(context, reference);
-		val OOrganization orgNameToFix = (context.eContainer()
-				.eContainer() as OOrganization);
-		val IScope filtered = SelectableBasedScope::createScope(IScope::NULLSCOPE,
-				new ScopeBasedSelectable(unfilteredScope),
-				[IEObjectDescription input |
-					var EObject eObject = input.getEObjectOrProxy();
-						if (eObject.eIsProxy()) {
-							eObject = EcoreUtil::resolve(eObject, context);
-						}
-						val boolean result = eObject.eContainer().eContainer()
-								.equals(orgNameToFix);
-						return result;
-					], 
-					OrganizationPackage::eINSTANCE.getOWorker(), true);
-
-		return filtered;
-	}
+//	def IScope scope_Partnership_company(OPartnership context,
+//			EReference reference) {
+//		val IScope unfilteredScope = delegateGetScope(context, reference);
+//		val OOrganization orgNameToFix = (context.eContainer()
+//				.eContainer() as OOrganization);
+// 
+//		val IScope filtered = SelectableBasedScope::createScope(IScope::NULLSCOPE,
+//				new ScopeBasedSelectable(unfilteredScope),
+//				[IEObjectDescription input |
+//						var EObject eObject = input.getEObjectOrProxy();
+//						if (eObject.eIsProxy()) {
+//							eObject = EcoreUtil::resolve(eObject, context);
+//						}
+//						val boolean result = !eObject.equals(orgNameToFix);
+//						return result;
+//					], 
+//				OrganizationPackage::eINSTANCE.getOOrganization(), true);
+//
+//		return filtered;
+//	}
+//	
+//	def IScope scope_Partnership_responsible(OPartnership context,
+//			EReference reference) {
+//		val IScope unfilteredScope = delegateGetScope(context, reference);
+//		val OOrganization orgNameToFix = (context.eContainer()
+//				.eContainer() as OOrganization);
+//		val IScope filtered = SelectableBasedScope::createScope(IScope::NULLSCOPE,
+//				new ScopeBasedSelectable(unfilteredScope),
+//				[IEObjectDescription input |
+//					var EObject eObject = input.getEObjectOrProxy();
+//						if (eObject.eIsProxy()) {
+//							eObject = EcoreUtil::resolve(eObject, context);
+//						}
+//						val boolean result = eObject.eContainer().eContainer()
+//								.equals(orgNameToFix);
+//						return result;
+//					], 
+//					OrganizationPackage::eINSTANCE.getOWorker(), true);
+//
+//		return filtered;
+//	}
 	
 }

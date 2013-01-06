@@ -109,15 +109,6 @@ public interface OrganizationFactory extends EFactory {
 	OGroup createOGroup();
 
 	/**
-	 * Returns a new object of class '<em>OPartnership</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OPartnership</em>'.
-	 * @generated
-	 */
-	OPartnership createOPartnership();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

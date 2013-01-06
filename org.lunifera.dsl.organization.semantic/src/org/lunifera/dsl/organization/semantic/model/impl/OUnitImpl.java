@@ -11,14 +11,11 @@ package org.lunifera.dsl.organization.semantic.model.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.lunifera.dsl.organization.semantic.model.ODescribed;
 import org.lunifera.dsl.organization.semantic.model.ONamed;
 import org.lunifera.dsl.organization.semantic.model.OUnit;
@@ -37,7 +34,6 @@ import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
  *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OUnitImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OUnitImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OUnitImpl#getPlayRoles <em>Play Roles</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OUnitImpl#getSubUnits <em>Sub Units</em>}</li>
  * </ul>
  * </p>
  *
@@ -123,16 +119,6 @@ public class OUnitImpl extends OOrganizationMemberImpl implements OUnit {
 	 * @ordered
 	 */
 	protected EList<OUnitRole> playRoles;
-
-	/**
-	 * The cached value of the '{@link #getSubUnits() <em>Sub Units</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubUnits()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<OUnit> subUnits;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -271,18 +257,6 @@ public class OUnitImpl extends OOrganizationMemberImpl implements OUnit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<OUnit> getSubUnits() {
-		if (subUnits == null) {
-			subUnits = new EObjectResolvingEList<OUnit>(OUnit.class, this, OrganizationPackage.OUNIT__SUB_UNITS);
-		}
-		return subUnits;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -297,8 +271,6 @@ public class OUnitImpl extends OOrganizationMemberImpl implements OUnit {
 				return basicGetParent();
 			case OrganizationPackage.OUNIT__PLAY_ROLES:
 				return getPlayRoles();
-			case OrganizationPackage.OUNIT__SUB_UNITS:
-				return getSubUnits();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -328,10 +300,6 @@ public class OUnitImpl extends OOrganizationMemberImpl implements OUnit {
 				getPlayRoles().clear();
 				getPlayRoles().addAll((Collection<? extends OUnitRole>)newValue);
 				return;
-			case OrganizationPackage.OUNIT__SUB_UNITS:
-				getSubUnits().clear();
-				getSubUnits().addAll((Collection<? extends OUnit>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -359,9 +327,6 @@ public class OUnitImpl extends OOrganizationMemberImpl implements OUnit {
 			case OrganizationPackage.OUNIT__PLAY_ROLES:
 				getPlayRoles().clear();
 				return;
-			case OrganizationPackage.OUNIT__SUB_UNITS:
-				getSubUnits().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -384,8 +349,6 @@ public class OUnitImpl extends OOrganizationMemberImpl implements OUnit {
 				return parent != null;
 			case OrganizationPackage.OUNIT__PLAY_ROLES:
 				return playRoles != null && !playRoles.isEmpty();
-			case OrganizationPackage.OUNIT__SUB_UNITS:
-				return subUnits != null && !subUnits.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -51,18 +51,15 @@ BusinessRole returns OBusinessRole:
 ;
 
 OrganizationMember returns OOrganizationMember:
-	Unit | Person | Worker | Group | Partnership;
+	Unit | Person | Worker | Group;
 
 Unit returns OUnit:
 	'unit' name=Fqn ('subunit-of' parent=[OUnit|Fqn])?
 	('{'
 		(('name' longName=STRING)? &
 		('description' description=STRING)? &
-		('playRoles' '('playRoles+=[OUnitRole|Fqn] (',' playRoles+=[OUnitRole|Fqn])* ')')? &
-		('sub-units' '('subUnits+=[OUnit|Fqn] (',' subUnits+=[OUnit|Fqn])* ')')?)
+		('playRoles' '('playRoles+=[OUnitRole|Fqn] (',' playRoles+=[OUnitRole|Fqn])* ')')?)
 	'}')?;
-
-
 
 Person returns OPerson:
 	'person' name=ID
@@ -90,11 +87,11 @@ Group returns OGroup:
 	'}')?
 ;
 
-Partnership returns OPartnership:
-	'partnership' 'with' company=[OOrganization|Fqn] ('{' 
-		('responsible' responsible=[OWorker|Fqn])? 
-		('agreement'agreement=STRING)? 
-	'}')?;
+//Partnership returns OPartnership:
+//	'partnership' 'with' company=[OOrganization|Fqn] ('{' 
+//		('responsible' responsible=[OWorker|Fqn])? 
+//		('agreement'agreement=STRING)? 
+//	'}')?;
 
 FqnWithWildCard:
 	Fqn ('.' '*')?;

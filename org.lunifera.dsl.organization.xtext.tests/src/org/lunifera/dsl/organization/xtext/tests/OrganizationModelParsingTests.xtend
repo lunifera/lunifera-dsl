@@ -20,7 +20,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.lunifera.dsl.organization.semantic.model.OBusinessRole
 import org.lunifera.dsl.organization.semantic.model.OOrganization
-import org.lunifera.dsl.organization.semantic.model.OPartnership
 import org.lunifera.dsl.organization.semantic.model.OPerson
 import org.lunifera.dsl.organization.semantic.model.OUnit
 import org.lunifera.dsl.organization.semantic.model.OWorker
@@ -107,19 +106,19 @@ class OrganizationModelParsingTests extends AbstractXtextCommonTest {
 		assertEquals(worker1.person, person1)
 		assertEquals(worker1.allocationUnit, unit1)
 
-		// assert Partnerships
-		assertEquals(orgModel1.elements.filter(typeof(OPartnership)).size, 1)
-
-		var partnership = orgModel1.elements.filter(typeof(OPartnership)).head
-		var partner = partnership.company
-
-		assertEquals(partner.name, orgModel2.name)
-		assertEquals(orgModel1.elements.filter(typeof(OPartnership)).head.responsible, worker1)
-
-		assertNotNull(partner)
-
-		// assert model2
-		assertEquals(partner.name, "Lunifera")
+//		// assert Partnerships
+//		assertEquals(orgModel1.elements.filter(typeof(OPartnership)).size, 1)
+//
+//		var partnership = orgModel1.elements.filter(typeof(OPartnership)).head
+//		var partner = partnership.company
+//
+//		assertEquals(partner.name, orgModel2.name)
+//		assertEquals(orgModel1.elements.filter(typeof(OPartnership)).head.responsible, worker1)
+//
+//		assertNotNull(partner)
+//
+//		// assert model2
+//		assertEquals(partner.name, "Lunifera")
 
 		assertEquals("Lunifera", orgModel2.name)
 		assertEquals("Lunifera.org", orgModel2.longName)

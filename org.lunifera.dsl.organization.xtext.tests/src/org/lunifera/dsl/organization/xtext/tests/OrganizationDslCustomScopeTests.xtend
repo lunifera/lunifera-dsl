@@ -17,7 +17,6 @@ import org.eclipse.xtext.scoping.IScopeProvider
 import org.junit.Before
 import org.junit.Test
 import org.lunifera.dsl.organization.semantic.model.OOrganization
-import org.lunifera.dsl.organization.semantic.model.OPartnership
 import org.lunifera.dsl.organization.semantic.model.OWorker
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage
 import org.lunifera.dsl.organization.xtext.tests.utils.CustomParseHelper
@@ -56,22 +55,22 @@ class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
     	
     	return parser.parse(in, uri, null, resourceSet);
 }
-	/**
-	 * Only workers coming from same model resource are allowed.
-	 */
-	@Test
-	def void ensureOnlyInternalWorkersProposalsForPartnershipResponsible(){
-		
-		val reference = OrganizationPackage::eINSTANCE.OPartnership_Responsible
-		val partner = orgModel1.elements.filter(typeof(OPartnership)).head
-		assertNotNull(partner)
-		
-		var scope = scopeProvider.getScope(partner, reference)
-		
-		var actualProposals = scope.allElements.map[name.toString].join(", ")
-		
-		assertEquals("c4biz.workers.cvgaviao", actualProposals)				
-	}
+//	/**
+//	 * Only workers coming from same model resource are allowed.
+//	 */
+//	@Test
+//	def void ensureOnlyInternalWorkersProposalsForPartnershipResponsible(){
+//		
+//		val reference = OrganizationPackage::eINSTANCE.OPartnership_Responsible
+//		val partner = orgModel1.elements.filter(typeof(OPartnership)).head
+//		assertNotNull(partner)
+//		
+//		var scope = scopeProvider.getScope(partner, reference)
+//		
+//		var actualProposals = scope.allElements.map[name.toString].join(", ")
+//		
+//		assertEquals("c4biz.workers.cvgaviao", actualProposals)				
+//	}
 	
 	/**
 	 * Only units coming from same model resource are allowed.
@@ -124,21 +123,21 @@ class OrganizationDslFormattingTests extends AbstractXtextCommonTest{
 		assertEquals("c4biz.people.cvgaviao", actualProposals)				
 	}
 	
-	/**
-	 * Only companies coming from other models can be considered valid in proposals for a partner company.
-	 */
-	@Test
-	def void ensureOnlyExternalCompaniesProposalsForPartnerCompany(){
-		
-		val reference = OrganizationPackage::eINSTANCE.OPartnership_Company
-		val partner = orgModel1.elements.filter(typeof(OWorker)).head
-		assertNotNull(partner)
-		
-		var scope = scopeProvider.getScope(partner, reference)
-		
-		var actualProposals = scope.allElements.map[name.toString].join(", ")
-		
-		assertEquals("Lunifera", actualProposals)		
-	}
+//	/**
+//	 * Only companies coming from other models can be considered valid in proposals for a partner company.
+//	 */
+//	@Test
+//	def void ensureOnlyExternalCompaniesProposalsForPartnerCompany(){
+//		
+//		val reference = OrganizationPackage::eINSTANCE.OPartnership_Company
+//		val partner = orgModel1.elements.filter(typeof(OWorker)).head
+//		assertNotNull(partner)
+//		
+//		var scope = scopeProvider.getScope(partner, reference)
+//		
+//		var actualProposals = scope.allElements.map[name.toString].join(", ")
+//		
+//		assertEquals("Lunifera", actualProposals)		
+//	}
 	
 }

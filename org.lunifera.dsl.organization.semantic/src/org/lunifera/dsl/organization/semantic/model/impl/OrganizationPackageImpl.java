@@ -21,7 +21,6 @@ import org.lunifera.dsl.organization.semantic.model.ONamed;
 import org.lunifera.dsl.organization.semantic.model.OOrganization;
 import org.lunifera.dsl.organization.semantic.model.OOrganizationMember;
 import org.lunifera.dsl.organization.semantic.model.OOrganizationModel;
-import org.lunifera.dsl.organization.semantic.model.OPartnership;
 import org.lunifera.dsl.organization.semantic.model.OPerson;
 import org.lunifera.dsl.organization.semantic.model.OPersonRole;
 import org.lunifera.dsl.organization.semantic.model.OUnit;
@@ -120,13 +119,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 	 * @generated
 	 */
 	private EClass oGroupEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass oPartnershipEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -345,15 +337,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOUnit_SubUnits() {
-		return (EReference)oUnitEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOBusinessRole() {
 		return oBusinessRoleEClass;
 	}
@@ -480,42 +463,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOPartnership() {
-		return oPartnershipEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOPartnership_Company() {
-		return (EReference)oPartnershipEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOPartnership_Responsible() {
-		return (EReference)oPartnershipEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOPartnership_Agreement() {
-		return (EAttribute)oPartnershipEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOOrganizationMember() {
 		return oOrganizationMemberEClass;
 	}
@@ -569,7 +516,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 		oUnitEClass = createEClass(OUNIT);
 		createEReference(oUnitEClass, OUNIT__PARENT);
 		createEReference(oUnitEClass, OUNIT__PLAY_ROLES);
-		createEReference(oUnitEClass, OUNIT__SUB_UNITS);
 
 		oBusinessRoleEClass = createEClass(OBUSINESS_ROLE);
 
@@ -590,11 +536,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 
 		oGroupEClass = createEClass(OGROUP);
 		createEReference(oGroupEClass, OGROUP__WORKERS);
-
-		oPartnershipEClass = createEClass(OPARTNERSHIP);
-		createEReference(oPartnershipEClass, OPARTNERSHIP__COMPANY);
-		createEReference(oPartnershipEClass, OPARTNERSHIP__RESPONSIBLE);
-		createEAttribute(oPartnershipEClass, OPARTNERSHIP__AGREEMENT);
 
 		oOrganizationMemberEClass = createEClass(OORGANIZATION_MEMBER);
 	}
@@ -645,8 +586,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 		oGroupEClass.getESuperTypes().add(this.getOOrganizationMember());
 		oGroupEClass.getESuperTypes().add(this.getONamed());
 		oGroupEClass.getESuperTypes().add(this.getODescribed());
-		oPartnershipEClass.getESuperTypes().add(this.getOOrganizationMember());
-		oPartnershipEClass.getESuperTypes().add(this.getONamed());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(oNamedEClass, ONamed.class, "ONamed", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -660,6 +599,10 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 		initEReference(getOOrganizationModel_BusinessRoles(), this.getOBusinessRole(), null, "businessRoles", null, 0, -1, OOrganizationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOOrganizationModel_Root(), this.getOHierarchyRoot(), null, "root", null, 0, 1, OOrganizationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(oOrganizationModelEClass, this.getOUnitRole(), "getUnitRoles", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(oOrganizationModelEClass, this.getOPersonRole(), "getPersonRoles", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(oHierarchyRootEClass, OHierarchyRoot.class, "OHierarchyRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOHierarchyRoot_Organizations(), this.getOOrganization(), null, "organizations", null, 0, -1, OHierarchyRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -669,20 +612,15 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 
 		addEOperation(oOrganizationEClass, this.getOUnit(), "getUnits", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(oOrganizationEClass, this.getOPersonRole(), "getRoles", 0, -1, IS_UNIQUE, IS_ORDERED);
-
 		addEOperation(oOrganizationEClass, this.getOPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(oOrganizationEClass, this.getOWorker(), "getWorkers", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(oOrganizationEClass, this.getOGroup(), "getGroups", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(oOrganizationEClass, this.getOPartnership(), "getPartnerships", 0, -1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(oUnitEClass, OUnit.class, "OUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOUnit_Parent(), this.getOUnit(), null, "parent", null, 0, 1, OUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOUnit_PlayRoles(), this.getOUnitRole(), null, "playRoles", null, 0, -1, OUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOUnit_SubUnits(), this.getOUnit(), null, "subUnits", null, 0, -1, OUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oBusinessRoleEClass, OBusinessRole.class, "OBusinessRole", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -703,11 +641,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 
 		initEClass(oGroupEClass, OGroup.class, "OGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOGroup_Workers(), this.getOWorker(), null, "workers", null, 0, -1, OGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(oPartnershipEClass, OPartnership.class, "OPartnership", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOPartnership_Company(), this.getOOrganization(), null, "company", null, 0, 1, OPartnership.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOPartnership_Responsible(), this.getOWorker(), null, "responsible", null, 0, 1, OPartnership.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOPartnership_Agreement(), ecorePackage.getEString(), "agreement", null, 0, 1, OPartnership.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oOrganizationMemberEClass, OOrganizationMember.class, "OOrganizationMember", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

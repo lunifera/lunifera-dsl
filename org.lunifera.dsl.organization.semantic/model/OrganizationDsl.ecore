@@ -9,6 +9,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OOrganizationModel">
+    <eOperations name="getUnitRoles" upperBound="-1" eType="#//OUnitRole"/>
+    <eOperations name="getPersonRoles" upperBound="-1" eType="#//OPersonRole"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="businessRoles" upperBound="-1"
         eType="#//OBusinessRole" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//OHierarchyRoot"
@@ -20,11 +22,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OOrganization" eSuperTypes="#//ONamed #//ODescribed">
     <eOperations name="getUnits" upperBound="-1" eType="#//OUnit"/>
-    <eOperations name="getRoles" upperBound="-1" eType="#//OPersonRole"/>
     <eOperations name="getPersons" upperBound="-1" eType="#//OPerson"/>
     <eOperations name="getWorkers" upperBound="-1" eType="#//OWorker"/>
     <eOperations name="getGroups" upperBound="-1" eType="#//OGroup"/>
-    <eOperations name="getPartnerships" upperBound="-1" eType="#//OPartnership"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//OOrganizationMember" containment="true"/>
@@ -33,8 +33,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//OUnit"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="playRoles" unique="false"
         upperBound="-1" eType="#//OUnitRole"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subUnits" upperBound="-1"
-        eType="#//OUnit"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OBusinessRole" abstract="true" eSuperTypes="#//OOrganizationMember #//ONamed #//ODescribed"/>
   <eClassifiers xsi:type="ecore:EClass" name="OPersonRole" eSuperTypes="#//OBusinessRole"/>
@@ -54,11 +52,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="OGroup" eSuperTypes="#//OOrganizationMember #//ONamed #//ODescribed">
     <eStructuralFeatures xsi:type="ecore:EReference" name="workers" unique="false"
         upperBound="-1" eType="#//OWorker"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OPartnership" eSuperTypes="#//OOrganizationMember #//ONamed">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="company" eType="#//OOrganization"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="responsible" eType="#//OWorker"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="agreement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OOrganizationMember" abstract="true"/>
 </ecore:EPackage>

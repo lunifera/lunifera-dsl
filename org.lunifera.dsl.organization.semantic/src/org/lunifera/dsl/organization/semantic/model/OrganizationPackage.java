@@ -290,7 +290,7 @@ public interface OrganizationPackage extends EPackage {
 	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOOrganizationMember()
 	 * @generated
 	 */
-	int OORGANIZATION_MEMBER = 13;
+	int OORGANIZATION_MEMBER = 12;
 
 	/**
 	 * The number of structural features of the '<em>OOrganization Member</em>' class.
@@ -357,22 +357,13 @@ public interface OrganizationPackage extends EPackage {
 	int OUNIT__PLAY_ROLES = OORGANIZATION_MEMBER_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Sub Units</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUNIT__SUB_UNITS = OORGANIZATION_MEMBER_FEATURE_COUNT + 5;
-
-	/**
 	 * The number of structural features of the '<em>OUnit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OUNIT_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 6;
+	int OUNIT_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl <em>OBusiness Role</em>}' class.
@@ -678,61 +669,6 @@ public interface OrganizationPackage extends EPackage {
 	int OGROUP_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl <em>OPartnership</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl
-	 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOPartnership()
-	 * @generated
-	 */
-	int OPARTNERSHIP = 12;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPARTNERSHIP__NAME = OORGANIZATION_MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Company</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPARTNERSHIP__COMPANY = OORGANIZATION_MEMBER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Responsible</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPARTNERSHIP__RESPONSIBLE = OORGANIZATION_MEMBER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Agreement</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPARTNERSHIP__AGREEMENT = OORGANIZATION_MEMBER_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>OPartnership</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPARTNERSHIP_FEATURE_COUNT = OORGANIZATION_MEMBER_FEATURE_COUNT + 4;
-
-	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.ONamed <em>ONamed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -903,17 +839,6 @@ public interface OrganizationPackage extends EPackage {
 	EReference getOUnit_PlayRoles();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.organization.semantic.model.OUnit#getSubUnits <em>Sub Units</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Sub Units</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OUnit#getSubUnits()
-	 * @see #getOUnit()
-	 * @generated
-	 */
-	EReference getOUnit_SubUnits();
-
-	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OBusinessRole <em>OBusiness Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1060,49 +985,6 @@ public interface OrganizationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOGroup_Workers();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OPartnership <em>OPartnership</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OPartnership</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership
-	 * @generated
-	 */
-	EClass getOPartnership();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.OPartnership#getCompany <em>Company</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Company</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership#getCompany()
-	 * @see #getOPartnership()
-	 * @generated
-	 */
-	EReference getOPartnership_Company();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.organization.semantic.model.OPartnership#getResponsible <em>Responsible</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Responsible</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership#getResponsible()
-	 * @see #getOPartnership()
-	 * @generated
-	 */
-	EReference getOPartnership_Responsible();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.organization.semantic.model.OPartnership#getAgreement <em>Agreement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Agreement</em>'.
-	 * @see org.lunifera.dsl.organization.semantic.model.OPartnership#getAgreement()
-	 * @see #getOPartnership()
-	 * @generated
-	 */
-	EAttribute getOPartnership_Agreement();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.organization.semantic.model.OOrganizationMember <em>OOrganization Member</em>}'.
@@ -1277,14 +1159,6 @@ public interface OrganizationPackage extends EPackage {
 		EReference OUNIT__PLAY_ROLES = eINSTANCE.getOUnit_PlayRoles();
 
 		/**
-		 * The meta object literal for the '<em><b>Sub Units</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OUNIT__SUB_UNITS = eINSTANCE.getOUnit_SubUnits();
-
-		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OBusinessRoleImpl <em>OBusiness Role</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1407,40 +1281,6 @@ public interface OrganizationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OGROUP__WORKERS = eINSTANCE.getOGroup_Workers();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl <em>OPartnership</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OPartnershipImpl
-		 * @see org.lunifera.dsl.organization.semantic.model.impl.OrganizationPackageImpl#getOPartnership()
-		 * @generated
-		 */
-		EClass OPARTNERSHIP = eINSTANCE.getOPartnership();
-
-		/**
-		 * The meta object literal for the '<em><b>Company</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPARTNERSHIP__COMPANY = eINSTANCE.getOPartnership_Company();
-
-		/**
-		 * The meta object literal for the '<em><b>Responsible</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPARTNERSHIP__RESPONSIBLE = eINSTANCE.getOPartnership_Responsible();
-
-		/**
-		 * The meta object literal for the '<em><b>Agreement</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OPARTNERSHIP__AGREEMENT = eINSTANCE.getOPartnership_Agreement();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationMemberImpl <em>OOrganization Member</em>}' class.

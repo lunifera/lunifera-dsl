@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 import org.lunifera.dsl.organization.semantic.model.OOrganization;
-import org.lunifera.dsl.organization.semantic.model.OPartnership;
 import org.lunifera.dsl.organization.semantic.model.OPerson;
 import org.lunifera.dsl.organization.semantic.model.OWorker;
 
@@ -68,10 +67,10 @@ public class OrganizationGrammarEObjectHoverProvider extends
 			return retrieveHoverFirstLinePerson((OPerson) o, label);
 		}
 
-		if (o instanceof OPartnership) {
-
-			return retrieveHoverFirstLinePartnership((OPartnership) o, label);
-		}
+		// if (o instanceof OPartnership) {
+		//
+		// return retrieveHoverFirstLinePartnership((OPartnership) o, label);
+		// }
 
 		return super.getFirstLine(o);
 	}
@@ -106,19 +105,20 @@ public class OrganizationGrammarEObjectHoverProvider extends
 		return documentation.toString();
 	}
 
-	public String retrieveHoverFirstLinePartnership(OPartnership o, String label) {
-		StringBuilder documentation = new StringBuilder();
-		documentation.append(HTML_TAG_OPEN_BOLD).append(HTML_TAG_OPEN_ITALIC)
-				.append(label).append(HTML_TAG_CLOSE_ITALIC).append(" - ")
-				.append(o.getCompany().getLongName())
-				.append(HTML_TAG_CLOSE_BOLD).append(" :: ");
-
-		if (label != null) {
-			documentation.append(HTML_TAG_OPEN_ITALIC)
-					.append(o.eClass().getName()).append(HTML_TAG_CLOSE_ITALIC);
-		}
-		return documentation.toString();
-	}
+	// public String retrieveHoverFirstLinePartnership(OPartnership o, String
+	// label) {
+	// StringBuilder documentation = new StringBuilder();
+	// documentation.append(HTML_TAG_OPEN_BOLD).append(HTML_TAG_OPEN_ITALIC)
+	// .append(label).append(HTML_TAG_CLOSE_ITALIC).append(" - ")
+	// .append(o.getCompany().getLongName())
+	// .append(HTML_TAG_CLOSE_BOLD).append(" :: ");
+	//
+	// if (label != null) {
+	// documentation.append(HTML_TAG_OPEN_ITALIC)
+	// .append(o.eClass().getName()).append(HTML_TAG_CLOSE_ITALIC);
+	// }
+	// return documentation.toString();
+	// }
 
 	public String retrieveHoverFirstLinePerson(OPerson o, String label) {
 		StringBuilder documentation = new StringBuilder();

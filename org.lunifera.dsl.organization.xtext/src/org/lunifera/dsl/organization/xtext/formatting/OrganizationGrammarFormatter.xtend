@@ -59,6 +59,7 @@ class OrganizationGrammarFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(2, 1, 2).before(gac.getUnitRule());
 		c.setLinewrap(1, 1, 2).before(gac.getUnitAccess().getNameKeyword_3_1_0_0());
 		c.setLinewrap(1, 1, 2).before(gac.getUnitAccess().getDescriptionKeyword_3_1_1_0());
+		c.setLinewrap(1, 1, 2).before(gac.getUnitAccess().getPlayRolesKeyword_3_1_2_0());
 
 		// Person
 		c.setLinewrap(2, 1, 2).before(gac.getPersonRule());
@@ -77,15 +78,19 @@ class OrganizationGrammarFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(1, 1, 2).before(gac.getPersonRoleAccess().getDescriptionKeyword_2_1_1_0());
 		c.setLinewrap(1, 1, 2).before(gac.getPersonRoleAccess().getNameKeyword_2_1_0_0());
 		
-
 		// Worker
 		c.setLinewrap(2, 1, 2).before(gac.getWorkerRule());
 		c.setLinewrap(1, 1, 2).before(gac.getWorkerAccess().getAllocatedOnKeyword_2_1_0_0());
 		c.setLinewrap(1, 1, 2).before(gac.getWorkerAccess().getPlayRolesKeyword_2_1_1_0());
+		
+		// Group
+		c.setLinewrap(2, 1, 2).before(gac.getGroupRule());
+		c.setLinewrap(1, 1, 2).before(gac.getGroupAccess().getNameKeyword_2_1_0_0());
+		c.setLinewrap(1, 1, 2).before(gac.getGroupAccess().getWorkerKeyword_2_2_0());
 
-		// Partnership
-		c.setLinewrap(2, 1, 2).before(gac.getPartnershipRule());
-		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getAgreementKeyword_3_2_0());
-		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getResponsibleKeyword_3_1_0());
+//		// Partnership
+//		c.setLinewrap(2, 1, 2).before(gac.getPartnershipRule());
+//		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getAgreementKeyword_3_2_0());
+//		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getResponsibleKeyword_3_1_0());
 	}
 }

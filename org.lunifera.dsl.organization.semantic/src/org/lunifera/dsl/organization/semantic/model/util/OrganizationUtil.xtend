@@ -35,26 +35,29 @@ class OrganizationUtil {
 	}
 
 	/**
-	 * Searchs for sub units of the given unit using the organization.
+	 * Searchs for sub units of the given unit.
 	 * If no sub units could be found then an empty list will be returned.
 	 */
-	def List<OUnit> findSubUnitsByOrganization(OUnit unit){
+	def List<OUnit> findSubUnits(OUnit unit){
 		val OOrganization org = unit.findOrganization
 		if(org == null){
 			return newArrayList()
 		}
-		return org.units.filter([it.parent == unit]).toList
+		return org.units.filter([
+			it.parent == unit
+		]).toList
 	}
 	
 	/**
-	 * Returns true if sub units of the given unit could be found using the organization.
-	 * If no sub units could be found then an empty list will be returned.
+	 * Returns true if sub units of the given unit could be found.
 	 */
-	def List<OUnit> hasSubUnitsByOrganization(OUnit unit){
+	def boolean hasSubUnits(OUnit unit){
 		val OOrganization org = unit.findOrganization
 		if(org == null){
-			return newArrayList()
+			return false
 		}
-		return org.units.filter([it.parent == unit]).toList
+		return org.units.exists([
+			it.parent == unit
+		])
 	}
 }

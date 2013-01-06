@@ -22,27 +22,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.lunifera.dsl.organization.semantic.model.OBusinessRole;
 import org.lunifera.dsl.organization.semantic.model.OHierarchyRoot;
 import org.lunifera.dsl.organization.semantic.model.OOrganizationModel;
+import org.lunifera.dsl.organization.semantic.model.OPersonRole;
+import org.lunifera.dsl.organization.semantic.model.OUnitRole;
 import org.lunifera.dsl.organization.semantic.model.OrganizationPackage;
+import org.lunifera.dsl.organization.semantic.model.util.DerivedOrganizationModelFeatures;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>OOrganization Model</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>OOrganization Model</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationModelImpl#getBusinessRoles <em>Business Roles</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationModelImpl#getRoot <em>Root</em>}</li>
+ * <li>
+ * {@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationModelImpl#getBusinessRoles
+ * <em>Business Roles</em>}</li>
+ * <li>
+ * {@link org.lunifera.dsl.organization.semantic.model.impl.OOrganizationModelImpl#getRoot
+ * <em>Root</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class OOrganizationModelImpl extends MinimalEObjectImpl.Container implements OOrganizationModel {
+public class OOrganizationModelImpl extends MinimalEObjectImpl.Container
+		implements OOrganizationModel {
 	/**
-	 * The cached value of the '{@link #getBusinessRoles() <em>Business Roles</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getBusinessRoles()
+	 * <em>Business Roles</em>}' containment reference list. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getBusinessRoles()
 	 * @generated
 	 * @ordered
@@ -50,9 +58,9 @@ public class OOrganizationModelImpl extends MinimalEObjectImpl.Container impleme
 	protected EList<OBusinessRole> businessRoles;
 
 	/**
-	 * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRoot() <em>Root</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getRoot()
 	 * @generated
 	 * @ordered
@@ -60,8 +68,8 @@ public class OOrganizationModelImpl extends MinimalEObjectImpl.Container impleme
 	protected OHierarchyRoot root;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected OOrganizationModelImpl() {
@@ -69,8 +77,8 @@ public class OOrganizationModelImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -79,20 +87,22 @@ public class OOrganizationModelImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<OBusinessRole> getBusinessRoles() {
 		if (businessRoles == null) {
-			businessRoles = new EObjectContainmentEList<OBusinessRole>(OBusinessRole.class, this, OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES);
+			businessRoles = new EObjectContainmentEList<OBusinessRole>(
+					OBusinessRole.class, this,
+					OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES);
 		}
 		return businessRoles;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OHierarchyRoot getRoot() {
@@ -100,123 +110,153 @@ public class OOrganizationModelImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetRoot(OHierarchyRoot newRoot, NotificationChain msgs) {
+	public NotificationChain basicSetRoot(OHierarchyRoot newRoot,
+			NotificationChain msgs) {
 		OHierarchyRoot oldRoot = root;
 		root = newRoot;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OrganizationPackage.OORGANIZATION_MODEL__ROOT, oldRoot, newRoot);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					OrganizationPackage.OORGANIZATION_MODEL__ROOT, oldRoot,
+					newRoot);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setRoot(OHierarchyRoot newRoot) {
 		if (newRoot != root) {
 			NotificationChain msgs = null;
 			if (root != null)
-				msgs = ((InternalEObject)root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OrganizationPackage.OORGANIZATION_MODEL__ROOT, null, msgs);
+				msgs = ((InternalEObject) root)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- OrganizationPackage.OORGANIZATION_MODEL__ROOT,
+								null, msgs);
 			if (newRoot != null)
-				msgs = ((InternalEObject)newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OrganizationPackage.OORGANIZATION_MODEL__ROOT, null, msgs);
+				msgs = ((InternalEObject) newRoot)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- OrganizationPackage.OORGANIZATION_MODEL__ROOT,
+								null, msgs);
 			msgs = basicSetRoot(newRoot, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.OORGANIZATION_MODEL__ROOT, newRoot, newRoot));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					OrganizationPackage.OORGANIZATION_MODEL__ROOT, newRoot,
+					newRoot));
+	}
+
+	public EList<OUnitRole> getUnitRoles() {
+		return new DerivedOrganizationModelFeatures(this).getUnitRoles();
+	}
+
+	public EList<OPersonRole> getPersonRoles() {
+		return new DerivedOrganizationModelFeatures(this).getPersonRoles();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
-				return ((InternalEList<?>)getBusinessRoles()).basicRemove(otherEnd, msgs);
-			case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
-				return basicSetRoot(null, msgs);
+		case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
+			return ((InternalEList<?>) getBusinessRoles()).basicRemove(
+					otherEnd, msgs);
+		case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
+			return basicSetRoot(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
-				return getBusinessRoles();
-			case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
-				return getRoot();
+		case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
+			return getBusinessRoles();
+		case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
+			return getRoot();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
-				getBusinessRoles().clear();
-				getBusinessRoles().addAll((Collection<? extends OBusinessRole>)newValue);
-				return;
-			case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
-				setRoot((OHierarchyRoot)newValue);
-				return;
+		case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
+			getBusinessRoles().clear();
+			getBusinessRoles().addAll(
+					(Collection<? extends OBusinessRole>) newValue);
+			return;
+		case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
+			setRoot((OHierarchyRoot) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
-				getBusinessRoles().clear();
-				return;
-			case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
-				setRoot((OHierarchyRoot)null);
-				return;
+		case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
+			getBusinessRoles().clear();
+			return;
+		case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
+			setRoot((OHierarchyRoot) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
-				return businessRoles != null && !businessRoles.isEmpty();
-			case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
-				return root != null;
+		case OrganizationPackage.OORGANIZATION_MODEL__BUSINESS_ROLES:
+			return businessRoles != null && !businessRoles.isEmpty();
+		case OrganizationPackage.OORGANIZATION_MODEL__ROOT:
+			return root != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //OOrganizationModelImpl
+} // OOrganizationModelImpl

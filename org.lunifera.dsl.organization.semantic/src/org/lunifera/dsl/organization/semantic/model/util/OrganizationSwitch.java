@@ -11,7 +11,6 @@ package org.lunifera.dsl.organization.semantic.model.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.lunifera.dsl.organization.semantic.model.*;
 import org.lunifera.dsl.organization.semantic.model.OBusinessRole;
 import org.lunifera.dsl.organization.semantic.model.ODescribed;
 import org.lunifera.dsl.organization.semantic.model.OGroup;
@@ -20,7 +19,6 @@ import org.lunifera.dsl.organization.semantic.model.ONamed;
 import org.lunifera.dsl.organization.semantic.model.OOrganization;
 import org.lunifera.dsl.organization.semantic.model.OOrganizationMember;
 import org.lunifera.dsl.organization.semantic.model.OOrganizationModel;
-import org.lunifera.dsl.organization.semantic.model.OPartnership;
 import org.lunifera.dsl.organization.semantic.model.OPerson;
 import org.lunifera.dsl.organization.semantic.model.OPersonRole;
 import org.lunifera.dsl.organization.semantic.model.OUnit;
@@ -178,14 +176,6 @@ public class OrganizationSwitch<T> extends Switch<T> {
 				if (result == null) result = caseOOrganizationMember(oGroup);
 				if (result == null) result = caseONamed(oGroup);
 				if (result == null) result = caseODescribed(oGroup);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OrganizationPackage.OPARTNERSHIP: {
-				OPartnership oPartnership = (OPartnership)theEObject;
-				T result = caseOPartnership(oPartnership);
-				if (result == null) result = caseOOrganizationMember(oPartnership);
-				if (result == null) result = caseONamed(oPartnership);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -376,21 +366,6 @@ public class OrganizationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOGroup(OGroup object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>OPartnership</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>OPartnership</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOPartnership(OPartnership object) {
 		return null;
 	}
 

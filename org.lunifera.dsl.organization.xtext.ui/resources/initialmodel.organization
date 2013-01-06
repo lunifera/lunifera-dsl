@@ -1,0 +1,102 @@
+hierachy Kwiee {
+	organization Company_Austria {
+		name "Kwiee company"
+
+		unit HQ_Austria {
+			name "Headquater Austria"
+			description "The headquater of austria" playRoles ( Accounting , Controlling , Sales , Inventory , Purchase )
+		}
+
+		unit Sales_West subunit-of HQ_Austria {
+			name "Sales Unit West"
+			description "A unit in the west of austria thats main focus is the selling of goods" playRoles ( Sales , Inventory ,
+			Controlling )
+		}
+
+		unit Sales_East subunit-of HQ_Austria {
+			name "Sales Unit East"
+			description "A unit in the east of austria thats main focus is the selling of goods" playRoles ( Sales , Inventory )
+		}
+
+		unit Inventory_Center_1 subunit-of Sales_East {
+			name "Inventory Center 1"
+			description "The main focus of that unit is the storage of goods" playRoles ( Inventory )
+		}
+
+		unit Inventory_Center_2 subunit-of Sales_East {
+			name "Inventory Center 2"
+			description "The main focus of that unit is the storage of goods" playRoles ( Inventory )
+		}
+
+		unit Purchasing_Central subunit-of HQ_Austria {
+			name "Purchasing central"
+			description "This unit handles all purchase activities of Kwiee austria in the center of the country." playRoles (
+			Purchase , Inventory )
+		}
+
+		person FP {
+			first name "Florian"
+			last name "Pirchner"
+		}
+
+		person CG {
+			first name "Cristiano"
+			last name "Gaviao"
+		}
+
+		person HG {
+			first name "Hans-Georg"
+			last name "Glöckler"
+		}
+
+		worker FP {
+			playRoles ( Developer )
+		}
+
+		worker CG {
+			playRoles ( HumanResource )
+		}
+
+		group Workgroup_Core {
+			name "Core Group" 
+			
+			worker CG 
+			worker FP
+		}
+	}
+}
+
+business-role Accounting {
+	name "Accounting"
+	description "Can handle accounting processes"
+}
+
+business-role Sales {
+	name "Sales"
+	description "Can handle sales processes"
+}
+
+business-role Inventory {
+	name "Inventory"
+	description "Can handle inventory processes"
+}
+
+business-role Purchase {
+	name "Purchase"
+	description "Can handle purchase processes"
+}
+
+business-role Controlling {
+	name "Controlling"
+	description "Can handle controlling processes"
+}
+
+person-role Developer {
+	name "Software developer"
+	description "Writes software for the company"
+}
+
+person-role HumanResource {
+	name "Human resource"
+	description "Handles human resource issues"
+}

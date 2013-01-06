@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.lunifera.dsl.organization.semantic.model.OUnit#getParent <em>Parent</em>}</li>
  *   <li>{@link org.lunifera.dsl.organization.semantic.model.OUnit#getPlayRoles <em>Play Roles</em>}</li>
- *   <li>{@link org.lunifera.dsl.organization.semantic.model.OUnit#getSubUnits <em>Sub Units</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,21 +69,5 @@ public interface OUnit extends OOrganizationMember, ONamed, ODescribed {
 	 * @generated
 	 */
 	EList<OUnitRole> getPlayRoles();
-
-	/**
-	 * Returns the value of the '<em><b>Sub Units</b></em>' reference list.
-	 * The list contents are of type {@link org.lunifera.dsl.organization.semantic.model.OUnit}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sub Units</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Units</em>' reference list.
-	 * @see org.lunifera.dsl.organization.semantic.model.OrganizationPackage#getOUnit_SubUnits()
-	 * @model
-	 * @generated
-	 */
-	EList<OUnit> getSubUnits();
 
 } // OUnit

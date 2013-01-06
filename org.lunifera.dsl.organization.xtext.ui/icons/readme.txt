@@ -23,11 +23,18 @@ contact mjames@gmail.com
 
 Icons:
 oldname						newName
-chart_organisation.png		organization.png
+chart_organisation.png		hierarchy.png
+money.png					organization.png
 bricks.png					organizationunit.png
-user_suit.png				person.png, persons.png
+group.png					persons.png
+user_suit.png				person.png
 shield.png					worker.png, workers.png
 box.png						group.png
-plugin.png					role.png
 asterisk_orange.png			partnership.png, partnerships.png
 chart_line.png				oranizationunittype.png
+wrench_orange.png			personroles.png
+wrench_orange.png			personrole.png
+page_white_vector.png		unitroles.png
+page_white_vector.png		unitrole.png
+bullet_star.png				role.png
+bullet_star.png				bullet_outline.png
