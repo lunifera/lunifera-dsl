@@ -162,10 +162,12 @@
 				<module>org.lunifera.dsl.feature.entities</module>
 				<module>org.lunifera.dsl.feature.organizations</module>
 				<module>org.lunifera.dsl.feature.eclipse.ui</module>
+				<module>org.lunifera.dsl.feature.components</module>
 
 
 				<module>org.lunifera.dsl.feature.entities.headless</module>
 				<module>org.lunifera.dsl.feature.organizations.headless</module>
+				<module>org.lunifera.dsl.feature.components.headless</module>
 				<!-- end P2 features -->
 
 				<!-- P2 bundles -->
@@ -178,6 +180,10 @@
 <!-- 				<module>org.lunifera.dsl.organization.xtext.tests</module> -->
 				<module>org.lunifera.dsl.organization.xtext.ui</module>
 				<module>org.lunifera.dsl.organization.semantic</module>
+				<module>org.lunifera.dsl.component.xtext</module>
+				<module>org.lunifera.dsl.component.xtext.tests</module>
+				<module>org.lunifera.dsl.component.xtext.ui</module>
+				<module>org.lunifera.dsl.component.semantic</module>
 				<!-- end P2 bundles -->
 			</modules>
 
