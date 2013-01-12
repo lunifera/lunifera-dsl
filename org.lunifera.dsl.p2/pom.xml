@@ -21,13 +21,13 @@
 		</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.lunifera.dsl</groupId>
-			<artifactId>
-		org.lunifera.dsl.organization.xtext.tests
-		</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.lunifera.dsl</groupId> -->
+<!-- 			<artifactId> -->
+<!-- 		org.lunifera.dsl.organization.xtext.tests -->
+<!-- 		</artifactId> -->
+<!-- 			<version>${project.version}</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 
 	<build>
