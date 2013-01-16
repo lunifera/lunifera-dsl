@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target includeMode="feature" name="org.lunifera.p2.target.juno" sequenceNumber="59">
+<?pde version="3.8"?>
+
+<target includeMode="feature" name="org.lunifera.p2.target.juno" sequenceNumber="9">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.gemini.jpa.feature.feature.group" version="1.1.0.RELEASE"/>
 <repository location="http://download.eclipse.org/gemini/updates/jpa/1.1.0"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.hamcrest" version="1.1.0.v20090501071000"/>
 <unit id="org.slf4j.api" version="1.6.4.v20120130-2120"/>
 <unit id="org.hamcrest.library" version="1.1.0.v20090501071000"/>
@@ -16,8 +18,21 @@
 <unit id="org.apache.derby" version="10.5.1.1_v201108232300"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.lunifera.dependencies.feature.xtext.headless.feature.group" version="2.4.0.201301150557"/>
+<repository location="http://lunifera.github.com/p2/kepler"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.apache.commons.lang" version="2.6.0.v201205030909"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20121207152029/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.4.0.v201212180716"/>
+<unit id="org.eclipse.persistence.jpa.feature.group" version="2.5.0.v20121016-ab08992"/>
+<unit id="org.eclipse.emf.ecore.xcore.feature.group" version="1.1.0.v20121218-0841"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.9.0.v20121210-132935-8-8tFyYFNOfwKDedebWWejRS5834"/>
+<unit id="org.eclipse.emf.ecore.xcore.lib.feature.group" version="1.1.0.v20121218-0841"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.0.v20121217-0429"/>
 <unit id="org.eclipse.platform.sdk" version="4.3.0.I20121214-0730"/>
 <repository location="http://download.eclipse.org/releases/kepler"/>
 </location>
