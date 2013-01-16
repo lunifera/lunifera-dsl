@@ -2,44 +2,21 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<prerequisites>
-		<maven>3.0</maven>
-	</prerequisites>
+	<parent>
+		<groupId>org.lunifera</groupId>
+		<artifactId>org.lunifera</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 
 	<groupId>org.lunifera.dsl</groupId>
 	<artifactId>org.lunifera.dsl</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Lunifera :: DSLs : Parent POM</name>
 
 	<properties>
 		<next-release>0.0.2-SNAPSHOT</next-release>
-		<tycho-version>0.16.0</tycho-version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<tychoExtrasVersion>0.16.0</tychoExtrasVersion>
-		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+
 	</properties>
-
-	<organization>
-		<name>Lunifera.org</name>
-		<url>www.lunifera.org</url>
-	</organization>
-
-	<developers>
-		<developer>
-			<id>cvgaviao</id>
-			<name>Cristiano Gavião</name>
-			<email>cvgaviao@gmail.com</email>
-			<timezone>-3</timezone>
-		</developer>
-		<developer>
-			<id>florianpirchner</id>
-			<name>Florian Pirchner</name>
-			<email>florian.pirchner@gmail.com</email>
-			<timezone>+2</timezone>
-		</developer>
-	</developers>
 
 	<profiles>
 		<profile>
@@ -71,87 +48,55 @@
 		</profile>
 
 		<profile>
-			<id>p2-juno</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
-						<configuration>
-							<!-- <resolver>p2</resolver> -->
-							<!-- <pomDependencies>consider</pomDependencies> -->
-							<ignoreTychoRepositories>true</ignoreTychoRepositories>
-							<target>
-								<artifact>
-									<groupId>org.lunifera.dsl</groupId>
-									<artifactId>org.lunifera.dsl.target.juno</artifactId>
-									<version>${project.version}</version>
-								</artifact>
-							</target>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-			<modules>
-				<module>org.lunifera.dsl.target.juno</module>
-
-				<!-- exclusive for P2 -->
-				<module>org.lunifera.dsl.p2</module>
-
-				<!-- P2 features -->
-				<module>org.lunifera.dsl.feature.entities</module>
-				<module>org.lunifera.dsl.feature.organizations</module>
-				<module>org.lunifera.dsl.feature.eclipse.ui</module>
-
-
-				<module>org.lunifera.dsl.feature.entities.headless</module>
-				<module>org.lunifera.dsl.feature.organizations.headless</module>
-				<!-- end P2 features -->
-
-				<!-- P2 bundles -->
-				<module>org.lunifera.dsl.eclipse.ui</module>
-				<module>org.lunifera.dsl.entity.semantic</module>
-				<module>org.lunifera.dsl.entity.xtext</module>
-				<module>org.lunifera.dsl.entity.xtext.tests</module>
-				<module>org.lunifera.dsl.entity.xtext.ui</module>
-				<module>org.lunifera.dsl.organization.xtext</module>
-				<module>org.lunifera.dsl.organization.xtext.tests</module>
-				<module>org.lunifera.dsl.organization.xtext.ui</module>
-				<module>org.lunifera.dsl.organization.semantic</module>
-				<!-- end P2 bundles -->
-			</modules>
-		</profile>
-		<profile>
 			<id>p2-kepler</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
+			<properties>
+				<PLATFORM-LUNIFERA-DEPLOY-DIR>${LUNIFERA-DEPLOY-DIR}/kepler/dsl</PLATFORM-LUNIFERA-DEPLOY-DIR>
+			</properties>
 			<build>
-				<defaultGoal>verify</defaultGoal>
+				<defaultGoal>clean verify</defaultGoal>
 				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
-						<configuration>
-							<!-- <resolver>p2</resolver> -->
-							<!-- <pomDependencies>consider</pomDependencies> -->
-							<ignoreTychoRepositories>true</ignoreTychoRepositories>
-							<target>
-								<artifact>
-									<groupId>org.lunifera.dsl</groupId>
-									<artifactId>org.lunifera.dsl.target.kepler</artifactId>
-									<version>${project.version}</version>
-								</artifact>
-							</target>
-						</configuration>
-					</plugin>
+					<!-- <plugin> -->
+					<!-- <groupId>org.eclipse.tycho.extras</groupId> -->
+					<!-- <artifactId>target-platform-validation-plugin</artifactId> -->
+					<!-- <version>${tychoExtrasVersion}</version> -->
+					<!-- <executions> -->
+					<!-- <execution> -->
+					<!-- <phase>validate</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>validate-target-platform</goal> -->
+					<!-- </goals> -->
+					<!-- <configuration> -->
+					<!-- <targetFiles> -->
+					<!-- <param>org.lunifera.runtime.target.kepler.target</param> -->
+					<!-- </targetFiles> -->
+					<!-- <failOnError>true</failOnError> -->
+					<!-- </configuration> -->
+					<!-- </execution> -->
+					<!-- </executions> -->
+					<!-- </plugin> -->
 				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.tycho</groupId>
+							<artifactId>target-platform-configuration</artifactId>
+							<version>${tycho-version}</version>
+							<configuration>
+								<ignoreTychoRepositories>true</ignoreTychoRepositories>
+								<target>
+									<artifact>
+										<groupId>org.lunifera.dsl</groupId>
+										<artifactId>org.lunifera.dsl.target.kepler</artifactId>
+										<version>${project.version}</version>
+									</artifact>
+								</target>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 			</build>
 			<modules>
 				<module>org.lunifera.dsl.target.kepler</module>
@@ -176,7 +121,7 @@
 				<module>org.lunifera.dsl.entity.xtext.tests</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
 				<module>org.lunifera.dsl.organization.xtext</module>
-<!-- 				<module>org.lunifera.dsl.organization.xtext.tests</module> -->
+				<!-- <module>org.lunifera.dsl.organization.xtext.tests</module> -->
 				<module>org.lunifera.dsl.organization.xtext.ui</module>
 				<module>org.lunifera.dsl.organization.semantic</module>
 				<!-- end P2 bundles -->
