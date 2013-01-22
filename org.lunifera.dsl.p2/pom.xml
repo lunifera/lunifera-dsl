@@ -1,11 +1,21 @@
-
+<!--#======================================================================= -->
+<!--# Copyright (c) 2012, 2013 Committers of lunifera.org - Lunifera.org. -->
+<!--# All rights reserved. This program and the accompanying materials -->
+<!--# are made available under the terms of the Eclipse Public License v1.0 -->
+<!--# which accompanies this distribution, and is available at -->
+<!--# http://www.eclipse.org/legal/epl-v10.html -->
+<!--# -->
+<!--# Contributors: -->
+<!--# Cristiano Gavião - initial API and implementation -->
+<!--#======================================================================= -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>org.lunifera.dsl</artifactId>
 		<groupId>org.lunifera.dsl</groupId>
+		<artifactId>org.lunifera.dsl.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../org.lunifera.dsl.parent/pom.xml</relativePath>
 	</parent>
 
 	<artifactId>org.lunifera.dsl.p2</artifactId>
@@ -55,83 +65,4 @@
 <!-- 		</dependency> -->
 	</dependencies>
 
-	<profiles>
-		<profile>
-			<id>deploy-p2</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-				<property>
-					<name>LUNIFERA-DEPLOY-DIR</name>
-				</property>
-			</activation>
-			<properties>
-				<from-repo>${project.build.directory}/repository</from-repo>
-				<output.dir>${PLATFORM-LUNIFERA-DEPLOY-DIR}/${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}</output.dir>
-			</properties>
-			<build>
-				<plugins>
-					<!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>build-helper-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>parse-version</id>
-								<goals>
-									<goal>parse-version</goal>
-								</goals>
-								<phase>validate</phase>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<version>1.7</version>
-						<executions>
-							<execution>
-								<phase>verify</phase>
-								<configuration>
-									<quiet>true</quiet>
-									<target>
-										<!-- called AFTER generating p2 repo to add in extra content -->
-										<ant antfile="build.xml" target="copy.repo.to.dir" dir=".">
-											<property name="output.dir" value="${output.dir}" />
-											<property name="inputRepo" value="${from-repo}" />
-										</ant>
-									</target>
-
-								</configuration>
-								<goals>
-									<goal>run</goal>
-								</goals>
-							</execution>
-						</executions>
-						<dependencies>
-							<dependency>
-								<groupId>org.apache.ant</groupId>
-								<artifactId>ant</artifactId>
-								<version>1.8.4</version>
-							</dependency>
-							<dependency>
-								<groupId>ant-contrib</groupId>
-								<artifactId>ant-contrib</artifactId>
-								<version>1.0b3</version>
-								<exclusions>
-									<exclusion>
-										<groupId>ant</groupId>
-										<artifactId>ant</artifactId>
-									</exclusion>
-								</exclusions>
-							</dependency>
-							<dependency>
-								<groupId>net.sf.saxon</groupId>
-								<artifactId>Saxon-HE</artifactId>
-								<version>9.4</version>
-							</dependency>
-						</dependencies>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>

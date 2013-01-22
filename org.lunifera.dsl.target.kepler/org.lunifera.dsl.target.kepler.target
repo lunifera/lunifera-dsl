@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target includeMode="feature" name="org.lunifera.p2.target.juno" sequenceNumber="9">
+<target includeMode="feature" name="org.lunifera.dsl.p2.target.kepler" sequenceNumber="9">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.gemini.jpa.feature.feature.group" version="1.1.0.RELEASE"/>
@@ -19,8 +19,8 @@
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.lunifera.dependencies.feature.xtext.headless.feature.group" version="2.4.0.201301150557"/>
-<repository location="http://lunifera.github.com/p2/kepler"/>
+<unit id="org.lunifera.dependencies.feature.xtext.headless.feature.group" version="2.4.0.201301220448"/>
+<repository location="http://lunifera.github.com/p2/kepler/latest"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.commons.lang" version="2.6.0.v201205030909"/>

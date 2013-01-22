@@ -1,106 +1,44 @@
+<!--#======================================================================= -->
+<!--# Copyright (c) 2012, 2013 Committers of lunifera.org - Lunifera.org. -->
+<!--# All rights reserved. This program and the accompanying materials -->
+<!--# are made available under the terms of the Eclipse Public License v1.0 -->
+<!--# which accompanies this distribution, and is available at -->
+<!--# http://www.eclipse.org/legal/epl-v10.html -->
+<!--# -->
+<!--# Contributors: -->
+<!--# Cristiano Gavião - initial API and implementation -->
+<!--#======================================================================= -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.lunifera</groupId>
-		<artifactId>org.lunifera</artifactId>
+		<groupId>org.lunifera.releng</groupId>
+		<artifactId>org.lunifera.releng.parent.tycho.p2</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.lunifera.dsl</groupId>
 	<artifactId>org.lunifera.dsl</artifactId>
 	<packaging>pom</packaging>
-	<name>Lunifera :: DSLs : Parent POM</name>
 
 	<properties>
-		<next-release>0.0.2-SNAPSHOT</next-release>
-
+		<lunifera.deployment.p2.name>dsl</lunifera.deployment.p2.name>
+		<lunifera.build.p2.project.name>org.lunifera.dsl.p2</lunifera.build.p2.project.name>
 	</properties>
 
 	<profiles>
 		<profile>
-			<id>prepare-for-next-release</id>
+			<id>lunifera.build.p2</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
-			<build>
-				<defaultGoal>org.eclipse.tycho:tycho-versions-plugin:set-version</defaultGoal>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>tycho-versions-plugin</artifactId>
-						<version>${tycho-version}</version>
-						<executions>
-							<execution>
-								<id>change-next-release</id>
-								<goals>
-									<goal>set-version</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<newVersion>${next-release}</newVersion>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>p2-kepler</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<PLATFORM-LUNIFERA-DEPLOY-DIR>${LUNIFERA-DEPLOY-DIR}/kepler/dsl</PLATFORM-LUNIFERA-DEPLOY-DIR>
-			</properties>
 			<build>
 				<defaultGoal>clean verify</defaultGoal>
-				<plugins>
-					<!-- <plugin> -->
-					<!-- <groupId>org.eclipse.tycho.extras</groupId> -->
-					<!-- <artifactId>target-platform-validation-plugin</artifactId> -->
-					<!-- <version>${tychoExtrasVersion}</version> -->
-					<!-- <executions> -->
-					<!-- <execution> -->
-					<!-- <phase>validate</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>validate-target-platform</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <targetFiles> -->
-					<!-- <param>org.lunifera.runtime.target.kepler.target</param> -->
-					<!-- </targetFiles> -->
-					<!-- <failOnError>true</failOnError> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
-					<!-- </executions> -->
-					<!-- </plugin> -->
-				</plugins>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.eclipse.tycho</groupId>
-							<artifactId>target-platform-configuration</artifactId>
-							<version>${tycho-version}</version>
-							<configuration>
-								<ignoreTychoRepositories>true</ignoreTychoRepositories>
-								<target>
-									<artifact>
-										<groupId>org.lunifera.dsl</groupId>
-										<artifactId>org.lunifera.dsl.target.kepler</artifactId>
-										<version>${project.version}</version>
-									</artifact>
-								</target>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
 			</build>
 			<modules>
-				<module>org.lunifera.dsl.target.kepler</module>
-
+				<module>org.lunifera.dsl.parent</module>
+				
 				<!-- exclusive for P2 -->
 				<module>org.lunifera.dsl.p2</module>
 
@@ -128,172 +66,5 @@
 			</modules>
 
 		</profile>
-
-		<!-- This profile is used to gather code coverage for Sonar -->
-		<profile>
-			<id>codeCoverage</id>
-			<properties>
-				<!-- Properties to enable jacoco code coverage analysis -->
-				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-				<sonar.jacoco.reportPath>../org.demo.camp.nantes.parent/target/jacoco.exec</sonar.jacoco.reportPath>
-			</properties>
-
-			<build>
-				<plugins>
-					<!-- Enabling use of jacoco -->
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.5.8.201207111220</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>prepare-agent</goal>
-								</goals>
-								<configuration>
-									<!-- Where to put jacoco coverage report -->
-									<destFile>${sonar.jacoco.reportPath}</destFile>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 	</profiles>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>fornax</id>
-			<url>http://www.fornax-platform.org/m2/repository</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven</url>
-		</pluginRepository>
-	</pluginRepositories>
-
-	<build>
-		<sourceDirectory>src</sourceDirectory>
-
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-compiler-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
-			</plugin>
-		</plugins>
-
-		<pluginManagement>
-			<plugins>
-				<!-- enable tycho build -->
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-maven-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<extensions>true</extensions>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-compiler-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<configuration>
-						<compilerVersion>1.6</compilerVersion>
-						<encoding>UTF-8</encoding>
-						<source>1.6</source>
-						<target>1.6</target>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.5</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-source-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<executions>
-						<execution>
-							<id>plugin-source</id>
-							<goals>
-								<goal>plugin-source</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-surefire-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<configuration>
-						<includes>
-							<include>**/*Tests.java</include>
-						</includes>
-						<showEclipseLog>true</showEclipseLog>
-						<useUIHarness>false</useUIHarness>
-						<useUIThread>false</useUIThread>
-						<failIfNoTests>false</failIfNoTests>
-						<!-- <appArgLine>-Dfile.encoding=UTF-8</appArgLine> -->
-						<argLine>-Dfile.encoding=UTF-8</argLine>
-						<!-- Kill test JVM if tests take more than 10 minutes (600 seconds) 
-							to finish -->
-						<forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.fornax.toolsupport</groupId>
-					<artifactId>fornax-oaw-m2-plugin</artifactId>
-					<version>3.4.0</version>
-					<configuration>
-						<workflowEngine>mwe2</workflowEngine>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.xtend</groupId>
-					<artifactId>xtend-maven-plugin</artifactId>
-					<version>2.3.1</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>2.5</version>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>1.7</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 </project>
