@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target includeMode="feature" name="org.lunifera.dsl.p2.target.kepler" sequenceNumber="9">
+<target includeMode="feature" name="org.lunifera.dsl.p2.target.kepler" sequenceNumber="10">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.gemini.jpa.feature.feature.group" version="1.1.0.RELEASE"/>
@@ -19,10 +19,6 @@
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.lunifera.dependencies.feature.xtext.headless.feature.group" version="2.4.0.201301220448"/>
-<repository location="http://lunifera.github.com/p2/kepler/latest"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.commons.lang" version="2.6.0.v201205030909"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20121207152029/repository/"/>
 </location>
@@ -35,6 +31,11 @@
 <unit id="org.eclipse.emf.sdk.feature.group" version="2.9.0.v20121217-0429"/>
 <unit id="org.eclipse.platform.sdk" version="4.3.0.I20121214-0730"/>
 <repository location="http://download.eclipse.org/releases/kepler"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.lunifera.runtime.feature.configuration.manager.feature.group" version="0.0.1.201301290351"/>
+<unit id="org.lunifera.runtime.feature.configuration.manager.source.feature.group" version="0.0.1.201301290351"/>
+<repository location="http://lunifera.github.com/p2/kepler/latest"/>
 </location>
 </locations>
 </target>

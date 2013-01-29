@@ -23,12 +23,12 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#isAbstract <em>Abstract</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#isEmbeddable <em>Embeddable</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getSuperType <em>Super Type</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getEntityMembers <em>Entity Members</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#isCachable <em>Cachable</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getShortName <em>Short Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getPersistenceName <em>Persistence Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#isCacheable <em>Cacheable</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#isHistorized <em>Historized</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getOperations <em>Operations</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,141 +36,153 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface LEntity extends LType {
+public interface LEntity extends LClass {
 	/**
-	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.lunifera.dsl.entity.semantic.model.LAnnotationDef}.
+	 * Returns the value of the '<em><b>Short Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Annotations</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Short Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotations</em>' containment reference list.
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_Annotations()
+	 * @return the value of the '<em>Short Name</em>' attribute.
+	 * @see #setShortName(String)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_ShortName()
+	 * @model
+	 * @generated
+	 */
+	String getShortName();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getShortName <em>Short Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Short Name</em>' attribute.
+	 * @see #getShortName()
+	 * @generated
+	 */
+	void setShortName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Persistence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Persistence Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Persistence Name</em>' attribute.
+	 * @see #setPersistenceName(String)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_PersistenceName()
+	 * @model
+	 * @generated
+	 */
+	String getPersistenceName();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getPersistenceName <em>Persistence Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Persistence Name</em>' attribute.
+	 * @see #getPersistenceName()
+	 * @generated
+	 */
+	void setPersistenceName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Cacheable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cacheable</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cacheable</em>' attribute.
+	 * @see #setCacheable(boolean)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_Cacheable()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isCacheable();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isCacheable <em>Cacheable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cacheable</em>' attribute.
+	 * @see #isCacheable()
+	 * @generated
+	 */
+	void setCacheable(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Historized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Historized</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Historized</em>' attribute.
+	 * @see #setHistorized(boolean)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_Historized()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isHistorized();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isHistorized <em>Historized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Historized</em>' attribute.
+	 * @see #isHistorized()
+	 * @generated
+	 */
+	void setHistorized(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.entity.semantic.model.LEntityProp}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_Properties()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<LAnnotationDef> getAnnotations();
+	EList<LEntityProp> getProperties();
 
 	/**
-	 * Returns the value of the '<em><b>Abstract</b></em>' attribute.
+	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.entity.semantic.model.LOperation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Abstract</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Operations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Abstract</em>' attribute.
-	 * @see #setAbstract(boolean)
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_Abstract()
-	 * @model
+	 * @return the value of the '<em>Operations</em>' containment reference list.
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_Operations()
+	 * @model containment="true"
 	 * @generated
 	 */
-	boolean isAbstract();
+	EList<LOperation> getOperations();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isAbstract <em>Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Abstract</em>' attribute.
-	 * @see #isAbstract()
-	 * @generated
-	 */
-	void setAbstract(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Cachable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Cachable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cachable</em>' attribute.
-	 * @see #setCachable(boolean)
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_Cachable()
-	 * @model
-	 * @generated
-	 */
-	boolean isCachable();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isCachable <em>Cachable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cachable</em>' attribute.
-	 * @see #isCachable()
-	 * @generated
-	 */
-	void setCachable(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Embeddable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Embeddable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Embeddable</em>' attribute.
-	 * @see #setEmbeddable(boolean)
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_Embeddable()
-	 * @model
-	 * @generated
-	 */
-	boolean isEmbeddable();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isEmbeddable <em>Embeddable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Embeddable</em>' attribute.
-	 * @see #isEmbeddable()
-	 * @generated
-	 */
-	void setEmbeddable(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Super Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Super Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Super Type</em>' reference.
-	 * @see #setSuperType(LEntity)
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_SuperType()
-	 * @model
+	 * @model kind="operation"
 	 * @generated
 	 */
 	LEntity getSuperType();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getSuperType <em>Super Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Super Type</em>' reference.
-	 * @see #getSuperType()
-	 * @generated
-	 */
-	void setSuperType(LEntity value);
-
-	/**
-	 * Returns the value of the '<em><b>Entity Members</b></em>' containment reference list.
-	 * The list contents are of type {@link org.lunifera.dsl.entity.semantic.model.LEntityMember}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Entity Members</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Entity Members</em>' containment reference list.
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_EntityMembers()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<LEntityMember> getEntityMembers();
 
 } // LEntity

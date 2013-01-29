@@ -13,7 +13,7 @@ generator settings {
 	checked lifecycle
 }  
 
-package org.lunifera.dsl.^entity.tests.jpa.model {
+package org.lunifera.metamodel.dsl.^entity.tests.jpa.model {
 
 	import javax.persistence.*
 	 

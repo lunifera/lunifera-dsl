@@ -287,7 +287,232 @@ public interface EntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLType()
 	 * @generated
 	 */
-	int LTYPE = 5;
+	int LTYPE = 7;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LScalarTypeImpl <em>LScalar Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LScalarTypeImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLScalarType()
+	 * @generated
+	 */
+	int LSCALAR_TYPE = 8;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl <em>LEntity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEntity()
+	 * @generated
+	 */
+	int LENTITY = 14;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LAnnotationTargetImpl <em>LAnnotation Target</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LAnnotationTargetImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLAnnotationTarget()
+	 * @generated
+	 */
+	int LANNOTATION_TARGET = 6;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl <em>LProperty</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLProperty()
+	 * @generated
+	 */
+	int LPROPERTY = 15;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDerivedPropertyImpl <em>LDerived Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LDerivedPropertyImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLDerivedProperty()
+	 * @generated
+	 */
+	int LDERIVED_PROPERTY = 16;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LPersistentPropertyImpl <em>LPersistent Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LPersistentPropertyImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLPersistentProperty()
+	 * @generated
+	 */
+	int LPERSISTENT_PROPERTY = 17;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LBeanPropImpl <em>LBean Prop</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LBeanPropImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLBeanProp()
+	 * @generated
+	 */
+	int LBEAN_PROP = 18;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDerivedBeanPropImpl <em>LDerived Bean Prop</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LDerivedBeanPropImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLDerivedBeanProp()
+	 * @generated
+	 */
+	int LDERIVED_BEAN_PROP = 19;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityPropImpl <em>LEntity Prop</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEntityPropImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEntityProp()
+	 * @generated
+	 */
+	int LENTITY_PROP = 20;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityCollectionPropImpl <em>LEntity Collection Prop</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEntityCollectionPropImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEntityCollectionProp()
+	 * @generated
+	 */
+	int LENTITY_COLLECTION_PROP = 21;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDerivedEntityPropImpl <em>LDerived Entity Prop</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LDerivedEntityPropImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLDerivedEntityProp()
+	 * @generated
+	 */
+	int LDERIVED_ENTITY_PROP = 22;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LOperationImpl <em>LOperation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LOperationImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLOperation()
+	 * @generated
+	 */
+	int LOPERATION = 23;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LModifierImpl <em>LModifier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LModifierImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLModifier()
+	 * @generated
+	 */
+	int LMODIFIER = 24;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEnumImpl <em>LEnum</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEnumImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEnum()
+	 * @generated
+	 */
+	int LENUM = 10;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEnumLiteralImpl <em>LEnum Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEnumLiteralImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEnumLiteral()
+	 * @generated
+	 */
+	int LENUM_LITERAL = 11;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl <em>LClass</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LClassImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLClass()
+	 * @generated
+	 */
+	int LCLASS = 12;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LBeanImpl <em>LBean</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LBeanImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLBean()
+	 * @generated
+	 */
+	int LBEAN = 13;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LAnnotationDefImpl <em>LAnnotation Def</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LAnnotationDefImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLAnnotationDef()
+	 * @generated
+	 */
+	int LANNOTATION_DEF = 5;
+
+	/**
+	 * The feature id for the '<em><b>Exclude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANNOTATION_DEF__EXCLUDE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANNOTATION_DEF__ANNOTATION = 1;
+
+	/**
+	 * The number of structural features of the '<em>LAnnotation Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANNOTATION_DEF_FEATURE_COUNT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANNOTATION_TARGET__ANNOTATIONS = 0;
+
+	/**
+	 * The number of structural features of the '<em>LAnnotation Target</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANNOTATION_TARGET_FEATURE_COUNT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' container reference.
@@ -317,14 +542,51 @@ public interface EntityPackage extends EPackage {
 	int LTYPE_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl <em>LEntity</em>}' class.
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEntity()
+	 * @generated
+	 * @ordered
+	 */
+	int LSCALAR_TYPE__PACKAGE = LTYPE__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSCALAR_TYPE__NAME = LTYPE__NAME;
+
+	/**
+	 * The number of structural features of the '<em>LScalar Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSCALAR_TYPE_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LMultiplicityImpl <em>LMultiplicity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LMultiplicityImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLMultiplicity()
 	 * @generated
 	 */
-	int LENTITY = 6;
+	int LMULTIPLICITY = 25;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDataTypeImpl <em>LData Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.LDataTypeImpl
+	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLDataType()
+	 * @generated
+	 */
+	int LDATA_TYPE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' container reference.
@@ -333,7 +595,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__PACKAGE = LTYPE__PACKAGE;
+	int LDATA_TYPE__PACKAGE = LSCALAR_TYPE__PACKAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -342,7 +604,97 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__NAME = LTYPE__NAME;
+	int LDATA_TYPE__NAME = LSCALAR_TYPE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Jvm Type Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDATA_TYPE__JVM_TYPE_REFERENCE = LSCALAR_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>LData Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM__PACKAGE = LSCALAR_TYPE__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM__NAME = LSCALAR_TYPE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Literals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM__LITERALS = LSCALAR_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>LEnum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM_LITERAL__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>LEnum Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM_LITERAL_FEATURE_COUNT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCLASS__PACKAGE = LTYPE__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCLASS__NAME = LTYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -351,7 +703,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__ANNOTATIONS = LTYPE_FEATURE_COUNT + 0;
+	int LCLASS__ANNOTATIONS = LTYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -360,16 +712,16 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__ABSTRACT = LTYPE_FEATURE_COUNT + 1;
+	int LCLASS__ABSTRACT = LTYPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Embeddable</b></em>' attribute.
+	 * The feature id for the '<em><b>Serializable</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__EMBEDDABLE = LTYPE_FEATURE_COUNT + 2;
+	int LCLASS__SERIALIZABLE = LTYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -378,25 +730,241 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__SUPER_TYPE = LTYPE_FEATURE_COUNT + 3;
+	int LCLASS__SUPER_TYPE = LTYPE_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Entity Members</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__ENTITY_MEMBERS = LTYPE_FEATURE_COUNT + 4;
+	int LCLASS__SUB_TYPES = LTYPE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Cachable</b></em>' attribute.
+	 * The number of structural features of the '<em>LClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__CACHABLE = LTYPE_FEATURE_COUNT + 5;
+	int LCLASS_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__PACKAGE = LCLASS__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__NAME = LCLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__ANNOTATIONS = LCLASS__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__ABSTRACT = LCLASS__ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Serializable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__SERIALIZABLE = LCLASS__SERIALIZABLE;
+
+	/**
+	 * The feature id for the '<em><b>Super Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__SUPER_TYPE = LCLASS__SUPER_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__SUB_TYPES = LCLASS__SUB_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__SHORT_NAME = LCLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__PROPERTIES = LCLASS_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__OPERATIONS = LCLASS_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>LBean</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_FEATURE_COUNT = LCLASS_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__PACKAGE = LCLASS__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__NAME = LCLASS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__ANNOTATIONS = LCLASS__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__ABSTRACT = LCLASS__ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Serializable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__SERIALIZABLE = LCLASS__SERIALIZABLE;
+
+	/**
+	 * The feature id for the '<em><b>Super Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__SUPER_TYPE = LCLASS__SUPER_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__SUB_TYPES = LCLASS__SUB_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__SHORT_NAME = LCLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Persistence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__PERSISTENCE_NAME = LCLASS_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Cacheable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__CACHEABLE = LCLASS_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Historized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__HISTORIZED = LCLASS_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__PROPERTIES = LCLASS_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__OPERATIONS = LCLASS_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>LEntity</em>' class.
@@ -405,17 +973,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 6;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LAnnotationTargetImpl <em>LAnnotation Target</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LAnnotationTargetImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLAnnotationTarget()
-	 * @generated
-	 */
-	int LANNOTATION_TARGET = 7;
+	int LENTITY_FEATURE_COUNT = LCLASS_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -424,81 +982,34 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_TARGET__ANNOTATIONS = 0;
+	int LPROPERTY__ANNOTATIONS = LANNOTATION_TARGET__ANNOTATIONS;
 
 	/**
-	 * The number of structural features of the '<em>LAnnotation Target</em>' class.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_TARGET_FEATURE_COUNT = 1;
+	int LPROPERTY__NAME = LANNOTATION_TARGET_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityMemberImpl <em>LEntity Member</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEntityMemberImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEntityMember()
-	 * @generated
-	 */
-	int LENTITY_MEMBER = 8;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_MEMBER__ANNOTATIONS = LANNOTATION_TARGET__ANNOTATIONS;
+	int LPROPERTY__TYPE = LANNOTATION_TARGET_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * The feature id for the '<em><b>Jvm Type Ref</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_MEMBER__ANNOTATION_INFO = LANNOTATION_TARGET_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>LEntity Member</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENTITY_MEMBER_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl <em>LProperty</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLProperty()
-	 * @generated
-	 */
-	int LPROPERTY = 9;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LPROPERTY__ANNOTATIONS = LENTITY_MEMBER__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LPROPERTY__ANNOTATION_INFO = LENTITY_MEMBER__ANNOTATION_INFO;
+	int LPROPERTY__JVM_TYPE_REF = LANNOTATION_TARGET_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -507,7 +1018,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY__ID = LENTITY_MEMBER_FEATURE_COUNT + 0;
+	int LPROPERTY__ID = LANNOTATION_TARGET_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -516,7 +1027,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY__VERSION = LENTITY_MEMBER_FEATURE_COUNT + 1;
+	int LPROPERTY__VERSION = LANNOTATION_TARGET_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
@@ -525,7 +1036,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY__NOTNULL = LENTITY_MEMBER_FEATURE_COUNT + 2;
+	int LPROPERTY__NOTNULL = LANNOTATION_TARGET_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -534,16 +1045,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY__TRANSIENT = LENTITY_MEMBER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LPROPERTY__MULTIPLICITY = LENTITY_MEMBER_FEATURE_COUNT + 4;
+	int LPROPERTY__TRANSIENT = LANNOTATION_TARGET_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Default Value Literal</b></em>' attribute.
@@ -552,34 +1054,52 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY__DEFAULT_VALUE_LITERAL = LENTITY_MEMBER_FEATURE_COUNT + 5;
+	int LPROPERTY__DEFAULT_VALUE_LITERAL = LANNOTATION_TARGET_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY__NAME = LENTITY_MEMBER_FEATURE_COUNT + 6;
+	int LPROPERTY__LOWER = LANNOTATION_TARGET_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY__TYPE = LENTITY_MEMBER_FEATURE_COUNT + 7;
+	int LPROPERTY__UPPER = LANNOTATION_TARGET_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Singular Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Collection</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY__SINGULAR_NAME = LENTITY_MEMBER_FEATURE_COUNT + 8;
+	int LPROPERTY__COLLECTION = LANNOTATION_TARGET_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Composition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPROPERTY__COMPOSITION = LANNOTATION_TARGET_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPROPERTY__OPPOSITE = LANNOTATION_TARGET_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>LProperty</em>' class.
@@ -588,408 +1108,25 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 9;
+	int LPROPERTY_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 13;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LReferenceImpl <em>LReference</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LReferenceImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLReference()
-	 * @generated
-	 */
-	int LREFERENCE = 10;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Persistent</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LREFERENCE__ANNOTATIONS = LENTITY_MEMBER__ANNOTATIONS;
+	int LDERIVED_PROPERTY__PERSISTENT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * The feature id for the '<em><b>Readonly</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LREFERENCE__ANNOTATION_INFO = LENTITY_MEMBER__ANNOTATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERENCE__TYPE = LENTITY_MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERENCE__NAME = LENTITY_MEMBER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERENCE__LAZY = LENTITY_MEMBER_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>LReference</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERENCE_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 3;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LRefersImpl <em>LRefers</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LRefersImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLRefers()
-	 * @generated
-	 */
-	int LREFERS = 11;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__ANNOTATIONS = LREFERENCE__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__ANNOTATION_INFO = LREFERENCE__ANNOTATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__TYPE = LREFERENCE__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__NAME = LREFERENCE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__LAZY = LREFERENCE__LAZY;
-
-	/**
-	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__NOTNULL = LREFERENCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__MULTIPLICITY = LREFERENCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Opposite</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__OPPOSITE = LREFERENCE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Singular Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS__SINGULAR_NAME = LREFERENCE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>LRefers</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LREFERS_FEATURE_COUNT = LREFERENCE_FEATURE_COUNT + 4;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LContainsImpl <em>LContains</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LContainsImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLContains()
-	 * @generated
-	 */
-	int LCONTAINS = 12;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__ANNOTATIONS = LREFERENCE__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__ANNOTATION_INFO = LREFERENCE__ANNOTATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__TYPE = LREFERENCE__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__NAME = LREFERENCE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__LAZY = LREFERENCE__LAZY;
-
-	/**
-	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__NOTNULL = LREFERENCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__MULTIPLICITY = LREFERENCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Opposite</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__OPPOSITE = LREFERENCE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Singular Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS__SINGULAR_NAME = LREFERENCE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>LContains</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINS_FEATURE_COUNT = LREFERENCE_FEATURE_COUNT + 4;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LContainerImpl <em>LContainer</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LContainerImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLContainer()
-	 * @generated
-	 */
-	int LCONTAINER = 13;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINER__ANNOTATIONS = LREFERENCE__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINER__ANNOTATION_INFO = LREFERENCE__ANNOTATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINER__TYPE = LREFERENCE__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINER__NAME = LREFERENCE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINER__LAZY = LREFERENCE__LAZY;
-
-	/**
-	 * The feature id for the '<em><b>Opposite</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINER__OPPOSITE = LREFERENCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>LContainer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCONTAINER_FEATURE_COUNT = LREFERENCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LOperationImpl <em>LOperation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LOperationImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLOperation()
-	 * @generated
-	 */
-	int LOPERATION = 14;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOPERATION__ANNOTATIONS = LENTITY_MEMBER__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOPERATION__ANNOTATION_INFO = LENTITY_MEMBER__ANNOTATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Modifier</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOPERATION__MODIFIER = LENTITY_MEMBER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOPERATION__NAME = LENTITY_MEMBER_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOPERATION__TYPE = LENTITY_MEMBER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Params</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOPERATION__PARAMS = LENTITY_MEMBER_FEATURE_COUNT + 3;
+	int LDERIVED_PROPERTY__READONLY = 1;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -998,7 +1135,1042 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOPERATION__BODY = LENTITY_MEMBER_FEATURE_COUNT + 4;
+	int LDERIVED_PROPERTY__BODY = 2;
+
+	/**
+	 * The number of structural features of the '<em>LDerived Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_PROPERTY_FEATURE_COUNT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__ANNOTATIONS = LPROPERTY__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__NAME = LPROPERTY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__TYPE = LPROPERTY__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Jvm Type Ref</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__JVM_TYPE_REF = LPROPERTY__JVM_TYPE_REF;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__ID = LPROPERTY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__VERSION = LPROPERTY__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__NOTNULL = LPROPERTY__NOTNULL;
+
+	/**
+	 * The feature id for the '<em><b>Transient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__TRANSIENT = LPROPERTY__TRANSIENT;
+
+	/**
+	 * The feature id for the '<em><b>Default Value Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__DEFAULT_VALUE_LITERAL = LPROPERTY__DEFAULT_VALUE_LITERAL;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__LOWER = LPROPERTY__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__UPPER = LPROPERTY__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Collection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__COLLECTION = LPROPERTY__COLLECTION;
+
+	/**
+	 * The feature id for the '<em><b>Composition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__COMPOSITION = LPROPERTY__COMPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__OPPOSITE = LPROPERTY__OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Persistence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__PERSISTENCE_NAME = LPROPERTY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY__LAZY = LPROPERTY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>LPersistent Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPERSISTENT_PROPERTY_FEATURE_COUNT = LPROPERTY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__ANNOTATIONS = LPERSISTENT_PROPERTY__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__NAME = LPERSISTENT_PROPERTY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__TYPE = LPERSISTENT_PROPERTY__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Jvm Type Ref</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__JVM_TYPE_REF = LPERSISTENT_PROPERTY__JVM_TYPE_REF;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__ID = LPERSISTENT_PROPERTY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__VERSION = LPERSISTENT_PROPERTY__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__NOTNULL = LPERSISTENT_PROPERTY__NOTNULL;
+
+	/**
+	 * The feature id for the '<em><b>Transient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__TRANSIENT = LPERSISTENT_PROPERTY__TRANSIENT;
+
+	/**
+	 * The feature id for the '<em><b>Default Value Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__DEFAULT_VALUE_LITERAL = LPERSISTENT_PROPERTY__DEFAULT_VALUE_LITERAL;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__LOWER = LPERSISTENT_PROPERTY__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__UPPER = LPERSISTENT_PROPERTY__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Collection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__COLLECTION = LPERSISTENT_PROPERTY__COLLECTION;
+
+	/**
+	 * The feature id for the '<em><b>Composition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__COMPOSITION = LPERSISTENT_PROPERTY__COMPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__OPPOSITE = LPERSISTENT_PROPERTY__OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Persistence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__PERSISTENCE_NAME = LPERSISTENT_PROPERTY__PERSISTENCE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP__LAZY = LPERSISTENT_PROPERTY__LAZY;
+
+	/**
+	 * The number of structural features of the '<em>LBean Prop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_PROP_FEATURE_COUNT = LPERSISTENT_PROPERTY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__ANNOTATIONS = LBEAN_PROP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__NAME = LBEAN_PROP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__TYPE = LBEAN_PROP__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Jvm Type Ref</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__JVM_TYPE_REF = LBEAN_PROP__JVM_TYPE_REF;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__ID = LBEAN_PROP__ID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__VERSION = LBEAN_PROP__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__NOTNULL = LBEAN_PROP__NOTNULL;
+
+	/**
+	 * The feature id for the '<em><b>Transient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__TRANSIENT = LBEAN_PROP__TRANSIENT;
+
+	/**
+	 * The feature id for the '<em><b>Default Value Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__DEFAULT_VALUE_LITERAL = LBEAN_PROP__DEFAULT_VALUE_LITERAL;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__LOWER = LBEAN_PROP__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__UPPER = LBEAN_PROP__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Collection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__COLLECTION = LBEAN_PROP__COLLECTION;
+
+	/**
+	 * The feature id for the '<em><b>Composition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__COMPOSITION = LBEAN_PROP__COMPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__OPPOSITE = LBEAN_PROP__OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Persistence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__PERSISTENCE_NAME = LBEAN_PROP__PERSISTENCE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__LAZY = LBEAN_PROP__LAZY;
+
+	/**
+	 * The feature id for the '<em><b>Persistent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__PERSISTENT = LBEAN_PROP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Readonly</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__READONLY = LBEAN_PROP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP__BODY = LBEAN_PROP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>LDerived Bean Prop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_BEAN_PROP_FEATURE_COUNT = LBEAN_PROP_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__ANNOTATIONS = LPERSISTENT_PROPERTY__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__NAME = LPERSISTENT_PROPERTY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__TYPE = LPERSISTENT_PROPERTY__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Jvm Type Ref</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__JVM_TYPE_REF = LPERSISTENT_PROPERTY__JVM_TYPE_REF;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__ID = LPERSISTENT_PROPERTY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__VERSION = LPERSISTENT_PROPERTY__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__NOTNULL = LPERSISTENT_PROPERTY__NOTNULL;
+
+	/**
+	 * The feature id for the '<em><b>Transient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__TRANSIENT = LPERSISTENT_PROPERTY__TRANSIENT;
+
+	/**
+	 * The feature id for the '<em><b>Default Value Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__DEFAULT_VALUE_LITERAL = LPERSISTENT_PROPERTY__DEFAULT_VALUE_LITERAL;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__LOWER = LPERSISTENT_PROPERTY__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__UPPER = LPERSISTENT_PROPERTY__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Collection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__COLLECTION = LPERSISTENT_PROPERTY__COLLECTION;
+
+	/**
+	 * The feature id for the '<em><b>Composition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__COMPOSITION = LPERSISTENT_PROPERTY__COMPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__OPPOSITE = LPERSISTENT_PROPERTY__OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Persistence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__PERSISTENCE_NAME = LPERSISTENT_PROPERTY__PERSISTENCE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP__LAZY = LPERSISTENT_PROPERTY__LAZY;
+
+	/**
+	 * The number of structural features of the '<em>LEntity Prop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PROP_FEATURE_COUNT = LPERSISTENT_PROPERTY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__ANNOTATIONS = LENTITY_PROP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__NAME = LENTITY_PROP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__TYPE = LENTITY_PROP__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Jvm Type Ref</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__JVM_TYPE_REF = LENTITY_PROP__JVM_TYPE_REF;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__ID = LENTITY_PROP__ID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__VERSION = LENTITY_PROP__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__NOTNULL = LENTITY_PROP__NOTNULL;
+
+	/**
+	 * The feature id for the '<em><b>Transient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__TRANSIENT = LENTITY_PROP__TRANSIENT;
+
+	/**
+	 * The feature id for the '<em><b>Default Value Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__DEFAULT_VALUE_LITERAL = LENTITY_PROP__DEFAULT_VALUE_LITERAL;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__LOWER = LENTITY_PROP__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__UPPER = LENTITY_PROP__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Collection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__COLLECTION = LENTITY_PROP__COLLECTION;
+
+	/**
+	 * The feature id for the '<em><b>Composition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__COMPOSITION = LENTITY_PROP__COMPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__OPPOSITE = LENTITY_PROP__OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Persistence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__PERSISTENCE_NAME = LENTITY_PROP__PERSISTENCE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP__LAZY = LENTITY_PROP__LAZY;
+
+	/**
+	 * The number of structural features of the '<em>LEntity Collection Prop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLLECTION_PROP_FEATURE_COUNT = LENTITY_PROP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__ANNOTATIONS = LENTITY_PROP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__NAME = LENTITY_PROP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__TYPE = LENTITY_PROP__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Jvm Type Ref</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__JVM_TYPE_REF = LENTITY_PROP__JVM_TYPE_REF;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__ID = LENTITY_PROP__ID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__VERSION = LENTITY_PROP__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Notnull</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__NOTNULL = LENTITY_PROP__NOTNULL;
+
+	/**
+	 * The feature id for the '<em><b>Transient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__TRANSIENT = LENTITY_PROP__TRANSIENT;
+
+	/**
+	 * The feature id for the '<em><b>Default Value Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__DEFAULT_VALUE_LITERAL = LENTITY_PROP__DEFAULT_VALUE_LITERAL;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__LOWER = LENTITY_PROP__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__UPPER = LENTITY_PROP__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Collection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__COLLECTION = LENTITY_PROP__COLLECTION;
+
+	/**
+	 * The feature id for the '<em><b>Composition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__COMPOSITION = LENTITY_PROP__COMPOSITION;
+
+	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__OPPOSITE = LENTITY_PROP__OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Persistence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__PERSISTENCE_NAME = LENTITY_PROP__PERSISTENCE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__LAZY = LENTITY_PROP__LAZY;
+
+	/**
+	 * The feature id for the '<em><b>Persistent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__PERSISTENT = LENTITY_PROP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Readonly</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__READONLY = LENTITY_PROP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP__BODY = LENTITY_PROP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>LDerived Entity Prop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDERIVED_ENTITY_PROP_FEATURE_COUNT = LENTITY_PROP_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOPERATION__ANNOTATIONS = LANNOTATION_TARGET__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Modifier</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOPERATION__MODIFIER = LANNOTATION_TARGET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOPERATION__NAME = LANNOTATION_TARGET_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOPERATION__TYPE = LANNOTATION_TARGET_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Params</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOPERATION__PARAMS = LANNOTATION_TARGET_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOPERATION__BODY = LANNOTATION_TARGET_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>LOperation</em>' class.
@@ -1007,17 +2179,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOPERATION_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 5;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LModifierImpl <em>LModifier</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LModifierImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLModifier()
-	 * @generated
-	 */
-	int LMODIFIER = 15;
+	int LOPERATION_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -1056,198 +2218,13 @@ public interface EntityPackage extends EPackage {
 	int LMODIFIER_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEnumImpl <em>LEnum</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEnumImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEnum()
-	 * @generated
-	 */
-	int LENUM = 16;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENUM__PACKAGE = LTYPE__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENUM__NAME = LTYPE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Literals</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENUM__LITERALS = LTYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>LEnum</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENUM_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEnumLiteralImpl <em>LEnum Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LEnumLiteralImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEnumLiteral()
-	 * @generated
-	 */
-	int LENUM_LITERAL = 17;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENUM_LITERAL__NAME = 0;
-
-	/**
-	 * The number of structural features of the '<em>LEnum Literal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENUM_LITERAL_FEATURE_COUNT = 1;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LAnnotationDefImpl <em>LAnnotation Def</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LAnnotationDefImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLAnnotationDef()
-	 * @generated
-	 */
-	int LANNOTATION_DEF = 18;
-
-	/**
-	 * The feature id for the '<em><b>Exclude</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LANNOTATION_DEF__EXCLUDE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LANNOTATION_DEF__ANNOTATION = 1;
-
-	/**
-	 * The number of structural features of the '<em>LAnnotation Def</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LANNOTATION_DEF_FEATURE_COUNT = 2;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LMultiplicityImpl <em>LMultiplicity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LMultiplicityImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLMultiplicity()
-	 * @generated
-	 */
-	int LMULTIPLICITY = 19;
-
-	/**
-	 * The feature id for the '<em><b>Lower</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LMULTIPLICITY__LOWER = 0;
-
-	/**
-	 * The feature id for the '<em><b>Upper</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LMULTIPLICITY__UPPER = 1;
-
-	/**
 	 * The number of structural features of the '<em>LMultiplicity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LMULTIPLICITY_FEATURE_COUNT = 2;
-
-	/**
-	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDataTypeImpl <em>LData Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.LDataTypeImpl
-	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLDataType()
-	 * @generated
-	 */
-	int LDATA_TYPE = 20;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDATA_TYPE__PACKAGE = LTYPE__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDATA_TYPE__NAME = LTYPE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Jvm Type Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDATA_TYPE__JVM_TYPE_REFERENCE = LTYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>LData Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDATA_TYPE_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 1;
+	int LMULTIPLICITY_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.LVisibility <em>LVisibility</em>}' enum.
@@ -1257,7 +2234,7 @@ public interface EntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLVisibility()
 	 * @generated
 	 */
-	int LVISIBILITY = 21;
+	int LVISIBILITY = 26;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.LowerBound <em>Lower Bound</em>}' enum.
@@ -1267,7 +2244,7 @@ public interface EntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLowerBound()
 	 * @generated
 	 */
-	int LOWER_BOUND = 22;
+	int LOWER_BOUND = 27;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.entity.semantic.model.UpperBound <em>Upper Bound</em>}' enum.
@@ -1277,7 +2254,7 @@ public interface EntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getUpperBound()
 	 * @generated
 	 */
-	int UPPER_BOUND = 23;
+	int UPPER_BOUND = 28;
 
 
 	/**
@@ -1506,6 +2483,16 @@ public interface EntityPackage extends EPackage {
 	EAttribute getLType_Name();
 
 	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LScalarType <em>LScalar Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LScalar Type</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LScalarType
+	 * @generated
+	 */
+	EClass getLScalarType();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LEntity <em>LEntity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1516,70 +2503,70 @@ public interface EntityPackage extends EPackage {
 	EClass getLEntity();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getAnnotations <em>Annotations</em>}'.
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getShortName <em>Short Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Annotations</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#getAnnotations()
+	 * @return the meta object for the attribute '<em>Short Name</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#getShortName()
 	 * @see #getLEntity()
 	 * @generated
 	 */
-	EReference getLEntity_Annotations();
+	EAttribute getLEntity_ShortName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isAbstract <em>Abstract</em>}'.
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getPersistenceName <em>Persistence Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Abstract</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#isAbstract()
+	 * @return the meta object for the attribute '<em>Persistence Name</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#getPersistenceName()
 	 * @see #getLEntity()
 	 * @generated
 	 */
-	EAttribute getLEntity_Abstract();
+	EAttribute getLEntity_PersistenceName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isEmbeddable <em>Embeddable</em>}'.
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isCacheable <em>Cacheable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Embeddable</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#isEmbeddable()
+	 * @return the meta object for the attribute '<em>Cacheable</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#isCacheable()
 	 * @see #getLEntity()
 	 * @generated
 	 */
-	EAttribute getLEntity_Embeddable();
+	EAttribute getLEntity_Cacheable();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getSuperType <em>Super Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isHistorized <em>Historized</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Super Type</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#getSuperType()
+	 * @return the meta object for the attribute '<em>Historized</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#isHistorized()
 	 * @see #getLEntity()
 	 * @generated
 	 */
-	EReference getLEntity_SuperType();
+	EAttribute getLEntity_Historized();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getEntityMembers <em>Entity Members</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Entity Members</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#getEntityMembers()
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#getProperties()
 	 * @see #getLEntity()
 	 * @generated
 	 */
-	EReference getLEntity_EntityMembers();
+	EReference getLEntity_Properties();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#isCachable <em>Cachable</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getOperations <em>Operations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cachable</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#isCachable()
+	 * @return the meta object for the containment reference list '<em>Operations</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#getOperations()
 	 * @see #getLEntity()
 	 * @generated
 	 */
-	EAttribute getLEntity_Cachable();
+	EReference getLEntity_Operations();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LAnnotationTarget <em>LAnnotation Target</em>}'.
@@ -1601,27 +2588,6 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLAnnotationTarget_Annotations();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LEntityMember <em>LEntity Member</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LEntity Member</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntityMember
-	 * @generated
-	 */
-	EClass getLEntityMember();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.entity.semantic.model.LEntityMember#getAnnotationInfo <em>Annotation Info</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Annotation Info</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntityMember#getAnnotationInfo()
-	 * @see #getLEntityMember()
-	 * @generated
-	 */
-	EReference getLEntityMember_AnnotationInfo();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LProperty <em>LProperty</em>}'.
@@ -1678,17 +2644,6 @@ public interface EntityPackage extends EPackage {
 	EAttribute getLProperty_Transient();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getMultiplicity <em>Multiplicity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Multiplicity</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LProperty#getMultiplicity()
-	 * @see #getLProperty()
-	 * @generated
-	 */
-	EReference getLProperty_Multiplicity();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getDefaultValueLiteral <em>Default Value Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1698,6 +2653,186 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLProperty_DefaultValueLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getLower <em>Lower</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LProperty#getLower()
+	 * @see #getLProperty()
+	 * @generated
+	 */
+	EAttribute getLProperty_Lower();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getUpper <em>Upper</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LProperty#getUpper()
+	 * @see #getLProperty()
+	 * @generated
+	 */
+	EAttribute getLProperty_Upper();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LProperty#isCollection <em>Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Collection</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LProperty#isCollection()
+	 * @see #getLProperty()
+	 * @generated
+	 */
+	EAttribute getLProperty_Collection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LProperty#isComposition <em>Composition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Composition</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LProperty#isComposition()
+	 * @see #getLProperty()
+	 * @generated
+	 */
+	EAttribute getLProperty_Composition();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getOpposite <em>Opposite</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Opposite</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LProperty#getOpposite()
+	 * @see #getLProperty()
+	 * @generated
+	 */
+	EReference getLProperty_Opposite();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LDerivedProperty <em>LDerived Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDerived Property</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedProperty
+	 * @generated
+	 */
+	EClass getLDerivedProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LDerivedProperty#isPersistent <em>Persistent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Persistent</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedProperty#isPersistent()
+	 * @see #getLDerivedProperty()
+	 * @generated
+	 */
+	EAttribute getLDerivedProperty_Persistent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LDerivedProperty#isReadonly <em>Readonly</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Readonly</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedProperty#isReadonly()
+	 * @see #getLDerivedProperty()
+	 * @generated
+	 */
+	EAttribute getLDerivedProperty_Readonly();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.entity.semantic.model.LDerivedProperty#getBody <em>Body</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Body</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedProperty#getBody()
+	 * @see #getLDerivedProperty()
+	 * @generated
+	 */
+	EReference getLDerivedProperty_Body();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LPersistentProperty <em>LPersistent Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LPersistent Property</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LPersistentProperty
+	 * @generated
+	 */
+	EClass getLPersistentProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LPersistentProperty#getPersistenceName <em>Persistence Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Persistence Name</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LPersistentProperty#getPersistenceName()
+	 * @see #getLPersistentProperty()
+	 * @generated
+	 */
+	EAttribute getLPersistentProperty_PersistenceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LPersistentProperty#isLazy <em>Lazy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lazy</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LPersistentProperty#isLazy()
+	 * @see #getLPersistentProperty()
+	 * @generated
+	 */
+	EAttribute getLPersistentProperty_Lazy();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LBeanProp <em>LBean Prop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LBean Prop</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LBeanProp
+	 * @generated
+	 */
+	EClass getLBeanProp();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LDerivedBeanProp <em>LDerived Bean Prop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDerived Bean Prop</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedBeanProp
+	 * @generated
+	 */
+	EClass getLDerivedBeanProp();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LEntityProp <em>LEntity Prop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LEntity Prop</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntityProp
+	 * @generated
+	 */
+	EClass getLEntityProp();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LEntityCollectionProp <em>LEntity Collection Prop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LEntity Collection Prop</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntityCollectionProp
+	 * @generated
+	 */
+	EClass getLEntityCollectionProp();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LDerivedEntityProp <em>LDerived Entity Prop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDerived Entity Prop</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedEntityProp
+	 * @generated
+	 */
+	EClass getLDerivedEntityProp();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getName <em>Name</em>}'.
@@ -1722,187 +2857,15 @@ public interface EntityPackage extends EPackage {
 	EReference getLProperty_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getSingularName <em>Singular Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getJvmTypeRef <em>Jvm Type Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Singular Name</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LProperty#getSingularName()
+	 * @return the meta object for the containment reference '<em>Jvm Type Ref</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LProperty#getJvmTypeRef()
 	 * @see #getLProperty()
 	 * @generated
 	 */
-	EAttribute getLProperty_SingularName();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LReference <em>LReference</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LReference</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LReference
-	 * @generated
-	 */
-	EClass getLReference();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.entity.semantic.model.LReference#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Type</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LReference#getType()
-	 * @see #getLReference()
-	 * @generated
-	 */
-	EReference getLReference_Type();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LReference#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LReference#getName()
-	 * @see #getLReference()
-	 * @generated
-	 */
-	EAttribute getLReference_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LReference#isLazy <em>Lazy</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Lazy</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LReference#isLazy()
-	 * @see #getLReference()
-	 * @generated
-	 */
-	EAttribute getLReference_Lazy();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LRefers <em>LRefers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LRefers</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LRefers
-	 * @generated
-	 */
-	EClass getLRefers();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LRefers#isNotnull <em>Notnull</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Notnull</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LRefers#isNotnull()
-	 * @see #getLRefers()
-	 * @generated
-	 */
-	EAttribute getLRefers_Notnull();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.entity.semantic.model.LRefers#getMultiplicity <em>Multiplicity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Multiplicity</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LRefers#getMultiplicity()
-	 * @see #getLRefers()
-	 * @generated
-	 */
-	EReference getLRefers_Multiplicity();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.entity.semantic.model.LRefers#getOpposite <em>Opposite</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Opposite</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LRefers#getOpposite()
-	 * @see #getLRefers()
-	 * @generated
-	 */
-	EReference getLRefers_Opposite();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LRefers#getSingularName <em>Singular Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Singular Name</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LRefers#getSingularName()
-	 * @see #getLRefers()
-	 * @generated
-	 */
-	EAttribute getLRefers_SingularName();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LContains <em>LContains</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LContains</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContains
-	 * @generated
-	 */
-	EClass getLContains();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LContains#isNotnull <em>Notnull</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Notnull</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContains#isNotnull()
-	 * @see #getLContains()
-	 * @generated
-	 */
-	EAttribute getLContains_Notnull();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.entity.semantic.model.LContains#getMultiplicity <em>Multiplicity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Multiplicity</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContains#getMultiplicity()
-	 * @see #getLContains()
-	 * @generated
-	 */
-	EReference getLContains_Multiplicity();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.entity.semantic.model.LContains#getOpposite <em>Opposite</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Opposite</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContains#getOpposite()
-	 * @see #getLContains()
-	 * @generated
-	 */
-	EReference getLContains_Opposite();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LContains#getSingularName <em>Singular Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Singular Name</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContains#getSingularName()
-	 * @see #getLContains()
-	 * @generated
-	 */
-	EAttribute getLContains_SingularName();
-
-	/**
-	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LContainer <em>LContainer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LContainer</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContainer
-	 * @generated
-	 */
-	EClass getLContainer();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.dsl.entity.semantic.model.LContainer#getOpposite <em>Opposite</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Opposite</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContainer#getOpposite()
-	 * @see #getLContainer()
-	 * @generated
-	 */
-	EReference getLContainer_Opposite();
+	EReference getLProperty_JvmTypeRef();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LOperation <em>LOperation</em>}'.
@@ -2055,6 +3018,103 @@ public interface EntityPackage extends EPackage {
 	EAttribute getLEnumLiteral_Name();
 
 	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LClass <em>LClass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LClass</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LClass
+	 * @generated
+	 */
+	EClass getLClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LClass#isAbstract <em>Abstract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Abstract</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LClass#isAbstract()
+	 * @see #getLClass()
+	 * @generated
+	 */
+	EAttribute getLClass_Abstract();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LClass#isSerializable <em>Serializable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Serializable</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LClass#isSerializable()
+	 * @see #getLClass()
+	 * @generated
+	 */
+	EAttribute getLClass_Serializable();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.entity.semantic.model.LClass#getSuperType <em>Super Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Super Type</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LClass#getSuperType()
+	 * @see #getLClass()
+	 * @generated
+	 */
+	EReference getLClass_SuperType();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.entity.semantic.model.LClass#getSubTypes <em>Sub Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sub Types</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LClass#getSubTypes()
+	 * @see #getLClass()
+	 * @generated
+	 */
+	EReference getLClass_SubTypes();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LBean <em>LBean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LBean</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LBean
+	 * @generated
+	 */
+	EClass getLBean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LBean#getShortName <em>Short Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Short Name</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LBean#getShortName()
+	 * @see #getLBean()
+	 * @generated
+	 */
+	EAttribute getLBean_ShortName();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.entity.semantic.model.LBean#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LBean#getProperties()
+	 * @see #getLBean()
+	 * @generated
+	 */
+	EReference getLBean_Properties();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.entity.semantic.model.LBean#getOperations <em>Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Operations</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LBean#getOperations()
+	 * @see #getLBean()
+	 * @generated
+	 */
+	EReference getLBean_Operations();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LAnnotationDef <em>LAnnotation Def</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2095,28 +3155,6 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLMultiplicity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LMultiplicity#getLower <em>Lower</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Lower</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LMultiplicity#getLower()
-	 * @see #getLMultiplicity()
-	 * @generated
-	 */
-	EAttribute getLMultiplicity_Lower();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LMultiplicity#getUpper <em>Upper</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Upper</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LMultiplicity#getUpper()
-	 * @see #getLMultiplicity()
-	 * @generated
-	 */
-	EAttribute getLMultiplicity_Upper();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LDataType <em>LData Type</em>}'.
@@ -2372,6 +3410,16 @@ public interface EntityPackage extends EPackage {
 		EAttribute LTYPE__NAME = eINSTANCE.getLType_Name();
 
 		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LScalarTypeImpl <em>LScalar Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LScalarTypeImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLScalarType()
+		 * @generated
+		 */
+		EClass LSCALAR_TYPE = eINSTANCE.getLScalarType();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl <em>LEntity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2382,52 +3430,52 @@ public interface EntityPackage extends EPackage {
 		EClass LENTITY = eINSTANCE.getLEntity();
 
 		/**
-		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Short Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LENTITY__ANNOTATIONS = eINSTANCE.getLEntity_Annotations();
+		EAttribute LENTITY__SHORT_NAME = eINSTANCE.getLEntity_ShortName();
 
 		/**
-		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Persistence Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LENTITY__ABSTRACT = eINSTANCE.getLEntity_Abstract();
+		EAttribute LENTITY__PERSISTENCE_NAME = eINSTANCE.getLEntity_PersistenceName();
 
 		/**
-		 * The meta object literal for the '<em><b>Embeddable</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Cacheable</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LENTITY__EMBEDDABLE = eINSTANCE.getLEntity_Embeddable();
+		EAttribute LENTITY__CACHEABLE = eINSTANCE.getLEntity_Cacheable();
 
 		/**
-		 * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Historized</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LENTITY__SUPER_TYPE = eINSTANCE.getLEntity_SuperType();
+		EAttribute LENTITY__HISTORIZED = eINSTANCE.getLEntity_Historized();
 
 		/**
-		 * The meta object literal for the '<em><b>Entity Members</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LENTITY__ENTITY_MEMBERS = eINSTANCE.getLEntity_EntityMembers();
+		EReference LENTITY__PROPERTIES = eINSTANCE.getLEntity_Properties();
 
 		/**
-		 * The meta object literal for the '<em><b>Cachable</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LENTITY__CACHABLE = eINSTANCE.getLEntity_Cachable();
+		EReference LENTITY__OPERATIONS = eINSTANCE.getLEntity_Operations();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LAnnotationTargetImpl <em>LAnnotation Target</em>}' class.
@@ -2446,24 +3494,6 @@ public interface EntityPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LANNOTATION_TARGET__ANNOTATIONS = eINSTANCE.getLAnnotationTarget_Annotations();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityMemberImpl <em>LEntity Member</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.LEntityMemberImpl
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEntityMember()
-		 * @generated
-		 */
-		EClass LENTITY_MEMBER = eINSTANCE.getLEntityMember();
-
-		/**
-		 * The meta object literal for the '<em><b>Annotation Info</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LENTITY_MEMBER__ANNOTATION_INFO = eINSTANCE.getLEntityMember_AnnotationInfo();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl <em>LProperty</em>}' class.
@@ -2508,20 +3538,162 @@ public interface EntityPackage extends EPackage {
 		EAttribute LPROPERTY__TRANSIENT = eINSTANCE.getLProperty_Transient();
 
 		/**
-		 * The meta object literal for the '<em><b>Multiplicity</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LPROPERTY__MULTIPLICITY = eINSTANCE.getLProperty_Multiplicity();
-
-		/**
 		 * The meta object literal for the '<em><b>Default Value Literal</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute LPROPERTY__DEFAULT_VALUE_LITERAL = eINSTANCE.getLProperty_DefaultValueLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LPROPERTY__LOWER = eINSTANCE.getLProperty_Lower();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LPROPERTY__UPPER = eINSTANCE.getLProperty_Upper();
+
+		/**
+		 * The meta object literal for the '<em><b>Collection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LPROPERTY__COLLECTION = eINSTANCE.getLProperty_Collection();
+
+		/**
+		 * The meta object literal for the '<em><b>Composition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LPROPERTY__COMPOSITION = eINSTANCE.getLProperty_Composition();
+
+		/**
+		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LPROPERTY__OPPOSITE = eINSTANCE.getLProperty_Opposite();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDerivedPropertyImpl <em>LDerived Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LDerivedPropertyImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLDerivedProperty()
+		 * @generated
+		 */
+		EClass LDERIVED_PROPERTY = eINSTANCE.getLDerivedProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDERIVED_PROPERTY__PERSISTENT = eINSTANCE.getLDerivedProperty_Persistent();
+
+		/**
+		 * The meta object literal for the '<em><b>Readonly</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDERIVED_PROPERTY__READONLY = eINSTANCE.getLDerivedProperty_Readonly();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDERIVED_PROPERTY__BODY = eINSTANCE.getLDerivedProperty_Body();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LPersistentPropertyImpl <em>LPersistent Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LPersistentPropertyImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLPersistentProperty()
+		 * @generated
+		 */
+		EClass LPERSISTENT_PROPERTY = eINSTANCE.getLPersistentProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistence Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LPERSISTENT_PROPERTY__PERSISTENCE_NAME = eINSTANCE.getLPersistentProperty_PersistenceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Lazy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LPERSISTENT_PROPERTY__LAZY = eINSTANCE.getLPersistentProperty_Lazy();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LBeanPropImpl <em>LBean Prop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LBeanPropImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLBeanProp()
+		 * @generated
+		 */
+		EClass LBEAN_PROP = eINSTANCE.getLBeanProp();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDerivedBeanPropImpl <em>LDerived Bean Prop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LDerivedBeanPropImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLDerivedBeanProp()
+		 * @generated
+		 */
+		EClass LDERIVED_BEAN_PROP = eINSTANCE.getLDerivedBeanProp();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityPropImpl <em>LEntity Prop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LEntityPropImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEntityProp()
+		 * @generated
+		 */
+		EClass LENTITY_PROP = eINSTANCE.getLEntityProp();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityCollectionPropImpl <em>LEntity Collection Prop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LEntityCollectionPropImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLEntityCollectionProp()
+		 * @generated
+		 */
+		EClass LENTITY_COLLECTION_PROP = eINSTANCE.getLEntityCollectionProp();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDerivedEntityPropImpl <em>LDerived Entity Prop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LDerivedEntityPropImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLDerivedEntityProp()
+		 * @generated
+		 */
+		EClass LDERIVED_ENTITY_PROP = eINSTANCE.getLDerivedEntityProp();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2540,148 +3712,12 @@ public interface EntityPackage extends EPackage {
 		EReference LPROPERTY__TYPE = eINSTANCE.getLProperty_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Singular Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Jvm Type Ref</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LPROPERTY__SINGULAR_NAME = eINSTANCE.getLProperty_SingularName();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LReferenceImpl <em>LReference</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.LReferenceImpl
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLReference()
-		 * @generated
-		 */
-		EClass LREFERENCE = eINSTANCE.getLReference();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LREFERENCE__TYPE = eINSTANCE.getLReference_Type();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LREFERENCE__NAME = eINSTANCE.getLReference_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Lazy</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LREFERENCE__LAZY = eINSTANCE.getLReference_Lazy();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LRefersImpl <em>LRefers</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.LRefersImpl
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLRefers()
-		 * @generated
-		 */
-		EClass LREFERS = eINSTANCE.getLRefers();
-
-		/**
-		 * The meta object literal for the '<em><b>Notnull</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LREFERS__NOTNULL = eINSTANCE.getLRefers_Notnull();
-
-		/**
-		 * The meta object literal for the '<em><b>Multiplicity</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LREFERS__MULTIPLICITY = eINSTANCE.getLRefers_Multiplicity();
-
-		/**
-		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LREFERS__OPPOSITE = eINSTANCE.getLRefers_Opposite();
-
-		/**
-		 * The meta object literal for the '<em><b>Singular Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LREFERS__SINGULAR_NAME = eINSTANCE.getLRefers_SingularName();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LContainsImpl <em>LContains</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.LContainsImpl
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLContains()
-		 * @generated
-		 */
-		EClass LCONTAINS = eINSTANCE.getLContains();
-
-		/**
-		 * The meta object literal for the '<em><b>Notnull</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LCONTAINS__NOTNULL = eINSTANCE.getLContains_Notnull();
-
-		/**
-		 * The meta object literal for the '<em><b>Multiplicity</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LCONTAINS__MULTIPLICITY = eINSTANCE.getLContains_Multiplicity();
-
-		/**
-		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LCONTAINS__OPPOSITE = eINSTANCE.getLContains_Opposite();
-
-		/**
-		 * The meta object literal for the '<em><b>Singular Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LCONTAINS__SINGULAR_NAME = eINSTANCE.getLContains_SingularName();
-
-		/**
-		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LContainerImpl <em>LContainer</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.LContainerImpl
-		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLContainer()
-		 * @generated
-		 */
-		EClass LCONTAINER = eINSTANCE.getLContainer();
-
-		/**
-		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LCONTAINER__OPPOSITE = eINSTANCE.getLContainer_Opposite();
+		EReference LPROPERTY__JVM_TYPE_REF = eINSTANCE.getLProperty_JvmTypeRef();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LOperationImpl <em>LOperation</em>}' class.
@@ -2804,6 +3840,82 @@ public interface EntityPackage extends EPackage {
 		EAttribute LENUM_LITERAL__NAME = eINSTANCE.getLEnumLiteral_Name();
 
 		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl <em>LClass</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LClassImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLClass()
+		 * @generated
+		 */
+		EClass LCLASS = eINSTANCE.getLClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LCLASS__ABSTRACT = eINSTANCE.getLClass_Abstract();
+
+		/**
+		 * The meta object literal for the '<em><b>Serializable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LCLASS__SERIALIZABLE = eINSTANCE.getLClass_Serializable();
+
+		/**
+		 * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LCLASS__SUPER_TYPE = eINSTANCE.getLClass_SuperType();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Types</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LCLASS__SUB_TYPES = eINSTANCE.getLClass_SubTypes();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LBeanImpl <em>LBean</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.LBeanImpl
+		 * @see org.lunifera.dsl.entity.semantic.model.impl.EntityPackageImpl#getLBean()
+		 * @generated
+		 */
+		EClass LBEAN = eINSTANCE.getLBean();
+
+		/**
+		 * The meta object literal for the '<em><b>Short Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LBEAN__SHORT_NAME = eINSTANCE.getLBean_ShortName();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LBEAN__PROPERTIES = eINSTANCE.getLBean_Properties();
+
+		/**
+		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LBEAN__OPERATIONS = eINSTANCE.getLBean_Operations();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LAnnotationDefImpl <em>LAnnotation Def</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2838,22 +3950,6 @@ public interface EntityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LMULTIPLICITY = eINSTANCE.getLMultiplicity();
-
-		/**
-		 * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LMULTIPLICITY__LOWER = eINSTANCE.getLMultiplicity_Lower();
-
-		/**
-		 * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LMULTIPLICITY__UPPER = eINSTANCE.getLMultiplicity_Upper();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LDataTypeImpl <em>LData Type</em>}' class.

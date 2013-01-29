@@ -35,7 +35,7 @@ import org.lunifera.dsl.entity.semantic.model.LDataType;
  *
  * @generated
  */
-public class LDataTypeImpl extends LTypeImpl implements LDataType {
+public class LDataTypeImpl extends LScalarTypeImpl implements LDataType {
 	/**
 	 * The cached value of the '{@link #getJvmTypeReference() <em>Jvm Type Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->

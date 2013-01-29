@@ -19,16 +19,21 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.lunifera.dsl.entity.semantic.model.*;
 import org.lunifera.dsl.entity.semantic.model.EntityFactory;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef;
+import org.lunifera.dsl.entity.semantic.model.LBean;
+import org.lunifera.dsl.entity.semantic.model.LBeanProp;
 import org.lunifera.dsl.entity.semantic.model.LCompilerType;
-import org.lunifera.dsl.entity.semantic.model.LContainer;
-import org.lunifera.dsl.entity.semantic.model.LContains;
 import org.lunifera.dsl.entity.semantic.model.LDataType;
+import org.lunifera.dsl.entity.semantic.model.LDerivedBeanProp;
+import org.lunifera.dsl.entity.semantic.model.LDerivedEntityProp;
+import org.lunifera.dsl.entity.semantic.model.LDerivedProperty;
 import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LEntityMember;
+import org.lunifera.dsl.entity.semantic.model.LEntityCollectionProp;
 import org.lunifera.dsl.entity.semantic.model.LEntityModel;
+import org.lunifera.dsl.entity.semantic.model.LEntityProp;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
 import org.lunifera.dsl.entity.semantic.model.LEnumLiteral;
 import org.lunifera.dsl.entity.semantic.model.LGenSettings;
@@ -37,8 +42,9 @@ import org.lunifera.dsl.entity.semantic.model.LModifier;
 import org.lunifera.dsl.entity.semantic.model.LMultiplicity;
 import org.lunifera.dsl.entity.semantic.model.LOperation;
 import org.lunifera.dsl.entity.semantic.model.LPackage;
+import org.lunifera.dsl.entity.semantic.model.LPersistentProperty;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
-import org.lunifera.dsl.entity.semantic.model.LRefers;
+import org.lunifera.dsl.entity.semantic.model.LScalarType;
 import org.lunifera.dsl.entity.semantic.model.LVisibility;
 import org.lunifera.dsl.entity.semantic.model.LowerBound;
 import org.lunifera.dsl.entity.semantic.model.UpperBound;
@@ -92,19 +98,24 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 			case EntityPackage.LIMPORT: return createLImport();
 			case EntityPackage.LGEN_SETTINGS: return createLGenSettings();
 			case EntityPackage.LCOMPILER_TYPE: return createLCompilerType();
-			case EntityPackage.LENTITY: return createLEntity();
-			case EntityPackage.LENTITY_MEMBER: return createLEntityMember();
-			case EntityPackage.LPROPERTY: return createLProperty();
-			case EntityPackage.LREFERS: return createLRefers();
-			case EntityPackage.LCONTAINS: return createLContains();
-			case EntityPackage.LCONTAINER: return createLContainer();
-			case EntityPackage.LOPERATION: return createLOperation();
-			case EntityPackage.LMODIFIER: return createLModifier();
+			case EntityPackage.LANNOTATION_DEF: return createLAnnotationDef();
+			case EntityPackage.LSCALAR_TYPE: return createLScalarType();
+			case EntityPackage.LDATA_TYPE: return createLDataType();
 			case EntityPackage.LENUM: return createLEnum();
 			case EntityPackage.LENUM_LITERAL: return createLEnumLiteral();
-			case EntityPackage.LANNOTATION_DEF: return createLAnnotationDef();
+			case EntityPackage.LBEAN: return createLBean();
+			case EntityPackage.LENTITY: return createLEntity();
+			case EntityPackage.LPROPERTY: return createLProperty();
+			case EntityPackage.LDERIVED_PROPERTY: return createLDerivedProperty();
+			case EntityPackage.LPERSISTENT_PROPERTY: return createLPersistentProperty();
+			case EntityPackage.LBEAN_PROP: return createLBeanProp();
+			case EntityPackage.LDERIVED_BEAN_PROP: return createLDerivedBeanProp();
+			case EntityPackage.LENTITY_PROP: return createLEntityProp();
+			case EntityPackage.LENTITY_COLLECTION_PROP: return createLEntityCollectionProp();
+			case EntityPackage.LDERIVED_ENTITY_PROP: return createLDerivedEntityProp();
+			case EntityPackage.LOPERATION: return createLOperation();
+			case EntityPackage.LMODIFIER: return createLModifier();
 			case EntityPackage.LMULTIPLICITY: return createLMultiplicity();
-			case EntityPackage.LDATA_TYPE: return createLDataType();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -213,16 +224,6 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LEntityMember createLEntityMember() {
-		LEntityMemberImpl lEntityMember = new LEntityMemberImpl();
-		return lEntityMember;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public LProperty createLProperty() {
 		LPropertyImpl lProperty = new LPropertyImpl();
 		return lProperty;
@@ -233,9 +234,9 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LRefers createLRefers() {
-		LRefersImpl lRefers = new LRefersImpl();
-		return lRefers;
+	public LDerivedProperty createLDerivedProperty() {
+		LDerivedPropertyImpl lDerivedProperty = new LDerivedPropertyImpl();
+		return lDerivedProperty;
 	}
 
 	/**
@@ -243,9 +244,9 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LContains createLContains() {
-		LContainsImpl lContains = new LContainsImpl();
-		return lContains;
+	public LPersistentProperty createLPersistentProperty() {
+		LPersistentPropertyImpl lPersistentProperty = new LPersistentPropertyImpl();
+		return lPersistentProperty;
 	}
 
 	/**
@@ -253,9 +254,49 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LContainer createLContainer() {
-		LContainerImpl lContainer = new LContainerImpl();
-		return lContainer;
+	public LBeanProp createLBeanProp() {
+		LBeanPropImpl lBeanProp = new LBeanPropImpl();
+		return lBeanProp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDerivedBeanProp createLDerivedBeanProp() {
+		LDerivedBeanPropImpl lDerivedBeanProp = new LDerivedBeanPropImpl();
+		return lDerivedBeanProp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LEntityProp createLEntityProp() {
+		LEntityPropImpl lEntityProp = new LEntityPropImpl();
+		return lEntityProp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LEntityCollectionProp createLEntityCollectionProp() {
+		LEntityCollectionPropImpl lEntityCollectionProp = new LEntityCollectionPropImpl();
+		return lEntityCollectionProp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDerivedEntityProp createLDerivedEntityProp() {
+		LDerivedEntityPropImpl lDerivedEntityProp = new LDerivedEntityPropImpl();
+		return lDerivedEntityProp;
 	}
 
 	/**
@@ -303,9 +344,29 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LBean createLBean() {
+		LBeanImpl lBean = new LBeanImpl();
+		return lBean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LAnnotationDef createLAnnotationDef() {
 		LAnnotationDefImpl lAnnotationDef = new LAnnotationDefImpl();
 		return lAnnotationDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LScalarType createLScalarType() {
+		LScalarTypeImpl lScalarType = new LScalarTypeImpl();
+		return lScalarType;
 	}
 
 	/**

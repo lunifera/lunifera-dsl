@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface LEnum extends LType {
+public interface LEnum extends LScalarType {
 	/**
 	 * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
 	 * The list contents are of type {@link org.lunifera.dsl.entity.semantic.model.LEnumLiteral}.

@@ -16,12 +16,11 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
+import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LGenSettings;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
-import org.lunifera.dsl.entity.semantic.model.LReference;
 
-public class EntityHighlightingCalculator implements
+public class EntityGrammarHighlightingCalculator implements
 		ISemanticHighlightingCalculator {
 
 	public void provideHighlightingFor(XtextResource resource,
@@ -35,7 +34,7 @@ public class EntityHighlightingCalculator implements
 			INode node = it.next();
 			String text = node.getText();
 			EObject semanticElement = node.getSemanticElement();
-	
+
 			if (semanticElement instanceof LProperty) {
 				if ("id".equals(text) || "transient".equals(text)
 						|| "version".equals(text)) {
@@ -52,22 +51,7 @@ public class EntityHighlightingCalculator implements
 					}
 
 				}
-			} else if (semanticElement instanceof LReference) {
-				if ("transient".equals(text) || "lazy".equals(text)) {
-					if (node.getNextSibling() == null) {
-						if (!"transient".equals(text)) {
-							acceptor.addPosition(node.getOffset(),
-									node.getLength(),
-									EntityHighlightingConfiguration.DEFAULT_ID);
-						}
-					} else {
-						acceptor.addPosition(node.getOffset(),
-								node.getLength(),
-								EntityHighlightingConfiguration.MODIFIER_ID);
-					}
-
-				}
-			} else if (semanticElement instanceof LEntity) {
+			} else if (semanticElement instanceof LClass) {
 				if ("cachable".equals(text) || "embeddable".equals(text)) {
 					acceptor.addPosition(node.getOffset(), node.getLength(),
 							EntityHighlightingConfiguration.MODIFIER_ID);
@@ -77,7 +61,7 @@ public class EntityHighlightingCalculator implements
 					acceptor.addPosition(node.getOffset(), node.getLength(),
 							EntityHighlightingConfiguration.DEFAULT_ID);
 				}
-			} 
+			}
 		}
 	}
 

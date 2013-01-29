@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+ * Copyright (c) 2011 - 2013, Committers of lunifera.org
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,57 +15,44 @@ package org.lunifera.dsl.entity.semantic.model.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LReference;
+import org.lunifera.dsl.entity.semantic.model.LPersistentProperty;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>LReference</b></em>'.
+ * An implementation of the model object '<em><b>LPersistent Property</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LReferenceImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LReferenceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LReferenceImpl#isLazy <em>Lazy</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPersistentPropertyImpl#getPersistenceName <em>Persistence Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPersistentPropertyImpl#isLazy <em>Lazy</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class LReferenceImpl extends LEntityMemberImpl implements LReference {
+public class LPersistentPropertyImpl extends LPropertyImpl implements LPersistentProperty {
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * The default value of the '{@link #getPersistenceName() <em>Persistence Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getPersistenceName()
 	 * @generated
 	 * @ordered
 	 */
-	protected LEntity type;
+	protected static final String PERSISTENCE_NAME_EDEFAULT = null;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getPersistenceName() <em>Persistence Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getPersistenceName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
+	protected String persistenceName = PERSISTENCE_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isLazy() <em>Lazy</em>}' attribute.
@@ -92,7 +79,7 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LReferenceImpl() {
+	protected LPersistentPropertyImpl() {
 		super();
 	}
 
@@ -103,7 +90,7 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EntityPackage.Literals.LREFERENCE;
+		return EntityPackage.Literals.LPERSISTENT_PROPERTY;
 	}
 
 	/**
@@ -111,16 +98,8 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LEntity getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject)type;
-			type = (LEntity)eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.LREFERENCE__TYPE, oldType, type));
-			}
-		}
-		return type;
+	public String getPersistenceName() {
+		return persistenceName;
 	}
 
 	/**
@@ -128,41 +107,11 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LEntity basicGetType() {
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setType(LEntity newType) {
-		LEntity oldType = type;
-		type = newType;
+	public void setPersistenceName(String newPersistenceName) {
+		String oldPersistenceName = persistenceName;
+		persistenceName = newPersistenceName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LREFERENCE__TYPE, oldType, type));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LREFERENCE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPERSISTENT_PROPERTY__PERSISTENCE_NAME, oldPersistenceName, persistenceName));
 	}
 
 	/**
@@ -183,7 +132,7 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 		boolean oldLazy = lazy;
 		lazy = newLazy;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LREFERENCE__LAZY, oldLazy, lazy));
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPERSISTENT_PROPERTY__LAZY, oldLazy, lazy));
 	}
 
 	/**
@@ -194,12 +143,9 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EntityPackage.LREFERENCE__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
-			case EntityPackage.LREFERENCE__NAME:
-				return getName();
-			case EntityPackage.LREFERENCE__LAZY:
+			case EntityPackage.LPERSISTENT_PROPERTY__PERSISTENCE_NAME:
+				return getPersistenceName();
+			case EntityPackage.LPERSISTENT_PROPERTY__LAZY:
 				return isLazy();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -213,13 +159,10 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EntityPackage.LREFERENCE__TYPE:
-				setType((LEntity)newValue);
+			case EntityPackage.LPERSISTENT_PROPERTY__PERSISTENCE_NAME:
+				setPersistenceName((String)newValue);
 				return;
-			case EntityPackage.LREFERENCE__NAME:
-				setName((String)newValue);
-				return;
-			case EntityPackage.LREFERENCE__LAZY:
+			case EntityPackage.LPERSISTENT_PROPERTY__LAZY:
 				setLazy((Boolean)newValue);
 				return;
 		}
@@ -234,13 +177,10 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LREFERENCE__TYPE:
-				setType((LEntity)null);
+			case EntityPackage.LPERSISTENT_PROPERTY__PERSISTENCE_NAME:
+				setPersistenceName(PERSISTENCE_NAME_EDEFAULT);
 				return;
-			case EntityPackage.LREFERENCE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case EntityPackage.LREFERENCE__LAZY:
+			case EntityPackage.LPERSISTENT_PROPERTY__LAZY:
 				setLazy(LAZY_EDEFAULT);
 				return;
 		}
@@ -255,11 +195,9 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LREFERENCE__TYPE:
-				return type != null;
-			case EntityPackage.LREFERENCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case EntityPackage.LREFERENCE__LAZY:
+			case EntityPackage.LPERSISTENT_PROPERTY__PERSISTENCE_NAME:
+				return PERSISTENCE_NAME_EDEFAULT == null ? persistenceName != null : !PERSISTENCE_NAME_EDEFAULT.equals(persistenceName);
+			case EntityPackage.LPERSISTENT_PROPERTY__LAZY:
 				return lazy != LAZY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -275,12 +213,12 @@ public abstract class LReferenceImpl extends LEntityMemberImpl implements LRefer
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (persistenceName: ");
+		result.append(persistenceName);
 		result.append(", lazy: ");
 		result.append(lazy);
 		result.append(')');
 		return result.toString();
 	}
 
-} //LReferenceImpl
+} //LPersistentPropertyImpl

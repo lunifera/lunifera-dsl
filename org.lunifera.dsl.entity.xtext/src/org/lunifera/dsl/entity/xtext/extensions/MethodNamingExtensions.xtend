@@ -1,34 +1,42 @@
 package org.lunifera.dsl.entity.xtext.extensions
 
 import org.lunifera.dsl.entity.semantic.model.LProperty
-import org.lunifera.dsl.entity.semantic.model.LReference
 
 class MethodNamingExtensions { 
 	
-//	@Inject extension IQualifiedNameProvider
-
-    def toCollectionAdderName(LReference collectionProp) {
-        return "addTo" + collectionProp.name.toFirstUpper;
+    def toSetterName(LProperty prop) {
+        "set" + prop.name.toFirstUpper;
     }
+    def toGetterName(LProperty prop) {
+        "get" + prop.name.toFirstUpper;
+    }
+    def toBooleanGetterName(LProperty prop) {
+        val propName = prop.name.toFirstLower 
+        if (propName.startsWith("is") || propName.startsWith("has")) {
+            return propName
+        } 
+        return "is" + prop.name.toFirstUpper;
+    }
+
     def toCollectionAdderName(LProperty collectionProp) {
         return "addTo" + collectionProp.name.toFirstUpper;
     }
-
-    def toCollectionInternalGetterName(LReference collectionProp) {
-        return "internalGet" + collectionProp.name.toFirstUpper;
+    def toCollectionRemoverName(LProperty collectionProp) {
+        return "removeFrom" + collectionProp.name.toFirstUpper;
     }
+
     def toCollectionInternalGetterName(LProperty collectionProp) {
         return "internalGet" + collectionProp.name.toFirstUpper;
     }
 
-    def toCollectionInternalAdderName(LReference collectionProp) {
+    def toCollectionInternalAdderName(LProperty collectionProp) {
         return "internalAddTo" + collectionProp.name.toFirstUpper;
     }
-    def toCollectionInternalRemoverName(LReference collectionProp) {
+    def toCollectionInternalRemoverName(LProperty collectionProp) {
         return "internalRemoveFrom" + collectionProp.name.toFirstUpper;
     }
-    def toInternalSetterName(LReference ref) {
+    def toInternalSetterName(LProperty ref) {
         return "internalSet" + ref.name.toFirstUpper;
     }
-	  
+	
 }

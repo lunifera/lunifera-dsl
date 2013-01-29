@@ -2,6 +2,12 @@ package org.lunifera.dsl.entity.xtext.tests.testmodel.model;
 
 import java.util.List;
 
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.Book;
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.Country;
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.Library;
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.PostBox;
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.SomeEnum;
+
 public class ExtendedLibrary extends Library {
   private String address_street;
   

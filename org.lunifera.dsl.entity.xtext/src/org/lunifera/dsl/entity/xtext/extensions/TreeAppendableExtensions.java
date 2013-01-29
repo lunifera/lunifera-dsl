@@ -23,12 +23,14 @@ public class TreeAppendableExtensions {
 	 * The operator {@code +=} appends the specified string.
 	 */
 	public ITreeAppendable operator_add(ITreeAppendable p, CharSequence s) {
+		if (s == null) return p;
 		return p.append(s);
 	}
 	/**
 	 * The operator {@code >>} appends the specified string.
 	 */
 	public ITreeAppendable operator_doubleGreaterThan(ITreeAppendable p, CharSequence s) {
+		if (s == null) return p;
 		return p.append(s);
 	}
 	/**
@@ -36,6 +38,7 @@ public class TreeAppendableExtensions {
 	 * It appends the specified string then increases the indent and adds a new line. 
 	 */
 	public ITreeAppendable operator_tripleGreaterThan(ITreeAppendable p, CharSequence s) {
+		if (s == null) return p;
 		p.append(s);
 		p.increaseIndentation().newLine(); 
 		return p;
@@ -46,6 +49,7 @@ public class TreeAppendableExtensions {
 	 * then appends the specified string and adds a final new line.
 	 */
 	public ITreeAppendable operator_tripleLessThan(ITreeAppendable p, CharSequence s) {
+		if (s == null) return p;
 		p.decreaseIndentation().newLine();
 		p.append(s).newLine();
 		return p;

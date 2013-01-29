@@ -16,16 +16,22 @@ package org.lunifera.dsl.entity.semantic.model.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.lunifera.dsl.entity.semantic.model.*;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationTarget;
+import org.lunifera.dsl.entity.semantic.model.LBean;
+import org.lunifera.dsl.entity.semantic.model.LBeanProp;
+import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LCompilerType;
-import org.lunifera.dsl.entity.semantic.model.LContainer;
-import org.lunifera.dsl.entity.semantic.model.LContains;
 import org.lunifera.dsl.entity.semantic.model.LDataType;
+import org.lunifera.dsl.entity.semantic.model.LDerivedBeanProp;
+import org.lunifera.dsl.entity.semantic.model.LDerivedEntityProp;
+import org.lunifera.dsl.entity.semantic.model.LDerivedProperty;
 import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LEntityMember;
+import org.lunifera.dsl.entity.semantic.model.LEntityCollectionProp;
 import org.lunifera.dsl.entity.semantic.model.LEntityModel;
+import org.lunifera.dsl.entity.semantic.model.LEntityProp;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
 import org.lunifera.dsl.entity.semantic.model.LEnumLiteral;
 import org.lunifera.dsl.entity.semantic.model.LGenSettings;
@@ -34,9 +40,9 @@ import org.lunifera.dsl.entity.semantic.model.LModifier;
 import org.lunifera.dsl.entity.semantic.model.LMultiplicity;
 import org.lunifera.dsl.entity.semantic.model.LOperation;
 import org.lunifera.dsl.entity.semantic.model.LPackage;
+import org.lunifera.dsl.entity.semantic.model.LPersistentProperty;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
-import org.lunifera.dsl.entity.semantic.model.LReference;
-import org.lunifera.dsl.entity.semantic.model.LRefers;
+import org.lunifera.dsl.entity.semantic.model.LScalarType;
 import org.lunifera.dsl.entity.semantic.model.LType;
 
 /**
@@ -126,16 +132,9 @@ public class EntitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EntityPackage.LTYPE: {
-				LType lType = (LType)theEObject;
-				T result = caseLType(lType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EntityPackage.LENTITY: {
-				LEntity lEntity = (LEntity)theEObject;
-				T result = caseLEntity(lEntity);
-				if (result == null) result = caseLType(lEntity);
+			case EntityPackage.LANNOTATION_DEF: {
+				LAnnotationDef lAnnotationDef = (LAnnotationDef)theEObject;
+				T result = caseLAnnotationDef(lAnnotationDef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -145,73 +144,31 @@ public class EntitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EntityPackage.LENTITY_MEMBER: {
-				LEntityMember lEntityMember = (LEntityMember)theEObject;
-				T result = caseLEntityMember(lEntityMember);
-				if (result == null) result = caseLAnnotationTarget(lEntityMember);
+			case EntityPackage.LTYPE: {
+				LType lType = (LType)theEObject;
+				T result = caseLType(lType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EntityPackage.LPROPERTY: {
-				LProperty lProperty = (LProperty)theEObject;
-				T result = caseLProperty(lProperty);
-				if (result == null) result = caseLEntityMember(lProperty);
-				if (result == null) result = caseLAnnotationTarget(lProperty);
+			case EntityPackage.LSCALAR_TYPE: {
+				LScalarType lScalarType = (LScalarType)theEObject;
+				T result = caseLScalarType(lScalarType);
+				if (result == null) result = caseLType(lScalarType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EntityPackage.LREFERENCE: {
-				LReference lReference = (LReference)theEObject;
-				T result = caseLReference(lReference);
-				if (result == null) result = caseLEntityMember(lReference);
-				if (result == null) result = caseLAnnotationTarget(lReference);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EntityPackage.LREFERS: {
-				LRefers lRefers = (LRefers)theEObject;
-				T result = caseLRefers(lRefers);
-				if (result == null) result = caseLReference(lRefers);
-				if (result == null) result = caseLEntityMember(lRefers);
-				if (result == null) result = caseLAnnotationTarget(lRefers);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EntityPackage.LCONTAINS: {
-				LContains lContains = (LContains)theEObject;
-				T result = caseLContains(lContains);
-				if (result == null) result = caseLReference(lContains);
-				if (result == null) result = caseLEntityMember(lContains);
-				if (result == null) result = caseLAnnotationTarget(lContains);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EntityPackage.LCONTAINER: {
-				LContainer lContainer = (LContainer)theEObject;
-				T result = caseLContainer(lContainer);
-				if (result == null) result = caseLReference(lContainer);
-				if (result == null) result = caseLEntityMember(lContainer);
-				if (result == null) result = caseLAnnotationTarget(lContainer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EntityPackage.LOPERATION: {
-				LOperation lOperation = (LOperation)theEObject;
-				T result = caseLOperation(lOperation);
-				if (result == null) result = caseLEntityMember(lOperation);
-				if (result == null) result = caseLAnnotationTarget(lOperation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EntityPackage.LMODIFIER: {
-				LModifier lModifier = (LModifier)theEObject;
-				T result = caseLModifier(lModifier);
+			case EntityPackage.LDATA_TYPE: {
+				LDataType lDataType = (LDataType)theEObject;
+				T result = caseLDataType(lDataType);
+				if (result == null) result = caseLScalarType(lDataType);
+				if (result == null) result = caseLType(lDataType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EntityPackage.LENUM: {
 				LEnum lEnum = (LEnum)theEObject;
 				T result = caseLEnum(lEnum);
+				if (result == null) result = caseLScalarType(lEnum);
 				if (result == null) result = caseLType(lEnum);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -222,22 +179,119 @@ public class EntitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EntityPackage.LANNOTATION_DEF: {
-				LAnnotationDef lAnnotationDef = (LAnnotationDef)theEObject;
-				T result = caseLAnnotationDef(lAnnotationDef);
+			case EntityPackage.LCLASS: {
+				LClass lClass = (LClass)theEObject;
+				T result = caseLClass(lClass);
+				if (result == null) result = caseLType(lClass);
+				if (result == null) result = caseLAnnotationTarget(lClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LBEAN: {
+				LBean lBean = (LBean)theEObject;
+				T result = caseLBean(lBean);
+				if (result == null) result = caseLClass(lBean);
+				if (result == null) result = caseLType(lBean);
+				if (result == null) result = caseLAnnotationTarget(lBean);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LENTITY: {
+				LEntity lEntity = (LEntity)theEObject;
+				T result = caseLEntity(lEntity);
+				if (result == null) result = caseLClass(lEntity);
+				if (result == null) result = caseLType(lEntity);
+				if (result == null) result = caseLAnnotationTarget(lEntity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LPROPERTY: {
+				LProperty lProperty = (LProperty)theEObject;
+				T result = caseLProperty(lProperty);
+				if (result == null) result = caseLAnnotationTarget(lProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LDERIVED_PROPERTY: {
+				LDerivedProperty lDerivedProperty = (LDerivedProperty)theEObject;
+				T result = caseLDerivedProperty(lDerivedProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LPERSISTENT_PROPERTY: {
+				LPersistentProperty lPersistentProperty = (LPersistentProperty)theEObject;
+				T result = caseLPersistentProperty(lPersistentProperty);
+				if (result == null) result = caseLProperty(lPersistentProperty);
+				if (result == null) result = caseLAnnotationTarget(lPersistentProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LBEAN_PROP: {
+				LBeanProp lBeanProp = (LBeanProp)theEObject;
+				T result = caseLBeanProp(lBeanProp);
+				if (result == null) result = caseLPersistentProperty(lBeanProp);
+				if (result == null) result = caseLProperty(lBeanProp);
+				if (result == null) result = caseLAnnotationTarget(lBeanProp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LDERIVED_BEAN_PROP: {
+				LDerivedBeanProp lDerivedBeanProp = (LDerivedBeanProp)theEObject;
+				T result = caseLDerivedBeanProp(lDerivedBeanProp);
+				if (result == null) result = caseLBeanProp(lDerivedBeanProp);
+				if (result == null) result = caseLDerivedProperty(lDerivedBeanProp);
+				if (result == null) result = caseLPersistentProperty(lDerivedBeanProp);
+				if (result == null) result = caseLProperty(lDerivedBeanProp);
+				if (result == null) result = caseLAnnotationTarget(lDerivedBeanProp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LENTITY_PROP: {
+				LEntityProp lEntityProp = (LEntityProp)theEObject;
+				T result = caseLEntityProp(lEntityProp);
+				if (result == null) result = caseLPersistentProperty(lEntityProp);
+				if (result == null) result = caseLProperty(lEntityProp);
+				if (result == null) result = caseLAnnotationTarget(lEntityProp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LENTITY_COLLECTION_PROP: {
+				LEntityCollectionProp lEntityCollectionProp = (LEntityCollectionProp)theEObject;
+				T result = caseLEntityCollectionProp(lEntityCollectionProp);
+				if (result == null) result = caseLEntityProp(lEntityCollectionProp);
+				if (result == null) result = caseLPersistentProperty(lEntityCollectionProp);
+				if (result == null) result = caseLProperty(lEntityCollectionProp);
+				if (result == null) result = caseLAnnotationTarget(lEntityCollectionProp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LDERIVED_ENTITY_PROP: {
+				LDerivedEntityProp lDerivedEntityProp = (LDerivedEntityProp)theEObject;
+				T result = caseLDerivedEntityProp(lDerivedEntityProp);
+				if (result == null) result = caseLEntityProp(lDerivedEntityProp);
+				if (result == null) result = caseLDerivedProperty(lDerivedEntityProp);
+				if (result == null) result = caseLPersistentProperty(lDerivedEntityProp);
+				if (result == null) result = caseLProperty(lDerivedEntityProp);
+				if (result == null) result = caseLAnnotationTarget(lDerivedEntityProp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LOPERATION: {
+				LOperation lOperation = (LOperation)theEObject;
+				T result = caseLOperation(lOperation);
+				if (result == null) result = caseLAnnotationTarget(lOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EntityPackage.LMODIFIER: {
+				LModifier lModifier = (LModifier)theEObject;
+				T result = caseLModifier(lModifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EntityPackage.LMULTIPLICITY: {
 				LMultiplicity lMultiplicity = (LMultiplicity)theEObject;
 				T result = caseLMultiplicity(lMultiplicity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EntityPackage.LDATA_TYPE: {
-				LDataType lDataType = (LDataType)theEObject;
-				T result = caseLDataType(lDataType);
-				if (result == null) result = caseLType(lDataType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -336,6 +390,21 @@ public class EntitySwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LScalar Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LScalar Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLScalarType(LScalarType object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>LEntity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -366,21 +435,6 @@ public class EntitySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LEntity Member</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LEntity Member</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLEntityMember(LEntityMember object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>LProperty</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -396,62 +450,107 @@ public class EntitySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LReference</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>LDerived Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LReference</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>LDerived Property</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLReference(LReference object) {
+	public T caseLDerivedProperty(LDerivedProperty object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LRefers</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>LPersistent Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LRefers</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>LPersistent Property</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLRefers(LRefers object) {
+	public T caseLPersistentProperty(LPersistentProperty object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LContains</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>LBean Prop</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LContains</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>LBean Prop</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLContains(LContains object) {
+	public T caseLBeanProp(LBeanProp object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LContainer</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>LDerived Bean Prop</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LContainer</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>LDerived Bean Prop</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLContainer(LContainer object) {
+	public T caseLDerivedBeanProp(LDerivedBeanProp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LEntity Prop</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LEntity Prop</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLEntityProp(LEntityProp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LEntity Collection Prop</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LEntity Collection Prop</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLEntityCollectionProp(LEntityCollectionProp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LDerived Entity Prop</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LDerived Entity Prop</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLDerivedEntityProp(LDerivedEntityProp object) {
 		return null;
 	}
 
@@ -512,6 +611,36 @@ public class EntitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLEnumLiteral(LEnumLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LClass</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LClass</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLClass(LClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LBean</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LBean</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLBean(LBean object) {
 		return null;
 	}
 

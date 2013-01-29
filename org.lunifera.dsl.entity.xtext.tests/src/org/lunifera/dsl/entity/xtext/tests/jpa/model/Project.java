@@ -1,7 +1,6 @@
 package org.lunifera.dsl.entity.xtext.tests.jpa.model;
 
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.lunifera.dsl.entity.xtext.tests.jpa.model.Contract;
+import org.lunifera.dsl.entity.xtext.tests.jpa.model.Developer;
+import org.lunifera.dsl.entity.xtext.tests.jpa.model.Manager;
 
 @Entity
 public class Project {

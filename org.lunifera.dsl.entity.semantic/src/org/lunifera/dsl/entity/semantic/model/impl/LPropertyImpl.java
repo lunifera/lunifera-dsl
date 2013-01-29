@@ -18,10 +18,12 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
-import org.lunifera.dsl.entity.semantic.model.LMultiplicity;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
 import org.lunifera.dsl.entity.semantic.model.LType;
+import org.lunifera.dsl.entity.semantic.model.LowerBound;
+import org.lunifera.dsl.entity.semantic.model.UpperBound;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,21 +32,65 @@ import org.lunifera.dsl.entity.semantic.model.LType;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getJvmTypeRef <em>Jvm Type Ref</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#isId <em>Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#isVersion <em>Version</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#isNotnull <em>Notnull</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#isTransient <em>Transient</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getMultiplicity <em>Multiplicity</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getDefaultValueLiteral <em>Default Value Literal</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getSingularName <em>Singular Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getLower <em>Lower</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#isCollection <em>Collection</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#isComposition <em>Composition</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LPropertyImpl#getOpposite <em>Opposite</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
+public class LPropertyImpl extends LAnnotationTargetImpl implements LProperty {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected LType type;
+
+	/**
+	 * The cached value of the '{@link #getJvmTypeRef() <em>Jvm Type Ref</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJvmTypeRef()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference jvmTypeRef;
+
 	/**
 	 * The default value of the '{@link #isId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -126,16 +172,6 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	protected boolean transient_ = TRANSIENT_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMultiplicity()
-	 * @generated
-	 * @ordered
-	 */
-	protected LMultiplicity multiplicity;
-
-	/**
 	 * The default value of the '{@link #getDefaultValueLiteral() <em>Default Value Literal</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,54 +192,94 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	protected String defaultValueLiteral = DEFAULT_VALUE_LITERAL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getLower()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final LowerBound LOWER_EDEFAULT = LowerBound.NULL;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getLower() <em>Lower</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getLower()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected LowerBound lower = LOWER_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getUpper()
 	 * @generated
 	 * @ordered
 	 */
-	protected LType type;
+	protected static final UpperBound UPPER_EDEFAULT = UpperBound.NULL;
 
 	/**
-	 * The default value of the '{@link #getSingularName() <em>Singular Name</em>}' attribute.
+	 * The cached value of the '{@link #getUpper() <em>Upper</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSingularName()
+	 * @see #getUpper()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SINGULAR_NAME_EDEFAULT = null;
+	protected UpperBound upper = UPPER_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSingularName() <em>Singular Name</em>}' attribute.
+	 * The default value of the '{@link #isCollection() <em>Collection</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSingularName()
+	 * @see #isCollection()
 	 * @generated
 	 * @ordered
 	 */
-	protected String singularName = SINGULAR_NAME_EDEFAULT;
+	protected static final boolean COLLECTION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCollection() <em>Collection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCollection()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean collection = COLLECTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isComposition() <em>Composition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isComposition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean COMPOSITION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isComposition() <em>Composition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isComposition()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean composition = COMPOSITION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOpposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected LProperty opposite;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -313,49 +389,6 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LMultiplicity getMultiplicity() {
-		return multiplicity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMultiplicity(LMultiplicity newMultiplicity, NotificationChain msgs) {
-		LMultiplicity oldMultiplicity = multiplicity;
-		multiplicity = newMultiplicity;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__MULTIPLICITY, oldMultiplicity, newMultiplicity);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMultiplicity(LMultiplicity newMultiplicity) {
-		if (newMultiplicity != multiplicity) {
-			NotificationChain msgs = null;
-			if (multiplicity != null)
-				msgs = ((InternalEObject)multiplicity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntityPackage.LPROPERTY__MULTIPLICITY, null, msgs);
-			if (newMultiplicity != null)
-				msgs = ((InternalEObject)newMultiplicity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntityPackage.LPROPERTY__MULTIPLICITY, null, msgs);
-			msgs = basicSetMultiplicity(newMultiplicity, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__MULTIPLICITY, newMultiplicity, newMultiplicity));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getDefaultValueLiteral() {
 		return defaultValueLiteral;
 	}
@@ -370,6 +403,128 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 		defaultValueLiteral = newDefaultValueLiteral;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__DEFAULT_VALUE_LITERAL, oldDefaultValueLiteral, defaultValueLiteral));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LowerBound getLower() {
+		return lower;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLower(LowerBound newLower) {
+		LowerBound oldLower = lower;
+		lower = newLower == null ? LOWER_EDEFAULT : newLower;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__LOWER, oldLower, lower));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UpperBound getUpper() {
+		return upper;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUpper(UpperBound newUpper) {
+		UpperBound oldUpper = upper;
+		upper = newUpper == null ? UPPER_EDEFAULT : newUpper;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__UPPER, oldUpper, upper));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isCollection() {
+		return collection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCollection(boolean newCollection) {
+		boolean oldCollection = collection;
+		collection = newCollection;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__COLLECTION, oldCollection, collection));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isComposition() {
+		return composition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setComposition(boolean newComposition) {
+		boolean oldComposition = composition;
+		composition = newComposition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__COMPOSITION, oldComposition, composition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LProperty getOpposite() {
+		if (opposite != null && opposite.eIsProxy()) {
+			InternalEObject oldOpposite = (InternalEObject)opposite;
+			opposite = (LProperty)eResolveProxy(oldOpposite);
+			if (opposite != oldOpposite) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.LPROPERTY__OPPOSITE, oldOpposite, opposite));
+			}
+		}
+		return opposite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LProperty basicGetOpposite() {
+		return opposite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOpposite(LProperty newOpposite) {
+		LProperty oldOpposite = opposite;
+		opposite = newOpposite;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__OPPOSITE, oldOpposite, opposite));
 	}
 
 	/**
@@ -436,8 +591,8 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getSingularName() {
-		return singularName;
+	public JvmTypeReference getJvmTypeRef() {
+		return jvmTypeRef;
 	}
 
 	/**
@@ -445,11 +600,33 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSingularName(String newSingularName) {
-		String oldSingularName = singularName;
-		singularName = newSingularName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__SINGULAR_NAME, oldSingularName, singularName));
+	public NotificationChain basicSetJvmTypeRef(JvmTypeReference newJvmTypeRef, NotificationChain msgs) {
+		JvmTypeReference oldJvmTypeRef = jvmTypeRef;
+		jvmTypeRef = newJvmTypeRef;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__JVM_TYPE_REF, oldJvmTypeRef, newJvmTypeRef);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJvmTypeRef(JvmTypeReference newJvmTypeRef) {
+		if (newJvmTypeRef != jvmTypeRef) {
+			NotificationChain msgs = null;
+			if (jvmTypeRef != null)
+				msgs = ((InternalEObject)jvmTypeRef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntityPackage.LPROPERTY__JVM_TYPE_REF, null, msgs);
+			if (newJvmTypeRef != null)
+				msgs = ((InternalEObject)newJvmTypeRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntityPackage.LPROPERTY__JVM_TYPE_REF, null, msgs);
+			msgs = basicSetJvmTypeRef(newJvmTypeRef, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LPROPERTY__JVM_TYPE_REF, newJvmTypeRef, newJvmTypeRef));
 	}
 
 	/**
@@ -460,8 +637,8 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EntityPackage.LPROPERTY__MULTIPLICITY:
-				return basicSetMultiplicity(null, msgs);
+			case EntityPackage.LPROPERTY__JVM_TYPE_REF:
+				return basicSetJvmTypeRef(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -474,6 +651,13 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EntityPackage.LPROPERTY__NAME:
+				return getName();
+			case EntityPackage.LPROPERTY__TYPE:
+				if (resolve) return getType();
+				return basicGetType();
+			case EntityPackage.LPROPERTY__JVM_TYPE_REF:
+				return getJvmTypeRef();
 			case EntityPackage.LPROPERTY__ID:
 				return isId();
 			case EntityPackage.LPROPERTY__VERSION:
@@ -482,17 +666,19 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 				return isNotnull();
 			case EntityPackage.LPROPERTY__TRANSIENT:
 				return isTransient();
-			case EntityPackage.LPROPERTY__MULTIPLICITY:
-				return getMultiplicity();
 			case EntityPackage.LPROPERTY__DEFAULT_VALUE_LITERAL:
 				return getDefaultValueLiteral();
-			case EntityPackage.LPROPERTY__NAME:
-				return getName();
-			case EntityPackage.LPROPERTY__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
-			case EntityPackage.LPROPERTY__SINGULAR_NAME:
-				return getSingularName();
+			case EntityPackage.LPROPERTY__LOWER:
+				return getLower();
+			case EntityPackage.LPROPERTY__UPPER:
+				return getUpper();
+			case EntityPackage.LPROPERTY__COLLECTION:
+				return isCollection();
+			case EntityPackage.LPROPERTY__COMPOSITION:
+				return isComposition();
+			case EntityPackage.LPROPERTY__OPPOSITE:
+				if (resolve) return getOpposite();
+				return basicGetOpposite();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -505,6 +691,15 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EntityPackage.LPROPERTY__NAME:
+				setName((String)newValue);
+				return;
+			case EntityPackage.LPROPERTY__TYPE:
+				setType((LType)newValue);
+				return;
+			case EntityPackage.LPROPERTY__JVM_TYPE_REF:
+				setJvmTypeRef((JvmTypeReference)newValue);
+				return;
 			case EntityPackage.LPROPERTY__ID:
 				setId((Boolean)newValue);
 				return;
@@ -517,20 +712,23 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 			case EntityPackage.LPROPERTY__TRANSIENT:
 				setTransient((Boolean)newValue);
 				return;
-			case EntityPackage.LPROPERTY__MULTIPLICITY:
-				setMultiplicity((LMultiplicity)newValue);
-				return;
 			case EntityPackage.LPROPERTY__DEFAULT_VALUE_LITERAL:
 				setDefaultValueLiteral((String)newValue);
 				return;
-			case EntityPackage.LPROPERTY__NAME:
-				setName((String)newValue);
+			case EntityPackage.LPROPERTY__LOWER:
+				setLower((LowerBound)newValue);
 				return;
-			case EntityPackage.LPROPERTY__TYPE:
-				setType((LType)newValue);
+			case EntityPackage.LPROPERTY__UPPER:
+				setUpper((UpperBound)newValue);
 				return;
-			case EntityPackage.LPROPERTY__SINGULAR_NAME:
-				setSingularName((String)newValue);
+			case EntityPackage.LPROPERTY__COLLECTION:
+				setCollection((Boolean)newValue);
+				return;
+			case EntityPackage.LPROPERTY__COMPOSITION:
+				setComposition((Boolean)newValue);
+				return;
+			case EntityPackage.LPROPERTY__OPPOSITE:
+				setOpposite((LProperty)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -544,6 +742,15 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EntityPackage.LPROPERTY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case EntityPackage.LPROPERTY__TYPE:
+				setType((LType)null);
+				return;
+			case EntityPackage.LPROPERTY__JVM_TYPE_REF:
+				setJvmTypeRef((JvmTypeReference)null);
+				return;
 			case EntityPackage.LPROPERTY__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -556,20 +763,23 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 			case EntityPackage.LPROPERTY__TRANSIENT:
 				setTransient(TRANSIENT_EDEFAULT);
 				return;
-			case EntityPackage.LPROPERTY__MULTIPLICITY:
-				setMultiplicity((LMultiplicity)null);
-				return;
 			case EntityPackage.LPROPERTY__DEFAULT_VALUE_LITERAL:
 				setDefaultValueLiteral(DEFAULT_VALUE_LITERAL_EDEFAULT);
 				return;
-			case EntityPackage.LPROPERTY__NAME:
-				setName(NAME_EDEFAULT);
+			case EntityPackage.LPROPERTY__LOWER:
+				setLower(LOWER_EDEFAULT);
 				return;
-			case EntityPackage.LPROPERTY__TYPE:
-				setType((LType)null);
+			case EntityPackage.LPROPERTY__UPPER:
+				setUpper(UPPER_EDEFAULT);
 				return;
-			case EntityPackage.LPROPERTY__SINGULAR_NAME:
-				setSingularName(SINGULAR_NAME_EDEFAULT);
+			case EntityPackage.LPROPERTY__COLLECTION:
+				setCollection(COLLECTION_EDEFAULT);
+				return;
+			case EntityPackage.LPROPERTY__COMPOSITION:
+				setComposition(COMPOSITION_EDEFAULT);
+				return;
+			case EntityPackage.LPROPERTY__OPPOSITE:
+				setOpposite((LProperty)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -583,6 +793,12 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EntityPackage.LPROPERTY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case EntityPackage.LPROPERTY__TYPE:
+				return type != null;
+			case EntityPackage.LPROPERTY__JVM_TYPE_REF:
+				return jvmTypeRef != null;
 			case EntityPackage.LPROPERTY__ID:
 				return id != ID_EDEFAULT;
 			case EntityPackage.LPROPERTY__VERSION:
@@ -591,16 +807,18 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 				return notnull != NOTNULL_EDEFAULT;
 			case EntityPackage.LPROPERTY__TRANSIENT:
 				return transient_ != TRANSIENT_EDEFAULT;
-			case EntityPackage.LPROPERTY__MULTIPLICITY:
-				return multiplicity != null;
 			case EntityPackage.LPROPERTY__DEFAULT_VALUE_LITERAL:
 				return DEFAULT_VALUE_LITERAL_EDEFAULT == null ? defaultValueLiteral != null : !DEFAULT_VALUE_LITERAL_EDEFAULT.equals(defaultValueLiteral);
-			case EntityPackage.LPROPERTY__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case EntityPackage.LPROPERTY__TYPE:
-				return type != null;
-			case EntityPackage.LPROPERTY__SINGULAR_NAME:
-				return SINGULAR_NAME_EDEFAULT == null ? singularName != null : !SINGULAR_NAME_EDEFAULT.equals(singularName);
+			case EntityPackage.LPROPERTY__LOWER:
+				return lower != LOWER_EDEFAULT;
+			case EntityPackage.LPROPERTY__UPPER:
+				return upper != UPPER_EDEFAULT;
+			case EntityPackage.LPROPERTY__COLLECTION:
+				return collection != COLLECTION_EDEFAULT;
+			case EntityPackage.LPROPERTY__COMPOSITION:
+				return composition != COMPOSITION_EDEFAULT;
+			case EntityPackage.LPROPERTY__OPPOSITE:
+				return opposite != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -615,7 +833,9 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (id: ");
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", id: ");
 		result.append(id);
 		result.append(", version: ");
 		result.append(version);
@@ -625,10 +845,14 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 		result.append(transient_);
 		result.append(", defaultValueLiteral: ");
 		result.append(defaultValueLiteral);
-		result.append(", name: ");
-		result.append(name);
-		result.append(", singularName: ");
-		result.append(singularName);
+		result.append(", lower: ");
+		result.append(lower);
+		result.append(", upper: ");
+		result.append(upper);
+		result.append(", collection: ");
+		result.append(collection);
+		result.append(", composition: ");
+		result.append(composition);
 		result.append(')');
 		return result.toString();
 	}

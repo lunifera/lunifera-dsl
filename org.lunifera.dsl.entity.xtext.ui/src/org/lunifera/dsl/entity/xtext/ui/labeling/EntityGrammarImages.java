@@ -22,7 +22,7 @@ import org.eclipse.xtext.xbase.ui.labeling.XbaseImages;
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
-public class EntityImages extends XbaseImages {
+public class EntityGrammarImages extends XbaseImages {
 
 	@Inject
 	private IImageHelper imageHelper;

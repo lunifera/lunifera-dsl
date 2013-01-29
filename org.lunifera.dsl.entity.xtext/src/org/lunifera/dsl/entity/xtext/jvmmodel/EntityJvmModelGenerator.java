@@ -16,7 +16,7 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
+import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LEntityModel;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
 
@@ -28,8 +28,7 @@ public class EntityJvmModelGenerator extends JvmModelGenerator {
 	@Inject
 	private IJvmModelAssociations associations;
 
-	public void internalDoGenerate(final EObject type,
-			final IFileSystemAccess fsa) {
+	public void internalDoGenerate(final EObject type, final IFileSystemAccess fsa) {
 		if (type instanceof JvmEnumerationType) {
 			LEnum lenum = (LEnum) associations.getPrimarySourceElement(type);
 			LEntityModel lmodel = (LEntityModel) lenum.getPackage().eContainer();
@@ -37,8 +36,8 @@ public class EntityJvmModelGenerator extends JvmModelGenerator {
 				return;
 			}
 		} else if (type instanceof JvmGenericType) {
-			LEntity lentity = (LEntity) associations.getPrimarySourceElement(type);
-			LEntityModel lmodel = (LEntityModel) lentity.getPackage().eContainer();
+			LClass lClass = (LClass) associations.getPrimarySourceElement(type);
+			LEntityModel lmodel = (LEntityModel) lClass.getPackage().eContainer();
 			if (isNoSource(lmodel)) {
 				return;
 			}

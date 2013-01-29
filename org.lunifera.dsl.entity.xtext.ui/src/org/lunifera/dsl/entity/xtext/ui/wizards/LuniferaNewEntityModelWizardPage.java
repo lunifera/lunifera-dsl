@@ -31,8 +31,7 @@ public class LuniferaNewEntityModelWizardPage extends WizardNewFileCreationPage 
 	protected InputStream getInitialContents() {
 		try {
 			return EntityGrammarActivator.getInstance().getBundle()
-					.getEntry("/resources/initialmodel.entitymodel")
-					.openStream();
+					.getEntry("/resources/initialmodel.entitymodel").openStream();
 		} catch (IOException e) {
 			return null; // ignore and create empty comments
 		}

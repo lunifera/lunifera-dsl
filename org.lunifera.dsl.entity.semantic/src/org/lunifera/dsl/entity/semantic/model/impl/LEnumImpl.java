@@ -38,7 +38,7 @@ import org.lunifera.dsl.entity.semantic.model.LEnumLiteral;
  *
  * @generated
  */
-public class LEnumImpl extends LTypeImpl implements LEnum {
+public class LEnumImpl extends LScalarTypeImpl implements LEnum {
 	/**
 	 * The cached value of the '{@link #getLiterals() <em>Literals</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

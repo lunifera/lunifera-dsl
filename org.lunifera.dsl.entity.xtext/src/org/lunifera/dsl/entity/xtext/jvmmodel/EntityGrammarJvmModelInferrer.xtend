@@ -1,23 +1,59 @@
 package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
+import org.apache.log4j.Logger
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.resource.XtextSyntaxDiagnostic
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.entity.semantic.model.LEntityModel
+import org.lunifera.dsl.entity.semantic.model.LBean
+import org.lunifera.dsl.entity.semantic.model.LEntity
+import org.lunifera.dsl.entity.semantic.model.LEnum
+import org.lunifera.dsl.entity.xtext.jvmmodel.services.bean.BeanJvmModelInferrer
+import org.lunifera.dsl.entity.xtext.jvmmodel.services.enums.EnumJvmModelInferrer
+import org.lunifera.dsl.entity.xtext.jvmmodel.services.jpa.JPAEntityJvmModelInferrer
 
 /**
- * <p>Infers a JVM model from the source model.</p> 
- *
- * <p>The JVM model should contain all elements that would appear in the Java code 
- * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
+ * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
+ * It dispatches to specific model inferrers depending on the metamodel element.
  */
 class EntityGrammarJvmModelInferrer extends AbstractModelInferrer {
 
+    protected val Logger log = Logger::getLogger(getClass())
+
+    @Inject EnumJvmModelInferrer enumJvmModelInferrer;
+    @Inject BeanJvmModelInferrer beanJvmModelInferrer;
+    @Inject JPAEntityJvmModelInferrer entityJvmModelInferrer;
+
     /**
-     * convenience API to build and initialize JVM types and their members.
+     * Returns true if the resource of the specified object has syntax errors.
+     * This method allows an eary abort of inferring that would cause NPEs because of not loaded 
+     * Ecore proxy instances.
+     * Inspired by DefaultFoldingStructureProvider.modelChanged().
      */
-	@Inject extension JvmTypesBuilder
+    def hasSyntaxErrors(EObject o) {
+        val hasSyntaxErrors = o.eResource.errors.exists [ it instanceof XtextSyntaxDiagnostic ]
+        if (hasSyntaxErrors) {
+            log.warn("Abort inferring due to syntax errors: " + o)
+        }
+        return hasSyntaxErrors
+    }
+
+    def dispatch void infer(LEnum element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+        if (hasSyntaxErrors(element)) return;
+        enumJvmModelInferrer.infer(element, acceptor, isPrelinkingPhase);
+    }
+
+    def dispatch void infer(LBean element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+        if (hasSyntaxErrors(element)) return;
+        beanJvmModelInferrer.infer(element, acceptor, isPrelinkingPhase);
+    }
+
+    def dispatch void infer(LEntity element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+        if (hasSyntaxErrors(element)) return;
+        entityJvmModelInferrer.infer(element, acceptor, isPrelinkingPhase);
+    }
+
 
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the
@@ -44,20 +80,20 @@ class EntityGrammarJvmModelInferrer extends AbstractModelInferrer {
 	 *            rely on linking using the index if isPreIndexingPhase is
 	 *            <code>true</code>.
 	 */
-   	def dispatch void infer(LEntityModel element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-   		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
-   		
-   		// An implementation for the initial hello world example could look like this:
-//   		acceptor.accept(element.toClass("my.company.greeting.MyGreetings"))
-//   			.initializeLater([
-//   				for (greeting : element.greetings) {
-//   					members += greeting.toMethod("hello" + greeting.name, greeting.newTypeRef(typeof(String))) [
-//   						body = [
-//   							append('''return "Hello «greeting.name»";''')
-//   						]
-//   					]
-//   				}
-//   			])
-   	}
+//   	def dispatch void infer(LEntityModel element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
+//   		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
+//   		
+//   		// An implementation for the initial hello world example could look like this:
+////   		acceptor.accept(element.toClass("my.company.greeting.MyGreetings"))
+////   			.initializeLater([
+////   				for (greeting : element.greetings) {
+////   					members += greeting.toMethod("hello" + greeting.name, greeting.newTypeRef(typeof(String))) [
+////   						body = [
+////   							append('''return "Hello «greeting.name»";''')
+////   						]
+////   					]
+////   				}
+////   			])
+//   	}
 }
 

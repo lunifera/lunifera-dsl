@@ -16,8 +16,8 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef;
+import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LCompilerType;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
 import org.lunifera.dsl.entity.semantic.model.LPackage;
 
@@ -35,11 +35,11 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 			return QualifiedName.create("");
 		}
 
-		if (obj instanceof LEntity) {
-			LPackage pkg = ((LEntity) obj).getPackage();
+		if (obj instanceof LClass) {
+			LPackage pkg = ((LClass) obj).getPackage();
 			if (pkg != null) {
 				final String qualifiedName = String.format("%s.%s",
-						pkg.getName(), ((LEntity) obj).getName());
+						pkg.getName(), ((LClass) obj).getName());
 				if (qualifiedName == null)
 					return null;
 				return qualifiedNameConverter.toQualifiedName(qualifiedName);

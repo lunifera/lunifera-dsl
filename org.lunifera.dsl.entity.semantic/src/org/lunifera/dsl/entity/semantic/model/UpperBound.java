@@ -30,6 +30,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum UpperBound implements Enumerator {
 	/**
+	 * The '<em><b>NULL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NULL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NULL(0, "NULL", "NULL"), /**
 	 * The '<em><b>MANY</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37,7 +45,7 @@ public enum UpperBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MANY(0, "MANY", "*"),
+	MANY(1, "MANY", "*"),
 
 	/**
 	 * The '<em><b>ONE</b></em>' literal object.
@@ -47,7 +55,22 @@ public enum UpperBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ONE(1, "ONE", "1");
+	ONE(2, "ONE", "1");
+
+	/**
+	 * The '<em><b>NULL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NULL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NULL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NULL_VALUE = 0;
 
 	/**
 	 * The '<em><b>MANY</b></em>' literal value.
@@ -62,7 +85,7 @@ public enum UpperBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MANY_VALUE = 0;
+	public static final int MANY_VALUE = 1;
 
 	/**
 	 * The '<em><b>ONE</b></em>' literal value.
@@ -77,7 +100,7 @@ public enum UpperBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ONE_VALUE = 1;
+	public static final int ONE_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Upper Bound</b></em>' enumerators.
@@ -87,6 +110,7 @@ public enum UpperBound implements Enumerator {
 	 */
 	private static final UpperBound[] VALUES_ARRAY =
 		new UpperBound[] {
+			NULL,
 			MANY,
 			ONE,
 		};
@@ -139,6 +163,7 @@ public enum UpperBound implements Enumerator {
 	 */
 	public static UpperBound get(int value) {
 		switch (value) {
+			case NULL_VALUE: return NULL;
 			case MANY_VALUE: return MANY;
 			case ONE_VALUE: return ONE;
 		}

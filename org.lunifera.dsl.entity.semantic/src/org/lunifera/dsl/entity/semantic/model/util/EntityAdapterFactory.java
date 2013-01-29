@@ -17,16 +17,22 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.lunifera.dsl.entity.semantic.model.*;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationTarget;
+import org.lunifera.dsl.entity.semantic.model.LBean;
+import org.lunifera.dsl.entity.semantic.model.LBeanProp;
+import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LCompilerType;
-import org.lunifera.dsl.entity.semantic.model.LContainer;
-import org.lunifera.dsl.entity.semantic.model.LContains;
 import org.lunifera.dsl.entity.semantic.model.LDataType;
+import org.lunifera.dsl.entity.semantic.model.LDerivedBeanProp;
+import org.lunifera.dsl.entity.semantic.model.LDerivedEntityProp;
+import org.lunifera.dsl.entity.semantic.model.LDerivedProperty;
 import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LEntityMember;
+import org.lunifera.dsl.entity.semantic.model.LEntityCollectionProp;
 import org.lunifera.dsl.entity.semantic.model.LEntityModel;
+import org.lunifera.dsl.entity.semantic.model.LEntityProp;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
 import org.lunifera.dsl.entity.semantic.model.LEnumLiteral;
 import org.lunifera.dsl.entity.semantic.model.LGenSettings;
@@ -35,9 +41,9 @@ import org.lunifera.dsl.entity.semantic.model.LModifier;
 import org.lunifera.dsl.entity.semantic.model.LMultiplicity;
 import org.lunifera.dsl.entity.semantic.model.LOperation;
 import org.lunifera.dsl.entity.semantic.model.LPackage;
+import org.lunifera.dsl.entity.semantic.model.LPersistentProperty;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
-import org.lunifera.dsl.entity.semantic.model.LReference;
-import org.lunifera.dsl.entity.semantic.model.LRefers;
+import org.lunifera.dsl.entity.semantic.model.LScalarType;
 import org.lunifera.dsl.entity.semantic.model.LType;
 
 /**
@@ -117,48 +123,24 @@ public class EntityAdapterFactory extends AdapterFactoryImpl {
 				return createLCompilerTypeAdapter();
 			}
 			@Override
-			public Adapter caseLType(LType object) {
-				return createLTypeAdapter();
-			}
-			@Override
-			public Adapter caseLEntity(LEntity object) {
-				return createLEntityAdapter();
+			public Adapter caseLAnnotationDef(LAnnotationDef object) {
+				return createLAnnotationDefAdapter();
 			}
 			@Override
 			public Adapter caseLAnnotationTarget(LAnnotationTarget object) {
 				return createLAnnotationTargetAdapter();
 			}
 			@Override
-			public Adapter caseLEntityMember(LEntityMember object) {
-				return createLEntityMemberAdapter();
+			public Adapter caseLType(LType object) {
+				return createLTypeAdapter();
 			}
 			@Override
-			public Adapter caseLProperty(LProperty object) {
-				return createLPropertyAdapter();
+			public Adapter caseLScalarType(LScalarType object) {
+				return createLScalarTypeAdapter();
 			}
 			@Override
-			public Adapter caseLReference(LReference object) {
-				return createLReferenceAdapter();
-			}
-			@Override
-			public Adapter caseLRefers(LRefers object) {
-				return createLRefersAdapter();
-			}
-			@Override
-			public Adapter caseLContains(LContains object) {
-				return createLContainsAdapter();
-			}
-			@Override
-			public Adapter caseLContainer(LContainer object) {
-				return createLContainerAdapter();
-			}
-			@Override
-			public Adapter caseLOperation(LOperation object) {
-				return createLOperationAdapter();
-			}
-			@Override
-			public Adapter caseLModifier(LModifier object) {
-				return createLModifierAdapter();
+			public Adapter caseLDataType(LDataType object) {
+				return createLDataTypeAdapter();
 			}
 			@Override
 			public Adapter caseLEnum(LEnum object) {
@@ -169,16 +151,60 @@ public class EntityAdapterFactory extends AdapterFactoryImpl {
 				return createLEnumLiteralAdapter();
 			}
 			@Override
-			public Adapter caseLAnnotationDef(LAnnotationDef object) {
-				return createLAnnotationDefAdapter();
+			public Adapter caseLClass(LClass object) {
+				return createLClassAdapter();
+			}
+			@Override
+			public Adapter caseLBean(LBean object) {
+				return createLBeanAdapter();
+			}
+			@Override
+			public Adapter caseLEntity(LEntity object) {
+				return createLEntityAdapter();
+			}
+			@Override
+			public Adapter caseLProperty(LProperty object) {
+				return createLPropertyAdapter();
+			}
+			@Override
+			public Adapter caseLDerivedProperty(LDerivedProperty object) {
+				return createLDerivedPropertyAdapter();
+			}
+			@Override
+			public Adapter caseLPersistentProperty(LPersistentProperty object) {
+				return createLPersistentPropertyAdapter();
+			}
+			@Override
+			public Adapter caseLBeanProp(LBeanProp object) {
+				return createLBeanPropAdapter();
+			}
+			@Override
+			public Adapter caseLDerivedBeanProp(LDerivedBeanProp object) {
+				return createLDerivedBeanPropAdapter();
+			}
+			@Override
+			public Adapter caseLEntityProp(LEntityProp object) {
+				return createLEntityPropAdapter();
+			}
+			@Override
+			public Adapter caseLEntityCollectionProp(LEntityCollectionProp object) {
+				return createLEntityCollectionPropAdapter();
+			}
+			@Override
+			public Adapter caseLDerivedEntityProp(LDerivedEntityProp object) {
+				return createLDerivedEntityPropAdapter();
+			}
+			@Override
+			public Adapter caseLOperation(LOperation object) {
+				return createLOperationAdapter();
+			}
+			@Override
+			public Adapter caseLModifier(LModifier object) {
+				return createLModifierAdapter();
 			}
 			@Override
 			public Adapter caseLMultiplicity(LMultiplicity object) {
 				return createLMultiplicityAdapter();
-			}
-			@Override
-			public Adapter caseLDataType(LDataType object) {
-				return createLDataTypeAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -285,6 +311,20 @@ public class EntityAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LScalarType <em>LScalar Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.entity.semantic.model.LScalarType
+	 * @generated
+	 */
+	public Adapter createLScalarTypeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LEntity <em>LEntity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -313,20 +353,6 @@ public class EntityAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LEntityMember <em>LEntity Member</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntityMember
-	 * @generated
-	 */
-	public Adapter createLEntityMemberAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LProperty <em>LProperty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -341,58 +367,100 @@ public class EntityAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LReference <em>LReference</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LDerivedProperty <em>LDerived Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.entity.semantic.model.LReference
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedProperty
 	 * @generated
 	 */
-	public Adapter createLReferenceAdapter() {
+	public Adapter createLDerivedPropertyAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LRefers <em>LRefers</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LPersistentProperty <em>LPersistent Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.entity.semantic.model.LRefers
+	 * @see org.lunifera.dsl.entity.semantic.model.LPersistentProperty
 	 * @generated
 	 */
-	public Adapter createLRefersAdapter() {
+	public Adapter createLPersistentPropertyAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LContains <em>LContains</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LBeanProp <em>LBean Prop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContains
+	 * @see org.lunifera.dsl.entity.semantic.model.LBeanProp
 	 * @generated
 	 */
-	public Adapter createLContainsAdapter() {
+	public Adapter createLBeanPropAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LContainer <em>LContainer</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LDerivedBeanProp <em>LDerived Bean Prop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.lunifera.dsl.entity.semantic.model.LContainer
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedBeanProp
 	 * @generated
 	 */
-	public Adapter createLContainerAdapter() {
+	public Adapter createLDerivedBeanPropAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LEntityProp <em>LEntity Prop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntityProp
+	 * @generated
+	 */
+	public Adapter createLEntityPropAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LEntityCollectionProp <em>LEntity Collection Prop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.entity.semantic.model.LEntityCollectionProp
+	 * @generated
+	 */
+	public Adapter createLEntityCollectionPropAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LDerivedEntityProp <em>LDerived Entity Prop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.entity.semantic.model.LDerivedEntityProp
+	 * @generated
+	 */
+	public Adapter createLDerivedEntityPropAdapter() {
 		return null;
 	}
 
@@ -449,6 +517,34 @@ public class EntityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLEnumLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LClass <em>LClass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.entity.semantic.model.LClass
+	 * @generated
+	 */
+	public Adapter createLClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.entity.semantic.model.LBean <em>LBean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.entity.semantic.model.LBean
+	 * @generated
+	 */
+	public Adapter createLBeanAdapter() {
 		return null;
 	}
 

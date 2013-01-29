@@ -13,10 +13,10 @@ package org.lunifera.dsl.entity.xtext.jvmmodel.services;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
-import org.lunifera.dsl.entity.semantic.model.LCompilerType;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LEntityMember;
+import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LGenSettings;
+import org.lunifera.dsl.entity.semantic.model.LOperation;
+import org.lunifera.dsl.entity.semantic.model.LProperty;
 
 /**
  * Implementations of that interface have to provide annotations.
@@ -24,44 +24,18 @@ import org.lunifera.dsl.entity.semantic.model.LGenSettings;
 public interface IAnnotationCompiler {
 
 	/**
-	 * Is responsible to decide whether the compiler should be used
-	 * 
-	 * @param compilerType
-	 * @return
-	 */
-	boolean isResponsible(LCompilerType compilerType);
-
-	/**
 	 * This method can be used to add annotations to the given jvmType.
-	 * 
-	 * @param lEntity
-	 * @param jvmType
-	 * @param setting
-	 * @return
 	 */
-	void processAnnotation(LEntity lEntity, JvmGenericType jvmType,
-			LGenSettings setting);
+	void processAnnotation(LClass lClass, JvmGenericType jvmType, LGenSettings setting);
 
 	/**
 	 * This method can be used to add annotations to the given jvmField.
-	 * 
-	 * @param member
-	 * @param jvmField
-	 * @param setting
-	 * @return
 	 */
-	void processAnnotation(LEntityMember member, JvmField jvmField,
-			LGenSettings setting);
+	void processAnnotation(LProperty member, JvmField jvmField, LGenSettings setting);
 	
 	/**
 	 * This method can be used to add annotations to the given jvmField.
-	 * 
-	 * @param member
-	 * @param jvmField
-	 * @param setting
-	 * @return
 	 */
-	void processAnnotation(LEntityMember member, JvmOperation jvmOperation,
-			LGenSettings setting);
+	void processAnnotation(LOperation member, JvmOperation jvmOperation, LGenSettings setting);
 
 }

@@ -38,7 +38,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface LOperation extends LEntityMember {
+public interface LOperation extends LAnnotationTarget {
 	/**
 	 * Returns the value of the '<em><b>Modifier</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

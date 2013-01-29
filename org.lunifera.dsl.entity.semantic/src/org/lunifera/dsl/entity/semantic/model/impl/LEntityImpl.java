@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
-import org.lunifera.dsl.entity.semantic.model.LAnnotationDef;
 import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LEntityMember;
+import org.lunifera.dsl.entity.semantic.model.LEntityProp;
+import org.lunifera.dsl.entity.semantic.model.LOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,107 +35,117 @@ import org.lunifera.dsl.entity.semantic.model.LEntityMember;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#isAbstract <em>Abstract</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#isEmbeddable <em>Embeddable</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getSuperType <em>Super Type</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getEntityMembers <em>Entity Members</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#isCachable <em>Cachable</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getShortName <em>Short Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getPersistenceName <em>Persistence Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#isCacheable <em>Cacheable</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#isHistorized <em>Historized</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getOperations <em>Operations</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class LEntityImpl extends LTypeImpl implements LEntity {
+public class LEntityImpl extends LClassImpl implements LEntity {
 	/**
-	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
+	 * The default value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAnnotations()
+	 * @see #getShortName()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<LAnnotationDef> annotations;
+	protected static final String SHORT_NAME_EDEFAULT = null;
 
 	/**
-	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * The cached value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAbstract()
+	 * @see #getShortName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean ABSTRACT_EDEFAULT = false;
+	protected String shortName = SHORT_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * The default value of the '{@link #getPersistenceName() <em>Persistence Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAbstract()
+	 * @see #getPersistenceName()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean abstract_ = ABSTRACT_EDEFAULT;
+	protected static final String PERSISTENCE_NAME_EDEFAULT = null;
 
 	/**
-	 * The default value of the '{@link #isEmbeddable() <em>Embeddable</em>}' attribute.
+	 * The cached value of the '{@link #getPersistenceName() <em>Persistence Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isEmbeddable()
+	 * @see #getPersistenceName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean EMBEDDABLE_EDEFAULT = false;
+	protected String persistenceName = PERSISTENCE_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #isEmbeddable() <em>Embeddable</em>}' attribute.
+	 * The default value of the '{@link #isCacheable() <em>Cacheable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isEmbeddable()
+	 * @see #isCacheable()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean embeddable = EMBEDDABLE_EDEFAULT;
+	protected static final boolean CACHEABLE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
+	 * The cached value of the '{@link #isCacheable() <em>Cacheable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSuperType()
+	 * @see #isCacheable()
 	 * @generated
 	 * @ordered
 	 */
-	protected LEntity superType;
+	protected boolean cacheable = CACHEABLE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getEntityMembers() <em>Entity Members</em>}' containment reference list.
+	 * The default value of the '{@link #isHistorized() <em>Historized</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEntityMembers()
+	 * @see #isHistorized()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<LEntityMember> entityMembers;
+	protected static final boolean HISTORIZED_EDEFAULT = false;
 
 	/**
-	 * The default value of the '{@link #isCachable() <em>Cachable</em>}' attribute.
+	 * The cached value of the '{@link #isHistorized() <em>Historized</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isCachable()
+	 * @see #isHistorized()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean CACHABLE_EDEFAULT = false;
+	protected boolean historized = HISTORIZED_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #isCachable() <em>Cachable</em>}' attribute.
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isCachable()
+	 * @see #getProperties()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean cachable = CACHABLE_EDEFAULT;
+	protected EList<LEntityProp> properties;
+
+	/**
+	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LOperation> operations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -161,11 +171,95 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<LAnnotationDef> getAnnotations() {
-		if (annotations == null) {
-			annotations = new EObjectContainmentEList<LAnnotationDef>(LAnnotationDef.class, this, EntityPackage.LENTITY__ANNOTATIONS);
+	public String getShortName() {
+		return shortName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShortName(String newShortName) {
+		String oldShortName = shortName;
+		shortName = newShortName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__SHORT_NAME, oldShortName, shortName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPersistenceName() {
+		return persistenceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPersistenceName(String newPersistenceName) {
+		String oldPersistenceName = persistenceName;
+		persistenceName = newPersistenceName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__PERSISTENCE_NAME, oldPersistenceName, persistenceName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isCacheable() {
+		return cacheable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCacheable(boolean newCacheable) {
+		boolean oldCacheable = cacheable;
+		cacheable = newCacheable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__CACHEABLE, oldCacheable, cacheable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isHistorized() {
+		return historized;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHistorized(boolean newHistorized) {
+		boolean oldHistorized = historized;
+		historized = newHistorized;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__HISTORIZED, oldHistorized, historized));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LEntityProp> getProperties() {
+		if (properties == null) {
+			properties = new EObjectContainmentEList<LEntityProp>(LEntityProp.class, this, EntityPackage.LENTITY__PROPERTIES);
 		}
-		return annotations;
+		return properties;
 	}
 
 	/**
@@ -173,112 +267,20 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isAbstract() {
-		return abstract_;
+	public EList<LOperation> getOperations() {
+		if (operations == null) {
+			operations = new EObjectContainmentEList<LOperation>(LOperation.class, this, EntityPackage.LENTITY__OPERATIONS);
+		}
+		return operations;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAbstract(boolean newAbstract) {
-		boolean oldAbstract = abstract_;
-		abstract_ = newAbstract;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__ABSTRACT, oldAbstract, abstract_));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isCachable() {
-		return cachable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCachable(boolean newCachable) {
-		boolean oldCachable = cachable;
-		cachable = newCachable;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__CACHABLE, oldCachable, cachable));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isEmbeddable() {
-		return embeddable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEmbeddable(boolean newEmbeddable) {
-		boolean oldEmbeddable = embeddable;
-		embeddable = newEmbeddable;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__EMBEDDABLE, oldEmbeddable, embeddable));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public LEntity getSuperType() {
-		if (superType != null && superType.eIsProxy()) {
-			InternalEObject oldSuperType = (InternalEObject)superType;
-			superType = (LEntity)eResolveProxy(oldSuperType);
-			if (superType != oldSuperType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.LENTITY__SUPER_TYPE, oldSuperType, superType));
-			}
-		}
-		return superType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LEntity basicGetSuperType() {
-		return superType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSuperType(LEntity newSuperType) {
-		LEntity oldSuperType = superType;
-		superType = newSuperType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__SUPER_TYPE, oldSuperType, superType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<LEntityMember> getEntityMembers() {
-		if (entityMembers == null) {
-			entityMembers = new EObjectContainmentEList<LEntityMember>(LEntityMember.class, this, EntityPackage.LENTITY__ENTITY_MEMBERS);
-		}
-		return entityMembers;
+		return (LEntity) super.getSuperType();
 	}
 
 	/**
@@ -289,10 +291,10 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__ANNOTATIONS:
-				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
-			case EntityPackage.LENTITY__ENTITY_MEMBERS:
-				return ((InternalEList<?>)getEntityMembers()).basicRemove(otherEnd, msgs);
+			case EntityPackage.LENTITY__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case EntityPackage.LENTITY__OPERATIONS:
+				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -305,19 +307,18 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__ANNOTATIONS:
-				return getAnnotations();
-			case EntityPackage.LENTITY__ABSTRACT:
-				return isAbstract();
-			case EntityPackage.LENTITY__EMBEDDABLE:
-				return isEmbeddable();
-			case EntityPackage.LENTITY__SUPER_TYPE:
-				if (resolve) return getSuperType();
-				return basicGetSuperType();
-			case EntityPackage.LENTITY__ENTITY_MEMBERS:
-				return getEntityMembers();
-			case EntityPackage.LENTITY__CACHABLE:
-				return isCachable();
+			case EntityPackage.LENTITY__SHORT_NAME:
+				return getShortName();
+			case EntityPackage.LENTITY__PERSISTENCE_NAME:
+				return getPersistenceName();
+			case EntityPackage.LENTITY__CACHEABLE:
+				return isCacheable();
+			case EntityPackage.LENTITY__HISTORIZED:
+				return isHistorized();
+			case EntityPackage.LENTITY__PROPERTIES:
+				return getProperties();
+			case EntityPackage.LENTITY__OPERATIONS:
+				return getOperations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -331,25 +332,25 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__ANNOTATIONS:
-				getAnnotations().clear();
-				getAnnotations().addAll((Collection<? extends LAnnotationDef>)newValue);
+			case EntityPackage.LENTITY__SHORT_NAME:
+				setShortName((String)newValue);
 				return;
-			case EntityPackage.LENTITY__ABSTRACT:
-				setAbstract((Boolean)newValue);
+			case EntityPackage.LENTITY__PERSISTENCE_NAME:
+				setPersistenceName((String)newValue);
 				return;
-			case EntityPackage.LENTITY__EMBEDDABLE:
-				setEmbeddable((Boolean)newValue);
+			case EntityPackage.LENTITY__CACHEABLE:
+				setCacheable((Boolean)newValue);
 				return;
-			case EntityPackage.LENTITY__SUPER_TYPE:
-				setSuperType((LEntity)newValue);
+			case EntityPackage.LENTITY__HISTORIZED:
+				setHistorized((Boolean)newValue);
 				return;
-			case EntityPackage.LENTITY__ENTITY_MEMBERS:
-				getEntityMembers().clear();
-				getEntityMembers().addAll((Collection<? extends LEntityMember>)newValue);
+			case EntityPackage.LENTITY__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends LEntityProp>)newValue);
 				return;
-			case EntityPackage.LENTITY__CACHABLE:
-				setCachable((Boolean)newValue);
+			case EntityPackage.LENTITY__OPERATIONS:
+				getOperations().clear();
+				getOperations().addAll((Collection<? extends LOperation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -363,23 +364,23 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__ANNOTATIONS:
-				getAnnotations().clear();
+			case EntityPackage.LENTITY__SHORT_NAME:
+				setShortName(SHORT_NAME_EDEFAULT);
 				return;
-			case EntityPackage.LENTITY__ABSTRACT:
-				setAbstract(ABSTRACT_EDEFAULT);
+			case EntityPackage.LENTITY__PERSISTENCE_NAME:
+				setPersistenceName(PERSISTENCE_NAME_EDEFAULT);
 				return;
-			case EntityPackage.LENTITY__EMBEDDABLE:
-				setEmbeddable(EMBEDDABLE_EDEFAULT);
+			case EntityPackage.LENTITY__CACHEABLE:
+				setCacheable(CACHEABLE_EDEFAULT);
 				return;
-			case EntityPackage.LENTITY__SUPER_TYPE:
-				setSuperType((LEntity)null);
+			case EntityPackage.LENTITY__HISTORIZED:
+				setHistorized(HISTORIZED_EDEFAULT);
 				return;
-			case EntityPackage.LENTITY__ENTITY_MEMBERS:
-				getEntityMembers().clear();
+			case EntityPackage.LENTITY__PROPERTIES:
+				getProperties().clear();
 				return;
-			case EntityPackage.LENTITY__CACHABLE:
-				setCachable(CACHABLE_EDEFAULT);
+			case EntityPackage.LENTITY__OPERATIONS:
+				getOperations().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -393,18 +394,18 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__ANNOTATIONS:
-				return annotations != null && !annotations.isEmpty();
-			case EntityPackage.LENTITY__ABSTRACT:
-				return abstract_ != ABSTRACT_EDEFAULT;
-			case EntityPackage.LENTITY__EMBEDDABLE:
-				return embeddable != EMBEDDABLE_EDEFAULT;
-			case EntityPackage.LENTITY__SUPER_TYPE:
-				return superType != null;
-			case EntityPackage.LENTITY__ENTITY_MEMBERS:
-				return entityMembers != null && !entityMembers.isEmpty();
-			case EntityPackage.LENTITY__CACHABLE:
-				return cachable != CACHABLE_EDEFAULT;
+			case EntityPackage.LENTITY__SHORT_NAME:
+				return SHORT_NAME_EDEFAULT == null ? shortName != null : !SHORT_NAME_EDEFAULT.equals(shortName);
+			case EntityPackage.LENTITY__PERSISTENCE_NAME:
+				return PERSISTENCE_NAME_EDEFAULT == null ? persistenceName != null : !PERSISTENCE_NAME_EDEFAULT.equals(persistenceName);
+			case EntityPackage.LENTITY__CACHEABLE:
+				return cacheable != CACHEABLE_EDEFAULT;
+			case EntityPackage.LENTITY__HISTORIZED:
+				return historized != HISTORIZED_EDEFAULT;
+			case EntityPackage.LENTITY__PROPERTIES:
+				return properties != null && !properties.isEmpty();
+			case EntityPackage.LENTITY__OPERATIONS:
+				return operations != null && !operations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -419,12 +420,14 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (abstract: ");
-		result.append(abstract_);
-		result.append(", embeddable: ");
-		result.append(embeddable);
-		result.append(", cachable: ");
-		result.append(cachable);
+		result.append(" (shortName: ");
+		result.append(shortName);
+		result.append(", persistenceName: ");
+		result.append(persistenceName);
+		result.append(", cacheable: ");
+		result.append(cacheable);
+		result.append(", historized: ");
+		result.append(historized);
 		result.append(')');
 		return result.toString();
 	}

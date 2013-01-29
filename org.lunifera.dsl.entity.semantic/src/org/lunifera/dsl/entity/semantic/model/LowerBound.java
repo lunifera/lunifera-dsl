@@ -30,6 +30,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum LowerBound implements Enumerator {
 	/**
+	 * The '<em><b>NULL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NULL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NULL(0, "NULL", "NULL"), /**
 	 * The '<em><b>MANY</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37,7 +45,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MANY(0, "MANY", "*"),
+	MANY(1, "MANY", "*"),
 
 	/**
 	 * The '<em><b>OPTIONAL</b></em>' literal object.
@@ -47,7 +55,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	OPTIONAL(1, "OPTIONAL", "?"),
+	OPTIONAL(2, "OPTIONAL", "?"),
 
 	/**
 	 * The '<em><b>ATLEASTONE</b></em>' literal object.
@@ -57,7 +65,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ATLEASTONE(2, "ATLEASTONE", "+"),
+	ATLEASTONE(3, "ATLEASTONE", "+"),
 
 	/**
 	 * The '<em><b>ZERO</b></em>' literal object.
@@ -67,7 +75,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ZERO(3, "ZERO", "0"),
+	ZERO(4, "ZERO", "0"),
 
 	/**
 	 * The '<em><b>ONE</b></em>' literal object.
@@ -77,7 +85,22 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ONE(4, "ONE", "1");
+	ONE(5, "ONE", "1");
+
+	/**
+	 * The '<em><b>NULL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NULL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NULL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NULL_VALUE = 0;
 
 	/**
 	 * The '<em><b>MANY</b></em>' literal value.
@@ -92,7 +115,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MANY_VALUE = 0;
+	public static final int MANY_VALUE = 1;
 
 	/**
 	 * The '<em><b>OPTIONAL</b></em>' literal value.
@@ -107,7 +130,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int OPTIONAL_VALUE = 1;
+	public static final int OPTIONAL_VALUE = 2;
 
 	/**
 	 * The '<em><b>ATLEASTONE</b></em>' literal value.
@@ -122,7 +145,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ATLEASTONE_VALUE = 2;
+	public static final int ATLEASTONE_VALUE = 3;
 
 	/**
 	 * The '<em><b>ZERO</b></em>' literal value.
@@ -137,7 +160,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ZERO_VALUE = 3;
+	public static final int ZERO_VALUE = 4;
 
 	/**
 	 * The '<em><b>ONE</b></em>' literal value.
@@ -152,7 +175,7 @@ public enum LowerBound implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ONE_VALUE = 4;
+	public static final int ONE_VALUE = 5;
 
 	/**
 	 * An array of all the '<em><b>Lower Bound</b></em>' enumerators.
@@ -162,6 +185,7 @@ public enum LowerBound implements Enumerator {
 	 */
 	private static final LowerBound[] VALUES_ARRAY =
 		new LowerBound[] {
+			NULL,
 			MANY,
 			OPTIONAL,
 			ATLEASTONE,
@@ -217,6 +241,7 @@ public enum LowerBound implements Enumerator {
 	 */
 	public static LowerBound get(int value) {
 		switch (value) {
+			case NULL_VALUE: return NULL;
 			case MANY_VALUE: return MANY;
 			case OPTIONAL_VALUE: return OPTIONAL;
 			case ATLEASTONE_VALUE: return ATLEASTONE;

@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.lunifera.dsl.entity.xtext.tests.jpa.model.Client;
+import org.lunifera.dsl.entity.xtext.tests.jpa.model.Project;
+
 @Entity
 public class Contract {
   private boolean disposed;

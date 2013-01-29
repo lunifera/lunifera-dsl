@@ -13,6 +13,8 @@
  */
 package org.lunifera.dsl.entity.semantic.model;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -22,15 +24,19 @@ package org.lunifera.dsl.entity.semantic.model;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getJvmTypeRef <em>Jvm Type Ref</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#isId <em>Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#isVersion <em>Version</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#isNotnull <em>Notnull</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#isTransient <em>Transient</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getMultiplicity <em>Multiplicity</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getDefaultValueLiteral <em>Default Value Literal</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getName <em>Name</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getType <em>Type</em>}</li>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getSingularName <em>Singular Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getLower <em>Lower</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#isCollection <em>Collection</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#isComposition <em>Composition</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LProperty#getOpposite <em>Opposite</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,7 +44,7 @@ package org.lunifera.dsl.entity.semantic.model;
  * @model
  * @generated
  */
-public interface LProperty extends LEntityMember {
+public interface LProperty extends LAnnotationTarget {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -144,32 +150,6 @@ public interface LProperty extends LEntityMember {
 	void setTransient(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Multiplicity</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Multiplicity</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Multiplicity</em>' containment reference.
-	 * @see #setMultiplicity(LMultiplicity)
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLProperty_Multiplicity()
-	 * @model containment="true"
-	 * @generated
-	 */
-	LMultiplicity getMultiplicity();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getMultiplicity <em>Multiplicity</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Multiplicity</em>' containment reference.
-	 * @see #getMultiplicity()
-	 * @generated
-	 */
-	void setMultiplicity(LMultiplicity value);
-
-	/**
 	 * Returns the value of the '<em><b>Default Value Literal</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -194,6 +174,143 @@ public interface LProperty extends LEntityMember {
 	 * @generated
 	 */
 	void setDefaultValueLiteral(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Lower</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.lunifera.dsl.entity.semantic.model.LowerBound}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lower</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lower</em>' attribute.
+	 * @see org.lunifera.dsl.entity.semantic.model.LowerBound
+	 * @see #setLower(LowerBound)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLProperty_Lower()
+	 * @model
+	 * @generated
+	 */
+	LowerBound getLower();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getLower <em>Lower</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lower</em>' attribute.
+	 * @see org.lunifera.dsl.entity.semantic.model.LowerBound
+	 * @see #getLower()
+	 * @generated
+	 */
+	void setLower(LowerBound value);
+
+	/**
+	 * Returns the value of the '<em><b>Upper</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.lunifera.dsl.entity.semantic.model.UpperBound}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Upper</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Upper</em>' attribute.
+	 * @see org.lunifera.dsl.entity.semantic.model.UpperBound
+	 * @see #setUpper(UpperBound)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLProperty_Upper()
+	 * @model
+	 * @generated
+	 */
+	UpperBound getUpper();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getUpper <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Upper</em>' attribute.
+	 * @see org.lunifera.dsl.entity.semantic.model.UpperBound
+	 * @see #getUpper()
+	 * @generated
+	 */
+	void setUpper(UpperBound value);
+
+	/**
+	 * Returns the value of the '<em><b>Collection</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Collection</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Collection</em>' attribute.
+	 * @see #setCollection(boolean)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLProperty_Collection()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isCollection();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LProperty#isCollection <em>Collection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Collection</em>' attribute.
+	 * @see #isCollection()
+	 * @generated
+	 */
+	void setCollection(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Composition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Composition</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Composition</em>' attribute.
+	 * @see #setComposition(boolean)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLProperty_Composition()
+	 * @model
+	 * @generated
+	 */
+	boolean isComposition();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LProperty#isComposition <em>Composition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Composition</em>' attribute.
+	 * @see #isComposition()
+	 * @generated
+	 */
+	void setComposition(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Opposite</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Opposite</em>' reference.
+	 * @see #setOpposite(LProperty)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLProperty_Opposite()
+	 * @model
+	 * @generated
+	 */
+	LProperty getOpposite();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getOpposite <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Opposite</em>' reference.
+	 * @see #getOpposite()
+	 * @generated
+	 */
+	void setOpposite(LProperty value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -248,29 +365,29 @@ public interface LProperty extends LEntityMember {
 	void setType(LType value);
 
 	/**
-	 * Returns the value of the '<em><b>Singular Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Jvm Type Ref</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Singular Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Jvm Type Ref</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Singular Name</em>' attribute.
-	 * @see #setSingularName(String)
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLProperty_SingularName()
-	 * @model
+	 * @return the value of the '<em>Jvm Type Ref</em>' containment reference.
+	 * @see #setJvmTypeRef(JvmTypeReference)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLProperty_JvmTypeRef()
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getSingularName();
+	JvmTypeReference getJvmTypeRef();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getSingularName <em>Singular Name</em>}' attribute.
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LProperty#getJvmTypeRef <em>Jvm Type Ref</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Singular Name</em>' attribute.
-	 * @see #getSingularName()
+	 * @param value the new value of the '<em>Jvm Type Ref</em>' containment reference.
+	 * @see #getJvmTypeRef()
 	 * @generated
 	 */
-	void setSingularName(String value);
+	void setJvmTypeRef(JvmTypeReference value);
 
 } // LProperty

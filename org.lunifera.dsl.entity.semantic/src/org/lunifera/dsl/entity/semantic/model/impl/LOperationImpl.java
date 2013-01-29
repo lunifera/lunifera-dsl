@@ -47,7 +47,7 @@ import org.lunifera.dsl.entity.semantic.model.LOperation;
  *
  * @generated
  */
-public class LOperationImpl extends LEntityMemberImpl implements LOperation {
+public class LOperationImpl extends LAnnotationTargetImpl implements LOperation {
 	/**
 	 * The cached value of the '{@link #getModifier() <em>Modifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->

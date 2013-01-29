@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.lunifera.dsl.entity.xtext.tests.jpa.model.Project;
+
 @Entity
 public class Developer {
   private boolean disposed;

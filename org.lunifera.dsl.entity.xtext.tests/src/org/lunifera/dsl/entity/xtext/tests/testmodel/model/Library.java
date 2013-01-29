@@ -2,6 +2,9 @@ package org.lunifera.dsl.entity.xtext.tests.testmodel.model;
 
 import java.util.List;
 
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.Book;
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.BookIndex;
+
 /**
  * Test 112233
  */

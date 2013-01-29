@@ -87,15 +87,6 @@ public interface EntityFactory extends EFactory {
 	LEntity createLEntity();
 
 	/**
-	 * Returns a new object of class '<em>LEntity Member</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LEntity Member</em>'.
-	 * @generated
-	 */
-	LEntityMember createLEntityMember();
-
-	/**
 	 * Returns a new object of class '<em>LProperty</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,31 +96,67 @@ public interface EntityFactory extends EFactory {
 	LProperty createLProperty();
 
 	/**
-	 * Returns a new object of class '<em>LRefers</em>'.
+	 * Returns a new object of class '<em>LDerived Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LRefers</em>'.
+	 * @return a new object of class '<em>LDerived Property</em>'.
 	 * @generated
 	 */
-	LRefers createLRefers();
+	LDerivedProperty createLDerivedProperty();
 
 	/**
-	 * Returns a new object of class '<em>LContains</em>'.
+	 * Returns a new object of class '<em>LPersistent Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LContains</em>'.
+	 * @return a new object of class '<em>LPersistent Property</em>'.
 	 * @generated
 	 */
-	LContains createLContains();
+	LPersistentProperty createLPersistentProperty();
 
 	/**
-	 * Returns a new object of class '<em>LContainer</em>'.
+	 * Returns a new object of class '<em>LBean Prop</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LContainer</em>'.
+	 * @return a new object of class '<em>LBean Prop</em>'.
 	 * @generated
 	 */
-	LContainer createLContainer();
+	LBeanProp createLBeanProp();
+
+	/**
+	 * Returns a new object of class '<em>LDerived Bean Prop</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDerived Bean Prop</em>'.
+	 * @generated
+	 */
+	LDerivedBeanProp createLDerivedBeanProp();
+
+	/**
+	 * Returns a new object of class '<em>LEntity Prop</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LEntity Prop</em>'.
+	 * @generated
+	 */
+	LEntityProp createLEntityProp();
+
+	/**
+	 * Returns a new object of class '<em>LEntity Collection Prop</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LEntity Collection Prop</em>'.
+	 * @generated
+	 */
+	LEntityCollectionProp createLEntityCollectionProp();
+
+	/**
+	 * Returns a new object of class '<em>LDerived Entity Prop</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDerived Entity Prop</em>'.
+	 * @generated
+	 */
+	LDerivedEntityProp createLDerivedEntityProp();
 
 	/**
 	 * Returns a new object of class '<em>LOperation</em>'.
@@ -168,6 +195,15 @@ public interface EntityFactory extends EFactory {
 	LEnumLiteral createLEnumLiteral();
 
 	/**
+	 * Returns a new object of class '<em>LBean</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LBean</em>'.
+	 * @generated
+	 */
+	LBean createLBean();
+
+	/**
 	 * Returns a new object of class '<em>LAnnotation Def</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,6 +211,15 @@ public interface EntityFactory extends EFactory {
 	 * @generated
 	 */
 	LAnnotationDef createLAnnotationDef();
+
+	/**
+	 * Returns a new object of class '<em>LScalar Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LScalar Type</em>'.
+	 * @generated
+	 */
+	LScalarType createLScalarType();
 
 	/**
 	 * Returns a new object of class '<em>LMultiplicity</em>'.

@@ -25,18 +25,20 @@ Import-Package: javax.persistence;jpa="2.0",
  org.apache.commons.logging,
  org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.lunifera.dsl.entity.xtext,
+Export-Package: org.lunifera.dsl.entity.xtext;x-internal:=true,
  org.lunifera.dsl.entity.xtext.extensions;x-internal:=true,
  org.lunifera.dsl.entity.xtext.formatting;x-internal:=true,
  org.lunifera.dsl.entity.xtext.jvmmodel;x-internal:=true,
  org.lunifera.dsl.entity.xtext.jvmmodel.services,
- org.lunifera.dsl.entity.xtext.jvmmodel.services.entity;x-internal:=true,
+ org.lunifera.dsl.entity.xtext.jvmmodel.services.bean;x-internal:=true,
+ org.lunifera.dsl.entity.xtext.jvmmodel.services.enums;x-internal:=true,
  org.lunifera.dsl.entity.xtext.jvmmodel.services.jpa;x-internal:=true,
  org.lunifera.dsl.entity.xtext.parser.antlr;x-internal:=true,
  org.lunifera.dsl.entity.xtext.parser.antlr.internal;x-internal:=true,
  org.lunifera.dsl.entity.xtext.scope;x-internal:=true,
  org.lunifera.dsl.entity.xtext.serializer;x-internal:=true,
  org.lunifera.dsl.entity.xtext.services,
+ org.lunifera.dsl.entity.xtext.util;x-internal:=true,
  org.lunifera.dsl.entity.xtext.validation;x-internal:=true,
  org.lunifera.dsl.entity.xtext.valueconverter;x-internal:=true
 

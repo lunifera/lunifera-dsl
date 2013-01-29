@@ -31,7 +31,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * @model
  * @generated
  */
-public interface LDataType extends LType {
+public interface LDataType extends LScalarType {
 	/**
 	 * Returns the value of the '<em><b>Jvm Type Reference</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -43,7 +43,7 @@ public interface LDataType extends LType {
 	 * @return the value of the '<em>Jvm Type Reference</em>' containment reference.
 	 * @see #setJvmTypeReference(JvmTypeReference)
 	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLDataType_JvmTypeReference()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	JvmTypeReference getJvmTypeReference();
