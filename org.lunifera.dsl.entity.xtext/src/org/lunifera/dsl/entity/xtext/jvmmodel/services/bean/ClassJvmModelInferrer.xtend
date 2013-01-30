@@ -231,7 +231,7 @@ abstract class ClassJvmModelInferrer {
             val compositionContainmentProps = lClass.properties.filter[compositionContainment]
             if (!compositionContainmentProps.empty) {
                 p >> "try " >>> "{"
-                p >> "// Dispose all the composition containment references.\n"
+                p >> "// Dispose all the composition references.\n"
                 for (prop: compositionContainmentProps) {
                     val fieldRef = "this." + prop.name.toFirstLower
                     val typeName = prop.type.name
@@ -399,12 +399,12 @@ abstract class ClassJvmModelInferrer {
         op.documentation = '''
             Adds the given «paramName» to this object. <p>
             «IF prop.opposite != null»
-            Since the reference is a containment reference, the opposite reference («prop.type.name».«prop.opposite.name.toFirstLower»)
+            Since the reference is a composition reference, the opposite reference («prop.type.name».«prop.opposite.name.toFirstLower»)
             of the «paramName» will be handled automatically and no further coding is required to keep them in sync. 
             See {@link «prop.type.name»#«prop.opposite.toSetterName»(«prop.type.name»)}.
             «ELSE»
             ATTENTION:<br>
-            The reference is a containment reference, but no opposite is available.
+            The reference is a composition reference, but no opposite is available.
             So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
             is set properly.
             «ENDIF»'''
@@ -526,7 +526,7 @@ abstract class ClassJvmModelInferrer {
         op.documentation = '''
             Removes the given «paramName» from this object. <p>
             «IF prop.composition»
-            Since the reference is a containment reference, the opposite reference («prop.type.name».«prop.opposite.name.toFirstLower»)
+            Since the reference is a composition reference, the opposite reference («prop.type.name».«prop.opposite.name.toFirstLower»)
             of the «paramName» will be handled automatically and no further coding is required to keep them in sync. 
             See {@link «prop.type.name»#«prop.opposite.toSetterName»(«prop.type.name»)}.
             «ENDIF»'''

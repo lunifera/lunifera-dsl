@@ -13,9 +13,12 @@ generator settings {
 	checked lifecycle
 }  
 
-package org.lunifera.metamodel.dsl.^entity.tests.jpa.model {
+package org.lunifera.dsl.^entity.xtext.tests.jpa.model {
 
 	import javax.persistence.*
+	
+	datatype long jvmType java.lang.Long
+	datatype String jvmType java.lang.String
 	 
 	/**
 	 * Test 112233
@@ -23,46 +26,51 @@ package org.lunifera.metamodel.dsl.^entity.tests.jpa.model {
 	entity Client {
 		// property
 		@GeneratedValue(strategy=GenerationType::IDENTITY)
-		var id long id
+		@Id
+		var long id 
 		var String name
 	 
-		contains Contract[*]contracts opposite client
+		collection Contract contracts opposite client composition
 	}  
 	
 	entity Contract {
 		@GeneratedValue(strategy=GenerationType::IDENTITY)
-		var id long id
+		@Id
+		var long id 
 		var String name
 		
-		container Client client opposite contracts
-		contains Project project opposite contract
+		refers Client client opposite contracts
+		refers Project project opposite contract
 	} 
 	
 	entity Project {
 		@GeneratedValue(strategy=GenerationType::IDENTITY)
-		var id long id
+		@Id
+		var long id 
 		var String name
 		
-		container Contract contract opposite project
-		refers Developer[*] developers  opposite project
+		refers Contract contract opposite project
+		collection Developer developers  opposite project
 		refers Manager manager opposite projects
 	} 
 	   
 	entity Manager {
 		@GeneratedValue(strategy=GenerationType::IDENTITY)
-		var id long id
+		@Id
+		var long id 
 		var String name
 		
-		refers Project[*] projects opposite manager
+		collection Project projects opposite manager
 		
-		def int getProjectsCount(){
+		def int getProjectsCount() {
 			projects.size
 		}
 	} 
 	
 	entity Developer {
 		@GeneratedValue(strategy=GenerationType::IDENTITY)
-		var id long id
+		@Id
+		var long id 
 		var String name
 		refers Project project	opposite developers
 	} 

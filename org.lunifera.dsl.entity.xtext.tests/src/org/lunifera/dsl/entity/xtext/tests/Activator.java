@@ -4,31 +4,22 @@ import javax.persistence.EntityManagerFactory;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
 public class Activator implements BundleActivator {
 
-	private static Activator instance;
 	public BundleContext context;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
 		this.context = context;
-		instance = this;
 	}
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
 		this.context = null;
-		instance = null;
-	}
-
-	/**
-	 * @return the instance
-	 */
-	public static Activator getInstance() {
-		return instance;
 	}
 
 	/**
@@ -37,7 +28,9 @@ public class Activator implements BundleActivator {
 	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public EntityManagerFactory getEMF() {
+	public static EntityManagerFactory getEMF() {
+		BundleContext context = FrameworkUtil.getBundle(Activator.class)
+				.getBundleContext();
 		ServiceReference[] refs;
 		try {
 			refs = context.getServiceReferences(

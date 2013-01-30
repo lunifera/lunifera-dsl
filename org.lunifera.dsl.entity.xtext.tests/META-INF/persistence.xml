@@ -3,14 +3,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="dbDerby" transaction-type="RESOURCE_LOCAL">
-		<class>org.lunifera.dsl.entity.xtext.tests.jpa.model.Client</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.jpa.model.Contract</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.jpa.model.Developer</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.jpa.model.Manager</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.jpa.model.Project</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby:luniferaDb" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:luniferaDb;create=true" />
 			<property name="javax.persistence.jdbc.user" value="test" />
 			<property name="javax.persistence.jdbc.password" value="test" />
 
