@@ -157,7 +157,7 @@ public class LPackageImpl extends MinimalEObjectImpl.Container implements LPacka
 	 */
 	public EList<LType> getTypes() {
 		if (types == null) {
-			types = new EObjectContainmentWithInverseEList<LType>(LType.class, this, EntityPackage.LPACKAGE__TYPES, EntityPackage.LTYPE__PACKAGE);
+			types = new EObjectContainmentEList<LType>(LType.class, this, EntityPackage.LPACKAGE__TYPES);
 		}
 		return types;
 	}
@@ -172,21 +172,6 @@ public class LPackageImpl extends MinimalEObjectImpl.Container implements LPacka
 			compilers = new EObjectContainmentEList<LCompilerType>(LCompilerType.class, this, EntityPackage.LPACKAGE__COMPILERS);
 		}
 		return compilers;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EntityPackage.LPACKAGE__TYPES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

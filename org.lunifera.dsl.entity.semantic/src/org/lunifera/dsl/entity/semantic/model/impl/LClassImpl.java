@@ -28,29 +28,31 @@ import org.lunifera.dsl.entity.semantic.model.EntityPackage;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationTarget;
 import org.lunifera.dsl.entity.semantic.model.LClass;
+import org.lunifera.dsl.entity.semantic.model.LOperation;
+import org.lunifera.dsl.entity.semantic.model.LProperty;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>LClass</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>LClass</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl#getAnnotationInfo <em>Annotation Info</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl#isSerializable <em>Serializable</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl#getSubTypes <em>Sub Types</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LClassImpl#getShortName <em>Short Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class LClassImpl extends LTypeImpl implements LClass {
+public class LClassImpl extends LTypeImpl implements LClass {
 	/**
 	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAnnotations()
 	 * @generated
 	 * @ordered
@@ -58,9 +60,18 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	protected EList<LAnnotationDef> annotations;
 
 	/**
-	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * The cached value of the '{@link #getAnnotationInfo() <em>Annotation Info</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getAnnotationInfo()
+	 * @generated
+	 * @ordered
+	 */
+	protected LAnnotationTarget annotationInfo;
+
+	/**
+	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isAbstract()
 	 * @generated
 	 * @ordered
@@ -69,8 +80,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 
 	/**
 	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isAbstract()
 	 * @generated
 	 * @ordered
@@ -79,8 +89,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 
 	/**
 	 * The default value of the '{@link #isSerializable() <em>Serializable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSerializable()
 	 * @generated
 	 * @ordered
@@ -89,8 +98,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 
 	/**
 	 * The cached value of the '{@link #isSerializable() <em>Serializable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSerializable()
 	 * @generated
 	 * @ordered
@@ -99,8 +107,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 
 	/**
 	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSuperType()
 	 * @generated
 	 * @ordered
@@ -109,8 +116,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 
 	/**
 	 * The cached value of the '{@link #getSubTypes() <em>Sub Types</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSubTypes()
 	 * @generated
 	 * @ordered
@@ -118,8 +124,25 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	protected EList<LClass> subTypes;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getShortName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SHORT_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getShortName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String shortName = SHORT_NAME_EDEFAULT;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected LClassImpl() {
@@ -127,8 +150,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -137,20 +159,67 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<LAnnotationDef> getAnnotations() {
+	public EList<LAnnotationDef> getAnnotationsGen() {
 		if (annotations == null) {
 			annotations = new EObjectContainmentEList<LAnnotationDef>(LAnnotationDef.class, this, EntityPackage.LCLASS__ANNOTATIONS);
 		}
 		return annotations;
 	}
 
+	@Override
+	public EList<LAnnotationDef> getAnnotations() {
+		if (getAnnotationInfo() != null) {
+			return getAnnotationInfo().getAnnotations();
+		}
+		return getAnnotationsGen();
+	}
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LAnnotationTarget getAnnotationInfo() {
+		return annotationInfo;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAnnotationInfo(
+			LAnnotationTarget newAnnotationInfo, NotificationChain msgs) {
+		LAnnotationTarget oldAnnotationInfo = annotationInfo;
+		annotationInfo = newAnnotationInfo;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntityPackage.LCLASS__ANNOTATION_INFO, oldAnnotationInfo, newAnnotationInfo);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAnnotationInfo(LAnnotationTarget newAnnotationInfo) {
+		if (newAnnotationInfo != annotationInfo) {
+			NotificationChain msgs = null;
+			if (annotationInfo != null)
+				msgs = ((InternalEObject)annotationInfo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntityPackage.LCLASS__ANNOTATION_INFO, null, msgs);
+			if (newAnnotationInfo != null)
+				msgs = ((InternalEObject)newAnnotationInfo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntityPackage.LCLASS__ANNOTATION_INFO, null, msgs);
+			msgs = basicSetAnnotationInfo(newAnnotationInfo, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LCLASS__ANNOTATION_INFO, newAnnotationInfo, newAnnotationInfo));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isAbstract() {
@@ -158,8 +227,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setAbstract(boolean newAbstract) {
@@ -170,8 +238,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isSerializable() {
@@ -179,8 +246,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSerializable(boolean newSerializable) {
@@ -191,8 +257,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public LClass getSuperType() {
@@ -200,11 +265,11 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSuperType(LClass newSuperType, NotificationChain msgs) {
+	public NotificationChain basicSetSuperType(LClass newSuperType,
+			NotificationChain msgs) {
 		LClass oldSuperType = superType;
 		superType = newSuperType;
 		if (eNotificationRequired()) {
@@ -215,8 +280,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSuperType(LClass newSuperType) {
@@ -234,8 +298,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<LClass> getSubTypes() {
@@ -245,14 +308,42 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 		return subTypes;
 	}
 
+	public EList<? extends LProperty> getProperties() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public EList<LOperation> getOperations() {
+		throw new UnsupportedOperationException();
+	}
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getShortName() {
+		return shortName;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShortName(String newShortName) {
+		String oldShortName = shortName;
+		shortName = newShortName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LCLASS__SHORT_NAME, oldShortName, shortName));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EntityPackage.LCLASS__SUPER_TYPE:
 				if (superType != null)
@@ -265,15 +356,17 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EntityPackage.LCLASS__ANNOTATIONS:
 				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
+			case EntityPackage.LCLASS__ANNOTATION_INFO:
+				return basicSetAnnotationInfo(null, msgs);
 			case EntityPackage.LCLASS__SUPER_TYPE:
 				return basicSetSuperType(null, msgs);
 			case EntityPackage.LCLASS__SUB_TYPES:
@@ -283,8 +376,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -292,6 +384,8 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 		switch (featureID) {
 			case EntityPackage.LCLASS__ANNOTATIONS:
 				return getAnnotations();
+			case EntityPackage.LCLASS__ANNOTATION_INFO:
+				return getAnnotationInfo();
 			case EntityPackage.LCLASS__ABSTRACT:
 				return isAbstract();
 			case EntityPackage.LCLASS__SERIALIZABLE:
@@ -300,13 +394,14 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 				return getSuperType();
 			case EntityPackage.LCLASS__SUB_TYPES:
 				return getSubTypes();
+			case EntityPackage.LCLASS__SHORT_NAME:
+				return getShortName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -316,6 +411,9 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 			case EntityPackage.LCLASS__ANNOTATIONS:
 				getAnnotations().clear();
 				getAnnotations().addAll((Collection<? extends LAnnotationDef>)newValue);
+				return;
+			case EntityPackage.LCLASS__ANNOTATION_INFO:
+				setAnnotationInfo((LAnnotationTarget)newValue);
 				return;
 			case EntityPackage.LCLASS__ABSTRACT:
 				setAbstract((Boolean)newValue);
@@ -330,13 +428,15 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 				getSubTypes().clear();
 				getSubTypes().addAll((Collection<? extends LClass>)newValue);
 				return;
+			case EntityPackage.LCLASS__SHORT_NAME:
+				setShortName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -344,6 +444,9 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 		switch (featureID) {
 			case EntityPackage.LCLASS__ANNOTATIONS:
 				getAnnotations().clear();
+				return;
+			case EntityPackage.LCLASS__ANNOTATION_INFO:
+				setAnnotationInfo((LAnnotationTarget)null);
 				return;
 			case EntityPackage.LCLASS__ABSTRACT:
 				setAbstract(ABSTRACT_EDEFAULT);
@@ -357,13 +460,15 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 			case EntityPackage.LCLASS__SUB_TYPES:
 				getSubTypes().clear();
 				return;
+			case EntityPackage.LCLASS__SHORT_NAME:
+				setShortName(SHORT_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -371,6 +476,8 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 		switch (featureID) {
 			case EntityPackage.LCLASS__ANNOTATIONS:
 				return annotations != null && !annotations.isEmpty();
+			case EntityPackage.LCLASS__ANNOTATION_INFO:
+				return annotationInfo != null;
 			case EntityPackage.LCLASS__ABSTRACT:
 				return abstract_ != ABSTRACT_EDEFAULT;
 			case EntityPackage.LCLASS__SERIALIZABLE:
@@ -379,13 +486,14 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 				return superType != null;
 			case EntityPackage.LCLASS__SUB_TYPES:
 				return subTypes != null && !subTypes.isEmpty();
+			case EntityPackage.LCLASS__SHORT_NAME:
+				return SHORT_NAME_EDEFAULT == null ? shortName != null : !SHORT_NAME_EDEFAULT.equals(shortName);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -400,8 +508,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -416,8 +523,7 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -429,8 +535,10 @@ public abstract class LClassImpl extends LTypeImpl implements LClass {
 		result.append(abstract_);
 		result.append(", serializable: ");
 		result.append(serializable);
+		result.append(", shortName: ");
+		result.append(shortName);
 		result.append(')');
 		return result.toString();
 	}
 
-} //LClassImpl
+} // LClassImpl

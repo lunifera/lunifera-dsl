@@ -103,6 +103,7 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 			case EntityPackage.LDATA_TYPE: return createLDataType();
 			case EntityPackage.LENUM: return createLEnum();
 			case EntityPackage.LENUM_LITERAL: return createLEnumLiteral();
+			case EntityPackage.LCLASS: return createLClass();
 			case EntityPackage.LBEAN: return createLBean();
 			case EntityPackage.LENTITY: return createLEntity();
 			case EntityPackage.LPROPERTY: return createLProperty();
@@ -337,6 +338,16 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory {
 	public LEnumLiteral createLEnumLiteral() {
 		LEnumLiteralImpl lEnumLiteral = new LEnumLiteralImpl();
 		return lEnumLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LClass createLClass() {
+		LClassImpl lClass = new LClassImpl();
+		return lClass;
 	}
 
 	/**

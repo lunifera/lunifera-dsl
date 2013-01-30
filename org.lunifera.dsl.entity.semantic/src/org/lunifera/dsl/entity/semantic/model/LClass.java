@@ -18,26 +18,50 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>LClass</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#isAbstract <em>
- * Abstract</em>}</li>
- * <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#isSerializable <em>
- * Serializable</em>}</li>
- * <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#getSuperType <em>
- * Super Type</em>}</li>
- * <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#getSubTypes <em>Sub
- * Types</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#getAnnotationInfo <em>Annotation Info</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#isSerializable <em>Serializable</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#getSuperType <em>Super Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#getSubTypes <em>Sub Types</em>}</li>
+ *   <li>{@link org.lunifera.dsl.entity.semantic.model.LClass#getShortName <em>Short Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLClass()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface LClass extends LType, LAnnotationTarget {
+	/**
+	 * Returns the value of the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Annotation Info</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Annotation Info</em>' containment reference.
+	 * @see #setAnnotationInfo(LAnnotationTarget)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLClass_AnnotationInfo()
+	 * @model containment="true"
+	 * @generated
+	 */
+	LAnnotationTarget getAnnotationInfo();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LClass#getAnnotationInfo <em>Annotation Info</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Annotation Info</em>' containment reference.
+	 * @see #getAnnotationInfo()
+	 * @generated
+	 */
+	void setAnnotationInfo(LAnnotationTarget value);
+
 	/**
 	 * Returns the value of the '<em><b>Abstract</b></em>' attribute. <!--
 	 * begin-user-doc -->
@@ -86,29 +110,24 @@ public interface LClass extends LType, LAnnotationTarget {
 	boolean isSerializable();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.lunifera.dsl.entity.semantic.model.LClass#isSerializable
-	 * <em>Serializable</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LClass#isSerializable <em>Serializable</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Serializable</em>' attribute.
+	 * @param value the new value of the '<em>Serializable</em>' attribute.
 	 * @see #isSerializable()
 	 * @generated
 	 */
 	void setSerializable(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Super Type</b></em>' reference. It is
-	 * bidirectional and its opposite is '
-	 * {@link org.lunifera.dsl.entity.semantic.model.LClass#getSubTypes
-	 * <em>Sub Types</em>}'. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Super Type</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.entity.semantic.model.LClass#getSubTypes <em>Sub Types</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Super Type</em>' reference isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Super Type</em>' reference.
 	 * @see #setSuperType(LClass)
 	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLClass_SuperType()
@@ -119,31 +138,25 @@ public interface LClass extends LType, LAnnotationTarget {
 	LClass getSuperType();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.lunifera.dsl.entity.semantic.model.LClass#getSuperType
-	 * <em>Super Type</em>}' reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LClass#getSuperType <em>Super Type</em>}' reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Super Type</em>' reference.
+	 * @param value the new value of the '<em>Super Type</em>' reference.
 	 * @see #getSuperType()
 	 * @generated
 	 */
 	void setSuperType(LClass value);
 
 	/**
-	 * Returns the value of the '<em><b>Sub Types</b></em>' reference list. The
-	 * list contents are of type
-	 * {@link org.lunifera.dsl.entity.semantic.model.LClass}. It is
-	 * bidirectional and its opposite is '
-	 * {@link org.lunifera.dsl.entity.semantic.model.LClass#getSuperType
-	 * <em>Super Type</em>}'. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Sub Types</b></em>' reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.entity.semantic.model.LClass}.
+	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.entity.semantic.model.LClass#getSuperType <em>Super Type</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Types</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Sub Types</em>' reference list.
 	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLClass_SubTypes()
 	 * @see org.lunifera.dsl.entity.semantic.model.LClass#getSuperType
@@ -151,6 +164,32 @@ public interface LClass extends LType, LAnnotationTarget {
 	 * @generated
 	 */
 	EList<LClass> getSubTypes();
+
+	/**
+	 * Returns the value of the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Short Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Short Name</em>' attribute.
+	 * @see #setShortName(String)
+	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLClass_ShortName()
+	 * @model
+	 * @generated
+	 */
+	String getShortName();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LClass#getShortName <em>Short Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Short Name</em>' attribute.
+	 * @see #getShortName()
+	 * @generated
+	 */
+	void setShortName(String value);
 
 	/**
 	 * Returns the properties of this class.

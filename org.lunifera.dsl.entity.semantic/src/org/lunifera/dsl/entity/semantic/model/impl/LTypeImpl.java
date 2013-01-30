@@ -31,7 +31,6 @@ import org.lunifera.dsl.entity.semantic.model.LType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LTypeImpl#getPackage <em>Package</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LTypeImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -83,47 +82,6 @@ public abstract class LTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LPackage getPackage() {
-		if (eContainerFeatureID() != EntityPackage.LTYPE__PACKAGE) return null;
-		return (LPackage)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPackage(LPackage newPackage, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newPackage, EntityPackage.LTYPE__PACKAGE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPackage(LPackage newPackage) {
-		if (newPackage != eInternalContainer() || (eContainerFeatureID() != EntityPackage.LTYPE__PACKAGE && newPackage != null)) {
-			if (EcoreUtil.isAncestor(this, newPackage))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newPackage != null)
-				msgs = ((InternalEObject)newPackage).eInverseAdd(this, EntityPackage.LPACKAGE__TYPES, LPackage.class, msgs);
-			msgs = basicSetPackage(newPackage, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LTYPE__PACKAGE, newPackage, newPackage));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getName() {
 		return name;
 	}
@@ -146,54 +104,8 @@ public abstract class LTypeImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EntityPackage.LTYPE__PACKAGE:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetPackage((LPackage)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EntityPackage.LTYPE__PACKAGE:
-				return basicSetPackage(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case EntityPackage.LTYPE__PACKAGE:
-				return eInternalContainer().eInverseRemove(this, EntityPackage.LPACKAGE__TYPES, LPackage.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EntityPackage.LTYPE__PACKAGE:
-				return getPackage();
 			case EntityPackage.LTYPE__NAME:
 				return getName();
 		}
@@ -208,9 +120,6 @@ public abstract class LTypeImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EntityPackage.LTYPE__PACKAGE:
-				setPackage((LPackage)newValue);
-				return;
 			case EntityPackage.LTYPE__NAME:
 				setName((String)newValue);
 				return;
@@ -226,9 +135,6 @@ public abstract class LTypeImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LTYPE__PACKAGE:
-				setPackage((LPackage)null);
-				return;
 			case EntityPackage.LTYPE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -244,8 +150,6 @@ public abstract class LTypeImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LTYPE__PACKAGE:
-				return getPackage() != null;
 			case EntityPackage.LTYPE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}

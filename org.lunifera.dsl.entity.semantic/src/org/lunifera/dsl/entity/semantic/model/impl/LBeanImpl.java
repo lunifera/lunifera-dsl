@@ -35,7 +35,6 @@ import org.lunifera.dsl.entity.semantic.model.LOperation;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LBeanImpl#getShortName <em>Short Name</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LBeanImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LBeanImpl#getOperations <em>Operations</em>}</li>
  * </ul>
@@ -44,26 +43,6 @@ import org.lunifera.dsl.entity.semantic.model.LOperation;
  * @generated
  */
 public class LBeanImpl extends LClassImpl implements LBean {
-	/**
-	 * The default value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getShortName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SHORT_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getShortName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String shortName = SHORT_NAME_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -101,27 +80,6 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	@Override
 	protected EClass eStaticClass() {
 		return EntityPackage.Literals.LBEAN;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getShortName() {
-		return shortName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setShortName(String newShortName) {
-		String oldShortName = shortName;
-		shortName = newShortName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LBEAN__SHORT_NAME, oldShortName, shortName));
 	}
 
 	/**
@@ -172,8 +130,6 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EntityPackage.LBEAN__SHORT_NAME:
-				return getShortName();
 			case EntityPackage.LBEAN__PROPERTIES:
 				return getProperties();
 			case EntityPackage.LBEAN__OPERATIONS:
@@ -191,9 +147,6 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EntityPackage.LBEAN__SHORT_NAME:
-				setShortName((String)newValue);
-				return;
 			case EntityPackage.LBEAN__PROPERTIES:
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends LBeanProp>)newValue);
@@ -214,9 +167,6 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LBEAN__SHORT_NAME:
-				setShortName(SHORT_NAME_EDEFAULT);
-				return;
 			case EntityPackage.LBEAN__PROPERTIES:
 				getProperties().clear();
 				return;
@@ -235,30 +185,12 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LBEAN__SHORT_NAME:
-				return SHORT_NAME_EDEFAULT == null ? shortName != null : !SHORT_NAME_EDEFAULT.equals(shortName);
 			case EntityPackage.LBEAN__PROPERTIES:
 				return properties != null && !properties.isEmpty();
 			case EntityPackage.LBEAN__OPERATIONS:
 				return operations != null && !operations.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (shortName: ");
-		result.append(shortName);
-		result.append(')');
-		return result.toString();
 	}
 
 } //LBeanImpl

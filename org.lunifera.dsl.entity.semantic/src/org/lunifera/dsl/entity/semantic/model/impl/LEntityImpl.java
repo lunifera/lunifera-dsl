@@ -35,7 +35,6 @@ import org.lunifera.dsl.entity.semantic.model.LOperation;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getShortName <em>Short Name</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#getPersistenceName <em>Persistence Name</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#isCacheable <em>Cacheable</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.impl.LEntityImpl#isHistorized <em>Historized</em>}</li>
@@ -47,26 +46,6 @@ import org.lunifera.dsl.entity.semantic.model.LOperation;
  * @generated
  */
 public class LEntityImpl extends LClassImpl implements LEntity {
-	/**
-	 * The default value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getShortName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SHORT_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getShortName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String shortName = SHORT_NAME_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getPersistenceName() <em>Persistence Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -164,27 +143,6 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	@Override
 	protected EClass eStaticClass() {
 		return EntityPackage.Literals.LENTITY;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getShortName() {
-		return shortName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setShortName(String newShortName) {
-		String oldShortName = shortName;
-		shortName = newShortName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__SHORT_NAME, oldShortName, shortName));
 	}
 
 	/**
@@ -307,8 +265,6 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__SHORT_NAME:
-				return getShortName();
 			case EntityPackage.LENTITY__PERSISTENCE_NAME:
 				return getPersistenceName();
 			case EntityPackage.LENTITY__CACHEABLE:
@@ -332,9 +288,6 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__SHORT_NAME:
-				setShortName((String)newValue);
-				return;
 			case EntityPackage.LENTITY__PERSISTENCE_NAME:
 				setPersistenceName((String)newValue);
 				return;
@@ -364,9 +317,6 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__SHORT_NAME:
-				setShortName(SHORT_NAME_EDEFAULT);
-				return;
 			case EntityPackage.LENTITY__PERSISTENCE_NAME:
 				setPersistenceName(PERSISTENCE_NAME_EDEFAULT);
 				return;
@@ -394,8 +344,6 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EntityPackage.LENTITY__SHORT_NAME:
-				return SHORT_NAME_EDEFAULT == null ? shortName != null : !SHORT_NAME_EDEFAULT.equals(shortName);
 			case EntityPackage.LENTITY__PERSISTENCE_NAME:
 				return PERSISTENCE_NAME_EDEFAULT == null ? persistenceName != null : !PERSISTENCE_NAME_EDEFAULT.equals(persistenceName);
 			case EntityPackage.LENTITY__CACHEABLE:
@@ -420,9 +368,7 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (shortName: ");
-		result.append(shortName);
-		result.append(", persistenceName: ");
+		result.append(" (persistenceName: ");
 		result.append(persistenceName);
 		result.append(", cacheable: ");
 		result.append(cacheable);

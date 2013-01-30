@@ -19,6 +19,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LEntityModel;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
+import org.lunifera.dsl.entity.xtext.util.Util;
 
 import com.google.inject.Inject;
 
@@ -31,13 +32,13 @@ public class EntityJvmModelGenerator extends JvmModelGenerator {
 	public void internalDoGenerate(final EObject type, final IFileSystemAccess fsa) {
 		if (type instanceof JvmEnumerationType) {
 			LEnum lenum = (LEnum) associations.getPrimarySourceElement(type);
-			LEntityModel lmodel = (LEntityModel) lenum.getPackage().eContainer();
+			LEntityModel lmodel = (LEntityModel) Util.toPackageS(lenum).eContainer();
 			if (isNoSource(lmodel)) {
 				return;
 			}
 		} else if (type instanceof JvmGenericType) {
 			LClass lClass = (LClass) associations.getPrimarySourceElement(type);
-			LEntityModel lmodel = (LEntityModel) lClass.getPackage().eContainer();
+			LEntityModel lmodel = (LEntityModel) Util.toPackageS(lClass).eContainer();
 			if (isNoSource(lmodel)) {
 				return;
 			}

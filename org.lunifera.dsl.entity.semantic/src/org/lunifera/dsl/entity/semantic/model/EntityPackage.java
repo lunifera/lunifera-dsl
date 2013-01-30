@@ -515,22 +515,13 @@ public interface EntityPackage extends EPackage {
 	int LANNOTATION_TARGET_FEATURE_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LTYPE__PACKAGE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LTYPE__NAME = 1;
+	int LTYPE__NAME = 0;
 
 	/**
 	 * The number of structural features of the '<em>LType</em>' class.
@@ -539,16 +530,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LTYPE_FEATURE_COUNT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LSCALAR_TYPE__PACKAGE = LTYPE__PACKAGE;
+	int LTYPE_FEATURE_COUNT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -589,15 +571,6 @@ public interface EntityPackage extends EPackage {
 	int LDATA_TYPE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDATA_TYPE__PACKAGE = LSCALAR_TYPE__PACKAGE;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -623,15 +596,6 @@ public interface EntityPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENUM__PACKAGE = LSCALAR_TYPE__PACKAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -679,15 +643,6 @@ public interface EntityPackage extends EPackage {
 	int LENUM_LITERAL_FEATURE_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LCLASS__PACKAGE = LTYPE__PACKAGE;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -706,13 +661,22 @@ public interface EntityPackage extends EPackage {
 	int LCLASS__ANNOTATIONS = LTYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCLASS__ANNOTATION_INFO = LTYPE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LCLASS__ABSTRACT = LTYPE_FEATURE_COUNT + 1;
+	int LCLASS__ABSTRACT = LTYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Serializable</b></em>' attribute.
@@ -721,7 +685,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LCLASS__SERIALIZABLE = LTYPE_FEATURE_COUNT + 2;
+	int LCLASS__SERIALIZABLE = LTYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -730,7 +694,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LCLASS__SUPER_TYPE = LTYPE_FEATURE_COUNT + 3;
+	int LCLASS__SUPER_TYPE = LTYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
@@ -739,7 +703,16 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LCLASS__SUB_TYPES = LTYPE_FEATURE_COUNT + 4;
+	int LCLASS__SUB_TYPES = LTYPE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCLASS__SHORT_NAME = LTYPE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>LClass</em>' class.
@@ -748,16 +721,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LCLASS_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LBEAN__PACKAGE = LCLASS__PACKAGE;
+	int LCLASS_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -776,6 +740,15 @@ public interface EntityPackage extends EPackage {
 	 * @ordered
 	 */
 	int LBEAN__ANNOTATIONS = LCLASS__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__ANNOTATION_INFO = LCLASS__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -820,7 +793,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN__SHORT_NAME = LCLASS_FEATURE_COUNT + 0;
+	int LBEAN__SHORT_NAME = LCLASS__SHORT_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -829,7 +802,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN__PROPERTIES = LCLASS_FEATURE_COUNT + 1;
+	int LBEAN__PROPERTIES = LCLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
@@ -838,7 +811,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN__OPERATIONS = LCLASS_FEATURE_COUNT + 2;
+	int LBEAN__OPERATIONS = LCLASS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>LBean</em>' class.
@@ -847,16 +820,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_FEATURE_COUNT = LCLASS_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENTITY__PACKAGE = LCLASS__PACKAGE;
+	int LBEAN_FEATURE_COUNT = LCLASS_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -875,6 +839,15 @@ public interface EntityPackage extends EPackage {
 	 * @ordered
 	 */
 	int LENTITY__ANNOTATIONS = LCLASS__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__ANNOTATION_INFO = LCLASS__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -919,7 +892,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__SHORT_NAME = LCLASS_FEATURE_COUNT + 0;
+	int LENTITY__SHORT_NAME = LCLASS__SHORT_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Persistence Name</b></em>' attribute.
@@ -928,7 +901,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__PERSISTENCE_NAME = LCLASS_FEATURE_COUNT + 1;
+	int LENTITY__PERSISTENCE_NAME = LCLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Cacheable</b></em>' attribute.
@@ -937,7 +910,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__CACHEABLE = LCLASS_FEATURE_COUNT + 2;
+	int LENTITY__CACHEABLE = LCLASS_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Historized</b></em>' attribute.
@@ -946,7 +919,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__HISTORIZED = LCLASS_FEATURE_COUNT + 3;
+	int LENTITY__HISTORIZED = LCLASS_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -955,7 +928,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__PROPERTIES = LCLASS_FEATURE_COUNT + 4;
+	int LENTITY__PROPERTIES = LCLASS_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
@@ -964,7 +937,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__OPERATIONS = LCLASS_FEATURE_COUNT + 5;
+	int LENTITY__OPERATIONS = LCLASS_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>LEntity</em>' class.
@@ -973,7 +946,7 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_FEATURE_COUNT = LCLASS_FEATURE_COUNT + 6;
+	int LENTITY_FEATURE_COUNT = LCLASS_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2461,17 +2434,6 @@ public interface EntityPackage extends EPackage {
 	EClass getLType();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.lunifera.dsl.entity.semantic.model.LType#getPackage <em>Package</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Package</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LType#getPackage()
-	 * @see #getLType()
-	 * @generated
-	 */
-	EReference getLType_Package();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LType#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2501,17 +2463,6 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLEntity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getShortName <em>Short Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Short Name</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LEntity#getShortName()
-	 * @see #getLEntity()
-	 * @generated
-	 */
-	EAttribute getLEntity_ShortName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getPersistenceName <em>Persistence Name</em>}'.
@@ -3028,6 +2979,17 @@ public interface EntityPackage extends EPackage {
 	EClass getLClass();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.entity.semantic.model.LClass#getAnnotationInfo <em>Annotation Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Annotation Info</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LClass#getAnnotationInfo()
+	 * @see #getLClass()
+	 * @generated
+	 */
+	EReference getLClass_AnnotationInfo();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LClass#isAbstract <em>Abstract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3072,6 +3034,17 @@ public interface EntityPackage extends EPackage {
 	EReference getLClass_SubTypes();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LClass#getShortName <em>Short Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Short Name</em>'.
+	 * @see org.lunifera.dsl.entity.semantic.model.LClass#getShortName()
+	 * @see #getLClass()
+	 * @generated
+	 */
+	EAttribute getLClass_ShortName();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.entity.semantic.model.LBean <em>LBean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3080,17 +3053,6 @@ public interface EntityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLBean();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.entity.semantic.model.LBean#getShortName <em>Short Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Short Name</em>'.
-	 * @see org.lunifera.dsl.entity.semantic.model.LBean#getShortName()
-	 * @see #getLBean()
-	 * @generated
-	 */
-	EAttribute getLBean_ShortName();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.entity.semantic.model.LBean#getProperties <em>Properties</em>}'.
@@ -3394,14 +3356,6 @@ public interface EntityPackage extends EPackage {
 		EClass LTYPE = eINSTANCE.getLType();
 
 		/**
-		 * The meta object literal for the '<em><b>Package</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LTYPE__PACKAGE = eINSTANCE.getLType_Package();
-
-		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3428,14 +3382,6 @@ public interface EntityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LENTITY = eINSTANCE.getLEntity();
-
-		/**
-		 * The meta object literal for the '<em><b>Short Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LENTITY__SHORT_NAME = eINSTANCE.getLEntity_ShortName();
 
 		/**
 		 * The meta object literal for the '<em><b>Persistence Name</b></em>' attribute feature.
@@ -3850,6 +3796,14 @@ public interface EntityPackage extends EPackage {
 		EClass LCLASS = eINSTANCE.getLClass();
 
 		/**
+		 * The meta object literal for the '<em><b>Annotation Info</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LCLASS__ANNOTATION_INFO = eINSTANCE.getLClass_AnnotationInfo();
+
+		/**
 		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3882,6 +3836,14 @@ public interface EntityPackage extends EPackage {
 		EReference LCLASS__SUB_TYPES = eINSTANCE.getLClass_SubTypes();
 
 		/**
+		 * The meta object literal for the '<em><b>Short Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LCLASS__SHORT_NAME = eINSTANCE.getLClass_ShortName();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.entity.semantic.model.impl.LBeanImpl <em>LBean</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3890,14 +3852,6 @@ public interface EntityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LBEAN = eINSTANCE.getLBean();
-
-		/**
-		 * The meta object literal for the '<em><b>Short Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LBEAN__SHORT_NAME = eINSTANCE.getLBean_ShortName();
 
 		/**
 		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.

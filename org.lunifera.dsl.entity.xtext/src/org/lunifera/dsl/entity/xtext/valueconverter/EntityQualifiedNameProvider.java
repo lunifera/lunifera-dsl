@@ -20,6 +20,7 @@ import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LCompilerType;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
 import org.lunifera.dsl.entity.semantic.model.LPackage;
+import org.lunifera.dsl.entity.xtext.util.Util;
 
 import com.google.inject.Inject;
 
@@ -36,7 +37,7 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 		}
 
 		if (obj instanceof LClass) {
-			LPackage pkg = ((LClass) obj).getPackage();
+			LPackage pkg = Util.toPackageS((LClass) obj);
 			if (pkg != null) {
 				final String qualifiedName = String.format("%s.%s",
 						pkg.getName(), ((LClass) obj).getName());
@@ -47,7 +48,7 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 				return QualifiedName.create("");
 			}
 		} else if (obj instanceof LEnum) {
-			LPackage pkg = ((LEnum) obj).getPackage();
+			LPackage pkg = Util.toPackageS((LEnum) obj);
 			if (pkg != null) {
 				final String qualifiedName = String.format("%s.%s",
 						pkg.getName(), ((LEnum) obj).getName());

@@ -30,7 +30,7 @@ import com.google.inject.Inject;
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an
  * example
  */
-@SuppressWarnings("restriction")
+@SuppressWarnings({ "restriction", "deprecation" })
 public class EntityFormatter extends AbstractDeclarativeFormatter {
 
 	@Inject
@@ -51,7 +51,6 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 
 		configureLCompilerType(c, f.getLGenSettingsAccess());
 		configureLPackage(c, f.getLPackageAccess());
-		configureLEntity(c, f.getLEntityAccess());
 		configureLAnnotationDef(c, f.getLAnnotationDefAccess());
 		configureLEntityPropElement(c, f.getLEntityPropAccess());
 
@@ -93,19 +92,6 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 				ele.getLeftCurlyBracketKeyword_3_0());
 		config.setIndentationDecrement().before(
 				ele.getRightCurlyBracketKeyword_3_4());
-	}
-
-	protected void configureLEntity(FormattingConfig c,
-			EntityGrammarGrammarAccess.LEntityElements ele) {
-		// linewrap
-		c.setLinewrap(2).around(ele.getRule());
-		// ### c.setLinewrap().around(ele.getAnnotationsAssignment_0());
-		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_6());
-		c.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_9());
-
-		// indentation
-		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_6());
-		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_9());
 	}
 
 	public void configureLEntityPropElement(FormattingConfig config,

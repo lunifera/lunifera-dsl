@@ -44,6 +44,7 @@ import org.lunifera.dsl.entity.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.entity.xtext.jvmmodel.services.IAnnotationCompiler
+import org.lunifera.dsl.entity.xtext.util.Util
 
 /**
  * Infers a JVM model from {@link LClass} model elements.
@@ -56,6 +57,7 @@ abstract class ClassJvmModelInferrer {
     @Inject extension ModelExtensions
     @Inject extension MethodNamingExtensions
     @Inject extension TreeAppendableExtensions
+    @Inject extension Util
 
     @Inject TypesFactory typesFactory;
     @Inject TypeReferences references;
@@ -150,7 +152,7 @@ abstract class ClassJvmModelInferrer {
         jvmField.type = cloneWithProxies(prop.toTypeReference)
 
         val LClass lEntity = prop.eContainer() as LClass
-        val LEntityModel lModel = lEntity.getPackage().eContainer() as LEntityModel
+        val LEntityModel lModel = lEntity.toPackage().eContainer() as LEntityModel
         annotationCompiler.processAnnotation(prop, jvmField, lModel.getGenSettings());
 
         associate(prop, jvmField);
@@ -279,7 +281,7 @@ abstract class ClassJvmModelInferrer {
         op.returnType = cloneWithProxies(returnType)
 
         val LClass lEntity = sourceElement.eContainer() as LClass
-        val LEntityModel lModel = lEntity.getPackage().eContainer() as LEntityModel
+        val LEntityModel lModel = lEntity.toPackage().eContainer() as LEntityModel
         annotationCompiler.processAnnotation(sourceElement, op, lModel.getGenSettings());
 
         associate(sourceElement, op);
@@ -426,8 +428,8 @@ abstract class ClassJvmModelInferrer {
     }
 
     def JvmVisibility getInternalMethodVisibility(LProperty ref) {
-        val LPackage ownerPackage = (ref.eContainer() as LType).getPackage();
-        val LPackage refPackage = ref.getType().getPackage();
+        val LPackage ownerPackage = (ref.eContainer() as LType).toPackage();
+        val LPackage refPackage = ref.getType().toPackage();
         if (ownerPackage.equals(refPackage)) {
             null // package visibility
         } else { 
@@ -580,7 +582,7 @@ abstract class ClassJvmModelInferrer {
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
    	 def void infer(LClass lClass, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-   	 	val LEntityModel model = lClass.getPackage().eContainer as LEntityModel
+   	 	val LEntityModel model = lClass.toPackage().eContainer as LEntityModel
    	 	val LGenSettings settings = model.genSettings
 		acceptor.accept(lClass.toJvmType).initializeLater [
 			documentation = lClass.documentation

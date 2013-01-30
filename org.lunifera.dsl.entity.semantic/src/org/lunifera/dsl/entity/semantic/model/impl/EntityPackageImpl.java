@@ -505,17 +505,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLType_Package() {
-		return (EReference)lTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getLType_Name() {
-		return (EAttribute)lTypeEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)lTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -541,7 +532,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLEntity_ShortName() {
+	public EAttribute getLEntity_PersistenceName() {
 		return (EAttribute)lEntityEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -550,7 +541,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLEntity_PersistenceName() {
+	public EAttribute getLEntity_Cacheable() {
 		return (EAttribute)lEntityEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -559,7 +550,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLEntity_Cacheable() {
+	public EAttribute getLEntity_Historized() {
 		return (EAttribute)lEntityEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -568,17 +559,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLEntity_Historized() {
-		return (EAttribute)lEntityEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getLEntity_Properties() {
-		return (EReference)lEntityEClass.getEStructuralFeatures().get(4);
+		return (EReference)lEntityEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -587,7 +569,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * @generated
 	 */
 	public EReference getLEntity_Operations() {
-		return (EReference)lEntityEClass.getEStructuralFeatures().get(5);
+		return (EReference)lEntityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -982,8 +964,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLClass_Abstract() {
-		return (EAttribute)lClassEClass.getEStructuralFeatures().get(0);
+	public EReference getLClass_AnnotationInfo() {
+		return (EReference)lClassEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -991,7 +973,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLClass_Serializable() {
+	public EAttribute getLClass_Abstract() {
 		return (EAttribute)lClassEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1000,8 +982,17 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLClass_Serializable() {
+		return (EAttribute)lClassEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getLClass_SuperType() {
-		return (EReference)lClassEClass.getEStructuralFeatures().get(2);
+		return (EReference)lClassEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1010,7 +1001,16 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * @generated
 	 */
 	public EReference getLClass_SubTypes() {
-		return (EReference)lClassEClass.getEStructuralFeatures().get(3);
+		return (EReference)lClassEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLClass_ShortName() {
+		return (EAttribute)lClassEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1027,17 +1027,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBean_ShortName() {
-		return (EAttribute)lBeanEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getLBean_Properties() {
-		return (EReference)lBeanEClass.getEStructuralFeatures().get(1);
+		return (EReference)lBeanEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1046,7 +1037,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 	 * @generated
 	 */
 	public EReference getLBean_Operations() {
-		return (EReference)lBeanEClass.getEStructuralFeatures().get(2);
+		return (EReference)lBeanEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1189,7 +1180,6 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 		createEReference(lAnnotationTargetEClass, LANNOTATION_TARGET__ANNOTATIONS);
 
 		lTypeEClass = createEClass(LTYPE);
-		createEReference(lTypeEClass, LTYPE__PACKAGE);
 		createEAttribute(lTypeEClass, LTYPE__NAME);
 
 		lScalarTypeEClass = createEClass(LSCALAR_TYPE);
@@ -1204,18 +1194,18 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 		createEAttribute(lEnumLiteralEClass, LENUM_LITERAL__NAME);
 
 		lClassEClass = createEClass(LCLASS);
+		createEReference(lClassEClass, LCLASS__ANNOTATION_INFO);
 		createEAttribute(lClassEClass, LCLASS__ABSTRACT);
 		createEAttribute(lClassEClass, LCLASS__SERIALIZABLE);
 		createEReference(lClassEClass, LCLASS__SUPER_TYPE);
 		createEReference(lClassEClass, LCLASS__SUB_TYPES);
+		createEAttribute(lClassEClass, LCLASS__SHORT_NAME);
 
 		lBeanEClass = createEClass(LBEAN);
-		createEAttribute(lBeanEClass, LBEAN__SHORT_NAME);
 		createEReference(lBeanEClass, LBEAN__PROPERTIES);
 		createEReference(lBeanEClass, LBEAN__OPERATIONS);
 
 		lEntityEClass = createEClass(LENTITY);
-		createEAttribute(lEntityEClass, LENTITY__SHORT_NAME);
 		createEAttribute(lEntityEClass, LENTITY__PERSISTENCE_NAME);
 		createEAttribute(lEntityEClass, LENTITY__CACHEABLE);
 		createEAttribute(lEntityEClass, LENTITY__HISTORIZED);
@@ -1335,7 +1325,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 		initEClass(lPackageEClass, LPackage.class, "LPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLPackage_Imports(), this.getLImport(), null, "imports", null, 0, -1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLPackage_Types(), this.getLType(), this.getLType_Package(), "types", null, 0, -1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLPackage_Types(), this.getLType(), null, "types", null, 0, -1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLPackage_Compilers(), this.getLCompilerType(), null, "compilers", null, 0, -1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lImportEClass, LImport.class, "LImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1359,7 +1349,6 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 		initEReference(getLAnnotationTarget_Annotations(), this.getLAnnotationDef(), null, "annotations", null, 0, -1, LAnnotationTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lTypeEClass, LType.class, "LType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLType_Package(), this.getLPackage(), this.getLPackage_Types(), "package", null, 1, 1, LType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLType_Name(), ecorePackage.getEString(), "name", null, 0, 1, LType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lScalarTypeEClass, LScalarType.class, "LScalarType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1373,19 +1362,19 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage {
 		initEClass(lEnumLiteralEClass, LEnumLiteral.class, "LEnumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLEnumLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, LEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(lClassEClass, LClass.class, "LClass", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(lClassEClass, LClass.class, "LClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLClass_AnnotationInfo(), this.getLAnnotationTarget(), null, "annotationInfo", null, 0, 1, LClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLClass_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, LClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLClass_Serializable(), ecorePackage.getEBoolean(), "serializable", null, 0, 1, LClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLClass_SuperType(), this.getLClass(), this.getLClass_SubTypes(), "superType", null, 0, 1, LClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLClass_SubTypes(), this.getLClass(), this.getLClass_SuperType(), "subTypes", null, 0, -1, LClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLClass_ShortName(), ecorePackage.getEString(), "shortName", null, 0, 1, LClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lBeanEClass, LBean.class, "LBean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLBean_ShortName(), ecorePackage.getEString(), "shortName", null, 0, 1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLBean_Properties(), this.getLBeanProp(), null, "properties", null, 0, -1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLBean_Operations(), this.getLOperation(), null, "operations", null, 0, -1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lEntityEClass, LEntity.class, "LEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLEntity_ShortName(), ecorePackage.getEString(), "shortName", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLEntity_PersistenceName(), ecorePackage.getEString(), "persistenceName", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLEntity_Cacheable(), ecorePackage.getEBoolean(), "cacheable", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLEntity_Historized(), ecorePackage.getEBoolean(), "historized", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

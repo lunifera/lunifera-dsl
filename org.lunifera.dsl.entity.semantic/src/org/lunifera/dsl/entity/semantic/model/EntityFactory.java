@@ -195,6 +195,15 @@ public interface EntityFactory extends EFactory {
 	LEnumLiteral createLEnumLiteral();
 
 	/**
+	 * Returns a new object of class '<em>LClass</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LClass</em>'.
+	 * @generated
+	 */
+	LClass createLClass();
+
+	/**
 	 * Returns a new object of class '<em>LBean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getShortName <em>Short Name</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#getPersistenceName <em>Persistence Name</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#isCacheable <em>Cacheable</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LEntity#isHistorized <em>Historized</em>}</li>
@@ -37,32 +36,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface LEntity extends LClass {
-	/**
-	 * Returns the value of the '<em><b>Short Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Short Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Short Name</em>' attribute.
-	 * @see #setShortName(String)
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLEntity_ShortName()
-	 * @model
-	 * @generated
-	 */
-	String getShortName();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LEntity#getShortName <em>Short Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Short Name</em>' attribute.
-	 * @see #getShortName()
-	 * @generated
-	 */
-	void setShortName(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Persistence Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

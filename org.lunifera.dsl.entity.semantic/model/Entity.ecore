@@ -12,7 +12,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//LImport" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
-        eType="#//LType" containment="true" eOpposite="#//LType/package"/>
+        eType="#//LType" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="compilers" upperBound="-1"
         eType="#//LCompilerType" containment="true"/>
   </eClassifiers>
@@ -40,8 +40,6 @@
         eType="#//LAnnotationDef" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LType" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="package" lowerBound="1"
-        eType="#//LPackage" eOpposite="#//LPackage/types"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LScalarType" eSuperTypes="#//LType"/>
@@ -57,16 +55,18 @@
   <eClassifiers xsi:type="ecore:EClass" name="LEnumLiteral">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LClass" abstract="true" eSuperTypes="#//LType #//LAnnotationTarget">
+  <eClassifiers xsi:type="ecore:EClass" name="LClass" eSuperTypes="#//LType #//LAnnotationTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotationInfo" eType="#//LAnnotationTarget"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serializable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//LClass"
         resolveProxies="false" eOpposite="#//LClass/subTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
         eType="#//LClass" eOpposite="#//LClass/superType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LBean" eSuperTypes="#//LClass">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//LBeanProp" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
@@ -74,7 +74,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LEntity" eSuperTypes="#//LClass">
     <eOperations name="getSuperType" eType="#//LEntity"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheable" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.dsl.entity.semantic.model.LBean#getShortName <em>Short Name</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LBean#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.lunifera.dsl.entity.semantic.model.LBean#getOperations <em>Operations</em>}</li>
  * </ul>
@@ -34,32 +33,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface LBean extends LClass {
-	/**
-	 * Returns the value of the '<em><b>Short Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Short Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Short Name</em>' attribute.
-	 * @see #setShortName(String)
-	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLBean_ShortName()
-	 * @model
-	 * @generated
-	 */
-	String getShortName();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.entity.semantic.model.LBean#getShortName <em>Short Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Short Name</em>' attribute.
-	 * @see #getShortName()
-	 * @generated
-	 */
-	void setShortName(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
 	 * The list contents are of type {@link org.lunifera.dsl.entity.semantic.model.LBeanProp}.

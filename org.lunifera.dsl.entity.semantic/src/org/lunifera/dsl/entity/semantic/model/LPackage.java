@@ -81,7 +81,6 @@ public interface LPackage extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
 	 * The list contents are of type {@link org.lunifera.dsl.entity.semantic.model.LType}.
-	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.entity.semantic.model.LType#getPackage <em>Package</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
@@ -90,8 +89,7 @@ public interface LPackage extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Types</em>' containment reference list.
 	 * @see org.lunifera.dsl.entity.semantic.model.EntityPackage#getLPackage_Types()
-	 * @see org.lunifera.dsl.entity.semantic.model.LType#getPackage
-	 * @model opposite="package" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<LType> getTypes();
