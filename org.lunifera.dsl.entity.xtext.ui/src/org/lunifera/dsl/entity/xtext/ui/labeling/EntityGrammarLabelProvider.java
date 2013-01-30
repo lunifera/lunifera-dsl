@@ -16,7 +16,6 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.internal.xtend.xtend.XtendFile;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
@@ -56,10 +55,6 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 		super(delegate);
 	}
 
-	public Image image(XtendFile element) {
-		return images.forFile();
-	}
-
 	public Image image(LImport element) {
 		return images.forImport();
 	}
@@ -73,7 +68,7 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 	public Image image(LEnum element) {
 		return images.forEnum(JvmVisibility.PUBLIC);
 	}
-	
+
 	public Image image(LEnumLiteral element) {
 		return images.forEnumLiteral();
 	}
@@ -86,23 +81,27 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 	}
 
 	public Image image(LProperty element) {
-		JvmField inferredField = getFirstOrNull(
-				associations.getJvmElements(element), JvmField.class);
-		return images.forField(inferredField.getVisibility(),
-				inferredField.isStatic(), false);
+		if (!element.isComposition()) {
+			JvmField inferredField = getFirstOrNull(
+					associations.getJvmElements(element), JvmField.class);
+			return images.forField(inferredField.getVisibility(),
+					inferredField.isStatic(), false);
+		} else {
+			return images.forComposition(JvmVisibility.PUBLIC);
+		}
 	}
 
-//	public Image image(LRefers element) {
-//		return images.forRefers();
-//	}
-//
-//	public Image image(LContains element) {
-//		return images.forContains();
-//	}
-//
-//	public Image image(LContainer element) {
-//		return images.forContainer();
-//	}
+	// public Image image(LRefers element) {
+	// return images.forRefers();
+	// }
+	//
+	// public Image image(LContains element) {
+	// return images.forContains();
+	// }
+	//
+	// public Image image(LContainer element) {
+	// return images.forContainer();
+	// }
 
 	public Image image(JvmParameterizedTypeReference typeRef) {
 		return images.forTypeParameter();
@@ -134,44 +133,44 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 		return element.getName();
 	}
 
-//	public String text(LRefers element) {
-//		JvmField inferredField = getFirstOrNull(
-//				associations.getJvmElements(element), JvmField.class);
-//		if (inferredField != null) {
-//			JvmTypeReference type = inferredField.getType();
-//			if (type != null) {
-//				return element.getName() + " : " + type.getSimpleName()
-//						+ " [refers]";
-//			}
-//		}
-//		return element.getName();
-//	}
-//
-//	public String text(LContains element) {
-//		JvmField inferredField = getFirstOrNull(
-//				associations.getJvmElements(element), JvmField.class);
-//		if (inferredField != null) {
-//			JvmTypeReference type = inferredField.getType();
-//			if (type != null) {
-//				return element.getName() + " : " + type.getSimpleName()
-//						+ " [contains]";
-//			}
-//		}
-//		return element.getName();
-//	}
-//
-//	public String text(LContainer element) {
-//		JvmField inferredField = getFirstOrNull(
-//				associations.getJvmElements(element), JvmField.class);
-//		if (inferredField != null) {
-//			JvmTypeReference type = inferredField.getType();
-//			if (type != null) {
-//				return element.getName() + " : " + type.getSimpleName()
-//						+ " [container]";
-//			}
-//		}
-//		return element.getName();
-//	}
+	// public String text(LRefers element) {
+	// JvmField inferredField = getFirstOrNull(
+	// associations.getJvmElements(element), JvmField.class);
+	// if (inferredField != null) {
+	// JvmTypeReference type = inferredField.getType();
+	// if (type != null) {
+	// return element.getName() + " : " + type.getSimpleName()
+	// + " [refers]";
+	// }
+	// }
+	// return element.getName();
+	// }
+	//
+	// public String text(LContains element) {
+	// JvmField inferredField = getFirstOrNull(
+	// associations.getJvmElements(element), JvmField.class);
+	// if (inferredField != null) {
+	// JvmTypeReference type = inferredField.getType();
+	// if (type != null) {
+	// return element.getName() + " : " + type.getSimpleName()
+	// + " [contains]";
+	// }
+	// }
+	// return element.getName();
+	// }
+	//
+	// public String text(LContainer element) {
+	// JvmField inferredField = getFirstOrNull(
+	// associations.getJvmElements(element), JvmField.class);
+	// if (inferredField != null) {
+	// JvmTypeReference type = inferredField.getType();
+	// if (type != null) {
+	// return element.getName() + " : " + type.getSimpleName()
+	// + " [container]";
+	// }
+	// }
+	// return element.getName();
+	// }
 
 	public String text(JvmParameterizedTypeReference typeRef) {
 		return typeRef.getType().getSimpleName();

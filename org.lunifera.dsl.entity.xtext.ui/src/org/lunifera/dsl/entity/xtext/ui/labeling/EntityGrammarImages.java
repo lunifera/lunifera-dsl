@@ -49,7 +49,7 @@ public class EntityGrammarImages extends XbaseImages {
 
 	public Image forField(JvmVisibility visibility, int attachment) {
 		ImageDescriptor descriptor = JavaElementImageProvider
-				.getFieldImageDescriptor(false, toFlags(JvmVisibility.PRIVATE));
+				.getFieldImageDescriptor(false, toFlags(JvmVisibility.PUBLIC));
 		return attachment >= 0 ? getDecoratedJdtImage(descriptor, attachment)
 				: getJdtImage(descriptor);
 	}
@@ -68,22 +68,14 @@ public class EntityGrammarImages extends XbaseImages {
 	}
 
 	public Image forProperty() {
-		return forField(JvmVisibility.PRIVATE, -1);
+		return forField(JvmVisibility.PUBLIC, -1);
 	}
 
 	public Image forRefers() {
-		return forField(JvmVisibility.PRIVATE, -1);
+		return forField(JvmVisibility.PUBLIC, -1);
 	}
 
-	public Image forContains() {
-		return forField(JvmVisibility.PRIVATE, -1);
-	}
-
-	public Image forContainer() {
-		return forField(JvmVisibility.PRIVATE, -1);
-	}
-
-	public Image forFile() {
-		return imageHelper.getImage("xtend.gif");
+	public Image forComposition(JvmVisibility visibility) {
+		return getJdtImage(JavaPluginImages.DESC_OBJS_EMPTY_PACKAGE);
 	}
 }
