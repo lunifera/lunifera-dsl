@@ -1,5 +1,6 @@
 package org.lunifera.dsl.entity.xtext.tests.jpa.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,8 +29,7 @@ public class Contract {
   @JoinColumn(name = "CLIENT")
   private Client client;
   
-  @OneToOne
-  @JoinColumn(name = "PROJECT")
+  @OneToOne(mappedBy = "contract", cascade = CascadeType.ALL, orphanRemoval = true)
   private Project project;
   
   /**
@@ -63,7 +63,7 @@ public class Contract {
       return;
     }
     try {
-      // Dispose all the composition containment references.
+      // Dispose all the composition references.
       if (this.client != null) {
         this.client.dispose();
         this.client = null;

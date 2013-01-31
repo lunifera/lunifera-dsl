@@ -11,10 +11,10 @@
 generator settings { 
 	compilerType= org.lunifera.annotation.processor.JPA
 	checked lifecycle
-}  
+}   
 
 package org.lunifera.dsl.^entity.xtext.tests.jpa.model {
-
+ 
 	import javax.persistence.*
 	
 	datatype long jvmType java.lang.Long
@@ -24,7 +24,7 @@ package org.lunifera.dsl.^entity.xtext.tests.jpa.model {
 	 * Test 112233
 	 */
 	entity Client {
-		// property
+		// property 
 		@GeneratedValue(strategy=GenerationType::IDENTITY)
 		@Id
 		var long id 
@@ -39,7 +39,7 @@ package org.lunifera.dsl.^entity.xtext.tests.jpa.model {
 		var long id 
 		var String name
 		
-		refers Client client opposite contracts
+		refers Client client opposite contracts 
 		refers Project project opposite contract
 	} 
 	
@@ -49,7 +49,7 @@ package org.lunifera.dsl.^entity.xtext.tests.jpa.model {
 		var long id 
 		var String name
 		
-		refers Contract contract opposite project
+		refers Contract contract opposite project composition
 		collection Developer developers  opposite project
 		refers Manager manager opposite projects
 	} 
@@ -63,7 +63,10 @@ package org.lunifera.dsl.^entity.xtext.tests.jpa.model {
 		collection Project projects opposite manager
 		
 		def int getProjectsCount() {
-			projects.size
+			if(projects != null)
+				projects.size
+			else
+				0
 		}
 	} 
 	

@@ -231,6 +231,10 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
         if (opposite != null && prop.composition) {
             oneToOne.addAnnAttr(prop, "mappedBy", opposite.name)
         }
+        if (prop.composition) {
+            oneToOne.addAnnAttr(prop, "cascade", CascadeType::ALL)
+            oneToOne.addAnnAttr(prop, "orphanRemoval", true)
+        }
         //oneToOne.addAnnAttr(prop, "fetch", FetchType::LAZY)
         addAnno(prop, jvmAnnTarget, oneToOne)
 

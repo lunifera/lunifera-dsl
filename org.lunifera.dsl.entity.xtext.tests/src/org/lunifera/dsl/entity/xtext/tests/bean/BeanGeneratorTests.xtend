@@ -17,6 +17,7 @@ import java.util.HashMap
 import java.util.Map
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.xbase.lib.Pair
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.lunifera.dsl.entity.xtext.EntityGrammarInjectorProvider
@@ -27,6 +28,48 @@ import org.lunifera.dsl.entity.xtext.tests.MultiFilesCompilationTestHelper
 class BeanGeneratorTest {
 
 	@Inject extension MultiFilesCompilationTestHelper
+
+	@Test
+	def void compile() {
+		resourceSet(
+			new Pair<String, CharSequence>("my.test.Library.entitymodel",
+				'''
+					package my.test {
+					    entity Library {
+					        refers Book containedBook opposite library composition
+					    }
+					
+					    entity Book {
+					    	refers Library library opposite containedBook
+					    }
+					}
+				''')
+		).compile([allGeneratedResources.values.forEach([System::out.println(it)])])
+	}
+
+	@Test
+	def void compile2() {
+		resourceSet(
+			new Pair<String, CharSequence>("my.test.Library.entitymodel",
+				'''
+					package my.test {
+						import my.test1.*
+						   entity Library {
+						       refers Book containedBook opposite library composition
+						   }
+					}
+				'''),
+			new Pair<String, CharSequence>("my.test1.Book.entitymodel",
+				'''
+					package my.test1 {
+						import my.test.*
+						   entity Book {
+						   	refers Library library opposite containedBook
+						   }
+					}
+				''')
+		).compile([allGeneratedResources.values.forEach([System::out.println(it)])])
+	}
 
 	@Test
 	def void compareEmptyBeanType() {
@@ -43,13 +86,13 @@ class BeanGeneratorTest {
 				package my.test;
 				
 				import javax.persistence.Embeddable;
-
-				/**
-				 * Kept comment.
-				 */
-				@Embeddable
-				public class Library {
-				}
+				
+								/**
+								 * Kept comment.
+								 */
+								@Embeddable
+								public class Library {
+								}
 			''')
 	}
 
@@ -105,27 +148,27 @@ class BeanGeneratorTest {
 			assertCompilesTo(
 				'''
 					package my.test;
-
-					import javax.persistence.Embeddable;
 					
-					@Embeddable
-					public class Library {
-					  private String name;
-					  
-					  /**
-					   * Returns the name property or <code>null</code> if not present.
-					   */
-					  public String getName() {
-					    return this.name;
-					  }
-					  
-					  /**
-					   * Sets the name property to this instance.
-					   */
-					  public void setName(final String name) {
-					    this.name = name;
-					  }
-					}
+										import javax.persistence.Embeddable;
+										
+										@Embeddable
+										public class Library {
+										  private String name;
+										  
+										  /**
+										   * Returns the name property or <code>null</code> if not present.
+										   */
+										  public String getName() {
+										    return this.name;
+										  }
+										  
+										  /**
+										   * Sets the name property to this instance.
+										   */
+										  public void setName(final String name) {
+										    this.name = name;
+										  }
+										}
 				''')
 	}
 
@@ -142,28 +185,28 @@ class BeanGeneratorTest {
 			assertCompilesTo(
 				'''
 					package my.test;
-
-					import java.math.BigDecimal;
-					import javax.persistence.Embeddable;
 					
-					@Embeddable
-					public class Library {
-					  private BigDecimal amount;
-					  
-					  /**
-					   * Returns the amount property or <code>null</code> if not present.
-					   */
-					  public BigDecimal getAmount() {
-					    return this.amount;
-					  }
-					  
-					  /**
-					   * Sets the amount property to this instance.
-					   */
-					  public void setAmount(final BigDecimal amount) {
-					    this.amount = amount;
-					  }
-					}
+										import java.math.BigDecimal;
+										import javax.persistence.Embeddable;
+										
+										@Embeddable
+										public class Library {
+										  private BigDecimal amount;
+										  
+										  /**
+										   * Returns the amount property or <code>null</code> if not present.
+										   */
+										  public BigDecimal getAmount() {
+										    return this.amount;
+										  }
+										  
+										  /**
+										   * Sets the amount property to this instance.
+										   */
+										  public void setAmount(final BigDecimal amount) {
+										    this.amount = amount;
+										  }
+										}
 				''')
 	}
 
@@ -183,27 +226,27 @@ class BeanGeneratorTest {
 			assertCompilesTo(
 				'''
 					package my.test;
-
-					import javax.persistence.Embeddable;
 					
-					@Embeddable
-					public class Library {
-					  private String name;
-					  
-					  /**
-					   * Returns the <em>required</em> name property.
-					   */
-					  public String getName() {
-					    return this.name;
-					  }
-					  
-					  /**
-					   * Sets the name property to this instance.
-					   */
-					  public void setName(final String name) {
-					    this.name = name;
-					  }
-					}
+										import javax.persistence.Embeddable;
+										
+										@Embeddable
+										public class Library {
+										  private String name;
+										  
+										  /**
+										   * Returns the <em>required</em> name property.
+										   */
+										  public String getName() {
+										    return this.name;
+										  }
+										  
+										  /**
+										   * Sets the name property to this instance.
+										   */
+										  public void setName(final String name) {
+										    this.name = name;
+										  }
+										}
 				''')
 	}
 
@@ -213,34 +256,34 @@ class BeanGeneratorTest {
 		expected.put("my.test.Library",
 			'''
 				package my.test;
-
-				import javax.persistence.Entity;
-				import javax.persistence.FetchType;
-				import javax.persistence.JoinColumn;
-				import javax.persistence.ManyToOne;
-				import my.test.Book;
 				
-				@Entity
-				public class Library {
-				  @ManyToOne(fetch = FetchType.LAZY)
-				  @JoinColumn(name = "LAST_BORROWED_BOOK")
-				  private Book lastBorrowedBook;
-				  
-				  /**
-				   * Returns the lastBorrowedBook property or <code>null</code> if not present.
-				   */
-				  public Book getLastBorrowedBook() {
-				    return this.lastBorrowedBook;
-				  }
-				  
-				  /**
-				   * Sets the lastBorrowedBook property to this instance.
-				   */
-				  public void setLastBorrowedBook(final Book lastBorrowedBook) {
-				    this.lastBorrowedBook = lastBorrowedBook;
-				  }
-				}
-			        ''');
+								import javax.persistence.Entity;
+								import javax.persistence.FetchType;
+								import javax.persistence.JoinColumn;
+								import javax.persistence.ManyToOne;
+								import my.test.Book;
+								
+								@Entity
+								public class Library {
+								  @ManyToOne(fetch = FetchType.LAZY)
+								  @JoinColumn(name = "LAST_BORROWED_BOOK")
+								  private Book lastBorrowedBook;
+								  
+								  /**
+								   * Returns the lastBorrowedBook property or <code>null</code> if not present.
+								   */
+								  public Book getLastBorrowedBook() {
+								    return this.lastBorrowedBook;
+								  }
+								  
+								  /**
+								   * Sets the lastBorrowedBook property to this instance.
+								   */
+								  public void setLastBorrowedBook(final Book lastBorrowedBook) {
+								    this.lastBorrowedBook = lastBorrowedBook;
+								  }
+								}
+							     ''');
 
 		expected.put("my.test.Book",
 			'''
@@ -253,16 +296,17 @@ class BeanGeneratorTest {
 				}
 			''');
 
-		'''
-			package my.test {
-				entity Book {
-			    }
-			    entity Library {
-			        refers Book lastBorrowedBook
-			    }
-			    
-			}
-		'''.assertCompilesToMultiple(expected)
+		expected.assertCompilesFrom(
+			'''
+				package my.test {
+					entity Book {
+					   }
+					   entity Library {
+					       refers Book lastBorrowedBook
+					   }
+					   
+				}
+			''')
 	}
 
 	@Test
@@ -339,25 +383,28 @@ class BeanGeneratorTest {
 				    internalGetAllBorrowedBooks().remove(book);
 				  }
 				}
-			        ''');
+			     ''');
 
 		expected.put("my.test.Book",
 			'''
 				package my.test;
 				
+				import my.text.Library
+				
 				public class Book {
 				}
 			''');
 
-		'''
-			package my.test {
-				entity Book {
-			    }
-			    entity Library {
-			        refers Book lastBorrowedBook
-			    }
-			}
-		'''.assertCompilesToMultiple(expected)
+		expected.assertCompilesFrom(
+			'''
+				package my.test {
+					entity Book {
+					   }
+					   entity Library {
+					       refers Book lastBorrowedBook
+					   }
+				}
+			''')
 	}
 
 	@Test
@@ -367,72 +414,73 @@ class BeanGeneratorTest {
 			'''
 				package my.test;
 				
-				import my.test.Book;
+				import javax.persistence.CascadeType;
+				import javax.persistence.Entity;
+				import javax.persistence.OneToOne;
+				import my.test1.Book;
 				
+				@Entity
 				public class Library {
+				  @OneToOne(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
 				  private Book containedBook;
 				  
 				  /**
-				   * Returns the containedBook reference or <code>null</code> if not present.
-				   * 
-				   * @return containedBook
+				   * Returns the containedBook property or <code>null</code> if not present.
 				   */
 				  public Book getContainedBook() {
 				    return this.containedBook;
 				  }
 				  
 				  /**
-				   * Sets the containedBook reference to this instance.
-				   * 
-				   * Since the reference is a containment reference, the opposite reference (Book.library) 
-				   * of the book will be handled automatically and no further coding is required to keep them in sync. 
+				   * Sets the containedBook property to this instance.
+				   * Since the reference is a container reference, the opposite reference (Book.library)
+				   * of the containedBook will be handled automatically and no further coding is required to keep them in sync.
 				   * See {@link Book#setLibrary(Book)}.
-				   * 
-				   * @param book
 				   */
-				  public void setContainedBook(final Book book) {
+				  public void setContainedBook(final Book containedBook) {
 				    if (this.containedBook != null) {
-				        this.containedBook.setLibrary(null);
+				      this.containedBook.internalSetLibrary(null);
 				    }
-				    this.containedBook = book;
+				    this.containedBook = containedBook;
 				    if (this.containedBook != null) {
-				        this.containedBook.setLibrary(this);
+				      this.containedBook.internalSetLibrary(this);
 				    }
 				    
 				  }
 				  
-				  void internalSetContainedBook(final Book book) {
-				    this.containedBook = book;
+				  void internalSetContainedBook(final Book containedBook) {
+				    this.containedBook = containedBook;
 				  }
 				}
 			''');
 
-		expected.put("my.test.Book",
+		expected.put("my.test1.Book",
 			'''
-				package my.test;
+				package my.test1;
 				
+				import javax.persistence.Entity;
+				import javax.persistence.JoinColumn;
+				import javax.persistence.OneToOne;
 				import my.test.Library;
 				
+				@Entity
 				public class Book {
+				  @OneToOne
+				  @JoinColumn(name = "LIBRARY")
 				  private Library library;
 				  
 				  /**
-				   * Returns the library reference or <code>null</code> if not present.
-				   * 
-				   * @return library
+				   * Returns the library property or <code>null</code> if not present.
 				   */
 				  public Library getLibrary() {
 				    return this.library;
 				  }
 				  
 				  /**
-				   * Sets the library reference to this instance.
-				   * 
-				   * Since the reference is a container reference, the opposite reference (Library.containedBook) 
-				   * of the library will be handled automatically and no further coding is required to keep them in sync. 
+				   * Sets the library property to this instance.
+				   * Since the reference is a container reference, the opposite reference (Library.containedBook)
+				   * of the library will be handled automatically and no further coding is required to keep them in sync.
 				   * See {@link Library#setContainedBook(Library)}.
-				   * 
-				   * @param library
 				   */
 				  public void setLibrary(final Library library) {
 				    if (this.library != null) {
@@ -444,20 +492,30 @@ class BeanGeneratorTest {
 				    }
 				    
 				  }
+				  
+				  void internalSetLibrary(final Library library) {
+				    this.library = library;
+				  }
 				}
 			''');
 
-		'''
-			package my.test {
-			    entity Library {
-			        contains Book containedBook opposite library
-			    }
-			    
-			    entity Book {
-			        container Library library opposite containedBook
-			    }
-			}
-		'''.assertCompilesToMultiple(expected)
+		expected.assertCompilesFrom(
+			'''
+				package my.test {
+					import my.test1.*
+					   entity Library {
+					       refers Book containedBook opposite library composition
+					   }
+				}
+			''',
+			'''
+				package my.test1 {
+					import my.test.*
+					   entity Book {
+					   	refers Library library opposite containedBook
+					   }
+				}
+			''')
 	}
 
 	@Test
@@ -468,19 +526,23 @@ class BeanGeneratorTest {
 				package my.test;
 				
 				import java.util.ArrayList;
+				import java.util.Collections;
 				import java.util.List;
+				import javax.persistence.CascadeType;
+				import javax.persistence.Entity;
+				import javax.persistence.OneToMany;
 				import my.test.Book;
 				
+				@Entity
 				public class Library {
+				  @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
 				  private List<Book> containedBooks;
 				  
 				  /**
 				   * Returns an unmodifiable list of containedBooks.
-				   * 
-				   * @return containedBooks
 				   */
 				  public List<Book> getContainedBooks() {
-				    return java.util.Collections.unmodifiableList(internalGetContainedBooks());
+				    return Collections.unmodifiableList(internalGetContainedBooks());
 				  }
 				  
 				  /**
@@ -495,28 +557,24 @@ class BeanGeneratorTest {
 				  
 				  /**
 				   * Adds the given book to this object. <p>
-				   * Since the reference is a containment reference, the opposite reference (Book.library) 
+				   * Since the reference is a composition reference, the opposite reference (Book.library)
 				   * of the book will be handled automatically and no further coding is required to keep them in sync. 
 				   * See {@link Book#setLibrary(Book)}.
 				   * 
-				   * @param book
 				   */
 				  public void addToContainedBooks(final Book book) {
 				    book.setLibrary(this);
-				    
 				  }
 				  
 				  /**
 				   * Removes the given book from this object. <p>
-				   * Since the reference is a containment reference, the opposite reference (Book.library) 
+				   * Since the reference is a composition reference, the opposite reference (Book.library)
 				   * of the book will be handled automatically and no further coding is required to keep them in sync. 
 				   * See {@link Book#setLibrary(Book)}.
 				   * 
-				   * @param book
 				   */
 				  public void removeFromContainedBooks(final Book book) {
 				    book.setLibrary(null);
-				    
 				  }
 				  
 				  void internalAddToContainedBooks(final Book book) {
@@ -533,53 +591,56 @@ class BeanGeneratorTest {
 			'''
 				package my.test;
 				
-				import my.test.Library;
-				
-				public class Book {
-				  private Library library;
-				  
-				  /**
-				   * Returns the library reference or <code>null</code> if not present.
-				   * 
-				   * @return library
-				   */
-				  public Library getLibrary() {
-				    return this.library;
-				  }
-				  
-				  /**
-				   * Sets the library reference to this instance.
-				   * 
-				   * Since the reference is a container reference, the opposite reference (Library.containedBooks) 
-				   * of the library will be handled automatically and no further coding is required to keep them in sync. 
-				   * See {@link Library#setContainedBooks(Library)}.
-				   * 
-				   * @param library
-				   */
-				  public void setLibrary(final Library library) {
-				    if (this.library != null) {
-				      this.library.internalRemoveFromContainedBooks(this);
-				    }
-				    this.library = library;
-				    if (this.library != null) {
-				      this.library.internalAddToContainedBooks(this);
-				    }
-				    
-				  }
-				}
+								import javax.persistence.Entity;
+								import javax.persistence.FetchType;
+								import javax.persistence.JoinColumn;
+								import javax.persistence.ManyToOne;
+								import my.test.Library;
+								
+								@Entity
+								public class Book {
+								  @ManyToOne(fetch = FetchType.LAZY)
+								  @JoinColumn(name = "LIBRARY")
+								  private Library library;
+								  
+								  /**
+								   * Returns the library property or <code>null</code> if not present.
+								   */
+								  public Library getLibrary() {
+								    return this.library;
+								  }
+								  
+								  /**
+								   * Sets the library property to this instance.
+								   * Since the reference is a container reference, the opposite reference (Library.containedBooks)
+								   * of the library will be handled automatically and no further coding is required to keep them in sync.
+								   * See {@link Library#setContainedBooks(Library)}.
+								   */
+								  public void setLibrary(final Library library) {
+								    if (this.library != null) {
+								      this.library.internalRemoveFromContainedBooks(this);
+								    }
+								    this.library = library;
+								    if (this.library != null) {
+								      this.library.internalAddToContainedBooks(this);
+								    }
+								    
+								  }
+								}
 			''');
 
-		'''
-			package my.test {
-			    entity Library {
-			        contains Book[*] containedBooks opposite library
-			    }
-			    
-			    entity Book {
-			        container Library library opposite containedBooks
-			    }
-			}
-		'''.assertCompilesToMultiple(expected)
+		expected.assertCompilesFrom(
+			'''
+				package my.test {
+				    entity Library {
+				        collection Book containedBooks opposite library composition
+				    }
+				    
+				    entity Book {
+				        refers Library library opposite containedBooks
+				    }
+				}
+			''')
 	}
 
 }

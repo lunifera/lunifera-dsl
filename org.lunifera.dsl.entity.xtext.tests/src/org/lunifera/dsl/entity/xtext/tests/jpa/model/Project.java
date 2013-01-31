@@ -29,7 +29,8 @@ public class Project {
   @Column
   private String name;
   
-  @OneToOne(mappedBy = "project")
+  @OneToOne
+  @JoinColumn(name = "CONTRACT")
   private Contract contract;
   
   @OneToMany(mappedBy = "project")
@@ -70,7 +71,7 @@ public class Project {
       return;
     }
     try {
-      // Dispose all the composition containment references.
+      // Dispose all the composition references.
       if (this.contract != null) {
         this.contract.dispose();
         this.contract = null;
@@ -165,7 +166,7 @@ public class Project {
   
   /**
    * Adds the given developer to this object. <p>
-   * Since the reference is a containment reference, the opposite reference (Developer.project)
+   * Since the reference is a composition reference, the opposite reference (Developer.project)
    * of the developer will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Developer#setProject(Developer)}.
    * 

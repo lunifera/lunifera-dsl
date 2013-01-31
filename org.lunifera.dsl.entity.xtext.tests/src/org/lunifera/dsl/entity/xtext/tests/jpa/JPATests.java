@@ -3,6 +3,7 @@ package org.lunifera.dsl.entity.xtext.tests.jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import javax.persistence.RollbackException;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -108,11 +109,12 @@ public class JPATests {
 			em.getTransaction().commit();
 
 			// must never reach that statement, since exception is thrown on
-			// txn.commit()
 			Assert.fail("Exception had to be thrown!");
-		} catch (Exception ex) {
-			// everything is fine
-			logger.debug("Info: Exception thrown");
+		} catch (RollbackException ex) {
+			Assert.assertTrue(ex
+					.toString()
+					.contains(
+							"During synchronization a new object was found through a relationship that was not marked cascade PERSIST: org.lunifera.dsl.entity.xtext.tests.jpa.model.Manager"));
 		} finally {
 			em.close();
 			emf.close();
@@ -142,11 +144,6 @@ public class JPATests {
 		}
 	}
 
-	@Test
-	public void refers_OneToMany() {
-
-	}
-
 	/**
 	 * The persist operation throws exception, since the cascades.ALL is not
 	 * specified at Project, but at Contract
@@ -170,6 +167,10 @@ public class JPATests {
 			// txn.commit()
 			Assert.fail("Exception had to be thrown!");
 		} catch (Exception ex) {
+			Assert.assertTrue(ex
+					.toString()
+					.contains(
+							"During synchronization a new object was found through a relationship that was not marked cascade PERSIST: org.lunifera.dsl.entity.xtext.tests.jpa.model.Contract"));
 			// everything is fine
 			logger.debug("Info: Exception thrown");
 		} finally {
@@ -206,6 +207,10 @@ public class JPATests {
 			// txn.commit()
 			Assert.fail("Exception had to be thrown!");
 		} catch (Exception ex) {
+			Assert.assertTrue(ex
+					.toString()
+					.contains(
+							"During synchronization a new object was found through a relationship that was not marked cascade PERSIST: org.lunifera.dsl.entity.xtext.tests.jpa.model.Client"));
 			// everything is fine
 			logger.debug("Info: Exception thrown");
 		} finally {
@@ -234,7 +239,7 @@ public class JPATests {
 			Assert.assertNull(contract.getId());
 
 			// persist
-			em.persist(project);
+			em.persist(contract);
 			em.getTransaction().commit();
 
 			Assert.assertEquals(Long.valueOf(1), project.getId());
@@ -262,7 +267,7 @@ public class JPATests {
 			Query query = em
 					.createQuery("select e.id from Contract e where e.id = :id");
 			query.setParameter("id", 1);
-			Assert.assertEquals(1, query.getResultList().size());
+			Assert.assertEquals(0, query.getResultList().size());
 
 		} finally {
 			em.close();
@@ -292,6 +297,10 @@ public class JPATests {
 			// txn.commit()
 			Assert.fail("Exception had to be thrown!");
 		} catch (Exception ex) {
+			Assert.assertTrue(ex
+					.toString()
+					.contains(
+							"During synchronization a new object was found through a relationship that was not marked cascade PERSIST: org.lunifera.dsl.entity.xtext.tests.jpa.model.Developer"));
 			// everything is fine
 			logger.debug("Info: Exception thrown");
 		} finally {

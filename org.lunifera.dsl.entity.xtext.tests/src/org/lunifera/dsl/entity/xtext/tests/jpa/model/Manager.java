@@ -112,7 +112,7 @@ public class Manager {
   
   /**
    * Adds the given project to this object. <p>
-   * Since the reference is a containment reference, the opposite reference (Project.manager)
+   * Since the reference is a composition reference, the opposite reference (Project.manager)
    * of the project will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Project#setManager(Project)}.
    * 

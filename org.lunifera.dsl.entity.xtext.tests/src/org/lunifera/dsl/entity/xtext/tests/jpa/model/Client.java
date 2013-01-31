@@ -61,7 +61,7 @@ public class Client {
       return;
     }
     try {
-      // Dispose all the composition containment references.
+      // Dispose all the composition references.
       if (this.contracts != null) {
         for (Contract contract : this.contracts) {
           contract.dispose();
@@ -128,7 +128,7 @@ public class Client {
   
   /**
    * Adds the given contract to this object. <p>
-   * Since the reference is a containment reference, the opposite reference (Contract.client)
+   * Since the reference is a composition reference, the opposite reference (Contract.client)
    * of the contract will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Contract#setClient(Contract)}.
    * 
@@ -140,7 +140,7 @@ public class Client {
   
   /**
    * Removes the given contract from this object. <p>
-   * Since the reference is a containment reference, the opposite reference (Contract.client)
+   * Since the reference is a composition reference, the opposite reference (Contract.client)
    * of the contract will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Contract#setClient(Contract)}.
    * 

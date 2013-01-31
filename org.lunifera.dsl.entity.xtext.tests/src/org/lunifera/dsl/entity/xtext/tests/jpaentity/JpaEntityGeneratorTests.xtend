@@ -434,7 +434,7 @@ class JpaEntityGeneratorTest {
 				}
 			''');
 
-		'''
+		expected.assertCompilesFrom('''
 			package my.test {
 			    entity Library {
 			        refers Book lastBorrowedBook
@@ -443,7 +443,7 @@ class JpaEntityGeneratorTest {
 			    entity Book {
 			    }
 			}
-		'''.assertCompilesToMultiple(expected)
+		''')
 	}
 
 	@Test
@@ -530,7 +530,7 @@ class JpaEntityGeneratorTest {
 				}
 			''');
 
-		'''
+		expected.assertCompilesFrom('''
 			package my.test {
 			    entity Library {
 			        refers Book[*] allBorrowedBooks
@@ -539,7 +539,7 @@ class JpaEntityGeneratorTest {
 			    entity Book {
 			    }
 			}
-		'''.assertCompilesToMultiple(expected)
+		''')
 	}
 
 	@Ignore("containment without opposite should be error")
@@ -633,7 +633,7 @@ class JpaEntityGeneratorTest {
 				}
 			            ''');
 
-		'''
+		expected.assertCompilesFrom('''
 			package my.test {
 			    entity Library {
 			        contains Book containedBook
@@ -643,7 +643,7 @@ class JpaEntityGeneratorTest {
 			        container Library library
 			    }
 			}
-		'''.assertCompilesToMultiple(expected)
+		''')
 	}
 
 	@Test
@@ -733,7 +733,7 @@ class JpaEntityGeneratorTest {
 				}
 			''');
 
-		'''
+		expected.assertCompilesFrom('''
 			package my.test {
 			    entity Library {
 			        contains Book containedBook opposite library
@@ -743,7 +743,7 @@ class JpaEntityGeneratorTest {
 			        container Library library opposite containedBook
 			    }
 			}
-		'''.assertCompilesToMultiple(expected)
+		''')
 	}
 
 	@Ignore("containment without opposite should be error")
@@ -875,7 +875,7 @@ class JpaEntityGeneratorTest {
 				}
 			''');
 
-		'''
+		expected.assertCompilesFrom('''
 			package my.test {
 			    entity Library {
 			        contains Book[*] containedBooks
@@ -885,7 +885,7 @@ class JpaEntityGeneratorTest {
 			        container Library library
 			    }
 			}
-		'''.assertCompilesToMultiple(expected)
+		''')
 	}
 
 	@Test
@@ -997,7 +997,7 @@ class JpaEntityGeneratorTest {
 				}
 			''');
 
-		'''
+		expected.assertCompilesFrom('''
 			package my.test {
 			    entity Library {
 			        contains Book[*] containedBooks opposite library
@@ -1007,7 +1007,7 @@ class JpaEntityGeneratorTest {
 			        container Library library opposite containedBooks
 			    }
 			}
-		'''.assertCompilesToMultiple(expected)
+		''')
 	}
 
 	@Ignore("embedds will be desupported")
@@ -1222,7 +1222,7 @@ class JpaEntityGeneratorTest {
 				}
 			            ''');
 
-		'''
+		expected.assertCompilesFrom('''
 			package my.test {
 			    entity Library {
 			        embedds Address address
@@ -1234,7 +1234,7 @@ class JpaEntityGeneratorTest {
 			        refers Address[*] moreAddresses
 			    }
 			}
-		'''.assertCompilesToMultiple(expected)
+		''')
 	}
 
 	@Ignore("too many test cases in one test")
@@ -1687,7 +1687,7 @@ class JpaEntityGeneratorTest {
 				}
 			            ''');
 
-		'''
+		expected.assertCompilesFrom('''
 			package org.lunifera.demo {
 			    /**
 			     * Test 112233
@@ -1711,6 +1711,6 @@ class JpaEntityGeneratorTest {
 			        container Library library opposite books
 			    }
 			}
-		'''.assertCompilesToMultiple(expected)
+		''')
 	}
 }
