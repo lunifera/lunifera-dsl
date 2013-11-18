@@ -16,7 +16,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
@@ -55,39 +55,37 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 		super(delegate);
 	}
 
-	public Image image(LImport element) {
+	public ImageDescriptor image(LImport element) {
 		return images.forImport();
 	}
 
-	public Image image(LClass element) {
+	public ImageDescriptor image(LClass element) {
 		final JvmGenericType inferredType = getFirstOrNull(
 				associations.getJvmElements(element), JvmGenericType.class);
-		return images.forClass(inferredType.getVisibility());
+		return images.forClass(inferredType.getVisibility(), -1);
 	}
 
-	public Image image(LEnum element) {
+	public ImageDescriptor image(LEnum element) {
 		return images.forEnum(JvmVisibility.PUBLIC);
 	}
 
-	public Image image(LEnumLiteral element) {
+	public ImageDescriptor image(LEnumLiteral element) {
 		return images.forEnumLiteral();
 	}
 
-	public Image image(LOperation element) {
+	public ImageDescriptor image(LOperation element) {
 		JvmOperation inferredOperation = getFirstOrNull(
 				associations.getJvmElements(element), JvmOperation.class);
-		return images.forOperation(inferredOperation.getVisibility(),
-				inferredOperation.isStatic());
+		return images.forOperation(inferredOperation.getVisibility(), -1);
 	}
 
-	public Image image(LProperty element) {
-		if (!element.isComposition()) {
+	public ImageDescriptor image(LProperty element) {
+		if (!element.isCascading()) {
 			JvmField inferredField = getFirstOrNull(
 					associations.getJvmElements(element), JvmField.class);
-			return images.forField(inferredField.getVisibility(),
-					inferredField.isStatic(), false);
+			return images.forField(inferredField.getVisibility(), -1);
 		} else {
-			return images.forComposition(JvmVisibility.PUBLIC);
+			return images.forCascading(JvmVisibility.PUBLIC);
 		}
 	}
 
@@ -103,8 +101,8 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 	// return images.forContainer();
 	// }
 
-	public Image image(JvmParameterizedTypeReference typeRef) {
-		return images.forTypeParameter();
+	public ImageDescriptor image(JvmParameterizedTypeReference typeRef) {
+		return images.forTypeParameter(-1);
 	}
 
 	public String text(LImport element) {

@@ -57,18 +57,18 @@ public class EntityGrammarRuntimeModule extends
 	// .to(PojoJvmModelInferrerDelegate.class);
 	// }
 	//
-	// /**
-	// * The modelInferrer delegate to be used for JPA compiles.
-	// *
-	// * @param binder
-	// */
-	// public void configureJPAJvmModelInferrerDelegate(Binder binder) {
-	// binder.bind(IEntityJvmModelInferrerDelegate.class)
-	// .annotatedWith(
-	// com.google.inject.name.Names
-	// .named(Constants.JPA_COMPILER_FQN))
-	// .to(JPAJvmModelInferrerDelegate.class);
-	// }
+//	/**
+//	 * The modelInferrer delegate to be used for JPA compiles.
+//	 * 
+//	 * @param binder
+//	 */
+//	public void configureJPAJvmModelInferrerDelegate(Binder binder) {
+//		binder.bind(IEntityJvmModelInferrerDelegate.class)
+//				.annotatedWith(
+//						com.google.inject.name.Names
+//								.named(Constants.JPA_COMPILER_FQN))
+//				.to(JPAJvmModelInferrerDelegate.class);
+//	}
 
 	/**
 	 * The operationsContentCompiler to be used to dispatch the calls.

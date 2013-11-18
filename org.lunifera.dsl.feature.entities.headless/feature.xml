@@ -17,10 +17,6 @@
       %license
    </license>
 
-   <requires>
-      <import feature="org.lunifera.dsl.feature.organizations.headless" version="0.0.0"/>
-   </requires>
-
    <plugin
          id="org.lunifera.dsl.entity.xtext"
          download-size="0"

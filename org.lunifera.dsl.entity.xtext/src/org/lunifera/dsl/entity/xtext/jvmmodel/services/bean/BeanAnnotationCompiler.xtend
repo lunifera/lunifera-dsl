@@ -20,7 +20,6 @@ import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.semantic.model.LAnnotationTarget
 import org.lunifera.dsl.entity.semantic.model.LClass
-import org.lunifera.dsl.entity.semantic.model.LGenSettings
 import org.lunifera.dsl.entity.semantic.model.LOperation
 import org.lunifera.dsl.entity.semantic.model.LProperty
 import org.lunifera.dsl.entity.xtext.jvmmodel.services.IAnnotationCompiler
@@ -39,17 +38,17 @@ class BeanAnnotationCompiler implements IAnnotationCompiler {
 		}
 	}
 
-	override processAnnotation(LClass lClass, JvmGenericType jvmType, LGenSettings setting) {
+	override processAnnotation(LClass lClass, JvmGenericType jvmType) {
 		lClass.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 
 		lClass.addAnno(jvmType, lClass.toAnnotation(typeof(Embeddable)))
 	}
 
-	override processAnnotation(LProperty member, JvmField jvmField, LGenSettings setting) {
+	override processAnnotation(LProperty member, JvmField jvmField) {
 		member.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 	}
 
-	override processAnnotation(LOperation member, JvmOperation jvmOperation, LGenSettings setting) {
+	override processAnnotation(LOperation member, JvmOperation jvmOperation) {
 		member.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
 	}
 }

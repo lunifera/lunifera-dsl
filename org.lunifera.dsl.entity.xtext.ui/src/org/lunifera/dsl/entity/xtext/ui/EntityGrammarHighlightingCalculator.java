@@ -17,7 +17,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.lunifera.dsl.entity.semantic.model.LClass;
-import org.lunifera.dsl.entity.semantic.model.LGenSettings;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
 
 public class EntityGrammarHighlightingCalculator implements
@@ -55,11 +54,6 @@ public class EntityGrammarHighlightingCalculator implements
 				if ("cachable".equals(text) || "embeddable".equals(text)) {
 					acceptor.addPosition(node.getOffset(), node.getLength(),
 							EntityHighlightingConfiguration.MODIFIER_ID);
-				}
-			} else if (semanticElement instanceof LGenSettings) {
-				if ("compilerType=".equals(text)) {
-					acceptor.addPosition(node.getOffset(), node.getLength(),
-							EntityHighlightingConfiguration.DEFAULT_ID);
 				}
 			}
 		}

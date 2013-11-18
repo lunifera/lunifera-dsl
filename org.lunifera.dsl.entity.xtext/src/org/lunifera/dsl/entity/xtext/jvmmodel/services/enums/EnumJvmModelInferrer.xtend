@@ -26,7 +26,7 @@ class EnumJvmModelInferrer {
 
 	@Inject extension IQualifiedNameProvider
     @Inject extension JvmTypesBuilder;
-
+ 
    	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -36,15 +36,14 @@ class EnumJvmModelInferrer {
 	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
-   	 def void infer(LEnum enum, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		acceptor.accept(enum.toEnumerationType(enum.fullyQualifiedName.toString, null))
+   	 def void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		acceptor.accept(enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null))
 		        .initializeLater [
-			documentation = enum.documentation
-			for (f : enum.literals) {
+			documentation = enumX.documentation
+			for (f : enumX.literals) {
 				documentation = f.documentation
 				members += f.toEnumerationLiteral(f.name)
 			}
 		]
    	}
-
 }

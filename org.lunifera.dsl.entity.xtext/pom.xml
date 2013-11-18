@@ -13,9 +13,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.lunifera.dsl</groupId>
-		<artifactId>org.lunifera.dsl.parent</artifactId>
+		<artifactId>org.lunifera.dsl</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../org.lunifera.dsl.parent/pom.xml</relativePath>
+		<relativePath>../</relativePath>
 	</parent>
 
 	<artifactId>org.lunifera.dsl.entity.xtext</artifactId>
@@ -92,7 +92,7 @@
 						</goals>
 						<configuration>
 							<workflowEngine>mwe2</workflowEngine>
-							<workflowDescriptor>org.lunifera.dsl.entity.xtext.GenerateEntity</workflowDescriptor>
+							<workflowDescriptor>src/org/lunifera/dsl/entity/xtext/GenerateEntity.mwe2</workflowDescriptor>
 							<timestampFileName>xtext-generator.timestamp</timestampFileName>
 							<jvmSettings>
 								<fork>true</fork>
@@ -109,6 +109,7 @@
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
+				<version>2.4.3</version>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
@@ -134,6 +135,7 @@
 						</goals>
 						<configuration>
 							<sources>
+								<source>src-gen</source>
 								<source>xtend-gen</source>
 							</sources>
 						</configuration>

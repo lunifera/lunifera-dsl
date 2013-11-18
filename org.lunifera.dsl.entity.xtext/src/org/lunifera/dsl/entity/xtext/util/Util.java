@@ -11,33 +11,8 @@
  */
 package org.lunifera.dsl.entity.xtext.util;
 
-import org.eclipse.emf.ecore.EObject;
-import org.lunifera.dsl.entity.semantic.model.LPackage;
-import org.lunifera.dsl.entity.semantic.model.LType;
 
 public class Util {
 
-	/**
-	 * Returns the {@link LPackage} for the given type.
-	 * 
-	 * @param lType
-	 * @return
-	 */
-	public static LPackage toPackageS(LType lType) {
-		EObject current = lType;
-		while (current != null && !(current instanceof LPackage)) {
-			current = current.eContainer();
-		}
-		return (LPackage) current;
-	}
 
-	/**
-	 * Returns the {@link LPackage} for the given type.
-	 * 
-	 * @param lType
-	 * @return
-	 */
-	public LPackage toPackage(LType lType) {
-		return toPackageS(lType);
-	}
 }

@@ -61,7 +61,8 @@ public class EntityScopeProvider extends XbaseWithAnnotationsScopeProvider {
 				if (prop.getType() != null && prop.getType() instanceof LClass) {
 					LClass propClass = (LClass) prop.eContainer();
 					LClass type = (LClass) prop.getType();
-					for (LProperty oppositeProp : type.getProperties()) {
+					for (LProperty oppositeProp : modelExtensions
+							.getProperties(type)) {
 						if (oppositeProp.getType() == propClass) {
 							String name = oppositeProp.getName();
 							if (name != null) {

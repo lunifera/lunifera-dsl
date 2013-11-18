@@ -1,0 +1,168 @@
+@GenModel(fileExtensions="entitymodel")
+@GenModel(modelName="Entity")
+@GenModel(prefix="Entity")
+@Ecore(nsURI="http://www.lunifera.org/dsl/entity/v1")
+package org.lunifera.dsl.entity.semantic.model
+
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.xbase.XExpression
+import org.eclipse.xtext.common.types.JvmFormalParameter
+
+class LEntityModel {
+	contains LPackage[] packages
+}
+
+class LPackage {
+	String name
+	contains LImport[] imports
+	contains LType[] types
+}
+
+class LImport {
+	String importedNamespace
+}
+
+class LType extends LAnnotationTarget {
+	String name
+	contains LAnnotationTarget annotationInfo
+}
+
+class LAnnotationDef {
+	boolean exclude
+	contains XAnnotation ^annotation
+} 
+
+class LAnnotationTarget {
+	contains LAnnotationDef[] annotations
+}
+
+class LScalarType extends LType {
+}
+
+class LDataType extends LScalarType {
+	contains JvmTypeReference jvmTypeReference
+}
+
+class LEnum extends LScalarType {
+	contains LEnumLiteral[] literals
+}
+ 
+class LEnumLiteral {
+	String name
+}
+
+class LClass extends LType {
+	boolean ^abstract
+	boolean serializable
+	refers local LClass superType opposite subTypes
+	refers transient LClass[] subTypes opposite superType
+	String shortName
+}
+ 
+class LBean extends LClass {
+	contains LBeanProp[] properties
+	contains LOperation[] operations
+}
+
+class LEntity extends LClass {
+	String persistenceName
+	boolean cacheable
+	boolean historized
+	contains LEntityProp[] properties
+	contains LOperation[] operations
+	contains LIndex[] indexes
+	
+	op LEntity getSuperTypeAsEntity() {
+		return superType as LEntity
+	}
+}
+
+class LProperty extends LAnnotationTarget {
+	String name
+	refers LType ^type
+	contains JvmTypeReference jvmTypeRef
+	boolean ^id
+	boolean version
+	boolean ^transient
+	String defaultValueLiteral
+	boolean cascading
+	refers LProperty ^opposite
+	contains LMultiplicity multiplicity
+}
+
+class LDerivedProperty extends LProperty {
+	boolean persistent
+	boolean ^readonly
+	contains XExpression body
+}
+
+class LPersistentProperty extends LProperty {
+	String persistenceName
+	boolean lazy
+}
+
+class LBeanProp extends LPersistentProperty {
+}
+
+class LDerivedBanProp extends LBeanProp, LDerivedProperty {
+}
+
+class LDerivedEntityProp extends LEntityProp, LDerivedProperty {
+}
+
+class LEntityProp extends LPersistentProperty {
+}
+
+class LOperation extends LAnnotationTarget {
+	contains LModifier modifier
+	String name
+	contains JvmTypeReference ^type
+	contains JvmFormalParameter[] params
+	contains XExpression body
+}
+
+class LModifier {
+	boolean final
+	boolean ^static
+	LVisibility visibility
+}
+
+enum LVisibility {
+	PACKAGE = 0
+	PRIVATE = 1
+	PROTECTED = 2
+	PUBLIC = 3
+}
+
+class LMultiplicity {
+	LowerBound lower
+	UpperBound upper
+}
+
+enum LowerBound {
+	NULL = 0
+	MANY = 1
+	OPTIONAL = 2
+	ATLEASTONE = 3
+	ZERO = 4
+	ONE = 5
+}
+
+enum UpperBound {
+	NULL = 0
+	MANY = 1
+	ONE = 2
+}
+
+class LIndex {
+	boolean ^unique
+	String name
+	refers LEntityProp[] properties
+}
+	
+	
+	
+	
+	
+	

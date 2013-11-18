@@ -15,106 +15,78 @@
 grammar org.lunifera.dsl.entity.xtext.EntityGrammar with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
 import "http://www.lunifera.org/dsl/entity/v1"
-import "http://www.eclipse.org/emf/2002/Ecore"
-import "http://www.eclipse.org/emf/2002/GenModel" as genmodel
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+import "http://www.eclipse.org/xtext/xbase/Xtype" as xtype
 import "http://www.eclipse.org/Xtext/Xbase/XAnnotations" as xannotation
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 LEntityModel:
-	(genSettings=LGenSettings)?
 	packages+=LPackage*;
 
 LPackage:
 	{LPackage}
 	'package' name=QualifiedName ('{'
 	(imports+=LImport)*
-	(compilers+=LCompilerType)*
 	(types+=LType)*
 	'}')?;
 
 LImport:
-	'import' importedNamespace=LQualifiedNameWithWildCard;
-
-LGenSettings:
-	{LGenSettings}
-	'generator settings' '{'
-	((noSource?='no source')? &
-	('compilerType=' compilerType=[LCompilerType|LFQN])? &
-	(lifecycle?='checked lifecycle')? &
-	(propertyChangeSupport?='add propertyChangeSupport')?)
-	'}';
-
-LCompilerType:
-	'compiler' name=ID '{'
-	('description:' description=STRING)?
-	'}';
+	'import' importedNamespace=LQualifiedNameWithWildCard ';';
 
 LDataType:
 	'datatype' name=ID
-	'jvmType' jvmTypeReference=JvmTypeReference;
+	'jvmType' jvmTypeReference=JvmTypeReference ';';
 
 LScalarType:
 	LDataType | LEnum;
 
 LType:
-	LScalarType | LClass;
+	LScalarType | Class;
 
-LClass:
+Class returns LClass:
 	{LClass} annotations+=LAnnotationDef*
-	
-	({LBean.annotationInfo=current}
-		(((abstract?='abstract')? &
-		(serializable?='serializable')?)
-		
-		'bean' name=ValidIDWithKeywords ('extends' superType=[LBean])?
-			'{' properties+=LBeanProp*
-				operations+=LOperation* '}'
-		) 
-	|
 	({LEntity.annotationInfo=current}
-		((abstract?='abstract')?
-		
-		'entity' name=ValidIDWithKeywords ('extends' superType=[LClass])?
-				(historized?='historized')?
-			'{' properties+=LEntityProp*
-				operations+=LOperation* 
-			'}')
-		)
-	)
-	;
+	(abstract?='abstract')?
+	'entity' name=ValidIDWithKeywords ('extends' superType=[LEntity])?
+	'{' properties+=LEntityProp*
+	indexes+=LIndex*
+	operations+=LOperation*
+	'}'
+	|
+	{LBean.annotationInfo=current}
+	'bean');
 
 LBeanProp:
 	{LBeanProp}
 	(annotations+=LAnnotationDef)*
-	(('transient' jvmTypeRef=JvmTypeReference name=ValidIDWithKeywords) |
-	('var' type=[LScalarType] //('[' (lower=LowerBound) ('..' upper=UpperBound)? ']')?
+	(('var' type=[LScalarType] multiplicity=LMultiplicity?
 	name=ValidIDWithKeywords
 	('=' defaultValueLiteral=STRING)? // TODO use the jvmTypeReference of LScalarType
-	(notnull?='notnull')?) |
-	(collection?='collection' type=[LBean] name=ValidIDWithKeywords
-	('opposite' opposite=[LBeanProp|LFQN])?
-	(composition?='composition')?) |
-	('refers' type=[LBean] name=ValidIDWithKeywords
-	(notnull?='notnull')?
-	('opposite' opposite=[LBeanProp|LFQN])?
-	(composition?='composition')?));
+	';')
+	|
+	('ref' type=[LBean] multiplicity=LMultiplicity? name=ValidIDWithKeywords
+	('opposite' opposite=[LBeanProp|LFQN])?)
+	';');
 
 LEntityProp:
 	{LEntityProp}
 	(annotations+=LAnnotationDef)*
-	(('transient' jvmTypeRef=JvmTypeReference name=ValidIDWithKeywords) |
-	('var' type=[LScalarType] //('[' (lower=LowerBound) ('..' upper=UpperBound)? ']')?
+	(('transient' jvmTypeRef=JvmTypeReference name=ValidIDWithKeywords)
+	|
+	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=LMultiplicity?
 	name=ValidIDWithKeywords
 	('=' defaultValueLiteral=STRING)? // TODO use the jvmTypeReference of LScalarType
-	(notnull?='notnull')?) |
-	(collection?='collection' type=[LEntity] name=ValidIDWithKeywords
-	('opposite' opposite=[LEntityProp|LFQN])?
-	(composition?='composition')?) |
-	('refers' type=[LEntity] name=ValidIDWithKeywords
-	(notnull?='notnull')?
-	('opposite' opposite=[LEntityProp|LFQN])?
-	(composition?='composition')?));
+	';')
+	|
+	('ref' (cascading?='cascade')? type=[LEntity] multiplicity=LMultiplicity? name=ValidIDWithKeywords
+	('opposite' opposite=[LEntityProp|LFQN])?)
+	';');
+
+LIndex:
+	{LIndex}
+	(unique?='unique')? 'index' name=ValidIDWithKeywords '{'
+	('prop' properties+=[LEntityProp|LFQN] ';')*
+	'}';
 
 LOperation:
 	(modifier=LModifier)?
@@ -152,6 +124,9 @@ ValidIDWithKeywords:
 	'notnull' |
 	'entity' | 'bean' |
 	ID;
+
+LMultiplicity:
+	'[' (lower=LowerBound) ('..' upper=UpperBound)? ']';
 
 enum LowerBound:
 	MANY='*' | OPTIONAL='?' | ATLEASTONE='+' | ZERO='0' | ONE='1';

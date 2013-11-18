@@ -16,15 +16,16 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.entity.semantic.model.EntityFactory
+import org.lunifera.dsl.entity.semantic.model.LBean
 import org.lunifera.dsl.entity.semantic.model.LClass
-import org.lunifera.dsl.entity.semantic.model.LCompilerType
 import org.lunifera.dsl.entity.semantic.model.LDataType
 import org.lunifera.dsl.entity.semantic.model.LEntity
-import org.lunifera.dsl.entity.semantic.model.LEntityModel
-import org.lunifera.dsl.entity.semantic.model.LGenSettings
+import org.lunifera.dsl.entity.semantic.model.LEntityProp
+import org.lunifera.dsl.entity.semantic.model.LOperation
+import org.lunifera.dsl.entity.semantic.model.LPackage
 import org.lunifera.dsl.entity.semantic.model.LPersistentProperty
 import org.lunifera.dsl.entity.semantic.model.LProperty
+import org.lunifera.dsl.entity.semantic.model.LScalarType
 import org.lunifera.dsl.entity.semantic.model.LType
 import org.lunifera.dsl.entity.xtext.util.PersistenceNamingUtils
 
@@ -60,13 +61,35 @@ class ModelExtensions {
 	}
 
 	def isToMany(LProperty prop) {
-
-		//###remove prop.entityBounds.toMany
-		if(prop == null) false else prop.collection
+		prop.entityBounds.toMany
 	}
 
-	def isCompositionContainment(LProperty prop) {
-		prop.composition || prop.opposite?.composition
+	def isCascading(LProperty prop) {
+		prop.cascading || prop.opposite.cascading
+	}
+
+	def dispatch List<? extends LProperty> getProperties(LEntity type) {
+		return type.properties
+	}
+
+	def dispatch List<? extends LProperty> getProperties(LBean type) {
+		return type.properties
+	}
+
+	def dispatch List<? extends LProperty> getProperties(LClass type) {
+		return newArrayList()
+	}
+
+	def dispatch List<? extends LOperation> getOperations(LEntity type) {
+		return type.operations
+	}
+
+	def dispatch List<? extends LOperation> getOperations(LBean type) {
+		return type.operations
+	}
+
+	def dispatch List<? extends LOperation> getOperations(LClass type) {
+		return newArrayList()
 	}
 
 	def getResolvedOpposite(LProperty prop) {
@@ -75,15 +98,18 @@ class ModelExtensions {
 		// Otherwise search in the referenced type for the property with the owner type.
 		if (prop.getOpposite() != null) {
 			return prop.getOpposite()
-		} else if (prop.type instanceof LClass) {
-			val LClass ref = prop.type as LClass
+		} else if (prop.type instanceof LEntity) {
+			val LEntity ref = prop.type as LEntity
+			ref.properties.findFirst[it.opposite == prop]
+		} else if (prop.type instanceof LBean) {
+			val LBean ref = prop.type as LBean
 			ref.properties.findFirst[it.opposite == prop]
 		}
 	}
 
 	def typeIsBoolean(LProperty prop) {
 		val typeRef = prop.toTypeReference
-		return typeRef != null && !typeRef.eIsProxy() && !typeRef.getType().eIsProxy() &&
+		return typeRef != null && !typeRef.eIsProxy() && typeRef.getType() != null && !typeRef.getType().eIsProxy() &&
 			"boolean".equals(typeRef.getType().getIdentifier())
 	}
 
@@ -108,53 +134,51 @@ class ModelExtensions {
 		return String::format("%s", name);
 	}
 
-	/**
-	 * Returns the used compiler type of the given model element.
-	 * If no compiler type was specified, the entity compiler type will be returned.
-	 */
-	def LCompilerType compilerType(EObject eObject) {
-		if (eObject == null) {
-			var result = EntityFactory::eINSTANCE.createLCompilerType;
-			result.name = Constants::POJO_COMPILER_FQN
-			return result
-		}
-
-		var LCompilerType result = null
-		if (eObject instanceof LEntityModel) {
-			val LEntityModel model = eObject as LEntityModel
-			if (model == null || model.genSettings == null) {
-				result = EntityFactory::eINSTANCE.createLCompilerType;
-				result.name = Constants::POJO_COMPILER_FQN
-			} else {
-				result = model.genSettings.compilerType
-			}
-
-			return result
-		} else if (eObject instanceof LCompilerType) {
-			result = eObject as LCompilerType
-		} else {
-			result = compilerType(eObject.eContainer)
-		}
-	}
-
-	/**
-	 * Returns true, if the given eObject compiles to the pojo model
-	 */
-	def boolean compilesToPojoModel(EObject eObject) {
-		eObject.compilerType.fullyQualifiedName.toString.equals(Constants::POJO_COMPILER_FQN)
-	}
-
-	/**
-	 * Returns true, if the given eObject compiles to the JPA model
-	 */
-	def boolean compilesToJPAModel(EObject eObject) {
-		eObject.compilerType.fullyQualifiedName.toString.equals(Constants::JPA_COMPILER_FQN)
-	}
-
-	def isLifecycleHandling(LGenSettings settings) {
-		return settings != null && settings.lifecycle
-	}
-
+	//	/**
+	//	 * Returns the used compiler type of the given model element.
+	//	 * If no compiler type was specified, the entity compiler type will be returned.
+	//	 */
+	//	def LCompilerType compilerType(EObject eObject) {
+	//		if (eObject == null) {
+	//			var result = EntityFactory::eINSTANCE.createLCompilerType;
+	//			result.name = Constants::POJO_COMPILER_FQN
+	//			return result
+	//		}
+	//
+	//		var LCompilerType result = null
+	//		if (eObject instanceof LEntityModel) {
+	//			val LEntityModel model = eObject as LEntityModel
+	//			if (model == null || model.genSettings == null) {
+	//				result = EntityFactory::eINSTANCE.createLCompilerType;
+	//				result.name = Constants::POJO_COMPILER_FQN
+	//			} else {
+	//				result = model.genSettings.compilerType
+	//			}
+	//
+	//			return result
+	//		} else if (eObject instanceof LCompilerType) {
+	//			result = eObject as LCompilerType
+	//		} else {
+	//			result = compilerType(eObject.eContainer)
+	//		}
+	//	}
+	//	/**
+	//	 * Returns true, if the given eObject compiles to the pojo model
+	//	 */
+	//	def boolean compilesToPojoModel(EObject eObject) {
+	//		eObject.compilerType.fullyQualifiedName.toString.equals(Constants::POJO_COMPILER_FQN)
+	//	}
+	//
+	//	/**
+	//	 * Returns true, if the given eObject compiles to the JPA model
+	//	 */
+	//	def boolean compilesToJPAModel(EObject eObject) {
+	//		eObject.compilerType.fullyQualifiedName.toString.equals(Constants::JPA_COMPILER_FQN)
+	//	}
+	//
+	//	def isLifecycleHandling(LGenSettings settings) {
+	//		return settings != null && settings.lifecycle
+	//	}
 	/**
    	 * Returns true, if toCheck can be cast to superType
    	 */
@@ -207,5 +231,46 @@ class ModelExtensions {
 		// E.g. to add some prefix like the shortName of the Entity.
 		// ### not yet implemented
 		tableBaseName
+	}
+
+	/**
+	 * Returns the {@link LPackage} for the given type.
+	 * 
+	 * @param lType
+	 * @return
+	 */
+	def LPackage getPackage(LType lType) {
+		var EObject current = lType;
+		while (current != null && !(current instanceof LPackage)) {
+			current = current.eContainer();
+		}
+		return current as LPackage;
+	}
+
+	/**
+	 * Returns true if the property is a scalar type property
+	 */
+	def boolean isScalarType(LEntityProp prop) {
+		return if(prop == null) false else prop.type instanceof LScalarType
+	}
+
+	/**
+	 * Returns true if the property is an entity type property
+	 */
+	def boolean isEntityType(LEntityProp prop) {
+		return !prop.scalarType
+	}
+
+	/**
+	 * The binary <code>+</code> operator that concatenates two strings.
+	 * 
+	 * @param a
+	 *            a string.
+	 * @param b
+	 *            another string.
+	 * @return <code>a + b</code>
+	 */
+	def static String operator_plus(String a, String b) {
+		return a + b;
 	}
 }

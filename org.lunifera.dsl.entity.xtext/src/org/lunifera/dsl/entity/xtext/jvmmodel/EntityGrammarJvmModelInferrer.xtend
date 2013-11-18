@@ -42,7 +42,7 @@ class EntityGrammarJvmModelInferrer extends AbstractModelInferrer {
     def dispatch void infer(LEnum element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
         if (hasSyntaxErrors(element)) return;
         enumJvmModelInferrer.infer(element, acceptor, isPrelinkingPhase);
-    }
+    } 
 
     def dispatch void infer(LBean element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
         if (hasSyntaxErrors(element)) return;

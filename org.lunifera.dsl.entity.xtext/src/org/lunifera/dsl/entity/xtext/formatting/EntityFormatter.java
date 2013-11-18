@@ -35,7 +35,7 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 
 	@Inject
 	private XbaseFormatter xbaseFormatter;
-
+	
 	@Override
 	protected void configureFormatting(FormattingConfig c) {
 		configure(c, (EntityGrammarGrammarAccess) getGrammarAccess());
@@ -49,7 +49,6 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 
 		c.setAutoLinewrap(120);
 
-		configureLCompilerType(c, f.getLGenSettingsAccess());
 		configureLPackage(c, f.getLPackageAccess());
 		configureLAnnotationDef(c, f.getLAnnotationDefAccess());
 		configureLEntityPropElement(c, f.getLEntityPropAccess());
@@ -60,22 +59,6 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(1, 1, 1).after(f.getML_COMMENTRule());
 	}
 
-	public void configureLCompilerType(FormattingConfig config,
-			EntityGrammarGrammarAccess.LGenSettingsElements ele) {
-
-		// linewrap
-		config.setLinewrap(1, 1, 2).around(ele.getRule());
-		config.setLinewrap(1, 1, 2).after(ele.getLeftCurlyBracketKeyword_2());
-		// config.setLinewrap().around(ele.getCompilerTypeAssignment_3_1_1());
-		config.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_4());
-
-		// indentation
-		config.setIndentationIncrement().after(
-				ele.getLeftCurlyBracketKeyword_2());
-		config.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_4());
-	}
-
 	public void configureLPackage(FormattingConfig config,
 			EntityGrammarGrammarAccess.LPackageElements ele) {
 
@@ -83,15 +66,14 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 		config.setLinewrap(1, 1, 2).around(ele.getRule());
 		config.setLinewrap(1, 1, 2).after(ele.getLeftCurlyBracketKeyword_3_0());
 		config.setLinewrap().around(ele.getImportsAssignment_3_1());
-		config.setLinewrap(1, 1, 2).around(ele.getCompilersAssignment_3_2());
-		config.setLinewrap(1, 1, 2).around(ele.getTypesAssignment_3_3());
-		config.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_3_4());
+		config.setLinewrap(1, 1, 2).around(ele.getTypesAssignment_3_2());
+		config.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_3_3());
 
 		// indentation
 		config.setIndentationIncrement().after(
 				ele.getLeftCurlyBracketKeyword_3_0());
 		config.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_3_4());
+				ele.getRightCurlyBracketKeyword_3_3());
 	}
 
 	public void configureLEntityPropElement(FormattingConfig config,

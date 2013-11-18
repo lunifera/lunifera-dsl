@@ -17,10 +17,11 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef;
 import org.lunifera.dsl.entity.semantic.model.LClass;
-import org.lunifera.dsl.entity.semantic.model.LCompilerType;
+import org.lunifera.dsl.entity.semantic.model.LDataType;
+import org.lunifera.dsl.entity.semantic.model.LEntityProp;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
 import org.lunifera.dsl.entity.semantic.model.LPackage;
-import org.lunifera.dsl.entity.xtext.util.Util;
+import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 
 import com.google.inject.Inject;
 
@@ -29,6 +30,8 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
+	@Inject
+	private ModelExtensions extensions;
 
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
@@ -37,7 +40,7 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 		}
 
 		if (obj instanceof LClass) {
-			LPackage pkg = Util.toPackageS((LClass) obj);
+			LPackage pkg = extensions.getPackage((LClass) obj);
 			if (pkg != null) {
 				final String qualifiedName = String.format("%s.%s",
 						pkg.getName(), ((LClass) obj).getName());
@@ -48,7 +51,7 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 				return QualifiedName.create("");
 			}
 		} else if (obj instanceof LEnum) {
-			LPackage pkg = Util.toPackageS((LEnum) obj);
+			LPackage pkg = extensions.getPackage((LEnum) obj);
 			if (pkg != null) {
 				final String qualifiedName = String.format("%s.%s",
 						pkg.getName(), ((LEnum) obj).getName());
@@ -58,17 +61,13 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 			} else {
 				return QualifiedName.create("");
 			}
-		} else if (obj instanceof LCompilerType) {
-			LPackage pkg = (LPackage) ((LCompilerType) obj).eContainer();
-			if (pkg != null) {
-				final String qualifiedName = String.format("%s.%s",
-						pkg.getName(), ((LCompilerType) obj).getName());
-				if (qualifiedName == null)
-					return null;
-				return qualifiedNameConverter.toQualifiedName(qualifiedName);
-			} else {
-				return QualifiedName.create("");
-			}
+		} else if (obj instanceof LEntityProp) {
+			LEntityProp prop = (LEntityProp) obj;
+			return prop.getName() != null ? qualifiedNameConverter
+					.toQualifiedName(prop.getName()) : null;
+		} else if (obj instanceof LDataType) {
+			LDataType dtd = (LDataType) obj;
+			return qualifiedNameConverter.toQualifiedName(dtd.getName());
 		} else if (obj instanceof LAnnotationDef) {
 			return super.getFullyQualifiedName(((LAnnotationDef) obj)
 					.getAnnotation());

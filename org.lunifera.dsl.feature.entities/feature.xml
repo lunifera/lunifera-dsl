@@ -19,7 +19,6 @@
    </license>
 
    <requires>
-      <import feature="org.lunifera.dsl.feature.organizations" version="0.0.0"/>
       <import feature="org.lunifera.dsl.feature.eclipse.ui" version="0.0.0"/>
    </requires>
 

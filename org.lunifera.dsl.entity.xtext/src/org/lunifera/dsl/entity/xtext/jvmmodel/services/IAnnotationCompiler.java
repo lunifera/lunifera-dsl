@@ -14,7 +14,6 @@ import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.lunifera.dsl.entity.semantic.model.LClass;
-import org.lunifera.dsl.entity.semantic.model.LGenSettings;
 import org.lunifera.dsl.entity.semantic.model.LOperation;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
 
@@ -26,16 +25,16 @@ public interface IAnnotationCompiler {
 	/**
 	 * This method can be used to add annotations to the given jvmType.
 	 */
-	void processAnnotation(LClass lClass, JvmGenericType jvmType, LGenSettings setting);
+	void processAnnotation(LClass lClass, JvmGenericType jvmType);
 
 	/**
 	 * This method can be used to add annotations to the given jvmField.
 	 */
-	void processAnnotation(LProperty member, JvmField jvmField, LGenSettings setting);
+	void processAnnotation(LProperty member, JvmField jvmField);
 	
 	/**
 	 * This method can be used to add annotations to the given jvmField.
 	 */
-	void processAnnotation(LOperation member, JvmOperation jvmOperation, LGenSettings setting);
+	void processAnnotation(LOperation member, JvmOperation jvmOperation);
 
 }

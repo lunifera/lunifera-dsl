@@ -18,11 +18,12 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.xbase.ui.labeling.XbaseImages;
+import org.eclipse.xtext.xbase.ui.labeling.XbaseImages2;
 
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
-public class EntityGrammarImages extends XbaseImages {
+public class EntityGrammarImages extends XbaseImages2 {
 
 	@Inject
 	private IImageHelper imageHelper;
@@ -39,43 +40,42 @@ public class EntityGrammarImages extends XbaseImages {
 		return JavaPluginImages.DESC_OBJ_OVERRIDES;
 	}
 
-	public Image forPackage() {
-		return getJdtImage(JavaPluginImages.DESC_OBJS_PACKDECL);
+	public ImageDescriptor forPackage() {
+		return JavaPluginImages.DESC_OBJS_PACKDECL;
 	}
 
-	public Image forImport() {
-		return getJdtImage(JavaPluginImages.DESC_OBJS_IMPDECL);
+	public ImageDescriptor forImport() {
+		return forImport();
 	}
 
-	public Image forField(JvmVisibility visibility, int attachment) {
+	public ImageDescriptor forField(JvmVisibility visibility, int attachment) {
 		ImageDescriptor descriptor = JavaElementImageProvider
 				.getFieldImageDescriptor(false, toFlags(JvmVisibility.PUBLIC));
-		return attachment >= 0 ? getDecoratedJdtImage(descriptor, attachment)
-				: getJdtImage(descriptor);
+		return attachment >= 0 ? getDecorated(descriptor, attachment)
+				: descriptor;
 	}
 
-	public Image forEnum(JvmVisibility visibility) {
+	public ImageDescriptor forEnum(JvmVisibility visibility) {
 		int flags = toFlags(visibility);
 		flags |= Flags.AccEnum;
-		return getJdtImage(JavaElementImageProvider.getTypeImageDescriptor(
-				false, false, flags, false));
+		return super.forEnum(visibility, flags);
 	}
 
-	public Image forEnumLiteral() {
+	public ImageDescriptor forEnumLiteral() {
 		ImageDescriptor descriptor = JavaElementImageProvider
 				.getFieldImageDescriptor(false, toFlags(JvmVisibility.PUBLIC));
-		return getJdtImage(descriptor);
+		return descriptor;
 	}
 
-	public Image forProperty() {
+	public ImageDescriptor forProperty() {
+		return super.forField(JvmVisibility.PUBLIC, -1);
+	}
+
+	public ImageDescriptor forRefers() {
 		return forField(JvmVisibility.PUBLIC, -1);
 	}
 
-	public Image forRefers() {
+	public ImageDescriptor forCascading(JvmVisibility visibility) {
 		return forField(JvmVisibility.PUBLIC, -1);
-	}
-
-	public Image forComposition(JvmVisibility visibility) {
-		return getJdtImage(JavaPluginImages.DESC_OBJS_EMPTY_PACKAGE);
 	}
 }

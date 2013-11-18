@@ -25,5 +25,5 @@ class BeanJvmModelInferrer extends ClassJvmModelInferrer {
 	override getAnnotationCompiler() {
 		annotationCompiler
 	}
-
+ 
 }

@@ -10,6 +10,7 @@
  */
 package org.lunifera.dsl.entity.xtext.extensions;
 
+import org.lunifera.dsl.entity.semantic.model.LMultiplicity;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
 import org.lunifera.dsl.entity.semantic.model.LowerBound;
 import org.lunifera.dsl.entity.semantic.model.UpperBound;
@@ -27,11 +28,17 @@ public class EntityBounds {
 			return new EntityBounds(LowerBound.ZERO, UpperBound.ONE);
 		}
 
-		LowerBound lb = prop.getLower();
-		UpperBound ub = prop.getUpper();
+		LMultiplicity multiplicity = prop.getMultiplicity();
+		
+		LowerBound lb = null;
+		UpperBound ub = null;
+		
+		if(multiplicity != null){
+			lb = multiplicity.getLower();
+			ub = multiplicity.getUpper();
+		}
 
-		// Set the defaults. Take 'notnull' into account
-		LowerBound lower = prop.isNotnull() ? LowerBound.ONE : LowerBound.ZERO;
+		LowerBound lower = LowerBound.ZERO;
 		UpperBound upper = UpperBound.ONE;
 
 //		// Set the defaults by type.
@@ -43,7 +50,7 @@ public class EntityBounds {
 //		}
 
 		if (lb != null) {
-			if (ub != null) {
+			if (ub != null && ub != UpperBound.NULL) {
 				// Lower and upper bound [x..y] where x = 0/1/?/+/* and y = 1/*
 				switch (lb) {
 				case ZERO: // [0..]

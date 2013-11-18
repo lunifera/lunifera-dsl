@@ -9,7 +9,7 @@
  * 		Florian Pirchner - Initial implementation
  */
 package org.lunifera.dsl.entity.xtext.extensions
-
+ 
 import com.google.inject.Inject
 import java.util.List
 import java.util.Map
@@ -51,7 +51,6 @@ class AnnotationExtension {
 	@Inject
 	private TypeReferences references;
 	
-	
 	/**
 	 * Creates an enum annotation value and adds it the the given annotation reference
 	 */
@@ -84,13 +83,13 @@ class AnnotationExtension {
 	 * Creates an enum annotation value and adds it the the given annotation reference
 	 */
 	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, 
-	                        Enum<?> enum) {
+	                        Enum<?> enumX) {
         // create the parameter
         val value = typesFactory.createJvmEnumAnnotationValue
         annRef.values += value
         
         // create the enum type
-        val declaredType = references.findDeclaredType(enum.declaringClass, context) as JvmDeclaredType
+        val declaredType = references.findDeclaredType(enumX.declaringClass, context) as JvmDeclaredType
         
         // create the operation
         val JvmOperation op = typesFactory.createJvmOperation
@@ -101,7 +100,7 @@ class AnnotationExtension {
         // create the literal
         val JvmEnumerationLiteral literal = typesFactory.createJvmEnumerationLiteral
         literal.setDeclaringType(declaredType)
-        literal.setSimpleName(enum.name)
+        literal.setSimpleName(enumX.name)
         value.values += literal
         
         return value

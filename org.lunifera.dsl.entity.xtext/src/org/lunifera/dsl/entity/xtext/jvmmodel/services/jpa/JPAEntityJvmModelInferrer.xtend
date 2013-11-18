@@ -13,7 +13,13 @@
 package org.lunifera.dsl.entity.xtext.jvmmodel.services.jpa
 
 import com.google.inject.Inject
+import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.lunifera.dsl.entity.semantic.model.LEntity
+import org.lunifera.dsl.entity.semantic.model.LEntityModel
+import org.lunifera.dsl.entity.semantic.model.LProperty
+import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.jvmmodel.services.IAnnotationCompiler
 import org.lunifera.dsl.entity.xtext.jvmmodel.services.bean.ClassJvmModelInferrer
 
@@ -23,109 +29,99 @@ import org.lunifera.dsl.entity.xtext.jvmmodel.services.bean.ClassJvmModelInferre
  */
 class JPAEntityJvmModelInferrer extends ClassJvmModelInferrer {
 
-    @Inject JPAAnnotationCompiler annotationCompiler
-	
-    override IAnnotationCompiler getAnnotationCompiler() {
-        annotationCompiler
-    }
-    
-//	@Inject extension IQualifiedNameProvider
-//	@Inject extension ModelExtensions
-//	@Inject TypeReferences references
+	@Inject JPAAnnotationCompiler annotationCompiler
 
-//    /**
-//	 * Is called for each instance of the first argument's type contained in a resource.
-//	 * 
-//	 * @param element - the model to create one or more JvmDeclaredTypes from.
-//	 * @param acceptor - each created JvmDeclaredType without a container should be passed to the acceptor in order get attached to the
-//	 *                   current resource.
-//	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
-//	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
-//	 */
-//	 @SuppressWarnings({"deprecation"})
-//   	 def void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-//   	 	val LEntityModel model = entity.getPackage().eContainer as LEntityModel
-//   	 	val LGenSettings settings = model.genSettings
-//		acceptor.accept(entity.toEntityClass( entity.fullyQualifiedName, settings)).initializeLater [
-//
-//			documentation = entity.documentation
-//			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
-//				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
-//			}
-//
-//			members += entity.toConstructor() []
-//				
-//			if(settings.lifecycleHandling && entity.getSuperType == null){
-//				members += entity.toPrimitiveTypeField("disposed", Boolean::TYPE)
-//			}
-//			//
-//			// Fields.
-//			//
-//			for (f : entity.properties) {
-//				switch f {
-//					LProperty: {
-//						if(f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty){
-//							members += f.toField(f.name, f.toTypeReference())
-//						}
-//					}
-//				}
-//			}
-//			
-//            //
-//            // Field accessors.
-//            //
-//			if(settings.lifecycleHandling){
-//				if(entity.getSuperType == null){
-//					members += entity.toIsDisposed()
-//				}
-//				members += entity.toCheckDisposed()
-//				members += entity.toDispose()
-//			}
-//			
-//			for (f : entity.properties) {
-//				switch f {
-//					LProperty : {
-//						members += f.toGetter(f.name, settings)
-//						if (f.toMany) {
-//							members += f.toInternalCollectionGetter(f.name)
-//							members += f.toAdder(f.name, settings)	
-//							members += f.toRemover(f.name, settings)		
-//						} else {
-//							members += f.toSetter(f.name, settings)
-//						}
-//					}
-//						
-////						LReference : {
-////							members += f.toGetter(f.name, settings)
-////							if (f.toMany) {
-////								members += f.toInternalCollectionGetter(f.name)
-////								members += f.toAdder(f.name, settings)
-////								members += f.toRemover(f.name, settings)
-////								members += f.toInternalAdder(f.name, settings)
-////								members += f.toInternalRemover(f.name, settings)
-////							} else {
-////								members += f.toSetter(f.name, settings)
-////
-////								if (f instanceof LContains && (f as LContains).opposite != null) {
-////									members += f.toInternalSetter
-////								}
-////							}
-////						}
-//				}
-//			}
-//            //
-//            // Methods.
-//            //
-//            for (op: entity.operations) {
-//                members += op.toMethod(op.name, op.type) [
-//                    documentation = op.documentation
-//                    for (p : op.params) {
-//                        parameters += p.toParameter(p.name, p.parameterType)
-//                    }
-//                    body = op.body
-//                ]
-//            }
-//		]
-//   	}
+	override IAnnotationCompiler getAnnotationCompiler() {
+		annotationCompiler
+	}
+
+	@Inject extension IQualifiedNameProvider
+	@Inject extension ModelExtensions
+	@Inject TypeReferences references
+
+	/**
+	 * Is called for each instance of the first argument's type contained in a resource.
+	 * 
+	 * @param element - the model to create one or more JvmDeclaredTypes from.
+	 * @param acceptor - each created JvmDeclaredType without a container should be passed to the acceptor in order get attached to the
+	 *                   current resource.
+	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
+	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
+	 */
+	def void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		val LEntityModel model = entity.getPackage().eContainer as LEntityModel
+		acceptor.accept(entity.toJvmType).initializeLater [
+			documentation = entity.documentation
+			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
+				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
+			}
+			members += entity.toConstructor()[]
+			if (entity.getSuperType == null) {
+				members += entity.toPrimitiveTypeField("disposed", Boolean::TYPE)
+			}
+			//
+			// Fields.
+			//
+			for (f : entity.properties) {
+				switch f {
+					LProperty: {
+						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
+							members += f.toField
+						}
+					}
+				}
+			}
+			//
+			// Field accessors.
+			//
+			if (entity.getSuperType == null) {
+				members += entity.toIsDisposed()
+			}
+			members += entity.toCheckDisposed()
+			members += entity.toDispose()
+			
+			for (f : entity.properties) {
+				if (f.scalarType) {
+					members += f.toGetter()
+					if (f.toMany) {
+						members += f.toInternalCollectionGetter(f.name)
+						members += f.toAdder(f.name)
+						members += f.toRemover(f.name)
+					} else {
+						members += f.toSetter()
+					}
+				}
+
+				if (f.entityType) {
+					members += f.toGetter()
+					if (f.toMany) {
+						members += f.toInternalCollectionGetter(f.name)
+						members += f.toAdder(f.name)
+						members += f.toRemover(f.name)
+						members += f.toInternalAdder
+						members += f.toInternalRemover
+					} else {
+						members += f.toSetter()
+
+						if (f.cascading && f.opposite != null) {
+							members += f.toInternalSetter
+						}
+					}
+				}
+			}
+			//
+			// Methods.
+			//
+			for (op : entity.operations) {
+				members += op.toMethod(op.name, op.type) [
+					documentation = op.documentation
+					for (p : op.params) {
+						parameters += p.toParameter(p.name, p.parameterType)
+					}
+					body = op.body
+				]
+			}
+		]
+	}
 
 }
