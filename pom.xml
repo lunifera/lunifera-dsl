@@ -38,10 +38,6 @@
 			</build>
 			<modules>
 				<module>org.lunifera.dsl.parent</module>
-
-				<!-- exclusive for P2 -->
-				<module>org.lunifera.dsl.p2</module>
-
 				<!-- P2 features -->
 				<module>org.lunifera.dsl.feature.entities</module>
 				<module>org.lunifera.dsl.feature.eclipse.ui</module>
@@ -55,6 +51,9 @@
 				<module>org.lunifera.dsl.entity.xtext</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
 				<!-- end P2 bundles -->
+				
+				<!-- exclusive for P2 -->
+				<module>org.lunifera.dsl.p2</module>
 			</modules>
 
 		</profile>
