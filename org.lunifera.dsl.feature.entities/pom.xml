@@ -60,4 +60,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.lunifera.dsl</groupId>
+			<artifactId>org.lunifera.dsl.entity.xtext</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>
