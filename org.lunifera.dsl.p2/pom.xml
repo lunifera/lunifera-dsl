@@ -41,9 +41,7 @@
 			be run. -->
 		<dependency>
 			<groupId>org.lunifera.dsl</groupId>
-			<artifactId>
-		org.lunifera.dsl.entity.xtext.tests
-		</artifactId>
+			<artifactId>org.lunifera.dsl.entity.xtext.tests</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

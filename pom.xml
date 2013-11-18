@@ -37,6 +37,9 @@
 				<defaultGoal>clean verify</defaultGoal>
 			</build>
 			<modules>
+				<!-- exclusive for P2 -->
+				<module>org.lunifera.dsl.p2</module>
+
 				<module>org.lunifera.dsl.parent</module>
 				<!-- P2 features -->
 				<module>org.lunifera.dsl.feature.entities</module>
@@ -50,10 +53,9 @@
 				<module>org.lunifera.dsl.entity.semantic</module>
 				<module>org.lunifera.dsl.entity.xtext</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
+				<module>org.lunifera.dsl.entity.xtext.tests</module>
 				<!-- end P2 bundles -->
-				
-				<!-- exclusive for P2 -->
-				<module>org.lunifera.dsl.p2</module>
+
 			</modules>
 
 		</profile>
