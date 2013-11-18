@@ -21,10 +21,10 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
-import org.lunifera.dsl.entity.semantic.model.LReference;
+import org.lunifera.dsl.entity.semantic.model.LProperty;
 
 public class OppositeReplacementTextApplier extends ReplacementTextApplier {
-	protected LReference xReference;
+	protected LProperty refProp;
 
 	protected ITextViewer viewer;
 
@@ -34,11 +34,11 @@ public class OppositeReplacementTextApplier extends ReplacementTextApplier {
 
 	protected IValueConverter<String> qualifiedNameValueConverter;
 
-	public OppositeReplacementTextApplier(LReference xReference,
+	public OppositeReplacementTextApplier(LProperty refProp,
 			ITextViewer viewer, IScope scope,
 			IQualifiedNameConverter qualifiedNameConverter,
 			IValueConverter<String> qualifiedNameValueConverter) {
-		this.xReference = xReference;
+		this.refProp = refProp;
 		this.viewer = viewer;
 		this.scope = scope;
 		this.qualifiedNameConverter = qualifiedNameConverter;

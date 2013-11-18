@@ -41,23 +41,23 @@ public class ModelTests {
 		Assert.assertNull(contract2.getClient());
 
 		// add books
-		client.addContracts(contract1);
+		client.addToContracts(contract1);
 		Assert.assertNotNull(contract1.getClient());
 		Assert.assertTrue(client.getContracts().contains(contract1));
 		Assert.assertFalse(client.getContracts().contains(contract2));
 
-		client.addContracts(contract2);
+		client.addToContracts(contract2);
 		Assert.assertNotNull(contract2.getClient());
 		Assert.assertTrue(client.getContracts().contains(contract1));
 		Assert.assertTrue(client.getContracts().contains(contract2));
 
 		// remove books
-		client.removeContracts(contract1);
+		client.removeFromContracts(contract1);
 		Assert.assertNull(contract1.getClient());
 		Assert.assertFalse(client.getContracts().contains(contract1));
 		Assert.assertTrue(client.getContracts().contains(contract2));
 
-		client.removeContracts(contract2);
+		client.removeFromContracts(contract2);
 		Assert.assertNull(contract1.getClient());
 		Assert.assertFalse(client.getContracts().contains(contract1));
 		Assert.assertFalse(client.getContracts().contains(contract2));
@@ -82,8 +82,8 @@ public class ModelTests {
 		contract12.setName("book12");
 
 		// add books
-		lib1.addContracts(contract11);
-		lib1.addContracts(contract12);
+		lib1.addToContracts(contract11);
+		lib1.addToContracts(contract12);
 
 		//
 		// lib2
@@ -96,20 +96,20 @@ public class ModelTests {
 		contract22.setName("book22");
 
 		// add books
-		lib2.addContracts(contract21);
-		lib2.addContracts(contract22);
+		lib2.addToContracts(contract21);
+		lib2.addToContracts(contract22);
 
 		//
 		// move a book from lib1 to lib2
 		//
-		lib2.addContracts(contract11);
+		lib2.addToContracts(contract11);
 		// parent did change
 		Assert.assertSame(lib2, contract11.getClient());
 		Assert.assertFalse(lib1.getContracts().contains(contract11));
 		Assert.assertTrue(lib2.getContracts().contains(contract11));
 
 		// move it back
-		lib1.addContracts(contract11);
+		lib1.addToContracts(contract11);
 		// parent did change
 		Assert.assertSame(lib1, contract11.getClient());
 		Assert.assertTrue(lib1.getContracts().contains(contract11));
@@ -125,16 +125,16 @@ public class ModelTests {
 		Contract contract = new Contract();
 		Assert.assertTrue(client.getContracts().size() == 0);
 
-		client.addContracts(contract);
+		client.addToContracts(contract);
 		Assert.assertTrue(client.getContracts().size() == 1);
 
-		client.addContracts(contract);
+		client.addToContracts(contract);
 		Assert.assertTrue(client.getContracts().size() == 1);
 
-		client.removeContracts(contract);
+		client.removeFromContracts(contract);
 		Assert.assertTrue(client.getContracts().size() == 0);
 
-		client.removeContracts(contract);
+		client.removeFromContracts(contract);
 		Assert.assertTrue(client.getContracts().size() == 0);
 	}
 
@@ -170,7 +170,7 @@ public class ModelTests {
 		Client client2 = new Client();
 		Contract contract21 = new Contract();
 		// add book
-		client2.addContracts(contract21);
+		client2.addToContracts(contract21);
 
 		//
 		// move a book from client2 to client1
@@ -335,19 +335,19 @@ public class ModelTests {
 		Project project2 = new Project();
 		project1.setName("book2");
 
-		manager.addProjects(project1);
+		manager.addToProjects(project1);
 		Assert.assertTrue(manager.getProjects().contains(project1));
 		Assert.assertFalse(manager.getProjects().contains(project2));
 
-		manager.addProjects(project2);
+		manager.addToProjects(project2);
 		Assert.assertTrue(manager.getProjects().contains(project1));
 		Assert.assertTrue(manager.getProjects().contains(project2));
 
-		manager.removeProjects(project2);
+		manager.removeFromProjects(project2);
 		Assert.assertTrue(manager.getProjects().contains(project1));
 		Assert.assertFalse(manager.getProjects().contains(project2));
 
-		manager.removeProjects(project1);
+		manager.removeFromProjects(project1);
 		Assert.assertFalse(manager.getProjects().contains(project1));
 		Assert.assertFalse(manager.getProjects().contains(project2));
 	}
@@ -361,16 +361,16 @@ public class ModelTests {
 		Project project1 = new Project();
 		Assert.assertTrue(manager.getProjects().size() == 0);
 
-		manager.addProjects(project1);
+		manager.addToProjects(project1);
 		Assert.assertTrue(manager.getProjects().size() == 1);
 
-		manager.addProjects(project1);
+		manager.addToProjects(project1);
 		Assert.assertTrue(manager.getProjects().size() == 1);
 
-		manager.removeProjects(project1);
+		manager.removeFromProjects(project1);
 		Assert.assertTrue(manager.getProjects().size() == 0);
 
-		manager.removeProjects(project1);
+		manager.removeFromProjects(project1);
 		Assert.assertTrue(manager.getProjects().size() == 0);
 	}
 
@@ -388,16 +388,16 @@ public class ModelTests {
 
 		Assert.assertEquals(0, (int) manager.getProjectsCount());
 
-		manager.addProjects(project1);
+		manager.addToProjects(project1);
 		Assert.assertEquals(1, (int) manager.getProjectsCount());
 
-		manager.addProjects(project2);
+		manager.addToProjects(project2);
 		Assert.assertEquals(2, (int) manager.getProjectsCount());
 
-		manager.removeProjects(project2);
+		manager.removeFromProjects(project2);
 		Assert.assertEquals(1, (int) manager.getProjectsCount());
 
-		manager.removeProjects(project1);
+		manager.removeFromProjects(project1);
 		Assert.assertEquals(0, (int) manager.getProjectsCount());
 	}
 
@@ -474,8 +474,8 @@ public class ModelTests {
 		Contract contained1 = new Contract();
 		Contract contained2 = new Contract();
 
-		client.addContracts(contained1);
-		client.addContracts(contained2);
+		client.addToContracts(contained1);
+		client.addToContracts(contained2);
 
 		Assert.assertFalse(contained1.isDisposed());
 		Assert.assertFalse(contained2.isDisposed());
@@ -507,9 +507,9 @@ public class ModelTests {
 	public void test_disposed_nodelegateToReference() {
 		Project contract = new Project();
 		Developer ref1 = new Developer();
-		contract.addDevelopers(ref1);
+		contract.addToDevelopers(ref1);
 		Developer ref2 = new Developer();
-		contract.addDevelopers(ref2);
+		contract.addToDevelopers(ref2);
 		Manager ref3 = new Manager();
 		contract.setManager(ref3);
 

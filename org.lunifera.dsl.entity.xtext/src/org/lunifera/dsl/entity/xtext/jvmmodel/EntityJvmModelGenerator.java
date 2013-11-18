@@ -10,15 +10,10 @@
  */
 package org.lunifera.dsl.entity.xtext.jvmmodel;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.common.types.JvmEnumerationType;
-import org.eclipse.xtext.common.types.JvmGenericType;
-import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
 import org.lunifera.dsl.entity.semantic.model.LEntityModel;
-import org.lunifera.dsl.entity.semantic.model.LEnum;
+import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 
 import com.google.inject.Inject;
 
@@ -27,25 +22,7 @@ public class EntityJvmModelGenerator extends JvmModelGenerator {
 
 	@Inject
 	private IJvmModelAssociations associations;
-
-	public void internalDoGenerate(final EObject type,
-			final IFileSystemAccess fsa) {
-		if (type instanceof JvmEnumerationType) {
-			LEnum lenum = (LEnum) associations.getPrimarySourceElement(type);
-			LEntityModel lmodel = (LEntityModel) lenum.getPackage().eContainer();
-			if (isNoSource(lmodel)) {
-				return;
-			}
-		} else if (type instanceof JvmGenericType) {
-			LEntity lentity = (LEntity) associations.getPrimarySourceElement(type);
-			LEntityModel lmodel = (LEntityModel) lentity.getPackage().eContainer();
-			if (isNoSource(lmodel)) {
-				return;
-			}
-		}
-
-		super.internalDoGenerate(type, fsa);
-	}
+	@Inject ModelExtensions extensions;
 
 	/**
 	 * Returns true, if no source should be generated.
@@ -54,7 +31,6 @@ public class EntityJvmModelGenerator extends JvmModelGenerator {
 	 * @return
 	 */
 	private boolean isNoSource(LEntityModel lmodel) {
-		return lmodel.getGenSettings() != null
-				&& lmodel.getGenSettings().isNoSource();
+		return false;
 	}
 }

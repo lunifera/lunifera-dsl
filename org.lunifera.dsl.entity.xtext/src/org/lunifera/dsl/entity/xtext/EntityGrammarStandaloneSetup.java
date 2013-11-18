@@ -20,8 +20,10 @@ public class EntityGrammarStandaloneSetup extends
 	}
 
 	public void register(Injector injector) {
-		if (!EPackage.Registry.INSTANCE.containsKey(EntityPackage.eNS_URI)) {
-			EPackage.Registry.INSTANCE.put(EntityPackage.eNS_URI,
+		if (!EPackage.Registry.INSTANCE
+				.containsKey("http://www.lunifera.org/metamodel/entity/Entity")) {
+			EPackage.Registry.INSTANCE.put(
+					"http://www.lunifera.org/metamodel/entity/Entity",
 					EntityPackage.eINSTANCE);
 		}
 

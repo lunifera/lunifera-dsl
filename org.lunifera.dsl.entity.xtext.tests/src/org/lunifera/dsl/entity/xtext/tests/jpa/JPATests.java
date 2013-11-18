@@ -2,12 +2,14 @@ package org.lunifera.dsl.entity.xtext.tests.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.RollbackException;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.lunifera.dsl.entity.xtext.tests.Activator;
 import org.lunifera.dsl.entity.xtext.tests.jpa.model.Client;
 import org.lunifera.dsl.entity.xtext.tests.jpa.model.Contract;
 import org.lunifera.dsl.entity.xtext.tests.jpa.model.Developer;
@@ -20,13 +22,22 @@ public class JPATests {
 	private static final Logger logger = org.slf4j.LoggerFactory
 			.getLogger(JPATests.class);
 
-	private static final String PERSISTENCE_UNIT_NAME = "dbHSQL";
+	private static final String PERSISTENCE_UNIT_NAME = "dbDerby";
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 
+	@BeforeClass
+	public static void setupClass() {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+		}
+	}
+
 	@Before
 	public void setupDB() throws Exception {
-		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+
+		emf = Activator.getEMF();
 		em = emf.createEntityManager();
 		// try {
 		// //not working
@@ -98,11 +109,12 @@ public class JPATests {
 			em.getTransaction().commit();
 
 			// must never reach that statement, since exception is thrown on
-			// txn.commit()
 			Assert.fail("Exception had to be thrown!");
-		} catch (Exception ex) {
-			// everything is fine
-			logger.debug("Info: Exception thrown");
+		} catch (RollbackException ex) {
+			Assert.assertTrue(ex
+					.toString()
+					.contains(
+							"During synchronization a new object was found through a relationship that was not marked cascade PERSIST: org.lunifera.dsl.entity.xtext.tests.jpa.model.Manager"));
 		} finally {
 			em.close();
 			emf.close();
@@ -132,11 +144,6 @@ public class JPATests {
 		}
 	}
 
-	@Test
-	public void refers_OneToMany() {
-
-	}
-
 	/**
 	 * The persist operation throws exception, since the cascades.ALL is not
 	 * specified at Project, but at Contract
@@ -160,6 +167,10 @@ public class JPATests {
 			// txn.commit()
 			Assert.fail("Exception had to be thrown!");
 		} catch (Exception ex) {
+			Assert.assertTrue(ex
+					.toString()
+					.contains(
+							"During synchronization a new object was found through a relationship that was not marked cascade PERSIST: org.lunifera.dsl.entity.xtext.tests.jpa.model.Contract"));
 			// everything is fine
 			logger.debug("Info: Exception thrown");
 		} finally {
@@ -181,12 +192,12 @@ public class JPATests {
 			Contract contract1 = new Contract();
 			contract1
 					.setName("contract1_containment_OneToMany__cascadePersist");
-			client.addContracts(contract1);
+			client.addToContracts(contract1);
 
 			Contract contract2 = new Contract();
 			contract2
 					.setName("contract2_containment_OneToMany__cascadePersist");
-			client.addContracts(contract2);
+			client.addToContracts(contract2);
 
 			em.persist(contract1);
 			em.getTransaction().commit();
@@ -196,6 +207,10 @@ public class JPATests {
 			// txn.commit()
 			Assert.fail("Exception had to be thrown!");
 		} catch (Exception ex) {
+			Assert.assertTrue(ex
+					.toString()
+					.contains(
+							"During synchronization a new object was found through a relationship that was not marked cascade PERSIST: org.lunifera.dsl.entity.xtext.tests.jpa.model.Client"));
 			// everything is fine
 			logger.debug("Info: Exception thrown");
 		} finally {
@@ -212,6 +227,7 @@ public class JPATests {
 	public void containment_OneToOne__cascadePersist() {
 
 		try {
+			em.getTransaction().begin();
 			// create new entires
 			Project project = new Project();
 			project.setName("proj_containment_OneToOne__cascadePersist");
@@ -219,16 +235,15 @@ public class JPATests {
 			contract.setName("cntr_containment_OneToOne__cascadePersist");
 			project.setContract(contract);
 
-			Assert.assertEquals(0, project.getId());
-			Assert.assertEquals(0, contract.getId());
+			Assert.assertNull(project.getId());
+			Assert.assertNull(contract.getId());
 
 			// persist
-			em.getTransaction().begin();
 			em.persist(contract);
 			em.getTransaction().commit();
 
-			Assert.assertEquals(1, project.getId());
-			Assert.assertEquals(1, contract.getId());
+			Assert.assertEquals(Long.valueOf(1), project.getId());
+			Assert.assertEquals(Long.valueOf(1), contract.getId());
 
 			em.getTransaction().begin();
 			// read them again
@@ -243,8 +258,8 @@ public class JPATests {
 			Assert.assertSame(readedContract, readedProject.getContract());
 
 			// delete
-			Assert.assertEquals(1, project.getId());
-			Assert.assertEquals(1, contract.getId());
+			Assert.assertEquals(Long.valueOf(1), project.getId());
+			Assert.assertEquals(Long.valueOf(1), contract.getId());
 
 			em.remove(contract);
 			em.getTransaction().commit();
@@ -268,11 +283,11 @@ public class JPATests {
 			project.setName("proj_containment_OneToMany__no_cascadePersist");
 			Developer developer1 = new Developer();
 			developer1.setName("dev1_containment_OneToMany__no_cascadePersist");
-			project.addDevelopers(developer1);
+			project.addToDevelopers(developer1);
 
 			Developer developer2 = new Developer();
 			developer2.setName("dev2_containment_OneToMany__no_cascadePersist");
-			project.addDevelopers(developer2);
+			project.addToDevelopers(developer2);
 
 			em.persist(project);
 			em.getTransaction().commit();
@@ -282,6 +297,10 @@ public class JPATests {
 			// txn.commit()
 			Assert.fail("Exception had to be thrown!");
 		} catch (Exception ex) {
+			Assert.assertTrue(ex
+					.toString()
+					.contains(
+							"During synchronization a new object was found through a relationship that was not marked cascade PERSIST: org.lunifera.dsl.entity.xtext.tests.jpa.model.Developer"));
 			// everything is fine
 			logger.debug("Info: Exception thrown");
 		} finally {
@@ -299,11 +318,11 @@ public class JPATests {
 			project.setName("proj_containment_OneToMany__no_cascadePersist");
 			Developer developer1 = new Developer();
 			developer1.setName("dev1_containment_OneToMany__no_cascadePersist");
-			project.addDevelopers(developer1);
+			project.addToDevelopers(developer1);
 
 			Developer developer2 = new Developer();
 			developer2.setName("dev2_containment_OneToMany__no_cascadePersist");
-			project.addDevelopers(developer2);
+			project.addToDevelopers(developer2);
 
 			em.persist(project);
 			em.persist(developer1);
@@ -325,12 +344,12 @@ public class JPATests {
 			Contract contract1 = new Contract();
 			contract1
 					.setName("contract1_containment_OneToMany__cascadePersist");
-			client.addContracts(contract1);
+			client.addToContracts(contract1);
 
 			Contract contract2 = new Contract();
 			contract2
 					.setName("contract2_containment_OneToMany__cascadePersist");
-			client.addContracts(contract2);
+			client.addToContracts(contract2);
 
 			em.persist(client);
 			em.getTransaction().commit();

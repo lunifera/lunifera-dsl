@@ -24,11 +24,8 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProvider;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
-import org.lunifera.dsl.entity.semantic.model.LContainer;
-import org.lunifera.dsl.entity.semantic.model.LContains;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LEntityMember;
-import org.lunifera.dsl.entity.semantic.model.LRefers;
+import org.lunifera.dsl.entity.semantic.model.LClass;
+import org.lunifera.dsl.entity.semantic.model.LProperty;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 
 import com.google.inject.Inject;
@@ -49,127 +46,30 @@ public class EntityScopeProvider extends XbaseWithAnnotationsScopeProvider {
 
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
-		if (reference == EntityPackage.Literals.LCONTAINS__OPPOSITE) {
-			return getScope_LContains_Opposite((LContains) context);
-		} else if (reference == EntityPackage.Literals.LCONTAINER__OPPOSITE) {
-			return getScope_LContainer_Opposite((LContainer) context);
-		} else if (reference == EntityPackage.Literals.LREFERS__OPPOSITE) {
-			return getScope_LReference_Opposite((LRefers) context);
-		} else {
-			return super.getScope(context, reference);
+		if (reference == EntityPackage.Literals.LPROPERTY__OPPOSITE) {
+			return getScope_LProperty_Opposite((LProperty) context);
 		}
+		return super.getScope(context, reference);
 	}
 
-	/**
-	 * Returns the scope for the opposite reference of LReference
-	 * 
-	 * @param a_refers
-	 * @return
-	 */
-	private IScope getScope_LReference_Opposite(final LRefers a_refers) {
-		return new AbstractScope(IScope.NULLSCOPE, false) {
-			@Override
-			protected Iterable<IEObjectDescription> getAllLocalElements() {
-				ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-				LEntity a_type = a_refers.getType();
-				if (a_type != null) {
-					LEntity a_containingRefersType = (LEntity) a_refers
-							.eContainer();
-					// iterate all memeber in the opposite type
-					for (LEntityMember member : a_type.getEntityMembers()) {
-						if (member instanceof LRefers) {
-							LRefers x_otherRefers = (LRefers) member;
-							LEntity x_otherRefersType = x_otherRefers.getType();
-							// test if the name of the
-							// a_refers-eContainer (==
-							// LEntity)
-							// matches the name of the
-							// x_otherRefers-type from the
-							// iterated members
-							if (modelExtensions.nameEquals(x_otherRefersType,
-									a_containingRefersType)) {
-								String name = x_otherRefers.getName();
-								if (name != null) {
-									result.add(new EObjectDescription(
-											qualifiedNameConverter
-													.toQualifiedName(name),
-											member, null));
-								}
-							}
-						}
-					}
-				}
-				return result;
-			}
-		};
-	}
-
-	/**
-	 * Returns the scope for the opposite reference of LContainer
-	 * 
-	 * @param a_container
-	 * @return
-	 */
-	private IScope getScope_LContainer_Opposite(final LContainer a_container) {
-		return new AbstractScope(IScope.NULLSCOPE, false) {
-			@Override
-			protected Iterable<IEObjectDescription> getAllLocalElements() {
-				ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-				LEntity a_type = a_container.getType();
-				if (a_type != null) {
-					LEntity a_containingContainerType = (LEntity) a_container
-							.eContainer();
-					// iterate all memeber in the opposite type
-					for (LEntityMember member : a_type.getEntityMembers()) {
-						if (member instanceof LContains) {
-							LContains x_contains = (LContains) member;
-							LEntity x_containsType = x_contains.getType();
-							// test if the name of the
-							// a_container-eContainer (==
-							// LEntity)
-							// matches the name of the
-							// x_contains-type from the
-							// iterated members
-							if (modelExtensions.nameEquals(x_containsType,
-									a_containingContainerType)) {
-								String name = x_contains.getName();
-								if (name != null) {
-									result.add(new EObjectDescription(
-											qualifiedNameConverter
-													.toQualifiedName(name),
-											member, null));
-								}
-							}
-						}
-					}
-				}
-				return result;
-			}
-		};
-	}
-
-	/**
-	 * Returns the scope for the opposite reference of LContains
-	 * 
-	 * @param containes
-	 * @return
-	 */
-	private IScope getScope_LContains_Opposite(final LContains containes) {
+	private IScope getScope_LProperty_Opposite(final LProperty prop) {
 		return new AbstractScope(IScope.NULLSCOPE, false) {
 			@Override
 			// springt zu EntityProposalProvider
 			protected Iterable<IEObjectDescription> getAllLocalElements() {
 				ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-				LEntity type = containes.getType();
-				if (type != null) {
-					for (LEntityMember opposite : type.getEntityMembers()) {
-						if (opposite instanceof LContainer) {
-							String name = ((LContainer) opposite).getName();
+				if (prop.getType() != null && prop.getType() instanceof LClass) {
+					LClass propClass = (LClass) prop.eContainer();
+					LClass type = (LClass) prop.getType();
+					for (LProperty oppositeProp : modelExtensions
+							.getProperties(type)) {
+						if (oppositeProp.getType() == propClass) {
+							String name = oppositeProp.getName();
 							if (name != null) {
 								result.add(new EObjectDescription(
 										qualifiedNameConverter
 												.toQualifiedName(name),
-										opposite, null));
+										oppositeProp, null));
 							}
 						}
 					}
@@ -178,5 +78,126 @@ public class EntityScopeProvider extends XbaseWithAnnotationsScopeProvider {
 			}
 		};
 	}
+	//
+	// /**
+	// * Returns the scope for the opposite reference of LReference
+	// *
+	// * @param a_refers
+	// * @return
+	// */
+	// private IScope getScope_LReference_Opposite(final LRefers a_refers) {
+	// return new AbstractScope(IScope.NULLSCOPE, false) {
+	// @Override
+	// protected Iterable<IEObjectDescription> getAllLocalElements() {
+	// ArrayList<IEObjectDescription> result = new
+	// ArrayList<IEObjectDescription>();
+	// LClass a_type = a_refers.getType();
+	// if (a_type != null) {
+	// LClass a_containingRefersType = (LClass) a_refers
+	// .eContainer();
+	// // iterate all memeber in the opposite type
+	// for (LEntityMember member : a_type.getEntityMembers()) {
+	// if (member instanceof LRefers) {
+	// LRefers x_otherRefers = (LRefers) member;
+	// LClass x_otherRefersType = x_otherRefers.getType();
+	// // test if the name of the
+	// // a_refers-eContainer (==
+	// // LClass)
+	// // matches the name of the
+	// // x_otherRefers-type from the
+	// // iterated members
+	// if (modelExtensions.nameEquals(x_otherRefersType,
+	// a_containingRefersType)) {
+	// String name = x_otherRefers.getName();
+	// if (name != null) {
+	// result.add(new EObjectDescription(
+	// qualifiedNameConverter
+	// .toQualifiedName(name),
+	// member, null));
+	// }
+	// }
+	// }
+	// }
+	// }
+	// return result;
+	// }
+	// };
+	// }
+	//
+	// /**
+	// * Returns the scope for the opposite reference of LContainer
+	// *
+	// * @param a_container
+	// * @return
+	// */
+	// private IScope getScope_LContainer_Opposite(final LContainer a_container)
+	// {
+	// return new AbstractScope(IScope.NULLSCOPE, false) {
+	// @Override
+	// protected Iterable<IEObjectDescription> getAllLocalElements() {
+	// ArrayList<IEObjectDescription> result = new
+	// ArrayList<IEObjectDescription>();
+	// LClass a_type = a_container.getType();
+	// if (a_type != null) {
+	// LClass a_containingContainerType = (LClass) a_container
+	// .eContainer();
+	// // iterate all memeber in the opposite type
+	// for (LEntityMember member : a_type.getEntityMembers()) {
+	// if (member instanceof LContains) {
+	// LContains x_contains = (LContains) member;
+	// LClass x_containsType = x_contains.getType();
+	// // test if the name of the
+	// // a_container-eContainer (==
+	// // LClass)
+	// // matches the name of the
+	// // x_contains-type from the
+	// // iterated members
+	// if (modelExtensions.nameEquals(x_containsType,
+	// a_containingContainerType)) {
+	// String name = x_contains.getName();
+	// if (name != null) {
+	// result.add(new EObjectDescription(
+	// qualifiedNameConverter
+	// .toQualifiedName(name),
+	// member, null));
+	// }
+	// }
+	// }
+	// }
+	// }
+	// return result;
+	// }
+	// };
+	// }
+	//
+	// /**
+	// * Returns the scope for the opposite reference of bidirectional
+	// associations.
+	// */
+	// private IScope getScope_LContains_Opposite(final LProperty prop) {
+	// return new AbstractScope(IScope.NULLSCOPE, false) {
+	// @Override
+	// // springt zu EntityProposalProvider
+	// protected Iterable<IEObjectDescription> getAllLocalElements() {
+	// ArrayList<IEObjectDescription> result = new
+	// ArrayList<IEObjectDescription>();
+	// LClass type = prop.getType();
+	// if (type != null) {
+	// for (LEntityMember opposite : type.getEntityMembers()) {
+	// if (opposite instanceof LContainer) {
+	// String name = ((LContainer) opposite).getName();
+	// if (name != null) {
+	// result.add(new EObjectDescription(
+	// qualifiedNameConverter
+	// .toQualifiedName(name),
+	// opposite, null));
+	// }
+	// }
+	// }
+	// }
+	// return result;
+	// }
+	// };
+	// }
 
 }

@@ -1,5 +1,6 @@
 package org.lunifera.dsl.entity.xtext.tests.testmodel.model;
 
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.Country;
 
 public class Province {
   private boolean disposed;

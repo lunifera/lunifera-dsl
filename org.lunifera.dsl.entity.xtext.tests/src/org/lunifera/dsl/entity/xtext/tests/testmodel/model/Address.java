@@ -2,6 +2,9 @@ package org.lunifera.dsl.entity.xtext.tests.testmodel.model;
 
 import java.util.List;
 
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.Country;
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.PostBox;
+
 public class Address {
   private boolean disposed;
   

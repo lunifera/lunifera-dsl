@@ -12,7 +12,7 @@ generator settings {
 	checked lifecycle
 }
 
-package org.lunifera.dsl.^entity.tests.testmodel.model {
+package org.lunifera.metamodel.dsl.^entity.tests.testmodel.model {
 
 	/**
 	 * Test 112233

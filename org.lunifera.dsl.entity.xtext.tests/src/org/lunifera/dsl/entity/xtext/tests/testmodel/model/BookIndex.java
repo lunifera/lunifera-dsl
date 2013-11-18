@@ -1,5 +1,6 @@
 package org.lunifera.dsl.entity.xtext.tests.testmodel.model;
 
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.Library;
 
 public class BookIndex {
   private boolean disposed;

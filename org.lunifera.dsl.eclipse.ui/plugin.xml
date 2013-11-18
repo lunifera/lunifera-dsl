@@ -11,7 +11,7 @@
       <wizard
             category="org.lunifera.ui.wizards.category"
             class="org.lunifera.eclipse.ui.utils.LuniferaUiExecutableExtensionFactory:org.lunifera.eclipse.ui.wizards.LuniferaNewProjectWizard"
-            icon="icons/Lunifera_Blueprint_16.png"
+            icon="icons/Lunifera_16.png"
             id="LuniferaUiExecutableExtensionFactory:"
             name="Lunifera Modeling Project"
             project="true">
@@ -57,7 +57,7 @@
       <view
             category="org.lunifera.eclipse.ui.views.category.Resources"
             class="org.lunifera.eclipse.ui.utils.LuniferaUiExecutableExtensionFactory:org.eclipse.ui.navigator.CommonNavigator"
-            icon="icons/UnitGroup_16.png"
+            icon="icons/Lunifera_16.png"
             id="org.lunifera.eclipse.ui.views.Navigator"
             name="Lunifera Navigator">
       </view>
@@ -116,7 +116,7 @@
          point="org.eclipse.ui.propertyPages">
       <page
             class="org.lunifera.dsl.eclipse.ui.WorkbenchPropertyPage1"
-            icon="icons/Lunifera_Blueprint_16.png"
+            icon="icons/Lunifera_16.png"
             id="org.lunifera.eclipse.ui.rootPropertyPage"
             name="Lunifera Tools">
       </page>

@@ -21,7 +21,7 @@
       <package
             uri="http://www.lunifera.org/dsl/entity/v1"
             class="org.lunifera.dsl.entity.semantic.model.EntityPackage"
-            genModel="model/Entity.genmodel"/>
+            genModel="model/entity.genmodel"/>
    </extension>
 
 </plugin>

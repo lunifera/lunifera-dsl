@@ -36,7 +36,7 @@ public class EntityGrammarUiModule extends AbstractEntityGrammarUiModule {
 	}
 
 	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
-		return EntityHighlightingCalculator.class;
+		return EntityGrammarHighlightingCalculator.class;
 	}
 
 }

@@ -23,7 +23,7 @@ import org.junit.runner.RunWith
 import org.lunifera.dsl.entity.semantic.model.LEntityModel
 import org.lunifera.dsl.entity.xtext.EntityGrammarInjectorProvider
 import org.lunifera.dsl.entity.xtext.EntityGrammarStandaloneSetup
-import org.lunifera.dsl.entity.xtext.validation.EntityGrammarJavaValidator
+import org.lunifera.dsl.entity.xtext.validation.EntityJavaValidator
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EntityGrammarInjectorProvider))
@@ -32,14 +32,14 @@ class ValidatorTest extends AbstractXtextTests {
 	@Inject
 	private ParseHelper<LEntityModel> parseHelper;
 
-	private ValidatorTester<EntityGrammarJavaValidator> tester;
+	private ValidatorTester<EntityJavaValidator> tester;
 
 	override void setUp() {
 		super.setUp
 
 		with(typeof(EntityGrammarStandaloneSetup));
-		val EntityGrammarJavaValidator validator = get(typeof(EntityGrammarJavaValidator));
-		tester = new ValidatorTester<EntityGrammarJavaValidator>(validator, injector);
+		val EntityJavaValidator validator = get(typeof(EntityJavaValidator));
+		tester = new ValidatorTester<EntityJavaValidator>(validator, injector);
 	}
 
 	@Test
@@ -57,7 +57,7 @@ class ValidatorTest extends AbstractXtextTests {
 			''')
 
 		tester.validator.checkDuplicateType_InProject(lModel.packages.get(0).types.get(0))
-		tester.diagnose.assertError(EntityGrammarJavaValidator::CODE__DUPLICATE_LTYPE_IN_PROJECT)
+		tester.diagnose.assertError(EntityJavaValidator::CODE__DUPLICATE_LTYPE_IN_PROJECT)
 	}
 
 	@Test
@@ -72,6 +72,6 @@ class ValidatorTest extends AbstractXtextTests {
 			''')
 
 		tester.validator.checkDuplicatePackages_InFile(lModel)
-		tester.diagnose.assertError(EntityGrammarJavaValidator::CODE__DUPLICATE_LPACKAGE_IN_FILE)
+		tester.diagnose.assertError(EntityJavaValidator::CODE__DUPLICATE_LPACKAGE_IN_FILE)
 	}
 }

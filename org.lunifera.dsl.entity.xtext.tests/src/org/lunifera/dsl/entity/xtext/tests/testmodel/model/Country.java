@@ -2,6 +2,8 @@ package org.lunifera.dsl.entity.xtext.tests.testmodel.model;
 
 import java.util.List;
 
+import org.lunifera.dsl.entity.xtext.tests.testmodel.model.Province;
+
 public class Country {
   private boolean disposed;
   

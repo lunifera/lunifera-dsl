@@ -16,8 +16,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.internal.xtend.xtend.XtendFile;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
@@ -27,15 +26,12 @@ import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider;
 import org.eclipse.xtext.xbase.validation.UIStrings;
-import org.lunifera.dsl.entity.semantic.model.LContainer;
-import org.lunifera.dsl.entity.semantic.model.LContains;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
+import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
 import org.lunifera.dsl.entity.semantic.model.LEnumLiteral;
 import org.lunifera.dsl.entity.semantic.model.LImport;
 import org.lunifera.dsl.entity.semantic.model.LOperation;
 import org.lunifera.dsl.entity.semantic.model.LProperty;
-import org.lunifera.dsl.entity.semantic.model.LRefers;
 
 import com.google.inject.Inject;
 
@@ -49,7 +45,7 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 	private UIStrings uiStrings;
 
 	@Inject
-	private EntityImages images;
+	private EntityGrammarImages images;
 
 	@Inject
 	private IJvmModelAssociations associations;
@@ -59,63 +55,61 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 		super(delegate);
 	}
 
-	public Image image(XtendFile element) {
-		return images.forFile();
-	}
-
-	public Image image(LImport element) {
+	public ImageDescriptor image(LImport element) {
 		return images.forImport();
 	}
 
-	public Image image(LEntity element) {
+	public ImageDescriptor image(LClass element) {
 		final JvmGenericType inferredType = getFirstOrNull(
 				associations.getJvmElements(element), JvmGenericType.class);
-		return images.forClass(inferredType.getVisibility());
+		return images.forClass(inferredType.getVisibility(), -1);
 	}
 
-	public Image image(LEnum element) {
+	public ImageDescriptor image(LEnum element) {
 		return images.forEnum(JvmVisibility.PUBLIC);
 	}
-	
-	public Image image(LEnumLiteral element) {
+
+	public ImageDescriptor image(LEnumLiteral element) {
 		return images.forEnumLiteral();
 	}
 
-	public Image image(LOperation element) {
+	public ImageDescriptor image(LOperation element) {
 		JvmOperation inferredOperation = getFirstOrNull(
 				associations.getJvmElements(element), JvmOperation.class);
-		return images.forOperation(inferredOperation.getVisibility(),
-				inferredOperation.isStatic());
+		return images.forOperation(inferredOperation.getVisibility(), -1);
 	}
 
-	public Image image(LProperty element) {
-		JvmField inferredField = getFirstOrNull(
-				associations.getJvmElements(element), JvmField.class);
-		return images.forField(inferredField.getVisibility(),
-				inferredField.isStatic(), false);
+	public ImageDescriptor image(LProperty element) {
+		if (!element.isCascading()) {
+			JvmField inferredField = getFirstOrNull(
+					associations.getJvmElements(element), JvmField.class);
+			return images.forField(inferredField.getVisibility(), -1);
+		} else {
+			return images.forCascading(JvmVisibility.PUBLIC);
+		}
 	}
 
-	public Image image(LRefers element) {
-		return images.forRefers();
-	}
+	// public Image image(LRefers element) {
+	// return images.forRefers();
+	// }
+	//
+	// public Image image(LContains element) {
+	// return images.forContains();
+	// }
+	//
+	// public Image image(LContainer element) {
+	// return images.forContainer();
+	// }
 
-	public Image image(LContains element) {
-		return images.forContains();
-	}
-
-	public Image image(LContainer element) {
-		return images.forContainer();
-	}
-
-	public Image image(JvmParameterizedTypeReference typeRef) {
-		return images.forTypeParameter();
+	public ImageDescriptor image(JvmParameterizedTypeReference typeRef) {
+		return images.forTypeParameter(-1);
 	}
 
 	public String text(LImport element) {
 		return element.getImportedNamespace();
 	}
 
-	public String text(LEntity element) {
+	public String text(LClass element) {
 		return element.getName();
 	}
 
@@ -137,44 +131,44 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 		return element.getName();
 	}
 
-	public String text(LRefers element) {
-		JvmField inferredField = getFirstOrNull(
-				associations.getJvmElements(element), JvmField.class);
-		if (inferredField != null) {
-			JvmTypeReference type = inferredField.getType();
-			if (type != null) {
-				return element.getName() + " : " + type.getSimpleName()
-						+ " [refers]";
-			}
-		}
-		return element.getName();
-	}
-
-	public String text(LContains element) {
-		JvmField inferredField = getFirstOrNull(
-				associations.getJvmElements(element), JvmField.class);
-		if (inferredField != null) {
-			JvmTypeReference type = inferredField.getType();
-			if (type != null) {
-				return element.getName() + " : " + type.getSimpleName()
-						+ " [contains]";
-			}
-		}
-		return element.getName();
-	}
-
-	public String text(LContainer element) {
-		JvmField inferredField = getFirstOrNull(
-				associations.getJvmElements(element), JvmField.class);
-		if (inferredField != null) {
-			JvmTypeReference type = inferredField.getType();
-			if (type != null) {
-				return element.getName() + " : " + type.getSimpleName()
-						+ " [container]";
-			}
-		}
-		return element.getName();
-	}
+	// public String text(LRefers element) {
+	// JvmField inferredField = getFirstOrNull(
+	// associations.getJvmElements(element), JvmField.class);
+	// if (inferredField != null) {
+	// JvmTypeReference type = inferredField.getType();
+	// if (type != null) {
+	// return element.getName() + " : " + type.getSimpleName()
+	// + " [refers]";
+	// }
+	// }
+	// return element.getName();
+	// }
+	//
+	// public String text(LContains element) {
+	// JvmField inferredField = getFirstOrNull(
+	// associations.getJvmElements(element), JvmField.class);
+	// if (inferredField != null) {
+	// JvmTypeReference type = inferredField.getType();
+	// if (type != null) {
+	// return element.getName() + " : " + type.getSimpleName()
+	// + " [contains]";
+	// }
+	// }
+	// return element.getName();
+	// }
+	//
+	// public String text(LContainer element) {
+	// JvmField inferredField = getFirstOrNull(
+	// associations.getJvmElements(element), JvmField.class);
+	// if (inferredField != null) {
+	// JvmTypeReference type = inferredField.getType();
+	// if (type != null) {
+	// return element.getName() + " : " + type.getSimpleName()
+	// + " [container]";
+	// }
+	// }
+	// return element.getName();
+	// }
 
 	public String text(JvmParameterizedTypeReference typeRef) {
 		return typeRef.getType().getSimpleName();

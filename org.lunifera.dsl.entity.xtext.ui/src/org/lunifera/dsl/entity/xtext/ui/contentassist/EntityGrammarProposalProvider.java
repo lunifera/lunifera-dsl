@@ -13,24 +13,11 @@
  */
 package org.lunifera.dsl.entity.xtext.ui.contentassist;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.text.contentassist.ICompletionProposal;
-import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.JdtVariableCompletions;
 import org.eclipse.xtext.conversion.impl.QualifiedNameValueConverter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
-import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.lunifera.dsl.entity.semantic.model.EntityPackage;
-import org.lunifera.dsl.entity.semantic.model.LContainer;
-import org.lunifera.dsl.entity.semantic.model.LContains;
-import org.lunifera.dsl.entity.semantic.model.LRefers;
 import org.lunifera.dsl.entity.xtext.services.EntityGrammarGrammarAccess;
-import org.lunifera.dsl.entity.xtext.ui.contentassist.AbstractEntityGrammarProposalProvider;
 
 import com.google.inject.Inject;
 
@@ -42,86 +29,89 @@ import com.google.inject.Inject;
 public class EntityGrammarProposalProvider extends
 		AbstractEntityGrammarProposalProvider {
 	@Inject
-	IScopeProvider entityScopeProvider;
-
+	private IScopeProvider entityScopeProvider;
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
-
 	@Inject
-	QualifiedNameValueConverter qualifiedNameValueConverter;
-
+	private QualifiedNameValueConverter qualifiedNameValueConverter;
 	@Inject
-	EntityGrammarGrammarAccess xcoreGrammarAccess;
-
+	private EntityGrammarGrammarAccess xcoreGrammarAccess;
 	@Inject
 	private JdtVariableCompletions completions;
 
-	@Override
-	public void completeEntityMember_Opposite(EObject model,
-			Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		if (model instanceof LContains) {
-			final IReplacementTextApplier textApplier = new OppositeReplacementTextApplier(
-					(LContains) model, context.getViewer(),
-					entityScopeProvider.getScope(model,
-							EntityPackage.Literals.LCONTAINS__OPPOSITE),
-					qualifiedNameConverter, qualifiedNameValueConverter);
-			ICompletionProposalAcceptor oppositeAware = new ICompletionProposalAcceptor.Delegate(
-					acceptor) {
-				@Override
-				public void accept(ICompletionProposal proposal) {
-					if (proposal instanceof ConfigurableCompletionProposal
-							&& textApplier != null) {
-						((ConfigurableCompletionProposal) proposal)
-								.setTextApplier(textApplier);
-					}
-					super.accept(proposal);
-				}
-			};
-			super.completeEntityMember_Opposite(model, assignment, context,
-					oppositeAware);
-		} else if (model instanceof LContainer) {
-			IScope scope = entityScopeProvider.getScope(model,
-					EntityPackage.Literals.LCONTAINER__OPPOSITE);
-
-			final IReplacementTextApplier textApplier = new OppositeReplacementTextApplier(
-					(LContainer) model, context.getViewer(), scope,
-					qualifiedNameConverter, qualifiedNameValueConverter);
-			ICompletionProposalAcceptor oppositeAware = new ICompletionProposalAcceptor.Delegate(
-					acceptor) {
-				@Override
-				public void accept(ICompletionProposal proposal) {
-					if (proposal instanceof ConfigurableCompletionProposal
-							&& textApplier != null) {
-						((ConfigurableCompletionProposal) proposal)
-								.setTextApplier(textApplier);
-					}
-					super.accept(proposal);
-				}
-			};
-			super.completeEntityMember_Opposite(model, assignment, context,
-					oppositeAware);
-		} else if (model instanceof LRefers) {
-			IScope scope = entityScopeProvider.getScope(model,
-					EntityPackage.Literals.LREFERS__OPPOSITE);
-			final IReplacementTextApplier textApplier = new OppositeReplacementTextApplier(
-					(LRefers) model, context.getViewer(), scope,
-					qualifiedNameConverter, qualifiedNameValueConverter);
-			ICompletionProposalAcceptor oppositeAware = new ICompletionProposalAcceptor.Delegate(
-					acceptor) {
-				@Override
-				public void accept(ICompletionProposal proposal) {
-					if (proposal instanceof ConfigurableCompletionProposal
-							&& textApplier != null) {
-						((ConfigurableCompletionProposal) proposal)
-								.setTextApplier(textApplier);
-					}
-					super.accept(proposal);
-				}
-			};
-			super.completeEntityMember_Opposite(model, assignment, context,
-					oppositeAware);
-		}
-	}
+	// @Override
+	// public void completeEntityMember_Opposite(EObject model,
+	// Assignment assignment, ContentAssistContext context,
+	// ICompletionProposalAcceptor acceptor) {
+	// if (model instanceof LContains) {
+	// final IReplacementTextApplier textApplier = new
+	// OppositeReplacementTextApplier(
+	// (LContains) model, context.getViewer(),
+	// entityScopeProvider.getScope(model,
+	// EntitymodelPackage.Literals.LCONTAINS__OPPOSITE),
+	// qualifiedNameConverter, qualifiedNameValueConverter);
+	// ICompletionProposalAcceptor oppositeAware = new
+	// ICompletionProposalAcceptor.Delegate(
+	// acceptor) {
+	// @Override
+	// public void accept(ICompletionProposal proposal) {
+	// if (proposal instanceof ConfigurableCompletionProposal
+	// && textApplier != null) {
+	// ((ConfigurableCompletionProposal) proposal)
+	// .setTextApplier(textApplier);
+	// }
+	// super.accept(proposal);
+	// }
+	// };
+	// super.completeEntityMember_Opposite(model, assignment, context,
+	// oppositeAware);
+	// } else if (model instanceof LContainer) {
+	// IScope scope = entityScopeProvider.getScope(model,
+	// EntitymodelPackage.Literals.LCONTAINER__OPPOSITE);
+	//
+	// final IReplacementTextApplier textApplier = new
+	// OppositeReplacementTextApplier(
+	// (LContainer) model, context.getViewer(), scope,
+	// qualifiedNameConverter, qualifiedNameValueConverter);
+	// ICompletionProposalAcceptor oppositeAware = new
+	// ICompletionProposalAcceptor.Delegate(
+	// acceptor) {
+	// @Override
+	// public void accept(ICompletionProposal proposal) {
+	// if (proposal instanceof ConfigurableCompletionProposal
+	// && textApplier != null) {
+	// ((ConfigurableCompletionProposal) proposal)
+	// .setTextApplier(textApplier);
+	// }
+	// super.accept(proposal);
+	// }
+	// };
+	// super.completeEntityMember_Opposite(model, assignment, context,
+	// oppositeAware);
+	// } else if (model instanceof LRefers) {
+	// IScope scope = entityScopeProvider.getScope(model,
+	// EntitymodelPackage.Literals.LREFERS__OPPOSITE);
+	// final IReplacementTextApplier textApplier = new
+	// OppositeReplacementTextApplier(
+	// (LRefers) model, context.getViewer(), scope,
+	// qualifiedNameConverter, qualifiedNameValueConverter);
+	// ICompletionProposalAcceptor oppositeAware = new
+	// ICompletionProposalAcceptor.Delegate(
+	// acceptor) {
+	// @Override
+	// public void accept(ICompletionProposal proposal) {
+	// if (proposal instanceof ConfigurableCompletionProposal
+	// && textApplier != null) {
+	// ((ConfigurableCompletionProposal) proposal)
+	// .setTextApplier(textApplier);
+	// }
+	// super.accept(proposal);
+	// }
+	// };
+	// super.completeEntityMember_Opposite(model, assignment, context,
+	// oppositeAware);
+	// }
+	// }
+	//
 
 }

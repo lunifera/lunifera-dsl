@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://www.lunifera.org/dsl/entity/v1" nsPrefix="model">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="fileExtensions" value="entitymodel"/>
+    <details key="modelName" value="Entity"/>
+    <details key="prefix" value="Entity"/>
+    <details key="basePackage" value="org.lunifera.dsl.entity.semantic"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="LEntityModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1"
+        eType="#//LPackage" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LPackage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//LImport" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//LType" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LImport">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LType" eSuperTypes="#//LAnnotationTarget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotationInfo" eType="#//LAnnotationTarget"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LAnnotationDef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclude" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LAnnotationTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//LAnnotationDef" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LScalarType" eSuperTypes="#//LType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LDataType" eSuperTypes="#//LScalarType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jvmTypeReference" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LEnum" eSuperTypes="#//LScalarType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" upperBound="-1"
+        eType="#//LEnumLiteral" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LEnumLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LClass" eSuperTypes="#//LType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serializable" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//LClass"
+        resolveProxies="false" eOpposite="#//LClass/subTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
+        eType="#//LClass" transient="true" eOpposite="#//LClass/superType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortName" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LBean" eSuperTypes="#//LClass">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//LBeanProp" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//LOperation" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LEntity" eSuperTypes="#//LClass">
+    <eOperations name="getSuperTypeAsEntity" unique="false" eType="#//LEntity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistenceName" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheable" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="historized" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//LEntityProp" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//LOperation" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="indexes" upperBound="-1"
+        eType="#//LIndex" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LProperty" eSuperTypes="#//LAnnotationTarget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jvmTypeRef" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transient" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValueLiteral" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascading" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//LProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiplicity" eType="#//LMultiplicity"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LDerivedProperty" eSuperTypes="#//LProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistent" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readonly" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LPersistentProperty" eSuperTypes="#//LProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistenceName" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lazy" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LBeanProp" eSuperTypes="#//LPersistentProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LDerivedBanProp" eSuperTypes="#//LBeanProp #//LDerivedProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LDerivedEntityProp" eSuperTypes="#//LEntityProp #//LDerivedProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LEntityProp" eSuperTypes="#//LPersistentProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LOperation" eSuperTypes="#//LAnnotationTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="#//LModifier"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmFormalParameter"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LModifier">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="final" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="static" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" unique="false"
+        eType="#//LVisibility"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LVisibility">
+    <eLiterals name="PACKAGE"/>
+    <eLiterals name="PRIVATE" value="1"/>
+    <eLiterals name="PROTECTED" value="2"/>
+    <eLiterals name="PUBLIC" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LMultiplicity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" unique="false" eType="#//LowerBound"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" unique="false" eType="#//UpperBound"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LowerBound">
+    <eLiterals name="NULL"/>
+    <eLiterals name="MANY" value="1"/>
+    <eLiterals name="OPTIONAL" value="2"/>
+    <eLiterals name="ATLEASTONE" value="3"/>
+    <eLiterals name="ZERO" value="4"/>
+    <eLiterals name="ONE" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UpperBound">
+    <eLiterals name="NULL"/>
+    <eLiterals name="MANY" value="1"/>
+    <eLiterals name="ONE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LIndex">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//LEntityProp"/>
+  </eClassifiers>
+</ecore:EPackage>
