@@ -24,8 +24,11 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProvider;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
+import org.lunifera.dsl.entity.semantic.model.LBean;
+import org.lunifera.dsl.entity.semantic.model.LBeanReference;
 import org.lunifera.dsl.entity.semantic.model.LClass;
-import org.lunifera.dsl.entity.semantic.model.LProperty;
+import org.lunifera.dsl.entity.semantic.model.LEntity;
+import org.lunifera.dsl.entity.semantic.model.LEntityReference;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 
 import com.google.inject.Inject;
@@ -41,28 +44,51 @@ import com.google.inject.Inject;
 public class EntityScopeProvider extends XbaseWithAnnotationsScopeProvider {
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
-	@Inject
-	private ModelExtensions modelExtensions;
 
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
-		if (reference == EntityPackage.Literals.LPROPERTY__OPPOSITE) {
-			return getScope_LProperty_Opposite((LProperty) context);
+		if (reference == EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE) {
+			return getScope_LFeature_Opposite((LEntityReference) context);
+		} else if (reference == EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
+			return getScope_LFeature_Opposite((LBeanReference) context);
 		}
 		return super.getScope(context, reference);
 	}
 
-	private IScope getScope_LProperty_Opposite(final LProperty prop) {
+	private IScope getScope_LFeature_Opposite(final LEntityReference prop) {
 		return new AbstractScope(IScope.NULLSCOPE, false) {
 			@Override
-			// springt zu EntityProposalProvider
+			protected Iterable<IEObjectDescription> getAllLocalElements() {
+				ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+				if (prop.getType() != null) {
+					LEntity propClass = prop.getEntity();
+					LEntity type = prop.getType();
+					for (LEntityReference oppositeProp : type.getReferences()) {
+						if (oppositeProp.getType() == propClass) {
+							String name = oppositeProp.getName();
+							if (name != null) {
+								result.add(new EObjectDescription(
+										qualifiedNameConverter
+												.toQualifiedName(name),
+										oppositeProp, null));
+							}
+						}
+					}
+				}
+				return result;
+			}
+		};
+	}
+
+	private IScope getScope_LFeature_Opposite(final LBeanReference prop) {
+		return new AbstractScope(IScope.NULLSCOPE, false) {
+			@Override
 			protected Iterable<IEObjectDescription> getAllLocalElements() {
 				ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 				if (prop.getType() != null && prop.getType() instanceof LClass) {
-					LClass propClass = (LClass) prop.eContainer();
-					LClass type = (LClass) prop.getType();
-					for (LProperty oppositeProp : modelExtensions
-							.getProperties(type)) {
+					LBean propClass = prop.getBean();
+					LBean type = prop.getType();
+					for (LBeanReference oppositeProp : type.getReferences()) {
 						if (oppositeProp.getType() == propClass) {
 							String name = oppositeProp.getName();
 							if (name != null) {
@@ -174,7 +200,7 @@ public class EntityScopeProvider extends XbaseWithAnnotationsScopeProvider {
 	// * Returns the scope for the opposite reference of bidirectional
 	// associations.
 	// */
-	// private IScope getScope_LContains_Opposite(final LProperty prop) {
+	// private IScope getScope_LContains_Opposite(final LFeature prop) {
 	// return new AbstractScope(IScope.NULLSCOPE, false) {
 	// @Override
 	// // springt zu EntityProposalProvider

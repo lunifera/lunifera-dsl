@@ -9,9 +9,9 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.lunifera.dsl.entity.semantic.model.LBean
 import org.lunifera.dsl.entity.semantic.model.LEntity
 import org.lunifera.dsl.entity.semantic.model.LEnum
-import org.lunifera.dsl.entity.xtext.jvmmodel.services.bean.BeanJvmModelInferrer
+import org.lunifera.dsl.entity.xtext.jvmmodel.bean.BeanJvmModelInferrer
+import org.lunifera.dsl.entity.xtext.jvmmodel.jpa.JPAEntityJvmModelInferrer
 import org.lunifera.dsl.entity.xtext.jvmmodel.services.enums.EnumJvmModelInferrer
-import org.lunifera.dsl.entity.xtext.jvmmodel.services.jpa.JPAEntityJvmModelInferrer
 
 /**
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.

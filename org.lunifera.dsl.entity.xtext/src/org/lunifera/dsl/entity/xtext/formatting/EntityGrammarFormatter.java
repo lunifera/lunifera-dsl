@@ -39,7 +39,7 @@ public class EntityGrammarFormatter extends AbstractDeclarativeFormatter {
 
 		configureLPackage(c, f.getLPackageAccess());
 		configureLAnnotationDef(c, f.getLAnnotationDefAccess());
-		configureLEntityPropElement(c, f.getLEntityPropAccess());
+		configureLEntityPropElement(c, f.getLEntityFeatureAccess());
 
 		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).after(f.getSL_COMMENTRule());
@@ -65,7 +65,7 @@ public class EntityGrammarFormatter extends AbstractDeclarativeFormatter {
 	}
 
 	public void configureLEntityPropElement(FormattingConfig config,
-			EntityGrammarGrammarAccess.LEntityPropElements elements) {
+			EntityGrammarGrammarAccess.LEntityFeatureElements elements) {
 		config.setLinewrap().around(elements.getRule());
 		// ###
 		// config.setLinewrap().around(elements.getAnnotationsAssignment_1());

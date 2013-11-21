@@ -18,8 +18,8 @@ import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef;
 import org.lunifera.dsl.entity.semantic.model.LClass;
 import org.lunifera.dsl.entity.semantic.model.LDataType;
-import org.lunifera.dsl.entity.semantic.model.LEntityProp;
 import org.lunifera.dsl.entity.semantic.model.LEnum;
+import org.lunifera.dsl.entity.semantic.model.LFeature;
 import org.lunifera.dsl.entity.semantic.model.LPackage;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 
@@ -61,8 +61,8 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 			} else {
 				return QualifiedName.create("");
 			}
-		} else if (obj instanceof LEntityProp) {
-			LEntityProp prop = (LEntityProp) obj;
+		} else if (obj instanceof LFeature) {
+			LFeature prop = (LFeature) obj;
 			return prop.getName() != null ? qualifiedNameConverter
 					.toQualifiedName(prop.getName()) : null;
 		} else if (obj instanceof LDataType) {

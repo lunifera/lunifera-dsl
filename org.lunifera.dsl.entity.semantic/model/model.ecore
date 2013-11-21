@@ -54,22 +54,57 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serializable" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//LClass"
-        resolveProxies="false" eOpposite="#//LClass/subTypes"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
-        eType="#//LClass" transient="true" eOpposite="#//LClass/superType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortName" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LBean" eSuperTypes="#//LClass">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//LBeanProp" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
-        eType="#//LOperation" containment="true" resolveProxies="false"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LBean" eSuperTypes="#//LClass #//LScalarType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="*&#xA;A bean is an embeddable element that may become added to a entity using the @embedd annotation."/>
+    </eAnnotations>
+    <eOperations name="getOperations" unique="false" eType="#//OperationsList">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Returns all features of type LOperation"/>
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getReferences" unique="false" eType="#//BeanReferenceList">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Returns all features of type LBeanReference"/>
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getAttributes" unique="false" eType="#//BeanAttributeList">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Returns all features of type LBeanAttribute"/>
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//LBeanFeature" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//LBean"
+        resolveProxies="false" eOpposite="#//LBean/subTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
+        eType="#//LBean" transient="true" eOpposite="#//LBean/superType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LEntity" eSuperTypes="#//LClass">
-    <eOperations name="getSuperTypeAsEntity" unique="false" eType="#//LEntity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="*&#xA;Represents a JPA entity."/>
+    </eAnnotations>
+    <eOperations name="getOperations" unique="false" eType="#//OperationsList">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Returns all features of type LOperation"/>
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getReferences" unique="false" eType="#//EntityReferenceList">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Returns all features of type LEntityReference"/>
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getAttributes" unique="false" eType="#//EntityAttributeList">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Returns all features of type LEntityAttribute"/>
         <details key="body" value=""/>
       </eAnnotations>
     </eOperations>
@@ -79,52 +114,68 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="historized" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//LEntityProp" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
-        eType="#//LOperation" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//LEntityFeature" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="indexes" upperBound="-1"
         eType="#//LIndex" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//LEntity"
+        resolveProxies="false" eOpposite="#//LEntity/subTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
+        eType="#//LEntity" transient="true" eOpposite="#//LEntity/superType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LProperty" eSuperTypes="#//LAnnotationTarget">
+  <eClassifiers xsi:type="ecore:EClass" name="LFeature" abstract="true" interface="true"
+      eSuperTypes="#//LAnnotationTarget">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jvmTypeRef" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiplicity" eType="#//LMultiplicity"
         containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotationInfo" eType="#//LAnnotationTarget"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LReference" abstract="true" interface="true"
+      eSuperTypes="#//LFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lazy" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascading" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LAttribute" abstract="true" interface="true"
+      eSuperTypes="#//LFeature">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transient" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValueLiteral" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lazy" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascading" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//LProperty"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="multiplicity" eType="#//LMultiplicity"
-        containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LDerivedProperty" eSuperTypes="#//LProperty">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistent" unique="false"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transient" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readonly" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
-        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LScalarType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LPersistentProperty" eSuperTypes="#//LProperty">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistenceName" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lazy" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LEntityFeature" eSuperTypes="#//LFeature">
+    <eOperations name="getEntity" unique="false" eType="#//LEntity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LBeanProp" eSuperTypes="#//LPersistentProperty"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LDerivedBanProp" eSuperTypes="#//LBeanProp #//LDerivedProperty"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LDerivedEntityProp" eSuperTypes="#//LEntityProp #//LDerivedProperty"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LEntityProp" eSuperTypes="#//LPersistentProperty"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LOperation" eSuperTypes="#//LAnnotationTarget">
+  <eClassifiers xsi:type="ecore:EClass" name="LEntityAttribute" eSuperTypes="#//LEntityFeature #//LAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LEntityReference" eSuperTypes="#//LEntityFeature #//LReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LEntity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//LEntityReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LBeanFeature" eSuperTypes="#//LFeature">
+    <eOperations name="getBean" unique="false" eType="#//LBean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LBeanAttribute" eSuperTypes="#//LBeanFeature #//LAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LBeanReference" eSuperTypes="#//LBeanFeature #//LReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LBean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//LBeanReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LOperation" eSuperTypes="#//LEntityFeature #//LBeanFeature">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="#//LModifier"
         containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
         containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
@@ -147,10 +198,10 @@
     <eLiterals name="PUBLIC" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LMultiplicity">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" unique="false" eType="#//LowerBound"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" unique="false" eType="#//UpperBound"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" unique="false" eType="#//LLowerBound"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" unique="false" eType="#//LUpperBound"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="LowerBound">
+  <eClassifiers xsi:type="ecore:EEnum" name="LLowerBound">
     <eLiterals name="NULL"/>
     <eLiterals name="MANY" value="1"/>
     <eLiterals name="OPTIONAL" value="2"/>
@@ -158,7 +209,7 @@
     <eLiterals name="ZERO" value="4"/>
     <eLiterals name="ONE" value="5"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="UpperBound">
+  <eClassifiers xsi:type="ecore:EEnum" name="LUpperBound">
     <eLiterals name="NULL"/>
     <eLiterals name="MANY" value="1"/>
     <eLiterals name="ONE" value="2"/>
@@ -167,7 +218,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//LEntityProp"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//LEntityFeature"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="OperationsList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.entity.semantic.model.LOperation>"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="EntityReferenceList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.entity.semantic.model.LEntityReference>"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="EntityAttributeList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.entity.semantic.model.LEntityAttribute>"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BeanReferenceList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.entity.semantic.model.LBeanReference>"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BeanAttributeList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.entity.semantic.model.LBeanAttribute>"/>
 </ecore:EPackage>

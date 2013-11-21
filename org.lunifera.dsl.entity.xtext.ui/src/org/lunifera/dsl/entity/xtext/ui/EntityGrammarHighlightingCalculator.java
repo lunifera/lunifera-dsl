@@ -16,8 +16,6 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-import org.lunifera.dsl.entity.semantic.model.LClass;
-import org.lunifera.dsl.entity.semantic.model.LProperty;
 
 public class EntityGrammarHighlightingCalculator implements
 		ISemanticHighlightingCalculator {
@@ -34,28 +32,28 @@ public class EntityGrammarHighlightingCalculator implements
 			String text = node.getText();
 			EObject semanticElement = node.getSemanticElement();
 
-			if (semanticElement instanceof LProperty) {
-				if ("id".equals(text) || "transient".equals(text)
-						|| "version".equals(text)) {
-					if (node.getNextSibling() == null) {
-						if (!"transient".equals(text)) {
-							acceptor.addPosition(node.getOffset(),
-									node.getLength(),
-									EntityHighlightingConfiguration.DEFAULT_ID);
-						}
-					} else {
-						acceptor.addPosition(node.getOffset(),
-								node.getLength(),
-								EntityHighlightingConfiguration.MODIFIER_ID);
-					}
-
-				}
-			} else if (semanticElement instanceof LClass) {
-				if ("cachable".equals(text) || "embeddable".equals(text)) {
-					acceptor.addPosition(node.getOffset(), node.getLength(),
-							EntityHighlightingConfiguration.MODIFIER_ID);
-				}
-			}
+			// if (semanticElement instanceof LProperty) {
+			// if ("id".equals(text) || "transient".equals(text)
+			// || "version".equals(text)) {
+			// if (node.getNextSibling() == null) {
+			// if (!"transient".equals(text)) {
+			// acceptor.addPosition(node.getOffset(),
+			// node.getLength(),
+			// EntityHighlightingConfiguration.DEFAULT_ID);
+			// }
+			// } else {
+			// acceptor.addPosition(node.getOffset(),
+			// node.getLength(),
+			// EntityHighlightingConfiguration.MODIFIER_ID);
+			// }
+			//
+			// }
+			// } else if (semanticElement instanceof LClass) {
+			// if ("cachable".equals(text) || "embeddable".equals(text)) {
+			// acceptor.addPosition(node.getOffset(), node.getLength(),
+			// EntityHighlightingConfiguration.MODIFIER_ID);
+			// }
+			// }
 		}
 	}
 

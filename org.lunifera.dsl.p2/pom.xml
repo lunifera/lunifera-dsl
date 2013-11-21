@@ -37,13 +37,5 @@
 			<artifactId>org.lunifera.dsl.feature.entities.headless</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- These was added to ensure that P2 will only be generated AFTER tests 
-			be run. -->
-		<dependency>
-			<groupId>org.lunifera.dsl</groupId>
-			<artifactId>org.lunifera.dsl.entity.xtext.tests</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 	</dependencies>
-
 </project>

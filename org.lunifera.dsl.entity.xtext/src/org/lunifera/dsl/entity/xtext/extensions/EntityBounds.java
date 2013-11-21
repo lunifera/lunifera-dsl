@@ -10,59 +10,60 @@
  */
 package org.lunifera.dsl.entity.xtext.extensions;
 
+import org.lunifera.dsl.entity.semantic.model.LFeature;
+import org.lunifera.dsl.entity.semantic.model.LLowerBound;
 import org.lunifera.dsl.entity.semantic.model.LMultiplicity;
-import org.lunifera.dsl.entity.semantic.model.LProperty;
-import org.lunifera.dsl.entity.semantic.model.LowerBound;
-import org.lunifera.dsl.entity.semantic.model.UpperBound;
+import org.lunifera.dsl.entity.semantic.model.LUpperBound;
 
 /**
  * Keeps lower and upper bound
  */
 public class EntityBounds {
 
-	private final LowerBound lower;
-	private final UpperBound upper;
+	private final LLowerBound lower;
+	private final LUpperBound upper;
 
-	public static EntityBounds createFor(LProperty prop) {
-		if (prop == null || prop.getType() == null) {
-			return new EntityBounds(LowerBound.ZERO, UpperBound.ONE);
+	public static EntityBounds createFor(LFeature prop) {
+		if (prop == null) {
+			return new EntityBounds(LLowerBound.ZERO, LUpperBound.ONE);
 		}
 
 		LMultiplicity multiplicity = prop.getMultiplicity();
-		
-		LowerBound lb = null;
-		UpperBound ub = null;
-		
-		if(multiplicity != null){
+
+		LLowerBound lb = null;
+		LUpperBound ub = null;
+
+		if (multiplicity != null) {
 			lb = multiplicity.getLower();
 			ub = multiplicity.getUpper();
 		}
 
-		LowerBound lower = LowerBound.ZERO;
-		UpperBound upper = UpperBound.ONE;
+		LLowerBound lower = LLowerBound.ZERO;
+		LUpperBound upper = LUpperBound.ONE;
 
-//		// Set the defaults by type.
-//		if (prop.getType() instanceof LScalarType) {
-//		} else if (prop.getType() instanceof LClass) {
-//			// ###
-//		} else {
-//			throw new IllegalArgumentException("Unsupported type " + prop.getType() + " of " + prop);
-//		}
+		// // Set the defaults by type.
+		// if (prop.getType() instanceof LScalarType) {
+		// } else if (prop.getType() instanceof LClass) {
+		// // ###
+		// } else {
+		// throw new IllegalArgumentException("Unsupported type " +
+		// prop.getType() + " of " + prop);
+		// }
 
 		if (lb != null) {
-			if (ub != null && ub != UpperBound.NULL) {
+			if (ub != null && ub != LUpperBound.NULL) {
 				// Lower and upper bound [x..y] where x = 0/1/?/+/* and y = 1/*
 				switch (lb) {
 				case ZERO: // [0..]
 				case OPTIONAL: // [?..] -> same as [0..] -> should be warning
-					lower = LowerBound.ZERO;
+					lower = LLowerBound.ZERO;
 					break;
 				case ONE: // [1..]
 				case ATLEASTONE: // [+..] -> same as [1..] -> should be warning
-					lower = LowerBound.ONE;
+					lower = LLowerBound.ONE;
 					break;
 				case MANY: // [*..]
-					lower = LowerBound.MANY;
+					lower = LLowerBound.MANY;
 					// [*..*]
 					// [*..1] -> error: upper must be greather than lower bound!
 					break;
@@ -75,20 +76,22 @@ public class EntityBounds {
 				switch (lb) {
 				case ZERO: // [0] -> makes only sense with upper bound
 				case OPTIONAL: // [?]
-					lower = LowerBound.ZERO;
-					upper = UpperBound.ONE;
+					lower = LLowerBound.ZERO;
+					upper = LUpperBound.ONE;
 					break;
 				case ONE: // [1] -> implies notnull
 				case ATLEASTONE: // [+]
-					lower = LowerBound.ONE;
-					upper = UpperBound.ONE;
+					lower = LLowerBound.ONE;
+					upper = LUpperBound.ONE;
 					break;
 				case MANY: // [*]
-					lower = LowerBound.ZERO;
-					upper = UpperBound.MANY;
+					lower = LLowerBound.ZERO;
+					upper = LUpperBound.MANY;
 					break;
 				case NULL:
-					throw new IllegalArgumentException("unexpected NULL value");
+					lower = LLowerBound.ZERO;
+					upper = LUpperBound.MANY;
+					break;
 				}
 			}
 		}
@@ -96,17 +99,17 @@ public class EntityBounds {
 		return new EntityBounds(lower, upper);
 	}
 
-	public EntityBounds(LowerBound lower, UpperBound upper) {
+	public EntityBounds(LLowerBound lower, LUpperBound upper) {
 		super();
 		this.lower = lower;
 		this.upper = upper;
 	}
 
-	public LowerBound getLower() {
+	public LLowerBound getLower() {
 		return lower;
 	}
 
-	public UpperBound getUpper() {
+	public LUpperBound getUpper() {
 		return upper;
 	}
 
@@ -116,7 +119,7 @@ public class EntityBounds {
 	 * @return
 	 */
 	public boolean isToMany() {
-		return upper == UpperBound.MANY;
+		return upper == LUpperBound.MANY;
 	}
 
 	/**
@@ -125,7 +128,7 @@ public class EntityBounds {
 	 * @return
 	 */
 	public boolean isRequired() {
-		return lower == LowerBound.ONE;
+		return lower == LLowerBound.ONE;
 	}
 
 	/**
@@ -134,6 +137,6 @@ public class EntityBounds {
 	 * @return
 	 */
 	public boolean isOptional() {
-		return lower == LowerBound.ZERO;
+		return lower == LLowerBound.ZERO;
 	}
 }

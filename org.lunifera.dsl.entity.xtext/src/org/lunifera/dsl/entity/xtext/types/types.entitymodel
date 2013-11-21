@@ -1,0 +1,13 @@
+package org.lunifera.dsl.^entity.datatypes {
+	
+	datatype int jvmType java.lang.Integer;
+	datatype long jvmType java.lang.Long;
+	datatype short jvmType java.lang.Short;
+	datatype float jvmType java.lang.Float;
+	datatype double jvmType java.lang.Double;
+	datatype char jvmType java.lang.Character;
+	datatype boolean jvmType java.lang.Boolean;
+	datatype byte jvmType java.lang.Byte;
+	datatype String jvmType java.lang.String;
+	
+}

@@ -32,19 +32,24 @@
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//LVisibility/PROTECTED"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//LVisibility/PUBLIC"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//LowerBound">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LowerBound/NULL"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LowerBound/MANY"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LowerBound/OPTIONAL"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LowerBound/ATLEASTONE"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LowerBound/ZERO"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LowerBound/ONE"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//LLowerBound">
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/NULL"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/OPTIONAL"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/ATLEASTONE"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/ZERO"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/ONE"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//UpperBound">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//UpperBound/NULL"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//UpperBound/MANY"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//UpperBound/ONE"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//LUpperBound">
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LUpperBound/NULL"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LUpperBound/MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LUpperBound/ONE"/>
     </genEnums>
+    <genDataTypes ecoreDataType="model.ecore#//OperationsList"/>
+    <genDataTypes ecoreDataType="model.ecore#//EntityReferenceList"/>
+    <genDataTypes ecoreDataType="model.ecore#//EntityAttributeList"/>
+    <genDataTypes ecoreDataType="model.ecore#//BeanReferenceList"/>
+    <genDataTypes ecoreDataType="model.ecore#//BeanAttributeList"/>
     <genClasses ecoreClass="model.ecore#//LEntityModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEntityModel/packages"/>
     </genClasses>
@@ -80,51 +85,63 @@
     <genClasses ecoreClass="model.ecore#//LClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LClass/abstract"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LClass/serializable"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LClass/superType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LClass/subTypes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LClass/shortName"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//LBean">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LBean/properties"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LBean/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LBean/features"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LBean/superType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LBean/subTypes"/>
+      <genOperations ecoreOperation="model.ecore#//LBean/getOperations"/>
+      <genOperations ecoreOperation="model.ecore#//LBean/getReferences"/>
+      <genOperations ecoreOperation="model.ecore#//LBean/getAttributes"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//LEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LEntity/persistenceName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LEntity/cacheable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LEntity/historized"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/properties"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/features"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/indexes"/>
-      <genOperations ecoreOperation="model.ecore#//LEntity/getSuperTypeAsEntity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/superType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/subTypes"/>
+      <genOperations ecoreOperation="model.ecore#//LEntity/getOperations"/>
+      <genOperations ecoreOperation="model.ecore#//LEntity/getReferences"/>
+      <genOperations ecoreOperation="model.ecore#//LEntity/getAttributes"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//LProperty">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LProperty/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LProperty/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LProperty/jvmTypeRef"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LProperty/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LProperty/version"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LProperty/transient"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LProperty/defaultValueLiteral"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LProperty/cascading"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LProperty/opposite"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LProperty/multiplicity"/>
+    <genClasses image="false" ecoreClass="model.ecore#//LFeature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LFeature/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LFeature/multiplicity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LFeature/annotationInfo"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//LDerivedProperty">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LDerivedProperty/persistent"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LDerivedProperty/readonly"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LDerivedProperty/body"/>
+    <genClasses ecoreClass="model.ecore#//LReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LReference/lazy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LReference/cascading"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//LPersistentProperty">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LPersistentProperty/persistenceName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LPersistentProperty/lazy"/>
+    <genClasses ecoreClass="model.ecore#//LAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/lazy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/cascading"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/transient"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LAttribute/type"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//LBeanProp"/>
-    <genClasses ecoreClass="model.ecore#//LDerivedBanProp"/>
-    <genClasses ecoreClass="model.ecore#//LDerivedEntityProp"/>
-    <genClasses ecoreClass="model.ecore#//LEntityProp"/>
+    <genClasses ecoreClass="model.ecore#//LEntityFeature">
+      <genOperations ecoreOperation="model.ecore#//LEntityFeature/getEntity"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//LEntityAttribute"/>
+    <genClasses ecoreClass="model.ecore#//LEntityReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LEntityReference/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LEntityReference/opposite"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//LBeanFeature">
+      <genOperations ecoreOperation="model.ecore#//LBeanFeature/getBean"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//LBeanAttribute"/>
+    <genClasses ecoreClass="model.ecore#//LBeanReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LBeanReference/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LBeanReference/opposite"/>
+    </genClasses>
     <genClasses ecoreClass="model.ecore#//LOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LOperation/modifier"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LOperation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LOperation/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LOperation/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LOperation/body"/>
@@ -141,7 +158,7 @@
     <genClasses ecoreClass="model.ecore#//LIndex">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LIndex/unique"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LIndex/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LIndex/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LIndex/features"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

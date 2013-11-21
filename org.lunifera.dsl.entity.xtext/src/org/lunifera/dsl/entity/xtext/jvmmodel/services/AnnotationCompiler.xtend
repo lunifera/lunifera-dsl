@@ -8,13 +8,15 @@
  * Contributors:
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.entity.xtext.jvmmodel.services.jpa
+package org.lunifera.dsl.entity.xtext.jvmmodel.services
 
 import com.google.inject.Inject
-import javax.persistence.AttributeOverrides
+import javax.persistence.Basic
 import javax.persistence.Cacheable
 import javax.persistence.CascadeType
 import javax.persistence.Column
+import javax.persistence.ElementCollection
+import javax.persistence.Embeddable
 import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -31,57 +33,59 @@ import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.semantic.model.LAnnotationTarget
 import org.lunifera.dsl.entity.semantic.model.LBean
-import org.lunifera.dsl.entity.semantic.model.LClass
+import org.lunifera.dsl.entity.semantic.model.LBeanAttribute
+import org.lunifera.dsl.entity.semantic.model.LBeanReference
 import org.lunifera.dsl.entity.semantic.model.LEntity
+import org.lunifera.dsl.entity.semantic.model.LEntityAttribute
+import org.lunifera.dsl.entity.semantic.model.LEntityReference
 import org.lunifera.dsl.entity.semantic.model.LOperation
-import org.lunifera.dsl.entity.semantic.model.LPersistentProperty
-import org.lunifera.dsl.entity.semantic.model.LProperty
-import org.lunifera.dsl.entity.semantic.model.LScalarType
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
-import org.lunifera.dsl.entity.xtext.jvmmodel.services.IAnnotationCompiler
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
  */
-class JPAAnnotationCompiler implements IAnnotationCompiler {
+class AnnotationCompiler {
 
 	@Inject extension ModelExtensions
 	@Inject extension JvmTypesBuilder
 	@Inject extension AnnotationExtension
 
-	def addAnno(LAnnotationTarget target, JvmAnnotationTarget jvmType, JvmAnnotationReference anno) {
-		val annoDef = target.annotations.findFirst[annotation.annotationType == anno.annotation]
-		if (annoDef == null || !annoDef.exclude) {
-			jvmType.annotations += anno
-		}
+	def processAnnotation(LAnnotationTarget annotationTarget, JvmMember jvmMember) {
+		internalProcessAnnotation(annotationTarget, jvmMember)
 	}
 
-	override processAnnotation(LClass lClass, JvmGenericType jvmType) {
-		val entity = lClass as LEntity
-		lClass.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
-		addAnno(lClass, jvmType, lClass.toAnnotation(typeof(Entity)))
+	def protected dispatch void internalProcessAnnotation(LBean bean, JvmGenericType jvmType) {
+		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+
+		bean.addAnno(jvmType, bean.toAnnotation(typeof(Embeddable)))
+	}
+
+	def protected dispatch void internalProcessAnnotation(LEntity entity, JvmGenericType jvmType) {
+		entity.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+		addAnno(entity, jvmType, entity.toAnnotation(typeof(Entity)))
 
 		val useSingleTableMapping = true // might come from settings in the future
 
 		// Process inheritance.
-		if (lClass.superType == null) {
+		if (entity.superType == null) {
 
 			// The Entity is a top-level Entity.
 			// Add @Table(name="T_ORDER", schema="LUNIXAMPLE")
 			//addAnno(lClass, jvmType, lClass.toAnnotation(typeof(Table)))
 			// If the Entity has subclasses, setup @Inheritance
-			if (!lClass.subTypes.empty) {
-				val annRef = lClass.toAnnotation(typeof(Inheritance))
-				annRef.addAnnAttr(lClass, "strategy",
+			if (!entity.subTypes.empty) {
+				val annRef = entity.toAnnotation(typeof(Inheritance))
+				annRef.addAnnAttr(entity, "strategy",
 					if(useSingleTableMapping) InheritanceType::SINGLE_TABLE else InheritanceType::JOINED)
 
 				//InheritanceType::TABLE_PER_CLASS)
-				addAnno(lClass, jvmType, annRef)
+				addAnno(entity, jvmType, annRef)
 
 				if (useSingleTableMapping) {
 					// @DiscriminatorColumn(name="DISCRIMINATOR", discriminatorType=DiscriminatorType.STRING)
@@ -106,91 +110,91 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
 		}
 	}
 
-	override processAnnotation(LOperation member, JvmOperation jvmOperation) {
+	def protected dispatch void internalProcessAnnotation(LOperation member, JvmOperation jvmOperation) {
 		member.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
 	}
 
-	override processAnnotation(LProperty prop, JvmField jvmField) {
+	def protected dispatch void internalProcessAnnotation(LEntityReference prop, JvmField jvmField) {
 		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
-		if (prop.transient) {
-			if (!prop.transientAnnoExcluded && !jvmField.isTransientAnnoCreated(prop)) {
-				jvmField.annotations += prop.toAnnotation(typeof(Transient))
+		if (prop.toMany) {
+
+			// *toMany
+			if (prop.opposite.toMany) {
+
+				// @ManyToMany
+				addManyToManyAnno(prop, jvmField)
+			} else {
+
+				// @OneToMany
+				addOneToManyAnno(prop, jvmField)
 			}
 		} else {
-			processAnnotation(prop as LPersistentProperty, jvmField)
+
+			// *toOne
+			val opposite = prop.resolvedOpposite
+
+			// When we have no opposite, then the master-side has no collection
+			// and we assume a many-to-one relation.
+			// A one-to-one relation needs an "opposite" on both sides.
+			if (opposite != null && !opposite.toMany) {
+
+				// @OneToOne
+				addOneToOneAnno(prop, jvmField)
+			} else {
+
+				// @ManyToOne
+				addManyToOneAnno(prop, jvmField)
+			}
 		}
 	}
 
-	def void processAnnotation(LPersistentProperty prop, JvmField jvmField) {
+	def protected dispatch void internalProcessAnnotation(LEntityAttribute prop, JvmField jvmField) {
+		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
+
 		if (prop.id) {
 			jvmField.annotations += prop.toAnnotation(typeof(Id))
 		} else if (prop.version) {
 			jvmField.annotations += prop.toAnnotation(typeof(Version))
-		} else if (prop.type instanceof LScalarType) {
-
-			// ### Check if userType must be added
-			addColumnAnno(prop, jvmField, prop.columnName, prop.entityBounds.required)
-		} else if (prop.type instanceof LBean) {
-
-			// @Embedded
-			addEmbeddedAnno(prop, jvmField)
-		} else if (prop.type instanceof LEntity) {
+		} else {
 			if (prop.toMany) {
-
-				// *toMany
-				if (prop.opposite.toMany) {
-
-					// @ManyToMany
-					addManyToManyAnno(prop, jvmField)
-				} else {
-
-					// @OneToMany
-					addOneToManyAnno(prop, jvmField)
-				}
+				val ann = prop.toAnnotation(typeof(ElementCollection))
+				addAnno(prop, jvmField, ann)
 			} else {
-
-				// *toOne
-				val opposite = prop.resolvedOpposite
-
-				// When we have no opposite, then the master-side has no collection
-				// and we assume a many-to-one relation.
-				// A one-to-one relation needs an "opposite" on both sides.
-				if (opposite != null && !opposite.toMany) {
-
-					// @OneToOne
-					addOneToOneAnno(prop, jvmField)
-				} else {
-
-					// @ManyToOne
-					addManyToOneAnno(prop, jvmField)
+				if (prop.type instanceof LBean) {
+					val ann = prop.toAnnotation(typeof(Embedded))
+					addAnno(prop, jvmField, ann)
 				}
 			}
-		}
 
+			val ann = prop.toAnnotation(typeof(Column))
+			if (prop.entityBounds.required) {
+				ann.addAnnAttr(prop, "nullable", false)
+			}
+			addAnno(prop, jvmField, ann)
+		}
 	}
 
-	def private addColumnAnno(LPersistentProperty prop, JvmAnnotationTarget jvmAnnTarget,
-		String columnName, boolean notnull) {
-		val ann = prop.toAnnotation(typeof(Column))
-		if (notnull) {
-			ann.addAnnAttr(prop, "nullable", false)
+	def protected dispatch void internalProcessAnnotation(LBeanAttribute prop, JvmField jvmField) {
+		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
+
+		if (prop.transient) {
+			jvmField.annotations += prop.toAnnotation(typeof(Transient))
 		}
-		addAnno(prop, jvmAnnTarget, ann)
+
+		jvmField.annotations += prop.toAnnotation(typeof(Basic))
 	}
 
-	def private addEmbeddedAnno(LPersistentProperty prop, JvmAnnotationTarget jvmAnnTarget) {
+	def protected dispatch void internalProcessAnnotation(LBeanReference prop, JvmField jvmField) {
+		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
+
+		jvmField.annotations += prop.toAnnotation(typeof(Basic))
+
 		val ann = prop.toAnnotation(typeof(Embedded))
-		addAnno(prop, jvmAnnTarget, ann)
-
-		// Add @AttributeOverrides with a list of @AttributeOverride
-		val bean = prop.type as LBean
-		val aoAnn = prop.toAnnotation(typeof(AttributeOverrides))
-
-	// TODO drill into bean recursively
+		addAnno(prop, jvmField, ann)
 	}
 
-	def private addOneToManyAnno(LPersistentProperty prop, JvmAnnotationTarget jvmAnnTarget) {
+	def private addOneToManyAnno(LEntityReference prop, JvmAnnotationTarget jvmAnnTarget) {
 		val ann = prop.toAnnotation(typeof(OneToMany))
 		if (prop.opposite != null) {
 			if (prop.opposite.name == null) {
@@ -209,11 +213,11 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
 		addAnno(prop, jvmAnnTarget, ann)
 	}
 
-	def private addManyToManyAnno(LPersistentProperty prop, JvmAnnotationTarget jvmAnnTarget) {
-		throw new UnsupportedOperationException("ManyToMany not yet supported");
+	def private addManyToManyAnno(LEntityReference prop, JvmAnnotationTarget jvmAnnTarget) {
+		//		throw new UnsupportedOperationException("ManyToMany not yet supported");
 	}
 
-	def private addManyToOneAnno(LPersistentProperty prop, JvmAnnotationTarget jvmAnnTarget) {
+	def private addManyToOneAnno(LEntityReference prop, JvmAnnotationTarget jvmAnnTarget) {
 		val manyToOne = prop.toAnnotation(typeof(ManyToOne))
 		if (prop.entityBounds.required) {
 			manyToOne.addAnnAttr(prop, "optional", !prop.entityBounds.required)
@@ -222,11 +226,11 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
 		addAnno(prop, jvmAnnTarget, manyToOne)
 
 		val joinColumn = prop.toAnnotation(typeof(JoinColumn))
-		joinColumn.addAnnAttr(prop, "name", prop.columnName)
+		joinColumn.addAnnAttr(prop, "name", prop.name)
 		addAnno(prop, jvmAnnTarget, joinColumn)
 	}
 
-	def private addOneToOneAnno(LPersistentProperty prop, JvmAnnotationTarget jvmAnnTarget) {
+	def private addOneToOneAnno(LEntityReference prop, JvmAnnotationTarget jvmAnnTarget) {
 		val oneToOne = prop.toAnnotation(typeof(OneToOne))
 		if (prop.entityBounds.required) {
 			oneToOne.addAnnAttr(prop, "optional", !prop.entityBounds.required)
@@ -245,8 +249,15 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
 
 		if (opposite != null && opposite.cascading) {
 			val joinColumn = prop.toAnnotation(typeof(JoinColumn))
-			joinColumn.addAnnAttr(prop, "name", prop.columnName)
+			joinColumn.addAnnAttr(prop, "name", prop.name)
 			addAnno(prop, jvmAnnTarget, joinColumn)
+		}
+	}
+
+	def private addAnno(LAnnotationTarget target, JvmAnnotationTarget jvmType, JvmAnnotationReference anno) {
+		val annoDef = target.annotations.findFirst[annotation.annotationType == anno.annotation]
+		if (annoDef == null || !annoDef.exclude) {
+			jvmType.annotations += anno
 		}
 	}
 

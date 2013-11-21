@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  **************************************************************************/
-package org.lunifera.dsl.entity.xtext.jvmmodel.services.bean
+package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
 import java.util.ArrayList
@@ -29,21 +29,26 @@ import org.eclipse.xtext.util.Pair
 import org.eclipse.xtext.util.Tuples
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
-import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.eclipse.xtext.xbase.lib.StringExtensions
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef
+import org.lunifera.dsl.entity.semantic.model.LBean
+import org.lunifera.dsl.entity.semantic.model.LBeanFeature
+import org.lunifera.dsl.entity.semantic.model.LBeanReference
 import org.lunifera.dsl.entity.semantic.model.LClass
+import org.lunifera.dsl.entity.semantic.model.LEntity
+import org.lunifera.dsl.entity.semantic.model.LEntityFeature
 import org.lunifera.dsl.entity.semantic.model.LEntityModel
+import org.lunifera.dsl.entity.semantic.model.LEntityReference
+import org.lunifera.dsl.entity.semantic.model.LFeature
 import org.lunifera.dsl.entity.semantic.model.LOperation
 import org.lunifera.dsl.entity.semantic.model.LPackage
-import org.lunifera.dsl.entity.semantic.model.LProperty
 import org.lunifera.dsl.entity.semantic.model.LType
 import org.lunifera.dsl.entity.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.extensions.TreeAppendableExtensions
-import org.lunifera.dsl.entity.xtext.jvmmodel.services.IAnnotationCompiler
+import org.lunifera.dsl.entity.xtext.jvmmodel.services.AnnotationCompiler
 
 /**
  * Infers a JVM model from {@link LClass} model elements.
@@ -58,11 +63,10 @@ abstract class ClassJvmModelInferrer {
 	@Inject extension TreeAppendableExtensions
 	@Inject extension StringExtensions
 
+	@Inject AnnotationCompiler annotationCompiler
 	@Inject TypesFactory typesFactory;
 	@Inject TypeReferences references;
 	@Inject JvmTypesBuilder jvmTypes;
-
-	def IAnnotationCompiler getAnnotationCompiler()
 
 	def private htmlCode(CharSequence s) {
 		"<code>".concat(String::valueOf(s)).concat("</code>")
@@ -157,7 +161,7 @@ abstract class ClassJvmModelInferrer {
 	/*
      * END Methods delegating to JvmTypesBuilder.
      */
-	def JvmField toField(LProperty prop) {
+	def JvmField toField(LFeature prop) {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.name
 		jvmField.visibility = JvmVisibility::PRIVATE
@@ -212,13 +216,13 @@ abstract class ClassJvmModelInferrer {
 		associate(sourceElement, op)
 	}
 
-	def String toCheckDisposedCall(LProperty prop) {
+	def String toCheckDisposedCall(LFeature prop) {
 
-		// TODO Retrieve the settings from the LProperty
+		// TODO Retrieve the settings from the LFeature
 		return "checkDisposed();\n"
 	}
 
-	def JvmOperation toDispose(LClass lClass) {
+	def dispatch JvmOperation toDispose(LEntity lClass) {
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, lClass)
@@ -239,14 +243,79 @@ abstract class ClassJvmModelInferrer {
 					  return;
 					}
 				'''
-				val compositionContainmentProps = lClass.properties.filter[cascading]
+				val compositionContainmentProps = lClass.features.filter[cascading]
 				if (!compositionContainmentProps.empty) {
 					p >> "try " >>> "{"
 					p >> "// Dispose all the composition references.\n"
 					for (prop : compositionContainmentProps) {
 						val fieldRef = "this.".concat(prop.name.toFirstLower)
-						val typeName = prop.type.name
-						val typeVar = prop.type.name.toFirstLower
+						val typeName = prop.typeName
+						val typeVar = typeName.toFirstLower
+						if (prop.toMany) {
+							p >> '''
+								if («fieldRef» != null) {
+								  for («typeName» «typeVar» : «fieldRef») {
+								    «typeVar».dispose();
+								  }
+								  «fieldRef» = null;
+								}
+							'''
+						} else {
+							p >> '''
+								if («fieldRef» != null) {
+								  «fieldRef».dispose();
+								  «fieldRef» = null;
+								}
+							'''
+						}
+					}
+					p <<< "}"
+					p >>> "finally {"
+
+				//p.increaseIndentation
+				}
+				if (lClass.superType != null) {
+					p >> "super.dispose();"
+				} else {
+					p >> "disposed = true;"
+				}
+				if (!compositionContainmentProps.empty) {
+					p <<< "}"
+				}
+			])
+
+		associate(lClass, op)
+	}
+
+	def dispatch JvmOperation toDispose(LBean lClass) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.returnType = references.getTypeForName(Void::TYPE, lClass)
+		op.simpleName = "dispose"
+		op.documentation = '''
+		Calling dispose will destroy that instance. The internal state will be 
+		set to 'disposed' and methods of that object must not be used anymore. 
+		Each call will result in runtime exceptions.<br/>
+		If this object keeps composition containments, these will be disposed too. 
+		So the whole composition containment tree will be disposed on calling this method.'''
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(lClass)
+				p >> '''
+					if (isDisposed()) {
+					  return;
+					}
+				'''
+				val compositionContainmentProps = lClass.features.filter[cascading]
+				if (!compositionContainmentProps.empty) {
+					p >> "try " >>> "{"
+					p >> "// Dispose all the composition references.\n"
+					for (prop : compositionContainmentProps) {
+						val fieldRef = "this.".concat(prop.name.toFirstLower)
+						val typeName = prop.typeName
+						val typeVar = typeName.toFirstLower
 						if (prop.toMany) {
 							p >> '''
 								if («fieldRef» != null) {
@@ -290,19 +359,16 @@ abstract class ClassJvmModelInferrer {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = cloneWithProxies(returnType)
 
-		val LClass lEntity = sourceElement.eContainer() as LClass
-		val LEntityModel lModel = lEntity.getPackage().eContainer() as LEntityModel
 		annotationCompiler.processAnnotation(sourceElement, op);
-
 		associate(sourceElement, op);
 		initializeSafely(op, initializer);
 	}
 
-	def JvmOperation toGetter(LProperty prop) {
+	def JvmOperation toGetter(LFeature prop) {
 		prop.toGetter(prop.toGetterName)
 	}
 
-	def JvmOperation toGetter(LProperty prop, String methodName) {
+	def JvmOperation toGetter(LFeature prop, String methodName) {
 		val typeRef = prop.toTypeReference
 		val propertyName = prop.name
 		val op = typesFactory.createJvmOperation();
@@ -346,23 +412,89 @@ abstract class ClassJvmModelInferrer {
 		return a.concat(b);
 	}
 
-	def JvmOperation toSetter(LProperty prop) {
+	def JvmOperation toSetter(LEntityFeature prop) {
 		if (prop.toMany) {
 			throw new RuntimeException("toMany-References not allowed for setters!");
 		}
 		val paramName = prop.toMethodParamName
 		val typeRef = prop.toTypeReference
-		val opposite = prop.resolvedOpposite
+		val opposite = if(prop instanceof LEntityReference) prop.resolvedOpposite else null
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toSetterName
 		op.parameters += prop.toParameter(paramName, typeRef)
 		op.documentation = "Sets the " + paramName + " property to this instance." + if (opposite != null) {
-			"\nSince the reference is a container reference, the opposite reference " + "(" + prop.type.name + "." +
+			"\nSince the reference is a container reference, the opposite reference " + "(" + prop.typeName + "." +
 				opposite.name.toFirstLower + ")\n" + "of the " + paramName +
 				" will be handled automatically and no further coding is required to keep them in sync.\n" +
-				"See {@link " + prop.type.name + "#" + opposite.toSetterName + "(" + prop.type.name + ")}."
+				"See {@link " + prop.typeName + "#" + opposite.toSetterName + "(" + prop.typeName + ")}."
+		} else
+			""
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(prop);
+				p >> prop.toCheckDisposedCall()
+				val fieldRef = "this." + prop.name
+				if (opposite == null) {
+					p >> fieldRef + " = " + paramName + ";"
+				} else {
+					p >> "if (" + fieldRef + " != null) " >>> "{"
+					if (opposite.toMany) {
+						p >> fieldRef + "." + opposite.toCollectionInternalRemoverName + "(this);"
+					} else {
+						p >> fieldRef + "." + opposite.toInternalSetterName + "(null);"
+					}
+					p <<< "}"
+					p >> fieldRef + " = " + paramName + ";\n"
+					p >> "if (" + fieldRef + " != null) " >>> "{"
+					if (opposite.toMany) {
+						p >> fieldRef + "." + opposite.toCollectionInternalAdderName + "(this);"
+					} else {
+						p >> fieldRef + "." + opposite.toInternalSetterName + "(this);"
+					}
+					p <<< "}"
+
+				//                if (this.«fieldName» != null) {
+				//                  «IF ref.opposite.toMany»
+				//                    this.«fieldName».«ref.opposite.toCollectionInternalRemoverName»(this);
+				//                  «ELSE»
+				//                    this.«fieldName».«ref.opposite.toInternalSetterName»(null);
+				//                  «ENDIF»
+				//                }
+				//                this.«fieldName» = «localVarName»;
+				//                if (this.«fieldName» != null) {
+				//                  «IF ref.opposite.toMany»
+				//                    this.«fieldName».«ref.opposite.toCollectionInternalAdderName»(this);
+				//                  «ELSE»
+				//                    this.«fieldName».«ref.opposite.toInternalSetterName»(this);
+				//                  «ENDIF»
+				//                }
+				}
+			])
+
+		return associate(prop, op);
+	}
+
+	def JvmOperation toSetter(LBeanFeature prop) {
+		if (prop.toMany) {
+			throw new RuntimeException("toMany-References not allowed for setters!");
+		}
+		val paramName = prop.toMethodParamName
+		val typeRef = prop.toTypeReference
+		val opposite = if(prop instanceof LBeanReference) prop.resolvedOpposite else null
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.returnType = references.getTypeForName(Void::TYPE, prop)
+		op.simpleName = prop.toSetterName
+		op.parameters += prop.toParameter(paramName, typeRef)
+		op.documentation = "Sets the " + paramName + " property to this instance." + if (opposite != null) {
+			"\nSince the reference is a container reference, the opposite reference " + "(" + prop.typeName + "." +
+				opposite.name.toFirstLower + ")\n" + "of the " + paramName +
+				" will be handled automatically and no further coding is required to keep them in sync.\n" +
+				"See {@link " + prop.typeName + "#" + opposite.toSetterName + "(" + prop.typeName + ")}."
 		} else
 			""
 
@@ -413,11 +545,11 @@ abstract class ClassJvmModelInferrer {
 	}
 
 	/**
-     		 * Builds an adder method for a *toMany relation like
-     		 * <code>Order.addToOrderLines(OrderLine orderLine)</code>.
-     		 */
-	def JvmOperation toAdder(LProperty prop, String propertyName) {
-		val paramName = prop.type.name.toFirstLower
+     * Builds an adder method for a *toMany relation like
+     * <code>Order.addToOrderLines(OrderLine orderLine)</code>.
+     */
+	def dispatch JvmOperation toAdder(LEntityFeature prop, String propertyName) {
+		val paramName = prop.typeName.toFirstLower
 		val JvmOperation op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -425,13 +557,14 @@ abstract class ClassJvmModelInferrer {
 		if (prop.type.toTypeReference != null) {
 			op.parameters += prop.toParameter(paramName, prop.type.toTypeReference)
 		}
+
 		op.documentation = '''
 		Adds the given «paramName» to this object. <p>
 		«IF prop.opposite != null»
-			Since the reference is a composition reference, the opposite reference («prop.type.name».«prop.opposite.name.
+			Since the reference is a composition reference, the opposite reference («prop.typeName».«prop.opposite.name.
 			toFirstLower»)
 			of the «paramName» will be handled automatically and no further coding is required to keep them in sync. 
-			See {@link «prop.type.name»#«prop.opposite.toSetterName»(«prop.type.name»)}.
+			See {@link «prop.typeName»#«prop.opposite.toSetterName»(«prop.typeName»)}.
 		«ELSE»
 			ATTENTION:<br>
 			The reference is a composition reference, but no opposite is available.
@@ -457,9 +590,55 @@ abstract class ClassJvmModelInferrer {
 		return associate(prop, op);
 	}
 
-	def JvmVisibility getInternalMethodVisibility(LProperty ref) {
-		val LPackage ownerPackage = (ref.eContainer() as LType).getPackage();
-		val LPackage refPackage = ref.getType().getPackage();
+	/**
+     * Builds an adder method for a *toMany relation like
+     * <code>Order.addToOrderLines(OrderLine orderLine)</code>.
+     */
+	def dispatch JvmOperation toAdder(LBeanFeature prop, String propertyName) {
+		val paramName = prop.typeName.toFirstLower
+		val JvmOperation op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.returnType = references.getTypeForName(Void::TYPE, prop)
+		op.simpleName = prop.toCollectionAdderName
+		if (prop.type.toTypeReference != null) {
+			op.parameters += prop.toParameter(paramName, prop.type.toTypeReference)
+		}
+
+		op.documentation = '''
+		Adds the given «paramName» to this object. <p>
+		«IF prop.opposite != null»
+			Since the reference is a composition reference, the opposite reference («prop.typeName».«prop.opposite.name.
+			toFirstLower»)
+			of the «paramName» will be handled automatically and no further coding is required to keep them in sync. 
+			See {@link «prop.typeName»#«prop.opposite.toSetterName»(«prop.typeName»)}.
+		«ELSE»
+			ATTENTION:<br>
+			The reference is a composition reference, but no opposite is available.
+			So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
+			is set properly.
+		«ENDIF»'''
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(prop);
+				p += prop.toCheckDisposedCall()
+				if (prop.opposite != null) {
+					p >> paramName + "." + prop.opposite.toSetterName + "(this);"
+				} else {
+					p >> "if (!" + prop.toGetterName + "().contains(" + paramName + "))" >>> "{"
+					{
+						p >> prop.toGetterName + "().add(" + paramName + ");"
+					}
+					p <<< "}"
+				}
+			])
+		return associate(prop, op);
+	}
+
+	def JvmVisibility getInternalMethodVisibility(LFeature ref) {
+		val LPackage ownerPackage = (ref.eContainer() as LType).package;
+		val LPackage refPackage = ref.type.package;
 		if (ownerPackage.equals(refPackage)) {
 			null // package visibility
 		} else {
@@ -467,7 +646,7 @@ abstract class ClassJvmModelInferrer {
 		}
 	}
 
-	def JvmOperation toInternalSetter(LProperty prop) {
+	def JvmOperation toInternalSetter(LFeature prop) {
 		val paramName = prop.toMethodParamName
 		val typeRef = prop.type.toTypeReference
 		val JvmOperation result = typesFactory.createJvmOperation();
@@ -485,8 +664,8 @@ abstract class ClassJvmModelInferrer {
 		return associate(prop, result);
 	}
 
-	def JvmOperation toInternalAdder(LProperty prop) {
-		val paramName = prop.type.name.toFirstLower
+	def JvmOperation toInternalAdder(LFeature prop) {
+		val paramName = prop.typeName.toFirstLower
 		val typeRef = prop.type.toTypeReference
 		val JvmOperation op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
@@ -507,8 +686,8 @@ abstract class ClassJvmModelInferrer {
 		return associate(prop, op);
 	}
 
-	def JvmOperation toInternalRemover(LProperty prop) {
-		val paramName = prop.type.name.toFirstLower
+	def JvmOperation toInternalRemover(LFeature prop) {
+		val paramName = prop.typeName.toFirstLower
 		val typeRef = prop.type.toTypeReference
 		val op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
@@ -529,13 +708,13 @@ abstract class ClassJvmModelInferrer {
 		return associate(prop, op)
 	}
 
-	def JvmOperation toInternalCollectionGetter(LProperty prop, String name) {
+	def JvmOperation toInternalCollectionGetter(LFeature prop, String name) {
 		val fieldName = name.toFirstLower
 		val JvmOperation op = typesFactory.createJvmOperation()
 		op.visibility = JvmVisibility::PRIVATE
 		op.returnType = prop.toTypeReference
 		op.simpleName = prop.toCollectionInternalGetterName
-		op.documentation = "Returns the list of " + htmlCode(prop.type.name) + "s thereby lazy initializing it."
+		op.documentation = "Returns the list of " + htmlCode(prop.typeName) + "s thereby lazy initializing it."
 		setBody(op,
 			[ // ITreeAppendable
 				if(it == null) return;
@@ -556,8 +735,8 @@ abstract class ClassJvmModelInferrer {
      * Builds a remover method for a *toMany relation like
      * <code>Order.removeFromOrderLines(OrderLine orderLine)</code>.
      */
-	def JvmOperation toRemover(LProperty prop, String propertyName) {
-		val paramName = prop.type.name.toFirstLower
+	def JvmOperation toRemover(LFeature prop, String propertyName) {
+		val paramName = prop.typeName.toFirstLower
 		val JvmOperation op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -569,10 +748,10 @@ abstract class ClassJvmModelInferrer {
 			op.documentation = '''
 			Removes the given «paramName» from this object. <p>
 			«IF prop.cascading»
-				Since the reference is a cascading reference, the opposite reference («prop.type.name».«prop.opposite.name.
+				Since the reference is a cascading reference, the opposite reference («prop.typeName».«prop.opposite.name.
 				toFirstLower»)
 				of the «paramName» will be handled automatically and no further coding is required to keep them in sync. 
-				See {@link «prop.type.name»#«prop.opposite.toSetterName»(«prop.type.name»)}.
+				See {@link «prop.typeName»#«prop.opposite.toSetterName»(«prop.typeName»)}.
 			«ENDIF»'''
 		}
 		setBody(op,
@@ -614,95 +793,5 @@ abstract class ClassJvmModelInferrer {
 		annotationCompiler.processAnnotation(lClass, type);
 
 		associate(lClass, type)
-	}
-
-	/**
-			 * Is called for each instance of the first argument's type contained in a resource.
-			 * 
-			 * @param element - the model to create one or more JvmDeclaredTypes from.
-			 * @param acceptor - each created JvmDeclaredType without a container should be passed to the acceptor in order get attached to the
-			 *                   current resource.
-			 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
-			 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
-			 */
-	def void infer(LClass lClass, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		val LEntityModel model = lClass.getPackage().eContainer as LEntityModel
-		acceptor.accept(lClass.toJvmType).initializeLater [
-			documentation = lClass.documentation
-			if (lClass.superType != null && !lClass.superType.fullyQualifiedName.toString.empty) {
-				val superTypeRef = references.getTypeForName(lClass.superType.fullyQualifiedName.toString, lClass)
-				superTypes += superTypeRef
-			}
-			members += lClass.toConstructor()[]
-			if (lClass.getSuperType == null) {
-				members += lClass.toPrimitiveTypeField("disposed", Boolean::TYPE)
-			}
-			//
-			// Fields
-			//
-			for (prop : lClass.properties) {
-
-				//###needed?	if(prop.fullyQualifiedName != null && !prop.fullyQualifiedName.toString.empty) {
-				members += prop.toField
-
-			//				}
-			}
-			//
-			// Lifecycle support.
-			//
-			if (lClass.getSuperType == null) {
-				members += lClass.toIsDisposed()
-			}
-			members += lClass.toCheckDisposed()
-			members += lClass.toDispose()
-			//
-			// Field accessors.
-			//
-			for (prop : lClass.properties) {
-				members += prop.toGetter(prop.toGetterName)
-
-				// TODO ### for booleans: normal getter AND boolean getter.
-				/* For boolean fields we generate a normal getter method (getX)
-            			     * and additionally a boolean getter method (isX).
-           				     * To have only the boolean getter method does not work in all
-         			         * cases in Hibernate. It works only when the field is named without
-			                 * "is" and "has". Example: 
-			                 *   - field "cool" -> getter "isCool" works. But
-			                 *   - field "isCool" -> getter "isCool" doesn't work! 
-			                 * Note that we do not want the getter named "isIsCool". 
-			                 * With getIsCool Hibernate is happy.
-			                 */
-				if (prop.typeIsBoolean) {
-					members += prop.toGetter(prop.toBooleanGetterName)
-				}
-				if (prop.isToMany) {
-					members += prop.toInternalCollectionGetter(prop.name)
-					members += prop.toAdder(prop.name)
-					members += prop.toRemover(prop.name)
-					if (prop.opposite != null) {
-						members += prop.toInternalAdder
-						members += prop.toInternalRemover
-					}
-				} else {
-					members += prop.toSetter()
-					val resolvedOpposite = prop.resolvedOpposite
-					if (resolvedOpposite != null && !resolvedOpposite.toMany) {
-						members += prop.toInternalSetter
-					}
-				}
-			}
-			//
-			// Methods.
-			//
-			for (op : lClass.operations) {
-				members += op.toMethod(op.name, op.type) [
-					documentation = op.documentation
-					for (p : op.params) {
-						parameters += p.toParameter(p.name, p.parameterType)
-					}
-					body = op.body
-				]
-			}
-		]
 	}
 }

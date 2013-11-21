@@ -121,5 +121,19 @@
             name="Lunifera Tools">
       </page>
    </extension>
+   
+   <extension point="org.eclipse.jdt.core.classpathContainerInitializer">            
+   		<classpathContainerInitializer                                          
+			id="org.lunifera.dsl.entity.ENTITY_CONTAINER"                                                        
+			class="org.lunifera.dsl.eclipse.ui.buildpath.EntityContainerInitializer"/>                           
+	</extension>
+	<extension
+         point="org.eclipse.jdt.ui.classpathContainerPage">
+      <classpathContainerPage
+            name="Lunifera EntityDSL container"
+            class="org.lunifera.dsl.eclipse.ui.buildpath.EntityContainerWizardPage"
+            id="org.lunifera.dsl.entity.ENTITY_CONTAINER">
+      </classpathContainerPage>
+   </extension>
 
 </plugin>

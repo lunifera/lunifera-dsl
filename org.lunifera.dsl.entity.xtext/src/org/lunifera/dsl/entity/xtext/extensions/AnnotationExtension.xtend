@@ -41,7 +41,7 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.semantic.model.LAnnotationDef
 import org.lunifera.dsl.entity.semantic.model.LClass
-import org.lunifera.dsl.entity.semantic.model.LProperty
+import org.lunifera.dsl.entity.semantic.model.LFeature
 
 class AnnotationExtension {
 	 
@@ -220,11 +220,11 @@ class AnnotationExtension {
 		return typeof(Entity).getRedefined(lEntity.getAnnotations)
 	}
 	
-	def boolean isOneToManyAnnoExcluded(LProperty member){
+	def boolean isOneToManyAnnoExcluded(LFeature member){
 		return typeof(OneToMany).isExcluded(member.annotations)
 	}
 	
-	def boolean isOneToManyAnnoRedefined(LProperty member){
+	def boolean isOneToManyAnnoRedefined(LFeature member){
 		return typeof(OneToMany).isRedefined(member.annotations)
 	}
 	
@@ -232,15 +232,15 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(OneToMany), context)
 	}
 	
-	def LAnnotationDef getOneToManyAnnoRedefine(LProperty member){
+	def LAnnotationDef getOneToManyAnnoRedefine(LFeature member){
 		return typeof(OneToMany).getRedefined(member.annotations)
 	}
 	
-	def boolean isOneToOneAnnoExcluded(LProperty member){
+	def boolean isOneToOneAnnoExcluded(LFeature member){
 		return typeof(OneToOne).isExcluded(member.annotations)
 	}
 	
-	def boolean isOneToOneAnnoRedefined(LProperty member){
+	def boolean isOneToOneAnnoRedefined(LFeature member){
 		return typeof(OneToOne).isRedefined(member.annotations)
 	}
 	
@@ -248,15 +248,15 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(OneToOne), context)
 	}
 	
-	def LAnnotationDef getOneToOneAnnoRedefine(LProperty member){
+	def LAnnotationDef getOneToOneAnnoRedefine(LFeature member){
 		return typeof(OneToOne).getRedefined(member.annotations)
 	}
 	
-	def boolean isManyToOneAnnoExcluded(LProperty member){
+	def boolean isManyToOneAnnoExcluded(LFeature member){
 		return typeof(ManyToOne).isExcluded(member.annotations)
 	}
 	
-	def boolean isManyToOneAnnoRedefined(LProperty member){
+	def boolean isManyToOneAnnoRedefined(LFeature member){
 		return typeof(ManyToOne).isRedefined(member.annotations)
 	}
 	
@@ -264,19 +264,19 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(ManyToOne), context)
 	}
 	
-	def LAnnotationDef getManyToOneAnnoRedefine(LProperty member){
+	def LAnnotationDef getManyToOneAnnoRedefine(LFeature member){
 		return typeof(ManyToOne).getRedefined(member.annotations)
 	}
 	
-	def boolean isIdAnnoExcluded(LProperty member){
+	def boolean isIdAnnoExcluded(LFeature member){
 		return typeof(Id).isExcluded(member.annotations)
 	}
 	
-	def boolean isIdAnnoRedefined(LProperty member){
+	def boolean isIdAnnoRedefined(LFeature member){
 		return typeof(Id).isRedefined(member.annotations)
 	}
 	
-	def LAnnotationDef getIdAnnoRedefine(LProperty member){
+	def LAnnotationDef getIdAnnoRedefine(LFeature member){
 		return typeof(Id).getRedefined(member.annotations)
 	}
 	
@@ -285,11 +285,11 @@ class AnnotationExtension {
 		return result
 	}
 	
-	def boolean isTransientAnnoExcluded(LProperty member){
+	def boolean isTransientAnnoExcluded(LFeature member){
 		return typeof(Transient).isExcluded(member.annotations)
 	}
 	
-	def boolean isTransientAnnoRedefined(LProperty member){
+	def boolean isTransientAnnoRedefined(LFeature member){
 		return typeof(Transient).isRedefined(member.annotations)
 	}
 	
@@ -297,15 +297,15 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(Transient), context)
 	}
 	
-	def LAnnotationDef getTransientAnnoRedefine(LProperty member){
+	def LAnnotationDef getTransientAnnoRedefine(LFeature member){
 		return typeof(Transient).getRedefined(member.annotations)
 	}
 	
-	def boolean isVersionAnnoExcluded(LProperty member){
+	def boolean isVersionAnnoExcluded(LFeature member){
 		return typeof(Version).isExcluded(member.annotations)
 	}
 	
-	def boolean isVersionAnnoRedefined(LProperty member){
+	def boolean isVersionAnnoRedefined(LFeature member){
 		return typeof(Version).isRedefined(member.annotations)
 	}
 	
@@ -313,15 +313,15 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(Version), context)
 	}
 	
-	def LAnnotationDef getVersionAnnoRedefine(LProperty member){
+	def LAnnotationDef getVersionAnnoRedefine(LFeature member){
 		return typeof(Version).getRedefined(member.annotations)
 	}
 	
-	def boolean isGeneratedValueAnnoExcluded(LProperty member){
+	def boolean isGeneratedValueAnnoExcluded(LFeature member){
 		return typeof(GeneratedValue).isExcluded(member.annotations)
 	}
 	
-	def boolean isGeneratedValueAnnoRedefined(LProperty member){
+	def boolean isGeneratedValueAnnoRedefined(LFeature member){
 		return typeof(GeneratedValue).isRedefined(member.annotations)
 	}
 	
@@ -329,7 +329,7 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(GeneratedValue), context)
 	}
 	
-	def LAnnotationDef getGeneratedValueAnnoRedefine(LProperty member){
+	def LAnnotationDef getGeneratedValueAnnoRedefine(LFeature member){
 		return typeof(GeneratedValue).getRedefined(member.annotations)
 	}
 	
@@ -349,15 +349,15 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(Cacheable), context)
 	}
 	
-	def boolean isEmbeddedAnnoExcluded(LProperty member){
+	def boolean isEmbeddedAnnoExcluded(LFeature member){
 		return typeof(Embedded).isExcluded(member.annotations)
 	}
 	
-	def boolean isEmbeddedAnnoRedefined(LProperty member){
+	def boolean isEmbeddedAnnoRedefined(LFeature member){
 		return typeof(Embedded).isRedefined(member.annotations)
 	}
 	
-	def LAnnotationDef getEmbeddedAnnoRedefine(LProperty member){
+	def LAnnotationDef getEmbeddedAnnoRedefine(LFeature member){
 		return typeof(Embedded).getRedefined(member.annotations)
 	}
 	
@@ -381,11 +381,11 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(Embeddable), context)
 	}
 	
-	def boolean isColumnAnnoExcluded(LProperty member){
+	def boolean isColumnAnnoExcluded(LFeature member){
 		return typeof(Column).isExcluded(member.annotations)
 	}
 	
-	def boolean isColumnAnnoRedefined(LProperty member){
+	def boolean isColumnAnnoRedefined(LFeature member){
 		return typeof(Column).isRedefined(member.annotations)
 	}
 	
@@ -393,15 +393,15 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(Column), context)
 	}
 	
-	def LAnnotationDef getColumnAnnoRedefine(LProperty member){
+	def LAnnotationDef getColumnAnnoRedefine(LFeature member){
 		return typeof(Column).getRedefined(member.annotations)
 	}
 	
-	def boolean isJoinColumnAnnoExcluded(LProperty member){
+	def boolean isJoinColumnAnnoExcluded(LFeature member){
 		return typeof(JoinColumn).isExcluded(member.annotations)
 	}
 	
-	def boolean isJoinColumnAnnoRedefined(LProperty member){
+	def boolean isJoinColumnAnnoRedefined(LFeature member){
 		return typeof(JoinColumn).isRedefined(member.annotations)
 	}
 	
@@ -409,7 +409,7 @@ class AnnotationExtension {
 		return target.containsAnnotation(typeof(JoinColumn), context)
 	}
 	
-	def LAnnotationDef getJoinColumnAnnoRedefine(LProperty member){
+	def LAnnotationDef getJoinColumnAnnoRedefine(LFeature member){
 		return typeof(JoinColumn).getRedefined(member.annotations)
 	}
 	

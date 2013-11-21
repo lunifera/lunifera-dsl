@@ -21,10 +21,14 @@ import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.lunifera.dsl.entity.semantic.model.EntityPackage;
+import org.lunifera.dsl.entity.semantic.model.LAttribute;
+import org.lunifera.dsl.entity.semantic.model.LBean;
+import org.lunifera.dsl.entity.semantic.model.LBeanReference;
 import org.lunifera.dsl.entity.semantic.model.LEntity;
 import org.lunifera.dsl.entity.semantic.model.LEntityModel;
+import org.lunifera.dsl.entity.semantic.model.LEntityReference;
+import org.lunifera.dsl.entity.semantic.model.LFeature;
 import org.lunifera.dsl.entity.semantic.model.LPackage;
-import org.lunifera.dsl.entity.semantic.model.LProperty;
 import org.lunifera.dsl.entity.semantic.model.LType;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 
@@ -100,6 +104,7 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__DUPLICATE_LPACKAGE_IN_PROJECT = "100";
 	public static final String CODE__DUPLICATE_LTYPE_IN_PROJECT = "101";
 	public static final String CODE__DUPLICATE_LPACKAGE_IN_FILE = "102";
+	public static final String CODE__MANY_TO_MANY__NOT_SUPPORTED = "103";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -113,25 +118,51 @@ public class EntityGrammarJavaValidator extends
 	ResourceDescriptionsProvider resourceDescriptionsProvider;
 
 	@Check
-	public void checkJPA_MultiHasOppositeReference(LProperty prop) {
+	public void checkJPA_MultiHasOppositeReference(LEntityReference prop) {
 		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
 			error("A bidirectional association needs an opposite reference.",
-					EntityPackage.Literals.LPROPERTY__OPPOSITE);
+					EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE);
 		}
 	}
 
 	@Check
-	public void checkJPA_OppositeNotAlsoCascading(LProperty prop) {
+	public void checkBean_MultiHasOppositeReference(LBeanReference prop) {
+		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
+			error("A bidirectional association needs an opposite reference.",
+					EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE);
+		}
+	}
+
+	@Check
+	public void checkJPA_OppositeNotAlsoCascading(LEntityReference prop) {
 		if (prop.getOpposite() != null) {
 			if (prop.isCascading() && prop.getOpposite().isCascading()) {
 				error("Only one opposite may be specified as cascade",
-						EntityPackage.Literals.LPROPERTY__CASCADING);
+						EntityPackage.Literals.LREFERENCE__CASCADING);
 			}
 
 			if (extensions.isToMany(prop.getOpposite())) {
 				if (prop.isCascading()) {
 					error("The many-to-one relation must not be marked as cascade",
-							prop, EntityPackage.Literals.LPROPERTY__CASCADING,
+							prop, EntityPackage.Literals.LREFERENCE__CASCADING,
+							CASCADE_NOT_VALID, new String[0]);
+				}
+			}
+		}
+	}
+
+	@Check
+	public void checkBean_OppositeNotAlsoCascading(LBeanReference prop) {
+		if (prop.getOpposite() != null) {
+			if (prop.isCascading() && prop.getOpposite().isCascading()) {
+				error("Only one opposite may be specified as cascade",
+						EntityPackage.Literals.LREFERENCE__CASCADING);
+			}
+
+			if (extensions.isToMany(prop.getOpposite())) {
+				if (prop.isCascading()) {
+					error("The many-to-one relation must not be marked as cascade",
+							prop, EntityPackage.Literals.LREFERENCE__CASCADING,
 							CASCADE_NOT_VALID, new String[0]);
 				}
 			}
@@ -178,10 +209,10 @@ public class EntityGrammarJavaValidator extends
 		int idCount = 0;
 		int memberIndex = -1;
 		int firstIdIndex = -1;
-		for (LProperty prop : entity.getProperties()) {
+		for (LFeature prop : entity.getFeatures()) {
 			memberIndex++;
-			if (prop instanceof LProperty) {
-				LProperty p = (LProperty) prop;
+			if (prop instanceof LAttribute) {
+				LAttribute p = (LAttribute) prop;
 				if (p.isId()) {
 					idCount++;
 					if (firstIdIndex == -1) {
@@ -194,11 +225,11 @@ public class EntityGrammarJavaValidator extends
 		if (idCount == 0) {
 			if (entity.getSuperType() == null) {
 				warning("An entity should have an ID property",
-						EntityPackage.Literals.LENTITY__PROPERTIES);
+						EntityPackage.Literals.LENTITY__FEATURES);
 			}
 		} else if (idCount > 1) {
 			error("An entity must only have one ID property",
-					EntityPackage.Literals.LENTITY__PROPERTIES, memberIndex);
+					EntityPackage.Literals.LENTITY__FEATURES, memberIndex);
 		}
 	}
 
@@ -219,10 +250,10 @@ public class EntityGrammarJavaValidator extends
 	// // lookup if an id property exists in the entity
 	// int memberIndex = -1;
 	// boolean idFound = false;
-	// for (LProperty prop : entity.getProperties()) {
+	// for (LFeature prop : entity.getProperties()) {
 	// memberIndex++;
-	// if (prop instanceof LProperty) {
-	// LProperty p = (LProperty) prop;
+	// if (prop instanceof LFeature) {
+	// LFeature p = (LFeature) prop;
 	// if (p.isId()) {
 	// idFound = true;
 	// break;
@@ -258,9 +289,9 @@ public class EntityGrammarJavaValidator extends
 	// return false;
 	// }
 	// boolean idFoundForSuperType = false;
-	// for (LProperty prop : superType.getProperties()) {
-	// if (prop instanceof LProperty) {
-	// LProperty p = (LProperty) prop;
+	// for (LFeature prop : superType.getProperties()) {
+	// if (prop instanceof LFeature) {
+	// LFeature p = (LFeature) prop;
 	// if (p.isId()) {
 	// idFoundForSuperType = true;
 	// break;
@@ -287,9 +318,9 @@ public class EntityGrammarJavaValidator extends
 	// return false;
 	// }
 	// boolean versionFoundForSuperType = false;
-	// for (LProperty prop : superType.getProperties()) {
-	// if (prop instanceof LProperty) {
-	// LProperty p = (LProperty) prop;
+	// for (LFeature prop : superType.getProperties()) {
+	// if (prop instanceof LFeature) {
+	// LFeature p = (LFeature) prop;
 	// if (p.isVersion()) {
 	// versionFoundForSuperType = true;
 	// break;
@@ -316,10 +347,10 @@ public class EntityGrammarJavaValidator extends
 	//
 	// int memberIndex = -1;
 	// boolean versionFound = false;
-	// for (LProperty prop : entity.getProperties()) {
+	// for (LFeature prop : entity.getProperties()) {
 	// memberIndex++;
-	// if (prop instanceof LProperty) {
-	// LProperty p = (LProperty) prop;
+	// if (prop instanceof LFeature) {
+	// LFeature p = (LFeature) prop;
 	// if (p.isVersion()) {
 	// versionFound = true;
 	// break;
@@ -338,10 +369,10 @@ public class EntityGrammarJavaValidator extends
 	// public void checkJPA_Version_LEntityHasOnlyOneVersion(LEntity entity) {
 	// int versionCount = 0;
 	// int memberIndex = -1;
-	// for (LProperty prop : entity.getProperties()) {
+	// for (LFeature prop : entity.getProperties()) {
 	// memberIndex++;
-	// if (prop instanceof LProperty) {
-	// LProperty p = (LProperty) prop;
+	// if (prop instanceof LFeature) {
+	// LFeature p = (LFeature) prop;
 	// if (p.isVersion()) {
 	// versionCount++;
 	// }
@@ -360,10 +391,10 @@ public class EntityGrammarJavaValidator extends
 	// }
 
 	@Check
-	public void checkProperties_JavaKeyWord(LProperty lprop) {
+	public void checkProperties_JavaKeyWord(LFeature lprop) {
 		if (javakeywords.contains(lprop.getName())) {
 			error("The name of the property is an java keyword and not allowed!",
-					EntityPackage.Literals.LPROPERTY__NAME);
+					EntityPackage.Literals.LFEATURE__NAME);
 		}
 	}
 
@@ -386,7 +417,7 @@ public class EntityGrammarJavaValidator extends
 	}
 
 	@Check(CheckType.NORMAL)
-	public void checkDuplicateType_InProject(LEntity type) {
+	public void checkDuplicateType_InProject(LType type) {
 		Map<IContainer, List<LType>> lTypes = getAllFor(type);
 		for (Map.Entry<IContainer, List<LType>> temp : lTypes.entrySet())
 			if (temp.getValue().size() > 1) {
@@ -416,6 +447,9 @@ public class EntityGrammarJavaValidator extends
 		for (IContainer container : visiblecontainers) {
 			List<LType> types = new ArrayList<LType>();
 			allEntities.put(container, types);
+			if (lType.getName() == null) {
+				continue;
+			}
 			for (IEObjectDescription eobjectDescription : container
 					.getExportedObjects(EntityPackage.Literals.LTYPE,
 							qnp.getFullyQualifiedName(lType), true)) {
@@ -462,5 +496,18 @@ public class EntityGrammarJavaValidator extends
 			}
 		}
 		return allEntities;
+	}
+
+	@Check
+	public void checkManyToMany(LEntityReference prop) {
+		ModelExtensions extension = new ModelExtensions();
+		if (prop.getOpposite() != null && extension.isToMany(prop)
+				&& extension.isToMany(prop.getOpposite())) {
+			error(String.format("ManyToMany relations are not permitted!", qnp
+					.getFullyQualifiedName(prop).toString()), prop.getEntity(),
+					EntityPackage.Literals.LENTITY__FEATURES,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					CODE__MANY_TO_MANY__NOT_SUPPORTED, (String[]) null);
+		}
 	}
 }

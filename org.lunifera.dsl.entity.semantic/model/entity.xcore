@@ -8,6 +8,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
+import org.eclipse.emf.common.util.EList
 
 class LEntityModel {
 	contains LPackage[] packages
@@ -31,7 +32,7 @@ class LType extends LAnnotationTarget {
 class LAnnotationDef {
 	boolean exclude
 	contains XAnnotation ^annotation
-} 
+}
 
 class LAnnotationTarget {
 	contains LAnnotationDef[] annotations
@@ -47,7 +48,7 @@ class LDataType extends LScalarType {
 class LEnum extends LScalarType {
 	contains LEnumLiteral[] literals
 }
- 
+
 class LEnumLiteral {
 	String name
 }
@@ -55,68 +56,122 @@ class LEnumLiteral {
 class LClass extends LType {
 	boolean ^abstract
 	boolean serializable
-	refers local LClass superType opposite subTypes
-	refers transient LClass[] subTypes opposite superType
 	String shortName
 }
- 
-class LBean extends LClass {
-	contains LBeanProp[] properties
-	contains LOperation[] operations
+
+/**
+ * A bean is an embeddable element that may become added to a entity using the @embedd annotation. 
+ */
+class LBean extends LClass, LScalarType {
+	contains LBeanFeature[] features
+	refers local LBean superType opposite subTypes
+	refers transient LBean[] subTypes opposite superType
+	
+	/**
+ 	 * Returns all features of type LOperation
+ 	 */
+	op OperationsList getOperations() {
+		features.filter(typeof(LOperation)).toList
+	}
+
+	/**
+ 	 * Returns all features of type LBeanReference
+ 	 */
+	op BeanReferenceList getReferences() {
+		features.filter(typeof(LBeanReference)).toList
+	}
+	
+	/**
+ 	 * Returns all features of type LBeanAttribute
+ 	 */
+	op BeanAttributeList getAttributes() {
+		features.filter(typeof(LBeanAttribute)).toList
+	}
 }
 
+/**
+ * Represents a JPA entity.
+ */
 class LEntity extends LClass {
 	String persistenceName
 	boolean cacheable
 	boolean historized
-	contains LEntityProp[] properties
-	contains LOperation[] operations
+	contains LEntityFeature[] features
 	contains LIndex[] indexes
+	refers local LEntity superType opposite subTypes
+	refers transient LEntity[] subTypes opposite superType
+	/**
+ 	 * Returns all features of type LOperation
+ 	 */
+	op OperationsList getOperations() {
+		features.filter(typeof(LOperation)).toList
+	}
 	
-	op LEntity getSuperTypeAsEntity() {
-		return superType as LEntity
+	/**
+ 	 * Returns all features of type LEntityReference
+ 	 */
+	op EntityReferenceList getReferences() {
+		features.filter(typeof(LEntityReference)).toList
+	}
+	
+	/**
+ 	 * Returns all features of type LEntityAttribute
+ 	 */
+	op EntityAttributeList getAttributes() {
+		features.filter(typeof(LEntityAttribute)).toList
 	}
 }
 
-class LProperty extends LAnnotationTarget {
+interface LFeature extends LAnnotationTarget {
 	String name
-	refers LType ^type
-	contains JvmTypeReference jvmTypeRef
+	contains LMultiplicity multiplicity
+	contains LAnnotationTarget annotationInfo
+}
+
+interface LReference extends LFeature {
+	boolean lazy
+	boolean cascading
+}
+
+interface LAttribute extends LFeature {
 	boolean ^id
 	boolean version
-	boolean ^transient
-	String defaultValueLiteral
-	boolean cascading
-	refers LProperty ^opposite
-	contains LMultiplicity multiplicity
-}
-
-class LDerivedProperty extends LProperty {
-	boolean persistent
-	boolean ^readonly
-	contains XExpression body
-}
-
-class LPersistentProperty extends LProperty {
-	String persistenceName
 	boolean lazy
+	boolean cascading
+	boolean ^transient
+	refers LScalarType ^type
 }
 
-class LBeanProp extends LPersistentProperty {
+class LEntityFeature extends LFeature {
+	op LEntity getEntity() {
+		return eContainer as LEntity
+	}
 }
 
-class LDerivedBanProp extends LBeanProp, LDerivedProperty {
+class LEntityAttribute extends LEntityFeature, LAttribute {
 }
 
-class LDerivedEntityProp extends LEntityProp, LDerivedProperty {
+class LEntityReference extends LEntityFeature, LReference {
+	refers LEntity ^type
+	refers LEntityReference ^opposite
 }
 
-class LEntityProp extends LPersistentProperty {
+class LBeanFeature  extends LFeature {
+	op LBean getBean() {
+		return eContainer as LBean
+	}
 }
 
-class LOperation extends LAnnotationTarget {
+class LBeanAttribute extends LBeanFeature, LAttribute {
+}
+
+class LBeanReference extends LBeanFeature, LReference {
+	refers LBean ^type
+	refers LBeanReference ^opposite
+}
+
+class LOperation extends LEntityFeature, LBeanFeature {
 	contains LModifier modifier
-	String name
 	contains JvmTypeReference ^type
 	contains JvmFormalParameter[] params
 	contains XExpression body
@@ -136,11 +191,11 @@ enum LVisibility {
 }
 
 class LMultiplicity {
-	LowerBound lower
-	UpperBound upper
+	LLowerBound lower
+	LUpperBound upper
 }
 
-enum LowerBound {
+enum LLowerBound {
 	NULL = 0
 	MANY = 1
 	OPTIONAL = 2
@@ -149,7 +204,7 @@ enum LowerBound {
 	ONE = 5
 }
 
-enum UpperBound {
+enum LUpperBound {
 	NULL = 0
 	MANY = 1
 	ONE = 2
@@ -158,9 +213,19 @@ enum UpperBound {
 class LIndex {
 	boolean ^unique
 	String name
-	refers LEntityProp[] properties
+	refers LEntityFeature[] features
 }
-	
+
+type OperationsList wraps java.util.List<LOperation>
+
+type EntityReferenceList wraps java.util.List<LEntityReference>
+
+type EntityAttributeList wraps java.util.List<LEntityAttribute>
+
+type BeanReferenceList wraps java.util.List<LBeanReference>
+
+type BeanAttributeList wraps java.util.List<LBeanAttribute>
+
 	
 	
 	

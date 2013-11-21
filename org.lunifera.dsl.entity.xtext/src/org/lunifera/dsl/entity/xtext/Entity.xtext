@@ -48,51 +48,55 @@ Class returns LClass:
 	({LEntity.annotationInfo=current}
 	(abstract?='abstract')?
 	'entity' name=ValidIDWithKeywords ('extends' superType=[LEntity])?
-	'{' properties+=LEntityProp*
-	indexes+=LIndex*
-	operations+=LOperation*
+	'{'
+	features+=LEntityFeature*
 	'}'
 	|
 	{LBean.annotationInfo=current}
-	'bean');
+	'bean' name=ValidIDWithKeywords ('extends' superType=[LBean])?
+	'{'
+	features+=LBeanFeature*
+	'}');
 
-LBeanProp:
-	{LBeanProp}
-	(annotations+=LAnnotationDef)*
-	(('var' type=[LScalarType] multiplicity=LMultiplicity?
-	name=ValidIDWithKeywords
-	('=' defaultValueLiteral=STRING)? // TODO use the jvmTypeReference of LScalarType
+LEntityFeature:
+	{LEntityFeature}
+	annotations+=LAnnotationDef*
+	(({LEntityReference.annotationInfo=current}
+	('ref' (cascading?='cascade')? type=[LEntity] multiplicity=LMultiplicity? name=ValidIDWithKeywords
+	('opposite' opposite=[LEntityReference|LFQN])?)
 	';')
 	|
-	('ref' type=[LBean] multiplicity=LMultiplicity? name=ValidIDWithKeywords
-	('opposite' opposite=[LBeanProp|LFQN])?)
-	';');
+	({LEntityAttribute.annotationInfo=current}
+	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
+	|
+	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=LMultiplicity?
+	name=ValidIDWithKeywords // TODO use the jvmTypeReference of LScalarType
+	';')))
+	|
+	({LOperation.annotationInfo=current}
+	('def' type=JvmTypeReference name=ValidIDWithKeywords
+	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	body=XExpression)));
 
-LEntityProp:
-	{LEntityProp}
-	(annotations+=LAnnotationDef)*
-	(('transient' jvmTypeRef=JvmTypeReference name=ValidIDWithKeywords)
+LBeanFeature:
+	{LBeanFeature}
+	annotations+=LAnnotationDef*
+	(({LBeanReference.annotationInfo=current}
+	('ref' (cascading?='cascade')? type=[LBean] multiplicity=LMultiplicity? name=ValidIDWithKeywords
+	('opposite' opposite=[LBeanReference|LFQN])?)
+	';')
+	|
+	({LBeanAttribute.annotationInfo=current}
+	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
 	|
 	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=LMultiplicity?
 	name=ValidIDWithKeywords
-	('=' defaultValueLiteral=STRING)? // TODO use the jvmTypeReference of LScalarType
-	';')
+	';')))
 	|
-	('ref' (cascading?='cascade')? type=[LEntity] multiplicity=LMultiplicity? name=ValidIDWithKeywords
-	('opposite' opposite=[LEntityProp|LFQN])?)
-	';');
-
-LIndex:
-	{LIndex}
-	(unique?='unique')? 'index' name=ValidIDWithKeywords '{'
-	('prop' properties+=[LEntityProp|LFQN] ';')*
-	'}';
-
-LOperation:
-	(modifier=LModifier)?
-	'def' type=JvmTypeReference name=ValidIDWithKeywords
+	({LOperation.annotationInfo=current}
+	('def' type=JvmTypeReference name=ValidIDWithKeywords
 	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
-	body=XExpression;
+	body=XExpression)));
 
 LModifier:
 	final?='final'? & static?='static'? & visibility=LVisibility;
@@ -107,7 +111,7 @@ LEnumLiteral:
 	name=ID;
 
 LAnnotationDef:
-	(exclude?='exclude')? annotation=XAnnotation;
+	=> (annotation=XAnnotation);
 
 enum LVisibility:
 	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
@@ -126,11 +130,11 @@ ValidIDWithKeywords:
 	ID;
 
 LMultiplicity:
-	'[' (lower=LowerBound) ('..' upper=UpperBound)? ']';
+	'[' (lower=LLowerBound) ('..' upper=LUpperBound)? ']';
 
-enum LowerBound:
-	MANY='*' | OPTIONAL='?' | ATLEASTONE='+' | ZERO='0' | ONE='1';
+enum LLowerBound:
+	MANY='*' | ZERO='0' | OPTIONAL='?' | ATLEASTONE='+' | ONE='1';
 
-enum UpperBound:
+enum LUpperBound:
 	MANY='*' | ONE='1';
 	

@@ -10,30 +10,25 @@
  * Contributors:
  *  		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.entity.xtext.jvmmodel.services.jpa
+package org.lunifera.dsl.entity.xtext.jvmmodel.jpa
 
 import com.google.inject.Inject
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.lunifera.dsl.entity.semantic.model.LAttribute
 import org.lunifera.dsl.entity.semantic.model.LEntity
-import org.lunifera.dsl.entity.semantic.model.LEntityModel
-import org.lunifera.dsl.entity.semantic.model.LProperty
+import org.lunifera.dsl.entity.semantic.model.LEntityReference
+import org.lunifera.dsl.entity.semantic.model.LFeature
+import org.lunifera.dsl.entity.semantic.model.LReference
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
-import org.lunifera.dsl.entity.xtext.jvmmodel.services.IAnnotationCompiler
-import org.lunifera.dsl.entity.xtext.jvmmodel.services.bean.ClassJvmModelInferrer
+import org.lunifera.dsl.entity.xtext.jvmmodel.ClassJvmModelInferrer
 
 /**
  * Infers a JVM model from {@link LEntity} model elements
  * using JPA as persistence provider.
  */
 class JPAEntityJvmModelInferrer extends ClassJvmModelInferrer {
-
-	@Inject JPAAnnotationCompiler annotationCompiler
-
-	override IAnnotationCompiler getAnnotationCompiler() {
-		annotationCompiler
-	}
 
 	@Inject extension IQualifiedNameProvider
 	@Inject extension ModelExtensions
@@ -49,22 +44,24 @@ class JPAEntityJvmModelInferrer extends ClassJvmModelInferrer {
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
 	def void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		val LEntityModel model = entity.getPackage().eContainer as LEntityModel
 		acceptor.accept(entity.toJvmType).initializeLater [
 			documentation = entity.documentation
 			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
 				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
 			}
+			//
+			// Constructor
+			//
 			members += entity.toConstructor()[]
 			if (entity.getSuperType == null) {
 				members += entity.toPrimitiveTypeField("disposed", Boolean::TYPE)
 			}
 			//
-			// Fields.
+			// Fields
 			//
-			for (f : entity.properties) {
+			for (f : entity.features) {
 				switch f {
-					LProperty: {
+					LFeature: {
 						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
 							members += f.toField
 						}
@@ -72,39 +69,39 @@ class JPAEntityJvmModelInferrer extends ClassJvmModelInferrer {
 				}
 			}
 			//
-			// Field accessors.
+			// Field accessors
 			//
 			if (entity.getSuperType == null) {
 				members += entity.toIsDisposed()
 			}
 			members += entity.toCheckDisposed()
 			members += entity.toDispose()
-			
-			for (f : entity.properties) {
-				if (f.scalarType) {
-					members += f.toGetter()
-					if (f.toMany) {
-						members += f.toInternalCollectionGetter(f.name)
-						members += f.toAdder(f.name)
-						members += f.toRemover(f.name)
-					} else {
-						members += f.toSetter()
+			for (f : entity.features) {
+				switch f {
+					case f instanceof LAttribute: {
+						members += f.toGetter()
+						if (f.toMany) {
+							members += f.toInternalCollectionGetter(f.name)
+							members += f.toAdder(f.name)
+							members += f.toRemover(f.name)
+						} else {
+							members += f.toSetter()
+						}
 					}
-				}
+					case f instanceof LReference: {
+						members += f.toGetter()
+						if (f.toMany) {
+							members += f.toInternalCollectionGetter(f.name)
+							members += f.toAdder(f.name)
+							members += f.toRemover(f.name)
+							members += f.toInternalAdder
+							members += f.toInternalRemover
+						} else {
+							members += f.toSetter()
 
-				if (f.entityType) {
-					members += f.toGetter()
-					if (f.toMany) {
-						members += f.toInternalCollectionGetter(f.name)
-						members += f.toAdder(f.name)
-						members += f.toRemover(f.name)
-						members += f.toInternalAdder
-						members += f.toInternalRemover
-					} else {
-						members += f.toSetter()
-
-						if (f.cascading && f.opposite != null) {
-							members += f.toInternalSetter
+							if (f.cascading && (f as LEntityReference).opposite != null) {
+								members += f.toInternalSetter
+							}
 						}
 					}
 				}

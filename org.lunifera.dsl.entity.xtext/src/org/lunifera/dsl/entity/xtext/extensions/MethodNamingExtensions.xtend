@@ -1,16 +1,19 @@
 package org.lunifera.dsl.entity.xtext.extensions
 
-import org.lunifera.dsl.entity.semantic.model.LProperty
+import org.lunifera.dsl.entity.semantic.model.LAttribute
+import org.lunifera.dsl.entity.semantic.model.LEntity
+import org.lunifera.dsl.entity.semantic.model.LFeature
+import org.lunifera.dsl.entity.xtext.util.PersistenceNamingUtils
 
 class MethodNamingExtensions { 
 	
-    def toSetterName(LProperty prop) {
+    def toSetterName(LFeature prop) {
         "set".concat(prop.name.toFirstUpper);
     }
-    def toGetterName(LProperty prop) {
+    def toGetterName(LFeature prop) {
         "get".concat(prop.name.toFirstUpper);
     }
-    def toBooleanGetterName(LProperty prop) {
+    def toBooleanGetterName(LFeature prop) {
         val propName = prop.name.toFirstLower 
         if (propName.startsWith("is") || propName.startsWith("has")) {
             return propName
@@ -18,25 +21,71 @@ class MethodNamingExtensions {
         return "is".concat(prop.name.toFirstUpper);
     }
 
-    def toCollectionAdderName(LProperty collectionProp) {
+    def toCollectionAdderName(LFeature collectionProp) {
         return "addTo".concat(collectionProp.name.toFirstUpper);
     }
-    def toCollectionRemoverName(LProperty collectionProp) {
+    def toCollectionRemoverName(LFeature collectionProp) {
         return "removeFrom".concat(collectionProp.name.toFirstUpper);
     }
 
-    def toCollectionInternalGetterName(LProperty collectionProp) {
+    def toCollectionInternalGetterName(LFeature collectionProp) {
         return "internalGet".concat(collectionProp.name.toFirstUpper);
     }
 
-    def toCollectionInternalAdderName(LProperty collectionProp) {
+    def toCollectionInternalAdderName(LFeature collectionProp) {
         return "internalAddTo".concat(collectionProp.name.toFirstUpper);
     }
-    def toCollectionInternalRemoverName(LProperty collectionProp) {
+    def toCollectionInternalRemoverName(LFeature collectionProp) {
         return "internalRemoveFrom".concat(collectionProp.name.toFirstUpper);
     }
-    def toInternalSetterName(LProperty ref) {
+    def toInternalSetterName(LFeature ref) {
         return "internalSet".concat(ref.name.toFirstUpper);
     }
+    
+    	// ### Might move to PersistenceExtensions
+	def columnName(LAttribute prop) {
+		var columnBaseName = prop.name
+		if (columnBaseName.nullOrEmpty) {
+			columnBaseName = PersistenceNamingUtils::camelCaseToUpperCase(prop.name)
+		}
+
+		// Compute the final column name using some settings. 
+		// E.g. to add some prefix like the shortName of the Entity.
+		// ### not yet implemented
+		columnBaseName
+	}
+
+	def tableName(LEntity entity) {
+		var tableBaseName = entity.persistenceName
+		if (tableBaseName.nullOrEmpty) {
+			tableBaseName = PersistenceNamingUtils::camelCaseToUpperCase(entity.name)
+		}
+
+		// Compute the final column name using some settings. 
+		// E.g. to add some prefix like the shortName of the Entity.
+		// ### not yet implemented
+		tableBaseName
+	}
+	
+		/** 
+	 * Returns the property name that is used for method signatures.
+	 */
+	def String toMethodParamName(LFeature prop) {
+		return prop.toGeneratorDefaultMethodParamName;
+	}
+
+	/**
+	 * Returns the generator default method param name.
+	 */
+	def String toGeneratorDefaultMethodParamName(LFeature sourceElement) {
+		return toMethodParamName(sourceElement.getName())
+	}
+
+	/** 
+	 * Returns the property name that is used for method signatures.
+	 */
+	def String toMethodParamName(String name) {
+		return String::format("%s", name);
+	}
 	
 }
