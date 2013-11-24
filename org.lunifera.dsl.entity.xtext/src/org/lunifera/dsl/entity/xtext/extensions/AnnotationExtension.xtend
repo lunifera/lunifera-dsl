@@ -9,7 +9,7 @@
  * 		Florian Pirchner - Initial implementation
  */
 package org.lunifera.dsl.entity.xtext.extensions
- 
+
 import com.google.inject.Inject
 import java.util.List
 import java.util.Map
@@ -39,9 +39,9 @@ import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.entity.semantic.model.LAnnotationDef
-import org.lunifera.dsl.entity.semantic.model.LClass
-import org.lunifera.dsl.entity.semantic.model.LFeature
+import org.lunifera.dsl.semantic.common.types.LAnnotationDef
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LFeature
 
 class AnnotationExtension {
 	 

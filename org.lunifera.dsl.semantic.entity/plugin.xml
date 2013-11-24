@@ -17,11 +17,11 @@
 
 <plugin>
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Entity -->
+      <!-- @generated entity -->
       <package
             uri="http://www.lunifera.org/dsl/entity/v1"
-            class="org.lunifera.dsl.entity.semantic.model.EntityPackage"
-            genModel="model/entity.genmodel"/>
+            class="org.lunifera.dsl.semantic.entity.EntityPackage"
+            genModel="model/entity.xcore"/>
    </extension>
 
 </plugin>

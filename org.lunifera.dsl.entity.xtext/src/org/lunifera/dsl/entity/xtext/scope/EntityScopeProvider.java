@@ -23,13 +23,12 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProvider;
-import org.lunifera.dsl.entity.semantic.model.EntityPackage;
-import org.lunifera.dsl.entity.semantic.model.LBean;
-import org.lunifera.dsl.entity.semantic.model.LBeanReference;
-import org.lunifera.dsl.entity.semantic.model.LClass;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LEntityReference;
-import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
+import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.entity.EntityPackage;
+import org.lunifera.dsl.semantic.entity.LBean;
+import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LEntityReference;
 
 import com.google.inject.Inject;
 

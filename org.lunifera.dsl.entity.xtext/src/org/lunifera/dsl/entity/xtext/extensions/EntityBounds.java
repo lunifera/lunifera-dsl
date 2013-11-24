@@ -10,10 +10,10 @@
  */
 package org.lunifera.dsl.entity.xtext.extensions;
 
-import org.lunifera.dsl.entity.semantic.model.LFeature;
-import org.lunifera.dsl.entity.semantic.model.LLowerBound;
-import org.lunifera.dsl.entity.semantic.model.LMultiplicity;
-import org.lunifera.dsl.entity.semantic.model.LUpperBound;
+import org.lunifera.dsl.semantic.common.types.LFeature;
+import org.lunifera.dsl.semantic.common.types.LLowerBound;
+import org.lunifera.dsl.semantic.common.types.LMultiplicity;
+import org.lunifera.dsl.semantic.common.types.LUpperBound;
 
 /**
  * Keeps lower and upper bound

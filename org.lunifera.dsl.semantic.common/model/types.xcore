@@ -1,0 +1,127 @@
+@GenModel(fileExtensions="typesmodel")
+@GenModel(modelName="Types")
+@GenModel(prefix="LunTypes")
+@Ecore(nsURI="http://www.lunifera.org/dsl/common/types/v1")
+@Ecore(nsPrefix="types")
+@Ecore(rootPackage="types")
+package org.lunifera.dsl.semantic.common.types
+ 
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.xbase.XExpression
+import org.eclipse.xtext.common.types.JvmFormalParameter
+
+class LPackage {
+	String name
+	contains LImport[] imports
+}
+
+class LTypedPackage extends LPackage {
+	contains LType[] types
+}
+
+
+class LImport {
+	String importedNamespace
+}
+
+class LType extends LAnnotationTarget {
+	String name
+	contains LAnnotationTarget annotationInfo
+}
+
+class LAnnotationDef {
+	boolean exclude
+	contains XAnnotation ^annotation
+}
+
+class LAnnotationTarget {
+	contains LAnnotationDef[] annotations
+}
+
+class LScalarType extends LType {
+}
+
+class LDataType extends LScalarType {
+	contains JvmTypeReference jvmTypeReference
+}
+
+class LEnum extends LScalarType {
+	contains LEnumLiteral[] literals
+}
+
+class LEnumLiteral {
+	String name
+}
+
+class LClass extends LType {
+	boolean ^abstract
+	boolean serializable
+	String shortName
+}
+
+interface LFeature extends LAnnotationTarget {
+	String name
+	contains LMultiplicity multiplicity
+	contains LAnnotationTarget annotationInfo
+}
+
+interface LReference extends LFeature {
+	boolean lazy
+	boolean cascading
+}
+
+interface LAttribute extends LFeature {
+	boolean ^id
+	boolean version
+	boolean lazy
+	boolean cascading
+	boolean ^transient
+	refers LScalarType ^type
+}
+
+class LOperation {
+	contains LModifier modifier
+	contains JvmTypeReference ^type
+	contains JvmFormalParameter[] params
+	contains XExpression body
+}
+
+class LModifier {
+	boolean final
+	boolean ^static
+	LVisibility visibility
+}
+
+enum LVisibility {
+	PACKAGE = 0
+	PRIVATE = 1
+	PROTECTED = 2
+	PUBLIC = 3
+}
+
+class LMultiplicity {
+	LLowerBound lower
+	LUpperBound upper
+}
+
+enum LLowerBound {
+	NULL = 0
+	MANY = 1
+	OPTIONAL = 2
+	ATLEASTONE = 3
+	ZERO = 4
+	ONE = 5
+}
+
+enum LUpperBound {
+	NULL = 0
+	MANY = 1
+	ONE = 2
+}
+
+type OperationsList wraps java.util.List<LOperation>
+
+	
+	
+	

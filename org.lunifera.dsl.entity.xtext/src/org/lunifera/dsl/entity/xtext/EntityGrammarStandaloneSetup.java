@@ -4,7 +4,8 @@
 package org.lunifera.dsl.entity.xtext;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.lunifera.dsl.entity.semantic.model.EntityPackage;
+import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
+import org.lunifera.dsl.semantic.entity.EntityPackage;
 
 import com.google.inject.Injector;
 
@@ -21,10 +22,17 @@ public class EntityGrammarStandaloneSetup extends
 
 	public void register(Injector injector) {
 		if (!EPackage.Registry.INSTANCE
-				.containsKey("http://www.lunifera.org/metamodel/entity/Entity")) {
+				.containsKey("http://www.lunifera.org/entity/v1")) {
 			EPackage.Registry.INSTANCE.put(
-					"http://www.lunifera.org/metamodel/entity/Entity",
+					"http://www.lunifera.org/dsl/entity/v1",
 					EntityPackage.eINSTANCE);
+		}
+
+		if (!EPackage.Registry.INSTANCE
+				.containsKey("http://www.lunifera.org/dsl/common/types/v1")) {
+			EPackage.Registry.INSTANCE.put(
+					"http://www.lunifera.org/dsl/common/types/v1",
+					LunTypesPackage.eINSTANCE);
 		}
 
 		super.register(injector);

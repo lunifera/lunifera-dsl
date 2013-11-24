@@ -17,7 +17,7 @@ import com.google.inject.Inject
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.entity.semantic.model.LEnum
+import org.lunifera.dsl.semantic.common.types.LEnum
 
 /**
  * Infers a JVM model from {@link LEnum} model elements.

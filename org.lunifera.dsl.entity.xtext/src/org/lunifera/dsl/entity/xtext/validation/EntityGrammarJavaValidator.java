@@ -20,17 +20,17 @@ import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
-import org.lunifera.dsl.entity.semantic.model.EntityPackage;
-import org.lunifera.dsl.entity.semantic.model.LAttribute;
-import org.lunifera.dsl.entity.semantic.model.LBean;
-import org.lunifera.dsl.entity.semantic.model.LBeanReference;
-import org.lunifera.dsl.entity.semantic.model.LEntity;
-import org.lunifera.dsl.entity.semantic.model.LEntityModel;
-import org.lunifera.dsl.entity.semantic.model.LEntityReference;
-import org.lunifera.dsl.entity.semantic.model.LFeature;
-import org.lunifera.dsl.entity.semantic.model.LPackage;
-import org.lunifera.dsl.entity.semantic.model.LType;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
+import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LFeature;
+import org.lunifera.dsl.semantic.common.types.LPackage;
+import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
+import org.lunifera.dsl.semantic.entity.EntityPackage;
+import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LEntityModel;
+import org.lunifera.dsl.semantic.entity.LEntityReference;
 
 import com.google.inject.Inject;
 
@@ -138,13 +138,14 @@ public class EntityGrammarJavaValidator extends
 		if (prop.getOpposite() != null) {
 			if (prop.isCascading() && prop.getOpposite().isCascading()) {
 				error("Only one opposite may be specified as cascade",
-						EntityPackage.Literals.LREFERENCE__CASCADING);
+						LunTypesPackage.Literals.LREFERENCE__CASCADING);
 			}
 
 			if (extensions.isToMany(prop.getOpposite())) {
 				if (prop.isCascading()) {
 					error("The many-to-one relation must not be marked as cascade",
-							prop, EntityPackage.Literals.LREFERENCE__CASCADING,
+							prop,
+							LunTypesPackage.Literals.LREFERENCE__CASCADING,
 							CASCADE_NOT_VALID, new String[0]);
 				}
 			}
@@ -156,13 +157,14 @@ public class EntityGrammarJavaValidator extends
 		if (prop.getOpposite() != null) {
 			if (prop.isCascading() && prop.getOpposite().isCascading()) {
 				error("Only one opposite may be specified as cascade",
-						EntityPackage.Literals.LREFERENCE__CASCADING);
+						LunTypesPackage.Literals.LREFERENCE__CASCADING);
 			}
 
 			if (extensions.isToMany(prop.getOpposite())) {
 				if (prop.isCascading()) {
 					error("The many-to-one relation must not be marked as cascade",
-							prop, EntityPackage.Literals.LREFERENCE__CASCADING,
+							prop,
+							LunTypesPackage.Literals.LREFERENCE__CASCADING,
 							CASCADE_NOT_VALID, new String[0]);
 				}
 			}
@@ -394,7 +396,7 @@ public class EntityGrammarJavaValidator extends
 	public void checkProperties_JavaKeyWord(LFeature lprop) {
 		if (javakeywords.contains(lprop.getName())) {
 			error("The name of the property is an java keyword and not allowed!",
-					EntityPackage.Literals.LFEATURE__NAME);
+					LunTypesPackage.Literals.LFEATURE__NAME);
 		}
 	}
 
@@ -423,7 +425,7 @@ public class EntityGrammarJavaValidator extends
 			if (temp.getValue().size() > 1) {
 				error(String.format("Duplicate type %s in container", qnp
 						.getFullyQualifiedName(type).toString()), type,
-						EntityPackage.Literals.LTYPE__NAME,
+						LunTypesPackage.Literals.LTYPE__NAME,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 						CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
 			}
@@ -451,7 +453,7 @@ public class EntityGrammarJavaValidator extends
 				continue;
 			}
 			for (IEObjectDescription eobjectDescription : container
-					.getExportedObjects(EntityPackage.Literals.LTYPE,
+					.getExportedObjects(LunTypesPackage.Literals.LTYPE,
 							qnp.getFullyQualifiedName(lType), true)) {
 				types.add((LType) eobjectDescription.getEObjectOrProxy());
 			}
@@ -466,7 +468,7 @@ public class EntityGrammarJavaValidator extends
 			if (temp.getValue().size() > 1) {
 				warning(String.format("Duplicate package %s in container ", qnp
 						.getFullyQualifiedName(lPackage).toString()), lPackage,
-						EntityPackage.Literals.LPACKAGE__NAME,
+						LunTypesPackage.Literals.LPACKAGE__NAME,
 						CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
 			}
 	}
@@ -490,7 +492,7 @@ public class EntityGrammarJavaValidator extends
 			List<LPackage> packages = new ArrayList<LPackage>();
 			allEntities.put(container, packages);
 			for (IEObjectDescription eobjectDescription : container
-					.getExportedObjects(EntityPackage.Literals.LPACKAGE,
+					.getExportedObjects(LunTypesPackage.Literals.LPACKAGE,
 							qnp.getFullyQualifiedName(lPackage), true)) {
 				packages.add((LPackage) eobjectDescription.getEObjectOrProxy());
 			}

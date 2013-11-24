@@ -16,18 +16,18 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.entity.semantic.model.LAttribute
-import org.lunifera.dsl.entity.semantic.model.LBean
-import org.lunifera.dsl.entity.semantic.model.LBeanAttribute
-import org.lunifera.dsl.entity.semantic.model.LBeanReference
-import org.lunifera.dsl.entity.semantic.model.LClass
-import org.lunifera.dsl.entity.semantic.model.LDataType
-import org.lunifera.dsl.entity.semantic.model.LEntity
-import org.lunifera.dsl.entity.semantic.model.LEntityAttribute
-import org.lunifera.dsl.entity.semantic.model.LEntityReference
-import org.lunifera.dsl.entity.semantic.model.LFeature
-import org.lunifera.dsl.entity.semantic.model.LPackage
-import org.lunifera.dsl.entity.semantic.model.LType
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LDataType
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LPackage
+import org.lunifera.dsl.semantic.common.types.LType
+import org.lunifera.dsl.semantic.entity.LBean
+import org.lunifera.dsl.semantic.entity.LBeanAttribute
+import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LEntity
+import org.lunifera.dsl.semantic.entity.LEntityAttribute
+import org.lunifera.dsl.semantic.entity.LEntityReference
 
 class ModelExtensions {
 

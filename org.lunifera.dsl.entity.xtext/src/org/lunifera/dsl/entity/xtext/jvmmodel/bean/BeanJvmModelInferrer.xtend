@@ -16,15 +16,14 @@ import com.google.inject.Inject
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.lunifera.dsl.entity.semantic.model.LAttribute
-import org.lunifera.dsl.entity.semantic.model.LBean
-import org.lunifera.dsl.entity.semantic.model.LEntity
-import org.lunifera.dsl.entity.semantic.model.LEntityReference
-import org.lunifera.dsl.entity.semantic.model.LFeature
-import org.lunifera.dsl.entity.semantic.model.LReference
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.jvmmodel.ClassJvmModelInferrer
-import org.lunifera.dsl.entity.semantic.model.LBeanReference
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.entity.LBean
+import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LEntity
 
 /**
  * Infers a JVM model from {@link LEntity} model elements

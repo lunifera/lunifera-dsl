@@ -1,9 +1,9 @@
 package org.lunifera.dsl.entity.xtext.extensions
 
-import org.lunifera.dsl.entity.semantic.model.LAttribute
-import org.lunifera.dsl.entity.semantic.model.LEntity
-import org.lunifera.dsl.entity.semantic.model.LFeature
 import org.lunifera.dsl.entity.xtext.util.PersistenceNamingUtils
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.entity.LEntity
 
 class MethodNamingExtensions { 
 	

@@ -1,16 +1,15 @@
-@GenModel(fileExtensions="entitymodel")
-@GenModel(modelName="Entity")
-@GenModel(prefix="Entity")
-@Ecore(nsURI="http://www.lunifera.org/dsl/entity/v1")
-package org.lunifera.dsl.entity.semantic.model
+@GenModel(fileExtensions="dtomodel")
+@GenModel(modelName="DTO")
+@GenModel(prefix="Dto")
+@Ecore(nsURI="http://www.lunifera.org/dsl/dto/v1")
+package org.lunifera.dsl.dto.semantic.model
 
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
-import org.eclipse.emf.common.util.EList
 
-class LEntityModel {
+class LDtoModel {
 	contains LPackage[] packages
 }
 

@@ -1,0 +1,136 @@
+@GenModel(fileExtensions="entitymodel")
+@GenModel(modelName="Entity")
+@GenModel(prefix="Entity")
+@Ecore(nsURI="http://www.lunifera.org/dsl/entity/v1")
+@Ecore(nsPrefix="entity")
+@Ecore(rootPackage="entity")
+package org.lunifera.dsl.semantic.entity
+
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LReference
+
+class LEntityModel {
+	contains LTypedPackage[] packages
+}
+
+/**
+ * A bean is an embeddable element that may become added to a entity using the @embedd annotation. 
+ */
+class LBean extends LClass, LScalarType {
+	contains LBeanFeature[] features
+	refers local LBean superType opposite subTypes
+	refers transient LBean[] subTypes opposite superType
+	/**
+ 	 * Returns all features of type LOperation
+ 	 */
+	op OperationsList getOperations() {
+		features.filter(typeof(LEOperation)).toList
+	}
+	/**
+ 	 * Returns all features of type LBeanReference
+ 	 */
+	op BeanReferenceList getReferences() {
+		features.filter(typeof(LBeanReference)).toList
+	}
+	/**
+ 	 * Returns all features of type LBeanAttribute
+ 	 */
+	op BeanAttributeList getAttributes() {
+		features.filter(typeof(LBeanAttribute)).toList
+	}
+}
+
+/**
+ * Represents a JPA entity.
+ */
+class LEntity extends LClass {
+	String persistenceName
+	boolean cacheable
+	boolean historized
+	contains LEntityFeature[] features
+	contains LIndex[] indexes
+	refers local LEntity superType opposite subTypes
+	refers transient LEntity[] subTypes opposite superType
+	/**
+ 	 * Returns all features of type LOperation
+ 	 */
+	op OperationsList getOperations() {
+		features.filter(typeof(LEOperation)).toList
+	}
+	/**
+ 	 * Returns all features of type LEntityReference
+ 	 */
+	op EntityReferenceList getReferences() {
+		features.filter(typeof(LEntityReference)).toList
+	}
+	/**
+ 	 * Returns all features of type LEntityAttribute
+ 	 */
+	op EntityAttributeList getAttributes() {
+		features.filter(typeof(LEntityAttribute)).toList
+	}
+}
+
+class LEntityFeature extends LFeature {
+	op LEntity getEntity() {
+		return eContainer as LEntity
+	}
+}
+
+class LEntityAttribute extends LEntityFeature, LAttribute {
+}
+
+class LEntityReference extends LEntityFeature, LReference {
+	refers LEntity ^type
+	refers LEntityReference ^opposite
+}
+
+class LBeanFeature  extends LFeature {
+	op LBean getBean() {
+		return eContainer as LBean
+	}
+}
+
+class LBeanAttribute extends LBeanFeature, LAttribute {
+}
+
+class LBeanReference extends LBeanFeature, LReference {
+	refers LBean ^type
+	refers LBeanReference ^opposite
+}
+
+class LEOperation extends LOperation, LEntityFeature, LBeanFeature {
+}
+
+class LIndex {
+	boolean ^unique
+	String name
+	refers LEntityFeature[] features
+}
+
+/**
+ * Overwrites LOperation to add bean and entity feature as supertype
+ */
+class LOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LBeanFeature, LEntityFeature {
+	
+}
+
+type OperationsList wraps java.util.List<LEOperation>
+
+type EntityReferenceList wraps java.util.List<LEntityReference>
+
+type EntityAttributeList wraps java.util.List<LEntityAttribute>
+
+type BeanReferenceList wraps java.util.List<LBeanReference>
+
+type BeanAttributeList wraps java.util.List<LBeanAttribute>
+
+	
+	
+	
+	
+	

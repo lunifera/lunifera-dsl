@@ -14,17 +14,18 @@
  */
 grammar org.lunifera.dsl.entity.xtext.EntityGrammar with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
-import "http://www.lunifera.org/dsl/entity/v1"
+import "http://www.lunifera.org/dsl/common/types/v1"
+import "http://www.lunifera.org/dsl/entity/v1" as entity
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/xbase/Xtype" as xtype
 import "http://www.eclipse.org/Xtext/Xbase/XAnnotations" as xannotation
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
-LEntityModel:
-	packages+=LPackage*;
+LEntityModel returns entity::LEntityModel:
+	packages+=LTypedPackage*;
 
-LPackage:
-	{LPackage}
+LTypedPackage:
+	{LTypedPackage}
 	'package' name=QualifiedName ('{'
 	(imports+=LImport)*
 	(types+=LType)*
@@ -45,55 +46,55 @@ LType:
 
 Class returns LClass:
 	{LClass} annotations+=LAnnotationDef*
-	({LEntity.annotationInfo=current}
+	({entity::LEntity.annotationInfo=current}
 	(abstract?='abstract')?
-	'entity' name=ValidIDWithKeywords ('extends' superType=[LEntity])?
+	'entity' name=ValidIDWithKeywords ('extends' superType=[entity::LEntity])?
 	'{'
 	features+=LEntityFeature*
 	'}'
 	|
-	{LBean.annotationInfo=current}
-	'bean' name=ValidIDWithKeywords ('extends' superType=[LBean])?
+	{entity::LBean.annotationInfo=current}
+	'bean' name=ValidIDWithKeywords ('extends' superType=[entity::LBean])?
 	'{'
 	features+=LBeanFeature*
 	'}');
 
-LEntityFeature:
-	{LEntityFeature}
+LEntityFeature returns entity::LEntityFeature:
+	{entity::LEntityFeature}
 	annotations+=LAnnotationDef*
-	(({LEntityReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[LEntity] multiplicity=LMultiplicity? name=ValidIDWithKeywords
-	('opposite' opposite=[LEntityReference|LFQN])?)
+	(({entity::LEntityReference.annotationInfo=current}
+	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=LMultiplicity? name=ValidIDWithKeywords
+	('opposite' opposite=[entity::LEntityReference|LFQN])?)
 	';')
 	|
-	({LEntityAttribute.annotationInfo=current}
+	({entity::LEntityAttribute.annotationInfo=current}
 	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
 	|
 	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=LMultiplicity?
 	name=ValidIDWithKeywords // TODO use the jvmTypeReference of LScalarType
 	';')))
 	|
-	({LOperation.annotationInfo=current}
+	({entity::LOperation.annotationInfo=current}
 	('def' type=JvmTypeReference name=ValidIDWithKeywords
 	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
 	body=XExpression)));
 
-LBeanFeature:
-	{LBeanFeature}
+LBeanFeature returns entity::LBeanFeature:
+	{entity::LBeanFeature}
 	annotations+=LAnnotationDef*
-	(({LBeanReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[LBean] multiplicity=LMultiplicity? name=ValidIDWithKeywords
-	('opposite' opposite=[LBeanReference|LFQN])?)
+	(({entity::LBeanReference.annotationInfo=current}
+	('ref' (cascading?='cascade')? type=[entity::LBean] multiplicity=LMultiplicity? name=ValidIDWithKeywords
+	('opposite' opposite=[entity::LBeanReference|LFQN])?)
 	';')
 	|
-	({LBeanAttribute.annotationInfo=current}
+	({entity::LBeanAttribute.annotationInfo=current}
 	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
 	|
 	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=LMultiplicity?
 	name=ValidIDWithKeywords
 	';')))
 	|
-	({LOperation.annotationInfo=current}
+	({entity::LOperation.annotationInfo=current}
 	('def' type=JvmTypeReference name=ValidIDWithKeywords
 	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
 	body=XExpression)));

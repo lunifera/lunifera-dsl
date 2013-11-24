@@ -36,16 +36,16 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.entity.semantic.model.LAnnotationTarget
-import org.lunifera.dsl.entity.semantic.model.LBean
-import org.lunifera.dsl.entity.semantic.model.LBeanAttribute
-import org.lunifera.dsl.entity.semantic.model.LBeanReference
-import org.lunifera.dsl.entity.semantic.model.LEntity
-import org.lunifera.dsl.entity.semantic.model.LEntityAttribute
-import org.lunifera.dsl.entity.semantic.model.LEntityReference
-import org.lunifera.dsl.entity.semantic.model.LOperation
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
+import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
+import org.lunifera.dsl.semantic.entity.LBean
+import org.lunifera.dsl.semantic.entity.LBeanAttribute
+import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LEntity
+import org.lunifera.dsl.semantic.entity.LEntityAttribute
+import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LOperation
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model

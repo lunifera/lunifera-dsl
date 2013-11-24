@@ -32,23 +32,23 @@ import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.eclipse.xtext.xbase.lib.StringExtensions
-import org.lunifera.dsl.entity.semantic.model.LAnnotationDef
-import org.lunifera.dsl.entity.semantic.model.LBean
-import org.lunifera.dsl.entity.semantic.model.LBeanFeature
-import org.lunifera.dsl.entity.semantic.model.LBeanReference
-import org.lunifera.dsl.entity.semantic.model.LClass
-import org.lunifera.dsl.entity.semantic.model.LEntity
-import org.lunifera.dsl.entity.semantic.model.LEntityFeature
-import org.lunifera.dsl.entity.semantic.model.LEntityModel
-import org.lunifera.dsl.entity.semantic.model.LEntityReference
-import org.lunifera.dsl.entity.semantic.model.LFeature
-import org.lunifera.dsl.entity.semantic.model.LOperation
-import org.lunifera.dsl.entity.semantic.model.LPackage
-import org.lunifera.dsl.entity.semantic.model.LType
 import org.lunifera.dsl.entity.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.entity.xtext.jvmmodel.services.AnnotationCompiler
+import org.lunifera.dsl.semantic.common.types.LAnnotationDef
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LPackage
+import org.lunifera.dsl.semantic.common.types.LType
+import org.lunifera.dsl.semantic.entity.LBean
+import org.lunifera.dsl.semantic.entity.LBeanFeature
+import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LEntity
+import org.lunifera.dsl.semantic.entity.LEntityFeature
+import org.lunifera.dsl.semantic.entity.LEntityModel
+import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LOperation
 
 /**
  * Infers a JVM model from {@link LClass} model elements.

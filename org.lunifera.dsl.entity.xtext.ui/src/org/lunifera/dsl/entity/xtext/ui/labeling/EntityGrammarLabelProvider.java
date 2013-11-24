@@ -26,14 +26,14 @@ import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider;
 import org.eclipse.xtext.xbase.validation.UIStrings;
-import org.lunifera.dsl.entity.semantic.model.LAttribute;
-import org.lunifera.dsl.entity.semantic.model.LClass;
-import org.lunifera.dsl.entity.semantic.model.LEnum;
-import org.lunifera.dsl.entity.semantic.model.LEnumLiteral;
-import org.lunifera.dsl.entity.semantic.model.LFeature;
-import org.lunifera.dsl.entity.semantic.model.LImport;
-import org.lunifera.dsl.entity.semantic.model.LOperation;
-import org.lunifera.dsl.entity.semantic.model.LReference;
+import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LEnum;
+import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
+import org.lunifera.dsl.semantic.common.types.LFeature;
+import org.lunifera.dsl.semantic.common.types.LImport;
+import org.lunifera.dsl.semantic.common.types.LReference;
+import org.lunifera.dsl.semantic.entity.LOperation;
 
 import com.google.inject.Inject;
 

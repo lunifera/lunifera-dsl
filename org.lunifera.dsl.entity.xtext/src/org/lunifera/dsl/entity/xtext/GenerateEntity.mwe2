@@ -29,8 +29,11 @@ Workflow {
 	bean = StandaloneSetup {
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.entity.semantic/model/entity.genmodel"
-		registerGeneratedEPackage = "org.lunifera.dsl.entity.semantic.model.EntityPackage"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.genmodel"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.EntityPackage"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.genmodel"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+		
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
@@ -54,7 +57,7 @@ Workflow {
 		projectNameUi = "${projectName}.ui"
 		language = {
 			uri = grammarURI
-			loadedResource = "platform:/resource/org.lunifera.dsl.entity.semantic/model/entity.xcore"
+			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
 			fileExtensions = file.extensions
 			fragment = grammarAccess.GrammarAccessFragment {}
 			fragment = serializer.SerializerFragment {

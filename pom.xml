@@ -42,8 +42,10 @@
 				<module>org.lunifera.dsl.p2</module>
 
 				<!-- P2 bundles -->
+				<module>org.lunifera.dsl.semantic.common</module>
+				<module>org.lunifera.dsl.semantic.entity</module>
+				<module>org.lunifera.dsl.semantic.dto</module>
 				<module>org.lunifera.dsl.eclipse.ui</module>
-				<module>org.lunifera.dsl.entity.semantic</module>
 				<module>org.lunifera.dsl.entity.xtext</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
 				<!-- <module>org.lunifera.dsl.entity.xtext.tests</module> -->
