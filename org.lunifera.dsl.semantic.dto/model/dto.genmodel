@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2011-2013 itemis AG (http://www.itemis.eu) and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
-    modelDirectory="/org.lunifera.dsl.dto.semantic/src" editDirectory="/org.eclipse.xtext.common.types.edit/emf-gen"
-    editorDirectory="/org.eclipse.xtext.types.editor/src" modelPluginID="org.lunifera.dsl.dto.semantic"
+    modelDirectory="/org.lunifera.dsl.semantic.dto/src" editDirectory="/org.eclipse.xtext.common.types.edit/emf-gen"
+    editorDirectory="/org.eclipse.xtext.types.editor/src" modelPluginID="org.lunifera.dsl.semantic.dto"
     forceOverwrite="true" modelName="DTO" modelPluginClass="" updateClasspath="false"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" rootImplementsInterface=""
     importerID="org.eclipse.emf.ecore.xcore.importer" complianceLevel="6.0" suppressGenModelAnnotations="false"
     copyrightFields="false" editPluginID="org.eclipse.xtext.common.types.edit" editorPluginID="org.eclipse.xtext.types.editor"
-    runtimeVersion="2.9" language="" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase"
+    runtimeVersion="2.9" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.lunifera.dsl.semantic.common/model/types.xcore#/1/types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase"
     interfaceNamePattern="" classNamePattern="" operationReflection="true" importOrganizing="true">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
     <genAnnotations source="selectedPackages">
@@ -24,141 +24,34 @@
   <foreignModel>dto.xcore</foreignModel>
   <modelPluginVariables>org.eclipse.xtext.xbase.lib</modelPluginVariables>
   <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
-  <genPackages prefix="DTO" basePackage="org.lunifera.dsl.dto.semantic" disposableProviderFactory="true"
-      fileExtensions="dtomodel" ecorePackage="model.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//LVisibility">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LVisibility/PACKAGE"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LVisibility/PRIVATE"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LVisibility/PROTECTED"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LVisibility/PUBLIC"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//LLowerBound">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/NULL"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/MANY"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/OPTIONAL"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/ATLEASTONE"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/ZERO"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LLowerBound/ONE"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//LUpperBound">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LUpperBound/NULL"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LUpperBound/MANY"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//LUpperBound/ONE"/>
-    </genEnums>
-    <genDataTypes ecoreDataType="model.ecore#//OperationsList"/>
-    <genDataTypes ecoreDataType="model.ecore#//EntityReferenceList"/>
-    <genDataTypes ecoreDataType="model.ecore#//EntityAttributeList"/>
-    <genDataTypes ecoreDataType="model.ecore#//BeanReferenceList"/>
-    <genDataTypes ecoreDataType="model.ecore#//BeanAttributeList"/>
-    <genClasses ecoreClass="model.ecore#//LEntityModel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEntityModel/packages"/>
+  <genPackages prefix="Dto" basePackage="org.lunifera.dsl.semantic" disposableProviderFactory="true"
+      fileExtensions="dtomodel" ecorePackage="dto.ecore#/">
+    <genDataTypes ecoreDataType="dto.ecore#//OperationsList"/>
+    <genDataTypes ecoreDataType="dto.ecore#//DtoReferenceList"/>
+    <genDataTypes ecoreDataType="dto.ecore#//DtoAttributeList"/>
+    <genClasses ecoreClass="dto.ecore#//LDtoModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoModel/packages"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//LPackage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LPackage/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LPackage/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LPackage/types"/>
+    <genClasses ecoreClass="dto.ecore#//LDto">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/features"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/superType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/subTypes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/replacedDto"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/replacingDto"/>
+      <genOperations ecoreOperation="dto.ecore#//LDto/getOperations"/>
+      <genOperations ecoreOperation="dto.ecore#//LDto/getReferences"/>
+      <genOperations ecoreOperation="dto.ecore#//LDto/getAttributes"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//LImport">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LImport/importedNamespace"/>
+    <genClasses ecoreClass="dto.ecore#//LDtoFeature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dto.ecore#//LDtoFeature/overrides"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoFeature/overriddenFeature"/>
+      <genOperations ecoreOperation="dto.ecore#//LDtoFeature/getDTO"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//LType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LType/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LType/annotationInfo"/>
+    <genClasses ecoreClass="dto.ecore#//LDtoAttribute"/>
+    <genClasses ecoreClass="dto.ecore#//LDtoReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/opposite"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//LAnnotationDef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAnnotationDef/exclude"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LAnnotationDef/annotation"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LAnnotationTarget">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LAnnotationTarget/annotations"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LScalarType"/>
-    <genClasses ecoreClass="model.ecore#//LDataType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LDataType/jvmTypeReference"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LEnum">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEnum/literals"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LEnumLiteral">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LEnumLiteral/name"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LClass">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LClass/abstract"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LClass/serializable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LClass/shortName"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LBean">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LBean/features"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LBean/superType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LBean/subTypes"/>
-      <genOperations ecoreOperation="model.ecore#//LBean/getOperations"/>
-      <genOperations ecoreOperation="model.ecore#//LBean/getReferences"/>
-      <genOperations ecoreOperation="model.ecore#//LBean/getAttributes"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LEntity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LEntity/persistenceName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LEntity/cacheable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LEntity/historized"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/features"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/indexes"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/superType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LEntity/subTypes"/>
-      <genOperations ecoreOperation="model.ecore#//LEntity/getOperations"/>
-      <genOperations ecoreOperation="model.ecore#//LEntity/getReferences"/>
-      <genOperations ecoreOperation="model.ecore#//LEntity/getAttributes"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="model.ecore#//LFeature">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LFeature/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LFeature/multiplicity"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LFeature/annotationInfo"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LReference">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LReference/lazy"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LReference/cascading"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/version"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/lazy"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/cascading"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LAttribute/transient"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LAttribute/type"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LEntityFeature">
-      <genOperations ecoreOperation="model.ecore#//LEntityFeature/getEntity"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LEntityAttribute"/>
-    <genClasses ecoreClass="model.ecore#//LEntityReference">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LEntityReference/type"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LEntityReference/opposite"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LBeanFeature">
-      <genOperations ecoreOperation="model.ecore#//LBeanFeature/getBean"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LBeanAttribute"/>
-    <genClasses ecoreClass="model.ecore#//LBeanReference">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LBeanReference/type"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LBeanReference/opposite"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LOperation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LOperation/modifier"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LOperation/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LOperation/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LOperation/body"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LModifier">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LModifier/final"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LModifier/static"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LModifier/visibility"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LMultiplicity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LMultiplicity/lower"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LMultiplicity/upper"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//LIndex">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LIndex/unique"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LIndex/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//LIndex/features"/>
-    </genClasses>
+    <genClasses ecoreClass="dto.ecore#//LDtoOperation"/>
   </genPackages>
 </genmodel:GenModel>

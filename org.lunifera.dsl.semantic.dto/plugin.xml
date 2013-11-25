@@ -17,19 +17,11 @@
 
 <plugin>
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Entity -->
-      <package
-            uri="http://www.lunifera.org/dsl/entity/v1"
-            class="org.lunifera.dsl.entity.semantic.model.EntityPackage"
-            genModel="model/entity.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated entity -->
+      <!-- @generated dto -->
       <package
             uri="http://www.lunifera.org/dsl/dto/v1"
-            class="org.lunifera.dsl.dto.semantic.model.DtoPackage"
-            genModel="model/entity.xcore"/>
+            class="org.lunifera.dsl.semantic.dto.DtoPackage"
+            genModel="model/dto.xcore"/>
    </extension>
 
 </plugin>

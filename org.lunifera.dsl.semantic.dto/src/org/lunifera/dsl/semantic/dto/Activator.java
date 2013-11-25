@@ -1,4 +1,4 @@
-package org.lunifera.dsl.dto.semantic;
+package org.lunifera.dsl.semantic.dto;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

@@ -20,7 +20,6 @@ class LTypedPackage extends LPackage {
 	contains LType[] types
 }
 
-
 class LImport {
 	String importedNamespace
 }

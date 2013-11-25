@@ -2,228 +2,84 @@
 @GenModel(modelName="DTO")
 @GenModel(prefix="Dto")
 @Ecore(nsURI="http://www.lunifera.org/dsl/dto/v1")
-package org.lunifera.dsl.dto.semantic.model
+@Ecore(nsPrefix="dto")
+@Ecore(rootPackage="dto")
+package org.lunifera.dsl.semantic.dto
 
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.lunifera.dsl.semantic.common.types.LModifier
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LReference
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
 
 class LDtoModel {
-	contains LPackage[] packages
-}
-
-class LPackage {
-	String name
-	contains LImport[] imports
-	contains LType[] types
-}
-
-class LImport {
-	String importedNamespace
-}
-
-class LType extends LAnnotationTarget {
-	String name
-	contains LAnnotationTarget annotationInfo
-}
-
-class LAnnotationDef {
-	boolean exclude
-	contains XAnnotation ^annotation
-}
-
-class LAnnotationTarget {
-	contains LAnnotationDef[] annotations
-}
-
-class LScalarType extends LType {
-}
-
-class LDataType extends LScalarType {
-	contains JvmTypeReference jvmTypeReference
-}
-
-class LEnum extends LScalarType {
-	contains LEnumLiteral[] literals
-}
-
-class LEnumLiteral {
-	String name
-}
-
-class LClass extends LType {
-	boolean ^abstract
-	boolean serializable
-	String shortName
+	contains LTypedPackage[] packages
 }
 
 /**
  * A bean is an embeddable element that may become added to a entity using the @embedd annotation. 
  */
-class LBean extends LClass, LScalarType {
-	contains LBeanFeature[] features
-	refers local LBean superType opposite subTypes
-	refers transient LBean[] subTypes opposite superType
+class LDto extends LClass {
+	contains LDtoFeature[] features
+	refers local LDto superType opposite subTypes
+	refers transient LDto[] subTypes opposite superType
 	
-	/**
+	refers local LDto replacedDto opposite replacingDto
+	refers transient LDto replacingDto opposite replacedDto
+	
+	/** 
  	 * Returns all features of type LOperation
  	 */
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList
+		features.filter(typeof(LDtoOperation)).toList
 	}
+	/**
+ 	 * Returns all features of type LDtoReference
+ 	 */
+	op DtoReferenceList getReferences() {
+		features.filter(typeof(LDtoReference)).toList
+	}
+	/**
+ 	 * Returns all features of type LDtoAttribute
+ 	 */
+	op DtoAttributeList getAttributes() {
+		features.filter(typeof(LDtoAttribute)).toList
+	}
+}
 
-	/**
- 	 * Returns all features of type LBeanReference
- 	 */
-	op BeanReferenceList getReferences() {
-		features.filter(typeof(LBeanReference)).toList
+class LDtoFeature extends LFeature {
+	boolean overrides
+	refers LFeature overriddenFeature
+	op LDto getDTO() {
+		return eContainer as LDto
 	}
-	
-	/**
- 	 * Returns all features of type LBeanAttribute
- 	 */
-	op BeanAttributeList getAttributes() {
-		features.filter(typeof(LBeanAttribute)).toList
-	}
+}
+
+class LDtoAttribute extends LDtoFeature, LAttribute {
+}
+
+class LDtoReference extends LDtoFeature, LReference {
+	refers LDto ^type
+	refers LDtoReference ^opposite
 }
 
 /**
- * Represents a JPA entity.
+ * Overwrites LOperation to add dto feature as supertype
  */
-class LEntity extends LClass {
-	String persistenceName
-	boolean cacheable
-	boolean historized
-	contains LEntityFeature[] features
-	contains LIndex[] indexes
-	refers local LEntity superType opposite subTypes
-	refers transient LEntity[] subTypes opposite superType
-	/**
- 	 * Returns all features of type LOperation
- 	 */
-	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList
-	}
-	
-	/**
- 	 * Returns all features of type LEntityReference
- 	 */
-	op EntityReferenceList getReferences() {
-		features.filter(typeof(LEntityReference)).toList
-	}
-	
-	/**
- 	 * Returns all features of type LEntityAttribute
- 	 */
-	op EntityAttributeList getAttributes() {
-		features.filter(typeof(LEntityAttribute)).toList
-	}
+class LDtoOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LDtoFeature {
 }
 
-interface LFeature extends LAnnotationTarget {
-	String name
-	contains LMultiplicity multiplicity
-	contains LAnnotationTarget annotationInfo
-}
+type OperationsList wraps java.util.List<LDtoOperation>
 
-interface LReference extends LFeature {
-	boolean lazy
-	boolean cascading
-}
+type DtoReferenceList wraps java.util.List<LDtoReference>
 
-interface LAttribute extends LFeature {
-	boolean ^id
-	boolean version
-	boolean lazy
-	boolean cascading
-	boolean ^transient
-	refers LScalarType ^type
-}
-
-class LEntityFeature extends LFeature {
-	op LEntity getEntity() {
-		return eContainer as LEntity
-	}
-}
-
-class LEntityAttribute extends LEntityFeature, LAttribute {
-}
-
-class LEntityReference extends LEntityFeature, LReference {
-	refers LEntity ^type
-	refers LEntityReference ^opposite
-}
-
-class LBeanFeature  extends LFeature {
-	op LBean getBean() {
-		return eContainer as LBean
-	}
-}
-
-class LBeanAttribute extends LBeanFeature, LAttribute {
-}
-
-class LBeanReference extends LBeanFeature, LReference {
-	refers LBean ^type
-	refers LBeanReference ^opposite
-}
-
-class LOperation extends LEntityFeature, LBeanFeature {
-	contains LModifier modifier
-	contains JvmTypeReference ^type
-	contains JvmFormalParameter[] params
-	contains XExpression body
-}
-
-class LModifier {
-	boolean final
-	boolean ^static
-	LVisibility visibility
-}
-
-enum LVisibility {
-	PACKAGE = 0
-	PRIVATE = 1
-	PROTECTED = 2
-	PUBLIC = 3
-}
-
-class LMultiplicity {
-	LLowerBound lower
-	LUpperBound upper
-}
-
-enum LLowerBound {
-	NULL = 0
-	MANY = 1
-	OPTIONAL = 2
-	ATLEASTONE = 3
-	ZERO = 4
-	ONE = 5
-}
-
-enum LUpperBound {
-	NULL = 0
-	MANY = 1
-	ONE = 2
-}
-
-class LIndex {
-	boolean ^unique
-	String name
-	refers LEntityFeature[] features
-}
-
-type OperationsList wraps java.util.List<LOperation>
-
-type EntityReferenceList wraps java.util.List<LEntityReference>
-
-type EntityAttributeList wraps java.util.List<LEntityAttribute>
-
-type BeanReferenceList wraps java.util.List<LBeanReference>
-
-type BeanAttributeList wraps java.util.List<LBeanAttribute>
+type DtoAttributeList wraps java.util.List<LDtoAttribute>
 
 	
 	
