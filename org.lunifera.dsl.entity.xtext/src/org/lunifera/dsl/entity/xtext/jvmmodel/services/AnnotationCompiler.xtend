@@ -168,7 +168,7 @@ class AnnotationCompiler {
 			}
 
 			val ann = prop.toAnnotation(typeof(Column))
-			if (prop.entityBounds.required) {
+			if (prop.bounds.required) {
 				ann.addAnnAttr(prop, "nullable", false)
 			}
 			addAnno(prop, jvmField, ann)
@@ -219,8 +219,8 @@ class AnnotationCompiler {
 
 	def private addManyToOneAnno(LEntityReference prop, JvmAnnotationTarget jvmAnnTarget) {
 		val manyToOne = prop.toAnnotation(typeof(ManyToOne))
-		if (prop.entityBounds.required) {
-			manyToOne.addAnnAttr(prop, "optional", !prop.entityBounds.required)
+		if (prop.bounds.required) {
+			manyToOne.addAnnAttr(prop, "optional", !prop.bounds.required)
 		}
 		manyToOne.addAnnAttr(prop, "fetch", FetchType::LAZY)
 		addAnno(prop, jvmAnnTarget, manyToOne)
@@ -232,8 +232,8 @@ class AnnotationCompiler {
 
 	def private addOneToOneAnno(LEntityReference prop, JvmAnnotationTarget jvmAnnTarget) {
 		val oneToOne = prop.toAnnotation(typeof(OneToOne))
-		if (prop.entityBounds.required) {
-			oneToOne.addAnnAttr(prop, "optional", !prop.entityBounds.required)
+		if (prop.bounds.required) {
+			oneToOne.addAnnAttr(prop, "optional", !prop.bounds.required)
 		}
 		val opposite = prop.resolvedOpposite
 		if (opposite != null && prop.cascading) {

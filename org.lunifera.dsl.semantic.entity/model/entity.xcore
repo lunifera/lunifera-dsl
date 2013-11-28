@@ -6,12 +6,15 @@
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
 
+import org.lunifera.dsl.semantic.common.types.*
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LReference
+import java.util.List
 
 class LEntityModel {
 	contains LTypedPackage[] packages
@@ -20,7 +23,7 @@ class LEntityModel {
 /**
  * A bean is an embeddable element that may become added to a entity using the @embedd annotation. 
  */
-class LBean extends LClass, LScalarType {
+class LBean extends LClass, LScalarType, LFeaturesHolder {
 	contains LBeanFeature[] features
 	refers local LBean superType opposite subTypes
 	refers transient LBean[] subTypes opposite superType
@@ -42,12 +45,31 @@ class LBean extends LClass, LScalarType {
 	op BeanAttributeList getAttributes() {
 		features.filter(typeof(LBeanAttribute)).toList
 	}
+	/**
+	 * Returns all features of the holder and from super types
+	 */
+	op FeaturesList getAllFeatures() {
+		val List<LBeanFeature> result = newArrayList()
+		collectAllLunFeatures(result)
+		return result
+	}
+	op void collectAllLunFeatures(LBean current, BeanFeatureList result) {
+		if (current == null) {
+			return
+		}
+
+		// collect from current feature
+		result.addAll(current.features)
+
+		// call for super class
+		current.superType.collectAllLunFeatures(result)
+	}
 }
 
 /**
  * Represents a JPA entity.
  */
-class LEntity extends LClass {
+class LEntity extends LClass, LFeaturesHolder {
 	String persistenceName
 	boolean cacheable
 	boolean historized
@@ -72,6 +94,26 @@ class LEntity extends LClass {
  	 */
 	op EntityAttributeList getAttributes() {
 		features.filter(typeof(LEntityAttribute)).toList
+	}
+	/**
+	 * Returns all features of the holder and from super types
+	 */
+	op FeaturesList getAllFeatures() {
+		val List<LEntityFeature> result = newArrayList()
+		collectAllLunFeatures(result)
+		return result
+	}
+	
+	op void collectAllLunFeatures(LEntity current, EntityFeatureList result) {
+		if (current == null) {
+			return
+		}
+
+		// collect from current feature
+		result.addAll(current.features)
+
+		// call for super class
+		current.superType.collectAllLunFeatures(result)
 	}
 }
 
@@ -116,18 +158,23 @@ class LIndex {
  * Overwrites LOperation to add bean and entity feature as supertype
  */
 class LOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LBeanFeature, LEntityFeature {
-	
 }
 
 type OperationsList wraps java.util.List<LEOperation>
+
+type EntityFeatureList wraps java.util.List<LEntityFeature>
 
 type EntityReferenceList wraps java.util.List<LEntityReference>
 
 type EntityAttributeList wraps java.util.List<LEntityAttribute>
 
+type BeanFeatureList wraps java.util.List<LBeanFeature>
+
 type BeanReferenceList wraps java.util.List<LBeanReference>
 
 type BeanAttributeList wraps java.util.List<LBeanAttribute>
+
+
 
 	
 	

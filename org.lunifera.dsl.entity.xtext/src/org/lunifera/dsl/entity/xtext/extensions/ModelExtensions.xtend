@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.lunifera.dsl.semantic.common.helper.Bounds
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LDataType
@@ -69,12 +70,12 @@ class ModelExtensions {
 		return jvmTypeRef
 	}
 
-	def EntityBounds getEntityBounds(LFeature prop) {
-		EntityBounds::createFor(prop)
+	def Bounds getBounds(LFeature prop) {
+		Bounds::createFor(prop)
 	}
 
 	def isToMany(LFeature prop) {
-		prop.entityBounds.toMany
+		prop.bounds.toMany
 	}
 
 	def dispatch isCascading(LEntityReference prop) {

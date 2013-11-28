@@ -43,10 +43,8 @@
         resolveProxies="false" eOpposite="#//LDto/subTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
         eType="#//LDto" transient="true" eOpposite="#//LDto/superType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="replacedDto" eType="#//LDto"
-        resolveProxies="false" eOpposite="#//LDto/replacingDto"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="replacingDto" eType="#//LDto"
-        transient="true" eOpposite="#//LDto/replacedDto"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wrappedType" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LType"
+        resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LDtoFeature" eSuperTypes="../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LFeature">
     <eOperations name="getDTO" unique="false" eType="#//LDto">
@@ -54,14 +52,19 @@
         <details key="body" value=""/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overrides" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="overriddenFeature" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LFeature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LDtoAttribute" eSuperTypes="#//LDtoFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LAttribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="LDtoReference" eSuperTypes="#//LDtoFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LReference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LDto"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//LDtoReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoWrappedReference" eSuperTypes="#//LDtoFeature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LFeature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="asType" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LScalarType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="convertToDTO" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="convertFromDTO" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LDtoOperation" eSuperTypes="../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LOperation #//LDtoFeature">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -1,0 +1,67 @@
+grammar org.lunifera.dsl.common.xtext.CommonGrammar with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
+
+import "http://www.lunifera.org/dsl/common/types/v1"
+
+LTypedPackage:
+	{LTypedPackage}
+	'package' name=QualifiedName ('{'
+	(imports+=LImport)*
+	(types+=LType)*
+	'}')?;
+
+LType:
+	LScalarType | Class;
+
+Class returns LClass:
+	{LClass} annotations+=LAnnotationDef*
+	{LClass.annotationInfo=current};
+
+LImport:
+	'import' importedNamespace=LQualifiedNameWithWildCard ';';
+
+LDataType:
+	'datatype' name=ID
+	'jvmType' jvmTypeReference=JvmTypeReference ';';
+
+LScalarType:
+	LDataType | LEnum;
+
+LModifier:
+	final?='final'? & static?='static'? & visibility=LVisibility;
+
+LEnum:
+	'enum' name=ID
+	('{'
+	(literals+=LEnumLiteral ((',')? literals+=LEnumLiteral)*)?
+	'}')?;
+
+LEnumLiteral:
+	name=ID;
+
+LAnnotationDef:
+	=> (annotation=XAnnotation);
+
+enum LVisibility:
+	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
+
+LQualifiedNameWithWildCard:
+	QualifiedName ('.' '*')?;
+
+LFQN:
+	ID ('.' ID)*;
+
+ValidIDWithKeywords:
+	'cachable' | 'id' | 'transient' | 'version' |
+	'collection' | 'refers' | 'settings' | 'lazy' |
+	'notnull' | 'dto' |
+	ID;
+
+LMultiplicity:
+	'[' (lower=LLowerBound) ('..' upper=LUpperBound)? ']';
+
+enum LLowerBound:
+	MANY='*' | ZERO='0' | OPTIONAL='?' | ATLEASTONE='+' | ONE='1';
+
+enum LUpperBound:
+	MANY='*' | ONE='1';
+	

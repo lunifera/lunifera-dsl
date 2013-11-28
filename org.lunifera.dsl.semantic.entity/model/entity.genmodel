@@ -27,8 +27,10 @@
   <genPackages prefix="Entity" basePackage="org.lunifera.dsl.semantic" disposableProviderFactory="true"
       fileExtensions="entitymodel" ecorePackage="entity.ecore#/">
     <genDataTypes ecoreDataType="entity.ecore#//OperationsList"/>
+    <genDataTypes ecoreDataType="entity.ecore#//EntityFeatureList"/>
     <genDataTypes ecoreDataType="entity.ecore#//EntityReferenceList"/>
     <genDataTypes ecoreDataType="entity.ecore#//EntityAttributeList"/>
+    <genDataTypes ecoreDataType="entity.ecore#//BeanFeatureList"/>
     <genDataTypes ecoreDataType="entity.ecore#//BeanReferenceList"/>
     <genDataTypes ecoreDataType="entity.ecore#//BeanAttributeList"/>
     <genClasses ecoreClass="entity.ecore#//LEntityModel">
@@ -41,6 +43,11 @@
       <genOperations ecoreOperation="entity.ecore#//LBean/getOperations"/>
       <genOperations ecoreOperation="entity.ecore#//LBean/getReferences"/>
       <genOperations ecoreOperation="entity.ecore#//LBean/getAttributes"/>
+      <genOperations ecoreOperation="entity.ecore#//LBean/getAllFeatures"/>
+      <genOperations ecoreOperation="entity.ecore#//LBean/collectAllLunFeatures">
+        <genParameters ecoreParameter="entity.ecore#//LBean/collectAllLunFeatures/current"/>
+        <genParameters ecoreParameter="entity.ecore#//LBean/collectAllLunFeatures/result"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="entity.ecore#//LEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/persistenceName"/>
@@ -53,6 +60,11 @@
       <genOperations ecoreOperation="entity.ecore#//LEntity/getOperations"/>
       <genOperations ecoreOperation="entity.ecore#//LEntity/getReferences"/>
       <genOperations ecoreOperation="entity.ecore#//LEntity/getAttributes"/>
+      <genOperations ecoreOperation="entity.ecore#//LEntity/getAllFeatures"/>
+      <genOperations ecoreOperation="entity.ecore#//LEntity/collectAllLunFeatures">
+        <genParameters ecoreParameter="entity.ecore#//LEntity/collectAllLunFeatures/current"/>
+        <genParameters ecoreParameter="entity.ecore#//LEntity/collectAllLunFeatures/result"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="entity.ecore#//LEntityFeature">
       <genOperations ecoreOperation="entity.ecore#//LEntityFeature/getEntity"/>

@@ -17,6 +17,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
+import org.lunifera.dsl.semantic.common.types.LType
 
 class LDtoModel {
 	contains LTypedPackage[] packages
@@ -29,10 +30,7 @@ class LDto extends LClass {
 	contains LDtoFeature[] features
 	refers local LDto superType opposite subTypes
 	refers transient LDto[] subTypes opposite superType
-	
-	refers local LDto replacedDto opposite replacingDto
-	refers transient LDto replacingDto opposite replacedDto
-	
+	refers local LType wrappedType
 	/** 
  	 * Returns all features of type LOperation
  	 */
@@ -54,8 +52,6 @@ class LDto extends LClass {
 }
 
 class LDtoFeature extends LFeature {
-	boolean overrides
-	refers LFeature overriddenFeature
 	op LDto getDTO() {
 		return eContainer as LDto
 	}
@@ -67,6 +63,13 @@ class LDtoAttribute extends LDtoFeature, LAttribute {
 class LDtoReference extends LDtoFeature, LReference {
 	refers LDto ^type
 	refers LDtoReference ^opposite
+}
+
+class LDtoWrappedReference extends LDtoFeature {
+	refers LFeature feature
+	refers LScalarType asType
+	contains XExpression convertToDTO
+	contains XExpression convertFromDTO
 }
 
 /**

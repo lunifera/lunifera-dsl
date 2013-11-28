@@ -8,7 +8,7 @@
  * Contributors:
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.entity.xtext.extensions;
+package org.lunifera.dsl.semantic.common.helper;
 
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LLowerBound;
@@ -18,14 +18,14 @@ import org.lunifera.dsl.semantic.common.types.LUpperBound;
 /**
  * Keeps lower and upper bound
  */
-public class EntityBounds {
+public class Bounds {
 
 	private final LLowerBound lower;
 	private final LUpperBound upper;
 
-	public static EntityBounds createFor(LFeature prop) {
+	public static Bounds createFor(LFeature prop) {
 		if (prop == null) {
-			return new EntityBounds(LLowerBound.ZERO, LUpperBound.ONE);
+			return new Bounds(LLowerBound.ZERO, LUpperBound.ONE);
 		}
 
 		LMultiplicity multiplicity = prop.getMultiplicity();
@@ -96,10 +96,10 @@ public class EntityBounds {
 			}
 		}
 
-		return new EntityBounds(lower, upper);
+		return new Bounds(lower, upper);
 	}
 
-	public EntityBounds(LLowerBound lower, LUpperBound upper) {
+	public Bounds(LLowerBound lower, LUpperBound upper) {
 		super();
 		this.lower = lower;
 		this.upper = upper;

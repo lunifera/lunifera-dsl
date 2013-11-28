@@ -59,6 +59,19 @@ class LClass extends LType {
 	String shortName
 }
 
+interface LFeaturesHolder {
+	
+	/**
+	 * Returns the features of the holder
+	 */
+	op FeaturesList getFeatures()
+	
+	/**
+	 * Returns all features of the holder and from super types
+	 */
+	op FeaturesList getAllFeatures()
+}
+
 interface LFeature extends LAnnotationTarget {
 	String name
 	contains LMultiplicity multiplicity
@@ -120,6 +133,8 @@ enum LUpperBound {
 }
 
 type OperationsList wraps java.util.List<LOperation>
+type FeaturesList wraps java.util.List<? extends LFeature>
+
 
 	
 	

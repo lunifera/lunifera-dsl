@@ -36,21 +36,24 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/features"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/superType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/subTypes"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/replacedDto"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/replacingDto"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDto/wrappedType"/>
       <genOperations ecoreOperation="dto.ecore#//LDto/getOperations"/>
       <genOperations ecoreOperation="dto.ecore#//LDto/getReferences"/>
       <genOperations ecoreOperation="dto.ecore#//LDto/getAttributes"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoFeature">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dto.ecore#//LDtoFeature/overrides"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoFeature/overriddenFeature"/>
       <genOperations ecoreOperation="dto.ecore#//LDtoFeature/getDTO"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoAttribute"/>
     <genClasses ecoreClass="dto.ecore#//LDtoReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/opposite"/>
+    </genClasses>
+    <genClasses ecoreClass="dto.ecore#//LDtoWrappedReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoWrappedReference/feature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoWrappedReference/asType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoWrappedReference/convertToDTO"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoWrappedReference/convertFromDTO"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoOperation"/>
   </genPackages>

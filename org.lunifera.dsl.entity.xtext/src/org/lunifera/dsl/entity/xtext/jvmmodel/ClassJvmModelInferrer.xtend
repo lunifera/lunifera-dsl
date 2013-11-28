@@ -378,9 +378,9 @@ abstract class ClassJvmModelInferrer {
 		op.documentation = if (prop.toMany) {
 			"Returns an unmodifiable list of " + propertyName + "."
 		} else {
-			"Returns the ".concat((if(prop.entityBounds.required) "<em>required</em> " else "")).concat(propertyName).
+			"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
 				concat(" property").concat(
-					(if(!prop.entityBounds.required) " or <code>null</code> if not present" else "")).concat(".")
+					(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
 		}
 
 		setBody(op,

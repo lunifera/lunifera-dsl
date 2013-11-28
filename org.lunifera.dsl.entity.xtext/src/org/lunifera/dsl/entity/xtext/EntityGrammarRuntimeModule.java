@@ -6,10 +6,7 @@ package org.lunifera.dsl.entity.xtext;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
-import org.lunifera.dsl.entity.xtext.extensions.Constants;
-import org.lunifera.dsl.entity.xtext.jvmmodel.DelegatingOperationContentCompiler;
 import org.lunifera.dsl.entity.xtext.jvmmodel.EntityJvmModelGenerator;
-import org.lunifera.dsl.entity.xtext.jvmmodel.services.IOperationContentCompiler;
 import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
@@ -57,27 +54,18 @@ public class EntityGrammarRuntimeModule extends
 	// .to(PojoJvmModelInferrerDelegate.class);
 	// }
 	//
-//	/**
-//	 * The modelInferrer delegate to be used for JPA compiles.
-//	 * 
-//	 * @param binder
-//	 */
-//	public void configureJPAJvmModelInferrerDelegate(Binder binder) {
-//		binder.bind(IEntityJvmModelInferrerDelegate.class)
-//				.annotatedWith(
-//						com.google.inject.name.Names
-//								.named(Constants.JPA_COMPILER_FQN))
-//				.to(JPAJvmModelInferrerDelegate.class);
-//	}
-
-	/**
-	 * The operationsContentCompiler to be used to dispatch the calls.
-	 */
-	public void configureDelegateOperationsCompiler(Binder binder) {
-		binder.bind(IOperationContentCompiler.class)
-				.annotatedWith(Names.named(Constants.DELEGATE))
-				.to(DelegatingOperationContentCompiler.class);
-	}
+	// /**
+	// * The modelInferrer delegate to be used for JPA compiles.
+	// *
+	// * @param binder
+	// */
+	// public void configureJPAJvmModelInferrerDelegate(Binder binder) {
+	// binder.bind(IEntityJvmModelInferrerDelegate.class)
+	// .annotatedWith(
+	// com.google.inject.name.Names
+	// .named(Constants.JPA_COMPILER_FQN))
+	// .to(JPAJvmModelInferrerDelegate.class);
+	// }
 
 	// /**
 	// * The operationsContentCompiler to be used for entity compiles.

@@ -46,6 +46,7 @@
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//LUpperBound/ONE"/>
     </genEnums>
     <genDataTypes ecoreDataType="types.ecore#//OperationsList"/>
+    <genDataTypes ecoreDataType="types.ecore#//FeaturesList"/>
     <genClasses ecoreClass="types.ecore#//LPackage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LPackage/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LPackage/imports"/>
@@ -81,6 +82,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LClass/abstract"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LClass/serializable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LClass/shortName"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="types.ecore#//LFeaturesHolder">
+      <genOperations ecoreOperation="types.ecore#//LFeaturesHolder/getFeatures"/>
+      <genOperations ecoreOperation="types.ecore#//LFeaturesHolder/getAllFeatures"/>
     </genClasses>
     <genClasses image="false" ecoreClass="types.ecore#//LFeature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LFeature/name"/>
