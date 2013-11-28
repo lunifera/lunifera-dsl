@@ -32,6 +32,6 @@ Import-Package: junit.framework;version="3.8.2",
  org.osgi.service.component;version="1.2.0",
  org.slf4j;version="1.6.4"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.lunifera.dsl.entity.xtext
+Export-Package: org.lunifera.dsl.entity.xtext.tests
 Meta-Persistence: META-INF/persistence.xml
 Bundle-Activator: org.lunifera.dsl.entity.xtext.tests.Activator
