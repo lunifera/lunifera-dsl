@@ -1,43 +1,16 @@
-/**************************************************************************
- * Copyright (c) 2011, 2012 Committers of lunifera.org - Lunifera.org.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- **************************************************************************/
-package org.lunifera.dsl.entity.xtext.jvmmodel
+package org.lunifera.dsl.entity.xtext.extensions
 
 import com.google.inject.Inject
 import java.util.ArrayList
-import java.util.Collections
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmAnnotationTarget
-import org.eclipse.xtext.common.types.JvmConstructor
-import org.eclipse.xtext.common.types.JvmExecutable
-import org.eclipse.xtext.common.types.JvmField
-import org.eclipse.xtext.common.types.JvmFormalParameter
-import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmIdentifiableElement
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.naming.QualifiedName
-import org.eclipse.xtext.util.Pair
-import org.eclipse.xtext.util.Tuples
-import org.eclipse.xtext.xbase.XExpression
-import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
-import org.eclipse.xtext.xbase.lib.StringExtensions
-import org.lunifera.dsl.entity.xtext.extensions.MethodNamingExtensions
-import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
-import org.lunifera.dsl.entity.xtext.extensions.TreeAppendableExtensions
-import org.lunifera.dsl.entity.xtext.jvmmodel.services.AnnotationCompiler
-import org.lunifera.dsl.semantic.common.types.LAnnotationDef
-import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
+import org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder
+import org.lunifera.dsl.entity.xtext.jvmmodel.AnnotationCompiler
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage
 import org.lunifera.dsl.semantic.common.types.LType
@@ -46,180 +19,21 @@ import org.lunifera.dsl.semantic.entity.LBeanFeature
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityFeature
-import org.lunifera.dsl.semantic.entity.LEntityModel
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LOperation
 
-/**
- * Infers a JVM model from {@link LClass} model elements.
- * 
- * @author Robert Handschmann
- */
-abstract class ClassJvmModelInferrer {
+class EntityTypesBuilder extends CommonTypesBuilder {
 
-	@Inject extension IQualifiedNameProvider
 	@Inject extension ModelExtensions
 	@Inject extension MethodNamingExtensions
 	@Inject extension TreeAppendableExtensions
-	@Inject extension StringExtensions
 
 	@Inject AnnotationCompiler annotationCompiler
 	@Inject TypesFactory typesFactory;
 	@Inject TypeReferences references;
-	@Inject JvmTypesBuilder jvmTypes;
 
-	def private htmlCode(CharSequence s) {
+	def htmlCode(CharSequence s) {
 		"<code>".concat(String::valueOf(s)).concat("</code>")
-	}
-
-	/*
-     * Methods delegating to JvmTypesBuilder. 
-     * (Includes methods copied from JvmTypesBuilder because its visibility is protected.)
-     */
-	def protected JvmTypeReference newTypeRef(EObject ctx, QualifiedName qn, JvmTypeReference... typeArgs) {
-		newTypeRef(ctx, qn.toString, typeArgs)
-	}
-
-	def protected JvmTypeReference newTypeRef(EObject ctx, Class<?> typeClass, JvmTypeReference... typeArgs) {
-		jvmTypes.newTypeRef(ctx, typeClass.name, typeArgs)
-	}
-
-	def protected JvmTypeReference newTypeRef(EObject ctx, String typeName, JvmTypeReference... typeArgs) {
-		jvmTypes.newTypeRef(ctx, typeName, typeArgs)
-	}
-
-	def protected <T extends EObject> T initializeSafely(T targetElement, Procedure1<? super T> initializer) {
-		if (targetElement != null && initializer != null) {
-
-			// need exception handling and logging like JvmTypesBuilder?
-			initializer.apply(targetElement)
-		}
-		return targetElement
-	}
-
-	def protected JvmTypeReference cloneWithProxies(JvmTypeReference typeRef) {
-		jvmTypes.cloneWithProxies(typeRef)
-	}
-
-	def <T extends JvmIdentifiableElement> T associate(EObject sourceElement, T target) {
-		jvmTypes.associate(sourceElement, target)
-	}
-
-	def setDocumentation(JvmIdentifiableElement jvmElement, CharSequence documentation) {
-		jvmTypes.setDocumentation(jvmElement, documentation?.toString)
-	}
-
-	def String getDocumentation(EObject source) {
-		return jvmTypes.getDocumentation(source)
-	}
-
-	def setBody(JvmExecutable executable, Procedure1<ITreeAppendable> strategy) {
-		jvmTypes.setBody(executable, strategy)
-	}
-
-	def setBody(JvmExecutable logicalContainer, XExpression expr) {
-		jvmTypes.setBody(logicalContainer, expr)
-	}
-
-	def JvmGenericType createJvmGenericType(EObject sourceElement, String name) {
-		if(sourceElement == null || name == null) return null
-
-		val Pair<String, String> fullName = name.splitQualifiedName
-		val JvmGenericType result = typesFactory.createJvmGenericType()
-		result.simpleName = fullName.second
-		if (fullName.first != null) {
-			result.packageName = fullName.first
-		}
-		result.visibility = JvmVisibility::PUBLIC
-		return result
-	}
-
-	def Pair<String, String> splitQualifiedName(String name) {
-		var String simpleName = name
-		var String packageName = null
-		val int dotIdx = name.lastIndexOf('.');
-		if (dotIdx != -1) {
-			simpleName = name.substring(dotIdx + 1)
-			packageName = name.substring(0, dotIdx)
-		}
-		return Tuples::create(packageName, simpleName)
-	}
-
-	def JvmFormalParameter toParameter(EObject sourceElement, String name, JvmTypeReference typeRef) {
-		if (sourceElement == null || name == null)
-			return null;
-		val JvmFormalParameter result = typesFactory.createJvmFormalParameter()
-		result.name = name
-		result.parameterType = cloneWithProxies(typeRef)
-		associate(sourceElement, result);
-	}
-
-	def JvmConstructor toConstructor(EObject sourceElement, Procedure1<? super JvmConstructor> initializer) {
-		return jvmTypes.toConstructor(sourceElement, initializer)
-	}
-
-	/*
-     * END Methods delegating to JvmTypesBuilder.
-     */
-	def JvmField toField(LFeature prop) {
-		val JvmField jvmField = typesFactory.createJvmField();
-		jvmField.simpleName = prop.name
-		jvmField.visibility = JvmVisibility::PRIVATE
-		jvmField.type = cloneWithProxies(prop.toTypeReference)
-
-		val LClass lEntity = prop.eContainer() as LClass
-		val LEntityModel lModel = lEntity.getPackage().eContainer() as LEntityModel
-		annotationCompiler.processAnnotation(prop, jvmField);
-
-		associate(prop, jvmField);
-	}
-
-	def JvmOperation toIsDisposed(LClass sourceElement) {
-		val op = typesFactory.createJvmOperation();
-		op.visibility = JvmVisibility::PUBLIC
-		op.simpleName = "isDisposed"
-		op.returnType = references.getTypeForName(Boolean::TYPE, sourceElement, null)
-		op.documentation = '''
-		Returns true, if the object is disposed. 
-		Disposed means, that it is prepared for garbage collection and may not be used anymore. 
-		Accessing objects that are already disposed will cause runtime exceptions.'''
-
-		setBody(op,
-			[ // ITreeAppendable
-				if(it == null) return
-				val p = it.trace(sourceElement)
-				p >> "return this.disposed;"
-			])
-
-		associate(sourceElement, op)
-	}
-
-	def JvmOperation toCheckDisposed(LClass sourceElement) {
-		val op = typesFactory.createJvmOperation();
-		op.visibility = JvmVisibility::PRIVATE
-		op.returnType = references.getTypeForName(Void::TYPE, sourceElement)
-		op.simpleName = "checkDisposed"
-		op.documentation = '''
-		Checks whether the object is disposed.
-		@throws RuntimeException if the object is disposed.'''
-
-		setBody(op,
-			[ // ITreeAppendable
-				if(it == null) return
-				val p = it.trace(sourceElement)
-				p >> '''
-				if (isDisposed()) {
-				  throw new RuntimeException("Object already disposed: " + this);
-				}'''
-			])
-
-		associate(sourceElement, op)
-	}
-
-	def String toCheckDisposedCall(LFeature prop) {
-
-		// TODO Retrieve the settings from the LFeature
-		return "checkDisposed();\n"
 	}
 
 	def dispatch JvmOperation toDispose(LEntity lClass) {
@@ -362,54 +176,6 @@ abstract class ClassJvmModelInferrer {
 		annotationCompiler.processAnnotation(sourceElement, op);
 		associate(sourceElement, op);
 		initializeSafely(op, initializer);
-	}
-
-	def JvmOperation toGetter(LFeature prop) {
-		prop.toGetter(prop.toGetterName)
-	}
-
-	def JvmOperation toGetter(LFeature prop, String methodName) {
-		val typeRef = prop.toTypeReference
-		val propertyName = prop.name
-		val op = typesFactory.createJvmOperation();
-		op.visibility = JvmVisibility::PUBLIC
-		op.simpleName = methodName
-		op.returnType = cloneWithProxies(typeRef)
-		op.documentation = if (prop.toMany) {
-			"Returns an unmodifiable list of " + propertyName + "."
-		} else {
-			"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
-				concat(" property").concat(
-					(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
-		}
-
-		setBody(op,
-			[ // ITreeAppendable it |
-				if(it == null) return
-				val p = it.trace(prop);
-				p >> prop.toCheckDisposedCall()
-				if (prop.toMany) {
-					p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
-						"(" + prop.toCollectionInternalGetterName + "());"
-				} else {
-					p >> "return this." + propertyName + ";"
-				}
-			])
-
-		return associate(prop, op);
-	}
-
-	/**
-	 * The binary <code>+</code> operator that concatenates two strings.
-	 * 
-	 * @param a
-	 *            a string.
-	 * @param b
-	 *            another string.
-	 * @return <code>a + b</code>
-	 */
-	def static String operator_plus(String a, String b) {
-		return a.concat(b);
 	}
 
 	def JvmOperation toSetter(LEntityFeature prop) {
@@ -768,30 +534,4 @@ abstract class ClassJvmModelInferrer {
 		return associate(prop, op);
 	}
 
-	def JvmField toPrimitiveTypeField(EObject sourceElement, String name, Class<?> primitiveType) {
-		val typeRef = newTypeRef(sourceElement, primitiveType, null)
-		val JvmField result = typesFactory.createJvmField();
-		result.simpleName = name
-		result.visibility = JvmVisibility::PRIVATE
-		result.type = cloneWithProxies(typeRef)
-		associate(sourceElement, result)
-	}
-
-	def void translateAnnotationDefTo(LAnnotationDef annotationDef, JvmAnnotationTarget target) {
-		if (annotationDef == null || target == null)
-			return
-		val annotationReference = jvmTypes.getJvmAnnotationReference(annotationDef.getAnnotation())
-		if (annotationReference != null) {
-			target.annotations += annotationReference
-		}
-	}
-
-	def JvmGenericType toJvmType(LClass lClass) {
-		val type = createJvmGenericType(lClass, lClass.fullyQualifiedName.toString)
-		type.setAbstract(lClass.isAbstract());
-
-		annotationCompiler.processAnnotation(lClass, type);
-
-		associate(lClass, type)
-	}
 }

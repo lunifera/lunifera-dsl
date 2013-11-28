@@ -8,7 +8,7 @@
  * Contributors:
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.entity.xtext.jvmmodel.services
+package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
 import javax.persistence.Basic
@@ -29,36 +29,27 @@ import javax.persistence.OneToMany
 import javax.persistence.OneToOne
 import javax.persistence.Transient
 import javax.persistence.Version
-import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmMember
-import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
-import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.lunifera.dsl.semantic.entity.LOperation
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
  */
-class AnnotationCompiler {
+class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.AnnotationCompiler {
 
 	@Inject extension ModelExtensions
 	@Inject extension JvmTypesBuilder
 	@Inject extension AnnotationExtension
-
-	def processAnnotation(LAnnotationTarget annotationTarget, JvmMember jvmMember) {
-		internalProcessAnnotation(annotationTarget, jvmMember)
-	}
 
 	def protected dispatch void internalProcessAnnotation(LBean bean, JvmGenericType jvmType) {
 		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
@@ -108,10 +99,6 @@ class AnnotationCompiler {
 		if (entity.cacheable) {
 			addAnno(entity, jvmType, entity.toAnnotation(typeof(Cacheable)))
 		}
-	}
-
-	def protected dispatch void internalProcessAnnotation(LOperation member, JvmOperation jvmOperation) {
-		member.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LEntityReference prop, JvmField jvmField) {
@@ -251,13 +238,6 @@ class AnnotationCompiler {
 			val joinColumn = prop.toAnnotation(typeof(JoinColumn))
 			joinColumn.addAnnAttr(prop, "name", prop.name)
 			addAnno(prop, jvmAnnTarget, joinColumn)
-		}
-	}
-
-	def private addAnno(LAnnotationTarget target, JvmAnnotationTarget jvmType, JvmAnnotationReference anno) {
-		val annoDef = target.annotations.findFirst[annotation.annotationType == anno.annotation]
-		if (annoDef == null || !annoDef.exclude) {
-			jvmType.annotations += anno
 		}
 	}
 

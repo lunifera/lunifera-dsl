@@ -3,12 +3,14 @@
  */
 package org.lunifera.dsl.entity.xtext;
 
+import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.lunifera.dsl.common.xtext.scope.CommonImportedNamespaceAwareLocalScopeProvider;
+import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
+import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.jvmmodel.EntityJvmModelGenerator;
-import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScopeProvider;
-import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
 
 import com.google.inject.Binder;
@@ -27,7 +29,7 @@ public class EntityGrammarRuntimeModule extends
 
 	@Override
 	public Class<? extends IScopeProvider> bindIScopeProvider() {
-		return EntityScopeProvider.class;
+		return CommonScopeProvider.class;
 	}
 
 	@Override
@@ -35,7 +37,7 @@ public class EntityGrammarRuntimeModule extends
 		binder.bind(IScopeProvider.class)
 				.annotatedWith(
 						Names.named("org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.delegate"))
-				.to(EntityImportedNamespaceAwareLocalScopeProvider.class);
+				.to(CommonImportedNamespaceAwareLocalScopeProvider.class);
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
@@ -43,76 +45,7 @@ public class EntityGrammarRuntimeModule extends
 		return EntityJvmModelGenerator.class;
 	}
 
-	// /**
-	// * The modelInferrer delegate to be used for {@link LBean}s.
-	// *
-	// * @param binder
-	// */
-	// public void configurePojoJvmModelInferrerDelegate(Binder binder) {
-	// binder.bind(IEntityJvmModelInferrerDelegate.class)
-	// .annotatedWith(Names.named(Constants.POJO_COMPILER_FQN))
-	// .to(PojoJvmModelInferrerDelegate.class);
-	// }
-	//
-	// /**
-	// * The modelInferrer delegate to be used for JPA compiles.
-	// *
-	// * @param binder
-	// */
-	// public void configureJPAJvmModelInferrerDelegate(Binder binder) {
-	// binder.bind(IEntityJvmModelInferrerDelegate.class)
-	// .annotatedWith(
-	// com.google.inject.name.Names
-	// .named(Constants.JPA_COMPILER_FQN))
-	// .to(JPAJvmModelInferrerDelegate.class);
-	// }
-
-	// /**
-	// * The operationsContentCompiler to be used for entity compiles.
-	// *
-	// * @param binder
-	// */
-	// public void configurePojoOperationsCompiler(Binder binder) {
-	// binder.bind(IOperationContentCompiler.class)
-	// .annotatedWith(
-	// com.google.inject.name.Names
-	// .named(Constants.POJO_COMPILER_FQN))
-	// .to(PojoOperationsGenerator.class);
-	// }
-	//
-	// /**
-	// * The operationsContentCompiler to be used for JPA compiles.
-	// *
-	// * @param binder
-	// */
-	// public void configureJPAOperationsCompiler(Binder binder) {
-	// binder.bind(IOperationContentCompiler.class)
-	// .annotatedWith(
-	// com.google.inject.name.Names
-	// .named(Constants.JPA_COMPILER_FQN))
-	// .to(JPAOperationsGenerator.class);
-	// }
-
-	// /**
-	// * The annotationCompiler to be used for pojo compiles.
-	// *
-	// * @param binder
-	// */
-	// public void configurePojoAnnotationCompiler(Binder binder) {
-	// binder.bind(IAnnotationCompiler.class)
-	// .annotatedWith(Names.named(Constants.POJO_COMPILER_FQN))
-	// .to(PojoAnnotationCompiler.class);
-	// }
-	//
-	// /**
-	// * The annotationCompiler to be used for jpa compiles.
-	// *
-	// * @param binder
-	// */
-	// public void configureJPAAnnotationCompiler(Binder binder) {
-	// binder.bind(IAnnotationCompiler.class)
-	// .annotatedWith(Names.named(Constants.JPA_COMPILER_FQN))
-	// .to(JPAAnnotationCompiler.class);
-	// }
-
+	public Class<? extends IFormatter> bindIFormatter() {
+		return EntityGrammarFormatter.class;
+	}
 }

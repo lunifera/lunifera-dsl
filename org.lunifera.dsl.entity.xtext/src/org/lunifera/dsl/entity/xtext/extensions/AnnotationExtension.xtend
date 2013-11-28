@@ -10,9 +10,6 @@
  */
 package org.lunifera.dsl.entity.xtext.extensions
 
-import com.google.inject.Inject
-import java.util.List
-import java.util.Map
 import javax.persistence.Cacheable
 import javax.persistence.Column
 import javax.persistence.Embeddable
@@ -26,441 +23,237 @@ import javax.persistence.ManyToOne
 import javax.persistence.MappedSuperclass
 import javax.persistence.OneToMany
 import javax.persistence.OneToOne
-import javax.persistence.Transient
 import javax.persistence.Version
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
-import org.eclipse.xtext.common.types.JvmAnnotationType
-import org.eclipse.xtext.common.types.JvmDeclaredType
-import org.eclipse.xtext.common.types.JvmEnumerationLiteral
-import org.eclipse.xtext.common.types.JvmOperation
-import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
 
-class AnnotationExtension {
-	 
-	@Inject extension JvmTypesBuilder
-	@Inject
-	private TypesFactory typesFactory;
-	@Inject
-	private TypeReferences references;
-	
-	/**
-	 * Creates an enum annotation value and adds it the the given annotation reference
-	 */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, 
-	                        Enum<?>... enums) {
-        // create the parameter
-        val value = typesFactory.createJvmEnumAnnotationValue
-        annRef.values += value
-        
-        // create the enum type
-        val declaredType = references.findDeclaredType(enums.get(0).declaringClass, context) as JvmDeclaredType
-        for(Enum<?> enumxx : enums) {
-            // create the operation
-            val JvmOperation op = typesFactory.createJvmOperation
-            op.setSimpleName(name)
-            op.setDeclaringType(declaredType)
-            value.setOperation(op)
-            
-            // create the literal
-            val JvmEnumerationLiteral literal = typesFactory.createJvmEnumerationLiteral
-            literal.setDeclaringType(declaredType)
-            literal.setSimpleName(enumxx.name)
-            value.values += literal
-        }
-        
-        return value
-    }
+class AnnotationExtension extends org.lunifera.dsl.common.xtext.extensions.AnnotationExtension {
 
-	/**
-	 * Creates an enum annotation value and adds it the the given annotation reference
-	 */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, 
-	                        Enum<?> enumX) {
-        // create the parameter
-        val value = typesFactory.createJvmEnumAnnotationValue
-        annRef.values += value
-        
-        // create the enum type
-        val declaredType = references.findDeclaredType(enumX.declaringClass, context) as JvmDeclaredType
-        
-        // create the operation
-        val JvmOperation op = typesFactory.createJvmOperation
-        op.setSimpleName(name)
-        op.setDeclaringType(declaredType)
-        value.setOperation(op)
-        
-        // create the literal
-        val JvmEnumerationLiteral literal = typesFactory.createJvmEnumerationLiteral
-        literal.setDeclaringType(declaredType)
-        literal.setSimpleName(enumX.name)
-        value.values += literal
-        
-        return value
-    }
-    /**
-     * Creates a boolean annotation value and adds it the the given annotation reference
-     */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, 
-	                        boolean booleanValue) {
-        // create the parameter
-        val value = typesFactory.createJvmBooleanAnnotationValue
-        annRef.values += value
-
-        // create the enum type
-        val declaredType = references.findDeclaredType(typeof(Boolean), context) as JvmDeclaredType
-        
-        // create the operation
-        val JvmOperation op = typesFactory.createJvmOperation
-        op.setSimpleName(name)
-        op.setDeclaringType(declaredType)
-        value.setOperation(op)
-        value.values += booleanValue
-        
-        return value
-    }
-    /**
-     * Creates a string annotation value and adds it the the given annotation reference
-     */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, 
-	                        String stringValue) {
-		// create the parameter
-		val value = typesFactory.createJvmStringAnnotationValue
-		annRef.values += value
-		
-		// create the enum type
-		val declaredType = references.findDeclaredType(typeof(String), context) as JvmDeclaredType
-		
-		// create the operation
-		val JvmOperation op = typesFactory.createJvmOperation
-		op.setSimpleName(name)
-		op.setDeclaringType(declaredType)
-		value.setOperation(op)
-		value.values += stringValue
-
-		return value
-	}
-
-	/**
-	 * Returns a map with all excluded types
-	 */
-	def Map<String, LAnnotationDef> excludedTypes(List<LAnnotationDef> defs){
-		return defs.filter([exclude]).toMap(
-			[val anno = it.annotation
-			if(anno.annotationType != null){
-				return anno.annotationType.qualifiedName
-			}
-				return ""
-			])
-	}
-	
-	/**
-	 * Returns a map with all included types
-	 */
-	def Map<String, LAnnotationDef> redefinedTypes(List<LAnnotationDef> defs){
-		return defs.filter([!exclude]).toMap(
-			[val anno = it.annotation
-			if(anno.annotationType != null){
-				return anno.annotationType.qualifiedName
-			}
-				return ""
-			])
-	}
-	
-	/**
-	 * Returns true, if the clazz.canonicalName exists in the excluded types of defs
-	 */
-	def isExcluded(Class<?> clazz, List<LAnnotationDef> defs){
-		if(defs == null){
-			return false;
-		}
-		return defs.excludedTypes.containsKey(clazz.canonicalName)
-	}
-	
-	/**
-	 * Returns true, if the clazz.canonicalName exists in the included types of defs
-	 */
-	def isRedefined(Class<?> clazz, List<LAnnotationDef> defs){
-		if(defs == null){
-			return false;
-		}
-		return clazz.getRedefined(defs) != null
-	}
-	
-	/**
-	 * Returns true, if the clazz.canonicalName exists in the included types of defs
-	 */
-	def getRedefined(Class<?> clazz, List<LAnnotationDef> defs){
-		if(defs == null){
-			return null;
-		}
-		return defs.redefinedTypes.get(clazz.canonicalName)
-	}
-	
-	def boolean isEntityAnnoExcluded(LClass lEntity){
+	def boolean isEntityAnnoExcluded(LClass lEntity) {
 		return typeof(Entity).isExcluded(lEntity.getAnnotations)
 	}
-	
-	def boolean isEntityAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isEntityAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(Entity), context)
 	}
-	
-	def boolean isEntityAnnoRedefined(LClass lEntity){
+
+	def boolean isEntityAnnoRedefined(LClass lEntity) {
 		return typeof(Entity).isRedefined(lEntity.getAnnotations)
 	}
-	
-	def LAnnotationDef getEntityAnnoRedefine(LClass lEntity){
+
+	def LAnnotationDef getEntityAnnoRedefine(LClass lEntity) {
 		return typeof(Entity).getRedefined(lEntity.getAnnotations)
 	}
-	
-	def boolean isOneToManyAnnoExcluded(LFeature member){
+
+	def boolean isOneToManyAnnoExcluded(LFeature member) {
 		return typeof(OneToMany).isExcluded(member.annotations)
 	}
-	
-	def boolean isOneToManyAnnoRedefined(LFeature member){
+
+	def boolean isOneToManyAnnoRedefined(LFeature member) {
 		return typeof(OneToMany).isRedefined(member.annotations)
 	}
-	
-	def boolean isOneToManyValueAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isOneToManyValueAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(OneToMany), context)
 	}
-	
-	def LAnnotationDef getOneToManyAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getOneToManyAnnoRedefine(LFeature member) {
 		return typeof(OneToMany).getRedefined(member.annotations)
 	}
-	
-	def boolean isOneToOneAnnoExcluded(LFeature member){
+
+	def boolean isOneToOneAnnoExcluded(LFeature member) {
 		return typeof(OneToOne).isExcluded(member.annotations)
 	}
-	
-	def boolean isOneToOneAnnoRedefined(LFeature member){
+
+	def boolean isOneToOneAnnoRedefined(LFeature member) {
 		return typeof(OneToOne).isRedefined(member.annotations)
 	}
-	
-	def boolean isOneToOneAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isOneToOneAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(OneToOne), context)
 	}
-	
-	def LAnnotationDef getOneToOneAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getOneToOneAnnoRedefine(LFeature member) {
 		return typeof(OneToOne).getRedefined(member.annotations)
 	}
-	
-	def boolean isManyToOneAnnoExcluded(LFeature member){
+
+	def boolean isManyToOneAnnoExcluded(LFeature member) {
 		return typeof(ManyToOne).isExcluded(member.annotations)
 	}
-	
-	def boolean isManyToOneAnnoRedefined(LFeature member){
+
+	def boolean isManyToOneAnnoRedefined(LFeature member) {
 		return typeof(ManyToOne).isRedefined(member.annotations)
 	}
-	
-	def boolean isManyToOneValueAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isManyToOneValueAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(ManyToOne), context)
 	}
-	
-	def LAnnotationDef getManyToOneAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getManyToOneAnnoRedefine(LFeature member) {
 		return typeof(ManyToOne).getRedefined(member.annotations)
 	}
-	
-	def boolean isIdAnnoExcluded(LFeature member){
+
+	def boolean isIdAnnoExcluded(LFeature member) {
 		return typeof(Id).isExcluded(member.annotations)
 	}
-	
-	def boolean isIdAnnoRedefined(LFeature member){
+
+	def boolean isIdAnnoRedefined(LFeature member) {
 		return typeof(Id).isRedefined(member.annotations)
 	}
-	
-	def LAnnotationDef getIdAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getIdAnnoRedefine(LFeature member) {
 		return typeof(Id).getRedefined(member.annotations)
 	}
-	
-	def boolean isIdAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isIdAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		val result = target.containsAnnotation(typeof(Id), context)
 		return result
 	}
-	
-	def boolean isTransientAnnoExcluded(LFeature member){
-		return typeof(Transient).isExcluded(member.annotations)
-	}
-	
-	def boolean isTransientAnnoRedefined(LFeature member){
-		return typeof(Transient).isRedefined(member.annotations)
-	}
-	
-	def boolean isTransientAnnoCreated(JvmAnnotationTarget target, EObject context){
-		return target.containsAnnotation(typeof(Transient), context)
-	}
-	
-	def LAnnotationDef getTransientAnnoRedefine(LFeature member){
-		return typeof(Transient).getRedefined(member.annotations)
-	}
-	
-	def boolean isVersionAnnoExcluded(LFeature member){
+
+	def boolean isVersionAnnoExcluded(LFeature member) {
 		return typeof(Version).isExcluded(member.annotations)
 	}
-	
-	def boolean isVersionAnnoRedefined(LFeature member){
+
+	def boolean isVersionAnnoRedefined(LFeature member) {
 		return typeof(Version).isRedefined(member.annotations)
 	}
-	
-	def boolean isVersionAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isVersionAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(Version), context)
 	}
-	
-	def LAnnotationDef getVersionAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getVersionAnnoRedefine(LFeature member) {
 		return typeof(Version).getRedefined(member.annotations)
 	}
-	
-	def boolean isGeneratedValueAnnoExcluded(LFeature member){
+
+	def boolean isGeneratedValueAnnoExcluded(LFeature member) {
 		return typeof(GeneratedValue).isExcluded(member.annotations)
 	}
-	
-	def boolean isGeneratedValueAnnoRedefined(LFeature member){
+
+	def boolean isGeneratedValueAnnoRedefined(LFeature member) {
 		return typeof(GeneratedValue).isRedefined(member.annotations)
 	}
-	
-	def boolean isGeneratedValueAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isGeneratedValueAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(GeneratedValue), context)
 	}
-	
-	def LAnnotationDef getGeneratedValueAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getGeneratedValueAnnoRedefine(LFeature member) {
 		return typeof(GeneratedValue).getRedefined(member.annotations)
 	}
-	
-	def boolean isCachableAnnoExcluded(LClass member){
+
+	def boolean isCachableAnnoExcluded(LClass member) {
 		return typeof(Cacheable).isExcluded(member.getAnnotations)
 	}
-	
-	def boolean isCacheableAnnoRedefined(LClass member){
+
+	def boolean isCacheableAnnoRedefined(LClass member) {
 		return typeof(Cacheable).isRedefined(member.getAnnotations)
 	}
-	
-	def LAnnotationDef getCacheableAnnoRedefine(LClass member){
+
+	def LAnnotationDef getCacheableAnnoRedefine(LClass member) {
 		return typeof(Cacheable).getRedefined(member.getAnnotations)
 	}
-	
-	def boolean isCacheableAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isCacheableAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(Cacheable), context)
 	}
-	
-	def boolean isEmbeddedAnnoExcluded(LFeature member){
+
+	def boolean isEmbeddedAnnoExcluded(LFeature member) {
 		return typeof(Embedded).isExcluded(member.annotations)
 	}
-	
-	def boolean isEmbeddedAnnoRedefined(LFeature member){
+
+	def boolean isEmbeddedAnnoRedefined(LFeature member) {
 		return typeof(Embedded).isRedefined(member.annotations)
 	}
-	
-	def LAnnotationDef getEmbeddedAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getEmbeddedAnnoRedefine(LFeature member) {
 		return typeof(Embedded).getRedefined(member.annotations)
 	}
-	
-	def boolean isEmbeddedAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isEmbeddedAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(Embedded), context)
 	}
-	
-	def boolean isEmbeddableAnnoExcluded(LClass member){
+
+	def boolean isEmbeddableAnnoExcluded(LClass member) {
 		return typeof(Embeddable).isExcluded(member.getAnnotations)
 	}
-	
-	def boolean isEmbeddableAnnoRedefined(LClass member){
+
+	def boolean isEmbeddableAnnoRedefined(LClass member) {
 		return typeof(Embeddable).isRedefined(member.getAnnotations)
 	}
-	
-	def LAnnotationDef getEmbeddableAnnoRedefine(LClass member){
+
+	def LAnnotationDef getEmbeddableAnnoRedefine(LClass member) {
 		return typeof(Embeddable).getRedefined(member.getAnnotations)
 	}
-	
-	def boolean isEmbeddableAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isEmbeddableAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(Embeddable), context)
 	}
-	
-	def boolean isColumnAnnoExcluded(LFeature member){
+
+	def boolean isColumnAnnoExcluded(LFeature member) {
 		return typeof(Column).isExcluded(member.annotations)
 	}
-	
-	def boolean isColumnAnnoRedefined(LFeature member){
+
+	def boolean isColumnAnnoRedefined(LFeature member) {
 		return typeof(Column).isRedefined(member.annotations)
 	}
-	
-	def boolean isColumnAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isColumnAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(Column), context)
 	}
-	
-	def LAnnotationDef getColumnAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getColumnAnnoRedefine(LFeature member) {
 		return typeof(Column).getRedefined(member.annotations)
 	}
-	
-	def boolean isJoinColumnAnnoExcluded(LFeature member){
+
+	def boolean isJoinColumnAnnoExcluded(LFeature member) {
 		return typeof(JoinColumn).isExcluded(member.annotations)
 	}
-	
-	def boolean isJoinColumnAnnoRedefined(LFeature member){
+
+	def boolean isJoinColumnAnnoRedefined(LFeature member) {
 		return typeof(JoinColumn).isRedefined(member.annotations)
 	}
-	
-	def boolean isJoinColumnAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isJoinColumnAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(JoinColumn), context)
 	}
-	
-	def LAnnotationDef getJoinColumnAnnoRedefine(LFeature member){
+
+	def LAnnotationDef getJoinColumnAnnoRedefine(LFeature member) {
 		return typeof(JoinColumn).getRedefined(member.annotations)
 	}
-	
-	def boolean isMappedSuperclassAnnoExcluded(LClass entity){
+
+	def boolean isMappedSuperclassAnnoExcluded(LClass entity) {
 		return typeof(MappedSuperclass).isExcluded(entity.getAnnotations)
 	}
-	
-	def boolean isMappedSuperclassAnnoRedefined(LClass entity){
+
+	def boolean isMappedSuperclassAnnoRedefined(LClass entity) {
 		return typeof(MappedSuperclass).isRedefined(entity.getAnnotations)
 	}
-	
-	def boolean isMappedSuperclassAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isMappedSuperclassAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(MappedSuperclass), context)
 	}
-	
-	def LAnnotationDef getMappedSuperclassAnnoRedefine(LClass entity){
+
+	def LAnnotationDef getMappedSuperclassAnnoRedefine(LClass entity) {
 		return typeof(MappedSuperclass).getRedefined(entity.getAnnotations)
 	}
-	
-	def boolean isInheritanceAnnoExcluded(LClass entity){
+
+	def boolean isInheritanceAnnoExcluded(LClass entity) {
 		return typeof(Inheritance).isExcluded(entity.getAnnotations)
 	}
-	
-	def boolean isInheritanceAnnoRedefined(LClass entity){
+
+	def boolean isInheritanceAnnoRedefined(LClass entity) {
 		return typeof(Inheritance).isRedefined(entity.getAnnotations)
 	}
-	
-	def boolean isInheritanceAnnoCreated(JvmAnnotationTarget target, EObject context){
+
+	def boolean isInheritanceAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(Inheritance), context)
 	}
-	
-	def LAnnotationDef getInheritanceAnnoRedefine(LClass entity){
+
+	def LAnnotationDef getInheritanceAnnoRedefine(LClass entity) {
 		return typeof(Inheritance).getRedefined(entity.getAnnotations)
-	}
-	 
-	def boolean containsAnnotation(JvmAnnotationTarget target, Class<?> type, EObject context){
-		for (anno : target.annotations) {
-			var JvmAnnotationType resolved
-			val JvmAnnotationType xan = anno.annotation;
-			if(xan != null){
-				if(xan.eIsProxy) {
-					resolved = EcoreUtil::resolve(xan, context) as JvmAnnotationType
-				} else {
-					resolved = xan
-				}
-				if(resolved.qualifiedName != null) {
-					if(resolved.qualifiedName.equals(type.canonicalName)) {
-						return true;
-					}
-				}
-			}
-		}
 	}
 }

@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase.lib,
  org.lunifera.dsl.semantic.entity;bundle-version="0.0.1";visibility:=reexport,
  org.lunifera.dsl.semantic.common;bundle-version="0.0.1",
- org.eclipse.emf.ecore.xcore;bundle-version="1.1.0"
+ org.eclipse.emf.ecore.xcore;bundle-version="1.1.0",
+ org.lunifera.dsl.common.xtext;bundle-version="1.0.0"
 Import-Package: javax.persistence;version="2.1.0",
  org.apache.commons.logging,
  org.apache.log4j
@@ -30,7 +31,6 @@ Export-Package: org.lunifera.dsl.entity.xtext;x-internal:=true,
  org.lunifera.dsl.entity.xtext.extensions;x-internal:=true,
  org.lunifera.dsl.entity.xtext.formatting;x-internal:=true,
  org.lunifera.dsl.entity.xtext.jvmmodel;x-internal:=true,
- org.lunifera.dsl.entity.xtext.jvmmodel.services,
  org.lunifera.dsl.entity.xtext.jvmmodel.services.bean;x-internal:=true,
  org.lunifera.dsl.entity.xtext.jvmmodel.services.enums;x-internal:=true,
  org.lunifera.dsl.entity.xtext.jvmmodel.services.jpa;x-internal:=true,

@@ -12,17 +12,10 @@ package org.lunifera.dsl.entity.xtext.extensions
 
 import com.google.inject.Inject
 import java.util.List
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.semantic.common.helper.Bounds
-import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LClass
-import org.lunifera.dsl.semantic.common.types.LDataType
-import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.common.types.LPackage
-import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
@@ -30,29 +23,10 @@ import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
 
-class ModelExtensions {
+class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
 	@Inject extension IQualifiedNameProvider
 	@Inject extension JvmTypesBuilder
-
-	def dispatch JvmTypeReference toTypeReference(LType type) {
-		if (type == null || type.fullyQualifiedName == null) { //###is this check needed?
-			return null
-		}
-		return type.newTypeRef(type.fullyQualifiedName.toString)
-	}
-
-	def dispatch JvmTypeReference toTypeReference(LDataType type) {
-		return type.jvmTypeReference
-	}
-
-	def dispatch JvmTypeReference toTypeReference(LAttribute prop) {
-		var jvmTypeRef = prop.type?.toTypeReference
-		if (jvmTypeRef != null && prop.isToMany) {
-			jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
-		}
-		return jvmTypeRef
-	}
 
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
 		var jvmTypeRef = prop.type?.toTypeReference
@@ -70,24 +44,12 @@ class ModelExtensions {
 		return jvmTypeRef
 	}
 
-	def Bounds getBounds(LFeature prop) {
-		Bounds::createFor(prop)
-	}
-
-	def isToMany(LFeature prop) {
-		prop.bounds.toMany
-	}
-
 	def dispatch isCascading(LEntityReference prop) {
 		prop.cascading || if(prop.opposite != null) prop.opposite.cascading else false
 	}
 
 	def dispatch isCascading(LBeanReference prop) {
 		prop.cascading || if(prop.opposite != null) prop.opposite.cascading else false
-	}
-
-	def dispatch isCascading(LAttribute prop) {
-		prop.cascading
 	}
 
 	def dispatch getResolvedOpposite(LEntityReference prop) {
@@ -112,12 +74,6 @@ class ModelExtensions {
 			val LBean ref = prop.type as LBean
 			ref.references.findFirst[it.opposite == prop]
 		}
-	}
-
-	def typeIsBoolean(LFeature prop) {
-		val typeRef = prop.toTypeReference
-		return typeRef != null && !typeRef.eIsProxy() && typeRef.getType() != null && !typeRef.getType().eIsProxy() &&
-			"boolean".equals(typeRef.getType().getIdentifier())
 	}
 
 	/**
@@ -156,29 +112,6 @@ class ModelExtensions {
 				return false;
 			}
 		}
-	}
-
-	/**
-   	 * Returns true, if toCheck can be cast to superType
-   	 */
-	def boolean nameEquals(LClass toCheck, LClass superType) {
-		val String toCheckFqn = toCheck.fullyQualifiedName.toString
-		val String superTypeFqn = superType.fullyQualifiedName.toString
-		return toCheckFqn.equals(superTypeFqn);
-	}
-
-	/**
-	 * Returns the {@link LPackage} for the given type.
-	 * 
-	 * @param lType
-	 * @return
-	 */
-	def LPackage getPackage(LType lType) {
-		var EObject current = lType;
-		while (current != null && !(current instanceof LPackage)) {
-			current = current.eContainer();
-		}
-		return current as LPackage;
 	}
 
 	/**

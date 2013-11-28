@@ -3,12 +3,9 @@
  */
 package org.lunifera.dsl.entity.xtext.formatting;
 
-import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
-import org.eclipse.xtext.xbase.formatting.XbaseFormatter;
+import org.lunifera.dsl.common.xtext.formatting.CommonGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.services.EntityGrammarGrammarAccess;
-
-import com.google.inject.Inject;
 
 /**
  * This class contains custom formatting description.
@@ -19,10 +16,7 @@ import com.google.inject.Inject;
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an
  * example
  */
-public class EntityGrammarFormatter extends AbstractDeclarativeFormatter {
-
-	@Inject
-	private XbaseFormatter xbaseFormatter;
+public class EntityGrammarFormatter extends CommonGrammarFormatter {
 
 	@Override
 	protected void configureFormatting(FormattingConfig c) {
@@ -30,50 +24,43 @@ public class EntityGrammarFormatter extends AbstractDeclarativeFormatter {
 	}
 
 	public void configure(FormattingConfig c, EntityGrammarGrammarAccess ga) {
-		xbaseFormatter.configure(c, ga.getXbaseWithAnnotationsGrammarAccess()
-				.getXbaseGrammarAccess());
-
 		EntityGrammarGrammarAccess f = (EntityGrammarGrammarAccess) getGrammarAccess();
 
-		c.setAutoLinewrap(120);
-
-		configureLPackage(c, f.getLTypedPackageAccess());
-		configureLAnnotationDef(c, f.getLAnnotationDefAccess());
-		configureLEntityPropElement(c, f.getLEntityFeatureAccess());
-
-		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
-		c.setLinewrap(0, 1, 2).after(f.getSL_COMMENTRule());
-		c.setLinewrap(0, 1, 2).before(f.getML_COMMENTRule());
-		c.setLinewrap(1, 1, 1).after(f.getML_COMMENTRule());
+		super.configure(c, ga.getCommonGrammarGrammarAccess());
+		configureClassDef(c, f.getClassAccess());
+		configureEntityDef(c, f.getEntityFeatureAccess());
+		configureBeanDef(c, f.getBeanFeatureAccess());
 	}
 
-	public void configureLPackage(FormattingConfig config,
-			EntityGrammarGrammarAccess.LTypedPackageElements ele) {
+	protected void configureClassDef(FormattingConfig c,
+			EntityGrammarGrammarAccess.ClassElements ele) {
+		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
+		c.setLinewrap(1).around(ele.getRule());
 
-		// linewrap
-		config.setLinewrap(1, 1, 2).around(ele.getRule());
-		config.setLinewrap(1, 1, 2).after(ele.getLeftCurlyBracketKeyword_3_0());
-		config.setLinewrap().around(ele.getImportsAssignment_3_1());
-		config.setLinewrap(1, 1, 2).around(ele.getTypesAssignment_3_2());
-		config.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_3_3());
+		// entity
+		c.setIndentationIncrement().after(
+				ele.getLeftCurlyBracketKeyword_2_0_5());
+		c.setIndentationDecrement().before(
+				ele.getRightCurlyBracketKeyword_2_0_7());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_0_7());
 
-		// indentation
-		config.setIndentationIncrement().after(
-				ele.getLeftCurlyBracketKeyword_3_0());
-		config.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_3_3());
+		// bean
+		c.setIndentationIncrement().after(
+				ele.getLeftCurlyBracketKeyword_2_1_4());
+		c.setIndentationDecrement().before(
+				ele.getRightCurlyBracketKeyword_2_1_6());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_1_6());
 	}
 
-	public void configureLEntityPropElement(FormattingConfig config,
-			EntityGrammarGrammarAccess.LEntityFeatureElements elements) {
-		config.setLinewrap().around(elements.getRule());
-		// ###
-		// config.setLinewrap().around(elements.getAnnotationsAssignment_1());
-		config.setLinewrap(1).around(elements.getRule());
+	protected void configureEntityDef(FormattingConfig c,
+			EntityGrammarGrammarAccess.EntityFeatureElements ele) {
+		c.setLinewrap(1).around(ele.getAnnotationsAssignment_1());
+		c.setLinewrap(1, 1, 2).around(ele.getRule());
 	}
 
-	protected void configureLAnnotationDef(FormattingConfig c,
-			EntityGrammarGrammarAccess.LAnnotationDefElements ele) {
-		c.setLinewrap(1).after(ele.getRule());
+	protected void configureBeanDef(FormattingConfig c,
+			EntityGrammarGrammarAccess.BeanFeatureElements ele) {
+		c.setLinewrap(1, 1, 2).around(ele.getRule());
 	}
+
 }

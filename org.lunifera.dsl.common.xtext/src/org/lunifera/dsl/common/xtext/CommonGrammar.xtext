@@ -2,43 +2,47 @@ grammar org.lunifera.dsl.common.xtext.CommonGrammar with org.eclipse.xtext.xbase
 
 import "http://www.lunifera.org/dsl/common/types/v1"
 
-LTypedPackage:
+TypedPackage returns LTypedPackage:
 	{LTypedPackage}
 	'package' name=QualifiedName ('{'
-	(imports+=LImport)*
-	(types+=LType)*
+	(imports+=Import)*
+	(types+=Type)*
 	'}')?;
 
-LType:
-	LScalarType | Class;
+Type returns LType:
+	ScalarType | Class;
 
+	/**
+ * Needs to be overridden by sub grammar
+ */
 Class returns LClass:
-	{LClass} annotations+=LAnnotationDef*
-	{LClass.annotationInfo=current};
+	{LClass} annotations+=AnnotationDef*
+	{LClass.annotationInfo=current}
+	'class';
 
-LImport:
+Import returns LImport:
 	'import' importedNamespace=LQualifiedNameWithWildCard ';';
 
-LDataType:
+DataType returns LDataType:
 	'datatype' name=ID
 	'jvmType' jvmTypeReference=JvmTypeReference ';';
 
-LScalarType:
-	LDataType | LEnum;
+ScalarType returns LScalarType:
+	DataType | Enum;
 
-LModifier:
+Modifier returns LModifier:
 	final?='final'? & static?='static'? & visibility=LVisibility;
 
-LEnum:
+Enum returns LEnum:
 	'enum' name=ID
 	('{'
-	(literals+=LEnumLiteral ((',')? literals+=LEnumLiteral)*)?
+	(literals+=EnumLiteral ((',')? literals+=EnumLiteral)*)?
 	'}')?;
 
-LEnumLiteral:
+EnumLiteral returns LEnumLiteral:
 	name=ID;
 
-LAnnotationDef:
+AnnotationDef returns LAnnotationDef:
 	=> (annotation=XAnnotation);
 
 enum LVisibility:
@@ -56,12 +60,12 @@ ValidIDWithKeywords:
 	'notnull' | 'dto' |
 	ID;
 
-LMultiplicity:
-	'[' (lower=LLowerBound) ('..' upper=LUpperBound)? ']';
+Multiplicity returns LMultiplicity:
+	'[' (lower=LowerBound) ('..' upper=UpperBound)? ']';
 
-enum LLowerBound:
+enum LowerBound returns LLowerBound:
 	MANY='*' | ZERO='0' | OPTIONAL='?' | ATLEASTONE='+' | ONE='1';
 
-enum LUpperBound:
+enum UpperBound returns LUpperBound:
 	MANY='*' | ONE='1';
 	

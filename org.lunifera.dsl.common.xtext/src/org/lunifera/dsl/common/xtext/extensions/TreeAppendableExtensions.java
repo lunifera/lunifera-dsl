@@ -1,4 +1,4 @@
-package org.lunifera.dsl.entity.xtext.extensions;
+package org.lunifera.dsl.common.xtext.extensions;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;

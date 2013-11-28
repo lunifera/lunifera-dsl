@@ -11,22 +11,18 @@
  */
 package org.lunifera.dsl.entity.xtext.scope;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
-import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider;
+import org.lunifera.dsl.common.xtext.scope.CommonImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
-import org.lunifera.dsl.semantic.common.types.LPackage;
-import org.lunifera.dsl.semantic.common.types.LType;
 
 import com.google.inject.Inject;
 
 public class EntityImportedNamespaceAwareLocalScopeProvider extends
-		ImportedNamespaceAwareLocalScopeProvider {
+		CommonImportedNamespaceAwareLocalScopeProvider {
 
 	@Inject
 	IQualifiedNameConverter qualifiedNameConverter;
@@ -35,37 +31,9 @@ public class EntityImportedNamespaceAwareLocalScopeProvider extends
 
 	@Override
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
-		List<ImportNormalizer> temp = new ArrayList<ImportNormalizer>();
-		temp.add(new ImportNormalizer(QualifiedName.create("builtin", "types",
-				"namespace"), true, ignoreCase));
-		temp.add(new ImportNormalizer(QualifiedName.create("java.lang"), true,
-				ignoreCase));
-		temp.add(new ImportNormalizer(QualifiedName.create("java.util"), true,
-				ignoreCase));
+		List<ImportNormalizer> temp = super.getImplicitImports(ignoreCase);
 		temp.add(new ImportNormalizer(QualifiedName
 				.create("org.lunifera.dsl.entity"), true, ignoreCase));
-
 		return temp;
-	}
-
-	@Override
-	protected List<ImportNormalizer> internalGetImportedNamespaceResolvers(
-			EObject context, boolean ignoreCase) {
-		List<ImportNormalizer> result = new ArrayList<ImportNormalizer>();
-		result.addAll(super.internalGetImportedNamespaceResolvers(context,
-				ignoreCase));
-		if (context instanceof LType) {
-			LPackage lPackage = extensions.getPackage(((LType) context));
-			if (lPackage != null) {
-				QualifiedName qfn = getQualifiedNameProvider()
-						.getFullyQualifiedName(lPackage);
-				if (qfn != null) {
-					result.add(createImportedNamespaceResolver(
-							qualifiedNameConverter.toString(qfn) + ".*",
-							ignoreCase));
-				}
-			}
-		}
-		return result;
 	}
 }

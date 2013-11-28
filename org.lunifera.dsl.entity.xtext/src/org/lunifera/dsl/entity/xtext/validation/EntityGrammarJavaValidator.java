@@ -3,23 +3,17 @@
  */
 package org.lunifera.dsl.entity.xtext.validation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IContainer;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.resource.IResourceDescription;
-import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.lunifera.dsl.common.xtext.validation.CommonGrammarJavaValidator;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LFeature;
@@ -39,67 +33,10 @@ import com.google.inject.Inject;
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
-public class EntityGrammarJavaValidator extends
-		AbstractEntityGrammarJavaValidator {
+public class EntityGrammarJavaValidator extends CommonGrammarJavaValidator {
 
 	public static final String BASE = "org.lunifera.dsl.entity.";
 	public static final String CASCADE_NOT_VALID = BASE + "cascadeNotValid";
-
-	private static final Set<String> javakeywords = new HashSet<String>();
-	static {
-		javakeywords.add("abstract");
-		javakeywords.add("assert");
-		javakeywords.add("boolean");
-		javakeywords.add("break");
-		javakeywords.add("byte");
-		javakeywords.add("case");
-		javakeywords.add("catch");
-		javakeywords.add("char");
-		javakeywords.add("class");
-		javakeywords.add("const");
-		javakeywords.add("continue");
-		javakeywords.add("default");
-		javakeywords.add("double");
-		javakeywords.add("do");
-		javakeywords.add("else");
-		javakeywords.add("enum");
-		javakeywords.add("extends");
-		javakeywords.add("false");
-		javakeywords.add("final");
-		javakeywords.add("finally");
-		javakeywords.add("float");
-		javakeywords.add("for");
-		javakeywords.add("goto");
-		javakeywords.add("if");
-		javakeywords.add("implements");
-		javakeywords.add("import");
-		javakeywords.add("instanceof");
-		javakeywords.add("int");
-		javakeywords.add("interface");
-		javakeywords.add("native");
-		javakeywords.add("new");
-		javakeywords.add("null");
-		javakeywords.add("package");
-		javakeywords.add("private");
-		javakeywords.add("protected");
-		javakeywords.add("public");
-		javakeywords.add("return");
-		javakeywords.add("short");
-		javakeywords.add("static");
-		javakeywords.add("strictfp");
-		javakeywords.add("super");
-		javakeywords.add("switch");
-		javakeywords.add("synchronized");
-		javakeywords.add("this");
-		javakeywords.add("throw");
-		javakeywords.add("throws");
-		javakeywords.add("transient");
-		javakeywords.add("true");
-		javakeywords.add("try");
-		javakeywords.add("void");
-		javakeywords.add("volatile");
-		javakeywords.add("while");
-	}
 
 	public static final String CODE__DUPLICATE_LPACKAGE_IN_PROJECT = "100";
 	public static final String CODE__DUPLICATE_LTYPE_IN_PROJECT = "101";
@@ -394,10 +331,7 @@ public class EntityGrammarJavaValidator extends
 
 	@Check
 	public void checkProperties_JavaKeyWord(LFeature lprop) {
-		if (javakeywords.contains(lprop.getName())) {
-			error("The name of the property is an java keyword and not allowed!",
-					LunTypesPackage.Literals.LFEATURE__NAME);
-		}
+		super.checkProperties_JavaKeyWord(lprop);
 	}
 
 	@Check
@@ -420,84 +354,12 @@ public class EntityGrammarJavaValidator extends
 
 	@Check(CheckType.NORMAL)
 	public void checkDuplicateType_InProject(LType type) {
-		Map<IContainer, List<LType>> lTypes = getAllFor(type);
-		for (Map.Entry<IContainer, List<LType>> temp : lTypes.entrySet())
-			if (temp.getValue().size() > 1) {
-				error(String.format("Duplicate type %s in container", qnp
-						.getFullyQualifiedName(type).toString()), type,
-						LunTypesPackage.Literals.LTYPE__NAME,
-						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-						CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
-			}
-	}
-
-	/**
-	 * Returns a map with the container (class path entry) as key and a
-	 * collection with the found types.
-	 * 
-	 * @param type
-	 * @return
-	 */
-	public Map<IContainer, List<LType>> getAllFor(LType lType) {
-		Map<IContainer, List<LType>> allEntities = new HashMap<IContainer, List<LType>>();
-		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider
-				.getResourceDescriptions(lType.eResource());
-		IResourceDescription resourceDescription = resourceDescriptions
-				.getResourceDescription(lType.eResource().getURI());
-		List<IContainer> visiblecontainers = containermanager
-				.getVisibleContainers(resourceDescription, resourceDescriptions);
-		for (IContainer container : visiblecontainers) {
-			List<LType> types = new ArrayList<LType>();
-			allEntities.put(container, types);
-			if (lType.getName() == null) {
-				continue;
-			}
-			for (IEObjectDescription eobjectDescription : container
-					.getExportedObjects(LunTypesPackage.Literals.LTYPE,
-							qnp.getFullyQualifiedName(lType), true)) {
-				types.add((LType) eobjectDescription.getEObjectOrProxy());
-			}
-		}
-		return allEntities;
+		super.checkDuplicateType_InProject(type);
 	}
 
 	@Check(CheckType.NORMAL)
 	public void checkDuplicatePackage_InProject(LPackage lPackage) {
-		Map<IContainer, List<LPackage>> packages = getAllFor(lPackage);
-		for (Map.Entry<IContainer, List<LPackage>> temp : packages.entrySet())
-			if (temp.getValue().size() > 1) {
-				warning(String.format("Duplicate package %s in container ", qnp
-						.getFullyQualifiedName(lPackage).toString()), lPackage,
-						LunTypesPackage.Literals.LPACKAGE__NAME,
-						CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
-			}
-	}
-
-	/**
-	 * Returns a map with the container (class path entry) as key and a
-	 * collection with the found packages.
-	 * 
-	 * @param type
-	 * @return
-	 */
-	public Map<IContainer, List<LPackage>> getAllFor(LPackage lPackage) {
-		Map<IContainer, List<LPackage>> allEntities = new HashMap<IContainer, List<LPackage>>();
-		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider
-				.getResourceDescriptions(lPackage.eResource());
-		IResourceDescription resourceDescription = resourceDescriptions
-				.getResourceDescription(lPackage.eResource().getURI());
-		List<IContainer> visiblecontainers = containermanager
-				.getVisibleContainers(resourceDescription, resourceDescriptions);
-		for (IContainer container : visiblecontainers) {
-			List<LPackage> packages = new ArrayList<LPackage>();
-			allEntities.put(container, packages);
-			for (IEObjectDescription eobjectDescription : container
-					.getExportedObjects(LunTypesPackage.Literals.LPACKAGE,
-							qnp.getFullyQualifiedName(lPackage), true)) {
-				packages.add((LPackage) eobjectDescription.getEObjectOrProxy());
-			}
-		}
-		return allEntities;
+		super.checkDuplicatePackage_InProject(lPackage);
 	}
 
 	@Check

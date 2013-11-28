@@ -92,7 +92,7 @@ interface LAttribute extends LFeature {
 	refers LScalarType ^type
 }
 
-class LOperation {
+class LOperation extends LAnnotationTarget {
 	contains LModifier modifier
 	contains JvmTypeReference ^type
 	contains JvmFormalParameter[] params
