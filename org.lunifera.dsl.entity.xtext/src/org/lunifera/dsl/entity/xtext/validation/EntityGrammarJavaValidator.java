@@ -13,7 +13,6 @@ import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
-import org.lunifera.dsl.common.xtext.validation.CommonGrammarJavaValidator;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LFeature;
@@ -33,7 +32,8 @@ import com.google.inject.Inject;
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
-public class EntityGrammarJavaValidator extends CommonGrammarJavaValidator {
+public class EntityGrammarJavaValidator extends
+		AbstractEntityGrammarJavaValidator {
 
 	public static final String BASE = "org.lunifera.dsl.entity.";
 	public static final String CASCADE_NOT_VALID = BASE + "cascadeNotValid";

@@ -17,6 +17,7 @@ import org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.lunifera.dsl.entity.xtext.ui.contentassist.EntityGrammarProposalProvider;
+import org.lunifera.dsl.entity.xtext.ui.labeling.EntityGrammarLabelProvider;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -39,4 +40,8 @@ public class EntityGrammarUiModule extends AbstractEntityGrammarUiModule {
 		return EntityGrammarHighlightingCalculator.class;
 	}
 
+	public Class<? extends org.eclipse.jface.viewers.ILabelProvider> bindILabelProvider() {
+		return EntityGrammarLabelProvider.class;
+	}
+	
 }

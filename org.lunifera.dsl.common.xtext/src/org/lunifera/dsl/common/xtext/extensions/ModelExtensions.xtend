@@ -21,7 +21,9 @@ import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LOperation
 import org.lunifera.dsl.semantic.common.types.LPackage
+import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
 
 class ModelExtensions {
@@ -59,7 +61,11 @@ class ModelExtensions {
 	def dispatch isCascading(LAttribute prop) {
 		prop.cascading
 	}
-
+	
+	def dispatch isCascading(LReference prop) {
+		prop.cascading
+	}
+	
 	def typeIsBoolean(LFeature prop) {
 		val typeRef = prop.toTypeReference
 		return typeRef != null && !typeRef.eIsProxy() && typeRef.getType() != null && !typeRef.getType().eIsProxy() &&

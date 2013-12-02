@@ -45,7 +45,7 @@ public class EntityGrammarImages extends XbaseImages2 {
 	}
 
 	public ImageDescriptor forImport() {
-		return forImport();
+		return null;
 	}
 
 	public ImageDescriptor forField(JvmVisibility visibility, int attachment) {
@@ -68,14 +68,18 @@ public class EntityGrammarImages extends XbaseImages2 {
 	}
 
 	public ImageDescriptor forProperty() {
-		return super.forField(JvmVisibility.PUBLIC, -1);
+		return super.forField(JvmVisibility.PUBLIC, 0);
 	}
 
 	public ImageDescriptor forRefers() {
-		return forField(JvmVisibility.PUBLIC, -1);
+		return forField(JvmVisibility.PUBLIC, 0);
 	}
 
 	public ImageDescriptor forCascading(JvmVisibility visibility) {
-		return forField(JvmVisibility.PUBLIC, -1);
+		return forField(JvmVisibility.PUBLIC, 0);
+	}
+	
+	public ImageDescriptor forDatatype() {
+		return super.forField(JvmVisibility.PRIVATE, 0);
 	}
 }

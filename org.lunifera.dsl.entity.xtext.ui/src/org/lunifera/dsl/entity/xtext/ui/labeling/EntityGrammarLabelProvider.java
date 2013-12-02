@@ -16,6 +16,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jdt.ui.JavaElementImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
@@ -26,15 +27,23 @@ import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider;
 import org.eclipse.xtext.xbase.validation.UIStrings;
-import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LImport;
-import org.lunifera.dsl.semantic.common.types.LReference;
+import org.lunifera.dsl.semantic.common.types.LPackage;
+import org.lunifera.dsl.semantic.entity.LBean;
+import org.lunifera.dsl.semantic.entity.LBeanAttribute;
+import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LEntityAttribute;
+import org.lunifera.dsl.semantic.entity.LEntityFeature;
+import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LOperation;
-
+//git@github.com/lunifera/lunifera-dsl.git
 import com.google.inject.Inject;
 
 /**
@@ -61,10 +70,17 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 		return images.forImport();
 	}
 
-	public ImageDescriptor image(LClass element) {
+	public ImageDescriptor image(LEntity element) {
 		final JvmGenericType inferredType = getFirstOrNull(
 				associations.getJvmElements(element), JvmGenericType.class);
-		return images.forClass(inferredType.getVisibility(), -1);
+		return images.forClass(inferredType.getVisibility(),
+				JavaElementImageDescriptor.STATIC);
+	}
+
+	public ImageDescriptor image(LBean element) {
+		final JvmGenericType inferredType = getFirstOrNull(
+				associations.getJvmElements(element), JvmGenericType.class);
+		return images.forClass(inferredType.getVisibility(), 0);
 	}
 
 	public ImageDescriptor image(LEnum element) {
@@ -78,20 +94,58 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 	public ImageDescriptor image(LOperation element) {
 		JvmOperation inferredOperation = getFirstOrNull(
 				associations.getJvmElements(element), JvmOperation.class);
-		return images.forOperation(inferredOperation.getVisibility(), -1);
+		return images.forOperation(inferredOperation.getVisibility(), 0);
 	}
 
-	public ImageDescriptor image(LReference element) {
+	public ImageDescriptor image(LEntityReference element) {
 		if (!element.isCascading()) {
 			JvmField inferredField = getFirstOrNull(
 					associations.getJvmElements(element), JvmField.class);
-			return images.forField(inferredField.getVisibility(), -1);
+			return images.forField(inferredField.getVisibility(), 0);
 		} else {
 			return images.forCascading(JvmVisibility.PUBLIC);
 		}
 	}
 
-	public ImageDescriptor image(LAttribute element) {
+	public ImageDescriptor image(LBeanReference element) {
+		if (!element.isCascading()) {
+			JvmField inferredField = getFirstOrNull(
+					associations.getJvmElements(element), JvmField.class);
+			return images.forField(inferredField.getVisibility(), 0);
+		} else {
+			return images.forCascading(JvmVisibility.PUBLIC);
+		}
+	}
+
+	public ImageDescriptor image(LEntityAttribute element) {
+		if (!element.isCascading()) {
+			JvmField inferredField = getFirstOrNull(
+					associations.getJvmElements(element), JvmField.class);
+			return images.forField(inferredField.getVisibility(), 0);
+		} else {
+			return images.forCascading(JvmVisibility.PUBLIC);
+		}
+	}
+
+	public ImageDescriptor image(LBeanAttribute element) {
+		if (!element.isCascading()) {
+			JvmField inferredField = getFirstOrNull(
+					associations.getJvmElements(element), JvmField.class);
+			return images.forField(inferredField.getVisibility(), 0);
+		} else {
+			return images.forCascading(JvmVisibility.PUBLIC);
+		}
+	}
+
+	public ImageDescriptor image(LDataType element) {
+		return images.forDatatype();
+	}
+
+	public ImageDescriptor image(LPackage element) {
+		return images.forPackage();
+	}
+
+	public ImageDescriptor image(LEntityFeature element) {
 		return images.forCascading(JvmVisibility.PUBLIC);
 	}
 
@@ -108,11 +162,17 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 	// }
 
 	public ImageDescriptor image(JvmParameterizedTypeReference typeRef) {
-		return images.forTypeParameter(-1);
+		return images.forTypeParameter(0);
 	}
 
 	public String text(LImport element) {
 		return element.getImportedNamespace();
+	}
+
+	public String text(LAnnotationDef element) {
+		return "@"
+				+ element.getAnnotation().getAnnotationType()
+						.getQualifiedName();
 	}
 
 	public String text(LClass element) {

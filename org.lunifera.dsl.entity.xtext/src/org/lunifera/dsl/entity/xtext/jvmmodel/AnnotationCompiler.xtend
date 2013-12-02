@@ -29,6 +29,7 @@ import javax.persistence.OneToMany
 import javax.persistence.OneToOne
 import javax.persistence.Transient
 import javax.persistence.Version
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
@@ -55,6 +56,12 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 
 		bean.addAnno(jvmType, bean.toAnnotation(typeof(Embeddable)))
+	}
+
+	/**
+	 * For method override in superclass due to dispatch
+ 	 */
+	def protected dispatch void internalProcessAnnotation(LEntity entity, EObject element) {
 	}
 
 	def protected dispatch void internalProcessAnnotation(LEntity entity, JvmGenericType jvmType) {

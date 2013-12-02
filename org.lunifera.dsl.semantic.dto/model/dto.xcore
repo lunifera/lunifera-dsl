@@ -9,15 +9,14 @@ package org.lunifera.dsl.semantic.dto
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LScalarType
-import org.lunifera.dsl.semantic.common.types.LModifier
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LReference
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
-import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
-import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.lunifera.dsl.semantic.common.types.LType
+import java.util.List
+import org.lunifera.dsl.semantic.common.types.FeaturesList
+import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 
 class LDtoModel {
 	contains LTypedPackage[] packages
@@ -26,11 +25,12 @@ class LDtoModel {
 /**
  * A bean is an embeddable element that may become added to a entity using the @embedd annotation. 
  */
-class LDto extends LClass {
+class LDto extends LClass, LFeaturesHolder {
 	contains LDtoFeature[] features
 	refers local LDto superType opposite subTypes
 	refers transient LDto[] subTypes opposite superType
 	refers local LType wrappedType
+	
 	/** 
  	 * Returns all features of type LOperation
  	 */
@@ -48,6 +48,27 @@ class LDto extends LClass {
  	 */
 	op DtoAttributeList getAttributes() {
 		features.filter(typeof(LDtoAttribute)).toList
+	}
+	
+		/**
+	 * Returns all features of the holder and from super types
+	 */
+	op FeaturesList getAllFeatures() {
+		val List<LDtoFeature> result = newArrayList()
+		collectAllLunFeatures(result)
+		return result
+	}
+	
+	op void collectAllLunFeatures(LDto current, DtoFeatureList result) {
+		if (current == null) {
+			return
+		}
+
+		// collect from current feature
+		result.addAll(current.features)
+
+		// call for super class
+		current.superType.collectAllLunFeatures(result)
 	}
 }
 
@@ -77,6 +98,8 @@ class LDtoWrappedReference extends LDtoFeature {
  */
 class LDtoOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LDtoFeature {
 }
+
+type DtoFeatureList wraps java.util.List<LDtoFeature>
 
 type OperationsList wraps java.util.List<LDtoOperation>
 

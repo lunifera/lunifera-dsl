@@ -7,8 +7,10 @@ import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.lunifera.dsl.common.xtext.scope.CommonImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
+import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
 import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.jvmmodel.EntityJvmModelGenerator;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
@@ -48,4 +50,18 @@ public class EntityGrammarRuntimeModule extends
 	public Class<? extends IFormatter> bindIFormatter() {
 		return EntityGrammarFormatter.class;
 	}
+
+	public Class<? extends org.lunifera.dsl.common.xtext.jvmmodel.AnnotationCompiler> bindAnnotationCompiler() {
+		return org.lunifera.dsl.entity.xtext.jvmmodel.AnnotationCompiler.class;
+	}
+
+	@SuppressWarnings("restriction")
+	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {
+		return EntityTypesBuilder.class;
+	}
+
+	public Class<? extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions> bindModelExtensions() {
+		return org.lunifera.dsl.entity.xtext.extensions.ModelExtensions.class;
+	}
+
 }

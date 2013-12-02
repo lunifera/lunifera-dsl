@@ -32,20 +32,6 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	@Inject extension ModelExtensions;
 	@Inject TypeReferences references
 
-	/**
-     * Returns true if the resource of the specified object has syntax errors.
-     * This method allows an eary abort of inferring that would cause NPEs because of not loaded 
-     * Ecore proxy instances.
-     * Inspired by DefaultFoldingStructureProvider.modelChanged().
-     */
-	def hasSyntaxErrors(EObject o) {
-		val hasSyntaxErrors = o.eResource.errors.exists[it instanceof XtextSyntaxDiagnostic]
-		if (hasSyntaxErrors) {
-			log.warn("Abort inferring due to syntax errors: " + o)
-		}
-		return hasSyntaxErrors
-	}
-
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(enumX)) return;
 

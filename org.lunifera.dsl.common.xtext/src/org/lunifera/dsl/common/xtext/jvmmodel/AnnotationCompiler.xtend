@@ -13,12 +13,15 @@ package org.lunifera.dsl.common.xtext.jvmmodel
 import com.google.inject.Inject
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
+import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
+import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LOperation
+import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
 
 /** 
@@ -34,6 +37,14 @@ class AnnotationCompiler {
 
 	def protected dispatch void internalProcessAnnotation(LType bean, JvmGenericType jvmType) {
 		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+	}
+
+	def protected dispatch void internalProcessAnnotation(LReference ref, JvmField jvmType) {
+		ref.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+	}
+
+	def protected dispatch void internalProcessAnnotation(LAttribute att, JvmField jvmType) {
+		att.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LOperation member, JvmOperation jvmOperation) {

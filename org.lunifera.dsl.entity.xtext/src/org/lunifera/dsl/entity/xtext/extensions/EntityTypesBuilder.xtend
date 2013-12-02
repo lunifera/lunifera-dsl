@@ -35,7 +35,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 	def htmlCode(CharSequence s) {
 		"<code>".concat(String::valueOf(s)).concat("</code>")
 	}
-
+ 
 	def dispatch JvmOperation toDispose(LEntity lClass) {
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
