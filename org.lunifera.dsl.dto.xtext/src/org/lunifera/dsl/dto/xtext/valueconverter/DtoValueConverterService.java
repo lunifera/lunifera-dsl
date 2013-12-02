@@ -12,18 +12,16 @@ package org.lunifera.dsl.dto.xtext.valueconverter;
 
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
-import org.eclipse.xtext.xbase.conversion.XbaseValueConverterService;
+import org.lunifera.dsl.common.xtext.valueconverter.CommonValueConverterService;
 
 import com.google.inject.Singleton;
 
 /**
  * Adds a value conversion for the QualifiedNameWithWildCard rule.
- * 
- * @author Jan Koehnlein
  */
 @SuppressWarnings("restriction")
 @Singleton
-public class DtoValueConverterService extends XbaseValueConverterService {
+public class DtoValueConverterService extends CommonValueConverterService {
 
 	@ValueConverter(rule = "QualifiedNameWithWildCard")
 	public IValueConverter<String> getQualifiedNameWithWildCard() {

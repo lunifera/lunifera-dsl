@@ -15,6 +15,7 @@ import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.common.types.LType;
@@ -53,6 +54,11 @@ public class EntityGrammarJavaValidator extends
 	IContainer.Manager containermanager;
 	@Inject
 	ResourceDescriptionsProvider resourceDescriptionsProvider;
+
+	@Check
+	public void checkDatatype_asPrimitive(LDataType dt) {
+		super.checkDatatype_asPrimitive(dt);
+	}
 
 	@Check
 	public void checkJPA_MultiHasOppositeReference(LEntityReference prop) {

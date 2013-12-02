@@ -71,6 +71,7 @@
     <genClasses ecoreClass="types.ecore#//LScalarType"/>
     <genClasses ecoreClass="types.ecore#//LDataType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LDataType/jvmTypeReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/asPrimitive"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//LEnum">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LEnum/literals"/>

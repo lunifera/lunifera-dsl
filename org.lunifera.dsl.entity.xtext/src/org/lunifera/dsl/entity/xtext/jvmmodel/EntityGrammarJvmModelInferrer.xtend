@@ -1,11 +1,10 @@
 package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
+import javax.persistence.Transient
 import org.apache.log4j.Logger
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.resource.XtextSyntaxDiagnostic
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder
@@ -18,6 +17,7 @@ import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import javax.persistence.Entity
 
 /**
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
@@ -57,7 +57,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			members += bean.toConstructor()[]
 			if (bean.getSuperType == null) {
-				members += bean.toPrimitiveTypeField("disposed", Boolean::TYPE)
+				members += bean.toDiposeField()
 			}
 			//
 			// Fields
@@ -138,7 +138,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			members += entity.toConstructor()[]
 			if (entity.getSuperType == null) {
-				members += entity.toPrimitiveTypeField("disposed", Boolean::TYPE)
+				members += entity.toDiposeField()
 			}
 			//
 			// Fields

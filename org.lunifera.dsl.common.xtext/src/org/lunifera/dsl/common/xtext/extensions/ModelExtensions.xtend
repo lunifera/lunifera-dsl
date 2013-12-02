@@ -14,6 +14,7 @@ import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.helper.Bounds
@@ -21,7 +22,6 @@ import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.common.types.LOperation
 import org.lunifera.dsl.semantic.common.types.LPackage
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
@@ -31,6 +31,8 @@ class ModelExtensions {
 	@Inject extension IQualifiedNameProvider
 	@Inject extension JvmTypesBuilder
 
+	@Inject TypeReferences references;
+
 	def dispatch JvmTypeReference toTypeReference(LType type) {
 		if (type == null || type.fullyQualifiedName == null) { //###is this check needed?
 			return null
@@ -39,7 +41,23 @@ class ModelExtensions {
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LDataType type) {
-		return type.jvmTypeReference
+		if (type.asPrimitive) {
+			val fqn = type?.jvmTypeReference?.type?.fullyQualifiedName
+			switch (fqn.toString) {
+				case typeof(Integer).name: references.findDeclaredType(Integer::TYPE, type).newTypeRef()
+				case typeof(Boolean).name: references.findDeclaredType(Boolean::TYPE, type).newTypeRef()
+				case typeof(Short).name: references.findDeclaredType(Short::TYPE, type).newTypeRef()
+				case typeof(Long).name: references.findDeclaredType(Long::TYPE, type).newTypeRef()
+				case typeof(Double).name: references.findDeclaredType(Double::TYPE, type).newTypeRef()
+				case typeof(Float).name: references.findDeclaredType(Float::TYPE, type).newTypeRef()
+				case typeof(Character).name: references.findDeclaredType(Character::TYPE, type).newTypeRef()
+				case typeof(Byte).name: references.findDeclaredType(Byte::TYPE, type).newTypeRef()
+				case typeof(Boolean).name: references.findDeclaredType(Boolean::TYPE, type).newTypeRef()
+				default: throw new IllegalStateException
+			}
+		} else {
+			return type.jvmTypeReference
+		}
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LAttribute prop) {
@@ -61,11 +79,11 @@ class ModelExtensions {
 	def dispatch isCascading(LAttribute prop) {
 		prop.cascading
 	}
-	
+
 	def dispatch isCascading(LReference prop) {
 		prop.cascading
 	}
-	
+
 	def typeIsBoolean(LFeature prop) {
 		val typeRef = prop.toTypeReference
 		return typeRef != null && !typeRef.eIsProxy() && typeRef.getType() != null && !typeRef.getType().eIsProxy() &&

@@ -3,9 +3,13 @@
  */
 package org.lunifera.dsl.dto.xtext;
 
+import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder;
+import org.lunifera.dsl.dto.xtext.formatting.DtoGrammarFormatter;
 import org.lunifera.dsl.dto.xtext.jvmmodel.DtoGrammarJvmModelInferrer;
 import org.lunifera.dsl.dto.xtext.scope.DtoImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.dto.xtext.scope.DtoScopeProvider;
@@ -42,4 +46,26 @@ public class DtoGrammarRuntimeModule extends
 	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
 		return DtoGrammarJvmModelInferrer.class;
 	}
+
+	public Class<? extends IFormatter> bindIFormatter() {
+		return DtoGrammarFormatter.class;
+	}
+
+	public Class<? extends org.lunifera.dsl.common.xtext.jvmmodel.AnnotationCompiler> bindAnnotationCompiler() {
+		return org.lunifera.dsl.dto.xtext.jvmmodel.AnnotationCompiler.class;
+	}
+
+	public Class<? extends org.lunifera.dsl.common.xtext.extensions.AnnotationExtension> bindAnnotationExtension() {
+		return org.lunifera.dsl.dto.xtext.extensions.AnnotationExtension.class;
+	}
+
+	@SuppressWarnings("restriction")
+	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {
+		return DtoTypesBuilder.class;
+	}
+
+	public Class<? extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions> bindModelExtensions() {
+		return org.lunifera.dsl.dto.xtext.extensions.ModelExtensions.class;
+	}
+
 }

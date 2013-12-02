@@ -1,36 +1,36 @@
 grammar org.lunifera.dsl.dto.xtext.DtoGrammar with org.lunifera.dsl.common.xtext.CommonGrammar
 
 import "http://www.lunifera.org/dsl/dto/v1" as dto
-import "http://www.lunifera.org/dsl/common/types/v1"
+import "http://www.lunifera.org/dsl/common/types/v1" as common
 import "http://www.lunifera.org/dsl/entity/v1" as entity
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/xtext/xbase/Xtype" as xtype
 import "http://www.eclipse.org/Xtext/Xbase/XAnnotations" as xannotation
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
- 
-LDTOModel returns dto::LDtoModel:
-	packages+=LTypedPackage*;
 
-Class returns LClass:
-	{LClass} annotations+=LAnnotationDef*
+LDTOModel returns dto::LDtoModel:
+	packages+=TypedPackage*;
+
+Class returns common::LClass:
+	{common::LClass} annotations+=AnnotationDef*
 	{dto::LDto.annotationInfo=current}
-	'dto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? ('wraps' wrappedType=[LType])?
+	'dto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? ('wraps' wrappedType=[common::LType])?
 	'{'
-	features+=LDtoFeature*
+	features+=DtoFeature*
 	'}';
 
-LDtoFeature returns dto::LDtoFeature:
+DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
-	annotations+=LAnnotationDef*
+	annotations+=AnnotationDef*
 	(({dto::LDtoReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[dto::LDto] multiplicity=LMultiplicity? name=ValidIDWithKeywords
+	('ref' (cascading?='cascade')? type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
 	('opposite' opposite=[dto::LDtoReference|LFQN])?)
 	';')
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
+	(('transient' type=[common::LScalarType] name=ValidIDWithKeywords)
 	|
-	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=LMultiplicity?
+	(('var' | id?='id' | version?="version") type=[common::LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords
 	';')))
 	|
@@ -40,8 +40,8 @@ LDtoFeature returns dto::LDtoFeature:
 	body=XExpression))
 	|
 	({dto::LDtoWrappedReference.annotationInfo=current}
-	('uses' feature=[LFeature]
-	('as' asType=[LScalarType]
+	('uses' feature=[common::LFeature]
+	('as' asType=[common::LScalarType]
 	(('toDTO' convertToDTO=XBlockExpression) &
 	('fromDTO' convertFromDTO=XBlockExpression)))?)
 	';'));

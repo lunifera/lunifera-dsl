@@ -25,7 +25,7 @@ Import returns LImport:
 
 DataType returns LDataType:
 	'datatype' name=ID
-	'jvmType' jvmTypeReference=JvmTypeReference ';';
+	'jvmType' jvmTypeReference=JvmTypeReference (asPrimitive?='as primitive')? ';';
 
 ScalarType returns LScalarType:
 	DataType | Enum;

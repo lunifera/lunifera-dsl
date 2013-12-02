@@ -43,6 +43,7 @@ class LScalarType extends LType {
 
 class LDataType extends LScalarType {
 	contains JvmTypeReference jvmTypeReference
+	boolean asPrimitive
 }
 
 class LEnum extends LScalarType {

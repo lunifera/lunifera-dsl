@@ -20,6 +20,7 @@ import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;
+import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.common.types.LType;
@@ -40,6 +41,7 @@ public class CommonGrammarJavaValidator
 	public static final String CODE__DUPLICATE_LTYPE_IN_PROJECT = "0_101";
 	public static final String CODE__DUPLICATE_LPACKAGE_IN_FILE = "0_102";
 	public static final String CODE__MANY_TO_MANY__NOT_SUPPORTED = "0_103";
+	public static final String CODE__NOT_A_VALID_PRIMITIVE = "0_104";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -108,8 +110,32 @@ public class CommonGrammarJavaValidator
 		javakeywords.add("while");
 	}
 
+	private static final Set<String> primitiveWrappers = new HashSet<String>();
+	static {
+		primitiveWrappers.add("java.lang.Integer");
+		primitiveWrappers.add("java.lang.Long");
+		primitiveWrappers.add("java.lang.Short");
+		primitiveWrappers.add("java.lang.Double");
+		primitiveWrappers.add("java.lang.Float");
+		primitiveWrappers.add("java.lang.Character");
+		primitiveWrappers.add("java.lang.Byte");
+		primitiveWrappers.add("java.lang.Boolean");
+	}
+
 	public Set<String> getKeywords() {
 		return Collections.unmodifiableSet(javakeywords);
+	}
+
+	public void checkDatatype_asPrimitive(LDataType dt) {
+		if (dt.isAsPrimitive()) {
+			if (!primitiveWrappers.contains(dt.getJvmTypeReference()
+					.getQualifiedName())) {
+				error("The type is not a wrapper from a primitive type!", dt,
+						LunTypesPackage.Literals.LDATA_TYPE__AS_PRIMITIVE,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__NOT_A_VALID_PRIMITIVE, (String[]) null);
+			}
+		}
 	}
 
 	public void checkProperties_JavaKeyWord(LFeature lprop) {

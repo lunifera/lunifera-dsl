@@ -69,6 +69,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.simpleName = "isDisposed"
 		op.returnType = references.getTypeForName(Boolean::TYPE, sourceElement, null)
+		
 		op.documentation = '''
 		Returns true, if the object is disposed. 
 		Disposed means, that it is prepared for garbage collection and may not be used anymore. 
@@ -180,7 +181,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		result.type = cloneWithProxies(typeRef)
 		associate(sourceElement, result)
 	}
-
+	
 	def void translateAnnotationDefTo(LAnnotationDef annotationDef, JvmAnnotationTarget target) {
 		if (annotationDef == null || target == null)
 			return

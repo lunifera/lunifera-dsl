@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
+import org.lunifera.dsl.common.xtext.valueconverter.CommonQualifiedNameProvider;
 import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LClass;
@@ -26,52 +27,6 @@ import org.lunifera.dsl.semantic.common.types.LPackage;
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
-public class DtoQualifiedNameProvider extends XbaseQualifiedNameProvider {
+public class DtoQualifiedNameProvider extends CommonQualifiedNameProvider {
 
-	@Inject
-	private IQualifiedNameConverter qualifiedNameConverter;
-	@Inject
-	private ModelExtensions extensions;
-
-	@Override
-	public QualifiedName getFullyQualifiedName(EObject obj) {
-		if (obj == null) {
-			return QualifiedName.create("");
-		}
-
-		if (obj instanceof LClass) {
-			LPackage pkg = extensions.getPackage((LClass) obj);
-			if (pkg != null) {
-				final String qualifiedName = String.format("%s.%s",
-						pkg.getName(), ((LClass) obj).getName());
-				if (qualifiedName == null)
-					return null;
-				return qualifiedNameConverter.toQualifiedName(qualifiedName);
-			} else {
-				return QualifiedName.create("");
-			}
-		} else if (obj instanceof LEnum) {
-			LPackage pkg = extensions.getPackage((LEnum) obj);
-			if (pkg != null) {
-				final String qualifiedName = String.format("%s.%s",
-						pkg.getName(), ((LEnum) obj).getName());
-				if (qualifiedName == null)
-					return null;
-				return qualifiedNameConverter.toQualifiedName(qualifiedName);
-			} else {
-				return QualifiedName.create("");
-			}
-		} else if (obj instanceof LFeature) {
-			LFeature prop = (LFeature) obj;
-			return prop.getName() != null ? qualifiedNameConverter
-					.toQualifiedName(prop.getName()) : null;
-		} else if (obj instanceof LDataType) {
-			LDataType dtd = (LDataType) obj;
-			return qualifiedNameConverter.toQualifiedName(dtd.getName());
-		} else if (obj instanceof LAnnotationDef) {
-			return super.getFullyQualifiedName(((LAnnotationDef) obj)
-					.getAnnotation());
-		}
-		return super.getFullyQualifiedName(obj);
-	}
 }

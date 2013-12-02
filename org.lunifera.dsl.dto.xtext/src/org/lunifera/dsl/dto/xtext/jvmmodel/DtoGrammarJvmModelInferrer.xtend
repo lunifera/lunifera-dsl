@@ -1,10 +1,17 @@
 package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
-import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
+import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.semantic.dto.LDtoModel
+import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
+import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
+import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.entity.LBeanReference
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -12,52 +19,91 @@ import org.lunifera.dsl.semantic.dto.LDtoModel
  * <p>The JVM model should contain all elements that would appear in the Java code 
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
-class DtoGrammarJvmModelInferrer extends AbstractModelInferrer {
+class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
-    /**
-     * convenience API to build and initialize JVM types and their members.
-     */
-	@Inject extension JvmTypesBuilder
+	@Inject extension IQualifiedNameProvider
+	@Inject extension DtoTypesBuilder;
+	@Inject extension ModelExtensions;
+	@Inject TypeReferences references
 
-	/**
-	 * The dispatch method {@code infer} is called for each instance of the
-	 * given element's type that is contained in a resource.
-	 * 
-	 * @param element
-	 *            the model to create one or more
-	 *            {@link org.eclipse.xtext.common.types.JvmDeclaredType declared
-	 *            types} from.
-	 * @param acceptor
-	 *            each created
-	 *            {@link org.eclipse.xtext.common.types.JvmDeclaredType type}
-	 *            without a container should be passed to the acceptor in order
-	 *            get attached to the current resource. The acceptor's
-	 *            {@link IJvmDeclaredTypeAcceptor#accept(org.eclipse.xtext.common.types.JvmDeclaredType)
-	 *            accept(..)} method takes the constructed empty type for the
-	 *            pre-indexing phase. This one is further initialized in the
-	 *            indexing phase using the closure you pass to the returned
-	 *            {@link org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing#initializeLater(org.eclipse.xtext.xbase.lib.Procedures.Procedure1)
-	 *            initializeLater(..)}.
-	 * @param isPreIndexingPhase
-	 *            whether the method is called in a pre-indexing phase, i.e.
-	 *            when the global index is not yet fully updated. You must not
-	 *            rely on linking using the index if isPreIndexingPhase is
-	 *            <code>true</code>.
-	 */
-   	def dispatch void infer(LDtoModel element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-   		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
-   		
-   		// An implementation for the initial hello world example could look like this:
-//   		acceptor.accept(element.toClass("my.company.greeting.MyGreetings"))
-//   			.initializeLater([
-//   				for (greeting : element.greetings) {
-//   					members += greeting.toMethod("hello" + greeting.name, greeting.newTypeRef(typeof(String))) [
-//   						body = [
-//   							append('''return "Hello «greeting.name»";''')
-//   						]
-//   					]
-//   				}
-//   			])
-   	}
+	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		if(hasSyntaxErrors(dto)) return;
+
+		acceptor.accept(dto.toJvmType).initializeLater [
+			documentation = dto.getDocumentation
+			if (dto.getSuperType != null && !dto.getSuperType.fullyQualifiedName.toString.empty) {
+				superTypes += references.getTypeForName(dto.getSuperType.fullyQualifiedName.toString, dto, null)
+			}
+			// 
+			// Constructor
+			//
+			members += dto.toConstructor()[]
+			if (dto.getSuperType == null) {
+				members += dto.toPrimitiveTypeField("disposed", Boolean::TYPE)
+			}
+			//
+			// Fields
+			//
+			for (f : dto.getFeatures) {
+				switch f {
+					LFeature: {
+						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
+							members += f.toField
+						}
+					}
+				}
+			}
+			//
+			// Field accessors
+			//
+			if (dto.getSuperType == null) {
+				members += dto.toIsDisposed()
+			}
+			members += dto.toCheckDisposed()
+			members += dto.toDispose()
+			for (f : dto.getFeatures) {
+				switch f {
+					case f instanceof LAttribute: {
+						members += f.toGetter()
+						if (f.isToMany) {
+							members += f.toInternalCollectionGetter(f.getName)
+							members += f.toAdder(f.getName)
+							members += f.toRemover(f.getName)
+						} else {
+							members += f.toSetter()
+						}
+					}
+					case f instanceof LReference: {
+						members += f.toGetter()
+						if (f.isToMany) {
+							members += f.toInternalCollectionGetter(f.getName)
+							members += f.toAdder(f.getName)
+							members += f.toRemover(f.getName)
+							members += f.toInternalAdder
+							members += f.toInternalRemover
+						} else {
+							members += f.toSetter()
+
+							if (f.isCascading && (f as LBeanReference).getOpposite != null) {
+								members += f.toInternalSetter
+							}
+						}
+					}
+				}
+			}
+			//
+			// Methods.
+			//
+			for (op : dto.getOperations) {
+				members += op.toMethod(op.getName, op.getType) [
+					documentation = op.getDocumentation
+					for (p : op.getParams) {
+						parameters += p.toParameter(p.name, p.parameterType)
+					}
+					body = op.getBody
+				]
+			}
+		]
+
+	}
 }
-

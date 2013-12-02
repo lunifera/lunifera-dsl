@@ -27,7 +27,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 
 	@Inject extension IQualifiedNameProvider
 	@Inject extension JvmTypesBuilder
-
+ 
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
 		var jvmTypeRef = prop.type?.toTypeReference
 		if (jvmTypeRef != null && prop.isToMany) {

@@ -29,10 +29,10 @@ import javax.persistence.OneToMany
 import javax.persistence.OneToOne
 import javax.persistence.Transient
 import javax.persistence.Version
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
@@ -56,12 +56,6 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 
 		bean.addAnno(jvmType, bean.toAnnotation(typeof(Embeddable)))
-	}
-
-	/**
-	 * For method override in superclass due to dispatch
- 	 */
-	def protected dispatch void internalProcessAnnotation(LEntity entity, EObject element) {
 	}
 
 	def protected dispatch void internalProcessAnnotation(LEntity entity, JvmGenericType jvmType) {
@@ -248,146 +242,20 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		}
 	}
 
-//		if(prop.id){
-//			if(!prop.idAnnoExcluded && !jvmField.isIdAnnoCreated(prop)){
-//				// there is no redefine
-//				jvmField.annotations += prop.toAnnotation(typeof(Id))
-//			}
-//			if(!prop.isGeneratedValueAnnoExcluded() && !jvmField.isGeneratedValueAnnoCreated(prop)){
-//				val JvmAnnotationReference annRef = prop.toAnnotation(typeof(GeneratedValue))
-//				jvmField.annotations+=annRef
-//				annRef.addEnumAnnotationValue(prop, "strategy", GenerationType::IDENTITY)
-//			}
-//		}
-//		if(prop.version && !prop.versionAnnoExcluded && !jvmField.isVersionAnnoCreated(prop)){
-//			jvmField.annotations += prop.toAnnotation(typeof(Version))
-//		}
-//###	
-//	def dispatch void processAnnotation_dispatch(LRefers refers, JvmField jvmField) {
-//		val bounds = EntityBounds::createFor(refers.multiplicity)
-//		val LRefers opposite = refers.opposite
-//		
-//		var EntityBounds oppBounds = null
-//		if(opposite != null){
-//			oppBounds =  EntityBounds::createFor(opposite.multiplicity)
-//		}else{
-//		 	oppBounds =  new EntityBounds(LowerBound::ZERO, UpperBound::ONE)
-//		}
-//		
-//		if(bounds.toMany && oppBounds.toMany){
-//			throw new IllegalStateException("ManyToMany not supported yet!");
-//		} else if(bounds.toMany && !oppBounds.toMany){
-//			if(!refers.joinColumnAnnoExcluded && !jvmField.isJoinColumnAnnoCreated(refers)){
-//				jvmField.annotations += refers.toAnnotation(typeof(JoinColumn))
-//			}
-//			if(!refers.oneToManyAnnoExcluded && !jvmField.isOneToManyValueAnnoCreated(refers)){
-//				val JvmAnnotationReference annRef = refers.toAnnotation(typeof(OneToMany))
-//				jvmField.annotations+=annRef
-//				if(refers.lazy){
-//					annRef.addEnumAnnotationValue(refers, "fetch", FetchType::LAZY)
-//				}
-//				if(opposite != null){
-//					annRef.addStringAnnotationValue(refers, "mappedBy", opposite.name)
-//				}
-//			}
-//		} else if(!bounds.toMany && oppBounds.toMany){
-//			if(!refers.joinColumnAnnoExcluded && !jvmField.isJoinColumnAnnoCreated(refers)){
-//				jvmField.annotations += refers.toAnnotation(typeof(JoinColumn))
-//			}
-//			if(!refers.manyToOneAnnoExcluded && !jvmField.isManyToOneValueAnnoCreated(refers)){
-//				val JvmAnnotationReference annRef = refers.toAnnotation(typeof(ManyToOne))
-//				jvmField.annotations+=annRef
-//				if(refers.lazy){
-//					annRef.addEnumAnnotationValue(refers, "fetch", FetchType::LAZY)
-//				}
-//			}
-//		} else if(!bounds.toMany && !oppBounds.toMany){
-//			if(!refers.joinColumnAnnoExcluded && !jvmField.isJoinColumnAnnoCreated(refers)){
-//				jvmField.annotations += refers.toAnnotation(typeof(JoinColumn))
-//			}
-//			if(!refers.oneToOneAnnoRedefined && !jvmField.isOneToOneAnnoCreated(refers)){
-//				val JvmAnnotationReference annRef = refers.toAnnotation(typeof(OneToOne))
-//				jvmField.annotations+=annRef
-//				if(refers.lazy){
-//					annRef.addEnumAnnotationValue(refers, "fetch", FetchType::LAZY)
-//				}
-//				if(refers.notnull){
-//					annRef.addBooleanAnnotationValue(refers, "optional", false)
-//				}
-//			}
-//		}
-//	}
-//	
-//	def dispatch void processAnnotation_dispatch(LContains contains, JvmField jvmField) {
-//		val bounds = EntityBounds::createFor(contains.multiplicity)
-//		if(bounds.toMany){
-//			if(!contains.joinColumnAnnoExcluded && !jvmField.isJoinColumnAnnoCreated(contains)){
-//				jvmField.annotations += contains.toAnnotation(typeof(JoinColumn))
-//			}
-//			if(!contains.oneToManyAnnoExcluded && !jvmField.isOneToManyValueAnnoCreated(contains)){
-//				val JvmAnnotationReference annRef = contains.toAnnotation(typeof(OneToMany))
-//				annRef.addEnumAnnotationValue(contains, "cascade", CascadeType::ALL)
-//				
-//				jvmField.annotations+=annRef
-//				if(contains.lazy){
-//					annRef.addEnumAnnotationValue(contains, "fetch", FetchType::LAZY)
-//				}
-//				if(contains.opposite != null){
-//					val LContainer container = contains.opposite
-//					annRef.addStringAnnotationValue(contains, "mappedBy", container.name)
-//				}
-//			}
-//		}else{
-//			if(!contains.joinColumnAnnoExcluded && !jvmField.isJoinColumnAnnoCreated(contains)){
-//				jvmField.annotations += contains.toAnnotation(typeof(JoinColumn))
-//			}
-//			if(!contains.oneToOneAnnoExcluded && !jvmField.isOneToOneAnnoCreated(contains)){
-//				val JvmAnnotationReference annRef = contains.toAnnotation(typeof(OneToOne))
-//				annRef.addEnumAnnotationValue(contains, "cascade", CascadeType::ALL)
-//				
-//				jvmField.annotations+=annRef
-//				if(contains.lazy){
-//					annRef.addEnumAnnotationValue(contains, "fetch", FetchType::LAZY)
-//				}
-//				if(contains.notnull){
-//					annRef.addBooleanAnnotationValue(contains, "optional", false)
-//				}
-//				
-//				if(contains.opposite != null){
-//					val LContainer container = contains.opposite
-//					annRef.addStringAnnotationValue(contains, "mappedBy", container.name)
-//				}
-//			}
-//		}
-//	}
-//	
-//	def dispatch void processAnnotation_dispatch(LContainer container, JvmField jvmField) {
-//		val opposite = container.opposite
-//		if(opposite == null){
-//			// nothing to generate
-//		} else {
-//			val oppositeBounds = EntityBounds::createFor(opposite.multiplicity)
-//			if(oppositeBounds.toMany){
-//				if(!container.joinColumnAnnoExcluded && !jvmField.isJoinColumnAnnoCreated(container)){
-//					jvmField.annotations += container.toAnnotation(typeof(JoinColumn))
-//				}
-//				if(!container.manyToOneAnnoExcluded && !jvmField.isManyToOneValueAnnoCreated(container)){
-//					val JvmAnnotationReference annRef = container.toAnnotation(typeof(ManyToOne))
-//					jvmField.annotations+=annRef
-//					
-//					annRef.addBooleanAnnotationValue(container, "optional", false)
-//				}
-//			}else{
-//				if(!container.joinColumnAnnoExcluded && !jvmField.isJoinColumnAnnoCreated(container)){
-//					jvmField.annotations += container.toAnnotation(typeof(JoinColumn))
-//				}
-//				if(!container.oneToOneAnnoExcluded && !jvmField.isOneToOneAnnoCreated(container)){
-//					val JvmAnnotationReference annRef = container.toAnnotation(typeof(OneToOne))
-//					jvmField.annotations+=annRef
-//					
-//					annRef.addBooleanAnnotationValue(container, "optional", false)
-//				}
-//			}
-//		}
-//	}
+	def dispatch addDisposeFieldAnnotation(LEntity entity, JvmField field) {
+		val anno = entity.toAnnotation(typeof(Transient))
+		addAnno(entity, field, anno)
+	}
+
+	def dispatch addDisposeFieldAnnotation(LBean entity, JvmField field) {
+	}
+
+	def dispatch addDisposeFieldAnnotation(LEntity entity, JvmOperation op) {
+	}
+
+	def dispatch addDisposeFieldAnnotation(LBean entity, JvmOperation op) {
+		//		val anno = entity.toAnnotation(typeof(java.beans.Transient))
+		//		addAnno(entity, op, anno)
+	}
+
 }

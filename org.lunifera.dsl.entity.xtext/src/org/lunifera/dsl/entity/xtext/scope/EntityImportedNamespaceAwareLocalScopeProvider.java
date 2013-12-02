@@ -33,6 +33,8 @@ public class EntityImportedNamespaceAwareLocalScopeProvider extends
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
 		List<ImportNormalizer> temp = super.getImplicitImports(ignoreCase);
 		temp.add(new ImportNormalizer(QualifiedName
+				.create("java.beans"), true, ignoreCase));
+		temp.add(new ImportNormalizer(QualifiedName
 				.create("org.lunifera.dsl.entity"), true, ignoreCase));
 		return temp;
 	}
