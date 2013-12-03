@@ -98,6 +98,10 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="historized" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedSuperclass" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inheritanceStrategy" eType="#//LEntityInheritanceStrategy"
+        containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
         eType="#//LEntityFeature" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="indexes" upperBound="-1"
@@ -106,6 +110,31 @@
         resolveProxies="false" eOpposite="#//LEntity/subTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
         eType="#//LEntity" transient="true" eOpposite="#//LEntity/superType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LEntityInheritanceStrategy" abstract="true"
+      interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LTablePerClassStrategy" eSuperTypes="#//LEntityInheritanceStrategy">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorColumn" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        defaultValueLiteral="discriminator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorType" unique="false"
+        eType="#//LDiscriminatorType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorValue" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LTablePerSubclassStrategy" eSuperTypes="#//LEntityInheritanceStrategy">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorColumn" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        defaultValueLiteral="discriminator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorType" unique="false"
+        eType="#//LDiscriminatorType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorValue" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LDiscriminatorType">
+    <eLiterals name="STRING"/>
+    <eLiterals name="CHAR"/>
+    <eLiterals name="INTEGER"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LEntityFeature" eSuperTypes="../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LFeature">
     <eOperations name="getEntity" unique="false" eType="#//LEntity">

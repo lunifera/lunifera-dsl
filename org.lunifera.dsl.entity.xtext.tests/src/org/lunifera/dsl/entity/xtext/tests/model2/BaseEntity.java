@@ -1,15 +1,12 @@
-package org.lunifera.dsl.entity.xtext.tests.model1;
+package org.lunifera.dsl.entity.xtext.tests.model2;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@MappedSuperclass
 @SuppressWarnings("all")
 public class BaseEntity {
   @Transient

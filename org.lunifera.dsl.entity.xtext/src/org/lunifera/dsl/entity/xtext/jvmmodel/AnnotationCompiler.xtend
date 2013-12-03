@@ -15,16 +15,21 @@ import javax.persistence.Basic
 import javax.persistence.Cacheable
 import javax.persistence.CascadeType
 import javax.persistence.Column
+import javax.persistence.DiscriminatorColumn
+import javax.persistence.DiscriminatorType
+import javax.persistence.DiscriminatorValue
 import javax.persistence.ElementCollection
 import javax.persistence.Embeddable
 import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.FetchType
+import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
+import javax.persistence.MappedSuperclass
 import javax.persistence.OneToMany
 import javax.persistence.OneToOne
 import javax.persistence.Transient
@@ -35,13 +40,18 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
+import org.lunifera.dsl.entity.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LDiscriminatorType
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
+import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
+import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -51,6 +61,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	@Inject extension ModelExtensions
 	@Inject extension JvmTypesBuilder
 	@Inject extension AnnotationExtension
+	@Inject extension MethodNamingExtensions
 
 	def protected dispatch void internalProcessAnnotation(LBean bean, JvmGenericType jvmType) {
 		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
@@ -60,45 +71,79 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 	def protected dispatch void internalProcessAnnotation(LEntity entity, JvmGenericType jvmType) {
 		entity.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
-		addAnno(entity, jvmType, entity.toAnnotation(typeof(Entity)))
-
-		val useSingleTableMapping = true // might come from settings in the future
-
-		// Process inheritance.
-		if (entity.superType == null) {
-
-			// The Entity is a top-level Entity.
-			// Add @Table(name="T_ORDER", schema="LUNIXAMPLE")
-			//addAnno(lClass, jvmType, lClass.toAnnotation(typeof(Table)))
-			// If the Entity has subclasses, setup @Inheritance
-			if (!entity.subTypes.empty) {
-				val annRef = entity.toAnnotation(typeof(Inheritance))
-				annRef.addAnnAttr(entity, "strategy",
-					if(useSingleTableMapping) InheritanceType::SINGLE_TABLE else InheritanceType::JOINED)
-
-				//InheritanceType::TABLE_PER_CLASS)
-				addAnno(entity, jvmType, annRef)
-
-				if (useSingleTableMapping) {
-					// @DiscriminatorColumn(name="DISCRIMINATOR", discriminatorType=DiscriminatorType.STRING)
-					// If the entity is not abstract, add @DiscriminatorValue("EMPLOYEE")
-				}
-			}
-
-		//		    addAnno(lClass, jvmType, lClass.toAnnotation(typeof(MappedSuperclass)))
+		if (entity.mappedSuperclass) {
+			addAnno(entity, jvmType, entity.toAnnotation(typeof(MappedSuperclass)))
 		} else {
+			addAnno(entity, jvmType, entity.toAnnotation(typeof(Entity)))
 
-			// The Entity is a sub-Entity.
-			if (useSingleTableMapping) {
-				// @DiscriminatorValue("EMPLOYEE")
-			} else {
-				// @Table(name="T_EMPLOYEE", schema="LUNIXAMPLE")
-				// @PrimaryKeyJoinColumn(name="PERS_ID")
+			val LEntityInheritanceStrategy strategy = entity.toInheritanceStrategy
+			strategy.processInheritance(entity, jvmType)
+
+			if (entity.cacheable) {
+				addAnno(entity, jvmType, entity.toAnnotation(typeof(Cacheable)))
 			}
 		}
+	}
 
-		if (entity.cacheable) {
-			addAnno(entity, jvmType, entity.toAnnotation(typeof(Cacheable)))
+	def protected dispatch void processInheritance(LTablePerClassStrategy strategy, LEntity entity,
+		JvmGenericType jvmType) {
+
+		// Process inheritance.
+		// If the Entity has subclasses, setup @Inheritance
+		if (!entity.subTypes.empty) {
+			val annRef = entity.toAnnotation(typeof(Inheritance))
+			annRef.addAnnAttr(entity, "strategy", InheritanceType::SINGLE_TABLE)
+			addAnno(entity, jvmType, annRef)
+
+			val discrColumn = entity.toAnnotation(typeof(DiscriminatorColumn))
+			discrColumn.addAnnAttr(entity, "name", strategy.discriminatorColumn)
+			discrColumn.addAnnAttr(entity, "discriminatorType", strategy.discriminatorType.toDiscriminatorType)
+			addAnno(entity, jvmType, discrColumn)
+		}
+
+		// add the discriminator value only once
+		val superType = entity.superType
+		if (!entity.subTypes.empty || entity.superType != null && !superType.mappedSuperclass) {
+			val discrValue = entity.toAnnotation(typeof(DiscriminatorValue))
+			discrValue.addAnnAttr(entity, "value", strategy.discriminatorValue)
+			addAnno(entity, jvmType, discrValue)
+		}
+
+	}
+
+	def protected dispatch void processInheritance(LTablePerSubclassStrategy strategy, LEntity entity,
+		JvmGenericType jvmType) {
+
+		// Process inheritance.
+		// If the Entity has subclasses, setup @Inheritance
+		if (!entity.subTypes.empty) {
+			val annRef = entity.toAnnotation(typeof(Inheritance))
+			annRef.addAnnAttr(entity, "strategy", InheritanceType::JOINED)
+			addAnno(entity, jvmType, annRef)
+
+			val discrColumn = entity.toAnnotation(typeof(DiscriminatorColumn))
+			discrColumn.addAnnAttr(entity, "name", strategy.discriminatorColumn)
+			discrColumn.addAnnAttr(entity, "discriminatorType", strategy.discriminatorType.toDiscriminatorType)
+			addAnno(entity, jvmType, discrColumn)
+		}
+
+		// add the discriminator value only once
+		val superType = entity.superType
+		if (!entity.subTypes.empty || entity.superType != null && !superType.mappedSuperclass) {
+			val discrValue = entity.toAnnotation(typeof(DiscriminatorValue))
+			discrValue.addAnnAttr(entity, "value", strategy.discriminatorValue)
+			addAnno(entity, jvmType, discrValue)
+		}
+	}
+
+	def DiscriminatorType toDiscriminatorType(LDiscriminatorType type) {
+		switch (type) {
+			case LDiscriminatorType::STRING:
+				return DiscriminatorType::STRING
+			case LDiscriminatorType::CHAR:
+				return DiscriminatorType::CHAR
+			case LDiscriminatorType::INTEGER:
+				return DiscriminatorType::INTEGER
 		}
 	}
 
@@ -142,6 +187,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 		if (prop.id) {
 			jvmField.annotations += prop.toAnnotation(typeof(Id))
+			jvmField.annotations += prop.toAnnotation(typeof(GeneratedValue))
 		} else if (prop.version) {
 			jvmField.annotations += prop.toAnnotation(typeof(Version))
 		} else {

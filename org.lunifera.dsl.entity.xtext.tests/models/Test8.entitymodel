@@ -1,0 +1,28 @@
+package org.lunifera.dsl.^entity.xtext.tests.test8
+ {
+	
+	entity BaseEntity {
+		id long id;
+		version int version;
+	}
+	 
+	entity House extends BaseEntity {
+		var String name;
+		ref Owner[1] owner opposite houses;
+		ref Room[1..*] rooms opposite parent;
+	}
+	
+	entity Owner extends BaseEntity {
+		var String name;
+		var date Birthday;
+		ref House[*] houses opposite owner;
+	}
+	
+	entity Room extends BaseEntity {
+		var String name;
+		var int floor;
+		ref House parent opposite rooms;
+	}
+
+	
+}

@@ -1,26 +1,21 @@
-package org.lunifera.dsl.entity.xtext.tests.model1;
+package org.lunifera.dsl.entity.xtext.tests.test10;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Transient;
-import javax.persistence.Version;
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Embeddable
 @SuppressWarnings("all")
-public class BaseEntity {
-  @Transient
+public class RoomInfo {
   private boolean disposed;
   
-  @Id
-  @GeneratedValue
-  private long id;
+  @Basic
+  private String name;
   
-  @Version
-  private int version;
+  @Basic
+  private int price;
+  
+  @Basic
+  private boolean occupied;
   
   /**
    * Returns true, if the object is disposed. 
@@ -56,34 +51,50 @@ public class BaseEntity {
   }
   
   /**
-   * Returns the id property or <code>null</code> if not present.
+   * Returns the name property or <code>null</code> if not present.
    */
-  public long getId() {
+  public String getName() {
     checkDisposed();
-    return this.id;
+    return this.name;
   }
   
   /**
-   * Sets the id property to this instance.
+   * Sets the name property to this instance.
    */
-  public void setId(final long id) {
+  public void setName(final String name) {
     checkDisposed();
-    this.id = id;
+    this.name = name;
   }
   
   /**
-   * Returns the version property or <code>null</code> if not present.
+   * Returns the price property or <code>null</code> if not present.
    */
-  public int getVersion() {
+  public int getPrice() {
     checkDisposed();
-    return this.version;
+    return this.price;
   }
   
   /**
-   * Sets the version property to this instance.
+   * Sets the price property to this instance.
    */
-  public void setVersion(final int version) {
+  public void setPrice(final int price) {
     checkDisposed();
-    this.version = version;
+    this.price = price;
+  }
+  
+  /**
+   * Returns the occupied property or <code>null</code> if not present.
+   */
+  public boolean getOccupied() {
+    checkDisposed();
+    return this.occupied;
+  }
+  
+  /**
+   * Sets the occupied property to this instance.
+   */
+  public void setOccupied(final boolean occupied) {
+    checkDisposed();
+    this.occupied = occupied;
   }
 }

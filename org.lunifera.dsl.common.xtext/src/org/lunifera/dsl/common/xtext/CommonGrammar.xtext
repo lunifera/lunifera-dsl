@@ -24,7 +24,7 @@ Import returns LImport:
 	'import' importedNamespace=LQualifiedNameWithWildCard ';';
 
 DataType returns LDataType:
-	'datatype' name=ID
+	'datatype' name=ValidIDWithKeywords
 	'jvmType' jvmTypeReference=JvmTypeReference (asPrimitive?='as primitive')? ';';
 
 ScalarType returns LScalarType:

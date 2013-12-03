@@ -16,18 +16,24 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.entity.EntityFactory
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
+import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
+import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
+import org.lunifera.dsl.semantic.entity.LDiscriminatorType
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
 	@Inject extension IQualifiedNameProvider
 	@Inject extension JvmTypesBuilder
- 
+	@Inject extension MethodNamingExtensions
+
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
 		var jvmTypeRef = prop.type?.toTypeReference
 		if (jvmTypeRef != null && prop.isToMany) {
@@ -158,8 +164,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch type(LBeanReference prop) {
 		prop.type
 	}
-	
-	
+
 	def dispatch opposite(LEntityAttribute prop) {
 		null
 	}
@@ -174,5 +179,58 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 
 	def dispatch opposite(LBeanReference prop) {
 		prop.opposite
+	}
+
+	def toInheritanceStrategy(LEntity entity) {
+		var LEntityInheritanceStrategy strategy = entity.inheritanceStrategy
+		if (strategy == null) {
+			strategy = entity.findStrategyFromSuper
+		}
+		
+		if(strategy == null){
+			strategy = EntityFactory::eINSTANCE.createLTablePerSubclassStrategy
+		}
+		
+		strategy.fillInheritanceDefaults(entity)
+		
+		return strategy
+	}
+	
+	def dispatch void fillInheritanceDefaults(LTablePerClassStrategy strategy, LEntity entity){
+		if(strategy.discriminatorColumn == null){
+			strategy.discriminatorColumn = "DISC"
+		}
+		
+		if(strategy.discriminatorType == null){
+			strategy.discriminatorType = LDiscriminatorType::STRING
+		}
+		
+		if(strategy.discriminatorValue == null){
+			strategy.discriminatorValue = entity.tableName
+		}
+	}
+	
+	def dispatch void fillInheritanceDefaults(LTablePerSubclassStrategy strategy, LEntity entity){
+		if(strategy.discriminatorColumn == null){
+			strategy.discriminatorColumn = "DISC"
+		}
+		
+		if(strategy.discriminatorType == null){
+			strategy.discriminatorType = LDiscriminatorType::STRING
+		}
+		
+		if(strategy.discriminatorValue == null){
+			strategy.discriminatorValue = entity.tableName
+		}
+	}
+
+	def LEntityInheritanceStrategy findStrategyFromSuper(LEntity entity) {
+		if (entity.inheritanceStrategy != null) {
+			return entity.inheritanceStrategy
+		}
+		if(entity.superType != null) {
+			return entity.superType.findStrategyFromSuper
+		}
+		return null
 	}
 }

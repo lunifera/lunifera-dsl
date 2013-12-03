@@ -1,7 +1,6 @@
-package org.lunifera.dsl.entity.xtext.tests.model1;
+package org.lunifera.dsl.entity.xtext.tests.test10;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -16,7 +15,6 @@ public class BaseEntity {
   private boolean disposed;
   
   @Id
-  @GeneratedValue
   private long id;
   
   @Version

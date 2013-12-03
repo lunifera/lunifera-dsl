@@ -1,0 +1,9 @@
+package org.lunifera.dsl.^entity.tests.datatypes {
+	
+	datatype long jvmType Long as primitive;
+	datatype int jvmType Integer as primitive;
+	datatype String jvmType String;
+	datatype date jvmType Date;
+	datatype bool jvmType Boolean as primitive;
+	
+}

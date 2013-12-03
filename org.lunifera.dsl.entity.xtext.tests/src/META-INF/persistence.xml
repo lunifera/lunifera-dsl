@@ -20,4 +20,25 @@
 				value="both" />
 		</properties>
 	</persistence-unit>
+	<persistence-unit name="model2" transaction-type="RESOURCE_LOCAL">
+		<class>org.lunifera.dsl.entity.xtext.tests.model2.BaseEntity</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.model2.House</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.model2.Hotel</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.model2.BigHotel</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.model2.SmallHotel</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:model1;create=true" />
+			<property name="javax.persistence.jdbc.user" value="test" />
+			<property name="javax.persistence.jdbc.password" value="test" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.create-ddl-jdbc-file-name"
+				value="createDDL_ddlGeneration.jdbc" />
+			<property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration.jdbc" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="both" />
+		</properties>
+	</persistence-unit>
 </persistence> 

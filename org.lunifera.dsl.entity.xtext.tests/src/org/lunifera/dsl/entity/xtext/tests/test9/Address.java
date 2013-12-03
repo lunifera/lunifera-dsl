@@ -1,26 +1,21 @@
-package org.lunifera.dsl.entity.xtext.tests.model1;
+package org.lunifera.dsl.entity.xtext.tests.test9;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Transient;
-import javax.persistence.Version;
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Embeddable
 @SuppressWarnings("all")
-public class BaseEntity {
-  @Transient
+public class Address {
   private boolean disposed;
   
-  @Id
-  @GeneratedValue
-  private long id;
+  @Basic
+  private String street;
   
-  @Version
-  private int version;
+  @Basic
+  private int postcode;
+  
+  @Basic
+  private String country;
   
   /**
    * Returns true, if the object is disposed. 
@@ -56,34 +51,50 @@ public class BaseEntity {
   }
   
   /**
-   * Returns the id property or <code>null</code> if not present.
+   * Returns the street property or <code>null</code> if not present.
    */
-  public long getId() {
+  public String getStreet() {
     checkDisposed();
-    return this.id;
+    return this.street;
   }
   
   /**
-   * Sets the id property to this instance.
+   * Sets the street property to this instance.
    */
-  public void setId(final long id) {
+  public void setStreet(final String street) {
     checkDisposed();
-    this.id = id;
+    this.street = street;
   }
   
   /**
-   * Returns the version property or <code>null</code> if not present.
+   * Returns the postcode property or <code>null</code> if not present.
    */
-  public int getVersion() {
+  public int getPostcode() {
     checkDisposed();
-    return this.version;
+    return this.postcode;
   }
   
   /**
-   * Sets the version property to this instance.
+   * Sets the postcode property to this instance.
    */
-  public void setVersion(final int version) {
+  public void setPostcode(final int postcode) {
     checkDisposed();
-    this.version = version;
+    this.postcode = postcode;
+  }
+  
+  /**
+   * Returns the country property or <code>null</code> if not present.
+   */
+  public String getCountry() {
+    checkDisposed();
+    return this.country;
+  }
+  
+  /**
+   * Sets the country property to this instance.
+   */
+  public void setCountry(final String country) {
+    checkDisposed();
+    this.country = country;
   }
 }

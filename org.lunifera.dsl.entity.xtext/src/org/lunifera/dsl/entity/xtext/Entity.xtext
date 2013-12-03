@@ -30,6 +30,14 @@ Class returns LClass:
 	(abstract?='abstract')?
 	'entity' name=ValidIDWithKeywords ('extends' superType=[entity::LEntity])?
 	'{'
+	(inheritanceStrategy=EntityInheritanceStrategy)?
+	features+=EntityFeature*
+	'}'
+	|
+	{entity::LEntity.annotationInfo=current}
+	mappedSuperclass?='mapped superclass' ('extends' superType=[entity::LEntity])?
+	name=ValidIDWithKeywords
+	'{'
 	features+=EntityFeature*
 	'}'
 	|
@@ -79,3 +87,21 @@ BeanFeature returns entity::LBeanFeature:
 	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
 	body=XExpression)));
 
+EntityInheritanceStrategy returns entity::LEntityInheritanceStrategy:
+	TablePerClassStrategy | TablePerSubclassStrategy;
+
+TablePerClassStrategy returns entity::LTablePerClassStrategy:
+	{entity::LTablePerClassStrategy}
+	'table per class' '{'
+	(('discriminatorColumn' discriminatorColumn=STRING)? & ('discriminatorType'
+	discriminatorType=DiscriminatorType)? & ('discriminatorValue'
+	discriminatorValue=STRING)?) '}';
+
+TablePerSubclassStrategy returns entity::LTablePerSubclassStrategy:
+	{entity::LTablePerSubclassStrategy} 'table per subclass' '{'
+	(('discriminatorColumn' discriminatorColumn=STRING)? & ('discriminatorType'
+	discriminatorType=DiscriminatorType)? & ('discriminatorValue'
+	discriminatorValue=STRING)?) '}';
+
+enum DiscriminatorType returns entity::LDiscriminatorType:
+	STRING="STRING" | CHAR="CHAR" | INTEGER="INT";

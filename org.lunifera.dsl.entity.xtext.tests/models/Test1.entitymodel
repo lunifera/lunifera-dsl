@@ -1,0 +1,12 @@
+package org.lunifera.dsl.^entity.xtext.tests.model1 {
+	
+	entity BaseEntity {
+		id long id;
+		version int version;
+	}
+	
+	entity House extends BaseEntity {
+		var String name;
+	}
+	
+}       

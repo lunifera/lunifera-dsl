@@ -1,5 +1,7 @@
 package org.lunifera.dsl.entity.xtext.tests.model;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -32,9 +34,14 @@ public class Model1Tests {
 		txn.begin();
 		
 		org.lunifera.dsl.entity.xtext.tests.model1.House house = new House();
+		org.lunifera.dsl.entity.xtext.tests.model1.House house2 = new House();
 		house.setName("Model1");
 		em.persist(house);
+		em.persist(house2);
 		txn.commit();
+		
+		assertEquals(1, house.getId());
+		assertEquals(2, house2.getId());
 	}
 
 }

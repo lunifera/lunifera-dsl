@@ -26,6 +26,11 @@
   <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
   <genPackages prefix="Entity" basePackage="org.lunifera.dsl.semantic" disposableProviderFactory="true"
       fileExtensions="entitymodel" ecorePackage="entity.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="entity.ecore#//LDiscriminatorType">
+      <genEnumLiterals ecoreEnumLiteral="entity.ecore#//LDiscriminatorType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="entity.ecore#//LDiscriminatorType/CHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="entity.ecore#//LDiscriminatorType/INTEGER"/>
+    </genEnums>
     <genDataTypes ecoreDataType="entity.ecore#//OperationsList"/>
     <genDataTypes ecoreDataType="entity.ecore#//EntityFeatureList"/>
     <genDataTypes ecoreDataType="entity.ecore#//EntityReferenceList"/>
@@ -53,6 +58,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/persistenceName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/cacheable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/historized"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/mappedSuperclass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/inheritanceStrategy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/features"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/indexes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/superType"/>
@@ -65,6 +72,17 @@
         <genParameters ecoreParameter="entity.ecore#//LEntity/collectAllLunFeatures/current"/>
         <genParameters ecoreParameter="entity.ecore#//LEntity/collectAllLunFeatures/result"/>
       </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="entity.ecore#//LEntityInheritanceStrategy"/>
+    <genClasses ecoreClass="entity.ecore#//LTablePerClassStrategy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LTablePerClassStrategy/discriminatorColumn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LTablePerClassStrategy/discriminatorType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LTablePerClassStrategy/discriminatorValue"/>
+    </genClasses>
+    <genClasses ecoreClass="entity.ecore#//LTablePerSubclassStrategy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LTablePerSubclassStrategy/discriminatorColumn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LTablePerSubclassStrategy/discriminatorType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LTablePerSubclassStrategy/discriminatorValue"/>
     </genClasses>
     <genClasses ecoreClass="entity.ecore#//LEntityFeature">
       <genOperations ecoreOperation="entity.ecore#//LEntityFeature/getEntity"/>

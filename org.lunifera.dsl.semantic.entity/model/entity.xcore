@@ -73,6 +73,8 @@ class LEntity extends LClass, LFeaturesHolder {
 	String persistenceName
 	boolean cacheable
 	boolean historized
+	boolean mappedSuperclass
+	contains LEntityInheritanceStrategy inheritanceStrategy
 	contains LEntityFeature[] features
 	contains LIndex[] indexes
 	refers local LEntity superType opposite subTypes
@@ -115,6 +117,26 @@ class LEntity extends LClass, LFeaturesHolder {
 		// call for super class
 		current.superType.collectAllLunFeatures(result)
 	}
+}
+
+interface LEntityInheritanceStrategy {
+	
+}
+
+class LTablePerClassStrategy extends LEntityInheritanceStrategy {
+	String discriminatorColumn = "discriminator"
+	LDiscriminatorType discriminatorType
+	String discriminatorValue
+}
+
+class LTablePerSubclassStrategy extends LEntityInheritanceStrategy {
+	String discriminatorColumn = "discriminator"
+	LDiscriminatorType discriminatorType
+	String discriminatorValue
+}
+
+enum LDiscriminatorType {
+	STRING, CHAR, INTEGER
 }
 
 class LEntityFeature extends LFeature {
