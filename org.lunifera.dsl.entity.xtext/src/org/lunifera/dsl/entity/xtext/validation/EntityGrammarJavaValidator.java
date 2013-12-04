@@ -3,13 +3,19 @@
  */
 package org.lunifera.dsl.entity.xtext.validation;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IContainer;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescription;
+import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
@@ -28,6 +34,7 @@ import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
+import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy;
@@ -52,6 +59,7 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE = "104";
 	public static final String CODE__INHERITANCE_PROPERTY_IGNORED = "105";
 	public static final String CODE__INHERITANCE_DISCRIMINATOR_VALUE_NOT_UNIQUE = "106";
+	public static final String CODE__DUPLICATE_PERSISTENCE = "106";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -313,10 +321,51 @@ public class EntityGrammarJavaValidator extends
 		}
 	}
 
+	@Check(CheckType.NORMAL)
+	public void checkDuplicatePersistentFQN_InProject(LEntity entity) {
+		LEntityPersistenceInfo info = entity.getPersistenceInfo();
+		if (info == null) {
+			return;
+		}
+		Map<IContainer, List<LEntityPersistenceInfo>> lTypes = getAllPersistentFQNsFor(info);
+		for (Map.Entry<IContainer, List<LEntityPersistenceInfo>> temp : lTypes
+				.entrySet())
+			if (temp.getValue().size() > 1) {
+				error(String.format("Persistence type %s is already defined!", qnp
+						.getFullyQualifiedName(info).toString()), entity,
+						EntityPackage.Literals.LENTITY__PERSISTENCE_INFO,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__DUPLICATE_PERSISTENCE, (String[]) null);
+			}
+	}
+
 	private void sendIgnoredInheritancePropertyWarning(
 			LEntityInheritanceStrategy stgy, EAttribute att) {
 		warning("Inherited from parent entity. Will be ignored.", stgy, att,
 				ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 				CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE, (String[]) null);
+	}
+
+	public Map<IContainer, List<LEntityPersistenceInfo>> getAllPersistentFQNsFor(
+			LEntityPersistenceInfo info) {
+		Map<IContainer, List<LEntityPersistenceInfo>> allEntities = new HashMap<IContainer, List<LEntityPersistenceInfo>>();
+		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider
+				.getResourceDescriptions(info.eResource());
+		IResourceDescription resourceDescription = resourceDescriptions
+				.getResourceDescription(info.eResource().getURI());
+		List<IContainer> visiblecontainers = containermanager
+				.getVisibleContainers(resourceDescription, resourceDescriptions);
+		for (IContainer container : visiblecontainers) {
+			List<LEntityPersistenceInfo> types = new ArrayList<LEntityPersistenceInfo>();
+			allEntities.put(container, types);
+			for (IEObjectDescription eObjectDescription : container
+					.getExportedObjects(
+							EntityPackage.Literals.LENTITY_PERSISTENCE_INFO,
+							qnp.getFullyQualifiedName(info), true)) {
+				types.add((LEntityPersistenceInfo) eObjectDescription
+						.getEObjectOrProxy());
+			}
+		}
+		return allEntities;
 	}
 }

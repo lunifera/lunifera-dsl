@@ -94,8 +94,7 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 			LEntity entity = feature.getEntity();
 			QualifiedName parentFQN = getFullyQualifiedName(entity
 					.getPersistenceInfo());
-			String columnName = naming
-					.toSchemaName(entity.getPersistenceInfo());
+			String columnName = naming.toColumnName(feature);
 			return parentFQN.append(columnName);
 		}
 		return super.getFullyQualifiedName(obj);
