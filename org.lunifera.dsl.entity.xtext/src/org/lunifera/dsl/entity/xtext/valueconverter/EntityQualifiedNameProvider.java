@@ -16,12 +16,17 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
+import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
+import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LEntityColumnPersistenceInfo;
+import org.lunifera.dsl.semantic.entity.LEntityFeature;
+import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 
 import com.google.inject.Inject;
 
@@ -32,6 +37,8 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 	private IQualifiedNameConverter qualifiedNameConverter;
 	@Inject
 	private ModelExtensions extensions;
+	@Inject
+	private NamingExtensions naming;
 
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
@@ -71,6 +78,25 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 		} else if (obj instanceof LAnnotationDef) {
 			return super.getFullyQualifiedName(((LAnnotationDef) obj)
 					.getAnnotation());
+		} else if (obj instanceof LEntityPersistenceInfo) {
+			LEntityPersistenceInfo info = (LEntityPersistenceInfo) obj;
+			LEntity entity = (LEntity) info.eContainer();
+			String schemaName = naming
+					.toSchemaName(entity.getPersistenceInfo());
+			if (schemaName == null || schemaName.equals("")) {
+				schemaName = "DEFAULT";
+			}
+			String tableName = naming.toTableName(entity);
+			return QualifiedName.create(schemaName, tableName);
+		} else if (obj instanceof LEntityColumnPersistenceInfo) {
+			LEntityColumnPersistenceInfo info = (LEntityColumnPersistenceInfo) obj;
+			LEntityFeature feature = (LEntityFeature) info.eContainer();
+			LEntity entity = feature.getEntity();
+			QualifiedName parentFQN = getFullyQualifiedName(entity
+					.getPersistenceInfo());
+			String columnName = naming
+					.toSchemaName(entity.getPersistenceInfo());
+			return parentFQN.append(columnName);
 		}
 		return super.getFullyQualifiedName(obj);
 	}

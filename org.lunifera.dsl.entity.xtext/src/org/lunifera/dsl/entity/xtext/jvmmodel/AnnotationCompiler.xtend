@@ -32,6 +32,7 @@ import javax.persistence.ManyToOne
 import javax.persistence.MappedSuperclass
 import javax.persistence.OneToMany
 import javax.persistence.OneToOne
+import javax.persistence.Table
 import javax.persistence.Transient
 import javax.persistence.Version
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
@@ -40,8 +41,8 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
-import org.lunifera.dsl.entity.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
+import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
@@ -61,7 +62,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	@Inject extension ModelExtensions
 	@Inject extension JvmTypesBuilder
 	@Inject extension AnnotationExtension
-	@Inject extension MethodNamingExtensions
+	@Inject extension NamingExtensions
 
 	def protected dispatch void internalProcessAnnotation(LBean bean, JvmGenericType jvmType) {
 		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
@@ -74,11 +75,24 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if (entity.mappedSuperclass) {
 			addAnno(entity, jvmType, entity.toAnnotation(typeof(MappedSuperclass)))
 		} else {
+
+			// @Entity
 			addAnno(entity, jvmType, entity.toAnnotation(typeof(Entity)))
 
+			// @Table
+			val tableAnn = entity.toAnnotation(typeof(Table))
+			addAnno(entity, jvmType, tableAnn)
+			val schemaName = entity.toSchemaName
+			if (!schemaName.nullOrEmpty) {
+				tableAnn.addAnnAttr(entity, "schema", schemaName)
+			}
+			tableAnn.addAnnAttr(entity, "name", entity.toTableName)
+
+			// @Inheritance
 			val LEntityInheritanceStrategy strategy = entity.toInheritanceStrategy
 			strategy.processInheritance(entity, jvmType)
 
+			// @Cachable
 			if (entity.cacheable) {
 				addAnno(entity, jvmType, entity.toAnnotation(typeof(Cacheable)))
 			}
@@ -90,7 +104,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 		// Process inheritance.
 		// If the Entity has subclasses, setup @Inheritance
-		if (!entity.subTypes.empty) {
+		val superType = entity.superType
+		if (!entity.subTypes.empty && (superType == null || superType.checkIsMappedSuperclass)) {
 			val annRef = entity.toAnnotation(typeof(Inheritance))
 			annRef.addAnnAttr(entity, "strategy", InheritanceType::SINGLE_TABLE)
 			addAnno(entity, jvmType, annRef)
@@ -102,8 +117,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		}
 
 		// add the discriminator value only once
-		val superType = entity.superType
-		if (!entity.subTypes.empty || entity.superType != null && !superType.mappedSuperclass) {
+		if (!entity.subTypes.empty || !superType.checkIsMappedSuperclass) {
 			val discrValue = entity.toAnnotation(typeof(DiscriminatorValue))
 			discrValue.addAnnAttr(entity, "value", strategy.discriminatorValue)
 			addAnno(entity, jvmType, discrValue)
@@ -116,7 +130,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 		// Process inheritance.
 		// If the Entity has subclasses, setup @Inheritance
-		if (!entity.subTypes.empty) {
+		val superType = entity.superType
+		if (!entity.subTypes.empty && (superType == null || superType.checkIsMappedSuperclass)) {
 			val annRef = entity.toAnnotation(typeof(Inheritance))
 			annRef.addAnnAttr(entity, "strategy", InheritanceType::JOINED)
 			addAnno(entity, jvmType, annRef)
@@ -128,8 +143,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		}
 
 		// add the discriminator value only once
-		val superType = entity.superType
-		if (!entity.subTypes.empty || entity.superType != null && !superType.mappedSuperclass) {
+		if (!entity.subTypes.empty || !superType.checkIsMappedSuperclass) {
 			val discrValue = entity.toAnnotation(typeof(DiscriminatorValue))
 			discrValue.addAnnAttr(entity, "value", strategy.discriminatorValue)
 			addAnno(entity, jvmType, discrValue)
@@ -150,20 +164,23 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	def protected dispatch void internalProcessAnnotation(LEntityReference prop, JvmField jvmField) {
 		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
-		if (prop.toMany) {
+			val ann = prop.toAnnotation(typeof(Column))
+			ann.addAnnAttr(prop, "name", prop.toColumnName)
+			if (prop.bounds.required) {
+				ann.addAnnAttr(prop, "nullable", false)
+			}
+			addAnno(prop, jvmField, ann)
 
+		if (prop.toMany) {
 			// *toMany
 			if (prop.opposite.toMany) {
-
 				// @ManyToMany
 				addManyToManyAnno(prop, jvmField)
 			} else {
-
 				// @OneToMany
 				addOneToManyAnno(prop, jvmField)
 			}
 		} else {
-
 			// *toOne
 			val opposite = prop.resolvedOpposite
 
@@ -202,6 +219,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			}
 
 			val ann = prop.toAnnotation(typeof(Column))
+			ann.addAnnAttr(prop, "name", prop.toColumnName)
+			
 			if (prop.bounds.required) {
 				ann.addAnnAttr(prop, "nullable", false)
 			}
@@ -260,7 +279,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		addAnno(prop, jvmAnnTarget, manyToOne)
 
 		val joinColumn = prop.toAnnotation(typeof(JoinColumn))
-		joinColumn.addAnnAttr(prop, "name", prop.name)
+		joinColumn.addAnnAttr(prop, "name", prop.toColumnName)
 		addAnno(prop, jvmAnnTarget, joinColumn)
 	}
 

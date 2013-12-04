@@ -22,9 +22,10 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="Lunifera"
             class="org.lunifera.eclipse.ui.utils.LuniferaUiExecutableExtensionFactory:org.lunifera.eclipse.ui.perspectives.LuniferaPerspective"
-            id="org.lunifera.ide.ui.perspectives.LuniferaPerspective">
+            icon="icons/Lunifera_16.png"
+            id="org.lunifera.ide.ui.perspectives.LuniferaPerspective"
+            name="Lunifera">
       </perspective>
    </extension>
    

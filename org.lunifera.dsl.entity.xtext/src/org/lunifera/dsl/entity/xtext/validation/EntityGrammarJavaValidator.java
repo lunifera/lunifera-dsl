@@ -4,8 +4,10 @@
 package org.lunifera.dsl.entity.xtext.validation;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
@@ -22,9 +24,13 @@ import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.EntityPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
+import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy;
 
 import com.google.inject.Inject;
 
@@ -43,6 +49,9 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__DUPLICATE_LTYPE_IN_PROJECT = "101";
 	public static final String CODE__DUPLICATE_LPACKAGE_IN_FILE = "102";
 	public static final String CODE__MANY_TO_MANY__NOT_SUPPORTED = "103";
+	public static final String CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE = "104";
+	public static final String CODE__INHERITANCE_PROPERTY_IGNORED = "105";
+	public static final String CODE__INHERITANCE_DISCRIMINATOR_VALUE_NOT_UNIQUE = "106";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -114,41 +123,6 @@ public class EntityGrammarJavaValidator extends
 		}
 	}
 
-	// ### @Check
-	// public void checkJPA_ContainsHasOppositeReference(LContainer container) {
-	// if (container.getOpposite() == null) {
-	// warning("A container reference should have an opposite reference too. Otherwise the annotation type (ManyToOne or OneToOne) can not be determined!",
-	// EntityPackage.Literals.LCONTAINER__OPPOSITE);
-	// }
-	// }
-
-	// @Check
-	// public void checkJPA_NotNull_LRefernce_OneToMany_NotNull_NotAllowed(
-	// LReference lReference) {
-	//
-	// if (lReference instanceof LRefers) {
-	// LRefers lRefers = (LRefers) lReference;
-	// if (lRefers.isNotnull()) {
-	// EntityBounds bounds = EntityBounds.createFor(lRefers
-	// .getMultiplicity());
-	// if (bounds.isToMany()) {
-	// error("Modifier 'notnull' is not allowed for references with upper bound GREATER ONE",
-	// EntityPackage.Literals.LREFERS__NOTNULL);
-	// }
-	// }
-	// } else if (lReference instanceof LContains) {
-	// LContains lContains = (LContains) lReference;
-	// if (lContains.isNotnull()) {
-	// EntityBounds bounds = EntityBounds.createFor(lContains
-	// .getMultiplicity());
-	// if (bounds.isToMany()) {
-	// error("Modifier 'notnull' is not allowed for containment references with upper bound GREATER ONE",
-	// EntityPackage.Literals.LCONTAINS__NOTNULL);
-	// }
-	// }
-	// }
-	// }
-
 	@Check
 	public void checkJPA_ID_LEntityHasOnlyOneId(LEntity entity) {
 		int idCount = 0;
@@ -177,163 +151,6 @@ public class EntityGrammarJavaValidator extends
 					EntityPackage.Literals.LENTITY__FEATURES, memberIndex);
 		}
 	}
-
-	// @Check
-	// public void checkJPA_ID_SpecifiedBySuperclass(LEntity entity) {
-	// // only check jpa model
-	// if (!extensions.compilesToJPAModel(entity)) {
-	// return;
-	// }
-	//
-	// LClass superType = entity.getSuperType();
-	// if (superType == null) {
-	// return;
-	// }
-	//
-	// boolean idFoundForSuperType = doesSupertypeContainIdProperty(entity);
-	//
-	// // lookup if an id property exists in the entity
-	// int memberIndex = -1;
-	// boolean idFound = false;
-	// for (LFeature prop : entity.getProperties()) {
-	// memberIndex++;
-	// if (prop instanceof LFeature) {
-	// LFeature p = (LFeature) prop;
-	// if (p.isId()) {
-	// idFound = true;
-	// break;
-	// }
-	// }
-	// }
-	//
-	// if (idFoundForSuperType && !idFound) {
-	// // nothing to do!
-	// }
-	//
-	// if (idFoundForSuperType && idFound) {
-	// warning("A id property was already defined by the super type. You should remove it here.",
-	// EntityPackage.Literals.LENTITY__PROPERTIES,
-	// memberIndex);
-	// }
-	//
-	// if (!idFoundForSuperType && !idFound) {
-	// warning("Nor the entity or one of its super types define an id property. Check the type hierarchy.",
-	// EntityPackage.Literals.LENTITY__PROPERTIES);
-	// }
-	// }
-	//
-	// /**
-	// * Returns true, if any of the supertypes contains an id property.
-	// *
-	// * @param superType
-	// * @return
-	// */
-	// private boolean doesSupertypeContainIdProperty(LEntity entity) {
-	// LEntity superType = entity.getSuperType();
-	// if (superType == null) {
-	// return false;
-	// }
-	// boolean idFoundForSuperType = false;
-	// for (LFeature prop : superType.getProperties()) {
-	// if (prop instanceof LFeature) {
-	// LFeature p = (LFeature) prop;
-	// if (p.isId()) {
-	// idFoundForSuperType = true;
-	// break;
-	// }
-	// }
-	// }
-	//
-	// if (!idFoundForSuperType) {
-	// idFoundForSuperType = doesSupertypeContainIdProperty(superType);
-	// }
-	//
-	// return idFoundForSuperType;
-	// }
-	//
-	// /**
-	// * Returns true, if any of the supertypes contains an id property.
-	// *
-	// * @param superType
-	// * @return
-	// */
-	// private boolean doesSupertypeContainVersionProperty(LEntity entity) {
-	// LEntity superType = entity.getSuperType();
-	// if (superType == null) {
-	// return false;
-	// }
-	// boolean versionFoundForSuperType = false;
-	// for (LFeature prop : superType.getProperties()) {
-	// if (prop instanceof LFeature) {
-	// LFeature p = (LFeature) prop;
-	// if (p.isVersion()) {
-	// versionFoundForSuperType = true;
-	// break;
-	// }
-	// }
-	// }
-	//
-	// if (!versionFoundForSuperType) {
-	// versionFoundForSuperType =
-	// doesSupertypeContainVersionProperty(superType);
-	// }
-	//
-	// return versionFoundForSuperType;
-	// }
-	//
-	// @Check
-	// public void checkJPA_Version_SpecifiedBySuperclass(LEntity entity) {
-	// if (entity.getSuperType() == null) {
-	// return;
-	// }
-	//
-	// boolean versionContainedInSuperType =
-	// doesSupertypeContainVersionProperty(entity);
-	//
-	// int memberIndex = -1;
-	// boolean versionFound = false;
-	// for (LFeature prop : entity.getProperties()) {
-	// memberIndex++;
-	// if (prop instanceof LFeature) {
-	// LFeature p = (LFeature) prop;
-	// if (p.isVersion()) {
-	// versionFound = true;
-	// break;
-	// }
-	// }
-	// }
-	//
-	// if (versionContainedInSuperType && versionFound) {
-	// warning("A version property was already defined in one of the super types.",
-	// EntityPackage.Literals.LENTITY__PROPERTIES,
-	// memberIndex);
-	// }
-	// }
-	//
-	// @Check
-	// public void checkJPA_Version_LEntityHasOnlyOneVersion(LEntity entity) {
-	// int versionCount = 0;
-	// int memberIndex = -1;
-	// for (LFeature prop : entity.getProperties()) {
-	// memberIndex++;
-	// if (prop instanceof LFeature) {
-	// LFeature p = (LFeature) prop;
-	// if (p.isVersion()) {
-	// versionCount++;
-	// }
-	// }
-	// }
-	//
-	// if (versionCount > 1) {
-	// error("An entity must only have one version property",
-	// EntityPackage.Literals.LENTITY__PROPERTIES,
-	// memberIndex);
-	// }
-	// }
-	//
-	// private boolean isStringValid(String value) {
-	// return value != null && !value.equals("");
-	// }
 
 	@Check
 	public void checkProperties_JavaKeyWord(LFeature lprop) {
@@ -379,5 +196,127 @@ public class EntityGrammarJavaValidator extends
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 					CODE__MANY_TO_MANY__NOT_SUPPORTED, (String[]) null);
 		}
+	}
+
+	@Check(CheckType.NORMAL)
+	public void checkJPA_ConsistentInheritanceStrategy(LEntity entity) {
+		// no checks required - inheritance is inherited
+		if (entity.getInheritanceStrategy() == null) {
+			return;
+		}
+
+		LEntityInheritanceStrategy differingSuperStgy = searchDifferingSuperStrategy(
+				entity.getInheritanceStrategy(), entity);
+		if (differingSuperStgy != null) {
+			LEntity superType = (LEntity) differingSuperStgy.eContainer();
+			warning(String.format(
+					"The supertype %s uses the inheritance strategy %s. The inheritance of this entity is ignored!",
+					qnp.getFullyQualifiedName(superType).toString(),
+					getStrategyName(differingSuperStgy)),
+					EntityPackage.Literals.LENTITY__INHERITANCE_STRATEGY,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE, (String[]) null);
+		}
+	}
+
+	protected String getStrategyName(LEntityInheritanceStrategy stgy) {
+		if (LTablePerClassStrategy.class.isAssignableFrom(stgy.getClass())) {
+			return "Table-Per-Class";
+		} else {
+			return "Table-Per-Subclass";
+		}
+	}
+
+	protected LEntityInheritanceStrategy searchDifferingSuperStrategy(
+			LEntityInheritanceStrategy stgy, LEntity entity) {
+		LEntity superEntity = entity.getSuperType();
+		if (superEntity == null) {
+			return null;
+		}
+
+		LEntityInheritanceStrategy superStgy = superEntity
+				.getInheritanceStrategy();
+		if (superStgy == null) {
+			return searchDifferingSuperStrategy(stgy, superEntity);
+		}
+
+		if (!stgy.getClass().getName().equals(superStgy.getClass().getName())) {
+			return superStgy;
+		}
+
+		return searchDifferingSuperStrategy(stgy, superEntity);
+	}
+
+	@Check(CheckType.NORMAL)
+	public void checkJPA_IgnoredInheritanceStrategyProperties(LEntity entity) {
+		// no checks required - inheritance is inherited
+		LEntityInheritanceStrategy stgy = entity.getInheritanceStrategy();
+		if (stgy == null) {
+			return;
+		}
+
+		if (entity.getSuperType() != null
+				&& !extensions.checkIsMappedSuperclass(entity.getSuperType())) {
+			if (LTablePerClassStrategy.class.isAssignableFrom(stgy.getClass())) {
+				LTablePerClassStrategy castStgy = (LTablePerClassStrategy) stgy;
+				if (castStgy.getDiscriminatorColumn() != null) {
+					sendIgnoredInheritancePropertyWarning(
+							stgy,
+							EntityPackage.Literals.LTABLE_PER_CLASS_STRATEGY__DISCRIMINATOR_COLUMN);
+				}
+				if (castStgy.getDiscriminatorType() != LDiscriminatorType.INHERIT) {
+					sendIgnoredInheritancePropertyWarning(
+							stgy,
+							EntityPackage.Literals.LTABLE_PER_CLASS_STRATEGY__DISCRIMINATOR_TYPE);
+				}
+			} else {
+				LTablePerSubclassStrategy castStgy = (LTablePerSubclassStrategy) stgy;
+				if (castStgy.getDiscriminatorColumn() != null) {
+					sendIgnoredInheritancePropertyWarning(
+							stgy,
+							EntityPackage.Literals.LTABLE_PER_SUBCLASS_STRATEGY__DISCRIMINATOR_COLUMN);
+				}
+				if (castStgy.getDiscriminatorType() != LDiscriminatorType.INHERIT) {
+					sendIgnoredInheritancePropertyWarning(
+							stgy,
+							EntityPackage.Literals.LTABLE_PER_SUBCLASS_STRATEGY__DISCRIMINATOR_TYPE);
+				}
+			}
+		}
+	}
+
+	@Check(CheckType.NORMAL)
+	public void checkJPA_InheritanceStrategy_NotUniqueDiscriminatorValue(
+			LEntity entity) {
+		if (entity.getSuperType() == null) {
+			return;
+		}
+
+		String currentValue = extensions.toDiscriminatorValue(extensions
+				.toInheritanceStrategy(entity));
+
+		// collect all super type strategies
+		List<LEntityInheritanceStrategy> stgies = extensions
+				.collectAllInheritanceStrategies(entity.getSuperType());
+
+		for (LEntityInheritanceStrategy stgy : stgies) {
+			String value = extensions.toDiscriminatorValue(stgy);
+			if (value.equals(currentValue)) {
+				error(String.format(
+						"The discrimator value %s is already used by supertype!",
+						value), entity,
+						EntityPackage.Literals.LENTITY__INHERITANCE_STRATEGY,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__INHERITANCE_DISCRIMINATOR_VALUE_NOT_UNIQUE,
+						(String[]) null);
+			}
+		}
+	}
+
+	private void sendIgnoredInheritancePropertyWarning(
+			LEntityInheritanceStrategy stgy, EAttribute att) {
+		warning("Inherited from parent entity. Will be ignored.", stgy, att,
+				ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+				CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE, (String[]) null);
 	}
 }

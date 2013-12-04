@@ -28,7 +28,7 @@ import org.lunifera.dsl.semantic.common.types.LClass
 class EntityTypesBuilder extends CommonTypesBuilder {
 
 	@Inject extension ModelExtensions
-	@Inject extension MethodNamingExtensions
+	@Inject extension NamingExtensions
 	@Inject extension TreeAppendableExtensions
 
 	@Inject AnnotationCompiler annotationCompiler

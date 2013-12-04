@@ -70,10 +70,10 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
  * Represents a JPA entity.
  */
 class LEntity extends LClass, LFeaturesHolder {
-	String persistenceName
 	boolean cacheable
 	boolean historized
 	boolean mappedSuperclass
+	contains LEntityPersistenceInfo persistenceInfo
 	contains LEntityInheritanceStrategy inheritanceStrategy
 	contains LEntityFeature[] features
 	contains LIndex[] indexes
@@ -119,27 +119,39 @@ class LEntity extends LClass, LFeaturesHolder {
 	}
 }
 
+class LEntityPersistenceInfo {
+	String schemaName
+	String tableName
+}
+
+class LEntityColumnPersistenceInfo {
+	String columnName
+}
+
 interface LEntityInheritanceStrategy {
 	
 }
 
 class LTablePerClassStrategy extends LEntityInheritanceStrategy {
-	String discriminatorColumn = "discriminator"
+	String discriminatorColumn
 	LDiscriminatorType discriminatorType
 	String discriminatorValue
 }
 
 class LTablePerSubclassStrategy extends LEntityInheritanceStrategy {
-	String discriminatorColumn = "discriminator"
+	String discriminatorColumn
 	LDiscriminatorType discriminatorType
 	String discriminatorValue
 }
 
 enum LDiscriminatorType {
-	STRING, CHAR, INTEGER
+	INHERIT, STRING, CHAR, INTEGER
 }
 
 class LEntityFeature extends LFeature {
+	
+	contains LEntityColumnPersistenceInfo persistenceInfo
+	
 	op LEntity getEntity() {
 		return eContainer as LEntity
 	}

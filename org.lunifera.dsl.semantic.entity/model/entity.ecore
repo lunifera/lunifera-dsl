@@ -92,14 +92,14 @@
       <eParameters name="current" unique="false" eType="#//LEntity"/>
       <eParameters name="result" unique="false" eType="#//EntityFeatureList"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistenceName" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheable" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="historized" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedSuperclass" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="persistenceInfo" eType="#//LEntityPersistenceInfo"
+        containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inheritanceStrategy" eType="#//LEntityInheritanceStrategy"
         containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
@@ -111,12 +111,21 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
         eType="#//LEntity" transient="true" eOpposite="#//LEntity/superType"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LEntityPersistenceInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaName" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableName" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LEntityColumnPersistenceInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnName" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LEntityInheritanceStrategy" abstract="true"
       interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="LTablePerClassStrategy" eSuperTypes="#//LEntityInheritanceStrategy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorColumn" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
-        defaultValueLiteral="discriminator"/>
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorType" unique="false"
         eType="#//LDiscriminatorType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorValue" unique="false"
@@ -124,14 +133,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LTablePerSubclassStrategy" eSuperTypes="#//LEntityInheritanceStrategy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorColumn" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
-        defaultValueLiteral="discriminator"/>
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorType" unique="false"
         eType="#//LDiscriminatorType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="discriminatorValue" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LDiscriminatorType">
+    <eLiterals name="INHERIT"/>
     <eLiterals name="STRING"/>
     <eLiterals name="CHAR"/>
     <eLiterals name="INTEGER"/>
@@ -142,6 +151,8 @@
         <details key="body" value=""/>
       </eAnnotations>
     </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="persistenceInfo" eType="#//LEntityColumnPersistenceInfo"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LEntityAttribute" eSuperTypes="#//LEntityFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LAttribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="LEntityReference" eSuperTypes="#//LEntityFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LReference">

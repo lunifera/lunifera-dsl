@@ -30,6 +30,7 @@ Class returns LClass:
 	(abstract?='abstract')?
 	'entity' name=ValidIDWithKeywords ('extends' superType=[entity::LEntity])?
 	'{'
+	(persistenceInfo=EntityPersistenceInfo)
 	(inheritanceStrategy=EntityInheritanceStrategy)?
 	features+=EntityFeature*
 	'}'
@@ -47,11 +48,21 @@ Class returns LClass:
 	features+=BeanFeature*
 	'}');
 
+EntityPersistenceInfo returns entity::LEntityPersistenceInfo:
+	{entity::LEntityPersistenceInfo}
+	(('schemaName' schemaName=ValidIDWithKeywords ';')? &
+	('tableName' tableName=ValidIDWithKeywords ';')?);
+
+ColumnPersistenceInfo returns entity::LEntityColumnPersistenceInfo:
+	{entity::LEntityColumnPersistenceInfo}
+	'(' columnName=ValidIDWithKeywords ')';
+
 EntityFeature returns entity::LEntityFeature:
 	{entity::LEntityFeature}
 	annotations+=AnnotationDef*
 	(({entity::LEntityReference.annotationInfo=current}
 	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	(persistenceInfo=ColumnPersistenceInfo)?
 	('opposite' opposite=[entity::LEntityReference|LFQN])?)
 	';')
 	|
@@ -59,7 +70,7 @@ EntityFeature returns entity::LEntityFeature:
 	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
 	|
 	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
-	name=ValidIDWithKeywords // TODO use the jvmTypeReference of LScalarType
+	name=ValidIDWithKeywords (persistenceInfo=ColumnPersistenceInfo)?
 	';')))
 	|
 	({entity::LOperation.annotationInfo=current}
@@ -92,16 +103,17 @@ EntityInheritanceStrategy returns entity::LEntityInheritanceStrategy:
 
 TablePerClassStrategy returns entity::LTablePerClassStrategy:
 	{entity::LTablePerClassStrategy}
-	'table per class' '{'
-	(('discriminatorColumn' discriminatorColumn=STRING)? & ('discriminatorType'
-	discriminatorType=DiscriminatorType)? & ('discriminatorValue'
-	discriminatorValue=STRING)?) '}';
+	'inheritance per class' '{'
+	(('discriminatorColumn' discriminatorColumn=ValidIDWithKeywords ';')? & ('discriminatorType'
+	discriminatorType=DiscriminatorType ';')? & ('discriminatorValue'
+	discriminatorValue=ValidIDWithKeywords ';')?) '}';
 
 TablePerSubclassStrategy returns entity::LTablePerSubclassStrategy:
-	{entity::LTablePerSubclassStrategy} 'table per subclass' '{'
-	(('discriminatorColumn' discriminatorColumn=STRING)? & ('discriminatorType'
-	discriminatorType=DiscriminatorType)? & ('discriminatorValue'
-	discriminatorValue=STRING)?) '}';
+	{entity::LTablePerSubclassStrategy} 'inheritance per subclass' '{'
+	(('discriminatorColumn' discriminatorColumn=ValidIDWithKeywords ';')? & ('discriminatorType'
+	discriminatorType=DiscriminatorType ';')? & ('discriminatorValue'
+	discriminatorValue=ValidIDWithKeywords ';')?) '}';
 
 enum DiscriminatorType returns entity::LDiscriminatorType:
-	STRING="STRING" | CHAR="CHAR" | INTEGER="INT";
+	INHERIT="INHERIT" | STRING="STRING" | CHAR="CHAR" | INTEGER="INT";
+	

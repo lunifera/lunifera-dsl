@@ -41,8 +41,8 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 		c.setIndentationIncrement().after(
 				ele.getLeftCurlyBracketKeyword_2_0_5());
 		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_2_0_8());
-		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_0_8());
+				ele.getRightCurlyBracketKeyword_2_0_9());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_0_9());
 
 		// bean
 		c.setIndentationIncrement().after(

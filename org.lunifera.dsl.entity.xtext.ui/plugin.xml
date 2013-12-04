@@ -6,12 +6,13 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.lunifera.dsl.entity.xtext.ui.EntityGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
-            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-            default="true"
-            extensions="entitymodel"
-            id="org.lunifera.dsl.entity.xtext.EntityGrammar"
-            name="Entity Editor">
+              class="org.lunifera.dsl.entity.xtext.ui.EntityGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+              contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+              default="true"
+              extensions="entitymodel"
+              icon="images/16x16_EntityDSL.png"
+              id="org.lunifera.dsl.entity.xtext.EntityGrammar"
+              name="Entity Editor">
         </editor>
     </extension>
     <extension
@@ -76,6 +77,7 @@
         <page
               category="org.lunifera.eclipse.ui.rootPropertyPage"
               class="org.lunifera.dsl.entity.xtext.ui.EntityGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              icon="images/16x16_EntityDSL.png"
               id="org.lunifera.dsl.entity.xtext.EntityGrammar"
               name="EntityDsl">
             <keywordReference id="org.lunifera.dsl.entity.xtext.ui.keyword_Entity"/>
@@ -326,10 +328,11 @@
   <extension
         point="org.eclipse.ui.newWizards">
        <wizard
-            name="Entity Model"
-            category="org.lunifera.ui.wizards.category"
-            class="org.lunifera.dsl.entity.xtext.ui.EntityGrammarExecutableExtensionFactory:org.lunifera.dsl.entity.xtext.ui.wizards.LuniferaNewEntityModelWizard"
-            id="org.lunifera.dsl.entity.xtext.ui.wizards.entityNewProjectWizard">
+             category="org.lunifera.ui.wizards.category"
+             class="org.lunifera.dsl.entity.xtext.ui.EntityGrammarExecutableExtensionFactory:org.lunifera.dsl.entity.xtext.ui.wizards.LuniferaNewEntityModelWizard"
+             icon="images/16x16_EntityDSL.png"
+             id="org.lunifera.dsl.entity.xtext.ui.wizards.entityNewProjectWizard"
+             name="Entity Model">
       </wizard>
       </extension>
 </plugin>

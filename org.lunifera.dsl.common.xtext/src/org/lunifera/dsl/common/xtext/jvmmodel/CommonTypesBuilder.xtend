@@ -16,18 +16,18 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
-import org.lunifera.dsl.common.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LOperation
+import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
 
 class CommonTypesBuilder extends JvmTypesBuilder {
 	@Inject extension IQualifiedNameProvider
 	@Inject extension ModelExtensions
-	@Inject extension MethodNamingExtensions
+	@Inject extension NamingExtensions
 	@Inject extension TreeAppendableExtensions
 
 	@Inject AnnotationCompiler annotationCompiler

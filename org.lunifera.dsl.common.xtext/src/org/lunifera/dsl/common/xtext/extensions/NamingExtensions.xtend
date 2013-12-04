@@ -2,7 +2,7 @@ package org.lunifera.dsl.common.xtext.extensions
 
 import org.lunifera.dsl.semantic.common.types.LFeature
 
-class MethodNamingExtensions {
+class NamingExtensions {
 
 	def toSetterName(LFeature prop) {
 		"set".concat(prop.name.toFirstUpper);

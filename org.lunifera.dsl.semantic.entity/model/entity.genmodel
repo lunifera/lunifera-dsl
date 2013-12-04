@@ -27,6 +27,7 @@
   <genPackages prefix="Entity" basePackage="org.lunifera.dsl.semantic" disposableProviderFactory="true"
       fileExtensions="entitymodel" ecorePackage="entity.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="entity.ecore#//LDiscriminatorType">
+      <genEnumLiterals ecoreEnumLiteral="entity.ecore#//LDiscriminatorType/INHERIT"/>
       <genEnumLiterals ecoreEnumLiteral="entity.ecore#//LDiscriminatorType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="entity.ecore#//LDiscriminatorType/CHAR"/>
       <genEnumLiterals ecoreEnumLiteral="entity.ecore#//LDiscriminatorType/INTEGER"/>
@@ -55,10 +56,10 @@
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="entity.ecore#//LEntity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/persistenceName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/cacheable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/historized"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/mappedSuperclass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/persistenceInfo"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/inheritanceStrategy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/features"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/indexes"/>
@@ -73,6 +74,13 @@
         <genParameters ecoreParameter="entity.ecore#//LEntity/collectAllLunFeatures/result"/>
       </genOperations>
     </genClasses>
+    <genClasses ecoreClass="entity.ecore#//LEntityPersistenceInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntityPersistenceInfo/schemaName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntityPersistenceInfo/tableName"/>
+    </genClasses>
+    <genClasses ecoreClass="entity.ecore#//LEntityColumnPersistenceInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntityColumnPersistenceInfo/columnName"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="entity.ecore#//LEntityInheritanceStrategy"/>
     <genClasses ecoreClass="entity.ecore#//LTablePerClassStrategy">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LTablePerClassStrategy/discriminatorColumn"/>
@@ -85,6 +93,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LTablePerSubclassStrategy/discriminatorValue"/>
     </genClasses>
     <genClasses ecoreClass="entity.ecore#//LEntityFeature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntityFeature/persistenceInfo"/>
       <genOperations ecoreOperation="entity.ecore#//LEntityFeature/getEntity"/>
     </genClasses>
     <genClasses ecoreClass="entity.ecore#//LEntityAttribute"/>
