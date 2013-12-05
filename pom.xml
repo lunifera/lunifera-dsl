@@ -46,6 +46,8 @@
 				<module>org.lunifera.dsl.semantic.entity</module>
 				<module>org.lunifera.dsl.semantic.dto</module>
 				<module>org.lunifera.dsl.eclipse.ui</module>
+				<module>org.lunifera.dsl.common.xtext</module>
+				<module>org.lunifera.dsl.common.xtext.ui</module>
 				<module>org.lunifera.dsl.entity.xtext</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
 				<!-- <module>org.lunifera.dsl.entity.xtext.tests</module> -->
