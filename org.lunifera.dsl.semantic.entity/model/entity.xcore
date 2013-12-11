@@ -48,7 +48,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 	/**
 	 * Returns all features of the holder and from super types
 	 */
-	op FeaturesList getAllFeatures() {
+	op BeanFeatureList getAllFeatures() {
 		val List<LBeanFeature> result = newArrayList()
 		collectAllLunFeatures(result)
 		return result
@@ -119,7 +119,7 @@ class LEntity extends LClass, LFeaturesHolder {
 	/**
 	 * Returns all features of the holder and from super types
 	 */
-	op FeaturesList getAllFeatures() {
+	op EntityFeatureList getAllFeatures() {
 		val List<LEntityFeature> result = newArrayList()
 		collectAllLunFeatures(result)
 		return result

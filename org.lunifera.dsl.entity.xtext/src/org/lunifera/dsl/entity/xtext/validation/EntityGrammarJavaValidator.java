@@ -22,7 +22,6 @@ import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
-import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
@@ -33,6 +32,7 @@ import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
+import org.lunifera.dsl.semantic.entity.LEntityFeature;
 import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
@@ -63,6 +63,8 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__DUPLICATE_PERSISTENCE = "106";
 	public static final String CODE__DUPLICATE_ID = "107";
 	public static final String CODE__DUPLICATE_VERSION = "108";
+	public static final String CODE__MISSING_ID = "109";
+	public static final String CODE__DUPLICATE_PROPERTY_NAME = "110";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -135,35 +137,6 @@ public class EntityGrammarJavaValidator extends
 	}
 
 	@Check
-	public void checkJPA_ID_LEntityHasOnlyOneId(LEntity entity) {
-		int idCount = 0;
-		int memberIndex = -1;
-		int firstIdIndex = -1;
-		for (LFeature prop : entity.getFeatures()) {
-			memberIndex++;
-			if (prop instanceof LAttribute) {
-				LAttribute p = (LAttribute) prop;
-				if (p.isId()) {
-					idCount++;
-					if (firstIdIndex == -1) {
-						firstIdIndex = memberIndex;
-					}
-				}
-			}
-		}
-
-		if (idCount == 0) {
-			if (entity.getSuperType() == null) {
-				warning("An entity should have an ID property",
-						EntityPackage.Literals.LENTITY__FEATURES);
-			}
-		} else if (idCount > 1) {
-			error("An entity must only have one ID property",
-					EntityPackage.Literals.LENTITY__FEATURES, memberIndex);
-		}
-	}
-
-	@Check
 	public void checkProperties_JavaKeyWord(LFeature lprop) {
 		super.checkProperties_JavaKeyWord(lprop);
 	}
@@ -231,32 +204,75 @@ public class EntityGrammarJavaValidator extends
 	}
 
 	@Check(CheckType.NORMAL)
-	public void checkJPA_DuplicateIdAndVersion(LEntityAttribute input) {
+	public void checkJPA_Features(LEntity entity) {
 
-		boolean idFound = false;
-		boolean idMessageSent = false;
-		boolean versionFound = false;
-		boolean versionMessageSent = false;
-		for (LEntityAttribute att : input.getEntity().getAllAttributes()) {
-			if (!idMessageSent && idFound && att.isId()) {
-				error("A supertype already defines an id attribute.",
-						LunTypesPackage.Literals.LATTRIBUTE__ID,
-						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-						CODE__DUPLICATE_ID, (String[]) null);
-				return;
+		int idCounter = 0;
+		int versionCounter = 0;
+		Map<String, Integer> attNames = new HashMap<String, Integer>();
+		for (LEntityFeature feature : entity.getAllFeatures()) {
+			if (feature instanceof LEntityAttribute) {
+				LEntityAttribute att = (LEntityAttribute) feature;
+				if (att.isId())
+					idCounter++;
+				if (att.isVersion())
+					versionCounter++;
 			}
-			if (att.isId())
-				idFound = true;
 
-			if (!versionMessageSent && versionFound && att.isVersion()) {
-				error("A supertype already defines an version attribute.",
-						LunTypesPackage.Literals.LATTRIBUTE__VERSION,
-						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-						CODE__DUPLICATE_VERSION, (String[]) null);
-				return;
+			if (!attNames.containsKey(feature.getName())) {
+				attNames.put(feature.getName(), 1);
+			} else {
+				int value = attNames.get(feature.getName());
+				attNames.put(feature.getName(), ++value);
 			}
-			if (att.isVersion())
-				versionFound = true;
+		}
+
+		if (idCounter == 0) {
+			warning("An entity should have an ID property",
+					EntityPackage.Literals.LENTITY__FEATURES, CODE__MISSING_ID);
+		} else if (idCounter > 1) {
+			int i = 0;
+			for (LEntityFeature feature : entity.getFeatures()) {
+				if (feature instanceof LEntityAttribute) {
+					if (((LEntityAttribute) feature).isId()) {
+						error("An entity must only have one ID property.",
+								EntityPackage.Literals.LENTITY__FEATURES, i,
+								CODE__DUPLICATE_ID, new String[0]);
+						break;
+					}
+				}
+
+				i++;
+			}
+		}
+		if (versionCounter > 1) {
+			int i = 0;
+			for (LEntityFeature feature : entity.getFeatures()) {
+				if (feature instanceof LEntityAttribute) {
+					if (((LEntityAttribute) feature).isVersion()) {
+						error("An entity must only have one Version property.",
+								EntityPackage.Literals.LENTITY__FEATURES, i,
+								CODE__DUPLICATE_VERSION, new String[0]);
+						break;
+					}
+				}
+				i++;
+			}
+		}
+
+		for (Map.Entry<String, Integer> entry : attNames.entrySet()) {
+			if (entry.getValue() > 1) {
+				int i = 0;
+				for (LEntityFeature feature : entity.getFeatures()) {
+					if (feature.getName().equals(entry.getKey())) {
+						error(String.format(
+								"The property \"%s\" must only be defined once!",
+								feature.getName()),
+								EntityPackage.Literals.LENTITY__FEATURES, i,
+								CODE__DUPLICATE_PROPERTY_NAME, new String[0]);
+					}
+					i++;
+				}
+			}
 		}
 	}
 
