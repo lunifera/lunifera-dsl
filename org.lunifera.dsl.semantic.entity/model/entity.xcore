@@ -53,6 +53,25 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		collectAllLunFeatures(result)
 		return result
 	}
+	
+		/**
+	 * Returns all attributes of the holder and from super types
+	 */
+	op BeanAttributeList getAllAttributes() {
+		val List<LBeanFeature> result = newArrayList()
+		collectAllLunFeatures(result)
+		return result.filter(typeof(LBeanAttribute)).toList
+	}
+	
+	/**
+	 * Returns all references of the holder and from super types
+	 */
+	op BeanReferenceList getAllReferences() {
+		val List<LBeanFeature> result = newArrayList()
+		collectAllLunFeatures(result)
+		return result.filter(typeof(LBeanReference)).toList
+	}
+	
 	op void collectAllLunFeatures(LBean current, BeanFeatureList result) {
 		if (current == null) {
 			return
@@ -104,6 +123,24 @@ class LEntity extends LClass, LFeaturesHolder {
 		val List<LEntityFeature> result = newArrayList()
 		collectAllLunFeatures(result)
 		return result
+	}
+	
+	/**
+	 * Returns all attributes of the holder and from super types
+	 */
+	op EntityAttributeList getAllAttributes() {
+		val List<LEntityFeature> result = newArrayList()
+		collectAllLunFeatures(result)
+		return result.filter(typeof(LEntityAttribute)).toList
+	}
+	
+	/**
+	 * Returns all references of the holder and from super types
+	 */
+	op EntityReferenceList getAllReferences() {
+		val List<LEntityFeature> result = newArrayList()
+		collectAllLunFeatures(result)
+		return result.filter(typeof(LEntityReference)).toList
 	}
 	
 	op void collectAllLunFeatures(LEntity current, EntityFeatureList result) {

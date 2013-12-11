@@ -13,6 +13,7 @@
  */
 package org.lunifera.dsl.entity.xtext.ui.contentassist;
 
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.common.types.xtext.ui.JdtVariableCompletions;
 import org.eclipse.xtext.conversion.impl.QualifiedNameValueConverter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
@@ -38,6 +39,10 @@ public class EntityGrammarProposalProvider extends
 	private EntityGrammarGrammarAccess xcoreGrammarAccess;
 	@Inject
 	private JdtVariableCompletions completions;
+
+	protected boolean isKeywordWorthyToPropose(Keyword keyword) {
+		return true;
+	}
 
 	// @Override
 	// public void completeEntityMember_Opposite(EObject model,
@@ -113,5 +118,4 @@ public class EntityGrammarProposalProvider extends
 	// }
 	// }
 	//
-
 }

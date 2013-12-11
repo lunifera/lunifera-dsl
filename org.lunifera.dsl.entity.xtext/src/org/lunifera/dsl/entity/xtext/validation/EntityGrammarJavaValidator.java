@@ -32,6 +32,7 @@ import org.lunifera.dsl.semantic.entity.EntityPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
@@ -60,6 +61,8 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__INHERITANCE_PROPERTY_IGNORED = "105";
 	public static final String CODE__INHERITANCE_DISCRIMINATOR_VALUE_NOT_UNIQUE = "106";
 	public static final String CODE__DUPLICATE_PERSISTENCE = "106";
+	public static final String CODE__DUPLICATE_ID = "107";
+	public static final String CODE__DUPLICATE_VERSION = "108";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -227,6 +230,36 @@ public class EntityGrammarJavaValidator extends
 		}
 	}
 
+	@Check(CheckType.NORMAL)
+	public void checkJPA_DuplicateIdAndVersion(LEntityAttribute input) {
+
+		boolean idFound = false;
+		boolean idMessageSent = false;
+		boolean versionFound = false;
+		boolean versionMessageSent = false;
+		for (LEntityAttribute att : input.getEntity().getAllAttributes()) {
+			if (!idMessageSent && idFound && att.isId()) {
+				error("A supertype already defines an id attribute.",
+						LunTypesPackage.Literals.LATTRIBUTE__ID,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__DUPLICATE_ID, (String[]) null);
+				return;
+			}
+			if (att.isId())
+				idFound = true;
+
+			if (!versionMessageSent && versionFound && att.isVersion()) {
+				error("A supertype already defines an version attribute.",
+						LunTypesPackage.Literals.LATTRIBUTE__VERSION,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__DUPLICATE_VERSION, (String[]) null);
+				return;
+			}
+			if (att.isVersion())
+				versionFound = true;
+		}
+	}
+
 	protected String getStrategyName(LEntityInheritanceStrategy stgy) {
 		if (LTablePerClassStrategy.class.isAssignableFrom(stgy.getClass())) {
 			return "Table-Per-Class";
@@ -331,8 +364,8 @@ public class EntityGrammarJavaValidator extends
 		for (Map.Entry<IContainer, List<LEntityPersistenceInfo>> temp : lTypes
 				.entrySet())
 			if (temp.getValue().size() > 1) {
-				error(String.format("Persistence type %s is already defined!", qnp
-						.getFullyQualifiedName(info).toString()), entity,
+				error(String.format("Persistence type %s is already defined!",
+						qnp.getFullyQualifiedName(info).toString()), entity,
 						EntityPackage.Literals.LENTITY__PERSISTENCE_INFO,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 						CODE__DUPLICATE_PERSISTENCE, (String[]) null);
