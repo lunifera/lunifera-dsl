@@ -42,6 +42,7 @@ public class CommonGrammarJavaValidator
 	public static final String CODE__DUPLICATE_LPACKAGE_IN_FILE = "0_102";
 	public static final String CODE__MANY_TO_MANY__NOT_SUPPORTED = "0_103";
 	public static final String CODE__NOT_A_VALID_PRIMITIVE = "0_104";
+	public static final String CODE__FORBIDDEN_JAVA_KEYWORD = "0_105";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -54,7 +55,7 @@ public class CommonGrammarJavaValidator
 	@Inject
 	ResourceDescriptionsProvider resourceDescriptionsProvider;
 
-	private static final Set<String> javakeywords = new HashSet<String>();
+	public static final Set<String> javakeywords = new HashSet<String>();
 	static {
 		javakeywords.add("abstract");
 		javakeywords.add("assert");
@@ -139,9 +140,14 @@ public class CommonGrammarJavaValidator
 	}
 
 	public void checkProperties_JavaKeyWord(LFeature lprop) {
+		if (lprop.getName() == null) {
+			return;
+		}
 		if (javakeywords.contains(lprop.getName())) {
-			error("The name of the property is an java keyword and not allowed!",
-					LunTypesPackage.Literals.LFEATURE__NAME);
+			error("The name of the property is a java keyword and not allowed!",
+					LunTypesPackage.Literals.LFEATURE__NAME,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					CODE__FORBIDDEN_JAVA_KEYWORD, (String[]) null);
 		}
 	}
 
@@ -194,7 +200,7 @@ public class CommonGrammarJavaValidator
 				warning(String.format("Duplicate package %s in container ", qnp
 						.getFullyQualifiedName(lPackage).toString()), lPackage,
 						LunTypesPackage.Literals.LPACKAGE__NAME,
-						CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
+						CODE__DUPLICATE_LPACKAGE_IN_PROJECT, (String[]) null);
 			}
 	}
 

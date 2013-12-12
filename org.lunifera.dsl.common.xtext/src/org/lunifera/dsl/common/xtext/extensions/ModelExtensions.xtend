@@ -53,7 +53,7 @@ class ModelExtensions {
 				case typeof(Character).name: references.findDeclaredType(Character::TYPE, type).newTypeRef()
 				case typeof(Byte).name: references.findDeclaredType(Byte::TYPE, type).newTypeRef()
 				case typeof(Boolean).name: references.findDeclaredType(Boolean::TYPE, type).newTypeRef()
-				default: throw new IllegalStateException
+				default: type?.jvmTypeReference
 			}
 		} else {
 			return type.jvmTypeReference

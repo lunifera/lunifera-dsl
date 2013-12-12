@@ -50,13 +50,6 @@ import com.google.inject.Inject;
 public class EntityGrammarJavaValidator extends
 		AbstractEntityGrammarJavaValidator {
 
-	public static final String BASE = "org.lunifera.dsl.entity.";
-	public static final String CASCADE_NOT_VALID = BASE + "cascadeNotValid";
-
-	public static final String CODE__DUPLICATE_LPACKAGE_IN_PROJECT = "100";
-	public static final String CODE__DUPLICATE_LTYPE_IN_PROJECT = "101";
-	public static final String CODE__DUPLICATE_LPACKAGE_IN_FILE = "102";
-	public static final String CODE__MANY_TO_MANY__NOT_SUPPORTED = "103";
 	public static final String CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE = "104";
 	public static final String CODE__INHERITANCE_PROPERTY_IGNORED = "105";
 	public static final String CODE__INHERITANCE_DISCRIMINATOR_VALUE_NOT_UNIQUE = "106";
@@ -65,6 +58,9 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__DUPLICATE_VERSION = "108";
 	public static final String CODE__MISSING_ID = "109";
 	public static final String CODE__DUPLICATE_PROPERTY_NAME = "110";
+	public static final String CODE__MISSING_OPPOSITE_REFERENCE = "111";
+	public static final String CODE__BIDIRECTIONAL_CASCADE_INVALID = "112";
+	public static final String CODE__CASCADE_DIRECTION_INVALID = "113";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -86,7 +82,9 @@ public class EntityGrammarJavaValidator extends
 	public void checkJPA_MultiHasOppositeReference(LEntityReference prop) {
 		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
 			error("A bidirectional association needs an opposite reference.",
-					EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE);
+					EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
 		}
 	}
 
@@ -94,7 +92,9 @@ public class EntityGrammarJavaValidator extends
 	public void checkBean_MultiHasOppositeReference(LBeanReference prop) {
 		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
 			error("A bidirectional association needs an opposite reference.",
-					EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE);
+					EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
 		}
 	}
 
@@ -103,15 +103,16 @@ public class EntityGrammarJavaValidator extends
 		if (prop.getOpposite() != null) {
 			if (prop.isCascading() && prop.getOpposite().isCascading()) {
 				error("Only one opposite may be specified as cascade",
-						LunTypesPackage.Literals.LREFERENCE__CASCADING);
+						LunTypesPackage.Literals.LREFERENCE__CASCADING,
+						CODE__BIDIRECTIONAL_CASCADE_INVALID, (String[]) null);
 			}
 
 			if (extensions.isToMany(prop.getOpposite())) {
 				if (prop.isCascading()) {
-					error("The many-to-one relation must not be marked as cascade",
+					error("Cascade must not affect the common parent in a many-to-one relation",
 							prop,
 							LunTypesPackage.Literals.LREFERENCE__CASCADING,
-							CASCADE_NOT_VALID, new String[0]);
+							CODE__CASCADE_DIRECTION_INVALID, new String[0]);
 				}
 			}
 		}
@@ -122,15 +123,16 @@ public class EntityGrammarJavaValidator extends
 		if (prop.getOpposite() != null) {
 			if (prop.isCascading() && prop.getOpposite().isCascading()) {
 				error("Only one opposite may be specified as cascade",
-						LunTypesPackage.Literals.LREFERENCE__CASCADING);
+						LunTypesPackage.Literals.LREFERENCE__CASCADING,
+						CODE__BIDIRECTIONAL_CASCADE_INVALID, (String[]) null);
 			}
 
 			if (extensions.isToMany(prop.getOpposite())) {
 				if (prop.isCascading()) {
-					error("The many-to-one relation must not be marked as cascade",
+					error("Cascade must not affect the common parent in a many-to-one relation",
 							prop,
 							LunTypesPackage.Literals.LREFERENCE__CASCADING,
-							CASCADE_NOT_VALID, new String[0]);
+							CODE__CASCADE_DIRECTION_INVALID, new String[0]);
 				}
 			}
 		}
@@ -170,18 +172,31 @@ public class EntityGrammarJavaValidator extends
 	}
 
 	@Check
-	public void checkManyToMany(LEntityReference prop) {
+	public void checkBeanManyToMany(LBeanReference prop) {
 		ModelExtensions extension = new ModelExtensions();
 		if (prop.getOpposite() != null && extension.isToMany(prop)
 				&& extension.isToMany(prop.getOpposite())) {
 			error(String.format("ManyToMany relations are not permitted!", qnp
-					.getFullyQualifiedName(prop).toString()), prop.getEntity(),
-					EntityPackage.Literals.LENTITY__FEATURES,
+					.getFullyQualifiedName(prop).toString()),
+					EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 					CODE__MANY_TO_MANY__NOT_SUPPORTED, (String[]) null);
 		}
 	}
 
+	@Check
+	public void checkManyToMany(LEntityReference prop) {
+		ModelExtensions extension = new ModelExtensions();
+		if (prop.getOpposite() != null && extension.isToMany(prop)
+				&& extension.isToMany(prop.getOpposite())) {
+			error(String.format("ManyToMany relations are not permitted!", qnp
+					.getFullyQualifiedName(prop).toString()),
+					EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					CODE__MANY_TO_MANY__NOT_SUPPORTED, (String[]) null);
+		}
+	}
+	
 	@Check(CheckType.NORMAL)
 	public void checkJPA_ConsistentInheritanceStrategy(LEntity entity) {
 		// no checks required - inheritance is inherited
@@ -269,6 +284,7 @@ public class EntityGrammarJavaValidator extends
 								feature.getName()),
 								EntityPackage.Literals.LENTITY__FEATURES, i,
 								CODE__DUPLICATE_PROPERTY_NAME, new String[0]);
+						break;
 					}
 					i++;
 				}
