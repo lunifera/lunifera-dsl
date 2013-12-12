@@ -810,7 +810,7 @@ class Validations {
 				}
 				
 				entity Test2 extends Test {
-					tableName Testtable;							// error: table name equal in CAPITALS
+					tableName Testtable;							// error: table name equal when using CAPITALS
 				}
 			}
 		'''.parse.validate.toMap[it.code]
