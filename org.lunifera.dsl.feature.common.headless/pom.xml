@@ -21,7 +21,7 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	<artifactId>org.lunifera.dsl.feature.eclipse.ui</artifactId>
+	<artifactId>org.lunifera.dsl.feature.common.headless</artifactId>
 	<packaging>eclipse-feature</packaging>
 	<build>
 		<plugins>
@@ -60,4 +60,16 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.lunifera.dsl</groupId>
+			<artifactId>org.lunifera.dsl.semantic.common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.lunifera.dsl</groupId>
+			<artifactId>org.lunifera.dsl.common.xtext</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

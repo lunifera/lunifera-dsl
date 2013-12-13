@@ -25,7 +25,7 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="2.3.1",
  org.eclipse.xtext.purexbase.ui;bundle-version="2.3.1",
  org.lunifera.dsl.semantic.common;bundle-version="0.0.1",
  org.lunifera.dsl.common.xtext;bundle-version="0.0.1",
- org.lunifera.dsl.common.xtext.ui;bundle-version="1.0.0"
+ org.lunifera.dsl.common.xtext.ui;bundle-version="0.0.1"
 Import-Package: org.apache.commons.logging,
  org.apache.log4j,
  org.eclipse.jdt.internal.ui,

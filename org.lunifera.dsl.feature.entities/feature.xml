@@ -19,22 +19,9 @@
    </license>
 
    <requires>
-      <import feature="org.lunifera.dsl.feature.eclipse.ui" version="0.0.0"/>
+      <import feature="org.lunifera.dsl.feature.entities.headless" version="0.0.0"/>
+      <import feature="org.lunifera.dsl.feature.common" version="0.0.0"/>
    </requires>
-
-   <plugin
-         id="org.lunifera.dsl.entity.xtext"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.lunifera.dsl.entity.semantic"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.lunifera.dsl.entity.xtext.ui"

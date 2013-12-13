@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.lunifera.dsl.feature.entities.headless"
+      id="org.lunifera.dsl.feature.common"
       label="%featureName"
       version="0.0.1.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="org.lunifera.dsl.common.xtext.ui">
 
    <description>
       %description
@@ -22,14 +23,7 @@
    </requires>
 
    <plugin
-         id="org.lunifera.dsl.semantic.entity"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.lunifera.dsl.entity.xtext"
+         id="org.lunifera.dsl.common.xtext.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

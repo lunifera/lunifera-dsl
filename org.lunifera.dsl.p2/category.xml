@@ -18,6 +18,12 @@
    <feature id="org.lunifera.dsl.feature.entities.headless.source" version="0.0.0">
       <category name="lunifera-dsls-headless"/>
    </feature>
+   <feature id="org.lunifera.dsl.feature.common.headless" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
+   </feature>
+   <feature id="org.lunifera.dsl.feature.common.headless.source" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
+   </feature>
    <category-def name="lunifera-dsls" label="Lunifera DSLs"/>
    <category-def name="lunifera-dsls-headless" label="Lunifera DSLs - Headless for Target Platform"/>
 </site>

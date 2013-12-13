@@ -13,9 +13,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.lunifera.dsl</groupId>
-		<artifactId>org.lunifera.dsl.parent</artifactId>
+		<artifactId>org.lunifera.dsl</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../org.lunifera.dsl.parent/pom.xml</relativePath>
+		<relativePath>../</relativePath>
 	</parent>
 	
 	<artifactId>org.lunifera.dsl.eclipse.ui</artifactId>

@@ -32,7 +32,7 @@ public class EntityGrammarQuickfixProvider extends DefaultQuickfixProvider {
 							throws BadLocationException {
 						IXtextDocument xtextDocument = context
 								.getXtextDocument();
-						xtextDocument.replace(issue.getOffset(), "cascade".length(),
+						xtextDocument.replace(issue.getOffset(), "cascade ".length(),
 								"");
 					}
 				});

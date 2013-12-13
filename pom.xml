@@ -21,10 +21,11 @@
 		<lunifera.deployment.p2.name>dsl</lunifera.deployment.p2.name>
 		<lunifera.build.p2.project.name>org.lunifera.dsl.p2</lunifera.build.p2.project.name>
 		<tycho-version>0.19.0</tycho-version>
+		<tychoExtrasVersion>0.19.0</tychoExtrasVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<xtext.version>2.5.0-SNAPSHOT</xtext.version>
 	</properties>
-		
+
 	<profiles>
 		<profile>
 			<id>lunifera.build.p2</id>
@@ -37,12 +38,23 @@
 			<modules>
 				<!-- P2 bundles -->
 				<module>org.lunifera.dsl.semantic.common</module>
-				<module>org.lunifera.dsl.common.xtext</module>
 				<module>org.lunifera.dsl.semantic.entity</module>
+				<module>org.lunifera.dsl.common.xtext</module>
+				<module>org.lunifera.dsl.common.xtext.ui</module>
 				<module>org.lunifera.dsl.entity.xtext</module>
-				<module>org.lunifera.dsl.semantic.dto</module>
-			</modules>
+				<module>org.lunifera.dsl.entity.xtext.ui</module>
+				<module>org.lunifera.dsl.eclipse.ui</module>
 
+				<!-- P2 feature -->
+				<module>org.lunifera.dsl.feature.entities</module>
+				<module>org.lunifera.dsl.feature.entities.headless</module>
+				<module>org.lunifera.dsl.feature.common</module>
+				<module>org.lunifera.dsl.feature.common.headless</module>
+				<module>org.lunifera.dsl.feature.eclipse.ui</module>
+				
+				<!-- P2 repository -->
+				<module>org.lunifera.dsl.p2</module>
+			</modules>
 		</profile>
 	</profiles>
 
@@ -93,6 +105,19 @@
 					</executions>
 				</plugin>
 				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-source-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<executions>
+						<execution>
+							<id>plugin-source</id>
+							<goals>
+								<goal>plugin-source</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
 					<version>${xtext.version}</version>
@@ -119,6 +144,10 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
