@@ -23,7 +23,7 @@ import org.lunifera.dsl.entity.xtext.validation.EntityGrammarJavaValidator;
 public class EntityGrammarQuickfixProvider extends DefaultQuickfixProvider {
 
 	@SuppressWarnings("restriction")
-	@Fix(EntityGrammarJavaValidator.CASCADE_NOT_VALID)
+	@Fix(EntityGrammarJavaValidator.CODE__CASCADE_DIRECTION_INVALID)
 	public void capitalizeName(final Issue issue,
 			IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, "Remove cascade", "Removes the cascade keyword",
