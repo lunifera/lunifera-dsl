@@ -5,14 +5,23 @@ import org.lunifera.dsl.semantic.common.types.LFeature
 class NamingExtensions {
 
 	def toSetterName(LFeature prop) {
+		if (prop == null || prop.name == null) {
+			return "setMISSING_NAME"
+		}
 		"set".concat(prop.name.toFirstUpper);
 	}
 
 	def toGetterName(LFeature prop) {
+		if (prop == null || prop.name == null) {
+			return "getMISSING_NAME"
+		}
 		"get".concat(prop.name.toFirstUpper);
 	}
 
 	def toBooleanGetterName(LFeature prop) {
+		if (prop == null || prop.name == null) {
+			return "isMISSING_NAME"
+		}
 		val propName = prop.name.toFirstLower
 		if (propName.startsWith("is") || propName.startsWith("has")) {
 			return propName
