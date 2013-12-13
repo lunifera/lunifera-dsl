@@ -1,5 +1,5 @@
 package org.lunifera.dsl.entity.xtext.extensions
-
+ 
 import com.google.inject.Inject
 import java.util.ArrayList
 import org.eclipse.emf.ecore.EObject

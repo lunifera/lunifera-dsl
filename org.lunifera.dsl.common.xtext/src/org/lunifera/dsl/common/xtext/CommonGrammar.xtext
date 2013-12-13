@@ -12,7 +12,7 @@ TypedPackage returns LTypedPackage:
 Type returns LType:
 	ScalarType | Class;
 
-	/**
+/**
  * Needs to be overridden by sub grammar
  */
 Class returns LClass:

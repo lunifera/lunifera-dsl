@@ -4,8 +4,8 @@ import org.lunifera.dsl.entity.xtext.util.PersistenceNamingUtils
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
-import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo
+import org.lunifera.dsl.semantic.entity.LEntityReference
 
 class NamingExtensions extends org.lunifera.dsl.common.xtext.extensions.NamingExtensions {
 
@@ -15,7 +15,7 @@ class NamingExtensions extends org.lunifera.dsl.common.xtext.extensions.NamingEx
 		if (columnBaseName.nullOrEmpty) {
 			columnBaseName = PersistenceNamingUtils::camelCaseToUpperCase(prop.name)
 		}
-
+ 
 		// Compute the final column name using some settings. 
 		// E.g. to add some prefix like the shortName of the Entity.
 		// ### not yet implemented
@@ -69,7 +69,7 @@ class NamingExtensions extends org.lunifera.dsl.common.xtext.extensions.NamingEx
 	def toSchemaName(LEntity entity) {
 		entity.persistenceInfo.toSchemaName
 	}
-	
+
 	def toSchemaName(LEntityPersistenceInfo info) {
 		var schemaName = info.schemaName
 		if (!schemaName.nullOrEmpty) {

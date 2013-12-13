@@ -54,7 +54,7 @@ public class EntityGrammarRuntimeModule extends
 	public Class<? extends org.lunifera.dsl.common.xtext.jvmmodel.AnnotationCompiler> bindAnnotationCompiler() {
 		return org.lunifera.dsl.entity.xtext.jvmmodel.AnnotationCompiler.class;
 	}
-
+ 
 	@SuppressWarnings("restriction")
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {
 		return EntityTypesBuilder.class;

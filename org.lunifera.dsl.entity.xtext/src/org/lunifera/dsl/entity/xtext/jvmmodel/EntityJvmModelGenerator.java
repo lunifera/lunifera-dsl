@@ -12,7 +12,7 @@ package org.lunifera.dsl.entity.xtext.jvmmodel;
 
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
+import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
 
 import com.google.inject.Inject;

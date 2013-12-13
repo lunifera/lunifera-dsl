@@ -185,13 +185,14 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def List<LEntityInheritanceStrategy> collectAllInheritanceStrategies(LEntity entity) {
 		return entity.collectAllInheritanceStrategies(newArrayList())
 	}
-	
-	def protected List<LEntityInheritanceStrategy> collectAllInheritanceStrategies(LEntity entity, List<LEntityInheritanceStrategy> result) {
-		if(entity == null){
+
+	def protected List<LEntityInheritanceStrategy> collectAllInheritanceStrategies(LEntity entity,
+		List<LEntityInheritanceStrategy> result) {
+		if (entity == null) {
 			return result
 		}
 		result += entity.toInheritanceStrategy
-		
+
 		return entity.superType.collectAllInheritanceStrategies(result)
 	}
 
@@ -251,7 +252,6 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		strategy.discriminatorValue = null
 	}
 
-
 	def dispatch String toDiscriminatorValue(LTablePerClassStrategy strategy) {
 		strategy.discriminatorValue
 	}
@@ -259,7 +259,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch String toDiscriminatorValue(LTablePerSubclassStrategy strategy) {
 		strategy.discriminatorValue
 	}
-	
+
 	def LEntityInheritanceStrategy findStrategyFromSuper(LEntity entity) {
 		if (entity.inheritanceStrategy != null) {
 			return EcoreUtil::copy(entity.inheritanceStrategy)
