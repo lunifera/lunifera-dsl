@@ -33,6 +33,8 @@ import javax.persistence.MappedSuperclass
 import javax.persistence.OneToMany
 import javax.persistence.OneToOne
 import javax.persistence.Table
+import javax.persistence.Temporal
+import javax.persistence.TemporalType
 import javax.persistence.Transient
 import javax.persistence.Version
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
@@ -43,6 +45,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions
+import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
@@ -53,6 +56,8 @@ import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
+
+import static org.lunifera.dsl.semantic.common.types.LDateType.*
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -164,23 +169,20 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	def protected dispatch void internalProcessAnnotation(LEntityReference prop, JvmField jvmField) {
 		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
-			val ann = prop.toAnnotation(typeof(Column))
-			ann.addAnnAttr(prop, "name", prop.toColumnName)
-			if (prop.bounds.required) {
-				ann.addAnnAttr(prop, "nullable", false)
-			}
-			addAnno(prop, jvmField, ann)
-
 		if (prop.toMany) {
+
 			// *toMany
 			if (prop.opposite.toMany) {
+
 				// @ManyToMany
 				addManyToManyAnno(prop, jvmField)
 			} else {
+
 				// @OneToMany
 				addOneToManyAnno(prop, jvmField)
 			}
 		} else {
+
 			// *toOne
 			val opposite = prop.resolvedOpposite
 
@@ -220,11 +222,27 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 			val ann = prop.toAnnotation(typeof(Column))
 			ann.addAnnAttr(prop, "name", prop.toColumnName)
-			
 			if (prop.bounds.required) {
 				ann.addAnnAttr(prop, "nullable", false)
 			}
 			addAnno(prop, jvmField, ann)
+
+			if (prop.type instanceof LDataType) {
+				val LDataType datatype = prop.type as LDataType
+				if (datatype.date) {
+					val temp = prop.toAnnotation(typeof(Temporal))
+					switch (datatype.dateType) {
+						case DATE:
+							temp.addAnnAttr(prop, "value", TemporalType::DATE)
+						case TIME:
+							temp.addAnnAttr(prop, "value", TemporalType::TIME)
+						case TIMESTAMP:
+							temp.addAnnAttr(prop, "value", TemporalType::TIMESTAMP)
+					}
+					addAnno(prop, jvmField, temp)
+				}
+
+			}
 		}
 	}
 
@@ -248,6 +266,14 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def private addOneToManyAnno(LEntityReference prop, JvmAnnotationTarget jvmAnnTarget) {
+
+		val col = prop.toAnnotation(typeof(JoinColumn))
+		col.addAnnAttr(prop, "name", prop.toColumnName)
+		if (prop.bounds.required) {
+			col.addAnnAttr(prop, "nullable", false)
+		}
+		addAnno(prop, jvmAnnTarget, col)
+
 		val ann = prop.toAnnotation(typeof(OneToMany))
 		if (prop.opposite != null) {
 			if (prop.opposite.name == null) {
@@ -280,6 +306,9 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 		val joinColumn = prop.toAnnotation(typeof(JoinColumn))
 		joinColumn.addAnnAttr(prop, "name", prop.toColumnName)
+		if (prop.bounds.required) {
+			joinColumn.addAnnAttr(prop, "nullable", false)
+		}
 		addAnno(prop, jvmAnnTarget, joinColumn)
 	}
 
@@ -303,6 +332,9 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if (opposite != null && opposite.cascading) {
 			val joinColumn = prop.toAnnotation(typeof(JoinColumn))
 			joinColumn.addAnnAttr(prop, "name", prop.name)
+			if (prop.bounds.required) {
+				joinColumn.addAnnAttr(prop, "nullable", false)
+			}
 			addAnno(prop, jvmAnnTarget, joinColumn)
 		}
 	}

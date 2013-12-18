@@ -5,9 +5,9 @@ import org.eclipse.xtext.ui.generator.*
 import org.eclipse.xtext.generator.parser.antlr.*
 import org.eclipse.xtext.resource.XtextResourceSet
 
-var grammarURI = "classpath:/org/lunifera/dsl/common/xtext/CommonGrammar.xtext"
 var fileExtensions = "dtomodel"
 var projectName = "org.lunifera.dsl.common.xtext"
+var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/common/xtext/CommonGrammar.xtext"
 var runtimeProject = "../${projectName}"
 var backtrack = false
 var memoize = false

@@ -373,7 +373,7 @@ class Validations {
 
 	@Test
 	def void javaKeyword() {
-		for (String keyword : CommonGrammarJavaValidator.javakeywords) {
+		for (String keyword : CommonGrammarJavaValidator::javakeywords) {
 			result = '''
 				package org.lunifera.dsl.^entity.xtext.tests {
 					entity Test {
@@ -718,7 +718,7 @@ class Validations {
 		CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE.severity.assertSame(WARNING)
 		CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE.lineNumber.assertEquals(16)
 	}
-	
+
 	@Test
 	def void inheritance_4() {
 		result = '''
@@ -746,7 +746,7 @@ class Validations {
 		CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE.severity.assertSame(WARNING)
 		CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE.lineNumber.assertEquals(16)
 	}
-	
+
 	@Test
 	def void inheritance_5() {
 		result = '''
@@ -796,7 +796,7 @@ class Validations {
 		CODE__DUPLICATE_PERSISTENCE.severity.assertSame(ERROR)
 		CODE__DUPLICATE_PERSISTENCE.lineNumber.assertEquals(11)
 	}
-	
+
 	@Test
 	def void persistence_2() {
 		result = '''
@@ -836,7 +836,7 @@ class Validations {
 				}
 			}
 		'''.parse.validate.toMap[it.code]
-		
+
 		result.size.assertEquals(0)
 	}
 

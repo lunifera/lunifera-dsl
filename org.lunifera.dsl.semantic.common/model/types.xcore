@@ -10,7 +10,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
- 
+
 class LPackage {
 	String name
 	contains LImport[] imports
@@ -19,16 +19,16 @@ class LPackage {
 class LTypedPackage extends LPackage {
 	contains LType[] types
 }
- 
+
 class LImport {
 	String importedNamespace
-} 
+}
 
 class LType extends LAnnotationTarget {
 	String name
 	contains LAnnotationTarget annotationInfo
 }
- 
+
 class LAnnotationDef {
 	boolean exclude
 	contains XAnnotation ^annotation
@@ -40,10 +40,18 @@ class LAnnotationTarget {
 
 class LScalarType extends LType {
 }
- 
+
 class LDataType extends LScalarType {
 	contains JvmTypeReference jvmTypeReference
 	boolean asPrimitive
+	boolean date
+	LDateType dateType
+}
+
+enum LDateType {
+	DATE
+	, TIME
+	, TIMESTAMP
 }
 
 class LEnum extends LScalarType {

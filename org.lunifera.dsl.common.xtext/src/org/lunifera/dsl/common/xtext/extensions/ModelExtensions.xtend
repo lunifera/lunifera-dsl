@@ -11,6 +11,7 @@
 package org.lunifera.dsl.common.xtext.extensions
 
 import com.google.inject.Inject
+import java.util.Date
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
@@ -41,7 +42,9 @@ class ModelExtensions {
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LDataType type) {
-		if (type.asPrimitive) {
+		if (type.date) {
+			return references.findDeclaredType(typeof(Date), type).newTypeRef()
+		} else if (type.asPrimitive) {
 			val fqn = type?.jvmTypeReference?.type?.fullyQualifiedName
 			switch (fqn.toString) {
 				case typeof(Integer).name: references.findDeclaredType(Integer::TYPE, type).newTypeRef()

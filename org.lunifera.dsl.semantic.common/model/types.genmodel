@@ -26,6 +26,11 @@
   <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
   <genPackages prefix="LunTypes" basePackage="org.lunifera.dsl.semantic.common" disposableProviderFactory="true"
       fileExtensions="typesmodel" ecorePackage="types.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//DateType">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//DateType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//DateType/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//DateType/TIMESTAMP"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//LVisibility">
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//LVisibility/PACKAGE"/>
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//LVisibility/PRIVATE"/>
@@ -72,6 +77,8 @@
     <genClasses ecoreClass="types.ecore#//LDataType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LDataType/jvmTypeReference"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/asPrimitive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/dateType"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//LEnum">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LEnum/literals"/>

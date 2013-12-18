@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.persistence.jpa;bundle-version="2.5.0",
  org.eclipse.persistence.asm;bundle-version="3.3.1",
  org.eclipse.persistence.jpa.jpql;bundle-version="2.5.0",
- org.lunifera.dsl.common.xtext;bundle-version="1.0.0",
+ org.lunifera.dsl.common.xtext;bundle-version="0.0.1",
  org.lunifera.dsl.semantic.common;bundle-version="0.0.1"
 Import-Package: junit.framework;version="3.8.2",
  org.apache.commons.logging,
@@ -39,3 +39,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.lunifera.dsl.entity.xtext.tests
 Meta-Persistence: META-INF/persistence.xml
 Bundle-Activator: org.lunifera.dsl.entity.xtext.tests.Activator
+Bundle-ClassPath: lib/mysql-connector-java-5.1.6.jar,
+ .

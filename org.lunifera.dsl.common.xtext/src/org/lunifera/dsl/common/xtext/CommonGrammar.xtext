@@ -12,7 +12,7 @@ TypedPackage returns LTypedPackage:
 Type returns LType:
 	ScalarType | Class;
 
-/**
+	/**
  * Needs to be overridden by sub grammar
  */
 Class returns LClass:
@@ -25,7 +25,13 @@ Import returns LImport:
 
 DataType returns LDataType:
 	'datatype' name=ValidIDWithKeywords
-	'jvmType' jvmTypeReference=JvmTypeReference (asPrimitive?='as primitive')? ';';
+	(('jvmType' jvmTypeReference=JvmTypeReference (asPrimitive?='as primitive')?)
+	|
+	(date?='dateType' dateType=DateType))
+	';';
+
+enum DateType returns LDateType:
+	DATE='date' | TIME='time' | TIMESTAMP='timestamp';
 
 ScalarType returns LScalarType:
 	DataType | Enum;
@@ -57,7 +63,7 @@ LFQN:
 ValidIDWithKeywords:
 	'cachable' | 'id' | 'transient' | 'version' |
 	'collection' | 'refers' | 'settings' | 'lazy' |
-	'notnull' | 'dto' |
+	'notnull' | 'dto' |  'date' | 
 	ID;
 
 Multiplicity returns LMultiplicity:

@@ -44,6 +44,14 @@
         containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="asPrimitive" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateType" unique="false"
+        eType="#//DateType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DateType">
+    <eLiterals name="DATE"/>
+    <eLiterals name="TIME"/>
+    <eLiterals name="TIMESTAMP"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LEnum" eSuperTypes="#//LScalarType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="literals" upperBound="-1"
