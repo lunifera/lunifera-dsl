@@ -52,8 +52,11 @@
 			<id>central snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</pluginRepository>
+		<pluginRepository>
+			<id>lunifera snapshots</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</url>
+		</pluginRepository>
 	</pluginRepositories>
-
 	<build>
 		<pluginManagement>
 			<plugins>

@@ -21,8 +21,4 @@ package org.lunifera.dsl.^entity.xtext.lib {
 	datatype String jvmType java.lang.String;
 	datatype Date jvmType java.util.Date;
 	 
-	entity BaseEntity { 
-		id long id;
-		version long version;
-	}
 }
