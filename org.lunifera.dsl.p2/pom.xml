@@ -101,14 +101,12 @@
 						<artifactId>maven-antrun-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>create.p2.inf</id>
-								<phase>package</phase>
+								<phase>verify</phase>
 								<configuration>
 									<quiet>true</quiet>
 									<target>
 										<ant antfile="build.xml" target="basic.build" dir=".">
-											<property name="lunifera.deployment.p2.origin.dir"
-												value="${lunifera.deployment.p2.origin.dir}" />
+											<property name="lunifera.build.p2.source.dir" value="${lunifera.build.p2.source.dir}" />
 											<property name="associate.sites" value="${associate.p2}" />
 										</ant>
 									</target>
