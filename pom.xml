@@ -12,19 +12,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>org.lunifera.releng.maven</groupId>
+		<artifactId>org.lunifera.releng.maven.parent.tycho.aggregator</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<groupId>org.lunifera.dsl</groupId>
 	<artifactId>org.lunifera.dsl</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
-	<properties>
-		<lunifera.deployment.p2.name>dsl</lunifera.deployment.p2.name>
-		<lunifera.build.p2.project.name>org.lunifera.dsl.p2</lunifera.build.p2.project.name>
-		<tycho-version>0.19.0</tycho-version>
-		<tychoExtrasVersion>0.19.0</tychoExtrasVersion>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<xtext.version>2.5.0-SNAPSHOT</xtext.version>
-	</properties>
 
 	<profiles>
 		<profile>
@@ -36,12 +32,14 @@
 				<defaultGoal>clean verify</defaultGoal>
 			</build>
 			<modules>
+				<module>org.lunifera.dsl.parent</module>
 				<!-- P2 bundles -->
 				<module>org.lunifera.dsl.semantic.common</module>
 				<module>org.lunifera.dsl.semantic.entity</module>
 				<module>org.lunifera.dsl.common.xtext</module>
 				<module>org.lunifera.dsl.common.xtext.ui</module>
 				<module>org.lunifera.dsl.entity.xtext</module>
+				<module>org.lunifera.dsl.entity.xtext.lib</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
 				<module>org.lunifera.dsl.eclipse.ui</module>
 
@@ -51,104 +49,10 @@
 				<module>org.lunifera.dsl.feature.common</module>
 				<module>org.lunifera.dsl.feature.common.headless</module>
 				<module>org.lunifera.dsl.feature.eclipse.ui</module>
-				
+
 				<!-- P2 repository -->
 				<module>org.lunifera.dsl.p2</module>
 			</modules>
 		</profile>
 	</profiles>
-
-	<repositories>
-		<repository>
-			<id>kepler</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/kepler</url>
-		</repository>
-		<repository>
-			<id>Xtext bleeding edge</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/</url>
-		</repository>
-
-		<repository>
-			<id>central snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>central snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</pluginRepository>
-	</pluginRepositories>
-
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>build-helper-maven-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>add-source</id>
-							<phase>initialize</phase>
-							<goals>
-								<goal>add-source</goal>
-							</goals>
-							<configuration>
-								<sources>
-									<source>src-gen</source>
-									<source>xtend-gen</source>
-								</sources>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-source-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<executions>
-						<execution>
-							<id>plugin-source</id>
-							<goals>
-								<goal>plugin-source</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.xtend</groupId>
-					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtext.version}</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>compile</goal>
-								<goal>xtend-install-debug-info</goal>
-								<goal>testCompile</goal>
-								<goal>xtend-test-install-debug-info</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<outputDirectory>xtend-gen</outputDirectory>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>

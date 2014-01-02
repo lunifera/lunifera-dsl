@@ -35,7 +35,8 @@ public class EntityImportedNamespaceAwareLocalScopeProvider extends
 		temp.add(new ImportNormalizer(QualifiedName
 				.create("java.beans"), true, ignoreCase));
 		temp.add(new ImportNormalizer(QualifiedName
-				.create("org.lunifera.dsl.entity"), true, ignoreCase));
+				.create("org.lunifera.dsl.entity.xtext.lib"), true, ignoreCase));
+		
 		return temp;
 	}
 }

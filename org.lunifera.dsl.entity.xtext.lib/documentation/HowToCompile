@@ -1,0 +1,14 @@
+1)
+Just open org.lunifera.dsl.entity.xtext.extensions.AnnotationExtensions.xtend
+change a line (add a white space)
+Save
+--> Then the xtend-gen folder should contain a lot of elements
+
+2)
+Then run the "lunifera-P2" maven run configuration
+
+3)
+Refresh all projects
+
+4)
+Open org.lunifera.p2.target.juno/local.target and set as target platform

@@ -186,7 +186,7 @@ public class CommonGrammarJavaValidator
 			}
 			for (IEObjectDescription eobjectDescription : container
 					.getExportedObjects(LunTypesPackage.Literals.LTYPE,
-							qnp.getFullyQualifiedName(lType), true)) {
+							qnp.getFullyQualifiedName(lType), false)) {
 				types.add((LType) eobjectDescription.getEObjectOrProxy());
 			}
 		}
@@ -224,7 +224,7 @@ public class CommonGrammarJavaValidator
 			allEntities.put(container, packages);
 			for (IEObjectDescription eobjectDescription : container
 					.getExportedObjects(LunTypesPackage.Literals.LPACKAGE,
-							qnp.getFullyQualifiedName(lPackage), true)) {
+							qnp.getFullyQualifiedName(lPackage), false)) {
 				packages.add((LPackage) eobjectDescription.getEObjectOrProxy());
 			}
 		}
