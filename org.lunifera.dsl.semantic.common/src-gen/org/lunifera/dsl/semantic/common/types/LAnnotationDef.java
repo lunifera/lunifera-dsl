@@ -1,0 +1,80 @@
+/**
+ */
+package org.lunifera.dsl.semantic.common.types;
+
+import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>LAnnotation Def</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAnnotationDef#isExclude <em>Exclude</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAnnotationDef#getAnnotation <em>Annotation</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAnnotationDef()
+ * @model
+ * @generated
+ */
+public interface LAnnotationDef extends EObject
+{
+  /**
+   * Returns the value of the '<em><b>Exclude</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Exclude</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Exclude</em>' attribute.
+   * @see #setExclude(boolean)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAnnotationDef_Exclude()
+   * @model unique="false"
+   * @generated
+   */
+  boolean isExclude();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAnnotationDef#isExclude <em>Exclude</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Exclude</em>' attribute.
+   * @see #isExclude()
+   * @generated
+   */
+  void setExclude(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Annotation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Annotation</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Annotation</em>' containment reference.
+   * @see #setAnnotation(XAnnotation)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAnnotationDef_Annotation()
+   * @model containment="true"
+   * @generated
+   */
+  XAnnotation getAnnotation();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAnnotationDef#getAnnotation <em>Annotation</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Annotation</em>' containment reference.
+   * @see #getAnnotation()
+   * @generated
+   */
+  void setAnnotation(XAnnotation value);
+
+} // LAnnotationDef
