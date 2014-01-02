@@ -11,12 +11,12 @@
 #     Cristiano Gavião - initial API and implementation
 #====================================================================== 
 -->
-<project default="basic.build" name="Lunifera DSL P2 with aggregate repositories">
+<project default="basic.build" name="Lunifera DSLs P2 with aggregate repositories">
 
 	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
 	
 	<target name="init">
-		<property name="update.site.source.dir" value="${lunifera.deployment.p2.origin.dir}" />
+		<property name="update.site.source.dir" value="${lunifera.build.p2.source.dir}" />
 
 		<echo>Loaded associate sites: ${associate.sites}</echo>
 		<echo>Source dir: ${update.site.source.dir}</echo>
