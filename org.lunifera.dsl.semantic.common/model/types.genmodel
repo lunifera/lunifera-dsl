@@ -26,10 +26,10 @@
   <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
   <genPackages prefix="LunTypes" basePackage="org.lunifera.dsl.semantic.common" disposableProviderFactory="true"
       fileExtensions="typesmodel" ecorePackage="types.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//DateType">
-      <genEnumLiterals ecoreEnumLiteral="types.ecore#//DateType/DATE"/>
-      <genEnumLiterals ecoreEnumLiteral="types.ecore#//DateType/TIME"/>
-      <genEnumLiterals ecoreEnumLiteral="types.ecore#//DateType/TIMESTAMP"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//LDateType">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LDateType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LDateType/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LDateType/TIMESTAMP"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//LVisibility">
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//LVisibility/PACKAGE"/>

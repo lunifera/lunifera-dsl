@@ -31,7 +31,7 @@ Import-Package: org.apache.commons.logging,
  org.eclipse.jdt.internal.ui,
  org.eclipse.jdt.internal.ui.viewsupport,
  org.eclipse.jdt.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.dsl.entity.xtext.ui;x-internal:=true,
  org.lunifera.dsl.entity.xtext.ui.contentassist;x-internal:=true,
  org.lunifera.dsl.entity.xtext.ui.contentassist.antlr;x-internal:=true,

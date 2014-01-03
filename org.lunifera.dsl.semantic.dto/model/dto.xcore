@@ -20,7 +20,7 @@ import org.lunifera.dsl.semantic.common.types.FeaturesList
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
-
+ 
 class LDtoModel {
 	contains LTypedPackage[] packages
 }

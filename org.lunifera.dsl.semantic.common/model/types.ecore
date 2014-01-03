@@ -46,9 +46,9 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateType" unique="false"
-        eType="#//DateType"/>
+        eType="#//LDateType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="DateType">
+  <eClassifiers xsi:type="ecore:EEnum" name="LDateType">
     <eLiterals name="DATE"/>
     <eLiterals name="TIME"/>
     <eLiterals name="TIMESTAMP"/>

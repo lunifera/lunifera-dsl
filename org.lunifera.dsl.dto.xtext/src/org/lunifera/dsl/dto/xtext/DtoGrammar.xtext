@@ -22,16 +22,22 @@ Class returns dto::LDto:
 DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
 	annotations+=AnnotationDef*
-	(
-	({dto::LDtoAttribute.annotationInfo=current}
+	(({dto::LDtoAttribute.annotationInfo=current}
 	(inherit?='inherit var' inheritedFeature=[entity::LEntityAttribute] ('name' name=ValidIDWithKeywords)?
-	('as' type=[common::LScalarType|LFQN])?
-	";")
+	(('asType' type=[common::LScalarType|LFQN] ('toDTO' toDTO=XBlockExpression 'fromDTO'
+	fromDTO=XBlockExpression)?) | (";")))
+	)
+	|
+	({dto::LDtoReference.annotationInfo=current}
+	(inherit?='inherit ref' inheritedFeature=[entity::LEntityReference] ('name' name=ValidIDWithKeywords)?
+	(('asType' type=[dto::LDto|LFQN] ('toDTO' toDTO=XBlockExpression 'fromDTO'
+	fromDTO=XBlockExpression)?) | (";")))
+	)
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
 	(('transient' type=[common::LScalarType] name=ValidIDWithKeywords ';')
 	|
 	(('var' | id?='id' | version?="version") type=[common::LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords
-	';')))));
+	';'))));
 
