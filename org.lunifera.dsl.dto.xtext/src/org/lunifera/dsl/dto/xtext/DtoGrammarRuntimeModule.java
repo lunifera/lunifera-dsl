@@ -51,21 +51,21 @@ public class DtoGrammarRuntimeModule extends
 		return DtoGrammarFormatter.class;
 	}
 
-	public Class<? extends org.lunifera.dsl.common.xtext.jvmmodel.AnnotationCompiler> bindAnnotationCompiler() {
-		return org.lunifera.dsl.dto.xtext.jvmmodel.AnnotationCompiler.class;
-	}
+//	public Class<? extends org.lunifera.dsl.common.xtext.jvmmodel.AnnotationCompiler> bindAnnotationCompiler() {
+//		return org.lunifera.dsl.dto.xtext.jvmmodel.AnnotationCompiler.class;
+//	}
+//
+//	public Class<? extends org.lunifera.dsl.common.xtext.extensions.AnnotationExtension> bindAnnotationExtension() {
+//		return org.lunifera.dsl.dto.xtext.extensions.AnnotationExtension.class;
+//	}
 
-	public Class<? extends org.lunifera.dsl.common.xtext.extensions.AnnotationExtension> bindAnnotationExtension() {
-		return org.lunifera.dsl.dto.xtext.extensions.AnnotationExtension.class;
-	}
+//	@SuppressWarnings("restriction")
+//	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {
+//		return DtoTypesBuilder.class;
+//	}
 
-	@SuppressWarnings("restriction")
-	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {
-		return DtoTypesBuilder.class;
-	}
-
-	public Class<? extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions> bindModelExtensions() {
-		return org.lunifera.dsl.dto.xtext.extensions.ModelExtensions.class;
-	}
+//	public Class<? extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions> bindModelExtensions() {
+//		return org.lunifera.dsl.dto.xtext.extensions.ModelExtensions.class;
+//	}
 
 }

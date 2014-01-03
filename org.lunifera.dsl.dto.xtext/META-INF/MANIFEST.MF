@@ -5,22 +5,22 @@ Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.dto.xtext; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext;visibility:=reexport,
- org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
- org.eclipse.xtext.generator;resolution:=optional,
+Require-Bundle: org.eclipse.xtext;bundle-version="2.5.0";visibility:=reexport,
+ org.eclipse.xtext.xbase;bundle-version="2.5.0";resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;bundle-version="2.5.0";resolution:=optional,
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
- org.lunifera.dsl.semantic.dto;bundle-version="0.0.1",
- org.lunifera.dsl.semantic.entity;bundle-version="0.0.1",
- org.eclipse.emf.ecore.xcore;bundle-version="1.1.1",
+ org.lunifera.dsl.common.xtext;bundle-version="0.0.1",
  org.lunifera.dsl.semantic.common;bundle-version="0.0.1",
- org.eclipse.xtext.util,
+ org.lunifera.dsl.semantic.entity;bundle-version="0.0.1",
+ org.lunifera.dsl.semantic.dto;bundle-version="0.0.1",
+ org.eclipse.emf.ecore.xcore;bundle-version="1.1.1",
+ org.eclipse.xtext.util;bundle-version="2.5.0",
  org.antlr.runtime,
- org.eclipse.xtext.common.types,
- org.eclipse.xtext.xbase.lib,
- org.lunifera.dsl.common.xtext;bundle-version="1.0.0"
+ org.eclipse.xtext.common.types;bundle-version="2.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.5.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.dsl.dto.xtext,

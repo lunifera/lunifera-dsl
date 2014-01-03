@@ -21,89 +21,89 @@ import org.lunifera.dsl.semantic.entity.LBeanReference
  */
 class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
-	@Inject extension IQualifiedNameProvider
-	@Inject extension DtoTypesBuilder;
-	@Inject extension ModelExtensions;
-	@Inject TypeReferences references
+//	@Inject extension IQualifiedNameProvider
+//	@Inject extension DtoTypesBuilder;
+//	@Inject extension ModelExtensions;
+//	@Inject TypeReferences references
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(dto)) return;
 
-		acceptor.accept(dto.toJvmType).initializeLater [
-			documentation = dto.getDocumentation
-			if (dto.getSuperType != null && !dto.getSuperType.fullyQualifiedName.toString.empty) {
-				superTypes += references.getTypeForName(dto.getSuperType.fullyQualifiedName.toString, dto, null)
-			}
-			// 
-			// Constructor
-			//
-			members += dto.toConstructor()[]
-			if (dto.getSuperType == null) {
-				members += dto.toPrimitiveTypeField("disposed", Boolean::TYPE)
-			}
-			//
-			// Fields
-			//
-			for (f : dto.getFeatures) {
-				switch f {
-					LFeature: {
-						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
-							members += f.toField
-						}
-					}
-				}
-			}
-			//
-			// Field accessors
-			//
-			if (dto.getSuperType == null) {
-				members += dto.toIsDisposed()
-			}
-			members += dto.toCheckDisposed()
-			members += dto.toDispose()
-			for (f : dto.getFeatures) {
-				switch f {
-					case f instanceof LAttribute: {
-						members += f.toGetter()
-						if (f.isToMany) {
-							members += f.toInternalCollectionGetter(f.getName)
-							members += f.toAdder(f.getName)
-							members += f.toRemover(f.getName)
-						} else {
-							members += f.toSetter()
-						}
-					}
-					case f instanceof LReference: {
-						members += f.toGetter()
-						if (f.isToMany) {
-							members += f.toInternalCollectionGetter(f.getName)
-							members += f.toAdder(f.getName)
-							members += f.toRemover(f.getName)
-							members += f.toInternalAdder
-							members += f.toInternalRemover
-						} else {
-							members += f.toSetter()
-
-							if (f.isCascading && (f as LBeanReference).getOpposite != null) {
-								members += f.toInternalSetter
-							}
-						}
-					}
-				}
-			}
-			//
-			// Methods.
-			//
-			for (op : dto.getOperations) {
-				members += op.toMethod(op.getName, op.getType) [
-					documentation = op.getDocumentation
-					for (p : op.getParams) {
-						parameters += p.toParameter(p.name, p.parameterType)
-					}
-					body = op.getBody
-				]
-			}
-		]
-
+//		acceptor.accept(dto.toJvmType).initializeLater [
+//			documentation = dto.getDocumentation
+//			if (dto.getSuperType != null && !dto.getSuperType.fullyQualifiedName.toString.empty) {
+//				superTypes += references.getTypeForName(dto.getSuperType.fullyQualifiedName.toString, dto, null)
+//			}
+//			// 
+//			// Constructor
+//			//
+//			members += dto.toConstructor()[]
+//			if (dto.getSuperType == null) {
+//				members += dto.toPrimitiveTypeField("disposed", Boolean::TYPE)
+//			}
+//			//
+//			// Fields
+//			//
+//			for (f : dto.getFeatures) {
+//				switch f {
+//					LFeature: {
+//						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
+//							members += f.toField
+//						}
+//					}
+//				}
+//			}
+//			//
+//			// Field accessors
+//			//
+//			if (dto.getSuperType == null) {
+//				members += dto.toIsDisposed()
+//			}
+//			members += dto.toCheckDisposed()
+//			members += dto.toDispose()
+//			for (f : dto.getFeatures) {
+//				switch f {
+//					case f instanceof LAttribute: {
+//						members += f.toGetter()
+//						if (f.isToMany) {
+//							members += f.toInternalCollectionGetter(f.getName)
+//							members += f.toAdder(f.getName)
+//							members += f.toRemover(f.getName)
+//						} else {
+//							members += f.toSetter()
+//						}
+//					}
+//					case f instanceof LReference: {
+//						members += f.toGetter()
+//						if (f.isToMany) {
+//							members += f.toInternalCollectionGetter(f.getName)
+//							members += f.toAdder(f.getName)
+//							members += f.toRemover(f.getName)
+//							members += f.toInternalAdder
+//							members += f.toInternalRemover
+//						} else {
+//							members += f.toSetter()
+//
+//							if (f.isCascading && (f as LBeanReference).getOpposite != null) {
+//								members += f.toInternalSetter
+//							}
+//						}
+//					}
+//				}
+//			}
+//			//
+//			// Methods.
+//			//
+//			for (op : dto.getOperations) {
+//				members += op.toMethod(op.getName, op.getType) [
+//					documentation = op.getDocumentation
+//					for (p : op.getParams) {
+//						parameters += p.toParameter(p.name, p.parameterType)
+//					}
+//					body = op.getBody
+//				]
+//			}
+//		]
+//
 	}
 }

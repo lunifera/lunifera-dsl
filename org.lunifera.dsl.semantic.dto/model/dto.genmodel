@@ -7,7 +7,7 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" rootImplementsInterface=""
     importerID="org.eclipse.emf.ecore.xcore.importer" complianceLevel="6.0" suppressGenModelAnnotations="false"
     copyrightFields="false" editPluginID="org.eclipse.xtext.common.types.edit" editorPluginID="org.eclipse.xtext.types.editor"
-    runtimeVersion="2.9" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.lunifera.dsl.semantic.common/model/types.xcore#/1/types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase"
+    runtimeVersion="2.9" usedGenPackages="../../org.lunifera.dsl.semantic.entity/model/entity.xcore#/1/entity ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.lunifera.dsl.semantic.common/model/types.xcore#/1/types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types"
     interfaceNamePattern="" classNamePattern="" operationReflection="true" importOrganizing="true">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
     <genAnnotations source="selectedPackages">
@@ -26,6 +26,7 @@
   <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
   <genPackages prefix="Dto" basePackage="org.lunifera.dsl.semantic" disposableProviderFactory="true"
       fileExtensions="dtomodel" ecorePackage="dto.ecore#/">
+    <genDataTypes ecoreDataType="dto.ecore#//DtoFeatureList"/>
     <genDataTypes ecoreDataType="dto.ecore#//OperationsList"/>
     <genDataTypes ecoreDataType="dto.ecore#//DtoReferenceList"/>
     <genDataTypes ecoreDataType="dto.ecore#//DtoAttributeList"/>
@@ -40,20 +41,25 @@
       <genOperations ecoreOperation="dto.ecore#//LDto/getOperations"/>
       <genOperations ecoreOperation="dto.ecore#//LDto/getReferences"/>
       <genOperations ecoreOperation="dto.ecore#//LDto/getAttributes"/>
+      <genOperations ecoreOperation="dto.ecore#//LDto/getAllFeatures"/>
+      <genOperations ecoreOperation="dto.ecore#//LDto/collectAllLunFeatures">
+        <genParameters ecoreParameter="dto.ecore#//LDto/collectAllLunFeatures/current"/>
+        <genParameters ecoreParameter="dto.ecore#//LDto/collectAllLunFeatures/result"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoFeature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoFeature/toDTO"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoFeature/fromDTO"/>
       <genOperations ecoreOperation="dto.ecore#//LDtoFeature/getDTO"/>
     </genClasses>
-    <genClasses ecoreClass="dto.ecore#//LDtoAttribute"/>
+    <genClasses ecoreClass="dto.ecore#//LDtoAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dto.ecore#//LDtoAttribute/inherit"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoAttribute/inheritedFeature"/>
+    </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/type"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/opposite"/>
-    </genClasses>
-    <genClasses ecoreClass="dto.ecore#//LDtoWrappedReference">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoWrappedReference/feature"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoWrappedReference/asType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoWrappedReference/convertToDTO"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoWrappedReference/convertFromDTO"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dto.ecore#//LDtoReference/inherit"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/inheritedFeature"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoOperation"/>
   </genPackages>

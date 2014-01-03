@@ -11,8 +11,8 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 LDTOModel returns dto::LDtoModel:
 	packages+=TypedPackage*;
 
-Class returns common::LClass:
-	{common::LClass} annotations+=AnnotationDef*
+Class returns dto::LDto:
+	{dto::LDto} annotations+=AnnotationDef*
 	{dto::LDto.annotationInfo=current}
 	'dto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? ('wraps' wrappedType=[common::LType])?
 	'{'
@@ -22,28 +22,16 @@ Class returns common::LClass:
 DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
 	annotations+=AnnotationDef*
-	(({dto::LDtoReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
-	('opposite' opposite=[dto::LDtoReference|LFQN])?)
-	';')
+	(
+	({dto::LDtoAttribute.annotationInfo=current}
+	(inherit?='inherit var' inheritedFeature=[entity::LEntityAttribute] ('name' name=ValidIDWithKeywords)?
+	('as' type=[common::LScalarType|LFQN])?
+	";")
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(('transient' type=[common::LScalarType] name=ValidIDWithKeywords)
+	(('transient' type=[common::LScalarType] name=ValidIDWithKeywords ';')
 	|
 	(('var' | id?='id' | version?="version") type=[common::LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords
-	';')))
-	|
-	({dto::LDtoOperation.annotationInfo=current}
-	('def' type=JvmTypeReference name=ValidIDWithKeywords
-	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
-	body=XExpression))
-	|
-	({dto::LDtoWrappedReference.annotationInfo=current}
-	('uses' feature=[common::LFeature]
-	('as' asType=[common::LScalarType]
-	(('toDTO' convertToDTO=XBlockExpression) &
-	('fromDTO' convertFromDTO=XBlockExpression)))?)
-	';'));
-
+	';')))));
 

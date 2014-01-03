@@ -6,6 +6,7 @@
 @Ecore(rootPackage="dto")
 package org.lunifera.dsl.semantic.dto
 
+import GenModel
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LScalarType
@@ -17,6 +18,8 @@ import org.lunifera.dsl.semantic.common.types.LType
 import java.util.List
 import org.lunifera.dsl.semantic.common.types.FeaturesList
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
+import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LEntityAttribute
 
 class LDtoModel {
 	contains LTypedPackage[] packages
@@ -30,7 +33,6 @@ class LDto extends LClass, LFeaturesHolder {
 	refers local LDto superType opposite subTypes
 	refers transient LDto[] subTypes opposite superType
 	refers local LType wrappedType
-	
 	/** 
  	 * Returns all features of type LOperation
  	 */
@@ -49,8 +51,7 @@ class LDto extends LClass, LFeaturesHolder {
 	op DtoAttributeList getAttributes() {
 		features.filter(typeof(LDtoAttribute)).toList
 	}
-	
-		/**
+	/**
 	 * Returns all features of the holder and from super types
 	 */
 	op FeaturesList getAllFeatures() {
@@ -58,7 +59,6 @@ class LDto extends LClass, LFeaturesHolder {
 		collectAllLunFeatures(result)
 		return result
 	}
-	
 	op void collectAllLunFeatures(LDto current, DtoFeatureList result) {
 		if (current == null) {
 			return
@@ -73,24 +73,22 @@ class LDto extends LClass, LFeaturesHolder {
 }
 
 class LDtoFeature extends LFeature {
+	contains XExpression toDTO
+	contains XExpression fromDTO
 	op LDto getDTO() {
 		return eContainer as LDto
 	}
 }
 
 class LDtoAttribute extends LDtoFeature, LAttribute {
+	boolean inherit
+	refers LEntityAttribute inheritedFeature
 }
 
 class LDtoReference extends LDtoFeature, LReference {
 	refers LDto ^type
-	refers LDtoReference ^opposite
-}
-
-class LDtoWrappedReference extends LDtoFeature {
-	refers LFeature feature
-	refers LScalarType asType
-	contains XExpression convertToDTO
-	contains XExpression convertFromDTO
+	boolean inherit
+	refers LEntityReference inheritedFeature
 }
 
 /**
