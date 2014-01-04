@@ -56,7 +56,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 
 	def JvmField toField(LFeature prop) {
 		val JvmField jvmField = typesFactory.createJvmField();
-		jvmField.simpleName = prop.name
+		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
 		jvmField.type = cloneWithProxies(prop.toTypeReference)
 
@@ -131,7 +131,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 
 	def JvmOperation toGetter(LFeature prop, String methodName) {
 		val typeRef = prop.toTypeReference
-		val propertyName = prop.name
+		val propertyName = prop.toName
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.simpleName = methodName
@@ -170,6 +170,9 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 	 * @return <code>a + b</code>
 	 */
 	def static String operator_plus(String a, String b) {
+		if(b == null){
+			return a
+		}
 		return a.concat(b);
 	}
 

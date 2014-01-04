@@ -74,6 +74,9 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 					.toQualifiedName(prop.getName()) : null;
 		} else if (obj instanceof LDataType) {
 			LDataType dtd = (LDataType) obj;
+			if(dtd.getName() == null){
+				return QualifiedName.create();
+			}
 			return qualifiedNameConverter.toQualifiedName(dtd.getName());
 		} else if (obj instanceof LAnnotationDef) {
 			return super.getFullyQualifiedName(((LAnnotationDef) obj)

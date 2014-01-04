@@ -20,7 +20,8 @@ import org.lunifera.dsl.semantic.common.types.FeaturesList
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
- 
+import org.lunifera.dsl.semantic.entity.LEntity
+
 class LDtoModel {
 	contains LTypedPackage[] packages
 }
@@ -28,11 +29,11 @@ class LDtoModel {
 /**
  * A bean is an embeddable element that may become added to a entity using the @embedd annotation. 
  */
-class LDto extends LClass, LFeaturesHolder {
+class LDto extends LClass, LFeaturesHolder, LScalarType {
 	contains LDtoFeature[] features
 	refers local LDto superType opposite subTypes
 	refers transient LDto[] subTypes opposite superType
-	refers local LType wrappedType
+	refers local LEntity wrappedType
 	/** 
  	 * Returns all features of type LOperation
  	 */
@@ -73,21 +74,20 @@ class LDto extends LClass, LFeaturesHolder {
 }
 
 class LDtoFeature extends LFeature {
-	contains XExpression toDTO
-	contains XExpression fromDTO
+	boolean inherit
 	op LDto getDTO() {
 		return eContainer as LDto
 	}
 }
 
 class LDtoAttribute extends LDtoFeature, LAttribute {
-	boolean inherit
+	contains XExpression toDTO
+	contains XExpression fromDTO
 	refers LEntityAttribute inheritedFeature
 }
 
 class LDtoReference extends LDtoFeature, LReference {
 	refers LDto ^type
-	boolean inherit
 	refers LEntityReference inheritedFeature
 }
 

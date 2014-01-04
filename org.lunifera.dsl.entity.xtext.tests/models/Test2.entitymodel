@@ -1,7 +1,7 @@
 package org.lunifera.dsl.^entity.xtext.tests.test2 {
 	
 	entity BaseEntity {
-		id long id;
+		id String id;
 		version int version;
 	}
 	
@@ -10,8 +10,7 @@ package org.lunifera.dsl.^entity.xtext.tests.test2 {
 	}
 	
 	entity Hotel extends House {
-		var String name;
 		var int category;
 	}
 	
-}
+} 

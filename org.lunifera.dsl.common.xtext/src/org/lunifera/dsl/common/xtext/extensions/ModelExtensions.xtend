@@ -115,6 +115,10 @@ class ModelExtensions {
 		}
 		return current as LPackage;
 	}
+	
+	def String toName(LFeature feature){
+		return feature.name
+	}
 
 	/**
 	 * The binary <code>+</code> operator that concatenates two strings.

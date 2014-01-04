@@ -14,7 +14,7 @@ LDTOModel returns dto::LDtoModel:
 Class returns dto::LDto:
 	{dto::LDto} annotations+=AnnotationDef*
 	{dto::LDto.annotationInfo=current}
-	'dto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? ('wraps' wrappedType=[common::LType])?
+	'dto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? ('wraps' wrappedType=[entity::LEntity])?
 	'{'
 	features+=DtoFeature*
 	'}';
@@ -23,21 +23,23 @@ DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
 	annotations+=AnnotationDef*
 	(({dto::LDtoAttribute.annotationInfo=current}
-	(inherit?='inherit var' inheritedFeature=[entity::LEntityAttribute] ('name' name=ValidIDWithKeywords)?
-	(('asType' type=[common::LScalarType|LFQN] ('toDTO' toDTO=XBlockExpression 'fromDTO'
-	fromDTO=XBlockExpression)?) | (";")))
-	)
+	(inherit?='inherit var' inheritedFeature=[entity::LEntityAttribute]) ';')
 	|
 	({dto::LDtoReference.annotationInfo=current}
-	(inherit?='inherit ref' inheritedFeature=[entity::LEntityReference] ('name' name=ValidIDWithKeywords)?
-	(('asType' type=[dto::LDto|LFQN] ('toDTO' toDTO=XBlockExpression 'fromDTO'
-	fromDTO=XBlockExpression)?) | (";")))
-	)
+	(inherit?='inherit ref' inheritedFeature=[entity::LEntityReference]) ';')	
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
 	(('transient' type=[common::LScalarType] name=ValidIDWithKeywords ';')
 	|
-	(('var' | id?='id' | version?="version") type=[common::LScalarType] multiplicity=Multiplicity?
+	((id?='id' | version?="version") type=[common::LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords
+	';')
+	|
+	('var' type=[common::LScalarType] multiplicity=Multiplicity?
+	name=ValidIDWithKeywords ('{' 'toDTO' '[' toDTO=XRawBlockExpression ']' ('fromDTO' '['
+	fromDTO=XRawBlockExpression ']')? '}')?
 	';'))));
 
+XRawBlockExpression returns xbase::XExpression:
+	{xbase::XBlockExpression}
+	(expressions+=XExpressionInsideBlock ';'?)*;

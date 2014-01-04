@@ -1,56 +1,59 @@
 package org.lunifera.dsl.common.xtext.extensions
 
+import com.google.inject.Inject
 import org.lunifera.dsl.semantic.common.types.LFeature
 
 class NamingExtensions {
+	
+	@Inject extension ModelExtensions;
 
 	def toSetterName(LFeature prop) {
-		if (prop == null || prop.name == null) {
+		if (prop == null || prop.toName == null) {
 			return "setMISSING_NAME"
 		}
-		"set".concat(prop.name.toFirstUpper);
+		"set".concat(prop.toName.toFirstUpper);
 	}
 
 	def toGetterName(LFeature prop) {
-		if (prop == null || prop.name == null) {
+		if (prop == null || prop.toName == null) {
 			return "getMISSING_NAME"
 		}
-		"get".concat(prop.name.toFirstUpper);
+		"get".concat(prop.toName.toFirstUpper);
 	}
 
 	def toBooleanGetterName(LFeature prop) {
-		if (prop == null || prop.name == null) {
+		if (prop == null || prop.toName == null) {
 			return "isMISSING_NAME"
 		}
-		val propName = prop.name.toFirstLower
+		val propName = prop.toName.toFirstLower
 		if (propName.startsWith("is") || propName.startsWith("has")) {
 			return propName
 		}
-		return "is".concat(prop.name.toFirstUpper);
+		return "is".concat(prop.toName.toFirstUpper);
 	}
 
 	def toCollectionAdderName(LFeature collectionProp) {
-		return "addTo".concat(collectionProp.name.toFirstUpper);
+		return "addTo".concat(collectionProp.toName.toFirstUpper);
 	}
 
 	def toCollectionRemoverName(LFeature collectionProp) {
-		return "removeFrom".concat(collectionProp.name.toFirstUpper);
+		return "removeFrom".concat(collectionProp.toName.toFirstUpper);
 	}
 
 	def toCollectionInternalGetterName(LFeature collectionProp) {
-		return "internalGet".concat(collectionProp.name.toFirstUpper);
+		return "internalGet".concat(collectionProp.toName.toFirstUpper);
 	}
 
 	def toCollectionInternalAdderName(LFeature collectionProp) {
-		return "internalAddTo".concat(collectionProp.name.toFirstUpper);
+		return "internalAddTo".concat(collectionProp.toName.toFirstUpper);
 	}
 
 	def toCollectionInternalRemoverName(LFeature collectionProp) {
-		return "internalRemoveFrom".concat(collectionProp.name.toFirstUpper);
+		return "internalRemoveFrom".concat(collectionProp.toName.toFirstUpper);
 	}
 
 	def toInternalSetterName(LFeature ref) {
-		return "internalSet".concat(ref.name.toFirstUpper);
+		return "internalSet".concat(ref.toName.toFirstUpper);
 	}
 
 	/** 
@@ -64,7 +67,7 @@ class NamingExtensions {
 	 * Returns the generator default method param name.
 	 */
 	def String toGeneratorDefaultMethodParamName(LFeature sourceElement) {
-		return toMethodParamName(sourceElement.getName())
+		return toMethodParamName(sourceElement.toName)
 	}
 
 	/** 

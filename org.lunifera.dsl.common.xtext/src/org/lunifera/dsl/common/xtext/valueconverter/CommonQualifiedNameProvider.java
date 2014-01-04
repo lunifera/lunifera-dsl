@@ -63,8 +63,9 @@ public class CommonQualifiedNameProvider extends XbaseQualifiedNameProvider {
 			}
 		} else if (obj instanceof LFeature) {
 			LFeature prop = (LFeature) obj;
-			return prop.getName() != null ? qualifiedNameConverter
-					.toQualifiedName(prop.getName()) : null;
+			String name = prop.getName();
+			return name != null ? qualifiedNameConverter
+					.toQualifiedName(name) : null;
 		} else if (obj instanceof LDataType) {
 			LDataType dtd = (LDataType) obj;
 		} else if (obj instanceof LAnnotationDef) {

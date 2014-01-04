@@ -12,21 +12,32 @@
 package org.lunifera.dsl.dto.xtext.valueconverter;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
+import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.common.xtext.valueconverter.CommonQualifiedNameProvider;
-import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions;
-import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
-import org.lunifera.dsl.semantic.common.types.LClass;
-import org.lunifera.dsl.semantic.common.types.LDataType;
-import org.lunifera.dsl.semantic.common.types.LEnum;
-import org.lunifera.dsl.semantic.common.types.LFeature;
-import org.lunifera.dsl.semantic.common.types.LPackage;
+import org.lunifera.dsl.semantic.dto.LDtoFeature;
 
 import com.google.inject.Inject;
 
-@SuppressWarnings("restriction")
 public class DtoQualifiedNameProvider extends CommonQualifiedNameProvider {
+
+	@Inject
+	private IQualifiedNameConverter qualifiedNameConverter;
+	@Inject
+	ModelExtensions extensions;
+
+	@Override
+	public QualifiedName getFullyQualifiedName(EObject obj) {
+		if (obj == null) {
+			return QualifiedName.create("");
+		}
+
+		if (obj instanceof LDtoFeature) {
+			return QualifiedName.create(obj.toString());
+		}
+		return super.getFullyQualifiedName(obj);
+	}
 
 }
