@@ -26,6 +26,8 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getJvmTypeReference <em>Jvm Type Reference</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#isAsPrimitive <em>As Primitive</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#isDate <em>Date</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#isAsBlob <em>As Blob</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getLength <em>Length</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getDateType <em>Date Type</em>}</li>
  * </ul>
  * </p>
@@ -83,6 +85,46 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * @ordered
    */
   protected boolean date = DATE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isAsBlob() <em>As Blob</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAsBlob()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean AS_BLOB_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isAsBlob() <em>As Blob</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAsBlob()
+   * @generated
+   * @ordered
+   */
+  protected boolean asBlob = AS_BLOB_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLength()
+   * @generated
+   * @ordered
+   */
+  protected static final int LENGTH_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLength()
+   * @generated
+   * @ordered
+   */
+  protected int length = LENGTH_EDEFAULT;
 
   /**
    * The default value of the '{@link #getDateType() <em>Date Type</em>}' attribute.
@@ -224,6 +266,52 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isAsBlob()
+  {
+    return asBlob;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAsBlob(boolean newAsBlob)
+  {
+    boolean oldAsBlob = asBlob;
+    asBlob = newAsBlob;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LDATA_TYPE__AS_BLOB, oldAsBlob, asBlob));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getLength()
+  {
+    return length;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLength(int newLength)
+  {
+    int oldLength = length;
+    length = newLength;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LDATA_TYPE__LENGTH, oldLength, length));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public LDateType getDateType()
   {
     return dateType;
@@ -274,6 +362,10 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return isAsPrimitive();
       case LunTypesPackage.LDATA_TYPE__DATE:
         return isDate();
+      case LunTypesPackage.LDATA_TYPE__AS_BLOB:
+        return isAsBlob();
+      case LunTypesPackage.LDATA_TYPE__LENGTH:
+        return getLength();
       case LunTypesPackage.LDATA_TYPE__DATE_TYPE:
         return getDateType();
     }
@@ -298,6 +390,12 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return;
       case LunTypesPackage.LDATA_TYPE__DATE:
         setDate((Boolean)newValue);
+        return;
+      case LunTypesPackage.LDATA_TYPE__AS_BLOB:
+        setAsBlob((Boolean)newValue);
+        return;
+      case LunTypesPackage.LDATA_TYPE__LENGTH:
+        setLength((Integer)newValue);
         return;
       case LunTypesPackage.LDATA_TYPE__DATE_TYPE:
         setDateType((LDateType)newValue);
@@ -325,6 +423,12 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
       case LunTypesPackage.LDATA_TYPE__DATE:
         setDate(DATE_EDEFAULT);
         return;
+      case LunTypesPackage.LDATA_TYPE__AS_BLOB:
+        setAsBlob(AS_BLOB_EDEFAULT);
+        return;
+      case LunTypesPackage.LDATA_TYPE__LENGTH:
+        setLength(LENGTH_EDEFAULT);
+        return;
       case LunTypesPackage.LDATA_TYPE__DATE_TYPE:
         setDateType(DATE_TYPE_EDEFAULT);
         return;
@@ -348,6 +452,10 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return asPrimitive != AS_PRIMITIVE_EDEFAULT;
       case LunTypesPackage.LDATA_TYPE__DATE:
         return date != DATE_EDEFAULT;
+      case LunTypesPackage.LDATA_TYPE__AS_BLOB:
+        return asBlob != AS_BLOB_EDEFAULT;
+      case LunTypesPackage.LDATA_TYPE__LENGTH:
+        return length != LENGTH_EDEFAULT;
       case LunTypesPackage.LDATA_TYPE__DATE_TYPE:
         return dateType != DATE_TYPE_EDEFAULT;
     }
@@ -369,6 +477,10 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
     result.append(asPrimitive);
     result.append(", date: ");
     result.append(date);
+    result.append(", asBlob: ");
+    result.append(asBlob);
+    result.append(", length: ");
+    result.append(length);
     result.append(", dateType: ");
     result.append(dateType);
     result.append(')');

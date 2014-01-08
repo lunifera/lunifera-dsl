@@ -61,6 +61,7 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__MISSING_OPPOSITE_REFERENCE = "111";
 	public static final String CODE__BIDIRECTIONAL_CASCADE_INVALID = "112";
 	public static final String CODE__CASCADE_DIRECTION_INVALID = "113";
+	public static final String CODE__UUID_WRONG_TYPE = "114";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -196,7 +197,7 @@ public class EntityGrammarJavaValidator extends
 					CODE__MANY_TO_MANY__NOT_SUPPORTED, (String[]) null);
 		}
 	}
-	
+
 	@Check(CheckType.NORMAL)
 	public void checkJPA_ConsistentInheritanceStrategy(LEntity entity) {
 		// no checks required - inheritance is inherited
@@ -219,6 +220,27 @@ public class EntityGrammarJavaValidator extends
 	}
 
 	@Check(CheckType.NORMAL)
+	public void checkJPA_Features(LEntityAttribute prop) {
+		if (prop.isUuid()) {
+			boolean typeOK = false;
+			if (prop.getType() instanceof LDataType) {
+				LDataType type = (LDataType) prop.getType();
+				String typename = qnp.getFullyQualifiedName(
+						type.getJvmTypeReference()).toString();
+				if (typename.equals("java.lang.String")) {
+					typeOK = true;
+				}
+			}
+
+			if (!typeOK) {
+				error("UUIDs must be of type String.",
+						EntityPackage.Literals.LENTITY_ATTRIBUTE__UUID,
+						CODE__UUID_WRONG_TYPE, new String[0]);
+			}
+		}
+	}
+
+	@Check(CheckType.NORMAL)
 	public void checkJPA_Features(LEntity entity) {
 
 		int idCounter = 0;
@@ -227,7 +249,7 @@ public class EntityGrammarJavaValidator extends
 		for (LEntityFeature feature : entity.getAllFeatures()) {
 			if (feature instanceof LEntityAttribute) {
 				LEntityAttribute att = (LEntityAttribute) feature;
-				if (att.isId())
+				if (att.isId() || att.isUuid())
 					idCounter++;
 				if (att.isVersion())
 					versionCounter++;
@@ -248,7 +270,8 @@ public class EntityGrammarJavaValidator extends
 			int i = 0;
 			for (LEntityFeature feature : entity.getFeatures()) {
 				if (feature instanceof LEntityAttribute) {
-					if (((LEntityAttribute) feature).isId()) {
+					if (((LEntityAttribute) feature).isId()
+							|| ((LEntityAttribute) feature).isUuid()) {
 						error("An entity must only have one ID property.",
 								EntityPackage.Literals.LENTITY__FEATURES, i,
 								CODE__DUPLICATE_ID, new String[0]);

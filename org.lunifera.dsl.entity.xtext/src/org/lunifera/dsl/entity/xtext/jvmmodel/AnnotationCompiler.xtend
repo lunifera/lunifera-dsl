@@ -59,6 +59,7 @@ import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 
 import static org.lunifera.dsl.semantic.common.types.LDateType.*
 import org.lunifera.dsl.semantic.entity.LOperation
+import javax.persistence.Lob
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -212,6 +213,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if (prop.id) {
 			jvmField.annotations += prop.toAnnotation(typeof(Id))
 			jvmField.annotations += prop.toAnnotation(typeof(GeneratedValue))
+		} else if (prop.uuid) {
+			jvmField.annotations += prop.toAnnotation(typeof(Id))
 		} else if (prop.version) {
 			jvmField.annotations += prop.toAnnotation(typeof(Version))
 		} else {
@@ -245,9 +248,15 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 							temp.addAnnAttr(prop, "value", TemporalType::TIMESTAMP)
 					}
 					addAnno(prop, jvmField, temp)
+				} else if (datatype.asBlob) {
+					addAnno(prop, jvmField, prop.toAnnotation(typeof(Lob)))
+					
+					val basic = prop.toAnnotation(typeof(Basic))
+					basic.addAnnAttr(prop, "fetch", FetchType::LAZY)
+					addAnno(prop, jvmField, basic)
 				}
 
-			}
+			} 
 		}
 	}
 

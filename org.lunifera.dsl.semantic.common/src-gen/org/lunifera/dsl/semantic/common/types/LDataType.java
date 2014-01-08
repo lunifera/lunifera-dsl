@@ -15,6 +15,8 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getJvmTypeReference <em>Jvm Type Reference</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#isAsPrimitive <em>As Primitive</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#isDate <em>Date</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#isAsBlob <em>As Blob</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getLength <em>Length</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getDateType <em>Date Type</em>}</li>
  * </ul>
  * </p>
@@ -102,6 +104,58 @@ public interface LDataType extends LScalarType
    * @generated
    */
   void setDate(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>As Blob</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>As Blob</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>As Blob</em>' attribute.
+   * @see #setAsBlob(boolean)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_AsBlob()
+   * @model unique="false"
+   * @generated
+   */
+  boolean isAsBlob();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LDataType#isAsBlob <em>As Blob</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>As Blob</em>' attribute.
+   * @see #isAsBlob()
+   * @generated
+   */
+  void setAsBlob(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Length</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Length</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Length</em>' attribute.
+   * @see #setLength(int)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_Length()
+   * @model unique="false"
+   * @generated
+   */
+  int getLength();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LDataType#getLength <em>Length</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Length</em>' attribute.
+   * @see #getLength()
+   * @generated
+   */
+  void setLength(int value);
 
   /**
    * Returns the value of the '<em><b>Date Type</b></em>' attribute.

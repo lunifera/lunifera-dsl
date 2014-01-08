@@ -1,0 +1,20 @@
+package org.lunifera.entitydsl.documentation.demo {
+		
+	entity Foo {
+		inheritance per class{}
+		id long id;
+		var String name;
+	}
+	
+	entity Bar extends Foo {
+		var long number;
+		
+		def String getnumberasstring() {
+			return java.lang.Long::toString(number)
+		}
+	}
+
+}
+
+
+ 

@@ -172,6 +172,24 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 
 		associate(lClass, op)
 	}
+	
+	override JvmField toField(LFeature prop) {
+		val JvmField jvmField = typesFactory.createJvmField();
+		jvmField.simpleName = prop.toName
+		jvmField.visibility = JvmVisibility::PRIVATE
+		jvmField.type = cloneWithProxies(prop.toTypeReference)
+		
+		if(prop.isUUID){
+			jvmField.setInitializer[
+				if(it == null) return
+				val p = it.trace(prop)
+				p >> '''java.util.UUID.randomUUID().toString()'''
+			]
+		}
+
+		annotationCompiler.processAnnotation(prop, jvmField);
+		associate(prop, jvmField);
+	}
 
 	def JvmOperation toMethod(LOperation sourceElement, String name, JvmTypeReference returnType,
 		Procedure1<? super JvmOperation> initializer) {

@@ -11,12 +11,12 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
 import GenModel
-
+   
 class LPackage {
 	String name
 	contains LImport[] imports
 } 
- 
+  
 class LTypedPackage extends LPackage {
 	contains LType[] types
 }
@@ -46,6 +46,8 @@ class LDataType extends LScalarType {
 	contains JvmTypeReference jvmTypeReference
 	boolean asPrimitive
 	boolean date
+	boolean asBlob
+	int length
 	LDateType dateType
 }
 

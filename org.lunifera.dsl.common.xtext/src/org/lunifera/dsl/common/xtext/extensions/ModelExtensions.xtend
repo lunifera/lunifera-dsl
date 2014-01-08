@@ -44,6 +44,9 @@ class ModelExtensions {
 	def dispatch JvmTypeReference toTypeReference(LDataType type) {
 		if (type.date) {
 			return references.findDeclaredType(typeof(Date), type).newTypeRef()
+		} else if (type.asBlob) {
+			val typeRef = references.findDeclaredType(Byte::TYPE, type).newTypeRef()
+			return references.createArrayType(typeRef)
 		} else if (type.asPrimitive) {
 			val fqn = type?.jvmTypeReference?.type?.fullyQualifiedName
 			switch (fqn.toString) {
@@ -121,6 +124,9 @@ class ModelExtensions {
 	}
 	
 	def String toName(LClass clazz){
+		if(clazz == null || clazz.name == null){
+			return ""
+		}
 		return clazz.name.replace("^", "")
 	}
 	

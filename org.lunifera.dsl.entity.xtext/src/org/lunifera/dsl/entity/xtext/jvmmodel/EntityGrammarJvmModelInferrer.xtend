@@ -112,7 +112,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			}
 			//
 			// Methods.
-			//
+			// 
 			for (op : bean.getOperations) {
 				members += op.toMethod(op.getName, op.getType) [
 					documentation = op.getDocumentation

@@ -458,13 +458,31 @@ public interface LunTypesPackage extends EPackage
   int LDATA_TYPE__DATE = LSCALAR_TYPE_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>As Blob</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LDATA_TYPE__AS_BLOB = LSCALAR_TYPE_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Length</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LDATA_TYPE__LENGTH = LSCALAR_TYPE_FEATURE_COUNT + 4;
+
+  /**
    * The feature id for the '<em><b>Date Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LDATA_TYPE__DATE_TYPE = LSCALAR_TYPE_FEATURE_COUNT + 3;
+  int LDATA_TYPE__DATE_TYPE = LSCALAR_TYPE_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>LData Type</em>' class.
@@ -473,7 +491,7 @@ public interface LunTypesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 4;
+  int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 6;
 
   /**
    * The number of operations of the '<em>LData Type</em>' class.
@@ -1425,6 +1443,28 @@ public interface LunTypesPackage extends EPackage
   EAttribute getLDataType_Date();
 
   /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDataType#isAsBlob <em>As Blob</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>As Blob</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LDataType#isAsBlob()
+   * @see #getLDataType()
+   * @generated
+   */
+  EAttribute getLDataType_AsBlob();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDataType#getLength <em>Length</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Length</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LDataType#getLength()
+   * @see #getLDataType()
+   * @generated
+   */
+  EAttribute getLDataType_Length();
+
+  /**
    * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDataType#getDateType <em>Date Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2091,6 +2131,22 @@ public interface LunTypesPackage extends EPackage
      * @generated
      */
     EAttribute LDATA_TYPE__DATE = eINSTANCE.getLDataType_Date();
+
+    /**
+     * The meta object literal for the '<em><b>As Blob</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LDATA_TYPE__AS_BLOB = eINSTANCE.getLDataType_AsBlob();
+
+    /**
+     * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LDATA_TYPE__LENGTH = eINSTANCE.getLDataType_Length();
 
     /**
      * The meta object literal for the '<em><b>Date Type</b></em>' attribute feature.

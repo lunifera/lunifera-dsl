@@ -930,13 +930,22 @@ public interface EntityPackage extends EPackage
   int LENTITY_ATTRIBUTE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 5;
 
   /**
+   * The feature id for the '<em><b>Uuid</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY_ATTRIBUTE__UUID = LENTITY_FEATURE_FEATURE_COUNT + 6;
+
+  /**
    * The number of structural features of the '<em>LEntity Attribute</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 6;
+  int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 7;
 
   /**
    * The operation id for the '<em>Get Entity</em>' operation.
@@ -2150,6 +2159,17 @@ public interface EntityPackage extends EPackage
   EClass getLEntityAttribute();
 
   /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntityAttribute#isUuid <em>Uuid</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Uuid</em>'.
+   * @see org.lunifera.dsl.semantic.entity.LEntityAttribute#isUuid()
+   * @see #getLEntityAttribute()
+   * @generated
+   */
+  EAttribute getLEntityAttribute_Uuid();
+
+  /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LEntityReference <em>LEntity Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2810,6 +2830,14 @@ public interface EntityPackage extends EPackage
      * @generated
      */
     EClass LENTITY_ATTRIBUTE = eINSTANCE.getLEntityAttribute();
+
+    /**
+     * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LENTITY_ATTRIBUTE__UUID = eINSTANCE.getLEntityAttribute_Uuid();
 
     /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl <em>LEntity Reference</em>}' class.

@@ -1,0 +1,10 @@
+package org.lunifera.entitydsl.documentation.common {
+
+	entity ABar {
+		id long id;
+	}
+	
+}
+
+
+

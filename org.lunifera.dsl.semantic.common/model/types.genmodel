@@ -78,6 +78,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LDataType/jvmTypeReference"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/asPrimitive"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/asBlob"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/length"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/dateType"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//LEnum">

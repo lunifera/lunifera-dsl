@@ -67,9 +67,9 @@ EntityFeature returns entity::LEntityFeature:
 	';')
 	|
 	({entity::LEntityAttribute.annotationInfo=current}
-	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
+	(('transient' type=[LScalarType] name=ValidIDWithKeywords ';')
 	|
-	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
+	(('var' | id?='id' | uuid?='uuid' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords (persistenceInfo=ColumnPersistenceInfo)?
 	';')))
 	|

@@ -16,7 +16,7 @@ import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LReference
 import java.util.List
 import GenModel
-
+ 
 class LEntityModel {
 	contains LTypedPackage[] packages
 }
@@ -32,7 +32,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
  	 * Returns all features of type LOperation
  	 */
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList
+		features.filter(typeof(LOperation)).toList 
 	}
 	/**
  	 * Returns all features of type LBeanReference
@@ -196,6 +196,7 @@ class LEntityFeature extends LFeature {
 }
 
 class LEntityAttribute extends LEntityFeature, LAttribute {
+	boolean uuid
 }
 
 class LEntityReference extends LEntityFeature, LReference {

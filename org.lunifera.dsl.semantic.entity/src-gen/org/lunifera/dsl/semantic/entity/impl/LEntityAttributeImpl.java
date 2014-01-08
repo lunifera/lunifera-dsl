@@ -29,6 +29,7 @@ import org.lunifera.dsl.semantic.entity.LEntityAttribute;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isUuid <em>Uuid</em>}</li>
  * </ul>
  * </p>
  *
@@ -145,6 +146,26 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
    * @ordered
    */
   protected LScalarType type;
+
+  /**
+   * The default value of the '{@link #isUuid() <em>Uuid</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isUuid()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean UUID_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isUuid() <em>Uuid</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isUuid()
+   * @generated
+   * @ordered
+   */
+  protected boolean uuid = UUID_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -330,6 +351,29 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isUuid()
+  {
+    return uuid;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUuid(boolean newUuid)
+  {
+    boolean oldUuid = uuid;
+    uuid = newUuid;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY_ATTRIBUTE__UUID, oldUuid, uuid));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -348,6 +392,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
       case EntityPackage.LENTITY_ATTRIBUTE__TYPE:
         if (resolve) return getType();
         return basicGetType();
+      case EntityPackage.LENTITY_ATTRIBUTE__UUID:
+        return isUuid();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -379,6 +425,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
         return;
       case EntityPackage.LENTITY_ATTRIBUTE__TYPE:
         setType((LScalarType)newValue);
+        return;
+      case EntityPackage.LENTITY_ATTRIBUTE__UUID:
+        setUuid((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -412,6 +461,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
       case EntityPackage.LENTITY_ATTRIBUTE__TYPE:
         setType((LScalarType)null);
         return;
+      case EntityPackage.LENTITY_ATTRIBUTE__UUID:
+        setUuid(UUID_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -438,6 +490,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
         return transient_ != TRANSIENT_EDEFAULT;
       case EntityPackage.LENTITY_ATTRIBUTE__TYPE:
         return type != null;
+      case EntityPackage.LENTITY_ATTRIBUTE__UUID:
+        return uuid != UUID_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -511,6 +565,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
     result.append(cascading);
     result.append(", transient: ");
     result.append(transient_);
+    result.append(", uuid: ");
+    result.append(uuid);
     result.append(')');
     return result.toString();
   }
