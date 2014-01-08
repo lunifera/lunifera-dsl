@@ -16,7 +16,7 @@ class LPackage {
 	String name
 	contains LImport[] imports
 } 
-  
+   
 class LTypedPackage extends LPackage {
 	contains LType[] types
 }
@@ -34,7 +34,7 @@ class LAnnotationDef {
 	boolean exclude
 	contains XAnnotation ^annotation
 }
-
+ 
 class LAnnotationTarget {
 	contains LAnnotationDef[] annotations
 }
