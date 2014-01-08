@@ -11,6 +11,9 @@
 package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
+import java.util.List
+import javax.persistence.AttributeOverride
+import javax.persistence.AttributeOverrides
 import javax.persistence.Basic
 import javax.persistence.Cacheable
 import javax.persistence.CascadeType
@@ -28,6 +31,7 @@ import javax.persistence.Id
 import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
 import javax.persistence.JoinColumn
+import javax.persistence.Lob
 import javax.persistence.ManyToOne
 import javax.persistence.MappedSuperclass
 import javax.persistence.OneToMany
@@ -37,6 +41,7 @@ import javax.persistence.Temporal
 import javax.persistence.TemporalType
 import javax.persistence.Transient
 import javax.persistence.Version
+import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
@@ -48,18 +53,18 @@ import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
+import org.lunifera.dsl.semantic.entity.LBeanFeature
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 
 import static org.lunifera.dsl.semantic.common.types.LDateType.*
-import org.lunifera.dsl.semantic.entity.LOperation
-import javax.persistence.Lob
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -76,7 +81,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 		bean.addAnno(jvmType, bean.toAnnotation(typeof(Embeddable)))
 	}
-	
+
 	def protected dispatch void internalProcessAnnotation(LOperation member, JvmField jvmOperation) {
 		member.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
 	}
@@ -222,9 +227,14 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 				val ann = prop.toAnnotation(typeof(ElementCollection))
 				addAnno(prop, jvmField, ann)
 			} else {
+
+				//
+				// if the propery is a bean, then add AttributeOverride Annotations
+				//
 				if (prop.type instanceof LBean) {
-					val ann = prop.toAnnotation(typeof(Embedded))
-					addAnno(prop, jvmField, ann)
+					addAnno(prop, jvmField, prop.toAnnotation(typeof(Embedded)))
+
+					jvmField.toAttributesOverride(prop)
 				}
 			}
 
@@ -250,13 +260,73 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 					addAnno(prop, jvmField, temp)
 				} else if (datatype.asBlob) {
 					addAnno(prop, jvmField, prop.toAnnotation(typeof(Lob)))
-					
+
 					val basic = prop.toAnnotation(typeof(Basic))
 					basic.addAnnAttr(prop, "fetch", FetchType::LAZY)
 					addAnno(prop, jvmField, basic)
 				}
+			}
+		}
+	}
 
-			} 
+	// generate Attribute overrides
+	// @AttributeOverrides({
+	//    @AttributeOverride(name="number", column=@Column(name="ORDER_NUMBER"))
+	//    @AttributeOverride(name="status", column=@Column(name="ORDER_STATUS"))}
+	//	)
+	def protected void toAttributesOverride(JvmField jvmField, LEntityAttribute prop) {
+
+		val overrideAttributesAnno = prop.toAnnotation(typeof(AttributeOverrides))
+		val List<JvmAnnotationReference> collectedReferences = newArrayList();
+
+		for (LBeanFeature f : (prop.type as LBean).allFeatures.filter[!it.toMany]) {
+			if (f instanceof LBeanAttribute) {
+
+				val overrideAttributeAnno = prop.toAnnotation(typeof(AttributeOverride))
+				overrideAttributeAnno.addAnnAttr(f, "name", f.toName)
+				{
+					val colAnno = prop.toAnnotation(typeof(Column))
+					colAnno.addAnnAttr(f, "name", (prop.toName + "_" + f.toName).toUpperCase)
+
+					overrideAttributeAnno.addAnnAttr(f, "column", colAnno)
+				}
+
+				collectedReferences += overrideAttributeAnno;
+			} else if (f instanceof LBeanReference) {
+				(f as LBeanReference).type.collectNestedAttributeOverride(collectedReferences, f.toName, (prop.toName + "_" + f.toName).toUpperCase)
+			}
+		}
+
+		val JvmAnnotationReference[] result = collectedReferences.toArray(newArrayOfSize(collectedReferences.size));
+		overrideAttributesAnno.addAnnAttr(prop, "value", result)
+		addAnno(prop, jvmField, overrideAttributesAnno)
+	}
+
+	/**
+	 * Collects all nested embedded fields to be overridden
+ 	*/
+	def protected void collectNestedAttributeOverride(LBean bean, List<JvmAnnotationReference> collectedReferences,
+		String propertyPath, String persistencePath) {
+		if (bean == null) {
+			return
+		}
+
+		for (LBeanFeature f : bean.allFeatures.filter[!it.toMany]) {
+			if (f instanceof LBeanAttribute) {
+
+				val overrideAttributeAnno = bean.toAnnotation(typeof(AttributeOverride))
+				overrideAttributeAnno.addAnnAttr(f, "name", propertyPath + "." + f.toName)
+				{
+					val colAnno = bean.toAnnotation(typeof(Column))
+					colAnno.addAnnAttr(f, "name", (persistencePath + "_" + f.toName).toUpperCase)
+					overrideAttributeAnno.addAnnAttr(f, "column", colAnno)
+				}
+
+				collectedReferences += overrideAttributeAnno;
+			} else if (f instanceof LBeanReference) {
+				(f as LBeanReference).type.collectNestedAttributeOverride(collectedReferences,
+					propertyPath + "." + f.toName, persistencePath + "_" + f.toName.toUpperCase)
+			}
 		}
 	}
 
@@ -267,16 +337,54 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			jvmField.annotations += prop.toAnnotation(typeof(Transient))
 		}
 
-		jvmField.annotations += prop.toAnnotation(typeof(Basic))
+		var basicAdded = false;
+		if (prop.type instanceof LDataType) {
+			val LDataType datatype = prop.type as LDataType
+			if (datatype.date) {
+				addAnno(prop, jvmField, prop.toAnnotation(typeof(Basic)))
+				basicAdded = true;
+
+				val temp = prop.toAnnotation(typeof(Temporal))
+				switch (datatype.dateType) {
+					case DATE:
+						temp.addAnnAttr(prop, "value", TemporalType::DATE)
+					case TIME:
+						temp.addAnnAttr(prop, "value", TemporalType::TIME)
+					case TIMESTAMP:
+						temp.addAnnAttr(prop, "value", TemporalType::TIMESTAMP)
+				}
+				addAnno(prop, jvmField, temp)
+			} else if (datatype.asBlob) {
+				addAnno(prop, jvmField, prop.toAnnotation(typeof(Lob)))
+
+				val basic = prop.toAnnotation(typeof(Basic))
+				basic.addAnnAttr(prop, "fetch", FetchType::LAZY)
+				addAnno(prop, jvmField, basic)
+				basicAdded = true;
+			}
+		}
+
+		if (!basicAdded) {
+			addAnno(prop, jvmField, prop.toAnnotation(typeof(Basic)))
+			basicAdded = true
+		}
+
+		if (prop.toMany) {
+			val ann = prop.toAnnotation(typeof(ElementCollection))
+			addAnno(prop, jvmField, ann)
+		}
 	}
 
 	def protected dispatch void internalProcessAnnotation(LBeanReference prop, JvmField jvmField) {
 		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
 		jvmField.annotations += prop.toAnnotation(typeof(Basic))
+		addAnno(prop, jvmField, prop.toAnnotation(typeof(Embedded)))
 
-		val ann = prop.toAnnotation(typeof(Embedded))
-		addAnno(prop, jvmField, ann)
+		if (prop.toMany) {
+			addAnno(prop, jvmField, prop.toAnnotation(typeof(ElementCollection)))
+		}
+
 	}
 
 	def private addOneToManyAnno(LEntityReference prop, JvmAnnotationTarget jvmAnnTarget) {

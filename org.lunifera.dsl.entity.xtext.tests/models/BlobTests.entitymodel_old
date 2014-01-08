@@ -1,0 +1,27 @@
+  package org.lunifera.dsl.^entity.xtext.tests.blobtests  {
+
+	 entity Base {
+		id long id;
+		version long version;
+		var String name;
+		var Bean other;  
+	} 
+	              
+	bean Bean {
+		var String name;
+		ref Bean1 info   ;
+		var String huhu;
+	}
+	   
+	bean Bean1 {
+		var String name;
+		ref Bean2 addon;
+		var String huhu;
+	}
+	
+	bean Bean2 {
+		var String name;
+		var String huhu;
+	}
+}
+      

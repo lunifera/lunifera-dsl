@@ -162,6 +162,52 @@ class AnnotationExtension {
 
 		return value
 	}
+	
+	/**
+     * Creates a string annotation value and adds it the the given annotation reference
+     */
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
+		JvmAnnotationReference annotationValue) {
+
+		// create the parameter
+		val value = typesFactory.createJvmAnnotationAnnotationValue
+		annRef.values += value
+
+		// create the enum type
+		val declaredType = references.findDeclaredType(typeof(JvmAnnotationReference), context) as JvmDeclaredType
+
+		// create the operation
+		val JvmOperation op = typesFactory.createJvmOperation
+		op.setSimpleName(name)
+		op.setDeclaringType(declaredType)
+		value.setOperation(op)
+		value.values += annotationValue
+
+		return value
+	}
+	
+		/**
+     * Creates a string annotation value and adds it the the given annotation reference
+     */
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
+		JvmAnnotationReference... annotationValues) {
+
+		// create the parameter
+		val value = typesFactory.createJvmAnnotationAnnotationValue
+		annRef.values += value
+
+		// create the enum type
+		val declaredType = references.findDeclaredType(typeof(JvmAnnotationReference), context) as JvmDeclaredType
+
+		// create the operation
+		val JvmOperation op = typesFactory.createJvmOperation
+		op.setSimpleName(name)
+		op.setDeclaringType(declaredType)
+		value.setOperation(op)
+		value.values.addAll(annotationValues)
+
+		return value
+	}
 
 	/**
 	 * Returns a map with all excluded types

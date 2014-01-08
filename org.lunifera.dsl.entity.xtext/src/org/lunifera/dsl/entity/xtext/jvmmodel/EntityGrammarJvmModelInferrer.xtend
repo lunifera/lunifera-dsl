@@ -19,6 +19,7 @@ import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import javax.persistence.Entity
 import org.lunifera.dsl.semantic.common.types.LOperation
+import java.io.Serializable
 
 /**
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
@@ -50,6 +51,9 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 		acceptor.accept(bean.toJvmType).initializeLater [
 			documentation = bean.getDocumentation
+			if(bean.getSuperType == null){
+				superTypes += references.getTypeForName(typeof(Serializable), bean, null)
+			}
 			if (bean.getSuperType != null && !bean.getSuperType.fullyQualifiedName.toString.empty) {
 				superTypes += references.getTypeForName(bean.getSuperType.fullyQualifiedName.toString, bean, null)
 			}
@@ -111,7 +115,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				}
 			}
 			//
-			// Methods.
+			// Methods. 
 			// 
 			for (op : bean.getOperations) {
 				members += op.toMethod(op.getName, op.getType) [

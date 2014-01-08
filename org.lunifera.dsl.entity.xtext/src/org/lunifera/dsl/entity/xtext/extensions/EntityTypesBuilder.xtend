@@ -371,16 +371,16 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				if (prop.opposite != null) {
 					p >> paramName + "." + prop.opposite.toSetterName + "(this);"
 				} else {
-					p >> "if (!" + prop.toGetterName + "().contains(" + paramName + "))" >>> "{"
+					p >> "if (!" + prop.toCollectionInternalGetterName + "().contains(" + paramName + "))" >>> "{"
 					{
-						p >> prop.toGetterName + "().add(" + paramName + ");"
+						p >> prop.toCollectionInternalGetterName + "().add(" + paramName + ");"
 					}
 					p <<< "}"
 				}
 			])
 		return associate(prop, op);
 	}
-
+ 
 	/**
      * Builds an adder method for a *toMany relation like
      * <code>Order.addToOrderLines(OrderLine orderLine)</code>.

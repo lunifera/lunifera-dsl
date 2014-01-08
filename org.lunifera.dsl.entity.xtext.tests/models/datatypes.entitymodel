@@ -5,5 +5,5 @@ package org.lunifera.dsl.^entity.tests.datatypes {
 	datatype String jvmType String;
 	datatype date jvmType Date;
 	datatype bool jvmType Boolean as primitive;
-	
+		
 }
