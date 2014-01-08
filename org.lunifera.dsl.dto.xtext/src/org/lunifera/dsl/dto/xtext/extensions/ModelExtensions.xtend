@@ -37,7 +37,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	@Inject TypeReferences references;
 
 	def dispatch JvmTypeReference toTypeReference(LDtoReference prop) {
-		if (prop.inherit) {
+		if (prop.inherit && prop.type == null) {
 			return prop.inheritedFeature.toTypeReference
 		} else {
 			var jvmTypeRef = prop.type?.toTypeReference
@@ -75,7 +75,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch JvmTypeReference toTypeParameterReference(LDtoReference prop) {
-		if (prop.inherit) {
+		if (prop.inherit && prop.type == null) {
 			return prop.inheritedFeature.toTypeParameterReference
 		} else {
 			return prop.type?.toTypeReference
@@ -168,7 +168,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch String typeName(LDtoReference prop) {
-		if (prop.inherit) {
+		if (prop.inherit && prop.type == null) {
 			prop.inheritedFeature.type.name
 		} else {
 			prop.type.name
@@ -184,7 +184,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch toType(LDtoReference prop) {
-		if (prop.inherit) {
+		if (prop.inherit && prop.type == null) {
 			prop.inheritedFeature.type
 		} else {
 			prop.type as LType
@@ -248,6 +248,9 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	override isToMany(LFeature prop) {
+		if(prop == null){
+			return false
+		}
 		return internalIsToMany(prop);
 	}
 
@@ -281,5 +284,35 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 
 	def isCrossReference(LDtoFeature prop) {
 		return prop instanceof LReference && !prop.cascading
+	}
+
+	def dispatch boolean shouldUseCrossReference(LDtoFeature prop) {
+		if (prop.crossReference) {
+			if (prop.inherit) {
+				return prop.inheritedFeature.shouldUseCrossReference
+			} else {
+				return true
+			}
+		}
+		return false
+	}
+
+	def dispatch boolean shouldUseCrossReference(LEntityReference prop) {
+		if (prop.cascading) {
+			return false
+		}
+
+		if (prop.opposite == null) {
+			return true
+		}
+
+		if (prop.opposite.cascading) {
+			return false
+		}
+		return true
+	}
+
+	def isCascadingReference(LDtoFeature prop) {
+		return prop instanceof LReference && prop.cascading
 	}
 }

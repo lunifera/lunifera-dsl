@@ -1,6 +1,8 @@
 package org.lunifera.dsl.common.xtext.jvmmodel
 
 import com.google.inject.Inject
+import java.beans.PropertyChangeListener
+import java.beans.PropertyChangeSupport
 import java.util.Collections
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
@@ -17,12 +19,12 @@ import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions
+import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LOperation
-import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
 
 class CommonTypesBuilder extends JvmTypesBuilder {
 	@Inject extension IQualifiedNameProvider
@@ -69,7 +71,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.simpleName = "isDisposed"
 		op.returnType = references.getTypeForName(Boolean::TYPE, sourceElement, null)
-		
+
 		op.documentation = '''
 		Returns true, if the object is disposed. 
 		Disposed means, that it is prepared for garbage collection and may not be used anymore. 
@@ -138,7 +140,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		op.returnType = cloneWithProxies(typeRef)
 		op.documentation = if (prop.toMany) {
 			"Returns an unmodifiable list of " + propertyName + "."
-		} else {
+		} else if (propertyName != null) {
 			"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
 				concat(" property").concat(
 					(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
@@ -170,7 +172,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 	 * @return <code>a + b</code>
 	 */
 	def static String operator_plus(String a, String b) {
-		if(b == null){
+		if (b == null) {
 			return a
 		}
 		return a.concat(b);
@@ -184,7 +186,134 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		result.type = cloneWithProxies(typeRef)
 		associate(sourceElement, result)
 	}
-	
+
+	def JvmField toPropertyChangeSupportField(EObject sourceElement) {
+		val typeRef = newTypeRef(sourceElement, typeof(PropertyChangeSupport), null)
+		val JvmField result = typesFactory.createJvmField();
+		result.simpleName = "propertyChangeSupport"
+		result.visibility = JvmVisibility::PRIVATE
+		result.type = cloneWithProxies(typeRef)
+		result.setInitializer [ // ITreeAppendable
+			if(it == null) return
+			val p = it.trace(sourceElement)
+			p >> '''new PropertyChangeSupport(this)'''
+		]
+		associate(sourceElement, result)
+	}
+
+	def JvmOperation toAddPropertyChangeListener(LClass sourceElement) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = "addPropertyChangeListener"
+		op.returnType = references.getTypeForName(Void::TYPE, sourceElement, null)
+		val parameterRef = references.getTypeForName(typeof(PropertyChangeListener), sourceElement, null)
+		op.parameters += sourceElement.toParameter("listener", parameterRef)
+
+		op.documentation = '''
+		@see PropertyChangeSupport#addPropertyChangeListener(PropertyChangeListener)'''
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(sourceElement)
+				p >> "propertyChangeSupport.addPropertyChangeListener(listener);"
+			])
+
+		associate(sourceElement, op)
+	}
+
+	def JvmOperation toAddPropertyChangeListenerWithProperty(LClass sourceElement) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = "addPropertyChangeListener"
+		op.returnType = references.getTypeForName(Void::TYPE, sourceElement, null)
+		op.parameters +=
+			sourceElement.toParameter("propertyName", references.getTypeForName(typeof(String), sourceElement, null))
+		op.parameters += sourceElement.toParameter("listener",
+			references.getTypeForName(typeof(PropertyChangeListener), sourceElement, null))
+
+		op.documentation = '''
+		@see PropertyChangeSupport#addPropertyChangeListener(String, PropertyChangeListener)'''
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(sourceElement)
+				p >> "propertyChangeSupport.addPropertyChangeListener(propertyName, listener);"
+			])
+
+		associate(sourceElement, op)
+	}
+
+	def JvmOperation toRemovePropertyChangeListener(LClass sourceElement) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = "removePropertyChangeListener"
+		op.returnType = references.getTypeForName(Void::TYPE, sourceElement, null)
+		val parameterRef = references.getTypeForName(typeof(PropertyChangeListener), sourceElement, null)
+		op.parameters += sourceElement.toParameter("listener", parameterRef)
+
+		op.documentation = '''
+		@see PropertyChangeSupport#removePropertyChangeListener(PropertyChangeListener)'''
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(sourceElement)
+				p >> "propertyChangeSupport.removePropertyChangeListener(listener);"
+			])
+
+		associate(sourceElement, op)
+	}
+
+	def JvmOperation toRemovePropertyChangeListenerWithProperty(LClass sourceElement) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = "removePropertyChangeListener"
+		op.returnType = references.getTypeForName(Void::TYPE, sourceElement, null)
+		op.parameters +=
+			sourceElement.toParameter("propertyName", references.getTypeForName(typeof(String), sourceElement, null))
+		op.parameters += sourceElement.toParameter("listener",
+			references.getTypeForName(typeof(PropertyChangeListener), sourceElement, null))
+
+		op.documentation = '''
+		@see PropertyChangeSupport#removePropertyChangeListener(String, PropertyChangeListener)'''
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(sourceElement)
+				p >> "propertyChangeSupport.removePropertyChangeListener(propertyName, listener);"
+			])
+
+		associate(sourceElement, op)
+	}
+
+	def JvmOperation toFirePropertyChange(LClass sourceElement) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = "firePropertyChange"
+		op.returnType = references.getTypeForName(Void::TYPE, sourceElement, null)
+		op.parameters +=
+			sourceElement.toParameter("propertyName", references.getTypeForName(typeof(String), sourceElement, null))
+		op.parameters += sourceElement.toParameter("oldValue",
+			references.getTypeForName(typeof(Object), sourceElement, null))
+		op.parameters += sourceElement.toParameter("newValue",
+			references.getTypeForName(typeof(Object), sourceElement, null))
+
+		op.documentation = '''
+		@see PropertyChangeSupport#firePropertyChange(String, Object, Object)'''
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(sourceElement)
+				p >> "propertyChangeSupport.firePropertyChange(propertyName, oldValue, newValue);"
+			])
+
+		associate(sourceElement, op)
+	}
+
 	def void translateAnnotationDefTo(LAnnotationDef annotationDef, JvmAnnotationTarget target) {
 		if (annotationDef == null || target == null)
 			return

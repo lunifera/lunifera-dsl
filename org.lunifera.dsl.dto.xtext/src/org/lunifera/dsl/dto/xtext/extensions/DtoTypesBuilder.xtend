@@ -126,7 +126,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toSetterName
 		op.parameters += prop.toParameter(paramName, typeRef)
-		if (prop instanceof LDtoReference && !prop.cascading) {
+		if (prop.shouldUseCrossReference) {
 			op.documentation = "Sets the " + paramName +
 				" cross reference to this instance. The cross reference contains information how to resolve {@link " +
 				prop.toType.fullyQualifiedName.toString + "} using the DTO service. \n" +
@@ -146,8 +146,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				val p = it.trace(prop);
 				p >> prop.toCheckDisposedCall()
 				val fieldRef = "this." + prop.toName
-				if (opposite == null || !prop.cascading) {
-					p >> fieldRef + " = " + paramName + ";"
+				if (opposite == null || prop.shouldUseCrossReference) {
+					p >>  "firePropertyChange(\"" + paramName +"\", this."+paramName+", this."+paramName+" = "+paramName+");"
 				} else {
 					p >> "if (" + fieldRef + " != null) " >>> "{"
 					if (opposite.toMany) {
@@ -156,7 +156,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						p >> fieldRef + "." + opposite.toInternalSetterName + "(null);"
 					}
 					p <<< "}"
-					p >> fieldRef + " = " + paramName + ";\n"
+					p >> prop.toInternalSetterName +"(" + paramName + ");\n"
 					p >> "if (" + fieldRef + " != null) " >>> "{"
 					if (opposite.toMany) {
 						p >> fieldRef + "." + opposite.toCollectionInternalAdderName + "(this);"
@@ -208,13 +208,13 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		op.documentation = '''
 		
-		«IF prop.crossReference»
+		«IF prop.shouldUseCrossReference»
 			Adds the cross reference to this object. The cross reference contains information how to resolve {@link 
 			«prop.toType.fullyQualifiedName.toString»} using the DTO service.<p>
 			See {@link org.lunifera.dsl.dto.xtext.common.ICrossReferenceInfo}
 		«ELSE»
 			Adds the given «paramName» to this object. <p>
-			«IF prop.opposite != null && !prop.crossReference»
+			«IF prop.opposite != null && !prop.shouldUseCrossReference»
 				Since the reference is a composition reference, the opposite reference («prop.typeName».«prop.opposite.name.
 			toFirstLower»)
 				of the «paramName» will be handled automatically and no further coding is required to keep them in sync. 
@@ -232,9 +232,9 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				if(it == null) return
 				val p = it.trace(prop);
 				p += prop.toCheckDisposedCall()
-				if (prop.opposite != null && !prop.crossReference) {
+				if (prop.opposite != null && !prop.shouldUseCrossReference) {
 					p >> paramName + "." + prop.opposite.toSetterName + "(this);"
-				} else if (prop.crossReference) {
+				} else if (prop.shouldUseCrossReference) {
 					p >> "if (!" + prop.toCollectionInternalGetterName + "().contains(" + paramName + "))" >>> "{"
 					{
 						p >> prop.toCollectionInternalGetterName + "().add(" + paramName + ");"
@@ -244,7 +244,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					p >> "if (!" + prop.toGetterName + "().contains(" + paramName + "))" >>> "{"
 					{
 						p >> prop.toGetterName + "().add(" + paramName + ");"
-					}
+					} 
 					p <<< "}"
 				}
 			])
@@ -274,7 +274,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			[ // ITreeAppendable
 				if(it == null) return
 				val p = it.trace(prop)
-				p >> "this." + prop.toName + " = " + paramName + ";"
+				p >>  "firePropertyChange(\"" + paramName +"\", this."+paramName+", this."+paramName+" = "+paramName+");"
 			])
 		return associate(prop, result);
 	}
@@ -292,7 +292,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			[ // ITreeAppendable
 				if(it == null) return
 				val p = it.trace(prop)
-				p >> "this." + prop.toName + " = " + paramName + ";"
+				p >>  "firePropertyChange(\"" + paramName +"\", this."+paramName+", this."+paramName+" = "+paramName+");"
 			])
 		return associate(prop, result);
 	}
@@ -447,7 +447,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		if (prop.opposite != null) {
 			op.documentation = '''
 				
-				«IF prop.crossReference»
+				«IF prop.shouldUseCrossReference»
 					Removes the cross reference to this object. The cross reference contains information how to resolve {@link 
 					«prop.toType.fullyQualifiedName.toString»} using the DTO service. <p>
 					See {@link org.lunifera.dsl.dto.xtext.common.ICrossReferenceInfo}
@@ -467,9 +467,9 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				if(it == null) return
 				val p = it.trace(prop);
 				p += prop.toCheckDisposedCall()
-				if (prop.opposite != null && !prop.crossReference) {
+				if (prop.opposite != null && !prop.shouldUseCrossReference) {
 					p >> paramName + "." + prop.opposite.toSetterName + "(null);"
-				} else if (prop.crossReference) {
+				} else if (prop.shouldUseCrossReference) {
 					p >> prop.toCollectionInternalRemoverName + "(" + paramName + ");"
 				} else {
 					p >> prop.toGetterName + "().remove(" + paramName + ");"

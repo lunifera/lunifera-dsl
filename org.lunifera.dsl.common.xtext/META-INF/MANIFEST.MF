@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.4.2",
  org.eclipse.xtext.xbase;bundle-version="2.4.2"
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.dsl.common.xtext;
   uses:="org.eclipse.xtext,
    org.eclipse.xtext.xtype,

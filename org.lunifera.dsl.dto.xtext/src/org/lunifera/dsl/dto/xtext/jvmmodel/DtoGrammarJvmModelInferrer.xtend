@@ -41,6 +41,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			members += dto.toConstructor()[]
 			if (dto.getSuperType == null) {
+				members += dto.toPropertyChangeSupportField()
 				members += dto.toPrimitiveTypeField("disposed", Boolean::TYPE)
 			}
 			//
@@ -60,6 +61,11 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			if (dto.getSuperType == null) {
 				members += dto.toIsDisposed()
+				members += dto.toAddPropertyChangeListener()
+				members += dto.toAddPropertyChangeListenerWithProperty()
+				members += dto.toRemovePropertyChangeListener()
+				members += dto.toRemovePropertyChangeListenerWithProperty()
+				members += dto.toFirePropertyChange()
 			}
 			members += dto.toCheckDisposed()
 			members += dto.toDispose()
@@ -86,9 +92,9 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 						} else {
 							members += f.toSetter()
 
-//							if (f.isCascading && (f as LBeanReference).getOpposite != null) {
-//								members += f.toInternalSetter
-//							}
+							if (!f.shouldUseCrossReference && f.opposite != null) {
+								members += f.toInternalSetter
+							}
 						}
 					}
 				}
