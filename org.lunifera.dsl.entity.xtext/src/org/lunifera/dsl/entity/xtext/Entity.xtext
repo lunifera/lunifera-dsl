@@ -27,7 +27,7 @@ EntityModel returns entity::LEntityModel:
 Class returns LClass:
 	{LClass} annotations+=AnnotationDef*
 	({entity::LEntity.annotationInfo=current}
-	(abstract?='abstract')?
+	(abstract?='abstract')? (historized?='historized' ('('historizedDateType=LHistorizedDateType')')?)?
 	'entity' name=ValidIDWithKeywords ('extends' superType=[entity::LEntity])?
 	'{'
 	(persistenceInfo=EntityPersistenceInfo)
@@ -116,4 +116,8 @@ TablePerSubclassStrategy returns entity::LTablePerSubclassStrategy:
 
 enum DiscriminatorType returns entity::LDiscriminatorType:
 	INHERIT="INHERIT" | STRING="STRING" | CHAR="CHAR" | INTEGER="INT";
+	
+enum LHistorizedDateType returns LDateType:
+	DATE="DATE" | TIMESTAMP="TIMESTAMP"
+;
 	

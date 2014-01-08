@@ -26,7 +26,7 @@ class LImport {
 }
  
 class LType extends LAnnotationTarget {
-	String name
+	String name 
 	contains LAnnotationTarget annotationInfo
 }
  

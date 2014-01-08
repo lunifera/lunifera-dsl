@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
+import org.lunifera.dsl.semantic.common.types.LDateType;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
@@ -54,6 +55,7 @@ import org.lunifera.dsl.semantic.entity.LOperation;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#isCacheable <em>Cacheable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#isHistorized <em>Historized</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getHistorizedDateType <em>Historized Date Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#isMappedSuperclass <em>Mapped Superclass</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getPersistenceInfo <em>Persistence Info</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getInheritanceStrategy <em>Inheritance Strategy</em>}</li>
@@ -107,6 +109,26 @@ public class LEntityImpl extends LClassImpl implements LEntity
    * @ordered
    */
   protected boolean historized = HISTORIZED_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getHistorizedDateType() <em>Historized Date Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHistorizedDateType()
+   * @generated
+   * @ordered
+   */
+  protected static final LDateType HISTORIZED_DATE_TYPE_EDEFAULT = LDateType.DATE;
+
+  /**
+   * The cached value of the '{@link #getHistorizedDateType() <em>Historized Date Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHistorizedDateType()
+   * @generated
+   * @ordered
+   */
+  protected LDateType historizedDateType = HISTORIZED_DATE_TYPE_EDEFAULT;
 
   /**
    * The default value of the '{@link #isMappedSuperclass() <em>Mapped Superclass</em>}' attribute.
@@ -253,6 +275,29 @@ public class LEntityImpl extends LClassImpl implements LEntity
     historized = newHistorized;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__HISTORIZED, oldHistorized, historized));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LDateType getHistorizedDateType()
+  {
+    return historizedDateType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHistorizedDateType(LDateType newHistorizedDateType)
+  {
+    LDateType oldHistorizedDateType = historizedDateType;
+    historizedDateType = newHistorizedDateType == null ? HISTORIZED_DATE_TYPE_EDEFAULT : newHistorizedDateType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__HISTORIZED_DATE_TYPE, oldHistorizedDateType, historizedDateType));
   }
 
   /**
@@ -620,6 +665,8 @@ public class LEntityImpl extends LClassImpl implements LEntity
         return isCacheable();
       case EntityPackage.LENTITY__HISTORIZED:
         return isHistorized();
+      case EntityPackage.LENTITY__HISTORIZED_DATE_TYPE:
+        return getHistorizedDateType();
       case EntityPackage.LENTITY__MAPPED_SUPERCLASS:
         return isMappedSuperclass();
       case EntityPackage.LENTITY__PERSISTENCE_INFO:
@@ -654,6 +701,9 @@ public class LEntityImpl extends LClassImpl implements LEntity
         return;
       case EntityPackage.LENTITY__HISTORIZED:
         setHistorized((Boolean)newValue);
+        return;
+      case EntityPackage.LENTITY__HISTORIZED_DATE_TYPE:
+        setHistorizedDateType((LDateType)newValue);
         return;
       case EntityPackage.LENTITY__MAPPED_SUPERCLASS:
         setMappedSuperclass((Boolean)newValue);
@@ -699,6 +749,9 @@ public class LEntityImpl extends LClassImpl implements LEntity
       case EntityPackage.LENTITY__HISTORIZED:
         setHistorized(HISTORIZED_EDEFAULT);
         return;
+      case EntityPackage.LENTITY__HISTORIZED_DATE_TYPE:
+        setHistorizedDateType(HISTORIZED_DATE_TYPE_EDEFAULT);
+        return;
       case EntityPackage.LENTITY__MAPPED_SUPERCLASS:
         setMappedSuperclass(MAPPED_SUPERCLASS_EDEFAULT);
         return;
@@ -738,6 +791,8 @@ public class LEntityImpl extends LClassImpl implements LEntity
         return cacheable != CACHEABLE_EDEFAULT;
       case EntityPackage.LENTITY__HISTORIZED:
         return historized != HISTORIZED_EDEFAULT;
+      case EntityPackage.LENTITY__HISTORIZED_DATE_TYPE:
+        return historizedDateType != HISTORIZED_DATE_TYPE_EDEFAULT;
       case EntityPackage.LENTITY__MAPPED_SUPERCLASS:
         return mappedSuperclass != MAPPED_SUPERCLASS_EDEFAULT;
       case EntityPackage.LENTITY__PERSISTENCE_INFO:
@@ -821,6 +876,8 @@ public class LEntityImpl extends LClassImpl implements LEntity
     result.append(cacheable);
     result.append(", historized: ");
     result.append(historized);
+    result.append(", historizedDateType: ");
+    result.append(historizedDateType);
     result.append(", mappedSuperclass: ");
     result.append(mappedSuperclass);
     result.append(')');

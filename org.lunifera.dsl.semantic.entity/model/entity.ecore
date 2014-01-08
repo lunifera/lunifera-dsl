@@ -120,6 +120,8 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="historized" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="historizedDateType" unique="false"
+        eType="ecore:EEnum ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LDateType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedSuperclass" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="persistenceInfo" eType="#//LEntityPersistenceInfo"

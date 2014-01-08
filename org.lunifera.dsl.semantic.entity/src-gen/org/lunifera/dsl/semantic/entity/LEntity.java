@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LDateType;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
 
 /**
@@ -24,6 +25,7 @@ import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#isCacheable <em>Cacheable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#isHistorized <em>Historized</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getHistorizedDateType <em>Historized Date Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#isMappedSuperclass <em>Mapped Superclass</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getPersistenceInfo <em>Persistence Info</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getInheritanceStrategy <em>Inheritance Strategy</em>}</li>
@@ -91,6 +93,35 @@ public interface LEntity extends LClass, LFeaturesHolder
    * @generated
    */
   void setHistorized(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Historized Date Type</b></em>' attribute.
+   * The literals are from the enumeration {@link org.lunifera.dsl.semantic.common.types.LDateType}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Historized Date Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Historized Date Type</em>' attribute.
+   * @see org.lunifera.dsl.semantic.common.types.LDateType
+   * @see #setHistorizedDateType(LDateType)
+   * @see org.lunifera.dsl.semantic.entity.EntityPackage#getLEntity_HistorizedDateType()
+   * @model unique="false"
+   * @generated
+   */
+  LDateType getHistorizedDateType();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntity#getHistorizedDateType <em>Historized Date Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Historized Date Type</em>' attribute.
+   * @see org.lunifera.dsl.semantic.common.types.LDateType
+   * @see #getHistorizedDateType()
+   * @generated
+   */
+  void setHistorizedDateType(LDateType value);
 
   /**
    * Returns the value of the '<em><b>Mapped Superclass</b></em>' attribute.

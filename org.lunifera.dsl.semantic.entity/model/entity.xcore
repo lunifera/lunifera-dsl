@@ -92,6 +92,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 class LEntity extends LClass, LFeaturesHolder {
 	boolean cacheable
 	boolean historized
+	LDateType historizedDateType
 	boolean mappedSuperclass
 	contains LEntityPersistenceInfo persistenceInfo
 	contains LEntityInheritanceStrategy inheritanceStrategy
@@ -101,9 +102,9 @@ class LEntity extends LClass, LFeaturesHolder {
 	refers transient LEntity[] subTypes opposite superType
 	/**
  	 * Returns all features of type LOperation
- 	 */
+ 	 */ 
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList
+		features.filter(typeof(LOperation)).toList 
 	}
 	/**
  	 * Returns all features of type LEntityReference

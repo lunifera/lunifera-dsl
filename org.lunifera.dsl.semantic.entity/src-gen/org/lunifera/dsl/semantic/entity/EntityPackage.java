@@ -365,13 +365,22 @@ public interface EntityPackage extends EPackage
   int LENTITY__HISTORIZED = LunTypesPackage.LCLASS_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Historized Date Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY__HISTORIZED_DATE_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Mapped Superclass</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LENTITY__MAPPED_SUPERCLASS = LunTypesPackage.LCLASS_FEATURE_COUNT + 2;
+  int LENTITY__MAPPED_SUPERCLASS = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Persistence Info</b></em>' containment reference.
@@ -380,7 +389,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__PERSISTENCE_INFO = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
+  int LENTITY__PERSISTENCE_INFO = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Inheritance Strategy</b></em>' containment reference.
@@ -389,7 +398,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__INHERITANCE_STRATEGY = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
+  int LENTITY__INHERITANCE_STRATEGY = LunTypesPackage.LCLASS_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Features</b></em>' containment reference list.
@@ -398,7 +407,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__FEATURES = LunTypesPackage.LCLASS_FEATURE_COUNT + 5;
+  int LENTITY__FEATURES = LunTypesPackage.LCLASS_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Indexes</b></em>' containment reference list.
@@ -407,7 +416,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__INDEXES = LunTypesPackage.LCLASS_FEATURE_COUNT + 6;
+  int LENTITY__INDEXES = LunTypesPackage.LCLASS_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -416,7 +425,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__SUPER_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 7;
+  int LENTITY__SUPER_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Sub Types</b></em>' reference list.
@@ -425,7 +434,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 8;
+  int LENTITY__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 9;
 
   /**
    * The number of structural features of the '<em>LEntity</em>' class.
@@ -434,7 +443,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 9;
+  int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 10;
 
   /**
    * The operation id for the '<em>Get Features</em>' operation.
@@ -1822,6 +1831,17 @@ public interface EntityPackage extends EPackage
   EAttribute getLEntity_Historized();
 
   /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntity#getHistorizedDateType <em>Historized Date Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Historized Date Type</em>'.
+   * @see org.lunifera.dsl.semantic.entity.LEntity#getHistorizedDateType()
+   * @see #getLEntity()
+   * @generated
+   */
+  EAttribute getLEntity_HistorizedDateType();
+
+  /**
    * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntity#isMappedSuperclass <em>Mapped Superclass</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2560,6 +2580,14 @@ public interface EntityPackage extends EPackage
      * @generated
      */
     EAttribute LENTITY__HISTORIZED = eINSTANCE.getLEntity_Historized();
+
+    /**
+     * The meta object literal for the '<em><b>Historized Date Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LENTITY__HISTORIZED_DATE_TYPE = eINSTANCE.getLEntity_HistorizedDateType();
 
     /**
      * The meta object literal for the '<em><b>Mapped Superclass</b></em>' attribute feature.
