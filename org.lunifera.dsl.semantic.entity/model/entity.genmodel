@@ -50,6 +50,8 @@
       <genOperations ecoreOperation="entity.ecore#//LBean/getReferences"/>
       <genOperations ecoreOperation="entity.ecore#//LBean/getAttributes"/>
       <genOperations ecoreOperation="entity.ecore#//LBean/getAllFeatures"/>
+      <genOperations ecoreOperation="entity.ecore#//LBean/getAllAttributes"/>
+      <genOperations ecoreOperation="entity.ecore#//LBean/getAllReferences"/>
       <genOperations ecoreOperation="entity.ecore#//LBean/collectAllLunFeatures">
         <genParameters ecoreParameter="entity.ecore#//LBean/collectAllLunFeatures/current"/>
         <genParameters ecoreParameter="entity.ecore#//LBean/collectAllLunFeatures/result"/>
@@ -69,6 +71,8 @@
       <genOperations ecoreOperation="entity.ecore#//LEntity/getReferences"/>
       <genOperations ecoreOperation="entity.ecore#//LEntity/getAttributes"/>
       <genOperations ecoreOperation="entity.ecore#//LEntity/getAllFeatures"/>
+      <genOperations ecoreOperation="entity.ecore#//LEntity/getAllAttributes"/>
+      <genOperations ecoreOperation="entity.ecore#//LEntity/getAllReferences"/>
       <genOperations ecoreOperation="entity.ecore#//LEntity/collectAllLunFeatures">
         <genParameters ecoreParameter="entity.ecore#//LEntity/collectAllLunFeatures/current"/>
         <genParameters ecoreParameter="entity.ecore#//LEntity/collectAllLunFeatures/result"/>
@@ -109,7 +113,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entity.ecore#//LBeanReference/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entity.ecore#//LBeanReference/opposite"/>
     </genClasses>
-    <genClasses ecoreClass="entity.ecore#//LEOperation"/>
     <genClasses ecoreClass="entity.ecore#//LIndex">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LIndex/unique"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LIndex/name"/>

@@ -117,9 +117,13 @@ class ModelExtensions {
 	}
 	
 	def String toName(LFeature feature){
-		return feature.name
+		return feature.name.replace("^", "")
 	}
-
+	
+	def String toName(LClass clazz){
+		return clazz.name.replace("^", "")
+	}
+	
 	/**
 	 * The binary <code>+</code> operator that concatenates two strings.
 	 * 

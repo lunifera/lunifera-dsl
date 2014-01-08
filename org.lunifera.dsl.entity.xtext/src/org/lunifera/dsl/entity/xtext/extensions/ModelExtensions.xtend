@@ -28,6 +28,7 @@ import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
+import org.lunifera.dsl.semantic.entity.LOperation
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
@@ -50,6 +51,10 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 		return jvmTypeRef
 	}
+	
+	def dispatch JvmTypeReference toTypeReference(LOperation prop) {
+		prop.type.cloneWithProxies
+	}
 
 	def dispatch isCascading(LEntityReference prop) {
 		prop.cascading || if(prop.opposite != null) prop.opposite.cascading else false
@@ -58,9 +63,13 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch isCascading(LBeanReference prop) {
 		prop.cascading || if(prop.opposite != null) prop.opposite.cascading else false
 	}
+	
+	def dispatch isCascading(LOperation prop) {
+		return false
+	}
 
 	def dispatch getResolvedOpposite(LEntityReference prop) {
-
+ 
 		// For a toMany that has already an opposite, return it.
 		// Otherwise search in the referenced type for the property with the owner type.
 		if (prop.getOpposite() != null) {

@@ -80,7 +80,6 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
       case EntityPackage.LBEAN_FEATURE: return createLBeanFeature();
       case EntityPackage.LBEAN_ATTRIBUTE: return createLBeanAttribute();
       case EntityPackage.LBEAN_REFERENCE: return createLBeanReference();
-      case EntityPackage.LE_OPERATION: return createLEOperation();
       case EntityPackage.LINDEX: return createLIndex();
       case EntityPackage.LOPERATION: return createLOperation();
       default:
@@ -298,17 +297,6 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public LEOperation createLEOperation()
-  {
-    LEOperationImpl leOperation = new LEOperationImpl();
-    return leOperation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public LIndex createLIndex()
   {
     LIndexImpl lIndex = new LIndexImpl();
@@ -354,9 +342,9 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
    * @generated
    */
   @SuppressWarnings("unchecked")
-  public List<LEOperation> createOperationsListFromString(EDataType eDataType, String initialValue)
+  public List<LOperation> createOperationsListFromString(EDataType eDataType, String initialValue)
   {
-    return (List<LEOperation>)super.createFromString(initialValue);
+    return (List<LOperation>)super.createFromString(initialValue);
   }
 
   /**

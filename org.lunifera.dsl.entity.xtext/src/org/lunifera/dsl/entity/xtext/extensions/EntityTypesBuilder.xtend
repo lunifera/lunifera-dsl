@@ -210,7 +210,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				if(it == null) return
 				val p = it.trace(prop);
 				p >> prop.toCheckDisposedCall()
-				val fieldRef = "this." + prop.name
+				val fieldRef = "this." + prop.toName
 				if (opposite == null) {
 					p >> fieldRef + " = " + paramName + ";"
 				} else {
@@ -276,7 +276,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				if(it == null) return
 				val p = it.trace(prop);
 				p >> prop.toCheckDisposedCall()
-				val fieldRef = "this." + prop.name
+				val fieldRef = "this." + prop.toName
 				if (opposite == null) {
 					p >> fieldRef + " = " + paramName + ";"
 				} else {

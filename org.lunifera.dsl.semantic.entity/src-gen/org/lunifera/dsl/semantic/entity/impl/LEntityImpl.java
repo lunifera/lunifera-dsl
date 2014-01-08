@@ -36,7 +36,6 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.common.types.impl.LClassImpl;
 
 import org.lunifera.dsl.semantic.entity.EntityPackage;
-import org.lunifera.dsl.semantic.entity.LEOperation;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityFeature;
@@ -44,6 +43,7 @@ import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LIndex;
+import org.lunifera.dsl.semantic.entity.LOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -469,11 +469,11 @@ public class LEntityImpl extends LClassImpl implements LEntity
    * <!-- end-user-doc -->
    * @generated
    */
-  public List<LEOperation> getOperations()
+  public List<LOperation> getOperations()
   {
     EList<LEntityFeature> _features = this.getFeatures();
-    Iterable<LEOperation> _filter = Iterables.<LEOperation>filter(_features, LEOperation.class);
-    List<LEOperation> _list = IterableExtensions.<LEOperation>toList(_filter);
+    Iterable<LOperation> _filter = Iterables.<LOperation>filter(_features, LOperation.class);
+    List<LOperation> _list = IterableExtensions.<LOperation>toList(_filter);
     return _list;
   }
 

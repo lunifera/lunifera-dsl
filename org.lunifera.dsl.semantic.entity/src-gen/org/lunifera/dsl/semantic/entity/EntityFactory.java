@@ -140,15 +140,6 @@ public interface EntityFactory extends EFactory
   LBeanReference createLBeanReference();
 
   /**
-   * Returns a new object of class '<em>LE Operation</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LE Operation</em>'.
-   * @generated
-   */
-  LEOperation createLEOperation();
-
-  /**
    * Returns a new object of class '<em>LIndex</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

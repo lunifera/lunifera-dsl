@@ -24,7 +24,6 @@ import org.lunifera.dsl.semantic.entity.LBeanAttribute;
 import org.lunifera.dsl.semantic.entity.LBeanFeature;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
-import org.lunifera.dsl.semantic.entity.LEOperation;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityColumnPersistenceInfo;
@@ -143,13 +142,6 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * @generated
    */
   private EClass lBeanReferenceEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass leOperationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -862,16 +854,6 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getLEOperation()
-  {
-    return leOperationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getLIndex()
   {
     return lIndexEClass;
@@ -1098,8 +1080,6 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     createEReference(lBeanReferenceEClass, LBEAN_REFERENCE__TYPE);
     createEReference(lBeanReferenceEClass, LBEAN_REFERENCE__OPPOSITE);
 
-    leOperationEClass = createEClass(LE_OPERATION);
-
     lIndexEClass = createEClass(LINDEX);
     createEAttribute(lIndexEClass, LINDEX__UNIQUE);
     createEAttribute(lIndexEClass, LINDEX__NAME);
@@ -1170,9 +1150,6 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     lBeanAttributeEClass.getESuperTypes().add(theLunTypesPackage.getLAttribute());
     lBeanReferenceEClass.getESuperTypes().add(this.getLBeanFeature());
     lBeanReferenceEClass.getESuperTypes().add(theLunTypesPackage.getLReference());
-    leOperationEClass.getESuperTypes().add(this.getLOperation());
-    leOperationEClass.getESuperTypes().add(this.getLEntityFeature());
-    leOperationEClass.getESuperTypes().add(this.getLBeanFeature());
     lOperationEClass.getESuperTypes().add(theLunTypesPackage.getLOperation());
     lOperationEClass.getESuperTypes().add(this.getLBeanFeature());
     lOperationEClass.getESuperTypes().add(this.getLEntityFeature());
@@ -1269,8 +1246,6 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     initEReference(getLBeanReference_Type(), this.getLBean(), null, "type", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLBeanReference_Opposite(), this.getLBeanReference(), null, "opposite", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(leOperationEClass, LEOperation.class, "LEOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(lIndexEClass, LIndex.class, "LIndex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLIndex_Unique(), theEcorePackage.getEBoolean(), "unique", null, 0, 1, LIndex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLIndex_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LIndex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1286,7 +1261,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     addEEnumLiteral(lDiscriminatorTypeEEnum, LDiscriminatorType.INTEGER);
 
     // Initialize data types
-    initEDataType(operationsListEDataType, List.class, "OperationsList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.entity.LEOperation>");
+    initEDataType(operationsListEDataType, List.class, "OperationsList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.entity.LOperation>");
     initEDataType(entityFeatureListEDataType, List.class, "EntityFeatureList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.entity.LEntityFeature>");
     initEDataType(entityReferenceListEDataType, List.class, "EntityReferenceList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.entity.LEntityReference>");
     initEDataType(entityAttributeListEDataType, List.class, "EntityAttributeList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.entity.LEntityAttribute>");

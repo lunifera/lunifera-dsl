@@ -18,6 +18,7 @@ import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import javax.persistence.Entity
+import org.lunifera.dsl.semantic.common.types.LOperation
 
 /**
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
@@ -143,7 +144,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			// Fields
 			//
-			for (f : entity.features) {
+			for (f : entity.features.filter[!(it instanceof LOperation)]) {
 				switch f {
 					LFeature: {
 						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {

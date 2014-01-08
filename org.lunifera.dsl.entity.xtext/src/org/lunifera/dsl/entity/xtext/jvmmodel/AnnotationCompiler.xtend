@@ -58,6 +58,7 @@ import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 
 import static org.lunifera.dsl.semantic.common.types.LDateType.*
+import org.lunifera.dsl.semantic.entity.LOperation
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -73,6 +74,10 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 
 		bean.addAnno(jvmType, bean.toAnnotation(typeof(Embeddable)))
+	}
+	
+	def protected dispatch void internalProcessAnnotation(LOperation member, JvmField jvmOperation) {
+		member.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LEntity entity, JvmGenericType jvmType) {

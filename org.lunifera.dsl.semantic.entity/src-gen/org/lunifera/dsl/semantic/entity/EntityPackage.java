@@ -1384,6 +1384,61 @@ public interface EntityPackage extends EPackage
   int LBEAN_REFERENCE_OPERATION_COUNT = LBEAN_FEATURE_OPERATION_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LIndexImpl <em>LIndex</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.dsl.semantic.entity.impl.LIndexImpl
+   * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getLIndex()
+   * @generated
+   */
+  int LINDEX = 14;
+
+  /**
+   * The feature id for the '<em><b>Unique</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LINDEX__UNIQUE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LINDEX__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Features</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LINDEX__FEATURES = 2;
+
+  /**
+   * The number of structural features of the '<em>LIndex</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LINDEX_FEATURE_COUNT = 3;
+
+  /**
+   * The number of operations of the '<em>LIndex</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LINDEX_OPERATION_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LOperationImpl <em>LOperation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1391,7 +1446,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getLOperation()
    * @generated
    */
-  int LOPERATION = 16;
+  int LOPERATION = 15;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1511,188 +1566,6 @@ public interface EntityPackage extends EPackage
   int LOPERATION_OPERATION_COUNT = LunTypesPackage.LOPERATION_OPERATION_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LEOperationImpl <em>LE Operation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.lunifera.dsl.semantic.entity.impl.LEOperationImpl
-   * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getLEOperation()
-   * @generated
-   */
-  int LE_OPERATION = 14;
-
-  /**
-   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__ANNOTATIONS = LOPERATION__ANNOTATIONS;
-
-  /**
-   * The feature id for the '<em><b>Modifier</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__MODIFIER = LOPERATION__MODIFIER;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__TYPE = LOPERATION__TYPE;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__PARAMS = LOPERATION__PARAMS;
-
-  /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__BODY = LOPERATION__BODY;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__NAME = LOPERATION__NAME;
-
-  /**
-   * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__MULTIPLICITY = LOPERATION__MULTIPLICITY;
-
-  /**
-   * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__ANNOTATION_INFO = LOPERATION__ANNOTATION_INFO;
-
-  /**
-   * The feature id for the '<em><b>Persistence Info</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION__PERSISTENCE_INFO = LOPERATION__PERSISTENCE_INFO;
-
-  /**
-   * The number of structural features of the '<em>LE Operation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION_FEATURE_COUNT = LOPERATION_FEATURE_COUNT + 0;
-
-  /**
-   * The operation id for the '<em>Get Bean</em>' operation.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION___GET_BEAN = LOPERATION___GET_BEAN;
-
-  /**
-   * The operation id for the '<em>Get Entity</em>' operation.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION___GET_ENTITY = LOPERATION___GET_ENTITY;
-
-  /**
-   * The number of operations of the '<em>LE Operation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LE_OPERATION_OPERATION_COUNT = LOPERATION_OPERATION_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LIndexImpl <em>LIndex</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.lunifera.dsl.semantic.entity.impl.LIndexImpl
-   * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getLIndex()
-   * @generated
-   */
-  int LINDEX = 15;
-
-  /**
-   * The feature id for the '<em><b>Unique</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LINDEX__UNIQUE = 0;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LINDEX__NAME = 1;
-
-  /**
-   * The feature id for the '<em><b>Features</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LINDEX__FEATURES = 2;
-
-  /**
-   * The number of structural features of the '<em>LIndex</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LINDEX_FEATURE_COUNT = 3;
-
-  /**
-   * The number of operations of the '<em>LIndex</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LINDEX_OPERATION_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.LDiscriminatorType <em>LDiscriminator Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1700,7 +1573,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getLDiscriminatorType()
    * @generated
    */
-  int LDISCRIMINATOR_TYPE = 17;
+  int LDISCRIMINATOR_TYPE = 16;
 
   /**
    * The meta object id for the '<em>Operations List</em>' data type.
@@ -1710,7 +1583,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getOperationsList()
    * @generated
    */
-  int OPERATIONS_LIST = 18;
+  int OPERATIONS_LIST = 17;
 
   /**
    * The meta object id for the '<em>Feature List</em>' data type.
@@ -1720,7 +1593,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getEntityFeatureList()
    * @generated
    */
-  int ENTITY_FEATURE_LIST = 19;
+  int ENTITY_FEATURE_LIST = 18;
 
   /**
    * The meta object id for the '<em>Reference List</em>' data type.
@@ -1730,7 +1603,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getEntityReferenceList()
    * @generated
    */
-  int ENTITY_REFERENCE_LIST = 20;
+  int ENTITY_REFERENCE_LIST = 19;
 
   /**
    * The meta object id for the '<em>Attribute List</em>' data type.
@@ -1740,7 +1613,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getEntityAttributeList()
    * @generated
    */
-  int ENTITY_ATTRIBUTE_LIST = 21;
+  int ENTITY_ATTRIBUTE_LIST = 20;
 
   /**
    * The meta object id for the '<em>Bean Feature List</em>' data type.
@@ -1750,7 +1623,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getBeanFeatureList()
    * @generated
    */
-  int BEAN_FEATURE_LIST = 22;
+  int BEAN_FEATURE_LIST = 21;
 
   /**
    * The meta object id for the '<em>Bean Reference List</em>' data type.
@@ -1760,7 +1633,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getBeanReferenceList()
    * @generated
    */
-  int BEAN_REFERENCE_LIST = 23;
+  int BEAN_REFERENCE_LIST = 22;
 
   /**
    * The meta object id for the '<em>Bean Attribute List</em>' data type.
@@ -1770,7 +1643,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getBeanAttributeList()
    * @generated
    */
-  int BEAN_ATTRIBUTE_LIST = 24;
+  int BEAN_ATTRIBUTE_LIST = 23;
 
 
   /**
@@ -2371,16 +2244,6 @@ public interface EntityPackage extends EPackage
   EReference getLBeanReference_Opposite();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LEOperation <em>LE Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>LE Operation</em>'.
-   * @see org.lunifera.dsl.semantic.entity.LEOperation
-   * @generated
-   */
-  EClass getLEOperation();
-
-  /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LIndex <em>LIndex</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2449,7 +2312,7 @@ public interface EntityPackage extends EPackage
    * <!-- end-user-doc -->
    * @return the meta object for data type '<em>Operations List</em>'.
    * @see java.util.List
-   * @model instanceClass="java.util.List<org.lunifera.dsl.semantic.entity.LEOperation>"
+   * @model instanceClass="java.util.List<org.lunifera.dsl.semantic.entity.LOperation>"
    * @generated
    */
   EDataType getOperationsList();
@@ -3027,16 +2890,6 @@ public interface EntityPackage extends EPackage
      * @generated
      */
     EReference LBEAN_REFERENCE__OPPOSITE = eINSTANCE.getLBeanReference_Opposite();
-
-    /**
-     * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LEOperationImpl <em>LE Operation</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.lunifera.dsl.semantic.entity.impl.LEOperationImpl
-     * @see org.lunifera.dsl.semantic.entity.impl.EntityPackageImpl#getLEOperation()
-     * @generated
-     */
-    EClass LE_OPERATION = eINSTANCE.getLEOperation();
 
     /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LIndexImpl <em>LIndex</em>}' class.

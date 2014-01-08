@@ -15,8 +15,8 @@ import GenModel
 class LPackage {
 	String name
 	contains LImport[] imports
-}
-
+} 
+ 
 class LTypedPackage extends LPackage {
 	contains LType[] types
 }

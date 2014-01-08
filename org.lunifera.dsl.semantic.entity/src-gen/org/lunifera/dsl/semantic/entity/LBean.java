@@ -105,10 +105,10 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * Returns all features of type LOperation
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.entity.OperationsList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LEOperation%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LEOperation%>>filter(_features, <%org.lunifera.dsl.semantic.entity.LEOperation%>.class);\n<%java.util.List%><<%org.lunifera.dsl.semantic.entity.LEOperation%>> _list = <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LEOperation%>>toList(_filter);\nreturn _list;'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LOperation%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LOperation%>>filter(_features, <%org.lunifera.dsl.semantic.entity.LOperation%>.class);\n<%java.util.List%><<%org.lunifera.dsl.semantic.entity.LOperation%>> _list = <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LOperation%>>toList(_filter);\nreturn _list;'"
    * @generated
    */
-  List<LEOperation> getOperations();
+  List<LOperation> getOperations();
 
   /**
    * <!-- begin-user-doc -->

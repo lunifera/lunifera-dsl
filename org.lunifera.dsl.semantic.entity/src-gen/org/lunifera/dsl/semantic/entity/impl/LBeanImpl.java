@@ -41,7 +41,7 @@ import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanAttribute;
 import org.lunifera.dsl.semantic.entity.LBeanFeature;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
-import org.lunifera.dsl.semantic.entity.LEOperation;
+import org.lunifera.dsl.semantic.entity.LOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -192,11 +192,11 @@ public class LBeanImpl extends LClassImpl implements LBean
    * <!-- end-user-doc -->
    * @generated
    */
-  public List<LEOperation> getOperations()
+  public List<LOperation> getOperations()
   {
     EList<LBeanFeature> _features = this.getFeatures();
-    Iterable<LEOperation> _filter = Iterables.<LEOperation>filter(_features, LEOperation.class);
-    List<LEOperation> _list = IterableExtensions.<LEOperation>toList(_filter);
+    Iterable<LOperation> _filter = Iterables.<LOperation>filter(_features, LOperation.class);
+    List<LOperation> _list = IterableExtensions.<LOperation>toList(_filter);
     return _list;
   }
 
