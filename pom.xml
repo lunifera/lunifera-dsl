@@ -42,6 +42,7 @@
 				<module>org.lunifera.dsl.entity.xtext</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
 				<module>org.lunifera.dsl.eclipse.ui</module>
+				<module>org.lunifera.dsl.eclipse.ui.examples</module>
 
 				<!-- P2 feature -->
 				<module>org.lunifera.dsl.feature.entities</module>

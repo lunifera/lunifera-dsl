@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.lunifera.dsl.Examples" 
+				  name="Lunifera DSL Examples" 
+				  parentCategory="org.eclipse.ui.Examples" />
+	</extension>
+
+   <!-- ========= org.eclipse.xtext.example.xbase.tutorial ========= -->
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.lunifera.dsl.examples.EntityExamples" 
+			name="%XbaseTutorial_name" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.lunifera.dsl.Examples"
+			icon="icons/Lunifera_16.png" 
+			project="true">
+			<description>Installs the Lunifera Entity DSL examples</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.emf.common.ui.examples">
+	  <example wizardID="org.lunifera.dsl.examples.EntityExamples" pageImage="icons/Lunifera_16.png">
+		 <projectDescriptor name="org.eclipse.xtext.example.xbase.tutorial" contentURI="contents/xbase.tutorial.zip" description="A hands-on tutorial to learn the Xbase expression language."/>
+	  </example>
+   </extension>
+</plugin>
