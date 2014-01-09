@@ -11,30 +11,43 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
 import GenModel
-   
+import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.xcore.lib.XcoreCollectionLiterals
+import org.eclipse.emf.ecore.util.BasicInternalEList
+
 class LPackage {
 	String name
 	contains LImport[] imports
-} 
-   
+}
+
 class LTypedPackage extends LPackage {
 	contains LType[] types
 }
- 
+
 class LImport {
 	String importedNamespace
 }
- 
+
 class LType extends LAnnotationTarget {
-	String name 
+	String name
 	contains LAnnotationTarget annotationInfo
+	/**
+	 * Delegates the annotation request to the target element.
+	 */
+	op AnnotationList getResolvedAnnotations() {
+		if(annotationInfo != null){
+			annotationInfo.annotations
+		}else{
+			annotations
+		}
+	}
 }
- 
+
 class LAnnotationDef {
 	boolean exclude
 	contains XAnnotation ^annotation
 }
- 
+
 class LAnnotationTarget {
 	contains LAnnotationDef[] annotations
 }
@@ -49,6 +62,9 @@ class LDataType extends LScalarType {
 	boolean asBlob
 	int length
 	LDateType dateType
+	// is used to prepare datatypes during linking
+	boolean syntheticFlag
+	String syntheticType
 }
 
 enum LDateType {
@@ -86,6 +102,16 @@ interface LFeature extends LAnnotationTarget {
 	String name
 	contains LMultiplicity multiplicity
 	contains LAnnotationTarget annotationInfo
+	/**
+	 * Delegates the annotation request to the target element.
+	 */
+	op AnnotationList getResolvedAnnotations() {
+		if(annotationInfo != null){
+			annotationInfo.annotations
+		}else{
+			annotations
+		}
+	}
 }
 
 interface LReference extends LFeature {
@@ -107,6 +133,13 @@ class LOperation extends LAnnotationTarget {
 	contains JvmTypeReference ^type
 	contains JvmFormalParameter[] params
 	contains XExpression body
+	
+	/**
+	 * Method to generalize naming conventions for annotation access
+	 */
+	op AnnotationList getResolvedAnnotations() {
+		annotations
+	}
 }
 
 class LModifier {
@@ -145,6 +178,8 @@ enum LUpperBound {
 type OperationsList wraps java.util.List<LOperation>
 
 type FeaturesList wraps java.util.List<? extends LFeature>
+
+type AnnotationList wraps EList<LAnnotationDef>
 
 
 	

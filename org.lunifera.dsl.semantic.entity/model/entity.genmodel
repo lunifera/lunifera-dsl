@@ -60,7 +60,8 @@
     <genClasses ecoreClass="entity.ecore#//LEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/cacheable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/historized"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/historizedDateType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/timedependent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/timedependentDateType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entity.ecore#//LEntity/mappedSuperclass"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/persistenceInfo"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entity.ecore#//LEntity/inheritanceStrategy"/>

@@ -284,13 +284,22 @@ public interface LunTypesPackage extends EPackage
   int LTYPE_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 2;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LTYPE___GET_RESOLVED_ANNOTATIONS = LANNOTATION_TARGET_OPERATION_COUNT + 0;
+
+  /**
    * The number of operations of the '<em>LType</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LTYPE_OPERATION_COUNT = LANNOTATION_TARGET_OPERATION_COUNT + 0;
+  int LTYPE_OPERATION_COUNT = LANNOTATION_TARGET_OPERATION_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LAnnotationDefImpl <em>LAnnotation Def</em>}' class.
@@ -383,6 +392,15 @@ public interface LunTypesPackage extends EPackage
    * @ordered
    */
   int LSCALAR_TYPE_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LSCALAR_TYPE___GET_RESOLVED_ANNOTATIONS = LTYPE___GET_RESOLVED_ANNOTATIONS;
 
   /**
    * The number of operations of the '<em>LScalar Type</em>' class.
@@ -485,13 +503,40 @@ public interface LunTypesPackage extends EPackage
   int LDATA_TYPE__DATE_TYPE = LSCALAR_TYPE_FEATURE_COUNT + 5;
 
   /**
+   * The feature id for the '<em><b>Synthetic Flag</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LDATA_TYPE__SYNTHETIC_FLAG = LSCALAR_TYPE_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Synthetic Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LDATA_TYPE__SYNTHETIC_TYPE = LSCALAR_TYPE_FEATURE_COUNT + 7;
+
+  /**
    * The number of structural features of the '<em>LData Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 6;
+  int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 8;
+
+  /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LDATA_TYPE___GET_RESOLVED_ANNOTATIONS = LSCALAR_TYPE___GET_RESOLVED_ANNOTATIONS;
 
   /**
    * The number of operations of the '<em>LData Type</em>' class.
@@ -556,6 +601,15 @@ public interface LunTypesPackage extends EPackage
    * @ordered
    */
   int LENUM_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 1;
+
+  /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENUM___GET_RESOLVED_ANNOTATIONS = LSCALAR_TYPE___GET_RESOLVED_ANNOTATIONS;
 
   /**
    * The number of operations of the '<em>LEnum</em>' class.
@@ -677,6 +731,15 @@ public interface LunTypesPackage extends EPackage
   int LCLASS_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 3;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LCLASS___GET_RESOLVED_ANNOTATIONS = LTYPE___GET_RESOLVED_ANNOTATIONS;
+
+  /**
    * The number of operations of the '<em>LClass</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -787,13 +850,22 @@ public interface LunTypesPackage extends EPackage
   int LFEATURE_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 3;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LFEATURE___GET_RESOLVED_ANNOTATIONS = LANNOTATION_TARGET_OPERATION_COUNT + 0;
+
+  /**
    * The number of operations of the '<em>LFeature</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LFEATURE_OPERATION_COUNT = LANNOTATION_TARGET_OPERATION_COUNT + 0;
+  int LFEATURE_OPERATION_COUNT = LANNOTATION_TARGET_OPERATION_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LReference <em>LReference</em>}' class.
@@ -867,6 +939,15 @@ public interface LunTypesPackage extends EPackage
    * @ordered
    */
   int LREFERENCE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 2;
+
+  /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LREFERENCE___GET_RESOLVED_ANNOTATIONS = LFEATURE___GET_RESOLVED_ANNOTATIONS;
 
   /**
    * The number of operations of the '<em>LReference</em>' class.
@@ -987,6 +1068,15 @@ public interface LunTypesPackage extends EPackage
   int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 6;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LATTRIBUTE___GET_RESOLVED_ANNOTATIONS = LFEATURE___GET_RESOLVED_ANNOTATIONS;
+
+  /**
    * The number of operations of the '<em>LAttribute</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1060,13 +1150,22 @@ public interface LunTypesPackage extends EPackage
   int LOPERATION_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 4;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOPERATION___GET_RESOLVED_ANNOTATIONS = LANNOTATION_TARGET_OPERATION_COUNT + 0;
+
+  /**
    * The number of operations of the '<em>LOperation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOPERATION_OPERATION_COUNT = LANNOTATION_TARGET_OPERATION_COUNT + 0;
+  int LOPERATION_OPERATION_COUNT = LANNOTATION_TARGET_OPERATION_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LModifierImpl <em>LModifier</em>}' class.
@@ -1229,6 +1328,16 @@ public interface LunTypesPackage extends EPackage
    */
   int FEATURES_LIST = 23;
 
+  /**
+   * The meta object id for the '<em>Annotation List</em>' data type.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.emf.common.util.EList
+   * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getAnnotationList()
+   * @generated
+   */
+  int ANNOTATION_LIST = 24;
+
 
   /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LPackage <em>LPackage</em>}'.
@@ -1335,6 +1444,16 @@ public interface LunTypesPackage extends EPackage
    * @generated
    */
   EReference getLType_AnnotationInfo();
+
+  /**
+   * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LType#getResolvedAnnotations() <em>Get Resolved Annotations</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the '<em>Get Resolved Annotations</em>' operation.
+   * @see org.lunifera.dsl.semantic.common.types.LType#getResolvedAnnotations()
+   * @generated
+   */
+  EOperation getLType__GetResolvedAnnotations();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LAnnotationDef <em>LAnnotation Def</em>}'.
@@ -1474,6 +1593,28 @@ public interface LunTypesPackage extends EPackage
    * @generated
    */
   EAttribute getLDataType_DateType();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDataType#isSyntheticFlag <em>Synthetic Flag</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Synthetic Flag</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LDataType#isSyntheticFlag()
+   * @see #getLDataType()
+   * @generated
+   */
+  EAttribute getLDataType_SyntheticFlag();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Synthetic Type</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType()
+   * @see #getLDataType()
+   * @generated
+   */
+  EAttribute getLDataType_SyntheticType();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LEnum <em>LEnum</em>}'.
@@ -1632,6 +1773,16 @@ public interface LunTypesPackage extends EPackage
    * @generated
    */
   EReference getLFeature_AnnotationInfo();
+
+  /**
+   * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LFeature#getResolvedAnnotations() <em>Get Resolved Annotations</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the '<em>Get Resolved Annotations</em>' operation.
+   * @see org.lunifera.dsl.semantic.common.types.LFeature#getResolvedAnnotations()
+   * @generated
+   */
+  EOperation getLFeature__GetResolvedAnnotations();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LReference <em>LReference</em>}'.
@@ -1796,6 +1947,16 @@ public interface LunTypesPackage extends EPackage
   EReference getLOperation_Body();
 
   /**
+   * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LOperation#getResolvedAnnotations() <em>Get Resolved Annotations</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the '<em>Get Resolved Annotations</em>' operation.
+   * @see org.lunifera.dsl.semantic.common.types.LOperation#getResolvedAnnotations()
+   * @generated
+   */
+  EOperation getLOperation__GetResolvedAnnotations();
+
+  /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LModifier <em>LModifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1933,6 +2094,17 @@ public interface LunTypesPackage extends EPackage
   EDataType getFeaturesList();
 
   /**
+   * Returns the meta object for data type '{@link org.eclipse.emf.common.util.EList <em>Annotation List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for data type '<em>Annotation List</em>'.
+   * @see org.eclipse.emf.common.util.EList
+   * @model instanceClass="org.eclipse.emf.common.util.EList<org.lunifera.dsl.semantic.common.types.LAnnotationDef>"
+   * @generated
+   */
+  EDataType getAnnotationList();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2045,6 +2217,14 @@ public interface LunTypesPackage extends EPackage
     EReference LTYPE__ANNOTATION_INFO = eINSTANCE.getLType_AnnotationInfo();
 
     /**
+     * The meta object literal for the '<em><b>Get Resolved Annotations</b></em>' operation.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EOperation LTYPE___GET_RESOLVED_ANNOTATIONS = eINSTANCE.getLType__GetResolvedAnnotations();
+
+    /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LAnnotationDefImpl <em>LAnnotation Def</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2155,6 +2335,22 @@ public interface LunTypesPackage extends EPackage
      * @generated
      */
     EAttribute LDATA_TYPE__DATE_TYPE = eINSTANCE.getLDataType_DateType();
+
+    /**
+     * The meta object literal for the '<em><b>Synthetic Flag</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LDATA_TYPE__SYNTHETIC_FLAG = eINSTANCE.getLDataType_SyntheticFlag();
+
+    /**
+     * The meta object literal for the '<em><b>Synthetic Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LDATA_TYPE__SYNTHETIC_TYPE = eINSTANCE.getLDataType_SyntheticType();
 
     /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LEnumImpl <em>LEnum</em>}' class.
@@ -2287,6 +2483,14 @@ public interface LunTypesPackage extends EPackage
     EReference LFEATURE__ANNOTATION_INFO = eINSTANCE.getLFeature_AnnotationInfo();
 
     /**
+     * The meta object literal for the '<em><b>Get Resolved Annotations</b></em>' operation.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EOperation LFEATURE___GET_RESOLVED_ANNOTATIONS = eINSTANCE.getLFeature__GetResolvedAnnotations();
+
+    /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.LReference <em>LReference</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2413,6 +2617,14 @@ public interface LunTypesPackage extends EPackage
     EReference LOPERATION__BODY = eINSTANCE.getLOperation_Body();
 
     /**
+     * The meta object literal for the '<em><b>Get Resolved Annotations</b></em>' operation.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EOperation LOPERATION___GET_RESOLVED_ANNOTATIONS = eINSTANCE.getLOperation__GetResolvedAnnotations();
+
+    /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LModifierImpl <em>LModifier</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2531,6 +2743,16 @@ public interface LunTypesPackage extends EPackage
      * @generated
      */
     EDataType FEATURES_LIST = eINSTANCE.getFeaturesList();
+
+    /**
+     * The meta object literal for the '<em>Annotation List</em>' data type.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.emf.common.util.EList
+     * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getAnnotationList()
+     * @generated
+     */
+    EDataType ANNOTATION_LIST = eINSTANCE.getAnnotationList();
 
   }
 

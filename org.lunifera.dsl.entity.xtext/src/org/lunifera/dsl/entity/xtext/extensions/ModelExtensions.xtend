@@ -14,9 +14,11 @@ import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.entity.EntityFactory
 import org.lunifera.dsl.semantic.entity.LBean
@@ -37,6 +39,8 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	@Inject extension JvmTypesBuilder
 	@Inject extension NamingExtensions
 
+	@Inject TypeReferences references;
+
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
 		var jvmTypeRef = prop.type?.toTypeReference
 		if (jvmTypeRef != null && prop.isToMany) {
@@ -55,6 +59,15 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 
 	def dispatch JvmTypeReference toTypeReference(LOperation prop) {
 		prop.type.cloneWithProxies
+	}
+
+	override JvmTypeReference toSyntheticTypeReference(LDataType type) {
+		switch (type.syntheticType) {
+			case Constants::DT_INTERNAL_IS_CURRENT_VERSION:
+				references.findDeclaredType(Boolean::TYPE, type).newTypeRef()
+			case Constants::DT_INTERNAL_OBJECT_VERSION:
+				references.findDeclaredType(Integer::TYPE, type).newTypeRef()
+		}
 	}
 
 	def dispatch isCascading(LEntityReference prop) {
@@ -287,11 +300,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 		return null
 	}
-	
+
 	def boolean isStrategyFromSuperPresent(LEntity entity) {
 		return entity.findStrategyFromSuper != null
 	}
-	
+
 	def boolean isStrategyPerSubclass(LEntity entity) {
 		return entity.toInheritanceStrategy instanceof LTablePerSubclassStrategy
 	}

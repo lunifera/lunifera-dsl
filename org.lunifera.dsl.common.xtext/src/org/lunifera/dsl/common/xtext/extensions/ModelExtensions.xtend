@@ -42,7 +42,9 @@ class ModelExtensions {
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LDataType type) {
-		if (type.date) {
+		if (type.syntheticFlag) {
+			return type.toSyntheticTypeReference
+		} else if (type.date) {
 			return references.findDeclaredType(typeof(Date), type).newTypeRef()
 		} else if (type.asBlob) {
 			val typeRef = references.findDeclaredType(Byte::TYPE, type).newTypeRef()
@@ -64,6 +66,9 @@ class ModelExtensions {
 		} else {
 			return type.jvmTypeReference
 		}
+	}
+
+	def JvmTypeReference toSyntheticTypeReference(LDataType type) {
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LAttribute prop) {
@@ -118,18 +123,18 @@ class ModelExtensions {
 		}
 		return current as LPackage;
 	}
-	
-	def String toName(LFeature feature){
+
+	def String toName(LFeature feature) {
 		return feature.name.replace("^", "")
 	}
-	
-	def String toName(LClass clazz){
-		if(clazz == null || clazz.name == null){
+
+	def String toName(LClass clazz) {
+		if (clazz == null || clazz.name == null) {
 			return ""
 		}
 		return clazz.name.replace("^", "")
 	}
-	
+
 	/**
 	 * The binary <code>+</code> operator that concatenates two strings.
 	 * 

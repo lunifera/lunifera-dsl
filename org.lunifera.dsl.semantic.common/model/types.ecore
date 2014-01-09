@@ -24,6 +24,12 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LType" eSuperTypes="#//LAnnotationTarget">
+    <eOperations name="getAnnotations" unique="false" eType="#//AnnotationList">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Delegates the annotation request to the target element."/>
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotationInfo" eType="#//LAnnotationTarget"
         containment="true" resolveProxies="false"/>
@@ -153,4 +159,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="OperationsList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.semantic.common.types.LOperation>"/>
   <eClassifiers xsi:type="ecore:EDataType" name="FeaturesList" instanceTypeName="java.util.List&lt;? extends org.lunifera.dsl.semantic.common.types.LFeature>"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="AnnotationList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.semantic.common.types.LAnnotationDef>"/>
 </ecore:EPackage>

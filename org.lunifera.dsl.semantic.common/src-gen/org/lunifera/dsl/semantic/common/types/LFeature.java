@@ -2,6 +2,7 @@
  */
 package org.lunifera.dsl.semantic.common.types;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,5 +101,18 @@ public interface LFeature extends LAnnotationTarget
    * @generated
    */
   void setAnnotationInfo(LAnnotationTarget value);
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * *
+   * Delegates the annotation request to the target element.
+   * <!-- end-model-doc -->
+   * @model kind="operation" dataType="org.lunifera.dsl.semantic.common.types.AnnotationList" unique="false"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.common.types.LAnnotationDef%>> _xifexpression = null;\n<%org.lunifera.dsl.semantic.common.types.LAnnotationTarget%> _annotationInfo = this.getAnnotationInfo();\nboolean _notEquals = (!<%com.google.common.base.Objects%>.equal(_annotationInfo, null));\nif (_notEquals)\n{\n\t<%org.lunifera.dsl.semantic.common.types.LAnnotationTarget%> _annotationInfo_1 = this.getAnnotationInfo();\n\t<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.common.types.LAnnotationDef%>> _annotations = _annotationInfo_1.getAnnotations();\n\t_xifexpression = _annotations;\n}\nelse\n{\n\t<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.common.types.LAnnotationDef%>> _annotations_1 = this.getAnnotations();\n\t_xifexpression = _annotations_1;\n}\nreturn _xifexpression;'"
+   * @generated
+   */
+  EList<LAnnotationDef> getResolvedAnnotations();
 
 } // LFeature

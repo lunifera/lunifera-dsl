@@ -25,7 +25,8 @@ import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#isCacheable <em>Cacheable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#isHistorized <em>Historized</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getHistorizedDateType <em>Historized Date Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#isTimedependent <em>Timedependent</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getTimedependentDateType <em>Timedependent Date Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#isMappedSuperclass <em>Mapped Superclass</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getPersistenceInfo <em>Persistence Info</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getInheritanceStrategy <em>Inheritance Strategy</em>}</li>
@@ -95,33 +96,59 @@ public interface LEntity extends LClass, LFeaturesHolder
   void setHistorized(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Historized Date Type</b></em>' attribute.
-   * The literals are from the enumeration {@link org.lunifera.dsl.semantic.common.types.LDateType}.
+   * Returns the value of the '<em><b>Timedependent</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Historized Date Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Timedependent</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Historized Date Type</em>' attribute.
-   * @see org.lunifera.dsl.semantic.common.types.LDateType
-   * @see #setHistorizedDateType(LDateType)
-   * @see org.lunifera.dsl.semantic.entity.EntityPackage#getLEntity_HistorizedDateType()
+   * @return the value of the '<em>Timedependent</em>' attribute.
+   * @see #setTimedependent(boolean)
+   * @see org.lunifera.dsl.semantic.entity.EntityPackage#getLEntity_Timedependent()
    * @model unique="false"
    * @generated
    */
-  LDateType getHistorizedDateType();
+  boolean isTimedependent();
 
   /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntity#getHistorizedDateType <em>Historized Date Type</em>}' attribute.
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntity#isTimedependent <em>Timedependent</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Historized Date Type</em>' attribute.
-   * @see org.lunifera.dsl.semantic.common.types.LDateType
-   * @see #getHistorizedDateType()
+   * @param value the new value of the '<em>Timedependent</em>' attribute.
+   * @see #isTimedependent()
    * @generated
    */
-  void setHistorizedDateType(LDateType value);
+  void setTimedependent(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Timedependent Date Type</b></em>' attribute.
+   * The literals are from the enumeration {@link org.lunifera.dsl.semantic.common.types.LDateType}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Timedependent Date Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Timedependent Date Type</em>' attribute.
+   * @see org.lunifera.dsl.semantic.common.types.LDateType
+   * @see #setTimedependentDateType(LDateType)
+   * @see org.lunifera.dsl.semantic.entity.EntityPackage#getLEntity_TimedependentDateType()
+   * @model unique="false"
+   * @generated
+   */
+  LDateType getTimedependentDateType();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntity#getTimedependentDateType <em>Timedependent Date Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Timedependent Date Type</em>' attribute.
+   * @see org.lunifera.dsl.semantic.common.types.LDateType
+   * @see #getTimedependentDateType()
+   * @generated
+   */
+  void setTimedependentDateType(LDateType value);
 
   /**
    * Returns the value of the '<em><b>Mapped Superclass</b></em>' attribute.

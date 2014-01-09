@@ -55,7 +55,8 @@ import org.lunifera.dsl.semantic.entity.LOperation;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#isCacheable <em>Cacheable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#isHistorized <em>Historized</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getHistorizedDateType <em>Historized Date Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#isTimedependent <em>Timedependent</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getTimedependentDateType <em>Timedependent Date Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#isMappedSuperclass <em>Mapped Superclass</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getPersistenceInfo <em>Persistence Info</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getInheritanceStrategy <em>Inheritance Strategy</em>}</li>
@@ -111,24 +112,44 @@ public class LEntityImpl extends LClassImpl implements LEntity
   protected boolean historized = HISTORIZED_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getHistorizedDateType() <em>Historized Date Type</em>}' attribute.
+   * The default value of the '{@link #isTimedependent() <em>Timedependent</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getHistorizedDateType()
+   * @see #isTimedependent()
    * @generated
    * @ordered
    */
-  protected static final LDateType HISTORIZED_DATE_TYPE_EDEFAULT = LDateType.DATE;
+  protected static final boolean TIMEDEPENDENT_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getHistorizedDateType() <em>Historized Date Type</em>}' attribute.
+   * The cached value of the '{@link #isTimedependent() <em>Timedependent</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getHistorizedDateType()
+   * @see #isTimedependent()
    * @generated
    * @ordered
    */
-  protected LDateType historizedDateType = HISTORIZED_DATE_TYPE_EDEFAULT;
+  protected boolean timedependent = TIMEDEPENDENT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getTimedependentDateType() <em>Timedependent Date Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTimedependentDateType()
+   * @generated
+   * @ordered
+   */
+  protected static final LDateType TIMEDEPENDENT_DATE_TYPE_EDEFAULT = LDateType.DATE;
+
+  /**
+   * The cached value of the '{@link #getTimedependentDateType() <em>Timedependent Date Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTimedependentDateType()
+   * @generated
+   * @ordered
+   */
+  protected LDateType timedependentDateType = TIMEDEPENDENT_DATE_TYPE_EDEFAULT;
 
   /**
    * The default value of the '{@link #isMappedSuperclass() <em>Mapped Superclass</em>}' attribute.
@@ -282,9 +303,9 @@ public class LEntityImpl extends LClassImpl implements LEntity
    * <!-- end-user-doc -->
    * @generated
    */
-  public LDateType getHistorizedDateType()
+  public boolean isTimedependent()
   {
-    return historizedDateType;
+    return timedependent;
   }
 
   /**
@@ -292,12 +313,35 @@ public class LEntityImpl extends LClassImpl implements LEntity
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHistorizedDateType(LDateType newHistorizedDateType)
+  public void setTimedependent(boolean newTimedependent)
   {
-    LDateType oldHistorizedDateType = historizedDateType;
-    historizedDateType = newHistorizedDateType == null ? HISTORIZED_DATE_TYPE_EDEFAULT : newHistorizedDateType;
+    boolean oldTimedependent = timedependent;
+    timedependent = newTimedependent;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__HISTORIZED_DATE_TYPE, oldHistorizedDateType, historizedDateType));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__TIMEDEPENDENT, oldTimedependent, timedependent));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LDateType getTimedependentDateType()
+  {
+    return timedependentDateType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTimedependentDateType(LDateType newTimedependentDateType)
+  {
+    LDateType oldTimedependentDateType = timedependentDateType;
+    timedependentDateType = newTimedependentDateType == null ? TIMEDEPENDENT_DATE_TYPE_EDEFAULT : newTimedependentDateType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.LENTITY__TIMEDEPENDENT_DATE_TYPE, oldTimedependentDateType, timedependentDateType));
   }
 
   /**
@@ -665,8 +709,10 @@ public class LEntityImpl extends LClassImpl implements LEntity
         return isCacheable();
       case EntityPackage.LENTITY__HISTORIZED:
         return isHistorized();
-      case EntityPackage.LENTITY__HISTORIZED_DATE_TYPE:
-        return getHistorizedDateType();
+      case EntityPackage.LENTITY__TIMEDEPENDENT:
+        return isTimedependent();
+      case EntityPackage.LENTITY__TIMEDEPENDENT_DATE_TYPE:
+        return getTimedependentDateType();
       case EntityPackage.LENTITY__MAPPED_SUPERCLASS:
         return isMappedSuperclass();
       case EntityPackage.LENTITY__PERSISTENCE_INFO:
@@ -702,8 +748,11 @@ public class LEntityImpl extends LClassImpl implements LEntity
       case EntityPackage.LENTITY__HISTORIZED:
         setHistorized((Boolean)newValue);
         return;
-      case EntityPackage.LENTITY__HISTORIZED_DATE_TYPE:
-        setHistorizedDateType((LDateType)newValue);
+      case EntityPackage.LENTITY__TIMEDEPENDENT:
+        setTimedependent((Boolean)newValue);
+        return;
+      case EntityPackage.LENTITY__TIMEDEPENDENT_DATE_TYPE:
+        setTimedependentDateType((LDateType)newValue);
         return;
       case EntityPackage.LENTITY__MAPPED_SUPERCLASS:
         setMappedSuperclass((Boolean)newValue);
@@ -749,8 +798,11 @@ public class LEntityImpl extends LClassImpl implements LEntity
       case EntityPackage.LENTITY__HISTORIZED:
         setHistorized(HISTORIZED_EDEFAULT);
         return;
-      case EntityPackage.LENTITY__HISTORIZED_DATE_TYPE:
-        setHistorizedDateType(HISTORIZED_DATE_TYPE_EDEFAULT);
+      case EntityPackage.LENTITY__TIMEDEPENDENT:
+        setTimedependent(TIMEDEPENDENT_EDEFAULT);
+        return;
+      case EntityPackage.LENTITY__TIMEDEPENDENT_DATE_TYPE:
+        setTimedependentDateType(TIMEDEPENDENT_DATE_TYPE_EDEFAULT);
         return;
       case EntityPackage.LENTITY__MAPPED_SUPERCLASS:
         setMappedSuperclass(MAPPED_SUPERCLASS_EDEFAULT);
@@ -791,8 +843,10 @@ public class LEntityImpl extends LClassImpl implements LEntity
         return cacheable != CACHEABLE_EDEFAULT;
       case EntityPackage.LENTITY__HISTORIZED:
         return historized != HISTORIZED_EDEFAULT;
-      case EntityPackage.LENTITY__HISTORIZED_DATE_TYPE:
-        return historizedDateType != HISTORIZED_DATE_TYPE_EDEFAULT;
+      case EntityPackage.LENTITY__TIMEDEPENDENT:
+        return timedependent != TIMEDEPENDENT_EDEFAULT;
+      case EntityPackage.LENTITY__TIMEDEPENDENT_DATE_TYPE:
+        return timedependentDateType != TIMEDEPENDENT_DATE_TYPE_EDEFAULT;
       case EntityPackage.LENTITY__MAPPED_SUPERCLASS:
         return mappedSuperclass != MAPPED_SUPERCLASS_EDEFAULT;
       case EntityPackage.LENTITY__PERSISTENCE_INFO:
@@ -876,8 +930,10 @@ public class LEntityImpl extends LClassImpl implements LEntity
     result.append(cacheable);
     result.append(", historized: ");
     result.append(historized);
-    result.append(", historizedDateType: ");
-    result.append(historizedDateType);
+    result.append(", timedependent: ");
+    result.append(timedependent);
+    result.append(", timedependentDateType: ");
+    result.append(timedependentDateType);
     result.append(", mappedSuperclass: ");
     result.append(mappedSuperclass);
     result.append(')');

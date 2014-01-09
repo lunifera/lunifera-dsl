@@ -62,6 +62,7 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__BIDIRECTIONAL_CASCADE_INVALID = "112";
 	public static final String CODE__CASCADE_DIRECTION_INVALID = "113";
 	public static final String CODE__UUID_WRONG_TYPE = "114";
+	public static final String CODE__OPPOSITE_WITHOUT_CASCADE = "115";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -82,7 +83,7 @@ public class EntityGrammarJavaValidator extends
 	@Check
 	public void checkJPA_MultiHasOppositeReference(LEntityReference prop) {
 		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
-			error("A bidirectional association needs an opposite reference.",
+			error("A 'to-many' association needs an opposite reference.",
 					EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 					CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
@@ -115,6 +116,17 @@ public class EntityGrammarJavaValidator extends
 							LunTypesPackage.Literals.LREFERENCE__CASCADING,
 							CODE__CASCADE_DIRECTION_INVALID, new String[0]);
 				}
+			}
+		}
+	}
+
+	@Check
+	public void checkJPA_Opposite_OneIsCascading(LEntityReference prop) {
+		if (prop.getOpposite() != null) {
+			if (!prop.isCascading() && !prop.getOpposite().isCascading()) {
+				error("Opposite references may only defined for cascading relations.",
+						prop, LunTypesPackage.Literals.LREFERENCE__CASCADING,
+						CODE__OPPOSITE_WITHOUT_CASCADE, new String[0]);
 			}
 		}
 	}

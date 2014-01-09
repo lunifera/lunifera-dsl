@@ -77,17 +77,17 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	@Inject extension NamingExtensions
 
 	def protected dispatch void internalProcessAnnotation(LBean bean, JvmGenericType jvmType) {
-		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+		bean.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 
 		bean.addAnno(jvmType, bean.toAnnotation(typeof(Embeddable)))
 	}
 
 	def protected dispatch void internalProcessAnnotation(LOperation member, JvmField jvmOperation) {
-		member.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
+		member.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LEntity entity, JvmGenericType jvmType) {
-		entity.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+		entity.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 		if (entity.mappedSuperclass) {
 			addAnno(entity, jvmType, entity.toAnnotation(typeof(MappedSuperclass)))
 		} else {
@@ -180,7 +180,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def protected dispatch void internalProcessAnnotation(LEntityReference prop, JvmField jvmField) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
 		if (prop.toMany) {
 
@@ -215,7 +215,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def protected dispatch void internalProcessAnnotation(LEntityAttribute prop, JvmField jvmField) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
 		if (prop.id) {
 			jvmField.annotations += prop.toAnnotation(typeof(Id))
@@ -336,7 +336,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def protected dispatch void internalProcessAnnotation(LBeanAttribute prop, JvmField jvmField) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
 		if (prop.transient) {
 			jvmField.annotations += prop.toAnnotation(typeof(Transient))
@@ -381,7 +381,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def protected dispatch void internalProcessAnnotation(LBeanReference prop, JvmField jvmField) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
 		jvmField.annotations += prop.toAnnotation(typeof(Basic))
 		addAnno(prop, jvmField, prop.toAnnotation(typeof(Embedded)))

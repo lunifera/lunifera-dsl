@@ -3,7 +3,6 @@ package org.lunifera.dsl.entity.xtext.linker;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
 import org.eclipse.xtext.util.OnChangeEvictingCache;
@@ -21,14 +20,14 @@ import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import com.google.inject.Inject;
 
 public class EntityLinker extends XbaseLazyLinker {
-
+	
 	@Inject
 	private OnChangeEvictingCache cache;
 
 	@Override
 	protected void doLinkModel(final EObject model, IDiagnosticConsumer consumer) {
 		super.doLinkModel(model, consumer);
-		
+
 		cache.execWithoutCacheClear(model.eResource(),
 				new IUnitOfWork.Void<Resource>() {
 					@Override
@@ -38,11 +37,75 @@ public class EntityLinker extends XbaseLazyLinker {
 							EObject eObject = iterator.next();
 							if (eObject instanceof LEntity) {
 								LEntity entity = (LEntity) eObject;
-								applyHistorized(entity);
+								if (entity.isHistorized()) {
+									applyHistorized(entity);
+								} else if (entity.isTimedependent()) {
+									applyTimedependent(entity);
+								}
 							}
 						}
 					}
 				});
+	}
+
+	/**
+	 * Applies the synthetic attributes for historized entities.
+	 * 
+	 * @param entity
+	 */
+	protected void applyHistorized(LEntity entity) {
+
+		LTypedPackage pkg = (LTypedPackage) entity.eContainer();
+
+		LEntityAttribute ooid = EntityFactory.eINSTANCE
+				.createLEntityAttribute();
+		ooid.setName(Constants.PROP__OID);
+		ooid.setType(findInternalOID(entity, pkg));
+		entity.getFeatures().add(ooid);
+
+		LEntityAttribute version = EntityFactory.eINSTANCE
+				.createLEntityAttribute();
+		version.setName(Constants.PROP__VERSION);
+		version.setType(findInternalDatatype(entity, pkg,
+				Constants.DT_INTERNAL_OBJECT_VERSION));
+		entity.getFeatures().add(version);
+
+		LEntityAttribute current = EntityFactory.eINSTANCE
+				.createLEntityAttribute();
+		current.setName(Constants.PROP__ISCURRENT);
+		current.setType(findInternalDatatype(entity, pkg,
+				Constants.DT_INTERNAL_IS_CURRENT_VERSION));
+		entity.getFeatures().add(current);
+	}
+
+	/**
+	 * Applies the synthetic attributes for historized entities.
+	 * 
+	 * @param entity
+	 */
+	protected void applyTimedependent(LEntity entity) {
+
+		LTypedPackage pkg = (LTypedPackage) entity.eContainer();
+
+		LEntityAttribute ooid = EntityFactory.eINSTANCE
+				.createLEntityAttribute();
+		ooid.setName(Constants.PROP__OID);
+		ooid.setType(findInternalOID(entity, pkg));
+		entity.getFeatures().add(ooid);
+
+		LEntityAttribute validFrom = EntityFactory.eINSTANCE
+				.createLEntityAttribute();
+		validFrom.setName(Constants.PROP__VALID_FROM);
+		validFrom.setType(findInternalValidDate(entity, pkg,
+				Constants.DT_INTERNAL_VALID_FROM));
+		entity.getFeatures().add(validFrom);
+
+		LEntityAttribute validUntil = EntityFactory.eINSTANCE
+				.createLEntityAttribute();
+		validUntil.setName(Constants.PROP__VALID_UNTIL);
+		validUntil.setType(findInternalValidDate(entity, pkg,
+				Constants.DT_INTERNAL_VALID_UNTIL));
+		entity.getFeatures().add(validUntil);
 	}
 
 	/**
@@ -69,7 +132,7 @@ public class EntityLinker extends XbaseLazyLinker {
 			datatype = LunTypesFactory.eINSTANCE.createLDataType();
 			datatype.setName(dtName);
 			datatype.setDate(true);
-			datatype.setDateType(entity.getHistorizedDateType());
+			datatype.setDateType(entity.getTimedependentDateType());
 			pkg.getTypes().add(datatype);
 		}
 		return datatype;
@@ -87,7 +150,7 @@ public class EntityLinker extends XbaseLazyLinker {
 		for (LType type : pkg.getTypes()) {
 			if (type instanceof LDataType) {
 				LDataType temp = (LDataType) type;
-				if (temp.getName().equals(Constants.DT_INTERNAL_OID)) {
+				if (temp.getName().equals(Constants.DT_INTERNAL_OBJECT_ID)) {
 					datatype = temp;
 					break;
 				}
@@ -97,8 +160,9 @@ public class EntityLinker extends XbaseLazyLinker {
 		if (datatype == null) {
 			for (LEntityAttribute att : entity.getAllAttributes()) {
 				if (att.isId() || att.isUuid()) {
-					datatype = (LDataType) EcoreUtil2.cloneWithProxies(att.getType());
-					datatype.setName(Constants.DT_INTERNAL_OID);
+					datatype = (LDataType) EcoreUtil2.cloneWithProxies(att
+							.getType());
+					datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);
 					pkg.getTypes().add(datatype);
 					break;
 				}
@@ -108,33 +172,32 @@ public class EntityLinker extends XbaseLazyLinker {
 	}
 
 	/**
-	 * Applies the synthetic attributes for historized entities.
+	 * Tries to find the datatype to be used for valid from and valid until.
 	 * 
 	 * @param entity
+	 * @param pkg
+	 * @return
 	 */
-	protected void applyHistorized(LEntity entity) {
-		if (entity.isHistorized()) {
-			LTypedPackage pkg = (LTypedPackage) entity.eContainer();
-
-			LEntityAttribute ooid = EntityFactory.eINSTANCE
-					.createLEntityAttribute();
-			ooid.setName(Constants.PROP__OID);
-			ooid.setType(findInternalOID(entity, pkg));
-			entity.getFeatures().add(ooid);
-
-			LEntityAttribute validFrom = EntityFactory.eINSTANCE
-					.createLEntityAttribute();
-			validFrom.setName(Constants.PROP__VALID_FROM);
-			validFrom.setType(findInternalValidDate(entity, pkg,
-					Constants.DT_INTERNAL_VALID_FROM));
-			entity.getFeatures().add(validFrom);
-
-			LEntityAttribute validUntil = EntityFactory.eINSTANCE
-					.createLEntityAttribute();
-			validUntil.setName(Constants.PROP__VALID_UNTIL);
-			validUntil.setType(findInternalValidDate(entity, pkg,
-					Constants.DT_INTERNAL_VALID_UNTIL));
-			entity.getFeatures().add(validUntil);
+	private LDataType findInternalDatatype(LEntity entity, LTypedPackage pkg,
+			String syntheticType) {
+		LDataType datatype = null;
+		for (LType type : pkg.getTypes()) {
+			if (type instanceof LDataType) {
+				LDataType temp = (LDataType) type;
+				if (temp.getName().equals(syntheticType)) {
+					datatype = temp;
+					break;
+				}
+			}
 		}
+
+		if (datatype == null) {
+			datatype = LunTypesFactory.eINSTANCE.createLDataType();
+			datatype.setName(syntheticType);
+			datatype.setSyntheticFlag(true);
+			datatype.setSyntheticType(syntheticType);
+			pkg.getTypes().add(datatype);
+		}
+		return datatype;
 	}
 }

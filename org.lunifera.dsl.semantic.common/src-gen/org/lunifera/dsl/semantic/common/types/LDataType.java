@@ -18,6 +18,8 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#isAsBlob <em>As Blob</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getLength <em>Length</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getDateType <em>Date Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#isSyntheticFlag <em>Synthetic Flag</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -185,5 +187,57 @@ public interface LDataType extends LScalarType
    * @generated
    */
   void setDateType(LDateType value);
+
+  /**
+   * Returns the value of the '<em><b>Synthetic Flag</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Synthetic Flag</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Synthetic Flag</em>' attribute.
+   * @see #setSyntheticFlag(boolean)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_SyntheticFlag()
+   * @model unique="false"
+   * @generated
+   */
+  boolean isSyntheticFlag();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LDataType#isSyntheticFlag <em>Synthetic Flag</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Synthetic Flag</em>' attribute.
+   * @see #isSyntheticFlag()
+   * @generated
+   */
+  void setSyntheticFlag(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Synthetic Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Synthetic Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Synthetic Type</em>' attribute.
+   * @see #setSyntheticType(String)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_SyntheticType()
+   * @model unique="false"
+   * @generated
+   */
+  String getSyntheticType();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Synthetic Type</em>' attribute.
+   * @see #getSyntheticType()
+   * @generated
+   */
+  void setSyntheticType(String value);
 
 } // LDataType
