@@ -13,6 +13,7 @@ import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
 import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.jvmmodel.EntityJvmModelGenerator;
+import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
 
 import com.google.inject.Binder;
@@ -63,5 +64,7 @@ public class EntityGrammarRuntimeModule extends
 	public Class<? extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions> bindModelExtensions() {
 		return org.lunifera.dsl.entity.xtext.extensions.ModelExtensions.class;
 	}
-
+	public Class<? extends org.eclipse.xtext.linking.ILinker> bindILinker() {
+		return EntityLinker.class;
+	}
 }

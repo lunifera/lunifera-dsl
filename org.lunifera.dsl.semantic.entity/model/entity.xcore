@@ -20,7 +20,7 @@ import GenModel
 class LEntityModel {
 	contains LTypedPackage[] packages
 }
-
+ 
 /**
  * A bean is an embeddable element that may become added to a entity using the @embedd annotation. 
  */
@@ -54,8 +54,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		collectAllLunFeatures(result)
 		return result
 	}
-	
-		/**
+	/**
 	 * Returns all attributes of the holder and from super types
 	 */
 	op BeanAttributeList getAllAttributes() {
@@ -63,7 +62,6 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		collectAllLunFeatures(result)
 		return result.filter(typeof(LBeanAttribute)).toList
 	}
-	
 	/**
 	 * Returns all references of the holder and from super types
 	 */
@@ -72,7 +70,6 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		collectAllLunFeatures(result)
 		return result.filter(typeof(LBeanReference)).toList
 	}
-	
 	op void collectAllLunFeatures(LBean current, BeanFeatureList result) {
 		if (current == null) {
 			return
@@ -92,6 +89,8 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 class LEntity extends LClass, LFeaturesHolder {
 	boolean cacheable
 	boolean historized
+	boolean timedependent
+	LDateType timedependentDateType
 	boolean mappedSuperclass
 	contains LEntityPersistenceInfo persistenceInfo
 	contains LEntityInheritanceStrategy inheritanceStrategy
@@ -103,7 +102,7 @@ class LEntity extends LClass, LFeaturesHolder {
  	 * Returns all features of type LOperation
  	 */
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList
+		features.filter(typeof(LOperation)).toList 
 	}
 	/**
  	 * Returns all features of type LEntityReference
@@ -125,7 +124,6 @@ class LEntity extends LClass, LFeaturesHolder {
 		collectAllLunFeatures(result)
 		return result
 	}
-	
 	/**
 	 * Returns all attributes of the holder and from super types
 	 */
@@ -134,7 +132,6 @@ class LEntity extends LClass, LFeaturesHolder {
 		collectAllLunFeatures(result)
 		return result.filter(typeof(LEntityAttribute)).toList
 	}
-	
 	/**
 	 * Returns all references of the holder and from super types
 	 */
@@ -143,7 +140,6 @@ class LEntity extends LClass, LFeaturesHolder {
 		collectAllLunFeatures(result)
 		return result.filter(typeof(LEntityReference)).toList
 	}
-	
 	op void collectAllLunFeatures(LEntity current, EntityFeatureList result) {
 		if (current == null) {
 			return
@@ -167,7 +163,6 @@ class LEntityColumnPersistenceInfo {
 }
 
 interface LEntityInheritanceStrategy {
-	
 }
 
 class LTablePerClassStrategy extends LEntityInheritanceStrategy {
@@ -183,13 +178,14 @@ class LTablePerSubclassStrategy extends LEntityInheritanceStrategy {
 }
 
 enum LDiscriminatorType {
-	INHERIT, STRING, CHAR, INTEGER
+	INHERIT
+	, STRING
+	, CHAR
+	, INTEGER
 }
 
 class LEntityFeature extends LFeature {
-	
 	contains LEntityColumnPersistenceInfo persistenceInfo
-	
 	op LEntity getEntity() {
 		return eContainer as LEntity
 	}

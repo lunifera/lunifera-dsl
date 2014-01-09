@@ -2,14 +2,21 @@
  */
 package org.lunifera.dsl.semantic.common.types.impl;
 
+import com.google.common.base.Objects;
+
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -157,6 +164,30 @@ public class LTypeImpl extends LAnnotationTargetImpl implements LType
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<LAnnotationDef> getResolvedAnnotations()
+  {
+    EList<LAnnotationDef> _xifexpression = null;
+    LAnnotationTarget _annotationInfo = this.getAnnotationInfo();
+    boolean _notEquals = (!Objects.equal(_annotationInfo, null));
+    if (_notEquals)
+    {
+      LAnnotationTarget _annotationInfo_1 = this.getAnnotationInfo();
+      EList<LAnnotationDef> _annotations = _annotationInfo_1.getAnnotations();
+      _xifexpression = _annotations;
+    }
+    else
+    {
+      EList<LAnnotationDef> _annotations_1 = this.getAnnotations();
+      _xifexpression = _annotations_1;
+    }
+    return _xifexpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -242,6 +273,22 @@ public class LTypeImpl extends LAnnotationTargetImpl implements LType
         return annotationInfo != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+  {
+    switch (operationID)
+    {
+      case LunTypesPackage.LTYPE___GET_RESOLVED_ANNOTATIONS:
+        return getResolvedAnnotations();
+    }
+    return super.eInvoke(operationID, arguments);
   }
 
   /**

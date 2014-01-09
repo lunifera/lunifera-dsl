@@ -27,7 +27,12 @@ EntityModel returns entity::LEntityModel:
 Class returns LClass:
 	{LClass} annotations+=AnnotationDef*
 	({entity::LEntity.annotationInfo=current}
-	(abstract?='abstract')?
+	((abstract?='abstract')? & 
+	((historized?='historized')
+		| 
+	(timedependent?='timedependent' ('(' timedependentDateType=LHistorizedDateType ')')?)
+	)? &
+	(cacheable?="cacheable")?)
 	'entity' name=ValidIDWithKeywords ('extends' superType=[entity::LEntity])?
 	'{'
 	(persistenceInfo=EntityPersistenceInfo)
@@ -67,7 +72,7 @@ EntityFeature returns entity::LEntityFeature:
 	';')
 	|
 	({entity::LEntityAttribute.annotationInfo=current}
-	(('transient' type=[LScalarType] name=ValidIDWithKeywords ';')
+	((transient?='transient' type=[LScalarType] name=ValidIDWithKeywords ';')
 	|
 	(('var' | id?='id' | uuid?='uuid' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords (persistenceInfo=ColumnPersistenceInfo)?
@@ -87,7 +92,7 @@ BeanFeature returns entity::LBeanFeature:
 	';')
 	|
 	({entity::LBeanAttribute.annotationInfo=current}
-	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
+	((transient?='transient' type=[LScalarType] name=ValidIDWithKeywords)
 	|
 	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords
@@ -116,4 +121,7 @@ TablePerSubclassStrategy returns entity::LTablePerSubclassStrategy:
 
 enum DiscriminatorType returns entity::LDiscriminatorType:
 	INHERIT="INHERIT" | STRING="STRING" | CHAR="CHAR" | INTEGER="INT";
+
+enum LHistorizedDateType returns LDateType:
+	DATE="DATE" | TIMESTAMP="TIMESTAMP";
 	

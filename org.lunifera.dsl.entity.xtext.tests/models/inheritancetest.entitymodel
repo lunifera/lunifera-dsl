@@ -1,0 +1,31 @@
+package org.lunifera.dsl.^entity.xtext.tests.classinheritance {
+	
+	entity BaseByClass {
+		inheritance per class{}
+		id long id;
+		version int version;
+	}
+	
+	entity OneByClass extends BaseByClass { 
+		var String name;
+	}
+	
+	entity TwoByClass extends OneByClass {
+		var long stuff;
+	}
+	
+	entity BaseBySubclass {
+		inheritance per subclass{}
+		id long id;
+		version int version;
+	}
+	
+	entity OneBySubclass extends BaseBySubclass { 
+		var String name;
+	}
+	
+	entity TwoBySubclass extends OneBySubclass {
+		var long stuff;
+	}
+	
+}       

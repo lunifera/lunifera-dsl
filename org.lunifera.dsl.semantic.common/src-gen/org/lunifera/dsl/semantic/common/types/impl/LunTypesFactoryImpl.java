@@ -4,6 +4,8 @@ package org.lunifera.dsl.semantic.common.types.impl;
 
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -108,6 +110,8 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
         return createOperationsListFromString(eDataType, initialValue);
       case LunTypesPackage.FEATURES_LIST:
         return createFeaturesListFromString(eDataType, initialValue);
+      case LunTypesPackage.ANNOTATION_LIST:
+        return createAnnotationListFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -135,6 +139,8 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
         return convertOperationsListToString(eDataType, instanceValue);
       case LunTypesPackage.FEATURES_LIST:
         return convertFeaturesListToString(eDataType, instanceValue);
+      case LunTypesPackage.ANNOTATION_LIST:
+        return convertAnnotationListToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -420,6 +426,27 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
    * @generated
    */
   public String convertFeaturesListToString(EDataType eDataType, Object instanceValue)
+  {
+    return super.convertToString(instanceValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  public EList<LAnnotationDef> createAnnotationListFromString(EDataType eDataType, String initialValue)
+  {
+    return (EList<LAnnotationDef>)super.createFromString(initialValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertAnnotationListToString(EDataType eDataType, Object instanceValue)
   {
     return super.convertToString(instanceValue);
   }

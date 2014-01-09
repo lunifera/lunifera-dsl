@@ -43,6 +43,7 @@ import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityFeature;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LOperation;
+
 //git@github.com/lunifera/lunifera-dsl.git
 import com.google.inject.Inject;
 

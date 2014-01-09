@@ -29,6 +29,8 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#isAsBlob <em>As Blob</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getLength <em>Length</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getDateType <em>Date Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#isSyntheticFlag <em>Synthetic Flag</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticType <em>Synthetic Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -145,6 +147,46 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * @ordered
    */
   protected LDateType dateType = DATE_TYPE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isSyntheticFlag() <em>Synthetic Flag</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSyntheticFlag()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean SYNTHETIC_FLAG_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isSyntheticFlag() <em>Synthetic Flag</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSyntheticFlag()
+   * @generated
+   * @ordered
+   */
+  protected boolean syntheticFlag = SYNTHETIC_FLAG_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSyntheticType() <em>Synthetic Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSyntheticType()
+   * @generated
+   * @ordered
+   */
+  protected static final String SYNTHETIC_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSyntheticType() <em>Synthetic Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSyntheticType()
+   * @generated
+   * @ordered
+   */
+  protected String syntheticType = SYNTHETIC_TYPE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -335,6 +377,52 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isSyntheticFlag()
+  {
+    return syntheticFlag;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSyntheticFlag(boolean newSyntheticFlag)
+  {
+    boolean oldSyntheticFlag = syntheticFlag;
+    syntheticFlag = newSyntheticFlag;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG, oldSyntheticFlag, syntheticFlag));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getSyntheticType()
+  {
+    return syntheticType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSyntheticType(String newSyntheticType)
+  {
+    String oldSyntheticType = syntheticType;
+    syntheticType = newSyntheticType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE, oldSyntheticType, syntheticType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -368,6 +456,10 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return getLength();
       case LunTypesPackage.LDATA_TYPE__DATE_TYPE:
         return getDateType();
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG:
+        return isSyntheticFlag();
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
+        return getSyntheticType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -399,6 +491,12 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return;
       case LunTypesPackage.LDATA_TYPE__DATE_TYPE:
         setDateType((LDateType)newValue);
+        return;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG:
+        setSyntheticFlag((Boolean)newValue);
+        return;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
+        setSyntheticType((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -432,6 +530,12 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
       case LunTypesPackage.LDATA_TYPE__DATE_TYPE:
         setDateType(DATE_TYPE_EDEFAULT);
         return;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG:
+        setSyntheticFlag(SYNTHETIC_FLAG_EDEFAULT);
+        return;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
+        setSyntheticType(SYNTHETIC_TYPE_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -458,6 +562,10 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return length != LENGTH_EDEFAULT;
       case LunTypesPackage.LDATA_TYPE__DATE_TYPE:
         return dateType != DATE_TYPE_EDEFAULT;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG:
+        return syntheticFlag != SYNTHETIC_FLAG_EDEFAULT;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
+        return SYNTHETIC_TYPE_EDEFAULT == null ? syntheticType != null : !SYNTHETIC_TYPE_EDEFAULT.equals(syntheticType);
     }
     return super.eIsSet(featureID);
   }
@@ -483,6 +591,10 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
     result.append(length);
     result.append(", dateType: ");
     result.append(dateType);
+    result.append(", syntheticFlag: ");
+    result.append(syntheticFlag);
+    result.append(", syntheticType: ");
+    result.append(syntheticType);
     result.append(')');
     return result.toString();
   }

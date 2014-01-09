@@ -2,6 +2,8 @@
  */
 package org.lunifera.dsl.semantic.common.types.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,6 +24,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
+import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LOperation;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -268,6 +271,17 @@ public class LOperationImpl extends LAnnotationTargetImpl implements LOperation
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<LAnnotationDef> getResolvedAnnotations()
+  {
+    EList<LAnnotationDef> _annotations = this.getAnnotations();
+    return _annotations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -381,6 +395,22 @@ public class LOperationImpl extends LAnnotationTargetImpl implements LOperation
         return body != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+  {
+    switch (operationID)
+    {
+      case LunTypesPackage.LOPERATION___GET_RESOLVED_ANNOTATIONS:
+        return getResolvedAnnotations();
+    }
+    return super.eInvoke(operationID, arguments);
   }
 
 } //LOperationImpl

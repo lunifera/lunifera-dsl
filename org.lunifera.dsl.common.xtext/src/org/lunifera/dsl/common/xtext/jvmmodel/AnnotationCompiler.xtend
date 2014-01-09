@@ -30,25 +30,25 @@ import org.lunifera.dsl.semantic.common.types.LType
 class AnnotationCompiler {
 
 	@Inject extension JvmTypesBuilder
-
+ 
 	def processAnnotation(LAnnotationTarget annotationTarget, JvmMember jvmMember) {
 		internalProcessAnnotation(annotationTarget, jvmMember)
 	}
 
 	def protected dispatch void internalProcessAnnotation(LType bean, JvmGenericType jvmType) {
-		bean.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+		bean.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LReference ref, JvmField jvmType) {
-		ref.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+		ref.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LAttribute att, JvmField jvmType) {
-		att.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+		att.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LOperation member, JvmOperation jvmOperation) {
-		member.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
+		member.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
 	}
 
 	def addAnno(LAnnotationTarget target, JvmAnnotationTarget jvmType, JvmAnnotationReference anno) {

@@ -1,0 +1,9 @@
+package org.lunifera.dsl.^entity.xtext.tests.blobtests {
+	
+	datatype blobtype as blob;
+	
+	entity base {
+		uuid String id;
+		var blob myblob;
+	}
+}

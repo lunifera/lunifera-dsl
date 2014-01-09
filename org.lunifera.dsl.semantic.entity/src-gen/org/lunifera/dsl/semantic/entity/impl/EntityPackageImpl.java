@@ -444,7 +444,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLEntity_MappedSuperclass()
+  public EAttribute getLEntity_Timedependent()
   {
     return (EAttribute)lEntityEClass.getEStructuralFeatures().get(2);
   }
@@ -454,27 +454,27 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getLEntity_TimedependentDateType()
+  {
+    return (EAttribute)lEntityEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLEntity_MappedSuperclass()
+  {
+    return (EAttribute)lEntityEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getLEntity_PersistenceInfo()
-  {
-    return (EReference)lEntityEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLEntity_InheritanceStrategy()
-  {
-    return (EReference)lEntityEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLEntity_Features()
   {
     return (EReference)lEntityEClass.getEStructuralFeatures().get(5);
   }
@@ -484,7 +484,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLEntity_Indexes()
+  public EReference getLEntity_InheritanceStrategy()
   {
     return (EReference)lEntityEClass.getEStructuralFeatures().get(6);
   }
@@ -494,7 +494,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLEntity_SuperType()
+  public EReference getLEntity_Features()
   {
     return (EReference)lEntityEClass.getEStructuralFeatures().get(7);
   }
@@ -504,9 +504,29 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLEntity_SubTypes()
+  public EReference getLEntity_Indexes()
   {
     return (EReference)lEntityEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLEntity_SuperType()
+  {
+    return (EReference)lEntityEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLEntity_SubTypes()
+  {
+    return (EReference)lEntityEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -1037,6 +1057,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     lEntityEClass = createEClass(LENTITY);
     createEAttribute(lEntityEClass, LENTITY__CACHEABLE);
     createEAttribute(lEntityEClass, LENTITY__HISTORIZED);
+    createEAttribute(lEntityEClass, LENTITY__TIMEDEPENDENT);
+    createEAttribute(lEntityEClass, LENTITY__TIMEDEPENDENT_DATE_TYPE);
     createEAttribute(lEntityEClass, LENTITY__MAPPED_SUPERCLASS);
     createEReference(lEntityEClass, LENTITY__PERSISTENCE_INFO);
     createEReference(lEntityEClass, LENTITY__INHERITANCE_STRATEGY);
@@ -1193,6 +1215,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     initEClass(lEntityEClass, LEntity.class, "LEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLEntity_Cacheable(), theEcorePackage.getEBoolean(), "cacheable", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLEntity_Historized(), theEcorePackage.getEBoolean(), "historized", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLEntity_Timedependent(), theEcorePackage.getEBoolean(), "timedependent", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLEntity_TimedependentDateType(), theLunTypesPackage.getLDateType(), "timedependentDateType", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLEntity_MappedSuperclass(), theEcorePackage.getEBoolean(), "mappedSuperclass", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLEntity_PersistenceInfo(), this.getLEntityPersistenceInfo(), null, "persistenceInfo", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLEntity_InheritanceStrategy(), this.getLEntityInheritanceStrategy(), null, "inheritanceStrategy", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

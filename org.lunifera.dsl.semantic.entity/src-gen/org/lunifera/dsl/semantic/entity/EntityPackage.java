@@ -202,6 +202,15 @@ public interface EntityPackage extends EPackage
   int LBEAN_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LBEAN___GET_RESOLVED_ANNOTATIONS = LunTypesPackage.LCLASS___GET_RESOLVED_ANNOTATIONS;
+
+  /**
    * The operation id for the '<em>Get Features</em>' operation.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -365,13 +374,31 @@ public interface EntityPackage extends EPackage
   int LENTITY__HISTORIZED = LunTypesPackage.LCLASS_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Timedependent</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY__TIMEDEPENDENT = LunTypesPackage.LCLASS_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Timedependent Date Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY__TIMEDEPENDENT_DATE_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
+
+  /**
    * The feature id for the '<em><b>Mapped Superclass</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LENTITY__MAPPED_SUPERCLASS = LunTypesPackage.LCLASS_FEATURE_COUNT + 2;
+  int LENTITY__MAPPED_SUPERCLASS = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Persistence Info</b></em>' containment reference.
@@ -380,7 +407,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__PERSISTENCE_INFO = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
+  int LENTITY__PERSISTENCE_INFO = LunTypesPackage.LCLASS_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Inheritance Strategy</b></em>' containment reference.
@@ -389,7 +416,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__INHERITANCE_STRATEGY = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
+  int LENTITY__INHERITANCE_STRATEGY = LunTypesPackage.LCLASS_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Features</b></em>' containment reference list.
@@ -398,7 +425,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__FEATURES = LunTypesPackage.LCLASS_FEATURE_COUNT + 5;
+  int LENTITY__FEATURES = LunTypesPackage.LCLASS_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Indexes</b></em>' containment reference list.
@@ -407,7 +434,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__INDEXES = LunTypesPackage.LCLASS_FEATURE_COUNT + 6;
+  int LENTITY__INDEXES = LunTypesPackage.LCLASS_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -416,7 +443,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__SUPER_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 7;
+  int LENTITY__SUPER_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Sub Types</b></em>' reference list.
@@ -425,7 +452,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 8;
+  int LENTITY__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 10;
 
   /**
    * The number of structural features of the '<em>LEntity</em>' class.
@@ -434,7 +461,16 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 9;
+  int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 11;
+
+  /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY___GET_RESOLVED_ANNOTATIONS = LunTypesPackage.LCLASS___GET_RESOLVED_ANNOTATIONS;
 
   /**
    * The operation id for the '<em>Get Features</em>' operation.
@@ -803,6 +839,15 @@ public interface EntityPackage extends EPackage
   int LENTITY_FEATURE_FEATURE_COUNT = LunTypesPackage.LFEATURE_FEATURE_COUNT + 1;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY_FEATURE___GET_RESOLVED_ANNOTATIONS = LunTypesPackage.LFEATURE___GET_RESOLVED_ANNOTATIONS;
+
+  /**
    * The operation id for the '<em>Get Entity</em>' operation.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -948,6 +993,15 @@ public interface EntityPackage extends EPackage
   int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 7;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY_ATTRIBUTE___GET_RESOLVED_ANNOTATIONS = LENTITY_FEATURE___GET_RESOLVED_ANNOTATIONS;
+
+  /**
    * The operation id for the '<em>Get Entity</em>' operation.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1066,6 +1120,15 @@ public interface EntityPackage extends EPackage
   int LENTITY_REFERENCE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 4;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY_REFERENCE___GET_RESOLVED_ANNOTATIONS = LENTITY_FEATURE___GET_RESOLVED_ANNOTATIONS;
+
+  /**
    * The operation id for the '<em>Get Entity</em>' operation.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1137,6 +1200,15 @@ public interface EntityPackage extends EPackage
    * @ordered
    */
   int LBEAN_FEATURE_FEATURE_COUNT = LunTypesPackage.LFEATURE_FEATURE_COUNT + 0;
+
+  /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LBEAN_FEATURE___GET_RESOLVED_ANNOTATIONS = LunTypesPackage.LFEATURE___GET_RESOLVED_ANNOTATIONS;
 
   /**
    * The operation id for the '<em>Get Bean</em>' operation.
@@ -1266,6 +1338,15 @@ public interface EntityPackage extends EPackage
   int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 6;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LBEAN_ATTRIBUTE___GET_RESOLVED_ANNOTATIONS = LBEAN_FEATURE___GET_RESOLVED_ANNOTATIONS;
+
+  /**
    * The operation id for the '<em>Get Bean</em>' operation.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1373,6 +1454,15 @@ public interface EntityPackage extends EPackage
    * @ordered
    */
   int LBEAN_REFERENCE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 4;
+
+  /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LBEAN_REFERENCE___GET_RESOLVED_ANNOTATIONS = LBEAN_FEATURE___GET_RESOLVED_ANNOTATIONS;
 
   /**
    * The operation id for the '<em>Get Bean</em>' operation.
@@ -1548,13 +1638,22 @@ public interface EntityPackage extends EPackage
   int LOPERATION_FEATURE_COUNT = LunTypesPackage.LOPERATION_FEATURE_COUNT + 4;
 
   /**
+   * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOPERATION___GET_RESOLVED_ANNOTATIONS = LunTypesPackage.LOPERATION_OPERATION_COUNT + 0;
+
+  /**
    * The operation id for the '<em>Get Bean</em>' operation.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOPERATION___GET_BEAN = LunTypesPackage.LOPERATION_OPERATION_COUNT + 0;
+  int LOPERATION___GET_BEAN = LunTypesPackage.LOPERATION_OPERATION_COUNT + 1;
 
   /**
    * The operation id for the '<em>Get Entity</em>' operation.
@@ -1563,7 +1662,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOPERATION___GET_ENTITY = LunTypesPackage.LOPERATION_OPERATION_COUNT + 1;
+  int LOPERATION___GET_ENTITY = LunTypesPackage.LOPERATION_OPERATION_COUNT + 2;
 
   /**
    * The number of operations of the '<em>LOperation</em>' class.
@@ -1572,7 +1671,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOPERATION_OPERATION_COUNT = LunTypesPackage.LOPERATION_OPERATION_COUNT + 2;
+  int LOPERATION_OPERATION_COUNT = LunTypesPackage.LOPERATION_OPERATION_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.LDiscriminatorType <em>LDiscriminator Type</em>}' enum.
@@ -1820,6 +1919,28 @@ public interface EntityPackage extends EPackage
    * @generated
    */
   EAttribute getLEntity_Historized();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntity#isTimedependent <em>Timedependent</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Timedependent</em>'.
+   * @see org.lunifera.dsl.semantic.entity.LEntity#isTimedependent()
+   * @see #getLEntity()
+   * @generated
+   */
+  EAttribute getLEntity_Timedependent();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntity#getTimedependentDateType <em>Timedependent Date Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Timedependent Date Type</em>'.
+   * @see org.lunifera.dsl.semantic.entity.LEntity#getTimedependentDateType()
+   * @see #getLEntity()
+   * @generated
+   */
+  EAttribute getLEntity_TimedependentDateType();
 
   /**
    * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntity#isMappedSuperclass <em>Mapped Superclass</em>}'.
@@ -2560,6 +2681,22 @@ public interface EntityPackage extends EPackage
      * @generated
      */
     EAttribute LENTITY__HISTORIZED = eINSTANCE.getLEntity_Historized();
+
+    /**
+     * The meta object literal for the '<em><b>Timedependent</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LENTITY__TIMEDEPENDENT = eINSTANCE.getLEntity_Timedependent();
+
+    /**
+     * The meta object literal for the '<em><b>Timedependent Date Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LENTITY__TIMEDEPENDENT_DATE_TYPE = eINSTANCE.getLEntity_TimedependentDateType();
 
     /**
      * The meta object literal for the '<em><b>Mapped Superclass</b></em>' attribute feature.

@@ -52,6 +52,7 @@
     </genEnums>
     <genDataTypes ecoreDataType="types.ecore#//OperationsList"/>
     <genDataTypes ecoreDataType="types.ecore#//FeaturesList"/>
+    <genDataTypes ecoreDataType="types.ecore#//AnnotationList"/>
     <genClasses ecoreClass="types.ecore#//LPackage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LPackage/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LPackage/imports"/>
@@ -65,6 +66,7 @@
     <genClasses ecoreClass="types.ecore#//LType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LType/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LType/annotationInfo"/>
+      <genOperations ecoreOperation="types.ecore#//LType/getAnnotations"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//LAnnotationDef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAnnotationDef/exclude"/>

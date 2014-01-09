@@ -1,8 +1,7 @@
 package org.lunifera.dsl.entity.xtext.extensions
- 
+
 import com.google.inject.Inject
 import java.util.ArrayList
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
@@ -13,6 +12,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder
 import org.lunifera.dsl.entity.xtext.jvmmodel.AnnotationCompiler
+import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage
 import org.lunifera.dsl.semantic.common.types.LType
@@ -23,7 +23,6 @@ import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityFeature
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LOperation
-import org.lunifera.dsl.semantic.common.types.LClass
 
 class EntityTypesBuilder extends CommonTypesBuilder {
 
@@ -172,15 +171,31 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 
 		associate(lClass, op)
 	}
-	
+
 	override JvmField toField(LFeature prop) {
+		prop.internalToField
+	}
+	
+	def dispatch JvmField internalToField(LBeanFeature prop) {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
 		jvmField.type = cloneWithProxies(prop.toTypeReference)
-		
-		if(prop.isUUID){
-			jvmField.setInitializer[
+
+		annotationCompiler.processAnnotation(prop, jvmField);
+		associate(prop, jvmField);
+	}
+	
+	def dispatch JvmField internalToField(LEntityFeature prop) {
+		val LEntity entity = prop.entity
+		val JvmField jvmField = typesFactory.createJvmField();
+		jvmField.simpleName = prop.toName
+		jvmField.visibility = JvmVisibility::PRIVATE
+		jvmField.type = cloneWithProxies(prop.toTypeReference)
+		jvmField.documentation = prop.getDocumentation
+		// if uuid or historized entity and property name == oid AND a uuid property is present too
+		if (prop.isUUID || (entity.timedependent && prop.name.equals(Constants::PROP__OID) && entity.uuidPresent)) {
+			jvmField.setInitializer [
 				if(it == null) return
 				val p = it.trace(prop)
 				p >> '''java.util.UUID.randomUUID().toString()'''
@@ -189,6 +204,10 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
+	}
+	
+	def boolean uuidPresent(LEntity entity){
+		entity.allAttributes.exists[it.uuid]
 	}
 
 	def JvmOperation toMethod(LOperation sourceElement, String name, JvmTypeReference returnType,
@@ -380,7 +399,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 			])
 		return associate(prop, op);
 	}
- 
+
 	/**
      * Builds an adder method for a *toMany relation like
      * <code>Order.addToOrderLines(OrderLine orderLine)</code>.

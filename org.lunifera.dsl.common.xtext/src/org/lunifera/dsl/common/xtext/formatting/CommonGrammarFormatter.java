@@ -35,7 +35,7 @@ public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 		xbaseFormatter.configure(c, ga.getXbaseWithAnnotationsGrammarAccess()
 				.getXbaseGrammarAccess());
 
-		CommonGrammarGrammarAccess f = (CommonGrammarGrammarAccess) getGrammarAccess();
+		CommonGrammarGrammarAccess f = (CommonGrammarGrammarAccess) ga;
 		c.setAutoLinewrap(120);
 
 		configureTypedPackage(c, f.getTypedPackageAccess());

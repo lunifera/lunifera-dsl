@@ -4,6 +4,8 @@ package org.lunifera.dsl.semantic.common.types.impl;
 
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -223,6 +225,13 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
   private EDataType featuresListEDataType = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EDataType annotationListEDataType = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -271,9 +280,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     isInited = true;
 
     // Initialize simple dependencies
-    XbasePackage.eINSTANCE.eClass();
     XAnnotationsPackage.eINSTANCE.eClass();
     EcorePackage.eINSTANCE.eClass();
+    XbasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theLunTypesPackage.createPackageContents();
@@ -388,6 +397,16 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
   public EReference getLType_AnnotationInfo()
   {
     return (EReference)lTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EOperation getLType__GetResolvedAnnotations()
+  {
+    return lTypeEClass.getEOperations().get(0);
   }
 
   /**
@@ -518,6 +537,26 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
   public EAttribute getLDataType_DateType()
   {
     return (EAttribute)lDataTypeEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLDataType_SyntheticFlag()
+  {
+    return (EAttribute)lDataTypeEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLDataType_SyntheticType()
+  {
+    return (EAttribute)lDataTypeEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -675,6 +714,16 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EOperation getLFeature__GetResolvedAnnotations()
+  {
+    return lFeatureEClass.getEOperations().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLReference()
   {
     return lReferenceEClass;
@@ -825,6 +874,16 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EOperation getLOperation__GetResolvedAnnotations()
+  {
+    return lOperationEClass.getEOperations().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLModifier()
   {
     return lModifierEClass;
@@ -955,6 +1014,16 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EDataType getAnnotationList()
+  {
+    return annotationListEDataType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public LunTypesFactory getLunTypesFactory()
   {
     return (LunTypesFactory)getEFactoryInstance();
@@ -993,6 +1062,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     lTypeEClass = createEClass(LTYPE);
     createEAttribute(lTypeEClass, LTYPE__NAME);
     createEReference(lTypeEClass, LTYPE__ANNOTATION_INFO);
+    createEOperation(lTypeEClass, LTYPE___GET_RESOLVED_ANNOTATIONS);
 
     lAnnotationDefEClass = createEClass(LANNOTATION_DEF);
     createEAttribute(lAnnotationDefEClass, LANNOTATION_DEF__EXCLUDE);
@@ -1010,6 +1080,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     createEAttribute(lDataTypeEClass, LDATA_TYPE__AS_BLOB);
     createEAttribute(lDataTypeEClass, LDATA_TYPE__LENGTH);
     createEAttribute(lDataTypeEClass, LDATA_TYPE__DATE_TYPE);
+    createEAttribute(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_FLAG);
+    createEAttribute(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_TYPE);
 
     lEnumEClass = createEClass(LENUM);
     createEReference(lEnumEClass, LENUM__LITERALS);
@@ -1030,6 +1102,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     createEAttribute(lFeatureEClass, LFEATURE__NAME);
     createEReference(lFeatureEClass, LFEATURE__MULTIPLICITY);
     createEReference(lFeatureEClass, LFEATURE__ANNOTATION_INFO);
+    createEOperation(lFeatureEClass, LFEATURE___GET_RESOLVED_ANNOTATIONS);
 
     lReferenceEClass = createEClass(LREFERENCE);
     createEAttribute(lReferenceEClass, LREFERENCE__LAZY);
@@ -1048,6 +1121,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     createEReference(lOperationEClass, LOPERATION__TYPE);
     createEReference(lOperationEClass, LOPERATION__PARAMS);
     createEReference(lOperationEClass, LOPERATION__BODY);
+    createEOperation(lOperationEClass, LOPERATION___GET_RESOLVED_ANNOTATIONS);
 
     lModifierEClass = createEClass(LMODIFIER);
     createEAttribute(lModifierEClass, LMODIFIER__FINAL);
@@ -1067,6 +1141,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     // Create data types
     operationsListEDataType = createEDataType(OPERATIONS_LIST);
     featuresListEDataType = createEDataType(FEATURES_LIST);
+    annotationListEDataType = createEDataType(ANNOTATION_LIST);
   }
 
   /**
@@ -1130,6 +1205,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     initEAttribute(getLType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLType_AnnotationInfo(), this.getLAnnotationTarget(), null, "annotationInfo", null, 0, 1, LType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEOperation(getLType__GetResolvedAnnotations(), this.getAnnotationList(), "getResolvedAnnotations", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
     initEClass(lAnnotationDefEClass, LAnnotationDef.class, "LAnnotationDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLAnnotationDef_Exclude(), theEcorePackage.getEBoolean(), "exclude", null, 0, 1, LAnnotationDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLAnnotationDef_Annotation(), theXAnnotationsPackage.getXAnnotation(), null, "annotation", null, 0, 1, LAnnotationDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1146,6 +1223,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     initEAttribute(getLDataType_AsBlob(), theEcorePackage.getEBoolean(), "asBlob", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLDataType_Length(), theEcorePackage.getEInt(), "length", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLDataType_DateType(), this.getLDateType(), "dateType", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLDataType_SyntheticFlag(), theEcorePackage.getEBoolean(), "syntheticFlag", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLDataType_SyntheticType(), theEcorePackage.getEString(), "syntheticType", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lEnumEClass, LEnum.class, "LEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLEnum_Literals(), this.getLEnumLiteral(), null, "literals", null, 0, -1, LEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1169,6 +1248,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     initEReference(getLFeature_Multiplicity(), this.getLMultiplicity(), null, "multiplicity", null, 0, 1, LFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLFeature_AnnotationInfo(), this.getLAnnotationTarget(), null, "annotationInfo", null, 0, 1, LFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEOperation(getLFeature__GetResolvedAnnotations(), this.getAnnotationList(), "getResolvedAnnotations", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
     initEClass(lReferenceEClass, LReference.class, "LReference", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLReference_Lazy(), theEcorePackage.getEBoolean(), "lazy", null, 0, 1, LReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLReference_Cascading(), theEcorePackage.getEBoolean(), "cascading", null, 0, 1, LReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1186,6 +1267,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     initEReference(getLOperation_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, LOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLOperation_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, LOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLOperation_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, LOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEOperation(getLOperation__GetResolvedAnnotations(), this.getAnnotationList(), "getResolvedAnnotations", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
     initEClass(lModifierEClass, LModifier.class, "LModifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLModifier_Final(), theEcorePackage.getEBoolean(), "final", null, 0, 1, LModifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1224,6 +1307,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     // Initialize data types
     initEDataType(operationsListEDataType, List.class, "OperationsList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.common.types.LOperation>");
     initEDataType(featuresListEDataType, List.class, "FeaturesList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<? extends org.lunifera.dsl.semantic.common.types.LFeature>");
+    initEDataType(annotationListEDataType, EList.class, "AnnotationList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "org.eclipse.emf.common.util.EList<org.lunifera.dsl.semantic.common.types.LAnnotationDef>");
 
     // Create resource
     createResource(eNS_URI);
@@ -1248,7 +1332,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
        new String[] 
        {
        "rootPackage", "types"
-       });		
+       });					
   }
 
 } //LunTypesPackageImpl

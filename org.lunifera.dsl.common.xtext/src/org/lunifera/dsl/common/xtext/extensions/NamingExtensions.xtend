@@ -4,7 +4,7 @@ import com.google.inject.Inject
 import org.lunifera.dsl.semantic.common.types.LFeature
 
 class NamingExtensions {
-	
+
 	@Inject extension ModelExtensions;
 
 	def toSetterName(LFeature prop) {
@@ -18,7 +18,7 @@ class NamingExtensions {
 		if (prop == null || prop.toName == null) {
 			return "getMISSING_NAME"
 		}
-		"get".concat(prop.toName.toFirstUpper);
+		if(prop.typeIsBoolean) "is".concat(prop.toName.toFirstUpper) else "get".concat(prop.toName.toFirstUpper);
 	}
 
 	def toBooleanGetterName(LFeature prop) {
