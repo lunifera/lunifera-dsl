@@ -287,6 +287,14 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 		return null
 	}
+	
+	def boolean isStrategyFromSuperPresent(LEntity entity) {
+		return entity.findStrategyFromSuper != null
+	}
+	
+	def boolean isStrategyPerSubclass(LEntity entity) {
+		return entity.toInheritanceStrategy instanceof LTablePerSubclassStrategy
+	}
 
 	def boolean checkIsMappedSuperclass(LEntity entity) {
 		return if(entity == null) false else entity.mappedSuperclass

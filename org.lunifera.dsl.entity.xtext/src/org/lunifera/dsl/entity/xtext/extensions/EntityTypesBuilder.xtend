@@ -173,8 +173,21 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 	}
 
 	override JvmField toField(LFeature prop) {
-		val LEntityFeature entityFeature = prop as LEntityFeature
-		val LEntity entity = entityFeature.entity
+		prop.internalToField
+	}
+	
+	def dispatch JvmField internalToField(LBeanFeature prop) {
+		val JvmField jvmField = typesFactory.createJvmField();
+		jvmField.simpleName = prop.toName
+		jvmField.visibility = JvmVisibility::PRIVATE
+		jvmField.type = cloneWithProxies(prop.toTypeReference)
+
+		annotationCompiler.processAnnotation(prop, jvmField);
+		associate(prop, jvmField);
+	}
+	
+	def dispatch JvmField internalToField(LEntityFeature prop) {
+		val LEntity entity = prop.entity
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE

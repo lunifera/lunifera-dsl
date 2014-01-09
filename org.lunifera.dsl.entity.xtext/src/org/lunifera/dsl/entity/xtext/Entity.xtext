@@ -67,7 +67,7 @@ EntityFeature returns entity::LEntityFeature:
 	';')
 	|
 	({entity::LEntityAttribute.annotationInfo=current}
-	(('transient' type=[LScalarType] name=ValidIDWithKeywords ';')
+	((transient?='transient' type=[LScalarType] name=ValidIDWithKeywords ';')
 	|
 	(('var' | id?='id' | uuid?='uuid' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords (persistenceInfo=ColumnPersistenceInfo)?
@@ -87,7 +87,7 @@ BeanFeature returns entity::LBeanFeature:
 	';')
 	|
 	({entity::LBeanAttribute.annotationInfo=current}
-	(('transient' type=[LScalarType] name=ValidIDWithKeywords)
+	((transient?='transient' type=[LScalarType] name=ValidIDWithKeywords)
 	|
 	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords

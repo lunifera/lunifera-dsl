@@ -164,6 +164,9 @@ public class EntityGrammarJavaValidator extends
 
 	@Check(CheckType.NORMAL)
 	public void checkDuplicateType_InProject(LType type) {
+		if (type instanceof LDataType) {
+			return;
+		}
 		super.checkDuplicateType_InProject(type);
 	}
 
@@ -225,8 +228,7 @@ public class EntityGrammarJavaValidator extends
 			boolean typeOK = false;
 			if (prop.getType() instanceof LDataType) {
 				LDataType type = (LDataType) prop.getType();
-				String typename = qnp.getFullyQualifiedName(
-						type.getJvmTypeReference()).toString();
+				String typename = type.getJvmTypeReference().getQualifiedName();
 				if (typename.equals("java.lang.String")) {
 					typeOK = true;
 				}
