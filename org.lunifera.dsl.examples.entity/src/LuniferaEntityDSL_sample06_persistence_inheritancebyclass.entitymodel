@@ -1,0 +1,52 @@
+/**
+ * Example for persistence with the "inheritance per class" strategy
+ * 
+ * The "Inheritance per class" strategy causes subclasses to share the database tables
+ * of their parent classes. In order to be able to tell the types of the entries apart, a 
+ * discriminator has to be used.
+ * 
+ * Thus, a single table is created that has the columns of all entities that share it (causing
+ * a tradeoff between database size and access speed).
+ * 
+ * "inheritance per class" needs to be declared in the topmost entity that should share the
+ * common table. The setting is then inherited by children.
+ * 
+ * The example below shows the declaration of custom values; inheritance per class
+ * declarations have been added to sub-entities in order to override default values. This would
+ * not have been necessary.
+ * 
+ */
+ 
+package org.lunifera.entitydsl.samples.sample06 {
+
+	datatype String jvmType String;
+	datatype int jvmType java.lang.Integer as primitive;
+
+	entity Vehicle {
+		inheritance per class {
+			discriminatorColumn TYPE_DISCR_COLUMN;
+			discriminatorType STRING;
+			discriminatorValue VEH;
+		}
+		uuid String id ;
+		var String name;
+	}
+
+	entity Bike extends Vehicle {
+		inheritance per class {
+			discriminatorValue BIKE;
+		}
+		var String[*] bikedescription;
+		var int price;
+	}
+	
+	entity Boat extends Vehicle {
+		inheritance per class {
+			discriminatorValue BOAT;
+		}
+		var String[*] boatdescription;
+		var int price;
+	}
+	
+
+}

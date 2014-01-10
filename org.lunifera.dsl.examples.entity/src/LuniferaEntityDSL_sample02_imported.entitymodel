@@ -1,0 +1,18 @@
+/**
+ * Importing packages in the Lunifera Entity DSL:
+ * 
+ * The datatype that is declared here can be accessed in packages that import this one.
+ * 
+ * Entities in other packages can inherit from the BaseEntity declared here.
+ * 
+ */
+ 
+package org.lunifera.entitydsl.samples.sample02.imported {
+
+	datatype String jvmType String;
+
+	entity BaseEntity  {
+		uuid String id;
+	}
+
+}

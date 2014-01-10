@@ -1,0 +1,50 @@
+/**
+ * Entities and their modifications
+ * 
+ * Entities can be declared within a package. There are the following modificators:
+ * 
+ * - abstract: generates an abstract Java class
+ * - cacheable: marks the entity as cacheable for the persistence provider
+ * - historized: adds fields for object ID and object version and a flag to
+ *   mark the current version. One way to deal with multiple database entries
+ *   for a single object (e.g. keeping track of old values when updating)
+ * - timedependent: adds fields for object ID as well as starting and ending
+ *   point of the validity of the database entry. Another way to deal with 
+ *   multiple database entries for a single object; the valid entry is determined
+ *   based on the "valid from" and "valid until" fields; can handle future dates
+ *   (e.g. varying price of a product).
+ * 
+ * - extends: Entities can extend other entities, inheriting their properties and
+ *   persistence settings.
+ */
+ 
+package org.lunifera.entitydsl.samples.sample04 {
+
+	datatype String jvmType String;
+
+	entity NormalEntity {
+		uuid String id ;
+	}
+	
+	entity ExtendedEntity extends NormalEntity {
+		
+	}
+	
+	abstract entity AbstractEntity {
+		uuid String id;
+	}
+	
+	cacheable entity CacheableEntity {
+		uuid String id ;
+	}
+	
+	historized entity HistorizedEntity {
+		uuid String id ;
+	}
+	
+	timedependent entity TimedependentEntity {
+		uuid String id ;
+	}
+
+
+}

@@ -1,0 +1,42 @@
+/**
+ * Declaring datatypes in the Lunifera Entity DSL:
+ * 
+ * There are three kinds of datatype declarations: jvmTypes, dateTypes and blobs.
+ * 
+ * Declaring a jvmType allows the specification of the JVM Datatype to be used in 
+ * the generated Java code. Adding "as primitive" triggers the use of primitive
+ * datatypes (where applicable).
+ * 
+ * Temporal Datetypes can be date, time and timestamp.
+ * 
+ * Blobs can be declared by using the "as blob" keyword and are translated to a
+ * byte array in the Java code.
+ */
+ 
+package org.lunifera.entitydsl.samples.sample03 {
+	
+	datatype String jvmType java.lang.String;
+	datatype int jvmType java.lang.Integer as primitive;
+	datatype wrapped_int jvmType java.lang.Integer;
+	
+	
+	datatype dat dateType date;
+	datatype tim dateType timestamp;
+	
+	datatype binarydata as blob;
+
+	entity Worker {
+		uuid String id;
+		
+		var String name;
+		var int employeenumber;
+		var wrapped_int insurancenumber;
+		
+		var dat birthdate;
+		var tim lastpromotion;
+		
+		var binarydata photo;
+		
+	}
+
+}

@@ -1,0 +1,28 @@
+/**
+ * Example for persistence with the "mapped superclass" strategy
+ * 
+ * The "mapped superclass" strategy means that no database table is created for the 
+ * parent in an inheritance situation between entities. 
+ * 
+ * The parent's fields are inherited by the children and included as columns
+ * in their tables as if they had been declared in the child entity.
+ * 
+ */
+ 
+package org.lunifera.entitydsl.samples.sample05 {
+
+	datatype String jvmType String;
+	datatype int jvmType java.lang.Integer as primitive;
+
+	mapped superclass Item {
+		uuid String id ;
+		var String name;
+		var int count;
+	}
+
+	entity Article extends Item {
+		var String[*] description;
+		var int price;
+	}
+
+}
