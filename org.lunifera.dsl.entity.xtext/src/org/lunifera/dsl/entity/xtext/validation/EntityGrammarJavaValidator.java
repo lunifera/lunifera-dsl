@@ -22,6 +22,7 @@ import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
+import org.lunifera.dsl.semantic.common.helper.Bounds;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
@@ -122,6 +123,14 @@ public class EntityGrammarJavaValidator extends
 
 	@Check
 	public void checkJPA_Opposite_OneIsCascading(LEntityReference prop) {
+		Bounds propBound = extensions.getBounds(prop);
+		Bounds oppositeBound = extensions.getBounds(prop.getOpposite());
+
+		if (propBound.isToMany() || oppositeBound.isToMany()) {
+			// no check required!
+			return;
+		}
+
 		if (prop.getOpposite() != null) {
 			if (!prop.isCascading() && !prop.getOpposite().isCascading()) {
 				error("Opposite references may only defined for cascading relations.",

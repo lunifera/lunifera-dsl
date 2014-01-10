@@ -1,0 +1,64 @@
+package org.lunifera.dsl.^entity.xtext.tests.model.testcarstore2{
+	
+	datatype long jvmType Long as primitive;
+	datatype int jvmType Integer as primitive;
+	datatype String jvmType String;
+	datatype datetype dateType date;
+	datatype timetype dateType time;
+	datatype bool jvmType Boolean as primitive;
+	
+	entity Person {
+		id long id;
+		var String firstname;
+		var String lastname;
+		var datetype birthdate;
+		var Address[1..*] address;
+	}
+	
+	bean Address {
+		var String streetname;
+		var int housenumber; 
+		var String city;
+		var int zipcode;
+	}
+	
+	entity Manufacturer {
+		id long id;
+		var String name;
+		var Address address;
+		ref cascade Car[*] cars opposite manufacturer;
+	}
+	
+	entity Car { 
+		id long id;
+		var String modelname;
+		var timetype constructiondate;
+		var int price;
+		ref Manufacturer[1] manufacturer opposite cars;
+	}
+	
+	entity Customer extends Person {
+		var bool isseller;
+		var bool isbuyer;
+		var String phonenumber;
+		var String iban;
+		var int discount;
+	}
+	     
+	entity Employee extends Person {
+		var long employeenumber;
+		var timetype employeesince;
+		var int salary;
+		var String jobdescription;
+		ref Employee[1] boss opposite subordinates;
+		ref cascade Employee[*] subordinates opposite boss;
+	}
+	
+	entity UsedCar extends Car {
+		var String state;
+		var int mileage;
+		ref Customer[1] seller;
+	}
+	
+	
+}

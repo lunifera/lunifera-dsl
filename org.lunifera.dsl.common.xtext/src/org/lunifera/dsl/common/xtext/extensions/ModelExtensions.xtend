@@ -125,6 +125,7 @@ class ModelExtensions {
 	}
 
 	def String toName(LFeature feature) {
+		if(feature == null || feature.name == null) return ""
 		return feature.name.replace("^", "")
 	}
 

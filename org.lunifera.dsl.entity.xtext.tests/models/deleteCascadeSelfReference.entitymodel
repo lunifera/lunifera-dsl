@@ -1,0 +1,17 @@
+package org.lunifera.dsl.^entity.xtext.tests.selfreference {
+	
+	datatype long jvmType Long as primitive;
+	datatype String jvmType String;
+	
+	entity TreeEmployee {
+		id long id;
+		var String Name;
+		
+		/* Reference to children */
+		ref cascade TreeEmployee[0..*] subordinates opposite boss;
+		
+		/* Reference to parent */
+		ref TreeEmployee[1] boss;
+	}
+	
+}
