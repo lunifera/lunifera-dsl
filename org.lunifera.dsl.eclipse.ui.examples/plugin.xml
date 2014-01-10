@@ -7,10 +7,10 @@
 				  parentCategory="org.eclipse.ui.Examples" />
 	</extension>
 
-   <!-- ========= org.eclipse.xtext.example.xbase.tutorial ========= -->
+   <!-- ========= org.lunifera.dsl.examples.EntityExamples ========= -->
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard	id="org.lunifera.dsl.examples.EntityExamples" 
-			name="%XbaseTutorial_name" 
+			name="EntityDSL Samples" 
 			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
 			category="org.eclipse.ui.Examples/org.lunifera.dsl.Examples"
 			icon="icons/Lunifera_16.png" 
@@ -20,7 +20,7 @@
 	</extension>
 	<extension point="org.eclipse.emf.common.ui.examples">
 	  <example wizardID="org.lunifera.dsl.examples.EntityExamples" pageImage="icons/Lunifera_16.png">
-		 <projectDescriptor name="org.eclipse.xtext.example.xbase.tutorial" contentURI="contents/xbase.tutorial.zip" description="A hands-on tutorial to learn the Xbase expression language."/>
+		 <projectDescriptor name="org.lunifera.dsl.examples.entity" contentURI="contents/org.lunifera.dsl.examples.entity.zip" description="A hands-on tutorial to learn the Lunifera Entity DSL."/>
 	  </example>
    </extension>
 </plugin>

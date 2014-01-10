@@ -2,8 +2,11 @@ package org.lunifera.dsl.^entity.xtext.tests.blobtests {
 	
 	datatype blobtype as blob;
 	
-	entity base {
+	entity Foobar {
 		uuid String id;
-		var blob myblob;
+		var String name;
+		var blobtype myblob;
 	}
-}
+	
+	
+}  

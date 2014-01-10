@@ -84,11 +84,15 @@
 				value="both" />
 		</properties>
 	</persistence-unit>
-	<persistence-unit name="blobtests" transaction-type="RESOURCE_LOCAL">
-		<class>org.lunifera.dsl.entity.xtext.tests.blobtests.Base</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.blobtests.Bean</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.blobtests.Bean1</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.blobtests.Bean2</class>
+
+	<persistence-unit name="classinheritance"
+		transaction-type="RESOURCE_LOCAL">
+		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseByClass</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClass</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.TwoByClass</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseBySubclass</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.OneBySubclass</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.TwoBySubclass</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:model1;create=true" />
@@ -104,14 +108,9 @@
 				value="both" />
 		</properties>
 	</persistence-unit>
-	<persistence-unit name="classinheritance"
+	<persistence-unit name="blobtests"
 		transaction-type="RESOURCE_LOCAL">
-		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseByClass</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClass</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.TwoByClass</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseBySubclass</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.OneBySubclass</class>
-		<class>org.lunifera.dsl.entity.xtext.tests.classinheritance.TwoBySubclass</class>
+		<class>org.lunifera.dsl.entity.xtext.tests.blobtests.Foobar</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:model1;create=true" />

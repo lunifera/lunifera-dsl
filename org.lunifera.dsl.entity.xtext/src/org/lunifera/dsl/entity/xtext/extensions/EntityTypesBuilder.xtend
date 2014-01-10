@@ -194,7 +194,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		jvmField.type = cloneWithProxies(prop.toTypeReference)
 		jvmField.documentation = prop.getDocumentation
 		// if uuid or historized entity and property name == oid AND a uuid property is present too
-		if (prop.isUUID || (entity.timedependent && prop.name.equals(Constants::PROP__OID) && entity.uuidPresent)) {
+		if (prop.isUUID || ((entity.timedependent || entity.historized) && prop.name.equals(Constants::PROP__OID) && entity.uuidPresent)) {
 			jvmField.setInitializer [
 				if(it == null) return
 				val p = it.trace(prop)
