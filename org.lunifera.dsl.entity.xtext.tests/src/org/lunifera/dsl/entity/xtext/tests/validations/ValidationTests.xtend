@@ -22,7 +22,7 @@ import static extension org.junit.Assert.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(InjectorProvider))
-class Validations {
+class ValidationTests {
 
 	@Inject extension ValidationTestHelper;
 	@Inject extension ParseHelper<LEntityModel>;

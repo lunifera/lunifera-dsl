@@ -36,6 +36,7 @@
 						<configuration>
 							<sources>
 								<source>xtend-gen</source>
+								<source>src-gen</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -47,6 +48,12 @@
 					<filesets>
 						<fileset>
 							<directory>xtend-gen</directory>
+							<includes>
+								<include>**</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>src-gen</directory>
 							<includes>
 								<include>**</include>
 							</includes>
@@ -71,15 +78,16 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.lunifera.tools.maven</groupId>
+				<artifactId>org.lunifera.tools.maven.entity</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<configuration>
 					<includes>
 						<include>**/*Tests.java</include>
 					</includes>
-					<excludes>
-						<exclude>**/JPATests.java</exclude>
-					</excludes>
 					<failIfNoTests>true</failIfNoTests>
 					<showEclipseLog>true</showEclipseLog>
 					<useUIHarness>false</useUIHarness>

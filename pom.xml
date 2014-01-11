@@ -41,6 +41,7 @@
 				<module>org.lunifera.dsl.common.xtext.ui</module>
 				<module>org.lunifera.dsl.entity.xtext</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
+				<module>org.lunifera.dsl.entity.xtext.tests</module>
 				<module>org.lunifera.dsl.eclipse.ui</module>
 				<module>org.lunifera.dsl.eclipse.ui.examples</module>
 

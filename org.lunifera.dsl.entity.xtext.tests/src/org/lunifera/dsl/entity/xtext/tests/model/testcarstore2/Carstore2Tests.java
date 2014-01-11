@@ -16,7 +16,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Carstore2Test {
+public class Carstore2Tests {
 
 	private static final String PERSISTENCE_UNIT_NAME = "carstore2test";
 	private static EntityManagerFactory emf;
