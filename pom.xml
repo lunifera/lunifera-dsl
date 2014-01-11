@@ -37,11 +37,9 @@
 				<module>org.lunifera.dsl.semantic.common</module>
 				<module>org.lunifera.dsl.semantic.entity</module>
 				<module>org.lunifera.dsl.common.xtext</module>
-				<module>org.lunifera.dsl.entity.xtext.lib</module>
 				<module>org.lunifera.dsl.common.xtext.ui</module>
 				<module>org.lunifera.dsl.entity.xtext</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
-				<module>org.lunifera.dsl.entity.xtext.tests</module>
 				<module>org.lunifera.dsl.eclipse.ui</module>
 				<module>org.lunifera.dsl.eclipse.ui.examples</module>
 
@@ -54,6 +52,21 @@
 
 				<!-- P2 repository -->
 				<module>org.lunifera.dsl.p2</module>
+			</modules>
+		</profile>
+
+		<!-- For first run, the grammarcompiler must not be used, since the compiler 
+			requires grammar bundles to become built -->
+		<profile>
+			<id>lunifera.build.lib</id>
+			<activation>
+				<property>
+					<name>!lunifera.dsl.exclude.grammarcompiler</name>
+				</property>
+			</activation>
+			<modules>
+				<module>org.lunifera.dsl.entity.xtext.lib</module>
+				<module>org.lunifera.dsl.entity.xtext.tests</module>
 			</modules>
 		</profile>
 	</profiles>
