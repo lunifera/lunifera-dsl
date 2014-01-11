@@ -3,12 +3,12 @@
 	<target name="main">
 		<echo>Embedding example: ${example.name}</echo>
 
-		<copy todir="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/contents/${example.name}">
-			<fileset dir="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/../${example.name}">
+		<copy todir="${basedir}/contents/${example.name}">
+			<fileset dir="${basedir}/../${example.name}">
 				<exclude name="target/**" />
 			</fileset>
 		</copy>
-		<zip basedir="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/contents/${example.name}" destfile="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/contents/${example.name}.zip" />
-		<delete dir="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/contents/${example.name}" />
+		<zip basedir="${basedir}/contents/${example.name}" destfile="${basedir}/contents/${example.name}.zip" />
+		<delete dir="${basedir}/contents/${example.name}" />
 	</target>
 </project>

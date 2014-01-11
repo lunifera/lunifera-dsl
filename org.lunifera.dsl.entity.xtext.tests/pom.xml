@@ -64,7 +64,7 @@
 			</plugin>
 			<plugin>
 				<groupId>org.lunifera.tools.maven</groupId>
-				<artifactId>org.lunifera.tools.maven.entity</artifactId>
+				<artifactId>org.lunifera.tools.maven.plugin.entity</artifactId>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
