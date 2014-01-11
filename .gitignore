@@ -12,3 +12,4 @@ plugin.xml_gen
 .project
 /build.dsl.kepler.latest.log.properties
 org.lunifera.dsl.entity.xtext.tests/luniferaDb/*
+org.lunifera.dsl.eclipse.ui.examples/contents/*

@@ -129,7 +129,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		]
 
 	}
-
+ 
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(entity)) return;
 

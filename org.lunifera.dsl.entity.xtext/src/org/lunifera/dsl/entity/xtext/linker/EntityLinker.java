@@ -20,7 +20,7 @@ import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import com.google.inject.Inject;
 
 public class EntityLinker extends XbaseLazyLinker {
-	
+
 	@Inject
 	private OnChangeEvictingCache cache;
 
@@ -159,12 +159,14 @@ public class EntityLinker extends XbaseLazyLinker {
 
 		if (datatype == null) {
 			for (LEntityAttribute att : entity.getAllAttributes()) {
-				if (att.isId() || att.isUuid()) {
-					datatype = (LDataType) EcoreUtil2.cloneWithProxies(att
-							.getType());
-					datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);
-					pkg.getTypes().add(datatype);
-					break;
+				if (att.getType() instanceof LDataType) {
+					if (att.isId() || att.isUuid()) {
+						datatype = (LDataType) EcoreUtil2.cloneWithProxies(att
+								.getType());
+						datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);
+						pkg.getTypes().add(datatype);
+						break;
+					}
 				}
 			}
 		}

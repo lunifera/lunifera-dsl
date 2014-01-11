@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Embedd the example into the contents folder" default="main">
+	<target name="main">
+		<echo>Embedding example: ${example.name}</echo>
+
+		<copy todir="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/contents/${example.name}">
+			<fileset dir="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/../${example.name}">
+				<exclude name="target/**" />
+			</fileset>
+		</copy>
+		<zip basedir="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/contents/${example.name}" destfile="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/contents/${example.name}.zip" />
+		<delete dir="/Users/admin/git/lunifera-dsl/org.lunifera.dsl.eclipse.ui.examples/contents/${example.name}" />
+	</target>
+</project>
