@@ -69,7 +69,7 @@
 					<execution>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>testCompile</goal>
+							<goal>compile</goal>
 							<!-- <goal>testCompile</goal> -->
 						</goals>
 						<configuration>
@@ -85,7 +85,7 @@
 					<execution>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>testCompile</goal>
+							<goal>compile</goal>
 							<!-- <goal>testCompile</goal> -->
 						</goals>
 						<configuration>
