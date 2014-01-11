@@ -37,6 +37,7 @@
 							<sources>
 								<source>xtend-gen</source>
 								<source>src-gen</source>
+								<source>models</source>
 							</sources>
 						</configuration>
 					</execution>
