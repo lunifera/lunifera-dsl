@@ -18,9 +18,7 @@
  *   persistence settings.
  */
  
-package org.lunifera.entitydsl.samples.sample04 {
-
-	datatype String jvmType String;
+package org.lunifera.entitydsl.samples.example04 {
 
 	entity NormalEntity {
 		uuid String id ;

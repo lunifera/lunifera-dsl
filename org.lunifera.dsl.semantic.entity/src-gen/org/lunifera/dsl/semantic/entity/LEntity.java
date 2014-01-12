@@ -273,7 +273,7 @@ public interface LEntity extends LClass, LFeaturesHolder
    * @see #setSuperType(LEntity)
    * @see org.lunifera.dsl.semantic.entity.EntityPackage#getLEntity_SuperType()
    * @see org.lunifera.dsl.semantic.entity.LEntity#getSubTypes
-   * @model opposite="subTypes" resolveProxies="false"
+   * @model opposite="subTypes"
    * @generated
    */
   LEntity getSuperType();
@@ -301,7 +301,7 @@ public interface LEntity extends LClass, LFeaturesHolder
    * @return the value of the '<em>Sub Types</em>' reference list.
    * @see org.lunifera.dsl.semantic.entity.EntityPackage#getLEntity_SubTypes()
    * @see org.lunifera.dsl.semantic.entity.LEntity#getSuperType
-   * @model opposite="superType" transient="true"
+   * @model opposite="superType"
    * @generated
    */
   EList<LEntity> getSubTypes();

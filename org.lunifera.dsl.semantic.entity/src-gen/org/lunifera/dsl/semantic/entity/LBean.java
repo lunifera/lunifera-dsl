@@ -64,7 +64,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * @see #setSuperType(LBean)
    * @see org.lunifera.dsl.semantic.entity.EntityPackage#getLBean_SuperType()
    * @see org.lunifera.dsl.semantic.entity.LBean#getSubTypes
-   * @model opposite="subTypes" resolveProxies="false"
+   * @model opposite="subTypes"
    * @generated
    */
   LBean getSuperType();
@@ -92,7 +92,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * @return the value of the '<em>Sub Types</em>' reference list.
    * @see org.lunifera.dsl.semantic.entity.EntityPackage#getLBean_SubTypes()
    * @see org.lunifera.dsl.semantic.entity.LBean#getSuperType
-   * @model opposite="superType" transient="true"
+   * @model opposite="superType"
    * @generated
    */
   EList<LBean> getSubTypes();

@@ -498,6 +498,26 @@ public class LEntityImpl extends LClassImpl implements LEntity
    */
   public LEntity getSuperType()
   {
+    if (superType != null && superType.eIsProxy())
+    {
+      InternalEObject oldSuperType = (InternalEObject)superType;
+      superType = (LEntity)eResolveProxy(oldSuperType);
+      if (superType != oldSuperType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.LENTITY__SUPER_TYPE, oldSuperType, superType));
+      }
+    }
+    return superType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LEntity basicGetSuperType()
+  {
     return superType;
   }
 
@@ -724,7 +744,8 @@ public class LEntityImpl extends LClassImpl implements LEntity
       case EntityPackage.LENTITY__INDEXES:
         return getIndexes();
       case EntityPackage.LENTITY__SUPER_TYPE:
-        return getSuperType();
+        if (resolve) return getSuperType();
+        return basicGetSuperType();
       case EntityPackage.LENTITY__SUB_TYPES:
         return getSubTypes();
     }

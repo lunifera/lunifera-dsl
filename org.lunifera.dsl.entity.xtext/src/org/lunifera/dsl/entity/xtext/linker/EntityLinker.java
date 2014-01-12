@@ -21,13 +21,18 @@ import com.google.inject.Inject;
 
 public class EntityLinker extends XbaseLazyLinker {
 
+	/**
+	 * Move to DerivedStateAwareResource#installDerivedState
+	 */
+	
+	
 	@Inject
 	private OnChangeEvictingCache cache;
 
 	@Override
 	protected void doLinkModel(final EObject model, IDiagnosticConsumer consumer) {
 		super.doLinkModel(model, consumer);
-
+		
 		cache.execWithoutCacheClear(model.eResource(),
 				new IUnitOfWork.Void<Resource>() {
 					@Override

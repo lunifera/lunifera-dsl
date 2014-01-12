@@ -8,13 +8,12 @@
  * Import statements support the use of the *-wildcard.
  * 
  */
- 
-package org.lunifera.entitydsl.samples.sample02.importer {
+package org.lunifera.entitydsl.samples.theimporter {
 
-	import org.lunifera.entitydsl.samples.sample02.imported.*;
+	import org.lunifera.entitydsl.samples.theimp.*;
 
 	entity Machine extends BaseEntity {
-		
+		   
 	}
 
 }

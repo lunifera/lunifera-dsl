@@ -6,13 +6,12 @@
  * Entities in other packages can inherit from the BaseEntity declared here.
  * 
  */
- 
-package org.lunifera.entitydsl.samples.sample02.imported {
+package org.lunifera.entitydsl.samples.theimp {
 
-	datatype String jvmType String;
+	datatype String jvmType java.lang.String;
 
-	entity BaseEntity  {
-		uuid String id;
+	entity BaseEntity {
+		uuid String id ;
 	}
 
 }

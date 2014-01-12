@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.util.BasicInternalEList
 class LPackage {
 	String name
 	contains LImport[] imports
-}
+} 
 
 class LTypedPackage extends LPackage {
 	contains LType[] types
@@ -127,7 +127,7 @@ interface LAttribute extends LFeature {
 	boolean ^transient
 	refers LScalarType ^type
 }
-
+  
 class LOperation extends LAnnotationTarget {
 	contains LModifier modifier
 	contains JvmTypeReference ^type

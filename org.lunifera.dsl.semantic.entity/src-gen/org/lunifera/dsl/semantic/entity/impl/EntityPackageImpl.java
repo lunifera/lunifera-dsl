@@ -1193,8 +1193,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
 
     initEClass(lBeanEClass, LBean.class, "LBean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLBean_Features(), this.getLBeanFeature(), null, "features", null, 0, -1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLBean_SuperType(), this.getLBean(), this.getLBean_SubTypes(), "superType", null, 0, 1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLBean_SubTypes(), this.getLBean(), this.getLBean_SuperType(), "subTypes", null, 0, -1, LBean.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLBean_SuperType(), this.getLBean(), this.getLBean_SubTypes(), "superType", null, 0, 1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLBean_SubTypes(), this.getLBean(), this.getLBean_SuperType(), "subTypes", null, 0, -1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEOperation(getLBean__GetOperations(), this.getOperationsList(), "getOperations", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -1222,8 +1222,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     initEReference(getLEntity_InheritanceStrategy(), this.getLEntityInheritanceStrategy(), null, "inheritanceStrategy", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLEntity_Features(), this.getLEntityFeature(), null, "features", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLEntity_Indexes(), this.getLIndex(), null, "indexes", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLEntity_SuperType(), this.getLEntity(), this.getLEntity_SubTypes(), "superType", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLEntity_SubTypes(), this.getLEntity(), this.getLEntity_SuperType(), "subTypes", null, 0, -1, LEntity.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLEntity_SuperType(), this.getLEntity(), this.getLEntity_SubTypes(), "superType", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLEntity_SubTypes(), this.getLEntity(), this.getLEntity_SuperType(), "subTypes", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEOperation(getLEntity__GetOperations(), this.getOperationsList(), "getOperations", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

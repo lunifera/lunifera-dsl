@@ -19,7 +19,6 @@ package org.lunifera.entitydsl.samples.sample03 {
 	datatype int jvmType java.lang.Integer as primitive;
 	datatype wrapped_int jvmType java.lang.Integer;
 	
-	
 	datatype dat dateType date;
 	datatype tim dateType timestamp;
 	

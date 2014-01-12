@@ -16,23 +16,27 @@ import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LReference
 import java.util.List
 import GenModel
- 
+import org.eclipse.emf.ecore.InternalEObject
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl
+import org.eclipse.emf.common.notify.Notification
+import org.eclipse.emf.ecore.impl.ENotificationImpl
+
 class LEntityModel {
 	contains LTypedPackage[] packages
 }
- 
+
 /**
  * A bean is an embeddable element that may become added to a entity using the @embedd annotation. 
  */
 class LBean extends LClass, LScalarType, LFeaturesHolder {
 	contains LBeanFeature[] features
-	refers local LBean superType opposite subTypes
-	refers transient LBean[] subTypes opposite superType
+	refers LBean superType opposite subTypes
+	refers LBean[] subTypes opposite superType
 	/**
  	 * Returns all features of type LOperation
  	 */
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList 
+		features.filter(typeof(LOperation)).toList
 	}
 	/**
  	 * Returns all features of type LBeanReference
@@ -96,13 +100,13 @@ class LEntity extends LClass, LFeaturesHolder {
 	contains LEntityInheritanceStrategy inheritanceStrategy
 	contains LEntityFeature[] features
 	contains LIndex[] indexes
-	refers local LEntity superType opposite subTypes
-	refers transient LEntity[] subTypes opposite superType
+	refers LEntity superType opposite subTypes
+	refers LEntity[] subTypes opposite superType
 	/**
  	 * Returns all features of type LOperation
  	 */
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList 
+		features.filter(typeof(LOperation)).toList
 	}
 	/**
  	 * Returns all features of type LEntityReference

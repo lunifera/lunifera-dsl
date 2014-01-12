@@ -295,7 +295,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		if (entity.inheritanceStrategy != null) {
 			return EcoreUtil::copy(entity.inheritanceStrategy)
 		}
-		if (entity.superType != null) {
+		if (entity != entity.superType && entity.superType != null) {
 			return entity.superType.findStrategyFromSuper
 		}
 		return null

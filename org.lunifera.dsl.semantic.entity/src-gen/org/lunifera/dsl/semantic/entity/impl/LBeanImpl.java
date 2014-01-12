@@ -132,6 +132,26 @@ public class LBeanImpl extends LClassImpl implements LBean
    */
   public LBean getSuperType()
   {
+    if (superType != null && superType.eIsProxy())
+    {
+      InternalEObject oldSuperType = (InternalEObject)superType;
+      superType = (LBean)eResolveProxy(oldSuperType);
+      if (superType != oldSuperType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityPackage.LBEAN__SUPER_TYPE, oldSuperType, superType));
+      }
+    }
+    return superType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LBean basicGetSuperType()
+  {
     return superType;
   }
 
@@ -336,7 +356,8 @@ public class LBeanImpl extends LClassImpl implements LBean
       case EntityPackage.LBEAN__FEATURES:
         return getFeatures();
       case EntityPackage.LBEAN__SUPER_TYPE:
-        return getSuperType();
+        if (resolve) return getSuperType();
+        return basicGetSuperType();
       case EntityPackage.LBEAN__SUB_TYPES:
         return getSubTypes();
     }
