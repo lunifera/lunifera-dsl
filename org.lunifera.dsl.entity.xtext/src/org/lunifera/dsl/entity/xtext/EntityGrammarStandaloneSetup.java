@@ -4,8 +4,11 @@
 package org.lunifera.dsl.entity.xtext;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.EntityPackage;
+import org.lunifera.dsl.semantic.entity.impl.EntityFactoryImplCustom;
 
 import com.google.inject.Injector;
 
@@ -26,6 +29,8 @@ public class EntityGrammarStandaloneSetup extends
 			EPackage.Registry.INSTANCE.put(
 					"http://www.lunifera.org/dsl/entity/v1",
 					EntityPackage.eINSTANCE);
+			EntityPackage.eINSTANCE
+					.setEFactoryInstance(new EntityFactoryImplCustom());
 		}
 
 		if (!EPackage.Registry.INSTANCE

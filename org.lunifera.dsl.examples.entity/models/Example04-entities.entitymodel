@@ -20,7 +20,7 @@
  
 package org.lunifera.entitydsl.samples.example04 {
 
-	entity NormalEntity {
+	entity NormalEntity { 
 		uuid String id ;
 	}
 	
