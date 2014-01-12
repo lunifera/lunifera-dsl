@@ -15,14 +15,18 @@ public class LEntityImplCustom extends LEntityImpl {
 	public LEntity getSuperType() {
 		if (superType != null && superType.eIsProxy()) {
 			InternalEObject oldSuperType = (InternalEObject) superType;
+			LEntity oldSuperEntity = (LEntity) oldSuperType;
 			superType = (LEntity) eResolveProxy(oldSuperType);
 			if (superType != oldSuperType) {
-
 				// ATENTION: inverse add must be called since bidirectional
-				// references uses proxy resolution for lazy linking
-				(((InternalEObject) superType)).eInverseAdd(
-						(InternalEObject) this,
-						EntityPackage.LENTITY__SUB_TYPES, LEntity.class, null);
+				// references uses proxy resolution for lazy linking. And the
+				// sub_types added to proxy must be added to new superType
+				for (LEntity subType : oldSuperEntity.getSubTypes()) {
+					(((InternalEObject) superType)).eInverseAdd(
+							(InternalEObject) subType,
+							EntityPackage.LENTITY__SUB_TYPES, LEntity.class,
+							null);
+				}
 
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
