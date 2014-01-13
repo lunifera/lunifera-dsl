@@ -5,6 +5,8 @@
 
 		<copy todir="${basedir}/contents/${example.name}">
 			<fileset dir="${basedir}/../${example.name}">
+				<include name="*" />
+				<include name="models/**" />
 				<exclude name="target/**" />
 			</fileset>
 		</copy>
