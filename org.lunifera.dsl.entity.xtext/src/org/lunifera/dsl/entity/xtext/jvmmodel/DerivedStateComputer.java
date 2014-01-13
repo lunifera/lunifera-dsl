@@ -1,12 +1,11 @@
-package org.lunifera.dsl.entity.xtext.linker;
+package org.lunifera.dsl.entity.xtext.jvmmodel;
 
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
-import org.eclipse.xtext.util.OnChangeEvictingCache;
-import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-import org.eclipse.xtext.xbase.linking.XbaseLazyLinker;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.resource.DerivedStateAwareResource;
+import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.lunifera.dsl.entity.xtext.extensions.Constants;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
@@ -16,40 +15,36 @@ import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
 import org.lunifera.dsl.semantic.entity.EntityFactory;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
+import org.lunifera.dsl.semantic.entity.LEntityModel;
+import org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl;
 
-import com.google.inject.Inject;
-
-public class EntityLinker extends XbaseLazyLinker {
-
-	/**
-	 * Move to DerivedStateAwareResource#installDerivedState
-	 */
-
-	@Inject
-	private OnChangeEvictingCache cache;
+public class DerivedStateComputer extends JvmModelAssociator {
 
 	@Override
-	protected void doLinkModel(final EObject model, IDiagnosticConsumer consumer) {
-		super.doLinkModel(model, consumer);
+	public void installDerivedState(DerivedStateAwareResource resource,
+			boolean preIndexingPhase) {
 
-		cache.execWithoutCacheClear(model.eResource(),
-				new IUnitOfWork.Void<Resource>() {
-					@Override
-					public void process(Resource state) throws Exception {
-						TreeIterator<EObject> iterator = model.eAllContents();
-						while (iterator.hasNext()) {
-							EObject eObject = iterator.next();
-							if (eObject instanceof LEntity) {
-								LEntity entity = (LEntity) eObject;
-								if (entity.isHistorized()) {
-									applyHistorized(entity);
-								} else if (entity.isTimedependent()) {
-									applyTimedependent(entity);
-								}
-							}
-						}
-					}
-				});
+//		if (preIndexingPhase && !resource.getContents().isEmpty()) {
+//			LEntityModel model = (LEntityModel) resource.getContents().get(0);
+//			for (LTypedPackage pkg : new ArrayList<>(model.getPackages())) {
+//				for (LType type : new ArrayList<>(pkg.getTypes())) {
+//					if (type instanceof LEntity) {
+//						LEntity entity = (LEntity) type;
+//						if (entity.isHistorized()) {
+//							applyHistorized(entity);
+//						} else if (entity.isTimedependent()) {
+//							applyTimedependent(entity);
+//						}
+//					}
+//				}
+//			}
+//		}
+		super.installDerivedState(resource, preIndexingPhase);
+	}
+
+	@Override
+	public void discardDerivedState(DerivedStateAwareResource resource) {
+		super.discardDerivedState(resource);
 	}
 
 	/**
@@ -150,10 +145,10 @@ public class EntityLinker extends XbaseLazyLinker {
 	 * @return
 	 */
 	private LScalarType findInternalOID(LEntity entity, LTypedPackage pkg) {
-		LDataType datatype = null;
+		LScalarType datatype = null;
 		for (LType type : pkg.getTypes()) {
-			if (!type.eIsProxy() && type instanceof LDataType) {
-				LDataType temp = (LDataType) type;
+			if (!type.eIsProxy() && type instanceof LScalarType) {
+				LScalarType temp = (LScalarType) type;
 				if (temp.getName().equals(Constants.DT_INTERNAL_OBJECT_ID)) {
 					datatype = temp;
 					break;
@@ -163,12 +158,11 @@ public class EntityLinker extends XbaseLazyLinker {
 
 		if (datatype == null) {
 			for (LEntityAttribute att : entity.getAllAttributes()) {
-				if (att.isUuid() || att.isId()) {
-					datatype = LunTypesFactory.eINSTANCE.createLDataType();
+				if (att.isId() || att.isUuid()) {
+					LEntityAttributeImpl attImpl = (LEntityAttributeImpl) att;
+					datatype = (LScalarType) EcoreUtil2
+							.cloneWithProxies(attImpl.basicGetType());
 					datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);
-					datatype.setSyntheticFlag(true);
-					datatype.setSyntheticType(Constants.DT_INTERNAL_OBJECT_ID);
-					datatype.setSyntheticTypeReference(att);
 					pkg.getTypes().add(datatype);
 					break;
 				}

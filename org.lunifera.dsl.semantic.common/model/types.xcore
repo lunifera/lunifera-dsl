@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.util.BasicInternalEList
 class LPackage {
 	String name
 	contains LImport[] imports
-} 
+}
 
 class LTypedPackage extends LPackage {
 	contains LType[] types
 }
 
-class LImport { 
+class LImport {
 	String importedNamespace
 }
 
@@ -35,9 +35,9 @@ class LType extends LAnnotationTarget {
 	 * Delegates the annotation request to the target element.
 	 */
 	op AnnotationList getResolvedAnnotations() {
-		if(annotationInfo != null){
+		if (annotationInfo != null) {
 			annotationInfo.annotations
-		}else{
+		} else {
 			annotations
 		}
 	}
@@ -62,9 +62,14 @@ class LDataType extends LScalarType {
 	boolean asBlob
 	int length
 	LDateType dateType
+	/**
+	 * Attention: synthetic must only be used inside the same resource
+	 */
 	// is used to prepare datatypes during linking
 	boolean syntheticFlag
 	String syntheticType
+	// is used to target a feature in the current entity
+	refers LFeature syntheticTypeReference
 }
 
 enum LDateType {
@@ -106,9 +111,9 @@ interface LFeature extends LAnnotationTarget {
 	 * Delegates the annotation request to the target element.
 	 */
 	op AnnotationList getResolvedAnnotations() {
-		if(annotationInfo != null){
+		if (annotationInfo != null) {
 			annotationInfo.annotations
-		}else{
+		} else {
 			annotations
 		}
 	}
@@ -127,13 +132,12 @@ interface LAttribute extends LFeature {
 	boolean ^transient
 	refers LScalarType ^type
 }
-  
+
 class LOperation extends LAnnotationTarget {
 	contains LModifier modifier
 	contains JvmTypeReference ^type
 	contains JvmFormalParameter[] params
 	contains XExpression body
-	
 	/**
 	 * Method to generalize naming conventions for annotation access
 	 */

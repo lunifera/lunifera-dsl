@@ -521,13 +521,22 @@ public interface LunTypesPackage extends EPackage
   int LDATA_TYPE__SYNTHETIC_TYPE = LSCALAR_TYPE_FEATURE_COUNT + 7;
 
   /**
+   * The feature id for the '<em><b>Synthetic Type Reference</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE = LSCALAR_TYPE_FEATURE_COUNT + 8;
+
+  /**
    * The number of structural features of the '<em>LData Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 8;
+  int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 9;
 
   /**
    * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1617,6 +1626,17 @@ public interface LunTypesPackage extends EPackage
   EAttribute getLDataType_SyntheticType();
 
   /**
+   * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticTypeReference <em>Synthetic Type Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Synthetic Type Reference</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticTypeReference()
+   * @see #getLDataType()
+   * @generated
+   */
+  EReference getLDataType_SyntheticTypeReference();
+
+  /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LEnum <em>LEnum</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2351,6 +2371,14 @@ public interface LunTypesPackage extends EPackage
      * @generated
      */
     EAttribute LDATA_TYPE__SYNTHETIC_TYPE = eINSTANCE.getLDataType_SyntheticType();
+
+    /**
+     * The meta object literal for the '<em><b>Synthetic Type Reference</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE = eINSTANCE.getLDataType_SyntheticTypeReference();
 
     /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LEnumImpl <em>LEnum</em>}' class.

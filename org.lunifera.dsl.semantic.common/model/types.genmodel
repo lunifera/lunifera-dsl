@@ -66,7 +66,7 @@
     <genClasses ecoreClass="types.ecore#//LType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LType/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LType/annotationInfo"/>
-      <genOperations ecoreOperation="types.ecore#//LType/getAnnotations"/>
+      <genOperations ecoreOperation="types.ecore#//LType/getResolvedAnnotations"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//LAnnotationDef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAnnotationDef/exclude"/>
@@ -83,6 +83,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/asBlob"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/length"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/dateType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/syntheticFlag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/syntheticType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference types.ecore#//LDataType/syntheticTypeReference"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//LEnum">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LEnum/literals"/>
@@ -103,6 +106,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LFeature/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LFeature/multiplicity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LFeature/annotationInfo"/>
+      <genOperations ecoreOperation="types.ecore#//LFeature/getResolvedAnnotations"/>
     </genClasses>
     <genClasses image="false" ecoreClass="types.ecore#//LReference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LReference/lazy"/>
@@ -121,6 +125,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LOperation/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LOperation/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LOperation/body"/>
+      <genOperations ecoreOperation="types.ecore#//LOperation/getResolvedAnnotations"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//LModifier">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LModifier/final"/>

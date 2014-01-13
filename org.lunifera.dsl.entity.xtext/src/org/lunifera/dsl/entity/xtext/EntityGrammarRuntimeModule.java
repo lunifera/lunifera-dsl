@@ -12,6 +12,7 @@ import org.lunifera.dsl.common.xtext.scope.CommonImportedNamespaceAwareLocalScop
 import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
 import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
+import org.lunifera.dsl.entity.xtext.jvmmodel.DerivedStateComputer;
 import org.lunifera.dsl.entity.xtext.jvmmodel.EntityJvmModelGenerator;
 import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
@@ -66,5 +67,9 @@ public class EntityGrammarRuntimeModule extends
 	}
 	public Class<? extends org.eclipse.xtext.linking.ILinker> bindILinker() {
 		return EntityLinker.class;
+	}
+	
+	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
+		return DerivedStateComputer.class;
 	}
 }

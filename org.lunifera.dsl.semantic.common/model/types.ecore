@@ -24,7 +24,7 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LType" eSuperTypes="#//LAnnotationTarget">
-    <eOperations name="getAnnotations" unique="false" eType="#//AnnotationList">
+    <eOperations name="getResolvedAnnotations" unique="false" eType="#//AnnotationList">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="*&#xA;Delegates the annotation request to the target element."/>
         <details key="body" value=""/>
@@ -57,6 +57,16 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateType" unique="false"
         eType="#//LDateType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="syntheticFlag" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Attention: synthetic must only be used inside the same resource"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="syntheticType" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="syntheticTypeReference"
+        eType="#//LFeature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LDateType">
     <eLiterals name="DATE"/>
@@ -92,6 +102,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LFeature" abstract="true" interface="true"
       eSuperTypes="#//LAnnotationTarget">
+    <eOperations name="getResolvedAnnotations" unique="false" eType="#//AnnotationList">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Delegates the annotation request to the target element."/>
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="multiplicity" eType="#//LMultiplicity"
         containment="true" resolveProxies="false"/>
@@ -117,6 +133,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LScalarType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LOperation" eSuperTypes="#//LAnnotationTarget">
+    <eOperations name="getResolvedAnnotations" unique="false" eType="#//AnnotationList">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Method to generalize naming conventions for annotation access"/>
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="#//LModifier"
         containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
@@ -159,5 +181,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="OperationsList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.semantic.common.types.LOperation>"/>
   <eClassifiers xsi:type="ecore:EDataType" name="FeaturesList" instanceTypeName="java.util.List&lt;? extends org.lunifera.dsl.semantic.common.types.LFeature>"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="AnnotationList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.semantic.common.types.LAnnotationDef>"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="AnnotationList" instanceTypeName="org.eclipse.emf.common.util.EList&lt;org.lunifera.dsl.semantic.common.types.LAnnotationDef>"/>
 </ecore:EPackage>

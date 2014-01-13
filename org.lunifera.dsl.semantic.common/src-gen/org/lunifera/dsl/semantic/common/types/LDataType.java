@@ -20,6 +20,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getDateType <em>Date Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#isSyntheticFlag <em>Synthetic Flag</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticTypeReference <em>Synthetic Type Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -191,11 +192,11 @@ public interface LDataType extends LScalarType
   /**
    * Returns the value of the '<em><b>Synthetic Flag</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Synthetic Flag</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * *
+   * Attention: synthetic must only be used inside the same resource
+   * <!-- end-model-doc -->
    * @return the value of the '<em>Synthetic Flag</em>' attribute.
    * @see #setSyntheticFlag(boolean)
    * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_SyntheticFlag()
@@ -239,5 +240,31 @@ public interface LDataType extends LScalarType
    * @generated
    */
   void setSyntheticType(String value);
+
+  /**
+   * Returns the value of the '<em><b>Synthetic Type Reference</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Synthetic Type Reference</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Synthetic Type Reference</em>' reference.
+   * @see #setSyntheticTypeReference(LFeature)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_SyntheticTypeReference()
+   * @model
+   * @generated
+   */
+  LFeature getSyntheticTypeReference();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticTypeReference <em>Synthetic Type Reference</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Synthetic Type Reference</em>' reference.
+   * @see #getSyntheticTypeReference()
+   * @generated
+   */
+  void setSyntheticTypeReference(LFeature value);
 
 } // LDataType

@@ -60,13 +60,15 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch JvmTypeReference toTypeReference(LOperation prop) {
 		prop.type.cloneWithProxies
 	}
-
+	
 	override JvmTypeReference toSyntheticTypeReference(LDataType type) {
 		switch (type.syntheticType) {
 			case Constants::DT_INTERNAL_IS_CURRENT_VERSION:
 				references.findDeclaredType(Boolean::TYPE, type).newTypeRef()
 			case Constants::DT_INTERNAL_OBJECT_VERSION:
 				references.findDeclaredType(Integer::TYPE, type).newTypeRef()
+			case Constants::DT_INTERNAL_OBJECT_ID:
+				type.syntheticTypeReference.toTypeReference
 		}
 	}
 

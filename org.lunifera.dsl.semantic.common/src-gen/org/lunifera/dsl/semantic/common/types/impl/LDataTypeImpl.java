@@ -14,6 +14,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LDateType;
+import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
 /**
@@ -31,6 +32,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getDateType <em>Date Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#isSyntheticFlag <em>Synthetic Flag</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticType <em>Synthetic Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticTypeReference <em>Synthetic Type Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -187,6 +189,16 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * @ordered
    */
   protected String syntheticType = SYNTHETIC_TYPE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSyntheticTypeReference() <em>Synthetic Type Reference</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSyntheticTypeReference()
+   * @generated
+   * @ordered
+   */
+  protected LFeature syntheticTypeReference;
 
   /**
    * <!-- begin-user-doc -->
@@ -423,6 +435,49 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * <!-- end-user-doc -->
    * @generated
    */
+  public LFeature getSyntheticTypeReference()
+  {
+    if (syntheticTypeReference != null && syntheticTypeReference.eIsProxy())
+    {
+      InternalEObject oldSyntheticTypeReference = (InternalEObject)syntheticTypeReference;
+      syntheticTypeReference = (LFeature)eResolveProxy(oldSyntheticTypeReference);
+      if (syntheticTypeReference != oldSyntheticTypeReference)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE, oldSyntheticTypeReference, syntheticTypeReference));
+      }
+    }
+    return syntheticTypeReference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LFeature basicGetSyntheticTypeReference()
+  {
+    return syntheticTypeReference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSyntheticTypeReference(LFeature newSyntheticTypeReference)
+  {
+    LFeature oldSyntheticTypeReference = syntheticTypeReference;
+    syntheticTypeReference = newSyntheticTypeReference;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE, oldSyntheticTypeReference, syntheticTypeReference));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -460,6 +515,9 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return isSyntheticFlag();
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
         return getSyntheticType();
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE:
+        if (resolve) return getSyntheticTypeReference();
+        return basicGetSyntheticTypeReference();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -497,6 +555,9 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return;
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
         setSyntheticType((String)newValue);
+        return;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE:
+        setSyntheticTypeReference((LFeature)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -536,6 +597,9 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
         setSyntheticType(SYNTHETIC_TYPE_EDEFAULT);
         return;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE:
+        setSyntheticTypeReference((LFeature)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -566,6 +630,8 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return syntheticFlag != SYNTHETIC_FLAG_EDEFAULT;
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
         return SYNTHETIC_TYPE_EDEFAULT == null ? syntheticType != null : !SYNTHETIC_TYPE_EDEFAULT.equals(syntheticType);
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE:
+        return syntheticTypeReference != null;
     }
     return super.eIsSet(featureID);
   }
