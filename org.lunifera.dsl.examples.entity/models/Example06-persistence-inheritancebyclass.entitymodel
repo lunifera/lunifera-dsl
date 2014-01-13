@@ -19,6 +19,8 @@
  
 package org.lunifera.entitydsl.samples.sample06 {
 
+	datatype int jvmType java.lang.Integer as primitive;
+	
 	entity Vehicle {
 		inheritance per class {
 			discriminatorColumn TYPE_DISCR_COLUMN;
