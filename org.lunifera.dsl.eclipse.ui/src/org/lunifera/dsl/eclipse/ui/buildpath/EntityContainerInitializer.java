@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2013 Lunifera GmbH (Austria) and Loetz KG (Heidelberg)
+ * Copyright (c) 2011, 2014 Lunifera GmbH (Austria) and Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,6 @@ import org.eclipse.jdt.core.IClasspathContainer;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 
-/**
- * @author Dennis Huebner - Initial contribution and API
- */
 public class EntityContainerInitializer extends ClasspathContainerInitializer {
 
 	public static final Path ENTITY_LIBRARY_PATH = new Path("org.lunifera.dsl.entity.ENTITY_CONTAINER"); //$NON-NLS-1$

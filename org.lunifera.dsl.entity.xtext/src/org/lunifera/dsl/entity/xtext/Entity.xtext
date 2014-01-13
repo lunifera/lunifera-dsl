@@ -1,16 +1,13 @@
 /**
- * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg), Robert Handschmann (Vienna)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * IP: ideas, code and semantics also used from Xbase, Xcore and Xtend projects
- * 
- * Contributors:
- *    	Hans Georg Glöckler - initial implementation
- * 		Florian Pirchner - Xbase integration
- *      Robert Handschmann - v2
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ * 		Robert Handschmann - V2
  */
 grammar org.lunifera.dsl.entity.xtext.EntityGrammar with org.lunifera.dsl.common.xtext.CommonGrammar
 

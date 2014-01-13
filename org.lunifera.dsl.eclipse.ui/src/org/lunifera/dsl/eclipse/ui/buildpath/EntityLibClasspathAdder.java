@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2013 Lunifera GmbH (Austria) and Loetz KG (Heidelberg)
+ * Copyright (c) 2011, 2014 Lunifera GmbH (Austria) and Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,9 +37,6 @@ import org.eclipse.xtext.util.MergeableManifest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author Jan Koehnlein - Initial contribution and API
- */
 public class EntityLibClasspathAdder {
 
 	private static final Logger LOG = LoggerFactory

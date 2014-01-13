@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ */
 package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
@@ -12,12 +22,13 @@ import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LOperation
 
 /**
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
@@ -36,6 +47,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		if(hasSyntaxErrors(enumX)) return;
 
 		acceptor.accept(enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)).initializeLater [
+			fileHeader = (enumX.eContainer as LTypedPackage).documentation
 			documentation = enumX.documentation
 			for (f : enumX.literals) {
 				documentation = f.documentation
@@ -48,8 +60,9 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		if(hasSyntaxErrors(bean)) return;
 
 		acceptor.accept(bean.toJvmType).initializeLater [
+			fileHeader = (bean.eContainer as LTypedPackage).documentation
 			documentation = bean.getDocumentation
-			if(bean.getSuperType == null){
+			if (bean.getSuperType == null) {
 				superTypes += references.getTypeForName(typeof(Serializable), bean, null)
 			}
 			if (bean.getSuperType != null && !bean.getSuperType.fullyQualifiedName.toString.empty) {
@@ -127,11 +140,12 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		]
 
 	}
- 
+
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(entity)) return;
 
 		acceptor.accept(entity.toJvmType).initializeLater [
+			fileHeader = (entity.eContainer as LTypedPackage).documentation
 			documentation = entity.documentation
 			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
 				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
@@ -160,7 +174,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			if (entity.getSuperType == null) {
 				members += entity.toIsDisposed()
-			} 
+			}
 			members += entity.toCheckDisposed()
 			members += entity.toDispose()
 			for (f : entity.features) {

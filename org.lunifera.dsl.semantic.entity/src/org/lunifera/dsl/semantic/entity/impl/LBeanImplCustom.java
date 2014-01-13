@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ */
 package org.lunifera.dsl.semantic.entity.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -5,7 +15,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.lunifera.dsl.semantic.entity.EntityPackage;
 import org.lunifera.dsl.semantic.entity.LBean;
-import org.lunifera.dsl.semantic.entity.LEntity;
 
 public class LBeanImplCustom extends LBeanImpl {
 
@@ -26,8 +35,7 @@ public class LBeanImplCustom extends LBeanImpl {
 				for (LBean subType : oldSuperEntity.getSubTypes()) {
 					((InternalEObject) superType).eInverseAdd(
 							(InternalEObject) subType,
-							EntityPackage.LBEAN__SUB_TYPES, LBean.class,
-							null);
+							EntityPackage.LBEAN__SUB_TYPES, LBean.class, null);
 				}
 
 				if (eNotificationRequired())

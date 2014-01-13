@@ -1,4 +1,15 @@
 /**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ *  All rights reserved. This program and the accompanying materials 
+ *  are made available under the terms of the Eclipse Public License v1.0 
+ *  which accompanies this distribution, and is available at 
+ *  http://www.eclipse.org/legal/epl-v10.html 
+ * 
+ *  Based on ideas from Xtext, Xtend, Xcore
+ *   
+ *  Contributors:  
+ *  		Florian Pirchner - Initial implementation 
+ *  
  */
 package org.lunifera.dsl.semantic.entity;
 
@@ -26,7 +37,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  * <!-- end-user-doc -->
  * @see org.lunifera.dsl.semantic.entity.EntityFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel fileExtensions='entitymodel' modelName='Entity' prefix='Entity' basePackage='org.lunifera.dsl.semantic'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel fileExtensions='entitymodel' modelName='Entity' prefix='Entity' copyrightText='Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)\n All rights reserved. This program and the accompanying materials \n are made available under the terms of the Eclipse Public License v1.0 \n which accompanies this distribution, and is available at \n http://www.eclipse.org/legal/epl-v10.html \n\n Based on ideas from Xtext, Xtend, Xcore\n  \n Contributors:  \n \t\tFlorian Pirchner - Initial implementation \n ' basePackage='org.lunifera.dsl.semantic'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore rootPackage='entity'"
  * @generated
  */

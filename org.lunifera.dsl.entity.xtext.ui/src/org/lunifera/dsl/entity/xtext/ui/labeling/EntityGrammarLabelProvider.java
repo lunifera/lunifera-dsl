@@ -1,12 +1,11 @@
 /**
- * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Hans Georg Glöckler, Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Based on org.eclipse.xtend.ide.labeling.XtendLabelProvider
- * 
  */
 package org.lunifera.dsl.entity.xtext.ui.labeling;
 
@@ -26,7 +25,6 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider;
-import org.eclipse.xtext.xbase.validation.UIStrings;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LDataType;
@@ -52,9 +50,6 @@ import com.google.inject.Inject;
  */
 @SuppressWarnings("restriction")
 public class EntityGrammarLabelProvider extends XbaseLabelProvider {
-
-	@Inject
-	private UIStrings uiStrings;
 
 	@Inject
 	private EntityGrammarImages images;

@@ -1,12 +1,9 @@
 /**
- * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+ * Copyright (c) 2011 - 2014, Hans Georg Glöckler, Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributions:
- * 		Hans Georg Glöckler - Initial implementation
  */
 package org.lunifera.dsl.entity.xtext.ui;
 

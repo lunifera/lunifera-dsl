@@ -1,12 +1,11 @@
 /**
- * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+ * Copyright (c) 2011 - 2014, Hans Georg Glöckler, Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Based on org.eclipse.xtend.ide.labeling.XtendImages
- * 
  */
 package org.lunifera.dsl.entity.xtext.ui.labeling;
 
@@ -14,19 +13,11 @@ import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.viewsupport.JavaElementImageProvider;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.common.types.JvmVisibility;
-import org.eclipse.xtext.ui.IImageHelper;
-import org.eclipse.xtext.xbase.ui.labeling.XbaseImages;
 import org.eclipse.xtext.xbase.ui.labeling.XbaseImages2;
-
-import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
 public class EntityGrammarImages extends XbaseImages2 {
-
-	@Inject
-	private IImageHelper imageHelper;
 
 	public ImageDescriptor forFilter() {
 		return JavaPluginImages.DESC_ELCL_FILTER;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2013 Lunifera GmbH (Austria) and Loetz KG (Heidelberg)
+ * Copyright (c) 2011, 2014 Lunifera GmbH (Austria) and Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,15 +31,11 @@ import org.osgi.framework.Bundle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Holds some
- * 
- * @author Dennis Huebner - Initial contribution and API
- */
 final public class EntityClasspathContainer implements IClasspathContainer {
 
 	private static final String XTEXT_XBASE_LIB_BUNDLE_ID = "org.eclipse.xtext.xbase.lib";
 	private static final String XTEND_LIB_BUNDLE_ID = "org.eclipse.xtend.lib";
+	@SuppressWarnings("unused")
 	private static final String ENTITY_BUNDLE_ID = "org.lunifera.dsl.entity.xtext";
 	private static final String PERSISTENCE_BUNDLE_ID = "javax.persistence";
 
@@ -122,22 +118,6 @@ final public class EntityClasspathContainer implements IClasspathContainer {
 						"Can't resolve path '" + bundle.getSymbolicName() + "'", e); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		}
-		return null;
-	}
-
-	/**
-	 * Builds the Javadoc online URL.<br>
-	 * For example javadoc for version 2.3.0 looks like this:<br>
-	 * http://download.eclipse.org/modeling/tmf/xtext/javadoc/2.3/
-	 */
-	private String calculateJavadocURL() {
-		// Version myVersion =
-		// XtendActivator.getInstance().getBundle().getVersion();
-		// StringBuilder builder = new
-		// StringBuilder("http://download.eclipse.org/modeling/tmf/xtext/javadoc/");
-		// builder.append(myVersion.getMajor()).append(".");
-		// builder.append(myVersion.getMinor()).append("/");
-		// return builder.toString();
 		return null;
 	}
 
