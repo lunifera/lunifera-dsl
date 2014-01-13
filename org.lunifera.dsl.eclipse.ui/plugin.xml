@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
 
-   <extension
+  <!-- <extension
          point="org.eclipse.ui.newWizards">
       <category
             name="Lunifera Wizards"
@@ -15,9 +15,8 @@
             id="LuniferaUiExecutableExtensionFactory:"
             name="Lunifera Modeling Project"
             project="true">
-            
       </wizard>
-   </extension>
+   </extension> -->
    
    <extension
          point="org.eclipse.ui.perspectives">
