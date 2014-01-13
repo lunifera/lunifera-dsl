@@ -21,7 +21,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
-import GenModel
+import GenModel 
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.xcore.lib.XcoreCollectionLiterals
 import org.eclipse.emf.ecore.util.BasicInternalEList

@@ -173,7 +173,7 @@ public class EntityLinker extends XbaseLazyLinker {
 		}
 
 		if (datatype == null) {
-			for (LEntityAttribute att : entity.getAllAttributes()) {
+			for (LEntityAttribute att : entity.getAttributes()) {
 				if (att.isUuid() || att.isId()) {
 					datatype = LunTypesFactory.eINSTANCE.createLDataType();
 					datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);

@@ -72,6 +72,7 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__UUID_WRONG_TYPE = "114";
 	public static final String CODE__OPPOSITE_WITHOUT_CASCADE = "115";
 	public static final String CODE__MISSING_ID_FOR_VERSIONED = "116";
+	public static final String CODE__HISTORIZED_IN_SUBCLASS = "117";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -267,6 +268,25 @@ public class EntityGrammarJavaValidator extends
 				error("UUIDs must be of type String.",
 						EntityPackage.Literals.LENTITY_ATTRIBUTE__UUID,
 						CODE__UUID_WRONG_TYPE, new String[0]);
+			}
+		}
+	}
+
+	@Check(CheckType.NORMAL)
+	public void checkJPA_Historized(LEntity entity) {
+		if (entity.isHistorized()) {
+			if (entity.getSuperType() != null) {
+				error("Keyword historized may only be used in toplevel entities of inheritance hierarchy",
+						EntityPackage.Literals.LENTITY__HISTORIZED,
+						CODE__HISTORIZED_IN_SUBCLASS, new String[0]);
+			}
+		}
+
+		if (entity.isTimedependent()) {
+			if (entity.getSuperType() != null) {
+				error("Keyword historized may only be used in toplevel entities of inheritance hierarchy",
+						EntityPackage.Literals.LENTITY__TIMEDEPENDENT,
+						CODE__HISTORIZED_IN_SUBCLASS, new String[0]);
 			}
 		}
 	}

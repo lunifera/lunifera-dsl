@@ -39,7 +39,6 @@ Export-Package: org.lunifera.dsl.entity.xtext;x-internal:=true,
  org.lunifera.dsl.entity.xtext.scope;x-internal:=true,
  org.lunifera.dsl.entity.xtext.serializer;x-internal:=true,
  org.lunifera.dsl.entity.xtext.services;x-internal:=true,
- org.lunifera.dsl.entity.xtext.typesystem;x-internal:=true,
  org.lunifera.dsl.entity.xtext.util;x-internal:=true,
  org.lunifera.dsl.entity.xtext.validation;x-internal:=true,
  org.lunifera.dsl.entity.xtext.valueconverter;x-internal:=true
