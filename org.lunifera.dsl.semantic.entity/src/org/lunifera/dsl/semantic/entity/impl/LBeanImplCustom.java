@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.lunifera.dsl.semantic.entity.EntityPackage;
 import org.lunifera.dsl.semantic.entity.LBean;
+import org.lunifera.dsl.semantic.entity.LEntity;
 
 public class LBeanImplCustom extends LBeanImpl {
 
@@ -15,14 +16,19 @@ public class LBeanImplCustom extends LBeanImpl {
 	public LBean getSuperType() {
 		if (superType != null && superType.eIsProxy()) {
 			InternalEObject oldSuperType = (InternalEObject) superType;
+			LBean oldSuperEntity = (LBean) oldSuperType;
 			superType = (LBean) eResolveProxy(oldSuperType);
 			if (superType != oldSuperType) {
 
 				// ATENTION: inverse add must be called since bidirectional
-				// references uses proxy resolution for lazy linking
-				(((InternalEObject) superType)).eInverseAdd(
-						(InternalEObject) this, EntityPackage.LBEAN__SUB_TYPES,
-						LBean.class, null);
+				// references uses proxy resolution for lazy linking. And the
+				// sub_types added to proxy must be added to new superType
+				for (LBean subType : oldSuperEntity.getSubTypes()) {
+					((InternalEObject) superType).eInverseAdd(
+							(InternalEObject) subType,
+							EntityPackage.LBEAN__SUB_TYPES, LBean.class,
+							null);
+				}
 
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -32,5 +38,4 @@ public class LBeanImplCustom extends LBeanImpl {
 		}
 		return superType;
 	}
-
 }

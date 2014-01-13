@@ -22,7 +22,7 @@ public class LEntityImplCustom extends LEntityImpl {
 				// references uses proxy resolution for lazy linking. And the
 				// sub_types added to proxy must be added to new superType
 				for (LEntity subType : oldSuperEntity.getSubTypes()) {
-					(((InternalEObject) superType)).eInverseAdd(
+					((InternalEObject) superType).eInverseAdd(
 							(InternalEObject) subType,
 							EntityPackage.LENTITY__SUB_TYPES, LEntity.class,
 							null);

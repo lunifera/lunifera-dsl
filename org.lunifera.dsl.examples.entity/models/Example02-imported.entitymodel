@@ -8,8 +8,6 @@
  */
 package org.lunifera.entitydsl.samples.theimp {
 
-	datatype String jvmType java.lang.String;
-
 	entity BaseEntity {
 		uuid String id ;
 	}

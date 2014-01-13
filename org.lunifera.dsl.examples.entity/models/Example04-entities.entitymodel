@@ -40,9 +40,6 @@ package org.lunifera.entitydsl.samples.example04 {
 		uuid String id ;
 	}
 	
-	timedependent entity TimedependentEntity {
-		uuid String id ;
-	}
 
 
 }

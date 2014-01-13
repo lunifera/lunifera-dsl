@@ -1,7 +1,7 @@
 package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
-import javax.persistence.Transient
+import java.io.Serializable
 import org.apache.log4j.Logger
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
@@ -12,14 +12,12 @@ import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityReference
-import javax.persistence.Entity
-import org.lunifera.dsl.semantic.common.types.LOperation
-import java.io.Serializable
 
 /**
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
@@ -116,7 +114,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			}
 			//
 			// Methods. 
-			// 
+			//    
 			for (op : bean.getOperations) {
 				members += op.toMethod(op.getName, op.getType) [
 					documentation = op.getDocumentation
@@ -162,7 +160,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			if (entity.getSuperType == null) {
 				members += entity.toIsDisposed()
-			}
+			} 
 			members += entity.toCheckDisposed()
 			members += entity.toDispose()
 			for (f : entity.features) {

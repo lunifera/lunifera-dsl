@@ -6,7 +6,6 @@
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
 
-import org.lunifera.dsl.semantic.common.types.*
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LScalarType
@@ -14,12 +13,9 @@ import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.common.types.LDateType
 import java.util.List
 import GenModel
-import org.eclipse.emf.ecore.InternalEObject
-import org.eclipse.emf.ecore.impl.BasicEObjectImpl
-import org.eclipse.emf.common.notify.Notification
-import org.eclipse.emf.ecore.impl.ENotificationImpl
 
 class LEntityModel {
 	contains LTypedPackage[] packages
@@ -35,7 +31,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 	/**
  	 * Returns all features of type LOperation
  	 */
-	op OperationsList getOperations() {
+	op OperationsList getOperations() { 
 		features.filter(typeof(LOperation)).toList
 	}
 	/**
@@ -106,7 +102,7 @@ class LEntity extends LClass, LFeaturesHolder {
  	 * Returns all features of type LOperation
  	 */
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList
+		features.filter(typeof(LOperation)).toList 
 	}
 	/**
  	 * Returns all features of type LEntityReference
@@ -229,7 +225,7 @@ class LIndex {
  */
 class LOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LBeanFeature, LEntityFeature {
 }
-
+ 
 type OperationsList wraps java.util.List<LOperation>
 
 type EntityFeatureList wraps java.util.List<LEntityFeature>

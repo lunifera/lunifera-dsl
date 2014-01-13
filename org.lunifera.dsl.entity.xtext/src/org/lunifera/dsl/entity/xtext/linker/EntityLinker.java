@@ -10,12 +10,14 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.xbase.linking.XbaseLazyLinker;
 import org.lunifera.dsl.entity.xtext.extensions.Constants;
 import org.lunifera.dsl.semantic.common.types.LDataType;
+import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
 import org.lunifera.dsl.semantic.entity.EntityFactory;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
+import org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl;
 
 import com.google.inject.Inject;
 
@@ -24,15 +26,14 @@ public class EntityLinker extends XbaseLazyLinker {
 	/**
 	 * Move to DerivedStateAwareResource#installDerivedState
 	 */
-	
-	
+
 	@Inject
 	private OnChangeEvictingCache cache;
 
 	@Override
 	protected void doLinkModel(final EObject model, IDiagnosticConsumer consumer) {
 		super.doLinkModel(model, consumer);
-		
+
 		cache.execWithoutCacheClear(model.eResource(),
 				new IUnitOfWork.Void<Resource>() {
 					@Override
@@ -150,10 +151,10 @@ public class EntityLinker extends XbaseLazyLinker {
 	 * @param pkg
 	 * @return
 	 */
-	private LDataType findInternalOID(LEntity entity, LTypedPackage pkg) {
-		LDataType datatype = null;
+	private LScalarType findInternalOID(LEntity entity, LTypedPackage pkg) {
+		LScalarType datatype = null;
 		for (LType type : pkg.getTypes()) {
-			if (type instanceof LDataType) {
+			if (!type.eIsProxy() && type instanceof LDataType) {
 				LDataType temp = (LDataType) type;
 				if (temp.getName().equals(Constants.DT_INTERNAL_OBJECT_ID)) {
 					datatype = temp;
@@ -164,14 +165,13 @@ public class EntityLinker extends XbaseLazyLinker {
 
 		if (datatype == null) {
 			for (LEntityAttribute att : entity.getAllAttributes()) {
-				if (att.getType() instanceof LDataType) {
-					if (att.isId() || att.isUuid()) {
-						datatype = (LDataType) EcoreUtil2.cloneWithProxies(att
-								.getType());
-						datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);
-						pkg.getTypes().add(datatype);
-						break;
-					}
+				if (att.isId() || att.isUuid()) {
+					LEntityAttributeImpl attImpl = (LEntityAttributeImpl) att;
+					datatype = (LScalarType) EcoreUtil2
+							.cloneWithProxies(attImpl.basicGetType());
+					datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);
+					pkg.getTypes().add(datatype);
+					break;
 				}
 			}
 		}
