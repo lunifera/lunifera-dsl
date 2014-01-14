@@ -931,6 +931,42 @@ class ValidationTests {
 		CODE__TIMEDEPENDENT_IN_SUBCLASS.severity.assertSame(ERROR)
 		CODE__TIMEDEPENDENT_IN_SUBCLASS.lineNumber.assertEquals(10)
 	}
+	
+		@Test
+	def void historized_id() {
+		result = '''
+		package org.lunifera.entitydsltest.validation {
+
+			datatype String jvmType String;
+
+			historized entity MyTest {
+				var String stuff;
+			}
+
+		}
+		'''.parse.validate.toMap[it.code]
+
+		CODE__MISSING_ID_FOR_VERSIONED.severity.assertSame(ERROR)
+		CODE__MISSING_ID_FOR_VERSIONED.lineNumber.assertEquals(6)
+	}
+	
+		@Test
+	def void timedependent_id() {
+		result = '''
+		package org.lunifera.entitydsltest.validation {
+
+			datatype String jvmType String;
+
+			timedependent entity MyTest {
+				var String stuff;
+			}
+
+		}
+		'''.parse.validate.toMap[it.code]
+
+		CODE__MISSING_ID_FOR_VERSIONED.severity.assertSame(ERROR)
+		CODE__MISSING_ID_FOR_VERSIONED.lineNumber.assertEquals(6)
+	}
 
 	/**
  	* Helper methods 
