@@ -839,6 +839,98 @@ class ValidationTests {
 
 		result.size.assertEquals(0)
 	}
+	
+	@Test
+	def void historized_1() {
+		result = '''
+			package org.lunifera.dsl.entitydsl.histtimevalidation {
+
+			datatype String jvmType String;
+
+			entity Test {
+				inheritance per class{}
+				uuid String id;
+			}
+
+			historized entity SubTest extends Test {  				// error: no historized entities in inheritance
+
+			} 
+
+		}
+		'''.parse.validate.toMap[it.code]
+
+		CODE__HISTORIZED_IN_SUBCLASS.severity.assertSame(ERROR)
+		CODE__HISTORIZED_IN_SUBCLASS.lineNumber.assertEquals(10)
+	}
+	
+	@Test
+	def void historized_2() {
+		result = '''
+			package org.lunifera.dsl.entitydsl.histtimevalidation {
+
+			datatype String jvmType String;
+
+			entity Test {
+				inheritance per subclass{}
+				uuid String id;
+			}
+
+			historized entity SubTest extends Test {  				// error: no historized entities in inheritance
+
+			} 
+
+		}
+		'''.parse.validate.toMap[it.code]
+
+		CODE__HISTORIZED_IN_SUBCLASS.severity.assertSame(ERROR)
+		CODE__HISTORIZED_IN_SUBCLASS.lineNumber.assertEquals(10)
+	}
+	
+		@Test
+	def void timedependent_1() {
+		result = '''
+			package org.lunifera.dsl.entitydsl.histtimevalidation {
+
+			datatype String jvmType String;
+
+			entity Test {
+				inheritance per class{}
+				uuid String id;
+			}
+
+			timedependent entity SubTest extends Test {  				// error: no historized entities in inheritance
+
+			} 
+
+		}
+		'''.parse.validate.toMap[it.code]
+
+		CODE__TIMEDEPENDENT_IN_SUBCLASS.severity.assertSame(ERROR)
+		CODE__TIMEDEPENDENT_IN_SUBCLASS.lineNumber.assertEquals(10)
+	}
+	
+	@Test
+	def void timedependent_2() {
+		result = '''
+			package org.lunifera.dsl.entitydsl.histtimevalidation {
+
+			datatype String jvmType String;
+
+			entity Test {
+				inheritance per subclass{}
+				uuid String id;
+			}
+
+			timedependent entity SubTest extends Test {  				// error: no historized entities in inheritance
+
+			} 
+
+		}
+		'''.parse.validate.toMap[it.code]
+
+		CODE__TIMEDEPENDENT_IN_SUBCLASS.severity.assertSame(ERROR)
+		CODE__TIMEDEPENDENT_IN_SUBCLASS.lineNumber.assertEquals(10)
+	}
 
 	/**
  	* Helper methods 
