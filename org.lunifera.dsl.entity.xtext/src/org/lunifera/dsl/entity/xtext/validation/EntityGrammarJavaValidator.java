@@ -74,6 +74,7 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__OPPOSITE_WITHOUT_CASCADE = "115";
 	public static final String CODE__MISSING_ID_FOR_VERSIONED = "116";
 	public static final String CODE__HISTORIZED_IN_SUBCLASS = "117";
+	public static final String CODE__TIMEDEPENDENT_IN_SUBCLASS = "118";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -294,7 +295,7 @@ public class EntityGrammarJavaValidator extends
 					&& !entity.getSuperType().isMappedSuperclass()) {
 				error("Keyword historized may only be used in toplevel entities of inheritance hierarchy",
 						EntityPackage.Literals.LENTITY__TIMEDEPENDENT,
-						CODE__HISTORIZED_IN_SUBCLASS, new String[0]);
+						CODE__TIMEDEPENDENT_IN_SUBCLASS, new String[0]);
 			}
 		}
 	}

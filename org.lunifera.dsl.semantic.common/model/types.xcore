@@ -86,7 +86,7 @@ class LDataType extends LScalarType {
 	// for instance if the feature is contained in a superclass
 	refers LType syntheticType
 }
-
+ 
 enum LDateType {
 	DATE
 	, TIME
