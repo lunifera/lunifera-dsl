@@ -1,6 +1,14 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.lunifera.dsl.entity.xtext.tests.model.testcarstore2;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 import java.util.List;
@@ -11,19 +19,21 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import org.eclipse.persistence.jpa.jpql.Assert.AssertException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.lunifera.dsl.entity.xtext.tests.AbstractJPATest;
 
-public class Carstore2Tests {
+public class Carstore2Tests extends AbstractJPATest {
 
 	private static final String PERSISTENCE_UNIT_NAME = "carstore2test";
 	private static EntityManagerFactory emf;
 
 	@Before
 	public void setUp() throws Exception {
-		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		super.setUp();
+		
+		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, properties);
 
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();

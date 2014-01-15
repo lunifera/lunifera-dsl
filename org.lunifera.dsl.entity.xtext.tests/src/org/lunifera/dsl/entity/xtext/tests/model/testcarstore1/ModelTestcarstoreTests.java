@@ -1,6 +1,14 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.lunifera.dsl.entity.xtext.tests.model.testcarstore1;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 import java.util.List;
@@ -11,19 +19,22 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import org.eclipse.persistence.jpa.jpql.Assert.AssertException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.lunifera.dsl.entity.xtext.tests.AbstractJPATest;
 
-public class ModelTestcarstoreTests {
+public class ModelTestcarstoreTests extends AbstractJPATest {
 
 	private static final String PERSISTENCE_UNIT_NAME = "testcarstore";
 	private static EntityManagerFactory emf;
 
 	@Before
 	public void setUp() throws Exception {
-		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		super.setUp();
+
+		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME,
+				properties);
 
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
@@ -59,14 +70,14 @@ public class ModelTestcarstoreTests {
 		buyeraddr.setStreetname("Walfischgasse");
 		buyeraddr.setHousenumber(12);
 		manufacturer.setName("Lunifera Racecars");
-//		manufacturer.setAddress(manufactureraddr);
+		// manufacturer.setAddress(manufactureraddr);
 		manufacturer2.setName("Crashcars");
 		manufactureraddr.setCity("Torino");
 		manufactureraddr.setZipcode(23456);
 		manufactureraddr.setStreetname("Tivoli");
 		manufactureraddr.setHousenumber(34);
-//		buyer.addToAddress(buyeraddr);
-//		manufacturer.setAddress(manufactureraddr);
+		// buyer.addToAddress(buyeraddr);
+		// manufacturer.setAddress(manufactureraddr);
 		car.setConstructiondate(new Date(2012, 4, 4));
 		car.setModelname("Beta Romeo");
 		car.setManufacturer(manufacturer);
@@ -98,14 +109,13 @@ public class ModelTestcarstoreTests {
 				"select e from Employee e where e.id = 4").getResultList();
 		assertEquals(1, elist.size());
 
-	
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		emf.close();
 	}
-	
+
 	/**
 	 * Read from database
 	 */
@@ -154,7 +164,8 @@ public class ModelTestcarstoreTests {
 				List<Employee> elist2 = e.getSubordinates();
 				assertEquals(2, elist2.size());
 				for (Employee e2 : elist2) {
-					assertEquals(e2.getBoss(), e);  // check bidirectional reference
+					assertEquals(e2.getBoss(), e); // check bidirectional
+													// reference
 				}
 			}
 			if (e.getId() == 4) {
@@ -166,7 +177,7 @@ public class ModelTestcarstoreTests {
 		}
 	}
 
-	/** 
+	/**
 	 * Check different object
 	 */
 	@Test
@@ -186,7 +197,7 @@ public class ModelTestcarstoreTests {
 			}
 		}
 	}
-	
+
 	/**
 	 * Add value to db and read it back
 	 */
@@ -216,7 +227,7 @@ public class ModelTestcarstoreTests {
 			}
 		}
 	}
-	
+
 	/**
 	 * Change value in db and read it back
 	 */
@@ -260,7 +271,7 @@ public class ModelTestcarstoreTests {
 		List<Person> list = q.getResultList();
 		assertEquals(4, list.size());
 	}
-	
+
 	/**
 	 * Access a type via query for supertype (with strategy joined)
 	 */
@@ -276,10 +287,11 @@ public class ModelTestcarstoreTests {
 		for (Person p : list) {
 			if (p instanceof Employee) {
 				assertNotNull(((Employee) p).getBoss());
-			};
+			}
+			;
 		}
 	}
-	
+
 	/**
 	 * Delete operation
 	 */
@@ -289,7 +301,8 @@ public class ModelTestcarstoreTests {
 		EntityTransaction txn = em.getTransaction();
 		txn.begin();
 
-		Query q = em.createQuery("delete from Person p where p.firstname = 'Bertie'");
+		Query q = em
+				.createQuery("delete from Person p where p.firstname = 'Bertie'");
 		int deletedCount = q.executeUpdate();
 		assertEquals(1, deletedCount);
 		txn.commit();
@@ -297,7 +310,7 @@ public class ModelTestcarstoreTests {
 		List<Person> list = q.getResultList();
 		assertEquals(3, list.size());
 	}
-	
+
 	/**
 	 * Check bidirectional one-to-many
 	 */
@@ -307,15 +320,17 @@ public class ModelTestcarstoreTests {
 		EntityTransaction txn = em.getTransaction();
 		txn.begin();
 
-		Query q = em.createQuery("select c from Car c where c.manufacturer.id = 7");
+		Query q = em
+				.createQuery("select c from Car c where c.manufacturer.id = 7");
 		List<Car> list = q.getResultList();
-		for (Car c: list) {
-			System.out.println("Car " + c.getModelname() + ", Manufacturer: " + c.getManufacturer().getId());
+		for (Car c : list) {
+			System.out.println("Car " + c.getModelname() + ", Manufacturer: "
+					+ c.getManufacturer().getId());
 		}
 		assertEquals(2, list.size());
-		
+
 	}
-	
+
 	/**
 	 * Delete cascade operation
 	 */
@@ -328,20 +343,22 @@ public class ModelTestcarstoreTests {
 		Query q = em.createQuery("select c from Car c");
 		List<Car> list = q.getResultList();
 		assertEquals(3, list.size());
-		for (Car c: list) {
-			System.out.println("Car " + c.getModelname() + ", Manufacturer: " + c.getManufacturer().getId());
+		for (Car c : list) {
+			System.out.println("Car " + c.getModelname() + ", Manufacturer: "
+					+ c.getManufacturer().getId());
 		}
-		
+
 		Manufacturer m = em.find(Manufacturer.class, 7L);
 		em.remove(m);
 		txn.commit();
-		
+
 		q = em.createQuery("select c from Car c");
 		list = q.getResultList();
 		assertEquals(1, list.size());
-		for (Car c: list) {
-			System.out.println("Car " + c.getModelname() + ", Manufacturer: " + c.getManufacturer().getId());
+		for (Car c : list) {
+			System.out.println("Car " + c.getModelname() + ", Manufacturer: "
+					+ c.getManufacturer().getId());
 		}
 	}
-	
+
 }

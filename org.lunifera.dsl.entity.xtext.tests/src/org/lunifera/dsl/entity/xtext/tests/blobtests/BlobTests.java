@@ -26,15 +26,18 @@ import javax.persistence.Query;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.lunifera.dsl.entity.xtext.tests.AbstractJPATest;
 
-public class BlobTests {
+public class BlobTests extends AbstractJPATest {
 
 	private static final String PERSISTENCE_UNIT_NAME = "blobtests";
 	private static EntityManagerFactory emf;
 
 	@Before
 	public void setUp() throws Exception {
-		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		super.setUp();
+		
+		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, properties);
 
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();

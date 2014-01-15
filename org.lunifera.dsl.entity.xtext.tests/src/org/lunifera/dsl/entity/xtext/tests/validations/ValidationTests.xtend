@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.lunifera.dsl.entity.xtext.tests.validations
 
 import com.google.inject.Inject
@@ -838,129 +845,129 @@ class ValidationTests {
 
 		result.size.assertEquals(0)
 	}
-	
+
 	@Test
 	def void historized_1() {
 		result = '''
-			package org.lunifera.dsl.entitydsl.histtimevalidation {
-
-			datatype String jvmType String;
-
-			entity Test {
+				package org.lunifera.dsl.entitydsl.histtimevalidation {
+			
+				datatype String jvmType String;
+			
+				entity Test {
 				inheritance per class{}
 				uuid String id;
+				}
+			
+				historized entity SubTest extends Test {  				// error: no historized entities in inheritance
+			
+				} 
+			
 			}
-
-			historized entity SubTest extends Test {  				// error: no historized entities in inheritance
-
-			} 
-
-		}
 		'''.parse.validate.toMap[it.code]
 
 		CODE__HISTORIZED_IN_SUBCLASS.severity.assertSame(ERROR)
 		CODE__HISTORIZED_IN_SUBCLASS.lineNumber.assertEquals(10)
 	}
-	
+
 	@Test
 	def void historized_2() {
 		result = '''
-			package org.lunifera.dsl.entitydsl.histtimevalidation {
-
-			datatype String jvmType String;
-
-			entity Test {
+				package org.lunifera.dsl.entitydsl.histtimevalidation {
+			
+				datatype String jvmType String;
+			
+				entity Test {
 				inheritance per subclass{}
 				uuid String id;
+				}
+			
+				historized entity SubTest extends Test {  				// error: no historized entities in inheritance
+			
+				} 
+			
 			}
-
-			historized entity SubTest extends Test {  				// error: no historized entities in inheritance
-
-			} 
-
-		}
 		'''.parse.validate.toMap[it.code]
 
 		CODE__HISTORIZED_IN_SUBCLASS.severity.assertSame(ERROR)
 		CODE__HISTORIZED_IN_SUBCLASS.lineNumber.assertEquals(10)
 	}
-	
-		@Test
+
+	@Test
 	def void timedependent_1() {
 		result = '''
-			package org.lunifera.dsl.entitydsl.histtimevalidation {
-
-			datatype String jvmType String;
-
-			entity Test {
+				package org.lunifera.dsl.entitydsl.histtimevalidation {
+			
+				datatype String jvmType String;
+			
+				entity Test {
 				inheritance per class{}
 				uuid String id;
+				}
+			
+				timedependent entity SubTest extends Test {  				// error: no historized entities in inheritance
+			
+				} 
+			
 			}
-
-			timedependent entity SubTest extends Test {  				// error: no historized entities in inheritance
-
-			} 
-
-		}
 		'''.parse.validate.toMap[it.code]
 
 		CODE__TIMEDEPENDENT_IN_SUBCLASS.severity.assertSame(ERROR)
 		CODE__TIMEDEPENDENT_IN_SUBCLASS.lineNumber.assertEquals(10)
 	}
-	
+
 	@Test
 	def void timedependent_2() {
 		result = '''
-			package org.lunifera.dsl.entitydsl.histtimevalidation {
-
-			datatype String jvmType String;
-
-			entity Test {
+				package org.lunifera.dsl.entitydsl.histtimevalidation {
+			
+				datatype String jvmType String;
+			
+				entity Test {
 				inheritance per subclass{}
 				uuid String id;
+				}
+			
+				timedependent entity SubTest extends Test {  				// error: no historized entities in inheritance
+			
+				} 
+			
 			}
-
-			timedependent entity SubTest extends Test {  				// error: no historized entities in inheritance
-
-			} 
-
-		}
 		'''.parse.validate.toMap[it.code]
 
 		CODE__TIMEDEPENDENT_IN_SUBCLASS.severity.assertSame(ERROR)
 		CODE__TIMEDEPENDENT_IN_SUBCLASS.lineNumber.assertEquals(10)
 	}
-	
-		@Test
+
+	@Test
 	def void historized_id() {
 		result = '''
-		package org.lunifera.entitydsltest.validation {
-
-			datatype String jvmType String;
-
-			historized entity MyTest {
+			package org.lunifera.entitydsltest.validation {
+			
+				datatype String jvmType String;
+			
+				historized entity MyTest {
 				var String stuff;
+				}
+			
 			}
-
-		}
 		'''.parse.validate.toMap[it.code]
 
 		CODE__MISSING_ID_FOR_VERSIONED.severity.assertSame(ERROR)
 		CODE__MISSING_ID_FOR_VERSIONED.lineNumber.assertEquals(6)
 	}
-	
-		@Test
+
+	@Test
 	def void timedependent_id() {
 		result = '''
-		package org.lunifera.entitydsltest.validation {
-
-			datatype String jvmType String;
-
-			timedependent entity MyTest {
+			package org.lunifera.entitydsltest.validation {
+			
+				datatype String jvmType String;
+			
+				timedependent entity MyTest {
 				var String stuff;
+				}
+			
 			}
-
-		}
 		'''.parse.validate.toMap[it.code]
 
 		CODE__MISSING_ID_FOR_VERSIONED.severity.assertSame(ERROR)

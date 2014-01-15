@@ -1,9 +1,14 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.lunifera.dsl.entity.xtext.tests.model.testcarstore3;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.Date;
 
@@ -16,15 +21,19 @@ import javax.persistence.Query;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.lunifera.dsl.entity.xtext.tests.AbstractJPATest;
 
-public class ModelTestcarstore3Tests {
+public class ModelTestcarstore3Tests extends AbstractJPATest {
 
 	private static final String PERSISTENCE_UNIT_NAME = "testcarstore3";
 	private static EntityManagerFactory emf;
 
 	@Before
 	public void setUp() throws Exception {
-		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		super.setUp();
+
+		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME,
+				properties);
 
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
@@ -32,7 +41,7 @@ public class ModelTestcarstore3Tests {
 		txn.begin();
 		Car c = em.find(Car.class, 2L);
 		assertNull(c);
-		
+
 		try {
 			Query q = em.createNativeQuery("create schema SCHEMA3");
 			q.executeUpdate();
@@ -54,8 +63,6 @@ public class ModelTestcarstore3Tests {
 		em.persist(manufacturer);
 		txn.commit();
 
-		
-		
 	}
 
 	@After
@@ -84,24 +91,24 @@ public class ModelTestcarstore3Tests {
 		txn.rollback();
 	}
 
-//	/**
-//	 * Delete cascade operation
-//	 */
-//	@Test
-//	public void test2() {
-//		EntityManager em = emf.createEntityManager();
-//		EntityTransaction txn = em.getTransaction();
-//		txn.begin();
-//
-//		Car c = em.find(Car.class, 2L);
-//		assertNotNull(c);
-//		try {
-//			Query query = em.createQuery("delete from Manufacturer m");
-//			query.executeUpdate();
-//			fail("JPA does not support CASCADE DELETE on database level for default.");
-//		} catch (Exception e) {
-//		}
-//		txn.rollback();
-//	}
+	// /**
+	// * Delete cascade operation
+	// */
+	// @Test
+	// public void test2() {
+	// EntityManager em = emf.createEntityManager();
+	// EntityTransaction txn = em.getTransaction();
+	// txn.begin();
+	//
+	// Car c = em.find(Car.class, 2L);
+	// assertNotNull(c);
+	// try {
+	// Query query = em.createQuery("delete from Manufacturer m");
+	// query.executeUpdate();
+	// fail("JPA does not support CASCADE DELETE on database level for default.");
+	// } catch (Exception e) {
+	// }
+	// txn.rollback();
+	// }
 
 }
