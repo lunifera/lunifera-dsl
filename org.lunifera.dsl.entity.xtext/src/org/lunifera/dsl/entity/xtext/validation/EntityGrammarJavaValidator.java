@@ -293,7 +293,7 @@ public class EntityGrammarJavaValidator extends
 		if (entity.isTimedependent()) {
 			if (entity.getSuperType() != null
 					&& !entity.getSuperType().isMappedSuperclass()) {
-				error("Keyword historized may only be used in toplevel entities of inheritance hierarchy",
+				error("Keyword timedependent may only be used in toplevel entities of inheritance hierarchy",
 						EntityPackage.Literals.LENTITY__TIMEDEPENDENT,
 						CODE__TIMEDEPENDENT_IN_SUBCLASS, new String[0]);
 			}
