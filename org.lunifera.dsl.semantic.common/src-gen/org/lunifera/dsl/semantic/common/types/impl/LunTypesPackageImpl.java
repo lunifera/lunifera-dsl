@@ -291,9 +291,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     isInited = true;
 
     // Initialize simple dependencies
-    XbasePackage.eINSTANCE.eClass();
-    EcorePackage.eINSTANCE.eClass();
     XAnnotationsPackage.eINSTANCE.eClass();
+    EcorePackage.eINSTANCE.eClass();
+    XbasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theLunTypesPackage.createPackageContents();
@@ -565,7 +565,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLDataType_SyntheticType()
+  public EAttribute getLDataType_SyntheticSelector()
   {
     return (EAttribute)lDataTypeEClass.getEStructuralFeatures().get(7);
   }
@@ -578,6 +578,16 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
   public EReference getLDataType_SyntheticTypeReference()
   {
     return (EReference)lDataTypeEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLDataType_SyntheticType()
+  {
+    return (EReference)lDataTypeEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -1102,8 +1112,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     createEAttribute(lDataTypeEClass, LDATA_TYPE__LENGTH);
     createEAttribute(lDataTypeEClass, LDATA_TYPE__DATE_TYPE);
     createEAttribute(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_FLAG);
-    createEAttribute(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_TYPE);
+    createEAttribute(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_SELECTOR);
     createEReference(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE);
+    createEReference(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_TYPE);
 
     lEnumEClass = createEClass(LENUM);
     createEReference(lEnumEClass, LENUM__LITERALS);
@@ -1246,8 +1257,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     initEAttribute(getLDataType_Length(), theEcorePackage.getEInt(), "length", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLDataType_DateType(), this.getLDateType(), "dateType", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLDataType_SyntheticFlag(), theEcorePackage.getEBoolean(), "syntheticFlag", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLDataType_SyntheticType(), theEcorePackage.getEString(), "syntheticType", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLDataType_SyntheticSelector(), theEcorePackage.getEString(), "syntheticSelector", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLDataType_SyntheticTypeReference(), this.getLFeature(), null, "syntheticTypeReference", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLDataType_SyntheticType(), this.getLType(), null, "syntheticType", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lEnumEClass, LEnum.class, "LEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLEnum_Literals(), this.getLEnumLiteral(), null, "literals", null, 0, -1, LEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

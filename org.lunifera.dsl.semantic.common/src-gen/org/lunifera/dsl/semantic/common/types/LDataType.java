@@ -30,8 +30,9 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getLength <em>Length</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getDateType <em>Date Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#isSyntheticFlag <em>Synthetic Flag</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticSelector <em>Synthetic Selector</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticTypeReference <em>Synthetic Type Reference</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -227,30 +228,30 @@ public interface LDataType extends LScalarType
   void setSyntheticFlag(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Synthetic Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Synthetic Selector</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Synthetic Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Synthetic Selector</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Synthetic Type</em>' attribute.
-   * @see #setSyntheticType(String)
-   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_SyntheticType()
+   * @return the value of the '<em>Synthetic Selector</em>' attribute.
+   * @see #setSyntheticSelector(String)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_SyntheticSelector()
    * @model unique="false"
    * @generated
    */
-  String getSyntheticType();
+  String getSyntheticSelector();
 
   /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}' attribute.
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticSelector <em>Synthetic Selector</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Synthetic Type</em>' attribute.
-   * @see #getSyntheticType()
+   * @param value the new value of the '<em>Synthetic Selector</em>' attribute.
+   * @see #getSyntheticSelector()
    * @generated
    */
-  void setSyntheticType(String value);
+  void setSyntheticSelector(String value);
 
   /**
    * Returns the value of the '<em><b>Synthetic Type Reference</b></em>' reference.
@@ -277,5 +278,31 @@ public interface LDataType extends LScalarType
    * @generated
    */
   void setSyntheticTypeReference(LFeature value);
+
+  /**
+   * Returns the value of the '<em><b>Synthetic Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Synthetic Type</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Synthetic Type</em>' reference.
+   * @see #setSyntheticType(LType)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_SyntheticType()
+   * @model
+   * @generated
+   */
+  LType getSyntheticType();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Synthetic Type</em>' reference.
+   * @see #getSyntheticType()
+   * @generated
+   */
+  void setSyntheticType(LType value);
 
 } // LDataType

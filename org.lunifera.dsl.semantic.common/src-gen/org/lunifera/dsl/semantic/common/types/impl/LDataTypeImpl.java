@@ -26,6 +26,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LDateType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
+import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
 /**
@@ -42,8 +43,9 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getLength <em>Length</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getDateType <em>Date Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#isSyntheticFlag <em>Synthetic Flag</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticType <em>Synthetic Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticSelector <em>Synthetic Selector</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticTypeReference <em>Synthetic Type Reference</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticType <em>Synthetic Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -182,24 +184,24 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
   protected boolean syntheticFlag = SYNTHETIC_FLAG_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getSyntheticType() <em>Synthetic Type</em>}' attribute.
+   * The default value of the '{@link #getSyntheticSelector() <em>Synthetic Selector</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSyntheticType()
+   * @see #getSyntheticSelector()
    * @generated
    * @ordered
    */
-  protected static final String SYNTHETIC_TYPE_EDEFAULT = null;
+  protected static final String SYNTHETIC_SELECTOR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getSyntheticType() <em>Synthetic Type</em>}' attribute.
+   * The cached value of the '{@link #getSyntheticSelector() <em>Synthetic Selector</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSyntheticType()
+   * @see #getSyntheticSelector()
    * @generated
    * @ordered
    */
-  protected String syntheticType = SYNTHETIC_TYPE_EDEFAULT;
+  protected String syntheticSelector = SYNTHETIC_SELECTOR_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getSyntheticTypeReference() <em>Synthetic Type Reference</em>}' reference.
@@ -210,6 +212,16 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * @ordered
    */
   protected LFeature syntheticTypeReference;
+
+  /**
+   * The cached value of the '{@link #getSyntheticType() <em>Synthetic Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSyntheticType()
+   * @generated
+   * @ordered
+   */
+  protected LType syntheticType;
 
   /**
    * <!-- begin-user-doc -->
@@ -423,9 +435,9 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSyntheticType()
+  public String getSyntheticSelector()
   {
-    return syntheticType;
+    return syntheticSelector;
   }
 
   /**
@@ -433,12 +445,12 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSyntheticType(String newSyntheticType)
+  public void setSyntheticSelector(String newSyntheticSelector)
   {
-    String oldSyntheticType = syntheticType;
-    syntheticType = newSyntheticType;
+    String oldSyntheticSelector = syntheticSelector;
+    syntheticSelector = newSyntheticSelector;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE, oldSyntheticType, syntheticType));
+      eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LDATA_TYPE__SYNTHETIC_SELECTOR, oldSyntheticSelector, syntheticSelector));
   }
 
   /**
@@ -489,6 +501,49 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
    * <!-- end-user-doc -->
    * @generated
    */
+  public LType getSyntheticType()
+  {
+    if (syntheticType != null && syntheticType.eIsProxy())
+    {
+      InternalEObject oldSyntheticType = (InternalEObject)syntheticType;
+      syntheticType = (LType)eResolveProxy(oldSyntheticType);
+      if (syntheticType != oldSyntheticType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE, oldSyntheticType, syntheticType));
+      }
+    }
+    return syntheticType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LType basicGetSyntheticType()
+  {
+    return syntheticType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSyntheticType(LType newSyntheticType)
+  {
+    LType oldSyntheticType = syntheticType;
+    syntheticType = newSyntheticType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE, oldSyntheticType, syntheticType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -524,11 +579,14 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return getDateType();
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG:
         return isSyntheticFlag();
-      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
-        return getSyntheticType();
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_SELECTOR:
+        return getSyntheticSelector();
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE:
         if (resolve) return getSyntheticTypeReference();
         return basicGetSyntheticTypeReference();
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
+        if (resolve) return getSyntheticType();
+        return basicGetSyntheticType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -564,11 +622,14 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG:
         setSyntheticFlag((Boolean)newValue);
         return;
-      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
-        setSyntheticType((String)newValue);
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_SELECTOR:
+        setSyntheticSelector((String)newValue);
         return;
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE:
         setSyntheticTypeReference((LFeature)newValue);
+        return;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
+        setSyntheticType((LType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -605,11 +666,14 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG:
         setSyntheticFlag(SYNTHETIC_FLAG_EDEFAULT);
         return;
-      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
-        setSyntheticType(SYNTHETIC_TYPE_EDEFAULT);
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_SELECTOR:
+        setSyntheticSelector(SYNTHETIC_SELECTOR_EDEFAULT);
         return;
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE:
         setSyntheticTypeReference((LFeature)null);
+        return;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
+        setSyntheticType((LType)null);
         return;
     }
     super.eUnset(featureID);
@@ -639,10 +703,12 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
         return dateType != DATE_TYPE_EDEFAULT;
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_FLAG:
         return syntheticFlag != SYNTHETIC_FLAG_EDEFAULT;
-      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
-        return SYNTHETIC_TYPE_EDEFAULT == null ? syntheticType != null : !SYNTHETIC_TYPE_EDEFAULT.equals(syntheticType);
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_SELECTOR:
+        return SYNTHETIC_SELECTOR_EDEFAULT == null ? syntheticSelector != null : !SYNTHETIC_SELECTOR_EDEFAULT.equals(syntheticSelector);
       case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE:
         return syntheticTypeReference != null;
+      case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
+        return syntheticType != null;
     }
     return super.eIsSet(featureID);
   }
@@ -670,8 +736,8 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType
     result.append(dateType);
     result.append(", syntheticFlag: ");
     result.append(syntheticFlag);
-    result.append(", syntheticType: ");
-    result.append(syntheticType);
+    result.append(", syntheticSelector: ");
+    result.append(syntheticSelector);
     result.append(')');
     return result.toString();
   }

@@ -31,6 +31,7 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
 import com.google.inject.Inject;
@@ -50,6 +51,7 @@ public class CommonGrammarJavaValidator
 	public static final String CODE__MANY_TO_MANY__NOT_SUPPORTED = "0_103";
 	public static final String CODE__NOT_A_VALID_PRIMITIVE = "0_104";
 	public static final String CODE__FORBIDDEN_JAVA_KEYWORD = "0_105";
+	public static final String CODE__DUPLICATE_LDATATYPE_IN_PACKAGE = "0_106";
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -236,6 +238,26 @@ public class CommonGrammarJavaValidator
 			}
 		}
 		return allEntities;
+	}
+
+	public void checkDuplicateDatatypeInPackage(LTypedPackage pkg) {
+		Set<String> names = new HashSet<String>();
+		int counter = 0;
+		for (LType type : pkg.getTypes()) {
+			if (type instanceof LDataType) {
+				String name = ((LDataType) type).getName();
+				if (!names.add(name)) {
+					error(String.format(
+							"Datatype %s must be unique in package %s!", name,
+							pkg.getName()),
+							LunTypesPackage.Literals.LTYPED_PACKAGE__TYPES,
+							counter, CODE__DUPLICATE_LDATATYPE_IN_PACKAGE,
+							(String[]) null);
+					break;
+				}
+			}
+			counter++;
+		}
 	}
 
 }

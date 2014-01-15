@@ -5,6 +5,7 @@
     <details key="fileExtensions" value="typesmodel"/>
     <details key="modelName" value="Types"/>
     <details key="prefix" value="LunTypes"/>
+    <details key="copyrightText" value="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)&#xA; All rights reserved. This program and the accompanying materials &#xA; are made available under the terms of the Eclipse Public License v1.0 &#xA; which accompanies this distribution, and is available at &#xA; http://www.eclipse.org/legal/epl-v10.html &#xA;&#xA; Based on ideas from Xtext, Xtend, Xcore&#xA;  &#xA; Contributors:  &#xA; &#x9;&#x9;Florian Pirchner - Initial implementation &#xA; "/>
     <details key="basePackage" value="org.lunifera.dsl.semantic.common"/>
   </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -63,10 +64,11 @@
         <details key="documentation" value="*&#xA;Attention: synthetic must only be used inside the same resource"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="syntheticType" unique="false"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="syntheticSelector" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="syntheticTypeReference"
         eType="#//LFeature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="syntheticType" eType="#//LType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LDateType">
     <eLiterals name="DATE"/>

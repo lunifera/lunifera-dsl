@@ -24,14 +24,14 @@
    </url>
 
    <requires>
-      <import feature="org.eclipse.xtext.sdk" version="2.5.0"/>
-      <import feature="org.eclipse.xtend.sdk" version="2.5.0"/>
-      <import feature="org.eclipse.emf.ecore.xcore.sdk" version="1.1.2"/>
-      <import feature="org.eclipse.xpand.sdk" version="1.4.0"/>
-      <import feature="org.eclipse.xpand.support" version="1.4.0"/>
-      <import feature="org.eclipse.emf.mwe2.language.sdk" version="2.5.0"/>
-      <import feature="org.eclipse.emf.mwe2.launcher" version="2.5.0"/>
-      <import feature="org.eclipse.emf.mwe2.runtime.sdk" version="2.5.0"/>
+      <import feature="org.eclipse.xtext.sdk" version="2.5.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtend.sdk" version="2.5.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore.xcore.sdk" version="1.1.2" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xpand.sdk" version="1.4.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xpand.support" version="1.4.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.mwe2.language.sdk" version="2.5.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.mwe2.launcher" version="2.5.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.mwe2.runtime.sdk" version="2.5.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

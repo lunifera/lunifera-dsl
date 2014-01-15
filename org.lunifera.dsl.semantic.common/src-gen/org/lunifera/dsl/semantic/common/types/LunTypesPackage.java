@@ -523,13 +523,13 @@ public interface LunTypesPackage extends EPackage
   int LDATA_TYPE__SYNTHETIC_FLAG = LSCALAR_TYPE_FEATURE_COUNT + 6;
 
   /**
-   * The feature id for the '<em><b>Synthetic Type</b></em>' attribute.
+   * The feature id for the '<em><b>Synthetic Selector</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LDATA_TYPE__SYNTHETIC_TYPE = LSCALAR_TYPE_FEATURE_COUNT + 7;
+  int LDATA_TYPE__SYNTHETIC_SELECTOR = LSCALAR_TYPE_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Synthetic Type Reference</b></em>' reference.
@@ -541,13 +541,22 @@ public interface LunTypesPackage extends EPackage
   int LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE = LSCALAR_TYPE_FEATURE_COUNT + 8;
 
   /**
+   * The feature id for the '<em><b>Synthetic Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LDATA_TYPE__SYNTHETIC_TYPE = LSCALAR_TYPE_FEATURE_COUNT + 9;
+
+  /**
    * The number of structural features of the '<em>LData Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 9;
+  int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 10;
 
   /**
    * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1626,15 +1635,15 @@ public interface LunTypesPackage extends EPackage
   EAttribute getLDataType_SyntheticFlag();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticSelector <em>Synthetic Selector</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Synthetic Type</em>'.
-   * @see org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType()
+   * @return the meta object for the attribute '<em>Synthetic Selector</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticSelector()
    * @see #getLDataType()
    * @generated
    */
-  EAttribute getLDataType_SyntheticType();
+  EAttribute getLDataType_SyntheticSelector();
 
   /**
    * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticTypeReference <em>Synthetic Type Reference</em>}'.
@@ -1646,6 +1655,17 @@ public interface LunTypesPackage extends EPackage
    * @generated
    */
   EReference getLDataType_SyntheticTypeReference();
+
+  /**
+   * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Synthetic Type</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType()
+   * @see #getLDataType()
+   * @generated
+   */
+  EReference getLDataType_SyntheticType();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LEnum <em>LEnum</em>}'.
@@ -2376,12 +2396,12 @@ public interface LunTypesPackage extends EPackage
     EAttribute LDATA_TYPE__SYNTHETIC_FLAG = eINSTANCE.getLDataType_SyntheticFlag();
 
     /**
-     * The meta object literal for the '<em><b>Synthetic Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Synthetic Selector</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute LDATA_TYPE__SYNTHETIC_TYPE = eINSTANCE.getLDataType_SyntheticType();
+    EAttribute LDATA_TYPE__SYNTHETIC_SELECTOR = eINSTANCE.getLDataType_SyntheticSelector();
 
     /**
      * The meta object literal for the '<em><b>Synthetic Type Reference</b></em>' reference feature.
@@ -2390,6 +2410,14 @@ public interface LunTypesPackage extends EPackage
      * @generated
      */
     EReference LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE = eINSTANCE.getLDataType_SyntheticTypeReference();
+
+    /**
+     * The meta object literal for the '<em><b>Synthetic Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LDATA_TYPE__SYNTHETIC_TYPE = eINSTANCE.getLDataType_SyntheticType();
 
     /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LEnumImpl <em>LEnum</em>}' class.

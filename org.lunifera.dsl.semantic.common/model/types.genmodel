@@ -84,8 +84,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/length"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/dateType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/syntheticFlag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/syntheticType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/syntheticSelector"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference types.ecore#//LDataType/syntheticTypeReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference types.ecore#//LDataType/syntheticType"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//LEnum">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LEnum/literals"/>

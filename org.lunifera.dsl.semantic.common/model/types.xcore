@@ -78,9 +78,13 @@ class LDataType extends LScalarType {
 	 */
 	// is used to prepare datatypes during linking
 	boolean syntheticFlag
-	String syntheticType
+	// defines what target type should be prepared by the synthetic datatype. May be any string.
+	String syntheticSelector
 	// is used to target a feature in the current entity
 	refers LFeature syntheticTypeReference
+	// used to target a feature in the current entity, but avoids resolving cross refernces too early.
+	// for instance if the feature is contained in a superclass
+	refers LType syntheticType
 }
 
 enum LDateType {

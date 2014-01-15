@@ -301,8 +301,8 @@ class ValidationTests {
 			}
 		'''.parse.validate.toMap[it.code]
 
-		CODE__DUPLICATE_LTYPE_IN_PROJECT.severity.assertSame(ERROR)
-		CODE__DUPLICATE_LTYPE_IN_PROJECT.lineNumber.assertEquals(4)
+		CODE__DUPLICATE_LDATATYPE_IN_PACKAGE.severity.assertSame(ERROR)
+		CODE__DUPLICATE_LDATATYPE_IN_PACKAGE.lineNumber.assertEquals(4)
 	}
 
 	@Test
@@ -328,8 +328,7 @@ class ValidationTests {
 			}
 		'''.parse.validate.toMap[it.code]
 
-		CODE__DUPLICATE_LTYPE_IN_PROJECT.severity.assertSame(ERROR)
-		CODE__DUPLICATE_LTYPE_IN_PROJECT.lineNumber.assertEquals(12)
+		result.size.assertEquals(0)
 	}
 
 	@Test

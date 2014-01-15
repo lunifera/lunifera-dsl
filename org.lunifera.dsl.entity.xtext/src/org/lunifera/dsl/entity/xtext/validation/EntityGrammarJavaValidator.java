@@ -34,6 +34,7 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.EntityPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
@@ -201,6 +202,11 @@ public class EntityGrammarJavaValidator extends
 	}
 
 	@Check(CheckType.NORMAL)
+	public void checkDuplicateDatatypeInPackage(LTypedPackage pkg) {
+		super.checkDuplicateDatatypeInPackage(pkg);
+	}
+
+	@Check(CheckType.NORMAL)
 	public void checkDuplicatePackage_InProject(LPackage lPackage) {
 		super.checkDuplicatePackage_InProject(lPackage);
 	}
@@ -275,7 +281,8 @@ public class EntityGrammarJavaValidator extends
 	@Check(CheckType.NORMAL)
 	public void checkJPA_Historized(LEntity entity) {
 		if (entity.isHistorized()) {
-			if (entity.getSuperType() != null) {
+			if (entity.getSuperType() != null
+					&& !entity.getSuperType().isMappedSuperclass()) {
 				error("Keyword historized may only be used in toplevel entities of inheritance hierarchy",
 						EntityPackage.Literals.LENTITY__HISTORIZED,
 						CODE__HISTORIZED_IN_SUBCLASS, new String[0]);
@@ -283,7 +290,8 @@ public class EntityGrammarJavaValidator extends
 		}
 
 		if (entity.isTimedependent()) {
-			if (entity.getSuperType() != null) {
+			if (entity.getSuperType() != null
+					&& !entity.getSuperType().isMappedSuperclass()) {
 				error("Keyword historized may only be used in toplevel entities of inheritance hierarchy",
 						EntityPackage.Literals.LENTITY__TIMEDEPENDENT,
 						CODE__HISTORIZED_IN_SUBCLASS, new String[0]);

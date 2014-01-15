@@ -173,17 +173,14 @@ public class EntityLinker extends XbaseLazyLinker {
 		}
 
 		if (datatype == null) {
-			for (LEntityAttribute att : entity.getAttributes()) {
-				if (att.isUuid() || att.isId()) {
-					datatype = LunTypesFactory.eINSTANCE.createLDataType();
-					datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);
-					datatype.setSyntheticFlag(true);
-					datatype.setSyntheticType(Constants.DT_INTERNAL_OBJECT_ID);
-					datatype.setSyntheticTypeReference(att);
-					pkg.getTypes().add(datatype);
-					break;
-				}
-			}
+			datatype = LunTypesFactory.eINSTANCE.createLDataType();
+			datatype.setName(Constants.DT_INTERNAL_OBJECT_ID);
+			datatype.setSyntheticFlag(true);
+			datatype.setSyntheticSelector(Constants.DT_INTERNAL_OBJECT_ID);
+			// will be resolved later to avoid entity.super calls. Entity.super
+			// would resolve cross references too early.
+			datatype.setSyntheticType(entity);
+			pkg.getTypes().add(datatype);
 		}
 		return datatype;
 	}
@@ -212,7 +209,7 @@ public class EntityLinker extends XbaseLazyLinker {
 			datatype = LunTypesFactory.eINSTANCE.createLDataType();
 			datatype.setName(syntheticType);
 			datatype.setSyntheticFlag(true);
-			datatype.setSyntheticType(syntheticType);
+			datatype.setSyntheticSelector(syntheticType);
 			pkg.getTypes().add(datatype);
 		}
 		return datatype;
