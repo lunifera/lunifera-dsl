@@ -21,7 +21,7 @@ import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntity
-
+ 
 class LDtoModel {
 	contains LTypedPackage[] packages
 }
@@ -50,7 +50,7 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
  	 * Returns all features of type LDtoAttribute
  	 */
 	op DtoAttributeList getAttributes() {
-		features.filter(typeof(LDtoAttribute)).toList
+		features.filter(typeof(LDtoAttribute)).toList 
 	}
 	/**
 	 * Returns all features of the holder and from super types
@@ -73,6 +73,11 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
 	}
 }
 
+class LDtoMapper {
+	contains XExpression toDTO
+	contains XExpression fromDTO
+} 
+
 class LDtoFeature extends LFeature {
 	boolean inherit
 	op LDto getDTO() {
@@ -81,9 +86,8 @@ class LDtoFeature extends LFeature {
 }
 
 class LDtoAttribute extends LDtoFeature, LAttribute {
-	contains XExpression toDTO
-	contains XExpression fromDTO
 	refers LEntityAttribute inheritedFeature
+	contains LDtoMapper mapper
 }
 
 class LDtoReference extends LDtoFeature, LReference {

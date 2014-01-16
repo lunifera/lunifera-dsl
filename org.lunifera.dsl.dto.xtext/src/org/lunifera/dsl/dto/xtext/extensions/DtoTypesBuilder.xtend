@@ -2,13 +2,17 @@ package org.lunifera.dsl.dto.xtext.extensions
 
 import com.google.inject.Inject
 import java.util.ArrayList
+import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.compiler.DocumentationAdapter
+import org.eclipse.xtext.xbase.lib.Functions
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder
@@ -119,7 +123,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			throw new RuntimeException("toMany-References not allowed for setters!");
 		}
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toTypeReference
+		val typeRef = prop.toTypeParameterReference
 		val opposite = if(prop instanceof LDtoReference) prop.resolvedOpposite else null
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
@@ -147,7 +151,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				p >> prop.toCheckDisposedCall()
 				val fieldRef = "this." + prop.toName
 				if (opposite == null || prop.shouldUseCrossReference) {
-					p >>  "firePropertyChange(\"" + paramName +"\", this."+paramName+", this."+paramName+" = "+paramName+");"
+					p >> "firePropertyChange(\"" + paramName + "\", this." + paramName + ", this." + paramName + " = " +
+						paramName + ");"
 				} else {
 					p >> "if (" + fieldRef + " != null) " >>> "{"
 					if (opposite.toMany) {
@@ -156,7 +161,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						p >> fieldRef + "." + opposite.toInternalSetterName + "(null);"
 					}
 					p <<< "}"
-					p >> prop.toInternalSetterName +"(" + paramName + ");\n"
+					p >> prop.toInternalSetterName + "(" + paramName + ");\n"
 					p >> "if (" + fieldRef + " != null) " >>> "{"
 					if (opposite.toMany) {
 						p >> fieldRef + "." + opposite.toCollectionInternalAdderName + "(this);"
@@ -192,17 +197,14 @@ class DtoTypesBuilder extends CommonTypesBuilder {
      * Builds an adder method for a *toMany relation like
      * <code>Order.addToOrderLines(OrderLine orderLine)</code>.
      */
-	def JvmOperation toAdder(
-		LDtoFeature prop,
-		String propertyName
-	) {
+	def JvmOperation toAdder(LDtoFeature prop, String propertyName) {
 
 		val paramName = prop.typeName.toFirstLower
 		val JvmOperation op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionAdderName
-		if (prop.toTypeReference != null) {
+		if (prop.toTypeParameterReference != null) {
 			op.parameters += prop.toParameter(paramName, prop.toTypeParameterReference)
 		}
 
@@ -244,7 +246,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					p >> "if (!" + prop.toGetterName + "().contains(" + paramName + "))" >>> "{"
 					{
 						p >> prop.toGetterName + "().add(" + paramName + ");"
-					} 
+					}
 					p <<< "}"
 				}
 			])
@@ -263,7 +265,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def dispatch JvmOperation toInternalSetter(LDtoReference prop) {
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toTypeReference
+		val typeRef = prop.toTypeParameterReference
 		val JvmOperation result = typesFactory.createJvmOperation();
 		result.visibility = getInternalMethodVisibility(prop)
 		result.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -274,14 +276,25 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			[ // ITreeAppendable
 				if(it == null) return
 				val p = it.trace(prop)
-				p >>  "firePropertyChange(\"" + paramName +"\", this."+paramName+", this."+paramName+" = "+paramName+");"
+				p >> "firePropertyChange(\"" + paramName + "\", this." + paramName + ", this." + paramName + " = " +
+					paramName + ");"
 			])
 		return associate(prop, result);
 	}
 
+	override JvmField toField(LFeature prop) {
+		val JvmField jvmField = typesFactory.createJvmField();
+		jvmField.simpleName = prop.toName
+		jvmField.visibility = JvmVisibility::PRIVATE
+		jvmField.type = cloneWithProxies(prop.toTypeReference)
+
+		annotationCompiler.processAnnotation(prop, jvmField);
+		associate(prop, jvmField);
+	}
+
 	def dispatch JvmOperation toInternalSetter(LDtoAttribute prop) {
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toTypeReference
+		val typeRef = prop.toTypeParameterReference
 		val JvmOperation result = typesFactory.createJvmOperation();
 		result.visibility = getInternalMethodVisibility(prop)
 		result.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -292,7 +305,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			[ // ITreeAppendable
 				if(it == null) return
 				val p = it.trace(prop)
-				p >>  "firePropertyChange(\"" + paramName +"\", this."+paramName+", this."+paramName+" = "+paramName+");"
+				p >> "firePropertyChange(\"" + paramName + "\", this." + paramName + ", this." + paramName + " = " +
+					paramName + ");"
 			])
 		return associate(prop, result);
 	}
@@ -321,7 +335,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def dispatch JvmOperation toInternalAdder(LDtoAttribute prop) {
 		val paramName = prop.typeName.toFirstLower
-		val typeRef = prop.toTypeReference
+		val typeRef = prop.toTypeParameterReference
 		val JvmOperation op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -412,7 +426,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		val fieldName = name.toFirstLower
 		val JvmOperation op = typesFactory.createJvmOperation()
 		op.visibility = JvmVisibility::PRIVATE
-		op.returnType = prop.toTypeReference
+		op.returnType = prop.toTypeParameterReference
 		op.simpleName = prop.toCollectionInternalGetterName
 		op.documentation = "Returns the list of " + htmlCode(prop.typeName) + "s thereby lazy initializing it."
 		setBody(op,
@@ -441,7 +455,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionRemoverName
-		if (prop.toTypeReference != null) {
+		if (prop.toTypeParameterReference != null) {
 			op.parameters += prop.toParameter(paramName, prop.toTypeParameterReference)
 		}
 		if (prop.opposite != null) {
@@ -459,7 +473,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						of the «paramName» will be handled automatically and no further coding is required to keep them in sync. 
 						See {@link «prop.typeName»#«prop.opposite.toSetterName»(«prop.typeName»)}.
 					«ENDIF»
-				«ENDIF»
+				«ENDIF» 
 			'''
 		}
 		setBody(op,
@@ -488,7 +502,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionRemoverName
-		if (prop.toTypeReference != null) {
+		if (prop.toTypeParameterReference != null) {
 			op.parameters += prop.toParameter(paramName, prop.toTypeParameterReference)
 		}
 		if (prop.opposite != null) {
@@ -514,4 +528,166 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			])
 		return associate(prop, op);
 	}
+
+	/**
+	 * returns the mapper class type
+	 */
+	def JvmGenericType toMapperJvmType(LDto lDto) {
+		val type = createJvmGenericType(lDto, lDto.toFqnMapperName)
+		associate(lDto, type)
+	}
+
+	def JvmOperation toMapToDto(LDto dto) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.returnType = references.getTypeForName(Void::TYPE, dto)
+		op.simpleName = "mapToDTO"
+		op.parameters += dto.toParameter("dto", dto.toTypeReference)
+		op.parameters += dto.toParameter("entity", dto.wrappedType.toTypeReference)
+		op.documentation = '''
+			Maps the entity {@link «dto.wrappedType.toName»} to the dto {@link «dto.toName»}.
+			
+			@param dto - The target dto
+			@param entity - The source entity
+		''';
+
+		op.body = []
+
+		return associate(dto, op);
+	}
+
+	def JvmOperation toMapToEntity(LDto dto) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.returnType = references.getTypeForName(Void::TYPE, dto)
+		op.simpleName = "mapToEntity"
+		op.parameters += dto.toParameter("dto", dto.toTypeReference)
+		op.parameters += dto.toParameter("entity", dto.wrappedType.toTypeReference)
+		op.documentation = '''
+			Maps the dto {@link «dto.toName»} to the entity {@link «dto.wrappedType.toName»}.
+			
+			@param dto - The source dto
+			@param entity - The target entity
+		''';
+
+		op.body = []
+
+		return associate(dto, op);
+	}
+
+	//	def JvmOperation toMapToDtoProperty(LDtoFeature prop) {
+	//		val LDto dto = prop.eContainer as LDto
+	//		val op = typesFactory.createJvmOperation();
+	//		op.visibility = JvmVisibility::PROTECTED
+	//		op.returnType = references.getTypeForName(Void::TYPE, prop)
+	//		op.simpleName = prop.toMapPropertyToDto
+	//
+	//		associate(prop, op);
+	//  
+	//		initializeSafely(op) [
+	//			parameters += prop.toParameter("dto", dto.wrappedType.toTypeReference)
+	//			parameters += prop.toParameter("entity", dto.toTypeReference)
+	//			documentation = '''
+	//				Maps the property «prop.toName» to the given entity to the given dto.
+	//				
+	//				@param dto - The target dto
+	//				@param entity - The source entity
+	//			''';
+	//			val XExpression mapExpression = prop.toMapToDtoExpression
+	//			if (mapExpression != null) {
+	//				body = mapExpression
+	//			} else {
+	//				body = []
+	//			}
+	//		]
+	//	}
+	//
+	//	def JvmOperation toMapToEntityProperty(LDtoFeature prop) {
+	//		val LDto dto = prop.eContainer as LDto
+	//		
+	//		val op = typesFactory.createJvmOperation();
+	//		op.visibility = JvmVisibility::PROTECTED
+	//		op.returnType = references.getTypeForName(Void::TYPE, prop)
+	//		op.simpleName = prop.toMapPropertyToEntity
+	//
+	//		associate(prop, op);
+	//
+	//		initializeSafely(op) [
+	//			parameters += op.toParameter("in", dto.toTypeReference)
+	//			parameters += op.toParameter("out", dto.wrappedType.toTypeReference)
+	//			documentation = '''
+	//				Maps the property «prop.toName» from the given dto to the given entity.
+	//				
+	//				@param dto - The source dto
+	//				@param entity - The target entity
+	//			'''
+	//			val mapExpression = prop.toMapToEntityExpression
+	//			associate(prop, mapExpression)
+	//			if (mapExpression != null) {
+	//				body = mapExpression
+	//			} else {
+	//				body = []
+	//			}
+	//		]
+	//
+	//	}
+	def JvmOperation toMapToDtoProperty(LDtoFeature prop) {
+		val LDto dto = prop.eContainer as LDto
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PROTECTED
+		op.returnType = prop.toTypeReference
+		op.simpleName = prop.toMapPropertyToDto
+
+		associate(prop, op);
+
+		initializeSafely(op) [
+			parameters += prop.toParameter("entity", dto.wrappedType.toTypeReference)
+			parameters += prop.toParameter("initializer",
+				references.getTypeForName(typeof(Functions.Function1), prop, dto.wrappedType.toTypeReference,
+					prop.toTypeReference))
+			documentation = '''
+				Maps the property «prop.toName» to the given entity to the given dto.
+				
+				@param dto - The target dto
+				@param entity - The source entity
+			''';
+			val XExpression mapExpression = prop.toMapToDtoExpression
+			if (mapExpression != null) {
+				body = mapExpression
+			} else {
+				body = []
+			}
+		]
+	}
+
+	def JvmOperation toMapToEntityProperty(LDtoFeature prop) {
+		val LDto dto = prop.eContainer as LDto
+
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PROTECTED
+		op.returnType = references.getTypeForName(Void::TYPE, prop)
+		op.simpleName = prop.toMapPropertyToEntity
+
+		associate(prop, op);
+
+		initializeSafely(op) [
+			parameters += op.toParameter("in", dto.toTypeReference)
+			parameters += op.toParameter("out ", dto.wrappedType.toTypeReference)
+			documentation = '''
+				Maps the property «prop.toName» from the given dto to the given entity.
+				
+				@param dto - The source dto
+				@param entity - The target entity
+			'''
+			val mapExpression = prop.toMapToEntityExpression
+			associate(prop, mapExpression)
+			if (mapExpression != null) {
+				body = mapExpression
+			} else {
+				body = []
+			}
+		]
+
+	}
+
 }

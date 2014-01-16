@@ -26,7 +26,7 @@ DtoFeature returns dto::LDtoFeature:
 	(inherit?='inherit var' inheritedFeature=[entity::LEntityAttribute]) ';')
 	|
 	({dto::LDtoReference.annotationInfo=current}
-	(inherit?='inherit ref' inheritedFeature=[entity::LEntityReference]) ('asType' type=[dto::LDto])?';')	
+	(inherit?='inherit ref' inheritedFeature=[entity::LEntityReference]) 'asType' type=[dto::LDto] ';')
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
 	(('transient' type=[common::LScalarType] name=ValidIDWithKeywords ';')
@@ -36,10 +36,12 @@ DtoFeature returns dto::LDtoFeature:
 	';')
 	|
 	('var' type=[common::LScalarType] multiplicity=Multiplicity?
-	name=ValidIDWithKeywords ('{' 'toDTO' '[' toDTO=XRawBlockExpression ']' ('fromDTO' '['
-	fromDTO=XRawBlockExpression ']')? '}')?
+	name=ValidIDWithKeywords (mapper=DtoMapper)?
 	';'))));
 
-XRawBlockExpression returns xbase::XExpression:
-	{xbase::XBlockExpression}
-	(expressions+=XExpressionInsideBlock ';'?)*;
+DtoMapper returns dto::LDtoMapper:
+	'{' 'toDTO'
+	toDTO=XClosure
+	('fromDTO'
+	fromDTO=XClosure)?
+	'}';

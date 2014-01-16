@@ -6,13 +6,13 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
+import org.lunifera.dsl.dto.xtext.common.IMapper
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
 import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.dto.LDto
-import org.lunifera.dsl.semantic.entity.LBeanReference
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -28,8 +28,8 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	@Inject TypeReferences references
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		if(hasSyntaxErrors(dto)) return;
 
+		//		if(hasSyntaxErrors(dto)) return;
 		acceptor.accept(dto.toJvmType).initializeLater [
 			documentation = dto.getDocumentation
 			if (dto.getSuperType != null && !dto.getSuperType.fullyQualifiedName.toString.empty) {
@@ -101,17 +101,55 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			}
 			//
 			// Methods.
-			//
-			for (op : dto.getOperations) {
-				members += op.toMethod(op.toName, op.getType) [
-					documentation = op.getDocumentation
-					for (p : op.getParams) {
-						parameters += p.toParameter(p.name, p.parameterType)
-					}
-					body = op.getBody
-				]
-			}
+			// 
+//			for (op : dto.getOperations) {
+//				members += op.toMethod(op.toName, op.getType) [
+//					documentation = op.getDocumentation
+//					for (p : op.getParams) {
+//						parameters += p.toParameter(p.name, p.parameterType)
+//					}
+//					body = op.getBody
+//				]
+//			}
 		]
 
+		/**
+		 * Infers the DTO mapper
+		 */
+		dto.inferMapper(acceptor, isPrelinkingPhase)
+	}
+
+	def void inferMapper(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		if(hasSyntaxErrors(dto)) return;
+		
+		acceptor.accept(dto.toMapperJvmType).initializeLater [
+			documentation = '''
+				This class maps the dto {@link «dto.toName»} to and from the entity {@link «dto.wrappedType.toName»}.
+			'''
+			// 
+			// Constructor
+			//
+			members += dto.toConstructor()[]
+			if (dto.wrappedType != null) {
+				superTypes +=
+					references.getTypeForName(typeof(IMapper), dto, dto.toTypeReference, dto.wrappedType.toTypeReference)
+
+				members += dto.toMapToDto
+				members += dto.toMapToEntity
+
+				for (f : dto.getFeatures) {
+					switch f {
+						case f instanceof LAttribute: {
+							members += f.toMapToDtoProperty
+//							members += f.toMapToEntityProperty
+						}
+						case f instanceof LReference: {
+							members += f.toMapToDtoProperty
+//							members += f.toMapToEntityProperty
+						}
+					}
+				}
+			}
+		]
 	}
 }

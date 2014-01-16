@@ -37,67 +37,36 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	@Inject TypeReferences references;
 
 	def dispatch JvmTypeReference toTypeReference(LDtoReference prop) {
-		if (prop.inherit && prop.type == null) {
-			return prop.inheritedFeature.toTypeReference
-		} else {
-			var jvmTypeRef = prop.type?.toTypeReference
-			if (jvmTypeRef != null && prop.isToMany) {
-				jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
-			}
-			return jvmTypeRef
-		}
-
-	}
-
-	def dispatch JvmTypeReference toTypeReference(LDtoAttribute prop) {
-		val LAttribute att = if(prop.inherit) prop.inheritedFeature else prop
-
-		var jvmTypeRef = att.type?.toTypeReference
-		if (jvmTypeRef != null && att.isToMany) {
-			jvmTypeRef = newTypeRef(att, typeof(List), jvmTypeRef);
+		var JvmTypeReference jvmTypeRef = prop.toTypeParameterReference
+		if (jvmTypeRef != null && prop.isToMany) {
+			jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
 		}
 		return jvmTypeRef
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LEntityReference ref) {
-
-		var JvmTypeReference jvmTypeRef = null;
-		if (!ref.cascading) {
-			jvmTypeRef = newTypeRef(ref, typeof(ICrossReference), null)
-		} else {
-			jvmTypeRef = ref.type?.toTypeReference
-		}
-
-		if (jvmTypeRef != null && ref.isToMany) {
-			jvmTypeRef = newTypeRef(ref, typeof(List), jvmTypeRef);
+	def dispatch JvmTypeReference toTypeReference(LDtoAttribute prop) {
+		var JvmTypeReference jvmTypeRef = prop.toTypeParameterReference
+		if (jvmTypeRef != null && prop.isToMany) {
+			jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
 		}
 		return jvmTypeRef
 	}
 
 	def dispatch JvmTypeReference toTypeParameterReference(LDtoReference prop) {
-		if (prop.inherit && prop.type == null) {
-			return prop.inheritedFeature.toTypeParameterReference
+		if (prop.inherit) {
+			if (prop.inheritedFeature.shouldUseCrossReference) {
+				return newTypeRef(prop.inheritedFeature, typeof(ICrossReference), null)
+			} else {
+				return prop.type?.toTypeReference
+			}
 		} else {
 			return prop.type?.toTypeReference
 		}
-
 	}
 
 	def dispatch JvmTypeReference toTypeParameterReference(LDtoAttribute prop) {
 		val LAttribute att = if(prop.inherit) prop.inheritedFeature else prop
 		return att.type?.toTypeReference
-	}
-
-	def dispatch JvmTypeReference toTypeParameterReference(LEntityReference ref) {
-
-		var JvmTypeReference jvmTypeRef = null;
-		if (!ref.cascading) {
-			jvmTypeRef = newTypeRef(ref, typeof(ICrossReference), null)
-		} else {
-			jvmTypeRef = ref.type?.toTypeReference
-		}
-
-		return jvmTypeRef
 	}
 
 	def dispatch isCascading(LDtoOperation prop) {
@@ -160,19 +129,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch String typeName(LDtoAttribute prop) {
-		if (prop.inherit) {
-			prop.inheritedFeature.type.name
-		} else {
-			prop.type.name
-		}
+		prop.type.name
 	}
 
 	def dispatch String typeName(LDtoReference prop) {
-		if (prop.inherit && prop.type == null) {
-			prop.inheritedFeature.type.name
-		} else {
-			prop.type.name
-		}
+		prop.type.name
 	}
 
 	def dispatch toType(LDtoAttribute prop) {
@@ -248,7 +209,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	override isToMany(LFeature prop) {
-		if(prop == null){
+		if (prop == null) {
 			return false
 		}
 		return internalIsToMany(prop);

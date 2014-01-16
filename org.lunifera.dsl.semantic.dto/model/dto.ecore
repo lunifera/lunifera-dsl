@@ -59,6 +59,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="wrappedType" eType="ecore:EClass ../../org.lunifera.dsl.semantic.entity/model/entity.xcore#/EPackage/LEntity"
         resolveProxies="false"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoMapper">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toDTO" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromDTO" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LDtoFeature" eSuperTypes="../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LFeature">
     <eOperations name="getDTO" unique="false" eType="#//LDto">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -69,11 +75,9 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LDtoAttribute" eSuperTypes="#//LDtoFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LAttribute">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="toDTO" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
-        containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fromDTO" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
-        containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inheritedFeature" eType="ecore:EClass ../../org.lunifera.dsl.semantic.entity/model/entity.xcore#/EPackage/LEntityAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapper" eType="#//LDtoMapper"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LDtoReference" eSuperTypes="#//LDtoFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LReference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LDto"/>

@@ -11,7 +11,7 @@
   
  Contributors:  
  		Florian Pirchner - Initial implementation 
- ")
+ ") 
 @Ecore(nsURI="http://www.lunifera.org/dsl/common/types/v1")
 @Ecore(nsPrefix="types")
 @Ecore(rootPackage="types")
@@ -56,7 +56,7 @@ class LType extends LAnnotationTarget {
 
 class LAnnotationDef {
 	boolean exclude
-	contains XAnnotation ^annotation 
+	contains XAnnotation ^annotation  
 }
 
 class LAnnotationTarget {
@@ -159,6 +159,11 @@ class LOperation extends LAnnotationTarget {
 	op AnnotationList getResolvedAnnotations() {
 		annotations
 	}
+}
+
+class LDtoMapper {
+	contains XExpression fromDto
+	contains XExpression toDto
 }
 
 class LModifier {

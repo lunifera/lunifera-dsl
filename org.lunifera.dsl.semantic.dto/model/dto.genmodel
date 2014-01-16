@@ -47,14 +47,17 @@
         <genParameters ecoreParameter="dto.ecore#//LDto/collectAllLunFeatures/result"/>
       </genOperations>
     </genClasses>
+    <genClasses ecoreClass="dto.ecore#//LDtoMapper">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoMapper/toDTO"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoMapper/fromDTO"/>
+    </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoFeature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dto.ecore#//LDtoFeature/inherit"/>
       <genOperations ecoreOperation="dto.ecore#//LDtoFeature/getDTO"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoAttribute">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoAttribute/toDTO"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoAttribute/fromDTO"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoAttribute/inheritedFeature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoAttribute/mapper"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/type"/>

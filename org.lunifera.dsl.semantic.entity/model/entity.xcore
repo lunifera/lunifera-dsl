@@ -16,7 +16,7 @@
 @Ecore(nsPrefix="entity")
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
-
+ 
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LScalarType
