@@ -25,7 +25,7 @@ import GenModel
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.xcore.lib.XcoreCollectionLiterals
 import org.eclipse.emf.ecore.util.BasicInternalEList
-
+  
 class LPackage {
 	String name
 	contains LImport[] imports
