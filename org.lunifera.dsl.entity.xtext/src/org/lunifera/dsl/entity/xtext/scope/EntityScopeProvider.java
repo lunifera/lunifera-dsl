@@ -21,7 +21,7 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
 import org.lunifera.dsl.semantic.common.types.LClass;
-import org.lunifera.dsl.semantic.entity.EntityPackage;
+import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LEntity;
@@ -43,9 +43,9 @@ public class EntityScopeProvider extends CommonScopeProvider {
 
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
-		if (reference == EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE) {
+		if (reference == LunEntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE) {
 			return getScope_LFeature_Opposite((LEntityReference) context);
-		} else if (reference == EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
+		} else if (reference == LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
 			return getScope_LFeature_Opposite((LBeanReference) context);
 		}
 		return super.getScope(context, reference);

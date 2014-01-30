@@ -24,6 +24,22 @@ var backtrack = false
 var memoize = false
 
 Workflow {
+	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
+	bean = org.eclipse.xtext.xbase.annotations.XbaseWithAnnotationsStandaloneSetup : xanno {}
+
+	bean = org.eclipse.xtext.mwe.Reader {
+		register = xcore
+		register = xanno
+	}
+
+	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/common/types/v1"
+			packageClass = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+			factoryClass = "org.lunifera.dsl.semantic.common.types.impl.LunTypesFactoryImpl"
+		}
+	}
+
 	bean = StandaloneSetup {
 		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : theResourceSet {}
 
@@ -43,12 +59,15 @@ Workflow {
 
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.genmodel"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
+		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
-//		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
-//		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
-//		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
-//		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
 	}
 
 	component = DirectoryCleaner {
@@ -69,12 +88,10 @@ Workflow {
 		language = {
 			forcedResourceSet = theResourceSet
 			uri = grammarURI
-			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.ecore"
+			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 			fileExtensions = fileExtensions
 			fragment = grammarAccess.GrammarAccessFragment {}
-			fragment = serializer.SerializerFragment {
-			// generateDebugData = true
-			}
+			fragment = serializer.SerializerFragment {}
 			fragment = resourceFactory.ResourceFactoryFragment {
 				fileExtensions = fileExtensions
 			}

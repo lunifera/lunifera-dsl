@@ -28,7 +28,7 @@ Workflow {
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
 		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.genmodel"
-		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.EntityPackage"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
 		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.genmodel"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
 		

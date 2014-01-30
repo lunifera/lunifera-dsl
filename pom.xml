@@ -26,7 +26,7 @@
 		<profile>
 			<id>lunifera.build.p2</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
 				<defaultGoal>clean verify</defaultGoal>
@@ -34,6 +34,7 @@
 			<modules>
 				<module>org.lunifera.dsl.parent</module>
 				<!-- P2 bundles -->
+				<module>org.lunifera.dsl.mwe</module>
 				<module>org.lunifera.dsl.semantic.common</module>
 				<module>org.lunifera.dsl.semantic.entity</module>
 				<module>org.lunifera.dsl.common.xtext</module>
@@ -51,6 +52,28 @@
 
 				<!-- P2 repository -->
 				<module>org.lunifera.dsl.p2</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>lunifera.build.common</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>clean verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.dsl.parent</module>
+				<!-- P2 bundles -->
+				<module>org.lunifera.dsl.mwe</module>
+				<module>org.lunifera.dsl.semantic.common</module>
+				<module>org.lunifera.dsl.common.xtext</module>
+				<module>org.lunifera.dsl.common.xtext.ui</module>
+
+				<!-- P2 feature -->
+				<module>org.lunifera.dsl.feature.common</module>
+				<module>org.lunifera.dsl.feature.common.headless</module>
 			</modules>
 		</profile>
 

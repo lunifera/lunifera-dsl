@@ -20,7 +20,7 @@ Workflow {
 		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.dto/model/dto.genmodel"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.dto.DtoPackage"
 		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.genmodel"
-		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.EntityPackage"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
 		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.genmodel"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
 		
