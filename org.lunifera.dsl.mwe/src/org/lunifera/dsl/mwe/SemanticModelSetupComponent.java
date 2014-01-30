@@ -34,6 +34,8 @@ public class SemanticModelSetupComponent extends AbstractWorkflowComponent2 {
 
 	public void addEPackage(PackageMapping mapping) {
 		try {
+			System.getProperties();
+			
 			EPackage.Registry.INSTANCE.getEPackage(mapping.getNsURI());
 			if (!EPackage.Registry.INSTANCE.containsKey(mapping.getNsURI())) {
 				Class<?> clazz = ResourceLoaderFactory.createResourceLoader()

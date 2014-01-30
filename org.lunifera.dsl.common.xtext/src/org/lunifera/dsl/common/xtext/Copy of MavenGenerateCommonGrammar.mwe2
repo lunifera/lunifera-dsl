@@ -24,10 +24,14 @@ var backtrack = false
 var memoize = false
 
 Workflow {
+	bean = org.eclipse.xtext.xbase.annotations.XbaseWithAnnotationsStandaloneSetup : xanno {}
 	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
+
 	bean = org.eclipse.xtext.mwe.Reader {
+		register = xanno
 		register = xcore
 	}
+
 	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
 		ePackage = org.lunifera.dsl.mwe.PackageMapping {
 			nsURI = "http://www.lunifera.org/dsl/common/types/v1"
@@ -69,10 +73,10 @@ Workflow {
 		platformUri = "${runtimeProject}/.."
 		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
-		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
-		registerEcoreFile = "platform:/resource/org.eclipse.emf.ecore.xcore/model/Xcore.ecore"
-		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore.xcore/model/Xcore.genmodel"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
 		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
@@ -95,13 +99,12 @@ Workflow {
 		projectNameUi = "${projectName}.ui"
 		language = {
 			forcedResourceSet = theResourceSet
+			loadedResource = "platform:/resource/org.eclipse.emf.ecore.xcore.lib/model/XcoreLang.xcore"
+//			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 			uri = grammarURI
-			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 			fileExtensions = fileExtensions
 			fragment = grammarAccess.GrammarAccessFragment {}
-			fragment = serializer.SerializerFragment {
-			// generateDebugData = true
-			}
+			fragment = serializer.SerializerFragment {}
 			fragment = resourceFactory.ResourceFactoryFragment {
 				fileExtensions = fileExtensions
 			}

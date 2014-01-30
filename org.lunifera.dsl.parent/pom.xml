@@ -47,7 +47,7 @@
 		<repository>
 			<id>Xtext bleeding edge</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/</url>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones/</url>
 		</repository>
 
 		<repository>

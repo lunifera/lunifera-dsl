@@ -12,31 +12,31 @@
  */
 grammar org.lunifera.dsl.common.xtext.CommonGrammar with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
-import "http://www.lunifera.org/dsl/common/types/v1"
+import "http://www.lunifera.org/dsl/common/types/v1" as types
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
    
-TypedPackage returns LTypedPackage:
-	{LTypedPackage}
+TypedPackage returns types::LTypedPackage:
+	{types::LTypedPackage}
 	'package' name=QualifiedName ('{'
 	(imports+=Import)*
 	(types+=Type)*
 	'}')?;
 
-Type returns LType:
+Type returns types::LType:
 	ScalarType | Class;
 
 	/**
  * Needs to be overridden by sub grammar
  */
-Class returns LClass:
-	{LClass} annotations+=AnnotationDef*
-	{LClass.annotationInfo=current}
+Class returns types::LClass:
+	{types::LClass} annotations+=AnnotationDef*
+	{types::LClass.annotationInfo=current}
 	'class';
 
-Import returns LImport:
+Import returns types::LImport:
 	'import' importedNamespace=LQualifiedNameWithWildCard ';';
 
-DataType returns LDataType:
+DataType returns types::LDataType:
 	'datatype' name=ValidIDWithKeywords
 	(('jvmType' jvmTypeReference=JvmTypeReference (asPrimitive?='as primitive')?)
 	|
@@ -45,28 +45,28 @@ DataType returns LDataType:
 	(asBlob?='as blob'))
 	';';
 
-enum DateType returns LDateType:
+enum DateType returns types::LDateType:
 	DATE='date' | TIME='time' | TIMESTAMP='timestamp';
 
-ScalarType returns LScalarType:
+ScalarType returns types::LScalarType:
 	DataType | Enum;
 
-Modifier returns LModifier:
+Modifier returns types::LModifier:
 	final?='final'? & static?='static'? & visibility=LVisibility;
 
-Enum returns LEnum:
+Enum returns types::LEnum:
 	'enum' name=ID
 	('{'
 	(literals+=EnumLiteral ((',')? literals+=EnumLiteral)*)?
 	'}')?;
 
-EnumLiteral returns LEnumLiteral:
+EnumLiteral returns types::LEnumLiteral:
 	name=ID;
 
-AnnotationDef returns LAnnotationDef:
+AnnotationDef returns types::LAnnotationDef:
 	=> (annotation=XAnnotation);
 
-enum LVisibility:
+enum LVisibility returns types::LVisibility:
 	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
 
 LQualifiedNameWithWildCard:
@@ -81,13 +81,13 @@ ValidIDWithKeywords:
 	'notnull' | 'dto' |  'date' | 
 	ID;
 
-Multiplicity returns LMultiplicity:
+Multiplicity returns types::LMultiplicity:
 	'[' (lower=LowerBound) ('..' upper=UpperBound)? ']';
 
-enum LowerBound returns LLowerBound:
+enum LowerBound returns types::LLowerBound:
 	MANY='*' | ZERO='0' | OPTIONAL='?' | ATLEASTONE='+' | ONE='1';
 
-enum UpperBound returns LUpperBound:
+enum UpperBound returns types::LUpperBound:
 	MANY='*' | ONE='1';
 	 
 LInt returns ecore::EInt:
