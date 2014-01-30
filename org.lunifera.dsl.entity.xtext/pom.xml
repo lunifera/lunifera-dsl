@@ -50,6 +50,24 @@
 					</arguments>
 				</configuration>
 				<dependencies>
+					<!-- EMF -->
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.ecore.xcore</artifactId>
+						<version>1.1.2</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.ecore.xcore.lib</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.codegen.ecore.xtext</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+
+					<!-- Xtext -->
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xtext</artifactId>
@@ -61,9 +79,21 @@
 						<version>${xtext.version}</version>
 					</dependency>
 					<dependency>
-						<groupId>org.eclipse.emf</groupId>
-						<artifactId>org.eclipse.emf.ecore.xcore</artifactId>
-						<version>1.1.2</version>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.common.types</artifactId>
+						<version>${xtext.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.ecore</artifactId>
+						<version>${xtext.version}</version>
+					</dependency>
+
+					<!-- Lunifera -->
+					<dependency>
+						<groupId>org.lunifera.dsl</groupId>
+						<artifactId>org.lunifera.dsl.mwe</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
 					</dependency>
 					<dependency>
 						<groupId>org.lunifera.dsl</groupId>

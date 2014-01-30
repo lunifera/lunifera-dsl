@@ -16,32 +16,14 @@ import org.eclipse.xtext.ui.generator.*
 import org.eclipse.xtext.generator.parser.antlr.*
 import org.eclipse.xtext.resource.XtextResourceSet
 
-var fileExtensions = "entitymodel"
+var file.extensions = "entitymodel"
 var projectName = "org.lunifera.dsl.entity.xtext"
-var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/entity/xtext/Entity.xtext"
 var runtimeProject = "${projectName}"
+var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/entity/xtext/Entity.xtext"
 var backtrack = false
 var memoize = false
 
 Workflow {
-	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
-	bean = org.eclipse.xtext.mwe.Reader {
-		register = xcore
-	}
-	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
-		ePackage = org.lunifera.dsl.mwe.PackageMapping {
-			nsURI = "http://www.lunifera.org/dsl/common/types/v1"
-			packageClass = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
-			factoryClass = "org.lunifera.dsl.semantic.common.types.impl.LunTypesFactoryImpl"
-		}
-		
-		ePackage = org.lunifera.dsl.mwe.PackageMapping {
-			nsURI = "http://www.lunifera.org/dsl/entity/v1"
-			packageClass = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
-			factoryClass = "org.lunifera.dsl.semantic.entity.impl.LunEntityFactoryImpl"
-		}
-	}
-
 	bean = StandaloneSetup {
 		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : theResourceSet {}
 
@@ -51,25 +33,14 @@ Workflow {
 			to = "classpath:/"
 		}
 		uriMap = {
-			from = "platform:/resource/org.eclipse.xtext.xbase.lib/"
-			to = "classpath:/"
-		}
-		uriMap = {
 			from = "platform:/resource/org.eclipse.xtext.common.types/"
-			to = "classpath:/"
-		}
-		uriMap = {
-			from = "platform:/resource/org.eclipse.emf.ecore.xcore/"
-			to = "classpath:/"
-		}
-		uriMap = {
-			from = "platform:/resource/org.eclipse.emf.ecore.xcore.lib/"
 			to = "classpath:/"
 		}
 		uriMap = {
 			from = "platform:/resource/org.lunifera.dsl.semantic.common/"
 			to = "classpath:/"
 		}
+
 		uriMap = {
 			from = "platform:/resource/org.lunifera.dsl.semantic.entity/"
 			to = "classpath:/"
@@ -77,18 +48,15 @@ Workflow {
 
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
-		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
-		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
-		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
-		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
-		registerEcoreFile = "platform:/resource/org.eclipse.emf.ecore.xcore/model/Xcore.ecore"
-		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore.xcore/model/Xcore.genmodel"
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
-		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
-		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
-		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.genmodel"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.genmodel"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+				
+//		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
+//		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+//		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
+//		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
 	}
 
 	component = DirectoryCleaner {
@@ -109,15 +77,14 @@ Workflow {
 		language = {
 			forcedResourceSet = theResourceSet
 			uri = grammarURI
-			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
-			fileExtensions = fileExtensions
+			fileExtensions = file.extensions
 			fragment = grammarAccess.GrammarAccessFragment {}
 			fragment = serializer.SerializerFragment {
 			// generateDebugData = true
 			}
 			fragment = resourceFactory.ResourceFactoryFragment {
-				fileExtensions = fileExtensions
+				fileExtensions = file.extensions
 			}
 			fragment = XtextAntlrGeneratorFragment {
 				options = auto-inject {}
@@ -136,10 +103,10 @@ Workflow {
 			fragment = outline.OutlineTreeProviderFragment {}
 			fragment = outline.QuickOutlineFragment {}
 			fragment = compare.CompareFragment {
-				fileExtensions = fileExtensions
+				fileExtensions = file.extensions
 			}
 			fragment = contentAssist.JavaBasedContentAssistFragment {}
-			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+			fragment = XtextAntlrUiGeneratorFragment {
 				options = auto-inject {}
 			}
 			fragment = refactoring.RefactorElementNameFragment {

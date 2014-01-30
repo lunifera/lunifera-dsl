@@ -16,7 +16,7 @@ import org.eclipse.xtext.ui.generator.*
 import org.eclipse.xtext.generator.parser.antlr.*
 import org.eclipse.xtext.resource.XtextResourceSet
 
-var file.extensions = "entitymodel"
+var fileExtensions = "entitymodel"
 var projectName = "org.lunifera.dsl.entity.xtext"
 var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/entity/xtext/Entity.xtext"
 var runtimeProject = "../${projectName}"
@@ -24,18 +24,41 @@ var backtrack = false
 var memoize = false
 
 Workflow {
+	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
+	bean = org.eclipse.xtext.mwe.Reader {
+		register = xcore
+	}
+	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/common/types/v1"
+			packageClass = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+			factoryClass = "org.lunifera.dsl.semantic.common.types.impl.LunTypesFactoryImpl"
+		}
+
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/entity/v1"
+			packageClass = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
+			factoryClass = "org.lunifera.dsl.semantic.entity.impl.EntityFactoryImplCustom"
+		}
+	}
+
 	bean = StandaloneSetup {
+		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : theResourceSet {}
+
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.genmodel"
-		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.genmodel"
-		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
-		
-		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
-		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.emf.ecore.xcore/model/Xcore.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore.xcore/model/Xcore.genmodel"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
+		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
+		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
 	}
 
 	component = DirectoryCleaner {
@@ -54,15 +77,17 @@ Workflow {
 		projectNameRt = projectName
 		projectNameUi = "${projectName}.ui"
 		language = {
+			forcedResourceSet = theResourceSet
 			uri = grammarURI
+			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
-			fileExtensions = file.extensions
+			fileExtensions = fileExtensions
 			fragment = grammarAccess.GrammarAccessFragment {}
 			fragment = serializer.SerializerFragment {
 			// generateDebugData = true
 			}
 			fragment = resourceFactory.ResourceFactoryFragment {
-				fileExtensions = file.extensions
+				fileExtensions = fileExtensions
 			}
 			fragment = XtextAntlrGeneratorFragment {
 				options = auto-inject {}
@@ -81,10 +106,10 @@ Workflow {
 			fragment = outline.OutlineTreeProviderFragment {}
 			fragment = outline.QuickOutlineFragment {}
 			fragment = compare.CompareFragment {
-				fileExtensions = file.extensions
+				fileExtensions = fileExtensions
 			}
 			fragment = contentAssist.JavaBasedContentAssistFragment {}
-			fragment = XtextAntlrUiGeneratorFragment {
+			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
 				options = auto-inject {}
 			}
 			fragment = refactoring.RefactorElementNameFragment {
