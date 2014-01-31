@@ -27,3 +27,4 @@ public class DerivedStateComputer extends JvmModelAssociator {
 		super.discardDerivedState(resource);
 	}
 }
+ 

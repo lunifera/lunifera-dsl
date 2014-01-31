@@ -26,7 +26,7 @@ import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
-
+ 
 class ModelExtensions {
 
 	@Inject extension IQualifiedNameProvider
