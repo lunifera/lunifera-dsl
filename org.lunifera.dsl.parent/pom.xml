@@ -57,6 +57,10 @@
 			<id>lunifera releases</id>
 			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
 		</repository>
+		<repository>
+			<id>lunifera thirdparty</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/thirdparty/</url>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -70,6 +74,10 @@
 		<pluginRepository>
 			<id>lunifera releases</id>
 			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>lunifera thirdparty</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/thirdparty/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
