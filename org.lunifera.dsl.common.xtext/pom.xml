@@ -28,6 +28,21 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src-gen</source>
+								<source>xtend-gen</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -50,6 +65,26 @@
 					</arguments>
 				</configuration>
 				<dependencies>
+					<!-- EMF -->
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.ecore.xcore</artifactId>
+						<version>1.1.2</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.ecore.xcore.lib</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+
+					<!-- Attention: Part of lunifera nexus -->
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.codegen.ecore.xtext</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+
+					<!-- Xtext -->
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xtext</artifactId>
@@ -61,10 +96,37 @@
 						<version>${xtext.version}</version>
 					</dependency>
 					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.common.types</artifactId>
+						<version>${xtext.version}</version>
+					</dependency>
+
+					<!-- Attention: Part of lunifera nexus. Xtext artifacts are SNAPSHOTs, 
+						but this is RELEASE since no upload of SNAPSHOT supported -->
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.ecore</artifactId>
+						<version>2.5.1</version>
+					</dependency>
+
+					<!-- Lunifera -->
+					<dependency>
 						<groupId>org.lunifera.dsl</groupId>
 						<artifactId>org.lunifera.dsl.semantic.common</artifactId>
 						<version>0.0.1-SNAPSHOT</version>
 					</dependency>
+					<dependency>
+						<groupId>org.lunifera.dsl</groupId>
+						<artifactId>org.lunifera.dsl.mwe</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+
+					<!-- 3rd Party -->
+					<!-- <dependency> -->
+					<!-- <groupId>org.kohsuke</groupId> -->
+					<!-- <artifactId>asm3</artifactId> -->
+					<!-- <version>3.3.0</version> -->
+					<!-- </dependency> -->
 				</dependencies>
 			</plugin>
 			<plugin>

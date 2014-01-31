@@ -1,0 +1,144 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ */
+module org.lunifera.dsl.common.xtext.MavenGenerateCommonGrammar
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.generator.*
+import org.eclipse.xtext.ui.generator.*
+import org.eclipse.xtext.generator.parser.antlr.*
+import org.eclipse.xtext.resource.XtextResourceSet
+
+var fileExtensions = "commonmodel"
+var projectName = "org.lunifera.dsl.common.xtext"
+var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/common/xtext/CommonGrammar.xtext"
+var runtimeProject = "${projectName}"
+var backtrack = false
+var memoize = false
+
+Workflow {
+	bean = org.eclipse.xtext.xbase.annotations.XbaseWithAnnotationsStandaloneSetup : xanno {}
+	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
+
+	bean = org.eclipse.xtext.mwe.Reader {
+		register = xanno
+		register = xcore
+	}
+
+	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/common/types/v1"
+			packageClass = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+			factoryClass = "org.lunifera.dsl.semantic.common.types.impl.LunTypesFactoryImpl"
+		}
+	}
+
+	bean = StandaloneSetup {
+		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : theResourceSet {}
+
+		// add mappings from platform:/resource to classpath:/
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.xbase/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.xbase.lib/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.common.types/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.emf.ecore.xcore/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.emf.ecore.xcore.lib/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.lunifera.dsl.semantic.common/"
+			to = "classpath:/"
+		}
+
+		scanClassPath = true
+		platformUri = "${runtimeProject}/.."
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
+		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}/src-gen"
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}.ui/src-gen"
+	}
+
+	component = Generator {
+		encoding = "UTF-8"
+		pathRtProject = runtimeProject
+		pathUiProject = "${runtimeProject}.ui"
+		pathTestProject = "${runtimeProject}.tests"
+		projectNameRt = projectName
+		projectNameUi = "${projectName}.ui"
+		language = {
+			forcedResourceSet = theResourceSet
+			loadedResource = "platform:/resource/org.eclipse.emf.ecore.xcore.lib/model/XcoreLang.xcore"
+//			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
+			uri = grammarURI
+			fileExtensions = fileExtensions
+			fragment = grammarAccess.GrammarAccessFragment {}
+			fragment = serializer.SerializerFragment {}
+			fragment = resourceFactory.ResourceFactoryFragment {
+				fileExtensions = fileExtensions
+			}
+			fragment = XtextAntlrGeneratorFragment {
+				options = auto-inject {}
+			}
+			fragment = DebugAntlrGeneratorFragment {
+				options = auto-inject {}
+			}
+			fragment = validation.JavaValidatorFragment {}
+			fragment = generator.GeneratorFragment {}
+			fragment = scoping.ImportNamespacesScopingFragment {}
+			fragment = builder.BuilderIntegrationFragment {}
+			fragment = quickfix.QuickfixProviderFragment {}
+			fragment = labeling.LabelProviderFragment {
+				generateStub = false
+			}
+			fragment = outline.OutlineTreeProviderFragment {}
+			fragment = outline.QuickOutlineFragment {}
+			fragment = compare.CompareFragment {
+				fileExtensions = fileExtensions
+			}
+			fragment = contentAssist.JavaBasedContentAssistFragment {}
+			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+				options = auto-inject {}
+			}
+			fragment = refactoring.RefactorElementNameFragment {
+				useJdtRefactoring = true
+			}
+			fragment = types.TypesGeneratorFragment {}
+			fragment = xbase.XbaseGeneratorFragment {
+				generateXtendInferrer = true
+			}
+			fragment = templates.CodetemplatesGeneratorFragment {}
+		}
+	}
+}

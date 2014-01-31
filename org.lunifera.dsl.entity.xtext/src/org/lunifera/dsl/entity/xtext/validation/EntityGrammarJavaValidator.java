@@ -36,7 +36,7 @@ import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
-import org.lunifera.dsl.semantic.entity.EntityPackage;
+import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
@@ -96,7 +96,7 @@ public class EntityGrammarJavaValidator extends
 	public void checkJPA_MultiHasOppositeReference(LEntityReference prop) {
 		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
 			error("A 'to-many' association needs an opposite reference.",
-					EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE,
+					LunEntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 					CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
 		}
@@ -106,7 +106,7 @@ public class EntityGrammarJavaValidator extends
 	public void checkBean_MultiHasOppositeReference(LBeanReference prop) {
 		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
 			error("A bidirectional association needs an opposite reference.",
-					EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
+					LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 					CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
 		}
@@ -186,7 +186,7 @@ public class EntityGrammarJavaValidator extends
 			if (names.contains(pkgName)) {
 				error(String.format("Package %s must not be defined twice!",
 						pkgName),
-						EntityPackage.Literals.LENTITY_MODEL__PACKAGES,
+						LunEntityPackage.Literals.LENTITY_MODEL__PACKAGES,
 						counter, CODE__DUPLICATE_LPACKAGE_IN_FILE,
 						(String[]) null);
 			}
@@ -219,7 +219,7 @@ public class EntityGrammarJavaValidator extends
 				&& extension.isToMany(prop.getOpposite())) {
 			error(String.format("ManyToMany relations are not permitted!", qnp
 					.getFullyQualifiedName(prop).toString()),
-					EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
+					LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 					CODE__MANY_TO_MANY__NOT_SUPPORTED, (String[]) null);
 		}
@@ -232,7 +232,7 @@ public class EntityGrammarJavaValidator extends
 				&& extension.isToMany(prop.getOpposite())) {
 			error(String.format("ManyToMany relations are not permitted!", qnp
 					.getFullyQualifiedName(prop).toString()),
-					EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE,
+					LunEntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 					CODE__MANY_TO_MANY__NOT_SUPPORTED, (String[]) null);
 		}
@@ -253,7 +253,7 @@ public class EntityGrammarJavaValidator extends
 					"The supertype %s uses the inheritance strategy %s. The inheritance of this entity is ignored!",
 					qnp.getFullyQualifiedName(superType).toString(),
 					getStrategyName(differingSuperStgy)),
-					EntityPackage.Literals.LENTITY__INHERITANCE_STRATEGY,
+					LunEntityPackage.Literals.LENTITY__INHERITANCE_STRATEGY,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 					CODE__DIFFERING_INHERITANCE_FROM_SUPERTYPE, (String[]) null);
 		}
@@ -273,7 +273,7 @@ public class EntityGrammarJavaValidator extends
 
 			if (!typeOK) {
 				error("UUIDs must be of type String.",
-						EntityPackage.Literals.LENTITY_ATTRIBUTE__UUID,
+						LunEntityPackage.Literals.LENTITY_ATTRIBUTE__UUID,
 						CODE__UUID_WRONG_TYPE, new String[0]);
 			}
 		}
@@ -285,7 +285,7 @@ public class EntityGrammarJavaValidator extends
 			if (entity.getSuperType() != null
 					&& !entity.getSuperType().isMappedSuperclass()) {
 				error("Keyword historized may only be used in toplevel entities of inheritance hierarchy",
-						EntityPackage.Literals.LENTITY__HISTORIZED,
+						LunEntityPackage.Literals.LENTITY__HISTORIZED,
 						CODE__HISTORIZED_IN_SUBCLASS, new String[0]);
 			}
 		}
@@ -294,7 +294,7 @@ public class EntityGrammarJavaValidator extends
 			if (entity.getSuperType() != null
 					&& !entity.getSuperType().isMappedSuperclass()) {
 				error("Keyword timedependent may only be used in toplevel entities of inheritance hierarchy",
-						EntityPackage.Literals.LENTITY__TIMEDEPENDENT,
+						LunEntityPackage.Literals.LENTITY__TIMEDEPENDENT,
 						CODE__TIMEDEPENDENT_IN_SUBCLASS, new String[0]);
 			}
 		}
@@ -326,13 +326,13 @@ public class EntityGrammarJavaValidator extends
 		if (idCounter == 0
 				&& (entity.isHistorized() || entity.isTimedependent())) {
 			error("An historized or timedependent entity must have an ID property",
-					EntityPackage.Literals.LENTITY__FEATURES,
+					LunEntityPackage.Literals.LENTITY__FEATURES,
 					CODE__MISSING_ID_FOR_VERSIONED);
 		} else
 
 		if (idCounter == 0) {
 			warning("An entity should have an ID property",
-					EntityPackage.Literals.LENTITY__FEATURES, CODE__MISSING_ID);
+					LunEntityPackage.Literals.LENTITY__FEATURES, CODE__MISSING_ID);
 		} else if (idCounter > 1) {
 			int i = 0;
 			for (LEntityFeature feature : entity.getFeatures()) {
@@ -340,7 +340,7 @@ public class EntityGrammarJavaValidator extends
 					if (((LEntityAttribute) feature).isId()
 							|| ((LEntityAttribute) feature).isUuid()) {
 						error("An entity must only have one ID property.",
-								EntityPackage.Literals.LENTITY__FEATURES, i,
+								LunEntityPackage.Literals.LENTITY__FEATURES, i,
 								CODE__DUPLICATE_ID, new String[0]);
 						break;
 					}
@@ -355,7 +355,7 @@ public class EntityGrammarJavaValidator extends
 				if (feature instanceof LEntityAttribute) {
 					if (((LEntityAttribute) feature).isVersion()) {
 						error("An entity must only have one Version property.",
-								EntityPackage.Literals.LENTITY__FEATURES, i,
+								LunEntityPackage.Literals.LENTITY__FEATURES, i,
 								CODE__DUPLICATE_VERSION, new String[0]);
 						break;
 					}
@@ -372,7 +372,7 @@ public class EntityGrammarJavaValidator extends
 						error(String.format(
 								"The property \"%s\" must only be defined once!",
 								feature.getName()),
-								EntityPackage.Literals.LENTITY__FEATURES, i,
+								LunEntityPackage.Literals.LENTITY__FEATURES, i,
 								CODE__DUPLICATE_PROPERTY_NAME, new String[0]);
 						break;
 					}
@@ -425,24 +425,24 @@ public class EntityGrammarJavaValidator extends
 				if (castStgy.getDiscriminatorColumn() != null) {
 					sendIgnoredInheritancePropertyWarning(
 							stgy,
-							EntityPackage.Literals.LTABLE_PER_CLASS_STRATEGY__DISCRIMINATOR_COLUMN);
+							LunEntityPackage.Literals.LTABLE_PER_CLASS_STRATEGY__DISCRIMINATOR_COLUMN);
 				}
 				if (castStgy.getDiscriminatorType() != LDiscriminatorType.INHERIT) {
 					sendIgnoredInheritancePropertyWarning(
 							stgy,
-							EntityPackage.Literals.LTABLE_PER_CLASS_STRATEGY__DISCRIMINATOR_TYPE);
+							LunEntityPackage.Literals.LTABLE_PER_CLASS_STRATEGY__DISCRIMINATOR_TYPE);
 				}
 			} else {
 				LTablePerSubclassStrategy castStgy = (LTablePerSubclassStrategy) stgy;
 				if (castStgy.getDiscriminatorColumn() != null) {
 					sendIgnoredInheritancePropertyWarning(
 							stgy,
-							EntityPackage.Literals.LTABLE_PER_SUBCLASS_STRATEGY__DISCRIMINATOR_COLUMN);
+							LunEntityPackage.Literals.LTABLE_PER_SUBCLASS_STRATEGY__DISCRIMINATOR_COLUMN);
 				}
 				if (castStgy.getDiscriminatorType() != LDiscriminatorType.INHERIT) {
 					sendIgnoredInheritancePropertyWarning(
 							stgy,
-							EntityPackage.Literals.LTABLE_PER_SUBCLASS_STRATEGY__DISCRIMINATOR_TYPE);
+							LunEntityPackage.Literals.LTABLE_PER_SUBCLASS_STRATEGY__DISCRIMINATOR_TYPE);
 				}
 			}
 		}
@@ -468,7 +468,7 @@ public class EntityGrammarJavaValidator extends
 				error(String.format(
 						"The discrimator value %s is already used by supertype!",
 						value), entity,
-						EntityPackage.Literals.LENTITY__INHERITANCE_STRATEGY,
+						LunEntityPackage.Literals.LENTITY__INHERITANCE_STRATEGY,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 						CODE__INHERITANCE_DISCRIMINATOR_VALUE_NOT_UNIQUE,
 						(String[]) null);
@@ -488,7 +488,7 @@ public class EntityGrammarJavaValidator extends
 			if (temp.getValue().size() > 1) {
 				error(String.format("Persistence type %s is already defined!",
 						qnp.getFullyQualifiedName(info).toString()), entity,
-						EntityPackage.Literals.LENTITY__PERSISTENCE_INFO,
+						LunEntityPackage.Literals.LENTITY__PERSISTENCE_INFO,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 						CODE__DUPLICATE_PERSISTENCE, (String[]) null);
 			}
@@ -515,7 +515,7 @@ public class EntityGrammarJavaValidator extends
 			allEntities.put(container, types);
 			for (IEObjectDescription eObjectDescription : container
 					.getExportedObjects(
-							EntityPackage.Literals.LENTITY_PERSISTENCE_INFO,
+							LunEntityPackage.Literals.LENTITY_PERSISTENCE_INFO,
 							qnp.getFullyQualifiedName(info), true)) {
 				types.add((LEntityPersistenceInfo) eObjectDescription
 						.getEObjectOrProxy());

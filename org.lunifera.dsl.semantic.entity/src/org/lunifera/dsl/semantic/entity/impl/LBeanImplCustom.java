@@ -13,7 +13,7 @@ package org.lunifera.dsl.semantic.entity.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.lunifera.dsl.semantic.entity.EntityPackage;
+import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.LBean;
 
 public class LBeanImplCustom extends LBeanImpl {
@@ -35,12 +35,12 @@ public class LBeanImplCustom extends LBeanImpl {
 				for (LBean subType : oldSuperEntity.getSubTypes()) {
 					((InternalEObject) superType).eInverseAdd(
 							(InternalEObject) subType,
-							EntityPackage.LBEAN__SUB_TYPES, LBean.class, null);
+							LunEntityPackage.LBEAN__SUB_TYPES, LBean.class, null);
 				}
 
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							EntityPackage.LBEAN__SUPER_TYPE, oldSuperType,
+							LunEntityPackage.LBEAN__SUPER_TYPE, oldSuperType,
 							superType));
 			}
 		}

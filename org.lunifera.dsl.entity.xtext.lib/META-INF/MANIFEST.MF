@@ -5,6 +5,6 @@ Bundle-Vendor: Lunifera.org
 Bundle-Version: 0.0.1.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.entity.xtext.lib
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext.xbase.lib
+Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="2.5.1"
 Import-Package: javax.persistence;version="2.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

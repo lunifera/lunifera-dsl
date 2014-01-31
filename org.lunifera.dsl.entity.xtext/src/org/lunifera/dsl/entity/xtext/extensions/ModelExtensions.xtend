@@ -20,7 +20,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.entity.EntityFactory
+import org.lunifera.dsl.semantic.entity.LunEntityFactory
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
@@ -247,7 +247,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 
 		if (strategy == null) {
-			strategy = EntityFactory::eINSTANCE.createLTablePerSubclassStrategy
+			strategy = LunEntityFactory::eINSTANCE.createLTablePerSubclassStrategy
 		}
 
 		strategy.fillInheritanceDefaults(entity)
