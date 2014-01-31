@@ -49,10 +49,13 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones/</url>
 		</repository>
-
 		<repository>
 			<id>central snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>
+		<repository>
+			<id>lunifera releases</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -63,6 +66,10 @@
 		<pluginRepository>
 			<id>lunifera snapshots</id>
 			<url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>lunifera releases</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
