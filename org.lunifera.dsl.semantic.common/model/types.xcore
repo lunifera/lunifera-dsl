@@ -8,7 +8,7 @@
  http://www.eclipse.org/legal/epl-v10.html 
 
  Based on ideas from Xtext, Xtend, Xcore
-  
+   
  Contributors:  
  		Florian Pirchner - Initial implementation 
  ")
@@ -16,7 +16,7 @@
 @Ecore(nsPrefix="types")
 @Ecore(rootPackage="types")
 package org.lunifera.dsl.semantic.common.types
- 
+
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
@@ -24,7 +24,7 @@ import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.xcore.lib.XcoreCollectionLiterals
 import org.eclipse.emf.ecore.util.BasicInternalEList
-  
+
 class LPackage {
 	String name
 	contains LImport[] imports
@@ -55,9 +55,9 @@ class LType extends LAnnotationTarget {
 
 class LAnnotationDef {
 	boolean exclude
-	contains XAnnotation ^annotation  
+	contains XAnnotation ^annotation
 }
- 
+
 class LAnnotationTarget {
 	contains LAnnotationDef[] annotations
 }
@@ -85,7 +85,7 @@ class LDataType extends LScalarType {
 	// for instance if the feature is contained in a superclass
 	refers LType syntheticType
 }
- 
+
 enum LDateType {
 	DATE
 	, TIME

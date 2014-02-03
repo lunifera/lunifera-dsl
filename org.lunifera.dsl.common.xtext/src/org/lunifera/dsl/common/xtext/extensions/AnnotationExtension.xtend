@@ -39,12 +39,11 @@ class AnnotationExtension {
 	/**
 	 * Creates an enum annotation value and adds it the the given annotation reference
 	 */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		Enum<?>... enums) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, Enum<?>... enums) {
 
 		// create the parameter
 		val value = typesFactory.createJvmEnumAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(enums.get(0).declaringClass, context) as JvmDeclaredType
@@ -69,12 +68,11 @@ class AnnotationExtension {
 	/**
 	 * Creates an enum annotation value and adds it the the given annotation reference
 	 */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		Enum<?> enumX) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, Enum<?> enumX) {
 
 		// create the parameter
 		val value = typesFactory.createJvmEnumAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(enumX.declaringClass, context) as JvmDeclaredType
@@ -97,12 +95,11 @@ class AnnotationExtension {
 	/**
      * Creates a boolean annotation value and adds it the the given annotation reference
      */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		boolean booleanValue) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, boolean booleanValue) {
 
 		// create the parameter
 		val value = typesFactory.createJvmBooleanAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(Boolean), context) as JvmDeclaredType
@@ -120,12 +117,11 @@ class AnnotationExtension {
 	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		String stringValue) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, String stringValue) {
 
 		// create the parameter
 		val value = typesFactory.createJvmStringAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(String), context) as JvmDeclaredType
@@ -143,12 +139,11 @@ class AnnotationExtension {
 	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		int intValue) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, int intValue) {
 
 		// create the parameter
 		val value = typesFactory.createJvmIntAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(Integer), context) as JvmDeclaredType
@@ -162,7 +157,7 @@ class AnnotationExtension {
 
 		return value
 	}
-	
+
 	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
@@ -171,7 +166,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmAnnotationAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(JvmAnnotationReference), context) as JvmDeclaredType
@@ -185,8 +180,8 @@ class AnnotationExtension {
 
 		return value
 	}
-	
-		/**
+
+	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
 	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
@@ -194,7 +189,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmAnnotationAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(JvmAnnotationReference), context) as JvmDeclaredType
