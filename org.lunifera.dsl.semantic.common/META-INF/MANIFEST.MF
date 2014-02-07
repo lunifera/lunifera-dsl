@@ -20,4 +20,3 @@ Export-Package: org.lunifera.dsl.semantic.common,
  org.lunifera.dsl.semantic.common.types.impl,
  org.lunifera.dsl.semantic.common.types.util
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-

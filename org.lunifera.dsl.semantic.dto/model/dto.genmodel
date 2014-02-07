@@ -7,8 +7,8 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" rootImplementsInterface=""
     importerID="org.eclipse.emf.ecore.xcore.importer" complianceLevel="6.0" suppressGenModelAnnotations="false"
     copyrightFields="false" editPluginID="org.eclipse.xtext.common.types.edit" editorPluginID="org.eclipse.xtext.types.editor"
-    runtimeVersion="2.9" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.lunifera.dsl.semantic.entity/model/entity.xcore#/1/entity ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.lunifera.dsl.semantic.common/model/types.xcore#/1/types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase"
-    interfaceNamePattern="" classNamePattern="" operationReflection="true" importOrganizing="true">
+    runtimeVersion="2.9" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../org.lunifera.dsl.semantic.common/model/types.xcore#/1/types ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase"
+    interfaceNamePattern="" classNamePattern="" importOrganizing="true">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
     <genAnnotations source="selectedPackages">
       <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
@@ -52,16 +52,25 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoMapper/fromDTO"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoFeature">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dto.ecore#//LDtoFeature/inherit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoFeature/mapper"/>
       <genOperations ecoreOperation="dto.ecore#//LDtoFeature/getDTO"/>
     </genClasses>
-    <genClasses ecoreClass="dto.ecore#//LDtoAttribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoAttribute/inheritedFeature"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoAttribute/mapper"/>
+    <genClasses image="false" ecoreClass="dto.ecore#//LDtoAbstractAttribute"/>
+    <genClasses ecoreClass="dto.ecore#//LDtoInheritedAttribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoInheritedAttribute/inheritedFeature"/>
+      <genOperations ecoreOperation="dto.ecore#//LDtoInheritedAttribute/getInheritedType"/>
+      <genOperations ecoreOperation="dto.ecore#//LDtoInheritedAttribute/getInheritedMultiplicity"/>
+    </genClasses>
+    <genClasses ecoreClass="dto.ecore#//LDtoAttribute"/>
+    <genClasses image="false" ecoreClass="dto.ecore#//LDtoAbstractReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoAbstractReference/type"/>
+    </genClasses>
+    <genClasses ecoreClass="dto.ecore#//LDtoInheritedReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoInheritedReference/inheritedFeature"/>
+      <genOperations ecoreOperation="dto.ecore#//LDtoInheritedReference/getInheritedMultiplicity"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoReference">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/type"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/inheritedFeature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dto.ecore#//LDtoReference/opposite"/>
     </genClasses>
     <genClasses ecoreClass="dto.ecore#//LDtoOperation"/>
   </genPackages>

@@ -16,64 +16,117 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.dto.xtext.common.ICrossReference
 import org.lunifera.dsl.semantic.common.helper.Bounds
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
+import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.semantic.dto.LDtoAttribute
 import org.lunifera.dsl.semantic.dto.LDtoFeature
+import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
+import org.lunifera.dsl.semantic.dto.LDtoInheritedReference
 import org.lunifera.dsl.semantic.dto.LDtoOperation
 import org.lunifera.dsl.semantic.dto.LDtoReference
+import org.lunifera.dsl.semantic.entity.LBeanAttribute
+import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.eclipse.xtext.EcoreUtil2
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
 	@Inject extension IQualifiedNameProvider
 	@Inject extension JvmTypesBuilder
+	@Inject extension MethodNamingExtensions
 
 	@Inject TypeReferences references;
 
-	def dispatch JvmTypeReference toTypeReference(LDtoReference prop) {
-		var JvmTypeReference jvmTypeRef = prop.toTypeParameterReference
-		if (jvmTypeRef != null && prop.isToMany) {
-			jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
-		}
+	def dispatch JvmTypeReference toTypeReference(LDtoAbstractReference prop) {
+		var JvmTypeReference jvmTypeRef = prop.toDtoTypeParameterReference
 		return jvmTypeRef
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LDtoAttribute prop) {
-		var JvmTypeReference jvmTypeRef = prop.toTypeParameterReference
-		if (jvmTypeRef != null && prop.isToMany) {
-			jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
-		}
+	def dispatch JvmTypeReference toTypeReference(LDtoAbstractAttribute prop) {
+		var JvmTypeReference jvmTypeRef = prop.toDtoTypeParameterReference
+		return jvmTypeRef
+	}
+	
+	override dispatch JvmTypeReference toTypeReference(LAttribute prop) {
+		var jvmTypeRef = prop.type?.toTypeReference
 		return jvmTypeRef
 	}
 
-	def dispatch JvmTypeReference toTypeParameterReference(LDtoReference prop) {
-		if (prop.inherit) {
-			if (prop.inheritedFeature.shouldUseCrossReference) {
-				return newTypeRef(prop.inheritedFeature, typeof(ICrossReference), null)
-			} else {
-				return prop.type?.toTypeReference
-			}
-		} else {
-			return prop.type?.toTypeReference
-		}
+	/**
+	 * Creates a type references with respect to inherited features
+	 */
+	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractReference prop) {
+
+		// prop.type is instanceof DTO
+		return prop.type?.toTypeReference.cloneWithProxies
 	}
 
-	def dispatch JvmTypeReference toTypeParameterReference(LDtoAttribute prop) {
-		val LAttribute att = if(prop.inherit) prop.inheritedFeature else prop
-		return att.type?.toTypeReference
+	/**
+	 * Creates a type references with respect to inherited features
+	 */
+	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractAttribute prop) {
+
+		// prop.type is instanceof LDataType
+		return prop.type?.toTypeReference.cloneWithProxies
+	}
+
+	/**
+	 * Creates a type references with respect to inherited features
+	 */
+	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedAttribute prop) {
+
+		if (prop.type != null) {
+			// if the type is a different on, then use the type of the property
+			// needs to be mapped by a custom mapper in dsl
+			return prop.type?.toTypeReference.cloneWithProxies
+		}
+
+		// creates a type reference for the inherited LDataType
+		return prop.inheritedFeature?.toTypeReference.cloneWithProxies
+	}
+
+	/**
+	 * Creates a type references with respect to inherited features
+	 */
+	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedReference prop) {
+		// for inherited references, the dto type is specified -> So use it
+		return prop.type?.toTypeReference.cloneWithProxies
+	}
+	
+	/**
+	 * Creates a type reference with respect to multiplicity
+	 */
+	def JvmTypeReference toDtoTypeParameterReferenceWithMultiplicity(LDtoFeature prop) {
+		var ref = prop.toDtoTypeParameterReference
+		if(ref != null && prop.bounds.toMany){
+			ref = references.getTypeForName(typeof(List), prop, ref)	
+		}
+		return ref
+	}
+	
+		/**
+	 * Creates a type reference with respect to multiplicity
+	 */
+	def JvmTypeReference toRawTypeReferenceWithMultiplicity(LDtoFeature prop) {
+		var ref = prop.toRawTypeRefernce;
+		if(prop.bounds.toMany){
+			ref = references.getTypeForName(typeof(List), prop, ref)
+		}
+		return ref
 	}
 
 	def dispatch isCascading(LDtoOperation prop) {
 		false
 	}
 
-	def getResolvedOpposite(LDtoReference prop) {
+	def LDtoAbstractReference getResolvedOpposite(LDtoReference prop) {
 
 		// For a toMany that has already an opposite, return it.
 		// Otherwise search in the referenced type for the property with the owner type.
@@ -105,11 +158,15 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch inherited(LFeature prop) {
-		throw new UnsupportedOperationException
+		return false
 	}
 
-	def dispatch inherited(LDtoFeature prop) {
-		return prop.inherit
+	def dispatch inherited(LDtoInheritedReference prop) {
+		return true
+	}
+
+	def dispatch inherited(LDtoInheritedAttribute prop) {
+		return true
 	}
 
 	/**
@@ -128,44 +185,92 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		return a + b;
 	}
 
-	def dispatch String typeName(LDtoAttribute prop) {
+	def dispatch String toTypeName(LDtoAttribute prop) {
 		prop.type.name
 	}
 
-	def dispatch String typeName(LDtoReference prop) {
-		prop.type.name
-	}
-
-	def dispatch toType(LDtoAttribute prop) {
-		if (prop.inherit) {
-			prop.inheritedFeature.type as LType
-		} else {
-			prop.type as LType
+	def dispatch String toTypeName(LDtoInheritedAttribute prop) {
+		if(prop.type != null){
+			prop.type.name
+		}else{
+			prop.inheritedFeature.^type.name
 		}
 	}
 
-	def dispatch toType(LDtoReference prop) {
-		if (prop.inherit && prop.type == null) {
-			prop.inheritedFeature.type
-		} else {
-			prop.type as LType
-		}
+	def dispatch String toTypeName(LDtoReference prop) {
+		prop.type?.name
+	}
+
+	def dispatch String toTypeName(LDtoInheritedReference prop) {
+		prop.type?.name
+	}
+
+	def dispatch LType toRawType(LFeature prop) {
+		throw new IllegalStateException("not a valid call")
+	}
+
+	def dispatch LType toRawType(LDtoAttribute prop) {
+		prop.type
+	}
+
+	def dispatch LType toRawType(LDtoInheritedAttribute prop) {
+		prop.inheritedFeature?.type
+	}
+
+	def dispatch LType toRawType(LDtoReference prop) {
+		prop.type
+	}
+
+	def dispatch LType toRawType(LDtoInheritedReference prop) {
+		prop.inheritedFeature?.toRawType
+	}
+
+	def dispatch LType toRawType(LEntityReference prop) {
+		prop.type
+	}
+
+	def dispatch LType toRawType(LEntityAttribute prop) {
+		prop.type
+	}
+
+	def dispatch LType toRawType(LBeanReference prop) {
+		prop.type
+	}
+
+	def dispatch LType toRawType(LBeanAttribute prop) {
+		prop.type
+	}
+
+	def toRawTypeRefernce(LDtoFeature prop) {
+		prop.toRawType?.toTypeReference
+	}
+
+	def String toRawTypeName(LDtoFeature prop) {
+		prop.toRawType?.name
 	}
 
 	def dispatch LReference opposite(LDtoFeature prop) {
 		null
 	}
 
-	def dispatch LReference opposite(LDtoAttribute prop) {
-		null
+	def dispatch LReference opposite(LDtoReference prop) {
+		return prop.opposite
 	}
 
-	def dispatch LReference opposite(LDtoReference prop) {
-		if (prop.inherit) {
+	def dispatch LReference opposite(LDtoInheritedReference prop) {
+		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.opposite
 		} else {
-			return prop.opposite
+			return null
 		}
+	}
+
+	def dispatch LReference opposite(LEntityReference prop) {
+		prop.opposite
+	}
+
+	def dispatch LReference opposite(LBeanReference prop) {
+		prop.opposite
 	}
 
 	override Bounds getBounds(LFeature prop) {
@@ -177,15 +282,18 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch Bounds internalGetBound(LDtoFeature prop) {
-		if (prop.inherit) {
+		if (prop.inherited) {
 			return Bounds.createFor(prop.inheritedFeature);
 		} else {
 			return Bounds.createFor(prop);
 		}
 	}
 
-	override String toName(LFeature prop) {
-		return prop.internalToName
+	def dispatch String toName(LDtoFeature feature) {
+		if (feature.inherited) {
+			return feature.inheritedFeature?.toName
+		}
+		feature.name
 	}
 
 	def dispatch String internalToName(LFeature prop) {
@@ -193,18 +301,22 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch String internalToName(LDtoFeature prop) {
-		if (prop.inherit) {
+		if (prop.inherited) {
 			return prop.inheritedFeature?.name;
 		} else {
 			return prop.name;
 		}
 	}
 
-	def dispatch LReference inheritedFeature(LDtoReference prop) {
+	def dispatch LReference inheritedFeature(LDtoFeature prop) {
+		return null
+	}
+
+	def dispatch LReference inheritedFeature(LDtoInheritedReference prop) {
 		return prop.inheritedFeature
 	}
 
-	def dispatch LAttribute inheritedFeature(LDtoAttribute prop) {
+	def dispatch LAttribute inheritedFeature(LDtoInheritedAttribute prop) {
 		return prop.inheritedFeature
 	}
 
@@ -220,23 +332,23 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch boolean internalIsToMany(LDtoFeature prop) {
-		if (prop.inherit) {
+		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.internalIsToMany
 		} else {
 			return prop.bounds.toMany;
 		}
 	}
 
-	def dispatch isCascading(LDtoReference prop) {
-		if (prop.inherit) {
+	def dispatch isCascading(LDtoAbstractReference prop) {
+		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.cascading
 		} else {
 			return prop.cascading;
 		}
 	}
 
-	def dispatch isCascading(LDtoAttribute prop) {
-		if (prop.inherit) {
+	def dispatch isCascading(LDtoAbstractAttribute prop) {
+		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.cascading
 		} else {
 			return prop.cascading;
@@ -247,33 +359,38 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		return prop instanceof LReference && !prop.cascading
 	}
 
-	def dispatch boolean shouldUseCrossReference(LDtoFeature prop) {
-		if (prop.crossReference) {
-			if (prop.inherit) {
-				return prop.inheritedFeature.shouldUseCrossReference
-			} else {
-				return true
-			}
-		}
-		return false
+	//	def dispatch boolean shouldUseCrossReference(LDtoFeature prop) {
+	//
+	//		//		if (prop.crossReference) {
+	//		//			if (prop.inherited && prop.inheritedFeature != null) {
+	//		//				return prop.inheritedFeature.shouldUseCrossReference
+	//		//			} else {
+	//		//				return true
+	//		//			}
+	//		//		}
+	//		return false
+	//	}
+	//
+	//	def dispatch boolean shouldUseCrossReference(LEntityReference prop) {
+	//		if (prop.cascading) {
+	//			return false
+	//		}
+	//
+	//		if (prop.opposite == null) {
+	//			return true
+	//		}
+	//
+	//		if (prop.opposite.cascading) {
+	//			return false
+	//		}
+	//		return true
+	//	}
+	def toMapperTypeReference(LType type) {
+		references.getTypeForName(type.toFqnMapperName, type, null)
 	}
 
-	def dispatch boolean shouldUseCrossReference(LEntityReference prop) {
-		if (prop.cascading) {
-			return false
-		}
-
-		if (prop.opposite == null) {
-			return true
-		}
-
-		if (prop.opposite.cascading) {
-			return false
-		}
-		return true
+	def toMapperTypeReference(LDtoAbstractReference ref) {
+		ref.type.toMapperTypeReference
 	}
 
-	def isCascadingReference(LDtoFeature prop) {
-		return prop instanceof LReference && prop.cascading
-	}
 }

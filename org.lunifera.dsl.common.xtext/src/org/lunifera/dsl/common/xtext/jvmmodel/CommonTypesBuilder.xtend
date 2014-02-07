@@ -75,7 +75,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
 	}
-
+	
 	def JvmOperation toIsDisposed(LClass sourceElement) {
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
@@ -141,7 +141,8 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		prop.toGetter(prop.toGetterName)
 	}
 
-	def JvmOperation toGetter(LFeature prop, String methodName) {
+	// dispatch used by sub classes
+	def dispatch JvmOperation toGetter(LFeature prop, String methodName) {
 		val typeRef = prop.toTypeReference
 		val propertyName = prop.toName
 		val op = typesFactory.createJvmOperation();

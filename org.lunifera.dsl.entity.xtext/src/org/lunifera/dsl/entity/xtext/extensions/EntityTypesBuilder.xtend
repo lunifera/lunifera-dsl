@@ -227,6 +227,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 
 		annotationCompiler.processAnnotation(sourceElement, op);
 		associate(sourceElement, op);
+		
 		initializeSafely(op, initializer);
 	}
 

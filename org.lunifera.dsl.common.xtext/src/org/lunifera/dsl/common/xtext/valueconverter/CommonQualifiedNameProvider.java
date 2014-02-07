@@ -63,10 +63,19 @@ public class CommonQualifiedNameProvider extends XbaseQualifiedNameProvider {
 		} else if (obj instanceof LFeature) {
 			LFeature prop = (LFeature) obj;
 			String name = prop.getName();
-			return name != null ? qualifiedNameConverter
-					.toQualifiedName(name) : null;
+			return name != null ? qualifiedNameConverter.toQualifiedName(name)
+					: null;
 		} else if (obj instanceof LDataType) {
-			// nothing to do
+			LPackage pkg = extensions.getPackage((LDataType) obj);
+			if (pkg != null) {
+				final String qualifiedName = String.format("%s.%s",
+						pkg.getName(), ((LDataType) obj).getName());
+				if (qualifiedName == null)
+					return null;
+				return qualifiedNameConverter.toQualifiedName(qualifiedName);
+			} else {
+				return QualifiedName.create("");
+			}
 		} else if (obj instanceof LAnnotationDef) {
 			return super.getFullyQualifiedName(((LAnnotationDef) obj)
 					.getAnnotation());

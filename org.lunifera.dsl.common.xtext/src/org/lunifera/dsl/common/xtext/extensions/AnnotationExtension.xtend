@@ -27,6 +27,7 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef
 import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 
 class AnnotationExtension {
 
@@ -138,6 +139,13 @@ class AnnotationExtension {
 		value.values += stringValue
 
 		return value
+	}
+	
+	def addAnno(LAnnotationTarget target, JvmAnnotationTarget jvmType, JvmAnnotationReference anno) {
+		val annoDef = target.annotations.findFirst[annotation.annotationType == anno.annotation]
+		if (annoDef == null || !annoDef.exclude) {
+			jvmType.annotations += anno
+		}
 	}
 
 	/**

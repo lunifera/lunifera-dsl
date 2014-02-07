@@ -22,26 +22,42 @@ Class returns dto::LDto:
 DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
 	annotations+=AnnotationDef*
-	(({dto::LDtoAttribute.annotationInfo=current}
-	(inherit?='inherit var' inheritedFeature=[entity::LEntityAttribute]) ';')
+	((({dto::LDtoInheritedAttribute.annotationInfo=current}
+	'inherit var' inheritedFeature=[entity::LEntityAttribute|QualifiedName]) ('mapto' type=[dto::LDto])? (mapper=DtoMapper)? ';')
 	|
-	({dto::LDtoReference.annotationInfo=current}
-	(inherit?='inherit ref' inheritedFeature=[entity::LEntityReference]) 'asType' type=[dto::LDto] ';')
+	({dto::LDtoInheritedReference.annotationInfo=current}
+	('inherit ref' inheritedFeature=[entity::LEntityReference|QualifiedName]) 'mapto' type=[dto::LDto] (mapper=DtoMapper)?
+	';')
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(('transient' type=[common::LScalarType] name=ValidIDWithKeywords ';')
+	('transient' type=[common::LScalarType] name=ValidIDWithKeywords (mapper=DtoMapper)? ';'))
 	|
-	((id?='id' | version?="version") type=[common::LScalarType] multiplicity=Multiplicity?
+	({dto::LDtoAttribute.annotationInfo=current}
+	(id?='id' | version?="version") type=[common::LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords
 	';')
 	|
-	('var' type=[common::LScalarType] multiplicity=Multiplicity?
-	name=ValidIDWithKeywords (mapper=DtoMapper)?
-	';'))));
+	({dto::LDtoReference.annotationInfo=current}
+	('ref' (cascading?='cascade')? type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	('opposite' opposite=[dto::LDtoReference|LFQN])?)
+	(mapper=LimitedMapperDtoMapper)?
+	';')
+	|
+	({dto::LDtoAttribute.annotationInfo=current}
+	'var' type=[common::LScalarType] multiplicity=Multiplicity?
+	name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper)?
+	';'));
 
 DtoMapper returns dto::LDtoMapper:
 	'{' 'toDTO'
-	toDTO=XClosure
+	toDTO=XExpression
 	('fromDTO'
-	fromDTO=XClosure)?
+	fromDTO=XExpression)?
 	'}';
+
+// custom vars and refs should not be mapped to entity. 
+LimitedMapperDtoMapper returns dto::LDtoMapper:
+	'{' 'toDTO'
+	toDTO=XExpression
+	'}';
+

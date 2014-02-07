@@ -64,7 +64,7 @@ class ModelExtensions {
 				default: type?.jvmTypeReference
 			}
 		} else {
-			return type.jvmTypeReference
+			return type.jvmTypeReference.cloneWithProxies
 		}
 	}
 
@@ -124,12 +124,19 @@ class ModelExtensions {
 		return current as LPackage;
 	}
 
-	def String toName(LFeature feature) {
+	def dispatch String toName(LFeature feature) {
 		if(feature == null || feature.name == null) return ""
 		return feature.name.replace("^", "")
 	}
 
-	def String toName(LClass clazz) {
+	def dispatch String toName(LClass clazz) {
+		if (clazz == null || clazz.name == null) {
+			return ""
+		}
+		return clazz.name.replace("^", "")
+	}
+	 
+	def dispatch String toName(LType clazz) {
 		if (clazz == null || clazz.name == null) {
 			return ""
 		}

@@ -50,12 +50,4 @@ class AnnotationCompiler {
 	def protected dispatch void internalProcessAnnotation(LOperation member, JvmOperation jvmOperation) {
 		member.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmOperation);
 	}
-
-	def addAnno(LAnnotationTarget target, JvmAnnotationTarget jvmType, JvmAnnotationReference anno) {
-		val annoDef = target.annotations.findFirst[annotation.annotationType == anno.annotation]
-		if (annoDef == null || !annoDef.exclude) {
-			jvmType.annotations += anno
-		}
-	}
-
 }

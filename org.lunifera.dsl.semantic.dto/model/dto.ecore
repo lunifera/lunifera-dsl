@@ -56,8 +56,7 @@
         resolveProxies="false" eOpposite="#//LDto/subTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subTypes" upperBound="-1"
         eType="#//LDto" transient="true" eOpposite="#//LDto/superType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="wrappedType" eType="ecore:EClass ../../org.lunifera.dsl.semantic.entity/model/entity.xcore#/EPackage/LEntity"
-        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wrappedType" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LDtoMapper">
     <eStructuralFeatures xsi:type="ecore:EReference" name="toDTO" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
@@ -71,23 +70,41 @@
         <details key="body" value=""/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inherit" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LDtoAttribute" eSuperTypes="#//LDtoFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LAttribute">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inheritedFeature" eType="ecore:EClass ../../org.lunifera.dsl.semantic.entity/model/entity.xcore#/EPackage/LEntityAttribute"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mapper" eType="#//LDtoMapper"
         containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LDtoReference" eSuperTypes="#//LDtoFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LReference">
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoAbstractAttribute" abstract="true"
+      eSuperTypes="#//LDtoFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoInheritedAttribute" eSuperTypes="#//LDtoAbstractAttribute">
+    <eOperations name="getInheritedType" unique="false" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LScalarType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getInheritedMultiplicity" unique="false" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LMultiplicity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inheritedFeature" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LAttribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoAttribute" eSuperTypes="#//LDtoAbstractAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoAbstractReference" abstract="true"
+      eSuperTypes="#//LDtoFeature ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LReference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LDto"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inheritedFeature" eType="ecore:EClass ../../org.lunifera.dsl.semantic.entity/model/entity.xcore#/EPackage/LEntityReference"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LDtoOperation" eSuperTypes="../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LOperation #//LDtoFeature">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="*&#xA;Overwrites LOperation to add dto feature as supertype"/>
-    </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoInheritedReference" eSuperTypes="#//LDtoAbstractReference">
+    <eOperations name="getInheritedMultiplicity" unique="false" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LMultiplicity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value=""/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inheritedFeature" eType="ecore:EClass ../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LReference"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoReference" eSuperTypes="#//LDtoAbstractReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//LDtoReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LDtoOperation" eSuperTypes="../../org.lunifera.dsl.semantic.common/model/types.xcore#/EPackage/LOperation #//LDtoFeature"/>
   <eClassifiers xsi:type="ecore:EDataType" name="DtoFeatureList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.semantic.dto.LDtoFeature>"/>
   <eClassifiers xsi:type="ecore:EDataType" name="OperationsList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.semantic.dto.LDtoOperation>"/>
   <eClassifiers xsi:type="ecore:EDataType" name="DtoReferenceList" instanceTypeName="java.util.List&lt;org.lunifera.dsl.semantic.dto.LDtoReference>"/>

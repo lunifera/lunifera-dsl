@@ -91,7 +91,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if (entity.mappedSuperclass) {
 			addAnno(entity, jvmType, entity.toAnnotation(typeof(MappedSuperclass)))
 		} else {
-
+ 
 			// @Entity
 			addAnno(entity, jvmType, entity.toAnnotation(typeof(Entity)))
 
@@ -329,8 +329,10 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 				collectedReferences += overrideAttributeAnno;
 			} else if (f instanceof LBeanReference) {
-				(f as LBeanReference).type.collectNestedAttributeOverride(collectedReferences,
+				if((f as LBeanReference).opposite?.type != bean){
+					(f as LBeanReference).type.collectNestedAttributeOverride(collectedReferences,
 					propertyPath + "." + f.toName, persistencePath + "_" + f.toName.toUpperCase)
+				}
 			}
 		}
 	}

@@ -15,12 +15,14 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.lunifera.dsl.common.xtext.scope.CommonImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
 import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.jvmmodel.DerivedStateComputer;
 import org.lunifera.dsl.entity.xtext.jvmmodel.EntityJvmModelGenerator;
 import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
+import org.lunifera.dsl.entity.xtext.scope.EntityBatchScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
 
@@ -37,6 +39,11 @@ public class EntityGrammarRuntimeModule extends
 
 	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
 		return EntityQualifiedNameProvider.class;
+	}
+
+	@Override
+	public Class<? extends XbaseBatchScopeProvider> bindXbaseBatchScopeProvider() {
+		return EntityBatchScopeProvider.class;
 	}
 
 	@Override
@@ -65,7 +72,6 @@ public class EntityGrammarRuntimeModule extends
 		return org.lunifera.dsl.entity.xtext.jvmmodel.AnnotationCompiler.class;
 	}
 
-	@SuppressWarnings("restriction")
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {
 		return EntityTypesBuilder.class;
 	}

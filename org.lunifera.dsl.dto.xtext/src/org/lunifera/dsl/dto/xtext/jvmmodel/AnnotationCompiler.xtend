@@ -11,6 +11,7 @@
 package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
+import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.dto.LDto
@@ -30,6 +31,10 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 	def protected dispatch void internalProcessAnnotation(LDtoReference prop, JvmGenericType jvmType) {
 		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+
+	}
+
+	def protected dispatch void internalProcessAnnotation(LDtoReference prop, JvmField field) {
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoAttribute prop, JvmGenericType jvmType) {

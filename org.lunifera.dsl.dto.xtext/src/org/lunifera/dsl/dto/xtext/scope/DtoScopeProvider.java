@@ -1,14 +1,11 @@
 /**
- * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Sources partially based on org.eclipse.emf.ecore.xcore.scoping.XcoreScopeProvider
- * 
- * Contributors:
- * 		Hans Georg Gl??ckler - Initial implementation
+ * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
 package org.lunifera.dsl.dto.xtext.scope;
@@ -18,6 +15,10 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
+import org.lunifera.dsl.semantic.dto.DtoPackage;
+import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
+import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
+import org.lunifera.dsl.semantic.dto.LDtoReference;
 
 import com.google.inject.Inject;
 
@@ -30,38 +31,20 @@ import com.google.inject.Inject;
  */
 @SuppressWarnings("restriction")
 public class DtoScopeProvider extends CommonScopeProvider {
-	@Inject
-	private IQualifiedNameProvider fqnProvider;
 
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
+		if (reference == DtoPackage.Literals.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE) {
+			return new DtoInheritedReferenceScope(
+					(LDtoInheritedReference) context);
+		} else if (reference == DtoPackage.Literals.LDTO_INHERITED_ATTRIBUTE__INHERITED_FEATURE) {
+			return new DtoInheritedAttributeScope(
+					(LDtoInheritedAttribute) context);
+		} else if (reference == DtoPackage.Literals.LDTO_REFERENCE__OPPOSITE) {
+			return new DtoRefOppositeScope((LDtoReference) context);
+		} else if (reference == DtoPackage.Literals.LDTO__WRAPPED_TYPE) {
+			return new TypeFilterScope(super.getScope(context, reference));
+		}
 		return super.getScope(context, reference);
 	}
-
-	// private IScope getScope_LDtoWrappedReference_feature(
-	// final LDtoWrappedReference prop) {
-	// return new AbstractScope(IScope.NULLSCOPE, false) {
-	// @Override
-	// protected Iterable<IEObjectDescription> getAllLocalElements() {
-	// ArrayList<IEObjectDescription> result = new
-	// ArrayList<IEObjectDescription>();
-	// if (prop.getDTO() != null) {
-	// LDto propClass = prop.getDTO();
-	//
-	// LType wrappedType = propClass.getWrappedType();
-	// if (wrappedType != null
-	// && wrappedType instanceof LFeaturesHolder) {
-	// LFeaturesHolder holder = (LFeaturesHolder) wrappedType;
-	//
-	// for (LFeature feature : holder.getAllFeatures()) {
-	// result.add(new EObjectDescription(fqnProvider
-	// .getFullyQualifiedName(feature), feature,
-	// null));
-	// }
-	// }
-	// }
-	// return result;
-	// }
-	// };
-	// }
 }

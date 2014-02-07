@@ -8,9 +8,12 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder;
 import org.lunifera.dsl.dto.xtext.formatting.DtoGrammarFormatter;
+import org.lunifera.dsl.dto.xtext.generator.Generator;
 import org.lunifera.dsl.dto.xtext.jvmmodel.DtoGrammarJvmModelInferrer;
+import org.lunifera.dsl.dto.xtext.scope.DtoBatchScopeProvider;
 import org.lunifera.dsl.dto.xtext.scope.DtoImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.dto.xtext.scope.DtoScopeProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoQualifiedNameProvider;
@@ -22,6 +25,7 @@ import com.google.inject.name.Names;
  * Use this class to register components to be used at runtime / without the
  * Equinox extension registry.
  */
+@SuppressWarnings("restriction")
 public class DtoGrammarRuntimeModule extends
 		org.lunifera.dsl.dto.xtext.AbstractDtoGrammarRuntimeModule {
 
@@ -35,6 +39,11 @@ public class DtoGrammarRuntimeModule extends
 	}
 
 	@Override
+	public Class<? extends XbaseBatchScopeProvider> bindXbaseBatchScopeProvider() {
+		return DtoBatchScopeProvider.class;
+	}
+
+	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class)
 				.annotatedWith(
@@ -42,7 +51,6 @@ public class DtoGrammarRuntimeModule extends
 				.to(DtoImportedNamespaceAwareLocalScopeProvider.class);
 	}
 
-	@SuppressWarnings("restriction")
 	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
 		return DtoGrammarJvmModelInferrer.class;
 	}
@@ -59,13 +67,16 @@ public class DtoGrammarRuntimeModule extends
 		return org.lunifera.dsl.dto.xtext.extensions.AnnotationExtension.class;
 	}
 
-	@SuppressWarnings("restriction")
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {
 		return DtoTypesBuilder.class;
 	}
 
 	public Class<? extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions> bindModelExtensions() {
 		return org.lunifera.dsl.dto.xtext.extensions.ModelExtensions.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
+		return Generator.class;
 	}
 
 }

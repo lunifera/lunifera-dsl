@@ -2,13 +2,12 @@ package org.lunifera.dsl.dto.xtext.extensions
 
 import com.google.inject.Inject
 import org.eclipse.emf.mwe2.language.scoping.QualifiedNameProvider
-import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
-import org.lunifera.dsl.semantic.dto.LDto
-import org.lunifera.dsl.semantic.dto.LDtoFeature
 import org.eclipse.xtext.xbase.XExpression
-import org.lunifera.dsl.semantic.common.types.LDtoMapper
-import org.lunifera.dsl.semantic.dto.LDtoAttribute
-import org.lunifera.dsl.semantic.dto.LDtoReference
+import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
+import org.lunifera.dsl.semantic.common.types.LType
+import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
+import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
+import org.lunifera.dsl.semantic.dto.LDtoFeature
 
 class MethodNamingExtensions extends NamingExtensions {
 
@@ -23,40 +22,37 @@ class MethodNamingExtensions extends NamingExtensions {
 		"toEntity_" + prop.toName
 	}
 
-	def toMapperName(LDto dto) {
+	def toMapperFieldName(LDtoFeature prop) {
+		prop.toName + "Mapper"
+	}
+
+	def toMapperName(LType dto) {
 		if (dto == null || dto.toName == null) {
 			return "setMISSING_NAME"
 		}
 		dto.toName + "Mapper"
 	}
 
-	def toFqnMapperName(LDto dto) {
+	def toFqnMapperName(LType dto) {
 		if (dto == null || dto.toName == null) {
 			return "setMISSING_NAME"
 		}
 		dto.toMapperNamePackage + "." + dto.toMapperName
 	}
 
-	def toMapperNamePackage(LDto dto) {
+	def toMapperNamePackage(LType dto) {
 		if (dto == null) {
 			return "setMISSING_NAME"
 		}
 		dto.fullyQualifiedName.skipLast(1).append("mapper").toString
 	}
-	
-	def dispatch XExpression toMapToEntityExpression(LDtoAttribute prop){
+
+	def XExpression toMapToEntityExpression(LDtoFeature prop) {
 		if(prop.mapper != null) return prop.mapper.fromDTO else null
 	}
-	
-	def dispatch XExpression toMapToDtoExpression(LDtoAttribute prop){
+
+	def XExpression toMapToDtoExpression(LDtoFeature prop) {
 		if(prop.mapper != null) return prop.mapper.toDTO else null
 	}
-	
-	def dispatch XExpression toMapToEntityExpression(LDtoReference prop){
-		null
-	}
-	
-	def dispatch XExpression toMapToDtoExpression(LDtoReference prop){
-		null
-	}
+
 }

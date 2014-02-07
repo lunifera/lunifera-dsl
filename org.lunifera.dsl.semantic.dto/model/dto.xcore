@@ -1,11 +1,13 @@
 @GenModel(fileExtensions="dtomodel")
 @GenModel(modelName="DTO")
 @GenModel(prefix="Dto")
+@GenModel(runtimeVersion="2.9")
+@GenModel(operationReflection="false")
 @Ecore(nsURI="http://www.lunifera.org/dsl/dto/v1")
-@Ecore(nsPrefix="dto")
+@Ecore(nsPrefix="dto") 
 @Ecore(rootPackage="dto")
 package org.lunifera.dsl.semantic.dto
-
+ 
 import GenModel
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
@@ -21,7 +23,9 @@ import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntity
- 
+import org.lunifera.dsl.semantic.common.types.LMultiplicity
+import org.eclipse.xtext.xbase.XStringLiteral
+
 class LDtoModel {
 	contains LTypedPackage[] packages
 }
@@ -33,7 +37,7 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
 	contains LDtoFeature[] features
 	refers local LDto superType opposite subTypes
 	refers transient LDto[] subTypes opposite superType
-	refers local LEntity wrappedType
+	refers LType wrappedType
 	/** 
  	 * Returns all features of type LOperation
  	 */
@@ -50,7 +54,7 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
  	 * Returns all features of type LDtoAttribute
  	 */
 	op DtoAttributeList getAttributes() {
-		features.filter(typeof(LDtoAttribute)).toList 
+		features.filter(typeof(LDtoAttribute)).toList
 	}
 	/**
 	 * Returns all features of the holder and from super types
@@ -76,28 +80,46 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
 class LDtoMapper {
 	contains XExpression toDTO
 	contains XExpression fromDTO
-} 
+}
 
 class LDtoFeature extends LFeature {
-	boolean inherit
+	contains LDtoMapper mapper
 	op LDto getDTO() {
 		return eContainer as LDto
 	}
 }
 
-class LDtoAttribute extends LDtoFeature, LAttribute {
-	refers LEntityAttribute inheritedFeature
-	contains LDtoMapper mapper
+abstract class LDtoAbstractAttribute extends LDtoFeature, LAttribute {
 }
 
-class LDtoReference extends LDtoFeature, LReference {
+class LDtoInheritedAttribute extends LDtoAbstractAttribute{
+	refers LAttribute inheritedFeature
+	op LScalarType getInheritedType() {
+		return inheritedFeature.^type
+	}
+	op LMultiplicity getInheritedMultiplicity() {
+		return inheritedFeature.multiplicity
+	}
+}
+
+class LDtoAttribute  extends LDtoAbstractAttribute {
+}
+
+abstract class LDtoAbstractReference extends LDtoFeature, LReference {
 	refers LDto ^type
-	refers LEntityReference inheritedFeature
 }
 
-/**
- * Overwrites LOperation to add dto feature as supertype
- */
+class LDtoInheritedReference extends LDtoAbstractReference{
+	refers LReference inheritedFeature
+	op LMultiplicity getInheritedMultiplicity() {
+		return inheritedFeature.multiplicity
+	}
+}
+
+class LDtoReference  extends LDtoAbstractReference {
+	refers LDtoReference ^opposite
+}
+
 class LDtoOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LDtoFeature {
 }
 
