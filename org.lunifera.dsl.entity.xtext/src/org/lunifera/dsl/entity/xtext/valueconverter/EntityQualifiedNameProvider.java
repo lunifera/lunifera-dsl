@@ -13,7 +13,7 @@ package org.lunifera.dsl.entity.xtext.valueconverter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
+import org.lunifera.dsl.common.xtext.valueconverter.CommonQualifiedNameProvider;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
@@ -22,6 +22,7 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
+import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityColumnPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityFeature;
@@ -30,7 +31,7 @@ import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
-public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
+public class EntityQualifiedNameProvider extends CommonQualifiedNameProvider {
 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
@@ -69,14 +70,28 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 			}
 		} else if (obj instanceof LFeature) {
 			LFeature prop = (LFeature) obj;
-			return prop.getName() != null ? qualifiedNameConverter
-					.toQualifiedName(prop.getName()) : null;
-		} else if (obj instanceof LDataType) {
-			LDataType dtd = (LDataType) obj;
-			if(dtd.getName() == null){
-				return QualifiedName.create();
+			if(prop.getName() == null){
+				return QualifiedName.create("");
 			}
-			return qualifiedNameConverter.toQualifiedName(dtd.getName());
+			LType type = (LType) prop.eContainer();
+			LPackage pkg = extensions.getPackage(type);
+			if (pkg != null && type != null) {
+				final String qualifiedName = String.format("%s.%s.%s",
+						pkg.getName(), type.getName(), prop.getName());
+				if (qualifiedName == null)
+					return null;
+				return qualifiedNameConverter.toQualifiedName(qualifiedName);
+			} else {
+				return prop.getName() != null ? qualifiedNameConverter
+						.toQualifiedName(prop.getName()) : null;
+			}
+
+		} else if (obj instanceof LDataType) {
+			// LDataType dtd = (LDataType) obj;
+			// if(dtd.getName() == null){
+			// return QualifiedName.create();
+			// }
+			// return qualifiedNameConverter.toQualifiedName(dtd.getName());
 		} else if (obj instanceof LAnnotationDef) {
 			return super.getFullyQualifiedName(((LAnnotationDef) obj)
 					.getAnnotation());
