@@ -13,7 +13,7 @@ package org.lunifera.dsl.semantic.entity.impl;
 import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LEntity;
 
-public class EntityFactoryImplCustom extends EntityFactoryImpl {
+public class EntityFactoryImplCustom extends LunEntityFactoryImpl {
 
 	@Override
 	public LEntity createLEntity() {

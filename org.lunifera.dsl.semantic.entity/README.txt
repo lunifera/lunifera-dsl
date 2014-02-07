@@ -12,7 +12,7 @@
 	 */
 	public EList<LAnnotationDef> getAnnotationsGen() {
 		if (annotations == null) {
-			annotations = new EObjectContainmentEList<LAnnotationDef>(LAnnotationDef.class, this, EntityPackage.LCLASS__ANNOTATIONS);
+			annotations = new EObjectContainmentEList<LAnnotationDef>(LAnnotationDef.class, this, LunEntityPackage.LCLASS__ANNOTATIONS);
 		}
 		return annotations;
 	}

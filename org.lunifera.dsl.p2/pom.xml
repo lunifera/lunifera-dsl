@@ -24,6 +24,7 @@
 
 	<properties>
 		<lunifera.deployment.p2.label>dsl</lunifera.deployment.p2.label>
+		<xtext-milestone-p2>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/</xtext-milestone-p2>
 	</properties>
 
 	<repositories>
@@ -95,7 +96,7 @@
 			</activation>
 			<properties>
 				<lunifera.build.p2.source.dir>${project.build.directory}/repository</lunifera.build.p2.source.dir>
-				<associate.p2>${lunifera.build.eclipse.platform.p2.url},${orbit-site}</associate.p2>
+				<associate.p2>${lunifera.build.eclipse.platform.p2.url},${orbit-site},${xtext-milestone-p2}</associate.p2>
 			</properties>
 			<build>
 				<plugins>

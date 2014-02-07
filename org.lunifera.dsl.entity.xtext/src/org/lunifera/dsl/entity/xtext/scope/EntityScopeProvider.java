@@ -14,7 +14,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
+<<<<<<< HEAD
 import org.lunifera.dsl.semantic.entity.EntityPackage;
+=======
+import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.entity.LunEntityPackage;
+import org.lunifera.dsl.semantic.entity.LBean;
+>>>>>>> branch 'master' of git@github.com:lunifera/lunifera-dsl.git
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 

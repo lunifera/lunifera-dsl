@@ -75,7 +75,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 					p >> "try " >>> "{"
 					p >> "// Dispose all the composition references.\n"
 					for (prop : compositionContainmentProps) {
-						val fieldRef = "this.".concat(prop.name.toFirstLower)
+						val fieldRef = "this.".concat(prop.toName.toFirstLower)
 						val typeName = prop.typeName
 						val typeVar = typeName.toFirstLower
 						if (prop.toMany) {
@@ -141,7 +141,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 					p >> "try " >>> "{"
 					p >> "// Dispose all the composition references.\n"
 					for (prop : compositionContainmentProps) {
-						val fieldRef = "this.".concat(prop.name.toFirstLower)
+						val fieldRef = "this.".concat(prop.toName.toFirstLower)
 						val typeName = prop.typeName
 						val typeVar = typeName.toFirstLower
 						if (prop.toMany) {
@@ -202,7 +202,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		jvmField.type = cloneWithProxies(prop.toTypeReference)
 		jvmField.documentation = prop.getDocumentation
 		// if uuid or historized entity and property name == oid AND a uuid property is present too
-		if (prop.isUUID || ((entity.timedependent || entity.historized) && prop.name.equals(Constants::PROP__OID) && entity.uuidPresent)) {
+		if (prop.isUUID || ((entity.timedependent || entity.historized) && prop.toName.equals(Constants::PROP__OID) && entity.uuidPresent)) {
 			jvmField.setInitializer [
 				if(it == null) return
 				val p = it.trace(prop)
@@ -491,7 +491,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 			[ // ITreeAppendable
 				if(it == null) return
 				val p = it.trace(prop)
-				p >> "this." + prop.name + " = " + paramName + ";"
+				p >> "this." + prop.toName + " = " + paramName + ";"
 			])
 		return associate(prop, result);
 	}

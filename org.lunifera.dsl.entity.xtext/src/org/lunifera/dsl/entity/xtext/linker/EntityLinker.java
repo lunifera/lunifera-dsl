@@ -23,7 +23,7 @@ import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
-import org.lunifera.dsl.semantic.entity.EntityFactory;
+import org.lunifera.dsl.semantic.entity.LunEntityFactory;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 
@@ -72,20 +72,20 @@ public class EntityLinker extends XbaseLazyLinker {
 
 		LTypedPackage pkg = (LTypedPackage) entity.eContainer();
 
-		LEntityAttribute ooid = EntityFactory.eINSTANCE
+		LEntityAttribute ooid = LunEntityFactory.eINSTANCE
 				.createLEntityAttribute();
 		ooid.setName(Constants.PROP__OID);
 		ooid.setType(findInternalOID(entity, pkg));
 		entity.getFeatures().add(ooid);
 
-		LEntityAttribute version = EntityFactory.eINSTANCE
+		LEntityAttribute version = LunEntityFactory.eINSTANCE
 				.createLEntityAttribute();
 		version.setName(Constants.PROP__VERSION);
 		version.setType(findInternalDatatype(entity, pkg,
 				Constants.DT_INTERNAL_OBJECT_VERSION));
 		entity.getFeatures().add(version);
 
-		LEntityAttribute current = EntityFactory.eINSTANCE
+		LEntityAttribute current = LunEntityFactory.eINSTANCE
 				.createLEntityAttribute();
 		current.setName(Constants.PROP__ISCURRENT);
 		current.setType(findInternalDatatype(entity, pkg,
@@ -102,20 +102,20 @@ public class EntityLinker extends XbaseLazyLinker {
 
 		LTypedPackage pkg = (LTypedPackage) entity.eContainer();
 
-		LEntityAttribute ooid = EntityFactory.eINSTANCE
+		LEntityAttribute ooid = LunEntityFactory.eINSTANCE
 				.createLEntityAttribute();
 		ooid.setName(Constants.PROP__OID);
 		ooid.setType(findInternalOID(entity, pkg));
 		entity.getFeatures().add(ooid);
 
-		LEntityAttribute validFrom = EntityFactory.eINSTANCE
+		LEntityAttribute validFrom = LunEntityFactory.eINSTANCE
 				.createLEntityAttribute();
 		validFrom.setName(Constants.PROP__VALID_FROM);
 		validFrom.setType(findInternalValidDate(entity, pkg,
 				Constants.DT_INTERNAL_VALID_FROM));
 		entity.getFeatures().add(validFrom);
 
-		LEntityAttribute validUntil = EntityFactory.eINSTANCE
+		LEntityAttribute validUntil = LunEntityFactory.eINSTANCE
 				.createLEntityAttribute();
 		validUntil.setName(Constants.PROP__VALID_UNTIL);
 		validUntil.setType(findInternalValidDate(entity, pkg,

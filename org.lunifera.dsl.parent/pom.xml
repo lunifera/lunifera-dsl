@@ -47,12 +47,19 @@
 		<repository>
 			<id>Xtext bleeding edge</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/</url>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones/</url>
 		</repository>
-
 		<repository>
 			<id>central snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>
+		<repository>
+			<id>lunifera releases</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
+		</repository>
+		<repository>
+			<id>lunifera thirdparty</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/thirdparty/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -63,6 +70,14 @@
 		<pluginRepository>
 			<id>lunifera snapshots</id>
 			<url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>lunifera releases</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>lunifera thirdparty</id>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/thirdparty/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
@@ -103,7 +118,8 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtext.version}</version>
+	<!-- Attention - 2.5.1 has a bug -->
+					<version>2.5.0</version>
 					<executions>
 						<execution>
 							<goals>

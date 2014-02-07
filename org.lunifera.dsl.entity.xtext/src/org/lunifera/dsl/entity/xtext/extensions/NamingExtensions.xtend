@@ -11,12 +11,12 @@
 package org.lunifera.dsl.entity.xtext.extensions
 
 import com.google.inject.Inject
-import org.lunifera.dsl.entity.xtext.util.PersistenceNamingUtils
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.entity.xtext.util.PersistenceNamingUtils
 
 class NamingExtensions extends org.lunifera.dsl.common.xtext.extensions.NamingExtensions {
 

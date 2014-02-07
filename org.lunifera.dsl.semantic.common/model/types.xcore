@@ -1,5 +1,5 @@
-@GenModel(fileExtensions="typesmodel")
-@GenModel(modelName="Types")
+@xcore.lang.GenModel(fileExtensions="typesmodel")
+@xcore.lang.GenModel(modelName="Types")
 @GenModel(prefix="LunTypes")
 @GenModel(copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
  All rights reserved. This program and the accompanying materials 
@@ -11,21 +11,19 @@
   
  Contributors:  
  		Florian Pirchner - Initial implementation 
- ") 
+ ")
 @Ecore(nsURI="http://www.lunifera.org/dsl/common/types/v1")
 @Ecore(nsPrefix="types")
 @Ecore(rootPackage="types")
 package org.lunifera.dsl.semantic.common.types
-
+ 
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
-import GenModel 
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.xcore.lib.XcoreCollectionLiterals
 import org.eclipse.emf.ecore.util.BasicInternalEList
- 
 class LPackage {
 	String name
 	contains LImport[] imports
@@ -58,7 +56,7 @@ class LAnnotationDef {
 	boolean exclude
 	contains XAnnotation ^annotation  
 }
-
+ 
 class LAnnotationTarget {
 	contains LAnnotationDef[] annotations
 }

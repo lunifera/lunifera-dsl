@@ -26,6 +26,7 @@ import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef
+import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 
@@ -45,7 +46,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmEnumAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(enums.get(0).declaringClass, context) as JvmDeclaredType
@@ -75,7 +76,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmEnumAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(enumX.declaringClass, context) as JvmDeclaredType
@@ -103,7 +104,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmBooleanAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(Boolean), context) as JvmDeclaredType
@@ -126,7 +127,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmStringAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(String), context) as JvmDeclaredType
@@ -148,6 +149,13 @@ class AnnotationExtension {
 		}
 	}
 
+	def addAnno(LAnnotationTarget target, JvmAnnotationTarget jvmType, JvmAnnotationReference anno) {
+		val annoDef = target.annotations.findFirst[annotation.annotationType == anno.annotation]
+		if (annoDef == null || !annoDef.exclude) {
+			jvmType.annotations += anno
+		}
+	}
+	
 	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
@@ -156,7 +164,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmIntAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(Integer), context) as JvmDeclaredType
@@ -179,7 +187,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmAnnotationAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(JvmAnnotationReference), context) as JvmDeclaredType
@@ -202,7 +210,7 @@ class AnnotationExtension {
 
 		// create the parameter
 		val value = typesFactory.createJvmAnnotationAnnotationValue
-		annRef.values += value
+		annRef.explicitValues += value
 
 		// create the enum type
 		val declaredType = references.findDeclaredType(typeof(JvmAnnotationReference), context) as JvmDeclaredType
