@@ -159,11 +159,6 @@ class LOperation extends LAnnotationTarget {
 	}
 }
 
-class LDtoMapper {
-	contains XExpression fromDto
-	contains XExpression toDto
-}
-
 class LModifier {
 	boolean final
 	boolean ^static

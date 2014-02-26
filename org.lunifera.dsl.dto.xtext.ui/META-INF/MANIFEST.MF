@@ -18,7 +18,11 @@ Require-Bundle: org.lunifera.dsl.dto.xtext;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.lunifera.dsl.common.xtext;bundle-version="0.0.1",
- org.lunifera.dsl.common.xtext.ui;bundle-version="0.0.1"
+ org.lunifera.dsl.common.xtext.ui;bundle-version="0.0.1",
+ org.eclipse.jdt.ui,
+ org.eclipse.jdt.core,
+ org.lunifera.dsl.semantic.common;bundle-version="0.0.1",
+ org.lunifera.dsl.semantic.dto;bundle-version="0.0.1"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.dsl.dto.xtext.ui.contentassist,

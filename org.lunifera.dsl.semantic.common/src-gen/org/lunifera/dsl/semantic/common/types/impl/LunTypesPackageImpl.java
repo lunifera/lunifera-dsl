@@ -40,7 +40,6 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LDateType;
-import org.lunifera.dsl.semantic.common.types.LDtoMapper;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LFeature;
@@ -185,13 +184,6 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass lDtoMapperEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass lModifierEClass = null;
 
   /**
@@ -299,9 +291,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     isInited = true;
 
     // Initialize simple dependencies
-    XbasePackage.eINSTANCE.eClass();
-    EcorePackage.eINSTANCE.eClass();
     XAnnotationsPackage.eINSTANCE.eClass();
+    EcorePackage.eINSTANCE.eClass();
+    XbasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theLunTypesPackage.createPackageContents();
@@ -923,36 +915,6 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getLDtoMapper()
-  {
-    return lDtoMapperEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLDtoMapper_FromDto()
-  {
-    return (EReference)lDtoMapperEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLDtoMapper_ToDto()
-  {
-    return (EReference)lDtoMapperEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getLModifier()
   {
     return lModifierEClass;
@@ -1194,10 +1156,6 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     createEReference(lOperationEClass, LOPERATION__BODY);
     createEOperation(lOperationEClass, LOPERATION___GET_RESOLVED_ANNOTATIONS);
 
-    lDtoMapperEClass = createEClass(LDTO_MAPPER);
-    createEReference(lDtoMapperEClass, LDTO_MAPPER__FROM_DTO);
-    createEReference(lDtoMapperEClass, LDTO_MAPPER__TO_DTO);
-
     lModifierEClass = createEClass(LMODIFIER);
     createEAttribute(lModifierEClass, LMODIFIER__FINAL);
     createEAttribute(lModifierEClass, LMODIFIER__STATIC);
@@ -1346,10 +1304,6 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     initEReference(getLOperation_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, LOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEOperation(getLOperation__GetResolvedAnnotations(), this.getAnnotationList(), "getResolvedAnnotations", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-    initEClass(lDtoMapperEClass, LDtoMapper.class, "LDtoMapper", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLDtoMapper_FromDto(), theXbasePackage.getXExpression(), null, "fromDto", null, 0, 1, LDtoMapper.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLDtoMapper_ToDto(), theXbasePackage.getXExpression(), null, "toDto", null, 0, 1, LDtoMapper.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lModifierEClass, LModifier.class, "LModifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLModifier_Final(), theEcorePackage.getEBoolean(), "final", null, 0, 1, LModifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

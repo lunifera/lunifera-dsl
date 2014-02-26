@@ -1197,52 +1197,6 @@ public interface LunTypesPackage extends EPackage
   int LOPERATION_OPERATION_COUNT = LANNOTATION_TARGET_OPERATION_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtoMapperImpl <em>LDto Mapper</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.lunifera.dsl.semantic.common.types.impl.LDtoMapperImpl
-   * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtoMapper()
-   * @generated
-   */
-  int LDTO_MAPPER = 16;
-
-  /**
-   * The feature id for the '<em><b>From Dto</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LDTO_MAPPER__FROM_DTO = 0;
-
-  /**
-   * The feature id for the '<em><b>To Dto</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LDTO_MAPPER__TO_DTO = 1;
-
-  /**
-   * The number of structural features of the '<em>LDto Mapper</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LDTO_MAPPER_FEATURE_COUNT = 2;
-
-  /**
-   * The number of operations of the '<em>LDto Mapper</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LDTO_MAPPER_OPERATION_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LModifierImpl <em>LModifier</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1250,7 +1204,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLModifier()
    * @generated
    */
-  int LMODIFIER = 17;
+  int LMODIFIER = 16;
 
   /**
    * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -1305,7 +1259,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLMultiplicity()
    * @generated
    */
-  int LMULTIPLICITY = 18;
+  int LMULTIPLICITY = 17;
 
   /**
    * The feature id for the '<em><b>Lower</b></em>' attribute.
@@ -1351,7 +1305,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDateType()
    * @generated
    */
-  int LDATE_TYPE = 19;
+  int LDATE_TYPE = 18;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LVisibility <em>LVisibility</em>}' enum.
@@ -1361,7 +1315,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLVisibility()
    * @generated
    */
-  int LVISIBILITY = 20;
+  int LVISIBILITY = 19;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LLowerBound <em>LLower Bound</em>}' enum.
@@ -1371,7 +1325,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLLowerBound()
    * @generated
    */
-  int LLOWER_BOUND = 21;
+  int LLOWER_BOUND = 20;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LUpperBound <em>LUpper Bound</em>}' enum.
@@ -1381,7 +1335,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLUpperBound()
    * @generated
    */
-  int LUPPER_BOUND = 22;
+  int LUPPER_BOUND = 21;
 
   /**
    * The meta object id for the '<em>Operations List</em>' data type.
@@ -1391,7 +1345,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getOperationsList()
    * @generated
    */
-  int OPERATIONS_LIST = 23;
+  int OPERATIONS_LIST = 22;
 
   /**
    * The meta object id for the '<em>Features List</em>' data type.
@@ -1401,7 +1355,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getFeaturesList()
    * @generated
    */
-  int FEATURES_LIST = 24;
+  int FEATURES_LIST = 23;
 
   /**
    * The meta object id for the '<em>Annotation List</em>' data type.
@@ -1411,7 +1365,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getAnnotationList()
    * @generated
    */
-  int ANNOTATION_LIST = 25;
+  int ANNOTATION_LIST = 24;
 
 
   /**
@@ -2052,38 +2006,6 @@ public interface LunTypesPackage extends EPackage
    * @generated
    */
   EOperation getLOperation__GetResolvedAnnotations();
-
-  /**
-   * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtoMapper <em>LDto Mapper</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>LDto Mapper</em>'.
-   * @see org.lunifera.dsl.semantic.common.types.LDtoMapper
-   * @generated
-   */
-  EClass getLDtoMapper();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.common.types.LDtoMapper#getFromDto <em>From Dto</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>From Dto</em>'.
-   * @see org.lunifera.dsl.semantic.common.types.LDtoMapper#getFromDto()
-   * @see #getLDtoMapper()
-   * @generated
-   */
-  EReference getLDtoMapper_FromDto();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.common.types.LDtoMapper#getToDto <em>To Dto</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>To Dto</em>'.
-   * @see org.lunifera.dsl.semantic.common.types.LDtoMapper#getToDto()
-   * @see #getLDtoMapper()
-   * @generated
-   */
-  EReference getLDtoMapper_ToDto();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LModifier <em>LModifier</em>}'.
@@ -2768,32 +2690,6 @@ public interface LunTypesPackage extends EPackage
      * @generated
      */
     EOperation LOPERATION___GET_RESOLVED_ANNOTATIONS = eINSTANCE.getLOperation__GetResolvedAnnotations();
-
-    /**
-     * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtoMapperImpl <em>LDto Mapper</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.lunifera.dsl.semantic.common.types.impl.LDtoMapperImpl
-     * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtoMapper()
-     * @generated
-     */
-    EClass LDTO_MAPPER = eINSTANCE.getLDtoMapper();
-
-    /**
-     * The meta object literal for the '<em><b>From Dto</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LDTO_MAPPER__FROM_DTO = eINSTANCE.getLDtoMapper_FromDto();
-
-    /**
-     * The meta object literal for the '<em><b>To Dto</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LDTO_MAPPER__TO_DTO = eINSTANCE.getLDtoMapper_ToDto();
 
     /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LModifierImpl <em>LModifier</em>}' class.

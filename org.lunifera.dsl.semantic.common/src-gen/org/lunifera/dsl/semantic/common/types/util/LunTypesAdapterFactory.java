@@ -166,11 +166,6 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl
         return createLOperationAdapter();
       }
       @Override
-      public Adapter caseLDtoMapper(LDtoMapper object)
-      {
-        return createLDtoMapperAdapter();
-      }
-      @Override
       public Adapter caseLModifier(LModifier object)
       {
         return createLModifierAdapter();
@@ -438,21 +433,6 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLOperationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtoMapper <em>LDto Mapper</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.lunifera.dsl.semantic.common.types.LDtoMapper
-   * @generated
-   */
-  public Adapter createLDtoMapperAdapter()
   {
     return null;
   }

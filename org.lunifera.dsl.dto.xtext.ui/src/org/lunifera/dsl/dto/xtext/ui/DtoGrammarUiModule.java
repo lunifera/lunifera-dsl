@@ -4,12 +4,18 @@
 package org.lunifera.dsl.dto.xtext.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.lunifera.dsl.dto.xtext.ui.labeling.DtoGrammarLabelProvider;
 
 /**
  * Use this class to register components to be used within the IDE.
  */
-public class DtoGrammarUiModule extends org.lunifera.dsl.dto.xtext.ui.AbstractDtoGrammarUiModule {
+public class DtoGrammarUiModule extends
+		org.lunifera.dsl.dto.xtext.ui.AbstractDtoGrammarUiModule {
 	public DtoGrammarUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+
+	public Class<? extends org.eclipse.jface.viewers.ILabelProvider> bindILabelProvider() {
+		return DtoGrammarLabelProvider.class;
 	}
 }

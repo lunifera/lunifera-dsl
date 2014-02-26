@@ -10,7 +10,7 @@
               contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
               default="true"
               extensions="dtomodel"
-              icon="images/16x16_EntityDSL.png"
+              icon="icons/16x16_DtoDSL.png"
               id="org.lunifera.dsl.dto.xtext.DtoGrammar"
               matchingStrategy="org.lunifera.dsl.dto.xtext.ui.DtoGrammarExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
               name="DtoGrammar Editor">

@@ -142,15 +142,6 @@ public interface LunTypesFactory extends EFactory
   LOperation createLOperation();
 
   /**
-   * Returns a new object of class '<em>LDto Mapper</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LDto Mapper</em>'.
-   * @generated
-   */
-  LDtoMapper createLDtoMapper();
-
-  /**
    * Returns a new object of class '<em>LModifier</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -25,10 +25,15 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.5.0";visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.osgi.service.component.annotations;version="1.2.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.lunifera.dsl.dto.xtext,
- org.lunifera.dsl.dto.xtext.services,
- org.lunifera.dsl.dto.xtext.serializer,
- org.lunifera.dsl.dto.xtext.parser.antlr,
- org.lunifera.dsl.dto.xtext.parser.antlr.internal,
- org.lunifera.dsl.dto.xtext.validation,
- org.lunifera.dsl.dto.xtext.jvmmodel
+Export-Package: org.lunifera.dsl.dto.xtext;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.common;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.extensions,
+ org.lunifera.dsl.dto.xtext.formatting;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.jvmmodel;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.parser.antlr;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.parser.antlr.internal;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.scope;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.serializer;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.services;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.validation;x-internal:=true,
+ org.lunifera.dsl.dto.xtext.valueconverter;x-internal:=true

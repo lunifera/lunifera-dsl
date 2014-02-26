@@ -4,6 +4,7 @@
 package org.lunifera.dsl.dto.xtext;
 
 import org.eclipse.xtext.formatting.IFormatter;
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
@@ -12,6 +13,7 @@ import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder;
 import org.lunifera.dsl.dto.xtext.formatting.DtoGrammarFormatter;
 import org.lunifera.dsl.dto.xtext.generator.Generator;
+import org.lunifera.dsl.dto.xtext.generator.OutputConfigurationProvider;
 import org.lunifera.dsl.dto.xtext.jvmmodel.DtoGrammarJvmModelInferrer;
 import org.lunifera.dsl.dto.xtext.scope.DtoBatchScopeProvider;
 import org.lunifera.dsl.dto.xtext.scope.DtoImportedNamespaceAwareLocalScopeProvider;
@@ -77,6 +79,10 @@ public class DtoGrammarRuntimeModule extends
 
 	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
 		return Generator.class;
+	}
+
+	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
+		return OutputConfigurationProvider.class;
 	}
 
 }

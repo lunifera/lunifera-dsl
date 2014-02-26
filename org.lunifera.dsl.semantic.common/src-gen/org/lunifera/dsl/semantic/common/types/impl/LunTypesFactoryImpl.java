@@ -92,7 +92,6 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
       case LunTypesPackage.LENUM_LITERAL: return createLEnumLiteral();
       case LunTypesPackage.LCLASS: return createLClass();
       case LunTypesPackage.LOPERATION: return createLOperation();
-      case LunTypesPackage.LDTO_MAPPER: return createLDtoMapper();
       case LunTypesPackage.LMODIFIER: return createLModifier();
       case LunTypesPackage.LMULTIPLICITY: return createLMultiplicity();
       default:
@@ -288,17 +287,6 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
   {
     LOperationImpl lOperation = new LOperationImpl();
     return lOperation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LDtoMapper createLDtoMapper()
-  {
-    LDtoMapperImpl lDtoMapper = new LDtoMapperImpl();
-    return lDtoMapper;
   }
 
   /**

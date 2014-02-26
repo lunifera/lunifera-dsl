@@ -213,13 +213,6 @@ public class LunTypesSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case LunTypesPackage.LDTO_MAPPER:
-      {
-        LDtoMapper lDtoMapper = (LDtoMapper)theEObject;
-        T result = caseLDtoMapper(lDtoMapper);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case LunTypesPackage.LMODIFIER:
       {
         LModifier lModifier = (LModifier)theEObject;
@@ -490,22 +483,6 @@ public class LunTypesSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLOperation(LOperation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>LDto Mapper</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>LDto Mapper</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLDtoMapper(LDtoMapper object)
   {
     return null;
   }
