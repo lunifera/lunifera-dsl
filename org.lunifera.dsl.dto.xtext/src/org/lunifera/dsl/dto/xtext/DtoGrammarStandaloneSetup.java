@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.dto.DtoPackage;
 import org.lunifera.dsl.semantic.dto.impl.DtoFactoryImplCustom;
-import org.lunifera.dsl.semantic.entity.EntityPackage;
+import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.impl.EntityFactoryImplCustom;
 
 import com.google.inject.Injector;
@@ -36,8 +36,8 @@ public class DtoGrammarStandaloneSetup extends
 				.containsKey("http://www.lunifera.org/entity/v1")) {
 			EPackage.Registry.INSTANCE.put(
 					"http://www.lunifera.org/dsl/entity/v1",
-					EntityPackage.eINSTANCE);
-			EntityPackage.eINSTANCE
+					LunEntityPackage.eINSTANCE);
+			LunEntityPackage.eINSTANCE
 					.setEFactoryInstance(new EntityFactoryImplCustom());
 		}
 

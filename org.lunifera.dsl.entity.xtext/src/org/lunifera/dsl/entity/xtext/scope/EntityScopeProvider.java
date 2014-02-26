@@ -14,15 +14,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
-<<<<<<< HEAD
-import org.lunifera.dsl.semantic.entity.EntityPackage;
-=======
-import org.lunifera.dsl.semantic.common.types.LClass;
-import org.lunifera.dsl.semantic.entity.LunEntityPackage;
-import org.lunifera.dsl.semantic.entity.LBean;
->>>>>>> branch 'master' of git@github.com:lunifera/lunifera-dsl.git
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
 /**
  * This class contains custom scoping description.
@@ -35,9 +29,9 @@ import org.lunifera.dsl.semantic.entity.LEntityReference;
 public class EntityScopeProvider extends CommonScopeProvider {
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
-		if (reference == EntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE) {
+		if (reference == LunEntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE) {
 			return new EntityRefOppositeScope((LEntityReference) context);
-		} else if (reference == EntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
+		} else if (reference == LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
 			return new BeanRefOppositeScope((LBeanReference) context);
 		}
 		return super.getScope(context, reference);
