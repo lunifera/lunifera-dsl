@@ -11,7 +11,6 @@ import org.lunifera.dsl.dto.xtext.common.IMapperAccess
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
 import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
-import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
@@ -50,7 +49,12 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			for (f : dto.getFeatures) {
 				switch f {
-					LFeature: {
+					LAttribute: {
+						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
+							members += f.toField
+						}
+					}
+					LReference: {
 						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
 							members += f.toField
 						}
@@ -72,17 +76,19 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			members += dto.toDispose()
 			for (f : dto.getFeatures) {
 				switch f {
-					case f instanceof LAttribute: {
+					LAttribute: {
 						members += f.toGetter()
-						if (f.isToMany) {
-							members += f.toInternalCollectionGetter(f.toName)
-							members += f.toAdder(f.toName)
-							members += f.toRemover(f.toName)
-						} else {
-							members += f.toSetter()
+						if (!f.derived) {
+							if (f.isToMany) {
+								members += f.toInternalCollectionGetter(f.toName)
+								members += f.toAdder(f.toName)
+								members += f.toRemover(f.toName)
+							} else {
+								members += f.toSetter()
+							}
 						}
 					}
-					case f instanceof LReference: {
+					LReference: {
 						members += f.toGetter()
 						if (f.isToMany) {
 							members += f.toInternalCollectionGetter(f.toName)
@@ -121,6 +127,11 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	}
 
 	def void inferMapper(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+
+		if (dto.wrappedType == null) {
+			return;
+		}
+
 		acceptor.accept(dto.toMapperJvmType).initializeLater [
 			documentation = '''
 				This class maps the dto {@link «dto.toName»} to and from the entity {@link «dto.wrappedType.toName»}.
@@ -139,7 +150,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 						dto.wrappedType.toTypeReference)
 					members += dto.toField("mapperAccess", references.getTypeForName(typeof(IMapperAccess), dto, null))
 					members += dto.toGetMapperAccess
-					
+
 					members += dto.toMapperBindMethod
 					members += dto.toMapperUnbindMethod
 				}

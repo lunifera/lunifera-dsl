@@ -12,7 +12,7 @@ package org.lunifera.dsl.semantic.dto.impl;
 
 import org.lunifera.dsl.semantic.dto.LDto;
 
-public class DtoFactoryImplCustom extends DtoFactoryImpl {
+public class DtoFactoryImplCustom extends LunDtoFactoryImpl {
 
 	@Override
 	public LDto createLDto() {

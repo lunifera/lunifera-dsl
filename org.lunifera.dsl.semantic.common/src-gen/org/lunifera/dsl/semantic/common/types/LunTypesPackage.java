@@ -1043,13 +1043,22 @@ public interface LunTypesPackage extends EPackage
   int LATTRIBUTE__ID = LFEATURE_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Uuid</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LATTRIBUTE__UUID = LFEATURE_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Version</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LATTRIBUTE__VERSION = LFEATURE_FEATURE_COUNT + 1;
+  int LATTRIBUTE__VERSION = LFEATURE_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Lazy</b></em>' attribute.
@@ -1058,7 +1067,7 @@ public interface LunTypesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LATTRIBUTE__LAZY = LFEATURE_FEATURE_COUNT + 2;
+  int LATTRIBUTE__LAZY = LFEATURE_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Cascading</b></em>' attribute.
@@ -1067,7 +1076,7 @@ public interface LunTypesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LATTRIBUTE__CASCADING = LFEATURE_FEATURE_COUNT + 3;
+  int LATTRIBUTE__CASCADING = LFEATURE_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -1076,7 +1085,25 @@ public interface LunTypesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LATTRIBUTE__TRANSIENT = LFEATURE_FEATURE_COUNT + 4;
+  int LATTRIBUTE__TRANSIENT = LFEATURE_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Derived</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LATTRIBUTE__DERIVED = LFEATURE_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LATTRIBUTE__DERIVED_GETTER_EXPRESSION = LFEATURE_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1085,7 +1112,7 @@ public interface LunTypesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 5;
+  int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 8;
 
   /**
    * The number of structural features of the '<em>LAttribute</em>' class.
@@ -1094,7 +1121,7 @@ public interface LunTypesPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 6;
+  int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 9;
 
   /**
    * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1889,6 +1916,17 @@ public interface LunTypesPackage extends EPackage
   EAttribute getLAttribute_Id();
 
   /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isUuid <em>Uuid</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Uuid</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LAttribute#isUuid()
+   * @see #getLAttribute()
+   * @generated
+   */
+  EAttribute getLAttribute_Uuid();
+
+  /**
    * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isVersion <em>Version</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1931,6 +1969,28 @@ public interface LunTypesPackage extends EPackage
    * @generated
    */
   EAttribute getLAttribute_Transient();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDerived <em>Derived</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Derived</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LAttribute#isDerived()
+   * @see #getLAttribute()
+   * @generated
+   */
+  EAttribute getLAttribute_Derived();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression <em>Derived Getter Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Derived Getter Expression</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression()
+   * @see #getLAttribute()
+   * @generated
+   */
+  EReference getLAttribute_DerivedGetterExpression();
 
   /**
    * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getType <em>Type</em>}'.
@@ -2602,6 +2662,14 @@ public interface LunTypesPackage extends EPackage
     EAttribute LATTRIBUTE__ID = eINSTANCE.getLAttribute_Id();
 
     /**
+     * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LATTRIBUTE__UUID = eINSTANCE.getLAttribute_Uuid();
+
+    /**
      * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2632,6 +2700,22 @@ public interface LunTypesPackage extends EPackage
      * @generated
      */
     EAttribute LATTRIBUTE__TRANSIENT = eINSTANCE.getLAttribute_Transient();
+
+    /**
+     * The meta object literal for the '<em><b>Derived</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LATTRIBUTE__DERIVED = eINSTANCE.getLAttribute_Derived();
+
+    /**
+     * The meta object literal for the '<em><b>Derived Getter Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LATTRIBUTE__DERIVED_GETTER_EXPRESSION = eINSTANCE.getLAttribute_DerivedGetterExpression();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' reference feature.

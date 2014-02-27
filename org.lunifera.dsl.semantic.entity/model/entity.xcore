@@ -203,7 +203,7 @@ class LEntityFeature extends LFeature {
 }
 
 class LEntityAttribute extends LEntityFeature, LAttribute {
-	boolean uuid
+	
 }
 
 class LEntityReference extends LEntityFeature, LReference {

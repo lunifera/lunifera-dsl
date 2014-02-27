@@ -14,11 +14,14 @@
 package org.lunifera.dsl.semantic.entity.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
@@ -35,12 +38,14 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isId <em>Id</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isUuid <em>Uuid</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isVersion <em>Version</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isTransient <em>Transient</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isUuid <em>Uuid</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +72,26 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
    * @ordered
    */
   protected boolean id = ID_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isUuid() <em>Uuid</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isUuid()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean UUID_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isUuid() <em>Uuid</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isUuid()
+   * @generated
+   * @ordered
+   */
+  protected boolean uuid = UUID_EDEFAULT;
 
   /**
    * The default value of the '{@link #isVersion() <em>Version</em>}' attribute.
@@ -149,6 +174,36 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
   protected boolean transient_ = TRANSIENT_EDEFAULT;
 
   /**
+   * The default value of the '{@link #isDerived() <em>Derived</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDerived()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean DERIVED_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isDerived() <em>Derived</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDerived()
+   * @generated
+   * @ordered
+   */
+  protected boolean derived = DERIVED_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getDerivedGetterExpression() <em>Derived Getter Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDerivedGetterExpression()
+   * @generated
+   * @ordered
+   */
+  protected XExpression derivedGetterExpression;
+
+  /**
    * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -157,26 +212,6 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
    * @ordered
    */
   protected LScalarType type;
-
-  /**
-   * The default value of the '{@link #isUuid() <em>Uuid</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isUuid()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean UUID_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isUuid() <em>Uuid</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isUuid()
-   * @generated
-   * @ordered
-   */
-  protected boolean uuid = UUID_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -220,6 +255,29 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
     id = newId;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__ID, oldId, id));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isUuid()
+  {
+    return uuid;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUuid(boolean newUuid)
+  {
+    boolean oldUuid = uuid;
+    uuid = newUuid;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__UUID, oldUuid, uuid));
   }
 
   /**
@@ -319,6 +377,77 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isDerived()
+  {
+    return derived;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDerived(boolean newDerived)
+  {
+    boolean oldDerived = derived;
+    derived = newDerived;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED, oldDerived, derived));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public XExpression getDerivedGetterExpression()
+  {
+    return derivedGetterExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDerivedGetterExpression(XExpression newDerivedGetterExpression, NotificationChain msgs)
+  {
+    XExpression oldDerivedGetterExpression = derivedGetterExpression;
+    derivedGetterExpression = newDerivedGetterExpression;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION, oldDerivedGetterExpression, newDerivedGetterExpression);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDerivedGetterExpression(XExpression newDerivedGetterExpression)
+  {
+    if (newDerivedGetterExpression != derivedGetterExpression)
+    {
+      NotificationChain msgs = null;
+      if (derivedGetterExpression != null)
+        msgs = ((InternalEObject)derivedGetterExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION, null, msgs);
+      if (newDerivedGetterExpression != null)
+        msgs = ((InternalEObject)newDerivedGetterExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION, null, msgs);
+      msgs = basicSetDerivedGetterExpression(newDerivedGetterExpression, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION, newDerivedGetterExpression, newDerivedGetterExpression));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public LScalarType getType()
   {
     if (type != null && type.eIsProxy())
@@ -362,22 +491,15 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isUuid()
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    return uuid;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setUuid(boolean newUuid)
-  {
-    boolean oldUuid = uuid;
-    uuid = newUuid;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__UUID, oldUuid, uuid));
+    switch (featureID)
+    {
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
+        return basicSetDerivedGetterExpression(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -392,6 +514,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
     {
       case LunEntityPackage.LENTITY_ATTRIBUTE__ID:
         return isId();
+      case LunEntityPackage.LENTITY_ATTRIBUTE__UUID:
+        return isUuid();
       case LunEntityPackage.LENTITY_ATTRIBUTE__VERSION:
         return isVersion();
       case LunEntityPackage.LENTITY_ATTRIBUTE__LAZY:
@@ -400,11 +524,13 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
         return isCascading();
       case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT:
         return isTransient();
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
+        return isDerived();
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
+        return getDerivedGetterExpression();
       case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE:
         if (resolve) return getType();
         return basicGetType();
-      case LunEntityPackage.LENTITY_ATTRIBUTE__UUID:
-        return isUuid();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -422,6 +548,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
       case LunEntityPackage.LENTITY_ATTRIBUTE__ID:
         setId((Boolean)newValue);
         return;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__UUID:
+        setUuid((Boolean)newValue);
+        return;
       case LunEntityPackage.LENTITY_ATTRIBUTE__VERSION:
         setVersion((Boolean)newValue);
         return;
@@ -434,11 +563,14 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
       case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT:
         setTransient((Boolean)newValue);
         return;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
+        setDerived((Boolean)newValue);
+        return;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
+        setDerivedGetterExpression((XExpression)newValue);
+        return;
       case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE:
         setType((LScalarType)newValue);
-        return;
-      case LunEntityPackage.LENTITY_ATTRIBUTE__UUID:
-        setUuid((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -457,6 +589,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
       case LunEntityPackage.LENTITY_ATTRIBUTE__ID:
         setId(ID_EDEFAULT);
         return;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__UUID:
+        setUuid(UUID_EDEFAULT);
+        return;
       case LunEntityPackage.LENTITY_ATTRIBUTE__VERSION:
         setVersion(VERSION_EDEFAULT);
         return;
@@ -469,11 +604,14 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
       case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT:
         setTransient(TRANSIENT_EDEFAULT);
         return;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
+        setDerived(DERIVED_EDEFAULT);
+        return;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
+        setDerivedGetterExpression((XExpression)null);
+        return;
       case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE:
         setType((LScalarType)null);
-        return;
-      case LunEntityPackage.LENTITY_ATTRIBUTE__UUID:
-        setUuid(UUID_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -491,6 +629,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
     {
       case LunEntityPackage.LENTITY_ATTRIBUTE__ID:
         return id != ID_EDEFAULT;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__UUID:
+        return uuid != UUID_EDEFAULT;
       case LunEntityPackage.LENTITY_ATTRIBUTE__VERSION:
         return version != VERSION_EDEFAULT;
       case LunEntityPackage.LENTITY_ATTRIBUTE__LAZY:
@@ -499,10 +639,12 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
         return cascading != CASCADING_EDEFAULT;
       case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT:
         return transient_ != TRANSIENT_EDEFAULT;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
+        return derived != DERIVED_EDEFAULT;
+      case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
+        return derivedGetterExpression != null;
       case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE:
         return type != null;
-      case LunEntityPackage.LENTITY_ATTRIBUTE__UUID:
-        return uuid != UUID_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -520,10 +662,13 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
       switch (derivedFeatureID)
       {
         case LunEntityPackage.LENTITY_ATTRIBUTE__ID: return LunTypesPackage.LATTRIBUTE__ID;
+        case LunEntityPackage.LENTITY_ATTRIBUTE__UUID: return LunTypesPackage.LATTRIBUTE__UUID;
         case LunEntityPackage.LENTITY_ATTRIBUTE__VERSION: return LunTypesPackage.LATTRIBUTE__VERSION;
         case LunEntityPackage.LENTITY_ATTRIBUTE__LAZY: return LunTypesPackage.LATTRIBUTE__LAZY;
         case LunEntityPackage.LENTITY_ATTRIBUTE__CASCADING: return LunTypesPackage.LATTRIBUTE__CASCADING;
         case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT: return LunTypesPackage.LATTRIBUTE__TRANSIENT;
+        case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED: return LunTypesPackage.LATTRIBUTE__DERIVED;
+        case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
         case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
         default: return -1;
       }
@@ -544,10 +689,13 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
       switch (baseFeatureID)
       {
         case LunTypesPackage.LATTRIBUTE__ID: return LunEntityPackage.LENTITY_ATTRIBUTE__ID;
+        case LunTypesPackage.LATTRIBUTE__UUID: return LunEntityPackage.LENTITY_ATTRIBUTE__UUID;
         case LunTypesPackage.LATTRIBUTE__VERSION: return LunEntityPackage.LENTITY_ATTRIBUTE__VERSION;
         case LunTypesPackage.LATTRIBUTE__LAZY: return LunEntityPackage.LENTITY_ATTRIBUTE__LAZY;
         case LunTypesPackage.LATTRIBUTE__CASCADING: return LunEntityPackage.LENTITY_ATTRIBUTE__CASCADING;
         case LunTypesPackage.LATTRIBUTE__TRANSIENT: return LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT;
+        case LunTypesPackage.LATTRIBUTE__DERIVED: return LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED;
+        case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
         case LunTypesPackage.LATTRIBUTE__TYPE: return LunEntityPackage.LENTITY_ATTRIBUTE__TYPE;
         default: return -1;
       }
@@ -568,6 +716,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (id: ");
     result.append(id);
+    result.append(", uuid: ");
+    result.append(uuid);
     result.append(", version: ");
     result.append(version);
     result.append(", lazy: ");
@@ -576,8 +726,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
     result.append(cascading);
     result.append(", transient: ");
     result.append(transient_);
-    result.append(", uuid: ");
-    result.append(uuid);
+    result.append(", derived: ");
+    result.append(derived);
     result.append(')');
     return result.toString();
   }

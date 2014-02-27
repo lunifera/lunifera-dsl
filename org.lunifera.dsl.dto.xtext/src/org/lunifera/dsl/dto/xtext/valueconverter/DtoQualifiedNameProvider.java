@@ -12,7 +12,6 @@
 package org.lunifera.dsl.dto.xtext.valueconverter;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;

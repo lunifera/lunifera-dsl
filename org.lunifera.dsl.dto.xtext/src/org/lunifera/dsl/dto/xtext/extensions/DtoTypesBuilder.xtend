@@ -28,6 +28,7 @@ import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.semantic.dto.LDtoFeature
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LOperation
+import org.lunifera.dsl.semantic.common.types.LAttribute
 
 class DtoTypesBuilder extends CommonTypesBuilder {
 
@@ -393,7 +394,17 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
 		jvmField.type = cloneWithProxies((prop as LDtoFeature).toDtoTypeParameterReferenceWithMultiplicity)
-
+		jvmField.transient = prop.transient
+		
+		// if uuid
+		if(prop instanceof LAttribute && (prop as LAttribute).uuid) {
+			jvmField.setInitializer [
+				if(it == null) return
+				val p = it.trace(prop)
+				p >> '''java.util.UUID.randomUUID().toString()'''
+			]
+		}
+		
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
 	}

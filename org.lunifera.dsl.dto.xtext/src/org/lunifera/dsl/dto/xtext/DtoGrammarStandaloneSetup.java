@@ -5,7 +5,7 @@ package org.lunifera.dsl.dto.xtext;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
-import org.lunifera.dsl.semantic.dto.DtoPackage;
+import org.lunifera.dsl.semantic.dto.LunDtoPackage;
 import org.lunifera.dsl.semantic.dto.impl.DtoFactoryImplCustom;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.impl.EntityFactoryImplCustom;
@@ -27,8 +27,8 @@ public class DtoGrammarStandaloneSetup extends
 		if (!EPackage.Registry.INSTANCE
 				.containsKey("http://www.lunifera.org/dto/v1")) {
 			EPackage.Registry.INSTANCE.put(
-					"http://www.lunifera.org/dsl/dto/v1", DtoPackage.eINSTANCE);
-			DtoPackage.eINSTANCE
+					"http://www.lunifera.org/dsl/dto/v1", LunDtoPackage.eINSTANCE);
+			LunDtoPackage.eINSTANCE
 					.setEFactoryInstance(new DtoFactoryImplCustom());
 		}
 

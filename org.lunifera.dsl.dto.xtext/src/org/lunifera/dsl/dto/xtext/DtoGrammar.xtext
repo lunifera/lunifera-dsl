@@ -30,10 +30,13 @@ DtoFeature returns dto::LDtoFeature:
 	';')
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	('transient' type=[common::LScalarType] name=ValidIDWithKeywords (mapper=DtoMapper)? ';'))
+	(transient?='transient' type=[common::LScalarType] name=ValidIDWithKeywords';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(id?='id' | version?="version") type=[common::LScalarType] multiplicity=Multiplicity?
+	(derived?='derived' type=[common::LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression';'))
+	|
+	({dto::LDtoAttribute.annotationInfo=current}
+	(id?='id' | version?="version" | uuid?="uuid") type=[common::LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords
 	';')
 	|
@@ -46,7 +49,12 @@ DtoFeature returns dto::LDtoFeature:
 	({dto::LDtoAttribute.annotationInfo=current}
 	'var' type=[common::LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper)?
-	';'));
+	';')
+	|
+	({dto::LDtoOperation.annotationInfo=current}
+	('def' type=JvmTypeReference name=ValidIDWithKeywords
+	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	body=XExpression)));
 
 DtoMapper returns dto::LDtoMapper:
 	'{' 'toDTO'

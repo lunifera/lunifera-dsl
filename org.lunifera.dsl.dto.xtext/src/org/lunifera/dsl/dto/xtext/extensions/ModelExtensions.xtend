@@ -12,6 +12,7 @@ package org.lunifera.dsl.dto.xtext.extensions
 
 import com.google.inject.Inject
 import java.util.List
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
@@ -34,7 +35,6 @@ import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.eclipse.xtext.EcoreUtil2
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
@@ -53,7 +53,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		var JvmTypeReference jvmTypeRef = prop.toDtoTypeParameterReference
 		return jvmTypeRef
 	}
-	
+
 	override dispatch JvmTypeReference toTypeReference(LAttribute prop) {
 		var jvmTypeRef = prop.type?.toTypeReference
 		return jvmTypeRef
@@ -83,6 +83,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedAttribute prop) {
 
 		if (prop.type != null) {
+
 			// if the type is a different on, then use the type of the property
 			// needs to be mapped by a custom mapper in dsl
 			return prop.type?.toTypeReference.cloneWithProxies
@@ -96,27 +97,28 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	 * Creates a type references with respect to inherited features
 	 */
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedReference prop) {
+
 		// for inherited references, the dto type is specified -> So use it
 		return prop.type?.toTypeReference.cloneWithProxies
 	}
-	
+
 	/**
 	 * Creates a type reference with respect to multiplicity
 	 */
 	def JvmTypeReference toDtoTypeParameterReferenceWithMultiplicity(LDtoFeature prop) {
 		var ref = prop.toDtoTypeParameterReference
-		if(ref != null && prop.bounds.toMany){
-			ref = references.getTypeForName(typeof(List), prop, ref)	
+		if (ref != null && prop.bounds.toMany) {
+			ref = references.getTypeForName(typeof(List), prop, ref)
 		}
 		return ref
 	}
-	
-		/**
+
+	/**
 	 * Creates a type reference with respect to multiplicity
 	 */
 	def JvmTypeReference toRawTypeReferenceWithMultiplicity(LDtoFeature prop) {
 		var ref = prop.toRawTypeRefernce;
-		if(prop.bounds.toMany){
+		if (prop.bounds.toMany) {
 			ref = references.getTypeForName(typeof(List), prop, ref)
 		}
 		return ref
@@ -190,9 +192,9 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch String toTypeName(LDtoInheritedAttribute prop) {
-		if(prop.type != null){
+		if (prop.type != null) {
 			prop.type.name
-		}else{
+		} else {
 			prop.inheritedFeature.^type.name
 		}
 	}
@@ -293,20 +295,27 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		if (feature.inherited) {
 			return feature.inheritedFeature?.toName
 		}
-		feature.name
+		return feature.name.replace("^", "")
 	}
 
-	def dispatch String internalToName(LFeature prop) {
-		return prop.name;
-	}
-
-	def dispatch String internalToName(LDtoFeature prop) {
-		if (prop.inherited) {
-			return prop.inheritedFeature?.name;
-		} else {
-			return prop.name;
+	def dispatch String toName(LDto dto) {
+		if (dto == null || dto.name == null) {
+			return ""
 		}
+		return dto.name.replace("^", "")
 	}
+
+//	def dispatch String internalToName(LFeature prop) {
+//		return prop.name;
+//	}
+//
+//	def dispatch String internalToName(LDtoFeature prop) {
+//		if (prop.inherited) {
+//			return prop.inheritedFeature?.name;
+//		} else {
+//			return prop.name;
+//		}
+//	}
 
 	def dispatch LReference inheritedFeature(LDtoFeature prop) {
 		return null
@@ -325,6 +334,14 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 			return false
 		}
 		return internalIsToMany(prop);
+	}
+
+	def dispatch boolean isTransient(EObject context) {
+		false
+	}
+
+	def dispatch boolean isTransient(LDtoAttribute context) {
+		context.transient
 	}
 
 	def dispatch boolean internalIsToMany(LFeature prop) {

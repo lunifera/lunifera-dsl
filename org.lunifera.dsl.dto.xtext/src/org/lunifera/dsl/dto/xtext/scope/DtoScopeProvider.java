@@ -12,15 +12,15 @@ package org.lunifera.dsl.dto.xtext.scope;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
-import org.lunifera.dsl.semantic.dto.DtoPackage;
+import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
+import org.lunifera.dsl.semantic.dto.LDtoAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
 import org.lunifera.dsl.semantic.dto.LDtoReference;
-
-import com.google.inject.Inject;
+import org.lunifera.dsl.semantic.dto.LunDtoPackage;
 
 /**
  * This class contains custom scoping description.
@@ -34,16 +34,29 @@ public class DtoScopeProvider extends CommonScopeProvider {
 
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
-		if (reference == DtoPackage.Literals.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE) {
+		if (reference == LunDtoPackage.Literals.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE) {
 			return new DtoInheritedReferenceScope(
 					(LDtoInheritedReference) context);
-		} else if (reference == DtoPackage.Literals.LDTO_INHERITED_ATTRIBUTE__INHERITED_FEATURE) {
+		} else if (reference == LunDtoPackage.Literals.LDTO_INHERITED_ATTRIBUTE__INHERITED_FEATURE) {
 			return new DtoInheritedAttributeScope(
 					(LDtoInheritedAttribute) context);
-		} else if (reference == DtoPackage.Literals.LDTO_REFERENCE__OPPOSITE) {
+		} else if (reference == LunDtoPackage.Literals.LDTO_REFERENCE__OPPOSITE) {
 			return new DtoRefOppositeScope((LDtoReference) context);
-		} else if (reference == DtoPackage.Literals.LDTO__WRAPPED_TYPE) {
-			return new TypeFilterScope(super.getScope(context, reference));
+		} else if (reference == LunDtoPackage.Literals.LDTO__WRAPPED_TYPE) {
+			return new WrappedTypeFilterScope(
+					super.getScope(context, reference));
+		} else if (reference == LunDtoPackage.Literals.LDTO__SUPER_TYPE) {
+			return new InheritTypesFilterScope((LType) context, super.getScope(
+					context, reference));
+		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {
+			LDtoAttribute att = (LDtoAttribute) context;
+			if (att.isId() || att.isVersion()) {
+				return new DatatypesFilterScope(super.getScope(context,
+						reference));
+			} else if (att.isUuid()) {
+				return new DatatypesFilterScope(super.getScope(context,
+						reference));
+			}
 		}
 		return super.getScope(context, reference);
 	}

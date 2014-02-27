@@ -63,7 +63,7 @@ class NamingExtensions {
 	}
 
 	def toInternalSetterName(LFeature ref) {
-		return "internalSet".concat(ref.toName.toFirstUpper);
+		return "internalSet".concat(ref.toName?.toFirstUpper);
 	}
 
 	/** 

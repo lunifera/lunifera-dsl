@@ -13,6 +13,7 @@
  */
 package org.lunifera.dsl.semantic.common.types;
 
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,10 +24,13 @@ package org.lunifera.dsl.semantic.common.types;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isId <em>Id</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isUuid <em>Uuid</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isVersion <em>Version</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isTransient <em>Transient</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getType <em>Type</em>}</li>
  * </ul>
  * </p>
@@ -62,6 +66,32 @@ public interface LAttribute extends LFeature
    * @generated
    */
   void setId(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Uuid</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Uuid</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Uuid</em>' attribute.
+   * @see #setUuid(boolean)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAttribute_Uuid()
+   * @model unique="false"
+   * @generated
+   */
+  boolean isUuid();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isUuid <em>Uuid</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Uuid</em>' attribute.
+   * @see #isUuid()
+   * @generated
+   */
+  void setUuid(boolean value);
 
   /**
    * Returns the value of the '<em><b>Version</b></em>' attribute.
@@ -166,6 +196,58 @@ public interface LAttribute extends LFeature
    * @generated
    */
   void setTransient(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Derived</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Derived</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Derived</em>' attribute.
+   * @see #setDerived(boolean)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAttribute_Derived()
+   * @model unique="false"
+   * @generated
+   */
+  boolean isDerived();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDerived <em>Derived</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Derived</em>' attribute.
+   * @see #isDerived()
+   * @generated
+   */
+  void setDerived(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Derived Getter Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Derived Getter Expression</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Derived Getter Expression</em>' containment reference.
+   * @see #setDerivedGetterExpression(XExpression)
+   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAttribute_DerivedGetterExpression()
+   * @model containment="true"
+   * @generated
+   */
+  XExpression getDerivedGetterExpression();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression <em>Derived Getter Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Derived Getter Expression</em>' containment reference.
+   * @see #getDerivedGetterExpression()
+   * @generated
+   */
+  void setDerivedGetterExpression(XExpression value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' reference.

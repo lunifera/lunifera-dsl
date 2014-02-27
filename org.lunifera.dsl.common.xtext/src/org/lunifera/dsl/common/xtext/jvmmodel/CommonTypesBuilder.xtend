@@ -32,9 +32,11 @@ import org.lunifera.dsl.common.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef
+import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LOperation
+import org.lunifera.dsl.semantic.common.types.LReference
 
 class CommonTypesBuilder extends JvmTypesBuilder {
 	@Inject extension IQualifiedNameProvider
@@ -75,7 +77,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
 	}
-	
+
 	def JvmOperation toIsDisposed(LClass sourceElement) {
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
@@ -142,7 +144,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 	}
 
 	// dispatch used by sub classes
-	def dispatch JvmOperation toGetter(LFeature prop, String methodName) {
+	def dispatch JvmOperation toGetter(LReference prop, String methodName) {
 		val typeRef = prop.toTypeReference
 		val propertyName = prop.toName
 		val op = typesFactory.createJvmOperation();
@@ -170,6 +172,52 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 				}
 			])
 
+		return associate(prop, op);
+	}
+
+	// dispatch used by sub classes
+	def dispatch JvmOperation toGetter(LAttribute prop, String methodName) {
+		val typeRef = prop.toTypeReference
+		val propertyName = prop.toName
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = methodName
+		op.returnType = cloneWithProxies(typeRef)
+
+		if (prop.derived) {
+			val customDoc = prop.documentation
+			if (customDoc != null) {
+				op.documentation = customDoc
+			} else {
+				op.documentation = '''
+				Calculates the value for the derived property «prop.name»
+				 
+				@return «prop.name» The derived property value'''
+			}
+
+			setBody(op, prop.derivedGetterExpression)
+		} else {
+			op.documentation = if (prop.toMany) {
+				"Returns an unmodifiable list of " + propertyName + "."
+			} else if (propertyName != null) {
+				"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
+					concat(" property").concat(
+						(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
+			}
+
+			setBody(op,
+				[ // ITreeAppendable it |
+					if(it == null) return
+					val p = it.trace(prop);
+					p >> prop.toCheckDisposedCall()
+					if (prop.toMany) {
+						p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
+							"(" + prop.toCollectionInternalGetterName + "());"
+					} else {
+						p >> "return this." + propertyName + ";"
+					}
+				])
+		}
 		return associate(prop, op);
 	}
 

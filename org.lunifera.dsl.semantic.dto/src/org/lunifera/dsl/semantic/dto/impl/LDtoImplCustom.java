@@ -13,8 +13,8 @@ package org.lunifera.dsl.semantic.dto.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.lunifera.dsl.semantic.dto.DtoPackage;
 import org.lunifera.dsl.semantic.dto.LDto;
+import org.lunifera.dsl.semantic.dto.LunDtoPackage;
 
 public class LDtoImplCustom extends LDtoImpl {
 
@@ -35,12 +35,12 @@ public class LDtoImplCustom extends LDtoImpl {
 				for (LDto subType : oldSuperEntity.getSubTypes()) {
 					((InternalEObject) superType).eInverseAdd(
 							(InternalEObject) subType,
-							DtoPackage.LDTO__SUB_TYPES, LDto.class, null);
+							LunDtoPackage.LDTO__SUB_TYPES, LDto.class, null);
 				}
 
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							DtoPackage.LDTO__SUPER_TYPE, oldSuperType,
+							LunDtoPackage.LDTO__SUPER_TYPE, oldSuperType,
 							superType));
 			}
 		}

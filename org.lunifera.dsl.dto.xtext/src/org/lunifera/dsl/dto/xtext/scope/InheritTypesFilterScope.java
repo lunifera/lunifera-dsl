@@ -16,14 +16,14 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.lunifera.dsl.semantic.common.types.LType;
-import org.lunifera.dsl.semantic.entity.LBean;
-import org.lunifera.dsl.semantic.entity.LEntity;
 
-public class TypeFilterScope extends AbstractScope {
+public class InheritTypesFilterScope extends AbstractScope {
+	private final LType context;
 	private final IScope scope;
 
-	public TypeFilterScope(IScope scope) {
+	public InheritTypesFilterScope(LType context, IScope scope) {
 		super(IScope.NULLSCOPE, true);
+		this.context = context;
 		this.scope = scope;
 	}
 
@@ -32,7 +32,7 @@ public class TypeFilterScope extends AbstractScope {
 		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 		for (IEObjectDescription desc : scope.getAllElements()) {
 			LType type = (LType) desc.getEObjectOrProxy();
-			if (type instanceof LEntity || type instanceof LBean) {
+			if (type != context && type.getName() != null) {
 				result.add(desc);
 			}
 		}

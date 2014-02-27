@@ -941,13 +941,22 @@ public interface LunEntityPackage extends EPackage
   int LENTITY_ATTRIBUTE__ID = LENTITY_FEATURE_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Uuid</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY_ATTRIBUTE__UUID = LENTITY_FEATURE_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Version</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LENTITY_ATTRIBUTE__VERSION = LENTITY_FEATURE_FEATURE_COUNT + 1;
+  int LENTITY_ATTRIBUTE__VERSION = LENTITY_FEATURE_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Lazy</b></em>' attribute.
@@ -956,7 +965,7 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY_ATTRIBUTE__LAZY = LENTITY_FEATURE_FEATURE_COUNT + 2;
+  int LENTITY_ATTRIBUTE__LAZY = LENTITY_FEATURE_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Cascading</b></em>' attribute.
@@ -965,7 +974,7 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY_ATTRIBUTE__CASCADING = LENTITY_FEATURE_FEATURE_COUNT + 3;
+  int LENTITY_ATTRIBUTE__CASCADING = LENTITY_FEATURE_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -974,7 +983,25 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY_ATTRIBUTE__TRANSIENT = LENTITY_FEATURE_FEATURE_COUNT + 4;
+  int LENTITY_ATTRIBUTE__TRANSIENT = LENTITY_FEATURE_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Derived</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY_ATTRIBUTE__DERIVED = LENTITY_FEATURE_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION = LENTITY_FEATURE_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -983,16 +1010,7 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY_ATTRIBUTE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 5;
-
-  /**
-   * The feature id for the '<em><b>Uuid</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LENTITY_ATTRIBUTE__UUID = LENTITY_FEATURE_FEATURE_COUNT + 6;
+  int LENTITY_ATTRIBUTE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 8;
 
   /**
    * The number of structural features of the '<em>LEntity Attribute</em>' class.
@@ -1001,7 +1019,7 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 7;
+  int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 9;
 
   /**
    * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1295,13 +1313,22 @@ public interface LunEntityPackage extends EPackage
   int LBEAN_ATTRIBUTE__ID = LBEAN_FEATURE_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Uuid</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LBEAN_ATTRIBUTE__UUID = LBEAN_FEATURE_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Version</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LBEAN_ATTRIBUTE__VERSION = LBEAN_FEATURE_FEATURE_COUNT + 1;
+  int LBEAN_ATTRIBUTE__VERSION = LBEAN_FEATURE_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Lazy</b></em>' attribute.
@@ -1310,7 +1337,7 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LBEAN_ATTRIBUTE__LAZY = LBEAN_FEATURE_FEATURE_COUNT + 2;
+  int LBEAN_ATTRIBUTE__LAZY = LBEAN_FEATURE_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Cascading</b></em>' attribute.
@@ -1319,7 +1346,7 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LBEAN_ATTRIBUTE__CASCADING = LBEAN_FEATURE_FEATURE_COUNT + 3;
+  int LBEAN_ATTRIBUTE__CASCADING = LBEAN_FEATURE_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -1328,7 +1355,25 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LBEAN_ATTRIBUTE__TRANSIENT = LBEAN_FEATURE_FEATURE_COUNT + 4;
+  int LBEAN_ATTRIBUTE__TRANSIENT = LBEAN_FEATURE_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Derived</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LBEAN_ATTRIBUTE__DERIVED = LBEAN_FEATURE_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION = LBEAN_FEATURE_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1337,7 +1382,7 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LBEAN_ATTRIBUTE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 5;
+  int LBEAN_ATTRIBUTE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 8;
 
   /**
    * The number of structural features of the '<em>LBean Attribute</em>' class.
@@ -1346,7 +1391,7 @@ public interface LunEntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 6;
+  int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 9;
 
   /**
    * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -2291,17 +2336,6 @@ public interface LunEntityPackage extends EPackage
   EClass getLEntityAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntityAttribute#isUuid <em>Uuid</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Uuid</em>'.
-   * @see org.lunifera.dsl.semantic.entity.LEntityAttribute#isUuid()
-   * @see #getLEntityAttribute()
-   * @generated
-   */
-  EAttribute getLEntityAttribute_Uuid();
-
-  /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LEntityReference <em>LEntity Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2978,14 +3012,6 @@ public interface LunEntityPackage extends EPackage
      * @generated
      */
     EClass LENTITY_ATTRIBUTE = eINSTANCE.getLEntityAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LENTITY_ATTRIBUTE__UUID = eINSTANCE.getLEntityAttribute_Uuid();
 
     /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl <em>LEntity Reference</em>}' class.

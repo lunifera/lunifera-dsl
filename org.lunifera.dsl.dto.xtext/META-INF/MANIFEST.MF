@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.5.0";visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types;bundle-version="2.5.0",
  org.eclipse.xtext.xbase.lib;bundle-version="2.5.0",
- org.apache.commons.lang;bundle-version="2.6.0"
+ org.apache.commons.lang;bundle-version="2.6.0",
+ org.lunifera.dsl.mwe;bundle-version="0.0.1"
 Import-Package: org.apache.log4j,
  org.osgi.service.component.annotations;version="1.2.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

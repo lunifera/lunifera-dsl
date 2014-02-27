@@ -7,24 +7,49 @@ import org.eclipse.xtext.generator.parser.antlr.*
 import org.eclipse.xtext.resource.XtextResourceSet
 
 var grammarURI = "classpath:/org/lunifera/dsl/dto/xtext/DtoGrammar.xtext"
-var fileExtensions = "dtomodel"
+var fileExtensions = "dtos"
 var projectName = "org.lunifera.dsl.dto.xtext"
 var runtimeProject = "../${projectName}"
 var backtrack = false
 var memoize = false
 
 Workflow {
+	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
+	bean = org.eclipse.xtext.mwe.Reader {
+		register = xcore
+	}
+	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/common/types/v1"
+			packageClass = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+			factoryClass = "org.lunifera.dsl.semantic.common.types.impl.LunTypesFactoryImpl"
+		}
+
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/entity/v1"
+			packageClass = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
+			factoryClass = "org.lunifera.dsl.semantic.entity.impl.EntityFactoryImplCustom"
+		}
+		
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/dto/v1"
+			packageClass = "org.lunifera.dsl.semantic.dto.LunDtoPackage"
+			factoryClass = "org.lunifera.dsl.semantic.dto.impl.LunDtoFactoryImpl"
+		}
+	}
+	
 	bean = StandaloneSetup {
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.dto/model/dto.genmodel"
-		registerGeneratedEPackage = "org.lunifera.dsl.semantic.dto.DtoPackage"
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.genmodel"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
-		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.genmodel"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
-		
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.dto/model/dto.xcore"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.dto.LunDtoPackage"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
@@ -47,6 +72,7 @@ Workflow {
 		projectNameUi = "${projectName}.ui"
 		language = {
 			uri = grammarURI
+			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.dto/model/dto.xcore"
 			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.dto/model/dto.xcore"
 			fileExtensions = fileExtensions
 			fragment = grammarAccess.GrammarAccessFragment {}

@@ -139,10 +139,13 @@ interface LReference extends LFeature {
 
 interface LAttribute extends LFeature {
 	boolean ^id
+	boolean uuid
 	boolean version
 	boolean lazy
 	boolean cascading
 	boolean ^transient
+	boolean ^derived
+	contains XExpression derivedGetterExpression
 	refers LScalarType ^type
 }
 

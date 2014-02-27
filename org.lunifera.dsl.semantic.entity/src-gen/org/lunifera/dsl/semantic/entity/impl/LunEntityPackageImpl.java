@@ -795,16 +795,6 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLEntityAttribute_Uuid()
-  {
-    return (EAttribute)lEntityAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getLEntityReference()
   {
     return lEntityReferenceEClass;
@@ -1109,7 +1099,6 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
     createEOperation(lEntityFeatureEClass, LENTITY_FEATURE___GET_ENTITY);
 
     lEntityAttributeEClass = createEClass(LENTITY_ATTRIBUTE);
-    createEAttribute(lEntityAttributeEClass, LENTITY_ATTRIBUTE__UUID);
 
     lEntityReferenceEClass = createEClass(LENTITY_REFERENCE);
     createEReference(lEntityReferenceEClass, LENTITY_REFERENCE__TYPE);
@@ -1277,7 +1266,6 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
     initEOperation(getLEntityFeature__GetEntity(), this.getLEntity(), "getEntity", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
     initEClass(lEntityAttributeEClass, LEntityAttribute.class, "LEntityAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLEntityAttribute_Uuid(), theEcorePackage.getEBoolean(), "uuid", null, 0, 1, LEntityAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lEntityReferenceEClass, LEntityReference.class, "LEntityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLEntityReference_Type(), this.getLEntity(), null, "type", null, 0, 1, LEntityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

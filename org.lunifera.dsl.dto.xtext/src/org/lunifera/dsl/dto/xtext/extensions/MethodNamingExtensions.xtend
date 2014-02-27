@@ -41,7 +41,7 @@ class MethodNamingExtensions extends NamingExtensions {
 	}
 
 	def toMapperNamePackage(LType dto) {
-		if (dto == null) {
+		if (dto == null || dto.fullyQualifiedName == null) {
 			return "setMISSING_NAME"
 		}
 		dto.fullyQualifiedName.skipLast(1).append("mapper").toString

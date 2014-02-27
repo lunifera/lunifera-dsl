@@ -16,20 +16,20 @@
 -->
 
 <plugin>
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated dto -->
-      <package
-            uri="http://www.lunifera.org/dsl/dto/v1"
-            class="org.lunifera.dsl.semantic.dto.DtoPackage"
-            genModel="model/dto.xcore"/>
-   </extension>
-   
    <extension
          point="org.eclipse.emf.ecore.factory_override">
       <factory
             class="org.lunifera.dsl.semantic.dto.impl.DtoFactoryImplCustom"
             uri="http://www.lunifera.org/dsl/dto/v1">
       </factory>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dto -->
+      <package
+            uri="http://www.lunifera.org/dsl/dto/v1"
+            class="org.lunifera.dsl.semantic.dto.LunDtoPackage"
+            genModel="model/dto.xcore"/>
    </extension>
 
 </plugin>
