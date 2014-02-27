@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.dto.xtext.ui
-Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: lunifera DOT org
+Bundle-Version: 0.0.1.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.dto.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.lunifera.dsl.dto.xtext;visibility:=reexport,

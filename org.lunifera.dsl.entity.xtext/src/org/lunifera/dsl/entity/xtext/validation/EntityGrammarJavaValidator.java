@@ -36,7 +36,6 @@ import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
-import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
@@ -48,6 +47,7 @@ import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy;
+import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
 import com.google.inject.Inject;
 
@@ -273,7 +273,7 @@ public class EntityGrammarJavaValidator extends
 
 			if (!typeOK) {
 				error("UUIDs must be of type String.",
-						LunEntityPackage.Literals.LENTITY_ATTRIBUTE__UUID,
+						LunTypesPackage.Literals.LATTRIBUTE__UUID,
 						CODE__UUID_WRONG_TYPE, new String[0]);
 			}
 		}

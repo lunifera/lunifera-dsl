@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,10 @@ import org.eclipse.xtext.resource.XtextResourceSet
 var fileExtensions = "entitymodel"
 var projectName = "org.lunifera.dsl.entity.xtext"
 var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/entity/xtext/Entity.xtext"
-var runtimeProject = "../${projectName}"
+var runtimeProject = "${projectName}"
 var backtrack = false
-var memoize = false 
-
+var memoize = false
+ 
 Workflow {
 	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
 	bean = org.eclipse.xtext.mwe.Reader {
@@ -34,16 +34,57 @@ Workflow {
 			packageClass = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
 			factoryClass = "org.lunifera.dsl.semantic.common.types.impl.LunTypesFactoryImpl"
 		}
-
+		
 		ePackage = org.lunifera.dsl.mwe.PackageMapping {
 			nsURI = "http://www.lunifera.org/dsl/entity/v1"
 			packageClass = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
-			factoryClass = "org.lunifera.dsl.semantic.entity.impl.EntityFactoryImplCustom"
+			factoryClass = "org.lunifera.dsl.semantic.entity.impl.LunEntityFactoryImpl"
+		}
+		
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/dto/v1"
+			packageClass = "org.lunifera.dsl.semantic.dto.LunDtoPackage"
+			factoryClass = "org.lunifera.dsl.semantic.dto.impl.LunDtoFactoryImpl"
 		}
 	}
 
 	bean = StandaloneSetup {
 		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : theResourceSet {}
+
+		// add mappings from platform:/resource to classpath:/
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.xbase/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.xbase.lib/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.common.types/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.emf.ecore.xcore/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.emf.ecore.xcore.lib/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.lunifera.dsl.semantic.common/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.lunifera.dsl.semantic.entity/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.lunifera.dsl.semantic.dto/"
+			to = "classpath:/"
+		}
+		
 
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
@@ -59,6 +100,9 @@ Workflow {
 		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
 		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
 		registerGeneratedEPackage = "org.lunifera.dsl.semantic.entity.LunEntityPackage"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.dto/model/dto.xcore"
+		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.dto/model/dto.xcore"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.dto.LunDtoPackage"
 	}
 
 	component = DirectoryCleaner {
@@ -81,6 +125,7 @@ Workflow {
 			uri = grammarURI
 			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
 			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.entity/model/entity.xcore"
+			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.dto/model/dto.xcore"
 			fileExtensions = fileExtensions
 			fragment = grammarAccess.GrammarAccessFragment {}
 			fragment = serializer.SerializerFragment {

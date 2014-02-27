@@ -46,7 +46,7 @@
 					<includePluginDependencies>true</includePluginDependencies>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>${project.basedir}/src/org/lunifera/dsl/dto/xtext/MavenGenerateEntityGrammar.mwe2</argument>
+						<argument>${project.basedir}/src/org/lunifera/dsl/dto/xtext/MavenGenerateDtoGrammar.mwe2</argument>
 					</arguments>
 				</configuration>
 				<dependencies>
@@ -110,7 +110,17 @@
 					</dependency>
 					<dependency>
 						<groupId>org.lunifera.dsl</groupId>
+						<artifactId>org.lunifera.dsl.semantic.dto</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+					<dependency>
+						<groupId>org.lunifera.dsl</groupId>
 						<artifactId>org.lunifera.dsl.common.xtext</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+					<dependency>
+						<groupId>org.lunifera.dsl</groupId>
+						<artifactId>org.lunifera.dsl.entity.xtext</artifactId>
 						<version>0.0.1-SNAPSHOT</version>
 					</dependency>
 				</dependencies>

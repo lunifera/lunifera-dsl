@@ -22,7 +22,7 @@ var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/entity/
 var runtimeProject = "${projectName}"
 var backtrack = false
 var memoize = false
-
+ 
 Workflow {
 	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
 	bean = org.eclipse.xtext.mwe.Reader {
