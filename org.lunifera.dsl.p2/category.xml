@@ -6,6 +6,18 @@
    <feature id="org.lunifera.dsl.feature.eclipse.ui.source" version="0.0.0">
       <category name="lunifera-dsls"/>
    </feature>
+    <feature id="org.lunifera.dsl.feature.dto" version="0.0.0">
+      <category name="lunifera-dsls"/>
+   </feature>
+   <feature id="org.lunifera.dsl.feature.dto.source" version="0.0.0">
+      <category name="lunifera-dsls"/>
+   </feature>
+   <feature id="org.lunifera.dsl.feature.dto.headless" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
+   </feature>
+   <feature id="org.lunifera.dsl.feature.dto.headless.source" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
+   </feature>
    <feature id="org.lunifera.dsl.feature.entities" version="0.0.0">
       <category name="lunifera-dsls"/>
    </feature>
