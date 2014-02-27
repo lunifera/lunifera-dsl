@@ -16,9 +16,9 @@ import org.eclipse.xtext.ui.generator.*
 import org.eclipse.xtext.generator.parser.antlr.*
 import org.eclipse.xtext.resource.XtextResourceSet
 
-var fileExtensions = "entitymodel"
-var projectName = "org.lunifera.dsl.entity.xtext"
-var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/entity/xtext/Entity.xtext"
+var fileExtensions = "dtos"
+var projectName = "org.lunifera.dsl.dto.xtext"
+var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/dto/xtext/DtoGrammar.xtext"
 var runtimeProject = "${projectName}"
 var backtrack = false
 var memoize = false
