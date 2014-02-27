@@ -37,10 +37,13 @@
 				<module>org.lunifera.dsl.mwe</module>
 				<module>org.lunifera.dsl.semantic.common</module>
 				<module>org.lunifera.dsl.semantic.entity</module>
+				<module>org.lunifera.dsl.semantic.dto</module>
 				<module>org.lunifera.dsl.common.xtext</module>
 				<module>org.lunifera.dsl.common.xtext.ui</module>
 				<module>org.lunifera.dsl.entity.xtext</module>
 				<module>org.lunifera.dsl.entity.xtext.ui</module>
+				<module>org.lunifera.dsl.dto.xtext</module>
+				<module>org.lunifera.dsl.dto.xtext.ui</module>
 				<module>org.lunifera.dsl.eclipse.ui</module>
 
 				<!-- P2 feature -->
@@ -48,6 +51,8 @@
 				<module>org.lunifera.dsl.feature.entities.headless</module>
 				<module>org.lunifera.dsl.feature.common</module>
 				<module>org.lunifera.dsl.feature.common.headless</module>
+				<module>org.lunifera.dsl.feature.dto</module>
+				<module>org.lunifera.dsl.feature.dto.headless</module>
 				<module>org.lunifera.dsl.feature.eclipse.ui</module>
 
 				<!-- P2 repository -->

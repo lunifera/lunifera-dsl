@@ -22,7 +22,7 @@
 		<relativePath>../org.lunifera.dsl.parent/pom.xml</relativePath>
 	</parent>
 
-	<artifactId>org.lunifera.dsl.feature.entities.headless</artifactId>
+	<artifactId>org.lunifera.dsl.feature.dto.headless</artifactId>
 	<packaging>eclipse-feature</packaging>
 	<build>
 		<plugins>

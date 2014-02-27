@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.lunifera.dsl.feature.entities.headless"
+      id="org.lunifera.dsl.feature.dto.headless"
       label="%featureName"
       version="0.0.1.qualifier"
       provider-name="%providerName">
@@ -19,24 +19,19 @@
 
    <requires>
       <import feature="org.lunifera.dsl.feature.common.headless" version="0.0.0"/>
+      <import feature="org.lunifera.dsl.feature.entities.headless" version="0.0.0"/>
+      <import feature="org.lunifera.dsl.feature.entities" version="0.0.0"/>
    </requires>
 
    <plugin
-         id="org.lunifera.dsl.semantic.entity"
+         id="org.lunifera.dsl.dto.xtext"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.lunifera.dsl.entity.xtext"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-         
-   <plugin
-         id="org.lunifera.dsl.entity.xtext.lib"
+         id="org.lunifera.dsl.semantic.dto"
          download-size="0"
          install-size="0"
          version="0.0.0"
