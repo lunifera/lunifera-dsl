@@ -17,7 +17,7 @@
 		<groupId>org.lunifera.dsl</groupId>
 		<artifactId>org.lunifera.dsl.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../</relativePath>
+		<relativePath>../org.lunifera.dsl.parent/pom.xml</relativePath>
 	</parent>
 
 	<artifactId>org.lunifera.dsl.semantic.dto</artifactId>
