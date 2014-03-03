@@ -256,7 +256,8 @@ public class LDtoImpl extends LClassImpl implements LDto
    */
   public List<LDtoOperation> getOperations()
   {
-    EList<LDtoFeature> _features = this.getFeatures();
+    LDto _this = this;
+    EList<LDtoFeature> _features = _this.getFeatures();
     Iterable<LDtoOperation> _filter = Iterables.<LDtoOperation>filter(_features, LDtoOperation.class);
     return IterableExtensions.<LDtoOperation>toList(_filter);
   }
@@ -268,7 +269,8 @@ public class LDtoImpl extends LClassImpl implements LDto
    */
   public List<LDtoReference> getReferences()
   {
-    EList<LDtoFeature> _features = this.getFeatures();
+    LDto _this = this;
+    EList<LDtoFeature> _features = _this.getFeatures();
     Iterable<LDtoReference> _filter = Iterables.<LDtoReference>filter(_features, LDtoReference.class);
     return IterableExtensions.<LDtoReference>toList(_filter);
   }
@@ -280,7 +282,8 @@ public class LDtoImpl extends LClassImpl implements LDto
    */
   public List<LDtoAttribute> getAttributes()
   {
-    EList<LDtoFeature> _features = this.getFeatures();
+    LDto _this = this;
+    EList<LDtoFeature> _features = _this.getFeatures();
     Iterable<LDtoAttribute> _filter = Iterables.<LDtoAttribute>filter(_features, LDtoAttribute.class);
     return IterableExtensions.<LDtoAttribute>toList(_filter);
   }
@@ -293,7 +296,9 @@ public class LDtoImpl extends LClassImpl implements LDto
   public List<? extends LFeature> getAllFeatures()
   {
     final List<LDtoFeature> result = CollectionLiterals.<LDtoFeature>newArrayList();
-    this.collectAllLunFeatures(this, result);
+    LDto _this = this;
+    LDto _this_1 = this;
+    _this.collectAllLunFeatures(_this_1, result);
     return result;
   }
 
@@ -311,8 +316,9 @@ public class LDtoImpl extends LClassImpl implements LDto
     }
     EList<LDtoFeature> _features = current.getFeatures();
     result.addAll(_features);
+    LDto _this = this;
     LDto _superType = current.getSuperType();
-    this.collectAllLunFeatures(_superType, result);
+    _this.collectAllLunFeatures(_superType, result);
   }
 
   /**

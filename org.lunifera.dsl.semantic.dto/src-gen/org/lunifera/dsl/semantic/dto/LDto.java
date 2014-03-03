@@ -145,7 +145,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType
    * Returns all features of type LOperation
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.dto.OperationsList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoOperation%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoOperation%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoOperation%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoOperation%>>toList(_filter);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.dto.LDto%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = _this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoOperation%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoOperation%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoOperation%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoOperation%>>toList(_filter);'"
    * @generated
    */
   List<LDtoOperation> getOperations();
@@ -158,7 +158,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType
    * Returns all features of type LDtoReference
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.dto.DtoReferenceList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoReference%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoReference%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoReference%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoReference%>>toList(_filter);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.dto.LDto%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = _this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoReference%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoReference%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoReference%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoReference%>>toList(_filter);'"
    * @generated
    */
   List<LDtoReference> getReferences();
@@ -171,7 +171,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType
    * Returns all features of type LDtoAttribute
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.dto.DtoAttributeList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoAttribute%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>>toList(_filter);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.dto.LDto%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = _this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoAttribute%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>>toList(_filter);'"
    * @generated
    */
   List<LDtoAttribute> getAttributes();
@@ -184,7 +184,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType
    * Returns all features of the holder and from super types
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.common.types.FeaturesList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%java.util.List%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> result = <%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.<<%org.lunifera.dsl.semantic.dto.LDtoFeature%>>newArrayList();\nthis.collectAllLunFeatures(this, result);\nreturn result;'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%java.util.List%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> result = <%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.<<%org.lunifera.dsl.semantic.dto.LDtoFeature%>>newArrayList();\n<%org.lunifera.dsl.semantic.dto.LDto%> _this = this;\n<%org.lunifera.dsl.semantic.dto.LDto%> _this_1 = this;\n_this.collectAllLunFeatures(_this_1, result);\nreturn result;'"
    * @generated
    */
   List<? extends LFeature> getAllFeatures();
@@ -193,7 +193,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @model currentUnique="false" resultDataType="org.lunifera.dsl.semantic.dto.DtoFeatureList" resultUnique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _equals = <%com.google.common.base.Objects%>.equal(current, null);\nif (_equals)\n{\n\treturn;\n}\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = current.getFeatures();\nresult.addAll(_features);\n<%org.lunifera.dsl.semantic.dto.LDto%> _superType = current.getSuperType();\nthis.collectAllLunFeatures(_superType, result);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _equals = <%com.google.common.base.Objects%>.equal(current, null);\nif (_equals)\n{\n\treturn;\n}\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = current.getFeatures();\nresult.addAll(_features);\n<%org.lunifera.dsl.semantic.dto.LDto%> _this = this;\n<%org.lunifera.dsl.semantic.dto.LDto%> _superType = current.getSuperType();\n_this.collectAllLunFeatures(_superType, result);'"
    * @generated
    */
   void collectAllLunFeatures(LDto current, List<LDtoFeature> result);

@@ -225,7 +225,8 @@ public class LBeanImpl extends LClassImpl implements LBean
    */
   public List<LOperation> getOperations()
   {
-    EList<LBeanFeature> _features = this.getFeatures();
+    LBean _this = this;
+    EList<LBeanFeature> _features = _this.getFeatures();
     Iterable<LOperation> _filter = Iterables.<LOperation>filter(_features, LOperation.class);
     return IterableExtensions.<LOperation>toList(_filter);
   }
@@ -237,7 +238,8 @@ public class LBeanImpl extends LClassImpl implements LBean
    */
   public List<LBeanReference> getReferences()
   {
-    EList<LBeanFeature> _features = this.getFeatures();
+    LBean _this = this;
+    EList<LBeanFeature> _features = _this.getFeatures();
     Iterable<LBeanReference> _filter = Iterables.<LBeanReference>filter(_features, LBeanReference.class);
     return IterableExtensions.<LBeanReference>toList(_filter);
   }
@@ -249,7 +251,8 @@ public class LBeanImpl extends LClassImpl implements LBean
    */
   public List<LBeanAttribute> getAttributes()
   {
-    EList<LBeanFeature> _features = this.getFeatures();
+    LBean _this = this;
+    EList<LBeanFeature> _features = _this.getFeatures();
     Iterable<LBeanAttribute> _filter = Iterables.<LBeanAttribute>filter(_features, LBeanAttribute.class);
     return IterableExtensions.<LBeanAttribute>toList(_filter);
   }
@@ -262,7 +265,9 @@ public class LBeanImpl extends LClassImpl implements LBean
   public List<LBeanFeature> getAllFeatures()
   {
     final List<LBeanFeature> result = CollectionLiterals.<LBeanFeature>newArrayList();
-    this.collectAllLunFeatures(this, result);
+    LBean _this = this;
+    LBean _this_1 = this;
+    _this.collectAllLunFeatures(_this_1, result);
     return result;
   }
 
@@ -274,7 +279,9 @@ public class LBeanImpl extends LClassImpl implements LBean
   public List<LBeanAttribute> getAllAttributes()
   {
     final List<LBeanFeature> result = CollectionLiterals.<LBeanFeature>newArrayList();
-    this.collectAllLunFeatures(this, result);
+    LBean _this = this;
+    LBean _this_1 = this;
+    _this.collectAllLunFeatures(_this_1, result);
     Iterable<LBeanAttribute> _filter = Iterables.<LBeanAttribute>filter(result, LBeanAttribute.class);
     return IterableExtensions.<LBeanAttribute>toList(_filter);
   }
@@ -287,7 +294,9 @@ public class LBeanImpl extends LClassImpl implements LBean
   public List<LBeanReference> getAllReferences()
   {
     final List<LBeanFeature> result = CollectionLiterals.<LBeanFeature>newArrayList();
-    this.collectAllLunFeatures(this, result);
+    LBean _this = this;
+    LBean _this_1 = this;
+    _this.collectAllLunFeatures(_this_1, result);
     Iterable<LBeanReference> _filter = Iterables.<LBeanReference>filter(result, LBeanReference.class);
     return IterableExtensions.<LBeanReference>toList(_filter);
   }
@@ -306,8 +315,9 @@ public class LBeanImpl extends LClassImpl implements LBean
     }
     EList<LBeanFeature> _features = current.getFeatures();
     result.addAll(_features);
+    LBean _this = this;
     LBean _superType = current.getSuperType();
-    this.collectAllLunFeatures(_superType, result);
+    _this.collectAllLunFeatures(_superType, result);
   }
 
   /**

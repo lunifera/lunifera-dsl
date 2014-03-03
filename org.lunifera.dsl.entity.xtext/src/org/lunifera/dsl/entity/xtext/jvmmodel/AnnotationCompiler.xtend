@@ -66,7 +66,7 @@ import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 
 import static org.lunifera.dsl.semantic.common.types.LDateType.*
 import org.lunifera.dsl.entity.xtext.compiler.batch.SomeClass
-
+ 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
  */

@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
+import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 
 import org.lunifera.dsl.semantic.common.types.impl.LAnnotationTargetImpl;
@@ -242,7 +243,8 @@ public class LBeanFeatureImpl extends LAnnotationTargetImpl implements LBeanFeat
    */
   public LBean getBean()
   {
-    EObject _eContainer = this.eContainer();
+    LBeanFeature _this = this;
+    EObject _eContainer = _this.eContainer();
     return ((LBean) _eContainer);
   }
 
@@ -254,16 +256,19 @@ public class LBeanFeatureImpl extends LAnnotationTargetImpl implements LBeanFeat
   public EList<LAnnotationDef> getResolvedAnnotations()
   {
     EList<LAnnotationDef> _xifexpression = null;
-    LAnnotationTarget _annotationInfo = this.getAnnotationInfo();
+    LFeature _this = this;
+    LAnnotationTarget _annotationInfo = _this.getAnnotationInfo();
     boolean _notEquals = (!Objects.equal(_annotationInfo, null));
     if (_notEquals)
     {
-      LAnnotationTarget _annotationInfo_1 = this.getAnnotationInfo();
+      LFeature _this_1 = this;
+      LAnnotationTarget _annotationInfo_1 = _this_1.getAnnotationInfo();
       _xifexpression = _annotationInfo_1.getAnnotations();
     }
     else
     {
-      _xifexpression = this.getAnnotations();
+      LFeature _this_2 = this;
+      _xifexpression = _this_2.getAnnotations();
     }
     return _xifexpression;
   }

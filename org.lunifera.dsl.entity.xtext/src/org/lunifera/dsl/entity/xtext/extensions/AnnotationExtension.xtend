@@ -29,7 +29,7 @@ import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
-
+ 
 class AnnotationExtension extends org.lunifera.dsl.common.xtext.extensions.AnnotationExtension {
 
 	def boolean isEntityAnnoExcluded(LClass lEntity) {

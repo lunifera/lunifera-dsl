@@ -1,11 +1,4 @@
-/**
- * Copyright (c) 2011 - 2014, Hans Georg Glöckler, Loetz KG (Heidelberg)
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- */
-package org.lunifera.dsl.entity.xtext.ui;
+package org.lunifera.dsl.dto.xtext.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
@@ -13,8 +6,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
 
-public class EntityHighlightingConfiguration implements
-		IHighlightingConfiguration {
+public class DtoHighlightingConfiguration implements IHighlightingConfiguration {
 
 	public static final String COMMENT_ID = "comment";
 	public static final String KEYWORD_ID = "keyword";
@@ -85,4 +77,5 @@ public class EntityHighlightingConfiguration implements
 		textStyle.setColor(new RGB(125, 125, 125));
 		return textStyle;
 	}
+
 }

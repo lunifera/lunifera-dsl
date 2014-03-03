@@ -122,7 +122,8 @@ public class LDtoInheritedReferenceImpl extends LDtoAbstractReferenceImpl implem
    */
   public LMultiplicity getInheritedMultiplicity()
   {
-    LReference _inheritedFeature = this.getInheritedFeature();
+    LDtoInheritedReference _this = this;
+    LReference _inheritedFeature = _this.getInheritedFeature();
     return _inheritedFeature.getMultiplicity();
   }
 

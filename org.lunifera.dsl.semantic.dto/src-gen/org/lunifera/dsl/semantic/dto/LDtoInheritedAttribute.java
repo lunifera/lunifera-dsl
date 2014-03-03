@@ -65,7 +65,7 @@ public interface LDtoInheritedAttribute extends LDtoAbstractAttribute
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @model kind="operation" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.common.types.LAttribute%> _inheritedFeature = this.getInheritedFeature();\nreturn _inheritedFeature.getType();'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute%> _this = this;\n<%org.lunifera.dsl.semantic.common.types.LAttribute%> _inheritedFeature = _this.getInheritedFeature();\nreturn _inheritedFeature.getType();'"
    * @generated
    */
   LScalarType getInheritedType();
@@ -74,7 +74,7 @@ public interface LDtoInheritedAttribute extends LDtoAbstractAttribute
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @model kind="operation" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.common.types.LAttribute%> _inheritedFeature = this.getInheritedFeature();\nreturn _inheritedFeature.getMultiplicity();'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute%> _this = this;\n<%org.lunifera.dsl.semantic.common.types.LAttribute%> _inheritedFeature = _this.getInheritedFeature();\nreturn _inheritedFeature.getMultiplicity();'"
    * @generated
    */
   LMultiplicity getInheritedMultiplicity();
