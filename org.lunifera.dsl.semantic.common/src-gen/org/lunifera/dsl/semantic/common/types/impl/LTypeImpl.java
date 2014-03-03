@@ -178,16 +178,19 @@ public class LTypeImpl extends LAnnotationTargetImpl implements LType
   public EList<LAnnotationDef> getResolvedAnnotations()
   {
     EList<LAnnotationDef> _xifexpression = null;
-    LAnnotationTarget _annotationInfo = this.getAnnotationInfo();
+    LType _this = this;
+    LAnnotationTarget _annotationInfo = _this.getAnnotationInfo();
     boolean _notEquals = (!Objects.equal(_annotationInfo, null));
     if (_notEquals)
     {
-      LAnnotationTarget _annotationInfo_1 = this.getAnnotationInfo();
+      LType _this_1 = this;
+      LAnnotationTarget _annotationInfo_1 = _this_1.getAnnotationInfo();
       _xifexpression = _annotationInfo_1.getAnnotations();
     }
     else
     {
-      _xifexpression = this.getAnnotations();
+      LType _this_2 = this;
+      _xifexpression = _this_2.getAnnotations();
     }
     return _xifexpression;
   }

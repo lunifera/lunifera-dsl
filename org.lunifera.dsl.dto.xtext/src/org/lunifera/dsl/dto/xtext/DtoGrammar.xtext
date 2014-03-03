@@ -26,7 +26,7 @@ DtoFeature returns dto::LDtoFeature:
 	'inherit var' inheritedFeature=[entity::LEntityAttribute|QualifiedName]) ('mapto' type=[dto::LDto])? (mapper=DtoMapper)? ';')
 	|
 	({dto::LDtoInheritedReference.annotationInfo=current}
-	('inherit ref' inheritedFeature=[entity::LEntityReference|QualifiedName]) 'mapto' type=[dto::LDto] (mapper=DtoMapper)?
+	('inherit ref' inheritedFeature=[entity::LEntityReference|QualifiedName]) 'mapto' type=[dto::LDto] (mapper=DtoMapper)? 
 	';')
 	|
 	({dto::LDtoAttribute.annotationInfo=current}

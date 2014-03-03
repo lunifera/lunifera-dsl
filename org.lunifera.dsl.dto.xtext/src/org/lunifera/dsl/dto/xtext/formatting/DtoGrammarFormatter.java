@@ -25,8 +25,69 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 
 	public void configure(FormattingConfig c, DtoGrammarGrammarAccess ga) {
 		DtoGrammarGrammarAccess f = (DtoGrammarGrammarAccess) getGrammarAccess();
-
+		
 		super.configure(c, ga.getCommonGrammarGrammarAccess());
+
+		configureClassDef(c, f.getClassAccess());
+		configureDtoFeature(c, f.getDtoFeatureAccess());
+		configureDtoMapper(c, f.getDtoMapperAccess());
+		configureLimitedMapperDtoMapper(c, f.getLimitedMapperDtoMapperAccess());
 	}
+
+	protected void configureClassDef(FormattingConfig c,
+			DtoGrammarGrammarAccess.ClassElements ele) {
+		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
+		c.setLinewrap().around(ele.getRule());
+
+		c.setIndentationIncrement().after(
+				ele.getLeftCurlyBracketKeyword_7());
+		c.setIndentationDecrement().before(
+				ele.getRightCurlyBracketKeyword_9());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_9());
+	}
+
+	protected void configureDtoFeature(FormattingConfig c,
+			DtoGrammarGrammarAccess.DtoFeatureElements ele) {
+		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
+
+		//Setting for ";"
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_0_3());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_5());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_2_1_3());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_3_1_4());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_4_5());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_3());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_6_6());
+		
+		c.setLinewrap(1, 1, 2).around(ele.getRule());
+	}
+
+	protected void configureDtoMapper(FormattingConfig c,
+			DtoGrammarGrammarAccess.DtoMapperElements ele) {
+		c.setLinewrap(1, 1, 2).after(ele.getRule());
+
+		//Settings for "{" and "}"
+		c.setIndentationIncrement().after(
+				ele.getLeftCurlyBracketKeyword_0());
+		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_0());
+		
+		c.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_4());
+		c.setIndentationDecrement().before(
+				ele.getRightCurlyBracketKeyword_4());
+		c.setLinewrap(1, 1, 2).after(ele.getRightCurlyBracketKeyword_4());
+	}
+
+	protected void configureLimitedMapperDtoMapper(FormattingConfig c,
+			DtoGrammarGrammarAccess.LimitedMapperDtoMapperElements ele) {
+		c.setLinewrap(1, 1, 2).around(ele.getRule());
+
+		//Settings for "{" and "}"
+		c.setIndentationIncrement().after(
+				ele.getLeftCurlyBracketKeyword_0());
+		c.setIndentationDecrement().before(
+				ele.getRightCurlyBracketKeyword_3());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_3());
+	}
+
 
 }
