@@ -23,17 +23,18 @@ DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
 	annotations+=AnnotationDef*
 	((({dto::LDtoInheritedAttribute.annotationInfo=current}
-	'inherit var' inheritedFeature=[entity::LEntityAttribute|QualifiedName]) ('mapto' type=[dto::LDto])? (mapper=DtoMapper)? ';')
+	'inherit var' inheritedFeature=[entity::LEntityAttribute|QualifiedName]) ('mapto' type=[dto::LDto])? (mapper=DtoMapper
+	| ';'))
 	|
 	({dto::LDtoInheritedReference.annotationInfo=current}
-	('inherit ref' inheritedFeature=[entity::LEntityReference|QualifiedName]) 'mapto' type=[dto::LDto] (mapper=DtoMapper)?
-	';')
+	('inherit ref' inheritedFeature=[entity::LEntityReference|QualifiedName]) 'mapto' type=[dto::LDto] (mapper=DtoMapper |
+	';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(transient?='transient' type=[common::LScalarType] name=ValidIDWithKeywords';'))
+	(transient?='transient' type=[common::LScalarType] name=ValidIDWithKeywords ';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(derived?='derived' type=[common::LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression';'))
+	(derived?='derived' type=[common::LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
 	(id?='id' | version?="version" | uuid?="uuid") type=[common::LScalarType] multiplicity=Multiplicity?
@@ -43,13 +44,13 @@ DtoFeature returns dto::LDtoFeature:
 	({dto::LDtoReference.annotationInfo=current}
 	('ref' (cascading?='cascade')? type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
 	('opposite' opposite=[dto::LDtoReference|LFQN])?)
-	(mapper=LimitedMapperDtoMapper)?
-	';')
+	(mapper=LimitedMapperDtoMapper |
+	';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
 	'var' type=[common::LScalarType] multiplicity=Multiplicity?
-	name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper)?
-	';')
+	name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper |
+	';'))
 	|
 	({dto::LDtoOperation.annotationInfo=current}
 	('def' type=JvmTypeReference name=ValidIDWithKeywords
@@ -63,7 +64,7 @@ DtoMapper returns dto::LDtoMapper:
 	fromDTO=XExpression)?
 	'}';
 
-// custom vars and refs should not be mapped to entity. 
+	// custom vars and refs should not be mapped to entity. 
 LimitedMapperDtoMapper returns dto::LDtoMapper:
 	'{' 'toDTO'
 	toDTO=XExpression
