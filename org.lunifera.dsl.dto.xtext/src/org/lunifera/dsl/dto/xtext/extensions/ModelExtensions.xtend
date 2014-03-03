@@ -292,6 +292,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch String toName(LDtoFeature feature) {
+		if(feature == null || feature.name == null) return ""
 		if (feature.inherited) {
 			return feature.inheritedFeature?.toName
 		}
