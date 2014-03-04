@@ -22,7 +22,11 @@ public class Bounds {
 
 	private final LLowerBound lower;
 	private final LUpperBound upper;
-
+	
+	public static Bounds createZeroToOne(){
+		return new Bounds(LLowerBound.ZERO, LUpperBound.ONE);
+	}
+	
 	public static Bounds createFor(LFeature prop) {
 		if (prop == null) {
 			return new Bounds(LLowerBound.ZERO, LUpperBound.ONE);

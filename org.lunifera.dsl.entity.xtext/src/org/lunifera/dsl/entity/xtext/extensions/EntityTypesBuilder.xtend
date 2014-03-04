@@ -8,7 +8,7 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.entity.xtext.extensions
+package org.lunifera.dsl.entity.xtext.extensions 
 
 import com.google.inject.Inject
 import java.util.ArrayList
@@ -188,7 +188,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
-		jvmField.type = cloneWithProxies(prop.toTypeReference)
+		jvmField.type = cloneWithProxies(prop.toTypeReferenceWithMultiplicity)
 
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
@@ -199,7 +199,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
-		jvmField.type = cloneWithProxies(prop.toTypeReference)
+		jvmField.type = cloneWithProxies(prop.toTypeReferenceWithMultiplicity)
 		jvmField.documentation = prop.getDocumentation
 		// if uuid or historized entity and property name == oid AND a uuid property is present too
 		if (prop.isUUID || ((entity.timedependent || entity.historized) && prop.toName.equals(Constants::PROP__OID) && entity.uuidPresent)) {
@@ -544,7 +544,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		val fieldName = name.toFirstLower
 		val JvmOperation op = typesFactory.createJvmOperation()
 		op.visibility = JvmVisibility::PRIVATE
-		op.returnType = prop.toTypeReference
+		op.returnType = prop.toTypeReferenceWithMultiplicity
 		op.simpleName = prop.toCollectionInternalGetterName
 		op.documentation = "Returns the list of " + htmlCode(prop.typeName) + "s thereby lazy initializing it."
 		setBody(op,

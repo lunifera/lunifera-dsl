@@ -16,6 +16,7 @@ import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonBatchScopeProvider;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
+import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
@@ -49,7 +50,7 @@ public class DtoBatchScopeProvider extends CommonBatchScopeProvider {
 			return new InheritTypesFilterScope((LType) context, super.getScope(
 					context, reference));
 		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {
-			LDtoAttribute att = (LDtoAttribute) context;
+			LDtoAbstractAttribute att = (LDtoAbstractAttribute) context;
 			if (att.isId() || att.isVersion()) {
 				return new DatatypesFilterScope(super.getScope(context,
 						reference));

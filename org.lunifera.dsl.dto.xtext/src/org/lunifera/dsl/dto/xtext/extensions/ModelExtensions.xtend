@@ -54,16 +54,10 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		return jvmTypeRef
 	}
 
-	override dispatch JvmTypeReference toTypeReference(LAttribute prop) {
-		var jvmTypeRef = prop.type?.toTypeReference
-		return jvmTypeRef
-	}
-
 	/**
 	 * Creates a type references with respect to inherited features
 	 */
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractReference prop) {
-
 		// prop.type is instanceof DTO
 		return prop.type?.toTypeReference.cloneWithProxies
 	}
@@ -72,7 +66,6 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	 * Creates a type references with respect to inherited features
 	 */
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractAttribute prop) {
-
 		// prop.type is instanceof LDataType
 		return prop.type?.toTypeReference.cloneWithProxies
 	}
@@ -83,8 +76,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedAttribute prop) {
 
 		if (prop.type != null) {
-
-			// if the type is a different on, then use the type of the property
+			// if the type is a different one, then use the type of the property
 			// needs to be mapped by a custom mapper in dsl
 			return prop.type?.toTypeReference.cloneWithProxies
 		}
@@ -275,15 +267,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		prop.opposite
 	}
 
-	override Bounds getBounds(LFeature prop) {
-		return internalGetBound(prop)
-	}
-
-	def dispatch Bounds internalGetBound(LFeature prop) {
-		return Bounds.createFor(prop);
-	}
-
-	def dispatch Bounds internalGetBound(LDtoFeature prop) {
+	def dispatch Bounds getBounds(LDtoFeature prop) {
 		if (prop.inherited) {
 			return Bounds.createFor(prop.inheritedFeature);
 		} else {
@@ -292,7 +276,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch String toName(LDtoFeature feature) {
-		if(feature == null || feature.name == null) return ""
+		if(feature == null || !feature.inherited && feature.name == null) return ""
 		if (feature.inherited) {
 			return feature.inheritedFeature?.toName
 		}
