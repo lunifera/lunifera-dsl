@@ -3,6 +3,7 @@
  */
 package org.lunifera.dsl.dto.xtext.formatting;
 
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 import org.lunifera.dsl.common.xtext.formatting.CommonGrammarFormatter;
 import org.lunifera.dsl.dto.xtext.services.DtoGrammarGrammarAccess;
@@ -32,6 +33,30 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 		configureDtoFeature(c, f.getDtoFeatureAccess());
 		configureDtoMapper(c, f.getDtoMapperAccess());
 		configureLimitedMapperDtoMapper(c, f.getLimitedMapperDtoMapperAccess());
+		
+		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
+		c.setLinewrap(0, 1, 2).after(f.getSL_COMMENTRule());
+		c.setLinewrap(0, 1, 2).before(f.getML_COMMENTRule());
+		c.setLinewrap(1, 1, 1).after(f.getML_COMMENTRule());
+
+		for (Keyword kw : ga.findKeywords("@")) {
+			c.setNoSpace().after(kw);
+		}
+		for (Keyword kw : ga.findKeywords("(")) {
+			c.setNoSpace().after(kw);
+		}
+		for (Keyword kw : ga.findKeywords("(")) {
+			c.setNoSpace().before(kw);
+		}
+		for (Keyword kw : ga.findKeywords(")")) {
+			c.setNoSpace().before(kw);
+		}
+		for (Keyword kw : ga.findKeywords(";")) {
+			c.setNoSpace().before(kw);
+		}
+		for (Keyword kw : ga.findKeywords(",")) {
+			c.setNoSpace().before(kw);
+		}
 	}
 
 	protected void configureClassDef(FormattingConfig c,
@@ -49,16 +74,6 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 	protected void configureDtoFeature(FormattingConfig c,
 			DtoGrammarGrammarAccess.DtoFeatureElements ele) {
 		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
-
-		//Setting for ";"
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_0_3());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_5());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_2_1_3());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_3_1_4());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_4_5());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_3());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_6_6());
-		
 		c.setLinewrap(1, 1, 2).around(ele.getRule());
 	}
 
