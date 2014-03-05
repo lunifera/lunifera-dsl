@@ -72,7 +72,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
-		jvmField.type = cloneWithProxies(prop.toTypeReference)
+		jvmField.type = cloneWithProxies(prop.toTypeReferenceWithMultiplicity)
 
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
@@ -143,14 +143,17 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		prop.toGetter(prop.toGetterName)
 	}
 
+	def dispatch JvmOperation toGetter(EObject prop, String methodName) {
+		throw new IllegalStateException("Please override")
+	}
+
 	// dispatch used by sub classes
 	def dispatch JvmOperation toGetter(LReference prop, String methodName) {
-		val typeRef = prop.toTypeReference
 		val propertyName = prop.toName
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.simpleName = methodName
-		op.returnType = cloneWithProxies(typeRef)
+		op.returnType = cloneWithProxies(prop.toTypeReferenceWithMultiplicity)
 		op.documentation = if (prop.toMany) {
 			"Returns an unmodifiable list of " + propertyName + "."
 		} else if (propertyName != null) {
@@ -177,12 +180,11 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 
 	// dispatch used by sub classes
 	def dispatch JvmOperation toGetter(LAttribute prop, String methodName) {
-		val typeRef = prop.toTypeReference
 		val propertyName = prop.toName
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.simpleName = methodName
-		op.returnType = cloneWithProxies(typeRef)
+		op.returnType = cloneWithProxies(prop.toTypeReferenceWithMultiplicity)
 
 		if (prop.derived) {
 			val customDoc = prop.documentation

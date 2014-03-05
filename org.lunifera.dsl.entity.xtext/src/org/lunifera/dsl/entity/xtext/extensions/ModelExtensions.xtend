@@ -42,19 +42,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	@Inject TypeReferences references;
 
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
-		var jvmTypeRef = prop.type?.toTypeReference
-		if (jvmTypeRef != null && prop.isToMany) {
-			jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
-		}
-		return jvmTypeRef
+		return prop.type?.toTypeReference
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LBeanReference prop) {
-		var jvmTypeRef = prop.type?.toTypeReference
-		if (jvmTypeRef != null && prop.isToMany) {
-			jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
-		}
-		return jvmTypeRef
+		return prop.type?.toTypeReference
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LOperation prop) {
@@ -97,7 +89,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch isUUID(LEntityAttribute prop) {
 		prop.uuid
 	}
-
+ 
 	def dispatch getResolvedOpposite(LEntityReference prop) {
 
 		// For a toMany that has already an opposite, return it.

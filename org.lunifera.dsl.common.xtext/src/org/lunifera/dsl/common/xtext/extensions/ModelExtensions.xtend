@@ -26,7 +26,8 @@ import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
- 
+import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
+
 class ModelExtensions {
 
 	@Inject extension IQualifiedNameProvider
@@ -67,22 +68,41 @@ class ModelExtensions {
 			return type.jvmTypeReference.cloneWithProxies
 		}
 	}
-
+	
 	def JvmTypeReference toSyntheticTypeReference(LDataType type) {
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LAttribute prop) {
-		var jvmTypeRef = prop.type?.toTypeReference
-		if (jvmTypeRef != null && prop.isToMany) {
-			jvmTypeRef = newTypeRef(prop, typeof(List), jvmTypeRef);
-		}
-		return jvmTypeRef
+		return prop.type?.toTypeReference
 	}
-
-	def Bounds getBounds(LFeature prop) {
+	
+	/**
+	 * Create a type reference with respect to many multiplicity
+	 */
+	def dispatch JvmTypeReference toTypeReferenceWithMultiplicity(LAnnotationTarget context){
+		var typeRef = context.toTypeReference
+		if(typeRef != null && context.bounds.toMany){
+			typeRef = context.toListTypeReference(typeRef)
+		}
+		return typeRef
+	}
+	
+	def toListTypeReference(EObject context, JvmTypeReference jvmTypeRef){
+		newTypeRef(context, typeof(List), jvmTypeRef);
+	}
+	
+	def dispatch Bounds getBounds(LFeature prop) {
 		Bounds::createFor(prop)
 	}
-
+	
+	def dispatch Bounds getBounds(LAnnotationTarget context) {
+		Bounds::createZeroToOne
+	}
+	
+	def dispatch Bounds getBounds(Void context) {
+		Bounds::createZeroToOne
+	}
+	
 	def isToMany(LFeature prop) {
 		prop.bounds.toMany
 	}
