@@ -14,7 +14,7 @@ import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LLowerBound;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LUpperBound;
-
+ 
 /**
  * Keeps lower and upper bound
  */
