@@ -123,6 +123,11 @@
 						<artifactId>org.lunifera.dsl.common.xtext</artifactId>
 						<version>0.0.1-SNAPSHOT</version>
 					</dependency>
+					<dependency>
+						<groupId>org.lunifera.dsl</groupId>
+						<artifactId>org.lunifera.dsl.datatype.xtext</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
 				</dependencies>
 			</plugin>
 			<plugin>
