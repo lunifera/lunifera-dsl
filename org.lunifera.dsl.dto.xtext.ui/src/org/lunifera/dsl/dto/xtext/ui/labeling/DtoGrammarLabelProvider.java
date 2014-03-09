@@ -31,13 +31,13 @@ import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LImport;
-import org.lunifera.dsl.semantic.common.types.LOperation;
 import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.dto.LDtoAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
 import org.lunifera.dsl.semantic.dto.LDtoMapper;
+import org.lunifera.dsl.semantic.dto.LDtoOperation;
 import org.lunifera.dsl.semantic.dto.LDtoReference;
 
 //git@github.com/lunifera/lunifera-dsl.git
@@ -63,8 +63,8 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 		super(delegate);
 	}
 
-	public ImageDescriptor image(LImport element) {
-		return images.forImport();
+	public String image(LImport element) {
+		return "import.gif";
 	}
 
 	public ImageDescriptor image(LDto element) {
@@ -80,12 +80,6 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 
 	public ImageDescriptor image(LEnumLiteral element) {
 		return images.forEnumLiteral();
-	}
-
-	public ImageDescriptor image(LOperation element) {
-		JvmOperation inferredOperation = getFirstOrNull(
-				associations.getJvmElements(element), JvmOperation.class);
-		return images.forOperation(inferredOperation.getVisibility(), 0);
 	}
 
 	public String image(LDtoMapper element) {
@@ -108,6 +102,12 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 
 	public String image(LDtoInheritedAttribute element) {
 		return "inheritedfeature.gif";
+	}
+	
+	public ImageDescriptor image(LDtoOperation element) {
+		JvmOperation inferredOperation = getFirstOrNull(
+				associations.getJvmElements(element), JvmOperation.class);
+		return images.forOperation(inferredOperation.getVisibility(), 0);
 	}
 
 	public ImageDescriptor image(LDtoAttribute element) {

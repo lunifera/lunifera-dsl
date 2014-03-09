@@ -17,39 +17,38 @@ public class DtoGrammarHighlightingCalculator implements
 	public void provideHighlightingFor(XtextResource resource,
 			IHighlightedPositionAcceptor acceptor) {
 
-			if (resource == null || resource.getParseResult() == null)
-				return;
+		if (resource == null || resource.getParseResult() == null)
+			return;
 
-			INode root = resource.getParseResult().getRootNode();
-			BidiTreeIterator<INode> it = root.getAsTreeIterable().iterator();
-			while (it.hasNext()) {
-				INode node = it.next();
-				String text = node.getText();
-				EObject semanticElement = node.getSemanticElement();
+		INode root = resource.getParseResult().getRootNode();
+		BidiTreeIterator<INode> it = root.getAsTreeIterable().iterator();
+		while (it.hasNext()) {
+			INode node = it.next();
+			String text = node.getText();
+			EObject semanticElement = node.getSemanticElement();
 
-				if (semanticElement instanceof LDtoFeature) {
-					if ("id".equals(text) || "transient".equals(text)
-							|| "version".equals(text)) {
-						if (node.getNextSibling() == null) {
-							if (!"transient".equals(text)) {
-								acceptor.addPosition(node.getOffset(),
-										node.getLength(),
-										DtoHighlightingConfiguration.DEFAULT_ID);
-							}
-						} else {
+			if (semanticElement instanceof LDtoFeature) {
+				if ("id".equals(text) || "transient".equals(text)
+						|| "version".equals(text)) {
+					if (node.getNextSibling() == null) {
+						if (!"transient".equals(text)) {
 							acceptor.addPosition(node.getOffset(),
 									node.getLength(),
-									DtoHighlightingConfiguration.MODIFIER_ID);
+									DtoHighlightingConfiguration.DEFAULT_ID);
 						}
-					}
-				} else if (semanticElement instanceof LDtoMapper) {
-					if ("toDTO".equals(text) || "fromDTO".equals(text)) {
-						acceptor.addPosition(node.getOffset(), node.getLength(),
+					} else {
+						acceptor.addPosition(node.getOffset(),
+								node.getLength(),
 								DtoHighlightingConfiguration.MODIFIER_ID);
 					}
 				}
+			} else if (semanticElement instanceof LDtoMapper) {
+				if ("toDTO".equals(text) || "fromDTO".equals(text)) {
+					acceptor.addPosition(node.getOffset(), node.getLength(),
+							DtoHighlightingConfiguration.MODIFIER_ID);
+				}
+
 			}
 		}
 	}
-
-
+}
