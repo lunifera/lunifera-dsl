@@ -131,7 +131,6 @@
 					<filesets>
 						<fileset>
 							<directory>xtend-gen</directory>
-							<directory>src-gen</directory>
 							<includes>
 								<include>**</include>
 							</includes>

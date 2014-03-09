@@ -5,10 +5,10 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Contributors: 
+ * Contributors:
  * 		Florian Pirchner - Initial implementation
  */
-module org.lunifera.dsl.datatype.xtext.MavenGenerateDatatypeGrammar
+module org.lunifera.dsl.datatype.xtext.DatatypeGrammar
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
@@ -28,6 +28,7 @@ Workflow {
 	bean = org.eclipse.xtext.mwe.Reader {
 		register = xcore
 	}
+	
 	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
 		ePackage = org.lunifera.dsl.mwe.PackageMapping {
 			nsURI = "http://www.lunifera.org/dsl/common/types/v1"
@@ -62,14 +63,6 @@ Workflow {
 		}
 		uriMap = {
 			from = "platform:/resource/org.lunifera.dsl.semantic.common/"
-			to = "classpath:/"
-		}
-		uriMap = {
-			from = "platform:/resource/org.lunifera.dsl.datatype.xtext/"
-			to = "classpath:/"
-		}
-		uriMap = {
-			from = "platform:/resource/org.lunifera.dsl.datatype.xtext/src/org/lunifera/dsl/datatype/xtext/"
 			to = "classpath:/"
 		}
 
