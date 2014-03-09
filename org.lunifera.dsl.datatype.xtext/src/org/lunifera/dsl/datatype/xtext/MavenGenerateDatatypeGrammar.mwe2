@@ -19,7 +19,7 @@ import org.eclipse.xtext.resource.XtextResourceSet
 var fileExtensions = "datatypes"
 var projectName = "org.lunifera.dsl.datatype.xtext"
 var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/datatype/xtext/DatatypeGrammar.xtext"
-var runtimeProject = "${projectName}"
+var runtimeProject = "../${projectName}"
 var backtrack = false
 var memoize = false
  
