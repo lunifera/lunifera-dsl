@@ -64,6 +64,14 @@ Workflow {
 			from = "platform:/resource/org.lunifera.dsl.semantic.common/"
 			to = "classpath:/"
 		}
+		uriMap = {
+			from = "platform:/resource/org.lunifera.dsl.datatype.xtext/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.lunifera.dsl.datatype.xtext/src/org/lunifera/dsl/datatype/xtext/"
+			to = "classpath:/"
+		}
 
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
