@@ -14,7 +14,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonBatchScopeProvider;
+import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
@@ -33,6 +35,9 @@ public class EntityBatchScopeProvider extends CommonBatchScopeProvider {
 			return new EntityRefOppositeScope((LEntityReference) context);
 		} else if (reference == LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
 			return new BeanRefOppositeScope((LBeanReference) context);
+		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {
+			return new DatatypesScope(super.getScope(context, reference),
+					(LEntityAttribute) context, reference);
 		}
 		return super.getScope(context, reference);
 	}

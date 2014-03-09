@@ -74,6 +74,43 @@ public interface LunTypesPackage extends EPackage
   LunTypesPackage eINSTANCE = org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl.init();
 
   /**
+   * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LCommonModelImpl <em>LCommon Model</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.dsl.semantic.common.types.impl.LCommonModelImpl
+   * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLCommonModel()
+   * @generated
+   */
+  int LCOMMON_MODEL = 0;
+
+  /**
+   * The feature id for the '<em><b>Packages</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LCOMMON_MODEL__PACKAGES = 0;
+
+  /**
+   * The number of structural features of the '<em>LCommon Model</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LCOMMON_MODEL_FEATURE_COUNT = 1;
+
+  /**
+   * The number of operations of the '<em>LCommon Model</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LCOMMON_MODEL_OPERATION_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LPackageImpl <em>LPackage</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -81,7 +118,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLPackage()
    * @generated
    */
-  int LPACKAGE = 0;
+  int LPACKAGE = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -127,7 +164,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLTypedPackage()
    * @generated
    */
-  int LTYPED_PACKAGE = 1;
+  int LTYPED_PACKAGE = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -182,7 +219,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLImport()
    * @generated
    */
-  int LIMPORT = 2;
+  int LIMPORT = 3;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -219,7 +256,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAnnotationTarget()
    * @generated
    */
-  int LANNOTATION_TARGET = 5;
+  int LANNOTATION_TARGET = 6;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -256,7 +293,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLType()
    * @generated
    */
-  int LTYPE = 3;
+  int LTYPE = 4;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -320,7 +357,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAnnotationDef()
    * @generated
    */
-  int LANNOTATION_DEF = 4;
+  int LANNOTATION_DEF = 5;
 
   /**
    * The feature id for the '<em><b>Exclude</b></em>' attribute.
@@ -366,7 +403,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLScalarType()
    * @generated
    */
-  int LSCALAR_TYPE = 6;
+  int LSCALAR_TYPE = 7;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -430,7 +467,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDataType()
    * @generated
    */
-  int LDATA_TYPE = 7;
+  int LDATA_TYPE = 8;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -584,7 +621,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLEnum()
    * @generated
    */
-  int LENUM = 8;
+  int LENUM = 9;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -657,7 +694,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLEnumLiteral()
    * @generated
    */
-  int LENUM_LITERAL = 9;
+  int LENUM_LITERAL = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -694,7 +731,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLClass()
    * @generated
    */
-  int LCLASS = 10;
+  int LCLASS = 11;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -785,7 +822,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLFeaturesHolder()
    * @generated
    */
-  int LFEATURES_HOLDER = 11;
+  int LFEATURES_HOLDER = 12;
 
   /**
    * The number of structural features of the '<em>LFeatures Holder</em>' class.
@@ -831,7 +868,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLFeature()
    * @generated
    */
-  int LFEATURE = 12;
+  int LFEATURE = 13;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -904,7 +941,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLReference()
    * @generated
    */
-  int LREFERENCE = 13;
+  int LREFERENCE = 14;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -995,7 +1032,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAttribute()
    * @generated
    */
-  int LATTRIBUTE = 14;
+  int LATTRIBUTE = 15;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1149,7 +1186,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLOperation()
    * @generated
    */
-  int LOPERATION = 15;
+  int LOPERATION = 16;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1231,7 +1268,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLModifier()
    * @generated
    */
-  int LMODIFIER = 16;
+  int LMODIFIER = 17;
 
   /**
    * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -1286,7 +1323,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLMultiplicity()
    * @generated
    */
-  int LMULTIPLICITY = 17;
+  int LMULTIPLICITY = 18;
 
   /**
    * The feature id for the '<em><b>Lower</b></em>' attribute.
@@ -1332,7 +1369,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDateType()
    * @generated
    */
-  int LDATE_TYPE = 18;
+  int LDATE_TYPE = 19;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LVisibility <em>LVisibility</em>}' enum.
@@ -1342,7 +1379,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLVisibility()
    * @generated
    */
-  int LVISIBILITY = 19;
+  int LVISIBILITY = 20;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LLowerBound <em>LLower Bound</em>}' enum.
@@ -1352,7 +1389,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLLowerBound()
    * @generated
    */
-  int LLOWER_BOUND = 20;
+  int LLOWER_BOUND = 21;
 
   /**
    * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LUpperBound <em>LUpper Bound</em>}' enum.
@@ -1362,7 +1399,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLUpperBound()
    * @generated
    */
-  int LUPPER_BOUND = 21;
+  int LUPPER_BOUND = 22;
 
   /**
    * The meta object id for the '<em>Operations List</em>' data type.
@@ -1372,7 +1409,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getOperationsList()
    * @generated
    */
-  int OPERATIONS_LIST = 22;
+  int OPERATIONS_LIST = 23;
 
   /**
    * The meta object id for the '<em>Features List</em>' data type.
@@ -1382,7 +1419,7 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getFeaturesList()
    * @generated
    */
-  int FEATURES_LIST = 23;
+  int FEATURES_LIST = 24;
 
   /**
    * The meta object id for the '<em>Annotation List</em>' data type.
@@ -1392,8 +1429,29 @@ public interface LunTypesPackage extends EPackage
    * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getAnnotationList()
    * @generated
    */
-  int ANNOTATION_LIST = 24;
+  int ANNOTATION_LIST = 25;
 
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LCommonModel <em>LCommon Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>LCommon Model</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LCommonModel
+   * @generated
+   */
+  EClass getLCommonModel();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.semantic.common.types.LCommonModel#getPackages <em>Packages</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Packages</em>'.
+   * @see org.lunifera.dsl.semantic.common.types.LCommonModel#getPackages()
+   * @see #getLCommonModel()
+   * @generated
+   */
+  EReference getLCommonModel_Packages();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LPackage <em>LPackage</em>}'.
@@ -2239,6 +2297,24 @@ public interface LunTypesPackage extends EPackage
    */
   interface Literals
   {
+    /**
+     * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LCommonModelImpl <em>LCommon Model</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.dsl.semantic.common.types.impl.LCommonModelImpl
+     * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLCommonModel()
+     * @generated
+     */
+    EClass LCOMMON_MODEL = eINSTANCE.getLCommonModel();
+
+    /**
+     * The meta object literal for the '<em><b>Packages</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LCOMMON_MODEL__PACKAGES = eINSTANCE.getLCommonModel_Packages();
+
     /**
      * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LPackageImpl <em>LPackage</em>}' class.
      * <!-- begin-user-doc -->

@@ -116,7 +116,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * Returns all features of type LOperation
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.entity.OperationsList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.entity.LBean%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = _this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LOperation%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LOperation%>>filter(_features, <%org.lunifera.dsl.semantic.entity.LOperation%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LOperation%>>toList(_filter);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LOperation%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LOperation%>>filter(_features, <%org.lunifera.dsl.semantic.entity.LOperation%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LOperation%>>toList(_filter);'"
    * @generated
    */
   List<LOperation> getOperations();
@@ -129,7 +129,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * Returns all features of type LBeanReference
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.entity.BeanReferenceList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.entity.LBean%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = _this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LBeanReference%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LBeanReference%>>filter(_features, <%org.lunifera.dsl.semantic.entity.LBeanReference%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LBeanReference%>>toList(_filter);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LBeanReference%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LBeanReference%>>filter(_features, <%org.lunifera.dsl.semantic.entity.LBeanReference%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LBeanReference%>>toList(_filter);'"
    * @generated
    */
   List<LBeanReference> getReferences();
@@ -142,7 +142,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * Returns all features of type LBeanAttribute
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.entity.BeanAttributeList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.entity.LBean%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = _this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>>filter(_features, <%org.lunifera.dsl.semantic.entity.LBeanAttribute%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>>toList(_filter);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>>filter(_features, <%org.lunifera.dsl.semantic.entity.LBeanAttribute%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>>toList(_filter);'"
    * @generated
    */
   List<LBeanAttribute> getAttributes();
@@ -155,7 +155,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * Returns all features of the holder and from super types
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.entity.BeanFeatureList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%java.util.List%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> result = <%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.<<%org.lunifera.dsl.semantic.entity.LBeanFeature%>>newArrayList();\n<%org.lunifera.dsl.semantic.entity.LBean%> _this = this;\n<%org.lunifera.dsl.semantic.entity.LBean%> _this_1 = this;\n_this.collectAllLunFeatures(_this_1, result);\nreturn result;'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%java.util.List%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> result = <%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.<<%org.lunifera.dsl.semantic.entity.LBeanFeature%>>newArrayList();\nthis.collectAllLunFeatures(this, result);\nreturn result;'"
    * @generated
    */
   List<LBeanFeature> getAllFeatures();
@@ -168,7 +168,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * Returns all attributes of the holder and from super types
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.entity.BeanAttributeList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%java.util.List%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> result = <%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.<<%org.lunifera.dsl.semantic.entity.LBeanFeature%>>newArrayList();\n<%org.lunifera.dsl.semantic.entity.LBean%> _this = this;\n<%org.lunifera.dsl.semantic.entity.LBean%> _this_1 = this;\n_this.collectAllLunFeatures(_this_1, result);\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>>filter(result, <%org.lunifera.dsl.semantic.entity.LBeanAttribute%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>>toList(_filter);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%java.util.List%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> result = <%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.<<%org.lunifera.dsl.semantic.entity.LBeanFeature%>>newArrayList();\nthis.collectAllLunFeatures(this, result);\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>>filter(result, <%org.lunifera.dsl.semantic.entity.LBeanAttribute%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LBeanAttribute%>>toList(_filter);'"
    * @generated
    */
   List<LBeanAttribute> getAllAttributes();
@@ -181,7 +181,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * Returns all references of the holder and from super types
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.entity.BeanReferenceList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%java.util.List%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> result = <%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.<<%org.lunifera.dsl.semantic.entity.LBeanFeature%>>newArrayList();\n<%org.lunifera.dsl.semantic.entity.LBean%> _this = this;\n<%org.lunifera.dsl.semantic.entity.LBean%> _this_1 = this;\n_this.collectAllLunFeatures(_this_1, result);\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LBeanReference%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LBeanReference%>>filter(result, <%org.lunifera.dsl.semantic.entity.LBeanReference%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LBeanReference%>>toList(_filter);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%java.util.List%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> result = <%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.<<%org.lunifera.dsl.semantic.entity.LBeanFeature%>>newArrayList();\nthis.collectAllLunFeatures(this, result);\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.entity.LBeanReference%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.entity.LBeanReference%>>filter(result, <%org.lunifera.dsl.semantic.entity.LBeanReference%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.entity.LBeanReference%>>toList(_filter);'"
    * @generated
    */
   List<LBeanReference> getAllReferences();
@@ -190,7 +190,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @model currentUnique="false" resultDataType="org.lunifera.dsl.semantic.entity.BeanFeatureList" resultUnique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _equals = <%com.google.common.base.Objects%>.equal(current, null);\nif (_equals)\n{\n\treturn;\n}\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = current.getFeatures();\nresult.addAll(_features);\n<%org.lunifera.dsl.semantic.entity.LBean%> _this = this;\n<%org.lunifera.dsl.semantic.entity.LBean%> _superType = current.getSuperType();\n_this.collectAllLunFeatures(_superType, result);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _equals = <%com.google.common.base.Objects%>.equal(current, null);\nif (_equals)\n{\n\treturn;\n}\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = current.getFeatures();\nresult.addAll(_features);\n<%org.lunifera.dsl.semantic.entity.LBean%> _superType = current.getSuperType();\nthis.collectAllLunFeatures(_superType, result);'"
    * @generated
    */
   void collectAllLunFeatures(LBean current, List<LBeanFeature> result);

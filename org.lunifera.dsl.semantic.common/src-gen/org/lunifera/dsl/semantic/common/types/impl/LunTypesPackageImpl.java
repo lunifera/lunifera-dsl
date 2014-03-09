@@ -38,6 +38,7 @@ import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LCommonModel;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LDateType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
@@ -67,6 +68,13 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  */
 public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lCommonModelEClass = null;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -292,8 +300,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 
     // Initialize simple dependencies
     XbasePackage.eINSTANCE.eClass();
-    XAnnotationsPackage.eINSTANCE.eClass();
     EcorePackage.eINSTANCE.eClass();
+    XAnnotationsPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theLunTypesPackage.createPackageContents();
@@ -308,6 +316,26 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(LunTypesPackage.eNS_URI, theLunTypesPackage);
     return theLunTypesPackage;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLCommonModel()
+  {
+    return lCommonModelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLCommonModel_Packages()
+  {
+    return (EReference)lCommonModelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1110,6 +1138,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     isCreated = true;
 
     // Create classes and their features
+    lCommonModelEClass = createEClass(LCOMMON_MODEL);
+    createEReference(lCommonModelEClass, LCOMMON_MODEL__PACKAGES);
+
     lPackageEClass = createEClass(LPACKAGE);
     createEAttribute(lPackageEClass, LPACKAGE__NAME);
     createEReference(lPackageEClass, LPACKAGE__IMPORTS);
@@ -1257,6 +1288,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
     lOperationEClass.getESuperTypes().add(this.getLAnnotationTarget());
 
     // Initialize classes, features, and operations; add parameters
+    initEClass(lCommonModelEClass, LCommonModel.class, "LCommonModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLCommonModel_Packages(), this.getLTypedPackage(), null, "packages", null, 0, -1, LCommonModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(lPackageEClass, LPackage.class, "LPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLPackage_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLPackage_Imports(), this.getLImport(), null, "imports", null, 0, -1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

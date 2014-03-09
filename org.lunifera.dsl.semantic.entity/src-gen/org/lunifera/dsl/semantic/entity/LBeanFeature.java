@@ -31,7 +31,7 @@ public interface LBeanFeature extends LFeature
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @model kind="operation" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.entity.LBeanFeature%> _this = this;\n<%org.eclipse.emf.ecore.EObject%> _eContainer = _this.eContainer();\nreturn ((<%org.lunifera.dsl.semantic.entity.LBean%>) _eContainer);'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();\nreturn ((<%org.lunifera.dsl.semantic.entity.LBean%>) _eContainer);'"
    * @generated
    */
   LBean getBean();

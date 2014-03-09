@@ -80,6 +80,7 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
   {
     switch (eClass.getClassifierID())
     {
+      case LunTypesPackage.LCOMMON_MODEL: return createLCommonModel();
       case LunTypesPackage.LPACKAGE: return createLPackage();
       case LunTypesPackage.LTYPED_PACKAGE: return createLTypedPackage();
       case LunTypesPackage.LIMPORT: return createLImport();
@@ -155,6 +156,17 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LCommonModel createLCommonModel()
+  {
+    LCommonModelImpl lCommonModel = new LCommonModelImpl();
+    return lCommonModel;
   }
 
   /**

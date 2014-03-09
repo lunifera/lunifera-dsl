@@ -34,6 +34,15 @@ public interface LunTypesFactory extends EFactory
   LunTypesFactory eINSTANCE = org.lunifera.dsl.semantic.common.types.impl.LunTypesFactoryImpl.init();
 
   /**
+   * Returns a new object of class '<em>LCommon Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LCommon Model</em>'.
+   * @generated
+   */
+  LCommonModel createLCommonModel();
+
+  /**
    * Returns a new object of class '<em>LPackage</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

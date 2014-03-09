@@ -64,7 +64,7 @@ public interface LDtoInheritedReference extends LDtoAbstractReference
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @model kind="operation" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.dto.LDtoInheritedReference%> _this = this;\n<%org.lunifera.dsl.semantic.common.types.LReference%> _inheritedFeature = _this.getInheritedFeature();\nreturn _inheritedFeature.getMultiplicity();'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.common.types.LReference%> _inheritedFeature = this.getInheritedFeature();\nreturn _inheritedFeature.getMultiplicity();'"
    * @generated
    */
   LMultiplicity getInheritedMultiplicity();

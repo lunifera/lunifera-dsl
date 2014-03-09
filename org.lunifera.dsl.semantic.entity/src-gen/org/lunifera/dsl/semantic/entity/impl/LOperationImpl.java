@@ -305,8 +305,7 @@ public class LOperationImpl extends org.lunifera.dsl.semantic.common.types.impl.
    */
   public LEntity getEntity()
   {
-    LEntityFeature _this = this;
-    EObject _eContainer = _this.eContainer();
+    EObject _eContainer = this.eContainer();
     return ((LEntity) _eContainer);
   }
 
@@ -317,8 +316,7 @@ public class LOperationImpl extends org.lunifera.dsl.semantic.common.types.impl.
    */
   public LBean getBean()
   {
-    LBeanFeature _this = this;
-    EObject _eContainer = _this.eContainer();
+    EObject _eContainer = this.eContainer();
     return ((LBean) _eContainer);
   }
 
@@ -330,19 +328,16 @@ public class LOperationImpl extends org.lunifera.dsl.semantic.common.types.impl.
   public EList<LAnnotationDef> getResolvedAnnotations()
   {
     EList<LAnnotationDef> _xifexpression = null;
-    LFeature _this = this;
-    LAnnotationTarget _annotationInfo = _this.getAnnotationInfo();
+    LAnnotationTarget _annotationInfo = this.getAnnotationInfo();
     boolean _notEquals = (!Objects.equal(_annotationInfo, null));
     if (_notEquals)
     {
-      LFeature _this_1 = this;
-      LAnnotationTarget _annotationInfo_1 = _this_1.getAnnotationInfo();
+      LAnnotationTarget _annotationInfo_1 = this.getAnnotationInfo();
       _xifexpression = _annotationInfo_1.getAnnotations();
     }
     else
     {
-      LFeature _this_2 = this;
-      _xifexpression = _this_2.getAnnotations();
+      _xifexpression = this.getAnnotations();
     }
     return _xifexpression;
   }

@@ -36,7 +36,7 @@ class ModelExtensions {
 	@Inject TypeReferences references;
 
 	def dispatch JvmTypeReference toTypeReference(LType type) {
-		if (type == null || type.fullyQualifiedName == null) { //###is this check needed?
+		if (type == null || type.fullyQualifiedName == null) {
 			return null
 		}
 		return type.newTypeRef(type.fullyQualifiedName.toString)

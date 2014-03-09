@@ -22,8 +22,11 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.eclipse.emf.common.util.EList
-import org.eclipse.emf.ecore.xcore.lib.XcoreCollectionLiterals
-import org.eclipse.emf.ecore.util.BasicInternalEList
+ 
+class LCommonModel {
+	contains LTypedPackage[] packages
+}
+
 class LPackage {
 	String name
 	contains LImport[] imports

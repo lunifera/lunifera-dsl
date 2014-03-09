@@ -1,0 +1,7 @@
+This implementation is based on ideas and code of 
+
+org.eclipse.emf.ecore.xcore
+org.eclipse.xtext.xbase
+org.eclipse.xtend
+
+We are using parts of their semantics, syntactics and also written code.

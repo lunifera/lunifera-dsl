@@ -14,7 +14,6 @@ package org.lunifera.dsl.dto.xtext.scope;
 import java.util.List;
 
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
 import org.lunifera.dsl.common.xtext.scope.CommonImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions;
@@ -32,8 +31,10 @@ public class DtoImportedNamespaceAwareLocalScopeProvider extends
 	@Override
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
 		List<ImportNormalizer> temp = super.getImplicitImports(ignoreCase);
-		temp.add(new ImportNormalizer(QualifiedName
-				.create("org.lunifera.dsl.dto"), true, ignoreCase));
+
+		temp.add(new ImportNormalizer(qualifiedNameConverter
+				.toQualifiedName("org.lunifera.dsl.common.datatypes"), true,
+				ignoreCase));
 
 		return temp;
 	}

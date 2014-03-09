@@ -28,7 +28,7 @@ Workflow {
 	bean = org.eclipse.xtext.mwe.Reader {
 		register = xcore
 	}
-
+ 
 	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
 		ePackage = org.lunifera.dsl.mwe.PackageMapping {
 			nsURI = "http://www.lunifera.org/dsl/common/types/v1"

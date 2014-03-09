@@ -591,8 +591,7 @@ public class LEntityImpl extends LClassImpl implements LEntity
    */
   public List<LOperation> getOperations()
   {
-    LEntity _this = this;
-    EList<LEntityFeature> _features = _this.getFeatures();
+    EList<LEntityFeature> _features = this.getFeatures();
     Iterable<LOperation> _filter = Iterables.<LOperation>filter(_features, LOperation.class);
     return IterableExtensions.<LOperation>toList(_filter);
   }
@@ -604,8 +603,7 @@ public class LEntityImpl extends LClassImpl implements LEntity
    */
   public List<LEntityReference> getReferences()
   {
-    LEntity _this = this;
-    EList<LEntityFeature> _features = _this.getFeatures();
+    EList<LEntityFeature> _features = this.getFeatures();
     Iterable<LEntityReference> _filter = Iterables.<LEntityReference>filter(_features, LEntityReference.class);
     return IterableExtensions.<LEntityReference>toList(_filter);
   }
@@ -617,8 +615,7 @@ public class LEntityImpl extends LClassImpl implements LEntity
    */
   public List<LEntityAttribute> getAttributes()
   {
-    LEntity _this = this;
-    EList<LEntityFeature> _features = _this.getFeatures();
+    EList<LEntityFeature> _features = this.getFeatures();
     Iterable<LEntityAttribute> _filter = Iterables.<LEntityAttribute>filter(_features, LEntityAttribute.class);
     return IterableExtensions.<LEntityAttribute>toList(_filter);
   }
@@ -631,9 +628,7 @@ public class LEntityImpl extends LClassImpl implements LEntity
   public List<LEntityFeature> getAllFeatures()
   {
     final List<LEntityFeature> result = CollectionLiterals.<LEntityFeature>newArrayList();
-    LEntity _this = this;
-    LEntity _this_1 = this;
-    _this.collectAllLunFeatures(_this_1, result);
+    this.collectAllLunFeatures(this, result);
     return result;
   }
 
@@ -645,9 +640,7 @@ public class LEntityImpl extends LClassImpl implements LEntity
   public List<LEntityAttribute> getAllAttributes()
   {
     final List<LEntityFeature> result = CollectionLiterals.<LEntityFeature>newArrayList();
-    LEntity _this = this;
-    LEntity _this_1 = this;
-    _this.collectAllLunFeatures(_this_1, result);
+    this.collectAllLunFeatures(this, result);
     Iterable<LEntityAttribute> _filter = Iterables.<LEntityAttribute>filter(result, LEntityAttribute.class);
     return IterableExtensions.<LEntityAttribute>toList(_filter);
   }
@@ -660,9 +653,7 @@ public class LEntityImpl extends LClassImpl implements LEntity
   public List<LEntityReference> getAllReferences()
   {
     final List<LEntityFeature> result = CollectionLiterals.<LEntityFeature>newArrayList();
-    LEntity _this = this;
-    LEntity _this_1 = this;
-    _this.collectAllLunFeatures(_this_1, result);
+    this.collectAllLunFeatures(this, result);
     Iterable<LEntityReference> _filter = Iterables.<LEntityReference>filter(result, LEntityReference.class);
     return IterableExtensions.<LEntityReference>toList(_filter);
   }
@@ -681,9 +672,8 @@ public class LEntityImpl extends LClassImpl implements LEntity
     }
     EList<LEntityFeature> _features = current.getFeatures();
     result.addAll(_features);
-    LEntity _this = this;
     LEntity _superType = current.getSuperType();
-    _this.collectAllLunFeatures(_superType, result);
+    this.collectAllLunFeatures(_superType, result);
   }
 
   /**

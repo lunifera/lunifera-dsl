@@ -35,11 +35,9 @@ public class CommonImportedNamespaceAwareLocalScopeProvider extends
 	@Override
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
 		List<ImportNormalizer> temp = new ArrayList<ImportNormalizer>();
-		temp.add(new ImportNormalizer(QualifiedName.create("builtin", "types",
-				"namespace"), true, ignoreCase));
-		temp.add(new ImportNormalizer(QualifiedName.create("java.lang"), true,
+		temp.add(new ImportNormalizer(qualifiedNameConverter.toQualifiedName("java.lang"), true,
 				ignoreCase));
-		temp.add(new ImportNormalizer(QualifiedName.create("java.util"), true,
+		temp.add(new ImportNormalizer(qualifiedNameConverter.toQualifiedName("java.util"), true,
 				ignoreCase));
 		return temp;
 	}

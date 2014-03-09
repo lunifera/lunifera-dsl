@@ -86,6 +86,11 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl
     new LunTypesSwitch<Adapter>()
     {
       @Override
+      public Adapter caseLCommonModel(LCommonModel object)
+      {
+        return createLCommonModelAdapter();
+      }
+      @Override
       public Adapter caseLPackage(LPackage object)
       {
         return createLPackageAdapter();
@@ -196,6 +201,21 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl
     return modelSwitch.doSwitch((EObject)target);
   }
 
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LCommonModel <em>LCommon Model</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.dsl.semantic.common.types.LCommonModel
+   * @generated
+   */
+  public Adapter createLCommonModelAdapter()
+  {
+    return null;
+  }
 
   /**
    * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LPackage <em>LPackage</em>}'.
