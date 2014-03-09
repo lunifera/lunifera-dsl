@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.datatype.lib
 Bundle-Vendor: Lunifera.org
 Bundle-Version: 0.0.1.qualifier
-Bundle-SymbolicName: org.lunifera.dsl.entity.xtext.lib
+Bundle-SymbolicName: org.lunifera.dsl.datatype.lib
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="2.5.1"
 Import-Package: javax.persistence;version="2.1.0"

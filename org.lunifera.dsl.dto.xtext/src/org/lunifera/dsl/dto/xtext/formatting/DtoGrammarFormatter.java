@@ -26,14 +26,14 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 
 	public void configure(FormattingConfig c, DtoGrammarGrammarAccess ga) {
 		DtoGrammarGrammarAccess f = (DtoGrammarGrammarAccess) getGrammarAccess();
-		
+
 		super.configure(c, ga.getCommonGrammarGrammarAccess());
 
 		configureClassDef(c, f.getClassAccess());
 		configureDtoFeature(c, f.getDtoFeatureAccess());
 		configureDtoMapper(c, f.getDtoMapperAccess());
 		configureLimitedMapperDtoMapper(c, f.getLimitedMapperDtoMapperAccess());
-		
+
 		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).after(f.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).before(f.getML_COMMENTRule());
@@ -64,28 +64,22 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
 		c.setLinewrap().around(ele.getRule());
 
-		c.setIndentationIncrement().after(
-				ele.getLeftCurlyBracketKeyword_7());
-		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_9());
+		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_7());
+		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_9());
 		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_9());
 	}
 
 	protected void configureDtoFeature(FormattingConfig c,
 			DtoGrammarGrammarAccess.DtoFeatureElements ele) {
 		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
-<<<<<<< HEAD
-=======
-
-		//Setting for ";"
+		// Setting for ";"
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_0_2_1());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_4_1());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_2_1_3());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_4_5());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_2_1());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_6_5_1());
-		
->>>>>>> e706435188b96a17e8cca5105ed6e883a4615811
+
 		c.setLinewrap(1, 1, 2).around(ele.getRule());
 	}
 
@@ -93,14 +87,12 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 			DtoGrammarGrammarAccess.DtoMapperElements ele) {
 		c.setLinewrap(1, 1, 2).after(ele.getRule());
 
-		//Settings for "{" and "}"
-		c.setIndentationIncrement().after(
-				ele.getLeftCurlyBracketKeyword_0());
+		// Settings for "{" and "}"
+		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_0());
 		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_0());
-		
+
 		c.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_4());
-		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_4());
+		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_4());
 		c.setLinewrap(1, 1, 2).after(ele.getRightCurlyBracketKeyword_4());
 	}
 
@@ -108,13 +100,10 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 			DtoGrammarGrammarAccess.LimitedMapperDtoMapperElements ele) {
 		c.setLinewrap(1, 1, 2).around(ele.getRule());
 
-		//Settings for "{" and "}"
-		c.setIndentationIncrement().after(
-				ele.getLeftCurlyBracketKeyword_0());
-		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_3());
+		// Settings for "{" and "}"
+		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_0());
+		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_3());
 		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_3());
 	}
-
 
 }
