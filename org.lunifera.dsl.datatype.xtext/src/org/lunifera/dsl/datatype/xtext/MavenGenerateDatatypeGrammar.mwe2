@@ -8,7 +8,7 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-module org.lunifera.dsl.entity.xtext.GenerateEntity
+module org.lunifera.dsl.entity.xtext.GenerateDatatypes
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
