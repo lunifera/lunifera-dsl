@@ -1,0 +1,130 @@
+module org.lunifera.dsl.ldt.xtext.GenerateLdtGrammar
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.generator.*
+import org.eclipse.xtext.ui.generator.*
+
+var fileExtensions = "ldts"
+var projectName = "org.lunifera.dsl.ldt.xtext"
+var grammarURI = "platform:/resource/${projectName}/src/org/lunifera/dsl/ldt/xtext/LdtGrammar.xtext"
+var runtimeProject = "${projectName}"
+var backtrack = false
+var memoize = false
+
+Workflow {
+
+	bean = org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup : xcore {}
+	bean = org.eclipse.xtext.mwe.Reader {
+		register = xcore
+	}
+	bean = org.lunifera.dsl.mwe.SemanticModelSetupComponent {
+		ePackage = org.lunifera.dsl.mwe.PackageMapping {
+			nsURI = "http://www.lunifera.org/dsl/common/types/v1"
+			packageClass = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+			factoryClass = "org.lunifera.dsl.semantic.common.types.impl.LunTypesFactoryImpl"
+		}
+	}
+	
+	bean = StandaloneSetup {
+		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : theResourceSet {}
+
+		// add mappings from platform:/resource to classpath:/
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.xbase/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.xbase.lib/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.xtext.common.types/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.emf.ecore.xcore/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.eclipse.emf.ecore.xcore.lib/"
+			to = "classpath:/"
+		}
+		uriMap = {
+			from = "platform:/resource/org.lunifera.dsl.semantic.common/"
+			to = "classpath:/"
+		}
+
+		scanClassPath = true
+		platformUri = "${runtimeProject}/.."
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
+		registerEcoreFile = "platform:/resource/org.eclipse.emf.ecore.xcore/model/Xcore.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore.xcore/model/Xcore.genmodel"
+		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
+		registerEcoreFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
+		registerGeneratedEPackage = "org.lunifera.dsl.semantic.common.types.LunTypesPackage"
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}/src-gen"
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}.ui/src-gen"
+	}
+
+	component = Generator {
+		encoding = "UTF-8"
+		pathRtProject = runtimeProject
+		pathUiProject = "${runtimeProject}.ui"
+		pathTestProject = "${runtimeProject}.tests"
+		projectNameRt = projectName
+		projectNameUi = "${projectName}.ui"
+		language = auto-inject {
+			forcedResourceSet = theResourceSet
+			uri = grammarURI
+			loadedResource = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"// Java API to access grammar elements (required by several other fragments)
+			fileExtensions = fileExtensions
+			fragment = grammarAccess.GrammarAccessFragment {}
+			fragment = serializer.SerializerFragment {
+			// generateDebugData = true
+			}
+			fragment = resourceFactory.ResourceFactoryFragment {
+				fileExtensions = fileExtensions
+			}
+			fragment = parser.antlr.XtextAntlrGeneratorFragment {
+				options = auto-inject {}
+			}
+			fragment = parser.antlr.DebugAntlrGeneratorFragment {
+				options = auto-inject {}
+			}
+			fragment = validation.JavaValidatorFragment {}
+			fragment = generator.GeneratorFragment {}
+			fragment = scoping.ImportNamespacesScopingFragment {}
+			fragment = builder.BuilderIntegrationFragment {}
+			fragment = quickfix.QuickfixProviderFragment {}
+			fragment = labeling.LabelProviderFragment {
+				generateStub = false
+			}
+			fragment = outline.OutlineTreeProviderFragment {}
+			fragment = outline.QuickOutlineFragment {}
+			fragment = compare.CompareFragment {
+				fileExtensions = fileExtensions
+			}
+			fragment = contentAssist.JavaBasedContentAssistFragment {}
+			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+				options = auto-inject {}
+			}
+			fragment = refactoring.RefactorElementNameFragment {
+				useJdtRefactoring = true
+			}
+			fragment = types.TypesGeneratorFragment {}
+			fragment = xbase.XbaseGeneratorFragment {
+				generateXtendInferrer = true
+			}
+			fragment = templates.CodetemplatesGeneratorFragment {}
+		}
+	}
+}

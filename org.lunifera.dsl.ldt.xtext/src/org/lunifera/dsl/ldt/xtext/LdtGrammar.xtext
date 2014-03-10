@@ -1,0 +1,13 @@
+grammar org.lunifera.dsl.ldt.xtext.LdtGrammar  with org.lunifera.dsl.common.xtext.CommonGrammar
+
+import "http://www.lunifera.org/dsl/common/types/v1" as types
+
+LCommonModel returns types::LCommonModel:
+	packages+=TypedPackage*;
+
+TypedPackage returns types::LTypedPackage:
+	{types::LTypedPackage}
+	'package' name=QualifiedName ('{'
+	(imports+=Import)*
+	(types+=ScalarType)*
+	'}')?;
