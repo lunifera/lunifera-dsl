@@ -73,7 +73,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.lunifera.dsl</groupId>
-			<artifactId>org.lunifera.dsl.ldt.xtext</artifactId>
+			<artifactId>org.lunifera.dsl.datatype.xtext</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

@@ -25,7 +25,7 @@
    </requires>
 
    <plugin
-         id="org.lunifera.dsl.entity.xtext.ui"
+         id="org.lunifera.dsl.dto.xtext.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
