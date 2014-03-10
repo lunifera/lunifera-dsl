@@ -71,10 +71,5 @@
 			<artifactId>org.lunifera.dsl.common.xtext</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.lunifera.dsl</groupId>
-			<artifactId>org.lunifera.dsl.datatype.xtext</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 	</dependencies>
 </project>
