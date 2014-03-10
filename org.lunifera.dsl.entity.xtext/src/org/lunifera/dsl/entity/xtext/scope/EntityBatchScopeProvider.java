@@ -35,9 +35,9 @@ public class EntityBatchScopeProvider extends CommonBatchScopeProvider {
 			return new EntityRefOppositeScope((LEntityReference) context);
 		} else if (reference == LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
 			return new BeanRefOppositeScope((LBeanReference) context);
-		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {
-			return new DatatypesScope(super.getScope(context, reference),
-					(LEntityAttribute) context, reference);
+//		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {
+//			return new DatatypesScope(super.getScope(context, reference),
+//					(LEntityAttribute) context, reference);
 		}
 		return super.getScope(context, reference);
 	}
