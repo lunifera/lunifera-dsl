@@ -686,14 +686,14 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage
    */
   protected void createEcoreAnnotations()
   {
-    String source = "http://www.eclipse.org/emf/2002/Ecore";	
+    String source = "http://www.eclipse.org/emf/2002/Ecore";			
     addAnnotation
       (this, 
        source, 
        new String[] 
        {
        "rootPackage", "dto"
-       });
+       });										
   }
 
 } //LunDtoPackageImpl

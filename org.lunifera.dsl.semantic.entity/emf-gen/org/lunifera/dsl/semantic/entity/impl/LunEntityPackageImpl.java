@@ -1320,14 +1320,14 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
    */
   protected void createEcoreAnnotations()
   {
-    String source = "http://www.eclipse.org/emf/2002/Ecore";	
+    String source = "http://www.eclipse.org/emf/2002/Ecore";			
     addAnnotation
       (this, 
        source, 
        new String[] 
        {
        "rootPackage", "entity"
-       });
+       });																			
   }
 
 } //LunEntityPackageImpl

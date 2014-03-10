@@ -63,6 +63,8 @@
 			</modules>
 		</profile>
 
+		
+
 		<profile>
 			<id>lunifera.build.common</id>
 			<activation>
@@ -82,6 +84,31 @@
 				<!-- P2 feature -->
 				<module>org.lunifera.dsl.feature.common</module>
 				<module>org.lunifera.dsl.feature.common.headless</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>lunifera.build.datatype</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>clean verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.dsl.parent</module>
+				<!-- P2 bundles -->
+				<module>org.lunifera.dsl.mwe</module>
+				<module>org.lunifera.dsl.semantic.common</module>
+				<module>org.lunifera.dsl.common.xtext</module>
+				<module>org.lunifera.dsl.common.xtext.ui</module>
+				<module>org.lunifera.dsl.datatype.xtext</module>
+				<module>org.lunifera.dsl.datatype.xtext.ui</module>
+
+				<!-- P2 feature -->
+				<module>org.lunifera.dsl.feature.common</module>
+				<module>org.lunifera.dsl.feature.common.headless</module>
+
 			</modules>
 		</profile>
 

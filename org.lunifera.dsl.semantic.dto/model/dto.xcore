@@ -18,7 +18,7 @@
 @Ecore(nsPrefix="dto") 
 @Ecore(rootPackage="dto")
 package org.lunifera.dsl.semantic.dto
- 
+  
 import GenModel
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass

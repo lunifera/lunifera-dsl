@@ -33,11 +33,17 @@
       <import feature="org.eclipse.emf.mwe2.language.sdk" version="2.5.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.mwe2.launcher" version="2.5.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.mwe2.runtime.sdk" version="2.5.0" match="greaterOrEqual"/>
-      <import plugin="org.lunifera.dsl.datatype.xtext.ui"/>
    </requires>
 
    <plugin
          id="org.lunifera.dsl.common.xtext.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.dsl.datatype.xtext.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

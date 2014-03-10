@@ -168,6 +168,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.lunifera.dsl</groupId>
+			<artifactId>org.lunifera.dsl.feature.common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.lunifera.dsl</groupId>
 			<artifactId>org.lunifera.dsl.feature.common.headless</artifactId>
 			<version>${project.version}</version>
 		</dependency>
