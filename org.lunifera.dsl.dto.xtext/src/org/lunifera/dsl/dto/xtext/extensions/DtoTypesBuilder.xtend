@@ -15,9 +15,9 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder
-import org.lunifera.dsl.dto.xtext.common.ICrossReference
-import org.lunifera.dsl.dto.xtext.common.IMapper
-import org.lunifera.dsl.dto.xtext.common.IMapperAccess
+import org.lunifera.dsl.dto.lib.ICrossReference
+import org.lunifera.dsl.dto.lib.IMapper
+import org.lunifera.dsl.dto.lib.IMapperAccess
 import org.lunifera.dsl.dto.xtext.jvmmodel.AnnotationCompiler
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage

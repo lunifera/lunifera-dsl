@@ -8,14 +8,17 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.dto.xtext.common;
+package org.lunifera.dsl.dto.lib;
 
-import java.io.Serializable;
+public interface IMapperAccess {
 
-public interface ICrossReference extends Serializable {
-
-	String getTarget();
-
-	Object getId();
+	/**
+	 * Returns the mapper for the given DTO.
+	 * 
+	 * @param dto
+	 * @param entity
+	 * @return
+	 */
+	<D, E> IMapper<D, E> getMapper(Class<D> dto, Class<E> entity);
 
 }

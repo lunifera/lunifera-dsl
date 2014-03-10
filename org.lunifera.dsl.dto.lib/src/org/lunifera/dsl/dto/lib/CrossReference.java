@@ -8,7 +8,7 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.dto.xtext.common;
+package org.lunifera.dsl.dto.lib;
 
 @SuppressWarnings("serial")
 public class CrossReference implements ICrossReferenceInfo {

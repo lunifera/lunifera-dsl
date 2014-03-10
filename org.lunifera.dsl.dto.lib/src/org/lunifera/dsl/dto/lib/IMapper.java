@@ -8,7 +8,7 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.dto.xtext.common;
+package org.lunifera.dsl.dto.lib;
 
 public interface IMapper<D, E> {
 	

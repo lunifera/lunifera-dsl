@@ -6,8 +6,8 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
-import org.lunifera.dsl.dto.xtext.common.IMapper
-import org.lunifera.dsl.dto.xtext.common.IMapperAccess
+import org.lunifera.dsl.dto.lib.IMapper
+import org.lunifera.dsl.dto.lib.IMapperAccess
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
 import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute

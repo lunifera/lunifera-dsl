@@ -130,7 +130,7 @@
 	<extension
          point="org.eclipse.jdt.ui.classpathContainerPage">
       <classpathContainerPage
-            name="Lunifera EntityDSL container"
+            name="Lunifera modeling container"
             class="org.lunifera.dsl.eclipse.ui.buildpath.EntityContainerWizardPage"
             id="org.lunifera.dsl.entity.ENTITY_CONTAINER">
       </classpathContainerPage>

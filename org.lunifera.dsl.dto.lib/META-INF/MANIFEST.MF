@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.lunifera.dsl.datatype.lib
+Bundle-Name: org.lunifera.dsl.dto.lib
 Bundle-Vendor: Lunifera.org
 Bundle-Version: 0.0.1.qualifier
-Bundle-SymbolicName: org.lunifera.dsl.datatype.lib
+Bundle-SymbolicName: org.lunifera.dsl.dto.lib
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="2.5.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.lunifera.dsl.dto.lib
