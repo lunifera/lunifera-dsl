@@ -22,7 +22,6 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
-import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityColumnPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityFeature;
@@ -70,22 +69,8 @@ public class EntityQualifiedNameProvider extends CommonQualifiedNameProvider {
 			}
 		} else if (obj instanceof LFeature) {
 			LFeature prop = (LFeature) obj;
-			if(prop.getName() == null){
-				return QualifiedName.create("");
-			}
-			LType type = (LType) prop.eContainer();
-			LPackage pkg = extensions.getPackage(type);
-			if (pkg != null && type != null) {
-				final String qualifiedName = String.format("%s.%s.%s",
-						pkg.getName(), type.getName(), prop.getName());
-				if (qualifiedName == null)
-					return null;
-				return qualifiedNameConverter.toQualifiedName(qualifiedName);
-			} else {
-				return prop.getName() != null ? qualifiedNameConverter
-						.toQualifiedName(prop.getName()) : null;
-			}
-
+			return prop.getName() != null ? qualifiedNameConverter
+					.toQualifiedName(prop.getName()) : null;
 		} else if (obj instanceof LDataType) {
 			// LDataType dtd = (LDataType) obj;
 			// if(dtd.getName() == null){

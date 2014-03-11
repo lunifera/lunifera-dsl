@@ -16,13 +16,13 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
-import org.lunifera.dsl.common.xtext.scope.CommonImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
 import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.jvmmodel.DerivedStateComputer;
 import org.lunifera.dsl.entity.xtext.jvmmodel.EntityJvmModelGenerator;
 import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
 import org.lunifera.dsl.entity.xtext.scope.EntityBatchScopeProvider;
+import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
 
@@ -56,7 +56,7 @@ public class EntityGrammarRuntimeModule extends
 		binder.bind(IScopeProvider.class)
 				.annotatedWith(
 						Names.named("org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.delegate"))
-				.to(CommonImportedNamespaceAwareLocalScopeProvider.class);
+				.to(EntityImportedNamespaceAwareLocalScopeProvider.class);
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment

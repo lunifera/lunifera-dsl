@@ -6,13 +6,14 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.lunifera.dsl.datatype.xtext.ui.DatatypeGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
-            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-            default="true"
-            extensions="datatypes"
-            id="org.lunifera.dsl.datatype.xtext.DatatypeGrammar"
-            matchingStrategy="org.lunifera.dsl.datatype.xtext.ui.DatatypeGrammarExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
-            name="DatatypeGrammar Editor">
+              class="org.lunifera.dsl.datatype.xtext.ui.DatatypeGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+              contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+              default="true"
+              extensions="datatypes"
+              icon="icons/16x16_DatatypeDSL.png"
+              id="org.lunifera.dsl.datatype.xtext.DatatypeGrammar"
+              matchingStrategy="org.lunifera.dsl.datatype.xtext.ui.DatatypeGrammarExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
+              name="DatatypeGrammar Editor">
         </editor>
     </extension>
     <extension
@@ -104,9 +105,10 @@
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.lunifera.dsl.datatype.xtext.ui.DatatypeGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.lunifera.dsl.datatype.xtext.DatatypeGrammar"
-            name="DatatypeGrammar">
+              class="org.lunifera.dsl.datatype.xtext.ui.DatatypeGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              icon="icons/16x16_DatatypeDSL.png"
+              id="org.lunifera.dsl.datatype.xtext.DatatypeGrammar"
+              name="DatatypeGrammar">
             <keywordReference id="org.lunifera.dsl.datatype.xtext.ui.keyword_DatatypeGrammar"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
