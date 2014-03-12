@@ -284,7 +284,8 @@ public class LOperationImpl extends LAnnotationTargetImpl implements LOperation
    */
   public EList<LAnnotationDef> getResolvedAnnotations()
   {
-    return this.getAnnotations();
+    LOperation _this = this;
+    return _this.getAnnotations();
   }
 
   /**
