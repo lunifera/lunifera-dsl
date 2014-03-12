@@ -123,7 +123,8 @@ public class LDtoInheritedAttributeImpl extends LDtoAbstractAttributeImpl implem
    */
   public LScalarType getInheritedType()
   {
-    LAttribute _inheritedFeature = this.getInheritedFeature();
+    LDtoInheritedAttribute _this = this;
+    LAttribute _inheritedFeature = _this.getInheritedFeature();
     return _inheritedFeature.getType();
   }
 
@@ -134,7 +135,8 @@ public class LDtoInheritedAttributeImpl extends LDtoAbstractAttributeImpl implem
    */
   public LMultiplicity getInheritedMultiplicity()
   {
-    LAttribute _inheritedFeature = this.getInheritedFeature();
+    LDtoInheritedAttribute _this = this;
+    LAttribute _inheritedFeature = _this.getInheritedFeature();
     return _inheritedFeature.getMultiplicity();
   }
 

@@ -143,7 +143,7 @@ public interface LOperation extends LAnnotationTarget
    * Method to generalize naming conventions for annotation access
    * <!-- end-model-doc -->
    * @model kind="operation" dataType="org.lunifera.dsl.semantic.common.types.AnnotationList" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getAnnotations();'"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.common.types.LOperation%> _this = this;\nreturn _this.getAnnotations();'"
    * @generated
    */
   EList<LAnnotationDef> getResolvedAnnotations();

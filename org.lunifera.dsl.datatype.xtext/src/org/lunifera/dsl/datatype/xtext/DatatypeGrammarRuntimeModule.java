@@ -10,7 +10,9 @@
  */
 package org.lunifera.dsl.datatype.xtext;
 
+import org.eclipse.xtext.formatting.IFormatter;
 import org.lunifera.dsl.datatype.xtext.valueconverter.DatatypesQualifiedNameProvider;
+import org.lunifera.dsl.datatype.xtext.formatting.DatatypeGrammarFormatter;
 
 /**
  * Use this class to register components to be used at runtime / without the
@@ -22,4 +24,9 @@ public class DatatypeGrammarRuntimeModule extends
 	public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
 		return DatatypesQualifiedNameProvider.class;
 	}
+
+	public Class<? extends IFormatter> bindIFormatter() {
+		return DatatypeGrammarFormatter.class;
+	}
+
 }

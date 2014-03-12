@@ -33,7 +33,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  * <!-- end-user-doc -->
  * @see org.lunifera.dsl.semantic.dto.LunDtoFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel fileExtensions='dtos' modelName='DTO' prefix='LunDto' runtimeVersion='2.9' copyrightText='Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)\n All rights reserved. This program and the accompanying materials \n are made available under the terms of the Eclipse Public License v1.0 \n which accompanies this distribution, and is available at \n http://www.eclipse.org/legal/epl-v10.html \n\n Based on ideas from Xtext, Xtend, Xcore\n   \n Contributors:  \n \t\tFlorian Pirchner - Initial implementation \n ' operationReflection='false' basePackage='org.lunifera.dsl.semantic'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel fileExtensions='dtos' modelName='DTO' prefix='LunDto' runtimeVersion='2.9' copyrightText='Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)\r\n All rights reserved. This program and the accompanying materials \r\n are made available under the terms of the Eclipse Public License v1.0 \r\n which accompanies this distribution, and is available at \r\n http://www.eclipse.org/legal/epl-v10.html \r\n\r\n Based on ideas from Xtext, Xtend, Xcore\r\n   \r\n Contributors:  \r\n \t\tFlorian Pirchner - Initial implementation \r\n ' operationReflection='false' basePackage='org.lunifera.dsl.semantic'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore rootPackage='dto'"
  * @generated
  */

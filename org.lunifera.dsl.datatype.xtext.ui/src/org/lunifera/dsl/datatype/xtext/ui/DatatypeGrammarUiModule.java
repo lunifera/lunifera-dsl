@@ -4,6 +4,11 @@
 package org.lunifera.dsl.datatype.xtext.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.lunifera.dsl.datatype.xtext.ui.DatatypeGrammarHighlightingCalculator;
+import org.lunifera.dsl.datatype.xtext.ui.DatatypeHighlightingConfiguration;
+import org.lunifera.dsl.datatype.xtext.ui.labeling.DatatypeGrammarLabelProvider;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -12,4 +17,18 @@ public class DatatypeGrammarUiModule extends org.lunifera.dsl.datatype.xtext.ui.
 	public DatatypeGrammarUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
+	
+	
+	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		return DatatypeHighlightingConfiguration.class;
+	}
+
+	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+		return DatatypeGrammarHighlightingCalculator.class;
+	}
+
+	public Class<? extends org.eclipse.jface.viewers.ILabelProvider> bindILabelProvider() {
+		return DatatypeGrammarLabelProvider.class;
+	}
+
 }
