@@ -20,15 +20,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
-import org.lunifera.dsl.semantic.entity.LEntityAttribute;
+import org.lunifera.dsl.semantic.common.types.LAttribute;
 
 public class DatatypesScope extends AbstractScope {
 
 	private final IScope parent;
-	private final LEntityAttribute context;
+	private final LAttribute context;
 	private final EReference reference;
 
-	public DatatypesScope(IScope parent, final LEntityAttribute context,
+	public DatatypesScope(IScope parent, final LAttribute context,
 			EReference reference) {
 		super(IScope.NULLSCOPE, true);
 		this.parent = parent;

@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
+import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
-import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
 import org.lunifera.dsl.semantic.dto.LDtoReference;
@@ -49,13 +49,12 @@ public class DtoScopeProvider extends CommonScopeProvider {
 			return new InheritTypesFilterScope((LType) context, super.getScope(
 					context, reference));
 		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {
-			LDtoAbstractAttribute att = (LDtoAbstractAttribute) context;
-			if (att.isId() || att.isVersion()) {
+			LAttribute att = (LAttribute) context;
+			if (att.isId() || att.isVersion() || att.isUuid()) {
 				return new DatatypesFilterScope(super.getScope(context,
 						reference));
 			} else if (att.isUuid()) {
-				return new DatatypesFilterScope(super.getScope(context,
-						reference));
+				return new UUIdFilterScope(super.getScope(context, reference));
 			}
 		}
 		return super.getScope(context, reference);

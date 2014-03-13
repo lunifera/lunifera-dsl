@@ -1,0 +1,33 @@
+package org.lunifera.dsl.examples.dtos.dtos {
+	
+	import org.lunifera.dsl.examples.dtos.entities.*;
+	
+	
+	dto BaseDto wraps Base {
+		inherit var ^id;
+		inherit var number;
+	}
+	
+	dto HouseDto extends BaseDto wraps House{
+		inherit ref windows mapto WindowDto;
+		inherit ref openWindows mapto WindowDto;
+		inherit ref doors mapto DoorDto;
+		inherit var address mapto AddressDto;
+	}
+	
+	dto WindowDto extends BaseDto wraps Window{
+		inherit ref parent mapto HouseDto;
+		
+	}
+	
+	dto DoorDto extends BaseDto wraps Door{
+		inherit ref parent mapto HouseDto;
+	}
+	
+	dto AddressDto wraps Address{
+		inherit var city;
+		inherit var street;      
+	}
+	
+	
+}

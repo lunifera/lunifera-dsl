@@ -1,0 +1,30 @@
+package org.lunifera.dsl.examples.dtos.entities {
+	
+	mapped superclass Base {
+		uuid String id;
+		var String number;
+	} 
+	
+	entity House extends Base {
+		ref cascade Window[*] windows opposite parent;
+		ref Window[*] openWindows opposite parent;
+		
+		ref cascade Door[*] doors opposite parent;
+		
+		var Address address;
+	}
+	
+	entity Window extends Base {
+		ref House parent opposite windows;
+	}
+	
+	entity Door extends Base {
+		ref House parent opposite doors;
+	}   
+	
+	bean Address {
+		var String street;
+		var String city;
+	}
+	 
+}
