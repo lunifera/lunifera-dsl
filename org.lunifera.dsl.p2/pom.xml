@@ -24,7 +24,7 @@
 
 	<properties>
 		<lunifera.deployment.p2.label>dsl</lunifera.deployment.p2.label>
-		<xtext-milestone-p2>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/</xtext-milestone-p2>
+		<xtext-milestone-p2>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</xtext-milestone-p2>
 	</properties>
 
 	<repositories>
@@ -34,9 +34,9 @@
 			<url>http://download.eclipse.org/releases/kepler</url>
 		</repository>
 		<repository>
-			<id>Xtext bleeding edge</id>
+			<id>Xtext releases</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/</url>
+			<url>${xtext-milestone-p2}</url>
 		</repository>
 
 		<repository>
