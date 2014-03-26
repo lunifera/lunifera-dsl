@@ -15,6 +15,8 @@ import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
+import org.lunifera.dsl.semantic.common.types.LEnum
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -124,6 +126,19 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		 * Infers the DTO mapper
 		 */
 		dto.inferMapper(acceptor, isPrelinkingPhase)
+	}
+	
+	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		if(hasSyntaxErrors(enumX)) return;
+
+		acceptor.accept(enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)).initializeLater [
+			fileHeader = (enumX.eContainer as LTypedPackage).documentation
+			documentation = enumX.documentation
+			for (f : enumX.literals) {
+				documentation = f.documentation
+				members += f.toEnumerationLiteral(f.name)
+			}
+		]
 	}
 
 	def void inferMapper(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
