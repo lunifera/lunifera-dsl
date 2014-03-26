@@ -140,7 +140,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				if (!compositionContainmentProps.empty) {
 					p >> "try " >>> "{"
 					p >> "// Dispose all the composition references.\n"
-					for (prop : compositionContainmentProps) {
+					for (prop : compositionContainmentProps) { 
 						val fieldRef = "this.".concat(prop.toName.toFirstLower) 
 						val typeName = prop.typeName
 						val typeVar = typeName.toFirstLower

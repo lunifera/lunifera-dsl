@@ -11,7 +11,7 @@
 package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
-import java.io.Serializable
+import java.io.Serializable 
 import org.apache.log4j.Logger
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
