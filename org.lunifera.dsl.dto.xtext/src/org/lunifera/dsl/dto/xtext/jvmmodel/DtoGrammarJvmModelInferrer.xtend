@@ -11,12 +11,12 @@ import org.lunifera.dsl.dto.lib.IMapperAccess
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
 import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
-import org.lunifera.dsl.semantic.common.types.LEnum
-import org.lunifera.dsl.semantic.common.types.LTypedPackage
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -33,6 +33,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(dto.toJvmType).initializeLater [
+			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = dto.getDocumentation
 			if (dto.getSuperType != null && !dto.getSuperType.fullyQualifiedName.toString.empty) {
 				superTypes += references.getTypeForName(dto.getSuperType.fullyQualifiedName.toString, dto, null)
@@ -148,6 +149,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		}
 
 		acceptor.accept(dto.toMapperJvmType).initializeLater [
+			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = '''
 				This class maps the dto {@link «dto.toName»} to and from the entity {@link «dto.wrappedType.toName»}.
 			'''
