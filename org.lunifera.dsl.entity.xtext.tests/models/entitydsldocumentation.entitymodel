@@ -7,6 +7,10 @@
  */
 package org.lunifera.entitydsl.documentation.demo {
 		
+	datatype String jvmType String;
+	datatype long jvmType Long;
+	
+	
 	entity Foo {
 		inheritance per class{}
 		id long id;

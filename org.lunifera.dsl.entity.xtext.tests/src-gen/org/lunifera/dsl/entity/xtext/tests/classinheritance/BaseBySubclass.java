@@ -20,10 +20,10 @@ import javax.persistence.Transient;
 import javax.persistence.Version;
 
 @Entity
-@Table(name = "BASE__________BYSUBCLASS")
+@Table(name = "BASE_________BYSUBCLASS")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "DISC", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue(value = "BASE__________BYSUBCLASS")
+@DiscriminatorValue(value = "BASE_________BYSUBCLASS")
 @SuppressWarnings("all")
 public class BaseBySubclass {
   @Transient
@@ -31,7 +31,7 @@ public class BaseBySubclass {
   
   @Id
   @GeneratedValue
-  private long id;
+  private Long id;
   
   @Version
   private int version;
@@ -72,7 +72,7 @@ public class BaseBySubclass {
   /**
    * Returns the id property or <code>null</code> if not present.
    */
-  public long getId() {
+  public Long getId() {
     checkDisposed();
     return this.id;
   }
@@ -80,7 +80,7 @@ public class BaseBySubclass {
   /**
    * Sets the id property to this instance.
    */
-  public void setId(final long id) {
+  public void setId(final Long id) {
     checkDisposed();
     this.id = id;
   }

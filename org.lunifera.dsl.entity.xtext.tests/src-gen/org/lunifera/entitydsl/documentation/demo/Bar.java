@@ -17,7 +17,7 @@ import org.lunifera.entitydsl.documentation.demo.Foo;
 @SuppressWarnings("all")
 public class Bar extends Foo {
   @Column(name = "NUMBER")
-  private long number;
+  private Long number;
   
   /**
    * Checks whether the object is disposed.
@@ -46,7 +46,7 @@ public class Bar extends Foo {
   /**
    * Returns the number property or <code>null</code> if not present.
    */
-  public long getNumber() {
+  public Long getNumber() {
     checkDisposed();
     return this.number;
   }
@@ -54,12 +54,12 @@ public class Bar extends Foo {
   /**
    * Sets the number property to this instance.
    */
-  public void setNumber(final long number) {
+  public void setNumber(final Long number) {
     checkDisposed();
     this.number = number;
   }
   
   public String getnumberasstring() {
-    return Long.toString(this.number);
+    return Long.toString((this.number).longValue());
   }
 }

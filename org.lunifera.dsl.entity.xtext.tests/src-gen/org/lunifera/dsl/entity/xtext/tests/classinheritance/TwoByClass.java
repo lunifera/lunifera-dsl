@@ -13,11 +13,11 @@ import javax.persistence.Entity;
 import org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClass;
 
 @Entity
-@DiscriminatorValue(value = "TWO_______BYCLASS")
+@DiscriminatorValue(value = "TWO______BYCLASS")
 @SuppressWarnings("all")
 public class TwoByClass extends OneByClass {
   @Column(name = "STUFF")
-  private long stuff;
+  private Long stuff;
   
   /**
    * Checks whether the object is disposed.
@@ -46,7 +46,7 @@ public class TwoByClass extends OneByClass {
   /**
    * Returns the stuff property or <code>null</code> if not present.
    */
-  public long getStuff() {
+  public Long getStuff() {
     checkDisposed();
     return this.stuff;
   }
@@ -54,7 +54,7 @@ public class TwoByClass extends OneByClass {
   /**
    * Sets the stuff property to this instance.
    */
-  public void setStuff(final long stuff) {
+  public void setStuff(final Long stuff) {
     checkDisposed();
     this.stuff = stuff;
   }

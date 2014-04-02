@@ -26,7 +26,6 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.5.0";visibility:=reexport,
  org.lunifera.dsl.dto.lib;bundle-version="0.0.1"
 Import-Package: org.apache.log4j,
  org.osgi.service.component.annotations;version="1.2.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.dsl.dto.xtext;x-internal:=true,
  org.lunifera.dsl.dto.xtext.extensions,
  org.lunifera.dsl.dto.xtext.formatting;x-internal:=true,
@@ -38,3 +37,4 @@ Export-Package: org.lunifera.dsl.dto.xtext;x-internal:=true,
  org.lunifera.dsl.dto.xtext.services;x-internal:=true,
  org.lunifera.dsl.dto.xtext.validation;x-internal:=true,
  org.lunifera.dsl.dto.xtext.valueconverter;x-internal:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

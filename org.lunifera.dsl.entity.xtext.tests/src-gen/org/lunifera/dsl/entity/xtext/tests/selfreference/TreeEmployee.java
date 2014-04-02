@@ -24,8 +24,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "TREE________EMPLOYEE")
-@DiscriminatorValue(value = "TREE________EMPLOYEE")
+@Table(name = "TREE_______EMPLOYEE")
+@DiscriminatorValue(value = "TREE_______EMPLOYEE")
 @SuppressWarnings("all")
 public class TreeEmployee {
   @Transient

@@ -11,6 +11,7 @@
 package org.lunifera.dsl.^entity.xtext.tests.blobtests {
 	
 	datatype blobtype as blob;
+	datatype String jvmType String;
 	
 	entity Foobar {
 		uuid String id;

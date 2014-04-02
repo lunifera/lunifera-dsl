@@ -19,6 +19,7 @@ import org.lunifera.dsl.dto.lib.ICrossReference
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.lib.IMapperAccess
 import org.lunifera.dsl.dto.xtext.jvmmodel.AnnotationCompiler
+import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage
 import org.lunifera.dsl.semantic.common.types.LType
@@ -28,7 +29,6 @@ import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.semantic.dto.LDtoFeature
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LOperation
-import org.lunifera.dsl.semantic.common.types.LAttribute
 
 class DtoTypesBuilder extends CommonTypesBuilder {
 
@@ -248,7 +248,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.documentation = '''
 			Sets the proxy of the <code>«paramName»</code> property for lazy cross reference loading.
 		'''
-
+ 
 		setBody(op,
 			[ // ITreeAppendable
 				if(it == null) return

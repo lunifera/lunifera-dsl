@@ -1,0 +1,152 @@
+package org.lunifera.dsl.metadata.api.types {
+	
+	import org.lunifera.dsl.metadata.api.entity.*;
+	import org.lunifera.dsl.metadata.api.^dto.*;
+	
+	datatype OperationsList jvmType java.util.List<OperationDTO>;
+	datatype FeaturesList jvmType java.util.List<? extends FeatureDTO>;
+	datatype AnnotationList jvmType java.util.List<AnnotationDefDTO>;
+	datatype Class jvmType Class<?>;
+
+	dto CommonModelDTO {
+		ref cascade TypedPackageDTO[*] packages opposite commonmodel;
+	}
+	
+	dto PackageDTO {
+		var String name;
+		ref cascade ImportDTO[*] imports opposite ^package;
+	}
+	
+	dto TypedPackageDTO extends PackageDTO {
+		ref CommonModelDTO commonmodel opposite packages;
+//		ref EntityModelDTO entitymodel opposite packages;
+//		ref DtoModelDTO dtomodel opposite packages;
+		ref cascade TypeDTO[*] types opposite ^package;
+	}
+	
+	dto ImportDTO {
+		ref PackageDTO ^package opposite imports;
+		var String importedNamespace;
+	}
+	
+	dto TypeDTO extends AnnotationTargetDTO {
+		ref TypedPackageDTO ^package opposite types;
+		var String name;
+		ref cascade AnnotationTargetDTO annotationInfo;
+	}
+	 
+	dto AnnotationDefDTO {
+		ref AnnotationTargetDTO target opposite annotations;
+		var boolean exclude;
+//		ref cascade XAnnotation ^annotation;
+	}
+	 
+	dto AnnotationTargetDTO {
+		ref cascade AnnotationDefDTO[*] annotations opposite target;
+	}
+	
+	dto ScalarTypeDTO extends TypeDTO {
+	}
+	
+	
+	dto DataTypeDTO extends ScalarTypeDTO {
+		var Class jvmTypeReference;
+		var boolean asPrimitive;
+		var boolean ^date;
+		var boolean asBlob;
+		var int length;
+		var DateType ^dateType;
+		var boolean syntheticFlag;
+		var String syntheticSelector;
+		ref FeatureDTO syntheticTypeReference;
+		ref TypeDTO syntheticType;
+	}
+	 
+	enum DateType {
+		DATE
+		, TIME
+		, TIMESTAMP
+	}
+	
+	dto EnumDTO extends ScalarTypeDTO {
+		ref cascade EnumLiteralDTO[*] literals opposite ^enum;
+	}
+	
+	dto EnumLiteralDTO  {
+		ref EnumDTO ^enum opposite literals;
+		var String name;
+	}
+	
+	dto ClassDTO extends TypeDTO {
+		var boolean ^abstract;
+		var boolean serializable;
+		var String shortName;
+	}
+	
+	dto FeatureDTO extends AnnotationTargetDTO {
+		var String name;
+		ref cascade MultiplicityDTO multiplicity;
+		ref cascade AnnotationTargetDTO annotationInfo;
+	}
+	
+	dto ReferenceDTO extends FeatureDTO {
+		var boolean lazy;
+		var boolean cascading;	
+	}
+	
+	dto AttributeDTO extends FeatureDTO {
+		var boolean ^id;
+		var boolean ^uuid;
+		var boolean version;
+		var boolean ^lazy;
+		var boolean cascading;
+		var boolean ^transient;
+		var boolean ^derived;
+//		ref cascade XExpression derivedGetterExpression;
+		ref ScalarTypeDTO ^type;
+	}
+	
+	dto OperationDTO extends AnnotationTargetDTO {
+		ref cascade ModifierDTO modifier opposite operation;
+		var Class ^type;
+//		ref cascade JvmFormalParameter[*] params;
+//		ref cascade XExpression body;
+	}
+	
+	dto ModifierDTO {
+		ref OperationDTO operation opposite modifier;
+		var boolean ^final;
+		var boolean ^static;
+		var Visibility visibility;
+	}
+	
+	enum Visibility {
+		PACKAGE,
+		PRIVATE,
+		PROTECTED,
+		PUBLIC
+	}
+	
+	dto MultiplicityDTO {
+		var LowerBound lower;
+		var UpperBound upper;
+	}
+	
+	enum LowerBound {
+		NULL,
+		MANY,
+		OPTIONAL,
+		ATLEASTONE,
+		ZERO,
+		ONE
+	}
+	
+	enum UpperBound {
+		NULL,
+		MANY,
+		ONE
+	}
+	
+
+	
+}

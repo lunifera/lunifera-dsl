@@ -13,7 +13,6 @@ package org.lunifera.dsl.dto.xtext.scope;
 import java.util.ArrayList;
 
 import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.resource.impl.AliasedEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.lunifera.dsl.semantic.common.types.LType;

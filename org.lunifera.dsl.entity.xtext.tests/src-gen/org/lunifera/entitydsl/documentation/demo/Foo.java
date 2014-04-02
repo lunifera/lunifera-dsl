@@ -29,7 +29,7 @@ public class Foo {
   
   @Id
   @GeneratedValue
-  private long id;
+  private Long id;
   
   @Column(name = "NAME")
   private String name;
@@ -70,7 +70,7 @@ public class Foo {
   /**
    * Returns the id property or <code>null</code> if not present.
    */
-  public long getId() {
+  public Long getId() {
     checkDisposed();
     return this.id;
   }
@@ -78,7 +78,7 @@ public class Foo {
   /**
    * Sets the id property to this instance.
    */
-  public void setId(final long id) {
+  public void setId(final Long id) {
     checkDisposed();
     this.id = id;
   }

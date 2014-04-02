@@ -15,8 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "A___BAR")
-@DiscriminatorValue(value = "A___BAR")
+@Table(name = "A__BAR")
+@DiscriminatorValue(value = "A__BAR")
 @SuppressWarnings("all")
 public class ABar {
   @Transient
@@ -24,7 +24,7 @@ public class ABar {
   
   @Id
   @GeneratedValue
-  private long id;
+  private Long id;
   
   /**
    * Returns true, if the object is disposed. 
@@ -62,7 +62,7 @@ public class ABar {
   /**
    * Returns the id property or <code>null</code> if not present.
    */
-  public long getId() {
+  public Long getId() {
     checkDisposed();
     return this.id;
   }
@@ -70,7 +70,7 @@ public class ABar {
   /**
    * Sets the id property to this instance.
    */
-  public void setId(final long id) {
+  public void setId(final Long id) {
     checkDisposed();
     this.id = id;
   }

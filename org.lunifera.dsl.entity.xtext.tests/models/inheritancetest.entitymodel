@@ -7,6 +7,12 @@
  */
 package org.lunifera.dsl.^entity.xtext.tests.classinheritance {
 	
+	datatype long jvmType Long;
+	datatype int jvmType Integer as primitive;
+	datatype String jvmType String;
+	
+	
+	
 	entity BaseByClass {
 		inheritance per class{}
 		id long id;

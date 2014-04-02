@@ -14,12 +14,12 @@ import javax.persistence.Table;
 import org.lunifera.dsl.entity.xtext.tests.classinheritance.OneBySubclass;
 
 @Entity
-@Table(name = "TWO__________BYSUBCLASS")
-@DiscriminatorValue(value = "TWO__________BYSUBCLASS")
+@Table(name = "TWO_________BYSUBCLASS")
+@DiscriminatorValue(value = "TWO_________BYSUBCLASS")
 @SuppressWarnings("all")
 public class TwoBySubclass extends OneBySubclass {
   @Column(name = "STUFF")
-  private long stuff;
+  private Long stuff;
   
   /**
    * Checks whether the object is disposed.
@@ -48,7 +48,7 @@ public class TwoBySubclass extends OneBySubclass {
   /**
    * Returns the stuff property or <code>null</code> if not present.
    */
-  public long getStuff() {
+  public Long getStuff() {
     checkDisposed();
     return this.stuff;
   }
@@ -56,7 +56,7 @@ public class TwoBySubclass extends OneBySubclass {
   /**
    * Sets the stuff property to this instance.
    */
-  public void setStuff(final long stuff) {
+  public void setStuff(final Long stuff) {
     checkDisposed();
     this.stuff = stuff;
   }

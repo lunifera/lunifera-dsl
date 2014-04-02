@@ -1,0 +1,118 @@
+package org.lunifera.dsl.metadata.api.entity {
+	
+	import org.lunifera.dsl.metadata.api.types.*;
+	import org.lunifera.dsl.metadata.api.^dto.*;
+	
+	datatype OperationsList jvmType java.util.List<OperationDTO>;
+	datatype EntityFeatureList jvmType java.util.List<EntityFeatureDTO>;
+	datatype EntityReferenceList jvmType java.util.List<EntityReferenceDTO>;
+	datatype EntityAttributeList jvmType java.util.List<EntityAttributeDTO>;
+	datatype BeanFeatureList jvmType java.util.List<BeanFeatureDTO>;
+	datatype BeanReferenceList jvmType java.util.List<BeanReferenceDTO>;
+	datatype BeanAttributeList jvmType java.util.List<BeanAttributeDTO>;
+		
+//	dto EntityModelDTO {
+//		ref cascade TypedPackageDTO[*] packages opposite entitymodel;
+//	}
+	
+	
+	dto BeanDTO {
+		var boolean ^abstract;
+		var boolean serializable;
+		var String shortName;
+		
+		ref cascade BeanFeatureDTO[*] features opposite bean;
+		ref BeanDTO superType opposite subTypes;
+		ref BeanDTO[*] subTypes opposite superType;
+		
+	}
+	
+	
+	dto EntityDTO {
+		var boolean ^abstract;
+		var boolean serializable;
+		var String shortName;
+		
+		var boolean cacheable;
+		var boolean historized;
+		var boolean timedependent;
+		var DateType timedependentDateType;
+		var boolean mappedSuperclass;
+		ref cascade EntityPersistenceInfoDTO persistenceInfo;
+		ref cascade EntityInheritanceStrategyDTO inheritanceStrategy;
+		ref cascade EntityFeatureDTO[*] features opposite entity;
+		ref cascade IndexDTO[*] indexes opposite entity;
+		ref EntityDTO superType opposite subTypes;
+		ref EntityDTO[*] subTypes opposite superType;
+		
+	}
+	
+	dto EntityPersistenceInfoDTO {
+		var String schemaName;
+		var String tableName;
+	}
+	 
+	dto EntityColumnPersistenceInfoDTO {
+		var String columnName;
+	}
+	
+	dto EntityInheritanceStrategyDTO {
+	}
+	
+	dto TablePerClassStrategy extends EntityInheritanceStrategyDTO {
+		var String discriminatorColumn;
+		var DiscriminatorType discriminatorType;
+		var String discriminatorValue;
+	}
+	
+	dto TablePerSubclassStrategyDTO extends EntityInheritanceStrategyDTO {
+		var String discriminatorColumn;
+		var DiscriminatorType discriminatorType;
+		var String discriminatorValue;
+	}
+	
+	enum DiscriminatorType {
+		INHERIT,
+		STRING,
+		CHAR,
+		INTEGER
+	}
+	
+	
+	dto EntityFeatureDTO extends FeatureDTO {
+		ref EntityDTO entity opposite features;
+		ref IndexDTO index opposite features;
+		ref cascade EntityColumnPersistenceInfoDTO persistenceInfo;
+	}
+	
+	dto EntityAttributeDTO extends EntityFeatureDTO {
+		
+	}
+	
+	dto EntityReferenceDTO extends EntityFeatureDTO {
+		ref EntityDTO ^type;
+		ref EntityReferenceDTO ^opposite;
+	}
+
+	
+	dto BeanFeatureDTO extends FeatureDTO {
+		ref BeanDTO bean opposite features;
+	}
+	
+	dto BeanAttributeDTO extends BeanFeatureDTO {
+	}
+	
+	dto BeanReferenceDTO extends BeanFeatureDTO {
+		ref BeanDTO ^type;
+		ref BeanReferenceDTO ^opposite;
+	}
+	
+	dto IndexDTO {
+		ref EntityDTO entity opposite indexes;
+		var boolean ^unique;
+		var String name;
+		ref EntityFeatureDTO[*] features opposite index;
+	}
+	
+	
+}
