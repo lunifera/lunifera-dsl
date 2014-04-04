@@ -7,6 +7,10 @@ package org.lunifera.dsl.metadata.api.types {
 	datatype FeaturesList jvmType java.util.List<? extends FeatureDTO>;
 	datatype AnnotationList jvmType java.util.List<AnnotationDefDTO>;
 	datatype Class jvmType Class<?>;
+	
+	datatype String jvmType String;
+	datatype boolean jvmType Boolean as primitive;
+	datatype int jvmType Integer as primitive;
 
 	dto CommonModelDTO {
 		ref cascade TypedPackageDTO[*] packages opposite commonmodel;
@@ -14,30 +18,30 @@ package org.lunifera.dsl.metadata.api.types {
 	
 	dto PackageDTO {
 		var String name;
-		ref cascade ImportDTO[*] imports opposite ^package;
+		ref cascade ImportDTO[*] imports opposite parentPackage;
 	}
 	
 	dto TypedPackageDTO extends PackageDTO {
 		ref CommonModelDTO commonmodel opposite packages;
 //		ref EntityModelDTO entitymodel opposite packages;
 //		ref DtoModelDTO dtomodel opposite packages;
-		ref cascade TypeDTO[*] types opposite ^package;
+		ref cascade TypeDTO[*] types opposite parentPackage;
 	}
 	
 	dto ImportDTO {
-		ref PackageDTO ^package opposite imports;
+		ref PackageDTO parentPackage opposite imports;
 		var String importedNamespace;
 	}
 	
 	dto TypeDTO extends AnnotationTargetDTO {
-		ref TypedPackageDTO ^package opposite types;
+		ref TypedPackageDTO parentPackage opposite types;
 		var String name;
 		ref cascade AnnotationTargetDTO annotationInfo;
 	}
 	 
 	dto AnnotationDefDTO {
 		ref AnnotationTargetDTO target opposite annotations;
-		var boolean exclude;
+		var boolean excludeFlag;
 //		ref cascade XAnnotation ^annotation;
 	}
 	 
@@ -51,9 +55,9 @@ package org.lunifera.dsl.metadata.api.types {
 	
 	dto DataTypeDTO extends ScalarTypeDTO {
 		var Class jvmTypeReference;
-		var boolean asPrimitive;
-		var boolean ^date;
-		var boolean asBlob;
+		var boolean asPrimitiveFlag;
+		var boolean dateFlag;
+		var boolean asBlobFlag;
 		var int length;
 		var DateType ^dateType;
 		var boolean syntheticFlag;
@@ -69,17 +73,17 @@ package org.lunifera.dsl.metadata.api.types {
 	}
 	
 	dto EnumDTO extends ScalarTypeDTO {
-		ref cascade EnumLiteralDTO[*] literals opposite ^enum;
+		ref cascade EnumLiteralDTO[*] literals opposite parentEnum;
 	}
 	
 	dto EnumLiteralDTO  {
-		ref EnumDTO ^enum opposite literals;
+		ref EnumDTO parentEnum opposite literals;
 		var String name;
 	}
 	
 	dto ClassDTO extends TypeDTO {
-		var boolean ^abstract;
-		var boolean serializable;
+		var boolean abstractFlag;
+		var boolean serializableFlag;
 		var String shortName;
 	}
 	
@@ -90,18 +94,18 @@ package org.lunifera.dsl.metadata.api.types {
 	}
 	
 	dto ReferenceDTO extends FeatureDTO {
-		var boolean lazy;
-		var boolean cascading;	
+		var boolean lazyFlag;
+		var boolean cascadingFlag;	
 	}
 	
 	dto AttributeDTO extends FeatureDTO {
-		var boolean ^id;
-		var boolean ^uuid;
-		var boolean version;
-		var boolean ^lazy;
-		var boolean cascading;
-		var boolean ^transient;
-		var boolean ^derived;
+		var boolean idFlag;
+		var boolean uuidFlag;
+		var boolean versionFlag;
+		var boolean lazyFlag;
+		var boolean cascadingFlag;
+		var boolean transientFlag;
+		var boolean derivedFlag;
 //		ref cascade XExpression derivedGetterExpression;
 		ref ScalarTypeDTO ^type;
 	}
@@ -115,8 +119,8 @@ package org.lunifera.dsl.metadata.api.types {
 	
 	dto ModifierDTO {
 		ref OperationDTO operation opposite modifier;
-		var boolean ^final;
-		var boolean ^static;
+		var boolean finalFlag;
+		var boolean staticFlag;
 		var Visibility visibility;
 	}
 	

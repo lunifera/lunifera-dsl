@@ -17,8 +17,8 @@ package org.lunifera.dsl.metadata.api.entity {
 	
 	
 	dto BeanDTO {
-		var boolean ^abstract;
-		var boolean serializable;
+		var boolean abstractFlag;
+		var boolean serializableFlag;
 		var String shortName;
 		
 		ref cascade BeanFeatureDTO[*] features opposite bean;
@@ -29,15 +29,15 @@ package org.lunifera.dsl.metadata.api.entity {
 	
 	
 	dto EntityDTO {
-		var boolean ^abstract;
-		var boolean serializable;
+		var boolean abstractFlag;
+		var boolean serializableFlag;
 		var String shortName;
 		
-		var boolean cacheable;
-		var boolean historized;
-		var boolean timedependent;
+		var boolean cacheableFlag;
+		var boolean historizedFlag;
+		var boolean timedependentFlag;
 		var DateType timedependentDateType;
-		var boolean mappedSuperclass;
+		var boolean mappedSuperclassFlag;
 		ref cascade EntityPersistenceInfoDTO persistenceInfo;
 		ref cascade EntityInheritanceStrategyDTO inheritanceStrategy;
 		ref cascade EntityFeatureDTO[*] features opposite entity;
@@ -109,7 +109,7 @@ package org.lunifera.dsl.metadata.api.entity {
 	
 	dto IndexDTO {
 		ref EntityDTO entity opposite indexes;
-		var boolean ^unique;
+		var boolean uniqueFlag;
 		var String name;
 		ref EntityFeatureDTO[*] features opposite index;
 	}

@@ -33,13 +33,13 @@ package org.lunifera.dsl.metadata.api.^dto {
 	}
 	
 	dto DtoAbstractAttributeDTO extends DtoFeatureDTO {
-		var boolean ^id;
-		var boolean ^uuid;
-		var boolean version;
-		var boolean ^lazy;
-		var boolean cascading; 
-		var boolean ^transient;
-		var boolean ^derived;
+		var boolean idFlag;
+		var boolean uuidFlag;
+		var boolean versionFlag;
+		var boolean lazyFlag;
+		var boolean cascadingFlag; 
+		var boolean transientFlag;
+		var boolean derivedFlag;
 //		ref cascade XExpression derivedGetterExpression;
 		ref ScalarTypeDTO ^type;
 	}
@@ -54,8 +54,8 @@ package org.lunifera.dsl.metadata.api.^dto {
 	
 	dto DtoAbstractReferenceDTO extends DtoFeatureDTO {
 		ref DtoDTO ^type;
-		var boolean lazy;
-		var boolean cascading;	
+		var boolean lazyFlag;
+		var boolean cascadingFlag;	
 	}
 	
 	dto DtoInheritedReferenceDTO extends DtoAbstractReferenceDTO {

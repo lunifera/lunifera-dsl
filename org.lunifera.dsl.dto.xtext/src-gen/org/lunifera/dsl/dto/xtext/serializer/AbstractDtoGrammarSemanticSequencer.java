@@ -1,5 +1,7 @@
 package org.lunifera.dsl.dto.xtext.serializer;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
@@ -9,6 +11,12 @@ import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmUpperBound;
 import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
+import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
+import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
+import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
+import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XBlockExpression;
@@ -66,8 +74,6 @@ import org.lunifera.dsl.semantic.dto.LDtoModel;
 import org.lunifera.dsl.semantic.dto.LDtoOperation;
 import org.lunifera.dsl.semantic.dto.LDtoReference;
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
-
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarSemanticSequencer {
