@@ -1,0 +1,77 @@
+@GenModel(fileExtensions="services")
+@GenModel(modelName="Service")
+@GenModel(prefix="LunService")
+@GenModel(runtimeVersion="2.9")
+@GenModel(copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ All rights reserved. This program and the accompanying materials 
+ are made available under the terms of the Eclipse Public License v1.0 
+ which accompanies this distribution, and is available at 
+ http://www.eclipse.org/legal/epl-v10.html 
+
+ Based on ideas from Xtext, Xtend, Xcore
+   
+ Contributors:  
+ 		Florian Pirchner - Initial implementation 
+ ")
+@GenModel(operationReflection="false")
+@Ecore(nsURI="http://www.lunifera.org/dsl/services/v1")
+@Ecore(nsPrefix="services")
+@Ecore(rootPackage="services")
+package org.lunifera.dsl.semantic.service
+
+import GenModel
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LReference
+import org.eclipse.xtext.xbase.XExpression
+import org.lunifera.dsl.semantic.common.types.LType
+import java.util.List
+import org.lunifera.dsl.semantic.common.types.FeaturesList
+import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
+import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LEntityAttribute
+import org.lunifera.dsl.semantic.entity.LEntity
+import org.lunifera.dsl.semantic.common.types.LMultiplicity
+import org.eclipse.xtext.xbase.XStringLiteral
+import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.dto.LDtoFeature
+import org.lunifera.dsl.semantic.dto.LDtoOperation
+import org.lunifera.dsl.semantic.dto.LDtoReference
+import org.lunifera.dsl.semantic.dto.LDtoAttribute
+
+class LServiceModel {
+	contains LTypedPackage[] packages
+}
+
+abstract class LService extends LClass, LFeaturesHolder {
+}
+
+class LDTOService extends LService {
+	refers LDto primaryDTO
+	contains LSupportedDTOCollection supportedDTOs opposite service
+}
+
+class LSupportedDTOCollection {
+	refers LDTOService service opposite supportedDTOs
+	contains LSupportedDTO[*] supportedDtos opposite parent
+}
+ 
+class LSupportedDTO {
+	refers LSupportedDTOCollection parent opposite supportedDtos
+	refers LDto dto
+	contains LSupportedFilters filters opposite parent
+}
+
+class LSupportedFilters {
+	refers LSupportedDTO parent opposite filters
+	refers LDtoFeature[*] filterFeatures
+}
+
+class LChartService extends LService {
+}
+
+class LFreeService extends LService {
+}

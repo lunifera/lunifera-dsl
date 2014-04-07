@@ -12,15 +12,11 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,8 +25,6 @@ import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address;
 
 @Entity
 @Table(name = "PERSON")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "DISC", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue(value = "PERSON")
 @SuppressWarnings("all")
 public class Person {
