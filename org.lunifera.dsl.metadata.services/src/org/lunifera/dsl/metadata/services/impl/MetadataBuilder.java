@@ -140,6 +140,8 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 	private synchronized void resolveAllModels() {
 		for (Bundle bundle : context.getBundleContext().getBundles()) {
 			for (URL url : findModels(bundle)) {
+				logger.info("Adding model " + url.toString()
+						+ " to model cache.");
 				resourceSet.getResource(URI.createURI(url.toString()), true);
 			}
 		}
@@ -197,7 +199,7 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 
 		List<Issue> validationResults = validate(resourceSet);
 		for (Issue issue : validationResults) {
-			System.out.println(issue.getMessage());
+			logger.error(issue.toString());
 		}
 	}
 
@@ -212,7 +214,8 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 			return;
 		}
 
-		for (URL url : urls) {
+		for (URL url : urls) { 
+			logger.info("Unregistered " + url.toString());
 			Resource rs = resourceSet.getResource(
 					URI.createURI(url.toString()), true);
 			rs.unload();
