@@ -149,26 +149,6 @@
 						<outputDirectory>src-gen</outputDirectory>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.eclipse.xtext</groupId>
-					<artifactId>org.eclipse.xtext.xtext</artifactId>
-					<version>${xtext.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.xtext</groupId>
-					<artifactId>org.eclipse.xtext.xbase</artifactId>
-					<version>${xtext.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.xtext</groupId>
-					<artifactId>org.eclipse.xtext.common.types</artifactId>
-					<version>${xtext.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.xtext</groupId>
-					<artifactId>org.eclipse.xtext.ecore</artifactId>
-					<version>2.5.1</version>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -211,4 +191,28 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.xtext</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.xbase</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.common.types</artifactId>
+				<version>${xtext.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext.ecore</artifactId>
+				<version>2.5.1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
