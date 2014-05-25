@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.common.types.LClass;
-import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
 import org.lunifera.dsl.semantic.common.types.LType;
 
 import org.lunifera.dsl.semantic.service.*;
@@ -100,9 +99,22 @@ public class LunServiceSwitch<T> extends Switch<T>
         LService lService = (LService)theEObject;
         T result = caseLService(lService);
         if (result == null) result = caseLClass(lService);
-        if (result == null) result = caseLFeaturesHolder(lService);
         if (result == null) result = caseLType(lService);
         if (result == null) result = caseLAnnotationTarget(lService);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LunServicePackage.LINJECTED_SERVICES:
+      {
+        LInjectedServices lInjectedServices = (LInjectedServices)theEObject;
+        T result = caseLInjectedServices(lInjectedServices);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LunServicePackage.LINJECTED_SERVICE:
+      {
+        LInjectedService lInjectedService = (LInjectedService)theEObject;
+        T result = caseLInjectedService(lInjectedService);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -112,30 +124,22 @@ public class LunServiceSwitch<T> extends Switch<T>
         T result = caseLDTOService(ldtoService);
         if (result == null) result = caseLService(ldtoService);
         if (result == null) result = caseLClass(ldtoService);
-        if (result == null) result = caseLFeaturesHolder(ldtoService);
         if (result == null) result = caseLType(ldtoService);
         if (result == null) result = caseLAnnotationTarget(ldtoService);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case LunServicePackage.LSUPPORTED_DTO_COLLECTION:
+      case LunServicePackage.LFILTERABLE_ATTRIBUTES:
       {
-        LSupportedDTOCollection lSupportedDTOCollection = (LSupportedDTOCollection)theEObject;
-        T result = caseLSupportedDTOCollection(lSupportedDTOCollection);
+        LFilterableAttributes lFilterableAttributes = (LFilterableAttributes)theEObject;
+        T result = caseLFilterableAttributes(lFilterableAttributes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case LunServicePackage.LSUPPORTED_DTO:
+      case LunServicePackage.LSORTABLE_ATTRIBUTES:
       {
-        LSupportedDTO lSupportedDTO = (LSupportedDTO)theEObject;
-        T result = caseLSupportedDTO(lSupportedDTO);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LunServicePackage.LSUPPORTED_FILTERS:
-      {
-        LSupportedFilters lSupportedFilters = (LSupportedFilters)theEObject;
-        T result = caseLSupportedFilters(lSupportedFilters);
+        LSortableAttributes lSortableAttributes = (LSortableAttributes)theEObject;
+        T result = caseLSortableAttributes(lSortableAttributes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -145,7 +149,6 @@ public class LunServiceSwitch<T> extends Switch<T>
         T result = caseLChartService(lChartService);
         if (result == null) result = caseLService(lChartService);
         if (result == null) result = caseLClass(lChartService);
-        if (result == null) result = caseLFeaturesHolder(lChartService);
         if (result == null) result = caseLType(lChartService);
         if (result == null) result = caseLAnnotationTarget(lChartService);
         if (result == null) result = defaultCase(theEObject);
@@ -157,7 +160,6 @@ public class LunServiceSwitch<T> extends Switch<T>
         T result = caseLFreeService(lFreeService);
         if (result == null) result = caseLService(lFreeService);
         if (result == null) result = caseLClass(lFreeService);
-        if (result == null) result = caseLFeaturesHolder(lFreeService);
         if (result == null) result = caseLType(lFreeService);
         if (result == null) result = caseLAnnotationTarget(lFreeService);
         if (result == null) result = defaultCase(theEObject);
@@ -200,6 +202,38 @@ public class LunServiceSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>LInjected Services</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LInjected Services</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLInjectedServices(LInjectedServices object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>LInjected Service</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LInjected Service</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLInjectedService(LInjectedService object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>LDTO Service</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -216,49 +250,33 @@ public class LunServiceSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>LSupported DTO Collection</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>LFilterable Attributes</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>LSupported DTO Collection</em>'.
+   * @return the result of interpreting the object as an instance of '<em>LFilterable Attributes</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseLSupportedDTOCollection(LSupportedDTOCollection object)
+  public T caseLFilterableAttributes(LFilterableAttributes object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>LSupported DTO</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>LSortable Attributes</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>LSupported DTO</em>'.
+   * @return the result of interpreting the object as an instance of '<em>LSortable Attributes</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseLSupportedDTO(LSupportedDTO object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>LSupported Filters</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>LSupported Filters</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLSupportedFilters(LSupportedFilters object)
+  public T caseLSortableAttributes(LSortableAttributes object)
   {
     return null;
   }
@@ -339,22 +357,6 @@ public class LunServiceSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLClass(LClass object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>LFeatures Holder</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>LFeatures Holder</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLFeaturesHolder(LFeaturesHolder object)
   {
     return null;
   }

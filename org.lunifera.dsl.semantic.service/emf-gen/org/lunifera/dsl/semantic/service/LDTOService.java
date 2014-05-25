@@ -23,8 +23,9 @@ import org.lunifera.dsl.semantic.dto.LDto;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getPrimaryDTO <em>Primary DTO</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getSupportedDTOs <em>Supported DT Os</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getDto <em>Dto</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,57 +36,85 @@ import org.lunifera.dsl.semantic.dto.LDto;
 public interface LDTOService extends LService
 {
   /**
-   * Returns the value of the '<em><b>Primary DTO</b></em>' reference.
+   * Returns the value of the '<em><b>Dto</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Primary DTO</em>' reference isn't clear,
+   * If the meaning of the '<em>Dto</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Primary DTO</em>' reference.
-   * @see #setPrimaryDTO(LDto)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_PrimaryDTO()
+   * @return the value of the '<em>Dto</em>' reference.
+   * @see #setDto(LDto)
+   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Dto()
    * @model
    * @generated
    */
-  LDto getPrimaryDTO();
+  LDto getDto();
 
   /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getPrimaryDTO <em>Primary DTO</em>}' reference.
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getDto <em>Dto</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Primary DTO</em>' reference.
-   * @see #getPrimaryDTO()
+   * @param value the new value of the '<em>Dto</em>' reference.
+   * @see #getDto()
    * @generated
    */
-  void setPrimaryDTO(LDto value);
+  void setDto(LDto value);
 
   /**
-   * Returns the value of the '<em><b>Supported DT Os</b></em>' containment reference.
-   * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LSupportedDTOCollection#getService <em>Service</em>}'.
+   * Returns the value of the '<em><b>Filterable</b></em>' containment reference.
+   * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LFilterableAttributes#getParent <em>Parent</em>}'.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Supported DT Os</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Filterable</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Supported DT Os</em>' containment reference.
-   * @see #setSupportedDTOs(LSupportedDTOCollection)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_SupportedDTOs()
-   * @see org.lunifera.dsl.semantic.service.LSupportedDTOCollection#getService
-   * @model opposite="service" containment="true"
+   * @return the value of the '<em>Filterable</em>' containment reference.
+   * @see #setFilterable(LFilterableAttributes)
+   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Filterable()
+   * @see org.lunifera.dsl.semantic.service.LFilterableAttributes#getParent
+   * @model opposite="parent" containment="true"
    * @generated
    */
-  LSupportedDTOCollection getSupportedDTOs();
+  LFilterableAttributes getFilterable();
 
   /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getSupportedDTOs <em>Supported DT Os</em>}' containment reference.
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Supported DT Os</em>' containment reference.
-   * @see #getSupportedDTOs()
+   * @param value the new value of the '<em>Filterable</em>' containment reference.
+   * @see #getFilterable()
    * @generated
    */
-  void setSupportedDTOs(LSupportedDTOCollection value);
+  void setFilterable(LFilterableAttributes value);
+
+  /**
+   * Returns the value of the '<em><b>Sortable</b></em>' containment reference.
+   * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LSortableAttributes#getParent <em>Parent</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sortable</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sortable</em>' containment reference.
+   * @see #setSortable(LSortableAttributes)
+   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Sortable()
+   * @see org.lunifera.dsl.semantic.service.LSortableAttributes#getParent
+   * @model opposite="parent" containment="true"
+   * @generated
+   */
+  LSortableAttributes getSortable();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sortable</em>' containment reference.
+   * @see #getSortable()
+   * @generated
+   */
+  void setSortable(LSortableAttributes value);
 
 } // LDTOService

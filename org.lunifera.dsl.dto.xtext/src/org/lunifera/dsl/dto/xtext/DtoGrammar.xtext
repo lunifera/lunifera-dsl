@@ -23,11 +23,11 @@ DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
 	annotations+=AnnotationDef*
 	((({dto::LDtoInheritedAttribute.annotationInfo=current}
-	'inherit var' inheritedFeature=[entity::LEntityAttribute|QualifiedName]) ('mapto' type=[dto::LDto])? (mapper=DtoMapper
+	'inherit var' inheritedFeature=[entity::LEntityAttribute|LFQN]) ('mapto' type=[dto::LDto])? (mapper=DtoMapper
 	| ';'))
 	|
 	({dto::LDtoInheritedReference.annotationInfo=current}
-	('inherit ref' inheritedFeature=[entity::LEntityReference|QualifiedName]) 'mapto' type=[dto::LDto] (mapper=DtoMapper |
+	('inherit ref' inheritedFeature=[entity::LEntityReference|LFQN]) 'mapto' type=[dto::LDto] (mapper=DtoMapper |
 	';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
@@ -70,3 +70,5 @@ LimitedMapperDtoMapper returns dto::LDtoMapper:
 	toDTO=XExpression
 	'}';
 
+RefFQN:
+	ID ('.' ID)*;

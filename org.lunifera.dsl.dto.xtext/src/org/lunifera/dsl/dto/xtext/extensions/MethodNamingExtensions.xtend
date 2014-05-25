@@ -11,7 +11,7 @@ import org.lunifera.dsl.semantic.dto.LDtoFeature
 
 class MethodNamingExtensions extends NamingExtensions {
 
-	@Inject extension ModelExtensions;
+	@Inject extension DtoModelExtensions;
 	@Inject extension QualifiedNameProvider;
 
 	def toMapPropertyToDto(LDtoFeature prop) {

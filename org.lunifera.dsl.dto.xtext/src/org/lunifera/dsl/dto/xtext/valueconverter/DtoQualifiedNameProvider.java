@@ -11,11 +11,19 @@
  */
 package org.lunifera.dsl.dto.xtext.valueconverter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.linking.impl.LinkingHelper;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.impl.CompositeNodeWithSemanticElement;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.lunifera.dsl.common.xtext.valueconverter.CommonQualifiedNameProvider;
+import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions;
 import org.lunifera.dsl.semantic.dto.LDtoFeature;
 
 import com.google.inject.Inject;
@@ -25,7 +33,9 @@ public class DtoQualifiedNameProvider extends CommonQualifiedNameProvider {
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
 	@Inject
-	ModelExtensions extensions;
+	private DtoModelExtensions extensions;
+	@Inject
+	private LinkingHelper linkingHelper;
 
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
@@ -34,7 +44,19 @@ public class DtoQualifiedNameProvider extends CommonQualifiedNameProvider {
 		}
 
 		if (obj instanceof LDtoFeature) {
-			return QualifiedName.create(obj.toString());
+			LDtoFeature feature = (LDtoFeature) obj;
+
+			String name = "";
+			if (extensions.inherited(feature)) {
+				CompositeNodeWithSemanticElement node = (CompositeNodeWithSemanticElement) NodeModelUtils.getNode(feature);
+				List<ILeafNode> leafs = IterableExtensions.toList(node.getLeafNodes());
+				name = linkingHelper.getCrossRefNodeAsString(leafs.get(3), false);
+			} else {
+				name = feature.getName();
+			}
+
+			return name != null ? qualifiedNameConverter
+					.toQualifiedName(name) : null;
 		}
 		return super.getFullyQualifiedName(obj);
 	}

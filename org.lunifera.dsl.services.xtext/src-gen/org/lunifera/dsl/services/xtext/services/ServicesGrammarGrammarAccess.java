@@ -47,25 +47,31 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDtoserviceKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final UnorderedGroup cUnorderedGroup_6 = (UnorderedGroup)cGroup.eContents().get(6);
-		private final Group cGroup_6_0 = (Group)cUnorderedGroup_6.eContents().get(0);
-		private final Keyword cPrimaryDtoKeyword_6_0_0 = (Keyword)cGroup_6_0.eContents().get(0);
-		private final Assignment cPrimaryDTOAssignment_6_0_1 = (Assignment)cGroup_6_0.eContents().get(1);
-		private final CrossReference cPrimaryDTOLDtoCrossReference_6_0_1_0 = (CrossReference)cPrimaryDTOAssignment_6_0_1.eContents().get(0);
-		private final RuleCall cPrimaryDTOLDtoIDTerminalRuleCall_6_0_1_0_1 = (RuleCall)cPrimaryDTOLDtoCrossReference_6_0_1_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_6_0_2 = (Keyword)cGroup_6_0.eContents().get(2);
-		private final Assignment cSupportedDTOsAssignment_6_1 = (Assignment)cUnorderedGroup_6.eContents().get(1);
-		private final RuleCall cSupportedDTOsSupportedDTOCollectionParserRuleCall_6_1_0 = (RuleCall)cSupportedDTOsAssignment_6_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cProvidesKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cDtoAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final CrossReference cDtoLDtoCrossReference_6_0 = (CrossReference)cDtoAssignment_6.eContents().get(0);
+		private final RuleCall cDtoLDtoIDTerminalRuleCall_6_0_1 = (RuleCall)cDtoLDtoCrossReference_6_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cInjectedServicesAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cInjectedServicesInjectedServicesParserRuleCall_8_0 = (RuleCall)cInjectedServicesAssignment_8.eContents().get(0);
+		private final Alternatives cAlternatives_9 = (Alternatives)cGroup.eContents().get(9);
+		private final UnorderedGroup cUnorderedGroup_9_0 = (UnorderedGroup)cAlternatives_9.eContents().get(0);
+		private final Assignment cFilterableAssignment_9_0_0 = (Assignment)cUnorderedGroup_9_0.eContents().get(0);
+		private final RuleCall cFilterableFilterableAttributesParserRuleCall_9_0_0_0 = (RuleCall)cFilterableAssignment_9_0_0.eContents().get(0);
+		private final Assignment cSortableAssignment_9_0_1 = (Assignment)cUnorderedGroup_9_0.eContents().get(1);
+		private final RuleCall cSortableSortableAttributesParserRuleCall_9_0_1_0 = (RuleCall)cSortableAssignment_9_0_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_9_1 = (Keyword)cAlternatives_9.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//Class returns service::LDTOService:
 		//	{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-		//	name=ValidIDWithKeywords "{" ("primary dto" primaryDTO=[dto::LDto] ";" & supportedDTOs=SupportedDTOCollection?) "}";
+		//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" injectedServices=InjectedServices
+		//	(filterable=FilterableAttributes? & sortable=SortableAttributes? | ";") "}";
 		public ParserRule getRule() { return rule; }
 
 		//{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-		//name=ValidIDWithKeywords "{" ("primary dto" primaryDTO=[dto::LDto] ";" & supportedDTOs=SupportedDTOCollection?) "}"
+		//name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" injectedServices=InjectedServices
+		//(filterable=FilterableAttributes? & sortable=SortableAttributes? | ";") "}"
 		public Group getGroup() { return cGroup; }
 
 		//{service::LDTOService}
@@ -89,170 +95,237 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidIDWithKeywords
 		public RuleCall getNameValidIDWithKeywordsParserRuleCall_4_0() { return cNameValidIDWithKeywordsParserRuleCall_4_0; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
-
-		//"primary dto" primaryDTO=[dto::LDto] ";" & supportedDTOs=SupportedDTOCollection?
-		public UnorderedGroup getUnorderedGroup_6() { return cUnorderedGroup_6; }
-
-		//"primary dto" primaryDTO=[dto::LDto] ";"
-		public Group getGroup_6_0() { return cGroup_6_0; }
-
-		//"primary dto"
-		public Keyword getPrimaryDtoKeyword_6_0_0() { return cPrimaryDtoKeyword_6_0_0; }
-
-		//primaryDTO=[dto::LDto]
-		public Assignment getPrimaryDTOAssignment_6_0_1() { return cPrimaryDTOAssignment_6_0_1; }
-
-		//[dto::LDto]
-		public CrossReference getPrimaryDTOLDtoCrossReference_6_0_1_0() { return cPrimaryDTOLDtoCrossReference_6_0_1_0; }
-
-		//ID
-		public RuleCall getPrimaryDTOLDtoIDTerminalRuleCall_6_0_1_0_1() { return cPrimaryDTOLDtoIDTerminalRuleCall_6_0_1_0_1; }
-
-		//";"
-		public Keyword getSemicolonKeyword_6_0_2() { return cSemicolonKeyword_6_0_2; }
-
-		//supportedDTOs=SupportedDTOCollection?
-		public Assignment getSupportedDTOsAssignment_6_1() { return cSupportedDTOsAssignment_6_1; }
-
-		//SupportedDTOCollection
-		public RuleCall getSupportedDTOsSupportedDTOCollectionParserRuleCall_6_1_0() { return cSupportedDTOsSupportedDTOCollectionParserRuleCall_6_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
-	}
-
-	public class SupportedDTOCollectionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SupportedDTOCollection");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cLSupportedDTOCollectionAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cSupportedDTOsKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSupportedDtosAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSupportedDtosSupportedDTOParserRuleCall_3_0 = (RuleCall)cSupportedDtosAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//SupportedDTOCollection returns service::LSupportedDTOCollection:
-		//	{service::LSupportedDTOCollection} "supportedDTOs" "{" supportedDtos+=SupportedDTO* "}";
-		public ParserRule getRule() { return rule; }
-
-		//{service::LSupportedDTOCollection} "supportedDTOs" "{" supportedDtos+=SupportedDTO* "}"
-		public Group getGroup() { return cGroup; }
-
-		//{service::LSupportedDTOCollection}
-		public Action getLSupportedDTOCollectionAction_0() { return cLSupportedDTOCollectionAction_0; }
-
-		//"supportedDTOs"
-		public Keyword getSupportedDTOsKeyword_1() { return cSupportedDTOsKeyword_1; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-
-		//supportedDtos+=SupportedDTO*
-		public Assignment getSupportedDtosAssignment_3() { return cSupportedDtosAssignment_3; }
-
-		//SupportedDTO
-		public RuleCall getSupportedDtosSupportedDTOParserRuleCall_3_0() { return cSupportedDtosSupportedDTOParserRuleCall_3_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
-	}
-
-	public class SupportedDTOElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SupportedDTO");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cDtoAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cDtoLDtoCrossReference_0_0 = (CrossReference)cDtoAssignment_0.eContents().get(0);
-		private final RuleCall cDtoLDtoIDTerminalRuleCall_0_0_1 = (RuleCall)cDtoLDtoCrossReference_0_0.eContents().get(1);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cFiltersAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final RuleCall cFiltersSupportedFilterAttributesParserRuleCall_1_0_0 = (RuleCall)cFiltersAssignment_1_0.eContents().get(0);
-		private final Keyword cSemicolonKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
-		
-		//SupportedDTO returns service::LSupportedDTO:
-		//	dto=[dto::LDto] (filters=SupportedFilterAttributes | ";");
-		public ParserRule getRule() { return rule; }
-
-		//dto=[dto::LDto] (filters=SupportedFilterAttributes | ";")
-		public Group getGroup() { return cGroup; }
+		//"provides"
+		public Keyword getProvidesKeyword_5() { return cProvidesKeyword_5; }
 
 		//dto=[dto::LDto]
-		public Assignment getDtoAssignment_0() { return cDtoAssignment_0; }
+		public Assignment getDtoAssignment_6() { return cDtoAssignment_6; }
 
 		//[dto::LDto]
-		public CrossReference getDtoLDtoCrossReference_0_0() { return cDtoLDtoCrossReference_0_0; }
+		public CrossReference getDtoLDtoCrossReference_6_0() { return cDtoLDtoCrossReference_6_0; }
 
 		//ID
-		public RuleCall getDtoLDtoIDTerminalRuleCall_0_0_1() { return cDtoLDtoIDTerminalRuleCall_0_0_1; }
+		public RuleCall getDtoLDtoIDTerminalRuleCall_6_0_1() { return cDtoLDtoIDTerminalRuleCall_6_0_1; }
 
-		//filters=SupportedFilterAttributes | ";"
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
 
-		//filters=SupportedFilterAttributes
-		public Assignment getFiltersAssignment_1_0() { return cFiltersAssignment_1_0; }
+		//injectedServices=InjectedServices
+		public Assignment getInjectedServicesAssignment_8() { return cInjectedServicesAssignment_8; }
 
-		//SupportedFilterAttributes
-		public RuleCall getFiltersSupportedFilterAttributesParserRuleCall_1_0_0() { return cFiltersSupportedFilterAttributesParserRuleCall_1_0_0; }
+		//InjectedServices
+		public RuleCall getInjectedServicesInjectedServicesParserRuleCall_8_0() { return cInjectedServicesInjectedServicesParserRuleCall_8_0; }
+
+		//filterable=FilterableAttributes? & sortable=SortableAttributes? | ";"
+		public Alternatives getAlternatives_9() { return cAlternatives_9; }
+
+		//filterable=FilterableAttributes? & sortable=SortableAttributes?
+		public UnorderedGroup getUnorderedGroup_9_0() { return cUnorderedGroup_9_0; }
+
+		//filterable=FilterableAttributes?
+		public Assignment getFilterableAssignment_9_0_0() { return cFilterableAssignment_9_0_0; }
+
+		//FilterableAttributes
+		public RuleCall getFilterableFilterableAttributesParserRuleCall_9_0_0_0() { return cFilterableFilterableAttributesParserRuleCall_9_0_0_0; }
+
+		//sortable=SortableAttributes?
+		public Assignment getSortableAssignment_9_0_1() { return cSortableAssignment_9_0_1; }
+
+		//SortableAttributes
+		public RuleCall getSortableSortableAttributesParserRuleCall_9_0_1_0() { return cSortableSortableAttributesParserRuleCall_9_0_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_1_1() { return cSemicolonKeyword_1_1; }
+		public Keyword getSemicolonKeyword_9_1() { return cSemicolonKeyword_9_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
 
-	public class SupportedFilterAttributesElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SupportedFilterAttributes");
+	public class InjectedServicesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "InjectedServices");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cFiltersKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Action cLInjectedServicesAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cServicesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cServicesInjectedServiceParserRuleCall_1_0 = (RuleCall)cServicesAssignment_1.eContents().get(0);
+		
+		//InjectedServices returns service::LInjectedServices:
+		//	{service::LInjectedServices} services+=InjectedService*;
+		public ParserRule getRule() { return rule; }
+
+		//{service::LInjectedServices} services+=InjectedService*
+		public Group getGroup() { return cGroup; }
+
+		//{service::LInjectedServices}
+		public Action getLInjectedServicesAction_0() { return cLInjectedServicesAction_0; }
+
+		//services+=InjectedService*
+		public Assignment getServicesAssignment_1() { return cServicesAssignment_1; }
+
+		//InjectedService
+		public RuleCall getServicesInjectedServiceParserRuleCall_1_0() { return cServicesInjectedServiceParserRuleCall_1_0; }
+	}
+
+	public class InjectedServiceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "InjectedService");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLInjectedServiceAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cInjectServiceKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cCardinalityAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCardinalityCardinalityEnumRuleCall_2_0 = (RuleCall)cCardinalityAssignment_2.eContents().get(0);
+		private final Assignment cServiceAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cServiceJvmTypeReferenceParserRuleCall_3_0 = (RuleCall)cServiceAssignment_3.eContents().get(0);
+		private final Assignment cAttributeNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAttributeNameIDTerminalRuleCall_4_0 = (RuleCall)cAttributeNameAssignment_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//InjectedService returns service::LInjectedService:
+		//	{service::LInjectedService} "injectService" cardinality=Cardinality? service=JvmTypeReference attributeName=ID ";";
+		public ParserRule getRule() { return rule; }
+
+		//{service::LInjectedService} "injectService" cardinality=Cardinality? service=JvmTypeReference attributeName=ID ";"
+		public Group getGroup() { return cGroup; }
+
+		//{service::LInjectedService}
+		public Action getLInjectedServiceAction_0() { return cLInjectedServiceAction_0; }
+
+		//"injectService"
+		public Keyword getInjectServiceKeyword_1() { return cInjectServiceKeyword_1; }
+
+		//cardinality=Cardinality?
+		public Assignment getCardinalityAssignment_2() { return cCardinalityAssignment_2; }
+
+		//Cardinality
+		public RuleCall getCardinalityCardinalityEnumRuleCall_2_0() { return cCardinalityCardinalityEnumRuleCall_2_0; }
+
+		//service=JvmTypeReference
+		public Assignment getServiceAssignment_3() { return cServiceAssignment_3; }
+
+		//JvmTypeReference
+		public RuleCall getServiceJvmTypeReferenceParserRuleCall_3_0() { return cServiceJvmTypeReferenceParserRuleCall_3_0; }
+
+		//attributeName=ID
+		public Assignment getAttributeNameAssignment_4() { return cAttributeNameAssignment_4; }
+
+		//ID
+		public RuleCall getAttributeNameIDTerminalRuleCall_4_0() { return cAttributeNameIDTerminalRuleCall_4_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+	}
+
+	public class FilterableAttributesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FilterableAttributes");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFilterableKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cFilterFeaturesAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cFilterFeaturesLDtoFeatureCrossReference_2_0 = (CrossReference)cFilterFeaturesAssignment_2.eContents().get(0);
-		private final RuleCall cFilterFeaturesLDtoFeatureQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cFilterFeaturesLDtoFeatureCrossReference_2_0.eContents().get(1);
+		private final Assignment cFilterableFeaturesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cFilterableFeaturesLDtoFeatureCrossReference_2_0 = (CrossReference)cFilterableFeaturesAssignment_2.eContents().get(0);
+		private final RuleCall cFilterableFeaturesLDtoFeatureLFQNParserRuleCall_2_0_1 = (RuleCall)cFilterableFeaturesLDtoFeatureCrossReference_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cFilterFeaturesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cFilterFeaturesLDtoFeatureCrossReference_3_1_0 = (CrossReference)cFilterFeaturesAssignment_3_1.eContents().get(0);
-		private final RuleCall cFilterFeaturesLDtoFeatureQualifiedNameParserRuleCall_3_1_0_1 = (RuleCall)cFilterFeaturesLDtoFeatureCrossReference_3_1_0.eContents().get(1);
+		private final Assignment cFilterableFeaturesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cFilterableFeaturesLDtoFeatureCrossReference_3_1_0 = (CrossReference)cFilterableFeaturesAssignment_3_1.eContents().get(0);
+		private final RuleCall cFilterableFeaturesLDtoFeatureLFQNParserRuleCall_3_1_0_1 = (RuleCall)cFilterableFeaturesLDtoFeatureCrossReference_3_1_0.eContents().get(1);
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//SupportedFilterAttributes returns service::LSupportedFilters:
-		//	"filters" "{" filterFeatures+=[dto::LDtoFeature|QualifiedName] ("," filterFeatures+=[dto::LDtoFeature|QualifiedName])*
-		//	";" "}";
+		//FilterableAttributes returns service::LFilterableAttributes:
+		//	"filterable" "{" filterableFeatures+=[dto::LDtoFeature|LFQN] ("," filterableFeatures+=[dto::LDtoFeature|LFQN])* ";"
+		//	"}";
 		public ParserRule getRule() { return rule; }
 
-		//"filters" "{" filterFeatures+=[dto::LDtoFeature|QualifiedName] ("," filterFeatures+=[dto::LDtoFeature|QualifiedName])*
-		//";" "}"
+		//"filterable" "{" filterableFeatures+=[dto::LDtoFeature|LFQN] ("," filterableFeatures+=[dto::LDtoFeature|LFQN])* ";" "}"
 		public Group getGroup() { return cGroup; }
 
-		//"filters"
-		public Keyword getFiltersKeyword_0() { return cFiltersKeyword_0; }
+		//"filterable"
+		public Keyword getFilterableKeyword_0() { return cFilterableKeyword_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 
-		//filterFeatures+=[dto::LDtoFeature|QualifiedName]
-		public Assignment getFilterFeaturesAssignment_2() { return cFilterFeaturesAssignment_2; }
+		//filterableFeatures+=[dto::LDtoFeature|LFQN]
+		public Assignment getFilterableFeaturesAssignment_2() { return cFilterableFeaturesAssignment_2; }
 
-		//[dto::LDtoFeature|QualifiedName]
-		public CrossReference getFilterFeaturesLDtoFeatureCrossReference_2_0() { return cFilterFeaturesLDtoFeatureCrossReference_2_0; }
+		//[dto::LDtoFeature|LFQN]
+		public CrossReference getFilterableFeaturesLDtoFeatureCrossReference_2_0() { return cFilterableFeaturesLDtoFeatureCrossReference_2_0; }
 
-		//QualifiedName
-		public RuleCall getFilterFeaturesLDtoFeatureQualifiedNameParserRuleCall_2_0_1() { return cFilterFeaturesLDtoFeatureQualifiedNameParserRuleCall_2_0_1; }
+		//LFQN
+		public RuleCall getFilterableFeaturesLDtoFeatureLFQNParserRuleCall_2_0_1() { return cFilterableFeaturesLDtoFeatureLFQNParserRuleCall_2_0_1; }
 
-		//("," filterFeatures+=[dto::LDtoFeature|QualifiedName])*
+		//("," filterableFeatures+=[dto::LDtoFeature|LFQN])*
 		public Group getGroup_3() { return cGroup_3; }
 
 		//","
 		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
 
-		//filterFeatures+=[dto::LDtoFeature|QualifiedName]
-		public Assignment getFilterFeaturesAssignment_3_1() { return cFilterFeaturesAssignment_3_1; }
+		//filterableFeatures+=[dto::LDtoFeature|LFQN]
+		public Assignment getFilterableFeaturesAssignment_3_1() { return cFilterableFeaturesAssignment_3_1; }
 
-		//[dto::LDtoFeature|QualifiedName]
-		public CrossReference getFilterFeaturesLDtoFeatureCrossReference_3_1_0() { return cFilterFeaturesLDtoFeatureCrossReference_3_1_0; }
+		//[dto::LDtoFeature|LFQN]
+		public CrossReference getFilterableFeaturesLDtoFeatureCrossReference_3_1_0() { return cFilterableFeaturesLDtoFeatureCrossReference_3_1_0; }
 
-		//QualifiedName
-		public RuleCall getFilterFeaturesLDtoFeatureQualifiedNameParserRuleCall_3_1_0_1() { return cFilterFeaturesLDtoFeatureQualifiedNameParserRuleCall_3_1_0_1; }
+		//LFQN
+		public RuleCall getFilterableFeaturesLDtoFeatureLFQNParserRuleCall_3_1_0_1() { return cFilterableFeaturesLDtoFeatureLFQNParserRuleCall_3_1_0_1; }
+
+		//";"
+		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class SortableAttributesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SortableAttributes");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSortableKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cSortableFeaturesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cSortableFeaturesLDtoFeatureCrossReference_2_0 = (CrossReference)cSortableFeaturesAssignment_2.eContents().get(0);
+		private final RuleCall cSortableFeaturesLDtoFeatureLFQNParserRuleCall_2_0_1 = (RuleCall)cSortableFeaturesLDtoFeatureCrossReference_2_0.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cSortableFeaturesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cSortableFeaturesLDtoFeatureCrossReference_3_1_0 = (CrossReference)cSortableFeaturesAssignment_3_1.eContents().get(0);
+		private final RuleCall cSortableFeaturesLDtoFeatureLFQNParserRuleCall_3_1_0_1 = (RuleCall)cSortableFeaturesLDtoFeatureCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//SortableAttributes returns service::LSortableAttributes:
+		//	"sortable" "{" sortableFeatures+=[dto::LDtoFeature|LFQN] ("," sortableFeatures+=[dto::LDtoFeature|LFQN])* ";" "}";
+		public ParserRule getRule() { return rule; }
+
+		//"sortable" "{" sortableFeatures+=[dto::LDtoFeature|LFQN] ("," sortableFeatures+=[dto::LDtoFeature|LFQN])* ";" "}"
+		public Group getGroup() { return cGroup; }
+
+		//"sortable"
+		public Keyword getSortableKeyword_0() { return cSortableKeyword_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+
+		//sortableFeatures+=[dto::LDtoFeature|LFQN]
+		public Assignment getSortableFeaturesAssignment_2() { return cSortableFeaturesAssignment_2; }
+
+		//[dto::LDtoFeature|LFQN]
+		public CrossReference getSortableFeaturesLDtoFeatureCrossReference_2_0() { return cSortableFeaturesLDtoFeatureCrossReference_2_0; }
+
+		//LFQN
+		public RuleCall getSortableFeaturesLDtoFeatureLFQNParserRuleCall_2_0_1() { return cSortableFeaturesLDtoFeatureLFQNParserRuleCall_2_0_1; }
+
+		//("," sortableFeatures+=[dto::LDtoFeature|LFQN])*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//sortableFeatures+=[dto::LDtoFeature|LFQN]
+		public Assignment getSortableFeaturesAssignment_3_1() { return cSortableFeaturesAssignment_3_1; }
+
+		//[dto::LDtoFeature|LFQN]
+		public CrossReference getSortableFeaturesLDtoFeatureCrossReference_3_1_0() { return cSortableFeaturesLDtoFeatureCrossReference_3_1_0; }
+
+		//LFQN
+		public RuleCall getSortableFeaturesLDtoFeatureLFQNParserRuleCall_3_1_0_1() { return cSortableFeaturesLDtoFeatureLFQNParserRuleCall_3_1_0_1; }
 
 		//";"
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
@@ -262,11 +335,57 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	public class CardinalityElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "Cardinality");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cZERO_TO_ONEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cZERO_TO_ONEOptionalKeyword_0_0 = (Keyword)cZERO_TO_ONEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cONE_TO_ONEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cONE_TO_ONEMandatoryKeyword_1_0 = (Keyword)cONE_TO_ONEEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cZERO_TO_MANYEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cZERO_TO_MANYZeroToManyKeyword_2_0 = (Keyword)cZERO_TO_MANYEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cONE_TO_MANYEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cONE_TO_MANYOneToManyKeyword_3_0 = (Keyword)cONE_TO_MANYEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum Cardinality returns service::LCardinality:
+		//	ZERO_TO_ONE="optional" | ONE_TO_ONE="mandatory" | ZERO_TO_MANY="zeroToMany" | ONE_TO_MANY="oneToMany";
+		public EnumRule getRule() { return rule; }
+
+		//ZERO_TO_ONE="optional" | ONE_TO_ONE="mandatory" | ZERO_TO_MANY="zeroToMany" | ONE_TO_MANY="oneToMany"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ZERO_TO_ONE="optional"
+		public EnumLiteralDeclaration getZERO_TO_ONEEnumLiteralDeclaration_0() { return cZERO_TO_ONEEnumLiteralDeclaration_0; }
+
+		//"optional"
+		public Keyword getZERO_TO_ONEOptionalKeyword_0_0() { return cZERO_TO_ONEOptionalKeyword_0_0; }
+
+		//ONE_TO_ONE="mandatory"
+		public EnumLiteralDeclaration getONE_TO_ONEEnumLiteralDeclaration_1() { return cONE_TO_ONEEnumLiteralDeclaration_1; }
+
+		//"mandatory"
+		public Keyword getONE_TO_ONEMandatoryKeyword_1_0() { return cONE_TO_ONEMandatoryKeyword_1_0; }
+
+		//ZERO_TO_MANY="zeroToMany"
+		public EnumLiteralDeclaration getZERO_TO_MANYEnumLiteralDeclaration_2() { return cZERO_TO_MANYEnumLiteralDeclaration_2; }
+
+		//"zeroToMany"
+		public Keyword getZERO_TO_MANYZeroToManyKeyword_2_0() { return cZERO_TO_MANYZeroToManyKeyword_2_0; }
+
+		//ONE_TO_MANY="oneToMany"
+		public EnumLiteralDeclaration getONE_TO_MANYEnumLiteralDeclaration_3() { return cONE_TO_MANYEnumLiteralDeclaration_3; }
+
+		//"oneToMany"
+		public Keyword getONE_TO_MANYOneToManyKeyword_3_0() { return cONE_TO_MANYOneToManyKeyword_3_0; }
+	}
+	
 	private LServiceModelElements pLServiceModel;
 	private ClassElements pClass;
-	private SupportedDTOCollectionElements pSupportedDTOCollection;
-	private SupportedDTOElements pSupportedDTO;
-	private SupportedFilterAttributesElements pSupportedFilterAttributes;
+	private InjectedServicesElements pInjectedServices;
+	private InjectedServiceElements pInjectedService;
+	private FilterableAttributesElements pFilterableAttributes;
+	private SortableAttributesElements pSortableAttributes;
+	private CardinalityElements unknownRuleCardinality;
 	
 	private final Grammar grammar;
 
@@ -318,7 +437,8 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Class returns service::LDTOService:
 	//	{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-	//	name=ValidIDWithKeywords "{" ("primary dto" primaryDTO=[dto::LDto] ";" & supportedDTOs=SupportedDTOCollection?) "}";
+	//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" injectedServices=InjectedServices
+	//	(filterable=FilterableAttributes? & sortable=SortableAttributes? | ";") "}";
 	public ClassElements getClassAccess() {
 		return (pClass != null) ? pClass : (pClass = new ClassElements());
 	}
@@ -327,35 +447,55 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getClassAccess().getRule();
 	}
 
-	//SupportedDTOCollection returns service::LSupportedDTOCollection:
-	//	{service::LSupportedDTOCollection} "supportedDTOs" "{" supportedDtos+=SupportedDTO* "}";
-	public SupportedDTOCollectionElements getSupportedDTOCollectionAccess() {
-		return (pSupportedDTOCollection != null) ? pSupportedDTOCollection : (pSupportedDTOCollection = new SupportedDTOCollectionElements());
+	//InjectedServices returns service::LInjectedServices:
+	//	{service::LInjectedServices} services+=InjectedService*;
+	public InjectedServicesElements getInjectedServicesAccess() {
+		return (pInjectedServices != null) ? pInjectedServices : (pInjectedServices = new InjectedServicesElements());
 	}
 	
-	public ParserRule getSupportedDTOCollectionRule() {
-		return getSupportedDTOCollectionAccess().getRule();
+	public ParserRule getInjectedServicesRule() {
+		return getInjectedServicesAccess().getRule();
 	}
 
-	//SupportedDTO returns service::LSupportedDTO:
-	//	dto=[dto::LDto] (filters=SupportedFilterAttributes | ";");
-	public SupportedDTOElements getSupportedDTOAccess() {
-		return (pSupportedDTO != null) ? pSupportedDTO : (pSupportedDTO = new SupportedDTOElements());
+	//InjectedService returns service::LInjectedService:
+	//	{service::LInjectedService} "injectService" cardinality=Cardinality? service=JvmTypeReference attributeName=ID ";";
+	public InjectedServiceElements getInjectedServiceAccess() {
+		return (pInjectedService != null) ? pInjectedService : (pInjectedService = new InjectedServiceElements());
 	}
 	
-	public ParserRule getSupportedDTORule() {
-		return getSupportedDTOAccess().getRule();
+	public ParserRule getInjectedServiceRule() {
+		return getInjectedServiceAccess().getRule();
 	}
 
-	//SupportedFilterAttributes returns service::LSupportedFilters:
-	//	"filters" "{" filterFeatures+=[dto::LDtoFeature|QualifiedName] ("," filterFeatures+=[dto::LDtoFeature|QualifiedName])*
-	//	";" "}";
-	public SupportedFilterAttributesElements getSupportedFilterAttributesAccess() {
-		return (pSupportedFilterAttributes != null) ? pSupportedFilterAttributes : (pSupportedFilterAttributes = new SupportedFilterAttributesElements());
+	//FilterableAttributes returns service::LFilterableAttributes:
+	//	"filterable" "{" filterableFeatures+=[dto::LDtoFeature|LFQN] ("," filterableFeatures+=[dto::LDtoFeature|LFQN])* ";"
+	//	"}";
+	public FilterableAttributesElements getFilterableAttributesAccess() {
+		return (pFilterableAttributes != null) ? pFilterableAttributes : (pFilterableAttributes = new FilterableAttributesElements());
 	}
 	
-	public ParserRule getSupportedFilterAttributesRule() {
-		return getSupportedFilterAttributesAccess().getRule();
+	public ParserRule getFilterableAttributesRule() {
+		return getFilterableAttributesAccess().getRule();
+	}
+
+	//SortableAttributes returns service::LSortableAttributes:
+	//	"sortable" "{" sortableFeatures+=[dto::LDtoFeature|LFQN] ("," sortableFeatures+=[dto::LDtoFeature|LFQN])* ";" "}";
+	public SortableAttributesElements getSortableAttributesAccess() {
+		return (pSortableAttributes != null) ? pSortableAttributes : (pSortableAttributes = new SortableAttributesElements());
+	}
+	
+	public ParserRule getSortableAttributesRule() {
+		return getSortableAttributesAccess().getRule();
+	}
+
+	//enum Cardinality returns service::LCardinality:
+	//	ZERO_TO_ONE="optional" | ONE_TO_ONE="mandatory" | ZERO_TO_MANY="zeroToMany" | ONE_TO_MANY="oneToMany";
+	public CardinalityElements getCardinalityAccess() {
+		return (unknownRuleCardinality != null) ? unknownRuleCardinality : (unknownRuleCardinality = new CardinalityElements());
+	}
+	
+	public EnumRule getCardinalityRule() {
+		return getCardinalityAccess().getRule();
 	}
 
 	//TypedPackage returns types::LTypedPackage:

@@ -114,6 +114,8 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDtoMapperAccess().getGroup(), "rule__DtoMapper__Group__0");
 					put(grammarAccess.getDtoMapperAccess().getGroup_3(), "rule__DtoMapper__Group_3__0");
 					put(grammarAccess.getLimitedMapperDtoMapperAccess().getGroup(), "rule__LimitedMapperDtoMapper__Group__0");
+					put(grammarAccess.getRefFQNAccess().getGroup(), "rule__RefFQN__Group__0");
+					put(grammarAccess.getRefFQNAccess().getGroup_1(), "rule__RefFQN__Group_1__0");
 					put(grammarAccess.getTypedPackageAccess().getGroup(), "rule__TypedPackage__Group__0");
 					put(grammarAccess.getTypedPackageAccess().getGroup_3(), "rule__TypedPackage__Group_3__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");

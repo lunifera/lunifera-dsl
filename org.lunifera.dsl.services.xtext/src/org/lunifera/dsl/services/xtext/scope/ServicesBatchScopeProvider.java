@@ -14,6 +14,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonBatchScopeProvider;
+import org.lunifera.dsl.semantic.service.LFilterableAttributes;
+import org.lunifera.dsl.semantic.service.LSortableAttributes;
+import org.lunifera.dsl.semantic.service.LunServicePackage;
 
 /**
  * This class contains custom scoping description.
@@ -27,6 +30,12 @@ public class ServicesBatchScopeProvider extends CommonBatchScopeProvider {
 
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
+		if (reference == LunServicePackage.Literals.LFILTERABLE_ATTRIBUTES__FILTERABLE_FEATURES) {
+			return new ServicesFilterableScope((LFilterableAttributes) context);
+		} else if (reference == LunServicePackage.Literals.LSORTABLE_ATTRIBUTES__SORTABLE_FEATURES) {
+			return new ServicesSortableScope((LSortableAttributes) context);
+		}
+
 		// if (reference == LunServicePackage.Literals.LSER) {
 		// return new ServicesInheritedReferenceScope(
 		// (LDtoInheritedReference) context);

@@ -41,37 +41,50 @@ import org.lunifera.dsl.semantic.dto.LDtoFeature
 import org.lunifera.dsl.semantic.dto.LDtoOperation
 import org.lunifera.dsl.semantic.dto.LDtoReference
 import org.lunifera.dsl.semantic.dto.LDtoAttribute
+import org.lunifera.dsl.semantic.common.types.LOperation
+import org.eclipse.xtext.common.types.JvmTypeReference
 
 class LServiceModel {
 	contains LTypedPackage[] packages
 }
 
-abstract class LService extends LClass, LFeaturesHolder {
+abstract class LService extends LClass {
+	contains LInjectedServices injectedServices
+	contains LOperation[] operations
+}
+
+class LInjectedServices {
+	contains LInjectedService[*] services
+}
+ 
+class LInjectedService {
+	LCardinality cardinality
+	String attributeName
+	contains JvmTypeReference service
 }
 
 class LDTOService extends LService {
-	refers LDto primaryDTO
-	contains LSupportedDTOCollection supportedDTOs opposite service
-}
-
-class LSupportedDTOCollection {
-	refers LDTOService service opposite supportedDTOs
-	contains LSupportedDTO[*] supportedDtos opposite parent
-}
- 
-class LSupportedDTO {
-	refers LSupportedDTOCollection parent opposite supportedDtos
 	refers LDto dto
-	contains LSupportedFilters filters opposite parent
+	contains LFilterableAttributes filterable opposite parent
+	contains LSortableAttributes sortable opposite parent
 }
 
-class LSupportedFilters {
-	refers LSupportedDTO parent opposite filters
-	refers LDtoFeature[*] filterFeatures
+class LFilterableAttributes {
+	refers LDTOService parent opposite filterable
+	refers LDtoFeature[*] filterableFeatures
+}
+
+class LSortableAttributes {
+	refers LDTOService parent opposite sortable
+	refers LDtoFeature[*] sortableFeatures
 }
 
 class LChartService extends LService {
 }
 
 class LFreeService extends LService {
+}
+
+enum LCardinality {
+	ZERO_TO_ONE, ONE_TO_ONE, ZERO_TO_MANY, ONE_TO_MANY 
 }

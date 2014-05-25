@@ -37,7 +37,7 @@ public class ServicesGrammarParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getSupportedDTOAccess().getAlternatives_1(), "rule__SupportedDTO__Alternatives_1");
+					put(grammarAccess.getClassAccess().getAlternatives_9(), "rule__Class__Alternatives_9");
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getDataTypeAccess().getAlternatives_2(), "rule__DataType__Alternatives_2");
 					put(grammarAccess.getScalarTypeAccess().getAlternatives(), "rule__ScalarType__Alternatives");
@@ -80,16 +80,18 @@ public class ServicesGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmArgumentTypeReferenceAccess().getAlternatives(), "rule__JvmArgumentTypeReference__Alternatives");
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1(), "rule__XImportDeclaration__Alternatives_1");
+					put(grammarAccess.getCardinalityAccess().getAlternatives(), "rule__Cardinality__Alternatives");
 					put(grammarAccess.getDateTypeAccess().getAlternatives(), "rule__DateType__Alternatives");
 					put(grammarAccess.getLVisibilityAccess().getAlternatives(), "rule__LVisibility__Alternatives");
 					put(grammarAccess.getLowerBoundAccess().getAlternatives(), "rule__LowerBound__Alternatives");
 					put(grammarAccess.getUpperBoundAccess().getAlternatives(), "rule__UpperBound__Alternatives");
 					put(grammarAccess.getClassAccess().getGroup(), "rule__Class__Group__0");
-					put(grammarAccess.getClassAccess().getGroup_6_0(), "rule__Class__Group_6_0__0");
-					put(grammarAccess.getSupportedDTOCollectionAccess().getGroup(), "rule__SupportedDTOCollection__Group__0");
-					put(grammarAccess.getSupportedDTOAccess().getGroup(), "rule__SupportedDTO__Group__0");
-					put(grammarAccess.getSupportedFilterAttributesAccess().getGroup(), "rule__SupportedFilterAttributes__Group__0");
-					put(grammarAccess.getSupportedFilterAttributesAccess().getGroup_3(), "rule__SupportedFilterAttributes__Group_3__0");
+					put(grammarAccess.getInjectedServicesAccess().getGroup(), "rule__InjectedServices__Group__0");
+					put(grammarAccess.getInjectedServiceAccess().getGroup(), "rule__InjectedService__Group__0");
+					put(grammarAccess.getFilterableAttributesAccess().getGroup(), "rule__FilterableAttributes__Group__0");
+					put(grammarAccess.getFilterableAttributesAccess().getGroup_3(), "rule__FilterableAttributes__Group_3__0");
+					put(grammarAccess.getSortableAttributesAccess().getGroup(), "rule__SortableAttributes__Group__0");
+					put(grammarAccess.getSortableAttributesAccess().getGroup_3(), "rule__SortableAttributes__Group_3__0");
 					put(grammarAccess.getTypedPackageAccess().getGroup(), "rule__TypedPackage__Group__0");
 					put(grammarAccess.getTypedPackageAccess().getGroup_3(), "rule__TypedPackage__Group_3__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
@@ -274,13 +276,18 @@ public class ServicesGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLServiceModelAccess().getPackagesAssignment(), "rule__LServiceModel__PackagesAssignment");
 					put(grammarAccess.getClassAccess().getAnnotationsAssignment_1(), "rule__Class__AnnotationsAssignment_1");
 					put(grammarAccess.getClassAccess().getNameAssignment_4(), "rule__Class__NameAssignment_4");
-					put(grammarAccess.getClassAccess().getPrimaryDTOAssignment_6_0_1(), "rule__Class__PrimaryDTOAssignment_6_0_1");
-					put(grammarAccess.getClassAccess().getSupportedDTOsAssignment_6_1(), "rule__Class__SupportedDTOsAssignment_6_1");
-					put(grammarAccess.getSupportedDTOCollectionAccess().getSupportedDtosAssignment_3(), "rule__SupportedDTOCollection__SupportedDtosAssignment_3");
-					put(grammarAccess.getSupportedDTOAccess().getDtoAssignment_0(), "rule__SupportedDTO__DtoAssignment_0");
-					put(grammarAccess.getSupportedDTOAccess().getFiltersAssignment_1_0(), "rule__SupportedDTO__FiltersAssignment_1_0");
-					put(grammarAccess.getSupportedFilterAttributesAccess().getFilterFeaturesAssignment_2(), "rule__SupportedFilterAttributes__FilterFeaturesAssignment_2");
-					put(grammarAccess.getSupportedFilterAttributesAccess().getFilterFeaturesAssignment_3_1(), "rule__SupportedFilterAttributes__FilterFeaturesAssignment_3_1");
+					put(grammarAccess.getClassAccess().getDtoAssignment_6(), "rule__Class__DtoAssignment_6");
+					put(grammarAccess.getClassAccess().getInjectedServicesAssignment_8(), "rule__Class__InjectedServicesAssignment_8");
+					put(grammarAccess.getClassAccess().getFilterableAssignment_9_0_0(), "rule__Class__FilterableAssignment_9_0_0");
+					put(grammarAccess.getClassAccess().getSortableAssignment_9_0_1(), "rule__Class__SortableAssignment_9_0_1");
+					put(grammarAccess.getInjectedServicesAccess().getServicesAssignment_1(), "rule__InjectedServices__ServicesAssignment_1");
+					put(grammarAccess.getInjectedServiceAccess().getCardinalityAssignment_2(), "rule__InjectedService__CardinalityAssignment_2");
+					put(grammarAccess.getInjectedServiceAccess().getServiceAssignment_3(), "rule__InjectedService__ServiceAssignment_3");
+					put(grammarAccess.getInjectedServiceAccess().getAttributeNameAssignment_4(), "rule__InjectedService__AttributeNameAssignment_4");
+					put(grammarAccess.getFilterableAttributesAccess().getFilterableFeaturesAssignment_2(), "rule__FilterableAttributes__FilterableFeaturesAssignment_2");
+					put(grammarAccess.getFilterableAttributesAccess().getFilterableFeaturesAssignment_3_1(), "rule__FilterableAttributes__FilterableFeaturesAssignment_3_1");
+					put(grammarAccess.getSortableAttributesAccess().getSortableFeaturesAssignment_2(), "rule__SortableAttributes__SortableFeaturesAssignment_2");
+					put(grammarAccess.getSortableAttributesAccess().getSortableFeaturesAssignment_3_1(), "rule__SortableAttributes__SortableFeaturesAssignment_3_1");
 					put(grammarAccess.getTypedPackageAccess().getNameAssignment_2(), "rule__TypedPackage__NameAssignment_2");
 					put(grammarAccess.getTypedPackageAccess().getImportsAssignment_3_1(), "rule__TypedPackage__ImportsAssignment_3_1");
 					put(grammarAccess.getTypedPackageAccess().getTypesAssignment_3_2(), "rule__TypedPackage__TypesAssignment_3_2");
@@ -434,7 +441,7 @@ public class ServicesGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getImportedTypeAssignment_1_0_2(), "rule__XImportDeclaration__ImportedTypeAssignment_1_0_2");
 					put(grammarAccess.getXImportDeclarationAccess().getImportedTypeAssignment_1_1(), "rule__XImportDeclaration__ImportedTypeAssignment_1_1");
 					put(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceAssignment_1_2(), "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2");
-					put(grammarAccess.getClassAccess().getUnorderedGroup_6(), "rule__Class__UnorderedGroup_6");
+					put(grammarAccess.getClassAccess().getUnorderedGroup_9_0(), "rule__Class__UnorderedGroup_9_0");
 					put(grammarAccess.getModifierAccess().getUnorderedGroup(), "rule__Modifier__UnorderedGroup");
 				}
 			};

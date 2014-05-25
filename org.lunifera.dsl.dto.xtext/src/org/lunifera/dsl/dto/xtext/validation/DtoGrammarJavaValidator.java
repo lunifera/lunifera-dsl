@@ -12,7 +12,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
-import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions;
+import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions;
 import org.lunifera.dsl.semantic.common.helper.Bounds;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
@@ -50,7 +50,7 @@ public class DtoGrammarJavaValidator extends
 	@Inject
 	IQualifiedNameProvider qnp;
 	@Inject
-	ModelExtensions extensions;
+	DtoModelExtensions extensions;
 
 	@Check
 	public void checkDatatype_asPrimitive(LDataType dt) {
@@ -151,7 +151,7 @@ public class DtoGrammarJavaValidator extends
 
 	@Check
 	public void checkManyToMany(LDtoReference prop) {
-		ModelExtensions extension = new ModelExtensions();
+		DtoModelExtensions extension = new DtoModelExtensions();
 		if (prop.getOpposite() != null && extension.isToMany(prop)
 				&& extension.isToMany(prop.getOpposite())) {
 			error(String.format("ManyToMany relations are not permitted!", qnp

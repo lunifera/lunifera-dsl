@@ -24,7 +24,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.lunifera.dsl.semantic.dto.LDto;
 
 import org.lunifera.dsl.semantic.service.LDTOService;
-import org.lunifera.dsl.semantic.service.LSupportedDTOCollection;
+import org.lunifera.dsl.semantic.service.LFilterableAttributes;
+import org.lunifera.dsl.semantic.service.LSortableAttributes;
 import org.lunifera.dsl.semantic.service.LunServicePackage;
 
 /**
@@ -34,8 +35,9 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getPrimaryDTO <em>Primary DTO</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getSupportedDTOs <em>Supported DT Os</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getDto <em>Dto</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getFilterable <em>Filterable</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getSortable <em>Sortable</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,24 +46,34 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
 public class LDTOServiceImpl extends LServiceImpl implements LDTOService
 {
   /**
-   * The cached value of the '{@link #getPrimaryDTO() <em>Primary DTO</em>}' reference.
+   * The cached value of the '{@link #getDto() <em>Dto</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPrimaryDTO()
+   * @see #getDto()
    * @generated
    * @ordered
    */
-  protected LDto primaryDTO;
+  protected LDto dto;
 
   /**
-   * The cached value of the '{@link #getSupportedDTOs() <em>Supported DT Os</em>}' containment reference.
+   * The cached value of the '{@link #getFilterable() <em>Filterable</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSupportedDTOs()
+   * @see #getFilterable()
    * @generated
    * @ordered
    */
-  protected LSupportedDTOCollection supportedDTOs;
+  protected LFilterableAttributes filterable;
+
+  /**
+   * The cached value of the '{@link #getSortable() <em>Sortable</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSortable()
+   * @generated
+   * @ordered
+   */
+  protected LSortableAttributes sortable;
 
   /**
    * <!-- begin-user-doc -->
@@ -89,19 +101,19 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
    * <!-- end-user-doc -->
    * @generated
    */
-  public LDto getPrimaryDTO()
+  public LDto getDto()
   {
-    if (primaryDTO != null && primaryDTO.eIsProxy())
+    if (dto != null && dto.eIsProxy())
     {
-      InternalEObject oldPrimaryDTO = (InternalEObject)primaryDTO;
-      primaryDTO = (LDto)eResolveProxy(oldPrimaryDTO);
-      if (primaryDTO != oldPrimaryDTO)
+      InternalEObject oldDto = (InternalEObject)dto;
+      dto = (LDto)eResolveProxy(oldDto);
+      if (dto != oldDto)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunServicePackage.LDTO_SERVICE__PRIMARY_DTO, oldPrimaryDTO, primaryDTO));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunServicePackage.LDTO_SERVICE__DTO, oldDto, dto));
       }
     }
-    return primaryDTO;
+    return dto;
   }
 
   /**
@@ -109,9 +121,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
    * <!-- end-user-doc -->
    * @generated
    */
-  public LDto basicGetPrimaryDTO()
+  public LDto basicGetDto()
   {
-    return primaryDTO;
+    return dto;
   }
 
   /**
@@ -119,12 +131,12 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPrimaryDTO(LDto newPrimaryDTO)
+  public void setDto(LDto newDto)
   {
-    LDto oldPrimaryDTO = primaryDTO;
-    primaryDTO = newPrimaryDTO;
+    LDto oldDto = dto;
+    dto = newDto;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__PRIMARY_DTO, oldPrimaryDTO, primaryDTO));
+      eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__DTO, oldDto, dto));
   }
 
   /**
@@ -132,9 +144,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
    * <!-- end-user-doc -->
    * @generated
    */
-  public LSupportedDTOCollection getSupportedDTOs()
+  public LFilterableAttributes getFilterable()
   {
-    return supportedDTOs;
+    return filterable;
   }
 
   /**
@@ -142,13 +154,13 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSupportedDTOs(LSupportedDTOCollection newSupportedDTOs, NotificationChain msgs)
+  public NotificationChain basicSetFilterable(LFilterableAttributes newFilterable, NotificationChain msgs)
   {
-    LSupportedDTOCollection oldSupportedDTOs = supportedDTOs;
-    supportedDTOs = newSupportedDTOs;
+    LFilterableAttributes oldFilterable = filterable;
+    filterable = newFilterable;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS, oldSupportedDTOs, newSupportedDTOs);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__FILTERABLE, oldFilterable, newFilterable);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -159,20 +171,68 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSupportedDTOs(LSupportedDTOCollection newSupportedDTOs)
+  public void setFilterable(LFilterableAttributes newFilterable)
   {
-    if (newSupportedDTOs != supportedDTOs)
+    if (newFilterable != filterable)
     {
       NotificationChain msgs = null;
-      if (supportedDTOs != null)
-        msgs = ((InternalEObject)supportedDTOs).eInverseRemove(this, LunServicePackage.LSUPPORTED_DTO_COLLECTION__SERVICE, LSupportedDTOCollection.class, msgs);
-      if (newSupportedDTOs != null)
-        msgs = ((InternalEObject)newSupportedDTOs).eInverseAdd(this, LunServicePackage.LSUPPORTED_DTO_COLLECTION__SERVICE, LSupportedDTOCollection.class, msgs);
-      msgs = basicSetSupportedDTOs(newSupportedDTOs, msgs);
+      if (filterable != null)
+        msgs = ((InternalEObject)filterable).eInverseRemove(this, LunServicePackage.LFILTERABLE_ATTRIBUTES__PARENT, LFilterableAttributes.class, msgs);
+      if (newFilterable != null)
+        msgs = ((InternalEObject)newFilterable).eInverseAdd(this, LunServicePackage.LFILTERABLE_ATTRIBUTES__PARENT, LFilterableAttributes.class, msgs);
+      msgs = basicSetFilterable(newFilterable, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS, newSupportedDTOs, newSupportedDTOs));
+      eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__FILTERABLE, newFilterable, newFilterable));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LSortableAttributes getSortable()
+  {
+    return sortable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSortable(LSortableAttributes newSortable, NotificationChain msgs)
+  {
+    LSortableAttributes oldSortable = sortable;
+    sortable = newSortable;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__SORTABLE, oldSortable, newSortable);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSortable(LSortableAttributes newSortable)
+  {
+    if (newSortable != sortable)
+    {
+      NotificationChain msgs = null;
+      if (sortable != null)
+        msgs = ((InternalEObject)sortable).eInverseRemove(this, LunServicePackage.LSORTABLE_ATTRIBUTES__PARENT, LSortableAttributes.class, msgs);
+      if (newSortable != null)
+        msgs = ((InternalEObject)newSortable).eInverseAdd(this, LunServicePackage.LSORTABLE_ATTRIBUTES__PARENT, LSortableAttributes.class, msgs);
+      msgs = basicSetSortable(newSortable, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__SORTABLE, newSortable, newSortable));
   }
 
   /**
@@ -185,10 +245,14 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
   {
     switch (featureID)
     {
-      case LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS:
-        if (supportedDTOs != null)
-          msgs = ((InternalEObject)supportedDTOs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS, null, msgs);
-        return basicSetSupportedDTOs((LSupportedDTOCollection)otherEnd, msgs);
+      case LunServicePackage.LDTO_SERVICE__FILTERABLE:
+        if (filterable != null)
+          msgs = ((InternalEObject)filterable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__FILTERABLE, null, msgs);
+        return basicSetFilterable((LFilterableAttributes)otherEnd, msgs);
+      case LunServicePackage.LDTO_SERVICE__SORTABLE:
+        if (sortable != null)
+          msgs = ((InternalEObject)sortable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__SORTABLE, null, msgs);
+        return basicSetSortable((LSortableAttributes)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
@@ -203,8 +267,10 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
   {
     switch (featureID)
     {
-      case LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS:
-        return basicSetSupportedDTOs(null, msgs);
+      case LunServicePackage.LDTO_SERVICE__FILTERABLE:
+        return basicSetFilterable(null, msgs);
+      case LunServicePackage.LDTO_SERVICE__SORTABLE:
+        return basicSetSortable(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -219,11 +285,13 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
   {
     switch (featureID)
     {
-      case LunServicePackage.LDTO_SERVICE__PRIMARY_DTO:
-        if (resolve) return getPrimaryDTO();
-        return basicGetPrimaryDTO();
-      case LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS:
-        return getSupportedDTOs();
+      case LunServicePackage.LDTO_SERVICE__DTO:
+        if (resolve) return getDto();
+        return basicGetDto();
+      case LunServicePackage.LDTO_SERVICE__FILTERABLE:
+        return getFilterable();
+      case LunServicePackage.LDTO_SERVICE__SORTABLE:
+        return getSortable();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -238,11 +306,14 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
   {
     switch (featureID)
     {
-      case LunServicePackage.LDTO_SERVICE__PRIMARY_DTO:
-        setPrimaryDTO((LDto)newValue);
+      case LunServicePackage.LDTO_SERVICE__DTO:
+        setDto((LDto)newValue);
         return;
-      case LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS:
-        setSupportedDTOs((LSupportedDTOCollection)newValue);
+      case LunServicePackage.LDTO_SERVICE__FILTERABLE:
+        setFilterable((LFilterableAttributes)newValue);
+        return;
+      case LunServicePackage.LDTO_SERVICE__SORTABLE:
+        setSortable((LSortableAttributes)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -258,11 +329,14 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
   {
     switch (featureID)
     {
-      case LunServicePackage.LDTO_SERVICE__PRIMARY_DTO:
-        setPrimaryDTO((LDto)null);
+      case LunServicePackage.LDTO_SERVICE__DTO:
+        setDto((LDto)null);
         return;
-      case LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS:
-        setSupportedDTOs((LSupportedDTOCollection)null);
+      case LunServicePackage.LDTO_SERVICE__FILTERABLE:
+        setFilterable((LFilterableAttributes)null);
+        return;
+      case LunServicePackage.LDTO_SERVICE__SORTABLE:
+        setSortable((LSortableAttributes)null);
         return;
     }
     super.eUnset(featureID);
@@ -278,10 +352,12 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService
   {
     switch (featureID)
     {
-      case LunServicePackage.LDTO_SERVICE__PRIMARY_DTO:
-        return primaryDTO != null;
-      case LunServicePackage.LDTO_SERVICE__SUPPORTED_DT_OS:
-        return supportedDTOs != null;
+      case LunServicePackage.LDTO_SERVICE__DTO:
+        return dto != null;
+      case LunServicePackage.LDTO_SERVICE__FILTERABLE:
+        return filterable != null;
+      case LunServicePackage.LDTO_SERVICE__SORTABLE:
+        return sortable != null;
     }
     return super.eIsSet(featureID);
   }

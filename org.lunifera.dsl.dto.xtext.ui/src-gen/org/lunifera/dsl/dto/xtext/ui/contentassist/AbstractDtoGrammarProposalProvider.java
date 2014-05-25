@@ -112,4 +112,7 @@ public class AbstractDtoGrammarProposalProvider extends org.lunifera.dsl.common.
 	public void complete_LimitedMapperDtoMapper(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
+	public void complete_RefFQN(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
 }

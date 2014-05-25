@@ -100,6 +100,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					case f instanceof LAttribute: {
 						members += f.toGetter()
 						if (f.isToMany) {
+							members += f.toCollectionSetter(f.name)
 							members += f.toInternalCollectionGetter(f.getName)
 							members += f.toAdder(f.getName)
 							members += f.toRemover(f.getName)
@@ -110,6 +111,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					case f instanceof LReference: {
 						members += f.toGetter()
 						if (f.isToMany) {
+							members += f.toCollectionSetter(f.name)
 							members += f.toInternalCollectionGetter(f.getName)
 							members += f.toAdder(f.getName)
 							members += f.toRemover(f.getName)
@@ -182,6 +184,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					case f instanceof LAttribute: {
 						members += f.toGetter()
 						if (f.toMany) {
+							members += f.toCollectionSetter(f.name)
 							members += f.toInternalCollectionGetter(f.name)
 							members += f.toAdder(f.name)
 							members += f.toRemover(f.name)
@@ -192,6 +195,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					case f instanceof LReference: {
 						members += f.toGetter()
 						if (f.toMany) {
+							members += f.toCollectionSetter(f.name)
 							members += f.toInternalCollectionGetter(f.name)
 							members += f.toAdder(f.name)
 							members += f.toRemover(f.name)

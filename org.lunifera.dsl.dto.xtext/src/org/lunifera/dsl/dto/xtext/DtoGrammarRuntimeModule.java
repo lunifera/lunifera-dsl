@@ -3,6 +3,7 @@
  */
 package org.lunifera.dsl.dto.xtext;
 
+import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -19,6 +20,7 @@ import org.lunifera.dsl.dto.xtext.scope.DtoBatchScopeProvider;
 import org.lunifera.dsl.dto.xtext.scope.DtoImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.dto.xtext.scope.DtoScopeProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoQualifiedNameProvider;
+import org.lunifera.dsl.dto.xtext.valueconverter.DtoValueConverterService;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -74,7 +76,7 @@ public class DtoGrammarRuntimeModule extends
 	}
 
 	public Class<? extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions> bindModelExtensions() {
-		return org.lunifera.dsl.dto.xtext.extensions.ModelExtensions.class;
+		return org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions.class;
 	}
 
 	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
@@ -83,6 +85,10 @@ public class DtoGrammarRuntimeModule extends
 
 	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
 		return OutputConfigurationProvider.class;
+	}
+	
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return DtoValueConverterService.class;
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.entity.xtext.extensions 
+package org.lunifera.dsl.entity.xtext.extensions
 
 import com.google.inject.Inject
 import java.util.ArrayList
@@ -33,6 +33,7 @@ import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityFeature
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LOperation
+import org.lunifera.dsl.semantic.common.types.LReference
 
 class EntityTypesBuilder extends CommonTypesBuilder {
 
@@ -140,8 +141,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				if (!compositionContainmentProps.empty) {
 					p >> "try " >>> "{"
 					p >> "// Dispose all the composition references.\n"
-					for (prop : compositionContainmentProps) { 
-						val fieldRef = "this.".concat(prop.toName.toFirstLower) 
+					for (prop : compositionContainmentProps) {
+						val fieldRef = "this.".concat(prop.toName.toFirstLower)
 						val typeName = prop.typeName
 						val typeVar = typeName.toFirstLower
 						if (prop.toMany) {
@@ -183,7 +184,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 	override JvmField toField(LFeature prop) {
 		prop.internalToField
 	}
-	
+
 	def dispatch JvmField internalToField(LBeanFeature prop) {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
@@ -193,7 +194,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
 	}
-	 
+
 	def dispatch JvmField internalToField(LEntityFeature prop) {
 		val LEntity entity = prop.entity
 		val JvmField jvmField = typesFactory.createJvmField();
@@ -201,8 +202,10 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		jvmField.visibility = JvmVisibility::PRIVATE
 		jvmField.type = cloneWithProxies(prop.toTypeReferenceWithMultiplicity)
 		jvmField.documentation = prop.getDocumentation
+
 		// if uuid or historized entity and property name == oid AND a uuid property is present too
-		if (prop.isUUID || ((entity.timedependent || entity.historized) && prop.toName.equals(Constants::PROP__OID) && entity.uuidPresent)) {
+		if (prop.isUUID || ((entity.timedependent || entity.historized) && prop.toName.equals(Constants::PROP__OID) &&
+			entity.uuidPresent)) {
 			jvmField.setInitializer [
 				if(it == null) return
 				val p = it.trace(prop)
@@ -213,8 +216,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
 	}
-	
-	def boolean uuidPresent(LEntity entity){
+
+	def boolean uuidPresent(LEntity entity) {
 		entity.allAttributes.exists[it.uuid]
 	}
 
@@ -227,7 +230,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 
 		annotationCompiler.processAnnotation(sourceElement, op);
 		associate(sourceElement, op);
-		
+
 		initializeSafely(op, initializer);
 	}
 
@@ -452,6 +455,37 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 					p <<< "}"
 				}
 			])
+		return associate(prop, op);
+	}
+
+	/**
+     * Builds a setter method for a *toMany relation like
+     * <code>Order.setOrderLines(List<OrderLine> orderLines)</code>.
+     */
+	def JvmOperation toCollectionSetter(LFeature prop, String propertyName) {
+		val paramName = prop.typeName.toFirstLower
+		val JvmOperation op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.returnType = references.getTypeForName(Void::TYPE, prop)
+		op.simpleName = prop.toSetterName
+		if (prop.type.toTypeReference != null) {
+			op.parameters += prop.toParameter(propertyName, prop.toTypeReferenceWithMultiplicity)
+		}
+		op.documentation = '''
+			Sets the given «propertyName» to the object. Currently contained «propertyName» instances will be removed.
+			
+			@param «propertyName» the list of new instances'''
+		op.body = '''
+			// remove the old «paramName»
+			for(«prop.typeName» oldElement : new ArrayList<«prop.typeName»>(this.«propertyName»)){
+			  «prop.toCollectionRemoverName»(oldElement);
+			}
+			
+			// add the new «paramName»
+			for(«prop.typeName» newElement : «propertyName»){
+			  «prop.toCollectionAdderName»(newElement);
+			}
+		'''
 		return associate(prop, op);
 	}
 

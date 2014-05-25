@@ -24,8 +24,11 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.5.0";visibility:=reexport,
  org.apache.commons.lang;bundle-version="2.6.0",
  org.lunifera.dsl.mwe;bundle-version="0.0.1",
  org.lunifera.dsl.dto.lib;bundle-version="0.0.1",
- org.lunifera.dsl.semantic.service;bundle-version="0.0.1"
-Import-Package: org.apache.log4j,
+ org.lunifera.dsl.semantic.service;bundle-version="0.0.1",
+ org.lunifera.dsl.dto.xtext;bundle-version="0.0.1",
+ org.lunifera.dsl.services.lib;bundle-version="0.0.1"
+Import-Package: javax.persistence;version="2.1.0",
+ org.apache.log4j,
  org.osgi.service.component.annotations;version="1.2.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.lunifera.dsl.services.xtext,
@@ -35,3 +38,4 @@ Export-Package: org.lunifera.dsl.services.xtext,
  org.lunifera.dsl.services.xtext.parser.antlr.internal,
  org.lunifera.dsl.services.xtext.validation,
  org.lunifera.dsl.services.xtext.jvmmodel
+Service-Component: component.xml

@@ -9,7 +9,6 @@ import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.lib.IMapperAccess
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
-import org.lunifera.dsl.dto.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LReference
@@ -17,6 +16,7 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
+import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -28,7 +28,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 	@Inject extension IQualifiedNameProvider
 	@Inject extension DtoTypesBuilder;
-	@Inject extension ModelExtensions;
+	@Inject extension DtoModelExtensions;
 	@Inject TypeReferences references
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {

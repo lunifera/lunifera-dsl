@@ -11,8 +11,6 @@
 package org.lunifera.dsl.entity.xtext;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.impl.EntityFactoryImplCustom;
@@ -26,8 +24,17 @@ import com.google.inject.Injector;
 public class EntityGrammarStandaloneSetup extends
 		EntityGrammarStandaloneSetupGenerated {
 
-	public static void doSetup() {
-		new EntityGrammarStandaloneSetup().createInjectorAndDoEMFRegistration();
+	public static Injector doSetup() {
+		return new EntityGrammarStandaloneSetup()
+				.createInjectorAndDoEMFRegistration();
+	}
+
+	public Injector createInjectorAndDoEMFRegistration() {
+		org.lunifera.dsl.common.xtext.CommonGrammarStandaloneSetup.doSetup();
+
+		Injector injector = createInjector();
+		register(injector);
+		return injector;
 	}
 
 	public void register(Injector injector) {

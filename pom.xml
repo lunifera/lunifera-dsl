@@ -49,10 +49,11 @@
 				<module>org.lunifera.dsl.dto.lib</module>
 				<module>org.lunifera.dsl.dto.xtext</module>
 				<module>org.lunifera.dsl.dto.xtext.ui</module>
-				<module>org.lunifera.dsl.services.lib</module>
-				<module>org.lunifera.dsl.services.xtext</module>
-				<module>org.lunifera.dsl.services.xtext.ui</module>
+				<!-- <module>org.lunifera.dsl.services.lib</module> -->
+				<!-- <module>org.lunifera.dsl.services.xtext</module> -->
+				<!-- <module>org.lunifera.dsl.services.xtext.ui</module> -->
 				<module>org.lunifera.dsl.eclipse.ui</module>
+				<module>org.lunifera.dsl.metadata.services</module>
 
 				<!-- P2 feature -->
 				<module>org.lunifera.dsl.feature.entities</module>
@@ -62,13 +63,14 @@
 				<module>org.lunifera.dsl.feature.dto</module>
 				<module>org.lunifera.dsl.feature.dto.headless</module>
 				<module>org.lunifera.dsl.feature.eclipse.ui</module>
+				<module>org.lunifera.dsl.feature.metadata</module>
 
 				<!-- P2 repository -->
 				<module>org.lunifera.dsl.p2</module>
 			</modules>
 		</profile>
 
-		
+
 
 		<profile>
 			<id>lunifera.build.common</id>
@@ -91,7 +93,7 @@
 				<module>org.lunifera.dsl.feature.common.headless</module>
 			</modules>
 		</profile>
-		
+
 		<profile>
 			<id>lunifera.build.datatype</id>
 			<activation>

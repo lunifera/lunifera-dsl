@@ -7,3 +7,4 @@ Bundle-SymbolicName: org.lunifera.dsl.datatype.lib
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="2.5.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Service-Component: component.xml

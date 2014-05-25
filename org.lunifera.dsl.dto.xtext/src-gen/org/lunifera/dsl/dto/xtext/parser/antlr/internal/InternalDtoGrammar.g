@@ -294,7 +294,7 @@ ruleDtoFeature returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityAttributeCrossReference_2_0_0_2_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleLFQN		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -360,7 +360,7 @@ ruleDtoFeature returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityReferenceCrossReference_2_1_1_1_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleLFQN		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1079,6 +1079,8 @@ ruleLimitedMapperDtoMapper returns [EObject current=null]
     }
 )
 ;
+
+
 
 
 

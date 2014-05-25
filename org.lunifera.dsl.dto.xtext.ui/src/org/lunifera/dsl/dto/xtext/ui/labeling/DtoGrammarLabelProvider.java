@@ -56,7 +56,7 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 	private IJvmModelAssociations associations;
 
 	@Inject
-	private org.lunifera.dsl.dto.xtext.extensions.ModelExtensions extension;
+	private org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions extension;
 
 	@Inject
 	public DtoGrammarLabelProvider(AdapterFactoryLabelProvider delegate) {

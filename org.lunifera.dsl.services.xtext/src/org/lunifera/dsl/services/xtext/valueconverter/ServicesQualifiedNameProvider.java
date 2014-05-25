@@ -12,15 +12,13 @@
 package org.lunifera.dsl.services.xtext.valueconverter;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.common.xtext.valueconverter.CommonQualifiedNameProvider;
-import org.lunifera.dsl.semantic.dto.LDto;
-import org.lunifera.dsl.semantic.service.LDTOService;
-import org.lunifera.dsl.semantic.service.LSupportedDTO;
-import org.lunifera.dsl.semantic.service.LSupportedFilters;
+import org.lunifera.dsl.semantic.service.LFilterableAttributes;
+import org.lunifera.dsl.semantic.service.LService;
+import org.lunifera.dsl.semantic.service.LSortableAttributes;
 
 import com.google.inject.Inject;
 
@@ -28,6 +26,7 @@ public class ServicesQualifiedNameProvider extends CommonQualifiedNameProvider {
 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
+
 	@Inject
 	ModelExtensions extensions;
 
@@ -37,21 +36,16 @@ public class ServicesQualifiedNameProvider extends CommonQualifiedNameProvider {
 			return QualifiedName.create("");
 		}
 
-		if (obj instanceof LSupportedFilters) {
-			LSupportedFilters filters = (LSupportedFilters) obj;
-			LSupportedDTO dto = filters.getParent();
-			QualifiedName name = getFullyQualifiedName(dto);
-			return name.append("supportedFilter");
-		} else if (obj instanceof LSupportedDTO) {
-			LSupportedDTO dto = (LSupportedDTO) obj;
-			LDTOService service = dto.getParent().getService();
+		if (obj instanceof LFilterableAttributes) {
+			LFilterableAttributes filters = (LFilterableAttributes) obj;
+			LService service = filters.getParent();
 			QualifiedName name = getFullyQualifiedName(service);
-			name.append("dto");
-			
-			EcoreUtil.resolveAll(dto.getDto());
-			name.append(getFullyQualifiedName(dto.getDto()));
-			
-			return name;
+			return name.append("supportedFilter");
+		} else if (obj instanceof LSortableAttributes) {
+			LSortableAttributes sortable = (LSortableAttributes) obj;
+			LService service = sortable.getParent();
+			QualifiedName name = getFullyQualifiedName(service);
+			return name.append("supportedFilter");
 		}
 
 		return super.getFullyQualifiedName(obj);

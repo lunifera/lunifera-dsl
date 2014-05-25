@@ -14,6 +14,7 @@
 package org.lunifera.dsl.semantic.service.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -76,14 +77,49 @@ public class LunServiceFactoryImpl extends EFactoryImpl implements LunServiceFac
     switch (eClass.getClassifierID())
     {
       case LunServicePackage.LSERVICE_MODEL: return createLServiceModel();
+      case LunServicePackage.LINJECTED_SERVICES: return createLInjectedServices();
+      case LunServicePackage.LINJECTED_SERVICE: return createLInjectedService();
       case LunServicePackage.LDTO_SERVICE: return createLDTOService();
-      case LunServicePackage.LSUPPORTED_DTO_COLLECTION: return createLSupportedDTOCollection();
-      case LunServicePackage.LSUPPORTED_DTO: return createLSupportedDTO();
-      case LunServicePackage.LSUPPORTED_FILTERS: return createLSupportedFilters();
+      case LunServicePackage.LFILTERABLE_ATTRIBUTES: return createLFilterableAttributes();
+      case LunServicePackage.LSORTABLE_ATTRIBUTES: return createLSortableAttributes();
       case LunServicePackage.LCHART_SERVICE: return createLChartService();
       case LunServicePackage.LFREE_SERVICE: return createLFreeService();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case LunServicePackage.LCARDINALITY:
+        return createLCardinalityFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case LunServicePackage.LCARDINALITY:
+        return convertLCardinalityToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -103,6 +139,28 @@ public class LunServiceFactoryImpl extends EFactoryImpl implements LunServiceFac
    * <!-- end-user-doc -->
    * @generated
    */
+  public LInjectedServices createLInjectedServices()
+  {
+    LInjectedServicesImpl lInjectedServices = new LInjectedServicesImpl();
+    return lInjectedServices;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LInjectedService createLInjectedService()
+  {
+    LInjectedServiceImpl lInjectedService = new LInjectedServiceImpl();
+    return lInjectedService;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public LDTOService createLDTOService()
   {
     LDTOServiceImpl ldtoService = new LDTOServiceImpl();
@@ -114,10 +172,10 @@ public class LunServiceFactoryImpl extends EFactoryImpl implements LunServiceFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public LSupportedDTOCollection createLSupportedDTOCollection()
+  public LFilterableAttributes createLFilterableAttributes()
   {
-    LSupportedDTOCollectionImpl lSupportedDTOCollection = new LSupportedDTOCollectionImpl();
-    return lSupportedDTOCollection;
+    LFilterableAttributesImpl lFilterableAttributes = new LFilterableAttributesImpl();
+    return lFilterableAttributes;
   }
 
   /**
@@ -125,21 +183,10 @@ public class LunServiceFactoryImpl extends EFactoryImpl implements LunServiceFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public LSupportedDTO createLSupportedDTO()
+  public LSortableAttributes createLSortableAttributes()
   {
-    LSupportedDTOImpl lSupportedDTO = new LSupportedDTOImpl();
-    return lSupportedDTO;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LSupportedFilters createLSupportedFilters()
-  {
-    LSupportedFiltersImpl lSupportedFilters = new LSupportedFiltersImpl();
-    return lSupportedFilters;
+    LSortableAttributesImpl lSortableAttributes = new LSortableAttributesImpl();
+    return lSortableAttributes;
   }
 
   /**
@@ -162,6 +209,28 @@ public class LunServiceFactoryImpl extends EFactoryImpl implements LunServiceFac
   {
     LFreeServiceImpl lFreeService = new LFreeServiceImpl();
     return lFreeService;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LCardinality createLCardinalityFromString(EDataType eDataType, String initialValue)
+  {
+    LCardinality result = LCardinality.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertLCardinalityToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

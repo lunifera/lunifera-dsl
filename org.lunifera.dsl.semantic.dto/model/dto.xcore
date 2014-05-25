@@ -15,10 +15,10 @@
  ")
 @GenModel(operationReflection="false")
 @Ecore(nsURI="http://www.lunifera.org/dsl/dto/v1")
-@Ecore(nsPrefix="dto") 
+@Ecore(nsPrefix="dto")
 @Ecore(rootPackage="dto")
 package org.lunifera.dsl.semantic.dto
-  
+
 import GenModel
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
@@ -96,6 +96,10 @@ class LDtoMapper {
 class LDtoFeature extends LFeature {
 	contains LDtoMapper mapper
 	op LDto getDTO() {
+//		if (eContainer instanceof LFeature) {
+//			return null // this happens since the feature may be the annotation info 
+//		}
+
 		return eContainer as LDto
 	}
 }

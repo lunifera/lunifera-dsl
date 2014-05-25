@@ -64,10 +64,11 @@ import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.service.LDTOService;
+import org.lunifera.dsl.semantic.service.LFilterableAttributes;
+import org.lunifera.dsl.semantic.service.LInjectedService;
+import org.lunifera.dsl.semantic.service.LInjectedServices;
 import org.lunifera.dsl.semantic.service.LServiceModel;
-import org.lunifera.dsl.semantic.service.LSupportedDTO;
-import org.lunifera.dsl.semantic.service.LSupportedDTOCollection;
-import org.lunifera.dsl.semantic.service.LSupportedFilters;
+import org.lunifera.dsl.semantic.service.LSortableAttributes;
 import org.lunifera.dsl.semantic.service.LunServicePackage;
 import org.lunifera.dsl.services.xtext.services.ServicesGrammarGrammarAccess;
 
@@ -90,27 +91,33 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 					return; 
 				}
 				else break;
+			case LunServicePackage.LFILTERABLE_ATTRIBUTES:
+				if(context == grammarAccess.getFilterableAttributesRule()) {
+					sequence_FilterableAttributes(context, (LFilterableAttributes) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunServicePackage.LINJECTED_SERVICE:
+				if(context == grammarAccess.getInjectedServiceRule()) {
+					sequence_InjectedService(context, (LInjectedService) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunServicePackage.LINJECTED_SERVICES:
+				if(context == grammarAccess.getInjectedServicesRule()) {
+					sequence_InjectedServices(context, (LInjectedServices) semanticObject); 
+					return; 
+				}
+				else break;
 			case LunServicePackage.LSERVICE_MODEL:
 				if(context == grammarAccess.getLServiceModelRule()) {
 					sequence_LServiceModel(context, (LServiceModel) semanticObject); 
 					return; 
 				}
 				else break;
-			case LunServicePackage.LSUPPORTED_DTO:
-				if(context == grammarAccess.getSupportedDTORule()) {
-					sequence_SupportedDTO(context, (LSupportedDTO) semanticObject); 
-					return; 
-				}
-				else break;
-			case LunServicePackage.LSUPPORTED_DTO_COLLECTION:
-				if(context == grammarAccess.getSupportedDTOCollectionRule()) {
-					sequence_SupportedDTOCollection(context, (LSupportedDTOCollection) semanticObject); 
-					return; 
-				}
-				else break;
-			case LunServicePackage.LSUPPORTED_FILTERS:
-				if(context == grammarAccess.getSupportedFilterAttributesRule()) {
-					sequence_SupportedFilterAttributes(context, (LSupportedFilters) semanticObject); 
+			case LunServicePackage.LSORTABLE_ATTRIBUTES:
+				if(context == grammarAccess.getSortableAttributesRule()) {
+					sequence_SortableAttributes(context, (LSortableAttributes) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1155,7 +1162,13 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Class_LDTOService_2 name=ValidIDWithKeywords (primaryDTO=[LDto|ID] supportedDTOs=SupportedDTOCollection?))
+	 *     (
+	 *         annotationInfo=Class_LDTOService_2 
+	 *         name=ValidIDWithKeywords 
+	 *         dto=[LDto|ID] 
+	 *         injectedServices=InjectedServices 
+	 *         (filterable=FilterableAttributes? sortable=SortableAttributes?)?
+	 *     )
 	 */
 	protected void sequence_Class(EObject context, LDTOService semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1173,6 +1186,33 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	
 	/**
 	 * Constraint:
+	 *     (filterableFeatures+=[LDtoFeature|LFQN] filterableFeatures+=[LDtoFeature|LFQN]*)
+	 */
+	protected void sequence_FilterableAttributes(EObject context, LFilterableAttributes semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (cardinality=Cardinality? service=JvmTypeReference attributeName=ID)
+	 */
+	protected void sequence_InjectedService(EObject context, LInjectedService semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (services+=InjectedService*)
+	 */
+	protected void sequence_InjectedServices(EObject context, LInjectedServices semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     packages+=TypedPackage*
 	 */
 	protected void sequence_LServiceModel(EObject context, LServiceModel semanticObject) {
@@ -1182,27 +1222,9 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	
 	/**
 	 * Constraint:
-	 *     (supportedDtos+=SupportedDTO*)
+	 *     (sortableFeatures+=[LDtoFeature|LFQN] sortableFeatures+=[LDtoFeature|LFQN]*)
 	 */
-	protected void sequence_SupportedDTOCollection(EObject context, LSupportedDTOCollection semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (dto=[LDto|ID] filters=SupportedFilterAttributes?)
-	 */
-	protected void sequence_SupportedDTO(EObject context, LSupportedDTO semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (filterFeatures+=[LDtoFeature|QualifiedName] filterFeatures+=[LDtoFeature|QualifiedName]*)
-	 */
-	protected void sequence_SupportedFilterAttributes(EObject context, LSupportedFilters semanticObject) {
+	protected void sequence_SortableAttributes(EObject context, LSortableAttributes semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

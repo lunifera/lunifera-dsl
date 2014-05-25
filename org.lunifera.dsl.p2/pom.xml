@@ -196,5 +196,10 @@
 			<artifactId>org.lunifera.dsl.feature.dto.headless</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.lunifera.dsl</groupId>
+			<artifactId>org.lunifera.dsl.feature.metadata</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

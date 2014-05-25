@@ -15,23 +15,29 @@ LServiceModel returns service::LServiceModel:
 Class returns service::LDTOService:
 	{service::LDTOService} annotations+=AnnotationDef*
 	{service::LDTOService.annotationInfo=current}
-	'dtoservice' name=ValidIDWithKeywords
+	'dtoservice' name=ValidIDWithKeywords 'provides' dto=[dto::LDto]
 	'{'
-	(('primary dto' primaryDTO=[dto::LDto] ';') &
-	(supportedDTOs=SupportedDTOCollection)?)
+	injectedServices=InjectedServices
+	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
 	'}';
 
-SupportedDTOCollection returns service::LSupportedDTOCollection:
-	{service::LSupportedDTOCollection}
-	'supportedDTOs' '{'
-	(supportedDtos+=SupportedDTO)*
+InjectedServices returns service::LInjectedServices:
+	{service::LInjectedServices}
+	(services+=InjectedService)*;
+
+InjectedService returns service::LInjectedService:
+	{service::LInjectedService}
+	'injectService' (cardinality=Cardinality)? service=JvmTypeReference attributeName=ID ';';
+
+FilterableAttributes returns service::LFilterableAttributes:
+	'filterable' '{'
+	filterableFeatures+=[dto::LDtoFeature|LFQN] (',' filterableFeatures+=[dto::LDtoFeature|LFQN])* ';'
 	'}';
 
-SupportedDTO returns service::LSupportedDTO:
-	dto=[dto::LDto]
-	((filters=SupportedFilterAttributes) | ';');
-
-SupportedFilterAttributes returns service::LSupportedFilters:
-	'filters' '{'
-	filterFeatures+=[dto::LDtoFeature|QualifiedName] (',' filterFeatures+=[dto::LDtoFeature|QualifiedName])* ';'
+SortableAttributes returns service::LSortableAttributes:
+	'sortable' '{'
+	sortableFeatures+=[dto::LDtoFeature|LFQN] (',' sortableFeatures+=[dto::LDtoFeature|LFQN])* ';'
 	'}';
+
+enum Cardinality returns service::LCardinality:
+	ZERO_TO_ONE="optional" | ONE_TO_ONE="mandatory" | ZERO_TO_MANY="zeroToMany" | ONE_TO_MANY="oneToMany";

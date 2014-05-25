@@ -37,21 +37,30 @@ ruleAnnotationDef
 (
 ruleValidIDWithKeywords
 )
-)	'{' 
-(
-((	'primary dto' 
+)	'provides' 
 (
 (
 	RULE_ID
 
 )
-)	';' 
+)	'{' 
+(
+(
+ruleInjectedServices
 )
+)((
+((
+(
+ruleFilterableAttributes
+)
+)?
     |(
 (
-ruleSupportedDTOCollection
+ruleSortableAttributes
 )
 )?)*
+)
+    |	';' 
 )	'}' 
 )
 ;
@@ -61,16 +70,39 @@ ruleSupportedDTOCollection
 
 
 
-// Rule SupportedDTOCollection
-ruleSupportedDTOCollection :
+// Rule InjectedServices
+ruleInjectedServices :
 ((
-)	'supportedDTOs' 
-	'{' 
+)(
 (
-(
-ruleSupportedDTO
+ruleInjectedService
 )
-)*	'}' 
+)*)
+;
+
+
+
+
+
+
+// Rule InjectedService
+ruleInjectedService :
+((
+)	'injectService' 
+(
+(
+ruleCardinality
+)
+)?(
+(
+ruleJvmTypeReference
+)
+)(
+(
+RULE_ID
+
+)
+)	';' 
 )
 ;
 
@@ -79,39 +111,41 @@ ruleSupportedDTO
 
 
 
-// Rule SupportedDTO
-ruleSupportedDTO :
-((
-(
-	RULE_ID
-
-)
-)((
-(
-ruleSupportedFilterAttributes
-)
-)
-    |	';' 
-))
-;
-
-
-
-
-
-
-// Rule SupportedFilterAttributes
-ruleSupportedFilterAttributes :
-(	'filters' 
+// Rule FilterableAttributes
+ruleFilterableAttributes :
+(	'filterable' 
 	'{' 
 (
 (
-		ruleQualifiedName
+		ruleLFQN
 )
 )(	',' 
 (
 (
-		ruleQualifiedName
+		ruleLFQN
+)
+))*	';' 
+	'}' 
+)
+;
+
+
+
+
+
+
+// Rule SortableAttributes
+ruleSortableAttributes :
+(	'sortable' 
+	'{' 
+(
+(
+		ruleLFQN
+)
+)(	',' 
+(
+(
+		ruleLFQN
 )
 ))*	';' 
 	'}' 
@@ -304,6 +338,16 @@ ruleLQualifiedNameWithWildCard :
     ;
 
 
+
+
+
+
+// Rule LFQN
+ruleLFQN :
+( RULE_ID(
+	'.' 
+RULE_ID)*)
+    ;
 
 
 
@@ -2174,6 +2218,19 @@ ruleQualifiedNameWithWildcard
 ;
 
 
+
+
+
+// Rule Cardinality
+ruleCardinality :
+((	'optional' 
+)
+    |(	'mandatory' 
+)
+    |(	'zeroToMany' 
+)
+    |(	'oneToMany' 
+));
 
 
 

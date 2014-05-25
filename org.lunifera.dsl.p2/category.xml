@@ -6,7 +6,7 @@
    <feature id="org.lunifera.dsl.feature.eclipse.ui.source" version="0.0.0">
       <category name="lunifera-dsls"/>
    </feature>
-    <feature id="org.lunifera.dsl.feature.dto" version="0.0.0">
+   <feature id="org.lunifera.dsl.feature.dto" version="0.0.0">
       <category name="lunifera-dsls"/>
    </feature>
    <feature id="org.lunifera.dsl.feature.dto.source" version="0.0.0">
@@ -42,6 +42,17 @@
    <feature id="org.lunifera.dsl.feature.common.headless.source" version="0.0.0">
       <category name="lunifera-dsls-headless"/>
    </feature>
+   <feature id="org.lunifera.dsl.feature.metadata" version="0.0.0">
+      <category name="lunifera-dsls-metadata"/>
+   </feature>
+    <feature id="org.lunifera.dsl.feature.metadata.source" version="0.0.0">
+      <category name="lunifera-dsls-metadata"/>
+   </feature>
    <category-def name="lunifera-dsls" label="Lunifera DSLs"/>
    <category-def name="lunifera-dsls-headless" label="Lunifera DSLs - Headless for Target Platform"/>
+   <category-def name="lunifera-dsls-metadata" label="Metadata Cache">
+      <description>
+         Metadata Cache that indexes the runtime and provides access to that information.
+      </description>
+   </category-def>
 </site>

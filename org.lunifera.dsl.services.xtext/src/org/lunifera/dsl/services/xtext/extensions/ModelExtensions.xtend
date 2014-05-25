@@ -35,6 +35,8 @@ import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.service.LInjectedService
+import org.lunifera.dsl.semantic.service.LCardinality
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
@@ -387,12 +389,8 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	//		}
 	//		return true
 	//	}
-	def toMapperTypeReference(LType type) {
-		references.getTypeForName(type.toFqnMapperName, type, null)
-	}
 
-	def toMapperTypeReference(LDtoAbstractReference ref) {
-		ref.type.toMapperTypeReference
+	def isMany(LInjectedService service) {
+		return service.cardinality == LCardinality::ZERO_TO_MANY || service.cardinality == LCardinality::ONE_TO_MANY
 	}
-
 }

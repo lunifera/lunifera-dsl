@@ -197,6 +197,8 @@ finally {
 
 
 
+
+
 // Entry rule entryRuleTypedPackage
 entryRuleTypedPackage 
 :
@@ -7138,6 +7140,8 @@ rule__LimitedMapperDtoMapper__Group__3__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
 
 
 
@@ -21065,8 +21069,8 @@ rule__DtoFeature__InheritedFeatureAssignment_2_0_0_2
 (
 { before(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityAttributeCrossReference_2_0_0_2_0()); }
 (
-{ before(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityAttributeQualifiedNameParserRuleCall_2_0_0_2_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityAttributeQualifiedNameParserRuleCall_2_0_0_2_0_1()); }
+{ before(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityAttributeLFQNParserRuleCall_2_0_0_2_0_1()); }
+	ruleLFQN{ after(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityAttributeLFQNParserRuleCall_2_0_0_2_0_1()); }
 )
 { after(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityAttributeCrossReference_2_0_0_2_0()); }
 )
@@ -21118,8 +21122,8 @@ rule__DtoFeature__InheritedFeatureAssignment_2_1_1_1
 (
 { before(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityReferenceCrossReference_2_1_1_1_0()); }
 (
-{ before(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityReferenceQualifiedNameParserRuleCall_2_1_1_1_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityReferenceQualifiedNameParserRuleCall_2_1_1_1_0_1()); }
+{ before(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityReferenceLFQNParserRuleCall_2_1_1_1_0_1()); }
+	ruleLFQN{ after(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityReferenceLFQNParserRuleCall_2_1_1_1_0_1()); }
 )
 { after(grammarAccess.getDtoFeatureAccess().getInheritedFeatureLEntityReferenceCrossReference_2_1_1_1_0()); }
 )

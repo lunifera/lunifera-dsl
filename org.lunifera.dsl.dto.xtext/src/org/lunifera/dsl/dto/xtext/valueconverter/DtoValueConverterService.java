@@ -27,5 +27,10 @@ public class DtoValueConverterService extends CommonValueConverterService {
 	public IValueConverter<String> getQualifiedNameWithWildCard() {
 		return getQualifiedNameValueConverter();
 	}
+	
+	@ValueConverter(rule = "RefFQN")
+	public IValueConverter<String> getQualifiedNameRefFQN() {
+		return getQualifiedNameValueConverter();
+	}
 
 }

@@ -74,7 +74,7 @@ ruleAnnotationDef
 )	'inherit var' 
 (
 (
-		ruleQualifiedName
+		ruleLFQN
 )
 ))(	'mapto' 
 (
@@ -93,7 +93,7 @@ ruleDtoMapper
 )(	'inherit ref' 
 (
 (
-		ruleQualifiedName
+		ruleLFQN
 )
 ))	'mapto' 
 (
@@ -304,6 +304,8 @@ ruleXExpression
 )	'}' 
 )
 ;
+
+
 
 
 

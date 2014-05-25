@@ -32,7 +32,7 @@ import org.lunifera.dsl.semantic.entity.LOperation
 
 class DtoTypesBuilder extends CommonTypesBuilder {
 
-	@Inject extension ModelExtensions
+	@Inject extension DtoModelExtensions
 	@Inject extension MethodNamingExtensions
 	@Inject extension TreeAppendableExtensions
 	@Inject extension IQualifiedNameProvider
