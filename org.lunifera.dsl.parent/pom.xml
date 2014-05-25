@@ -29,7 +29,7 @@
 		<lunifera.build.p2.project.name>org.lunifera.dsl.p2</lunifera.build.p2.project.name>
 		<tychoExtrasVersion>0.19.0</tychoExtrasVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<xtext.version>2.5.1-SNAPSHOT</xtext.version>
+		<xtext.version>2.5.4</xtext.version>
 		<!-- Sonar -->
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
@@ -149,37 +149,56 @@
 						<outputDirectory>src-gen</outputDirectory>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtext</groupId>
+					<artifactId>org.eclipse.xtext.xtext</artifactId>
+					<version>${xtext.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtext</groupId>
+					<artifactId>org.eclipse.xtext.xbase</artifactId>
+					<version>${xtext.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtext</groupId>
+					<artifactId>org.eclipse.xtext.common.types</artifactId>
+					<version>${xtext.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtext</groupId>
+					<artifactId>org.eclipse.xtext.ecore</artifactId>
+					<version>2.5.1</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
-
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.jacoco</groupId> -->
-<!-- 				<artifactId>jacoco-maven-plugin</artifactId> -->
-<!-- 				<configuration> -->
-<!-- 					<append>true</append> -->
-<!-- 				</configuration> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>prepare-unit-tests</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>prepare-agent</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<output>file</output> -->
-<!-- 							<destFile>${sonar.jacoco.reportPath}</destFile> -->
-<!-- 							<propertyName>jacoco.agent-un.argLine</propertyName> -->
-<!-- 							<includes> -->
-<!-- 								<include>org.lunifera.dsl.*</include> -->
-<!-- 							</includes> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.jacoco</groupId> -->
+			<!-- <artifactId>jacoco-maven-plugin</artifactId> -->
+			<!-- <configuration> -->
+			<!-- <append>true</append> -->
+			<!-- </configuration> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>prepare-unit-tests</id> -->
+			<!-- <goals> -->
+			<!-- <goal>prepare-agent</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <output>file</output> -->
+			<!-- <destFile>${sonar.jacoco.reportPath}</destFile> -->
+			<!-- <propertyName>jacoco.agent-un.argLine</propertyName> -->
+			<!-- <includes> -->
+			<!-- <include>org.lunifera.dsl.*</include> -->
+			<!-- </includes> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
