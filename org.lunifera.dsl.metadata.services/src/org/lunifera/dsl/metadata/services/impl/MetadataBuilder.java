@@ -94,9 +94,15 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 			bundleTracker = null;
 		}
 
-		datatypesServiceRegistration.unregister();
-		entityServiceRegistration.unregister();
-		dtoServiceRegistration.unregister();
+		if(datatypesServiceRegistration != null){
+			datatypesServiceRegistration.unregister();
+		}
+		if(entityServiceRegistration != null){
+			entityServiceRegistration.unregister();
+		}
+		if(dtoServiceRegistration != null){
+			dtoServiceRegistration.unregister();
+		}
 
 		datatypesServiceRegistration = null;
 		entityServiceRegistration = null;

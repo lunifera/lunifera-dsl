@@ -10,9 +10,9 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;visibility:=reexport,
- org.eclipse.emf.ecore.xcore.lib;bundle-version="1.0.0",
+ org.eclipse.emf.ecore.xcore.lib;visibility:=reexport;bundle-version="1.0.0",
  org.eclipse.xtext.xbase;visibility:=reexport,
- org.lunifera.dsl.semantic.common;bundle-version="0.0.1",
+ org.lunifera.dsl.semantic.common;visibility:=reexport;bundle-version="0.0.1",
  org.eclipse.xtext.common.types;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

@@ -10,10 +10,8 @@ package org.lunifera.dsl.common.xtext.typesystem;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.xtext.xbase.typesystem.internal.LogicalContainerAwareBatchTypeResolver;
 
-@NonNullByDefault
 public class TypeDeclarationAwareBatchTypeResolver extends
 		LogicalContainerAwareBatchTypeResolver {
 

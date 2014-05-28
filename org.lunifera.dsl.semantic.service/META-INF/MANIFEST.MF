@@ -11,10 +11,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport;bundle-version="2.8.0",
  org.eclipse.xtext.xbase.lib;visibility:=reexport,
  org.eclipse.emf.ecore.xcore.lib;visibility:=reexport,
- org.eclipse.xtext.xbase;bundle-version="2.4.2",
+ org.eclipse.xtext.xbase;visibility:=reexport;bundle-version="2.4.2",
  org.eclipse.xtext.common.types;visibility:=reexport,
- org.lunifera.dsl.semantic.common;bundle-version="0.0.1",
- org.lunifera.dsl.semantic.dto;bundle-version="0.0.1"
+ org.lunifera.dsl.semantic.common;visibility:=reexport;bundle-version="0.0.1",
+ org.lunifera.dsl.semantic.dto;visibility:=reexport;bundle-version="0.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: model,

@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.5.0";visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.5.0",
  org.apache.commons.lang;bundle-version="2.6.0",
  org.lunifera.dsl.mwe;bundle-version="0.0.1",
- org.lunifera.dsl.dto.lib;bundle-version="0.0.1"
+ org.lunifera.dsl.dto.lib;bundle-version="0.0.1",
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
 Import-Package: org.apache.log4j,
  org.osgi.service.component.annotations;version="1.2.0"
 Export-Package: org.lunifera.dsl.dto.xtext;x-internal:=true,
