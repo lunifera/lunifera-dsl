@@ -1,0 +1,6 @@
+/**
+ * To run a maven build that compiles the entitymodels from /models to src-gen/ -> Please run pom.xml as a maven build.
+ */
+package org.lunifera.entitydsl.samples.sample99 {
+
+}
