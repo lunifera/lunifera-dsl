@@ -24,7 +24,7 @@
 
 	<profiles>
 		<profile>
-			<id>build.p2</id>
+			<id>build.features</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
