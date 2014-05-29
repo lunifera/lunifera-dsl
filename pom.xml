@@ -24,7 +24,7 @@
 
 	<profiles>
 		<profile>
-			<id>lunifera.build.p2</id>
+			<id>build.p2</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -64,16 +64,13 @@
 				<module>org.lunifera.dsl.feature.dto.headless</module>
 				<module>org.lunifera.dsl.feature.eclipse.ui</module>
 				<module>org.lunifera.dsl.feature.metadata</module>
-
-				<!-- P2 repository -->
-				<module>org.lunifera.dsl.p2</module>
 			</modules>
 		</profile>
 
 
 
 		<profile>
-			<id>lunifera.build.common</id>
+			<id>build.common</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -95,7 +92,7 @@
 		</profile>
 
 		<profile>
-			<id>lunifera.build.datatype</id>
+			<id>build.datatype</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -122,7 +119,7 @@
 		<!-- For first run, the grammarcompiler must not be used, since the compiler 
 			requires grammar bundles to become built -->
 		<profile>
-			<id>lunifera.build.lib</id>
+			<id>build.lib</id>
 			<activation>
 				<property>
 					<name>!lunifera.dsl.exclude.grammarcompiler</name>
@@ -131,6 +128,28 @@
 			<modules>
 				<module>org.lunifera.dsl.eclipse.ui.examples</module>
 				<module>org.lunifera.dsl.entity.xtext.tests</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>build.p2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>clean verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.dsl.p2</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>stage.p2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>org.lunifera.dsl.p2</module>
 			</modules>
 		</profile>
 	</profiles>
