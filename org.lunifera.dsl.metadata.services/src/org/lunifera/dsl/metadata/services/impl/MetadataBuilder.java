@@ -280,6 +280,8 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 				BundleWiring.FINDENTRIES_RECURSE));
 		result.addAll(wiring.findEntries(path, "*.entitymodel",
 				BundleWiring.FINDENTRIES_RECURSE));
+		result.addAll(wiring.findEntries(path, "*.dtos",
+				BundleWiring.FINDENTRIES_RECURSE));
 		return result;
 	}
 
