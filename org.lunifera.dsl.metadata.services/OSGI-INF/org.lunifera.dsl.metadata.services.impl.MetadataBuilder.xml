@@ -6,4 +6,5 @@
       <provide interface="org.osgi.framework.FrameworkListener"/>
       <provide interface="org.lunifera.dsl.metadata.services.IMetadataBuilderService"/>
    </service>
+   <reference bind="addParticipant" cardinality="1..n" interface="org.lunifera.dsl.metadata.services.IBuilderParticipant" name="Participant" policy="static" unbind="removeParticipant"/>
 </scr:component>

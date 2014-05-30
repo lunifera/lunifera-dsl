@@ -11,6 +11,7 @@
 package org.lunifera.dsl.metadata.services.impl;
 
 import org.lunifera.dsl.datatype.xtext.DatatypeGrammarStandaloneSetup;
+import org.lunifera.dsl.dto.xtext.DtoGrammarStandaloneSetup;
 import org.lunifera.dsl.entity.xtext.EntityGrammarStandaloneSetup;
 
 import com.google.inject.Injector;
@@ -23,6 +24,7 @@ public class StandaloneGrammarsSetup {
 	@SuppressWarnings("restriction")
 	public static Injector setup() {
 		DatatypeGrammarStandaloneSetup.doSetup();
+		DtoGrammarStandaloneSetup.doSetup();
 		return EntityGrammarStandaloneSetup.doSetup();
 	}
 

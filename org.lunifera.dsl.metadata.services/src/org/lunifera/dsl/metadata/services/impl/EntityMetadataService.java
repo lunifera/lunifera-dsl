@@ -11,14 +11,15 @@
 package org.lunifera.dsl.metadata.services.impl;
 
 import org.lunifera.dsl.metadata.services.IEntityMetadataService;
+import org.lunifera.dsl.metadata.services.IMetadataBuilderService;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
 public class EntityMetadataService implements IEntityMetadataService {
 
-	private final MetadataBuilder builder;
+	private final IMetadataBuilderService builder;
 
-	public EntityMetadataService(MetadataBuilder builder) {
+	public EntityMetadataService(IMetadataBuilderService builder) {
 		super();
 		this.builder = builder;
 	}
@@ -30,8 +31,8 @@ public class EntityMetadataService implements IEntityMetadataService {
 
 	@Override
 	public LEntity getMetadata(String className) {
-		return (LEntity) builder
-				.getMetadata(className, LunEntityPackage.Literals.LENTITY);
+		return (LEntity) builder.getMetadata(className,
+				LunEntityPackage.Literals.LENTITY);
 	}
 
 }

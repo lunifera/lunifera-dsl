@@ -11,14 +11,15 @@
 package org.lunifera.dsl.metadata.services.impl;
 
 import org.lunifera.dsl.metadata.services.IDtoMetadataService;
+import org.lunifera.dsl.metadata.services.IMetadataBuilderService;
 import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
 
 public class DtoMetadataService implements IDtoMetadataService {
 
-	private final MetadataBuilder builder;
+	private final IMetadataBuilderService builder;
 
-	public DtoMetadataService(MetadataBuilder builder) {
+	public DtoMetadataService(IMetadataBuilderService builder) {
 		super();
 		this.builder = builder;
 	}

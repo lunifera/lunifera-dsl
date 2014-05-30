@@ -14,9 +14,6 @@ import static com.google.common.collect.Iterables.addAll;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,21 +34,18 @@ import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
-import org.lunifera.dsl.metadata.services.IDatatypesMetadataService;
-import org.lunifera.dsl.metadata.services.IDtoMetadataService;
-import org.lunifera.dsl.metadata.services.IEntityMetadataService;
+import org.lunifera.dsl.metadata.services.IBuilderParticipant;
 import org.lunifera.dsl.metadata.services.IMetadataBuilderService;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
 import org.osgi.framework.FrameworkEvent;
 import org.osgi.framework.FrameworkListener;
-import org.osgi.framework.ServiceRegistration;
-import org.osgi.framework.wiring.BundleWiring;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.util.tracker.BundleTracker;
 import org.osgi.util.tracker.BundleTrackerCustomizer;
 import org.slf4j.Logger;
@@ -72,19 +66,30 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 	private XtextResourceSet resourceSet;
 	private ResourceDescriptionsProvider resourceDescriptionsProvider;
 	private IQualifiedNameConverter converter;
-	private ServiceRegistration<IEntityMetadataService> entityServiceRegistration;
-	private ServiceRegistration<IDatatypesMetadataService> datatypesServiceRegistration;
-	private ServiceRegistration<IDtoMetadataService> dtoServiceRegistration;
+
+	private List<IBuilderParticipant> participants = new ArrayList<IBuilderParticipant>();
+
+	private Injector injector;
 
 	@Activate
 	protected void activate(ComponentContext context) {
 		this.context = context;
 		context.getBundleContext().addFrameworkListener(this);
-		Injector injector = StandaloneGrammarsSetup.setup();
+		doSetup();
 		converter = new IQualifiedNameConverter.DefaultImpl();
 		resourceSet = injector.getInstance(XtextResourceSet.class);
 		resourceDescriptionsProvider = injector
 				.getInstance(ResourceDescriptionsProvider.class);
+	}
+
+	protected void doSetup() {
+		for (IBuilderParticipant participant : participants
+				.toArray(new IBuilderParticipant[participants.size()])) {
+			Injector injector = participant.setupGrammars();
+			if (this.injector == null) {
+				this.injector = injector;
+			}
+		}
 	}
 
 	@Deactivate
@@ -94,13 +99,11 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 			bundleTracker = null;
 		}
 
-		datatypesServiceRegistration.unregister();
-		entityServiceRegistration.unregister();
-		dtoServiceRegistration.unregister();
-
-		datatypesServiceRegistration = null;
-		entityServiceRegistration = null;
-		dtoServiceRegistration = null;
+		// notify each participant that the builder was deactivated
+		for (IBuilderParticipant participant : participants
+				.toArray(new IBuilderParticipant[participants.size()])) {
+			participant.builderDeactivated();
+		}
 
 		for (Resource rs : new ArrayList<Resource>(resourceSet.getResources())) {
 			rs.unload();
@@ -121,7 +124,7 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 		return getEObjectForFQN(converter.toQualifiedName(qualifiedName), type);
 	}
 
-	protected EObject getEObjectForFQN(QualifiedName fqn, EClass type) {
+	public EObject getEObjectForFQN(QualifiedName fqn, EClass type) {
 		EObject result = null;
 		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider
 				.getResourceDescriptions(resourceSet);
@@ -160,15 +163,10 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 	 * Registers all services.
 	 */
 	protected void registerServices() {
-		BundleContext bc = context.getBundleContext();
-		datatypesServiceRegistration = bc.registerService(
-				IDatatypesMetadataService.class, new DatatypesMetadataService(
-						this), null);
-		entityServiceRegistration = bc.registerService(
-				IEntityMetadataService.class, new EntityMetadataService(this),
-				null);
-		dtoServiceRegistration = bc.registerService(IDtoMetadataService.class,
-				new DtoMetadataService(this), null);
+		for (IBuilderParticipant participant : participants
+				.toArray(new IBuilderParticipant[participants.size()])) {
+			participant.registerServices(this);
+		}
 	}
 
 	/**
@@ -214,7 +212,7 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 			return;
 		}
 
-		for (URL url : urls) { 
+		for (URL url : urls) {
 			logger.info("Unregistered " + url.toString());
 			Resource rs = resourceSet.getResource(
 					URI.createURI(url.toString()), true);
@@ -253,35 +251,19 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 	 * @param bundleContext
 	 * @return
 	 */
-	private List<URL> findModels(Bundle bundle) {
+	private List<URL> findModels(Bundle suspect) {
 
-		boolean keyFound = false;
-		String path = "";
-		Dictionary<String, String> headers = bundle.getHeaders();
-		Enumeration<String> elements = headers.keys();
-		while (elements.hasMoreElements()) {
-			String key = elements.nextElement();
-			if (key.equals("Lun-models")) {
-				path = headers.get(key);
-				keyFound = true;
-				break;
-			}
-		}
-
-		if (!keyFound) {
-			return Collections.emptyList();
-		}
-
-		bundles.add(bundle);
-
-		BundleWiring wiring = bundle.adapt(BundleWiring.class);
 		List<URL> result = new ArrayList<URL>();
-		result.addAll(wiring.findEntries(path, "*.datatypes",
-				BundleWiring.FINDENTRIES_RECURSE));
-		result.addAll(wiring.findEntries(path, "*.entitymodel",
-				BundleWiring.FINDENTRIES_RECURSE));
-		result.addAll(wiring.findEntries(path, "*.dtos",
-				BundleWiring.FINDENTRIES_RECURSE));
+		// iterate all participants
+		for (IBuilderParticipant participant : participants
+				.toArray(new IBuilderParticipant[participants.size()])) {
+			result.addAll(participant.getModels(suspect));
+		}
+
+		if (result.size() > 0) {
+			bundles.add(suspect);
+		}
+
 		return result;
 	}
 
@@ -330,5 +312,26 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 			}).start();
 
 		}
+	}
+
+	/**
+	 * Called by OSGi-DS.
+	 * 
+	 * @param participant
+	 */
+	@Reference(cardinality = ReferenceCardinality.AT_LEAST_ONE, unbind = "removeParticipant")
+	protected void addParticipant(IBuilderParticipant participant) {
+		if (!participants.contains(participant)) {
+			participants.add(participant);
+		}
+	}
+
+	/**
+	 * Called by OSGi-DS.
+	 * 
+	 * @param participant
+	 */
+	protected void removeParticipant(IBuilderParticipant participant) {
+		participants.remove(participant);
 	}
 }

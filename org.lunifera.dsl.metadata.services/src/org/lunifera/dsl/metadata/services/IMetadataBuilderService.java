@@ -10,9 +10,22 @@
  */
 package org.lunifera.dsl.metadata.services;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * Returns the metadata model for the given fully qualified name and type.
+ */
 public interface IMetadataBuilderService {
-	
-	
-	
-	
+
+	/**
+	 * Returns the resolved model or <code>null</code> if the model could not be
+	 * found.
+	 * 
+	 * @param fqn
+	 * @param type
+	 * @return
+	 */
+	EObject getMetadata(String qualifiedName, EClass type);
+
 }

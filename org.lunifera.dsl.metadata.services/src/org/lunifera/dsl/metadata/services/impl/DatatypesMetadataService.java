@@ -11,14 +11,15 @@
 package org.lunifera.dsl.metadata.services.impl;
 
 import org.lunifera.dsl.metadata.services.IDatatypesMetadataService;
+import org.lunifera.dsl.metadata.services.IMetadataBuilderService;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
 public class DatatypesMetadataService implements IDatatypesMetadataService {
 
-	private final MetadataBuilder builder;
+	private final IMetadataBuilderService builder;
 
-	public DatatypesMetadataService(MetadataBuilder builder) {
+	public DatatypesMetadataService(IMetadataBuilderService builder) {
 		super();
 		this.builder = builder;
 	}
