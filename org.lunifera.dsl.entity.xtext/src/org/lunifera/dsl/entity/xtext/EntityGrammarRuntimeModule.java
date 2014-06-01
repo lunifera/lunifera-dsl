@@ -11,15 +11,16 @@
 package org.lunifera.dsl.entity.xtext;
 
 import org.eclipse.xtext.formatting.IFormatter;
-import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
 import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
+import org.lunifera.dsl.entity.xtext.generator.Generator;
+import org.lunifera.dsl.entity.xtext.generator.OutputConfigurationProvider;
 import org.lunifera.dsl.entity.xtext.jvmmodel.DerivedStateComputer;
-import org.lunifera.dsl.entity.xtext.jvmmodel.EntityJvmModelGenerator;
 import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
 import org.lunifera.dsl.entity.xtext.scope.EntityBatchScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScopeProvider;
@@ -59,11 +60,6 @@ public class EntityGrammarRuntimeModule extends
 				.to(EntityImportedNamespaceAwareLocalScopeProvider.class);
 	}
 
-	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
-	public Class<? extends IGenerator> bindIGenerator() {
-		return EntityJvmModelGenerator.class;
-	}
-
 	public Class<? extends IFormatter> bindIFormatter() {
 		return EntityGrammarFormatter.class;
 	}
@@ -86,5 +82,13 @@ public class EntityGrammarRuntimeModule extends
 
 	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
 		return DerivedStateComputer.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
+		return Generator.class;
+	}
+
+	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
+		return OutputConfigurationProvider.class;
 	}
 }
