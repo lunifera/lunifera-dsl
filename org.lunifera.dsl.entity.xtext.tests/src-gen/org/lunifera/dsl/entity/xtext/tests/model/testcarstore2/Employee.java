@@ -194,6 +194,23 @@ public class Employee extends Person {
   }
   
   /**
+   * Sets the given subordinates to the object. Currently contained subordinates instances will be removed.
+   * 
+   * @param subordinates the list of new instances
+   */
+  public void setSubordinates(final List<Employee> subordinates) {
+    // remove the old employee
+    for(Employee oldElement : new ArrayList<Employee>(this.subordinates)){
+      removeFromSubordinates(oldElement);
+    }
+    
+    // add the new employee
+    for(Employee newElement : subordinates){
+      addToSubordinates(newElement);
+    }
+  }
+  
+  /**
    * Returns the list of <code>Employee</code>s thereby lazy initializing it.
    */
   private List<Employee> internalGetSubordinates() {

@@ -139,6 +139,23 @@ public class TreeEmployee {
   }
   
   /**
+   * Sets the given subordinates to the object. Currently contained subordinates instances will be removed.
+   * 
+   * @param subordinates the list of new instances
+   */
+  public void setSubordinates(final List<TreeEmployee> subordinates) {
+    // remove the old treeEmployee
+    for(TreeEmployee oldElement : new ArrayList<TreeEmployee>(this.subordinates)){
+      removeFromSubordinates(oldElement);
+    }
+    
+    // add the new treeEmployee
+    for(TreeEmployee newElement : subordinates){
+      addToSubordinates(newElement);
+    }
+  }
+  
+  /**
    * Returns the list of <code>TreeEmployee</code>s thereby lazy initializing it.
    */
   private List<TreeEmployee> internalGetSubordinates() {

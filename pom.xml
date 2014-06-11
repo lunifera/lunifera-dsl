@@ -54,6 +54,7 @@
 				<!-- <module>org.lunifera.dsl.services.xtext.ui</module> -->
 				<module>org.lunifera.dsl.eclipse.ui</module>
 				<module>org.lunifera.dsl.metadata.services</module>
+				<module>org.lunifera.dsl.xtext.types.bundles</module>
 
 				<!-- P2 feature -->
 				<module>org.lunifera.dsl.feature.entities</module>

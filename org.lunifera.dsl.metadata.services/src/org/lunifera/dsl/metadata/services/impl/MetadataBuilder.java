@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.common.types.access.impl.IndexedJvmTypeAccess;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -36,6 +37,8 @@ import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.lunifera.dsl.metadata.services.IBuilderParticipant;
 import org.lunifera.dsl.metadata.services.IMetadataBuilderService;
+import org.lunifera.dsl.xtext.types.bundles.BundleSpace;
+import org.lunifera.dsl.xtext.types.bundles.BundleSpaceTypeProvider;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleEvent;
 import org.osgi.framework.FrameworkEvent;
@@ -51,8 +54,10 @@ import org.osgi.util.tracker.BundleTrackerCustomizer;
 import org.slf4j.Logger;
 
 import com.google.common.collect.Lists;
+import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+@SuppressWarnings("restriction")
 @Component(immediate = true)
 public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 		FrameworkListener, IMetadataBuilderService {
@@ -66,10 +71,13 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 	private XtextResourceSet resourceSet;
 	private ResourceDescriptionsProvider resourceDescriptionsProvider;
 	private IQualifiedNameConverter converter;
+	private IndexedJvmTypeAccess jvmTypeAccess;
 
 	private List<IBuilderParticipant> participants = new ArrayList<IBuilderParticipant>();
 
 	private Injector injector;
+
+	private BundleSpace bundleSpace;
 
 	@Activate
 	protected void activate(ComponentContext context) {
@@ -77,19 +85,22 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 		context.getBundleContext().addFrameworkListener(this);
 		doSetup();
 		converter = new IQualifiedNameConverter.DefaultImpl();
-		resourceSet = injector.getInstance(XtextResourceSet.class);
-		resourceDescriptionsProvider = injector
-				.getInstance(ResourceDescriptionsProvider.class);
 	}
 
+	/**
+	 * Does the setup.
+	 */
 	protected void doSetup() {
 		for (IBuilderParticipant participant : participants
 				.toArray(new IBuilderParticipant[participants.size()])) {
-			Injector injector = participant.setupGrammars();
-			if (this.injector == null) {
-				this.injector = injector;
-			}
+			participant.setupGrammars();
 		}
+
+		injector = Guice.createInjector(new MetadataBuilderModule());
+		resourceSet = injector.getInstance(XtextResourceSet.class);
+		resourceDescriptionsProvider = injector
+				.getInstance(ResourceDescriptionsProvider.class);
+		jvmTypeAccess = injector.getInstance(IndexedJvmTypeAccess.class);
 	}
 
 	@Deactivate
@@ -149,11 +160,19 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 			}
 		}
 
+		// Create a compound class loader
+		// CompoundClassloader classLoader = new CompoundClassloader(bundles);
+		bundleSpace = new BundleSpace(bundles);
+		new BundleSpaceTypeProvider(bundleSpace, resourceSet, jvmTypeAccess);
+		// new ClasspathTypeProvider(classLoader, resourceSet, null);
+		resourceSet.setClasspathURIContext(bundleSpace);
+
 		EcoreUtil.resolveAll(resourceSet);
 
 		List<Issue> validationResults = validate(resourceSet);
 		for (Issue issue : validationResults) {
 			logger.error(issue.toString());
+			System.out.println(issue.toString());
 		}
 
 		logger.info("Models resolved. In case of error, see messages before.");

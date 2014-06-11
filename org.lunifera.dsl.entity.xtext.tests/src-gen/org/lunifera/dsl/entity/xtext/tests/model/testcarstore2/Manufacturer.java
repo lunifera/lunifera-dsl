@@ -153,6 +153,23 @@ public class Manufacturer {
   }
   
   /**
+   * Sets the given cars to the object. Currently contained cars instances will be removed.
+   * 
+   * @param cars the list of new instances
+   */
+  public void setCars(final List<Car> cars) {
+    // remove the old car
+    for(Car oldElement : new ArrayList<Car>(this.cars)){
+      removeFromCars(oldElement);
+    }
+    
+    // add the new car
+    for(Car newElement : cars){
+      addToCars(newElement);
+    }
+  }
+  
+  /**
    * Returns the list of <code>Car</code>s thereby lazy initializing it.
    */
   private List<Car> internalGetCars() {

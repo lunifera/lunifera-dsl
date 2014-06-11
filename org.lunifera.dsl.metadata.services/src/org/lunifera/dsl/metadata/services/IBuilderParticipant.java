@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.osgi.framework.Bundle;
 
-import com.google.inject.Injector;
-
 /**
  * Builder participants can participate to the model builder.
  */
@@ -14,10 +12,8 @@ public interface IBuilderParticipant {
 
 	/**
 	 * Implementors need to setup their xtext grammars.
-	 * 
-	 * @returns injector.
 	 */
-	Injector setupGrammars();
+	void setupGrammars();
 
 	/**
 	 * Returns a list with all models that should be loaded into the builder.

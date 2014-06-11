@@ -161,6 +161,23 @@ public class Person {
   }
   
   /**
+   * Sets the given address to the object. Currently contained address instances will be removed.
+   * 
+   * @param address the list of new instances
+   */
+  public void setAddress(final List<Address> address) {
+    // remove the old address
+    for(Address oldElement : new ArrayList<Address>(this.address)){
+      removeFromAddress(oldElement);
+    }
+    
+    // add the new address
+    for(Address newElement : address){
+      addToAddress(newElement);
+    }
+  }
+  
+  /**
    * Returns the list of <code>Address</code>s thereby lazy initializing it.
    */
   private List<Address> internalGetAddress() {

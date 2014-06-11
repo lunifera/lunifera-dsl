@@ -21,8 +21,6 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 
-import com.google.inject.Injector;
-
 @Component(property = { "service.ranking=1" })
 public class BuilderParticipant implements IBuilderParticipant {
 
@@ -55,8 +53,8 @@ public class BuilderParticipant implements IBuilderParticipant {
 	}
 
 	@Override
-	public Injector setupGrammars() {
-		return StandaloneGrammarsSetup.setup();
+	public void setupGrammars() {
+		StandaloneGrammarsSetup.setup();
 	}
 
 	@Override

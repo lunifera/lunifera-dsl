@@ -14,18 +14,15 @@ import org.lunifera.dsl.datatype.xtext.DatatypeGrammarStandaloneSetup;
 import org.lunifera.dsl.dto.xtext.DtoGrammarStandaloneSetup;
 import org.lunifera.dsl.entity.xtext.EntityGrammarStandaloneSetup;
 
-import com.google.inject.Injector;
-
 /**
  * A helper class to setup the Xtext grammars properly.
  */
+@SuppressWarnings("restriction")
 public class StandaloneGrammarsSetup {
 
-	@SuppressWarnings("restriction")
-	public static Injector setup() {
+	public static void setup() {
 		DatatypeGrammarStandaloneSetup.doSetup();
 		DtoGrammarStandaloneSetup.doSetup();
-		return EntityGrammarStandaloneSetup.doSetup();
+		EntityGrammarStandaloneSetup.doSetup();
 	}
-
 }
