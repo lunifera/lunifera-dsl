@@ -167,8 +167,6 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 		// new ClasspathTypeProvider(classLoader, resourceSet, null);
 		resourceSet.setClasspathURIContext(bundleSpace);
 
-		EcoreUtil.resolveAll(resourceSet);
-
 		List<Issue> validationResults = validate(resourceSet);
 		for (Issue issue : validationResults) {
 			logger.error(issue.toString());

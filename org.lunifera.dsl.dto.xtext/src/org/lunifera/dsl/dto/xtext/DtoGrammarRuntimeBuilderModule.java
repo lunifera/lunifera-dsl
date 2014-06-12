@@ -8,15 +8,14 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.dsl.common.xtext;
+package org.lunifera.dsl.dto.xtext;
 
 import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
 import org.lunifera.dsl.xtext.types.bundles.BundleSpaceTypeProviderFactory;
 import org.lunifera.dsl.xtext.types.bundles.BundleSpaceTypeScopeProvider;
 
 @SuppressWarnings("restriction")
-public class CommonGrammarRuntimeBuilderModule extends
-		org.lunifera.dsl.common.xtext.CommonGrammarRuntimeModule {
+public class DtoGrammarRuntimeBuilderModule extends DtoGrammarRuntimeModule {
 
 	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment
 	public Class<? extends org.eclipse.xtext.common.types.access.IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
@@ -26,5 +25,4 @@ public class CommonGrammarRuntimeBuilderModule extends
 	public Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
 		return BundleSpaceTypeScopeProvider.class;
 	}
-
 }

@@ -10,9 +10,9 @@
  */
 package org.lunifera.dsl.metadata.services.impl;
 
-import org.lunifera.dsl.datatype.xtext.DatatypeGrammarStandaloneSetup;
-import org.lunifera.dsl.dto.xtext.DtoGrammarStandaloneSetup;
-import org.lunifera.dsl.entity.xtext.EntityGrammarStandaloneSetup;
+import org.lunifera.dsl.datatype.xtext.DatatypeGrammarRuntimeBuilderStandaloneSetup;
+import org.lunifera.dsl.dto.xtext.DtoGrammarRuntimeBuilderStandaloneSetup;
+import org.lunifera.dsl.entity.xtext.EntityGrammarRuntimeBuilderStandaloneSetup;
 
 /**
  * A helper class to setup the Xtext grammars properly.
@@ -21,8 +21,8 @@ import org.lunifera.dsl.entity.xtext.EntityGrammarStandaloneSetup;
 public class StandaloneGrammarsSetup {
 
 	public static void setup() {
-		DatatypeGrammarStandaloneSetup.doSetup();
-		DtoGrammarStandaloneSetup.doSetup();
-		EntityGrammarStandaloneSetup.doSetup();
+		DatatypeGrammarRuntimeBuilderStandaloneSetup.doSetup();
+		DtoGrammarRuntimeBuilderStandaloneSetup.doSetup();
+		EntityGrammarRuntimeBuilderStandaloneSetup.doSetup();
 	}
 }

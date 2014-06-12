@@ -69,6 +69,11 @@ class ModelExtensions {
 		}
 	}
 	
+	
+	def boolean isPrimitive(LDataType type) {
+		return type.asPrimitive;
+	}
+	
 	def JvmTypeReference toSyntheticTypeReference(LDataType type) {
 	}
 

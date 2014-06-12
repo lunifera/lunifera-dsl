@@ -3,6 +3,9 @@ package org.lunifera.dsl.metadata.services;
 import java.net.URL;
 import java.util.List;
 
+import org.lunifera.dsl.metadata.services.impl.BuilderParticipant;
+import org.lunifera.dsl.metadata.services.impl.StandaloneGrammarsSetup;
+import org.lunifera.dsl.xtext.types.bundles.BundleSpaceTypeProvider;
 import org.osgi.framework.Bundle;
 
 /**
@@ -11,7 +14,10 @@ import org.osgi.framework.Bundle;
 public interface IBuilderParticipant {
 
 	/**
-	 * Implementors need to setup their xtext grammars.
+	 * Implementors need to setup their xtext grammars.<br>
+	 * Attention: The runtime builder needs to use the
+	 * {@link BundleSpaceTypeProvider}. Attached {@link BuilderParticipant} or
+	 * {@link StandaloneGrammarsSetup} for implementation details.
 	 */
 	void setupGrammars();
 

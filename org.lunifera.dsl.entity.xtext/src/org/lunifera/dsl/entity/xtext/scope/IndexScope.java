@@ -18,7 +18,7 @@ import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
-import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;
+import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
@@ -33,7 +33,7 @@ public class IndexScope extends AbstractScope {
 		super(IScope.NULLSCOPE, true);
 		this.context = context;
 	}
-
+ 
 	@Override
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
 		ModelExtensions ext = new ModelExtensions();

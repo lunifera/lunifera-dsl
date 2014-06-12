@@ -29,13 +29,13 @@ public class BundleSpaceTypeProviderFactory extends AbstractTypeProviderFactory 
 	}
 
 	@Override
-	public ReflectionTypeProvider createTypeProvider() {
-		return (ReflectionTypeProvider) super.createTypeProvider();
+	public BundleSpaceTypeProvider createTypeProvider() {
+		return (BundleSpaceTypeProvider) super.createTypeProvider();
 	}
 
 	@Override
-	public ReflectionTypeProvider findTypeProvider(ResourceSet resourceSet) {
-		return (ReflectionTypeProvider) super.findTypeProvider(resourceSet);
+	public BundleSpaceTypeProvider findTypeProvider(ResourceSet resourceSet) {
+		return (BundleSpaceTypeProvider) super.findTypeProvider(resourceSet);
 	}
 
 }
