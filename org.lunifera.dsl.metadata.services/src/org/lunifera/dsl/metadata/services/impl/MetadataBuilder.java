@@ -160,17 +160,18 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 			}
 		}
 
-		// Create a compound class loader
-		// CompoundClassloader classLoader = new CompoundClassloader(bundles);
+		// Create the bundle space for class loading issues
 		bundleSpace = new BundleSpace(bundles);
 		new BundleSpaceTypeProvider(bundleSpace, resourceSet, jvmTypeAccess);
 		// new ClasspathTypeProvider(classLoader, resourceSet, null);
 		resourceSet.setClasspathURIContext(bundleSpace);
 
+		// resolve all models
+		EcoreUtil.resolveAll(resourceSet);
+
 		List<Issue> validationResults = validate(resourceSet);
 		for (Issue issue : validationResults) {
-			logger.error(issue.toString());
-			System.out.println(issue.toString());
+			logger.warn(issue.toString());
 		}
 
 		logger.info("Models resolved. In case of error, see messages before.");
@@ -214,7 +215,7 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 
 		List<Issue> validationResults = validate(resourceSet);
 		for (Issue issue : validationResults) {
-			logger.error(issue.toString());
+			logger.warn(issue.toString());
 		}
 	}
 
@@ -234,6 +235,7 @@ public class MetadataBuilder implements BundleTrackerCustomizer<Bundle>,
 			Resource rs = resourceSet.getResource(
 					URI.createURI(url.toString()), true);
 			rs.unload();
+			resourceSet.getResources().remove(rs);
 		}
 
 		EcoreUtil.resolveAll(resourceSet);

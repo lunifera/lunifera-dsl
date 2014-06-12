@@ -11,6 +11,7 @@ import org.osgi.framework.Bundle;
 /**
  * Builder participants can participate to the model builder.
  */
+@SuppressWarnings("restriction")
 public interface IBuilderParticipant {
 
 	/**
