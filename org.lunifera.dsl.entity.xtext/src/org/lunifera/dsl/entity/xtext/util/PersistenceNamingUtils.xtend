@@ -20,17 +20,21 @@ class PersistenceNamingUtils {
 			return pCamelCaseString; // Nothing to do.
 		}
 		val StringBuilder sb = new StringBuilder(pCamelCaseString);
-		val maxIndex = sb.length -1;
+		val StringBuilder sbOut = new StringBuilder(pCamelCaseString);
+		val maxIndex = sb.length - 1;
+		var offset = 0;
 		for (i : 1 .. (sb.length() - 1)) {
 			try {
 				if (i < maxIndex && sb.charAt(i - 1) != '_' && Character.isUpperCase(sb.charAt(i)) &&
 					!Character.isUpperCase(sb.charAt(i + 1))) {
-					sb.insert(i, '_');
+					sbOut.insert(i + offset, '_');
+					offset = offset + 1;
 				}
 			} catch (Exception ex) {
 				println(ex)
 			}
 		}
-		return sb.toString().toUpperCase();
+		return sbOut.toString().toUpperCase();
 	}
+
 }
