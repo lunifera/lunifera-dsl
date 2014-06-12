@@ -1,3 +1,16 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ * 
+ * Based on Xtext org.eclipse.xtext.common.types.access.reflect.ReflectionTypeProvider
+ * 
+ */
 package org.lunifera.dsl.xtext.types.bundles;
 
 import org.eclipse.emf.common.util.URI;
@@ -14,7 +27,7 @@ import org.eclipse.xtext.common.types.access.impl.IndexedJvmTypeAccess;
 import org.eclipse.xtext.common.types.access.reflect.ReflectURIHelper;
 import org.eclipse.xtext.common.types.access.reflect.ReflectionTypeFactory;
 
-@SuppressWarnings("restriction")
+@SuppressWarnings({ "restriction", "deprecation" })
 public class BundleSpaceTypeProvider extends AbstractRuntimeJvmTypeProvider {
 
 	private final BundleSpace classFinder;
@@ -164,13 +177,11 @@ public class BundleSpaceTypeProvider extends AbstractRuntimeJvmTypeProvider {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	public ClassMirror createMirror(Class<?> clazz) {
 		return ClassMirror.createClassMirror(clazz, reflectionTypeFactory);
 	}
 
 	public JvmType findTypeByClass(Class<?> clazz, Resource resource) {
-		// TODO: Maybe iterate the resource without computing a fragment
 		String fragment = uriHelper.getFragment(clazz);
 		JvmType result = (JvmType) resource.getEObject(fragment);
 		if (result == null) {
