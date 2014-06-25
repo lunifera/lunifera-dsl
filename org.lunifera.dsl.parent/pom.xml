@@ -24,62 +24,32 @@
 	<artifactId>org.lunifera.dsl.parent</artifactId>
 	<packaging>pom</packaging>
 
+	<url>${distribution.site.url}</url>
+	<distributionManagement>
+		<site>
+			<id>gh-pages</id>
+			<name>Lunifera GitHub Pages</name>
+			<url>${distribution.site.url}</url>
+		</site>
+	</distributionManagement>
+
 	<properties>
 		<lunifera.deployment.p2.name>dsl</lunifera.deployment.p2.name>
 		<lunifera.build.p2.project.name>org.lunifera.dsl.p2</lunifera.build.p2.project.name>
 		<tychoExtrasVersion>0.19.0</tychoExtrasVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<xtext.version>2.5.4</xtext.version>
-		<!-- Sonar -->
-		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
-		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-		<sonar.language>java</sonar.language>
+		<lunifera.jacoco.include>org.lunifera.dsl.*</lunifera.jacoco.include>
+		<sonar.skippedModules>
+			org.lunifera.dsl.common.xtext.tests,
+			org.lunifera.dsl.datatype.xtext.tests,
+			org.lunifera.dsl.dto.xtext.tests,
+			org.lunifera.dsl.entity.xtext.tests,
+			org.lunifera.dsl.services.xtext.tests,
+			org.lunifera.dsl.xtext.builder.participant.tests
+		</sonar.skippedModules>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>kepler</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/kepler</url>
-		</repository>
-		<repository>
-			<id>Xtext bleeding edge</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
-		</repository>
-		<repository>
-			<id>central snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</repository>
-		<repository>
-			<id>lunifera releases</id>
-			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
-		</repository>
-		<repository>
-			<id>lunifera thirdparty</id>
-			<url>http://maven.lunifera.org:8086/nexus/content/repositories/thirdparty/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>central snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>lunifera snapshots</id>
-			<url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>lunifera releases</id>
-			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>lunifera thirdparty</id>
-			<url>http://maven.lunifera.org:8086/nexus/content/repositories/thirdparty/</url>
-		</pluginRepository>
-	</pluginRepositories>
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -153,40 +123,8 @@
 		</pluginManagement>
 		<plugins>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.jacoco</groupId> -->
-			<!-- <artifactId>jacoco-maven-plugin</artifactId> -->
-			<!-- <configuration> -->
-			<!-- <append>true</append> -->
-			<!-- </configuration> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>prepare-unit-tests</id> -->
-			<!-- <goals> -->
-			<!-- <goal>prepare-agent</goal> -->
-			<!-- </goals> -->
-			<!-- <configuration> -->
-			<!-- <output>file</output> -->
-			<!-- <destFile>${sonar.jacoco.reportPath}</destFile> -->
-			<!-- <propertyName>jacoco.agent-un.argLine</propertyName> -->
-			<!-- <includes> -->
-			<!-- <include>org.lunifera.dsl.*</include> -->
-			<!-- </includes> -->
-			<!-- </configuration> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
