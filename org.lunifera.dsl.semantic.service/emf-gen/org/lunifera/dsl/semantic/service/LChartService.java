@@ -24,6 +24,5 @@ package org.lunifera.dsl.semantic.service;
  * @model
  * @generated
  */
-public interface LChartService extends LService
-{
+public interface LChartService extends LService {
 } // LChartService

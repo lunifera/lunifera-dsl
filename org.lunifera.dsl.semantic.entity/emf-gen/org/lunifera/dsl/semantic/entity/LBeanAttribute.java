@@ -25,6 +25,5 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
  * @model
  * @generated
  */
-public interface LBeanAttribute extends LBeanFeature, LAttribute
-{
+public interface LBeanAttribute extends LBeanFeature, LAttribute {
 } // LBeanAttribute

@@ -27,27 +27,24 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *
  * @generated
  */
-public class LScalarTypeImpl extends LTypeImpl implements LScalarType
-{
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected LScalarTypeImpl()
-  {
-    super();
-  }
+public class LScalarTypeImpl extends LTypeImpl implements LScalarType {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LScalarTypeImpl() {
+		super();
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return LunTypesPackage.Literals.LSCALAR_TYPE;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return LunTypesPackage.Literals.LSCALAR_TYPE;
+	}
 
 } //LScalarTypeImpl

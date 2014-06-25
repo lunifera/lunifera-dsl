@@ -25,6 +25,5 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
  * @model
  * @generated
  */
-public interface LEntityAttribute extends LEntityFeature, LAttribute
-{
+public interface LEntityAttribute extends LEntityFeature, LAttribute {
 } // LEntityAttribute

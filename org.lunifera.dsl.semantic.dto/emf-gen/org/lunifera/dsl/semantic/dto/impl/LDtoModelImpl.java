@@ -45,135 +45,120 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *
  * @generated
  */
-public class LDtoModelImpl extends MinimalEObjectImpl.Container implements LDtoModel
-{
-  /**
-   * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPackages()
-   * @generated
-   * @ordered
-   */
-  protected EList<LTypedPackage> packages;
+public class LDtoModelImpl extends MinimalEObjectImpl.Container implements LDtoModel {
+	/**
+	 * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LTypedPackage> packages;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected LDtoModelImpl()
-  {
-    super();
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtoModelImpl() {
+		super();
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return LunDtoPackage.Literals.LDTO_MODEL;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return LunDtoPackage.Literals.LDTO_MODEL;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<LTypedPackage> getPackages()
-  {
-    if (packages == null)
-    {
-      packages = new EObjectContainmentEList<LTypedPackage>(LTypedPackage.class, this, LunDtoPackage.LDTO_MODEL__PACKAGES);
-    }
-    return packages;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LTypedPackage> getPackages() {
+		if (packages == null) {
+			packages = new EObjectContainmentEList<LTypedPackage>(LTypedPackage.class, this, LunDtoPackage.LDTO_MODEL__PACKAGES);
+		}
+		return packages;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case LunDtoPackage.LDTO_MODEL__PACKAGES:
-        return ((InternalEList<?>)getPackages()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LunDtoPackage.LDTO_MODEL__PACKAGES:
+				return ((InternalEList<?>)getPackages()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case LunDtoPackage.LDTO_MODEL__PACKAGES:
-        return getPackages();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case LunDtoPackage.LDTO_MODEL__PACKAGES:
+				return getPackages();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case LunDtoPackage.LDTO_MODEL__PACKAGES:
-        getPackages().clear();
-        getPackages().addAll((Collection<? extends LTypedPackage>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case LunDtoPackage.LDTO_MODEL__PACKAGES:
+				getPackages().clear();
+				getPackages().addAll((Collection<? extends LTypedPackage>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case LunDtoPackage.LDTO_MODEL__PACKAGES:
-        getPackages().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case LunDtoPackage.LDTO_MODEL__PACKAGES:
+				getPackages().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case LunDtoPackage.LDTO_MODEL__PACKAGES:
-        return packages != null && !packages.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case LunDtoPackage.LDTO_MODEL__PACKAGES:
+				return packages != null && !packages.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //LDtoModelImpl

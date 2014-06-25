@@ -44,135 +44,120 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  *
  * @generated
  */
-public class LInjectedServicesImpl extends MinimalEObjectImpl.Container implements LInjectedServices
-{
-  /**
-   * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getServices()
-   * @generated
-   * @ordered
-   */
-  protected EList<LInjectedService> services;
+public class LInjectedServicesImpl extends MinimalEObjectImpl.Container implements LInjectedServices {
+	/**
+	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getServices()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LInjectedService> services;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected LInjectedServicesImpl()
-  {
-    super();
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LInjectedServicesImpl() {
+		super();
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return LunServicePackage.Literals.LINJECTED_SERVICES;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return LunServicePackage.Literals.LINJECTED_SERVICES;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<LInjectedService> getServices()
-  {
-    if (services == null)
-    {
-      services = new EObjectContainmentEList<LInjectedService>(LInjectedService.class, this, LunServicePackage.LINJECTED_SERVICES__SERVICES);
-    }
-    return services;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LInjectedService> getServices() {
+		if (services == null) {
+			services = new EObjectContainmentEList<LInjectedService>(LInjectedService.class, this, LunServicePackage.LINJECTED_SERVICES__SERVICES);
+		}
+		return services;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case LunServicePackage.LINJECTED_SERVICES__SERVICES:
-        return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LunServicePackage.LINJECTED_SERVICES__SERVICES:
+				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case LunServicePackage.LINJECTED_SERVICES__SERVICES:
-        return getServices();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case LunServicePackage.LINJECTED_SERVICES__SERVICES:
+				return getServices();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case LunServicePackage.LINJECTED_SERVICES__SERVICES:
-        getServices().clear();
-        getServices().addAll((Collection<? extends LInjectedService>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case LunServicePackage.LINJECTED_SERVICES__SERVICES:
+				getServices().clear();
+				getServices().addAll((Collection<? extends LInjectedService>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case LunServicePackage.LINJECTED_SERVICES__SERVICES:
-        getServices().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case LunServicePackage.LINJECTED_SERVICES__SERVICES:
+				getServices().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case LunServicePackage.LINJECTED_SERVICES__SERVICES:
-        return services != null && !services.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case LunServicePackage.LINJECTED_SERVICES__SERVICES:
+				return services != null && !services.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //LInjectedServicesImpl

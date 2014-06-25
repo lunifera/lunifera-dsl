@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.5.3,2.6.0)";visibility:=ree
  org.objectweb.asm;bundle-version="3.3.1",
  org.eclipse.emf.ecore.xcore;bundle-version="1.1.1",
  org.lunifera.dsl.mwe;bundle-version="0.0.1",
- org.lunifera.dsl.xtext.types.bundles;bundle-version="0.0.1"
+ org.lunifera.xtext.builder.types.bundles;bundle-version="0.0.1",
+ org.lunifera.xtext.builder.xbase.setups;bundle-version="0.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.dsl.common.xtext;
   uses:="org.eclipse.xtext,

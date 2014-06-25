@@ -35,22 +35,21 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage;
  * @model
  * @generated
  */
-public interface LDtoModel extends EObject
-{
-  /**
-   * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
-   * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LTypedPackage}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Packages</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Packages</em>' containment reference list.
-   * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoModel_Packages()
-   * @model containment="true"
-   * @generated
-   */
-  EList<LTypedPackage> getPackages();
+public interface LDtoModel extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LTypedPackage}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Packages</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Packages</em>' containment reference list.
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoModel_Packages()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LTypedPackage> getPackages();
 
 } // LDtoModel

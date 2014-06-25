@@ -21,7 +21,7 @@ TypedPackage returns types::LTypedPackage:
 	(imports+=Import)*
 	(types+=Type)*
 	'}')?;
-
+ 
 Type returns types::LType:
 	ScalarType | Class;
 

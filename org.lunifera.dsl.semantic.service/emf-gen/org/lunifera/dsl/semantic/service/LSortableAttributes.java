@@ -36,50 +36,49 @@ import org.lunifera.dsl.semantic.dto.LDtoFeature;
  * @model
  * @generated
  */
-public interface LSortableAttributes extends EObject
-{
-  /**
-   * Returns the value of the '<em><b>Parent</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}'.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Parent</em>' container reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Parent</em>' container reference.
-   * @see #setParent(LDTOService)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLSortableAttributes_Parent()
-   * @see org.lunifera.dsl.semantic.service.LDTOService#getSortable
-   * @model opposite="sortable" transient="false"
-   * @generated
-   */
-  LDTOService getParent();
+public interface LSortableAttributes extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent</em>' container reference.
+	 * @see #setParent(LDTOService)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLSortableAttributes_Parent()
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getSortable
+	 * @model opposite="sortable" transient="false"
+	 * @generated
+	 */
+	LDTOService getParent();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LSortableAttributes#getParent <em>Parent</em>}' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parent</em>' container reference.
-   * @see #getParent()
-   * @generated
-   */
-  void setParent(LDTOService value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LSortableAttributes#getParent <em>Parent</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent</em>' container reference.
+	 * @see #getParent()
+	 * @generated
+	 */
+	void setParent(LDTOService value);
 
-  /**
-   * Returns the value of the '<em><b>Sortable Features</b></em>' reference list.
-   * The list contents are of type {@link org.lunifera.dsl.semantic.dto.LDtoFeature}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Sortable Features</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Sortable Features</em>' reference list.
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLSortableAttributes_SortableFeatures()
-   * @model
-   * @generated
-   */
-  EList<LDtoFeature> getSortableFeatures();
+	/**
+	 * Returns the value of the '<em><b>Sortable Features</b></em>' reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.dto.LDtoFeature}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sortable Features</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sortable Features</em>' reference list.
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLSortableAttributes_SortableFeatures()
+	 * @model
+	 * @generated
+	 */
+	EList<LDtoFeature> getSortableFeatures();
 
 } // LSortableAttributes

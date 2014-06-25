@@ -34,58 +34,57 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface LDtoMapper extends EObject
-{
-  /**
-   * Returns the value of the '<em><b>To DTO</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>To DTO</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>To DTO</em>' containment reference.
-   * @see #setToDTO(XExpression)
-   * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoMapper_ToDTO()
-   * @model containment="true"
-   * @generated
-   */
-  XExpression getToDTO();
+public interface LDtoMapper extends EObject {
+	/**
+	 * Returns the value of the '<em><b>To DTO</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>To DTO</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>To DTO</em>' containment reference.
+	 * @see #setToDTO(XExpression)
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoMapper_ToDTO()
+	 * @model containment="true"
+	 * @generated
+	 */
+	XExpression getToDTO();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoMapper#getToDTO <em>To DTO</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>To DTO</em>' containment reference.
-   * @see #getToDTO()
-   * @generated
-   */
-  void setToDTO(XExpression value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoMapper#getToDTO <em>To DTO</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>To DTO</em>' containment reference.
+	 * @see #getToDTO()
+	 * @generated
+	 */
+	void setToDTO(XExpression value);
 
-  /**
-   * Returns the value of the '<em><b>From DTO</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>From DTO</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>From DTO</em>' containment reference.
-   * @see #setFromDTO(XExpression)
-   * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoMapper_FromDTO()
-   * @model containment="true"
-   * @generated
-   */
-  XExpression getFromDTO();
+	/**
+	 * Returns the value of the '<em><b>From DTO</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>From DTO</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>From DTO</em>' containment reference.
+	 * @see #setFromDTO(XExpression)
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoMapper_FromDTO()
+	 * @model containment="true"
+	 * @generated
+	 */
+	XExpression getFromDTO();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoMapper#getFromDTO <em>From DTO</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>From DTO</em>' containment reference.
-   * @see #getFromDTO()
-   * @generated
-   */
-  void setFromDTO(XExpression value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoMapper#getFromDTO <em>From DTO</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>From DTO</em>' containment reference.
+	 * @see #getFromDTO()
+	 * @generated
+	 */
+	void setFromDTO(XExpression value);
 
 } // LDtoMapper

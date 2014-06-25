@@ -28,258 +28,243 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum LCardinality implements Enumerator
-{
-  /**
-   * The '<em><b>ZERO TO ONE</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #ZERO_TO_ONE_VALUE
-   * @generated
-   * @ordered
-   */
-  ZERO_TO_ONE(0, "ZERO_TO_ONE", "ZERO_TO_ONE"),
+public enum LCardinality implements Enumerator {
+	/**
+	 * The '<em><b>ZERO TO ONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ZERO_TO_ONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ZERO_TO_ONE(0, "ZERO_TO_ONE", "ZERO_TO_ONE"),
 
-  /**
-   * The '<em><b>ONE TO ONE</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #ONE_TO_ONE_VALUE
-   * @generated
-   * @ordered
-   */
-  ONE_TO_ONE(0, "ONE_TO_ONE", "ONE_TO_ONE"),
+	/**
+	 * The '<em><b>ONE TO ONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ONE_TO_ONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ONE_TO_ONE(0, "ONE_TO_ONE", "ONE_TO_ONE"),
 
-  /**
-   * The '<em><b>ZERO TO MANY</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #ZERO_TO_MANY_VALUE
-   * @generated
-   * @ordered
-   */
-  ZERO_TO_MANY(0, "ZERO_TO_MANY", "ZERO_TO_MANY"),
+	/**
+	 * The '<em><b>ZERO TO MANY</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ZERO_TO_MANY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ZERO_TO_MANY(0, "ZERO_TO_MANY", "ZERO_TO_MANY"),
 
-  /**
-   * The '<em><b>ONE TO MANY</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #ONE_TO_MANY_VALUE
-   * @generated
-   * @ordered
-   */
-  ONE_TO_MANY(0, "ONE_TO_MANY", "ONE_TO_MANY");
+	/**
+	 * The '<em><b>ONE TO MANY</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ONE_TO_MANY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ONE_TO_MANY(0, "ONE_TO_MANY", "ONE_TO_MANY");
 
-  /**
-   * The '<em><b>ZERO TO ONE</b></em>' literal value.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>ZERO TO ONE</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @see #ZERO_TO_ONE
-   * @model
-   * @generated
-   * @ordered
-   */
-  public static final int ZERO_TO_ONE_VALUE = 0;
+	/**
+	 * The '<em><b>ZERO TO ONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ZERO TO ONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ZERO_TO_ONE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ZERO_TO_ONE_VALUE = 0;
 
-  /**
-   * The '<em><b>ONE TO ONE</b></em>' literal value.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>ONE TO ONE</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @see #ONE_TO_ONE
-   * @model
-   * @generated
-   * @ordered
-   */
-  public static final int ONE_TO_ONE_VALUE = 0;
+	/**
+	 * The '<em><b>ONE TO ONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ONE TO ONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ONE_TO_ONE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ONE_TO_ONE_VALUE = 0;
 
-  /**
-   * The '<em><b>ZERO TO MANY</b></em>' literal value.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>ZERO TO MANY</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @see #ZERO_TO_MANY
-   * @model
-   * @generated
-   * @ordered
-   */
-  public static final int ZERO_TO_MANY_VALUE = 0;
+	/**
+	 * The '<em><b>ZERO TO MANY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ZERO TO MANY</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ZERO_TO_MANY
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ZERO_TO_MANY_VALUE = 0;
 
-  /**
-   * The '<em><b>ONE TO MANY</b></em>' literal value.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>ONE TO MANY</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @see #ONE_TO_MANY
-   * @model
-   * @generated
-   * @ordered
-   */
-  public static final int ONE_TO_MANY_VALUE = 0;
+	/**
+	 * The '<em><b>ONE TO MANY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ONE TO MANY</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ONE_TO_MANY
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ONE_TO_MANY_VALUE = 0;
 
-  /**
-   * An array of all the '<em><b>LCardinality</b></em>' enumerators.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private static final LCardinality[] VALUES_ARRAY =
-    new LCardinality[]
-    {
-      ZERO_TO_ONE,
-      ONE_TO_ONE,
-      ZERO_TO_MANY,
-      ONE_TO_MANY,
-    };
+	/**
+	 * An array of all the '<em><b>LCardinality</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static final LCardinality[] VALUES_ARRAY =
+		new LCardinality[] {
+			ZERO_TO_ONE,
+			ONE_TO_ONE,
+			ZERO_TO_MANY,
+			ONE_TO_MANY,
+		};
 
-  /**
-   * A public read-only list of all the '<em><b>LCardinality</b></em>' enumerators.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public static final List<LCardinality> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	/**
+	 * A public read-only list of all the '<em><b>LCardinality</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final List<LCardinality> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
-  /**
-   * Returns the '<em><b>LCardinality</b></em>' literal with the specified literal value.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public static LCardinality get(String literal)
-  {
-    for (int i = 0; i < VALUES_ARRAY.length; ++i)
-    {
-      LCardinality result = VALUES_ARRAY[i];
-      if (result.toString().equals(literal))
-      {
-        return result;
-      }
-    }
-    return null;
-  }
+	/**
+	 * Returns the '<em><b>LCardinality</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static LCardinality get(String literal) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			LCardinality result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
+				return result;
+			}
+		}
+		return null;
+	}
 
-  /**
-   * Returns the '<em><b>LCardinality</b></em>' literal with the specified name.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public static LCardinality getByName(String name)
-  {
-    for (int i = 0; i < VALUES_ARRAY.length; ++i)
-    {
-      LCardinality result = VALUES_ARRAY[i];
-      if (result.getName().equals(name))
-      {
-        return result;
-      }
-    }
-    return null;
-  }
+	/**
+	 * Returns the '<em><b>LCardinality</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static LCardinality getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			LCardinality result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
 
-  /**
-   * Returns the '<em><b>LCardinality</b></em>' literal with the specified integer value.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public static LCardinality get(int value)
-  {
-    switch (value)
-    {
-      case ZERO_TO_ONE_VALUE: return ZERO_TO_ONE;
-    }
-    return null;
-  }
+	/**
+	 * Returns the '<em><b>LCardinality</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static LCardinality get(int value) {
+		switch (value) {
+			case ZERO_TO_ONE_VALUE: return ZERO_TO_ONE;
+		}
+		return null;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private final int value;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private final String name;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private final String literal;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
-  /**
-   * Only this class can construct instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private LCardinality(int value, String name, String literal)
-  {
-    this.value = value;
-    this.name = name;
-    this.literal = literal;
-  }
+	/**
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private LCardinality(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public int getValue()
-  {
-    return value;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getLiteral()
-  {
-    return literal;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
 
-  /**
-   * Returns the literal value of the enumerator, which is its string representation.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    return literal;
-  }
-  
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+	
 } //LCardinality

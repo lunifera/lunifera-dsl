@@ -24,6 +24,5 @@ package org.lunifera.dsl.semantic.service;
  * @model
  * @generated
  */
-public interface LFreeService extends LService
-{
+public interface LFreeService extends LService {
 } // LFreeService

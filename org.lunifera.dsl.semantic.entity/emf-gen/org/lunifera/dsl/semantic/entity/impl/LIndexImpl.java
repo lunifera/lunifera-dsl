@@ -45,244 +45,226 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *
  * @generated
  */
-public class LIndexImpl extends MinimalEObjectImpl.Container implements LIndex
-{
-  /**
-   * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isUnique()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean UNIQUE_EDEFAULT = false;
+public class LIndexImpl extends MinimalEObjectImpl.Container implements LIndex {
+	/**
+	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUnique()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean UNIQUE_EDEFAULT = false;
 
-  /**
-   * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isUnique()
-   * @generated
-   * @ordered
-   */
-  protected boolean unique = UNIQUE_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUnique()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean unique = UNIQUE_EDEFAULT;
 
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
 
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
-  /**
-   * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFeatures()
-   * @generated
-   * @ordered
-   */
-  protected EList<LEntityFeature> features;
+	/**
+	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LEntityFeature> features;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected LIndexImpl()
-  {
-    super();
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LIndexImpl() {
+		super();
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return LunEntityPackage.Literals.LINDEX;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return LunEntityPackage.Literals.LINDEX;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public boolean isUnique()
-  {
-    return unique;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isUnique() {
+		return unique;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setUnique(boolean newUnique)
-  {
-    boolean oldUnique = unique;
-    unique = newUnique;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LINDEX__UNIQUE, oldUnique, unique));
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnique(boolean newUnique) {
+		boolean oldUnique = unique;
+		unique = newUnique;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LINDEX__UNIQUE, oldUnique, unique));
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LINDEX__NAME, oldName, name));
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LINDEX__NAME, oldName, name));
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<LEntityFeature> getFeatures()
-  {
-    if (features == null)
-    {
-      features = new EObjectResolvingEList<LEntityFeature>(LEntityFeature.class, this, LunEntityPackage.LINDEX__FEATURES);
-    }
-    return features;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LEntityFeature> getFeatures() {
+		if (features == null) {
+			features = new EObjectResolvingEList<LEntityFeature>(LEntityFeature.class, this, LunEntityPackage.LINDEX__FEATURES);
+		}
+		return features;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case LunEntityPackage.LINDEX__UNIQUE:
-        return isUnique();
-      case LunEntityPackage.LINDEX__NAME:
-        return getName();
-      case LunEntityPackage.LINDEX__FEATURES:
-        return getFeatures();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case LunEntityPackage.LINDEX__UNIQUE:
+				return isUnique();
+			case LunEntityPackage.LINDEX__NAME:
+				return getName();
+			case LunEntityPackage.LINDEX__FEATURES:
+				return getFeatures();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case LunEntityPackage.LINDEX__UNIQUE:
-        setUnique((Boolean)newValue);
-        return;
-      case LunEntityPackage.LINDEX__NAME:
-        setName((String)newValue);
-        return;
-      case LunEntityPackage.LINDEX__FEATURES:
-        getFeatures().clear();
-        getFeatures().addAll((Collection<? extends LEntityFeature>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case LunEntityPackage.LINDEX__UNIQUE:
+				setUnique((Boolean)newValue);
+				return;
+			case LunEntityPackage.LINDEX__NAME:
+				setName((String)newValue);
+				return;
+			case LunEntityPackage.LINDEX__FEATURES:
+				getFeatures().clear();
+				getFeatures().addAll((Collection<? extends LEntityFeature>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case LunEntityPackage.LINDEX__UNIQUE:
-        setUnique(UNIQUE_EDEFAULT);
-        return;
-      case LunEntityPackage.LINDEX__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case LunEntityPackage.LINDEX__FEATURES:
-        getFeatures().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case LunEntityPackage.LINDEX__UNIQUE:
+				setUnique(UNIQUE_EDEFAULT);
+				return;
+			case LunEntityPackage.LINDEX__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case LunEntityPackage.LINDEX__FEATURES:
+				getFeatures().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case LunEntityPackage.LINDEX__UNIQUE:
-        return unique != UNIQUE_EDEFAULT;
-      case LunEntityPackage.LINDEX__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case LunEntityPackage.LINDEX__FEATURES:
-        return features != null && !features.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case LunEntityPackage.LINDEX__UNIQUE:
+				return unique != UNIQUE_EDEFAULT;
+			case LunEntityPackage.LINDEX__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case LunEntityPackage.LINDEX__FEATURES:
+				return features != null && !features.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (unique: ");
-    result.append(unique);
-    result.append(", name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (unique: ");
+		result.append(unique);
+		result.append(", name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
+	}
 
 } //LIndexImpl

@@ -23,95 +23,94 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.lunifera.dsl.semantic.service.LunServicePackage
  * @generated
  */
-public interface LunServiceFactory extends EFactory
-{
-  /**
-   * The singleton instance of the factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  LunServiceFactory eINSTANCE = org.lunifera.dsl.semantic.service.impl.LunServiceFactoryImpl.init();
+public interface LunServiceFactory extends EFactory {
+	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	LunServiceFactory eINSTANCE = org.lunifera.dsl.semantic.service.impl.LunServiceFactoryImpl.init();
 
-  /**
-   * Returns a new object of class '<em>LService Model</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LService Model</em>'.
-   * @generated
-   */
-  LServiceModel createLServiceModel();
+	/**
+	 * Returns a new object of class '<em>LService Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LService Model</em>'.
+	 * @generated
+	 */
+	LServiceModel createLServiceModel();
 
-  /**
-   * Returns a new object of class '<em>LInjected Services</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LInjected Services</em>'.
-   * @generated
-   */
-  LInjectedServices createLInjectedServices();
+	/**
+	 * Returns a new object of class '<em>LInjected Services</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LInjected Services</em>'.
+	 * @generated
+	 */
+	LInjectedServices createLInjectedServices();
 
-  /**
-   * Returns a new object of class '<em>LInjected Service</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LInjected Service</em>'.
-   * @generated
-   */
-  LInjectedService createLInjectedService();
+	/**
+	 * Returns a new object of class '<em>LInjected Service</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LInjected Service</em>'.
+	 * @generated
+	 */
+	LInjectedService createLInjectedService();
 
-  /**
-   * Returns a new object of class '<em>LDTO Service</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LDTO Service</em>'.
-   * @generated
-   */
-  LDTOService createLDTOService();
+	/**
+	 * Returns a new object of class '<em>LDTO Service</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDTO Service</em>'.
+	 * @generated
+	 */
+	LDTOService createLDTOService();
 
-  /**
-   * Returns a new object of class '<em>LFilterable Attributes</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LFilterable Attributes</em>'.
-   * @generated
-   */
-  LFilterableAttributes createLFilterableAttributes();
+	/**
+	 * Returns a new object of class '<em>LFilterable Attributes</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LFilterable Attributes</em>'.
+	 * @generated
+	 */
+	LFilterableAttributes createLFilterableAttributes();
 
-  /**
-   * Returns a new object of class '<em>LSortable Attributes</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LSortable Attributes</em>'.
-   * @generated
-   */
-  LSortableAttributes createLSortableAttributes();
+	/**
+	 * Returns a new object of class '<em>LSortable Attributes</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LSortable Attributes</em>'.
+	 * @generated
+	 */
+	LSortableAttributes createLSortableAttributes();
 
-  /**
-   * Returns a new object of class '<em>LChart Service</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LChart Service</em>'.
-   * @generated
-   */
-  LChartService createLChartService();
+	/**
+	 * Returns a new object of class '<em>LChart Service</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LChart Service</em>'.
+	 * @generated
+	 */
+	LChartService createLChartService();
 
-  /**
-   * Returns a new object of class '<em>LFree Service</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LFree Service</em>'.
-   * @generated
-   */
-  LFreeService createLFreeService();
+	/**
+	 * Returns a new object of class '<em>LFree Service</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LFree Service</em>'.
+	 * @generated
+	 */
+	LFreeService createLFreeService();
 
-  /**
-   * Returns the package supported by this factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the package supported by this factory.
-   * @generated
-   */
-  LunServicePackage getLunServicePackage();
+	/**
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the package supported by this factory.
+	 * @generated
+	 */
+	LunServicePackage getLunServicePackage();
 
 } //LunServiceFactory

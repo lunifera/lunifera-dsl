@@ -33,88 +33,87 @@ import org.lunifera.dsl.semantic.dto.LDto;
  * @model
  * @generated
  */
-public interface LDTOService extends LService
-{
-  /**
-   * Returns the value of the '<em><b>Dto</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Dto</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Dto</em>' reference.
-   * @see #setDto(LDto)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Dto()
-   * @model
-   * @generated
-   */
-  LDto getDto();
+public interface LDTOService extends LService {
+	/**
+	 * Returns the value of the '<em><b>Dto</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Dto</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Dto</em>' reference.
+	 * @see #setDto(LDto)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Dto()
+	 * @model
+	 * @generated
+	 */
+	LDto getDto();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getDto <em>Dto</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dto</em>' reference.
-   * @see #getDto()
-   * @generated
-   */
-  void setDto(LDto value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getDto <em>Dto</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dto</em>' reference.
+	 * @see #getDto()
+	 * @generated
+	 */
+	void setDto(LDto value);
 
-  /**
-   * Returns the value of the '<em><b>Filterable</b></em>' containment reference.
-   * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LFilterableAttributes#getParent <em>Parent</em>}'.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Filterable</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Filterable</em>' containment reference.
-   * @see #setFilterable(LFilterableAttributes)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Filterable()
-   * @see org.lunifera.dsl.semantic.service.LFilterableAttributes#getParent
-   * @model opposite="parent" containment="true"
-   * @generated
-   */
-  LFilterableAttributes getFilterable();
+	/**
+	 * Returns the value of the '<em><b>Filterable</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LFilterableAttributes#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Filterable</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Filterable</em>' containment reference.
+	 * @see #setFilterable(LFilterableAttributes)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Filterable()
+	 * @see org.lunifera.dsl.semantic.service.LFilterableAttributes#getParent
+	 * @model opposite="parent" containment="true"
+	 * @generated
+	 */
+	LFilterableAttributes getFilterable();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Filterable</em>' containment reference.
-   * @see #getFilterable()
-   * @generated
-   */
-  void setFilterable(LFilterableAttributes value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Filterable</em>' containment reference.
+	 * @see #getFilterable()
+	 * @generated
+	 */
+	void setFilterable(LFilterableAttributes value);
 
-  /**
-   * Returns the value of the '<em><b>Sortable</b></em>' containment reference.
-   * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LSortableAttributes#getParent <em>Parent</em>}'.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Sortable</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Sortable</em>' containment reference.
-   * @see #setSortable(LSortableAttributes)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Sortable()
-   * @see org.lunifera.dsl.semantic.service.LSortableAttributes#getParent
-   * @model opposite="parent" containment="true"
-   * @generated
-   */
-  LSortableAttributes getSortable();
+	/**
+	 * Returns the value of the '<em><b>Sortable</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LSortableAttributes#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sortable</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sortable</em>' containment reference.
+	 * @see #setSortable(LSortableAttributes)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_Sortable()
+	 * @see org.lunifera.dsl.semantic.service.LSortableAttributes#getParent
+	 * @model opposite="parent" containment="true"
+	 * @generated
+	 */
+	LSortableAttributes getSortable();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sortable</em>' containment reference.
-   * @see #getSortable()
-   * @generated
-   */
-  void setSortable(LSortableAttributes value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sortable</em>' containment reference.
+	 * @see #getSortable()
+	 * @generated
+	 */
+	void setSortable(LSortableAttributes value);
 
 } // LDTOService

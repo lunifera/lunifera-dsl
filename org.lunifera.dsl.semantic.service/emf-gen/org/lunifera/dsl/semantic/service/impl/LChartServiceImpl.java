@@ -27,27 +27,24 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  *
  * @generated
  */
-public class LChartServiceImpl extends LServiceImpl implements LChartService
-{
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected LChartServiceImpl()
-  {
-    super();
-  }
+public class LChartServiceImpl extends LServiceImpl implements LChartService {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LChartServiceImpl() {
+		super();
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return LunServicePackage.Literals.LCHART_SERVICE;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return LunServicePackage.Literals.LCHART_SERVICE;
+	}
 
 } //LChartServiceImpl

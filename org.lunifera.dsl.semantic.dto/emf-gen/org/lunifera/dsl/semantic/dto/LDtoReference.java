@@ -30,32 +30,31 @@ package org.lunifera.dsl.semantic.dto;
  * @model
  * @generated
  */
-public interface LDtoReference extends LDtoAbstractReference
-{
-  /**
-   * Returns the value of the '<em><b>Opposite</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Opposite</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Opposite</em>' reference.
-   * @see #setOpposite(LDtoReference)
-   * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoReference_Opposite()
-   * @model
-   * @generated
-   */
-  LDtoReference getOpposite();
+public interface LDtoReference extends LDtoAbstractReference {
+	/**
+	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Opposite</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Opposite</em>' reference.
+	 * @see #setOpposite(LDtoReference)
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoReference_Opposite()
+	 * @model
+	 * @generated
+	 */
+	LDtoReference getOpposite();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoReference#getOpposite <em>Opposite</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Opposite</em>' reference.
-   * @see #getOpposite()
-   * @generated
-   */
-  void setOpposite(LDtoReference value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoReference#getOpposite <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Opposite</em>' reference.
+	 * @see #getOpposite()
+	 * @generated
+	 */
+	void setOpposite(LDtoReference value);
 
 } // LDtoReference

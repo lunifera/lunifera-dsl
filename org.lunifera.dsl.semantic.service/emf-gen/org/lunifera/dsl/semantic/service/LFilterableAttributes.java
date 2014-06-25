@@ -36,50 +36,49 @@ import org.lunifera.dsl.semantic.dto.LDtoFeature;
  * @model
  * @generated
  */
-public interface LFilterableAttributes extends EObject
-{
-  /**
-   * Returns the value of the '<em><b>Parent</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}'.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Parent</em>' container reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Parent</em>' container reference.
-   * @see #setParent(LDTOService)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLFilterableAttributes_Parent()
-   * @see org.lunifera.dsl.semantic.service.LDTOService#getFilterable
-   * @model opposite="filterable" transient="false"
-   * @generated
-   */
-  LDTOService getParent();
+public interface LFilterableAttributes extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent</em>' container reference.
+	 * @see #setParent(LDTOService)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLFilterableAttributes_Parent()
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getFilterable
+	 * @model opposite="filterable" transient="false"
+	 * @generated
+	 */
+	LDTOService getParent();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LFilterableAttributes#getParent <em>Parent</em>}' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parent</em>' container reference.
-   * @see #getParent()
-   * @generated
-   */
-  void setParent(LDTOService value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LFilterableAttributes#getParent <em>Parent</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent</em>' container reference.
+	 * @see #getParent()
+	 * @generated
+	 */
+	void setParent(LDTOService value);
 
-  /**
-   * Returns the value of the '<em><b>Filterable Features</b></em>' reference list.
-   * The list contents are of type {@link org.lunifera.dsl.semantic.dto.LDtoFeature}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Filterable Features</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Filterable Features</em>' reference list.
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLFilterableAttributes_FilterableFeatures()
-   * @model
-   * @generated
-   */
-  EList<LDtoFeature> getFilterableFeatures();
+	/**
+	 * Returns the value of the '<em><b>Filterable Features</b></em>' reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.dto.LDtoFeature}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Filterable Features</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Filterable Features</em>' reference list.
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLFilterableAttributes_FilterableFeatures()
+	 * @model
+	 * @generated
+	 */
+	EList<LDtoFeature> getFilterableFeatures();
 
 } // LFilterableAttributes

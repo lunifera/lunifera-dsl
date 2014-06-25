@@ -35,87 +35,86 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * @model
  * @generated
  */
-public interface LInjectedService extends EObject
-{
-  /**
-   * Returns the value of the '<em><b>Cardinality</b></em>' attribute.
-   * The literals are from the enumeration {@link org.lunifera.dsl.semantic.service.LCardinality}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Cardinality</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Cardinality</em>' attribute.
-   * @see org.lunifera.dsl.semantic.service.LCardinality
-   * @see #setCardinality(LCardinality)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLInjectedService_Cardinality()
-   * @model unique="false"
-   * @generated
-   */
-  LCardinality getCardinality();
+public interface LInjectedService extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Cardinality</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.lunifera.dsl.semantic.service.LCardinality}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cardinality</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cardinality</em>' attribute.
+	 * @see org.lunifera.dsl.semantic.service.LCardinality
+	 * @see #setCardinality(LCardinality)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLInjectedService_Cardinality()
+	 * @model unique="false"
+	 * @generated
+	 */
+	LCardinality getCardinality();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LInjectedService#getCardinality <em>Cardinality</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cardinality</em>' attribute.
-   * @see org.lunifera.dsl.semantic.service.LCardinality
-   * @see #getCardinality()
-   * @generated
-   */
-  void setCardinality(LCardinality value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LInjectedService#getCardinality <em>Cardinality</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cardinality</em>' attribute.
+	 * @see org.lunifera.dsl.semantic.service.LCardinality
+	 * @see #getCardinality()
+	 * @generated
+	 */
+	void setCardinality(LCardinality value);
 
-  /**
-   * Returns the value of the '<em><b>Attribute Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Attribute Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Attribute Name</em>' attribute.
-   * @see #setAttributeName(String)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLInjectedService_AttributeName()
-   * @model unique="false"
-   * @generated
-   */
-  String getAttributeName();
+	/**
+	 * Returns the value of the '<em><b>Attribute Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Attribute Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Attribute Name</em>' attribute.
+	 * @see #setAttributeName(String)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLInjectedService_AttributeName()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getAttributeName();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LInjectedService#getAttributeName <em>Attribute Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Attribute Name</em>' attribute.
-   * @see #getAttributeName()
-   * @generated
-   */
-  void setAttributeName(String value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LInjectedService#getAttributeName <em>Attribute Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Attribute Name</em>' attribute.
+	 * @see #getAttributeName()
+	 * @generated
+	 */
+	void setAttributeName(String value);
 
-  /**
-   * Returns the value of the '<em><b>Service</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Service</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Service</em>' containment reference.
-   * @see #setService(JvmTypeReference)
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLInjectedService_Service()
-   * @model containment="true"
-   * @generated
-   */
-  JvmTypeReference getService();
+	/**
+	 * Returns the value of the '<em><b>Service</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Service</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Service</em>' containment reference.
+	 * @see #setService(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLInjectedService_Service()
+	 * @model containment="true"
+	 * @generated
+	 */
+	JvmTypeReference getService();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LInjectedService#getService <em>Service</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Service</em>' containment reference.
-   * @see #getService()
-   * @generated
-   */
-  void setService(JvmTypeReference value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LInjectedService#getService <em>Service</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Service</em>' containment reference.
+	 * @see #getService()
+	 * @generated
+	 */
+	void setService(JvmTypeReference value);
 
 } // LInjectedService

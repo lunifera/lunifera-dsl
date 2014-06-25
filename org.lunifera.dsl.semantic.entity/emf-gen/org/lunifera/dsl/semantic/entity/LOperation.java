@@ -29,6 +29,5 @@ package org.lunifera.dsl.semantic.entity;
  * @model
  * @generated
  */
-public interface LOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LBeanFeature, LEntityFeature
-{
+public interface LOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LBeanFeature, LEntityFeature {
 } // LOperation

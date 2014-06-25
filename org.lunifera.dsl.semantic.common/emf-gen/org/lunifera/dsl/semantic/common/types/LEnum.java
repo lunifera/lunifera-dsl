@@ -31,22 +31,21 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface LEnum extends LScalarType
-{
-  /**
-   * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
-   * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LEnumLiteral}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Literals</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Literals</em>' containment reference list.
-   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLEnum_Literals()
-   * @model containment="true"
-   * @generated
-   */
-  EList<LEnumLiteral> getLiterals();
+public interface LEnum extends LScalarType {
+	/**
+	 * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LEnumLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Literals</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Literals</em>' containment reference list.
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLEnum_Literals()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LEnumLiteral> getLiterals();
 
 } // LEnum

@@ -32,41 +32,40 @@ import org.lunifera.dsl.semantic.common.types.LReference;
  * @model
  * @generated
  */
-public interface LDtoInheritedReference extends LDtoAbstractReference
-{
-  /**
-   * Returns the value of the '<em><b>Inherited Feature</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Inherited Feature</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Inherited Feature</em>' reference.
-   * @see #setInheritedFeature(LReference)
-   * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoInheritedReference_InheritedFeature()
-   * @model
-   * @generated
-   */
-  LReference getInheritedFeature();
+public interface LDtoInheritedReference extends LDtoAbstractReference {
+	/**
+	 * Returns the value of the '<em><b>Inherited Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inherited Feature</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inherited Feature</em>' reference.
+	 * @see #setInheritedFeature(LReference)
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoInheritedReference_InheritedFeature()
+	 * @model
+	 * @generated
+	 */
+	LReference getInheritedFeature();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoInheritedReference#getInheritedFeature <em>Inherited Feature</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Inherited Feature</em>' reference.
-   * @see #getInheritedFeature()
-   * @generated
-   */
-  void setInheritedFeature(LReference value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoInheritedReference#getInheritedFeature <em>Inherited Feature</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inherited Feature</em>' reference.
+	 * @see #getInheritedFeature()
+	 * @generated
+	 */
+	void setInheritedFeature(LReference value);
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @model kind="operation" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.common.types.LReference%> _inheritedFeature = this.getInheritedFeature();\nreturn _inheritedFeature.getMultiplicity();'"
-   * @generated
-   */
-  LMultiplicity getInheritedMultiplicity();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.common.types.LReference%> _inheritedFeature = this.getInheritedFeature();\nreturn _inheritedFeature.getMultiplicity();'"
+	 * @generated
+	 */
+	LMultiplicity getInheritedMultiplicity();
 
 } // LDtoInheritedReference

@@ -33,22 +33,21 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LCommonModel extends EObject
-{
-  /**
-   * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
-   * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LTypedPackage}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Packages</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Packages</em>' containment reference list.
-   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLCommonModel_Packages()
-   * @model containment="true"
-   * @generated
-   */
-  EList<LTypedPackage> getPackages();
+public interface LCommonModel extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LTypedPackage}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Packages</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Packages</em>' containment reference list.
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLCommonModel_Packages()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LTypedPackage> getPackages();
 
 } // LCommonModel

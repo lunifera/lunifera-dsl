@@ -31,58 +31,57 @@ package org.lunifera.dsl.semantic.common.types;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface LReference extends LFeature
-{
-  /**
-   * Returns the value of the '<em><b>Lazy</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Lazy</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Lazy</em>' attribute.
-   * @see #setLazy(boolean)
-   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLReference_Lazy()
-   * @model unique="false"
-   * @generated
-   */
-  boolean isLazy();
+public interface LReference extends LFeature {
+	/**
+	 * Returns the value of the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lazy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lazy</em>' attribute.
+	 * @see #setLazy(boolean)
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLReference_Lazy()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isLazy();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LReference#isLazy <em>Lazy</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Lazy</em>' attribute.
-   * @see #isLazy()
-   * @generated
-   */
-  void setLazy(boolean value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LReference#isLazy <em>Lazy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lazy</em>' attribute.
+	 * @see #isLazy()
+	 * @generated
+	 */
+	void setLazy(boolean value);
 
-  /**
-   * Returns the value of the '<em><b>Cascading</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Cascading</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Cascading</em>' attribute.
-   * @see #setCascading(boolean)
-   * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLReference_Cascading()
-   * @model unique="false"
-   * @generated
-   */
-  boolean isCascading();
+	/**
+	 * Returns the value of the '<em><b>Cascading</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cascading</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cascading</em>' attribute.
+	 * @see #setCascading(boolean)
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLReference_Cascading()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isCascading();
 
-  /**
-   * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LReference#isCascading <em>Cascading</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cascading</em>' attribute.
-   * @see #isCascading()
-   * @generated
-   */
-  void setCascading(boolean value);
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LReference#isCascading <em>Cascading</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cascading</em>' attribute.
+	 * @see #isCascading()
+	 * @generated
+	 */
+	void setCascading(boolean value);
 
 } // LReference

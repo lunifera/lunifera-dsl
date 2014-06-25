@@ -25,6 +25,5 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
  * @model abstract="true"
  * @generated
  */
-public interface LDtoAbstractAttribute extends LDtoFeature, LAttribute
-{
+public interface LDtoAbstractAttribute extends LDtoFeature, LAttribute {
 } // LDtoAbstractAttribute

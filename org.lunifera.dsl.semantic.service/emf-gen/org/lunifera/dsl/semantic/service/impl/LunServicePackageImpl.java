@@ -47,554 +47,522 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class LunServicePackageImpl extends EPackageImpl implements LunServicePackage
-{
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lServiceModelEClass = null;
+public class LunServicePackageImpl extends EPackageImpl implements LunServicePackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lServiceModelEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lServiceEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lServiceEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lInjectedServicesEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lInjectedServicesEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lInjectedServiceEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lInjectedServiceEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass ldtoServiceEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ldtoServiceEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lFilterableAttributesEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lFilterableAttributesEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lSortableAttributesEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lSortableAttributesEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lChartServiceEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lChartServiceEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lFreeServiceEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lFreeServiceEClass = null;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum lCardinalityEEnum = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum lCardinalityEEnum = null;
 
-  /**
-   * Creates an instance of the model <b>Package</b>, registered with
-   * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-   * package URI value.
-   * <p>Note: the correct way to create the package is via the static
-   * factory method {@link #init init()}, which also performs
-   * initialization of the package, or returns the registered package,
-   * if one already exists.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.ecore.EPackage.Registry
-   * @see org.lunifera.dsl.semantic.service.LunServicePackage#eNS_URI
-   * @see #init()
-   * @generated
-   */
-  private LunServicePackageImpl()
-  {
-    super(eNS_URI, LunServiceFactory.eINSTANCE);
-  }
+	/**
+	 * Creates an instance of the model <b>Package</b>, registered with
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+	 * package URI value.
+	 * <p>Note: the correct way to create the package is via the static
+	 * factory method {@link #init init()}, which also performs
+	 * initialization of the package, or returns the registered package,
+	 * if one already exists.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.ecore.EPackage.Registry
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#eNS_URI
+	 * @see #init()
+	 * @generated
+	 */
+	private LunServicePackageImpl() {
+		super(eNS_URI, LunServiceFactory.eINSTANCE);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private static boolean isInited = false;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static boolean isInited = false;
 
-  /**
-   * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   * 
-   * <p>This method is used to initialize {@link LunServicePackage#eINSTANCE} when that field is accessed.
-   * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #eNS_URI
-   * @see #createPackageContents()
-   * @see #initializePackageContents()
-   * @generated
-   */
-  public static LunServicePackage init()
-  {
-    if (isInited) return (LunServicePackage)EPackage.Registry.INSTANCE.getEPackage(LunServicePackage.eNS_URI);
+	/**
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link LunServicePackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #eNS_URI
+	 * @see #createPackageContents()
+	 * @see #initializePackageContents()
+	 * @generated
+	 */
+	public static LunServicePackage init() {
+		if (isInited) return (LunServicePackage)EPackage.Registry.INSTANCE.getEPackage(LunServicePackage.eNS_URI);
 
-    // Obtain or create and register package
-    LunServicePackageImpl theLunServicePackage = (LunServicePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof LunServicePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new LunServicePackageImpl());
+		// Obtain or create and register package
+		LunServicePackageImpl theLunServicePackage = (LunServicePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof LunServicePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new LunServicePackageImpl());
 
-    isInited = true;
+		isInited = true;
 
-    // Initialize simple dependencies
-    LunDtoPackage.eINSTANCE.eClass();
+		// Initialize simple dependencies
+		LunDtoPackage.eINSTANCE.eClass();
 
-    // Create package meta-data objects
-    theLunServicePackage.createPackageContents();
+		// Create package meta-data objects
+		theLunServicePackage.createPackageContents();
 
-    // Initialize created meta-data
-    theLunServicePackage.initializePackageContents();
+		// Initialize created meta-data
+		theLunServicePackage.initializePackageContents();
 
-    // Mark meta-data to indicate it can't be changed
-    theLunServicePackage.freeze();
+		// Mark meta-data to indicate it can't be changed
+		theLunServicePackage.freeze();
 
   
-    // Update the registry and return the package
-    EPackage.Registry.INSTANCE.put(LunServicePackage.eNS_URI, theLunServicePackage);
-    return theLunServicePackage;
-  }
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(LunServicePackage.eNS_URI, theLunServicePackage);
+		return theLunServicePackage;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLServiceModel()
-  {
-    return lServiceModelEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLServiceModel() {
+		return lServiceModelEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLServiceModel_Packages()
-  {
-    return (EReference)lServiceModelEClass.getEStructuralFeatures().get(0);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLServiceModel_Packages() {
+		return (EReference)lServiceModelEClass.getEStructuralFeatures().get(0);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLService()
-  {
-    return lServiceEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLService() {
+		return lServiceEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLService_InjectedServices()
-  {
-    return (EReference)lServiceEClass.getEStructuralFeatures().get(0);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLService_InjectedServices() {
+		return (EReference)lServiceEClass.getEStructuralFeatures().get(0);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLService_Operations()
-  {
-    return (EReference)lServiceEClass.getEStructuralFeatures().get(1);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLService_Operations() {
+		return (EReference)lServiceEClass.getEStructuralFeatures().get(1);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLInjectedServices()
-  {
-    return lInjectedServicesEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLInjectedServices() {
+		return lInjectedServicesEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLInjectedServices_Services()
-  {
-    return (EReference)lInjectedServicesEClass.getEStructuralFeatures().get(0);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLInjectedServices_Services() {
+		return (EReference)lInjectedServicesEClass.getEStructuralFeatures().get(0);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLInjectedService()
-  {
-    return lInjectedServiceEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLInjectedService() {
+		return lInjectedServiceEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getLInjectedService_Cardinality()
-  {
-    return (EAttribute)lInjectedServiceEClass.getEStructuralFeatures().get(0);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLInjectedService_Cardinality() {
+		return (EAttribute)lInjectedServiceEClass.getEStructuralFeatures().get(0);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getLInjectedService_AttributeName()
-  {
-    return (EAttribute)lInjectedServiceEClass.getEStructuralFeatures().get(1);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLInjectedService_AttributeName() {
+		return (EAttribute)lInjectedServiceEClass.getEStructuralFeatures().get(1);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLInjectedService_Service()
-  {
-    return (EReference)lInjectedServiceEClass.getEStructuralFeatures().get(2);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLInjectedService_Service() {
+		return (EReference)lInjectedServiceEClass.getEStructuralFeatures().get(2);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLDTOService()
-  {
-    return ldtoServiceEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDTOService() {
+		return ldtoServiceEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLDTOService_Dto()
-  {
-    return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(0);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDTOService_Dto() {
+		return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(0);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLDTOService_Filterable()
-  {
-    return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(1);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDTOService_Filterable() {
+		return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(1);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLDTOService_Sortable()
-  {
-    return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(2);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDTOService_Sortable() {
+		return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(2);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLFilterableAttributes()
-  {
-    return lFilterableAttributesEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLFilterableAttributes() {
+		return lFilterableAttributesEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLFilterableAttributes_Parent()
-  {
-    return (EReference)lFilterableAttributesEClass.getEStructuralFeatures().get(0);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLFilterableAttributes_Parent() {
+		return (EReference)lFilterableAttributesEClass.getEStructuralFeatures().get(0);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLFilterableAttributes_FilterableFeatures()
-  {
-    return (EReference)lFilterableAttributesEClass.getEStructuralFeatures().get(1);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLFilterableAttributes_FilterableFeatures() {
+		return (EReference)lFilterableAttributesEClass.getEStructuralFeatures().get(1);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLSortableAttributes()
-  {
-    return lSortableAttributesEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLSortableAttributes() {
+		return lSortableAttributesEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLSortableAttributes_Parent()
-  {
-    return (EReference)lSortableAttributesEClass.getEStructuralFeatures().get(0);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLSortableAttributes_Parent() {
+		return (EReference)lSortableAttributesEClass.getEStructuralFeatures().get(0);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLSortableAttributes_SortableFeatures()
-  {
-    return (EReference)lSortableAttributesEClass.getEStructuralFeatures().get(1);
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLSortableAttributes_SortableFeatures() {
+		return (EReference)lSortableAttributesEClass.getEStructuralFeatures().get(1);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLChartService()
-  {
-    return lChartServiceEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLChartService() {
+		return lChartServiceEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLFreeService()
-  {
-    return lFreeServiceEClass;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLFreeService() {
+		return lFreeServiceEClass;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EEnum getLCardinality()
-  {
-    return lCardinalityEEnum;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getLCardinality() {
+		return lCardinalityEEnum;
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LunServiceFactory getLunServiceFactory()
-  {
-    return (LunServiceFactory)getEFactoryInstance();
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LunServiceFactory getLunServiceFactory() {
+		return (LunServiceFactory)getEFactoryInstance();
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private boolean isCreated = false;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isCreated = false;
 
-  /**
-   * Creates the meta-model objects for the package.  This method is
-   * guarded to have no affect on any invocation but its first.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void createPackageContents()
-  {
-    if (isCreated) return;
-    isCreated = true;
+	/**
+	 * Creates the meta-model objects for the package.  This method is
+	 * guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void createPackageContents() {
+		if (isCreated) return;
+		isCreated = true;
 
-    // Create classes and their features
-    lServiceModelEClass = createEClass(LSERVICE_MODEL);
-    createEReference(lServiceModelEClass, LSERVICE_MODEL__PACKAGES);
+		// Create classes and their features
+		lServiceModelEClass = createEClass(LSERVICE_MODEL);
+		createEReference(lServiceModelEClass, LSERVICE_MODEL__PACKAGES);
 
-    lServiceEClass = createEClass(LSERVICE);
-    createEReference(lServiceEClass, LSERVICE__INJECTED_SERVICES);
-    createEReference(lServiceEClass, LSERVICE__OPERATIONS);
+		lServiceEClass = createEClass(LSERVICE);
+		createEReference(lServiceEClass, LSERVICE__INJECTED_SERVICES);
+		createEReference(lServiceEClass, LSERVICE__OPERATIONS);
 
-    lInjectedServicesEClass = createEClass(LINJECTED_SERVICES);
-    createEReference(lInjectedServicesEClass, LINJECTED_SERVICES__SERVICES);
+		lInjectedServicesEClass = createEClass(LINJECTED_SERVICES);
+		createEReference(lInjectedServicesEClass, LINJECTED_SERVICES__SERVICES);
 
-    lInjectedServiceEClass = createEClass(LINJECTED_SERVICE);
-    createEAttribute(lInjectedServiceEClass, LINJECTED_SERVICE__CARDINALITY);
-    createEAttribute(lInjectedServiceEClass, LINJECTED_SERVICE__ATTRIBUTE_NAME);
-    createEReference(lInjectedServiceEClass, LINJECTED_SERVICE__SERVICE);
+		lInjectedServiceEClass = createEClass(LINJECTED_SERVICE);
+		createEAttribute(lInjectedServiceEClass, LINJECTED_SERVICE__CARDINALITY);
+		createEAttribute(lInjectedServiceEClass, LINJECTED_SERVICE__ATTRIBUTE_NAME);
+		createEReference(lInjectedServiceEClass, LINJECTED_SERVICE__SERVICE);
 
-    ldtoServiceEClass = createEClass(LDTO_SERVICE);
-    createEReference(ldtoServiceEClass, LDTO_SERVICE__DTO);
-    createEReference(ldtoServiceEClass, LDTO_SERVICE__FILTERABLE);
-    createEReference(ldtoServiceEClass, LDTO_SERVICE__SORTABLE);
+		ldtoServiceEClass = createEClass(LDTO_SERVICE);
+		createEReference(ldtoServiceEClass, LDTO_SERVICE__DTO);
+		createEReference(ldtoServiceEClass, LDTO_SERVICE__FILTERABLE);
+		createEReference(ldtoServiceEClass, LDTO_SERVICE__SORTABLE);
 
-    lFilterableAttributesEClass = createEClass(LFILTERABLE_ATTRIBUTES);
-    createEReference(lFilterableAttributesEClass, LFILTERABLE_ATTRIBUTES__PARENT);
-    createEReference(lFilterableAttributesEClass, LFILTERABLE_ATTRIBUTES__FILTERABLE_FEATURES);
+		lFilterableAttributesEClass = createEClass(LFILTERABLE_ATTRIBUTES);
+		createEReference(lFilterableAttributesEClass, LFILTERABLE_ATTRIBUTES__PARENT);
+		createEReference(lFilterableAttributesEClass, LFILTERABLE_ATTRIBUTES__FILTERABLE_FEATURES);
 
-    lSortableAttributesEClass = createEClass(LSORTABLE_ATTRIBUTES);
-    createEReference(lSortableAttributesEClass, LSORTABLE_ATTRIBUTES__PARENT);
-    createEReference(lSortableAttributesEClass, LSORTABLE_ATTRIBUTES__SORTABLE_FEATURES);
+		lSortableAttributesEClass = createEClass(LSORTABLE_ATTRIBUTES);
+		createEReference(lSortableAttributesEClass, LSORTABLE_ATTRIBUTES__PARENT);
+		createEReference(lSortableAttributesEClass, LSORTABLE_ATTRIBUTES__SORTABLE_FEATURES);
 
-    lChartServiceEClass = createEClass(LCHART_SERVICE);
+		lChartServiceEClass = createEClass(LCHART_SERVICE);
 
-    lFreeServiceEClass = createEClass(LFREE_SERVICE);
+		lFreeServiceEClass = createEClass(LFREE_SERVICE);
 
-    // Create enums
-    lCardinalityEEnum = createEEnum(LCARDINALITY);
-  }
+		// Create enums
+		lCardinalityEEnum = createEEnum(LCARDINALITY);
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private boolean isInitialized = false;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isInitialized = false;
 
-  /**
-   * Complete the initialization of the package and its meta-model.  This
-   * method is guarded to have no affect on any invocation but its first.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void initializePackageContents()
-  {
-    if (isInitialized) return;
-    isInitialized = true;
+	/**
+	 * Complete the initialization of the package and its meta-model.  This
+	 * method is guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void initializePackageContents() {
+		if (isInitialized) return;
+		isInitialized = true;
 
-    // Initialize package
-    setName(eNAME);
-    setNsPrefix(eNS_PREFIX);
-    setNsURI(eNS_URI);
+		// Initialize package
+		setName(eNAME);
+		setNsPrefix(eNS_PREFIX);
+		setNsURI(eNS_URI);
 
-    // Obtain other dependent packages
-    LunTypesPackage theLunTypesPackage = (LunTypesPackage)EPackage.Registry.INSTANCE.getEPackage(LunTypesPackage.eNS_URI);
-    EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-    TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-    LunDtoPackage theLunDtoPackage = (LunDtoPackage)EPackage.Registry.INSTANCE.getEPackage(LunDtoPackage.eNS_URI);
+		// Obtain other dependent packages
+		LunTypesPackage theLunTypesPackage = (LunTypesPackage)EPackage.Registry.INSTANCE.getEPackage(LunTypesPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		LunDtoPackage theLunDtoPackage = (LunDtoPackage)EPackage.Registry.INSTANCE.getEPackage(LunDtoPackage.eNS_URI);
 
-    // Create type parameters
+		// Create type parameters
 
-    // Set bounds for type parameters
+		// Set bounds for type parameters
 
-    // Add supertypes to classes
-    lServiceEClass.getESuperTypes().add(theLunTypesPackage.getLClass());
-    ldtoServiceEClass.getESuperTypes().add(this.getLService());
-    lChartServiceEClass.getESuperTypes().add(this.getLService());
-    lFreeServiceEClass.getESuperTypes().add(this.getLService());
+		// Add supertypes to classes
+		lServiceEClass.getESuperTypes().add(theLunTypesPackage.getLClass());
+		ldtoServiceEClass.getESuperTypes().add(this.getLService());
+		lChartServiceEClass.getESuperTypes().add(this.getLService());
+		lFreeServiceEClass.getESuperTypes().add(this.getLService());
 
-    // Initialize classes and features; add operations and parameters
-    initEClass(lServiceModelEClass, LServiceModel.class, "LServiceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLServiceModel_Packages(), theLunTypesPackage.getLTypedPackage(), null, "packages", null, 0, -1, LServiceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		// Initialize classes and features; add operations and parameters
+		initEClass(lServiceModelEClass, LServiceModel.class, "LServiceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLServiceModel_Packages(), theLunTypesPackage.getLTypedPackage(), null, "packages", null, 0, -1, LServiceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(lServiceEClass, LService.class, "LService", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLService_InjectedServices(), this.getLInjectedServices(), null, "injectedServices", null, 0, 1, LService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLService_Operations(), theLunTypesPackage.getLOperation(), null, "operations", null, 0, -1, LService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(lServiceEClass, LService.class, "LService", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLService_InjectedServices(), this.getLInjectedServices(), null, "injectedServices", null, 0, 1, LService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLService_Operations(), theLunTypesPackage.getLOperation(), null, "operations", null, 0, -1, LService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(lInjectedServicesEClass, LInjectedServices.class, "LInjectedServices", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLInjectedServices_Services(), this.getLInjectedService(), null, "services", null, 0, -1, LInjectedServices.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(lInjectedServicesEClass, LInjectedServices.class, "LInjectedServices", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLInjectedServices_Services(), this.getLInjectedService(), null, "services", null, 0, -1, LInjectedServices.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(lInjectedServiceEClass, LInjectedService.class, "LInjectedService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLInjectedService_Cardinality(), this.getLCardinality(), "cardinality", null, 0, 1, LInjectedService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLInjectedService_AttributeName(), theEcorePackage.getEString(), "attributeName", null, 0, 1, LInjectedService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLInjectedService_Service(), theTypesPackage.getJvmTypeReference(), null, "service", null, 0, 1, LInjectedService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(lInjectedServiceEClass, LInjectedService.class, "LInjectedService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLInjectedService_Cardinality(), this.getLCardinality(), "cardinality", null, 0, 1, LInjectedService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLInjectedService_AttributeName(), theEcorePackage.getEString(), "attributeName", null, 0, 1, LInjectedService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLInjectedService_Service(), theTypesPackage.getJvmTypeReference(), null, "service", null, 0, 1, LInjectedService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(ldtoServiceEClass, LDTOService.class, "LDTOService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLDTOService_Dto(), theLunDtoPackage.getLDto(), null, "dto", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLDTOService_Filterable(), this.getLFilterableAttributes(), this.getLFilterableAttributes_Parent(), "filterable", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLDTOService_Sortable(), this.getLSortableAttributes(), this.getLSortableAttributes_Parent(), "sortable", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(ldtoServiceEClass, LDTOService.class, "LDTOService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLDTOService_Dto(), theLunDtoPackage.getLDto(), null, "dto", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDTOService_Filterable(), this.getLFilterableAttributes(), this.getLFilterableAttributes_Parent(), "filterable", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDTOService_Sortable(), this.getLSortableAttributes(), this.getLSortableAttributes_Parent(), "sortable", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(lFilterableAttributesEClass, LFilterableAttributes.class, "LFilterableAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLFilterableAttributes_Parent(), this.getLDTOService(), this.getLDTOService_Filterable(), "parent", null, 0, 1, LFilterableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLFilterableAttributes_FilterableFeatures(), theLunDtoPackage.getLDtoFeature(), null, "filterableFeatures", null, 0, -1, LFilterableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(lFilterableAttributesEClass, LFilterableAttributes.class, "LFilterableAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLFilterableAttributes_Parent(), this.getLDTOService(), this.getLDTOService_Filterable(), "parent", null, 0, 1, LFilterableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLFilterableAttributes_FilterableFeatures(), theLunDtoPackage.getLDtoFeature(), null, "filterableFeatures", null, 0, -1, LFilterableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(lSortableAttributesEClass, LSortableAttributes.class, "LSortableAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLSortableAttributes_Parent(), this.getLDTOService(), this.getLDTOService_Sortable(), "parent", null, 0, 1, LSortableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLSortableAttributes_SortableFeatures(), theLunDtoPackage.getLDtoFeature(), null, "sortableFeatures", null, 0, -1, LSortableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(lSortableAttributesEClass, LSortableAttributes.class, "LSortableAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLSortableAttributes_Parent(), this.getLDTOService(), this.getLDTOService_Sortable(), "parent", null, 0, 1, LSortableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLSortableAttributes_SortableFeatures(), theLunDtoPackage.getLDtoFeature(), null, "sortableFeatures", null, 0, -1, LSortableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(lChartServiceEClass, LChartService.class, "LChartService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(lChartServiceEClass, LChartService.class, "LChartService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(lFreeServiceEClass, LFreeService.class, "LFreeService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(lFreeServiceEClass, LFreeService.class, "LFreeService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    // Initialize enums and add enum literals
-    initEEnum(lCardinalityEEnum, LCardinality.class, "LCardinality");
-    addEEnumLiteral(lCardinalityEEnum, LCardinality.ZERO_TO_ONE);
-    addEEnumLiteral(lCardinalityEEnum, LCardinality.ONE_TO_ONE);
-    addEEnumLiteral(lCardinalityEEnum, LCardinality.ZERO_TO_MANY);
-    addEEnumLiteral(lCardinalityEEnum, LCardinality.ONE_TO_MANY);
+		// Initialize enums and add enum literals
+		initEEnum(lCardinalityEEnum, LCardinality.class, "LCardinality");
+		addEEnumLiteral(lCardinalityEEnum, LCardinality.ZERO_TO_ONE);
+		addEEnumLiteral(lCardinalityEEnum, LCardinality.ONE_TO_ONE);
+		addEEnumLiteral(lCardinalityEEnum, LCardinality.ZERO_TO_MANY);
+		addEEnumLiteral(lCardinalityEEnum, LCardinality.ONE_TO_MANY);
 
-    // Create resource
-    createResource(eNS_URI);
+		// Create resource
+		createResource(eNS_URI);
 
-    // Create annotations
-    // http://www.eclipse.org/emf/2002/Ecore
-    createEcoreAnnotations();
-  }
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+	}
 
-  /**
-   * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void createEcoreAnnotations()
-  {
-    String source = "http://www.eclipse.org/emf/2002/Ecore";			
-    addAnnotation
-      (this, 
-       source, 
-       new String[] 
-       {
-       "rootPackage", "services"
-       });
-  }
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "rootPackage", "services"
+		   });
+	}
 
 } //LunServicePackageImpl

@@ -27,30 +27,29 @@ import org.eclipse.emf.ecore.EObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface LFeaturesHolder extends EObject
-{
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * <!-- begin-model-doc -->
-   * *
-   * Returns the features of the holder
-   * <!-- end-model-doc -->
-   * @model kind="operation" dataType="org.lunifera.dsl.semantic.common.types.FeaturesList" unique="false"
-   * @generated
-   */
-  List<? extends LFeature> getFeatures();
+public interface LFeaturesHolder extends EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Returns the features of the holder
+	 * <!-- end-model-doc -->
+	 * @model kind="operation" dataType="org.lunifera.dsl.semantic.common.types.FeaturesList" unique="false"
+	 * @generated
+	 */
+	List<? extends LFeature> getFeatures();
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * <!-- begin-model-doc -->
-   * *
-   * Returns all features of the holder and from super types
-   * <!-- end-model-doc -->
-   * @model kind="operation" dataType="org.lunifera.dsl.semantic.common.types.FeaturesList" unique="false"
-   * @generated
-   */
-  List<? extends LFeature> getAllFeatures();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Returns all features of the holder and from super types
+	 * <!-- end-model-doc -->
+	 * @model kind="operation" dataType="org.lunifera.dsl.semantic.common.types.FeaturesList" unique="false"
+	 * @generated
+	 */
+	List<? extends LFeature> getAllFeatures();
 
 } // LFeaturesHolder

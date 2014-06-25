@@ -24,6 +24,5 @@ package org.lunifera.dsl.semantic.dto;
  * @model
  * @generated
  */
-public interface LDtoAttribute extends LDtoAbstractAttribute
-{
+public interface LDtoAttribute extends LDtoAbstractAttribute {
 } // LDtoAttribute

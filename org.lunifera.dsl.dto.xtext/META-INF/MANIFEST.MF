@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.5.3,2.6.0)";visibility:=ree
  org.lunifera.dsl.mwe;bundle-version="0.0.1",
  org.lunifera.dsl.dto.lib;bundle-version="0.0.1",
  org.eclipse.emf.mwe2.language;bundle-version="2.5.1",
- org.lunifera.dsl.xtext.types.bundles
+ org.lunifera.xtext.builder.types.bundles
 Import-Package: org.apache.log4j,
  org.osgi.service.component.annotations;version="1.2.0"
 Export-Package: org.lunifera.dsl.dto.xtext;x-internal:=true,

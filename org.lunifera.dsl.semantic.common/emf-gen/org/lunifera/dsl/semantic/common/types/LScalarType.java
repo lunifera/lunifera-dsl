@@ -24,6 +24,5 @@ package org.lunifera.dsl.semantic.common.types;
  * @model
  * @generated
  */
-public interface LScalarType extends LType
-{
+public interface LScalarType extends LType {
 } // LScalarType

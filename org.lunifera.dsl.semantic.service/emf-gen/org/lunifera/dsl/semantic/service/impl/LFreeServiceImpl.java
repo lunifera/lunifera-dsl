@@ -27,27 +27,24 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  *
  * @generated
  */
-public class LFreeServiceImpl extends LServiceImpl implements LFreeService
-{
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected LFreeServiceImpl()
-  {
-    super();
-  }
+public class LFreeServiceImpl extends LServiceImpl implements LFreeService {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LFreeServiceImpl() {
+		super();
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return LunServicePackage.Literals.LFREE_SERVICE;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return LunServicePackage.Literals.LFREE_SERVICE;
+	}
 
 } //LFreeServiceImpl

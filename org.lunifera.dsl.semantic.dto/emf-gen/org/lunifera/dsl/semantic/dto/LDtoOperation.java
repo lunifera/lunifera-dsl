@@ -25,6 +25,5 @@ import org.lunifera.dsl.semantic.common.types.LOperation;
  * @model
  * @generated
  */
-public interface LDtoOperation extends LOperation, LDtoFeature
-{
+public interface LDtoOperation extends LOperation, LDtoFeature {
 } // LDtoOperation

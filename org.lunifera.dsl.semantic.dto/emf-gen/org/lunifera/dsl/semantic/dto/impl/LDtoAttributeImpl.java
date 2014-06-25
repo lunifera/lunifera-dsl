@@ -27,27 +27,24 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *
  * @generated
  */
-public class LDtoAttributeImpl extends LDtoAbstractAttributeImpl implements LDtoAttribute
-{
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected LDtoAttributeImpl()
-  {
-    super();
-  }
+public class LDtoAttributeImpl extends LDtoAbstractAttributeImpl implements LDtoAttribute {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtoAttributeImpl() {
+		super();
+	}
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return LunDtoPackage.Literals.LDTO_ATTRIBUTE;
-  }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return LunDtoPackage.Literals.LDTO_ATTRIBUTE;
+	}
 
 } //LDtoAttributeImpl

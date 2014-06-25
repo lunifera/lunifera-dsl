@@ -55,7 +55,9 @@
 				<module>org.lunifera.dsl.eclipse.ui</module>
 				<module>org.lunifera.dsl.metadata.services</module>
 				<module>org.lunifera.dsl.xtext.types.bundles</module>
-
+				
+				<module>org.lunifera.dsl.xtext.builder.participant</module>
+				
 				<!-- P2 feature -->
 				<module>org.lunifera.dsl.feature.entities</module>
 				<module>org.lunifera.dsl.feature.entities.headless</module>
