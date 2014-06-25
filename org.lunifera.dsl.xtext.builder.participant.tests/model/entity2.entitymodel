@@ -1,0 +1,12 @@
+package org.lunifera.dsl.xtext.builder.participant.tests {
+	
+	mapped superclass SuperClass {
+		uuid String id;
+	}
+	 
+	entity MyEntity extends SuperClass{
+		var Long someValue;
+	}
+	
+	
+}

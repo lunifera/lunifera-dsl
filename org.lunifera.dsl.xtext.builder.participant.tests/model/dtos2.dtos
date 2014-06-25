@@ -1,0 +1,11 @@
+package org.lunifera.dsl.xtext.builder.participant.tests.other.dtos {
+
+	import org.lunifera.dsl.xtext.builder.participant.tests.other.*;
+	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.*;
+
+	dto OtherDto extends SuperDto wraps OtherEntity {
+		inherit ref myEntity mapto MyEntityDto;
+		inherit var someValue;
+	}
+
+}

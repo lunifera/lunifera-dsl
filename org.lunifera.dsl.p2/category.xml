@@ -42,17 +42,16 @@
    <feature id="org.lunifera.dsl.feature.common.headless.source" version="0.0.0">
       <category name="lunifera-dsls-headless"/>
    </feature>
-   <feature id="org.lunifera.dsl.feature.metadata" version="0.0.0">
-      <category name="lunifera-dsls-metadata"/>
+   <feature id="org.lunifera.dsl.feature.metadata.builder.participant" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
    </feature>
-    <feature id="org.lunifera.dsl.feature.metadata.source" version="0.0.0">
-      <category name="lunifera-dsls-metadata"/>
+   <feature id="org.lunifera.dsl.feature.metadata.builder.participant.source" version="0.0.0">
+      <category name="lunifera-dsls-headless"/>
    </feature>
-   <category-def name="lunifera-dsls" label="Lunifera DSLs"/>
-   <category-def name="lunifera-dsls-headless" label="Lunifera DSLs - Headless for Target Platform"/>
-   <category-def name="lunifera-dsls-metadata" label="Metadata Cache">
+   <category-def name="lunifera-dsls" label="Lunifera DSLs">
       <description>
-         Metadata Cache that indexes the runtime and provides access to that information.
+         These features include the required headless features.
       </description>
    </category-def>
+   <category-def name="lunifera-dsls-headless" label="Lunifera DSLs - Headless for Target Platform"/>
 </site>

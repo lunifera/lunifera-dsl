@@ -1,0 +1,6 @@
+package org.lunifera.dsl.xtext.builder.participant.tests.datatypes {
+	
+	datatype forTest jvmType java.util.List<String>;
+	datatype dateTest dateType time;	 
+	
+}

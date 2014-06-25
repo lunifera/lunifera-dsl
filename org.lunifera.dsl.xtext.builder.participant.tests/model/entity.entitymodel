@@ -1,0 +1,10 @@
+package org.lunifera.dsl.xtext.builder.participant.tests.other {
+	
+	import org.lunifera.dsl.xtext.builder.participant.tests.*;
+	
+	entity OtherEntity extends SuperClass{
+		var Long someValue;
+		ref MyEntity myEntity;
+	}
+	
+}
