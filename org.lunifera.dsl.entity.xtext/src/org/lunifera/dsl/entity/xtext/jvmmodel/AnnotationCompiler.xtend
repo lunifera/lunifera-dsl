@@ -47,6 +47,7 @@ import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.lunifera.dsl.entity.xtext.compiler.batch.SomeClass
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions
@@ -65,8 +66,7 @@ import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 
 import static org.lunifera.dsl.semantic.common.types.LDateType.*
-import org.lunifera.dsl.entity.xtext.compiler.batch.SomeClass
- 
+
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
  */
@@ -76,7 +76,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	@Inject extension JvmTypesBuilder
 	@Inject extension AnnotationExtension
 	@Inject extension NamingExtensions
- 
+
 	def protected dispatch void internalProcessAnnotation(LBean bean, JvmGenericType jvmType) {
 		val SomeClass x = new SomeClass
 		bean.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
@@ -93,11 +93,12 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if (entity.mappedSuperclass) {
 			addAnno(entity, jvmType, entity.toAnnotation(typeof(MappedSuperclass)))
 		} else {
- 
+
 			// @Entity
 			addAnno(entity, jvmType, entity.toAnnotation(typeof(Entity)))
 
 			if (!entity.isStrategyFromSuperPresent || entity.isStrategyPerSubclass) {
+
 				// @Table
 				val tableAnn = entity.toAnnotation(typeof(Table))
 				addAnno(entity, jvmType, tableAnn)
@@ -331,9 +332,9 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 				collectedReferences += overrideAttributeAnno;
 			} else if (f instanceof LBeanReference) {
-				if((f as LBeanReference).opposite?.type != bean){
+				if ((f as LBeanReference).opposite?.type != bean) {
 					(f as LBeanReference).type.collectNestedAttributeOverride(collectedReferences,
-					propertyPath + "." + f.toName, persistencePath + "_" + f.toName.toUpperCase)
+						propertyPath + "." + f.toName, persistencePath + "_" + f.toName.toUpperCase)
 				}
 			}
 		}
@@ -433,6 +434,11 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			manyToOne.addAnnAttr(prop, "optional", !prop.bounds.required)
 		}
 		manyToOne.addAnnAttr(prop, "fetch", FetchType::LAZY)
+
+		val opposite = prop.resolvedOpposite
+		if (opposite != null && opposite.cascading) {
+			manyToOne.addAnnAttr(prop, "cascade", CascadeType::PERSIST)
+		}
 		addAnno(prop, jvmAnnTarget, manyToOne)
 
 		val joinColumn = prop.toAnnotation(typeof(JoinColumn))
