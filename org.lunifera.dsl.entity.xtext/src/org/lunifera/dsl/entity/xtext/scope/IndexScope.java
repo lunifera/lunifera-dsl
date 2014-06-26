@@ -24,22 +24,24 @@ import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityFeature;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LIndex;
 
 public class IndexScope extends AbstractScope {
 
-	private final LEntity context;
+	private final LEntity lEntity;
+	private final LIndex lIndex;
 
-	public IndexScope(final LEntity context) {
+	public IndexScope(final LIndex lIndex) {
 		super(IScope.NULLSCOPE, true);
-		this.context = context;
+		this.lIndex = lIndex;
+		this.lEntity = (LEntity) lIndex.eContainer();
 	}
- 
+
 	@Override
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
 		ModelExtensions ext = new ModelExtensions();
-
 		List<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-		for (LEntityFeature feature : context.getAllFeatures()) {
+		for (LEntityFeature feature : lEntity.getAllFeatures()) {
 			if (feature instanceof LEntityAttribute) {
 				LEntityAttribute attribute = (LEntityAttribute) feature;
 				if (attribute.getType() instanceof LDataType) {

@@ -32,18 +32,20 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 		configure(c, (EntityGrammarGrammarAccess) getGrammarAccess());
 	}
 
+	// TODO formatting for index
+
 	public void configure(FormattingConfig c, EntityGrammarGrammarAccess ga) {
 		EntityGrammarGrammarAccess f = (EntityGrammarGrammarAccess) getGrammarAccess();
 
 		super.configure(c, ga.getCommonGrammarGrammarAccess());
-		
+
 		configureClassDef(c, f.getClassAccess());
 		configureEntityDef(c, f.getEntityFeatureAccess());
 		configureBeanDef(c, f.getBeanFeatureAccess());
 		configureMultiplicityDef(c, f.getMultiplicityAccess());
 		configureEnumDef(c, f.getEnumAccess());
 		configureEnumLiteralDef(c, f.getEnumLiteralAccess());
-		
+
 		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).after(f.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).before(f.getML_COMMENTRule());
@@ -76,19 +78,19 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 		c.setIndentationIncrement().after(
 				ele.getLeftCurlyBracketKeyword_2_0_5());
 		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_2_0_9());
-		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_0_9());
+				ele.getRightCurlyBracketKeyword_2_0_10());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_0_10());
 
 		// bean
 		c.setIndentationIncrement().after(
 				ele.getLeftCurlyBracketKeyword_2_1_4());
 		c.setIndentationIncrement().after(
-				ele.getLeftCurlyBracketKeyword_2_2_4());
+				ele.getLeftCurlyBracketKeyword_2_1_11());
 		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_2_1_6());
+				ele.getRightCurlyBracketKeyword_2_1_13());
 		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_2_2_6());
-		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_1_6());
+				ele.getRightCurlyBracketKeyword_2_1_13());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_1_13());
 	}
 
 	protected void configureEntityDef(FormattingConfig c,

@@ -23,14 +23,21 @@ ruleClass :
 		)* 'entity' ruleValidIDWithKeywords (
 			'extends' RULE_ID
 		)? '{' ruleEntityPersistenceInfo ruleEntityInheritanceStrategy?
-		ruleEntityFeature* '}' |
+		ruleEntityFeature* ruleIndex? '}' |
 		'mapped superclass' (
 			'extends' RULE_ID
-		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' |
-		'bean' ruleValidIDWithKeywords (
+		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' 'bean'
+		ruleValidIDWithKeywords (
 			'extends' RULE_ID
 		)? '{' ruleBeanFeature* '}'
 	)
+;
+
+// Rule Index
+ruleIndex :
+	'unique'? 'index' RULE_ID '{' RULE_ID (
+		', ' RULE_ID
+	)* '}'
 ;
 
 // Rule EntityPersistenceInfo

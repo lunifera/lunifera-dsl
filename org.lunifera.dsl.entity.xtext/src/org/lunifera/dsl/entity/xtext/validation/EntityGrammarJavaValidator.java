@@ -45,6 +45,7 @@ import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LIndex;
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
@@ -298,6 +299,16 @@ public class EntityGrammarJavaValidator extends
 						CODE__TIMEDEPENDENT_IN_SUBCLASS, new String[0]);
 			}
 		}
+	}
+	
+	@Check(CheckType.NORMAL)
+	public void checkIndex_Features(LIndex index) {
+		// TODO Features must by unique
+	}
+	
+	@Check(CheckType.NORMAL)
+	public void checkEntity_Index(LEntity entity) {
+		// TODO Index names must by unique
 	}
 
 	@Check(CheckType.NORMAL)

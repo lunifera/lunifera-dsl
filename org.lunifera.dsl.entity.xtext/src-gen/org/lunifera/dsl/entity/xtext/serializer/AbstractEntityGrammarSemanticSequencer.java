@@ -79,6 +79,7 @@ import org.lunifera.dsl.semantic.entity.LEntityFeature;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LIndex;
 import org.lunifera.dsl.semantic.entity.LOperation;
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy;
@@ -120,7 +121,11 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 				}
 				else break;
 			case LunEntityPackage.LENTITY:
-				if(context == grammarAccess.getClassRule() ||
+				if(context == grammarAccess.getClassAccess().getLBeanAnnotationInfoAction_2_1_7()) {
+					sequence_Class_LBean_2_1_7(context, (LEntity) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getClassRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_Class(context, (LEntity) semanticObject); 
 					return; 
@@ -164,6 +169,12 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 					return; 
 				}
 				else break;
+			case LunEntityPackage.LINDEX:
+				if(context == grammarAccess.getIndexRule()) {
+					sequence_Index(context, (LIndex) semanticObject); 
+					return; 
+				}
+				else break;
 			case LunEntityPackage.LOPERATION:
 				if(context == grammarAccess.getBeanFeatureRule()) {
 					sequence_BeanFeature(context, (LOperation) semanticObject); 
@@ -197,10 +208,9 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 				}
 				else break;
 			case LunTypesPackage.LCLASS:
-				if(context == grammarAccess.getClassAccess().getLBeanAnnotationInfoAction_2_2_0() ||
-				   context == grammarAccess.getClassAccess().getLEntityAnnotationInfoAction_2_0_0() ||
+				if(context == grammarAccess.getClassAccess().getLEntityAnnotationInfoAction_2_0_0() ||
 				   context == grammarAccess.getClassAccess().getLEntityAnnotationInfoAction_2_1_0()) {
-					sequence_Class_LBean_2_2_0_LEntity_2_0_0_LEntity_2_1_0(context, (LClass) semanticObject); 
+					sequence_Class_LEntity_2_0_0_LEntity_2_1_0(context, (LClass) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1285,7 +1295,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Class_LBean_2_2_0 name=ValidIDWithKeywords superType=[LBean|ID]? features+=BeanFeature*)
+	 *     (annotationInfo=Class_LBean_2_1_7 name=ValidIDWithKeywords superType=[LBean|ID]? features+=BeanFeature*)
 	 */
 	protected void sequence_Class(EObject context, LBean semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1294,9 +1304,15 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	
 	/**
 	 * Constraint:
-	 *     annotations+=AnnotationDef+
+	 *     (
+	 *         annotationInfo=Class_LEntity_2_1_0 
+	 *         mappedSuperclass?='mapped superclass' 
+	 *         superType=[LEntity|ID]? 
+	 *         name=ValidIDWithKeywords 
+	 *         features+=EntityFeature*
+	 *     )
 	 */
-	protected void sequence_Class_LBean_2_2_0_LEntity_2_0_0_LEntity_2_1_0(EObject context, LClass semanticObject) {
+	protected void sequence_Class_LBean_2_1_7(EObject context, LEntity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1304,29 +1320,30 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	/**
 	 * Constraint:
 	 *     (
+	 *         annotationInfo=Class_LEntity_2_0_0 
 	 *         (
-	 *             annotationInfo=Class_LEntity_2_0_0 
-	 *             (
-	 *                 abstract?='abstract'? 
-	 *                 (historized?='historized' | (timedependent?='timedependent' timedependentDateType=LHistorizedDateType?))? 
-	 *                 cacheable?='cacheable'?
-	 *             ) 
-	 *             name=ValidIDWithKeywords 
-	 *             superType=[LEntity|ID]? 
-	 *             persistenceInfo=EntityPersistenceInfo 
-	 *             inheritanceStrategy=EntityInheritanceStrategy? 
-	 *             features+=EntityFeature*
-	 *         ) | 
-	 *         (
-	 *             annotationInfo=Class_LEntity_2_1_0 
-	 *             mappedSuperclass?='mapped superclass' 
-	 *             superType=[LEntity|ID]? 
-	 *             name=ValidIDWithKeywords 
-	 *             features+=EntityFeature*
-	 *         )
+	 *             abstract?='abstract'? 
+	 *             (historized?='historized' | (timedependent?='timedependent' timedependentDateType=LHistorizedDateType?))? 
+	 *             cacheable?='cacheable'?
+	 *         ) 
+	 *         name=ValidIDWithKeywords 
+	 *         superType=[LEntity|ID]? 
+	 *         persistenceInfo=EntityPersistenceInfo 
+	 *         inheritanceStrategy=EntityInheritanceStrategy? 
+	 *         features+=EntityFeature* 
+	 *         indexes+=Index?
 	 *     )
 	 */
 	protected void sequence_Class(EObject context, LEntity semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     annotations+=AnnotationDef+
+	 */
+	protected void sequence_Class_LEntity_2_0_0_LEntity_2_1_0(EObject context, LClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1422,6 +1439,15 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (schemaName=ValidIDWithKeywords? tableName=ValidIDWithKeywords?)
 	 */
 	protected void sequence_EntityPersistenceInfo(EObject context, LEntityPersistenceInfo semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (unique?='unique'? name=ID features+=[LEntityFeature|ID] features+=[LEntityFeature|ID]*)
+	 */
+	protected void sequence_Index(EObject context, LIndex semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

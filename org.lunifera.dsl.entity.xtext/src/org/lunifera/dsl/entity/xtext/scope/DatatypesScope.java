@@ -26,6 +26,7 @@ public class DatatypesScope extends AbstractScope {
 
 	private final IScope parent;
 	private final LAttribute context;
+	@SuppressWarnings("unused")
 	private final EReference reference;
 
 	public DatatypesScope(IScope parent, final LAttribute context,

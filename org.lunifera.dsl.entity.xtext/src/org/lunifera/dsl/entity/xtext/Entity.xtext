@@ -35,6 +35,8 @@ Class returns LClass:
 	(persistenceInfo=EntityPersistenceInfo)
 	(inheritanceStrategy=EntityInheritanceStrategy)?
 	features+=EntityFeature*
+	
+	(indexes+=Index)?
 	'}'
 	|
 	{entity::LEntity.annotationInfo=current}
@@ -43,12 +45,18 @@ Class returns LClass:
 	'{'
 	features+=EntityFeature*
 	'}'
-	|
+	
 	{entity::LBean.annotationInfo=current}
 	'bean' name=ValidIDWithKeywords ('extends' superType=[entity::LBean])?
 	'{'
 	features+=BeanFeature*
 	'}');
+
+Index returns entity::LIndex:
+	(unique?='unique')? 'index' name=ID '{'
+		features+=[entity::LEntityFeature] (', ' features+=[entity::LEntityFeature])*
+	'}'
+;
 
 EntityPersistenceInfo returns entity::LEntityPersistenceInfo:
 	{entity::LEntityPersistenceInfo}
