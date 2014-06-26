@@ -248,7 +248,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.documentation = '''
 			Sets the proxy of the <code>«paramName»</code> property for lazy cross reference loading.
 		'''
- 
+
 		setBody(op,
 			[ // ITreeAppendable
 				if(it == null) return
@@ -395,16 +395,16 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		jvmField.visibility = JvmVisibility::PRIVATE
 		jvmField.type = cloneWithProxies((prop as LDtoFeature).toDtoTypeParameterReferenceWithMultiplicity)
 		jvmField.transient = prop.transient
-		
+
 		// if uuid
-		if(prop instanceof LAttribute && (prop as LAttribute).uuid) {
+		if (prop instanceof LAttribute && (prop as LAttribute).uuid) {
 			jvmField.setInitializer [
 				if(it == null) return
 				val p = it.trace(prop)
 				p >> '''java.util.UUID.randomUUID().toString()'''
 			]
 		}
-		
+
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
 	}
@@ -963,7 +963,11 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						return dto;'''
 					}
 				} else {
-					body = '''return in.get«prop.toName.toFirstUpper»();'''
+					if (prop.typeIsBoolean) {
+						body = '''return in.is«prop.toName.toFirstUpper»();'''
+					} else {
+						body = '''return in.get«prop.toName.toFirstUpper»();'''
+					}
 				}
 			}
 		]
@@ -1074,7 +1078,11 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						return entity;'''
 					}
 				} else {
-					body = '''return in.get«prop.toName.toFirstUpper»();'''
+					if (prop.typeIsBoolean) {
+						body = '''return in.is«prop.toName.toFirstUpper»();'''
+					} else {
+						body = '''return in.get«prop.toName.toFirstUpper»();'''
+					}
 				}
 			}
 		]

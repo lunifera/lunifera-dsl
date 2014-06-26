@@ -69,6 +69,17 @@ class ModelExtensions {
 		}
 	}
 	
+	def boolean isBool(LDataType type) {
+		if (type.asPrimitive) {
+			val fqn = type?.jvmTypeReference?.type?.fullyQualifiedName
+			switch (fqn.toString) {
+				case typeof(Boolean).name: return true
+				default: return false
+			}
+		}
+		return false
+	}
+	
 	
 	def boolean isPrimitive(LDataType type) {
 		return type.asPrimitive;

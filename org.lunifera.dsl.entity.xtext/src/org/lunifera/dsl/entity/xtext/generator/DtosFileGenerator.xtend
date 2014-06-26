@@ -15,7 +15,7 @@ import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanFeature
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityFeature
-
+import org.lunifera.dsl.semantic.entity.LEntityReference
 
 /**
  *  This generator automatically creates a generic .dtos-file from a given entity model.
@@ -42,15 +42,15 @@ class DtosFileGenerator {
 			«ENDFOR»
 		
 			«FOR LDataType lDatatype : pkg.datatypes»
-			«lDatatype.toDocu»
-			«lDatatype.toDataType»
+				«lDatatype.toDocu»
+				«lDatatype.toDataType»
 			«ENDFOR»
 		
 			«FOR LEntity lEntity : pkg.entities»
 				«lEntity.toDocu»
 				«lEntity.toEntityDeclaration»
 					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute) || (it instanceof LReference)]»
-					«feature.toFeature»
+						«feature.toFeature»
 					«ENDFOR»
 				}
 				
@@ -59,7 +59,7 @@ class DtosFileGenerator {
 				«lBean.toDocu»
 				«lBean.toBeanDeclaration»
 					«FOR LBeanFeature feature : lBean.features.filter[(it instanceof LAttribute) || (it instanceof LReference)]»
-					«feature.toFeature»
+						«feature.toFeature»
 					«ENDFOR»
 				}
 				
@@ -72,28 +72,19 @@ class DtosFileGenerator {
 			«ENDFOR»
 		}
 	'''
-	
+
 	def toEntityDeclaration(LEntity lEntity) {
 		return '''
-			dto « lEntity.name »Dto «
-			IF lEntity.superType != null
-				»extends « lEntity.superType.name »Dto «
-			ENDIF
-			»wraps « lEntity.name » {
+			dto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
 		'''
 	}
-	
-		def toBeanDeclaration(LBean lBean) {
+
+	def toBeanDeclaration(LBean lBean) {
 		return '''
-			dto « lBean.name »Dto «
-			IF lBean.superType != null
-				»extends « lBean.superType.name »Dto «
-			ENDIF
-			»wraps « lBean.name » {
+			dto «lBean.name»Dto «IF lBean.superType != null»extends «lBean.superType.name»Dto «ENDIF»wraps «lBean.name» {
 		'''
 	}
-		
-	
+
 	def toDocu(EObject element) {
 		var docu = element.documentation
 		if (!docu.nullOrEmpty) {
@@ -105,7 +96,7 @@ class DtosFileGenerator {
 					«" * "»«line»
 				«ENDFOR»
 				 */'''.toString
-			} else if(docus.length == 1) {
+			} else if (docus.length == 1) {
 				return '''/** «docu» */'''.toString
 			}
 		}
@@ -122,6 +113,11 @@ class DtosFileGenerator {
 		inherit ref «att.name»;
 	'''
 
+	def dispatch toFeature(LEntityReference att) '''
+		«att.toDocu»
+		inherit ref «att.name» mapto «att.type.name»Dto;
+	'''
+
 	def toLiterals(LEnum lEnum) {
 		var result = new StringBuilder
 		for (lit : lEnum.literals) {
@@ -131,25 +127,12 @@ class DtosFileGenerator {
 
 		return result.substring(0, result.length - 2)
 	}
-	
+
 	def toDataType(LDataType lDatatype) {
 		'''
-		datatype «lDatatype.name» «
-			IF lDatatype.date
-				»dateType «
-				IF lDatatype.dateType == LDateType.DATE
-					»date«
-				ELSEIF lDatatype.dateType == LDateType.TIME
-					»time«
-				ELSE »timestamp«
-				ENDIF »«
-			ELSEIF lDatatype.asBlob
-				»as blob«
-			ELSE »jvmType « lDatatype.jvmTypeReference.type.qualifiedName »«
-				IF lDatatype.asPrimitive
-					» as primitive«
-				ENDIF »«
-			ENDIF »;
+			datatype «lDatatype.name» «IF lDatatype.date»dateType «IF lDatatype.dateType == LDateType.DATE»date«ELSEIF lDatatype.
+				dateType == LDateType.TIME»time«ELSE»timestamp«ENDIF»«ELSEIF lDatatype.asBlob»as blob«ELSE»jvmType «lDatatype.
+				jvmTypeReference.type.qualifiedName»«IF lDatatype.asPrimitive» as primitive«ENDIF»«ENDIF»;
 		'''
 	}
 
