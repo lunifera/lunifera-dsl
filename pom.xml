@@ -179,7 +179,7 @@
 			</activation>
 			<modules>
 				<module>org.lunifera.dsl.eclipse.ui.examples</module>
-				<module>org.lunifera.dsl.entity.xtext.tests</module>
+<!-- 				<module>org.lunifera.dsl.entity.xtext.tests</module> -->
 			</modules>
 		</profile>
 
