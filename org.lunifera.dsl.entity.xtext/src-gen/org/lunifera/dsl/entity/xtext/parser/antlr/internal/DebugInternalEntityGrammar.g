@@ -250,7 +250,7 @@ ruleXAnnotation :
 				ruleValidID '='
 				) => ruleXAnnotationElementValuePair )
 			)* |
-			ruleXAnnotationElementValue
+			ruleXAnnotationElementValueOrCommaList
 		)? ')'
 	)?
 ;
@@ -264,16 +264,41 @@ ruleXAnnotationElementValuePair :
 	) ) ruleXAnnotationElementValue
 ;
 
+// Rule XAnnotationElementValueOrCommaList
+ruleXAnnotationElementValueOrCommaList :
+	( (
+	'#' '['
+	) => (
+		'#' '['
+	) ) (
+		ruleXAnnotationOrExpression (
+			',' ruleXAnnotationOrExpression
+		)*
+	)? ']' |
+	ruleXAnnotationOrExpression (
+		(
+			',' ruleXAnnotationOrExpression
+		)+
+	)?
+;
+
 // Rule XAnnotationElementValue
 ruleXAnnotationElementValue :
-	ruleXAnnotation |
 	( (
-	'#' '[' ruleXAnnotation
+	'#' '['
 	) => (
-		'#' '[' ruleXAnnotation
+		'#' '['
 	) ) (
-		',' ruleXAnnotation
-	)* ']' |
+		ruleXAnnotationOrExpression (
+			',' ruleXAnnotationOrExpression
+		)*
+	)? ']' |
+	ruleXAnnotationOrExpression
+;
+
+// Rule XAnnotationOrExpression
+ruleXAnnotationOrExpression :
+	ruleXAnnotation |
 	ruleXExpression
 ;
 
@@ -300,7 +325,12 @@ ruleOpSingleAssign :
 // Rule OpMultiAssign
 ruleOpMultiAssign :
 	'+=' |
-	'-='
+	'-=' |
+	'*=' |
+	'/=' |
+	'%=' |
+	'<' '<' '=' |
+	'>' '>'? '>='
 ;
 
 // Rule XOrExpression
@@ -363,7 +393,7 @@ ruleXRelationalExpression :
 // Rule OpCompare
 ruleOpCompare :
 	'>=' |
-	'<=' |
+	'<' '=' |
 	'>' |
 	'<'
 ;
@@ -398,11 +428,11 @@ ruleOpOther :
 		) => (
 			'<' '<'
 		) ) |
-		'<'
+		'<' |
+		'=>'
 	) |
 	'<>' |
-	'?:' |
-	'<=>'
+	'?:'
 ;
 
 // Rule XAdditiveExpression
@@ -452,11 +482,24 @@ ruleOpUnary :
 
 // Rule XCastedExpression
 ruleXCastedExpression :
-	ruleXMemberFeatureCall (
+	ruleXPostfixOperation (
 		( (
 		'as'
 		) => 'as' ) ruleJvmTypeReference
 	)*
+;
+
+// Rule XPostfixOperation
+ruleXPostfixOperation :
+	ruleXMemberFeatureCall ( (
+	ruleOpPostfix
+	) => ruleOpPostfix )?
+;
+
+// Rule OpPostfix
+ruleOpPostfix :
+	'++' |
+	'--'
 ;
 
 // Rule XMemberFeatureCall
@@ -485,7 +528,7 @@ ruleXMemberFeatureCall :
 			'<' ruleJvmArgumentTypeReference (
 				',' ruleJvmArgumentTypeReference
 			)* '>'
-		)? ruleFeatureCallID (
+		)? ruleIdOrSuper (
 			( (
 			'('
 			) => '(' ) (
@@ -511,10 +554,16 @@ ruleXPrimaryExpression :
 	ruleXConstructorCall |
 	ruleXBlockExpression |
 	ruleXSwitchExpression |
+	( (
+	'synchronized' '('
+	) => ruleXSynchronizedExpression ) |
 	ruleXFeatureCall |
 	ruleXLiteral |
 	ruleXIfExpression |
-	ruleXForLoopExpression |
+	( (
+	'for' '(' ruleJvmFormalParameter ':'
+	) => ruleXForLoopExpression ) |
+	ruleXBasicForLoopExpression |
 	ruleXWhileExpression |
 	ruleXDoWhileExpression |
 	ruleXThrowExpression |
@@ -582,7 +631,7 @@ ruleXClosure :
 // Rule XExpressionInClosure
 ruleXExpressionInClosure :
 	(
-		ruleXExpressionInsideBlock ';'?
+		ruleXExpressionOrVarDeclaration ';'?
 	)*
 ;
 
@@ -621,16 +670,16 @@ ruleXIfExpression :
 ruleXSwitchExpression :
 	'switch' (
 		( (
-		ruleValidID ':'
+		'(' ruleJvmFormalParameter ':'
 		) => (
-			ruleValidID ':'
-		) )? ruleXExpression |
+			'(' ruleJvmFormalParameter ':'
+		) ) ruleXExpression ')' |
 		( (
-		'(' ruleValidID ':'
+		ruleJvmFormalParameter ':'
 		) => (
-			'(' ruleValidID ':'
-		) ) ruleXExpression ')'
-	) '{' ruleXCasePart+ (
+			ruleJvmFormalParameter ':'
+		) )? ruleXExpression
+	) '{' ruleXCasePart* (
 		'default' ':' ruleXExpression
 	)? '}'
 ;
@@ -639,12 +688,32 @@ ruleXSwitchExpression :
 ruleXCasePart :
 	ruleJvmTypeReference? (
 		'case' ruleXExpression
-	)? ':' ruleXExpression
+	)? (
+		':' ruleXExpression |
+		','
+	)
 ;
 
 // Rule XForLoopExpression
 ruleXForLoopExpression :
-	'for' '(' ruleJvmFormalParameter ':' ruleXExpression ')' ruleXExpression
+	( (
+	'for' '(' ruleJvmFormalParameter ':'
+	) => (
+		'for' '(' ruleJvmFormalParameter ':'
+	) ) ruleXExpression ')' ruleXExpression
+;
+
+// Rule XBasicForLoopExpression
+ruleXBasicForLoopExpression :
+	'for' '(' (
+		ruleXExpressionOrVarDeclaration (
+			',' ruleXExpressionOrVarDeclaration
+		)*
+	)? ';' ruleXExpression? ';' (
+		ruleXExpression (
+			',' ruleXExpression
+		)*
+	)? ')' ruleXExpression
 ;
 
 // Rule XWhileExpression
@@ -660,12 +729,12 @@ ruleXDoWhileExpression :
 // Rule XBlockExpression
 ruleXBlockExpression :
 	'{' (
-		ruleXExpressionInsideBlock ';'?
+		ruleXExpressionOrVarDeclaration ';'?
 	)* '}'
 ;
 
-// Rule XExpressionInsideBlock
-ruleXExpressionInsideBlock :
+// Rule XExpressionOrVarDeclaration
+ruleXExpressionOrVarDeclaration :
 	ruleXVariableDeclaration |
 	ruleXExpression
 ;
@@ -800,7 +869,38 @@ ruleXThrowExpression :
 // Rule XReturnExpression
 ruleXReturnExpression :
 	'return' ( (
-	ruleXExpression
+	'extends' |
+	'static' |
+	'import' |
+	'extension' |
+	'!' |
+	'-' |
+	'+' |
+	'new' |
+	'{' |
+	'switch' |
+	'synchronized' |
+	'<' |
+	'super' |
+	'#' |
+	'[' |
+	'false' |
+	'true' |
+	'null' |
+	'typeof' |
+	'if' |
+	'for' |
+	'while' |
+	'do' |
+	'throw' |
+	'return' |
+	'try' |
+	'(' |
+	RULE_ID |
+	RULE_HEX |
+	RULE_INT |
+	RULE_DECIMAL |
+	RULE_STRING
 	) => ruleXExpression )?
 ;
 
@@ -816,6 +916,15 @@ ruleXTryCatchFinallyExpression :
 		)? |
 		'finally' ruleXExpression
 	)
+;
+
+// Rule XSynchronizedExpression
+ruleXSynchronizedExpression :
+	( (
+	'synchronized' '('
+	) => (
+		'synchronized' '('
+	) ) ruleXExpression ')' ruleXExpression
 ;
 
 // Rule XCatchClause
@@ -925,10 +1034,20 @@ ruleValidID :
 // Rule XImportDeclaration
 ruleXImportDeclaration :
 	'import' (
-		'static' 'extension'? ruleQualifiedName '.' '*' |
+		'static' 'extension'? ruleQualifiedNameInStaticImport (
+			'*' |
+			ruleValidID
+		) |
 		ruleQualifiedName |
 		ruleQualifiedNameWithWildcard
 	) ';'?
+;
+
+// Rule QualifiedNameInStaticImport
+ruleQualifiedNameInStaticImport :
+	(
+		ruleValidID '.'
+	)+
 ;
 
 // Rule DiscriminatorType

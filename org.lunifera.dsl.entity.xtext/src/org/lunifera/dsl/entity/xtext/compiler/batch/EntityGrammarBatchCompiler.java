@@ -42,7 +42,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jdt.core.compiler.batch.BatchCompiler;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.TypesPackage;
@@ -681,7 +680,6 @@ public class EntityGrammarBatchCompiler {
 		return Strings.concat("/", typeName.getSegments()) + ".java";
 	}
 
-	@Nullable
 	protected LEntityModel getEntityGrammarFile(Resource resource) {
 		XtextResource xtextResource = (XtextResource) resource;
 		IParseResult parseResult = xtextResource.getParseResult();

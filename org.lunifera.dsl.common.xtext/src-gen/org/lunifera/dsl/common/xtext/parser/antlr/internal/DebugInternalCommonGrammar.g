@@ -293,7 +293,7 @@ ruleXAnnotationElementValuePair
 ))*)
     |(
 (
-ruleXAnnotationElementValue
+ruleXAnnotationElementValueOrCommaList
 )
 ))?	')' 
 )?)
@@ -328,29 +328,69 @@ ruleXAnnotationElementValue
 
 
 
+// Rule XAnnotationElementValueOrCommaList
+ruleXAnnotationElementValueOrCommaList :
+((((((
+)	'#' 
+	'[' 
+))=>((
+)	'#' 
+	'[' 
+))((
+(
+ruleXAnnotationOrExpression
+)
+)(	',' 
+(
+(
+ruleXAnnotationOrExpression
+)
+))*)?	']' 
+)
+    |(	ruleXAnnotationOrExpression((
+)(	',' 
+(
+(
+ruleXAnnotationOrExpression
+)
+))+)?))
+;
+
+
+
+
+
+
 // Rule XAnnotationElementValue
 ruleXAnnotationElementValue :
+((((((
+)	'#' 
+	'[' 
+))=>((
+)	'#' 
+	'[' 
+))((
+(
+ruleXAnnotationOrExpression
+)
+)(	',' 
+(
+(
+ruleXAnnotationOrExpression
+)
+))*)?	']' 
+)
+    |	ruleXAnnotationOrExpression)
+;
+
+
+
+
+
+
+// Rule XAnnotationOrExpression
+ruleXAnnotationOrExpression :
 (	ruleXAnnotation
-    |((
-)(((	'#' 
-	'[' 
-(
-(
-ruleXAnnotation
-)
-)))=>(	'#' 
-	'[' 
-(
-(
-ruleXAnnotation
-)
-)))(	',' 
-(
-(
-ruleXAnnotation
-)
-))*	']' 
-)
     |	ruleXExpression)
 ;
 
@@ -422,7 +462,30 @@ ruleOpMultiAssign :
 
     |
 	'-=' 
+
+    |
+	'*=' 
+
+    |
+	'/=' 
+
+    |
+	'%=' 
+
+    |(
+	'<' 
+
+	'<' 
+
+	'=' 
 )
+    |(
+	'>' 
+(
+	'>' 
+)?
+	'>=' 
+))
     ;
 
 
@@ -585,9 +648,11 @@ ruleOpCompare :
 (
 	'>=' 
 
-    |
-	'<=' 
+    |(
+	'<' 
 
+	'=' 
+)
     |
 	'>' 
 
@@ -671,15 +736,15 @@ ruleOpOther :
 ))
     |
 	'<' 
+
+    |
+	'=>' 
 ))
     |
 	'<>' 
 
     |
 	'?:' 
-
-    |
-	'<=>' 
 )
     ;
 
@@ -812,7 +877,7 @@ ruleOpUnary :
 
 // Rule XCastedExpression
 ruleXCastedExpression :
-(	ruleXMemberFeatureCall(((((
+(	ruleXPostfixOperation(((((
 )	'as' 
 ))=>((
 )	'as' 
@@ -822,6 +887,41 @@ ruleJvmTypeReference
 )
 ))*)
 ;
+
+
+
+
+
+
+// Rule XPostfixOperation
+ruleXPostfixOperation :
+(	ruleXMemberFeatureCall((((
+)(
+(
+		ruleOpPostfix
+)
+)))=>((
+)(
+(
+		ruleOpPostfix
+)
+)))?)
+;
+
+
+
+
+
+
+// Rule OpPostfix
+ruleOpPostfix :
+(
+	'++' 
+
+    |
+	'--' 
+)
+    ;
 
 
 
@@ -906,7 +1006,7 @@ ruleJvmArgumentTypeReference
 ))*	'>' 
 )?(
 (
-		ruleFeatureCallID
+		ruleIdOrSuper
 )
 )(((
 (
@@ -970,10 +1070,23 @@ ruleXPrimaryExpression :
 (	ruleXConstructorCall
     |	ruleXBlockExpression
     |	ruleXSwitchExpression
+    |((((
+)	'synchronized' 
+	'(' 
+))=>	ruleXSynchronizedExpression)
     |	ruleXFeatureCall
     |	ruleXLiteral
     |	ruleXIfExpression
-    |	ruleXForLoopExpression
+    |((((
+)	'for' 
+	'(' 
+(
+(
+ruleJvmFormalParameter
+)
+)	':' 
+))=>	ruleXForLoopExpression)
+    |	ruleXBasicForLoopExpression
     |	ruleXWhileExpression
     |	ruleXDoWhileExpression
     |	ruleXThrowExpression
@@ -1116,7 +1229,7 @@ ruleXExpressionInClosure :
 ((
 )((
 (
-ruleXExpressionInsideBlock
+ruleXExpressionOrVarDeclaration
 )
 )(	';' 
 )?)*)
@@ -1217,31 +1330,16 @@ ruleXExpression
 ruleXSwitchExpression :
 ((
 )	'switch' 
-((((((
-(
-ruleValidID
-)
-)	':' 
-))=>((
-(
-ruleValidID
-)
-)	':' 
-))?(
-(
-ruleXExpression
-)
-))
-    |((((	'(' 
+(((((	'(' 
 (
 (
-ruleValidID
+ruleJvmFormalParameter
 )
 )	':' 
 ))=>(	'(' 
 (
 (
-ruleValidID
+ruleJvmFormalParameter
 )
 )	':' 
 ))(
@@ -1249,12 +1347,27 @@ ruleValidID
 ruleXExpression
 )
 )	')' 
-))	'{' 
+)
+    |(((((
+(
+ruleJvmFormalParameter
+)
+)	':' 
+))=>((
+(
+ruleJvmFormalParameter
+)
+)	':' 
+))?(
+(
+ruleXExpression
+)
+)))	'{' 
 (
 (
 ruleXCasePart
 )
-)+(	'default' 
+)*(	'default' 
 	':' 
 (
 (
@@ -1272,6 +1385,7 @@ ruleXExpression
 // Rule XCasePart
 ruleXCasePart :
 ((
+)(
 (
 ruleJvmTypeReference
 )
@@ -1280,7 +1394,44 @@ ruleJvmTypeReference
 (
 ruleXExpression
 )
-))?	':' 
+))?((	':' 
+(
+(
+ruleXExpression
+)
+))
+    |	',' 
+))
+;
+
+
+
+
+
+
+// Rule XForLoopExpression
+ruleXForLoopExpression :
+(((((
+)	'for' 
+	'(' 
+(
+(
+ruleJvmFormalParameter
+)
+)	':' 
+))=>((
+)	'for' 
+	'(' 
+(
+(
+ruleJvmFormalParameter
+)
+)	':' 
+))(
+(
+ruleXExpression
+)
+)	')' 
 (
 (
 ruleXExpression
@@ -1293,21 +1444,36 @@ ruleXExpression
 
 
 
-// Rule XForLoopExpression
-ruleXForLoopExpression :
+// Rule XBasicForLoopExpression
+ruleXBasicForLoopExpression :
 ((
 )	'for' 
 	'(' 
+((
 (
-(
-ruleJvmFormalParameter
+ruleXExpressionOrVarDeclaration
 )
-)	':' 
+)(	',' 
+(
+(
+ruleXExpressionOrVarDeclaration
+)
+))*)?	';' 
 (
 (
 ruleXExpression
 )
-)	')' 
+)?	';' 
+((
+(
+ruleXExpression
+)
+)(	',' 
+(
+(
+ruleXExpression
+)
+))*)?	')' 
 (
 (
 ruleXExpression
@@ -1371,7 +1537,7 @@ ruleXBlockExpression :
 )	'{' 
 ((
 (
-ruleXExpressionInsideBlock
+ruleXExpressionOrVarDeclaration
 )
 )(	';' 
 )?)*	'}' 
@@ -1383,8 +1549,8 @@ ruleXExpressionInsideBlock
 
 
 
-// Rule XExpressionInsideBlock
-ruleXExpressionInsideBlock :
+// Rule XExpressionOrVarDeclaration
+ruleXExpressionOrVarDeclaration :
 (	ruleXVariableDeclaration
     |	ruleXExpression)
 ;
@@ -1605,8 +1771,18 @@ ruleJvmArgumentTypeReference
 ruleJvmArgumentTypeReference
 )
 ))*	'>' 
-)?(((	'(' 
-)=>	'(' 
+)?(((
+(
+	'(' 
+ 
+
+)
+)=>
+(
+	'(' 
+ 
+
+)
 )(((((
 )((
 (
@@ -1756,11 +1932,34 @@ ruleXExpression
 ruleXReturnExpression :
 ((
 )	'return' 
-((
-(
-ruleXExpression
-)
-)=>
+((	'extends' 
+ | 	'static' 
+ | 	'import' 
+ | 	'extension' 
+ | 	'!' 
+ | 	'-' 
+ | 	'+' 
+ | 	'new' 
+ | 	'{' 
+ | 	'switch' 
+ | 	'synchronized' 
+ | 	'<' 
+ | 	'super' 
+ | 	'#' 
+ | 	'[' 
+ | 	'false' 
+ | 	'true' 
+ | 	'null' 
+ | 	'typeof' 
+ | 	'if' 
+ | 	'for' 
+ | 	'while' 
+ | 	'do' 
+ | 	'throw' 
+ | 	'return' 
+ | 	'try' 
+ | 	'(' 
+ | 	RULE_ID | 	RULE_HEX | 	RULE_INT | 	RULE_DECIMAL | 	RULE_STRING)=>
 (
 ruleXExpression
 )
@@ -1798,6 +1997,31 @@ ruleXExpression
 ruleXExpression
 )
 ))))
+;
+
+
+
+
+
+
+// Rule XSynchronizedExpression
+ruleXSynchronizedExpression :
+(((((
+)	'synchronized' 
+	'(' 
+))=>((
+)	'synchronized' 
+	'(' 
+))(
+(
+ruleXExpression
+)
+)	')' 
+(
+(
+ruleXExpression
+)
+))
 ;
 
 
@@ -2059,11 +2283,20 @@ ruleXImportDeclaration :
 )
 )?(
 (
-		ruleQualifiedName
+		ruleQualifiedNameInStaticImport
 )
-)	'.' 
+)((
+(
 	'*' 
+ 
+
 )
+)
+    |(
+(
+ruleValidID
+)
+)))
     |(
 (
 		ruleQualifiedName
@@ -2076,6 +2309,18 @@ ruleQualifiedNameWithWildcard
 ))(	';' 
 )?)
 ;
+
+
+
+
+
+
+// Rule QualifiedNameInStaticImport
+ruleQualifiedNameInStaticImport :
+( ruleValidID
+	'.' 
+)+
+    ;
 
 
 
