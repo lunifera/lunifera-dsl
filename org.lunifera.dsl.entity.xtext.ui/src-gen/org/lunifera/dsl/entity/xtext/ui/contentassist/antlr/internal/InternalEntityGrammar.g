@@ -5309,7 +5309,7 @@ rule__Class__Group_2_0__9__Impl
 :
 (
 { before(grammarAccess.getClassAccess().getIndexesAssignment_2_0_9()); }
-(rule__Class__IndexesAssignment_2_0_9)?
+(rule__Class__IndexesAssignment_2_0_9)*
 { after(grammarAccess.getClassAccess().getIndexesAssignment_2_0_9()); }
 )
 

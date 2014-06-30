@@ -28,7 +28,6 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 
 class AnnotationExtension {
 
@@ -41,8 +40,7 @@ class AnnotationExtension {
 	/**
 	 * Creates an enum annotation value and adds it the the given annotation reference
 	 */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		Enum<?>... enums) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, Enum<?>... enums) {
 
 		// create the parameter
 		val value = typesFactory.createJvmEnumAnnotationValue
@@ -71,8 +69,7 @@ class AnnotationExtension {
 	/**
 	 * Creates an enum annotation value and adds it the the given annotation reference
 	 */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		Enum<?> enumX) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, Enum<?> enumX) {
 
 		// create the parameter
 		val value = typesFactory.createJvmEnumAnnotationValue
@@ -99,8 +96,7 @@ class AnnotationExtension {
 	/**
      * Creates a boolean annotation value and adds it the the given annotation reference
      */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		boolean booleanValue) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, boolean booleanValue) {
 
 		// create the parameter
 		val value = typesFactory.createJvmBooleanAnnotationValue
@@ -122,8 +118,7 @@ class AnnotationExtension {
 	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		String stringValue) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, String stringValue) {
 
 		// create the parameter
 		val value = typesFactory.createJvmStringAnnotationValue
@@ -141,7 +136,7 @@ class AnnotationExtension {
 
 		return value
 	}
-	
+
 	def addAnno(LAnnotationTarget target, JvmAnnotationTarget jvmType, JvmAnnotationReference anno) {
 		val annoDef = target.annotations.findFirst[annotation.annotationType == anno.annotation]
 		if (annoDef == null || !annoDef.exclude) {
@@ -152,8 +147,7 @@ class AnnotationExtension {
 	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
-	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,
-		int intValue) {
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, int intValue) {
 
 		// create the parameter
 		val value = typesFactory.createJvmIntAnnotationValue
@@ -171,7 +165,7 @@ class AnnotationExtension {
 
 		return value
 	}
-	
+
 	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
@@ -194,8 +188,8 @@ class AnnotationExtension {
 
 		return value
 	}
-	
-		/**
+
+	/**
      * Creates a string annotation value and adds it the the given annotation reference
      */
 	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name,

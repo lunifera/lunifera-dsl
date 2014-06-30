@@ -401,7 +401,7 @@ ruleClass returns [EObject current=null]
 	    }
 
 )
-)?	otherlv_20='}' 
+)*	otherlv_20='}' 
     {
     	newLeafNode(otherlv_20, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_0_10());
     }

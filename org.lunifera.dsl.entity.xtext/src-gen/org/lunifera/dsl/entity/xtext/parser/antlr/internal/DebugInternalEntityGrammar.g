@@ -23,7 +23,7 @@ ruleClass :
 		)* 'entity' ruleValidIDWithKeywords (
 			'extends' RULE_ID
 		)? '{' ruleEntityPersistenceInfo ruleEntityInheritanceStrategy?
-		ruleEntityFeature* ruleIndex? '}' |
+		ruleEntityFeature* ruleIndex* '}' |
 		'mapped superclass' (
 			'extends' RULE_ID
 		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' 'bean'

@@ -28,6 +28,7 @@ import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.Index
 import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
 import javax.persistence.JoinColumn
@@ -47,7 +48,6 @@ import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.dsl.entity.xtext.compiler.batch.SomeClass
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions
@@ -78,7 +78,6 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	@Inject extension NamingExtensions
 
 	def protected dispatch void internalProcessAnnotation(LBean bean, JvmGenericType jvmType) {
-		val SomeClass x = new SomeClass
 		bean.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 
 		bean.addAnno(jvmType, bean.toAnnotation(typeof(Embeddable)))
@@ -107,6 +106,36 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 					tableAnn.addAnnAttr(entity, "schema", schemaName)
 				}
 				tableAnn.addAnnAttr(entity, "name", entity.toTableName)
+
+				// @Index
+				//
+				val List<JvmAnnotationReference> collectedIndizes = newArrayList();
+				for (index : entity.indexes) {
+					val indexAnn = entity.toAnnotation(typeof(Index))
+					addAnno(entity, jvmType, indexAnn)
+
+					indexAnn.addAnnAttr(entity, "name", index.name)
+					if (index.unique) {
+						indexAnn.addAnnAttr(entity, "unique", true)
+					}
+
+					var StringBuilder propList = new StringBuilder;
+					for (name : index.features.map[it.name]) {
+						if (propList != null) {
+							if (propList.length > 0) {
+								propList.append(", ")
+							}
+							propList.append(name);
+						}
+					}
+					indexAnn.addAnnAttr(entity, "columnList", propList.toString)
+					collectedIndizes.add(indexAnn);
+				}
+
+				if(collectedIndizes.size > 0){
+					val JvmAnnotationReference[] result = collectedIndizes.toArray(newArrayOfSize(collectedIndizes.size));
+					tableAnn.addAnnAttr(entity, "indexes", result)
+				}
 			}
 
 			// @Inheritance
@@ -179,6 +208,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 				return DiscriminatorType::CHAR
 			case LDiscriminatorType::INTEGER:
 				return DiscriminatorType::INTEGER
+			default: {
+			}
 		}
 	}
 

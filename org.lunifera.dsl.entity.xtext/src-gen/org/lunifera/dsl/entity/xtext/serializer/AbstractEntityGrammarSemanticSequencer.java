@@ -1581,7 +1581,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *         persistenceInfo=EntityPersistenceInfo 
 	 *         inheritanceStrategy=EntityInheritanceStrategy? 
 	 *         features+=EntityFeature* 
-	 *         indexes+=Index?
+	 *         indexes+=Index*
 	 *     )
 	 */
 	protected void sequence_Class(EObject context, LEntity semanticObject) {

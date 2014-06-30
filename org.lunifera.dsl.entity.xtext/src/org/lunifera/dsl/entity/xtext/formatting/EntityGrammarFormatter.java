@@ -45,6 +45,7 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 		configureMultiplicityDef(c, f.getMultiplicityAccess());
 		configureEnumDef(c, f.getEnumAccess());
 		configureEnumLiteralDef(c, f.getEnumLiteralAccess());
+		configureIndex(c, f.getIndexAccess());
 
 		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).after(f.getSL_COMMENTRule());
@@ -126,7 +127,17 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 
 	protected void configureEnumLiteralDef(FormattingConfig c,
 			CommonGrammarGrammarAccess.EnumLiteralElements ele) {
-		
+
+	}
+
+	protected void configureIndex(FormattingConfig c,
+			EntityGrammarGrammarAccess.IndexElements ele) {
+
+		c.setLinewrap(2).around(ele.getRule());
+		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_3());
+		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_6());
+		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_3());
+		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_6());
 	}
 
 }

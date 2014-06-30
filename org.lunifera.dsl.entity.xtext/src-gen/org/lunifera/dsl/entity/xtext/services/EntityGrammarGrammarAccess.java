@@ -114,7 +114,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//	(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
 		//	cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{"
 		//	persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
-		//	indexes+=Index? "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
+		//	indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
 		//	superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}"
 		//	{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{"
 		//	features+=BeanFeature* "}");
@@ -124,7 +124,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
 		//cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{"
 		//persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
-		//indexes+=Index? "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
+		//indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
 		//superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}"
 		//{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{"
 		//features+=BeanFeature* "}")
@@ -142,7 +142,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//{entity::LEntity.annotationInfo=current} (abstract?="abstract"? & (historized?="historized" |
 		//timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? & cacheable?="cacheable"?)
 		//"entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{" persistenceInfo=EntityPersistenceInfo
-		//inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature* indexes+=Index? "}" |
+		//inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature* indexes+=Index* "}" |
 		//{entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends" superType=[entity::LEntity])?
 		//name=ValidIDWithKeywords "{" features+=EntityFeature* "}" {entity::LBean.annotationInfo=current} "bean"
 		//name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{" features+=BeanFeature* "}"
@@ -151,7 +151,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//{entity::LEntity.annotationInfo=current} (abstract?="abstract"? & (historized?="historized" |
 		//timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? & cacheable?="cacheable"?)
 		//"entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{" persistenceInfo=EntityPersistenceInfo
-		//inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature* indexes+=Index? "}"
+		//inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature* indexes+=Index* "}"
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//{entity::LEntity.annotationInfo=current}
@@ -251,7 +251,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//EntityFeature
 		public RuleCall getFeaturesEntityFeatureParserRuleCall_2_0_8_0() { return cFeaturesEntityFeatureParserRuleCall_2_0_8_0; }
 
-		//indexes+=Index?
+		//indexes+=Index*
 		public Assignment getIndexesAssignment_2_0_9() { return cIndexesAssignment_2_0_9; }
 
 		//Index
@@ -1517,7 +1517,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
 	//	cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{"
 	//	persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
-	//	indexes+=Index? "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
+	//	indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
 	//	superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}"
 	//	{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{"
 	//	features+=BeanFeature* "}");

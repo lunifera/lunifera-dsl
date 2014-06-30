@@ -40,6 +40,9 @@ public class IndexScope extends AbstractScope {
 		ModelExtensions ext = new ModelExtensions();
 		List<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 		for (LEntityFeature feature : lEntity.getAllFeatures()) {
+			if (ext.isToMany(feature) || feature.getName() == null) {
+				continue;
+			}
 			if (feature instanceof LEntityAttribute) {
 				LEntityAttribute attribute = (LEntityAttribute) feature;
 				if (attribute.getType() instanceof LDataType) {

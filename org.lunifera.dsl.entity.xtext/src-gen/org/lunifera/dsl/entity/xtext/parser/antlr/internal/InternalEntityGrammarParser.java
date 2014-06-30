@@ -369,7 +369,7 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleClass"
-    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:116:1: ruleClass returns [EObject current=null] : ( () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) ) ) ;
+    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:116:1: ruleClass returns [EObject current=null] : ( () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) ) ) ;
     public final EObject ruleClass() throws RecognitionException {
         EObject current = null;
 
@@ -420,11 +420,11 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:119:28: ( ( () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) ) ) )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:120:1: ( () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) ) )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:119:28: ( ( () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) ) ) )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:120:1: ( () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) ) )
             {
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:120:1: ( () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) ) )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:120:2: () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:120:1: ( () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) ) )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:120:2: () ( (lv_annotations_1_0= ruleAnnotationDef ) )* ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) )
             {
             // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:120:2: ()
             // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:121:5: 
@@ -492,7 +492,7 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:3: ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:3: ( ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}' ) | ( () ( (lv_mappedSuperclass_22_0= 'mapped superclass' ) ) (otherlv_23= 'extends' ( (otherlv_24= RULE_ID ) ) )? ( (lv_name_25_0= ruleValidIDWithKeywords ) ) otherlv_26= '{' ( (lv_features_27_0= ruleEntityFeature ) )* otherlv_28= '}' () otherlv_30= 'bean' ( (lv_name_31_0= ruleValidIDWithKeywords ) ) (otherlv_32= 'extends' ( (otherlv_33= RULE_ID ) ) )? otherlv_34= '{' ( (lv_features_35_0= ruleBeanFeature ) )* otherlv_36= '}' ) )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -511,10 +511,10 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
             }
             switch (alt14) {
                 case 1 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:4: ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}' )
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:4: ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}' )
                     {
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:4: ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}' )
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:5: () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )? otherlv_20= '}'
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:4: ( () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}' )
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:5: () ( ( ( ( ({...}? => ( ({...}? => ( (lv_abstract_4_0= 'abstract' ) ) ) ) ) | ({...}? => ( ({...}? => ( ( (lv_historized_5_0= 'historized' ) ) | ( ( (lv_timedependent_6_0= 'timedependent' ) ) (otherlv_7= '(' ( (lv_timedependentDateType_8_0= ruleLHistorizedDateType ) ) otherlv_9= ')' )? ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_cacheable_10_0= 'cacheable' ) ) ) ) ) )* ) ) ) otherlv_11= 'entity' ( (lv_name_12_0= ruleValidIDWithKeywords ) ) (otherlv_13= 'extends' ( (otherlv_14= RULE_ID ) ) )? otherlv_15= '{' ( (lv_persistenceInfo_16_0= ruleEntityPersistenceInfo ) ) ( (lv_inheritanceStrategy_17_0= ruleEntityInheritanceStrategy ) )? ( (lv_features_18_0= ruleEntityFeature ) )* ( (lv_indexes_19_0= ruleIndex ) )* otherlv_20= '}'
                     {
                     // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:144:5: ()
                     // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:145:5: 
@@ -1111,51 +1111,58 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:386:3: ( (lv_indexes_19_0= ruleIndex ) )?
-                    int alt9=2;
-                    int LA9_0 = input.LA(1);
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:386:3: ( (lv_indexes_19_0= ruleIndex ) )*
+                    loop9:
+                    do {
+                        int alt9=2;
+                        int LA9_0 = input.LA(1);
 
-                    if ( ((LA9_0>=25 && LA9_0<=26)) ) {
-                        alt9=1;
-                    }
-                    switch (alt9) {
-                        case 1 :
-                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:387:1: (lv_indexes_19_0= ruleIndex )
-                            {
-                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:387:1: (lv_indexes_19_0= ruleIndex )
-                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:388:3: lv_indexes_19_0= ruleIndex
-                            {
-                            if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getClassAccess().getIndexesIndexParserRuleCall_2_0_9_0()); 
-                              	    
-                            }
-                            pushFollow(FOLLOW_ruleIndex_in_ruleClass784);
-                            lv_indexes_19_0=ruleIndex();
-
-                            state._fsp--;
-                            if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getClassRule());
-                              	        }
-                                     		add(
-                                     			current, 
-                                     			"indexes",
-                                      		lv_indexes_19_0, 
-                                      		"Index");
-                              	        afterParserOrEnumRuleCall();
-                              	    
-                            }
-
-                            }
+                        if ( ((LA9_0>=25 && LA9_0<=26)) ) {
+                            alt9=1;
+                        }
 
 
-                            }
-                            break;
+                        switch (alt9) {
+                    	case 1 :
+                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:387:1: (lv_indexes_19_0= ruleIndex )
+                    	    {
+                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:387:1: (lv_indexes_19_0= ruleIndex )
+                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:388:3: lv_indexes_19_0= ruleIndex
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	      	        newCompositeNode(grammarAccess.getClassAccess().getIndexesIndexParserRuleCall_2_0_9_0()); 
+                    	      	    
+                    	    }
+                    	    pushFollow(FOLLOW_ruleIndex_in_ruleClass784);
+                    	    lv_indexes_19_0=ruleIndex();
 
-                    }
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      	        if (current==null) {
+                    	      	            current = createModelElementForParent(grammarAccess.getClassRule());
+                    	      	        }
+                    	             		add(
+                    	             			current, 
+                    	             			"indexes",
+                    	              		lv_indexes_19_0, 
+                    	              		"Index");
+                    	      	        afterParserOrEnumRuleCall();
+                    	      	    
+                    	    }
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop9;
+                        }
+                    } while (true);
 
                     otherlv_20=(Token)match(input,22,FOLLOW_22_in_ruleClass797); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -9382,11 +9389,11 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                 {
                 int LA71_1 = input.LA(2);
 
-                if ( (LA71_1==68) ) {
-                    alt71=1;
-                }
-                else if ( (LA71_1==EOF||(LA71_1>=RULE_ID && LA71_1<=RULE_DECIMAL)||(LA71_1>=16 && LA71_1<=17)||(LA71_1>=20 && LA71_1<=22)||(LA71_1>=25 && LA71_1<=26)||LA71_1==29||LA71_1==31||(LA71_1>=34 && LA71_1<=40)||LA71_1==47||(LA71_1>=54 && LA71_1<=55)||(LA71_1>=64 && LA71_1<=67)||(LA71_1>=69 && LA71_1<=100)||(LA71_1>=102 && LA71_1<=125)) ) {
+                if ( (LA71_1==EOF||(LA71_1>=RULE_ID && LA71_1<=RULE_DECIMAL)||(LA71_1>=16 && LA71_1<=17)||(LA71_1>=20 && LA71_1<=22)||(LA71_1>=25 && LA71_1<=26)||LA71_1==29||LA71_1==31||(LA71_1>=34 && LA71_1<=40)||LA71_1==47||(LA71_1>=54 && LA71_1<=55)||(LA71_1>=64 && LA71_1<=67)||(LA71_1>=69 && LA71_1<=100)||(LA71_1>=102 && LA71_1<=125)) ) {
                     alt71=2;
+                }
+                else if ( (LA71_1==68) ) {
+                    alt71=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -11551,11 +11558,11 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                 {
                 int LA79_2 = input.LA(2);
 
-                if ( (LA79_2==68) ) {
-                    alt79=2;
-                }
-                else if ( (LA79_2==EOF||(LA79_2>=RULE_ID && LA79_2<=RULE_DECIMAL)||LA79_2==16||(LA79_2>=20 && LA79_2<=21)||LA79_2==47||LA79_2==64||LA79_2==69||LA79_2==75||(LA79_2>=90 && LA79_2<=91)||LA79_2==95||LA79_2==102||LA79_2==104||(LA79_2>=108 && LA79_2<=110)||(LA79_2>=112 && LA79_2<=122)||LA79_2==124) ) {
+                if ( (LA79_2==EOF||(LA79_2>=RULE_ID && LA79_2<=RULE_DECIMAL)||LA79_2==16||(LA79_2>=20 && LA79_2<=21)||LA79_2==47||LA79_2==64||LA79_2==69||LA79_2==75||(LA79_2>=90 && LA79_2<=91)||LA79_2==95||LA79_2==102||LA79_2==104||(LA79_2>=108 && LA79_2<=110)||(LA79_2>=112 && LA79_2<=122)||LA79_2==124) ) {
                     alt79=4;
+                }
+                else if ( (LA79_2==68) ) {
+                    alt79=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -29261,7 +29268,7 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
     static final String DFA70_acceptS =
         "\10\uffff\1\2\1\1";
     static final String DFA70_specialS =
-        "\1\uffff\1\6\1\4\1\5\1\1\1\2\1\3\1\0\2\uffff}>";
+        "\1\uffff\1\4\1\5\1\1\1\2\1\0\1\3\1\6\2\uffff}>";
     static final String[] DFA70_transitionS = {
             "\5\10\7\uffff\2\10\2\uffff\3\10\2\uffff\2\10\2\uffff\1\10\1"+
             "\uffff\1\10\2\uffff\7\10\6\uffff\1\10\6\uffff\2\10\10\uffff"+
@@ -29315,36 +29322,6 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA70_7 = input.LA(1);
-
-                         
-                        int index70_7 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred8_InternalEntityGrammar()) ) {s = 9;}
-
-                        else if ( (true) ) {s = 8;}
-
-                         
-                        input.seek(index70_7);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA70_4 = input.LA(1);
-
-                         
-                        int index70_4 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred8_InternalEntityGrammar()) ) {s = 9;}
-
-                        else if ( (true) ) {s = 8;}
-
-                         
-                        input.seek(index70_4);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA70_5 = input.LA(1);
 
                          
@@ -29357,6 +29334,36 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index70_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA70_3 = input.LA(1);
+
+                         
+                        int index70_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred8_InternalEntityGrammar()) ) {s = 9;}
+
+                        else if ( (true) ) {s = 8;}
+
+                         
+                        input.seek(index70_3);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA70_4 = input.LA(1);
+
+                         
+                        int index70_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred8_InternalEntityGrammar()) ) {s = 9;}
+
+                        else if ( (true) ) {s = 8;}
+
+                         
+                        input.seek(index70_4);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
@@ -29375,6 +29382,21 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
+                        int LA70_1 = input.LA(1);
+
+                         
+                        int index70_1 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred8_InternalEntityGrammar()) ) {s = 9;}
+
+                        else if ( (true) ) {s = 8;}
+
+                         
+                        input.seek(index70_1);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
                         int LA70_2 = input.LA(1);
 
                          
@@ -29389,26 +29411,11 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                         input.seek(index70_2);
                         if ( s>=0 ) return s;
                         break;
-                    case 5 : 
-                        int LA70_3 = input.LA(1);
-
-                         
-                        int index70_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred8_InternalEntityGrammar()) ) {s = 9;}
-
-                        else if ( (true) ) {s = 8;}
-
-                         
-                        input.seek(index70_3);
-                        if ( s>=0 ) return s;
-                        break;
                     case 6 : 
-                        int LA70_1 = input.LA(1);
+                        int LA70_7 = input.LA(1);
 
                          
-                        int index70_1 = input.index();
+                        int index70_7 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred8_InternalEntityGrammar()) ) {s = 9;}
@@ -29416,7 +29423,7 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 8;}
 
                          
-                        input.seek(index70_1);
+                        input.seek(index70_7);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -29438,7 +29445,7 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
     static final String DFA80_acceptS =
         "\1\uffff\1\2\10\uffff\1\1";
     static final String DFA80_specialS =
-        "\2\uffff\1\1\1\7\1\4\1\2\1\0\1\6\1\5\1\3\1\uffff}>";
+        "\2\uffff\1\6\1\5\1\4\1\3\1\1\1\7\1\0\1\2\1\uffff}>";
     static final String[] DFA80_transitionS = {
             "\5\1\7\uffff\2\1\2\uffff\3\1\2\uffff\2\1\2\uffff\1\1\1\uffff"+
             "\1\1\2\uffff\7\1\6\uffff\1\1\6\uffff\2\1\10\uffff\1\1\1\6\2"+
@@ -29493,6 +29500,21 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA80_8 = input.LA(1);
+
+                         
+                        int index80_8 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalEntityGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index80_8);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
                         int LA80_6 = input.LA(1);
 
                          
@@ -29507,37 +29529,7 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                         input.seek(index80_6);
                         if ( s>=0 ) return s;
                         break;
-                    case 1 : 
-                        int LA80_2 = input.LA(1);
-
-                         
-                        int index80_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalEntityGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index80_2);
-                        if ( s>=0 ) return s;
-                        break;
                     case 2 : 
-                        int LA80_5 = input.LA(1);
-
-                         
-                        int index80_5 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalEntityGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index80_5);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
                         int LA80_9 = input.LA(1);
 
                          
@@ -29550,6 +29542,21 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index80_9);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA80_5 = input.LA(1);
+
+                         
+                        int index80_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalEntityGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index80_5);
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
@@ -29568,36 +29575,6 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA80_8 = input.LA(1);
-
-                         
-                        int index80_8 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalEntityGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index80_8);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA80_7 = input.LA(1);
-
-                         
-                        int index80_7 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalEntityGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index80_7);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
                         int LA80_3 = input.LA(1);
 
                          
@@ -29610,6 +29587,36 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index80_3);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA80_2 = input.LA(1);
+
+                         
+                        int index80_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalEntityGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index80_2);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA80_7 = input.LA(1);
+
+                         
+                        int index80_7 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalEntityGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index80_7);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -32712,7 +32719,7 @@ public class InternalEntityGrammarParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleEntityPersistenceInfo_in_ruleClass719 = new BitSet(new long[]{0x000022FC86CCE000L,0x0000000000000008L});
     public static final BitSet FOLLOW_ruleEntityInheritanceStrategy_in_ruleClass740 = new BitSet(new long[]{0x000000FC86CCE000L,0x0000000000000008L});
     public static final BitSet FOLLOW_ruleEntityFeature_in_ruleClass762 = new BitSet(new long[]{0x000000FC86CCE000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_ruleIndex_in_ruleClass784 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_ruleIndex_in_ruleClass784 = new BitSet(new long[]{0x0000000006400000L});
     public static final BitSet FOLLOW_22_in_ruleClass797 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_23_in_ruleClass832 = new BitSet(new long[]{0xFF00005400100010L});
     public static final BitSet FOLLOW_20_in_ruleClass858 = new BitSet(new long[]{0x0000000000000010L});
