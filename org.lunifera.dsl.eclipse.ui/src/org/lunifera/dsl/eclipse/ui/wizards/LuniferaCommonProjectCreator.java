@@ -32,9 +32,9 @@ import com.google.inject.Provider;
 
 public class LuniferaCommonProjectCreator extends AbstractPluginProjectCreator {
 
-	protected static final String SRC_ROOT = "src";
-	protected static final String SRC_GEN_ROOT = "src-gen";
-	protected final List<String> SRC_FOLDER_LIST = ImmutableList.of(SRC_ROOT,
+	private static final String SRC_ROOT = "src";
+	private static final String SRC_GEN_ROOT = "src-gen";
+	private final List<String> SRC_FOLDER_LIST = ImmutableList.of(SRC_ROOT,
 			SRC_GEN_ROOT);
 
 	@Inject

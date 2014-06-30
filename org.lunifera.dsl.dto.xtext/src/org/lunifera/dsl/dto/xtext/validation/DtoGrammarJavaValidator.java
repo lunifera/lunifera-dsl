@@ -42,15 +42,15 @@ public class DtoGrammarJavaValidator extends
 	private static final String CODE__CASCADE_DIRECTION_INVALID = "106";
 	private static final String CODE__OPPOSITE_WITHOUT_CASCADE = "107";
 	private static final String CODE__UUID_WRONG_TYPE = "108";
-	private static final String CODE__MISSING_ID = "109";
+
 	private static final String CODE__DUPLICATE_ID = "110";
 	private static final String CODE__DUPLICATE_VERSION = "111";
 	private static final String CODE__DUPLICATE_PROPERTY_NAME = "112";
 
 	@Inject
-	IQualifiedNameProvider qnp;
+	private IQualifiedNameProvider qnp;
 	@Inject
-	DtoModelExtensions extensions;
+	private DtoModelExtensions extensions;
 
 	@Check
 	public void checkDatatype_asPrimitive(LDataType dt) {
@@ -205,8 +205,7 @@ public class DtoGrammarJavaValidator extends
 		}
 		// ??
 		if (idCounter == 0) {
-			// warning("A DTO should have an ID property",
-			// LunDtoPackage.Literals.LDTO__FEATURES, CODE__MISSING_ID);
+			
 		} else
 		// ??
 		if (idCounter > 1) {

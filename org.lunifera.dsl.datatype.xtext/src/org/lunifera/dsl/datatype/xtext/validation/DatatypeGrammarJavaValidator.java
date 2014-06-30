@@ -17,10 +17,6 @@ package org.lunifera.dsl.datatype.xtext.validation;
  */
 public class DatatypeGrammarJavaValidator extends org.lunifera.dsl.datatype.xtext.validation.AbstractDatatypeGrammarJavaValidator {
 
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital", MyDslPackage.Literals.GREETING__NAME);
-//		}
-//	}
+
+
 }

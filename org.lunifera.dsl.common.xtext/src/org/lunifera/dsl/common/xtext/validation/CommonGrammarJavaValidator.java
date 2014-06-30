@@ -54,15 +54,15 @@ public class CommonGrammarJavaValidator
 	public static final String CODE__DUPLICATE_LDATATYPE_IN_PACKAGE = "0_106";
 
 	@Inject
-	IQualifiedNameProvider qnp;
+	private IQualifiedNameProvider qnp;
 	@Inject
-	ModelExtensions extensions;
+	private ModelExtensions extensions;
 	@Inject
-	NamesAreUniqueValidator uniqueValidator;
+	private NamesAreUniqueValidator uniqueValidator;
 	@Inject
-	IContainer.Manager containermanager;
+	private IContainer.Manager containermanager;
 	@Inject
-	ResourceDescriptionsProvider resourceDescriptionsProvider;
+	private ResourceDescriptionsProvider resourceDescriptionsProvider;
 
 	public static final Set<String> javakeywords = new HashSet<String>();
 	static {

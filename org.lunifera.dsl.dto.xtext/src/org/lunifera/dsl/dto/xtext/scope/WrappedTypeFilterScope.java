@@ -33,9 +33,9 @@ public class WrappedTypeFilterScope extends AbstractScope {
 		for (IEObjectDescription desc : scope.getAllElements()) {
 			LType type = (LType) desc.getEObjectOrProxy();
 			if (type instanceof LEntity || type instanceof LBean) {
-//				if (!(desc instanceof AliasedEObjectDescription)) {
+
 					result.add(desc);
-//				}
+
 			}
 		}
 

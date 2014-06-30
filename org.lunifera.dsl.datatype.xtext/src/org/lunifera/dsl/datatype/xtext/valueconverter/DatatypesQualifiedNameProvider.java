@@ -20,10 +20,9 @@ import com.google.inject.Inject;
 
 public class DatatypesQualifiedNameProvider extends CommonQualifiedNameProvider {
 
+	
 	@Inject
-	private IQualifiedNameConverter qualifiedNameConverter;
-	@Inject
-	ModelExtensions extensions;
+	private ModelExtensions extensions;
 
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {

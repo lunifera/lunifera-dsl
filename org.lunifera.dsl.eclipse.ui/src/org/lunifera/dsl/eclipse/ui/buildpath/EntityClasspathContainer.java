@@ -78,15 +78,7 @@ final public class EntityClasspathContainer implements IClasspathContainer {
 			IPath sourceBundlePath = calculateSourceBundlePath(bundle,
 					bundlePath);
 			IClasspathAttribute[] extraAttributes = null;
-			// if (EntityClasspathContainer.XTEXT_XBASE_LIB_BUNDLE_ID
-			// .equals(bundleId)
-			// || EntityClasspathContainer.XTEND_LIB_BUNDLE_ID
-			// .equals(bundleId)) {
-			// extraAttributes = new IClasspathAttribute[] { JavaCore
-			// .newClasspathAttribute(
-			// IClasspathAttribute.JAVADOC_LOCATION_ATTRIBUTE_NAME,
-			// calculateJavadocURL()) };
-			// }
+			
 			cpEntries.add(JavaCore.newLibraryEntry(bundlePath,
 					sourceBundlePath, null, new IAccessRule[] {},
 					extraAttributes, false));

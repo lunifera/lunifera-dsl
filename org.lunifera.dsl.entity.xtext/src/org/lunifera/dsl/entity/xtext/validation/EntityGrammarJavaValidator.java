@@ -78,15 +78,15 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__TIMEDEPENDENT_IN_SUBCLASS = "118";
 
 	@Inject
-	IQualifiedNameProvider qnp;
+	private IQualifiedNameProvider qnp;
 	@Inject
-	ModelExtensions extensions;
+	private ModelExtensions extensions;
 	@Inject
-	NamesAreUniqueValidator uniqueValidator;
+	private NamesAreUniqueValidator uniqueValidator;
 	@Inject
-	IContainer.Manager containermanager;
+	private IContainer.Manager containermanager;
 	@Inject
-	ResourceDescriptionsProvider resourceDescriptionsProvider;
+	private ResourceDescriptionsProvider resourceDescriptionsProvider;
 
 	@Check
 	public void checkDatatype_asPrimitive(LDataType dt) {

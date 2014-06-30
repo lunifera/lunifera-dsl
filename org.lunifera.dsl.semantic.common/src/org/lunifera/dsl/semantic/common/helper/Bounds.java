@@ -45,14 +45,7 @@ public class Bounds {
 		LLowerBound lower = LLowerBound.ZERO;
 		LUpperBound upper = LUpperBound.ONE;
 
-		// // Set the defaults by type.
-		// if (prop.getType() instanceof LScalarType) {
-		// } else if (prop.getType() instanceof LClass) {
-		// // ###
-		// } else {
-		// throw new IllegalArgumentException("Unsupported type " +
-		// prop.getType() + " of " + prop);
-		// }
+		
 
 		if (lb != null) {
 			if (ub != null && ub != LUpperBound.NULL) {

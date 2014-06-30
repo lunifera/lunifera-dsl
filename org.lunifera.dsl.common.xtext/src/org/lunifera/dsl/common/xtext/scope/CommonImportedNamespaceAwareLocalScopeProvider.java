@@ -28,9 +28,9 @@ public class CommonImportedNamespaceAwareLocalScopeProvider extends
 		ImportedNamespaceAwareLocalScopeProvider {
 
 	@Inject
-	IQualifiedNameConverter qualifiedNameConverter;
+	private IQualifiedNameConverter qualifiedNameConverter;
 	@Inject
-	ModelExtensions extensions;
+	private ModelExtensions extensions;
 
 	@Override
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {

@@ -27,93 +27,14 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class EntityGrammarProposalProvider extends
 		AbstractEntityGrammarProposalProvider {
-	@Inject
-	private IScopeProvider entityScopeProvider;
-	@Inject
-	private IQualifiedNameConverter qualifiedNameConverter;
-	@Inject
-	private QualifiedNameValueConverter qualifiedNameValueConverter;
+	
 	@Inject
 	private EntityGrammarGrammarAccess xcoreGrammarAccess;
-	@Inject
-	private JdtVariableCompletions completions;
+	
 
 	protected boolean isKeywordWorthyToPropose(Keyword keyword) {
 		return true;
 	}
 
-	// @Override
-	// public void completeEntityMember_Opposite(EObject model,
-	// Assignment assignment, ContentAssistContext context,
-	// ICompletionProposalAcceptor acceptor) {
-	// if (model instanceof LContains) {
-	// final IReplacementTextApplier textApplier = new
-	// OppositeReplacementTextApplier(
-	// (LContains) model, context.getViewer(),
-	// entityScopeProvider.getScope(model,
-	// EntitymodelPackage.Literals.LCONTAINS__OPPOSITE),
-	// qualifiedNameConverter, qualifiedNameValueConverter);
-	// ICompletionProposalAcceptor oppositeAware = new
-	// ICompletionProposalAcceptor.Delegate(
-	// acceptor) {
-	// @Override
-	// public void accept(ICompletionProposal proposal) {
-	// if (proposal instanceof ConfigurableCompletionProposal
-	// && textApplier != null) {
-	// ((ConfigurableCompletionProposal) proposal)
-	// .setTextApplier(textApplier);
-	// }
-	// super.accept(proposal);
-	// }
-	// };
-	// super.completeEntityMember_Opposite(model, assignment, context,
-	// oppositeAware);
-	// } else if (model instanceof LContainer) {
-	// IScope scope = entityScopeProvider.getScope(model,
-	// EntitymodelPackage.Literals.LCONTAINER__OPPOSITE);
-	//
-	// final IReplacementTextApplier textApplier = new
-	// OppositeReplacementTextApplier(
-	// (LContainer) model, context.getViewer(), scope,
-	// qualifiedNameConverter, qualifiedNameValueConverter);
-	// ICompletionProposalAcceptor oppositeAware = new
-	// ICompletionProposalAcceptor.Delegate(
-	// acceptor) {
-	// @Override
-	// public void accept(ICompletionProposal proposal) {
-	// if (proposal instanceof ConfigurableCompletionProposal
-	// && textApplier != null) {
-	// ((ConfigurableCompletionProposal) proposal)
-	// .setTextApplier(textApplier);
-	// }
-	// super.accept(proposal);
-	// }
-	// };
-	// super.completeEntityMember_Opposite(model, assignment, context,
-	// oppositeAware);
-	// } else if (model instanceof LRefers) {
-	// IScope scope = entityScopeProvider.getScope(model,
-	// EntitymodelPackage.Literals.LREFERS__OPPOSITE);
-	// final IReplacementTextApplier textApplier = new
-	// OppositeReplacementTextApplier(
-	// (LRefers) model, context.getViewer(), scope,
-	// qualifiedNameConverter, qualifiedNameValueConverter);
-	// ICompletionProposalAcceptor oppositeAware = new
-	// ICompletionProposalAcceptor.Delegate(
-	// acceptor) {
-	// @Override
-	// public void accept(ICompletionProposal proposal) {
-	// if (proposal instanceof ConfigurableCompletionProposal
-	// && textApplier != null) {
-	// ((ConfigurableCompletionProposal) proposal)
-	// .setTextApplier(textApplier);
-	// }
-	// super.accept(proposal);
-	// }
-	// };
-	// super.completeEntityMember_Opposite(model, assignment, context,
-	// oppositeAware);
-	// }
-	// }
-	//
+	
 }

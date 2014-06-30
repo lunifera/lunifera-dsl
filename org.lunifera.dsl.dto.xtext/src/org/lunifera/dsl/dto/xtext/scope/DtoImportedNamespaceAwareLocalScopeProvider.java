@@ -24,9 +24,9 @@ public class DtoImportedNamespaceAwareLocalScopeProvider extends
 		CommonImportedNamespaceAwareLocalScopeProvider {
 
 	@Inject
-	IQualifiedNameConverter qualifiedNameConverter;
+	private IQualifiedNameConverter qualifiedNameConverter;
 	@Inject
-	DtoModelExtensions extensions;
+	private DtoModelExtensions extensions;
 
 	@Override
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {

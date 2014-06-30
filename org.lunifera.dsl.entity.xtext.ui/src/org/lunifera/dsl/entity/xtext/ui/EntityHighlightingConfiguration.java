@@ -76,7 +76,7 @@ public class EntityHighlightingConfiguration implements
 
 	public TextStyle errorTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
-		// textStyle.setColor(new RGB(255, 0, 0));
+		
 		return textStyle;
 	}
 

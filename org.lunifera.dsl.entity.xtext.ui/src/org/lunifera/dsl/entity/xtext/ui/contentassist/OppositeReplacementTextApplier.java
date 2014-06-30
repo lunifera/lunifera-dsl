@@ -18,43 +18,17 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 
 public class OppositeReplacementTextApplier extends ReplacementTextApplier {
-	// protected LProperty refProp;
+	
 
-	protected ITextViewer viewer;
+	private ITextViewer viewer;
 
-	protected IScope scope;
+	private IScope scope;
 
-	protected IQualifiedNameConverter qualifiedNameConverter;
+	private IQualifiedNameConverter qualifiedNameConverter;
 
-	protected IValueConverter<String> qualifiedNameValueConverter;
+	private IValueConverter<String> qualifiedNameValueConverter;
 
-	// public OppositeReplacementTextApplier(LProperty refProp,
-	// ITextViewer viewer, IScope scope,
-	// IQualifiedNameConverter qualifiedNameConverter,
-	// IValueConverter<String> qualifiedNameValueConverter) {
-	// this.refProp = refProp;
-	// this.viewer = viewer;
-	// this.scope = scope;
-	// this.qualifiedNameConverter = qualifiedNameConverter;
-	// this.qualifiedNameValueConverter = qualifiedNameValueConverter;
-	// }
-	//
-	// @Override
-	// public void apply(IDocument document,
-	// ConfigurableCompletionProposal proposal)
-	// throws BadLocationException {
-	// String replacementString = getActualReplacementString(proposal);
-	// proposal.setCursorPosition(replacementString.length());
-	// int replacementOffset = proposal.getReplacementOffset();
-	//
-	// // IEObjectDescription oppositeDescription = scope
-	// // .getSingleElement(qualifiedNameConverter
-	// // .toQualifiedName(qualifiedNameValueConverter.toValue(
-	// // replacementString, null)));
-	// // EObject opposite = oppositeDescription.getEObjectOrProxy();
-	// document.replace(replacementOffset, proposal.getReplacementLength(),
-	// replacementString);
-	// }
+	
 
 	@Override
 	public String getActualReplacementString(

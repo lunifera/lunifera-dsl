@@ -113,13 +113,13 @@ public class EntityGrammarBatchCompiler {
 		}
 	};
 
-	protected Provider<ResourceSet> resourceSetProvider;
+	private Provider<ResourceSet> resourceSetProvider;
 	@Inject
-	protected Provider<JavaIoFileSystemAccess> javaIoFileSystemAccessProvider;
+	private Provider<JavaIoFileSystemAccess> javaIoFileSystemAccessProvider;
 	@Inject
-	protected FileExtensionProvider fileExtensionProvider;
+	private FileExtensionProvider fileExtensionProvider;
 	@Inject
-	protected Provider<ResourceSetBasedResourceDescriptions> resourceSetDescriptionsProvider;
+	private Provider<ResourceSetBasedResourceDescriptions> resourceSetDescriptionsProvider;
 	@Inject
 	private JvmModelGenerator generator;
 	@Inject
@@ -139,20 +139,20 @@ public class EntityGrammarBatchCompiler {
 	@Inject
 	private IStubGenerator stubGenerator;
 
-	protected Writer outputWriter;
-	protected Writer errorWriter;
-	protected String sourcePath;
-	protected String classPath;
-	protected boolean useCurrentClassLoaderAsParent;
-	protected String outputPath;
-	protected String fileEncoding;
-	protected String complianceLevel = "1.5";
-	protected boolean verbose = false;
-	protected String tempDirectory = System.getProperty("java.io.tmpdir");
-	protected boolean deleteTempDirectory = true;
-	protected List<File> tempFolders = Lists.newArrayList();
-	protected boolean writeTraceFiles = true;
-	protected ClassLoader currentClassLoader = getClass().getClassLoader();
+	private Writer outputWriter;
+	private Writer errorWriter;
+	private String sourcePath;
+	private String classPath;
+	private boolean useCurrentClassLoaderAsParent;
+	private String outputPath;
+	private String fileEncoding;
+	private String complianceLevel = "1.5";
+	private boolean verbose = false;
+	private String tempDirectory = System.getProperty("java.io.tmpdir");
+	private boolean deleteTempDirectory = true;
+	private List<File> tempFolders = Lists.newArrayList();
+	private boolean writeTraceFiles = true;
+	private ClassLoader currentClassLoader = getClass().getClassLoader();
 
 	public void setCurrentClassLoader(ClassLoader currentClassLoader) {
 		this.currentClassLoader = currentClassLoader;
@@ -651,8 +651,7 @@ public class EntityGrammarBatchCompiler {
 			}
 			JvmDeclaredType jvmGenericType = (JvmDeclaredType) eObjectDescription
 					.getEObjectOrProxy();
-			// JvmDeclaredType jvmGenericType =
-			// entityGrammarJvmAssociations.getInferredType(entityGrammarType);
+			
 			CharSequence generatedType = generator.generateType(jvmGenericType,
 					generatorConfigprovider.get(jvmGenericType));
 			QualifiedName qualifiedName = qualifiedNameProvider

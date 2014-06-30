@@ -126,9 +126,7 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 
 	protected void configureEnumLiteralDef(FormattingConfig c,
 			CommonGrammarGrammarAccess.EnumLiteralElements ele) {
-		// c.setLinewrap().around(ele.getRule());
-		// c.setLinewrap(1).after(ele.getRule());
-
+		
 	}
 
 }

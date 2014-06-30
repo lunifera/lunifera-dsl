@@ -145,17 +145,7 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 		return images.forCascading(JvmVisibility.PUBLIC);
 	}
 
-	// public Image image(LRefers element) {
-	// return images.forRefers();
-	// }
-	//
-	// public Image image(LContains element) {
-	// return images.forContains();
-	// }
-	//
-	// public Image image(LContainer element) {
-	// return images.forContainer();
-	// }
+	
 
 	public ImageDescriptor image(JvmParameterizedTypeReference typeRef) {
 		return images.forTypeParameter(0);
@@ -193,44 +183,7 @@ public class EntityGrammarLabelProvider extends XbaseLabelProvider {
 		return element.getName();
 	}
 
-	// public String text(LRefers element) {
-	// JvmField inferredField = getFirstOrNull(
-	// associations.getJvmElements(element), JvmField.class);
-	// if (inferredField != null) {
-	// JvmTypeReference type = inferredField.getType();
-	// if (type != null) {
-	// return element.getName() + " : " + type.getSimpleName()
-	// + " [refers]";
-	// }
-	// }
-	// return element.getName();
-	// }
-	//
-	// public String text(LContains element) {
-	// JvmField inferredField = getFirstOrNull(
-	// associations.getJvmElements(element), JvmField.class);
-	// if (inferredField != null) {
-	// JvmTypeReference type = inferredField.getType();
-	// if (type != null) {
-	// return element.getName() + " : " + type.getSimpleName()
-	// + " [contains]";
-	// }
-	// }
-	// return element.getName();
-	// }
-	//
-	// public String text(LContainer element) {
-	// JvmField inferredField = getFirstOrNull(
-	// associations.getJvmElements(element), JvmField.class);
-	// if (inferredField != null) {
-	// JvmTypeReference type = inferredField.getType();
-	// if (type != null) {
-	// return element.getName() + " : " + type.getSimpleName()
-	// + " [container]";
-	// }
-	// }
-	// return element.getName();
-	// }
+	
 
 	public String text(JvmParameterizedTypeReference typeRef) {
 		return typeRef.getType().getSimpleName();

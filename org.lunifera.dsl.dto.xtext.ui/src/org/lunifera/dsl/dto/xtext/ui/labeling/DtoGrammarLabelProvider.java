@@ -120,15 +120,7 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 		}
 	}
 
-	// public ImageDescriptor image(LDtoMapper element) {
-	// if (!element.getisCascading()) {
-	// JvmField inferredField = getFirstOrNull(
-	// associations.getJvmElements(element), JvmField.class);
-	// return images.forField(inferredField.getVisibility(), 0);
-	// } else {
-	// return images.forCascading(JvmVisibility.PUBLIC);
-	// }
-	// }
+	
 
 	public ImageDescriptor image(LDataType element) {
 		return images.forDatatype();
