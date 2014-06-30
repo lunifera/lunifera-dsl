@@ -29,11 +29,9 @@ import org.lunifera.dsl.semantic.entity.LIndex;
 public class IndexScope extends AbstractScope {
 
 	private final LEntity lEntity;
-	private final LIndex lIndex;
 
 	public IndexScope(final LIndex lIndex) {
 		super(IScope.NULLSCOPE, true);
-		this.lIndex = lIndex;
 		this.lEntity = (LEntity) lIndex.eContainer();
 	}
 

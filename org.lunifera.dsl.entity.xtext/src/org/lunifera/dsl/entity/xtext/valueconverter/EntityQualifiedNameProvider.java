@@ -29,7 +29,6 @@ import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 
 import com.google.inject.Inject;
 
-@SuppressWarnings("restriction")
 public class EntityQualifiedNameProvider extends CommonQualifiedNameProvider {
 
 	@Inject
@@ -72,11 +71,7 @@ public class EntityQualifiedNameProvider extends CommonQualifiedNameProvider {
 			return prop.getName() != null ? qualifiedNameConverter
 					.toQualifiedName(prop.getName()) : null;
 		} else if (obj instanceof LDataType) {
-			// LDataType dtd = (LDataType) obj;
-			// if(dtd.getName() == null){
-			// return QualifiedName.create();
-			// }
-			// return qualifiedNameConverter.toQualifiedName(dtd.getName());
+
 		} else if (obj instanceof LAnnotationDef) {
 			return super.getFullyQualifiedName(((LAnnotationDef) obj)
 					.getAnnotation());
