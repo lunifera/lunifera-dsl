@@ -94,8 +94,8 @@
 						<configuration>
 							<newVersion>${next-release}</newVersion>
 							<artifacts>org.lunifera.dsl,
-								org.lunifera.xtext.dsl.parent,
-								org.lunifera.xtext.dsl.p2
+								org.lunifera.dsl.parent,
+								org.lunifera.dsl.p2
 							</artifacts>
 						</configuration>
 					</plugin>
@@ -236,4 +236,5 @@
 			</modules>
 		</profile>
 	</profiles>
+<version>0.7.0</version>
 </project>

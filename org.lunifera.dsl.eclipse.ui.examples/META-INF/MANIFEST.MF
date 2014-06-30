@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Lunifera Eclipse UI Plugin
 Bundle-SymbolicName: org.lunifera.dsl.eclipse.ui.examples;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.7.0
 Bundle-Vendor: Lunifera.org
 Require-Bundle: org.eclipse.ui;bundle-version="3.105.0",
  org.eclipse.core.resources;bundle-version="3.8.100",

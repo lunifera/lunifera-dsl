@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.datatype.xtext.ui
 Bundle-Vendor: My Company
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.7.0
 Bundle-SymbolicName: org.lunifera.dsl.datatype.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.6.0,2.7.0)",
@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.6.0,2.7.0)",
  org.lunifera.dsl.common.xtext.ui;bundle-version="0.0.1"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.lunifera.dsl.datatype.xtext.ui.quickfix,
- org.lunifera.dsl.datatype.xtext.ui.contentassist,
- org.lunifera.dsl.datatype.xtext.ui.contentassist.antlr
+Export-Package: org.lunifera.dsl.datatype.xtext.ui.quickfix,org.lunife
+ ra.dsl.datatype.xtext.ui.contentassist,org.lunifera.dsl.datatype.xtex
+ t.ui.contentassist.antlr
 Bundle-Activator: org.lunifera.dsl.datatype.xtext.ui.internal.DatatypeGrammarActivator

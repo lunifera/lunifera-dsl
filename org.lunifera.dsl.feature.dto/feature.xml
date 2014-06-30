@@ -2,7 +2,7 @@
 <feature
       id="org.lunifera.dsl.feature.dto"
       label="%featureName"
-      version="0.0.1.qualifier"
+      version="0.7.0"
       provider-name="%providerName"
       plugin="org.lunifera.dsl.entity.xtext.ui">
 

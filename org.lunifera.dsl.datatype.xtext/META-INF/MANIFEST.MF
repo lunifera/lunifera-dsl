@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.datatype.xtext
 Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.7.0
 Bundle-SymbolicName: org.lunifera.dsl.datatype.xtext; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.0,2.7.0)";visibility:=reexport,
@@ -30,11 +30,9 @@ Import-Package: javax.persistence;version="2.1.0",
  org.apache.commons.logging,
  org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.lunifera.dsl.datatype.xtext,
- org.lunifera.dsl.datatype.xtext.jvmmodel,
- org.lunifera.dsl.datatype.xtext.parser.antlr,
- org.lunifera.dsl.datatype.xtext.parser.antlr.internal,
- org.lunifera.dsl.datatype.xtext.serializer,
- org.lunifera.dsl.datatype.xtext.services,
- org.lunifera.dsl.datatype.xtext.validation,
- org.lunifera.dsl.datatype.xtext.valueconverter
+Export-Package: org.lunifera.dsl.datatype.xtext,org.lunifera.dsl.datat
+ ype.xtext.jvmmodel,org.lunifera.dsl.datatype.xtext.parser.antlr,org.l
+ unifera.dsl.datatype.xtext.parser.antlr.internal,org.lunifera.dsl.dat
+ atype.xtext.serializer,org.lunifera.dsl.datatype.xtext.services,org.l
+ unifera.dsl.datatype.xtext.validation,org.lunifera.dsl.datatype.xtext
+ .valueconverter

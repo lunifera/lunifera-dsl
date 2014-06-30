@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.entity.xtext
 Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.7.0
 Bundle-SymbolicName: org.lunifera.dsl.entity.xtext;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.0,2.7.0)";visibility:=reexport,
@@ -31,18 +31,16 @@ Import-Package: javax.persistence;version="2.1.0",
  org.apache.commons.logging,
  org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.lunifera.dsl.entity.xtext;x-internal:=true,
- org.lunifera.dsl.entity.xtext.compiler.batch;x-internal:=true,
- org.lunifera.dsl.entity.xtext.extensions;x-internal:=true,
- org.lunifera.dsl.entity.xtext.formatting;x-internal:=true,
- org.lunifera.dsl.entity.xtext.jvmmodel;x-internal:=true,
- org.lunifera.dsl.entity.xtext.linker,
- org.lunifera.dsl.entity.xtext.parser.antlr;x-internal:=true,
- org.lunifera.dsl.entity.xtext.parser.antlr.internal;x-internal:=true,
- org.lunifera.dsl.entity.xtext.scope;x-internal:=true,
- org.lunifera.dsl.entity.xtext.serializer;x-internal:=true,
- org.lunifera.dsl.entity.xtext.services;x-internal:=true,
- org.lunifera.dsl.entity.xtext.util;x-internal:=true,
- org.lunifera.dsl.entity.xtext.validation;x-internal:=true,
- org.lunifera.dsl.entity.xtext.valueconverter;x-internal:=true
+Export-Package: org.lunifera.dsl.entity.xtext;x-internal:=true,org.lun
+ ifera.dsl.entity.xtext.compiler.batch;x-internal:=true,org.lunifera.d
+ sl.entity.xtext.extensions;x-internal:=true,org.lunifera.dsl.entity.x
+ text.formatting;x-internal:=true,org.lunifera.dsl.entity.xtext.jvmmod
+ el;x-internal:=true,org.lunifera.dsl.entity.xtext.linker,org.lunifera
+ .dsl.entity.xtext.parser.antlr;x-internal:=true,org.lunifera.dsl.enti
+ ty.xtext.parser.antlr.internal;x-internal:=true,org.lunifera.dsl.enti
+ ty.xtext.scope;x-internal:=true,org.lunifera.dsl.entity.xtext.seriali
+ zer;x-internal:=true,org.lunifera.dsl.entity.xtext.services;x-interna
+ l:=true,org.lunifera.dsl.entity.xtext.util;x-internal:=true,org.lunif
+ era.dsl.entity.xtext.validation;x-internal:=true,org.lunifera.dsl.ent
+ ity.xtext.valueconverter;x-internal:=true
 

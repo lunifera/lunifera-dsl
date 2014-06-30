@@ -153,7 +153,7 @@
 			<dependency>
 				<groupId>org.lunifera.dsl</groupId>
 				<artifactId>org.lunifera.dsl.parent</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>0.7.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -202,4 +202,5 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+<version>0.7.0</version>
 </project>
