@@ -6,4 +6,4 @@ Bundle-Version: 0.7.0
 Bundle-SymbolicName: org.lunifera.dsl.dto.lib
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.lunifera.dsl.dto.lib
+Export-Package: org.lunifera.dsl.dto.lib;version="0.7.0"

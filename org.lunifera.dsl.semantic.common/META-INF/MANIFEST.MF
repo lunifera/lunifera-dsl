@@ -14,9 +14,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.common.types;bundle-version="[2.6.0,2.7.0)";visibility:=reexport,
  org.eclipse.xtext.xbase;bundle-version="[2.6.0,2.7.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Export-Package: org.lunifera.dsl.semantic.common,
- org.lunifera.dsl.semantic.common.helper,
- org.lunifera.dsl.semantic.common.types,
- org.lunifera.dsl.semantic.common.types.impl,
- org.lunifera.dsl.semantic.common.types.util
+Export-Package: org.lunifera.dsl.semantic.common;version="0.7.0",
+ org.lunifera.dsl.semantic.common.helper;version="0.7.0",
+ org.lunifera.dsl.semantic.common.types;version="0.7.0",
+ org.lunifera.dsl.semantic.common.types.impl;version="0.7.0",
+ org.lunifera.dsl.semantic.common.types.util;version="0.7.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
