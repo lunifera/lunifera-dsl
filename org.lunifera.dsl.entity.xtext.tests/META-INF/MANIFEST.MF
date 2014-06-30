@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.entity.xtext.tests
 Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.7.0
 Bundle-SymbolicName: org.lunifera.dsl.entity.xtext.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime,

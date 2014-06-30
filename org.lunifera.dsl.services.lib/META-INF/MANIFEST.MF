@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.services.lib
 Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.7.0
 Bundle-SymbolicName: org.lunifera.dsl.services.lib
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

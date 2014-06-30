@@ -16,7 +16,7 @@
 	<parent>
 		<groupId>org.lunifera.releng.maven</groupId>
 		<artifactId>org.lunifera.releng.maven.parent.tycho.repository.p2</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.7.0</version>
 	</parent>
 
 	<artifactId>org.lunifera.dsl.p2</artifactId>
