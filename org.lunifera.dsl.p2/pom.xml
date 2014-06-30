@@ -16,11 +16,12 @@
 	<parent>
 		<groupId>org.lunifera.releng.maven</groupId>
 		<artifactId>org.lunifera.releng.maven.parent.tycho.repository.p2</artifactId>
-		<version>0.7.0</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.lunifera.dsl.p2</artifactId>
 	<packaging>eclipse-repository</packaging>
+	<version>0.7.0</version>
 
 	<properties>
 		<lunifera.deployment.p2.label>dsl</lunifera.deployment.p2.label>
@@ -202,5 +203,5 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-<version>0.7.0</version>
+
 </project>
