@@ -1,4 +1,4 @@
-@xcore.lang.GenModel(fileExtensions="typesmodel")
+@xcore.lang.GenModel(fileExtensions="typesmodel", editDirectory="/org.lunifera.dsl.semantic.common.edit/src", editorDirectory="/org.lunifera.dsl.semantic.common.editor/src", extensibleProviderFactory="true")
 @xcore.lang.GenModel(modelName="Types")
 @GenModel(prefix="LunTypes")
 @GenModel(copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)

@@ -488,20 +488,21 @@ ruleClass returns [EObject current=null]
     {
     	newLeafNode(otherlv_28, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_1_6());
     }
-(
+)
+    |((
     {
         $current = forceCreateModelElementAndSet(
-            grammarAccess.getClassAccess().getLBeanAnnotationInfoAction_2_1_7(),
+            grammarAccess.getClassAccess().getLBeanAnnotationInfoAction_2_2_0(),
             $current);
     }
 )	otherlv_30='bean' 
     {
-    	newLeafNode(otherlv_30, grammarAccess.getClassAccess().getBeanKeyword_2_1_8());
+    	newLeafNode(otherlv_30, grammarAccess.getClassAccess().getBeanKeyword_2_2_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getNameValidIDWithKeywordsParserRuleCall_2_1_9_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getNameValidIDWithKeywordsParserRuleCall_2_2_2_0()); 
 	    }
 		lv_name_31_0=ruleValidIDWithKeywords		{
 	        if ($current==null) {
@@ -518,7 +519,7 @@ ruleClass returns [EObject current=null]
 )
 )(	otherlv_32='extends' 
     {
-    	newLeafNode(otherlv_32, grammarAccess.getClassAccess().getExtendsKeyword_2_1_10_0());
+    	newLeafNode(otherlv_32, grammarAccess.getClassAccess().getExtendsKeyword_2_2_3_0());
     }
 (
 (
@@ -529,18 +530,18 @@ ruleClass returns [EObject current=null]
         }
 	otherlv_33=RULE_ID
 	{
-		newLeafNode(otherlv_33, grammarAccess.getClassAccess().getSuperTypeLBeanCrossReference_2_1_10_1_0()); 
+		newLeafNode(otherlv_33, grammarAccess.getClassAccess().getSuperTypeLBeanCrossReference_2_2_3_1_0()); 
 	}
 
 )
 ))?	otherlv_34='{' 
     {
-    	newLeafNode(otherlv_34, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_2_1_11());
+    	newLeafNode(otherlv_34, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_2_2_4());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getFeaturesBeanFeatureParserRuleCall_2_1_12_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getFeaturesBeanFeatureParserRuleCall_2_2_5_0()); 
 	    }
 		lv_features_35_0=ruleBeanFeature		{
 	        if ($current==null) {
@@ -557,7 +558,7 @@ ruleClass returns [EObject current=null]
 )
 )*	otherlv_36='}' 
     {
-    	newLeafNode(otherlv_36, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_1_13());
+    	newLeafNode(otherlv_36, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_2_6());
     }
 )))
 ;

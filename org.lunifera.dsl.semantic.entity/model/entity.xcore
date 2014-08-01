@@ -1,4 +1,4 @@
-@GenModel(fileExtensions="entitymodel")
+@xcore.lang.GenModel(fileExtensions="entitymodel", editDirectory="/org.lunifera.dsl.semantic.entity.edit/src", editorDirectory="/org.lunifera.dsl.semantic.entity.editor/src", childCreationExtenders="true")
 @GenModel(modelName="Entity")
 @GenModel(prefix="LunEntity")
 @GenModel(copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
@@ -109,6 +109,7 @@ class LEntity extends LClass, LFeaturesHolder {
 	contains LIndex[] indexes
 	refers LEntity superType opposite subTypes
 	refers LEntity[] subTypes opposite superType
+	
 	/**
  	 * Returns all features of type LOperation
  	 */
@@ -204,6 +205,25 @@ class LEntityFeature extends LFeature {
 
 class LEntityAttribute extends LEntityFeature, LAttribute {
 	
+	derived String typedName get 
+	{
+		var result = new StringBuilder
+		if(name != null){
+			result.append = name
+		}else{
+			result.append = "empty"
+		}
+		
+		result.append = " : "
+		
+		if(^type != null){
+			result.append = ^type.name
+		}else{
+			result.append = "undefined"
+		}
+		
+		return result.toString		
+	}
 }
 
 class LEntityReference extends LEntityFeature, LReference {
@@ -218,8 +238,29 @@ class LBeanFeature  extends LFeature {
 }
 
 class LBeanAttribute extends LBeanFeature, LAttribute {
+	
+	derived String typedName get 
+	{
+		var result = new StringBuilder
+		if(name != null){
+			result.append = name
+		}else{
+			result.append = "empty"
+		}
+		
+		result.append = " : "
+		
+		if(^type != null){
+			result.append = ^type.name
+		}else{
+			result.append = "undefined"
+		}
+		
+		return result.toString		
+	}
+	
 }
-
+ 
 class LBeanReference extends LBeanFeature, LReference {
 	refers LBean ^type
 	refers LBeanReference ^opposite

@@ -106,7 +106,8 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassAccess().getGroup_2_0_4(), "rule__Class__Group_2_0_4__0");
 					put(grammarAccess.getClassAccess().getGroup_2_1(), "rule__Class__Group_2_1__0");
 					put(grammarAccess.getClassAccess().getGroup_2_1_2(), "rule__Class__Group_2_1_2__0");
-					put(grammarAccess.getClassAccess().getGroup_2_1_10(), "rule__Class__Group_2_1_10__0");
+					put(grammarAccess.getClassAccess().getGroup_2_2(), "rule__Class__Group_2_2__0");
+					put(grammarAccess.getClassAccess().getGroup_2_2_3(), "rule__Class__Group_2_2_3__0");
 					put(grammarAccess.getIndexAccess().getGroup(), "rule__Index__Group__0");
 					put(grammarAccess.getIndexAccess().getGroup_5(), "rule__Index__Group_5__0");
 					put(grammarAccess.getEntityPersistenceInfoAccess().getGroup(), "rule__EntityPersistenceInfo__Group__0");
@@ -368,9 +369,9 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassAccess().getSuperTypeAssignment_2_1_2_1(), "rule__Class__SuperTypeAssignment_2_1_2_1");
 					put(grammarAccess.getClassAccess().getNameAssignment_2_1_3(), "rule__Class__NameAssignment_2_1_3");
 					put(grammarAccess.getClassAccess().getFeaturesAssignment_2_1_5(), "rule__Class__FeaturesAssignment_2_1_5");
-					put(grammarAccess.getClassAccess().getNameAssignment_2_1_9(), "rule__Class__NameAssignment_2_1_9");
-					put(grammarAccess.getClassAccess().getSuperTypeAssignment_2_1_10_1(), "rule__Class__SuperTypeAssignment_2_1_10_1");
-					put(grammarAccess.getClassAccess().getFeaturesAssignment_2_1_12(), "rule__Class__FeaturesAssignment_2_1_12");
+					put(grammarAccess.getClassAccess().getNameAssignment_2_2_2(), "rule__Class__NameAssignment_2_2_2");
+					put(grammarAccess.getClassAccess().getSuperTypeAssignment_2_2_3_1(), "rule__Class__SuperTypeAssignment_2_2_3_1");
+					put(grammarAccess.getClassAccess().getFeaturesAssignment_2_2_5(), "rule__Class__FeaturesAssignment_2_2_5");
 					put(grammarAccess.getIndexAccess().getUniqueAssignment_0(), "rule__Index__UniqueAssignment_0");
 					put(grammarAccess.getIndexAccess().getNameAssignment_2(), "rule__Index__NameAssignment_2");
 					put(grammarAccess.getIndexAccess().getFeaturesAssignment_4(), "rule__Index__FeaturesAssignment_4");

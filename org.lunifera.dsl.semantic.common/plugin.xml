@@ -21,7 +21,7 @@
       <package
             uri="http://www.lunifera.org/dsl/common/types/v1"
             class="org.lunifera.dsl.semantic.common.types.LunTypesPackage"
-            genModel="model/types.xcore"/>
+            genModel="bin/model/types.xcore"/>
    </extension>
 
 </plugin>

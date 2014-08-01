@@ -86,12 +86,12 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 		c.setIndentationIncrement().after(
 				ele.getLeftCurlyBracketKeyword_2_1_4());
 		c.setIndentationIncrement().after(
-				ele.getLeftCurlyBracketKeyword_2_1_11());
+				ele.getLeftCurlyBracketKeyword_2_2_4());
 		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_2_1_13());
+				ele.getRightCurlyBracketKeyword_2_2_6());
 		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_2_1_13());
-		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_1_13());
+				ele.getRightCurlyBracketKeyword_2_1_6());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_1_6());
 	}
 
 	protected void configureEntityDef(FormattingConfig c,

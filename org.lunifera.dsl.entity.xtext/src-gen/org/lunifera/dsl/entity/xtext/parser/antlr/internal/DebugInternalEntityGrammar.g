@@ -26,8 +26,8 @@ ruleClass :
 		ruleEntityFeature* ruleIndex* '}' |
 		'mapped superclass' (
 			'extends' RULE_ID
-		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' 'bean'
-		ruleValidIDWithKeywords (
+		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' |
+		'bean' ruleValidIDWithKeywords (
 			'extends' RULE_ID
 		)? '{' ruleBeanFeature* '}'
 	)

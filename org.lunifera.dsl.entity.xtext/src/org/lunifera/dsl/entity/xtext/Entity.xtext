@@ -45,7 +45,7 @@ Class returns LClass:
 	'{'
 	features+=EntityFeature*
 	'}'
-	
+	|
 	{entity::LBean.annotationInfo=current}
 	'bean' name=ValidIDWithKeywords ('extends' superType=[entity::LBean])?
 	'{'
