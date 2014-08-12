@@ -11,8 +11,12 @@
 package org.lunifera.dsl.semantic.entity.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
+import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.LEntity;
 
@@ -45,6 +49,15 @@ public class LEntityImplCustom extends LEntityImpl {
 			}
 		}
 		return superType;
+	}
+
+	@Override
+	public EList<LAnnotationDef> getAnnotations() {
+		LAnnotationTarget info = getAnnotationInfo();
+		if(info != null){
+			return info.getAnnotations();
+		}
+		return new BasicEList<LAnnotationDef>();
 	}
 
 }

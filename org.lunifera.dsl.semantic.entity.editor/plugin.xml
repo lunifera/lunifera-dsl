@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+  All rights reserved. This program and the accompanying materials 
+  are made available under the terms of the Eclipse Public License v1.0 
+  which accompanies this distribution, and is available at 
+  http://www.eclipse.org/legal/epl-v10.html 
+ 
+  Based on ideas from Xtext, Xtend, Xcore
+    
+  Contributors:  
+  		Florian Pirchner - Initial implementation 
+  
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated entity -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.lunifera.dsl.semantic.entity.presentation.LunEntityModelWizardID"
+            name="%_UI_LunEntityModelWizard_label"
+            class="org.lunifera.dsl.semantic.entity.presentation.LunEntityModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/LunEntityModelFile.gif">
+         <description>%_UI_LunEntityModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated entity -->
+      <editor
+            id="org.lunifera.dsl.semantic.entity.presentation.LunEntityEditorID"
+            name="%_UI_LunEntityEditor_label"
+            icon="icons/full/obj16/LunEntityModelFile.gif"
+            extensions="entitymodel"
+            class="org.lunifera.dsl.semantic.entity.presentation.LunEntityEditor"
+            contributorClass="org.lunifera.dsl.semantic.entity.presentation.LunEntityActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

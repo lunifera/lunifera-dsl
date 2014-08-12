@@ -31,7 +31,7 @@ public class DatatypesScope extends AbstractScope {
 
 	public DatatypesScope(IScope parent, final LAttribute context,
 			EReference reference) {
-		super(IScope.NULLSCOPE, true);
+		super(IScope.NULLSCOPE, false);
 		this.parent = parent;
 		this.context = context;
 		this.reference = reference;

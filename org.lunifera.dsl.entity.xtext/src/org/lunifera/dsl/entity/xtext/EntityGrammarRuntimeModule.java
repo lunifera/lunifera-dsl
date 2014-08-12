@@ -25,6 +25,7 @@ import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
 import org.lunifera.dsl.entity.xtext.scope.EntityBatchScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
+import org.lunifera.dsl.entity.xtext.serializer.EntityGrammarTransientValueService;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
 
 import com.google.inject.Binder;
@@ -90,5 +91,9 @@ public class EntityGrammarRuntimeModule extends
 
 	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
 		return OutputConfigurationProvider.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.serializer.sequencer.ITransientValueService> bindSerializerITransientValueService() {
+		return EntityGrammarTransientValueService.class;
 	}
 }
