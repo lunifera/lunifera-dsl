@@ -37,7 +37,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  * <!-- end-user-doc -->
  * @see org.lunifera.dsl.semantic.entity.LunEntityFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel fileExtensions='entitymodel' modelName='Entity' prefix='LunEntity' copyrightText='Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)\n All rights reserved. This program and the accompanying materials \n are made available under the terms of the Eclipse Public License v1.0 \n which accompanies this distribution, and is available at \n http://www.eclipse.org/legal/epl-v10.html \n\n Based on ideas from Xtext, Xtend, Xcore\n   \n Contributors:  \n \t\tFlorian Pirchner - Initial implementation \n ' basePackage='org.lunifera.dsl.semantic'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel fileExtensions='entitymodel' editDirectory='/org.lunifera.dsl.semantic.entity.edit/src' editorDirectory='/org.lunifera.dsl.semantic.entity.editor/src' childCreationExtenders='true' modelName='Entity' prefix='LunEntity' copyrightText='Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)\n All rights reserved. This program and the accompanying materials \n are made available under the terms of the Eclipse Public License v1.0 \n which accompanies this distribution, and is available at \n http://www.eclipse.org/legal/epl-v10.html \n\n Based on ideas from Xtext, Xtend, Xcore\n   \n Contributors:  \n \t\tFlorian Pirchner - Initial implementation \n ' basePackage='org.lunifera.dsl.semantic'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore rootPackage='entity'"
  * @generated
  */
@@ -1012,13 +1012,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_ATTRIBUTE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>LEntity Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 9;
+	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1384,13 +1393,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_ATTRIBUTE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_ATTRIBUTE__TYPED_NAME = LBEAN_FEATURE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>LBean Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 9;
+	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -2335,6 +2353,17 @@ public interface LunEntityPackage extends EPackage {
 	EClass getLEntityAttribute();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntityAttribute#getTypedName <em>Typed Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Typed Name</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LEntityAttribute#getTypedName()
+	 * @see #getLEntityAttribute()
+	 * @generated
+	 */
+	EAttribute getLEntityAttribute_TypedName();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LEntityReference <em>LEntity Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2395,6 +2424,17 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLBeanAttribute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LBeanAttribute#getTypedName <em>Typed Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Typed Name</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanAttribute#getTypedName()
+	 * @see #getLBeanAttribute()
+	 * @generated
+	 */
+	EAttribute getLBeanAttribute_TypedName();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LBeanReference <em>LBean Reference</em>}'.
@@ -3012,6 +3052,14 @@ public interface LunEntityPackage extends EPackage {
 		EClass LENTITY_ATTRIBUTE = eINSTANCE.getLEntityAttribute();
 
 		/**
+		 * The meta object literal for the '<em><b>Typed Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LENTITY_ATTRIBUTE__TYPED_NAME = eINSTANCE.getLEntityAttribute_TypedName();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl <em>LEntity Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3064,6 +3112,14 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LBEAN_ATTRIBUTE = eINSTANCE.getLBeanAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Typed Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LBEAN_ATTRIBUTE__TYPED_NAME = eINSTANCE.getLBeanAttribute_TypedName();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl <em>LBean Reference</em>}' class.

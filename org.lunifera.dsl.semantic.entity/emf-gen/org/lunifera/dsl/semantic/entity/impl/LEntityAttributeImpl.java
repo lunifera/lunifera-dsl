@@ -13,6 +13,8 @@
  */
 package org.lunifera.dsl.semantic.entity.impl;
 
+import com.google.common.base.Objects;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -46,6 +48,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDerived <em>Derived</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getTypedName <em>Typed Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -211,6 +214,16 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * @ordered
 	 */
 	protected LScalarType type;
+
+	/**
+	 * The default value of the '{@link #getTypedName() <em>Typed Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypedName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TYPED_NAME_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -464,6 +477,36 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTypedName() {
+		StringBuilder result = new StringBuilder();
+		String _name = this.getName();
+		boolean _notEquals = (!Objects.equal(_name, null));
+		if (_notEquals) {
+			String _name_1 = this.getName();
+			result.append(_name_1);
+		}
+		else {
+			result.append("empty");
+		}
+		result.append(" : ");
+		LScalarType _type = this.getType();
+		boolean _notEquals_1 = (!Objects.equal(_type, null));
+		if (_notEquals_1) {
+			LScalarType _type_1 = this.getType();
+			String _name_2 = _type_1.getName();
+			result.append(_name_2);
+		}
+		else {
+			result.append("undefined");
+		}
+		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -500,6 +543,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
+			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPED_NAME:
+				return getTypedName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -608,6 +653,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return derivedGetterExpression != null;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE:
 				return type != null;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPED_NAME:
+				return TYPED_NAME_EDEFAULT == null ? getTypedName() != null : !TYPED_NAME_EDEFAULT.equals(getTypedName());
 		}
 		return super.eIsSet(featureID);
 	}
