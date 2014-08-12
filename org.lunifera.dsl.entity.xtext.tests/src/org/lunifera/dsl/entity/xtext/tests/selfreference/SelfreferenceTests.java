@@ -139,8 +139,8 @@ public class SelfreferenceTests extends AbstractJPATest {
 			if (t.getName().equals("Mini")) {
 				assertEquals(0, t.getSubordinates().size());
 			}
-			if (t.getName().equals("Em1")) {
-				List<TreeEmployee> sublist = t.getSubordinates();
+			if (t.getName().equals("Em1")) { 
+				List<TreeEmployee> sublist = t.getSubordinates(); 
 				assertEquals(1, sublist.size());
 				for (TreeEmployee subt : sublist) {
 					assertEquals(subt.getBoss(), t);

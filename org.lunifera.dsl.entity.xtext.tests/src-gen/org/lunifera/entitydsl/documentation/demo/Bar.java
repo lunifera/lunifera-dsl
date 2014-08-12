@@ -10,11 +10,12 @@ package org.lunifera.entitydsl.documentation.demo;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import org.lunifera.entitydsl.documentation.demo.Foo;
 
 @Entity
 @DiscriminatorValue(value = "BAR")
 @SuppressWarnings("all")
-public class Bar implements org.lunifera.entitydsl.documentation.demo.Foo {
+public class Bar extends Foo {
   @Column(name = "NUMBER")
   private Long number;
   

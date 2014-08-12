@@ -167,7 +167,7 @@ public class Person {
    */
   public void setAddress(final List<Address> address) {
     // remove the old address
-    for(Address oldElement : new ArrayList<Address>(this.address)){
+    for(Address oldElement : new ArrayList<Address>(this.internalGetAddress())){
       removeFromAddress(oldElement);
     }
     

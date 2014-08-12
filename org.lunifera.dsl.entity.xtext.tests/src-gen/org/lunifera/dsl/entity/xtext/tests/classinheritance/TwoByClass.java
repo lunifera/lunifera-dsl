@@ -10,11 +10,12 @@ package org.lunifera.dsl.entity.xtext.tests.classinheritance;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClass;
 
 @Entity
 @DiscriminatorValue(value = "TWO_BY_CLASS")
 @SuppressWarnings("all")
-public class TwoByClass implements org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClass {
+public class TwoByClass extends OneByClass {
   @Column(name = "STUFF")
   private Long stuff;
   

@@ -159,7 +159,7 @@ public class Manufacturer {
    */
   public void setCars(final List<Car> cars) {
     // remove the old car
-    for(Car oldElement : new ArrayList<Car>(this.cars)){
+    for(Car oldElement : new ArrayList<Car>(this.internalGetCars())){
       removeFromCars(oldElement);
     }
     

@@ -18,8 +18,8 @@ import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car;
 import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Customer;
 
 @Entity
-@Table(name = "USED__CAR")
-@DiscriminatorValue(value = "USED__CAR")
+@Table(name = "USED_CAR")
+@DiscriminatorValue(value = "USED_CAR")
 @SuppressWarnings("all")
 public class UsedCar extends Car {
   @Column(name = "STATE")

@@ -8,6 +8,7 @@
 package org.lunifera.dsl.entity.xtext.tests.model.testcarstore2;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -50,7 +51,7 @@ public class Car {
   @Column(name = "PRICE")
   private int price;
   
-  @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "MANUFACTURER", nullable = false)
   private Manufacturer manufacturer;
   

@@ -21,7 +21,7 @@ package org.lunifera.dsl.^entity.xtext.tests.model.testcarstore2{
 		var datetype birthdate;
 		var Address[1..*] address;
 	}
-	
+	 
 	bean Address {
 		var String streetname;
 		var int housenumber; 

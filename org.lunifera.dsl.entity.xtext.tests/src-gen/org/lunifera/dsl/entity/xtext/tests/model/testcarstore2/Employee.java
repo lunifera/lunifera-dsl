@@ -42,7 +42,7 @@ public class Employee extends Person {
   @Column(name = "JOBDESCRIPTION")
   private String jobdescription;
   
-  @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "BOSS", nullable = false)
   private Employee boss;
   
@@ -200,7 +200,7 @@ public class Employee extends Person {
    */
   public void setSubordinates(final List<Employee> subordinates) {
     // remove the old employee
-    for(Employee oldElement : new ArrayList<Employee>(this.subordinates)){
+    for(Employee oldElement : new ArrayList<Employee>(this.internalGetSubordinates())){
       removeFromSubordinates(oldElement);
     }
     
