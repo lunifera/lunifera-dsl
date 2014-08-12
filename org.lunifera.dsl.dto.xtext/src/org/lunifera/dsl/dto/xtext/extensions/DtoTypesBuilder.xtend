@@ -947,7 +947,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				if (prop.toRawType instanceof LBean) {
 					if (prop.bounds.toMany) {
 						body = '''
-						org.lunifera.dsl.dto.xtext.common.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
+						org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 							type.toName».class, «prop.toRawType.toName».class);
 						if(mapper != null) {
 							throw new IllegalStateException("Mapper must not be null!");
@@ -962,7 +962,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						return results;'''
 					} else {
 						body = '''
-						org.lunifera.dsl.dto.xtext.common.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
+						org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 							type.toName».class, «prop.toRawType.toName».class);
 						if(mapper != null) {
 							throw new IllegalStateException("Mapper must not be null!");
@@ -1008,7 +1008,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			} else {
 				if (prop.bounds.toMany) {
 					body = '''
-					org.lunifera.dsl.dto.xtext.common.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
+					org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 						type.toName».class, «prop.toRawType.toName».class);
 					if(mapper != null) {
 						throw new IllegalStateException("Mapper must not be null!");
@@ -1023,7 +1023,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					return results;'''
 				} else {
 					body = '''
-					org.lunifera.dsl.dto.xtext.common.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
+					org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 						type.toName».class, «prop.toRawType.toName».class);
 					if(mapper != null) {
 						throw new IllegalStateException("Mapper must not be null!");
@@ -1062,7 +1062,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				if (prop.toRawType instanceof LBean) {
 					if (prop.bounds.toMany) {
 						body = '''
-						org.lunifera.dsl.dto.xtext.common.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
+						org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 							type.toName».class, «prop.toRawType.toName».class);
 						if(mapper != null) {
 							throw new IllegalStateException("Mapper must not be null!");
@@ -1077,7 +1077,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						return results;'''
 					} else {
 						body = '''
-						org.lunifera.dsl.dto.xtext.common.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
+						org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 							type.toName».class, «prop.toRawType.toName».class);
 						if(mapper != null) {
 							throw new IllegalStateException("Mapper must not be null!");
@@ -1122,7 +1122,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			} else {
 				if (prop.bounds.toMany) {
 					body = '''
-					org.lunifera.dsl.dto.xtext.common.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
+					org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 						type.toName».class, «prop.toRawType.toName».class);
 					if(mapper != null) {
 						throw new IllegalStateException("Mapper must not be null!");
@@ -1137,7 +1137,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					return results;'''
 				} else {
 					body = '''
-					org.lunifera.dsl.dto.xtext.common.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
+					org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 						type.toName».class, «prop.toRawType.toName».class);
 					if(mapper != null) {
 						throw new IllegalStateException("Mapper must not be null!");

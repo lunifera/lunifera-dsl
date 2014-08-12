@@ -18,7 +18,12 @@ Class returns service::LDTOService:
 	'dtoservice' name=ValidIDWithKeywords 'provides' dto=[dto::LDto]
 	'{'
 	injectedServices=InjectedServices
-	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
+//	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
+	('get' getExpression=XBlockExpression)? 
+	('find' findExpression=XBlockExpression)? 
+	('findWithDelimiter' findExpressionWithDelimiter=XBlockExpression)? 
+	('update' updateExpression=XBlockExpression)? 
+	('delete' deleteExpression=XBlockExpression)?
 	'}';
 
 InjectedServices returns service::LInjectedServices:

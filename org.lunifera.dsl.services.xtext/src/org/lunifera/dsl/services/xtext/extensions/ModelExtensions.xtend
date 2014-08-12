@@ -33,10 +33,11 @@ import org.lunifera.dsl.semantic.dto.LDtoOperation
 import org.lunifera.dsl.semantic.dto.LDtoReference
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.lunifera.dsl.semantic.service.LInjectedService
 import org.lunifera.dsl.semantic.service.LCardinality
+import org.lunifera.dsl.semantic.service.LInjectedService
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
@@ -60,6 +61,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	 * Creates a type references with respect to inherited features
 	 */
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractReference prop) {
+
 		// prop.type is instanceof DTO
 		return prop.type?.toTypeReference.cloneWithProxies
 	}
@@ -68,6 +70,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	 * Creates a type references with respect to inherited features
 	 */
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractAttribute prop) {
+
 		// prop.type is instanceof LDataType
 		return prop.type?.toTypeReference.cloneWithProxies
 	}
@@ -78,6 +81,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedAttribute prop) {
 
 		if (prop.type != null) {
+
 			// if the type is a different one, then use the type of the property
 			// needs to be mapped by a custom mapper in dsl
 			return prop.type?.toTypeReference.cloneWithProxies
@@ -292,18 +296,17 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		return dto.name.replace("^", "")
 	}
 
-//	def dispatch String internalToName(LFeature prop) {
-//		return prop.name;
-//	}
-//
-//	def dispatch String internalToName(LDtoFeature prop) {
-//		if (prop.inherited) {
-//			return prop.inheritedFeature?.name;
-//		} else {
-//			return prop.name;
-//		}
-//	}
-
+	//	def dispatch String internalToName(LFeature prop) {
+	//		return prop.name;
+	//	}
+	//
+	//	def dispatch String internalToName(LDtoFeature prop) {
+	//		if (prop.inherited) {
+	//			return prop.inheritedFeature?.name;
+	//		} else {
+	//			return prop.name;
+	//		}
+	//	}
 	def dispatch LReference inheritedFeature(LDtoFeature prop) {
 		return null
 	}
@@ -389,8 +392,46 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	//		}
 	//		return true
 	//	}
-
 	def isMany(LInjectedService service) {
 		return service.cardinality == LCardinality::ZERO_TO_MANY || service.cardinality == LCardinality::ONE_TO_MANY
+	}
+
+	def boolean basedOnEntity(LDto dto) {
+		dto.wrappedType != null
+	}
+	
+	def Iterable<LDtoAbstractAttribute> collectAllAttributes(LDto dto){
+		return dto.allFeatures.filter[it instanceof LDtoAbstractAttribute].map[
+			it as LDtoAbstractAttribute]
+	}
+
+	def LAttribute idAttribute(LDto dto) {
+		for (LDtoAbstractAttribute prop : dto.collectAllAttributes) {
+			if (prop.inherited && prop.inheritedFeature != null) {
+				val LAttribute attribute = prop.inheritedFeature as LAttribute
+				if (attribute.id || attribute.uuid) {
+					return attribute
+				}
+			} else {
+				if (prop.id || prop.uuid) {
+					return prop
+				}
+			}
+		}
+	}
+
+	def LEntity wrappedEntity(LDto dto) {
+		if (dto.basedOnEntity) {
+			return dto.wrappedType as LEntity
+		}
+		return null
+	}
+
+	def String wrappedEntityName(LDto dto) {
+		val entity = dto.wrappedEntity
+		if (entity != null) {
+			return entity.name
+		}
+		return null
 	}
 }

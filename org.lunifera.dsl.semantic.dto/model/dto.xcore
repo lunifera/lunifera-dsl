@@ -61,6 +61,7 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
 	op DtoReferenceList getReferences() {
 		features.filter(typeof(LDtoReference)).toList
 	}
+	
 	/**
  	 * Returns all features of type LDtoAttribute
  	 */
@@ -75,6 +76,7 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
 		collectAllLunFeatures(result)
 		return result
 	}
+	
 	op void collectAllLunFeatures(LDto current, DtoFeatureList result) {
 		if (current == null) {
 			return
@@ -145,6 +147,8 @@ type OperationsList wraps java.util.List<LDtoOperation>
 type DtoReferenceList wraps java.util.List<LDtoReference>
 
 type DtoAttributeList wraps java.util.List<LDtoAttribute>
+
+type DtoAbstractAttributeList wraps java.util.List<LDtoAbstractAttribute>
 
 	
 	

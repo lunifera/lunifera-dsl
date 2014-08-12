@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
 
+import org.eclipse.xtext.xbase.XbasePackage;
+
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
@@ -322,6 +324,51 @@ public class LunServicePackageImpl extends EPackageImpl implements LunServicePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getLDTOService_GetExpression() {
+		return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDTOService_FindExpression() {
+		return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDTOService_FindExpressionWithDelimiter() {
+		return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDTOService_UpdateExpression() {
+		return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDTOService_DeleteExpression() {
+		return (EReference)ldtoServiceEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLFilterableAttributes() {
 		return lFilterableAttributesEClass;
 	}
@@ -445,6 +492,11 @@ public class LunServicePackageImpl extends EPackageImpl implements LunServicePac
 		createEReference(ldtoServiceEClass, LDTO_SERVICE__DTO);
 		createEReference(ldtoServiceEClass, LDTO_SERVICE__FILTERABLE);
 		createEReference(ldtoServiceEClass, LDTO_SERVICE__SORTABLE);
+		createEReference(ldtoServiceEClass, LDTO_SERVICE__GET_EXPRESSION);
+		createEReference(ldtoServiceEClass, LDTO_SERVICE__FIND_EXPRESSION);
+		createEReference(ldtoServiceEClass, LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER);
+		createEReference(ldtoServiceEClass, LDTO_SERVICE__UPDATE_EXPRESSION);
+		createEReference(ldtoServiceEClass, LDTO_SERVICE__DELETE_EXPRESSION);
 
 		lFilterableAttributesEClass = createEClass(LFILTERABLE_ATTRIBUTES);
 		createEReference(lFilterableAttributesEClass, LFILTERABLE_ATTRIBUTES__PARENT);
@@ -490,6 +542,7 @@ public class LunServicePackageImpl extends EPackageImpl implements LunServicePac
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 		LunDtoPackage theLunDtoPackage = (LunDtoPackage)EPackage.Registry.INSTANCE.getEPackage(LunDtoPackage.eNS_URI);
+		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -521,6 +574,11 @@ public class LunServicePackageImpl extends EPackageImpl implements LunServicePac
 		initEReference(getLDTOService_Dto(), theLunDtoPackage.getLDto(), null, "dto", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDTOService_Filterable(), this.getLFilterableAttributes(), this.getLFilterableAttributes_Parent(), "filterable", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDTOService_Sortable(), this.getLSortableAttributes(), this.getLSortableAttributes_Parent(), "sortable", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDTOService_GetExpression(), theXbasePackage.getXExpression(), null, "getExpression", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDTOService_FindExpression(), theXbasePackage.getXExpression(), null, "findExpression", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDTOService_FindExpressionWithDelimiter(), theXbasePackage.getXExpression(), null, "findExpressionWithDelimiter", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDTOService_UpdateExpression(), theXbasePackage.getXExpression(), null, "updateExpression", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDTOService_DeleteExpression(), theXbasePackage.getXExpression(), null, "deleteExpression", null, 0, 1, LDTOService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lFilterableAttributesEClass, LFilterableAttributes.class, "LFilterableAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLFilterableAttributes_Parent(), this.getLDTOService(), this.getLDTOService_Filterable(), "parent", null, 0, 1, LFilterableAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

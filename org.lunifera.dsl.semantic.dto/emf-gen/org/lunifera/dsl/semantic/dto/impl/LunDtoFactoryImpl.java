@@ -100,6 +100,8 @@ public class LunDtoFactoryImpl extends EFactoryImpl implements LunDtoFactory {
 				return createDtoReferenceListFromString(eDataType, initialValue);
 			case LunDtoPackage.DTO_ATTRIBUTE_LIST:
 				return createDtoAttributeListFromString(eDataType, initialValue);
+			case LunDtoPackage.DTO_ABSTRACT_ATTRIBUTE_LIST:
+				return createDtoAbstractAttributeListFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -121,6 +123,8 @@ public class LunDtoFactoryImpl extends EFactoryImpl implements LunDtoFactory {
 				return convertDtoReferenceListToString(eDataType, instanceValue);
 			case LunDtoPackage.DTO_ATTRIBUTE_LIST:
 				return convertDtoAttributeListToString(eDataType, instanceValue);
+			case LunDtoPackage.DTO_ABSTRACT_ATTRIBUTE_LIST:
+				return convertDtoAbstractAttributeListToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -289,6 +293,25 @@ public class LunDtoFactoryImpl extends EFactoryImpl implements LunDtoFactory {
 	 * @generated
 	 */
 	public String convertDtoAttributeListToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public List<LDtoAbstractAttribute> createDtoAbstractAttributeListFromString(EDataType eDataType, String initialValue) {
+		return (List<LDtoAbstractAttribute>)super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDtoAbstractAttributeListToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(instanceValue);
 	}
 

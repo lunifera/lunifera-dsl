@@ -2,6 +2,7 @@ package org.lunifera.dsl.services.xtext.jvmmodel
 
 import com.google.inject.Inject
 import java.util.Set
+import javax.persistence.EntityManagerFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
@@ -13,6 +14,9 @@ import org.lunifera.dsl.services.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.services.xtext.extensions.ServicesTypesBuilder
 
 import static org.lunifera.dsl.semantic.service.LCardinality.*
+import org.lunifera.dsl.semantic.service.LInjectedService
+import org.lunifera.dsl.semantic.service.LunServiceFactory
+import org.lunifera.dsl.semantic.service.LCardinality
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -29,6 +33,8 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension ServicesTypesBuilder
 	@Inject extension ModelExtensions
 	@Inject TypeReferences references
+	@Inject
+	private org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions dtoNamings;
 
 	def dispatch void infer(LDTOService service, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(service.toJvmType).initializeLater [
@@ -38,45 +44,31 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 			//				superTypes += references.getTypeForName(service.getSuperType.fullyQualifiedName.toString, service, null)
 			//			}
 			superTypes += references.getTypeForName(typeof(IDTOService), service, service.dto.toTypeReference)
+			
 			// 
 			// Constructor
 			//
 			members += service.toConstructor()[]
-			//			if (service.getSuperType == null) {
-			//				members += service.toPropertyChangeSupportField()
-			//				members += service.toPrimitiveTypeField("disposed", Boolean::TYPE)
-			//			}
-			//
-			// Fields
-			//
-			//			for (f : service.getFeatures) {
-			//				switch f {
-			//					LAttribute: {
-			//						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
-			//							members += f.toField
-			//						}
-			//					}
-			//					LReference: {
-			//						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
-			//							members += f.toField
-			//						}
-			//					}
-			//				}
-			//			}
-			//
-			// Field accessors
-			//
-			//			if (service.getSuperType == null) {
-			//				members += service.toIsDisposed()
-			//				members += service.toAddPropertyChangeListener()
-			//				members += service.toAddPropertyChangeListenerWithProperty()
-			//				members += service.toRemovePropertyChangeListener()
-			//				members += service.toRemovePropertyChangeListenerWithProperty()
-			//				members += service.toFirePropertyChange()
-			//			}
-			//			members += service.toCheckDisposed()
-			//			members += service.toDispose()
-			// to fields
+			
+			
+			// create the dto mapper service
+			val LInjectedService mapperService = LunServiceFactory.eINSTANCE.createLInjectedService
+			mapperService.attributeName = "mapper"
+			mapperService.cardinality = LCardinality.ONE_TO_ONE
+			mapperService.service = references.getTypeForName(dtoNamings.toFqnMapperName(service.dto), service, null)
+			
+			// create the emf service
+			val LInjectedService emfService = LunServiceFactory.eINSTANCE.createLInjectedService
+			emfService.attributeName = "emf"
+			emfService.cardinality = LCardinality.ONE_TO_ONE
+			emfService.service = references.getTypeForName(typeof(EntityManagerFactory), service, null)
+			
+			
+			if(service.dto.basedOnEntity) {
+				members += mapperService.toField(mapperService.attributeName, mapperService.service.cloneWithProxies)
+				members += emfService.toField(emfService.attributeName, emfService.service.cloneWithProxies)
+			}
+			
 			if (service.injectedServices != null) {
 				for (f : service.injectedServices.services) {
 					switch (f.cardinality) {
@@ -84,16 +76,14 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 							members += f.toField(f.attributeName, f.service.cloneWithProxies)
 						case ZERO_TO_MANY:
 							members += f.toField(f.attributeName,
-								references.getTypeForName(typeof(Set), service, f.service.cloneWithProxies)) [
-								initializer = '''new java.util.HashSet<«f.service.simpleName»>()'''
-							]
+								references.getTypeForName(typeof(Set), service, f.service.cloneWithProxies))
 						case ONE_TO_ONE:
 							members += f.toField(f.attributeName, f.service.cloneWithProxies)
 						case ONE_TO_MANY:
 							members += f.toField(f.attributeName,
-								references.getTypeForName(typeof(Set), service, f.service.cloneWithProxies)) [
-								initializer = '''new java.util.HashSet<«f.service.simpleName»>()'''
-							]
+								references.getTypeForName(typeof(Set), service, f.service.cloneWithProxies))
+						default:
+							members += f.toField(f.attributeName, f.service.cloneWithProxies)
 					}
 				}
 			}
@@ -112,24 +102,19 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 					}
 					body = f.getBody
 				]
-
-			//					LReference: {
-			//						members += f.toGetter()
-			//						if (f.isToMany) {
-			//							members += f.toInternalCollectionGetter(f.toName)
-			//							members += f.toAdder(f.toName)
-			//							members += f.toRemover(f.toName)
-			//							members += f.toInternalAdder
-			//							members += f.toInternalRemover
-			//						} else {
-			//							members += f.toSetter()
-			//
-			//							if (f.isCascading || f.opposite != null) {
-			//								members += f.toInternalSetter
-			//							}
-			//						}
-			//					}
 			}
+			
+			if(service.dto.basedOnEntity) {
+				// mapper service
+				members += mapperService.toBindService(mapperService.attributeName, mapperService.service.cloneWithProxies)
+				members += mapperService.toUnbindService(mapperService.attributeName, mapperService.service.cloneWithProxies)
+				
+				// entity manager factory
+				members += emfService.toBindService(emfService.attributeName, emfService.service.cloneWithProxies)
+				members += emfService.toUnbindService(emfService.attributeName, emfService.service.cloneWithProxies)
+			}
+			
+			// other services
 			if (service.injectedServices != null) {
 				for (f : service.injectedServices.services) {
 					switch (f.cardinality) {

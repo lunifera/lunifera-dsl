@@ -6,6 +6,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
 import org.lunifera.dsl.semantic.service.LService
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.lunifera.dsl.services.xtext.extensions.MethodNamingExtensions
 
 class Generator extends JvmModelGenerator {
 

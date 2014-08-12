@@ -178,6 +178,11 @@ class ModelExtensions {
 		}
 		return clazz.name.replace("^", "")
 	}
+	
+	def toQualifiedName(LType type){
+		val LPackage pkg = type.getPackage
+		return pkg.name + "." + type.name
+	}
 
 	/**
 	 * The binary <code>+</code> operator that concatenates two strings.
@@ -189,6 +194,6 @@ class ModelExtensions {
 	 * @return <code>a + b</code>
 	 */
 	def static String operator_plus(String a, String b) {
-		return a + b;
+		return a.concat(b);
 	}
 }

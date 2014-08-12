@@ -24,8 +24,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "TREE_______EMPLOYEE")
-@DiscriminatorValue(value = "TREE_______EMPLOYEE")
+@Table(name = "TREE_EMPLOYEE")
+@DiscriminatorValue(value = "TREE_EMPLOYEE")
 @SuppressWarnings("all")
 public class TreeEmployee {
   @Transient
@@ -48,7 +48,7 @@ public class TreeEmployee {
   /**
    * Reference to parent
    */
-  @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "BOSS", nullable = false)
   private TreeEmployee boss;
   

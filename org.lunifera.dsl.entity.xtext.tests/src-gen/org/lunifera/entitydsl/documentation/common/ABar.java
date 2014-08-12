@@ -15,8 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "A__BAR")
-@DiscriminatorValue(value = "A__BAR")
+@Table(name = "A_BAR")
+@DiscriminatorValue(value = "A_BAR")
 @SuppressWarnings("all")
 public class ABar {
   @Transient

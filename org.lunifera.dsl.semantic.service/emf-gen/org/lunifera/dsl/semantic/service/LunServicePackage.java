@@ -374,13 +374,58 @@ public interface LunServicePackage extends EPackage {
 	int LDTO_SERVICE__SORTABLE = LSERVICE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Get Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_SERVICE__GET_EXPRESSION = LSERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Find Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_SERVICE__FIND_EXPRESSION = LSERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Find Expression With Delimiter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER = LSERVICE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Update Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_SERVICE__UPDATE_EXPRESSION = LSERVICE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Delete Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_SERVICE__DELETE_EXPRESSION = LSERVICE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>LDTO Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_SERVICE_FEATURE_COUNT = LSERVICE_FEATURE_COUNT + 3;
+	int LDTO_SERVICE_FEATURE_COUNT = LSERVICE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LFilterableAttributesImpl <em>LFilterable Attributes</em>}' class.
@@ -810,6 +855,61 @@ public interface LunServicePackage extends EPackage {
 	EReference getLDTOService_Sortable();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getGetExpression <em>Get Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Get Expression</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getGetExpression()
+	 * @see #getLDTOService()
+	 * @generated
+	 */
+	EReference getLDTOService_GetExpression();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getFindExpression <em>Find Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Find Expression</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getFindExpression()
+	 * @see #getLDTOService()
+	 * @generated
+	 */
+	EReference getLDTOService_FindExpression();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getFindExpressionWithDelimiter <em>Find Expression With Delimiter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Find Expression With Delimiter</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getFindExpressionWithDelimiter()
+	 * @see #getLDTOService()
+	 * @generated
+	 */
+	EReference getLDTOService_FindExpressionWithDelimiter();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getUpdateExpression <em>Update Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Update Expression</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getUpdateExpression()
+	 * @see #getLDTOService()
+	 * @generated
+	 */
+	EReference getLDTOService_UpdateExpression();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getDeleteExpression <em>Delete Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Delete Expression</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getDeleteExpression()
+	 * @see #getLDTOService()
+	 * @generated
+	 */
+	EReference getLDTOService_DeleteExpression();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.service.LFilterableAttributes <em>LFilterable Attributes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1054,6 +1154,46 @@ public interface LunServicePackage extends EPackage {
 		 * @generated
 		 */
 		EReference LDTO_SERVICE__SORTABLE = eINSTANCE.getLDTOService_Sortable();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO_SERVICE__GET_EXPRESSION = eINSTANCE.getLDTOService_GetExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Find Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO_SERVICE__FIND_EXPRESSION = eINSTANCE.getLDTOService_FindExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Find Expression With Delimiter</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER = eINSTANCE.getLDTOService_FindExpressionWithDelimiter();
+
+		/**
+		 * The meta object literal for the '<em><b>Update Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO_SERVICE__UPDATE_EXPRESSION = eINSTANCE.getLDTOService_UpdateExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Delete Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO_SERVICE__DELETE_EXPRESSION = eINSTANCE.getLDTOService_DeleteExpression();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.service.impl.LFilterableAttributesImpl <em>LFilterable Attributes</em>}' class.

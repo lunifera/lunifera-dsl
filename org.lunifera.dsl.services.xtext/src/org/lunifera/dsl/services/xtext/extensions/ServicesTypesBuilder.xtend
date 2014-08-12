@@ -2,7 +2,6 @@ package org.lunifera.dsl.services.xtext.extensions
 
 import com.google.inject.Inject
 import java.util.Collection
-import org.eclipse.jdt.annotation.Nullable
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -18,7 +17,6 @@ import org.lunifera.dsl.semantic.service.LDTOService
 import org.lunifera.dsl.semantic.service.LInjectedService
 import org.lunifera.dsl.service.lib.IFilter
 import org.lunifera.dsl.service.lib.ISortOrder
-import org.eclipse.xtext.EcoreUtil2
 
 class ServicesTypesBuilder extends CommonTypesBuilder {
 
@@ -44,7 +42,34 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 			{@inherit doc}
 		'''
 
-		setBody(op, '''return null;''')
+		if (service.dto.basedOnEntity && service.getExpression == null) {
+			op.body = '''
+			javax.persistence.EntityManager em = emf.createEntityManager();
+			javax.persistence.EntityTransaction txn = em.getTransaction();
+			
+			// find the entity
+			«service.dto.wrappedEntity.toQualifiedName» entity = null;
+			try {
+				entity = em.find(«service.dto.wrappedEntity.toQualifiedName».class, id);
+				txn.commit();
+			   	txn = null;
+			}finally{
+			   	if(txn != null){
+			   		txn.rollback();
+			   	}
+			   	em.close();
+			}
+
+			// map the entity to the dto
+			«service.getDto().toTypeReference.simpleName» dto = new «service.getDto().toTypeReference.simpleName»();
+			mapper.mapToDTO(dto, entity);
+			return dto;
+			'''
+		} else if(service.getExpression != null){
+			op.body = service.getExpression
+		} else{
+			op.body = '''throw new UnsupportedOperationException();'''
+		}
 
 		return associate(service, op);
 	}
@@ -92,7 +117,30 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 			{@inherit doc}
 		'''
 
-		setBody(op, '''''')
+		if (service.dto.basedOnEntity && service.updateExpression == null) {
+			op.body = '''
+				javax.persistence.EntityManager em = emf.createEntityManager();
+				javax.persistence.EntityTransaction txn = em.getTransaction();
+				
+				try {
+					«service.dto.wrappedEntity.toQualifiedName» entity = em.find(«service.dto.wrappedEntity.toQualifiedName».class, dto.«service.dto.idAttribute?.toGetterName»());
+					mapper.mapToEntity(dto, entity);
+					em.persist(entity);
+				
+					txn.commit();
+					txn = null;
+				}finally{
+					if(txn != null){
+						txn.rollback();
+					}
+					em.close();
+				}
+			'''
+		} else if(service.updateExpression != null) {
+			op.body = service.updateExpression
+		} else{
+			op.body = '''throw new UnsupportedOperationException();'''
+		}
 
 		return associate(service, op);
 	}
@@ -107,7 +155,29 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 			{@inherit doc}
 		'''
 
-		setBody(op, '''''')
+		if (service.dto.basedOnEntity && service.deleteExpression == null) {
+			op.body = '''
+				javax.persistence.EntityManager em = emf.createEntityManager();
+				javax.persistence.EntityTransaction txn = em.getTransaction();
+				
+				try {
+					«service.dto.wrappedEntity.toQualifiedName» entity = em.find(«service.dto.wrappedEntity.toQualifiedName».class, dto.«service.dto.idAttribute?.toGetterName»());
+					em.remove(entity);
+				
+					txn.commit();
+					txn = null;
+				}finally{
+					if(txn != null){
+						txn.rollback();
+					}
+					em.close();
+				}
+			'''
+		} else if(service.deleteExpression != null) {
+			op.body = service.deleteExpression
+		} else{
+			op.body = '''throw new UnsupportedOperationException();'''
+		}
 
 		return associate(service, op);
 	}
@@ -115,7 +185,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 	/**
 	 * shorthand for <code>toSetter(sourceElement, name, name, typeRef)</code>
 	 */
-	def JvmOperation toBindService(LInjectedService sourceElement, String name, @Nullable JvmTypeReference typeRef) {
+	def JvmOperation toBindService(LInjectedService sourceElement, String name, JvmTypeReference typeRef) {
 		return toBindService(sourceElement, name, name, typeRef);
 	}
 
@@ -136,24 +206,24 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 		if (sourceElement == null || propertyName == null || fieldName == null)
 			return null;
 		val JvmOperation result = typesFactory.createJvmOperation();
-		result.visibility = JvmVisibility.PUBLIC;
+		result.visibility = JvmVisibility.PROTECTED;
 		result.returnType = references.getTypeForName(Void.TYPE, sourceElement)
 		result.simpleName = "bind" + Strings.toFirstUpper(propertyName)
 		result.parameters += sourceElement.toParameter(propertyName, cloneWithProxies(typeRef));
 
 		result.body = '''this.«fieldName» = «propertyName»;'''
 		result.documentation = '''
-			Binds the service {@link «typeRef.qualifiedName.toString»} to this component. 
-			<br>The cardinality is «sourceElement.cardinality.getName()»
-			
-			@param «propertyName» the service'''
+		Binds the service {@link «typeRef.qualifiedName.toString»} to this component. 
+		<br>The cardinality is «sourceElement.cardinality.getName()»
+		
+		@param «propertyName» the service'''
 		return associate(sourceElement, result);
 	}
 
 	/**
 	 * shorthand for <code>toSetter(sourceElement, name, name, typeRef)</code>
 	 */
-	def JvmOperation toUnbindService(LInjectedService sourceElement, String name, @Nullable JvmTypeReference typeRef) {
+	def JvmOperation toUnbindService(LInjectedService sourceElement, String name, JvmTypeReference typeRef) {
 		return toUnbindService(sourceElement, name, name, typeRef);
 	}
 
@@ -174,7 +244,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 		if (sourceElement == null || propertyName == null || fieldName == null)
 			return null;
 		val JvmOperation result = typesFactory.createJvmOperation();
-		result.visibility = JvmVisibility.PUBLIC;
+		result.visibility = JvmVisibility.PROTECTED;
 		result.returnType = references.getTypeForName(Void.TYPE, sourceElement)
 		result.simpleName = "unbind" + Strings.toFirstUpper(propertyName)
 		result.parameters += sourceElement.toParameter(propertyName, cloneWithProxies(typeRef));
@@ -193,8 +263,8 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 	/**
 	 * shorthand for <code>toSetter(sourceElement, name, name, typeRef)</code>
 	 */
-	def JvmOperation toAddService(LInjectedService sourceElement, String name, @Nullable JvmTypeReference typeRef) {
-		return toBindService(sourceElement, name, name, typeRef);
+	def JvmOperation toAddService(LInjectedService sourceElement, String name, JvmTypeReference typeRef) {
+		return toAddService(sourceElement, name, name, typeRef);
 	}
 
 	/**
@@ -214,21 +284,26 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 		if (sourceElement == null || propertyName == null || fieldName == null)
 			return null;
 		val JvmOperation result = typesFactory.createJvmOperation();
-		result.visibility = JvmVisibility.PUBLIC;
+		result.visibility = JvmVisibility.PROTECTED;
 		result.returnType = references.getTypeForName(Void.TYPE, sourceElement)
 		result.simpleName = "add" + Strings.toFirstUpper(propertyName)
 		result.parameters += sourceElement.toParameter(propertyName, cloneWithProxies(typeRef));
 
-		result.body = '''if(!this.«fieldName».contains(«propertyName»){
-			this.«fieldName».add(«propertyName»);	
-		} 
+		result.body = '''
+			if(this.«fieldName» == null) {
+				this.«fieldName» = new java.util.HashSet<>();
+			}
+			
+			if(!this.«fieldName».contains(«propertyName»)) {
+				this.«fieldName».add(«propertyName»);
+			}
 		'''
 
 		result.documentation = '''
-			Adds the service {@link «typeRef.qualifiedName.toString»} from this component. 
-			<br>The cardinality is «sourceElement.cardinality.getName()»
-			
-			@param «propertyName» the service'''
+		Adds the service {@link «typeRef.qualifiedName.toString»} to this component. 
+		<br>The cardinality is «sourceElement.cardinality.getName()»
+		
+		@param «propertyName» the service'''
 
 		return associate(sourceElement, result);
 	}
@@ -236,8 +311,8 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 	/**
 	 * shorthand for <code>toSetter(sourceElement, name, name, typeRef)</code>
 	 */
-	def JvmOperation toRemoveService(LInjectedService sourceElement, String name, @Nullable JvmTypeReference typeRef) {
-		return toUnbindService(sourceElement, name, name, typeRef);
+	def JvmOperation toRemoveService(LInjectedService sourceElement, String name, JvmTypeReference typeRef) {
+		return toRemoveService(sourceElement, name, name, typeRef);
 	}
 
 	/**
@@ -257,18 +332,22 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 		if (sourceElement == null || propertyName == null || fieldName == null)
 			return null;
 		val JvmOperation result = typesFactory.createJvmOperation();
-		result.visibility = JvmVisibility.PUBLIC;
+		result.visibility = JvmVisibility.PROTECTED;
 		result.returnType = references.getTypeForName(Void.TYPE, sourceElement)
 		result.simpleName = "remove" + Strings.toFirstUpper(propertyName)
 		result.parameters += sourceElement.toParameter(propertyName, cloneWithProxies(typeRef));
 
-		result.body = '''this.«fieldName».remove(«propertyName»);'''
+		result.body = '''
+		if(this.«fieldName»==null){
+			return;
+		}
+		this.«fieldName».remove(«propertyName»);'''
 
 		result.documentation = '''
-			Removes the service {@link «typeRef.qualifiedName.toString»} from this component. 
-			<br>The cardinality is «sourceElement.cardinality.getName()»
-			
-			@param «propertyName» the service'''
+		Removes the service {@link «cloneWithProxies(typeRef).qualifiedName»} from this component. 
+		<br>The cardinality is «sourceElement.cardinality.getName()»
+		
+		@param «propertyName» the service'''
 
 		return associate(sourceElement, result);
 	}

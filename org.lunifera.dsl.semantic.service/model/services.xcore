@@ -67,6 +67,12 @@ class LDTOService extends LService {
 	refers LDto dto
 	contains LFilterableAttributes filterable opposite parent
 	contains LSortableAttributes sortable opposite parent
+	
+	contains XExpression getExpression
+	contains XExpression findExpression
+	contains XExpression findExpressionWithDelimiter
+	contains XExpression updateExpression
+	contains XExpression deleteExpression
 }
 
 class LFilterableAttributes {

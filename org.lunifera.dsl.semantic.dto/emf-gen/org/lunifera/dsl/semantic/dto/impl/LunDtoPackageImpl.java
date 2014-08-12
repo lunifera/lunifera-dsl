@@ -154,6 +154,13 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	private EDataType dtoAttributeListEDataType = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType dtoAbstractAttributeListEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -465,6 +472,15 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getDtoAbstractAttributeList() {
+		return dtoAbstractAttributeListEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LunDtoFactory getLunDtoFactory() {
 		return (LunDtoFactory)getEFactoryInstance();
 	}
@@ -527,6 +543,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 		operationsListEDataType = createEDataType(OPERATIONS_LIST);
 		dtoReferenceListEDataType = createEDataType(DTO_REFERENCE_LIST);
 		dtoAttributeListEDataType = createEDataType(DTO_ATTRIBUTE_LIST);
+		dtoAbstractAttributeListEDataType = createEDataType(DTO_ABSTRACT_ATTRIBUTE_LIST);
 	}
 
 	/**
@@ -636,6 +653,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 		initEDataType(operationsListEDataType, List.class, "OperationsList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoOperation>");
 		initEDataType(dtoReferenceListEDataType, List.class, "DtoReferenceList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoReference>");
 		initEDataType(dtoAttributeListEDataType, List.class, "DtoAttributeList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoAttribute>");
+		initEDataType(dtoAbstractAttributeListEDataType, List.class, "DtoAbstractAttributeList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute>");
 
 		// Create resource
 		createResource(eNS_URI);

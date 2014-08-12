@@ -14,8 +14,8 @@ import javax.persistence.Table;
 import org.lunifera.dsl.entity.xtext.tests.classinheritance.OneBySubclass;
 
 @Entity
-@Table(name = "TWO_________BYSUBCLASS")
-@DiscriminatorValue(value = "TWO_________BYSUBCLASS")
+@Table(name = "TWO_BY_SUBCLASS")
+@DiscriminatorValue(value = "TWO_BY_SUBCLASS")
 @SuppressWarnings("all")
 public class TwoBySubclass extends OneBySubclass {
   @Column(name = "STUFF")

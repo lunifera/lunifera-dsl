@@ -5,7 +5,6 @@ package org.lunifera.dsl.services.xtext;
 
 import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
-import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
@@ -13,6 +12,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.lunifera.dsl.services.xtext.extensions.ServicesTypesBuilder;
 import org.lunifera.dsl.services.xtext.formatting.ServicesGrammarFormatter;
+import org.lunifera.dsl.services.xtext.generator.Generator;
 import org.lunifera.dsl.services.xtext.jvmmodel.ServicesGrammarJvmModelInferrer;
 import org.lunifera.dsl.services.xtext.scope.ServicesBatchScopeProvider;
 import org.lunifera.dsl.services.xtext.scope.ServicesImportedNamespaceAwareLocalScopeProvider;
@@ -77,13 +77,12 @@ public class ServicesGrammarRuntimeModule extends
 		return org.lunifera.dsl.services.xtext.extensions.ModelExtensions.class;
 	}
 
-	// public Class<? extends org.eclipse.xtext.generator.IGenerator>
-	// bindIGenerator() {
-	// return Generator.class;
-	// }
+	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
+		return Generator.class;
+	}
 
 	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
-		return OutputConfigurationProvider.class;
+		return org.lunifera.dsl.services.xtext.generator.OutputConfigurationProvider.class;
 	}
 
 }

@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 import org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseByClass;
 
 @Entity
-@DiscriminatorValue(value = "ONE______BYCLASS")
+@DiscriminatorValue(value = "ONE_BY_CLASS")
 @SuppressWarnings("all")
 public class OneByClass extends BaseByClass {
   @Column(name = "NAME")

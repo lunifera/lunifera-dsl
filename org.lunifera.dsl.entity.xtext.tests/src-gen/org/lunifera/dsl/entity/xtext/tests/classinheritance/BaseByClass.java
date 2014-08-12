@@ -21,7 +21,7 @@ import javax.persistence.Version;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "DISC", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue(value = "BASE______BYCLASS")
+@DiscriminatorValue(value = "BASE_BY_CLASS")
 @SuppressWarnings("all")
 public class BaseByClass {
   @Transient

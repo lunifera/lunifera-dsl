@@ -20,10 +20,10 @@ import javax.persistence.Transient;
 import javax.persistence.Version;
 
 @Entity
-@Table(name = "BASE_________BYSUBCLASS")
+@Table(name = "BASE_BY_SUBCLASS")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "DISC", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue(value = "BASE_________BYSUBCLASS")
+@DiscriminatorValue(value = "BASE_BY_SUBCLASS")
 @SuppressWarnings("all")
 public class BaseBySubclass {
   @Transient

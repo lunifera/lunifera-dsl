@@ -1183,6 +1183,16 @@ public interface LunDtoPackage extends EPackage {
 	 */
 	int DTO_ATTRIBUTE_LIST = 14;
 
+	/**
+	 * The meta object id for the '<em>Dto Abstract Attribute List</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.List
+	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getDtoAbstractAttributeList()
+	 * @generated
+	 */
+	int DTO_ABSTRACT_ATTRIBUTE_LIST = 15;
+
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.dto.LDtoModel <em>LDto Model</em>}'.
@@ -1471,6 +1481,17 @@ public interface LunDtoPackage extends EPackage {
 	EDataType getDtoAttributeList();
 
 	/**
+	 * Returns the meta object for data type '{@link java.util.List <em>Dto Abstract Attribute List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Dto Abstract Attribute List</em>'.
+	 * @see java.util.List
+	 * @model instanceClass="java.util.List<org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute>"
+	 * @generated
+	 */
+	EDataType getDtoAbstractAttributeList();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1737,6 +1758,16 @@ public interface LunDtoPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType DTO_ATTRIBUTE_LIST = eINSTANCE.getDtoAttributeList();
+
+		/**
+		 * The meta object literal for the '<em>Dto Abstract Attribute List</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getDtoAbstractAttributeList()
+		 * @generated
+		 */
+		EDataType DTO_ABSTRACT_ATTRIBUTE_LIST = eINSTANCE.getDtoAbstractAttributeList();
 
 	}
 

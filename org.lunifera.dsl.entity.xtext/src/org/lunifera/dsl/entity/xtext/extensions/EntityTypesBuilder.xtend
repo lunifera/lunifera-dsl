@@ -477,7 +477,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 			@param «propertyName» the list of new instances'''
 		op.body = '''
 			// remove the old «paramName»
-			for(«prop.typeName» oldElement : new ArrayList<«prop.typeName»>(this.«propertyName»)){
+			for(«prop.typeName» oldElement : new ArrayList<«prop.typeName»>(this.«prop.toCollectionInternalGetterName»())){
 			  «prop.toCollectionRemoverName»(oldElement);
 			}
 			
