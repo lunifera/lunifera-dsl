@@ -78,7 +78,7 @@ ruleEntityFeature :
 		) |
 		'def' ruleJvmTypeReference ruleValidIDWithKeywords '(' (
 			ruleFullJvmFormalParameter (
-				',' ruleFullJvmFormalParameter
+				', ' ruleFullJvmFormalParameter
 			)*
 		)? ')' ruleXExpression
 	)
@@ -179,13 +179,9 @@ ruleScalarType :
 
 // Rule Enum
 ruleEnum :
-	'enum' RULE_ID (
-		'{' (
-			ruleEnumLiteral (
-				','? ruleEnumLiteral
-			)*
-		)? '}'
-	)?
+	'enum' RULE_ID '{' ruleEnumLiteral (
+		', ' ruleEnumLiteral
+	)* '}'
 ;
 
 // Rule EnumLiteral

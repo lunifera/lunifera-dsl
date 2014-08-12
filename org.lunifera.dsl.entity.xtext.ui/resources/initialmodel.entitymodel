@@ -12,12 +12,12 @@ package org.example {
 		var String name;
 		var ValueBean mybean;
 	}
-	
+	 
 	entity Bar extends Foo {
 		var String barDescription;
 		var Status status;
 	}
-	
+	 
 	bean ValueBean {
 		var String description;
 		var long value;

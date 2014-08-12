@@ -511,14 +511,14 @@ ruleEnum returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_2='{' 
+)	otherlv_2='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2_0());
+    	newLeafNode(otherlv_2, grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2());
     }
-((
+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_2_1_0_0()); 
+	        newCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_3_0()); 
 	    }
 		lv_literals_3_0=ruleEnumLiteral		{
 	        if ($current==null) {
@@ -533,14 +533,14 @@ ruleEnum returns [EObject current=null]
 	    }
 
 )
-)((	otherlv_4=',' 
+)(	otherlv_4=', ' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getEnumAccess().getCommaKeyword_2_1_1_0());
+    	newLeafNode(otherlv_4, grammarAccess.getEnumAccess().getCommaSpaceKeyword_4_0());
     }
-)?(
+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_2_1_1_1_0()); 
+	        newCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_4_1_0()); 
 	    }
 		lv_literals_5_0=ruleEnumLiteral		{
 	        if ($current==null) {
@@ -555,11 +555,11 @@ ruleEnum returns [EObject current=null]
 	    }
 
 )
-))*)?	otherlv_6='}' 
+))*	otherlv_6='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_2_2());
+    	newLeafNode(otherlv_6, grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_5());
     }
-)?)
+)
 ;
 
 

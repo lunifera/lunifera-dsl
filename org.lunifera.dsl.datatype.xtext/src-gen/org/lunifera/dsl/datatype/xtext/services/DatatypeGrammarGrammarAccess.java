@@ -229,7 +229,7 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Enum returns types::LEnum:
-	//	"enum" name=ID ("{" (literals+=EnumLiteral (","? literals+=EnumLiteral)*)? "}")?;
+	//	"enum" name=ID "{" literals+=EnumLiteral (", " literals+=EnumLiteral)* "}";
 	public CommonGrammarGrammarAccess.EnumElements getEnumAccess() {
 		return gaCommonGrammar.getEnumAccess();
 	}

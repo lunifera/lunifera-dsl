@@ -85,7 +85,7 @@ EntityFeature returns entity::LEntityFeature:
 	|
 	({entity::LOperation.annotationInfo=current}
 	('def' type=JvmTypeReference name=ValidIDWithKeywords
-	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	'(' (params+=FullJvmFormalParameter (', ' params+=FullJvmFormalParameter)*)? ')'
 	body=XExpression)));
 
 BeanFeature returns entity::LBeanFeature:

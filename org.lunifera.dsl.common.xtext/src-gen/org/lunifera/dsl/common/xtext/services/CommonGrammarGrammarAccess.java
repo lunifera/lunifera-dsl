@@ -307,22 +307,20 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEnumKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cLeftCurlyBracketKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
-		private final Assignment cLiteralsAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
-		private final RuleCall cLiteralsEnumLiteralParserRuleCall_2_1_0_0 = (RuleCall)cLiteralsAssignment_2_1_0.eContents().get(0);
-		private final Group cGroup_2_1_1 = (Group)cGroup_2_1.eContents().get(1);
-		private final Keyword cCommaKeyword_2_1_1_0 = (Keyword)cGroup_2_1_1.eContents().get(0);
-		private final Assignment cLiteralsAssignment_2_1_1_1 = (Assignment)cGroup_2_1_1.eContents().get(1);
-		private final RuleCall cLiteralsEnumLiteralParserRuleCall_2_1_1_1_0 = (RuleCall)cLiteralsAssignment_2_1_1_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cLiteralsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cLiteralsEnumLiteralParserRuleCall_3_0 = (RuleCall)cLiteralsAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaSpaceKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cLiteralsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cLiteralsEnumLiteralParserRuleCall_4_1_0 = (RuleCall)cLiteralsAssignment_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Enum returns types::LEnum:
-		//	"enum" name=ID ("{" (literals+=EnumLiteral (","? literals+=EnumLiteral)*)? "}")?;
+		//	"enum" name=ID "{" literals+=EnumLiteral (", " literals+=EnumLiteral)* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"enum" name=ID ("{" (literals+=EnumLiteral (","? literals+=EnumLiteral)*)? "}")?
+		//"enum" name=ID "{" literals+=EnumLiteral (", " literals+=EnumLiteral)* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"enum"
@@ -334,35 +332,29 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("{" (literals+=EnumLiteral (","? literals+=EnumLiteral)*)? "}")?
-		public Group getGroup_2() { return cGroup_2; }
-
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2_0() { return cLeftCurlyBracketKeyword_2_0; }
-
-		//(literals+=EnumLiteral (","? literals+=EnumLiteral)*)?
-		public Group getGroup_2_1() { return cGroup_2_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//literals+=EnumLiteral
-		public Assignment getLiteralsAssignment_2_1_0() { return cLiteralsAssignment_2_1_0; }
+		public Assignment getLiteralsAssignment_3() { return cLiteralsAssignment_3; }
 
 		//EnumLiteral
-		public RuleCall getLiteralsEnumLiteralParserRuleCall_2_1_0_0() { return cLiteralsEnumLiteralParserRuleCall_2_1_0_0; }
+		public RuleCall getLiteralsEnumLiteralParserRuleCall_3_0() { return cLiteralsEnumLiteralParserRuleCall_3_0; }
 
-		//(","? literals+=EnumLiteral)*
-		public Group getGroup_2_1_1() { return cGroup_2_1_1; }
+		//(", " literals+=EnumLiteral)*
+		public Group getGroup_4() { return cGroup_4; }
 
-		//","?
-		public Keyword getCommaKeyword_2_1_1_0() { return cCommaKeyword_2_1_1_0; }
+		//", "
+		public Keyword getCommaSpaceKeyword_4_0() { return cCommaSpaceKeyword_4_0; }
 
 		//literals+=EnumLiteral
-		public Assignment getLiteralsAssignment_2_1_1_1() { return cLiteralsAssignment_2_1_1_1; }
+		public Assignment getLiteralsAssignment_4_1() { return cLiteralsAssignment_4_1; }
 
 		//EnumLiteral
-		public RuleCall getLiteralsEnumLiteralParserRuleCall_2_1_1_1_0() { return cLiteralsEnumLiteralParserRuleCall_2_1_1_1_0; }
+		public RuleCall getLiteralsEnumLiteralParserRuleCall_4_1_0() { return cLiteralsEnumLiteralParserRuleCall_4_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_2_2() { return cRightCurlyBracketKeyword_2_2; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class EnumLiteralElements extends AbstractParserRuleElementFinder {
@@ -878,7 +870,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Enum returns types::LEnum:
-	//	"enum" name=ID ("{" (literals+=EnumLiteral (","? literals+=EnumLiteral)*)? "}")?;
+	//	"enum" name=ID "{" literals+=EnumLiteral (", " literals+=EnumLiteral)* "}";
 	public EnumElements getEnumAccess() {
 		return (pEnum != null) ? pEnum : (pEnum = new EnumElements());
 	}

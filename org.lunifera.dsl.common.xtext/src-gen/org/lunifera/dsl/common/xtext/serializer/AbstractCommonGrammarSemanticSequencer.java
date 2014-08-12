@@ -1432,7 +1432,7 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (literals+=EnumLiteral literals+=EnumLiteral*)?)
+	 *     (name=ID literals+=EnumLiteral literals+=EnumLiteral*)
 	 */
 	protected void sequence_Enum(EObject context, LEnum semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

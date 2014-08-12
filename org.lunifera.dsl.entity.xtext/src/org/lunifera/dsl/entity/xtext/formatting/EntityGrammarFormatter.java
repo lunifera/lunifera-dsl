@@ -114,15 +114,15 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 			CommonGrammarGrammarAccess.EnumElements ele) {
 
 		c.setLinewrap(2).before(ele.getEnumKeyword_0());
-		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_2_0());
-		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_2_2());
-		c.setNoSpace().before(ele.getCommaKeyword_2_1_1_0());
-		c.setSpace(null).after(ele.getCommaKeyword_2_1_1_0());
+		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_2());
+		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_5());
+		c.setNoSpace().before(ele.getCommaSpaceKeyword_4_0());
+		c.setSpace(null).after(ele.getCommaSpaceKeyword_4_0());
 
 		// Einzug for Enum
-		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_2_0());
+		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_2());
 		c.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_2_2());
+				ele.getRightCurlyBracketKeyword_5());
 	}
 
 	protected void configureEnumLiteralDef(FormattingConfig c,

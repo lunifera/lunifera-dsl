@@ -67,7 +67,7 @@ DtoFeature returns dto::LDtoFeature:
 	|
 	({dto::LDtoOperation.annotationInfo=current}
 	('def' type=JvmTypeReference name=ValidIDWithKeywords
-	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	'(' (params+=FullJvmFormalParameter (', ' params+=FullJvmFormalParameter)*)? ')'
 	body=XExpression)));
 
 DtoMapper returns dto::LDtoMapper:

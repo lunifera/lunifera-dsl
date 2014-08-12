@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'{'", "'}'", "'class'", "'import'", "';'", "'datatype'", "'jvmType'", "'as primitive'", "'dateType'", "'as blob'", "'enum'", "','", "'.'", "'*'", "'cachable'", "'id'", "'transient'", "'version'", "'collection'", "'refers'", "'settings'", "'lazy'", "'notnull'", "'dto'", "'date'", "'@'", "'('", "')'", "'='", "'#'", "'['", "']'", "'+='", "'-='", "'*='", "'/='", "'%='", "'<'", "'>'", "'>='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'->'", "'..<'", "'..'", "'=>'", "'<>'", "'?:'", "'+'", "'-'", "'**'", "'/'", "'%'", "'!'", "'as'", "'++'", "'--'", "'::'", "'?.'", "'|'", "'if'", "'else'", "'switch'", "':'", "'default'", "'case'", "'for'", "'while'", "'do'", "'var'", "'val'", "'extends'", "'static'", "'extension'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'synchronized'", "'catch'", "'?'", "'&'", "'time'", "'timestamp'", "'private'", "'protected'", "'public'", "'0'", "'1'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'{'", "'}'", "'class'", "'import'", "';'", "'datatype'", "'jvmType'", "'as primitive'", "'dateType'", "'as blob'", "'enum'", "', '", "'.'", "'*'", "'cachable'", "'id'", "'transient'", "'version'", "'collection'", "'refers'", "'settings'", "'lazy'", "'notnull'", "'dto'", "'date'", "'@'", "'('", "','", "')'", "'='", "'#'", "'['", "']'", "'+='", "'-='", "'*='", "'/='", "'%='", "'<'", "'>'", "'>='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'->'", "'..<'", "'..'", "'=>'", "'<>'", "'?:'", "'+'", "'-'", "'**'", "'/'", "'%'", "'!'", "'as'", "'++'", "'--'", "'::'", "'?.'", "'|'", "'if'", "'else'", "'switch'", "':'", "'default'", "'case'", "'for'", "'while'", "'do'", "'var'", "'val'", "'extends'", "'static'", "'extension'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'synchronized'", "'catch'", "'?'", "'&'", "'time'", "'timestamp'", "'private'", "'protected'", "'public'", "'0'", "'1'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -87,6 +87,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
     public static final int T__65=65;
     public static final int T__62=62;
     public static final int T__63=63;
+    public static final int T__114=114;
     public static final int T__61=61;
     public static final int T__60=60;
     public static final int T__55=55;
@@ -1411,7 +1412,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnum"
-    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:489:1: ruleEnum returns [EObject current=null] : (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '{' ( ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )* )? otherlv_6= '}' )? ) ;
+    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:489:1: ruleEnum returns [EObject current=null] : (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_literals_3_0= ruleEnumLiteral ) ) (otherlv_4= ', ' ( (lv_literals_5_0= ruleEnumLiteral ) ) )* otherlv_6= '}' ) ;
     public final EObject ruleEnum() throws RecognitionException {
         EObject current = null;
 
@@ -1428,11 +1429,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:492:28: ( (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '{' ( ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )* )? otherlv_6= '}' )? ) )
-            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:493:1: (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '{' ( ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )* )? otherlv_6= '}' )? )
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:492:28: ( (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_literals_3_0= ruleEnumLiteral ) ) (otherlv_4= ', ' ( (lv_literals_5_0= ruleEnumLiteral ) ) )* otherlv_6= '}' ) )
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:493:1: (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_literals_3_0= ruleEnumLiteral ) ) (otherlv_4= ', ' ( (lv_literals_5_0= ruleEnumLiteral ) ) )* otherlv_6= '}' )
             {
-            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:493:1: (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '{' ( ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )* )? otherlv_6= '}' )? )
-            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:493:3: otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '{' ( ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )* )? otherlv_6= '}' )?
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:493:1: (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_literals_3_0= ruleEnumLiteral ) ) (otherlv_4= ', ' ( (lv_literals_5_0= ruleEnumLiteral ) ) )* otherlv_6= '}' )
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:493:3: otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_literals_3_0= ruleEnumLiteral ) ) (otherlv_4= ', ' ( (lv_literals_5_0= ruleEnumLiteral ) ) )* otherlv_6= '}'
             {
             otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleEnum1041); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -1470,169 +1471,118 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:515:2: (otherlv_2= '{' ( ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )* )? otherlv_6= '}' )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleEnum1075); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            if ( (LA12_0==14) ) {
-                alt12=1;
+                  	newLeafNode(otherlv_2, grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2());
+                  
             }
-            switch (alt12) {
-                case 1 :
-                    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:515:4: otherlv_2= '{' ( ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )* )? otherlv_6= '}'
-                    {
-                    otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleEnum1076); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:519:1: ( (lv_literals_3_0= ruleEnumLiteral ) )
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:520:1: (lv_literals_3_0= ruleEnumLiteral )
+            {
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:520:1: (lv_literals_3_0= ruleEnumLiteral )
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:521:3: lv_literals_3_0= ruleEnumLiteral
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_3_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleEnumLiteral_in_ruleEnum1096);
+            lv_literals_3_0=ruleEnumLiteral();
 
-                          	newLeafNode(otherlv_2, grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2_0());
-                          
-                    }
-                    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:519:1: ( ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )* )?
-                    int alt11=2;
-                    int LA11_0 = input.LA(1);
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                    if ( (LA11_0==RULE_ID) ) {
-                        alt11=1;
-                    }
-                    switch (alt11) {
-                        case 1 :
-                            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:519:2: ( (lv_literals_3_0= ruleEnumLiteral ) ) ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )*
-                            {
-                            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:519:2: ( (lv_literals_3_0= ruleEnumLiteral ) )
-                            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:520:1: (lv_literals_3_0= ruleEnumLiteral )
-                            {
-                            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:520:1: (lv_literals_3_0= ruleEnumLiteral )
-                            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:521:3: lv_literals_3_0= ruleEnumLiteral
-                            {
-                            if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_2_1_0_0()); 
-                              	    
-                            }
-                            pushFollow(FOLLOW_ruleEnumLiteral_in_ruleEnum1098);
-                            lv_literals_3_0=ruleEnumLiteral();
-
-                            state._fsp--;
-                            if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getEnumRule());
-                              	        }
-                                     		add(
-                                     			current, 
-                                     			"literals",
-                                      		lv_literals_3_0, 
-                                      		"EnumLiteral");
-                              	        afterParserOrEnumRuleCall();
-                              	    
-                            }
-
-                            }
-
-
-                            }
-
-                            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:537:2: ( (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) ) )*
-                            loop10:
-                            do {
-                                int alt10=2;
-                                int LA10_0 = input.LA(1);
-
-                                if ( (LA10_0==RULE_ID||LA10_0==25) ) {
-                                    alt10=1;
-                                }
-
-
-                                switch (alt10) {
-                            	case 1 :
-                            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:537:3: (otherlv_4= ',' )? ( (lv_literals_5_0= ruleEnumLiteral ) )
-                            	    {
-                            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:537:3: (otherlv_4= ',' )?
-                            	    int alt9=2;
-                            	    int LA9_0 = input.LA(1);
-
-                            	    if ( (LA9_0==25) ) {
-                            	        alt9=1;
-                            	    }
-                            	    switch (alt9) {
-                            	        case 1 :
-                            	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:537:5: otherlv_4= ','
-                            	            {
-                            	            otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleEnum1112); if (state.failed) return current;
-                            	            if ( state.backtracking==0 ) {
-
-                            	                  	newLeafNode(otherlv_4, grammarAccess.getEnumAccess().getCommaKeyword_2_1_1_0());
-                            	                  
-                            	            }
-
-                            	            }
-                            	            break;
-
-                            	    }
-
-                            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:541:3: ( (lv_literals_5_0= ruleEnumLiteral ) )
-                            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:542:1: (lv_literals_5_0= ruleEnumLiteral )
-                            	    {
-                            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:542:1: (lv_literals_5_0= ruleEnumLiteral )
-                            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:543:3: lv_literals_5_0= ruleEnumLiteral
-                            	    {
-                            	    if ( state.backtracking==0 ) {
-                            	       
-                            	      	        newCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_2_1_1_1_0()); 
-                            	      	    
-                            	    }
-                            	    pushFollow(FOLLOW_ruleEnumLiteral_in_ruleEnum1135);
-                            	    lv_literals_5_0=ruleEnumLiteral();
-
-                            	    state._fsp--;
-                            	    if (state.failed) return current;
-                            	    if ( state.backtracking==0 ) {
-
-                            	      	        if (current==null) {
-                            	      	            current = createModelElementForParent(grammarAccess.getEnumRule());
-                            	      	        }
-                            	             		add(
-                            	             			current, 
-                            	             			"literals",
-                            	              		lv_literals_5_0, 
-                            	              		"EnumLiteral");
-                            	      	        afterParserOrEnumRuleCall();
-                            	      	    
-                            	    }
-
-                            	    }
-
-
-                            	    }
-
-
-                            	    }
-                            	    break;
-
-                            	default :
-                            	    break loop10;
-                                }
-                            } while (true);
-
-
-                            }
-                            break;
-
-                    }
-
-                    otherlv_6=(Token)match(input,15,FOLLOW_15_in_ruleEnum1151); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_6, grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_2_2());
-                          
-                    }
-
-                    }
-                    break;
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getEnumRule());
+              	        }
+                     		add(
+                     			current, 
+                     			"literals",
+                      		lv_literals_3_0, 
+                      		"EnumLiteral");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
 
             }
 
+
+            }
+
+            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:537:2: (otherlv_4= ', ' ( (lv_literals_5_0= ruleEnumLiteral ) ) )*
+            loop9:
+            do {
+                int alt9=2;
+                int LA9_0 = input.LA(1);
+
+                if ( (LA9_0==25) ) {
+                    alt9=1;
+                }
+
+
+                switch (alt9) {
+            	case 1 :
+            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:537:4: otherlv_4= ', ' ( (lv_literals_5_0= ruleEnumLiteral ) )
+            	    {
+            	    otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleEnum1109); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	          	newLeafNode(otherlv_4, grammarAccess.getEnumAccess().getCommaSpaceKeyword_4_0());
+            	          
+            	    }
+            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:541:1: ( (lv_literals_5_0= ruleEnumLiteral ) )
+            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:542:1: (lv_literals_5_0= ruleEnumLiteral )
+            	    {
+            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:542:1: (lv_literals_5_0= ruleEnumLiteral )
+            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:543:3: lv_literals_5_0= ruleEnumLiteral
+            	    {
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_4_1_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleEnumLiteral_in_ruleEnum1130);
+            	    lv_literals_5_0=ruleEnumLiteral();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getEnumRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"literals",
+            	              		lv_literals_5_0, 
+            	              		"EnumLiteral");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop9;
+                }
+            } while (true);
+
+            otherlv_6=(Token)match(input,15,FOLLOW_15_in_ruleEnum1144); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_6, grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_5());
+                  
+            }
 
             }
 
@@ -1670,7 +1620,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getEnumLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1189);
+            pushFollow(FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1180);
             iv_ruleEnumLiteral=ruleEnumLiteral();
 
             state._fsp--;
@@ -1678,7 +1628,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleEnumLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumLiteral1199); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumLiteral1190); if (state.failed) return current;
 
             }
 
@@ -1714,7 +1664,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:585:1: (lv_name_0_0= RULE_ID )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:586:3: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumLiteral1240); if (state.failed) return current;
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumLiteral1231); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_name_0_0, grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0()); 
@@ -1772,7 +1722,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAnnotationDefRule()); 
             }
-            pushFollow(FOLLOW_ruleAnnotationDef_in_entryRuleAnnotationDef1280);
+            pushFollow(FOLLOW_ruleAnnotationDef_in_entryRuleAnnotationDef1271);
             iv_ruleAnnotationDef=ruleAnnotationDef();
 
             state._fsp--;
@@ -1780,7 +1730,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAnnotationDef; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotationDef1290); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotationDef1281); if (state.failed) return current;
 
             }
 
@@ -1825,7 +1775,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getAnnotationDefAccess().getAnnotationXAnnotationParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXAnnotation_in_ruleAnnotationDef1348);
+            pushFollow(FOLLOW_ruleXAnnotation_in_ruleAnnotationDef1339);
             lv_annotation_0_0=ruleXAnnotation();
 
             state._fsp--;
@@ -1886,7 +1836,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLQualifiedNameWithWildCardRule()); 
             }
-            pushFollow(FOLLOW_ruleLQualifiedNameWithWildCard_in_entryRuleLQualifiedNameWithWildCard1385);
+            pushFollow(FOLLOW_ruleLQualifiedNameWithWildCard_in_entryRuleLQualifiedNameWithWildCard1376);
             iv_ruleLQualifiedNameWithWildCard=ruleLQualifiedNameWithWildCard();
 
             state._fsp--;
@@ -1894,7 +1844,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLQualifiedNameWithWildCard.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLQualifiedNameWithWildCard1396); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLQualifiedNameWithWildCard1387); if (state.failed) return current;
 
             }
 
@@ -1934,7 +1884,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getLQualifiedNameWithWildCardAccess().getQualifiedNameParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleLQualifiedNameWithWildCard1443);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleLQualifiedNameWithWildCard1434);
             this_QualifiedName_0=ruleQualifiedName();
 
             state._fsp--;
@@ -1950,24 +1900,24 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:677:1: (kw= '.' kw= '*' )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA13_0==26) ) {
-                alt13=1;
+            if ( (LA10_0==26) ) {
+                alt10=1;
             }
-            switch (alt13) {
+            switch (alt10) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:678:2: kw= '.' kw= '*'
                     {
-                    kw=(Token)match(input,26,FOLLOW_26_in_ruleLQualifiedNameWithWildCard1462); if (state.failed) return current;
+                    kw=(Token)match(input,26,FOLLOW_26_in_ruleLQualifiedNameWithWildCard1453); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getLQualifiedNameWithWildCardAccess().getFullStopKeyword_1_0()); 
                           
                     }
-                    kw=(Token)match(input,27,FOLLOW_27_in_ruleLQualifiedNameWithWildCard1475); if (state.failed) return current;
+                    kw=(Token)match(input,27,FOLLOW_27_in_ruleLQualifiedNameWithWildCard1466); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2017,7 +1967,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValidIDWithKeywordsRule()); 
             }
-            pushFollow(FOLLOW_ruleValidIDWithKeywords_in_entryRuleValidIDWithKeywords1520);
+            pushFollow(FOLLOW_ruleValidIDWithKeywords_in_entryRuleValidIDWithKeywords1511);
             iv_ruleValidIDWithKeywords=ruleValidIDWithKeywords();
 
             state._fsp--;
@@ -2025,7 +1975,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleValidIDWithKeywords.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValidIDWithKeywords1531); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValidIDWithKeywords1522); if (state.failed) return current;
 
             }
 
@@ -2057,81 +2007,81 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:712:1: (kw= 'cachable' | kw= 'id' | kw= 'transient' | kw= 'version' | kw= 'collection' | kw= 'refers' | kw= 'settings' | kw= 'lazy' | kw= 'notnull' | kw= 'dto' | kw= 'date' | this_ID_11= RULE_ID )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:712:1: (kw= 'cachable' | kw= 'id' | kw= 'transient' | kw= 'version' | kw= 'collection' | kw= 'refers' | kw= 'settings' | kw= 'lazy' | kw= 'notnull' | kw= 'dto' | kw= 'date' | this_ID_11= RULE_ID )
-            int alt14=12;
+            int alt11=12;
             switch ( input.LA(1) ) {
             case 28:
                 {
-                alt14=1;
+                alt11=1;
                 }
                 break;
             case 29:
                 {
-                alt14=2;
+                alt11=2;
                 }
                 break;
             case 30:
                 {
-                alt14=3;
+                alt11=3;
                 }
                 break;
             case 31:
                 {
-                alt14=4;
+                alt11=4;
                 }
                 break;
             case 32:
                 {
-                alt14=5;
+                alt11=5;
                 }
                 break;
             case 33:
                 {
-                alt14=6;
+                alt11=6;
                 }
                 break;
             case 34:
                 {
-                alt14=7;
+                alt11=7;
                 }
                 break;
             case 35:
                 {
-                alt14=8;
+                alt11=8;
                 }
                 break;
             case 36:
                 {
-                alt14=9;
+                alt11=9;
                 }
                 break;
             case 37:
                 {
-                alt14=10;
+                alt11=10;
                 }
                 break;
             case 38:
                 {
-                alt14=11;
+                alt11=11;
                 }
                 break;
             case RULE_ID:
                 {
-                alt14=12;
+                alt11=12;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt14) {
+            switch (alt11) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:713:2: kw= 'cachable'
                     {
-                    kw=(Token)match(input,28,FOLLOW_28_in_ruleValidIDWithKeywords1569); if (state.failed) return current;
+                    kw=(Token)match(input,28,FOLLOW_28_in_ruleValidIDWithKeywords1560); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2144,7 +2094,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:720:2: kw= 'id'
                     {
-                    kw=(Token)match(input,29,FOLLOW_29_in_ruleValidIDWithKeywords1588); if (state.failed) return current;
+                    kw=(Token)match(input,29,FOLLOW_29_in_ruleValidIDWithKeywords1579); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2157,7 +2107,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:727:2: kw= 'transient'
                     {
-                    kw=(Token)match(input,30,FOLLOW_30_in_ruleValidIDWithKeywords1607); if (state.failed) return current;
+                    kw=(Token)match(input,30,FOLLOW_30_in_ruleValidIDWithKeywords1598); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2170,7 +2120,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:734:2: kw= 'version'
                     {
-                    kw=(Token)match(input,31,FOLLOW_31_in_ruleValidIDWithKeywords1626); if (state.failed) return current;
+                    kw=(Token)match(input,31,FOLLOW_31_in_ruleValidIDWithKeywords1617); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2183,7 +2133,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:741:2: kw= 'collection'
                     {
-                    kw=(Token)match(input,32,FOLLOW_32_in_ruleValidIDWithKeywords1645); if (state.failed) return current;
+                    kw=(Token)match(input,32,FOLLOW_32_in_ruleValidIDWithKeywords1636); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2196,7 +2146,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:748:2: kw= 'refers'
                     {
-                    kw=(Token)match(input,33,FOLLOW_33_in_ruleValidIDWithKeywords1664); if (state.failed) return current;
+                    kw=(Token)match(input,33,FOLLOW_33_in_ruleValidIDWithKeywords1655); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2209,7 +2159,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 7 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:755:2: kw= 'settings'
                     {
-                    kw=(Token)match(input,34,FOLLOW_34_in_ruleValidIDWithKeywords1683); if (state.failed) return current;
+                    kw=(Token)match(input,34,FOLLOW_34_in_ruleValidIDWithKeywords1674); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2222,7 +2172,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 8 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:762:2: kw= 'lazy'
                     {
-                    kw=(Token)match(input,35,FOLLOW_35_in_ruleValidIDWithKeywords1702); if (state.failed) return current;
+                    kw=(Token)match(input,35,FOLLOW_35_in_ruleValidIDWithKeywords1693); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2235,7 +2185,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 9 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:769:2: kw= 'notnull'
                     {
-                    kw=(Token)match(input,36,FOLLOW_36_in_ruleValidIDWithKeywords1721); if (state.failed) return current;
+                    kw=(Token)match(input,36,FOLLOW_36_in_ruleValidIDWithKeywords1712); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2248,7 +2198,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 10 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:776:2: kw= 'dto'
                     {
-                    kw=(Token)match(input,37,FOLLOW_37_in_ruleValidIDWithKeywords1740); if (state.failed) return current;
+                    kw=(Token)match(input,37,FOLLOW_37_in_ruleValidIDWithKeywords1731); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2261,7 +2211,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 11 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:783:2: kw= 'date'
                     {
-                    kw=(Token)match(input,38,FOLLOW_38_in_ruleValidIDWithKeywords1759); if (state.failed) return current;
+                    kw=(Token)match(input,38,FOLLOW_38_in_ruleValidIDWithKeywords1750); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2274,7 +2224,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 12 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:789:10: this_ID_11= RULE_ID
                     {
-                    this_ID_11=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidIDWithKeywords1780); if (state.failed) return current;
+                    this_ID_11=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidIDWithKeywords1771); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ID_11);
@@ -2325,7 +2275,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXAnnotationRule()); 
             }
-            pushFollow(FOLLOW_ruleXAnnotation_in_entryRuleXAnnotation1829);
+            pushFollow(FOLLOW_ruleXAnnotation_in_entryRuleXAnnotation1820);
             iv_ruleXAnnotation=ruleXAnnotation();
 
             state._fsp--;
@@ -2333,7 +2283,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXAnnotation; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotation1839); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotation1830); if (state.failed) return current;
 
             }
 
@@ -2388,7 +2338,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,39,FOLLOW_39_in_ruleXAnnotation1885); if (state.failed) return current;
+            otherlv_1=(Token)match(input,39,FOLLOW_39_in_ruleXAnnotation1876); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXAnnotationAccess().getCommercialAtKeyword_1());
@@ -2412,7 +2362,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXAnnotationAccess().getAnnotationTypeJvmAnnotationTypeCrossReference_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXAnnotation1908);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXAnnotation1899);
             ruleQualifiedName();
 
             state._fsp--;
@@ -2429,20 +2379,20 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:846:2: ( ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_4_0= ruleXAnnotationElementValuePair ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_6_0= ruleXAnnotationElementValuePair ) ) )* ) | ( (lv_value_7_0= ruleXAnnotationElementValueOrCommaList ) ) )? otherlv_8= ')' )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA17_0==40) && (synpred2_InternalDatatypeGrammar())) {
-                alt17=1;
+            if ( (LA14_0==40) && (synpred2_InternalDatatypeGrammar())) {
+                alt14=1;
             }
-            switch (alt17) {
+            switch (alt14) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:846:3: ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_4_0= ruleXAnnotationElementValuePair ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_6_0= ruleXAnnotationElementValuePair ) ) )* ) | ( (lv_value_7_0= ruleXAnnotationElementValueOrCommaList ) ) )? otherlv_8= ')'
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:846:3: ( ( '(' )=>otherlv_3= '(' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:846:4: ( '(' )=>otherlv_3= '('
                     {
-                    otherlv_3=(Token)match(input,40,FOLLOW_40_in_ruleXAnnotation1929); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,40,FOLLOW_40_in_ruleXAnnotation1920); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0());
@@ -2452,9 +2402,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:851:2: ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_4_0= ruleXAnnotationElementValuePair ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_6_0= ruleXAnnotationElementValuePair ) ) )* ) | ( (lv_value_7_0= ruleXAnnotationElementValueOrCommaList ) ) )?
-                    int alt16=3;
-                    alt16 = dfa16.predict(input);
-                    switch (alt16) {
+                    int alt13=3;
+                    alt13 = dfa13.predict(input);
+                    switch (alt13) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:851:3: ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_4_0= ruleXAnnotationElementValuePair ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_6_0= ruleXAnnotationElementValuePair ) ) )* )
                             {
@@ -2472,7 +2422,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXAnnotationAccess().getElementValuePairsXAnnotationElementValuePairParserRuleCall_3_1_0_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXAnnotationElementValuePair_in_ruleXAnnotation1973);
+                            pushFollow(FOLLOW_ruleXAnnotationElementValuePair_in_ruleXAnnotation1964);
                             lv_elementValuePairs_4_0=ruleXAnnotationElementValuePair();
 
                             state._fsp--;
@@ -2497,21 +2447,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             }
 
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:874:2: (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_6_0= ruleXAnnotationElementValuePair ) ) )*
-                            loop15:
+                            loop12:
                             do {
-                                int alt15=2;
-                                int LA15_0 = input.LA(1);
+                                int alt12=2;
+                                int LA12_0 = input.LA(1);
 
-                                if ( (LA15_0==25) ) {
-                                    alt15=1;
+                                if ( (LA12_0==41) ) {
+                                    alt12=1;
                                 }
 
 
-                                switch (alt15) {
+                                switch (alt12) {
                             	case 1 :
                             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:874:4: otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_6_0= ruleXAnnotationElementValuePair ) )
                             	    {
-                            	    otherlv_5=(Token)match(input,25,FOLLOW_25_in_ruleXAnnotation1986); if (state.failed) return current;
+                            	    otherlv_5=(Token)match(input,41,FOLLOW_41_in_ruleXAnnotation1977); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_5, grammarAccess.getXAnnotationAccess().getCommaKeyword_3_1_0_1_0());
@@ -2528,7 +2478,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getXAnnotationAccess().getElementValuePairsXAnnotationElementValuePairParserRuleCall_3_1_0_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleXAnnotationElementValuePair_in_ruleXAnnotation2027);
+                            	    pushFollow(FOLLOW_ruleXAnnotationElementValuePair_in_ruleXAnnotation2018);
                             	    lv_elementValuePairs_6_0=ruleXAnnotationElementValuePair();
 
                             	    state._fsp--;
@@ -2557,7 +2507,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop15;
+                            	    break loop12;
                                 }
                             } while (true);
 
@@ -2581,7 +2531,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXAnnotationAccess().getValueXAnnotationElementValueOrCommaListParserRuleCall_3_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXAnnotationElementValueOrCommaList_in_ruleXAnnotation2057);
+                            pushFollow(FOLLOW_ruleXAnnotationElementValueOrCommaList_in_ruleXAnnotation2048);
                             lv_value_7_0=ruleXAnnotationElementValueOrCommaList();
 
                             state._fsp--;
@@ -2611,7 +2561,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_8=(Token)match(input,41,FOLLOW_41_in_ruleXAnnotation2071); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,42,FOLLOW_42_in_ruleXAnnotation2062); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2());
@@ -2660,7 +2610,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXAnnotationElementValuePairRule()); 
             }
-            pushFollow(FOLLOW_ruleXAnnotationElementValuePair_in_entryRuleXAnnotationElementValuePair2109);
+            pushFollow(FOLLOW_ruleXAnnotationElementValuePair_in_entryRuleXAnnotationElementValuePair2100);
             iv_ruleXAnnotationElementValuePair=ruleXAnnotationElementValuePair();
 
             state._fsp--;
@@ -2668,7 +2618,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXAnnotationElementValuePair; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotationElementValuePair2119); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotationElementValuePair2110); if (state.failed) return current;
 
             }
 
@@ -2727,7 +2677,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXAnnotationElementValuePairAccess().getElementJvmOperationCrossReference_0_0_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleXAnnotationElementValuePair2189);
+            pushFollow(FOLLOW_ruleValidID_in_ruleXAnnotationElementValuePair2180);
             ruleValidID();
 
             state._fsp--;
@@ -2743,7 +2693,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,42,FOLLOW_42_in_ruleXAnnotationElementValuePair2201); if (state.failed) return current;
+            otherlv_1=(Token)match(input,43,FOLLOW_43_in_ruleXAnnotationElementValuePair2192); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXAnnotationElementValuePairAccess().getEqualsSignKeyword_0_0_1());
@@ -2766,7 +2716,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXAnnotationElementValuePairAccess().getValueXAnnotationElementValueParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXAnnotationElementValue_in_ruleXAnnotationElementValuePair2224);
+            pushFollow(FOLLOW_ruleXAnnotationElementValue_in_ruleXAnnotationElementValuePair2215);
             lv_value_2_0=ruleXAnnotationElementValue();
 
             state._fsp--;
@@ -2827,7 +2777,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXAnnotationElementValueOrCommaListRule()); 
             }
-            pushFollow(FOLLOW_ruleXAnnotationElementValueOrCommaList_in_entryRuleXAnnotationElementValueOrCommaList2260);
+            pushFollow(FOLLOW_ruleXAnnotationElementValueOrCommaList_in_entryRuleXAnnotationElementValueOrCommaList2251);
             iv_ruleXAnnotationElementValueOrCommaList=ruleXAnnotationElementValueOrCommaList();
 
             state._fsp--;
@@ -2835,7 +2785,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXAnnotationElementValueOrCommaList; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotationElementValueOrCommaList2270); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotationElementValueOrCommaList2261); if (state.failed) return current;
 
             }
 
@@ -2878,9 +2828,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1008:1: ( ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' ) | (this_XAnnotationOrExpression_7= ruleXAnnotationOrExpression ( () (otherlv_9= ',' ( (lv_elements_10_0= ruleXAnnotationOrExpression ) ) )+ )? ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1008:1: ( ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' ) | (this_XAnnotationOrExpression_7= ruleXAnnotationOrExpression ( () (otherlv_9= ',' ( (lv_elements_10_0= ruleXAnnotationOrExpression ) ) )+ )? ) )
-            int alt22=2;
-            alt22 = dfa22.predict(input);
-            switch (alt22) {
+            int alt19=2;
+            alt19 = dfa19.predict(input);
+            switch (alt19) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1008:2: ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' )
                     {
@@ -2906,13 +2856,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,43,FOLLOW_43_in_ruleXAnnotationElementValueOrCommaList2335); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,44,FOLLOW_44_in_ruleXAnnotationElementValueOrCommaList2326); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXAnnotationElementValueOrCommaListAccess().getNumberSignKeyword_0_0_0_1());
                           
                     }
-                    otherlv_2=(Token)match(input,44,FOLLOW_44_in_ruleXAnnotationElementValueOrCommaList2347); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,45,FOLLOW_45_in_ruleXAnnotationElementValueOrCommaList2338); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getXAnnotationElementValueOrCommaListAccess().getLeftSquareBracketKeyword_0_0_0_2());
@@ -2925,13 +2875,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1025:3: ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )?
-                    int alt19=2;
-                    int LA19_0 = input.LA(1);
+                    int alt16=2;
+                    int LA16_0 = input.LA(1);
 
-                    if ( ((LA19_0>=RULE_ID && LA19_0<=RULE_DECIMAL)||LA19_0==14||LA19_0==17||(LA19_0>=39 && LA19_0<=40)||(LA19_0>=43 && LA19_0<=44)||LA19_0==51||(LA19_0>=67 && LA19_0<=68)||LA19_0==72||LA19_0==79||LA19_0==81||(LA19_0>=85 && LA19_0<=87)||(LA19_0>=90 && LA19_0<=101)||LA19_0==103) ) {
-                        alt19=1;
+                    if ( ((LA16_0>=RULE_ID && LA16_0<=RULE_DECIMAL)||LA16_0==14||LA16_0==17||(LA16_0>=39 && LA16_0<=40)||(LA16_0>=44 && LA16_0<=45)||LA16_0==52||(LA16_0>=68 && LA16_0<=69)||LA16_0==73||LA16_0==80||LA16_0==82||(LA16_0>=86 && LA16_0<=88)||(LA16_0>=91 && LA16_0<=102)||LA16_0==104) ) {
+                        alt16=1;
                     }
-                    switch (alt19) {
+                    switch (alt16) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1025:4: ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )*
                             {
@@ -2946,7 +2896,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXAnnotationElementValueOrCommaListAccess().getElementsXAnnotationOrExpressionParserRuleCall_0_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2371);
+                            pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2362);
                             lv_elements_3_0=ruleXAnnotationOrExpression();
 
                             state._fsp--;
@@ -2971,21 +2921,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             }
 
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1043:2: (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )*
-                            loop18:
+                            loop15:
                             do {
-                                int alt18=2;
-                                int LA18_0 = input.LA(1);
+                                int alt15=2;
+                                int LA15_0 = input.LA(1);
 
-                                if ( (LA18_0==25) ) {
-                                    alt18=1;
+                                if ( (LA15_0==41) ) {
+                                    alt15=1;
                                 }
 
 
-                                switch (alt18) {
+                                switch (alt15) {
                             	case 1 :
                             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1043:4: otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) )
                             	    {
-                            	    otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleXAnnotationElementValueOrCommaList2384); if (state.failed) return current;
+                            	    otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXAnnotationElementValueOrCommaList2375); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_4, grammarAccess.getXAnnotationElementValueOrCommaListAccess().getCommaKeyword_0_1_1_0());
@@ -3002,7 +2952,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getXAnnotationElementValueOrCommaListAccess().getElementsXAnnotationOrExpressionParserRuleCall_0_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2405);
+                            	    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2396);
                             	    lv_elements_5_0=ruleXAnnotationOrExpression();
 
                             	    state._fsp--;
@@ -3031,7 +2981,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop18;
+                            	    break loop15;
                                 }
                             } while (true);
 
@@ -3041,7 +2991,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,45,FOLLOW_45_in_ruleXAnnotationElementValueOrCommaList2421); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,46,FOLLOW_46_in_ruleXAnnotationElementValueOrCommaList2412); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXAnnotationElementValueOrCommaListAccess().getRightSquareBracketKeyword_0_2());
@@ -3064,7 +3014,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXAnnotationElementValueOrCommaListAccess().getXAnnotationOrExpressionParserRuleCall_1_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2451);
+                    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2442);
                     this_XAnnotationOrExpression_7=ruleXAnnotationOrExpression();
 
                     state._fsp--;
@@ -3076,13 +3026,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                           
                     }
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1079:1: ( () (otherlv_9= ',' ( (lv_elements_10_0= ruleXAnnotationOrExpression ) ) )+ )?
-                    int alt21=2;
-                    int LA21_0 = input.LA(1);
+                    int alt18=2;
+                    int LA18_0 = input.LA(1);
 
-                    if ( (LA21_0==25) ) {
-                        alt21=1;
+                    if ( (LA18_0==41) ) {
+                        alt18=1;
                     }
-                    switch (alt21) {
+                    switch (alt18) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1079:2: () (otherlv_9= ',' ( (lv_elements_10_0= ruleXAnnotationOrExpression ) ) )+
                             {
@@ -3100,22 +3050,22 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             }
 
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1085:2: (otherlv_9= ',' ( (lv_elements_10_0= ruleXAnnotationOrExpression ) ) )+
-                            int cnt20=0;
-                            loop20:
+                            int cnt17=0;
+                            loop17:
                             do {
-                                int alt20=2;
-                                int LA20_0 = input.LA(1);
+                                int alt17=2;
+                                int LA17_0 = input.LA(1);
 
-                                if ( (LA20_0==25) ) {
-                                    alt20=1;
+                                if ( (LA17_0==41) ) {
+                                    alt17=1;
                                 }
 
 
-                                switch (alt20) {
+                                switch (alt17) {
                             	case 1 :
                             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1085:4: otherlv_9= ',' ( (lv_elements_10_0= ruleXAnnotationOrExpression ) )
                             	    {
-                            	    otherlv_9=(Token)match(input,25,FOLLOW_25_in_ruleXAnnotationElementValueOrCommaList2473); if (state.failed) return current;
+                            	    otherlv_9=(Token)match(input,41,FOLLOW_41_in_ruleXAnnotationElementValueOrCommaList2464); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_9, grammarAccess.getXAnnotationElementValueOrCommaListAccess().getCommaKeyword_1_1_1_0());
@@ -3132,7 +3082,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getXAnnotationElementValueOrCommaListAccess().getElementsXAnnotationOrExpressionParserRuleCall_1_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2494);
+                            	    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2485);
                             	    lv_elements_10_0=ruleXAnnotationOrExpression();
 
                             	    state._fsp--;
@@ -3161,13 +3111,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    if ( cnt20 >= 1 ) break loop20;
+                            	    if ( cnt17 >= 1 ) break loop17;
                             	    if (state.backtracking>0) {state.failed=true; return current;}
                                         EarlyExitException eee =
-                                            new EarlyExitException(20, input);
+                                            new EarlyExitException(17, input);
                                         throw eee;
                                 }
-                                cnt20++;
+                                cnt17++;
                             } while (true);
 
 
@@ -3219,7 +3169,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXAnnotationElementValueRule()); 
             }
-            pushFollow(FOLLOW_ruleXAnnotationElementValue_in_entryRuleXAnnotationElementValue2535);
+            pushFollow(FOLLOW_ruleXAnnotationElementValue_in_entryRuleXAnnotationElementValue2526);
             iv_ruleXAnnotationElementValue=ruleXAnnotationElementValue();
 
             state._fsp--;
@@ -3227,7 +3177,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXAnnotationElementValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotationElementValue2545); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotationElementValue2536); if (state.failed) return current;
 
             }
 
@@ -3267,9 +3217,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1128:1: ( ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' ) | this_XAnnotationOrExpression_7= ruleXAnnotationOrExpression )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1128:1: ( ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' ) | this_XAnnotationOrExpression_7= ruleXAnnotationOrExpression )
-            int alt25=2;
-            alt25 = dfa25.predict(input);
-            switch (alt25) {
+            int alt22=2;
+            alt22 = dfa22.predict(input);
+            switch (alt22) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1128:2: ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' )
                     {
@@ -3295,13 +3245,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,43,FOLLOW_43_in_ruleXAnnotationElementValue2610); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,44,FOLLOW_44_in_ruleXAnnotationElementValue2601); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXAnnotationElementValueAccess().getNumberSignKeyword_0_0_0_1());
                           
                     }
-                    otherlv_2=(Token)match(input,44,FOLLOW_44_in_ruleXAnnotationElementValue2622); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,45,FOLLOW_45_in_ruleXAnnotationElementValue2613); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getXAnnotationElementValueAccess().getLeftSquareBracketKeyword_0_0_0_2());
@@ -3314,13 +3264,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1145:3: ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )?
-                    int alt24=2;
-                    int LA24_0 = input.LA(1);
+                    int alt21=2;
+                    int LA21_0 = input.LA(1);
 
-                    if ( ((LA24_0>=RULE_ID && LA24_0<=RULE_DECIMAL)||LA24_0==14||LA24_0==17||(LA24_0>=39 && LA24_0<=40)||(LA24_0>=43 && LA24_0<=44)||LA24_0==51||(LA24_0>=67 && LA24_0<=68)||LA24_0==72||LA24_0==79||LA24_0==81||(LA24_0>=85 && LA24_0<=87)||(LA24_0>=90 && LA24_0<=101)||LA24_0==103) ) {
-                        alt24=1;
+                    if ( ((LA21_0>=RULE_ID && LA21_0<=RULE_DECIMAL)||LA21_0==14||LA21_0==17||(LA21_0>=39 && LA21_0<=40)||(LA21_0>=44 && LA21_0<=45)||LA21_0==52||(LA21_0>=68 && LA21_0<=69)||LA21_0==73||LA21_0==80||LA21_0==82||(LA21_0>=86 && LA21_0<=88)||(LA21_0>=91 && LA21_0<=102)||LA21_0==104) ) {
+                        alt21=1;
                     }
-                    switch (alt24) {
+                    switch (alt21) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1145:4: ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )*
                             {
@@ -3335,7 +3285,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXAnnotationElementValueAccess().getElementsXAnnotationOrExpressionParserRuleCall_0_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2646);
+                            pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2637);
                             lv_elements_3_0=ruleXAnnotationOrExpression();
 
                             state._fsp--;
@@ -3360,21 +3310,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             }
 
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1163:2: (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )*
-                            loop23:
+                            loop20:
                             do {
-                                int alt23=2;
-                                int LA23_0 = input.LA(1);
+                                int alt20=2;
+                                int LA20_0 = input.LA(1);
 
-                                if ( (LA23_0==25) ) {
-                                    alt23=1;
+                                if ( (LA20_0==41) ) {
+                                    alt20=1;
                                 }
 
 
-                                switch (alt23) {
+                                switch (alt20) {
                             	case 1 :
                             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1163:4: otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) )
                             	    {
-                            	    otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleXAnnotationElementValue2659); if (state.failed) return current;
+                            	    otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXAnnotationElementValue2650); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_4, grammarAccess.getXAnnotationElementValueAccess().getCommaKeyword_0_1_1_0());
@@ -3391,7 +3341,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getXAnnotationElementValueAccess().getElementsXAnnotationOrExpressionParserRuleCall_0_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2680);
+                            	    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2671);
                             	    lv_elements_5_0=ruleXAnnotationOrExpression();
 
                             	    state._fsp--;
@@ -3420,7 +3370,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop23;
+                            	    break loop20;
                                 }
                             } while (true);
 
@@ -3430,7 +3380,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,45,FOLLOW_45_in_ruleXAnnotationElementValue2696); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,46,FOLLOW_46_in_ruleXAnnotationElementValue2687); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXAnnotationElementValueAccess().getRightSquareBracketKeyword_0_2());
@@ -3450,7 +3400,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXAnnotationElementValueAccess().getXAnnotationOrExpressionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2725);
+                    pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2716);
                     this_XAnnotationOrExpression_7=ruleXAnnotationOrExpression();
 
                     state._fsp--;
@@ -3501,7 +3451,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXAnnotationOrExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_entryRuleXAnnotationOrExpression2760);
+            pushFollow(FOLLOW_ruleXAnnotationOrExpression_in_entryRuleXAnnotationOrExpression2751);
             iv_ruleXAnnotationOrExpression=ruleXAnnotationOrExpression();
 
             state._fsp--;
@@ -3509,7 +3459,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXAnnotationOrExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotationOrExpression2770); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXAnnotationOrExpression2761); if (state.failed) return current;
 
             }
 
@@ -3543,23 +3493,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1220:1: (this_XAnnotation_0= ruleXAnnotation | this_XExpression_1= ruleXExpression )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1220:1: (this_XAnnotation_0= ruleXAnnotation | this_XExpression_1= ruleXExpression )
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA26_0==39) ) {
-                alt26=1;
+            if ( (LA23_0==39) ) {
+                alt23=1;
             }
-            else if ( ((LA26_0>=RULE_ID && LA26_0<=RULE_DECIMAL)||LA26_0==14||LA26_0==17||LA26_0==40||(LA26_0>=43 && LA26_0<=44)||LA26_0==51||(LA26_0>=67 && LA26_0<=68)||LA26_0==72||LA26_0==79||LA26_0==81||(LA26_0>=85 && LA26_0<=87)||(LA26_0>=90 && LA26_0<=101)||LA26_0==103) ) {
-                alt26=2;
+            else if ( ((LA23_0>=RULE_ID && LA23_0<=RULE_DECIMAL)||LA23_0==14||LA23_0==17||LA23_0==40||(LA23_0>=44 && LA23_0<=45)||LA23_0==52||(LA23_0>=68 && LA23_0<=69)||LA23_0==73||LA23_0==80||LA23_0==82||(LA23_0>=86 && LA23_0<=88)||(LA23_0>=91 && LA23_0<=102)||LA23_0==104) ) {
+                alt23=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 26, 0, input);
+                    new NoViableAltException("", 23, 0, input);
 
                 throw nvae;
             }
-            switch (alt26) {
+            switch (alt23) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1221:5: this_XAnnotation_0= ruleXAnnotation
                     {
@@ -3568,7 +3518,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXAnnotationOrExpressionAccess().getXAnnotationParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXAnnotation_in_ruleXAnnotationOrExpression2817);
+                    pushFollow(FOLLOW_ruleXAnnotation_in_ruleXAnnotationOrExpression2808);
                     this_XAnnotation_0=ruleXAnnotation();
 
                     state._fsp--;
@@ -3590,7 +3540,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXAnnotationOrExpressionAccess().getXExpressionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXAnnotationOrExpression2844);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXAnnotationOrExpression2835);
                     this_XExpression_1=ruleXExpression();
 
                     state._fsp--;
@@ -3641,7 +3591,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_entryRuleXExpression2879);
+            pushFollow(FOLLOW_ruleXExpression_in_entryRuleXExpression2870);
             iv_ruleXExpression=ruleXExpression();
 
             state._fsp--;
@@ -3649,7 +3599,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXExpression2889); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXExpression2880); if (state.failed) return current;
 
             }
 
@@ -3685,7 +3635,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXExpressionAccess().getXAssignmentParserRuleCall()); 
                   
             }
-            pushFollow(FOLLOW_ruleXAssignment_in_ruleXExpression2935);
+            pushFollow(FOLLOW_ruleXAssignment_in_ruleXExpression2926);
             this_XAssignment_0=ruleXAssignment();
 
             state._fsp--;
@@ -3730,7 +3680,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXAssignmentRule()); 
             }
-            pushFollow(FOLLOW_ruleXAssignment_in_entryRuleXAssignment2969);
+            pushFollow(FOLLOW_ruleXAssignment_in_entryRuleXAssignment2960);
             iv_ruleXAssignment=ruleXAssignment();
 
             state._fsp--;
@@ -3738,7 +3688,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXAssignment; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXAssignment2979); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXAssignment2970); if (state.failed) return current;
 
             }
 
@@ -3774,41 +3724,22 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1290:1: ( ( () ( ( ruleFeatureCallID ) ) ruleOpSingleAssign ( (lv_value_3_0= ruleXAssignment ) ) ) | (this_XOrExpression_4= ruleXOrExpression ( ( ( ( () ( ( ruleOpMultiAssign ) ) ) )=> ( () ( ( ruleOpMultiAssign ) ) ) ) ( (lv_rightOperand_7_0= ruleXAssignment ) ) )? ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1290:1: ( ( () ( ( ruleFeatureCallID ) ) ruleOpSingleAssign ( (lv_value_3_0= ruleXAssignment ) ) ) | (this_XOrExpression_4= ruleXOrExpression ( ( ( ( () ( ( ruleOpMultiAssign ) ) ) )=> ( () ( ( ruleOpMultiAssign ) ) ) ) ( (lv_rightOperand_7_0= ruleXAssignment ) ) )? ) )
-            int alt28=2;
+            int alt25=2;
             switch ( input.LA(1) ) {
             case RULE_ID:
                 {
-                int LA28_1 = input.LA(2);
+                int LA25_1 = input.LA(2);
 
-                if ( (LA28_1==EOF||(LA28_1>=RULE_ID && LA28_1<=RULE_DECIMAL)||(LA28_1>=14 && LA28_1<=15)||(LA28_1>=17 && LA28_1<=18)||(LA28_1>=25 && LA28_1<=27)||(LA28_1>=40 && LA28_1<=41)||(LA28_1>=43 && LA28_1<=77)||(LA28_1>=79 && LA28_1<=104)) ) {
-                    alt28=2;
+                if ( (LA25_1==EOF||(LA25_1>=RULE_ID && LA25_1<=RULE_DECIMAL)||(LA25_1>=14 && LA25_1<=15)||(LA25_1>=17 && LA25_1<=18)||(LA25_1>=26 && LA25_1<=27)||(LA25_1>=40 && LA25_1<=42)||(LA25_1>=44 && LA25_1<=78)||(LA25_1>=80 && LA25_1<=105)) ) {
+                    alt25=2;
                 }
-                else if ( (LA28_1==42) ) {
-                    alt28=1;
+                else if ( (LA25_1==43) ) {
+                    alt25=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 28, 1, input);
-
-                    throw nvae;
-                }
-                }
-                break;
-            case 90:
-                {
-                int LA28_2 = input.LA(2);
-
-                if ( (LA28_2==42) ) {
-                    alt28=1;
-                }
-                else if ( (LA28_2==EOF||(LA28_2>=RULE_ID && LA28_2<=RULE_DECIMAL)||(LA28_2>=14 && LA28_2<=15)||(LA28_2>=17 && LA28_2<=18)||(LA28_2>=25 && LA28_2<=27)||(LA28_2>=40 && LA28_2<=41)||(LA28_2>=43 && LA28_2<=77)||(LA28_2>=79 && LA28_2<=104)) ) {
-                    alt28=2;
-                }
-                else {
-                    if (state.backtracking>0) {state.failed=true; return current;}
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 28, 2, input);
+                        new NoViableAltException("", 25, 1, input);
 
                     throw nvae;
                 }
@@ -3816,37 +3747,18 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 break;
             case 91:
                 {
-                int LA28_3 = input.LA(2);
+                int LA25_2 = input.LA(2);
 
-                if ( (LA28_3==EOF||(LA28_3>=RULE_ID && LA28_3<=RULE_DECIMAL)||(LA28_3>=14 && LA28_3<=15)||(LA28_3>=17 && LA28_3<=18)||(LA28_3>=25 && LA28_3<=27)||(LA28_3>=40 && LA28_3<=41)||(LA28_3>=43 && LA28_3<=77)||(LA28_3>=79 && LA28_3<=104)) ) {
-                    alt28=2;
+                if ( (LA25_2==EOF||(LA25_2>=RULE_ID && LA25_2<=RULE_DECIMAL)||(LA25_2>=14 && LA25_2<=15)||(LA25_2>=17 && LA25_2<=18)||(LA25_2>=26 && LA25_2<=27)||(LA25_2>=40 && LA25_2<=42)||(LA25_2>=44 && LA25_2<=78)||(LA25_2>=80 && LA25_2<=105)) ) {
+                    alt25=2;
                 }
-                else if ( (LA28_3==42) ) {
-                    alt28=1;
+                else if ( (LA25_2==43) ) {
+                    alt25=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 28, 3, input);
-
-                    throw nvae;
-                }
-                }
-                break;
-            case 17:
-                {
-                int LA28_4 = input.LA(2);
-
-                if ( (LA28_4==EOF||(LA28_4>=RULE_ID && LA28_4<=RULE_DECIMAL)||(LA28_4>=14 && LA28_4<=15)||(LA28_4>=17 && LA28_4<=18)||(LA28_4>=25 && LA28_4<=27)||(LA28_4>=40 && LA28_4<=41)||(LA28_4>=43 && LA28_4<=77)||(LA28_4>=79 && LA28_4<=104)) ) {
-                    alt28=2;
-                }
-                else if ( (LA28_4==42) ) {
-                    alt28=1;
-                }
-                else {
-                    if (state.backtracking>0) {state.failed=true; return current;}
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 28, 4, input);
+                        new NoViableAltException("", 25, 2, input);
 
                     throw nvae;
                 }
@@ -3854,18 +3766,56 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 break;
             case 92:
                 {
-                int LA28_5 = input.LA(2);
+                int LA25_3 = input.LA(2);
 
-                if ( (LA28_5==EOF||(LA28_5>=RULE_ID && LA28_5<=RULE_DECIMAL)||(LA28_5>=14 && LA28_5<=15)||(LA28_5>=17 && LA28_5<=18)||(LA28_5>=25 && LA28_5<=27)||(LA28_5>=40 && LA28_5<=41)||(LA28_5>=43 && LA28_5<=77)||(LA28_5>=79 && LA28_5<=104)) ) {
-                    alt28=2;
+                if ( (LA25_3==43) ) {
+                    alt25=1;
                 }
-                else if ( (LA28_5==42) ) {
-                    alt28=1;
+                else if ( (LA25_3==EOF||(LA25_3>=RULE_ID && LA25_3<=RULE_DECIMAL)||(LA25_3>=14 && LA25_3<=15)||(LA25_3>=17 && LA25_3<=18)||(LA25_3>=26 && LA25_3<=27)||(LA25_3>=40 && LA25_3<=42)||(LA25_3>=44 && LA25_3<=78)||(LA25_3>=80 && LA25_3<=105)) ) {
+                    alt25=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 28, 5, input);
+                        new NoViableAltException("", 25, 3, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case 17:
+                {
+                int LA25_4 = input.LA(2);
+
+                if ( (LA25_4==EOF||(LA25_4>=RULE_ID && LA25_4<=RULE_DECIMAL)||(LA25_4>=14 && LA25_4<=15)||(LA25_4>=17 && LA25_4<=18)||(LA25_4>=26 && LA25_4<=27)||(LA25_4>=40 && LA25_4<=42)||(LA25_4>=44 && LA25_4<=78)||(LA25_4>=80 && LA25_4<=105)) ) {
+                    alt25=2;
+                }
+                else if ( (LA25_4==43) ) {
+                    alt25=1;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return current;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 25, 4, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case 93:
+                {
+                int LA25_5 = input.LA(2);
+
+                if ( (LA25_5==EOF||(LA25_5>=RULE_ID && LA25_5<=RULE_DECIMAL)||(LA25_5>=14 && LA25_5<=15)||(LA25_5>=17 && LA25_5<=18)||(LA25_5>=26 && LA25_5<=27)||(LA25_5>=40 && LA25_5<=42)||(LA25_5>=44 && LA25_5<=78)||(LA25_5>=80 && LA25_5<=105)) ) {
+                    alt25=2;
+                }
+                else if ( (LA25_5==43) ) {
+                    alt25=1;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return current;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 25, 5, input);
 
                     throw nvae;
                 }
@@ -3877,18 +3827,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             case RULE_DECIMAL:
             case 14:
             case 40:
-            case 43:
             case 44:
-            case 51:
-            case 67:
+            case 45:
+            case 52:
             case 68:
-            case 72:
-            case 79:
-            case 81:
-            case 85:
+            case 69:
+            case 73:
+            case 80:
+            case 82:
             case 86:
             case 87:
-            case 93:
+            case 88:
             case 94:
             case 95:
             case 96:
@@ -3897,20 +3846,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             case 99:
             case 100:
             case 101:
-            case 103:
+            case 102:
+            case 104:
                 {
-                alt28=2;
+                alt25=2;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 28, 0, input);
+                    new NoViableAltException("", 25, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt28) {
+            switch (alt25) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1290:2: ( () ( ( ruleFeatureCallID ) ) ruleOpSingleAssign ( (lv_value_3_0= ruleXAssignment ) ) )
                     {
@@ -3948,7 +3898,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXAssignmentAccess().getFeatureJvmIdentifiableElementCrossReference_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFeatureCallID_in_ruleXAssignment3037);
+                    pushFollow(FOLLOW_ruleFeatureCallID_in_ruleXAssignment3028);
                     ruleFeatureCallID();
 
                     state._fsp--;
@@ -3969,7 +3919,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXAssignmentAccess().getOpSingleAssignParserRuleCall_0_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleOpSingleAssign_in_ruleXAssignment3053);
+                    pushFollow(FOLLOW_ruleOpSingleAssign_in_ruleXAssignment3044);
                     ruleOpSingleAssign();
 
                     state._fsp--;
@@ -3990,7 +3940,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXAssignmentAccess().getValueXAssignmentParserRuleCall_0_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXAssignment_in_ruleXAssignment3073);
+                    pushFollow(FOLLOW_ruleXAssignment_in_ruleXAssignment3064);
                     lv_value_3_0=ruleXAssignment();
 
                     state._fsp--;
@@ -4031,7 +3981,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXAssignmentAccess().getXOrExpressionParserRuleCall_1_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXOrExpression_in_ruleXAssignment3103);
+                    pushFollow(FOLLOW_ruleXOrExpression_in_ruleXAssignment3094);
                     this_XOrExpression_4=ruleXOrExpression();
 
                     state._fsp--;
@@ -4043,9 +3993,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                           
                     }
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1347:1: ( ( ( ( () ( ( ruleOpMultiAssign ) ) ) )=> ( () ( ( ruleOpMultiAssign ) ) ) ) ( (lv_rightOperand_7_0= ruleXAssignment ) ) )?
-                    int alt27=2;
-                    alt27 = dfa27.predict(input);
-                    switch (alt27) {
+                    int alt24=2;
+                    alt24 = dfa24.predict(input);
+                    switch (alt24) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1347:2: ( ( ( () ( ( ruleOpMultiAssign ) ) ) )=> ( () ( ( ruleOpMultiAssign ) ) ) ) ( (lv_rightOperand_7_0= ruleXAssignment ) )
                             {
@@ -4086,7 +4036,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXAssignmentAccess().getFeatureJvmIdentifiableElementCrossReference_1_1_0_0_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleOpMultiAssign_in_ruleXAssignment3156);
+                            pushFollow(FOLLOW_ruleOpMultiAssign_in_ruleXAssignment3147);
                             ruleOpMultiAssign();
 
                             state._fsp--;
@@ -4119,7 +4069,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXAssignmentAccess().getRightOperandXAssignmentParserRuleCall_1_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXAssignment_in_ruleXAssignment3179);
+                            pushFollow(FOLLOW_ruleXAssignment_in_ruleXAssignment3170);
                             lv_rightOperand_7_0=ruleXAssignment();
 
                             state._fsp--;
@@ -4192,7 +4142,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpSingleAssignRule()); 
             }
-            pushFollow(FOLLOW_ruleOpSingleAssign_in_entryRuleOpSingleAssign3219);
+            pushFollow(FOLLOW_ruleOpSingleAssign_in_entryRuleOpSingleAssign3210);
             iv_ruleOpSingleAssign=ruleOpSingleAssign();
 
             state._fsp--;
@@ -4200,7 +4150,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpSingleAssign.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpSingleAssign3230); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpSingleAssign3221); if (state.failed) return current;
 
             }
 
@@ -4230,7 +4180,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1411:28: (kw= '=' )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1413:2: kw= '='
             {
-            kw=(Token)match(input,42,FOLLOW_42_in_ruleOpSingleAssign3267); if (state.failed) return current;
+            kw=(Token)match(input,43,FOLLOW_43_in_ruleOpSingleAssign3258); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -4271,7 +4221,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpMultiAssignRule()); 
             }
-            pushFollow(FOLLOW_ruleOpMultiAssign_in_entryRuleOpMultiAssign3307);
+            pushFollow(FOLLOW_ruleOpMultiAssign_in_entryRuleOpMultiAssign3298);
             iv_ruleOpMultiAssign=ruleOpMultiAssign();
 
             state._fsp--;
@@ -4279,7 +4229,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpMultiAssign.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpMultiAssign3318); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpMultiAssign3309); if (state.failed) return current;
 
             }
 
@@ -4310,56 +4260,56 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1439:1: (kw= '+=' | kw= '-=' | kw= '*=' | kw= '/=' | kw= '%=' | (kw= '<' kw= '<' kw= '=' ) | (kw= '>' (kw= '>' )? kw= '>=' ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1439:1: (kw= '+=' | kw= '-=' | kw= '*=' | kw= '/=' | kw= '%=' | (kw= '<' kw= '<' kw= '=' ) | (kw= '>' (kw= '>' )? kw= '>=' ) )
-            int alt30=7;
+            int alt27=7;
             switch ( input.LA(1) ) {
-            case 46:
-                {
-                alt30=1;
-                }
-                break;
             case 47:
                 {
-                alt30=2;
+                alt27=1;
                 }
                 break;
             case 48:
                 {
-                alt30=3;
+                alt27=2;
                 }
                 break;
             case 49:
                 {
-                alt30=4;
+                alt27=3;
                 }
                 break;
             case 50:
                 {
-                alt30=5;
+                alt27=4;
                 }
                 break;
             case 51:
                 {
-                alt30=6;
+                alt27=5;
                 }
                 break;
             case 52:
                 {
-                alt30=7;
+                alt27=6;
+                }
+                break;
+            case 53:
+                {
+                alt27=7;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 30, 0, input);
+                    new NoViableAltException("", 27, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt30) {
+            switch (alt27) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1440:2: kw= '+='
                     {
-                    kw=(Token)match(input,46,FOLLOW_46_in_ruleOpMultiAssign3356); if (state.failed) return current;
+                    kw=(Token)match(input,47,FOLLOW_47_in_ruleOpMultiAssign3347); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -4372,7 +4322,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1447:2: kw= '-='
                     {
-                    kw=(Token)match(input,47,FOLLOW_47_in_ruleOpMultiAssign3375); if (state.failed) return current;
+                    kw=(Token)match(input,48,FOLLOW_48_in_ruleOpMultiAssign3366); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -4385,7 +4335,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1454:2: kw= '*='
                     {
-                    kw=(Token)match(input,48,FOLLOW_48_in_ruleOpMultiAssign3394); if (state.failed) return current;
+                    kw=(Token)match(input,49,FOLLOW_49_in_ruleOpMultiAssign3385); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -4398,7 +4348,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1461:2: kw= '/='
                     {
-                    kw=(Token)match(input,49,FOLLOW_49_in_ruleOpMultiAssign3413); if (state.failed) return current;
+                    kw=(Token)match(input,50,FOLLOW_50_in_ruleOpMultiAssign3404); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -4411,7 +4361,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1468:2: kw= '%='
                     {
-                    kw=(Token)match(input,50,FOLLOW_50_in_ruleOpMultiAssign3432); if (state.failed) return current;
+                    kw=(Token)match(input,51,FOLLOW_51_in_ruleOpMultiAssign3423); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -4427,21 +4377,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1474:6: (kw= '<' kw= '<' kw= '=' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1475:2: kw= '<' kw= '<' kw= '='
                     {
-                    kw=(Token)match(input,51,FOLLOW_51_in_ruleOpMultiAssign3452); if (state.failed) return current;
+                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpMultiAssign3443); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getOpMultiAssignAccess().getLessThanSignKeyword_5_0()); 
                           
                     }
-                    kw=(Token)match(input,51,FOLLOW_51_in_ruleOpMultiAssign3465); if (state.failed) return current;
+                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpMultiAssign3456); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getOpMultiAssignAccess().getLessThanSignKeyword_5_1()); 
                           
                     }
-                    kw=(Token)match(input,42,FOLLOW_42_in_ruleOpMultiAssign3478); if (state.failed) return current;
+                    kw=(Token)match(input,43,FOLLOW_43_in_ruleOpMultiAssign3469); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -4460,7 +4410,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1493:6: (kw= '>' (kw= '>' )? kw= '>=' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1494:2: kw= '>' (kw= '>' )? kw= '>='
                     {
-                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpMultiAssign3499); if (state.failed) return current;
+                    kw=(Token)match(input,53,FOLLOW_53_in_ruleOpMultiAssign3490); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -4468,17 +4418,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                           
                     }
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1499:1: (kw= '>' )?
-                    int alt29=2;
-                    int LA29_0 = input.LA(1);
+                    int alt26=2;
+                    int LA26_0 = input.LA(1);
 
-                    if ( (LA29_0==52) ) {
-                        alt29=1;
+                    if ( (LA26_0==53) ) {
+                        alt26=1;
                     }
-                    switch (alt29) {
+                    switch (alt26) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1500:2: kw= '>'
                             {
-                            kw=(Token)match(input,52,FOLLOW_52_in_ruleOpMultiAssign3513); if (state.failed) return current;
+                            kw=(Token)match(input,53,FOLLOW_53_in_ruleOpMultiAssign3504); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
@@ -4491,7 +4441,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    kw=(Token)match(input,53,FOLLOW_53_in_ruleOpMultiAssign3528); if (state.failed) return current;
+                    kw=(Token)match(input,54,FOLLOW_54_in_ruleOpMultiAssign3519); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -4541,7 +4491,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXOrExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXOrExpression_in_entryRuleXOrExpression3569);
+            pushFollow(FOLLOW_ruleXOrExpression_in_entryRuleXOrExpression3560);
             iv_ruleXOrExpression=ruleXOrExpression();
 
             state._fsp--;
@@ -4549,7 +4499,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXOrExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXOrExpression3579); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXOrExpression3570); if (state.failed) return current;
 
             }
 
@@ -4590,7 +4540,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXOrExpressionAccess().getXAndExpressionParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXAndExpression_in_ruleXOrExpression3626);
+            pushFollow(FOLLOW_ruleXAndExpression_in_ruleXOrExpression3617);
             this_XAndExpression_0=ruleXAndExpression();
 
             state._fsp--;
@@ -4602,23 +4552,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1541:1: ( ( ( ( () ( ( ruleOpOr ) ) ) )=> ( () ( ( ruleOpOr ) ) ) ) ( (lv_rightOperand_3_0= ruleXAndExpression ) ) )*
-            loop31:
+            loop28:
             do {
-                int alt31=2;
-                int LA31_0 = input.LA(1);
+                int alt28=2;
+                int LA28_0 = input.LA(1);
 
-                if ( (LA31_0==54) ) {
-                    int LA31_2 = input.LA(2);
+                if ( (LA28_0==55) ) {
+                    int LA28_2 = input.LA(2);
 
                     if ( (synpred9_InternalDatatypeGrammar()) ) {
-                        alt31=1;
+                        alt28=1;
                     }
 
 
                 }
 
 
-                switch (alt31) {
+                switch (alt28) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1541:2: ( ( ( () ( ( ruleOpOr ) ) ) )=> ( () ( ( ruleOpOr ) ) ) ) ( (lv_rightOperand_3_0= ruleXAndExpression ) )
             	    {
@@ -4659,7 +4609,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXOrExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleOpOr_in_ruleXOrExpression3679);
+            	    pushFollow(FOLLOW_ruleOpOr_in_ruleXOrExpression3670);
             	    ruleOpOr();
 
             	    state._fsp--;
@@ -4692,7 +4642,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXOrExpressionAccess().getRightOperandXAndExpressionParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXAndExpression_in_ruleXOrExpression3702);
+            	    pushFollow(FOLLOW_ruleXAndExpression_in_ruleXOrExpression3693);
             	    lv_rightOperand_3_0=ruleXAndExpression();
 
             	    state._fsp--;
@@ -4721,7 +4671,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop31;
+            	    break loop28;
                 }
             } while (true);
 
@@ -4762,7 +4712,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpOrRule()); 
             }
-            pushFollow(FOLLOW_ruleOpOr_in_entryRuleOpOr3741);
+            pushFollow(FOLLOW_ruleOpOr_in_entryRuleOpOr3732);
             iv_ruleOpOr=ruleOpOr();
 
             state._fsp--;
@@ -4770,7 +4720,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpOr.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpOr3752); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpOr3743); if (state.failed) return current;
 
             }
 
@@ -4800,7 +4750,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1605:28: (kw= '||' )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1607:2: kw= '||'
             {
-            kw=(Token)match(input,54,FOLLOW_54_in_ruleOpOr3789); if (state.failed) return current;
+            kw=(Token)match(input,55,FOLLOW_55_in_ruleOpOr3780); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -4841,7 +4791,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXAndExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXAndExpression_in_entryRuleXAndExpression3828);
+            pushFollow(FOLLOW_ruleXAndExpression_in_entryRuleXAndExpression3819);
             iv_ruleXAndExpression=ruleXAndExpression();
 
             state._fsp--;
@@ -4849,7 +4799,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXAndExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXAndExpression3838); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXAndExpression3829); if (state.failed) return current;
 
             }
 
@@ -4890,7 +4840,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXAndExpressionAccess().getXEqualityExpressionParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression3885);
+            pushFollow(FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression3876);
             this_XEqualityExpression_0=ruleXEqualityExpression();
 
             state._fsp--;
@@ -4902,23 +4852,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1642:1: ( ( ( ( () ( ( ruleOpAnd ) ) ) )=> ( () ( ( ruleOpAnd ) ) ) ) ( (lv_rightOperand_3_0= ruleXEqualityExpression ) ) )*
-            loop32:
+            loop29:
             do {
-                int alt32=2;
-                int LA32_0 = input.LA(1);
+                int alt29=2;
+                int LA29_0 = input.LA(1);
 
-                if ( (LA32_0==55) ) {
-                    int LA32_2 = input.LA(2);
+                if ( (LA29_0==56) ) {
+                    int LA29_2 = input.LA(2);
 
                     if ( (synpred10_InternalDatatypeGrammar()) ) {
-                        alt32=1;
+                        alt29=1;
                     }
 
 
                 }
 
 
-                switch (alt32) {
+                switch (alt29) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1642:2: ( ( ( () ( ( ruleOpAnd ) ) ) )=> ( () ( ( ruleOpAnd ) ) ) ) ( (lv_rightOperand_3_0= ruleXEqualityExpression ) )
             	    {
@@ -4959,7 +4909,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXAndExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleOpAnd_in_ruleXAndExpression3938);
+            	    pushFollow(FOLLOW_ruleOpAnd_in_ruleXAndExpression3929);
             	    ruleOpAnd();
 
             	    state._fsp--;
@@ -4992,7 +4942,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXAndExpressionAccess().getRightOperandXEqualityExpressionParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression3961);
+            	    pushFollow(FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression3952);
             	    lv_rightOperand_3_0=ruleXEqualityExpression();
 
             	    state._fsp--;
@@ -5021,7 +4971,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop32;
+            	    break loop29;
                 }
             } while (true);
 
@@ -5062,7 +5012,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpAndRule()); 
             }
-            pushFollow(FOLLOW_ruleOpAnd_in_entryRuleOpAnd4000);
+            pushFollow(FOLLOW_ruleOpAnd_in_entryRuleOpAnd3991);
             iv_ruleOpAnd=ruleOpAnd();
 
             state._fsp--;
@@ -5070,7 +5020,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpAnd.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpAnd4011); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpAnd4002); if (state.failed) return current;
 
             }
 
@@ -5100,7 +5050,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1706:28: (kw= '&&' )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1708:2: kw= '&&'
             {
-            kw=(Token)match(input,55,FOLLOW_55_in_ruleOpAnd4048); if (state.failed) return current;
+            kw=(Token)match(input,56,FOLLOW_56_in_ruleOpAnd4039); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -5141,7 +5091,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXEqualityExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXEqualityExpression_in_entryRuleXEqualityExpression4087);
+            pushFollow(FOLLOW_ruleXEqualityExpression_in_entryRuleXEqualityExpression4078);
             iv_ruleXEqualityExpression=ruleXEqualityExpression();
 
             state._fsp--;
@@ -5149,7 +5099,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXEqualityExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXEqualityExpression4097); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXEqualityExpression4088); if (state.failed) return current;
 
             }
 
@@ -5190,7 +5140,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXEqualityExpressionAccess().getXRelationalExpressionParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression4144);
+            pushFollow(FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression4135);
             this_XRelationalExpression_0=ruleXRelationalExpression();
 
             state._fsp--;
@@ -5202,27 +5152,16 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1743:1: ( ( ( ( () ( ( ruleOpEquality ) ) ) )=> ( () ( ( ruleOpEquality ) ) ) ) ( (lv_rightOperand_3_0= ruleXRelationalExpression ) ) )*
-            loop33:
+            loop30:
             do {
-                int alt33=2;
+                int alt30=2;
                 switch ( input.LA(1) ) {
-                case 56:
-                    {
-                    int LA33_2 = input.LA(2);
-
-                    if ( (synpred11_InternalDatatypeGrammar()) ) {
-                        alt33=1;
-                    }
-
-
-                    }
-                    break;
                 case 57:
                     {
-                    int LA33_3 = input.LA(2);
+                    int LA30_2 = input.LA(2);
 
                     if ( (synpred11_InternalDatatypeGrammar()) ) {
-                        alt33=1;
+                        alt30=1;
                     }
 
 
@@ -5230,10 +5169,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     break;
                 case 58:
                     {
-                    int LA33_4 = input.LA(2);
+                    int LA30_3 = input.LA(2);
 
                     if ( (synpred11_InternalDatatypeGrammar()) ) {
-                        alt33=1;
+                        alt30=1;
                     }
 
 
@@ -5241,10 +5180,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     break;
                 case 59:
                     {
-                    int LA33_5 = input.LA(2);
+                    int LA30_4 = input.LA(2);
 
                     if ( (synpred11_InternalDatatypeGrammar()) ) {
-                        alt33=1;
+                        alt30=1;
+                    }
+
+
+                    }
+                    break;
+                case 60:
+                    {
+                    int LA30_5 = input.LA(2);
+
+                    if ( (synpred11_InternalDatatypeGrammar()) ) {
+                        alt30=1;
                     }
 
 
@@ -5253,7 +5203,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                 }
 
-                switch (alt33) {
+                switch (alt30) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1743:2: ( ( ( () ( ( ruleOpEquality ) ) ) )=> ( () ( ( ruleOpEquality ) ) ) ) ( (lv_rightOperand_3_0= ruleXRelationalExpression ) )
             	    {
@@ -5294,7 +5244,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXEqualityExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleOpEquality_in_ruleXEqualityExpression4197);
+            	    pushFollow(FOLLOW_ruleOpEquality_in_ruleXEqualityExpression4188);
             	    ruleOpEquality();
 
             	    state._fsp--;
@@ -5327,7 +5277,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXEqualityExpressionAccess().getRightOperandXRelationalExpressionParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression4220);
+            	    pushFollow(FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression4211);
             	    lv_rightOperand_3_0=ruleXRelationalExpression();
 
             	    state._fsp--;
@@ -5356,7 +5306,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop33;
+            	    break loop30;
                 }
             } while (true);
 
@@ -5397,7 +5347,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpEqualityRule()); 
             }
-            pushFollow(FOLLOW_ruleOpEquality_in_entryRuleOpEquality4259);
+            pushFollow(FOLLOW_ruleOpEquality_in_entryRuleOpEquality4250);
             iv_ruleOpEquality=ruleOpEquality();
 
             state._fsp--;
@@ -5405,7 +5355,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpEquality.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpEquality4270); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpEquality4261); if (state.failed) return current;
 
             }
 
@@ -5436,41 +5386,41 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1808:1: (kw= '==' | kw= '!=' | kw= '===' | kw= '!==' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1808:1: (kw= '==' | kw= '!=' | kw= '===' | kw= '!==' )
-            int alt34=4;
+            int alt31=4;
             switch ( input.LA(1) ) {
-            case 56:
-                {
-                alt34=1;
-                }
-                break;
             case 57:
                 {
-                alt34=2;
+                alt31=1;
                 }
                 break;
             case 58:
                 {
-                alt34=3;
+                alt31=2;
                 }
                 break;
             case 59:
                 {
-                alt34=4;
+                alt31=3;
+                }
+                break;
+            case 60:
+                {
+                alt31=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 34, 0, input);
+                    new NoViableAltException("", 31, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt34) {
+            switch (alt31) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1809:2: kw= '=='
                     {
-                    kw=(Token)match(input,56,FOLLOW_56_in_ruleOpEquality4308); if (state.failed) return current;
+                    kw=(Token)match(input,57,FOLLOW_57_in_ruleOpEquality4299); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -5483,7 +5433,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1816:2: kw= '!='
                     {
-                    kw=(Token)match(input,57,FOLLOW_57_in_ruleOpEquality4327); if (state.failed) return current;
+                    kw=(Token)match(input,58,FOLLOW_58_in_ruleOpEquality4318); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -5496,7 +5446,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1823:2: kw= '==='
                     {
-                    kw=(Token)match(input,58,FOLLOW_58_in_ruleOpEquality4346); if (state.failed) return current;
+                    kw=(Token)match(input,59,FOLLOW_59_in_ruleOpEquality4337); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -5509,7 +5459,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1830:2: kw= '!=='
                     {
-                    kw=(Token)match(input,59,FOLLOW_59_in_ruleOpEquality4365); if (state.failed) return current;
+                    kw=(Token)match(input,60,FOLLOW_60_in_ruleOpEquality4356); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -5556,7 +5506,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXRelationalExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXRelationalExpression_in_entryRuleXRelationalExpression4405);
+            pushFollow(FOLLOW_ruleXRelationalExpression_in_entryRuleXRelationalExpression4396);
             iv_ruleXRelationalExpression=ruleXRelationalExpression();
 
             state._fsp--;
@@ -5564,7 +5514,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXRelationalExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXRelationalExpression4415); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXRelationalExpression4406); if (state.failed) return current;
 
             }
 
@@ -5608,7 +5558,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getXOtherOperatorExpressionParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXOtherOperatorExpression_in_ruleXRelationalExpression4462);
+            pushFollow(FOLLOW_ruleXOtherOperatorExpression_in_ruleXRelationalExpression4453);
             this_XOtherOperatorExpression_0=ruleXOtherOperatorExpression();
 
             state._fsp--;
@@ -5620,38 +5570,16 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1865:1: ( ( ( ( ( () 'instanceof' ) )=> ( () otherlv_2= 'instanceof' ) ) ( (lv_type_3_0= ruleJvmTypeReference ) ) ) | ( ( ( ( () ( ( ruleOpCompare ) ) ) )=> ( () ( ( ruleOpCompare ) ) ) ) ( (lv_rightOperand_6_0= ruleXOtherOperatorExpression ) ) ) )*
-            loop35:
+            loop32:
             do {
-                int alt35=3;
+                int alt32=3;
                 switch ( input.LA(1) ) {
-                case 51:
-                    {
-                    int LA35_2 = input.LA(2);
-
-                    if ( (synpred13_InternalDatatypeGrammar()) ) {
-                        alt35=2;
-                    }
-
-
-                    }
-                    break;
                 case 52:
                     {
-                    int LA35_3 = input.LA(2);
+                    int LA32_2 = input.LA(2);
 
                     if ( (synpred13_InternalDatatypeGrammar()) ) {
-                        alt35=2;
-                    }
-
-
-                    }
-                    break;
-                case 60:
-                    {
-                    int LA35_4 = input.LA(2);
-
-                    if ( (synpred12_InternalDatatypeGrammar()) ) {
-                        alt35=1;
+                        alt32=2;
                     }
 
 
@@ -5659,10 +5587,32 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     break;
                 case 53:
                     {
-                    int LA35_5 = input.LA(2);
+                    int LA32_3 = input.LA(2);
 
                     if ( (synpred13_InternalDatatypeGrammar()) ) {
-                        alt35=2;
+                        alt32=2;
+                    }
+
+
+                    }
+                    break;
+                case 61:
+                    {
+                    int LA32_4 = input.LA(2);
+
+                    if ( (synpred12_InternalDatatypeGrammar()) ) {
+                        alt32=1;
+                    }
+
+
+                    }
+                    break;
+                case 54:
+                    {
+                    int LA32_5 = input.LA(2);
+
+                    if ( (synpred13_InternalDatatypeGrammar()) ) {
+                        alt32=2;
                     }
 
 
@@ -5671,7 +5621,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                 }
 
-                switch (alt35) {
+                switch (alt32) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1865:2: ( ( ( ( () 'instanceof' ) )=> ( () otherlv_2= 'instanceof' ) ) ( (lv_type_3_0= ruleJvmTypeReference ) ) )
             	    {
@@ -5697,7 +5647,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_2=(Token)match(input,60,FOLLOW_60_in_ruleXRelationalExpression4498); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,61,FOLLOW_61_in_ruleXRelationalExpression4489); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_2, grammarAccess.getXRelationalExpressionAccess().getInstanceofKeyword_1_0_0_0_1());
@@ -5720,7 +5670,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXRelationalExpression4521);
+            	    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXRelationalExpression4512);
             	    lv_type_3_0=ruleJvmTypeReference();
 
             	    state._fsp--;
@@ -5793,7 +5743,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleOpCompare_in_ruleXRelationalExpression4582);
+            	    pushFollow(FOLLOW_ruleOpCompare_in_ruleXRelationalExpression4573);
             	    ruleOpCompare();
 
             	    state._fsp--;
@@ -5826,7 +5776,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXRelationalExpressionAccess().getRightOperandXOtherOperatorExpressionParserRuleCall_1_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXOtherOperatorExpression_in_ruleXRelationalExpression4605);
+            	    pushFollow(FOLLOW_ruleXOtherOperatorExpression_in_ruleXRelationalExpression4596);
             	    lv_rightOperand_6_0=ruleXOtherOperatorExpression();
 
             	    state._fsp--;
@@ -5858,7 +5808,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop35;
+            	    break loop32;
                 }
             } while (true);
 
@@ -5899,7 +5849,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpCompareRule()); 
             }
-            pushFollow(FOLLOW_ruleOpCompare_in_entryRuleOpCompare4645);
+            pushFollow(FOLLOW_ruleOpCompare_in_entryRuleOpCompare4636);
             iv_ruleOpCompare=ruleOpCompare();
 
             state._fsp--;
@@ -5907,7 +5857,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpCompare.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpCompare4656); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpCompare4647); if (state.failed) return current;
 
             }
 
@@ -5938,50 +5888,50 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1961:1: (kw= '>=' | (kw= '<' kw= '=' ) | kw= '>' | kw= '<' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1961:1: (kw= '>=' | (kw= '<' kw= '=' ) | kw= '>' | kw= '<' )
-            int alt36=4;
+            int alt33=4;
             switch ( input.LA(1) ) {
-            case 53:
+            case 54:
                 {
-                alt36=1;
+                alt33=1;
                 }
                 break;
-            case 51:
+            case 52:
                 {
-                int LA36_2 = input.LA(2);
+                int LA33_2 = input.LA(2);
 
-                if ( (LA36_2==42) ) {
-                    alt36=2;
+                if ( (LA33_2==43) ) {
+                    alt33=2;
                 }
-                else if ( (LA36_2==EOF||(LA36_2>=RULE_ID && LA36_2<=RULE_DECIMAL)||LA36_2==14||LA36_2==17||LA36_2==40||(LA36_2>=43 && LA36_2<=44)||LA36_2==51||(LA36_2>=67 && LA36_2<=68)||LA36_2==72||LA36_2==79||LA36_2==81||(LA36_2>=85 && LA36_2<=87)||(LA36_2>=90 && LA36_2<=101)||LA36_2==103) ) {
-                    alt36=4;
+                else if ( (LA33_2==EOF||(LA33_2>=RULE_ID && LA33_2<=RULE_DECIMAL)||LA33_2==14||LA33_2==17||LA33_2==40||(LA33_2>=44 && LA33_2<=45)||LA33_2==52||(LA33_2>=68 && LA33_2<=69)||LA33_2==73||LA33_2==80||LA33_2==82||(LA33_2>=86 && LA33_2<=88)||(LA33_2>=91 && LA33_2<=102)||LA33_2==104) ) {
+                    alt33=4;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 36, 2, input);
+                        new NoViableAltException("", 33, 2, input);
 
                     throw nvae;
                 }
                 }
                 break;
-            case 52:
+            case 53:
                 {
-                alt36=3;
+                alt33=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 36, 0, input);
+                    new NoViableAltException("", 33, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt36) {
+            switch (alt33) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1962:2: kw= '>='
                     {
-                    kw=(Token)match(input,53,FOLLOW_53_in_ruleOpCompare4694); if (state.failed) return current;
+                    kw=(Token)match(input,54,FOLLOW_54_in_ruleOpCompare4685); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -5997,14 +5947,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1968:6: (kw= '<' kw= '=' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1969:2: kw= '<' kw= '='
                     {
-                    kw=(Token)match(input,51,FOLLOW_51_in_ruleOpCompare4714); if (state.failed) return current;
+                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpCompare4705); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getOpCompareAccess().getLessThanSignKeyword_1_0()); 
                           
                     }
-                    kw=(Token)match(input,42,FOLLOW_42_in_ruleOpCompare4727); if (state.failed) return current;
+                    kw=(Token)match(input,43,FOLLOW_43_in_ruleOpCompare4718); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6020,7 +5970,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1982:2: kw= '>'
                     {
-                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpCompare4747); if (state.failed) return current;
+                    kw=(Token)match(input,53,FOLLOW_53_in_ruleOpCompare4738); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6033,7 +5983,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1989:2: kw= '<'
                     {
-                    kw=(Token)match(input,51,FOLLOW_51_in_ruleOpCompare4766); if (state.failed) return current;
+                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpCompare4757); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6080,7 +6030,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXOtherOperatorExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXOtherOperatorExpression_in_entryRuleXOtherOperatorExpression4806);
+            pushFollow(FOLLOW_ruleXOtherOperatorExpression_in_entryRuleXOtherOperatorExpression4797);
             iv_ruleXOtherOperatorExpression=ruleXOtherOperatorExpression();
 
             state._fsp--;
@@ -6088,7 +6038,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXOtherOperatorExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXOtherOperatorExpression4816); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXOtherOperatorExpression4807); if (state.failed) return current;
 
             }
 
@@ -6129,7 +6079,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXOtherOperatorExpressionAccess().getXAdditiveExpressionParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXAdditiveExpression_in_ruleXOtherOperatorExpression4863);
+            pushFollow(FOLLOW_ruleXAdditiveExpression_in_ruleXOtherOperatorExpression4854);
             this_XAdditiveExpression_0=ruleXAdditiveExpression();
 
             state._fsp--;
@@ -6141,11 +6091,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2024:1: ( ( ( ( () ( ( ruleOpOther ) ) ) )=> ( () ( ( ruleOpOther ) ) ) ) ( (lv_rightOperand_3_0= ruleXAdditiveExpression ) ) )*
-            loop37:
+            loop34:
             do {
-                int alt37=2;
-                alt37 = dfa37.predict(input);
-                switch (alt37) {
+                int alt34=2;
+                alt34 = dfa34.predict(input);
+                switch (alt34) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2024:2: ( ( ( () ( ( ruleOpOther ) ) ) )=> ( () ( ( ruleOpOther ) ) ) ) ( (lv_rightOperand_3_0= ruleXAdditiveExpression ) )
             	    {
@@ -6186,7 +6136,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXOtherOperatorExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleOpOther_in_ruleXOtherOperatorExpression4916);
+            	    pushFollow(FOLLOW_ruleOpOther_in_ruleXOtherOperatorExpression4907);
             	    ruleOpOther();
 
             	    state._fsp--;
@@ -6219,7 +6169,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXOtherOperatorExpressionAccess().getRightOperandXAdditiveExpressionParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXAdditiveExpression_in_ruleXOtherOperatorExpression4939);
+            	    pushFollow(FOLLOW_ruleXAdditiveExpression_in_ruleXOtherOperatorExpression4930);
             	    lv_rightOperand_3_0=ruleXAdditiveExpression();
 
             	    state._fsp--;
@@ -6248,7 +6198,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop37;
+            	    break loop34;
                 }
             } while (true);
 
@@ -6289,7 +6239,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpOtherRule()); 
             }
-            pushFollow(FOLLOW_ruleOpOther_in_entryRuleOpOther4978);
+            pushFollow(FOLLOW_ruleOpOther_in_entryRuleOpOther4969);
             iv_ruleOpOther=ruleOpOther();
 
             state._fsp--;
@@ -6297,7 +6247,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpOther.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpOther4989); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpOther4980); if (state.failed) return current;
 
             }
 
@@ -6328,13 +6278,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2089:1: (kw= '->' | kw= '..<' | (kw= '>' kw= '..' ) | kw= '..' | kw= '=>' | (kw= '>' ( ( ( ( '>' '>' ) )=> (kw= '>' kw= '>' ) ) | kw= '>' ) ) | (kw= '<' ( ( ( ( '<' '<' ) )=> (kw= '<' kw= '<' ) ) | kw= '<' | kw= '=>' ) ) | kw= '<>' | kw= '?:' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2089:1: (kw= '->' | kw= '..<' | (kw= '>' kw= '..' ) | kw= '..' | kw= '=>' | (kw= '>' ( ( ( ( '>' '>' ) )=> (kw= '>' kw= '>' ) ) | kw= '>' ) ) | (kw= '<' ( ( ( ( '<' '<' ) )=> (kw= '<' kw= '<' ) ) | kw= '<' | kw= '=>' ) ) | kw= '<>' | kw= '?:' )
-            int alt40=9;
-            alt40 = dfa40.predict(input);
-            switch (alt40) {
+            int alt37=9;
+            alt37 = dfa37.predict(input);
+            switch (alt37) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2090:2: kw= '->'
                     {
-                    kw=(Token)match(input,61,FOLLOW_61_in_ruleOpOther5027); if (state.failed) return current;
+                    kw=(Token)match(input,62,FOLLOW_62_in_ruleOpOther5018); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6347,7 +6297,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2097:2: kw= '..<'
                     {
-                    kw=(Token)match(input,62,FOLLOW_62_in_ruleOpOther5046); if (state.failed) return current;
+                    kw=(Token)match(input,63,FOLLOW_63_in_ruleOpOther5037); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6363,14 +6313,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2103:6: (kw= '>' kw= '..' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2104:2: kw= '>' kw= '..'
                     {
-                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5066); if (state.failed) return current;
+                    kw=(Token)match(input,53,FOLLOW_53_in_ruleOpOther5057); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getOpOtherAccess().getGreaterThanSignKeyword_2_0()); 
                           
                     }
-                    kw=(Token)match(input,63,FOLLOW_63_in_ruleOpOther5079); if (state.failed) return current;
+                    kw=(Token)match(input,64,FOLLOW_64_in_ruleOpOther5070); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6386,7 +6336,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2117:2: kw= '..'
                     {
-                    kw=(Token)match(input,63,FOLLOW_63_in_ruleOpOther5099); if (state.failed) return current;
+                    kw=(Token)match(input,64,FOLLOW_64_in_ruleOpOther5090); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6399,7 +6349,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2124:2: kw= '=>'
                     {
-                    kw=(Token)match(input,64,FOLLOW_64_in_ruleOpOther5118); if (state.failed) return current;
+                    kw=(Token)match(input,65,FOLLOW_65_in_ruleOpOther5109); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6415,7 +6365,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2130:6: (kw= '>' ( ( ( ( '>' '>' ) )=> (kw= '>' kw= '>' ) ) | kw= '>' ) )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2131:2: kw= '>' ( ( ( ( '>' '>' ) )=> (kw= '>' kw= '>' ) ) | kw= '>' )
                     {
-                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5138); if (state.failed) return current;
+                    kw=(Token)match(input,53,FOLLOW_53_in_ruleOpOther5129); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6423,22 +6373,22 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                           
                     }
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2136:1: ( ( ( ( '>' '>' ) )=> (kw= '>' kw= '>' ) ) | kw= '>' )
-                    int alt38=2;
-                    int LA38_0 = input.LA(1);
+                    int alt35=2;
+                    int LA35_0 = input.LA(1);
 
-                    if ( (LA38_0==52) ) {
-                        int LA38_1 = input.LA(2);
+                    if ( (LA35_0==53) ) {
+                        int LA35_1 = input.LA(2);
 
-                        if ( (LA38_1==EOF||(LA38_1>=RULE_ID && LA38_1<=RULE_DECIMAL)||LA38_1==14||LA38_1==17||LA38_1==40||(LA38_1>=43 && LA38_1<=44)||LA38_1==51||(LA38_1>=67 && LA38_1<=68)||LA38_1==72||LA38_1==79||LA38_1==81||(LA38_1>=85 && LA38_1<=87)||(LA38_1>=90 && LA38_1<=101)||LA38_1==103) ) {
-                            alt38=2;
+                        if ( (LA35_1==53) && (synpred15_InternalDatatypeGrammar())) {
+                            alt35=1;
                         }
-                        else if ( (LA38_1==52) && (synpred15_InternalDatatypeGrammar())) {
-                            alt38=1;
+                        else if ( (LA35_1==EOF||(LA35_1>=RULE_ID && LA35_1<=RULE_DECIMAL)||LA35_1==14||LA35_1==17||LA35_1==40||(LA35_1>=44 && LA35_1<=45)||LA35_1==52||(LA35_1>=68 && LA35_1<=69)||LA35_1==73||LA35_1==80||LA35_1==82||(LA35_1>=86 && LA35_1<=88)||(LA35_1>=91 && LA35_1<=102)||LA35_1==104) ) {
+                            alt35=2;
                         }
                         else {
                             if (state.backtracking>0) {state.failed=true; return current;}
                             NoViableAltException nvae =
-                                new NoViableAltException("", 38, 1, input);
+                                new NoViableAltException("", 35, 1, input);
 
                             throw nvae;
                         }
@@ -6446,11 +6396,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 38, 0, input);
+                            new NoViableAltException("", 35, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt38) {
+                    switch (alt35) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2136:2: ( ( ( '>' '>' ) )=> (kw= '>' kw= '>' ) )
                             {
@@ -6460,14 +6410,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2140:5: (kw= '>' kw= '>' )
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2141:2: kw= '>' kw= '>'
                             {
-                            kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5169); if (state.failed) return current;
+                            kw=(Token)match(input,53,FOLLOW_53_in_ruleOpOther5160); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
                                       newLeafNode(kw, grammarAccess.getOpOtherAccess().getGreaterThanSignKeyword_5_1_0_0_0()); 
                                   
                             }
-                            kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5182); if (state.failed) return current;
+                            kw=(Token)match(input,53,FOLLOW_53_in_ruleOpOther5173); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
@@ -6486,7 +6436,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2154:2: kw= '>'
                             {
-                            kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5203); if (state.failed) return current;
+                            kw=(Token)match(input,53,FOLLOW_53_in_ruleOpOther5194); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
@@ -6511,7 +6461,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2160:6: (kw= '<' ( ( ( ( '<' '<' ) )=> (kw= '<' kw= '<' ) ) | kw= '<' | kw= '=>' ) )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2161:2: kw= '<' ( ( ( ( '<' '<' ) )=> (kw= '<' kw= '<' ) ) | kw= '<' | kw= '=>' )
                     {
-                    kw=(Token)match(input,51,FOLLOW_51_in_ruleOpOther5225); if (state.failed) return current;
+                    kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5216); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6519,37 +6469,37 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                           
                     }
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2166:1: ( ( ( ( '<' '<' ) )=> (kw= '<' kw= '<' ) ) | kw= '<' | kw= '=>' )
-                    int alt39=3;
-                    int LA39_0 = input.LA(1);
+                    int alt36=3;
+                    int LA36_0 = input.LA(1);
 
-                    if ( (LA39_0==51) ) {
-                        int LA39_1 = input.LA(2);
+                    if ( (LA36_0==52) ) {
+                        int LA36_1 = input.LA(2);
 
                         if ( (synpred16_InternalDatatypeGrammar()) ) {
-                            alt39=1;
+                            alt36=1;
                         }
                         else if ( (true) ) {
-                            alt39=2;
+                            alt36=2;
                         }
                         else {
                             if (state.backtracking>0) {state.failed=true; return current;}
                             NoViableAltException nvae =
-                                new NoViableAltException("", 39, 1, input);
+                                new NoViableAltException("", 36, 1, input);
 
                             throw nvae;
                         }
                     }
-                    else if ( (LA39_0==64) ) {
-                        alt39=3;
+                    else if ( (LA36_0==65) ) {
+                        alt36=3;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 39, 0, input);
+                            new NoViableAltException("", 36, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt39) {
+                    switch (alt36) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2166:2: ( ( ( '<' '<' ) )=> (kw= '<' kw= '<' ) )
                             {
@@ -6559,14 +6509,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2170:5: (kw= '<' kw= '<' )
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2171:2: kw= '<' kw= '<'
                             {
-                            kw=(Token)match(input,51,FOLLOW_51_in_ruleOpOther5256); if (state.failed) return current;
+                            kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5247); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
                                       newLeafNode(kw, grammarAccess.getOpOtherAccess().getLessThanSignKeyword_6_1_0_0_0()); 
                                   
                             }
-                            kw=(Token)match(input,51,FOLLOW_51_in_ruleOpOther5269); if (state.failed) return current;
+                            kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5260); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
@@ -6585,7 +6535,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2184:2: kw= '<'
                             {
-                            kw=(Token)match(input,51,FOLLOW_51_in_ruleOpOther5290); if (state.failed) return current;
+                            kw=(Token)match(input,52,FOLLOW_52_in_ruleOpOther5281); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
@@ -6598,7 +6548,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         case 3 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2191:2: kw= '=>'
                             {
-                            kw=(Token)match(input,64,FOLLOW_64_in_ruleOpOther5309); if (state.failed) return current;
+                            kw=(Token)match(input,65,FOLLOW_65_in_ruleOpOther5300); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
@@ -6620,7 +6570,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 8 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2198:2: kw= '<>'
                     {
-                    kw=(Token)match(input,65,FOLLOW_65_in_ruleOpOther5330); if (state.failed) return current;
+                    kw=(Token)match(input,66,FOLLOW_66_in_ruleOpOther5321); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6633,7 +6583,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 9 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2205:2: kw= '?:'
                     {
-                    kw=(Token)match(input,66,FOLLOW_66_in_ruleOpOther5349); if (state.failed) return current;
+                    kw=(Token)match(input,67,FOLLOW_67_in_ruleOpOther5340); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6680,7 +6630,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXAdditiveExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXAdditiveExpression_in_entryRuleXAdditiveExpression5389);
+            pushFollow(FOLLOW_ruleXAdditiveExpression_in_entryRuleXAdditiveExpression5380);
             iv_ruleXAdditiveExpression=ruleXAdditiveExpression();
 
             state._fsp--;
@@ -6688,7 +6638,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXAdditiveExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXAdditiveExpression5399); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXAdditiveExpression5390); if (state.failed) return current;
 
             }
 
@@ -6729,7 +6679,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXAdditiveExpressionAccess().getXMultiplicativeExpressionParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression5446);
+            pushFollow(FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression5437);
             this_XMultiplicativeExpression_0=ruleXMultiplicativeExpression();
 
             state._fsp--;
@@ -6741,32 +6691,32 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2240:1: ( ( ( ( () ( ( ruleOpAdd ) ) ) )=> ( () ( ( ruleOpAdd ) ) ) ) ( (lv_rightOperand_3_0= ruleXMultiplicativeExpression ) ) )*
-            loop41:
+            loop38:
             do {
-                int alt41=2;
-                int LA41_0 = input.LA(1);
+                int alt38=2;
+                int LA38_0 = input.LA(1);
 
-                if ( (LA41_0==67) ) {
-                    int LA41_2 = input.LA(2);
+                if ( (LA38_0==68) ) {
+                    int LA38_2 = input.LA(2);
 
                     if ( (synpred17_InternalDatatypeGrammar()) ) {
-                        alt41=1;
+                        alt38=1;
                     }
 
 
                 }
-                else if ( (LA41_0==68) ) {
-                    int LA41_3 = input.LA(2);
+                else if ( (LA38_0==69) ) {
+                    int LA38_3 = input.LA(2);
 
                     if ( (synpred17_InternalDatatypeGrammar()) ) {
-                        alt41=1;
+                        alt38=1;
                     }
 
 
                 }
 
 
-                switch (alt41) {
+                switch (alt38) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2240:2: ( ( ( () ( ( ruleOpAdd ) ) ) )=> ( () ( ( ruleOpAdd ) ) ) ) ( (lv_rightOperand_3_0= ruleXMultiplicativeExpression ) )
             	    {
@@ -6807,7 +6757,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXAdditiveExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleOpAdd_in_ruleXAdditiveExpression5499);
+            	    pushFollow(FOLLOW_ruleOpAdd_in_ruleXAdditiveExpression5490);
             	    ruleOpAdd();
 
             	    state._fsp--;
@@ -6840,7 +6790,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXAdditiveExpressionAccess().getRightOperandXMultiplicativeExpressionParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression5522);
+            	    pushFollow(FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression5513);
             	    lv_rightOperand_3_0=ruleXMultiplicativeExpression();
 
             	    state._fsp--;
@@ -6869,7 +6819,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop41;
+            	    break loop38;
                 }
             } while (true);
 
@@ -6910,7 +6860,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpAddRule()); 
             }
-            pushFollow(FOLLOW_ruleOpAdd_in_entryRuleOpAdd5561);
+            pushFollow(FOLLOW_ruleOpAdd_in_entryRuleOpAdd5552);
             iv_ruleOpAdd=ruleOpAdd();
 
             state._fsp--;
@@ -6918,7 +6868,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpAdd.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpAdd5572); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpAdd5563); if (state.failed) return current;
 
             }
 
@@ -6949,27 +6899,27 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2305:1: (kw= '+' | kw= '-' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2305:1: (kw= '+' | kw= '-' )
-            int alt42=2;
-            int LA42_0 = input.LA(1);
+            int alt39=2;
+            int LA39_0 = input.LA(1);
 
-            if ( (LA42_0==67) ) {
-                alt42=1;
+            if ( (LA39_0==68) ) {
+                alt39=1;
             }
-            else if ( (LA42_0==68) ) {
-                alt42=2;
+            else if ( (LA39_0==69) ) {
+                alt39=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 42, 0, input);
+                    new NoViableAltException("", 39, 0, input);
 
                 throw nvae;
             }
-            switch (alt42) {
+            switch (alt39) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2306:2: kw= '+'
                     {
-                    kw=(Token)match(input,67,FOLLOW_67_in_ruleOpAdd5610); if (state.failed) return current;
+                    kw=(Token)match(input,68,FOLLOW_68_in_ruleOpAdd5601); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6982,7 +6932,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2313:2: kw= '-'
                     {
-                    kw=(Token)match(input,68,FOLLOW_68_in_ruleOpAdd5629); if (state.failed) return current;
+                    kw=(Token)match(input,69,FOLLOW_69_in_ruleOpAdd5620); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -7029,7 +6979,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXMultiplicativeExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXMultiplicativeExpression_in_entryRuleXMultiplicativeExpression5669);
+            pushFollow(FOLLOW_ruleXMultiplicativeExpression_in_entryRuleXMultiplicativeExpression5660);
             iv_ruleXMultiplicativeExpression=ruleXMultiplicativeExpression();
 
             state._fsp--;
@@ -7037,7 +6987,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXMultiplicativeExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXMultiplicativeExpression5679); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXMultiplicativeExpression5670); if (state.failed) return current;
 
             }
 
@@ -7078,7 +7028,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXMultiplicativeExpressionAccess().getXUnaryOperationParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXUnaryOperation_in_ruleXMultiplicativeExpression5726);
+            pushFollow(FOLLOW_ruleXUnaryOperation_in_ruleXMultiplicativeExpression5717);
             this_XUnaryOperation_0=ruleXUnaryOperation();
 
             state._fsp--;
@@ -7090,27 +7040,16 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2348:1: ( ( ( ( () ( ( ruleOpMulti ) ) ) )=> ( () ( ( ruleOpMulti ) ) ) ) ( (lv_rightOperand_3_0= ruleXUnaryOperation ) ) )*
-            loop43:
+            loop40:
             do {
-                int alt43=2;
+                int alt40=2;
                 switch ( input.LA(1) ) {
                 case 27:
                     {
-                    int LA43_2 = input.LA(2);
+                    int LA40_2 = input.LA(2);
 
                     if ( (synpred18_InternalDatatypeGrammar()) ) {
-                        alt43=1;
-                    }
-
-
-                    }
-                    break;
-                case 69:
-                    {
-                    int LA43_3 = input.LA(2);
-
-                    if ( (synpred18_InternalDatatypeGrammar()) ) {
-                        alt43=1;
+                        alt40=1;
                     }
 
 
@@ -7118,10 +7057,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     break;
                 case 70:
                     {
-                    int LA43_4 = input.LA(2);
+                    int LA40_3 = input.LA(2);
 
                     if ( (synpred18_InternalDatatypeGrammar()) ) {
-                        alt43=1;
+                        alt40=1;
                     }
 
 
@@ -7129,10 +7068,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     break;
                 case 71:
                     {
-                    int LA43_5 = input.LA(2);
+                    int LA40_4 = input.LA(2);
 
                     if ( (synpred18_InternalDatatypeGrammar()) ) {
-                        alt43=1;
+                        alt40=1;
+                    }
+
+
+                    }
+                    break;
+                case 72:
+                    {
+                    int LA40_5 = input.LA(2);
+
+                    if ( (synpred18_InternalDatatypeGrammar()) ) {
+                        alt40=1;
                     }
 
 
@@ -7141,7 +7091,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                 }
 
-                switch (alt43) {
+                switch (alt40) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2348:2: ( ( ( () ( ( ruleOpMulti ) ) ) )=> ( () ( ( ruleOpMulti ) ) ) ) ( (lv_rightOperand_3_0= ruleXUnaryOperation ) )
             	    {
@@ -7182,7 +7132,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXMultiplicativeExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleOpMulti_in_ruleXMultiplicativeExpression5779);
+            	    pushFollow(FOLLOW_ruleOpMulti_in_ruleXMultiplicativeExpression5770);
             	    ruleOpMulti();
 
             	    state._fsp--;
@@ -7215,7 +7165,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXMultiplicativeExpressionAccess().getRightOperandXUnaryOperationParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXUnaryOperation_in_ruleXMultiplicativeExpression5802);
+            	    pushFollow(FOLLOW_ruleXUnaryOperation_in_ruleXMultiplicativeExpression5793);
             	    lv_rightOperand_3_0=ruleXUnaryOperation();
 
             	    state._fsp--;
@@ -7244,7 +7194,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop43;
+            	    break loop40;
                 }
             } while (true);
 
@@ -7285,7 +7235,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpMultiRule()); 
             }
-            pushFollow(FOLLOW_ruleOpMulti_in_entryRuleOpMulti5841);
+            pushFollow(FOLLOW_ruleOpMulti_in_entryRuleOpMulti5832);
             iv_ruleOpMulti=ruleOpMulti();
 
             state._fsp--;
@@ -7293,7 +7243,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpMulti.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpMulti5852); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpMulti5843); if (state.failed) return current;
 
             }
 
@@ -7324,41 +7274,41 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2413:1: (kw= '*' | kw= '**' | kw= '/' | kw= '%' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2413:1: (kw= '*' | kw= '**' | kw= '/' | kw= '%' )
-            int alt44=4;
+            int alt41=4;
             switch ( input.LA(1) ) {
             case 27:
                 {
-                alt44=1;
-                }
-                break;
-            case 69:
-                {
-                alt44=2;
+                alt41=1;
                 }
                 break;
             case 70:
                 {
-                alt44=3;
+                alt41=2;
                 }
                 break;
             case 71:
                 {
-                alt44=4;
+                alt41=3;
+                }
+                break;
+            case 72:
+                {
+                alt41=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 44, 0, input);
+                    new NoViableAltException("", 41, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt44) {
+            switch (alt41) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2414:2: kw= '*'
                     {
-                    kw=(Token)match(input,27,FOLLOW_27_in_ruleOpMulti5890); if (state.failed) return current;
+                    kw=(Token)match(input,27,FOLLOW_27_in_ruleOpMulti5881); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -7371,7 +7321,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2421:2: kw= '**'
                     {
-                    kw=(Token)match(input,69,FOLLOW_69_in_ruleOpMulti5909); if (state.failed) return current;
+                    kw=(Token)match(input,70,FOLLOW_70_in_ruleOpMulti5900); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -7384,7 +7334,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2428:2: kw= '/'
                     {
-                    kw=(Token)match(input,70,FOLLOW_70_in_ruleOpMulti5928); if (state.failed) return current;
+                    kw=(Token)match(input,71,FOLLOW_71_in_ruleOpMulti5919); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -7397,7 +7347,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2435:2: kw= '%'
                     {
-                    kw=(Token)match(input,71,FOLLOW_71_in_ruleOpMulti5947); if (state.failed) return current;
+                    kw=(Token)match(input,72,FOLLOW_72_in_ruleOpMulti5938); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -7444,7 +7394,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXUnaryOperationRule()); 
             }
-            pushFollow(FOLLOW_ruleXUnaryOperation_in_entryRuleXUnaryOperation5987);
+            pushFollow(FOLLOW_ruleXUnaryOperation_in_entryRuleXUnaryOperation5978);
             iv_ruleXUnaryOperation=ruleXUnaryOperation();
 
             state._fsp--;
@@ -7452,7 +7402,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXUnaryOperation; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXUnaryOperation5997); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXUnaryOperation5988); if (state.failed) return current;
 
             }
 
@@ -7486,23 +7436,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2461:1: ( ( () ( ( ruleOpUnary ) ) ( (lv_operand_2_0= ruleXUnaryOperation ) ) ) | this_XCastedExpression_3= ruleXCastedExpression )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2461:1: ( ( () ( ( ruleOpUnary ) ) ( (lv_operand_2_0= ruleXUnaryOperation ) ) ) | this_XCastedExpression_3= ruleXCastedExpression )
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            int alt42=2;
+            int LA42_0 = input.LA(1);
 
-            if ( ((LA45_0>=67 && LA45_0<=68)||LA45_0==72) ) {
-                alt45=1;
+            if ( ((LA42_0>=68 && LA42_0<=69)||LA42_0==73) ) {
+                alt42=1;
             }
-            else if ( ((LA45_0>=RULE_ID && LA45_0<=RULE_DECIMAL)||LA45_0==14||LA45_0==17||LA45_0==40||(LA45_0>=43 && LA45_0<=44)||LA45_0==51||LA45_0==79||LA45_0==81||(LA45_0>=85 && LA45_0<=87)||(LA45_0>=90 && LA45_0<=101)||LA45_0==103) ) {
-                alt45=2;
+            else if ( ((LA42_0>=RULE_ID && LA42_0<=RULE_DECIMAL)||LA42_0==14||LA42_0==17||LA42_0==40||(LA42_0>=44 && LA42_0<=45)||LA42_0==52||LA42_0==80||LA42_0==82||(LA42_0>=86 && LA42_0<=88)||(LA42_0>=91 && LA42_0<=102)||LA42_0==104) ) {
+                alt42=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 45, 0, input);
+                    new NoViableAltException("", 42, 0, input);
 
                 throw nvae;
             }
-            switch (alt45) {
+            switch (alt42) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2461:2: ( () ( ( ruleOpUnary ) ) ( (lv_operand_2_0= ruleXUnaryOperation ) ) )
                     {
@@ -7540,7 +7490,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXUnaryOperationAccess().getFeatureJvmIdentifiableElementCrossReference_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleOpUnary_in_ruleXUnaryOperation6055);
+                    pushFollow(FOLLOW_ruleOpUnary_in_ruleXUnaryOperation6046);
                     ruleOpUnary();
 
                     state._fsp--;
@@ -7567,7 +7517,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXUnaryOperationAccess().getOperandXUnaryOperationParserRuleCall_0_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXUnaryOperation_in_ruleXUnaryOperation6076);
+                    pushFollow(FOLLOW_ruleXUnaryOperation_in_ruleXUnaryOperation6067);
                     lv_operand_2_0=ruleXUnaryOperation();
 
                     state._fsp--;
@@ -7605,7 +7555,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXUnaryOperationAccess().getXCastedExpressionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXCastedExpression_in_ruleXUnaryOperation6105);
+                    pushFollow(FOLLOW_ruleXCastedExpression_in_ruleXUnaryOperation6096);
                     this_XCastedExpression_3=ruleXCastedExpression();
 
                     state._fsp--;
@@ -7656,7 +7606,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpUnaryRule()); 
             }
-            pushFollow(FOLLOW_ruleOpUnary_in_entryRuleOpUnary6141);
+            pushFollow(FOLLOW_ruleOpUnary_in_entryRuleOpUnary6132);
             iv_ruleOpUnary=ruleOpUnary();
 
             state._fsp--;
@@ -7664,7 +7614,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpUnary.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpUnary6152); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpUnary6143); if (state.failed) return current;
 
             }
 
@@ -7695,36 +7645,36 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2531:1: (kw= '!' | kw= '-' | kw= '+' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2531:1: (kw= '!' | kw= '-' | kw= '+' )
-            int alt46=3;
+            int alt43=3;
             switch ( input.LA(1) ) {
-            case 72:
+            case 73:
                 {
-                alt46=1;
+                alt43=1;
+                }
+                break;
+            case 69:
+                {
+                alt43=2;
                 }
                 break;
             case 68:
                 {
-                alt46=2;
-                }
-                break;
-            case 67:
-                {
-                alt46=3;
+                alt43=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 46, 0, input);
+                    new NoViableAltException("", 43, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt46) {
+            switch (alt43) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2532:2: kw= '!'
                     {
-                    kw=(Token)match(input,72,FOLLOW_72_in_ruleOpUnary6190); if (state.failed) return current;
+                    kw=(Token)match(input,73,FOLLOW_73_in_ruleOpUnary6181); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -7737,7 +7687,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2539:2: kw= '-'
                     {
-                    kw=(Token)match(input,68,FOLLOW_68_in_ruleOpUnary6209); if (state.failed) return current;
+                    kw=(Token)match(input,69,FOLLOW_69_in_ruleOpUnary6200); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -7750,7 +7700,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2546:2: kw= '+'
                     {
-                    kw=(Token)match(input,67,FOLLOW_67_in_ruleOpUnary6228); if (state.failed) return current;
+                    kw=(Token)match(input,68,FOLLOW_68_in_ruleOpUnary6219); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -7797,7 +7747,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXCastedExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXCastedExpression_in_entryRuleXCastedExpression6268);
+            pushFollow(FOLLOW_ruleXCastedExpression_in_entryRuleXCastedExpression6259);
             iv_ruleXCastedExpression=ruleXCastedExpression();
 
             state._fsp--;
@@ -7805,7 +7755,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXCastedExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXCastedExpression6278); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXCastedExpression6269); if (state.failed) return current;
 
             }
 
@@ -7847,7 +7797,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXCastedExpressionAccess().getXPostfixOperationParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXPostfixOperation_in_ruleXCastedExpression6325);
+            pushFollow(FOLLOW_ruleXPostfixOperation_in_ruleXCastedExpression6316);
             this_XPostfixOperation_0=ruleXPostfixOperation();
 
             state._fsp--;
@@ -7859,23 +7809,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2581:1: ( ( ( ( () 'as' ) )=> ( () otherlv_2= 'as' ) ) ( (lv_type_3_0= ruleJvmTypeReference ) ) )*
-            loop47:
+            loop44:
             do {
-                int alt47=2;
-                int LA47_0 = input.LA(1);
+                int alt44=2;
+                int LA44_0 = input.LA(1);
 
-                if ( (LA47_0==73) ) {
-                    int LA47_2 = input.LA(2);
+                if ( (LA44_0==74) ) {
+                    int LA44_2 = input.LA(2);
 
                     if ( (synpred19_InternalDatatypeGrammar()) ) {
-                        alt47=1;
+                        alt44=1;
                     }
 
 
                 }
 
 
-                switch (alt47) {
+                switch (alt44) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2581:2: ( ( ( () 'as' ) )=> ( () otherlv_2= 'as' ) ) ( (lv_type_3_0= ruleJvmTypeReference ) )
             	    {
@@ -7898,7 +7848,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_2=(Token)match(input,73,FOLLOW_73_in_ruleXCastedExpression6360); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,74,FOLLOW_74_in_ruleXCastedExpression6351); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_2, grammarAccess.getXCastedExpressionAccess().getAsKeyword_1_0_0_1());
@@ -7921,7 +7871,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXCastedExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXCastedExpression6383);
+            	    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXCastedExpression6374);
             	    lv_type_3_0=ruleJvmTypeReference();
 
             	    state._fsp--;
@@ -7950,7 +7900,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop47;
+            	    break loop44;
                 }
             } while (true);
 
@@ -7991,7 +7941,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXPostfixOperationRule()); 
             }
-            pushFollow(FOLLOW_ruleXPostfixOperation_in_entryRuleXPostfixOperation6421);
+            pushFollow(FOLLOW_ruleXPostfixOperation_in_entryRuleXPostfixOperation6412);
             iv_ruleXPostfixOperation=ruleXPostfixOperation();
 
             state._fsp--;
@@ -7999,7 +7949,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXPostfixOperation; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXPostfixOperation6431); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXPostfixOperation6422); if (state.failed) return current;
 
             }
 
@@ -8038,7 +7988,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXPostfixOperationAccess().getXMemberFeatureCallParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXMemberFeatureCall_in_ruleXPostfixOperation6478);
+            pushFollow(FOLLOW_ruleXMemberFeatureCall_in_ruleXPostfixOperation6469);
             this_XMemberFeatureCall_0=ruleXMemberFeatureCall();
 
             state._fsp--;
@@ -8050,24 +8000,24 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2641:1: ( ( ( () ( ( ruleOpPostfix ) ) ) )=> ( () ( ( ruleOpPostfix ) ) ) )?
-            int alt48=2;
-            int LA48_0 = input.LA(1);
+            int alt45=2;
+            int LA45_0 = input.LA(1);
 
-            if ( (LA48_0==74) ) {
-                int LA48_1 = input.LA(2);
-
-                if ( (synpred20_InternalDatatypeGrammar()) ) {
-                    alt48=1;
-                }
-            }
-            else if ( (LA48_0==75) ) {
-                int LA48_2 = input.LA(2);
+            if ( (LA45_0==75) ) {
+                int LA45_1 = input.LA(2);
 
                 if ( (synpred20_InternalDatatypeGrammar()) ) {
-                    alt48=1;
+                    alt45=1;
                 }
             }
-            switch (alt48) {
+            else if ( (LA45_0==76) ) {
+                int LA45_2 = input.LA(2);
+
+                if ( (synpred20_InternalDatatypeGrammar()) ) {
+                    alt45=1;
+                }
+            }
+            switch (alt45) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2641:2: ( ( () ( ( ruleOpPostfix ) ) ) )=> ( () ( ( ruleOpPostfix ) ) )
                     {
@@ -8105,7 +8055,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXPostfixOperationAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleOpPostfix_in_ruleXPostfixOperation6530);
+                    pushFollow(FOLLOW_ruleOpPostfix_in_ruleXPostfixOperation6521);
                     ruleOpPostfix();
 
                     state._fsp--;
@@ -8167,7 +8117,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpPostfixRule()); 
             }
-            pushFollow(FOLLOW_ruleOpPostfix_in_entryRuleOpPostfix6570);
+            pushFollow(FOLLOW_ruleOpPostfix_in_entryRuleOpPostfix6561);
             iv_ruleOpPostfix=ruleOpPostfix();
 
             state._fsp--;
@@ -8175,7 +8125,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpPostfix.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpPostfix6581); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpPostfix6572); if (state.failed) return current;
 
             }
 
@@ -8206,27 +8156,27 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2688:1: (kw= '++' | kw= '--' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2688:1: (kw= '++' | kw= '--' )
-            int alt49=2;
-            int LA49_0 = input.LA(1);
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA49_0==74) ) {
-                alt49=1;
+            if ( (LA46_0==75) ) {
+                alt46=1;
             }
-            else if ( (LA49_0==75) ) {
-                alt49=2;
+            else if ( (LA46_0==76) ) {
+                alt46=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 49, 0, input);
+                    new NoViableAltException("", 46, 0, input);
 
                 throw nvae;
             }
-            switch (alt49) {
+            switch (alt46) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2689:2: kw= '++'
                     {
-                    kw=(Token)match(input,74,FOLLOW_74_in_ruleOpPostfix6619); if (state.failed) return current;
+                    kw=(Token)match(input,75,FOLLOW_75_in_ruleOpPostfix6610); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -8239,7 +8189,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2696:2: kw= '--'
                     {
-                    kw=(Token)match(input,75,FOLLOW_75_in_ruleOpPostfix6638); if (state.failed) return current;
+                    kw=(Token)match(input,76,FOLLOW_76_in_ruleOpPostfix6629); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -8286,7 +8236,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXMemberFeatureCallRule()); 
             }
-            pushFollow(FOLLOW_ruleXMemberFeatureCall_in_entryRuleXMemberFeatureCall6678);
+            pushFollow(FOLLOW_ruleXMemberFeatureCall_in_entryRuleXMemberFeatureCall6669);
             iv_ruleXMemberFeatureCall=ruleXMemberFeatureCall();
 
             state._fsp--;
@@ -8294,7 +8244,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXMemberFeatureCall; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXMemberFeatureCall6688); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXMemberFeatureCall6679); if (state.failed) return current;
 
             }
 
@@ -8358,7 +8308,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getXPrimaryExpressionParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleXPrimaryExpression_in_ruleXMemberFeatureCall6735);
+            pushFollow(FOLLOW_ruleXPrimaryExpression_in_ruleXMemberFeatureCall6726);
             this_XPrimaryExpression_0=ruleXPrimaryExpression();
 
             state._fsp--;
@@ -8370,33 +8320,19 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2731:1: ( ( ( ( ( () ( '.' | ( ( '::' ) ) ) ( ( ruleFeatureCallID ) ) ruleOpSingleAssign ) )=> ( () (otherlv_2= '.' | ( (lv_explicitStatic_3_0= '::' ) ) ) ( ( ruleFeatureCallID ) ) ruleOpSingleAssign ) ) ( (lv_value_6_0= ruleXAssignment ) ) ) | ( ( ( ( () ( '.' | ( ( '?.' ) ) | ( ( '::' ) ) ) ) )=> ( () (otherlv_8= '.' | ( (lv_nullSafe_9_0= '?.' ) ) | ( (lv_explicitStatic_10_0= '::' ) ) ) ) ) (otherlv_11= '<' ( (lv_typeArguments_12_0= ruleJvmArgumentTypeReference ) ) (otherlv_13= ',' ( (lv_typeArguments_14_0= ruleJvmArgumentTypeReference ) ) )* otherlv_15= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_17_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_memberCallArguments_18_0= ruleXShortClosure ) ) | ( ( (lv_memberCallArguments_19_0= ruleXExpression ) ) (otherlv_20= ',' ( (lv_memberCallArguments_21_0= ruleXExpression ) ) )* ) )? otherlv_22= ')' )? ( ( ( () '[' ) )=> (lv_memberCallArguments_23_0= ruleXClosure ) )? ) )*
-            loop58:
+            loop55:
             do {
-                int alt58=3;
+                int alt55=3;
                 switch ( input.LA(1) ) {
                 case 26:
                     {
-                    int LA58_2 = input.LA(2);
+                    int LA55_2 = input.LA(2);
 
                     if ( (synpred21_InternalDatatypeGrammar()) ) {
-                        alt58=1;
+                        alt55=1;
                     }
                     else if ( (synpred22_InternalDatatypeGrammar()) ) {
-                        alt58=2;
-                    }
-
-
-                    }
-                    break;
-                case 76:
-                    {
-                    int LA58_3 = input.LA(2);
-
-                    if ( (synpred21_InternalDatatypeGrammar()) ) {
-                        alt58=1;
-                    }
-                    else if ( (synpred22_InternalDatatypeGrammar()) ) {
-                        alt58=2;
+                        alt55=2;
                     }
 
 
@@ -8404,10 +8340,24 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     break;
                 case 77:
                     {
-                    int LA58_4 = input.LA(2);
+                    int LA55_3 = input.LA(2);
+
+                    if ( (synpred21_InternalDatatypeGrammar()) ) {
+                        alt55=1;
+                    }
+                    else if ( (synpred22_InternalDatatypeGrammar()) ) {
+                        alt55=2;
+                    }
+
+
+                    }
+                    break;
+                case 78:
+                    {
+                    int LA55_4 = input.LA(2);
 
                     if ( (synpred22_InternalDatatypeGrammar()) ) {
-                        alt58=2;
+                        alt55=2;
                     }
 
 
@@ -8416,7 +8366,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                 }
 
-                switch (alt58) {
+                switch (alt55) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2731:2: ( ( ( ( () ( '.' | ( ( '::' ) ) ) ( ( ruleFeatureCallID ) ) ruleOpSingleAssign ) )=> ( () (otherlv_2= '.' | ( (lv_explicitStatic_3_0= '::' ) ) ) ( ( ruleFeatureCallID ) ) ruleOpSingleAssign ) ) ( (lv_value_6_0= ruleXAssignment ) ) )
             	    {
@@ -8443,27 +8393,27 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    }
 
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2750:2: (otherlv_2= '.' | ( (lv_explicitStatic_3_0= '::' ) ) )
-            	    int alt50=2;
-            	    int LA50_0 = input.LA(1);
+            	    int alt47=2;
+            	    int LA47_0 = input.LA(1);
 
-            	    if ( (LA50_0==26) ) {
-            	        alt50=1;
+            	    if ( (LA47_0==26) ) {
+            	        alt47=1;
             	    }
-            	    else if ( (LA50_0==76) ) {
-            	        alt50=2;
+            	    else if ( (LA47_0==77) ) {
+            	        alt47=2;
             	    }
             	    else {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 50, 0, input);
+            	            new NoViableAltException("", 47, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt50) {
+            	    switch (alt47) {
             	        case 1 :
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2750:4: otherlv_2= '.'
             	            {
-            	            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleXMemberFeatureCall6807); if (state.failed) return current;
+            	            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleXMemberFeatureCall6798); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                  	newLeafNode(otherlv_2, grammarAccess.getXMemberFeatureCallAccess().getFullStopKeyword_1_0_0_0_1_0());
@@ -8481,7 +8431,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2756:1: (lv_explicitStatic_3_0= '::' )
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2757:3: lv_explicitStatic_3_0= '::'
             	            {
-            	            lv_explicitStatic_3_0=(Token)match(input,76,FOLLOW_76_in_ruleXMemberFeatureCall6831); if (state.failed) return current;
+            	            lv_explicitStatic_3_0=(Token)match(input,77,FOLLOW_77_in_ruleXMemberFeatureCall6822); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                      newLeafNode(lv_explicitStatic_3_0, grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_0_0_0_1_1_0());
@@ -8525,7 +8475,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_0_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleFeatureCallID_in_ruleXMemberFeatureCall6868);
+            	    pushFollow(FOLLOW_ruleFeatureCallID_in_ruleXMemberFeatureCall6859);
             	    ruleFeatureCallID();
 
             	    state._fsp--;
@@ -8546,7 +8496,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	              newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getOpSingleAssignParserRuleCall_1_0_0_0_3()); 
             	          
             	    }
-            	    pushFollow(FOLLOW_ruleOpSingleAssign_in_ruleXMemberFeatureCall6884);
+            	    pushFollow(FOLLOW_ruleOpSingleAssign_in_ruleXMemberFeatureCall6875);
             	    ruleOpSingleAssign();
 
             	    state._fsp--;
@@ -8573,7 +8523,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getValueXAssignmentParserRuleCall_1_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXAssignment_in_ruleXMemberFeatureCall6906);
+            	    pushFollow(FOLLOW_ruleXAssignment_in_ruleXMemberFeatureCall6897);
             	    lv_value_6_0=ruleXAssignment();
 
             	    state._fsp--;
@@ -8629,36 +8579,36 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    }
 
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2834:2: (otherlv_8= '.' | ( (lv_nullSafe_9_0= '?.' ) ) | ( (lv_explicitStatic_10_0= '::' ) ) )
-            	    int alt51=3;
+            	    int alt48=3;
             	    switch ( input.LA(1) ) {
             	    case 26:
             	        {
-            	        alt51=1;
+            	        alt48=1;
+            	        }
+            	        break;
+            	    case 78:
+            	        {
+            	        alt48=2;
             	        }
             	        break;
             	    case 77:
             	        {
-            	        alt51=2;
-            	        }
-            	        break;
-            	    case 76:
-            	        {
-            	        alt51=3;
+            	        alt48=3;
             	        }
             	        break;
             	    default:
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 51, 0, input);
+            	            new NoViableAltException("", 48, 0, input);
 
             	        throw nvae;
             	    }
 
-            	    switch (alt51) {
+            	    switch (alt48) {
             	        case 1 :
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2834:4: otherlv_8= '.'
             	            {
-            	            otherlv_8=(Token)match(input,26,FOLLOW_26_in_ruleXMemberFeatureCall6992); if (state.failed) return current;
+            	            otherlv_8=(Token)match(input,26,FOLLOW_26_in_ruleXMemberFeatureCall6983); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                  	newLeafNode(otherlv_8, grammarAccess.getXMemberFeatureCallAccess().getFullStopKeyword_1_1_0_0_1_0());
@@ -8676,7 +8626,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2840:1: (lv_nullSafe_9_0= '?.' )
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2841:3: lv_nullSafe_9_0= '?.'
             	            {
-            	            lv_nullSafe_9_0=(Token)match(input,77,FOLLOW_77_in_ruleXMemberFeatureCall7016); if (state.failed) return current;
+            	            lv_nullSafe_9_0=(Token)match(input,78,FOLLOW_78_in_ruleXMemberFeatureCall7007); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                      newLeafNode(lv_nullSafe_9_0, grammarAccess.getXMemberFeatureCallAccess().getNullSafeQuestionMarkFullStopKeyword_1_1_0_0_1_1_0());
@@ -8708,7 +8658,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2856:1: (lv_explicitStatic_10_0= '::' )
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2857:3: lv_explicitStatic_10_0= '::'
             	            {
-            	            lv_explicitStatic_10_0=(Token)match(input,76,FOLLOW_76_in_ruleXMemberFeatureCall7053); if (state.failed) return current;
+            	            lv_explicitStatic_10_0=(Token)match(input,77,FOLLOW_77_in_ruleXMemberFeatureCall7044); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                      newLeafNode(lv_explicitStatic_10_0, grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_1_0_0_1_2_0());
@@ -8741,17 +8691,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    }
 
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2870:5: (otherlv_11= '<' ( (lv_typeArguments_12_0= ruleJvmArgumentTypeReference ) ) (otherlv_13= ',' ( (lv_typeArguments_14_0= ruleJvmArgumentTypeReference ) ) )* otherlv_15= '>' )?
-            	    int alt53=2;
-            	    int LA53_0 = input.LA(1);
+            	    int alt50=2;
+            	    int LA50_0 = input.LA(1);
 
-            	    if ( (LA53_0==51) ) {
-            	        alt53=1;
+            	    if ( (LA50_0==52) ) {
+            	        alt50=1;
             	    }
-            	    switch (alt53) {
+            	    switch (alt50) {
             	        case 1 :
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2870:7: otherlv_11= '<' ( (lv_typeArguments_12_0= ruleJvmArgumentTypeReference ) ) (otherlv_13= ',' ( (lv_typeArguments_14_0= ruleJvmArgumentTypeReference ) ) )* otherlv_15= '>'
             	            {
-            	            otherlv_11=(Token)match(input,51,FOLLOW_51_in_ruleXMemberFeatureCall7082); if (state.failed) return current;
+            	            otherlv_11=(Token)match(input,52,FOLLOW_52_in_ruleXMemberFeatureCall7073); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                  	newLeafNode(otherlv_11, grammarAccess.getXMemberFeatureCallAccess().getLessThanSignKeyword_1_1_1_0());
@@ -8768,7 +8718,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	              	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_1_1_0()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall7103);
+            	            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall7094);
             	            lv_typeArguments_12_0=ruleJvmArgumentTypeReference();
 
             	            state._fsp--;
@@ -8793,21 +8743,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	            }
 
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2892:2: (otherlv_13= ',' ( (lv_typeArguments_14_0= ruleJvmArgumentTypeReference ) ) )*
-            	            loop52:
+            	            loop49:
             	            do {
-            	                int alt52=2;
-            	                int LA52_0 = input.LA(1);
+            	                int alt49=2;
+            	                int LA49_0 = input.LA(1);
 
-            	                if ( (LA52_0==25) ) {
-            	                    alt52=1;
+            	                if ( (LA49_0==41) ) {
+            	                    alt49=1;
             	                }
 
 
-            	                switch (alt52) {
+            	                switch (alt49) {
             	            	case 1 :
             	            	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2892:4: otherlv_13= ',' ( (lv_typeArguments_14_0= ruleJvmArgumentTypeReference ) )
             	            	    {
-            	            	    otherlv_13=(Token)match(input,25,FOLLOW_25_in_ruleXMemberFeatureCall7116); if (state.failed) return current;
+            	            	    otherlv_13=(Token)match(input,41,FOLLOW_41_in_ruleXMemberFeatureCall7107); if (state.failed) return current;
             	            	    if ( state.backtracking==0 ) {
 
             	            	          	newLeafNode(otherlv_13, grammarAccess.getXMemberFeatureCallAccess().getCommaKeyword_1_1_1_2_0());
@@ -8824,7 +8774,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	            	      	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_1_2_1_0()); 
             	            	      	    
             	            	    }
-            	            	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall7137);
+            	            	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall7128);
             	            	    lv_typeArguments_14_0=ruleJvmArgumentTypeReference();
 
             	            	    state._fsp--;
@@ -8853,11 +8803,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	            	    break;
 
             	            	default :
-            	            	    break loop52;
+            	            	    break loop49;
             	                }
             	            } while (true);
 
-            	            otherlv_15=(Token)match(input,52,FOLLOW_52_in_ruleXMemberFeatureCall7151); if (state.failed) return current;
+            	            otherlv_15=(Token)match(input,53,FOLLOW_53_in_ruleXMemberFeatureCall7142); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                  	newLeafNode(otherlv_15, grammarAccess.getXMemberFeatureCallAccess().getGreaterThanSignKeyword_1_1_1_3());
@@ -8887,7 +8837,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getFeatureJvmIdentifiableElementCrossReference_1_1_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleIdOrSuper_in_ruleXMemberFeatureCall7176);
+            	    pushFollow(FOLLOW_ruleIdOrSuper_in_ruleXMemberFeatureCall7167);
             	    ruleIdOrSuper();
 
             	    state._fsp--;
@@ -8904,9 +8854,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    }
 
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2933:2: ( ( ( ( '(' ) )=> (lv_explicitOperationCall_17_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_memberCallArguments_18_0= ruleXShortClosure ) ) | ( ( (lv_memberCallArguments_19_0= ruleXExpression ) ) (otherlv_20= ',' ( (lv_memberCallArguments_21_0= ruleXExpression ) ) )* ) )? otherlv_22= ')' )?
-            	    int alt56=2;
-            	    alt56 = dfa56.predict(input);
-            	    switch (alt56) {
+            	    int alt53=2;
+            	    alt53 = dfa53.predict(input);
+            	    switch (alt53) {
             	        case 1 :
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2933:3: ( ( ( '(' ) )=> (lv_explicitOperationCall_17_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_memberCallArguments_18_0= ruleXShortClosure ) ) | ( ( (lv_memberCallArguments_19_0= ruleXExpression ) ) (otherlv_20= ',' ( (lv_memberCallArguments_21_0= ruleXExpression ) ) )* ) )? otherlv_22= ')'
             	            {
@@ -8916,7 +8866,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2940:1: (lv_explicitOperationCall_17_0= '(' )
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2941:3: lv_explicitOperationCall_17_0= '('
             	            {
-            	            lv_explicitOperationCall_17_0=(Token)match(input,40,FOLLOW_40_in_ruleXMemberFeatureCall7210); if (state.failed) return current;
+            	            lv_explicitOperationCall_17_0=(Token)match(input,40,FOLLOW_40_in_ruleXMemberFeatureCall7201); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                      newLeafNode(lv_explicitOperationCall_17_0, grammarAccess.getXMemberFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_1_1_3_0_0());
@@ -8937,9 +8887,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	            }
 
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2954:2: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_memberCallArguments_18_0= ruleXShortClosure ) ) | ( ( (lv_memberCallArguments_19_0= ruleXExpression ) ) (otherlv_20= ',' ( (lv_memberCallArguments_21_0= ruleXExpression ) ) )* ) )?
-            	            int alt55=3;
-            	            alt55 = dfa55.predict(input);
-            	            switch (alt55) {
+            	            int alt52=3;
+            	            alt52 = dfa52.predict(input);
+            	            switch (alt52) {
             	                case 1 :
             	                    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2954:3: ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_memberCallArguments_18_0= ruleXShortClosure ) )
             	                    {
@@ -8954,7 +8904,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	                      	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsXShortClosureParserRuleCall_1_1_3_1_0_0()); 
             	                      	    
             	                    }
-            	                    pushFollow(FOLLOW_ruleXShortClosure_in_ruleXMemberFeatureCall7295);
+            	                    pushFollow(FOLLOW_ruleXShortClosure_in_ruleXMemberFeatureCall7286);
             	                    lv_memberCallArguments_18_0=ruleXShortClosure();
 
             	                    state._fsp--;
@@ -8998,7 +8948,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	                      	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsXExpressionParserRuleCall_1_1_3_1_1_0_0()); 
             	                      	    
             	                    }
-            	                    pushFollow(FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall7323);
+            	                    pushFollow(FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall7314);
             	                    lv_memberCallArguments_19_0=ruleXExpression();
 
             	                    state._fsp--;
@@ -9023,21 +8973,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	                    }
 
             	                    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3007:2: (otherlv_20= ',' ( (lv_memberCallArguments_21_0= ruleXExpression ) ) )*
-            	                    loop54:
+            	                    loop51:
             	                    do {
-            	                        int alt54=2;
-            	                        int LA54_0 = input.LA(1);
+            	                        int alt51=2;
+            	                        int LA51_0 = input.LA(1);
 
-            	                        if ( (LA54_0==25) ) {
-            	                            alt54=1;
+            	                        if ( (LA51_0==41) ) {
+            	                            alt51=1;
             	                        }
 
 
-            	                        switch (alt54) {
+            	                        switch (alt51) {
             	                    	case 1 :
             	                    	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3007:4: otherlv_20= ',' ( (lv_memberCallArguments_21_0= ruleXExpression ) )
             	                    	    {
-            	                    	    otherlv_20=(Token)match(input,25,FOLLOW_25_in_ruleXMemberFeatureCall7336); if (state.failed) return current;
+            	                    	    otherlv_20=(Token)match(input,41,FOLLOW_41_in_ruleXMemberFeatureCall7327); if (state.failed) return current;
             	                    	    if ( state.backtracking==0 ) {
 
             	                    	          	newLeafNode(otherlv_20, grammarAccess.getXMemberFeatureCallAccess().getCommaKeyword_1_1_3_1_1_1_0());
@@ -9054,7 +9004,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	                    	      	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsXExpressionParserRuleCall_1_1_3_1_1_1_1_0()); 
             	                    	      	    
             	                    	    }
-            	                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall7357);
+            	                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall7348);
             	                    	    lv_memberCallArguments_21_0=ruleXExpression();
 
             	                    	    state._fsp--;
@@ -9083,7 +9033,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	                    	    break;
 
             	                    	default :
-            	                    	    break loop54;
+            	                    	    break loop51;
             	                        }
             	                    } while (true);
 
@@ -9096,7 +9046,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             	            }
 
-            	            otherlv_22=(Token)match(input,41,FOLLOW_41_in_ruleXMemberFeatureCall7374); if (state.failed) return current;
+            	            otherlv_22=(Token)match(input,42,FOLLOW_42_in_ruleXMemberFeatureCall7365); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                  	newLeafNode(otherlv_22, grammarAccess.getXMemberFeatureCallAccess().getRightParenthesisKeyword_1_1_3_2());
@@ -9109,9 +9059,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    }
 
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3033:3: ( ( ( () '[' ) )=> (lv_memberCallArguments_23_0= ruleXClosure ) )?
-            	    int alt57=2;
-            	    alt57 = dfa57.predict(input);
-            	    switch (alt57) {
+            	    int alt54=2;
+            	    alt54 = dfa54.predict(input);
+            	    switch (alt54) {
             	        case 1 :
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3033:4: ( ( () '[' ) )=> (lv_memberCallArguments_23_0= ruleXClosure )
             	            {
@@ -9123,7 +9073,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	              	        newCompositeNode(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsXClosureParserRuleCall_1_1_4_0()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleXClosure_in_ruleXMemberFeatureCall7409);
+            	            pushFollow(FOLLOW_ruleXClosure_in_ruleXMemberFeatureCall7400);
             	            lv_memberCallArguments_23_0=ruleXClosure();
 
             	            state._fsp--;
@@ -9158,7 +9108,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop58;
+            	    break loop55;
                 }
             } while (true);
 
@@ -9199,7 +9149,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXPrimaryExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXPrimaryExpression_in_entryRuleXPrimaryExpression7449);
+            pushFollow(FOLLOW_ruleXPrimaryExpression_in_entryRuleXPrimaryExpression7440);
             iv_ruleXPrimaryExpression=ruleXPrimaryExpression();
 
             state._fsp--;
@@ -9207,7 +9157,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXPrimaryExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXPrimaryExpression7459); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXPrimaryExpression7450); if (state.failed) return current;
 
             }
 
@@ -9267,9 +9217,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3074:1: (this_XConstructorCall_0= ruleXConstructorCall | this_XBlockExpression_1= ruleXBlockExpression | this_XSwitchExpression_2= ruleXSwitchExpression | ( ( ( () 'synchronized' '(' ) )=>this_XSynchronizedExpression_3= ruleXSynchronizedExpression ) | this_XFeatureCall_4= ruleXFeatureCall | this_XLiteral_5= ruleXLiteral | this_XIfExpression_6= ruleXIfExpression | ( ( ( () 'for' '(' ( ( ruleJvmFormalParameter ) ) ':' ) )=>this_XForLoopExpression_7= ruleXForLoopExpression ) | this_XBasicForLoopExpression_8= ruleXBasicForLoopExpression | this_XWhileExpression_9= ruleXWhileExpression | this_XDoWhileExpression_10= ruleXDoWhileExpression | this_XThrowExpression_11= ruleXThrowExpression | this_XReturnExpression_12= ruleXReturnExpression | this_XTryCatchFinallyExpression_13= ruleXTryCatchFinallyExpression | this_XParenthesizedExpression_14= ruleXParenthesizedExpression )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3074:1: (this_XConstructorCall_0= ruleXConstructorCall | this_XBlockExpression_1= ruleXBlockExpression | this_XSwitchExpression_2= ruleXSwitchExpression | ( ( ( () 'synchronized' '(' ) )=>this_XSynchronizedExpression_3= ruleXSynchronizedExpression ) | this_XFeatureCall_4= ruleXFeatureCall | this_XLiteral_5= ruleXLiteral | this_XIfExpression_6= ruleXIfExpression | ( ( ( () 'for' '(' ( ( ruleJvmFormalParameter ) ) ':' ) )=>this_XForLoopExpression_7= ruleXForLoopExpression ) | this_XBasicForLoopExpression_8= ruleXBasicForLoopExpression | this_XWhileExpression_9= ruleXWhileExpression | this_XDoWhileExpression_10= ruleXDoWhileExpression | this_XThrowExpression_11= ruleXThrowExpression | this_XReturnExpression_12= ruleXReturnExpression | this_XTryCatchFinallyExpression_13= ruleXTryCatchFinallyExpression | this_XParenthesizedExpression_14= ruleXParenthesizedExpression )
-            int alt59=15;
-            alt59 = dfa59.predict(input);
-            switch (alt59) {
+            int alt56=15;
+            alt56 = dfa56.predict(input);
+            switch (alt56) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3075:5: this_XConstructorCall_0= ruleXConstructorCall
                     {
@@ -9278,7 +9228,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXConstructorCallParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXConstructorCall_in_ruleXPrimaryExpression7506);
+                    pushFollow(FOLLOW_ruleXConstructorCall_in_ruleXPrimaryExpression7497);
                     this_XConstructorCall_0=ruleXConstructorCall();
 
                     state._fsp--;
@@ -9300,7 +9250,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXBlockExpressionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXBlockExpression_in_ruleXPrimaryExpression7533);
+                    pushFollow(FOLLOW_ruleXBlockExpression_in_ruleXPrimaryExpression7524);
                     this_XBlockExpression_1=ruleXBlockExpression();
 
                     state._fsp--;
@@ -9322,7 +9272,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXSwitchExpressionParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXSwitchExpression_in_ruleXPrimaryExpression7560);
+                    pushFollow(FOLLOW_ruleXSwitchExpression_in_ruleXPrimaryExpression7551);
                     this_XSwitchExpression_2=ruleXSwitchExpression();
 
                     state._fsp--;
@@ -9347,7 +9297,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXSynchronizedExpressionParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXSynchronizedExpression_in_ruleXPrimaryExpression7604);
+                    pushFollow(FOLLOW_ruleXSynchronizedExpression_in_ruleXPrimaryExpression7595);
                     this_XSynchronizedExpression_3=ruleXSynchronizedExpression();
 
                     state._fsp--;
@@ -9372,7 +9322,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXFeatureCallParserRuleCall_4()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXFeatureCall_in_ruleXPrimaryExpression7632);
+                    pushFollow(FOLLOW_ruleXFeatureCall_in_ruleXPrimaryExpression7623);
                     this_XFeatureCall_4=ruleXFeatureCall();
 
                     state._fsp--;
@@ -9394,7 +9344,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXLiteralParserRuleCall_5()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXLiteral_in_ruleXPrimaryExpression7659);
+                    pushFollow(FOLLOW_ruleXLiteral_in_ruleXPrimaryExpression7650);
                     this_XLiteral_5=ruleXLiteral();
 
                     state._fsp--;
@@ -9416,7 +9366,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXIfExpressionParserRuleCall_6()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXIfExpression_in_ruleXPrimaryExpression7686);
+                    pushFollow(FOLLOW_ruleXIfExpression_in_ruleXPrimaryExpression7677);
                     this_XIfExpression_6=ruleXIfExpression();
 
                     state._fsp--;
@@ -9441,7 +9391,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXForLoopExpressionParserRuleCall_7()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXForLoopExpression_in_ruleXPrimaryExpression7743);
+                    pushFollow(FOLLOW_ruleXForLoopExpression_in_ruleXPrimaryExpression7734);
                     this_XForLoopExpression_7=ruleXForLoopExpression();
 
                     state._fsp--;
@@ -9466,7 +9416,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXBasicForLoopExpressionParserRuleCall_8()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXBasicForLoopExpression_in_ruleXPrimaryExpression7771);
+                    pushFollow(FOLLOW_ruleXBasicForLoopExpression_in_ruleXPrimaryExpression7762);
                     this_XBasicForLoopExpression_8=ruleXBasicForLoopExpression();
 
                     state._fsp--;
@@ -9488,7 +9438,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXWhileExpressionParserRuleCall_9()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXWhileExpression_in_ruleXPrimaryExpression7798);
+                    pushFollow(FOLLOW_ruleXWhileExpression_in_ruleXPrimaryExpression7789);
                     this_XWhileExpression_9=ruleXWhileExpression();
 
                     state._fsp--;
@@ -9510,7 +9460,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXDoWhileExpressionParserRuleCall_10()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXDoWhileExpression_in_ruleXPrimaryExpression7825);
+                    pushFollow(FOLLOW_ruleXDoWhileExpression_in_ruleXPrimaryExpression7816);
                     this_XDoWhileExpression_10=ruleXDoWhileExpression();
 
                     state._fsp--;
@@ -9532,7 +9482,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXThrowExpressionParserRuleCall_11()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXThrowExpression_in_ruleXPrimaryExpression7852);
+                    pushFollow(FOLLOW_ruleXThrowExpression_in_ruleXPrimaryExpression7843);
                     this_XThrowExpression_11=ruleXThrowExpression();
 
                     state._fsp--;
@@ -9554,7 +9504,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXReturnExpressionParserRuleCall_12()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXReturnExpression_in_ruleXPrimaryExpression7879);
+                    pushFollow(FOLLOW_ruleXReturnExpression_in_ruleXPrimaryExpression7870);
                     this_XReturnExpression_12=ruleXReturnExpression();
 
                     state._fsp--;
@@ -9576,7 +9526,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXTryCatchFinallyExpressionParserRuleCall_13()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXTryCatchFinallyExpression_in_ruleXPrimaryExpression7906);
+                    pushFollow(FOLLOW_ruleXTryCatchFinallyExpression_in_ruleXPrimaryExpression7897);
                     this_XTryCatchFinallyExpression_13=ruleXTryCatchFinallyExpression();
 
                     state._fsp--;
@@ -9598,7 +9548,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getXParenthesizedExpressionParserRuleCall_14()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXParenthesizedExpression_in_ruleXPrimaryExpression7933);
+                    pushFollow(FOLLOW_ruleXParenthesizedExpression_in_ruleXPrimaryExpression7924);
                     this_XParenthesizedExpression_14=ruleXParenthesizedExpression();
 
                     state._fsp--;
@@ -9649,7 +9599,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXLiteral_in_entryRuleXLiteral7968);
+            pushFollow(FOLLOW_ruleXLiteral_in_entryRuleXLiteral7959);
             iv_ruleXLiteral=ruleXLiteral();
 
             state._fsp--;
@@ -9657,7 +9607,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXLiteral7978); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXLiteral7969); if (state.failed) return current;
 
             }
 
@@ -9701,38 +9651,38 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3255:1: (this_XCollectionLiteral_0= ruleXCollectionLiteral | ( ( ( () '[' ) )=>this_XClosure_1= ruleXClosure ) | this_XBooleanLiteral_2= ruleXBooleanLiteral | this_XNumberLiteral_3= ruleXNumberLiteral | this_XNullLiteral_4= ruleXNullLiteral | this_XStringLiteral_5= ruleXStringLiteral | this_XTypeLiteral_6= ruleXTypeLiteral )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3255:1: (this_XCollectionLiteral_0= ruleXCollectionLiteral | ( ( ( () '[' ) )=>this_XClosure_1= ruleXClosure ) | this_XBooleanLiteral_2= ruleXBooleanLiteral | this_XNumberLiteral_3= ruleXNumberLiteral | this_XNullLiteral_4= ruleXNullLiteral | this_XStringLiteral_5= ruleXStringLiteral | this_XTypeLiteral_6= ruleXTypeLiteral )
-            int alt60=7;
-            int LA60_0 = input.LA(1);
+            int alt57=7;
+            int LA57_0 = input.LA(1);
 
-            if ( (LA60_0==43) ) {
-                alt60=1;
+            if ( (LA57_0==44) ) {
+                alt57=1;
             }
-            else if ( (LA60_0==44) && (synpred28_InternalDatatypeGrammar())) {
-                alt60=2;
+            else if ( (LA57_0==45) && (synpred28_InternalDatatypeGrammar())) {
+                alt57=2;
             }
-            else if ( ((LA60_0>=95 && LA60_0<=96)) ) {
-                alt60=3;
+            else if ( ((LA57_0>=96 && LA57_0<=97)) ) {
+                alt57=3;
             }
-            else if ( ((LA60_0>=RULE_HEX && LA60_0<=RULE_DECIMAL)) ) {
-                alt60=4;
+            else if ( ((LA57_0>=RULE_HEX && LA57_0<=RULE_DECIMAL)) ) {
+                alt57=4;
             }
-            else if ( (LA60_0==97) ) {
-                alt60=5;
+            else if ( (LA57_0==98) ) {
+                alt57=5;
             }
-            else if ( (LA60_0==RULE_STRING) ) {
-                alt60=6;
+            else if ( (LA57_0==RULE_STRING) ) {
+                alt57=6;
             }
-            else if ( (LA60_0==98) ) {
-                alt60=7;
+            else if ( (LA57_0==99) ) {
+                alt57=7;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 60, 0, input);
+                    new NoViableAltException("", 57, 0, input);
 
                 throw nvae;
             }
-            switch (alt60) {
+            switch (alt57) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3256:5: this_XCollectionLiteral_0= ruleXCollectionLiteral
                     {
@@ -9741,7 +9691,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXLiteralAccess().getXCollectionLiteralParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXCollectionLiteral_in_ruleXLiteral8025);
+                    pushFollow(FOLLOW_ruleXCollectionLiteral_in_ruleXLiteral8016);
                     this_XCollectionLiteral_0=ruleXCollectionLiteral();
 
                     state._fsp--;
@@ -9766,7 +9716,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXLiteralAccess().getXClosureParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXClosure_in_ruleXLiteral8065);
+                    pushFollow(FOLLOW_ruleXClosure_in_ruleXLiteral8056);
                     this_XClosure_1=ruleXClosure();
 
                     state._fsp--;
@@ -9791,7 +9741,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXLiteralAccess().getXBooleanLiteralParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXBooleanLiteral_in_ruleXLiteral8093);
+                    pushFollow(FOLLOW_ruleXBooleanLiteral_in_ruleXLiteral8084);
                     this_XBooleanLiteral_2=ruleXBooleanLiteral();
 
                     state._fsp--;
@@ -9813,7 +9763,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXLiteralAccess().getXNumberLiteralParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXNumberLiteral_in_ruleXLiteral8120);
+                    pushFollow(FOLLOW_ruleXNumberLiteral_in_ruleXLiteral8111);
                     this_XNumberLiteral_3=ruleXNumberLiteral();
 
                     state._fsp--;
@@ -9835,7 +9785,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXLiteralAccess().getXNullLiteralParserRuleCall_4()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXNullLiteral_in_ruleXLiteral8147);
+                    pushFollow(FOLLOW_ruleXNullLiteral_in_ruleXLiteral8138);
                     this_XNullLiteral_4=ruleXNullLiteral();
 
                     state._fsp--;
@@ -9857,7 +9807,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXLiteralAccess().getXStringLiteralParserRuleCall_5()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXStringLiteral_in_ruleXLiteral8174);
+                    pushFollow(FOLLOW_ruleXStringLiteral_in_ruleXLiteral8165);
                     this_XStringLiteral_5=ruleXStringLiteral();
 
                     state._fsp--;
@@ -9879,7 +9829,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXLiteralAccess().getXTypeLiteralParserRuleCall_6()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXTypeLiteral_in_ruleXLiteral8201);
+                    pushFollow(FOLLOW_ruleXTypeLiteral_in_ruleXLiteral8192);
                     this_XTypeLiteral_6=ruleXTypeLiteral();
 
                     state._fsp--;
@@ -9930,7 +9880,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXCollectionLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXCollectionLiteral_in_entryRuleXCollectionLiteral8236);
+            pushFollow(FOLLOW_ruleXCollectionLiteral_in_entryRuleXCollectionLiteral8227);
             iv_ruleXCollectionLiteral=ruleXCollectionLiteral();
 
             state._fsp--;
@@ -9938,7 +9888,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXCollectionLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXCollectionLiteral8246); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXCollectionLiteral8237); if (state.failed) return current;
 
             }
 
@@ -9972,22 +9922,22 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3347:1: (this_XSetLiteral_0= ruleXSetLiteral | this_XListLiteral_1= ruleXListLiteral )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3347:1: (this_XSetLiteral_0= ruleXSetLiteral | this_XListLiteral_1= ruleXListLiteral )
-            int alt61=2;
-            int LA61_0 = input.LA(1);
+            int alt58=2;
+            int LA58_0 = input.LA(1);
 
-            if ( (LA61_0==43) ) {
-                int LA61_1 = input.LA(2);
+            if ( (LA58_0==44) ) {
+                int LA58_1 = input.LA(2);
 
-                if ( (LA61_1==14) ) {
-                    alt61=1;
+                if ( (LA58_1==14) ) {
+                    alt58=1;
                 }
-                else if ( (LA61_1==44) ) {
-                    alt61=2;
+                else if ( (LA58_1==45) ) {
+                    alt58=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 61, 1, input);
+                        new NoViableAltException("", 58, 1, input);
 
                     throw nvae;
                 }
@@ -9995,11 +9945,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 61, 0, input);
+                    new NoViableAltException("", 58, 0, input);
 
                 throw nvae;
             }
-            switch (alt61) {
+            switch (alt58) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3348:5: this_XSetLiteral_0= ruleXSetLiteral
                     {
@@ -10008,7 +9958,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXCollectionLiteralAccess().getXSetLiteralParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXSetLiteral_in_ruleXCollectionLiteral8293);
+                    pushFollow(FOLLOW_ruleXSetLiteral_in_ruleXCollectionLiteral8284);
                     this_XSetLiteral_0=ruleXSetLiteral();
 
                     state._fsp--;
@@ -10030,7 +9980,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXCollectionLiteralAccess().getXListLiteralParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXListLiteral_in_ruleXCollectionLiteral8320);
+                    pushFollow(FOLLOW_ruleXListLiteral_in_ruleXCollectionLiteral8311);
                     this_XListLiteral_1=ruleXListLiteral();
 
                     state._fsp--;
@@ -10081,7 +10031,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXSetLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXSetLiteral_in_entryRuleXSetLiteral8355);
+            pushFollow(FOLLOW_ruleXSetLiteral_in_entryRuleXSetLiteral8346);
             iv_ruleXSetLiteral=ruleXSetLiteral();
 
             state._fsp--;
@@ -10089,7 +10039,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXSetLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXSetLiteral8365); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXSetLiteral8356); if (state.failed) return current;
 
             }
 
@@ -10142,26 +10092,26 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,43,FOLLOW_43_in_ruleXSetLiteral8411); if (state.failed) return current;
+            otherlv_1=(Token)match(input,44,FOLLOW_44_in_ruleXSetLiteral8402); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXSetLiteralAccess().getNumberSignKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleXSetLiteral8423); if (state.failed) return current;
+            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleXSetLiteral8414); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXSetLiteralAccess().getLeftCurlyBracketKeyword_2());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3401:1: ( ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* )?
-            int alt63=2;
-            int LA63_0 = input.LA(1);
+            int alt60=2;
+            int LA60_0 = input.LA(1);
 
-            if ( ((LA63_0>=RULE_ID && LA63_0<=RULE_DECIMAL)||LA63_0==14||LA63_0==17||LA63_0==40||(LA63_0>=43 && LA63_0<=44)||LA63_0==51||(LA63_0>=67 && LA63_0<=68)||LA63_0==72||LA63_0==79||LA63_0==81||(LA63_0>=85 && LA63_0<=87)||(LA63_0>=90 && LA63_0<=101)||LA63_0==103) ) {
-                alt63=1;
+            if ( ((LA60_0>=RULE_ID && LA60_0<=RULE_DECIMAL)||LA60_0==14||LA60_0==17||LA60_0==40||(LA60_0>=44 && LA60_0<=45)||LA60_0==52||(LA60_0>=68 && LA60_0<=69)||LA60_0==73||LA60_0==80||LA60_0==82||(LA60_0>=86 && LA60_0<=88)||(LA60_0>=91 && LA60_0<=102)||LA60_0==104) ) {
+                alt60=1;
             }
-            switch (alt63) {
+            switch (alt60) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3401:2: ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )*
                     {
@@ -10176,7 +10126,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXSetLiteralAccess().getElementsXExpressionParserRuleCall_3_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXSetLiteral8445);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXSetLiteral8436);
                     lv_elements_3_0=ruleXExpression();
 
                     state._fsp--;
@@ -10201,21 +10151,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3419:2: (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )*
-                    loop62:
+                    loop59:
                     do {
-                        int alt62=2;
-                        int LA62_0 = input.LA(1);
+                        int alt59=2;
+                        int LA59_0 = input.LA(1);
 
-                        if ( (LA62_0==25) ) {
-                            alt62=1;
+                        if ( (LA59_0==41) ) {
+                            alt59=1;
                         }
 
 
-                        switch (alt62) {
+                        switch (alt59) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3419:4: otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleXSetLiteral8458); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXSetLiteral8449); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_4, grammarAccess.getXSetLiteralAccess().getCommaKeyword_3_1_0());
@@ -10232,7 +10182,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getXSetLiteralAccess().getElementsXExpressionParserRuleCall_3_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXSetLiteral8479);
+                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXSetLiteral8470);
                     	    lv_elements_5_0=ruleXExpression();
 
                     	    state._fsp--;
@@ -10261,7 +10211,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop62;
+                    	    break loop59;
                         }
                     } while (true);
 
@@ -10271,7 +10221,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,15,FOLLOW_15_in_ruleXSetLiteral8495); if (state.failed) return current;
+            otherlv_6=(Token)match(input,15,FOLLOW_15_in_ruleXSetLiteral8486); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getXSetLiteralAccess().getRightCurlyBracketKeyword_4());
@@ -10314,7 +10264,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXListLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXListLiteral_in_entryRuleXListLiteral8531);
+            pushFollow(FOLLOW_ruleXListLiteral_in_entryRuleXListLiteral8522);
             iv_ruleXListLiteral=ruleXListLiteral();
 
             state._fsp--;
@@ -10322,7 +10272,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXListLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXListLiteral8541); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXListLiteral8532); if (state.failed) return current;
 
             }
 
@@ -10375,26 +10325,26 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,43,FOLLOW_43_in_ruleXListLiteral8587); if (state.failed) return current;
+            otherlv_1=(Token)match(input,44,FOLLOW_44_in_ruleXListLiteral8578); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXListLiteralAccess().getNumberSignKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,44,FOLLOW_44_in_ruleXListLiteral8599); if (state.failed) return current;
+            otherlv_2=(Token)match(input,45,FOLLOW_45_in_ruleXListLiteral8590); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXListLiteralAccess().getLeftSquareBracketKeyword_2());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3480:1: ( ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* )?
-            int alt65=2;
-            int LA65_0 = input.LA(1);
+            int alt62=2;
+            int LA62_0 = input.LA(1);
 
-            if ( ((LA65_0>=RULE_ID && LA65_0<=RULE_DECIMAL)||LA65_0==14||LA65_0==17||LA65_0==40||(LA65_0>=43 && LA65_0<=44)||LA65_0==51||(LA65_0>=67 && LA65_0<=68)||LA65_0==72||LA65_0==79||LA65_0==81||(LA65_0>=85 && LA65_0<=87)||(LA65_0>=90 && LA65_0<=101)||LA65_0==103) ) {
-                alt65=1;
+            if ( ((LA62_0>=RULE_ID && LA62_0<=RULE_DECIMAL)||LA62_0==14||LA62_0==17||LA62_0==40||(LA62_0>=44 && LA62_0<=45)||LA62_0==52||(LA62_0>=68 && LA62_0<=69)||LA62_0==73||LA62_0==80||LA62_0==82||(LA62_0>=86 && LA62_0<=88)||(LA62_0>=91 && LA62_0<=102)||LA62_0==104) ) {
+                alt62=1;
             }
-            switch (alt65) {
+            switch (alt62) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3480:2: ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )*
                     {
@@ -10409,7 +10359,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXListLiteralAccess().getElementsXExpressionParserRuleCall_3_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXListLiteral8621);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXListLiteral8612);
                     lv_elements_3_0=ruleXExpression();
 
                     state._fsp--;
@@ -10434,21 +10384,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3498:2: (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )*
-                    loop64:
+                    loop61:
                     do {
-                        int alt64=2;
-                        int LA64_0 = input.LA(1);
+                        int alt61=2;
+                        int LA61_0 = input.LA(1);
 
-                        if ( (LA64_0==25) ) {
-                            alt64=1;
+                        if ( (LA61_0==41) ) {
+                            alt61=1;
                         }
 
 
-                        switch (alt64) {
+                        switch (alt61) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3498:4: otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleXListLiteral8634); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXListLiteral8625); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_4, grammarAccess.getXListLiteralAccess().getCommaKeyword_3_1_0());
@@ -10465,7 +10415,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getXListLiteralAccess().getElementsXExpressionParserRuleCall_3_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXListLiteral8655);
+                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXListLiteral8646);
                     	    lv_elements_5_0=ruleXExpression();
 
                     	    state._fsp--;
@@ -10494,7 +10444,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop64;
+                    	    break loop61;
                         }
                     } while (true);
 
@@ -10504,7 +10454,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,45,FOLLOW_45_in_ruleXListLiteral8671); if (state.failed) return current;
+            otherlv_6=(Token)match(input,46,FOLLOW_46_in_ruleXListLiteral8662); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getXListLiteralAccess().getRightSquareBracketKeyword_4());
@@ -10547,7 +10497,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXClosureRule()); 
             }
-            pushFollow(FOLLOW_ruleXClosure_in_entryRuleXClosure8707);
+            pushFollow(FOLLOW_ruleXClosure_in_entryRuleXClosure8698);
             iv_ruleXClosure=ruleXClosure();
 
             state._fsp--;
@@ -10555,7 +10505,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXClosure; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXClosure8717); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXClosure8708); if (state.failed) return current;
 
             }
 
@@ -10616,7 +10566,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,44,FOLLOW_44_in_ruleXClosure8777); if (state.failed) return current;
+            otherlv_1=(Token)match(input,45,FOLLOW_45_in_ruleXClosure8768); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXClosureAccess().getLeftSquareBracketKeyword_0_0_1());
@@ -10629,9 +10579,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3557:3: ( ( ( ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> ( ( ( (lv_declaredFormalParameters_2_0= ruleJvmFormalParameter ) ) (otherlv_3= ',' ( (lv_declaredFormalParameters_4_0= ruleJvmFormalParameter ) ) )* )? ( (lv_explicitSyntax_5_0= '|' ) ) ) )?
-            int alt68=2;
-            alt68 = dfa68.predict(input);
-            switch (alt68) {
+            int alt65=2;
+            alt65 = dfa65.predict(input);
+            switch (alt65) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3557:4: ( ( ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> ( ( ( (lv_declaredFormalParameters_2_0= ruleJvmFormalParameter ) ) (otherlv_3= ',' ( (lv_declaredFormalParameters_4_0= ruleJvmFormalParameter ) ) )* )? ( (lv_explicitSyntax_5_0= '|' ) ) )
                     {
@@ -10639,13 +10589,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3572:7: ( ( (lv_declaredFormalParameters_2_0= ruleJvmFormalParameter ) ) (otherlv_3= ',' ( (lv_declaredFormalParameters_4_0= ruleJvmFormalParameter ) ) )* )? ( (lv_explicitSyntax_5_0= '|' ) )
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3572:7: ( ( (lv_declaredFormalParameters_2_0= ruleJvmFormalParameter ) ) (otherlv_3= ',' ( (lv_declaredFormalParameters_4_0= ruleJvmFormalParameter ) ) )* )?
-                    int alt67=2;
-                    int LA67_0 = input.LA(1);
+                    int alt64=2;
+                    int LA64_0 = input.LA(1);
 
-                    if ( (LA67_0==RULE_ID||LA67_0==40||LA67_0==64) ) {
-                        alt67=1;
+                    if ( (LA64_0==RULE_ID||LA64_0==40||LA64_0==65) ) {
+                        alt64=1;
                     }
-                    switch (alt67) {
+                    switch (alt64) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3572:8: ( (lv_declaredFormalParameters_2_0= ruleJvmFormalParameter ) ) (otherlv_3= ',' ( (lv_declaredFormalParameters_4_0= ruleJvmFormalParameter ) ) )*
                             {
@@ -10660,7 +10610,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXClosureAccess().getDeclaredFormalParametersJvmFormalParameterParserRuleCall_1_0_0_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXClosure8850);
+                            pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXClosure8841);
                             lv_declaredFormalParameters_2_0=ruleJvmFormalParameter();
 
                             state._fsp--;
@@ -10685,21 +10635,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             }
 
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3590:2: (otherlv_3= ',' ( (lv_declaredFormalParameters_4_0= ruleJvmFormalParameter ) ) )*
-                            loop66:
+                            loop63:
                             do {
-                                int alt66=2;
-                                int LA66_0 = input.LA(1);
+                                int alt63=2;
+                                int LA63_0 = input.LA(1);
 
-                                if ( (LA66_0==25) ) {
-                                    alt66=1;
+                                if ( (LA63_0==41) ) {
+                                    alt63=1;
                                 }
 
 
-                                switch (alt66) {
+                                switch (alt63) {
                             	case 1 :
                             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3590:4: otherlv_3= ',' ( (lv_declaredFormalParameters_4_0= ruleJvmFormalParameter ) )
                             	    {
-                            	    otherlv_3=(Token)match(input,25,FOLLOW_25_in_ruleXClosure8863); if (state.failed) return current;
+                            	    otherlv_3=(Token)match(input,41,FOLLOW_41_in_ruleXClosure8854); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_3, grammarAccess.getXClosureAccess().getCommaKeyword_1_0_0_1_0());
@@ -10716,7 +10666,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getXClosureAccess().getDeclaredFormalParametersJvmFormalParameterParserRuleCall_1_0_0_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXClosure8884);
+                            	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXClosure8875);
                             	    lv_declaredFormalParameters_4_0=ruleJvmFormalParameter();
 
                             	    state._fsp--;
@@ -10745,7 +10695,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop66;
+                            	    break loop63;
                                 }
                             } while (true);
 
@@ -10761,7 +10711,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3613:1: (lv_explicitSyntax_5_0= '|' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3614:3: lv_explicitSyntax_5_0= '|'
                     {
-                    lv_explicitSyntax_5_0=(Token)match(input,78,FOLLOW_78_in_ruleXClosure8906); if (state.failed) return current;
+                    lv_explicitSyntax_5_0=(Token)match(input,79,FOLLOW_79_in_ruleXClosure8897); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_explicitSyntax_5_0, grammarAccess.getXClosureAccess().getExplicitSyntaxVerticalLineKeyword_1_0_1_0());
@@ -10801,7 +10751,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXClosureAccess().getExpressionXExpressionInClosureParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpressionInClosure_in_ruleXClosure8943);
+            pushFollow(FOLLOW_ruleXExpressionInClosure_in_ruleXClosure8934);
             lv_expression_6_0=ruleXExpressionInClosure();
 
             state._fsp--;
@@ -10825,7 +10775,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,45,FOLLOW_45_in_ruleXClosure8955); if (state.failed) return current;
+            otherlv_7=(Token)match(input,46,FOLLOW_46_in_ruleXClosure8946); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_7, grammarAccess.getXClosureAccess().getRightSquareBracketKeyword_3());
@@ -10868,7 +10818,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXExpressionInClosureRule()); 
             }
-            pushFollow(FOLLOW_ruleXExpressionInClosure_in_entryRuleXExpressionInClosure8991);
+            pushFollow(FOLLOW_ruleXExpressionInClosure_in_entryRuleXExpressionInClosure8982);
             iv_ruleXExpressionInClosure=ruleXExpressionInClosure();
 
             state._fsp--;
@@ -10876,7 +10826,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXExpressionInClosure; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXExpressionInClosure9001); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXExpressionInClosure8992); if (state.failed) return current;
 
             }
 
@@ -10925,17 +10875,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3676:2: ( ( (lv_expressions_1_0= ruleXExpressionOrVarDeclaration ) ) (otherlv_2= ';' )? )*
-            loop70:
+            loop67:
             do {
-                int alt70=2;
-                int LA70_0 = input.LA(1);
+                int alt67=2;
+                int LA67_0 = input.LA(1);
 
-                if ( ((LA70_0>=RULE_ID && LA70_0<=RULE_DECIMAL)||LA70_0==14||LA70_0==17||LA70_0==40||(LA70_0>=43 && LA70_0<=44)||LA70_0==51||(LA70_0>=67 && LA70_0<=68)||LA70_0==72||LA70_0==79||LA70_0==81||(LA70_0>=85 && LA70_0<=101)||LA70_0==103) ) {
-                    alt70=1;
+                if ( ((LA67_0>=RULE_ID && LA67_0<=RULE_DECIMAL)||LA67_0==14||LA67_0==17||LA67_0==40||(LA67_0>=44 && LA67_0<=45)||LA67_0==52||(LA67_0>=68 && LA67_0<=69)||LA67_0==73||LA67_0==80||LA67_0==82||(LA67_0>=86 && LA67_0<=102)||LA67_0==104) ) {
+                    alt67=1;
                 }
 
 
-                switch (alt70) {
+                switch (alt67) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3676:3: ( (lv_expressions_1_0= ruleXExpressionOrVarDeclaration ) ) (otherlv_2= ';' )?
             	    {
@@ -10950,7 +10900,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXExpressionInClosureAccess().getExpressionsXExpressionOrVarDeclarationParserRuleCall_1_0_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXExpressionInClosure9057);
+            	    pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXExpressionInClosure9048);
             	    lv_expressions_1_0=ruleXExpressionOrVarDeclaration();
 
             	    state._fsp--;
@@ -10975,17 +10925,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    }
 
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3694:2: (otherlv_2= ';' )?
-            	    int alt69=2;
-            	    int LA69_0 = input.LA(1);
+            	    int alt66=2;
+            	    int LA66_0 = input.LA(1);
 
-            	    if ( (LA69_0==18) ) {
-            	        alt69=1;
+            	    if ( (LA66_0==18) ) {
+            	        alt66=1;
             	    }
-            	    switch (alt69) {
+            	    switch (alt66) {
             	        case 1 :
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3694:4: otherlv_2= ';'
             	            {
-            	            otherlv_2=(Token)match(input,18,FOLLOW_18_in_ruleXExpressionInClosure9070); if (state.failed) return current;
+            	            otherlv_2=(Token)match(input,18,FOLLOW_18_in_ruleXExpressionInClosure9061); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                  	newLeafNode(otherlv_2, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
@@ -11002,7 +10952,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop70;
+            	    break loop67;
                 }
             } while (true);
 
@@ -11043,7 +10993,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXShortClosureRule()); 
             }
-            pushFollow(FOLLOW_ruleXShortClosure_in_entryRuleXShortClosure9110);
+            pushFollow(FOLLOW_ruleXShortClosure_in_entryRuleXShortClosure9101);
             iv_ruleXShortClosure=ruleXShortClosure();
 
             state._fsp--;
@@ -11051,7 +11001,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXShortClosure; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXShortClosure9120); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXShortClosure9111); if (state.failed) return current;
 
             }
 
@@ -11111,13 +11061,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3741:2: ( ( (lv_declaredFormalParameters_1_0= ruleJvmFormalParameter ) ) (otherlv_2= ',' ( (lv_declaredFormalParameters_3_0= ruleJvmFormalParameter ) ) )* )?
-            int alt72=2;
-            int LA72_0 = input.LA(1);
+            int alt69=2;
+            int LA69_0 = input.LA(1);
 
-            if ( (LA72_0==RULE_ID||LA72_0==40||LA72_0==64) ) {
-                alt72=1;
+            if ( (LA69_0==RULE_ID||LA69_0==40||LA69_0==65) ) {
+                alt69=1;
             }
-            switch (alt72) {
+            switch (alt69) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3741:3: ( (lv_declaredFormalParameters_1_0= ruleJvmFormalParameter ) ) (otherlv_2= ',' ( (lv_declaredFormalParameters_3_0= ruleJvmFormalParameter ) ) )*
                     {
@@ -11132,7 +11082,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXShortClosureAccess().getDeclaredFormalParametersJvmFormalParameterParserRuleCall_0_0_1_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXShortClosure9228);
+                    pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXShortClosure9219);
                     lv_declaredFormalParameters_1_0=ruleJvmFormalParameter();
 
                     state._fsp--;
@@ -11157,21 +11107,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3759:2: (otherlv_2= ',' ( (lv_declaredFormalParameters_3_0= ruleJvmFormalParameter ) ) )*
-                    loop71:
+                    loop68:
                     do {
-                        int alt71=2;
-                        int LA71_0 = input.LA(1);
+                        int alt68=2;
+                        int LA68_0 = input.LA(1);
 
-                        if ( (LA71_0==25) ) {
-                            alt71=1;
+                        if ( (LA68_0==41) ) {
+                            alt68=1;
                         }
 
 
-                        switch (alt71) {
+                        switch (alt68) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3759:4: otherlv_2= ',' ( (lv_declaredFormalParameters_3_0= ruleJvmFormalParameter ) )
                     	    {
-                    	    otherlv_2=(Token)match(input,25,FOLLOW_25_in_ruleXShortClosure9241); if (state.failed) return current;
+                    	    otherlv_2=(Token)match(input,41,FOLLOW_41_in_ruleXShortClosure9232); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_2, grammarAccess.getXShortClosureAccess().getCommaKeyword_0_0_1_1_0());
@@ -11188,7 +11138,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getXShortClosureAccess().getDeclaredFormalParametersJvmFormalParameterParserRuleCall_0_0_1_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXShortClosure9262);
+                    	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXShortClosure9253);
                     	    lv_declaredFormalParameters_3_0=ruleJvmFormalParameter();
 
                     	    state._fsp--;
@@ -11217,7 +11167,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop71;
+                    	    break loop68;
                         }
                     } while (true);
 
@@ -11233,7 +11183,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3782:1: (lv_explicitSyntax_4_0= '|' )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3783:3: lv_explicitSyntax_4_0= '|'
             {
-            lv_explicitSyntax_4_0=(Token)match(input,78,FOLLOW_78_in_ruleXShortClosure9284); if (state.failed) return current;
+            lv_explicitSyntax_4_0=(Token)match(input,79,FOLLOW_79_in_ruleXShortClosure9275); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_explicitSyntax_4_0, grammarAccess.getXShortClosureAccess().getExplicitSyntaxVerticalLineKeyword_0_0_2_0());
@@ -11270,7 +11220,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXShortClosureAccess().getExpressionXExpressionParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXShortClosure9320);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXShortClosure9311);
             lv_expression_5_0=ruleXExpression();
 
             state._fsp--;
@@ -11331,7 +11281,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXParenthesizedExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXParenthesizedExpression_in_entryRuleXParenthesizedExpression9356);
+            pushFollow(FOLLOW_ruleXParenthesizedExpression_in_entryRuleXParenthesizedExpression9347);
             iv_ruleXParenthesizedExpression=ruleXParenthesizedExpression();
 
             state._fsp--;
@@ -11339,7 +11289,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXParenthesizedExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXParenthesizedExpression9366); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXParenthesizedExpression9357); if (state.failed) return current;
 
             }
 
@@ -11375,7 +11325,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3835:1: (otherlv_0= '(' this_XExpression_1= ruleXExpression otherlv_2= ')' )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3835:3: otherlv_0= '(' this_XExpression_1= ruleXExpression otherlv_2= ')'
             {
-            otherlv_0=(Token)match(input,40,FOLLOW_40_in_ruleXParenthesizedExpression9403); if (state.failed) return current;
+            otherlv_0=(Token)match(input,40,FOLLOW_40_in_ruleXParenthesizedExpression9394); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
@@ -11386,7 +11336,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getXParenthesizedExpressionAccess().getXExpressionParserRuleCall_1()); 
                   
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXParenthesizedExpression9425);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXParenthesizedExpression9416);
             this_XExpression_1=ruleXExpression();
 
             state._fsp--;
@@ -11397,7 +11347,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            otherlv_2=(Token)match(input,41,FOLLOW_41_in_ruleXParenthesizedExpression9436); if (state.failed) return current;
+            otherlv_2=(Token)match(input,42,FOLLOW_42_in_ruleXParenthesizedExpression9427); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_2());
@@ -11440,7 +11390,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXIfExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXIfExpression_in_entryRuleXIfExpression9472);
+            pushFollow(FOLLOW_ruleXIfExpression_in_entryRuleXIfExpression9463);
             iv_ruleXIfExpression=ruleXIfExpression();
 
             state._fsp--;
@@ -11448,7 +11398,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXIfExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXIfExpression9482); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXIfExpression9473); if (state.failed) return current;
 
             }
 
@@ -11503,13 +11453,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,79,FOLLOW_79_in_ruleXIfExpression9528); if (state.failed) return current;
+            otherlv_1=(Token)match(input,80,FOLLOW_80_in_ruleXIfExpression9519); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXIfExpressionAccess().getIfKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXIfExpression9540); if (state.failed) return current;
+            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXIfExpression9531); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXIfExpressionAccess().getLeftParenthesisKeyword_2());
@@ -11526,7 +11476,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXIfExpressionAccess().getIfXExpressionParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXIfExpression9561);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXIfExpression9552);
             lv_if_3_0=ruleXExpression();
 
             state._fsp--;
@@ -11550,7 +11500,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXIfExpression9573); if (state.failed) return current;
+            otherlv_4=(Token)match(input,42,FOLLOW_42_in_ruleXIfExpression9564); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getXIfExpressionAccess().getRightParenthesisKeyword_4());
@@ -11567,7 +11517,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXIfExpressionAccess().getThenXExpressionParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXIfExpression9594);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXIfExpression9585);
             lv_then_5_0=ruleXExpression();
 
             state._fsp--;
@@ -11592,24 +11542,24 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3927:2: ( ( ( 'else' )=>otherlv_6= 'else' ) ( (lv_else_7_0= ruleXExpression ) ) )?
-            int alt73=2;
-            int LA73_0 = input.LA(1);
+            int alt70=2;
+            int LA70_0 = input.LA(1);
 
-            if ( (LA73_0==80) ) {
-                int LA73_1 = input.LA(2);
+            if ( (LA70_0==81) ) {
+                int LA70_1 = input.LA(2);
 
                 if ( (synpred32_InternalDatatypeGrammar()) ) {
-                    alt73=1;
+                    alt70=1;
                 }
             }
-            switch (alt73) {
+            switch (alt70) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3927:3: ( ( 'else' )=>otherlv_6= 'else' ) ( (lv_else_7_0= ruleXExpression ) )
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3927:3: ( ( 'else' )=>otherlv_6= 'else' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3927:4: ( 'else' )=>otherlv_6= 'else'
                     {
-                    otherlv_6=(Token)match(input,80,FOLLOW_80_in_ruleXIfExpression9615); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,81,FOLLOW_81_in_ruleXIfExpression9606); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXIfExpressionAccess().getElseKeyword_6_0());
@@ -11629,7 +11579,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXIfExpressionAccess().getElseXExpressionParserRuleCall_6_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXIfExpression9637);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXIfExpression9628);
                     lv_else_7_0=ruleXExpression();
 
                     state._fsp--;
@@ -11696,7 +11646,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXSwitchExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXSwitchExpression_in_entryRuleXSwitchExpression9675);
+            pushFollow(FOLLOW_ruleXSwitchExpression_in_entryRuleXSwitchExpression9666);
             iv_ruleXSwitchExpression=ruleXSwitchExpression();
 
             state._fsp--;
@@ -11704,7 +11654,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXSwitchExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXSwitchExpression9685); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXSwitchExpression9676); if (state.failed) return current;
 
             }
 
@@ -11770,16 +11720,16 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,81,FOLLOW_81_in_ruleXSwitchExpression9731); if (state.failed) return current;
+            otherlv_1=(Token)match(input,82,FOLLOW_82_in_ruleXSwitchExpression9722); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXSwitchExpressionAccess().getSwitchKeyword_1());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3981:1: ( ( ( ( ( '(' ( ( ruleJvmFormalParameter ) ) ':' ) )=> (otherlv_2= '(' ( (lv_declaredParam_3_0= ruleJvmFormalParameter ) ) otherlv_4= ':' ) ) ( (lv_switch_5_0= ruleXExpression ) ) otherlv_6= ')' ) | ( ( ( ( ( ( ruleJvmFormalParameter ) ) ':' ) )=> ( ( (lv_declaredParam_7_0= ruleJvmFormalParameter ) ) otherlv_8= ':' ) )? ( (lv_switch_9_0= ruleXExpression ) ) ) )
-            int alt75=2;
-            alt75 = dfa75.predict(input);
-            switch (alt75) {
+            int alt72=2;
+            alt72 = dfa72.predict(input);
+            switch (alt72) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3981:2: ( ( ( ( '(' ( ( ruleJvmFormalParameter ) ) ':' ) )=> (otherlv_2= '(' ( (lv_declaredParam_3_0= ruleJvmFormalParameter ) ) otherlv_4= ':' ) ) ( (lv_switch_5_0= ruleXExpression ) ) otherlv_6= ')' )
                     {
@@ -11792,7 +11742,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3987:5: (otherlv_2= '(' ( (lv_declaredParam_3_0= ruleJvmFormalParameter ) ) otherlv_4= ':' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3987:7: otherlv_2= '(' ( (lv_declaredParam_3_0= ruleJvmFormalParameter ) ) otherlv_4= ':'
                     {
-                    otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXSwitchExpression9769); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXSwitchExpression9760); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getXSwitchExpressionAccess().getLeftParenthesisKeyword_2_0_0_0_0());
@@ -11809,7 +11759,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXSwitchExpressionAccess().getDeclaredParamJvmFormalParameterParserRuleCall_2_0_0_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXSwitchExpression9790);
+                    pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXSwitchExpression9781);
                     lv_declaredParam_3_0=ruleJvmFormalParameter();
 
                     state._fsp--;
@@ -11833,7 +11783,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,82,FOLLOW_82_in_ruleXSwitchExpression9802); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,83,FOLLOW_83_in_ruleXSwitchExpression9793); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getXSwitchExpressionAccess().getColonKeyword_2_0_0_0_2());
@@ -11856,7 +11806,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXSwitchExpressionAccess().getSwitchXExpressionParserRuleCall_2_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXSwitchExpression9825);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXSwitchExpression9816);
                     lv_switch_5_0=ruleXExpression();
 
                     state._fsp--;
@@ -11880,7 +11830,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,41,FOLLOW_41_in_ruleXSwitchExpression9837); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,42,FOLLOW_42_in_ruleXSwitchExpression9828); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXSwitchExpressionAccess().getRightParenthesisKeyword_2_0_2());
@@ -11899,9 +11849,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4036:7: ( ( ( ( ( ruleJvmFormalParameter ) ) ':' ) )=> ( ( (lv_declaredParam_7_0= ruleJvmFormalParameter ) ) otherlv_8= ':' ) )? ( (lv_switch_9_0= ruleXExpression ) )
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4036:7: ( ( ( ( ( ruleJvmFormalParameter ) ) ':' ) )=> ( ( (lv_declaredParam_7_0= ruleJvmFormalParameter ) ) otherlv_8= ':' ) )?
-                    int alt74=2;
-                    alt74 = dfa74.predict(input);
-                    switch (alt74) {
+                    int alt71=2;
+                    alt71 = dfa71.predict(input);
+                    switch (alt71) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4036:8: ( ( ( ( ruleJvmFormalParameter ) ) ':' ) )=> ( ( (lv_declaredParam_7_0= ruleJvmFormalParameter ) ) otherlv_8= ':' )
                             {
@@ -11919,7 +11869,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXSwitchExpressionAccess().getDeclaredParamJvmFormalParameterParserRuleCall_2_1_0_0_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXSwitchExpression9886);
+                            pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXSwitchExpression9877);
                             lv_declaredParam_7_0=ruleJvmFormalParameter();
 
                             state._fsp--;
@@ -11943,7 +11893,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_8=(Token)match(input,82,FOLLOW_82_in_ruleXSwitchExpression9898); if (state.failed) return current;
+                            otherlv_8=(Token)match(input,83,FOLLOW_83_in_ruleXSwitchExpression9889); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_8, grammarAccess.getXSwitchExpressionAccess().getColonKeyword_2_1_0_0_1());
@@ -11969,7 +11919,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXSwitchExpressionAccess().getSwitchXExpressionParserRuleCall_2_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXSwitchExpression9922);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXSwitchExpression9913);
                     lv_switch_9_0=ruleXExpression();
 
                     state._fsp--;
@@ -12002,24 +11952,24 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_10=(Token)match(input,14,FOLLOW_14_in_ruleXSwitchExpression9936); if (state.failed) return current;
+            otherlv_10=(Token)match(input,14,FOLLOW_14_in_ruleXSwitchExpression9927); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_10, grammarAccess.getXSwitchExpressionAccess().getLeftCurlyBracketKeyword_3());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4085:1: ( (lv_cases_11_0= ruleXCasePart ) )*
-            loop76:
+            loop73:
             do {
-                int alt76=2;
-                int LA76_0 = input.LA(1);
+                int alt73=2;
+                int LA73_0 = input.LA(1);
 
-                if ( (LA76_0==RULE_ID||LA76_0==25||LA76_0==40||LA76_0==64||LA76_0==82||LA76_0==84) ) {
-                    alt76=1;
+                if ( (LA73_0==RULE_ID||(LA73_0>=40 && LA73_0<=41)||LA73_0==65||LA73_0==83||LA73_0==85) ) {
+                    alt73=1;
                 }
 
 
-                switch (alt76) {
+                switch (alt73) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4086:1: (lv_cases_11_0= ruleXCasePart )
             	    {
@@ -12031,7 +11981,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXSwitchExpressionAccess().getCasesXCasePartParserRuleCall_4_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXCasePart_in_ruleXSwitchExpression9957);
+            	    pushFollow(FOLLOW_ruleXCasePart_in_ruleXSwitchExpression9948);
             	    lv_cases_11_0=ruleXCasePart();
 
             	    state._fsp--;
@@ -12057,28 +12007,28 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop76;
+            	    break loop73;
                 }
             } while (true);
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4103:3: (otherlv_12= 'default' otherlv_13= ':' ( (lv_default_14_0= ruleXExpression ) ) )?
-            int alt77=2;
-            int LA77_0 = input.LA(1);
+            int alt74=2;
+            int LA74_0 = input.LA(1);
 
-            if ( (LA77_0==83) ) {
-                alt77=1;
+            if ( (LA74_0==84) ) {
+                alt74=1;
             }
-            switch (alt77) {
+            switch (alt74) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4103:5: otherlv_12= 'default' otherlv_13= ':' ( (lv_default_14_0= ruleXExpression ) )
                     {
-                    otherlv_12=(Token)match(input,83,FOLLOW_83_in_ruleXSwitchExpression9971); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,84,FOLLOW_84_in_ruleXSwitchExpression9962); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_12, grammarAccess.getXSwitchExpressionAccess().getDefaultKeyword_5_0());
                           
                     }
-                    otherlv_13=(Token)match(input,82,FOLLOW_82_in_ruleXSwitchExpression9983); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,83,FOLLOW_83_in_ruleXSwitchExpression9974); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_13, grammarAccess.getXSwitchExpressionAccess().getColonKeyword_5_1());
@@ -12095,7 +12045,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXSwitchExpressionAccess().getDefaultXExpressionParserRuleCall_5_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXSwitchExpression10004);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXSwitchExpression9995);
                     lv_default_14_0=ruleXExpression();
 
                     state._fsp--;
@@ -12125,7 +12075,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_15=(Token)match(input,15,FOLLOW_15_in_ruleXSwitchExpression10018); if (state.failed) return current;
+            otherlv_15=(Token)match(input,15,FOLLOW_15_in_ruleXSwitchExpression10009); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_15, grammarAccess.getXSwitchExpressionAccess().getRightCurlyBracketKeyword_6());
@@ -12168,7 +12118,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXCasePartRule()); 
             }
-            pushFollow(FOLLOW_ruleXCasePart_in_entryRuleXCasePart10054);
+            pushFollow(FOLLOW_ruleXCasePart_in_entryRuleXCasePart10045);
             iv_ruleXCasePart=ruleXCasePart();
 
             state._fsp--;
@@ -12176,7 +12126,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXCasePart; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXCasePart10064); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXCasePart10055); if (state.failed) return current;
 
             }
 
@@ -12231,13 +12181,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4160:2: ( (lv_typeGuard_1_0= ruleJvmTypeReference ) )?
-            int alt78=2;
-            int LA78_0 = input.LA(1);
+            int alt75=2;
+            int LA75_0 = input.LA(1);
 
-            if ( (LA78_0==RULE_ID||LA78_0==40||LA78_0==64) ) {
-                alt78=1;
+            if ( (LA75_0==RULE_ID||LA75_0==40||LA75_0==65) ) {
+                alt75=1;
             }
-            switch (alt78) {
+            switch (alt75) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4161:1: (lv_typeGuard_1_0= ruleJvmTypeReference )
                     {
@@ -12249,7 +12199,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXCasePartAccess().getTypeGuardJvmTypeReferenceParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXCasePart10119);
+                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXCasePart10110);
                     lv_typeGuard_1_0=ruleJvmTypeReference();
 
                     state._fsp--;
@@ -12277,17 +12227,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4178:3: (otherlv_2= 'case' ( (lv_case_3_0= ruleXExpression ) ) )?
-            int alt79=2;
-            int LA79_0 = input.LA(1);
+            int alt76=2;
+            int LA76_0 = input.LA(1);
 
-            if ( (LA79_0==84) ) {
-                alt79=1;
+            if ( (LA76_0==85) ) {
+                alt76=1;
             }
-            switch (alt79) {
+            switch (alt76) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4178:5: otherlv_2= 'case' ( (lv_case_3_0= ruleXExpression ) )
                     {
-                    otherlv_2=(Token)match(input,84,FOLLOW_84_in_ruleXCasePart10133); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,85,FOLLOW_85_in_ruleXCasePart10124); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getXCasePartAccess().getCaseKeyword_2_0());
@@ -12304,7 +12254,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXCasePartAccess().getCaseXExpressionParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXCasePart10154);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXCasePart10145);
                     lv_case_3_0=ruleXExpression();
 
                     state._fsp--;
@@ -12335,30 +12285,30 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4200:4: ( (otherlv_4= ':' ( (lv_then_5_0= ruleXExpression ) ) ) | otherlv_6= ',' )
-            int alt80=2;
-            int LA80_0 = input.LA(1);
+            int alt77=2;
+            int LA77_0 = input.LA(1);
 
-            if ( (LA80_0==82) ) {
-                alt80=1;
+            if ( (LA77_0==83) ) {
+                alt77=1;
             }
-            else if ( (LA80_0==25) ) {
-                alt80=2;
+            else if ( (LA77_0==41) ) {
+                alt77=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 80, 0, input);
+                    new NoViableAltException("", 77, 0, input);
 
                 throw nvae;
             }
-            switch (alt80) {
+            switch (alt77) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4200:5: (otherlv_4= ':' ( (lv_then_5_0= ruleXExpression ) ) )
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4200:5: (otherlv_4= ':' ( (lv_then_5_0= ruleXExpression ) ) )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4200:7: otherlv_4= ':' ( (lv_then_5_0= ruleXExpression ) )
                     {
-                    otherlv_4=(Token)match(input,82,FOLLOW_82_in_ruleXCasePart10170); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,83,FOLLOW_83_in_ruleXCasePart10161); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getXCasePartAccess().getColonKeyword_3_0_0());
@@ -12375,7 +12325,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXCasePartAccess().getThenXExpressionParserRuleCall_3_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXCasePart10191);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXCasePart10182);
                     lv_then_5_0=ruleXExpression();
 
                     state._fsp--;
@@ -12408,7 +12358,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4223:7: otherlv_6= ','
                     {
-                    otherlv_6=(Token)match(input,25,FOLLOW_25_in_ruleXCasePart10210); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,41,FOLLOW_41_in_ruleXCasePart10201); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXCasePartAccess().getCommaKeyword_3_1());
@@ -12457,7 +12407,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXForLoopExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXForLoopExpression_in_entryRuleXForLoopExpression10247);
+            pushFollow(FOLLOW_ruleXForLoopExpression_in_entryRuleXForLoopExpression10238);
             iv_ruleXForLoopExpression=ruleXForLoopExpression();
 
             state._fsp--;
@@ -12465,7 +12415,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXForLoopExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXForLoopExpression10257); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXForLoopExpression10248); if (state.failed) return current;
 
             }
 
@@ -12526,13 +12476,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,85,FOLLOW_85_in_ruleXForLoopExpression10334); if (state.failed) return current;
+            otherlv_1=(Token)match(input,86,FOLLOW_86_in_ruleXForLoopExpression10325); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXForLoopExpressionAccess().getForKeyword_0_0_1());
                   
             }
-            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXForLoopExpression10346); if (state.failed) return current;
+            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXForLoopExpression10337); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXForLoopExpressionAccess().getLeftParenthesisKeyword_0_0_2());
@@ -12549,7 +12499,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXForLoopExpressionAccess().getDeclaredParamJvmFormalParameterParserRuleCall_0_0_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXForLoopExpression10367);
+            pushFollow(FOLLOW_ruleJvmFormalParameter_in_ruleXForLoopExpression10358);
             lv_declaredParam_3_0=ruleJvmFormalParameter();
 
             state._fsp--;
@@ -12573,7 +12523,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,82,FOLLOW_82_in_ruleXForLoopExpression10379); if (state.failed) return current;
+            otherlv_4=(Token)match(input,83,FOLLOW_83_in_ruleXForLoopExpression10370); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getXForLoopExpressionAccess().getColonKeyword_0_0_4());
@@ -12596,7 +12546,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXForLoopExpressionAccess().getForExpressionXExpressionParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXForLoopExpression10402);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXForLoopExpression10393);
             lv_forExpression_5_0=ruleXExpression();
 
             state._fsp--;
@@ -12620,7 +12570,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,41,FOLLOW_41_in_ruleXForLoopExpression10414); if (state.failed) return current;
+            otherlv_6=(Token)match(input,42,FOLLOW_42_in_ruleXForLoopExpression10405); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getXForLoopExpressionAccess().getRightParenthesisKeyword_2());
@@ -12637,7 +12587,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXForLoopExpressionAccess().getEachExpressionXExpressionParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXForLoopExpression10435);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXForLoopExpression10426);
             lv_eachExpression_7_0=ruleXExpression();
 
             state._fsp--;
@@ -12698,7 +12648,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXBasicForLoopExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXBasicForLoopExpression_in_entryRuleXBasicForLoopExpression10471);
+            pushFollow(FOLLOW_ruleXBasicForLoopExpression_in_entryRuleXBasicForLoopExpression10462);
             iv_ruleXBasicForLoopExpression=ruleXBasicForLoopExpression();
 
             state._fsp--;
@@ -12706,7 +12656,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXBasicForLoopExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXBasicForLoopExpression10481); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXBasicForLoopExpression10472); if (state.failed) return current;
 
             }
 
@@ -12770,26 +12720,26 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,85,FOLLOW_85_in_ruleXBasicForLoopExpression10527); if (state.failed) return current;
+            otherlv_1=(Token)match(input,86,FOLLOW_86_in_ruleXBasicForLoopExpression10518); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXBasicForLoopExpressionAccess().getForKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXBasicForLoopExpression10539); if (state.failed) return current;
+            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXBasicForLoopExpression10530); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXBasicForLoopExpressionAccess().getLeftParenthesisKeyword_2());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4367:1: ( ( (lv_initExpressions_3_0= ruleXExpressionOrVarDeclaration ) ) (otherlv_4= ',' ( (lv_initExpressions_5_0= ruleXExpressionOrVarDeclaration ) ) )* )?
-            int alt82=2;
-            int LA82_0 = input.LA(1);
+            int alt79=2;
+            int LA79_0 = input.LA(1);
 
-            if ( ((LA82_0>=RULE_ID && LA82_0<=RULE_DECIMAL)||LA82_0==14||LA82_0==17||LA82_0==40||(LA82_0>=43 && LA82_0<=44)||LA82_0==51||(LA82_0>=67 && LA82_0<=68)||LA82_0==72||LA82_0==79||LA82_0==81||(LA82_0>=85 && LA82_0<=101)||LA82_0==103) ) {
-                alt82=1;
+            if ( ((LA79_0>=RULE_ID && LA79_0<=RULE_DECIMAL)||LA79_0==14||LA79_0==17||LA79_0==40||(LA79_0>=44 && LA79_0<=45)||LA79_0==52||(LA79_0>=68 && LA79_0<=69)||LA79_0==73||LA79_0==80||LA79_0==82||(LA79_0>=86 && LA79_0<=102)||LA79_0==104) ) {
+                alt79=1;
             }
-            switch (alt82) {
+            switch (alt79) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4367:2: ( (lv_initExpressions_3_0= ruleXExpressionOrVarDeclaration ) ) (otherlv_4= ',' ( (lv_initExpressions_5_0= ruleXExpressionOrVarDeclaration ) ) )*
                     {
@@ -12804,7 +12754,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXBasicForLoopExpressionAccess().getInitExpressionsXExpressionOrVarDeclarationParserRuleCall_3_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBasicForLoopExpression10561);
+                    pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBasicForLoopExpression10552);
                     lv_initExpressions_3_0=ruleXExpressionOrVarDeclaration();
 
                     state._fsp--;
@@ -12829,21 +12779,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4385:2: (otherlv_4= ',' ( (lv_initExpressions_5_0= ruleXExpressionOrVarDeclaration ) ) )*
-                    loop81:
+                    loop78:
                     do {
-                        int alt81=2;
-                        int LA81_0 = input.LA(1);
+                        int alt78=2;
+                        int LA78_0 = input.LA(1);
 
-                        if ( (LA81_0==25) ) {
-                            alt81=1;
+                        if ( (LA78_0==41) ) {
+                            alt78=1;
                         }
 
 
-                        switch (alt81) {
+                        switch (alt78) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4385:4: otherlv_4= ',' ( (lv_initExpressions_5_0= ruleXExpressionOrVarDeclaration ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleXBasicForLoopExpression10574); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXBasicForLoopExpression10565); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_4, grammarAccess.getXBasicForLoopExpressionAccess().getCommaKeyword_3_1_0());
@@ -12860,7 +12810,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getXBasicForLoopExpressionAccess().getInitExpressionsXExpressionOrVarDeclarationParserRuleCall_3_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBasicForLoopExpression10595);
+                    	    pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBasicForLoopExpression10586);
                     	    lv_initExpressions_5_0=ruleXExpressionOrVarDeclaration();
 
                     	    state._fsp--;
@@ -12889,7 +12839,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop81;
+                    	    break loop78;
                         }
                     } while (true);
 
@@ -12899,20 +12849,20 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,18,FOLLOW_18_in_ruleXBasicForLoopExpression10611); if (state.failed) return current;
+            otherlv_6=(Token)match(input,18,FOLLOW_18_in_ruleXBasicForLoopExpression10602); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getXBasicForLoopExpressionAccess().getSemicolonKeyword_4());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4411:1: ( (lv_expression_7_0= ruleXExpression ) )?
-            int alt83=2;
-            int LA83_0 = input.LA(1);
+            int alt80=2;
+            int LA80_0 = input.LA(1);
 
-            if ( ((LA83_0>=RULE_ID && LA83_0<=RULE_DECIMAL)||LA83_0==14||LA83_0==17||LA83_0==40||(LA83_0>=43 && LA83_0<=44)||LA83_0==51||(LA83_0>=67 && LA83_0<=68)||LA83_0==72||LA83_0==79||LA83_0==81||(LA83_0>=85 && LA83_0<=87)||(LA83_0>=90 && LA83_0<=101)||LA83_0==103) ) {
-                alt83=1;
+            if ( ((LA80_0>=RULE_ID && LA80_0<=RULE_DECIMAL)||LA80_0==14||LA80_0==17||LA80_0==40||(LA80_0>=44 && LA80_0<=45)||LA80_0==52||(LA80_0>=68 && LA80_0<=69)||LA80_0==73||LA80_0==80||LA80_0==82||(LA80_0>=86 && LA80_0<=88)||(LA80_0>=91 && LA80_0<=102)||LA80_0==104) ) {
+                alt80=1;
             }
-            switch (alt83) {
+            switch (alt80) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4412:1: (lv_expression_7_0= ruleXExpression )
                     {
@@ -12924,7 +12874,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXBasicForLoopExpressionAccess().getExpressionXExpressionParserRuleCall_5_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10632);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10623);
                     lv_expression_7_0=ruleXExpression();
 
                     state._fsp--;
@@ -12951,20 +12901,20 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,18,FOLLOW_18_in_ruleXBasicForLoopExpression10645); if (state.failed) return current;
+            otherlv_8=(Token)match(input,18,FOLLOW_18_in_ruleXBasicForLoopExpression10636); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_8, grammarAccess.getXBasicForLoopExpressionAccess().getSemicolonKeyword_6());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4433:1: ( ( (lv_updateExpressions_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_updateExpressions_11_0= ruleXExpression ) ) )* )?
-            int alt85=2;
-            int LA85_0 = input.LA(1);
+            int alt82=2;
+            int LA82_0 = input.LA(1);
 
-            if ( ((LA85_0>=RULE_ID && LA85_0<=RULE_DECIMAL)||LA85_0==14||LA85_0==17||LA85_0==40||(LA85_0>=43 && LA85_0<=44)||LA85_0==51||(LA85_0>=67 && LA85_0<=68)||LA85_0==72||LA85_0==79||LA85_0==81||(LA85_0>=85 && LA85_0<=87)||(LA85_0>=90 && LA85_0<=101)||LA85_0==103) ) {
-                alt85=1;
+            if ( ((LA82_0>=RULE_ID && LA82_0<=RULE_DECIMAL)||LA82_0==14||LA82_0==17||LA82_0==40||(LA82_0>=44 && LA82_0<=45)||LA82_0==52||(LA82_0>=68 && LA82_0<=69)||LA82_0==73||LA82_0==80||LA82_0==82||(LA82_0>=86 && LA82_0<=88)||(LA82_0>=91 && LA82_0<=102)||LA82_0==104) ) {
+                alt82=1;
             }
-            switch (alt85) {
+            switch (alt82) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4433:2: ( (lv_updateExpressions_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_updateExpressions_11_0= ruleXExpression ) ) )*
                     {
@@ -12979,7 +12929,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXBasicForLoopExpressionAccess().getUpdateExpressionsXExpressionParserRuleCall_7_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10667);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10658);
                     lv_updateExpressions_9_0=ruleXExpression();
 
                     state._fsp--;
@@ -13004,21 +12954,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4451:2: (otherlv_10= ',' ( (lv_updateExpressions_11_0= ruleXExpression ) ) )*
-                    loop84:
+                    loop81:
                     do {
-                        int alt84=2;
-                        int LA84_0 = input.LA(1);
+                        int alt81=2;
+                        int LA81_0 = input.LA(1);
 
-                        if ( (LA84_0==25) ) {
-                            alt84=1;
+                        if ( (LA81_0==41) ) {
+                            alt81=1;
                         }
 
 
-                        switch (alt84) {
+                        switch (alt81) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4451:4: otherlv_10= ',' ( (lv_updateExpressions_11_0= ruleXExpression ) )
                     	    {
-                    	    otherlv_10=(Token)match(input,25,FOLLOW_25_in_ruleXBasicForLoopExpression10680); if (state.failed) return current;
+                    	    otherlv_10=(Token)match(input,41,FOLLOW_41_in_ruleXBasicForLoopExpression10671); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_10, grammarAccess.getXBasicForLoopExpressionAccess().getCommaKeyword_7_1_0());
@@ -13035,7 +12985,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getXBasicForLoopExpressionAccess().getUpdateExpressionsXExpressionParserRuleCall_7_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10701);
+                    	    pushFollow(FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10692);
                     	    lv_updateExpressions_11_0=ruleXExpression();
 
                     	    state._fsp--;
@@ -13064,7 +13014,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop84;
+                    	    break loop81;
                         }
                     } while (true);
 
@@ -13074,7 +13024,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_12=(Token)match(input,41,FOLLOW_41_in_ruleXBasicForLoopExpression10717); if (state.failed) return current;
+            otherlv_12=(Token)match(input,42,FOLLOW_42_in_ruleXBasicForLoopExpression10708); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_12, grammarAccess.getXBasicForLoopExpressionAccess().getRightParenthesisKeyword_8());
@@ -13091,7 +13041,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXBasicForLoopExpressionAccess().getEachExpressionXExpressionParserRuleCall_9_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10738);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10729);
             lv_eachExpression_13_0=ruleXExpression();
 
             state._fsp--;
@@ -13152,7 +13102,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXWhileExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXWhileExpression_in_entryRuleXWhileExpression10774);
+            pushFollow(FOLLOW_ruleXWhileExpression_in_entryRuleXWhileExpression10765);
             iv_ruleXWhileExpression=ruleXWhileExpression();
 
             state._fsp--;
@@ -13160,7 +13110,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXWhileExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXWhileExpression10784); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXWhileExpression10775); if (state.failed) return current;
 
             }
 
@@ -13212,13 +13162,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,86,FOLLOW_86_in_ruleXWhileExpression10830); if (state.failed) return current;
+            otherlv_1=(Token)match(input,87,FOLLOW_87_in_ruleXWhileExpression10821); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXWhileExpressionAccess().getWhileKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXWhileExpression10842); if (state.failed) return current;
+            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXWhileExpression10833); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXWhileExpressionAccess().getLeftParenthesisKeyword_2());
@@ -13235,7 +13185,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXWhileExpressionAccess().getPredicateXExpressionParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXWhileExpression10863);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXWhileExpression10854);
             lv_predicate_3_0=ruleXExpression();
 
             state._fsp--;
@@ -13259,7 +13209,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXWhileExpression10875); if (state.failed) return current;
+            otherlv_4=(Token)match(input,42,FOLLOW_42_in_ruleXWhileExpression10866); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getXWhileExpressionAccess().getRightParenthesisKeyword_4());
@@ -13276,7 +13226,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXWhileExpressionAccess().getBodyXExpressionParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXWhileExpression10896);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXWhileExpression10887);
             lv_body_5_0=ruleXExpression();
 
             state._fsp--;
@@ -13337,7 +13287,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXDoWhileExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXDoWhileExpression_in_entryRuleXDoWhileExpression10932);
+            pushFollow(FOLLOW_ruleXDoWhileExpression_in_entryRuleXDoWhileExpression10923);
             iv_ruleXDoWhileExpression=ruleXDoWhileExpression();
 
             state._fsp--;
@@ -13345,7 +13295,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXDoWhileExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXDoWhileExpression10942); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXDoWhileExpression10933); if (state.failed) return current;
 
             }
 
@@ -13398,7 +13348,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,87,FOLLOW_87_in_ruleXDoWhileExpression10988); if (state.failed) return current;
+            otherlv_1=(Token)match(input,88,FOLLOW_88_in_ruleXDoWhileExpression10979); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXDoWhileExpressionAccess().getDoKeyword_1());
@@ -13415,7 +13365,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXDoWhileExpressionAccess().getBodyXExpressionParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXDoWhileExpression11009);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXDoWhileExpression11000);
             lv_body_2_0=ruleXExpression();
 
             state._fsp--;
@@ -13439,13 +13389,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,86,FOLLOW_86_in_ruleXDoWhileExpression11021); if (state.failed) return current;
+            otherlv_3=(Token)match(input,87,FOLLOW_87_in_ruleXDoWhileExpression11012); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getXDoWhileExpressionAccess().getWhileKeyword_3());
                   
             }
-            otherlv_4=(Token)match(input,40,FOLLOW_40_in_ruleXDoWhileExpression11033); if (state.failed) return current;
+            otherlv_4=(Token)match(input,40,FOLLOW_40_in_ruleXDoWhileExpression11024); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getXDoWhileExpressionAccess().getLeftParenthesisKeyword_4());
@@ -13462,7 +13412,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXDoWhileExpressionAccess().getPredicateXExpressionParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXDoWhileExpression11054);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXDoWhileExpression11045);
             lv_predicate_5_0=ruleXExpression();
 
             state._fsp--;
@@ -13486,7 +13436,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,41,FOLLOW_41_in_ruleXDoWhileExpression11066); if (state.failed) return current;
+            otherlv_6=(Token)match(input,42,FOLLOW_42_in_ruleXDoWhileExpression11057); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getXDoWhileExpressionAccess().getRightParenthesisKeyword_6());
@@ -13529,7 +13479,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXBlockExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXBlockExpression_in_entryRuleXBlockExpression11102);
+            pushFollow(FOLLOW_ruleXBlockExpression_in_entryRuleXBlockExpression11093);
             iv_ruleXBlockExpression=ruleXBlockExpression();
 
             state._fsp--;
@@ -13537,7 +13487,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXBlockExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXBlockExpression11112); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXBlockExpression11103); if (state.failed) return current;
 
             }
 
@@ -13587,24 +13537,24 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,14,FOLLOW_14_in_ruleXBlockExpression11158); if (state.failed) return current;
+            otherlv_1=(Token)match(input,14,FOLLOW_14_in_ruleXBlockExpression11149); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXBlockExpressionAccess().getLeftCurlyBracketKeyword_1());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4680:1: ( ( (lv_expressions_2_0= ruleXExpressionOrVarDeclaration ) ) (otherlv_3= ';' )? )*
-            loop87:
+            loop84:
             do {
-                int alt87=2;
-                int LA87_0 = input.LA(1);
+                int alt84=2;
+                int LA84_0 = input.LA(1);
 
-                if ( ((LA87_0>=RULE_ID && LA87_0<=RULE_DECIMAL)||LA87_0==14||LA87_0==17||LA87_0==40||(LA87_0>=43 && LA87_0<=44)||LA87_0==51||(LA87_0>=67 && LA87_0<=68)||LA87_0==72||LA87_0==79||LA87_0==81||(LA87_0>=85 && LA87_0<=101)||LA87_0==103) ) {
-                    alt87=1;
+                if ( ((LA84_0>=RULE_ID && LA84_0<=RULE_DECIMAL)||LA84_0==14||LA84_0==17||LA84_0==40||(LA84_0>=44 && LA84_0<=45)||LA84_0==52||(LA84_0>=68 && LA84_0<=69)||LA84_0==73||LA84_0==80||LA84_0==82||(LA84_0>=86 && LA84_0<=102)||LA84_0==104) ) {
+                    alt84=1;
                 }
 
 
-                switch (alt87) {
+                switch (alt84) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4680:2: ( (lv_expressions_2_0= ruleXExpressionOrVarDeclaration ) ) (otherlv_3= ';' )?
             	    {
@@ -13619,7 +13569,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXBlockExpressionAccess().getExpressionsXExpressionOrVarDeclarationParserRuleCall_2_0_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBlockExpression11180);
+            	    pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBlockExpression11171);
             	    lv_expressions_2_0=ruleXExpressionOrVarDeclaration();
 
             	    state._fsp--;
@@ -13644,17 +13594,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    }
 
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4698:2: (otherlv_3= ';' )?
-            	    int alt86=2;
-            	    int LA86_0 = input.LA(1);
+            	    int alt83=2;
+            	    int LA83_0 = input.LA(1);
 
-            	    if ( (LA86_0==18) ) {
-            	        alt86=1;
+            	    if ( (LA83_0==18) ) {
+            	        alt83=1;
             	    }
-            	    switch (alt86) {
+            	    switch (alt83) {
             	        case 1 :
             	            // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4698:4: otherlv_3= ';'
             	            {
-            	            otherlv_3=(Token)match(input,18,FOLLOW_18_in_ruleXBlockExpression11193); if (state.failed) return current;
+            	            otherlv_3=(Token)match(input,18,FOLLOW_18_in_ruleXBlockExpression11184); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	                  	newLeafNode(otherlv_3, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
@@ -13671,11 +13621,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop87;
+            	    break loop84;
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,15,FOLLOW_15_in_ruleXBlockExpression11209); if (state.failed) return current;
+            otherlv_4=(Token)match(input,15,FOLLOW_15_in_ruleXBlockExpression11200); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getXBlockExpressionAccess().getRightCurlyBracketKeyword_3());
@@ -13718,7 +13668,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXExpressionOrVarDeclarationRule()); 
             }
-            pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_entryRuleXExpressionOrVarDeclaration11245);
+            pushFollow(FOLLOW_ruleXExpressionOrVarDeclaration_in_entryRuleXExpressionOrVarDeclaration11236);
             iv_ruleXExpressionOrVarDeclaration=ruleXExpressionOrVarDeclaration();
 
             state._fsp--;
@@ -13726,7 +13676,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXExpressionOrVarDeclaration; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXExpressionOrVarDeclaration11255); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXExpressionOrVarDeclaration11246); if (state.failed) return current;
 
             }
 
@@ -13760,23 +13710,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4727:1: (this_XVariableDeclaration_0= ruleXVariableDeclaration | this_XExpression_1= ruleXExpression )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4727:1: (this_XVariableDeclaration_0= ruleXVariableDeclaration | this_XExpression_1= ruleXExpression )
-            int alt88=2;
-            int LA88_0 = input.LA(1);
+            int alt85=2;
+            int LA85_0 = input.LA(1);
 
-            if ( ((LA88_0>=88 && LA88_0<=89)) ) {
-                alt88=1;
+            if ( ((LA85_0>=89 && LA85_0<=90)) ) {
+                alt85=1;
             }
-            else if ( ((LA88_0>=RULE_ID && LA88_0<=RULE_DECIMAL)||LA88_0==14||LA88_0==17||LA88_0==40||(LA88_0>=43 && LA88_0<=44)||LA88_0==51||(LA88_0>=67 && LA88_0<=68)||LA88_0==72||LA88_0==79||LA88_0==81||(LA88_0>=85 && LA88_0<=87)||(LA88_0>=90 && LA88_0<=101)||LA88_0==103) ) {
-                alt88=2;
+            else if ( ((LA85_0>=RULE_ID && LA85_0<=RULE_DECIMAL)||LA85_0==14||LA85_0==17||LA85_0==40||(LA85_0>=44 && LA85_0<=45)||LA85_0==52||(LA85_0>=68 && LA85_0<=69)||LA85_0==73||LA85_0==80||LA85_0==82||(LA85_0>=86 && LA85_0<=88)||(LA85_0>=91 && LA85_0<=102)||LA85_0==104) ) {
+                alt85=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 88, 0, input);
+                    new NoViableAltException("", 85, 0, input);
 
                 throw nvae;
             }
-            switch (alt88) {
+            switch (alt85) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4728:5: this_XVariableDeclaration_0= ruleXVariableDeclaration
                     {
@@ -13785,7 +13735,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXExpressionOrVarDeclarationAccess().getXVariableDeclarationParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXVariableDeclaration_in_ruleXExpressionOrVarDeclaration11302);
+                    pushFollow(FOLLOW_ruleXVariableDeclaration_in_ruleXExpressionOrVarDeclaration11293);
                     this_XVariableDeclaration_0=ruleXVariableDeclaration();
 
                     state._fsp--;
@@ -13807,7 +13757,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getXExpressionOrVarDeclarationAccess().getXExpressionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXExpressionOrVarDeclaration11329);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXExpressionOrVarDeclaration11320);
                     this_XExpression_1=ruleXExpression();
 
                     state._fsp--;
@@ -13858,7 +13808,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXVariableDeclarationRule()); 
             }
-            pushFollow(FOLLOW_ruleXVariableDeclaration_in_entryRuleXVariableDeclaration11364);
+            pushFollow(FOLLOW_ruleXVariableDeclaration_in_entryRuleXVariableDeclaration11355);
             iv_ruleXVariableDeclaration=ruleXVariableDeclaration();
 
             state._fsp--;
@@ -13866,7 +13816,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXVariableDeclaration; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXVariableDeclaration11374); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXVariableDeclaration11365); if (state.failed) return current;
 
             }
 
@@ -13923,23 +13873,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4773:2: ( ( (lv_writeable_1_0= 'var' ) ) | otherlv_2= 'val' )
-            int alt89=2;
-            int LA89_0 = input.LA(1);
+            int alt86=2;
+            int LA86_0 = input.LA(1);
 
-            if ( (LA89_0==88) ) {
-                alt89=1;
+            if ( (LA86_0==89) ) {
+                alt86=1;
             }
-            else if ( (LA89_0==89) ) {
-                alt89=2;
+            else if ( (LA86_0==90) ) {
+                alt86=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 89, 0, input);
+                    new NoViableAltException("", 86, 0, input);
 
                 throw nvae;
             }
-            switch (alt89) {
+            switch (alt86) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4773:3: ( (lv_writeable_1_0= 'var' ) )
                     {
@@ -13949,7 +13899,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4774:1: (lv_writeable_1_0= 'var' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4775:3: lv_writeable_1_0= 'var'
                     {
-                    lv_writeable_1_0=(Token)match(input,88,FOLLOW_88_in_ruleXVariableDeclaration11427); if (state.failed) return current;
+                    lv_writeable_1_0=(Token)match(input,89,FOLLOW_89_in_ruleXVariableDeclaration11418); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_writeable_1_0, grammarAccess.getXVariableDeclarationAccess().getWriteableVarKeyword_1_0_0());
@@ -13975,7 +13925,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4789:7: otherlv_2= 'val'
                     {
-                    otherlv_2=(Token)match(input,89,FOLLOW_89_in_ruleXVariableDeclaration11458); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,90,FOLLOW_90_in_ruleXVariableDeclaration11449); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getXVariableDeclarationAccess().getValKeyword_1_1());
@@ -13988,40 +13938,40 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4793:2: ( ( ( ( ( ( ruleJvmTypeReference ) ) ( ( ruleValidID ) ) ) )=> ( ( (lv_type_3_0= ruleJvmTypeReference ) ) ( (lv_name_4_0= ruleValidID ) ) ) ) | ( (lv_name_5_0= ruleValidID ) ) )
-            int alt90=2;
-            int LA90_0 = input.LA(1);
+            int alt87=2;
+            int LA87_0 = input.LA(1);
 
-            if ( (LA90_0==RULE_ID) ) {
-                int LA90_1 = input.LA(2);
+            if ( (LA87_0==RULE_ID) ) {
+                int LA87_1 = input.LA(2);
 
                 if ( (synpred36_InternalDatatypeGrammar()) ) {
-                    alt90=1;
+                    alt87=1;
                 }
                 else if ( (true) ) {
-                    alt90=2;
+                    alt87=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 90, 1, input);
+                        new NoViableAltException("", 87, 1, input);
 
                     throw nvae;
                 }
             }
-            else if ( (LA90_0==40) && (synpred36_InternalDatatypeGrammar())) {
-                alt90=1;
+            else if ( (LA87_0==40) && (synpred36_InternalDatatypeGrammar())) {
+                alt87=1;
             }
-            else if ( (LA90_0==64) && (synpred36_InternalDatatypeGrammar())) {
-                alt90=1;
+            else if ( (LA87_0==65) && (synpred36_InternalDatatypeGrammar())) {
+                alt87=1;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 90, 0, input);
+                    new NoViableAltException("", 87, 0, input);
 
                 throw nvae;
             }
-            switch (alt90) {
+            switch (alt87) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4793:3: ( ( ( ( ( ruleJvmTypeReference ) ) ( ( ruleValidID ) ) ) )=> ( ( (lv_type_3_0= ruleJvmTypeReference ) ) ( (lv_name_4_0= ruleValidID ) ) ) )
                     {
@@ -14042,7 +13992,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXVariableDeclarationAccess().getTypeJvmTypeReferenceParserRuleCall_2_0_0_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXVariableDeclaration11506);
+                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXVariableDeclaration11497);
                     lv_type_3_0=ruleJvmTypeReference();
 
                     state._fsp--;
@@ -14077,7 +14027,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXVariableDeclarationAccess().getNameValidIDParserRuleCall_2_0_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleValidID_in_ruleXVariableDeclaration11527);
+                    pushFollow(FOLLOW_ruleValidID_in_ruleXVariableDeclaration11518);
                     lv_name_4_0=ruleValidID();
 
                     state._fsp--;
@@ -14124,7 +14074,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXVariableDeclarationAccess().getNameValidIDParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleValidID_in_ruleXVariableDeclaration11556);
+                    pushFollow(FOLLOW_ruleValidID_in_ruleXVariableDeclaration11547);
                     lv_name_5_0=ruleValidID();
 
                     state._fsp--;
@@ -14155,17 +14105,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4856:3: (otherlv_6= '=' ( (lv_right_7_0= ruleXExpression ) ) )?
-            int alt91=2;
-            int LA91_0 = input.LA(1);
+            int alt88=2;
+            int LA88_0 = input.LA(1);
 
-            if ( (LA91_0==42) ) {
-                alt91=1;
+            if ( (LA88_0==43) ) {
+                alt88=1;
             }
-            switch (alt91) {
+            switch (alt88) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4856:5: otherlv_6= '=' ( (lv_right_7_0= ruleXExpression ) )
                     {
-                    otherlv_6=(Token)match(input,42,FOLLOW_42_in_ruleXVariableDeclaration11570); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,43,FOLLOW_43_in_ruleXVariableDeclaration11561); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXVariableDeclarationAccess().getEqualsSignKeyword_3_0());
@@ -14182,7 +14132,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXVariableDeclarationAccess().getRightXExpressionParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXVariableDeclaration11591);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXVariableDeclaration11582);
                     lv_right_7_0=ruleXExpression();
 
                     state._fsp--;
@@ -14249,7 +14199,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmFormalParameterRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmFormalParameter_in_entryRuleJvmFormalParameter11629);
+            pushFollow(FOLLOW_ruleJvmFormalParameter_in_entryRuleJvmFormalParameter11620);
             iv_ruleJvmFormalParameter=ruleJvmFormalParameter();
 
             state._fsp--;
@@ -14257,7 +14207,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmFormalParameter; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmFormalParameter11639); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmFormalParameter11630); if (state.failed) return current;
 
             }
 
@@ -14294,20 +14244,20 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4899:2: ( (lv_parameterType_0_0= ruleJvmTypeReference ) )? ( (lv_name_1_0= ruleValidID ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4899:2: ( (lv_parameterType_0_0= ruleJvmTypeReference ) )?
-            int alt92=2;
-            int LA92_0 = input.LA(1);
+            int alt89=2;
+            int LA89_0 = input.LA(1);
 
-            if ( (LA92_0==RULE_ID) ) {
-                int LA92_1 = input.LA(2);
+            if ( (LA89_0==RULE_ID) ) {
+                int LA89_1 = input.LA(2);
 
-                if ( (LA92_1==RULE_ID||LA92_1==26||LA92_1==44||LA92_1==51) ) {
-                    alt92=1;
+                if ( (LA89_1==RULE_ID||LA89_1==26||LA89_1==45||LA89_1==52) ) {
+                    alt89=1;
                 }
             }
-            else if ( (LA92_0==40||LA92_0==64) ) {
-                alt92=1;
+            else if ( (LA89_0==40||LA89_0==65) ) {
+                alt89=1;
             }
-            switch (alt92) {
+            switch (alt89) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4900:1: (lv_parameterType_0_0= ruleJvmTypeReference )
                     {
@@ -14319,7 +14269,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmFormalParameter11685);
+                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmFormalParameter11676);
                     lv_parameterType_0_0=ruleJvmTypeReference();
 
                     state._fsp--;
@@ -14357,7 +14307,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getNameValidIDParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleJvmFormalParameter11707);
+            pushFollow(FOLLOW_ruleValidID_in_ruleJvmFormalParameter11698);
             lv_name_1_0=ruleValidID();
 
             state._fsp--;
@@ -14418,7 +14368,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFullJvmFormalParameterRule()); 
             }
-            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_entryRuleFullJvmFormalParameter11743);
+            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_entryRuleFullJvmFormalParameter11734);
             iv_ruleFullJvmFormalParameter=ruleFullJvmFormalParameter();
 
             state._fsp--;
@@ -14426,7 +14376,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFullJvmFormalParameter; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFullJvmFormalParameter11753); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFullJvmFormalParameter11744); if (state.failed) return current;
 
             }
 
@@ -14473,7 +14423,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getFullJvmFormalParameterAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleFullJvmFormalParameter11799);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleFullJvmFormalParameter11790);
             lv_parameterType_0_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -14508,7 +14458,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getFullJvmFormalParameterAccess().getNameValidIDParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleFullJvmFormalParameter11820);
+            pushFollow(FOLLOW_ruleValidID_in_ruleFullJvmFormalParameter11811);
             lv_name_1_0=ruleValidID();
 
             state._fsp--;
@@ -14569,7 +14519,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXFeatureCallRule()); 
             }
-            pushFollow(FOLLOW_ruleXFeatureCall_in_entryRuleXFeatureCall11856);
+            pushFollow(FOLLOW_ruleXFeatureCall_in_entryRuleXFeatureCall11847);
             iv_ruleXFeatureCall=ruleXFeatureCall();
 
             state._fsp--;
@@ -14577,7 +14527,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXFeatureCall; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXFeatureCall11866); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXFeatureCall11857); if (state.failed) return current;
 
             }
 
@@ -14641,17 +14591,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5019:2: (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
-            int alt94=2;
-            int LA94_0 = input.LA(1);
+            int alt91=2;
+            int LA91_0 = input.LA(1);
 
-            if ( (LA94_0==51) ) {
-                alt94=1;
+            if ( (LA91_0==52) ) {
+                alt91=1;
             }
-            switch (alt94) {
+            switch (alt91) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5019:4: otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>'
                     {
-                    otherlv_1=(Token)match(input,51,FOLLOW_51_in_ruleXFeatureCall11913); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,52,FOLLOW_52_in_ruleXFeatureCall11904); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXFeatureCallAccess().getLessThanSignKeyword_1_0());
@@ -14668,7 +14618,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall11934);
+                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall11925);
                     lv_typeArguments_2_0=ruleJvmArgumentTypeReference();
 
                     state._fsp--;
@@ -14693,21 +14643,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5041:2: (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )*
-                    loop93:
+                    loop90:
                     do {
-                        int alt93=2;
-                        int LA93_0 = input.LA(1);
+                        int alt90=2;
+                        int LA90_0 = input.LA(1);
 
-                        if ( (LA93_0==25) ) {
-                            alt93=1;
+                        if ( (LA90_0==41) ) {
+                            alt90=1;
                         }
 
 
-                        switch (alt93) {
+                        switch (alt90) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5041:4: otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,25,FOLLOW_25_in_ruleXFeatureCall11947); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,41,FOLLOW_41_in_ruleXFeatureCall11938); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getXFeatureCallAccess().getCommaKeyword_1_2_0());
@@ -14724,7 +14674,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall11968);
+                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall11959);
                     	    lv_typeArguments_4_0=ruleJvmArgumentTypeReference();
 
                     	    state._fsp--;
@@ -14753,11 +14703,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop93;
+                    	    break loop90;
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,52,FOLLOW_52_in_ruleXFeatureCall11982); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,53,FOLLOW_53_in_ruleXFeatureCall11973); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getXFeatureCallAccess().getGreaterThanSignKeyword_1_3());
@@ -14787,7 +14737,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getFeatureJvmIdentifiableElementCrossReference_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleIdOrSuper_in_ruleXFeatureCall12007);
+            pushFollow(FOLLOW_ruleIdOrSuper_in_ruleXFeatureCall11998);
             ruleIdOrSuper();
 
             state._fsp--;
@@ -14804,9 +14754,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5082:2: ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_featureCallArguments_8_0= ruleXShortClosure ) ) | ( ( (lv_featureCallArguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_featureCallArguments_11_0= ruleXExpression ) ) )* ) )? otherlv_12= ')' )?
-            int alt97=2;
-            alt97 = dfa97.predict(input);
-            switch (alt97) {
+            int alt94=2;
+            alt94 = dfa94.predict(input);
+            switch (alt94) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5082:3: ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_featureCallArguments_8_0= ruleXShortClosure ) ) | ( ( (lv_featureCallArguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_featureCallArguments_11_0= ruleXExpression ) ) )* ) )? otherlv_12= ')'
                     {
@@ -14816,7 +14766,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5089:1: (lv_explicitOperationCall_7_0= '(' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5090:3: lv_explicitOperationCall_7_0= '('
                     {
-                    lv_explicitOperationCall_7_0=(Token)match(input,40,FOLLOW_40_in_ruleXFeatureCall12041); if (state.failed) return current;
+                    lv_explicitOperationCall_7_0=(Token)match(input,40,FOLLOW_40_in_ruleXFeatureCall12032); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_explicitOperationCall_7_0, grammarAccess.getXFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_3_0_0());
@@ -14837,9 +14787,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5103:2: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_featureCallArguments_8_0= ruleXShortClosure ) ) | ( ( (lv_featureCallArguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_featureCallArguments_11_0= ruleXExpression ) ) )* ) )?
-                    int alt96=3;
-                    alt96 = dfa96.predict(input);
-                    switch (alt96) {
+                    int alt93=3;
+                    alt93 = dfa93.predict(input);
+                    switch (alt93) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5103:3: ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_featureCallArguments_8_0= ruleXShortClosure ) )
                             {
@@ -14854,7 +14804,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXShortClosureParserRuleCall_3_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXShortClosure_in_ruleXFeatureCall12126);
+                            pushFollow(FOLLOW_ruleXShortClosure_in_ruleXFeatureCall12117);
                             lv_featureCallArguments_8_0=ruleXShortClosure();
 
                             state._fsp--;
@@ -14898,7 +14848,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXExpressionParserRuleCall_3_1_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXExpression_in_ruleXFeatureCall12154);
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXFeatureCall12145);
                             lv_featureCallArguments_9_0=ruleXExpression();
 
                             state._fsp--;
@@ -14923,21 +14873,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             }
 
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5156:2: (otherlv_10= ',' ( (lv_featureCallArguments_11_0= ruleXExpression ) ) )*
-                            loop95:
+                            loop92:
                             do {
-                                int alt95=2;
-                                int LA95_0 = input.LA(1);
+                                int alt92=2;
+                                int LA92_0 = input.LA(1);
 
-                                if ( (LA95_0==25) ) {
-                                    alt95=1;
+                                if ( (LA92_0==41) ) {
+                                    alt92=1;
                                 }
 
 
-                                switch (alt95) {
+                                switch (alt92) {
                             	case 1 :
                             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5156:4: otherlv_10= ',' ( (lv_featureCallArguments_11_0= ruleXExpression ) )
                             	    {
-                            	    otherlv_10=(Token)match(input,25,FOLLOW_25_in_ruleXFeatureCall12167); if (state.failed) return current;
+                            	    otherlv_10=(Token)match(input,41,FOLLOW_41_in_ruleXFeatureCall12158); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_10, grammarAccess.getXFeatureCallAccess().getCommaKeyword_3_1_1_1_0());
@@ -14954,7 +14904,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXExpressionParserRuleCall_3_1_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXFeatureCall12188);
+                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXFeatureCall12179);
                             	    lv_featureCallArguments_11_0=ruleXExpression();
 
                             	    state._fsp--;
@@ -14983,7 +14933,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop95;
+                            	    break loop92;
                                 }
                             } while (true);
 
@@ -14996,7 +14946,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_12=(Token)match(input,41,FOLLOW_41_in_ruleXFeatureCall12205); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,42,FOLLOW_42_in_ruleXFeatureCall12196); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_12, grammarAccess.getXFeatureCallAccess().getRightParenthesisKeyword_3_2());
@@ -15009,9 +14959,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5182:3: ( ( ( () '[' ) )=> (lv_featureCallArguments_13_0= ruleXClosure ) )?
-            int alt98=2;
-            alt98 = dfa98.predict(input);
-            switch (alt98) {
+            int alt95=2;
+            alt95 = dfa95.predict(input);
+            switch (alt95) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5182:4: ( ( () '[' ) )=> (lv_featureCallArguments_13_0= ruleXClosure )
                     {
@@ -15023,7 +14973,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXClosureParserRuleCall_4_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXClosure_in_ruleXFeatureCall12240);
+                    pushFollow(FOLLOW_ruleXClosure_in_ruleXFeatureCall12231);
                     lv_featureCallArguments_13_0=ruleXClosure();
 
                     state._fsp--;
@@ -15087,7 +15037,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFeatureCallIDRule()); 
             }
-            pushFollow(FOLLOW_ruleFeatureCallID_in_entryRuleFeatureCallID12278);
+            pushFollow(FOLLOW_ruleFeatureCallID_in_entryRuleFeatureCallID12269);
             iv_ruleFeatureCallID=ruleFeatureCallID();
 
             state._fsp--;
@@ -15095,7 +15045,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFeatureCallID.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFeatureCallID12289); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFeatureCallID12280); if (state.failed) return current;
 
             }
 
@@ -15128,42 +15078,42 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5223:1: (this_ValidID_0= ruleValidID | kw= 'extends' | kw= 'static' | kw= 'import' | kw= 'extension' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5223:1: (this_ValidID_0= ruleValidID | kw= 'extends' | kw= 'static' | kw= 'import' | kw= 'extension' )
-            int alt99=5;
+            int alt96=5;
             switch ( input.LA(1) ) {
             case RULE_ID:
                 {
-                alt99=1;
-                }
-                break;
-            case 90:
-                {
-                alt99=2;
+                alt96=1;
                 }
                 break;
             case 91:
                 {
-                alt99=3;
-                }
-                break;
-            case 17:
-                {
-                alt99=4;
+                alt96=2;
                 }
                 break;
             case 92:
                 {
-                alt99=5;
+                alt96=3;
+                }
+                break;
+            case 17:
+                {
+                alt96=4;
+                }
+                break;
+            case 93:
+                {
+                alt96=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 99, 0, input);
+                    new NoViableAltException("", 96, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt99) {
+            switch (alt96) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5224:5: this_ValidID_0= ruleValidID
                     {
@@ -15172,7 +15122,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getFeatureCallIDAccess().getValidIDParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleValidID_in_ruleFeatureCallID12336);
+                    pushFollow(FOLLOW_ruleValidID_in_ruleFeatureCallID12327);
                     this_ValidID_0=ruleValidID();
 
                     state._fsp--;
@@ -15193,7 +15143,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5236:2: kw= 'extends'
                     {
-                    kw=(Token)match(input,90,FOLLOW_90_in_ruleFeatureCallID12360); if (state.failed) return current;
+                    kw=(Token)match(input,91,FOLLOW_91_in_ruleFeatureCallID12351); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15206,7 +15156,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5243:2: kw= 'static'
                     {
-                    kw=(Token)match(input,91,FOLLOW_91_in_ruleFeatureCallID12379); if (state.failed) return current;
+                    kw=(Token)match(input,92,FOLLOW_92_in_ruleFeatureCallID12370); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15219,7 +15169,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5250:2: kw= 'import'
                     {
-                    kw=(Token)match(input,17,FOLLOW_17_in_ruleFeatureCallID12398); if (state.failed) return current;
+                    kw=(Token)match(input,17,FOLLOW_17_in_ruleFeatureCallID12389); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15232,7 +15182,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5257:2: kw= 'extension'
                     {
-                    kw=(Token)match(input,92,FOLLOW_92_in_ruleFeatureCallID12417); if (state.failed) return current;
+                    kw=(Token)match(input,93,FOLLOW_93_in_ruleFeatureCallID12408); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15279,7 +15229,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIdOrSuperRule()); 
             }
-            pushFollow(FOLLOW_ruleIdOrSuper_in_entryRuleIdOrSuper12458);
+            pushFollow(FOLLOW_ruleIdOrSuper_in_entryRuleIdOrSuper12449);
             iv_ruleIdOrSuper=ruleIdOrSuper();
 
             state._fsp--;
@@ -15287,7 +15237,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIdOrSuper.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIdOrSuper12469); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIdOrSuper12460); if (state.failed) return current;
 
             }
 
@@ -15320,23 +15270,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5283:1: (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5283:1: (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' )
-            int alt100=2;
-            int LA100_0 = input.LA(1);
+            int alt97=2;
+            int LA97_0 = input.LA(1);
 
-            if ( (LA100_0==RULE_ID||LA100_0==17||(LA100_0>=90 && LA100_0<=92)) ) {
-                alt100=1;
+            if ( (LA97_0==RULE_ID||LA97_0==17||(LA97_0>=91 && LA97_0<=93)) ) {
+                alt97=1;
             }
-            else if ( (LA100_0==93) ) {
-                alt100=2;
+            else if ( (LA97_0==94) ) {
+                alt97=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 100, 0, input);
+                    new NoViableAltException("", 97, 0, input);
 
                 throw nvae;
             }
-            switch (alt100) {
+            switch (alt97) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5284:5: this_FeatureCallID_0= ruleFeatureCallID
                     {
@@ -15345,7 +15295,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getIdOrSuperAccess().getFeatureCallIDParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleFeatureCallID_in_ruleIdOrSuper12516);
+                    pushFollow(FOLLOW_ruleFeatureCallID_in_ruleIdOrSuper12507);
                     this_FeatureCallID_0=ruleFeatureCallID();
 
                     state._fsp--;
@@ -15366,7 +15316,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5296:2: kw= 'super'
                     {
-                    kw=(Token)match(input,93,FOLLOW_93_in_ruleIdOrSuper12540); if (state.failed) return current;
+                    kw=(Token)match(input,94,FOLLOW_94_in_ruleIdOrSuper12531); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -15413,7 +15363,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXConstructorCallRule()); 
             }
-            pushFollow(FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall12580);
+            pushFollow(FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall12571);
             iv_ruleXConstructorCall=ruleXConstructorCall();
 
             state._fsp--;
@@ -15421,7 +15371,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXConstructorCall; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXConstructorCall12590); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXConstructorCall12581); if (state.failed) return current;
 
             }
 
@@ -15485,7 +15435,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,94,FOLLOW_94_in_ruleXConstructorCall12636); if (state.failed) return current;
+            otherlv_1=(Token)match(input,95,FOLLOW_95_in_ruleXConstructorCall12627); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXConstructorCallAccess().getNewKeyword_1());
@@ -15509,7 +15459,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getConstructorJvmConstructorCrossReference_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXConstructorCall12659);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXConstructorCall12650);
             ruleQualifiedName();
 
             state._fsp--;
@@ -15526,16 +15476,16 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5347:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?
-            int alt102=2;
-            alt102 = dfa102.predict(input);
-            switch (alt102) {
+            int alt99=2;
+            alt99 = dfa99.predict(input);
+            switch (alt99) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5347:3: ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>'
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5347:3: ( ( '<' )=>otherlv_3= '<' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5347:4: ( '<' )=>otherlv_3= '<'
                     {
-                    otherlv_3=(Token)match(input,51,FOLLOW_51_in_ruleXConstructorCall12680); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,52,FOLLOW_52_in_ruleXConstructorCall12671); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getXConstructorCallAccess().getLessThanSignKeyword_3_0());
@@ -15555,7 +15505,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall12702);
+                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall12693);
                     lv_typeArguments_4_0=ruleJvmArgumentTypeReference();
 
                     state._fsp--;
@@ -15580,21 +15530,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5370:2: (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )*
-                    loop101:
+                    loop98:
                     do {
-                        int alt101=2;
-                        int LA101_0 = input.LA(1);
+                        int alt98=2;
+                        int LA98_0 = input.LA(1);
 
-                        if ( (LA101_0==25) ) {
-                            alt101=1;
+                        if ( (LA98_0==41) ) {
+                            alt98=1;
                         }
 
 
-                        switch (alt101) {
+                        switch (alt98) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5370:4: otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
                     	    {
-                    	    otherlv_5=(Token)match(input,25,FOLLOW_25_in_ruleXConstructorCall12715); if (state.failed) return current;
+                    	    otherlv_5=(Token)match(input,41,FOLLOW_41_in_ruleXConstructorCall12706); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_5, grammarAccess.getXConstructorCallAccess().getCommaKeyword_3_2_0());
@@ -15611,7 +15561,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_3_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall12736);
+                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall12727);
                     	    lv_typeArguments_6_0=ruleJvmArgumentTypeReference();
 
                     	    state._fsp--;
@@ -15640,11 +15590,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop101;
+                    	    break loop98;
                         }
                     } while (true);
 
-                    otherlv_7=(Token)match(input,52,FOLLOW_52_in_ruleXConstructorCall12750); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,53,FOLLOW_53_in_ruleXConstructorCall12741); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getXConstructorCallAccess().getGreaterThanSignKeyword_3_3());
@@ -15657,9 +15607,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5396:3: ( ( ( ( '(' ) )=> (lv_explicitConstructorCall_8_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )?
-            int alt105=2;
-            alt105 = dfa105.predict(input);
-            switch (alt105) {
+            int alt102=2;
+            alt102 = dfa102.predict(input);
+            switch (alt102) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5396:4: ( ( ( '(' ) )=> (lv_explicitConstructorCall_8_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')'
                     {
@@ -15669,7 +15619,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5403:1: (lv_explicitConstructorCall_8_0= '(' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5404:3: lv_explicitConstructorCall_8_0= '('
                     {
-                    lv_explicitConstructorCall_8_0=(Token)match(input,40,FOLLOW_40_in_ruleXConstructorCall12786); if (state.failed) return current;
+                    lv_explicitConstructorCall_8_0=(Token)match(input,40,FOLLOW_40_in_ruleXConstructorCall12777); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_explicitConstructorCall_8_0, grammarAccess.getXConstructorCallAccess().getExplicitConstructorCallLeftParenthesisKeyword_4_0_0());
@@ -15690,9 +15640,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5417:2: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )?
-                    int alt104=3;
-                    alt104 = dfa104.predict(input);
-                    switch (alt104) {
+                    int alt101=3;
+                    alt101 = dfa101.predict(input);
+                    switch (alt101) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5417:3: ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) )
                             {
@@ -15707,7 +15657,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXShortClosureParserRuleCall_4_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXShortClosure_in_ruleXConstructorCall12871);
+                            pushFollow(FOLLOW_ruleXShortClosure_in_ruleXConstructorCall12862);
                             lv_arguments_9_0=ruleXShortClosure();
 
                             state._fsp--;
@@ -15751,7 +15701,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall12899);
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall12890);
                             lv_arguments_10_0=ruleXExpression();
 
                             state._fsp--;
@@ -15776,21 +15726,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             }
 
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5470:2: (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )*
-                            loop103:
+                            loop100:
                             do {
-                                int alt103=2;
-                                int LA103_0 = input.LA(1);
+                                int alt100=2;
+                                int LA100_0 = input.LA(1);
 
-                                if ( (LA103_0==25) ) {
-                                    alt103=1;
+                                if ( (LA100_0==41) ) {
+                                    alt100=1;
                                 }
 
 
-                                switch (alt103) {
+                                switch (alt100) {
                             	case 1 :
                             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5470:4: otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) )
                             	    {
-                            	    otherlv_11=(Token)match(input,25,FOLLOW_25_in_ruleXConstructorCall12912); if (state.failed) return current;
+                            	    otherlv_11=(Token)match(input,41,FOLLOW_41_in_ruleXConstructorCall12903); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_11, grammarAccess.getXConstructorCallAccess().getCommaKeyword_4_1_1_1_0());
@@ -15807,7 +15757,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall12933);
+                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall12924);
                             	    lv_arguments_12_0=ruleXExpression();
 
                             	    state._fsp--;
@@ -15836,7 +15786,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop103;
+                            	    break loop100;
                                 }
                             } while (true);
 
@@ -15849,7 +15799,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_13=(Token)match(input,41,FOLLOW_41_in_ruleXConstructorCall12950); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,42,FOLLOW_42_in_ruleXConstructorCall12941); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_13, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2());
@@ -15862,9 +15812,9 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5496:3: ( ( ( () '[' ) )=> (lv_arguments_14_0= ruleXClosure ) )?
-            int alt106=2;
-            alt106 = dfa106.predict(input);
-            switch (alt106) {
+            int alt103=2;
+            alt103 = dfa103.predict(input);
+            switch (alt103) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5496:4: ( ( () '[' ) )=> (lv_arguments_14_0= ruleXClosure )
                     {
@@ -15876,7 +15826,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXClosureParserRuleCall_5_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXClosure_in_ruleXConstructorCall12985);
+                    pushFollow(FOLLOW_ruleXClosure_in_ruleXConstructorCall12976);
                     lv_arguments_14_0=ruleXClosure();
 
                     state._fsp--;
@@ -15940,7 +15890,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXBooleanLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral13022);
+            pushFollow(FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral13013);
             iv_ruleXBooleanLiteral=ruleXBooleanLiteral();
 
             state._fsp--;
@@ -15948,7 +15898,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXBooleanLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXBooleanLiteral13032); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXBooleanLiteral13023); if (state.failed) return current;
 
             }
 
@@ -15996,27 +15946,27 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5543:2: (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
-            int alt107=2;
-            int LA107_0 = input.LA(1);
+            int alt104=2;
+            int LA104_0 = input.LA(1);
 
-            if ( (LA107_0==95) ) {
-                alt107=1;
+            if ( (LA104_0==96) ) {
+                alt104=1;
             }
-            else if ( (LA107_0==96) ) {
-                alt107=2;
+            else if ( (LA104_0==97) ) {
+                alt104=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 107, 0, input);
+                    new NoViableAltException("", 104, 0, input);
 
                 throw nvae;
             }
-            switch (alt107) {
+            switch (alt104) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5543:4: otherlv_1= 'false'
                     {
-                    otherlv_1=(Token)match(input,95,FOLLOW_95_in_ruleXBooleanLiteral13079); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,96,FOLLOW_96_in_ruleXBooleanLiteral13070); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXBooleanLiteralAccess().getFalseKeyword_1_0());
@@ -16034,7 +15984,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5549:1: (lv_isTrue_2_0= 'true' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5550:3: lv_isTrue_2_0= 'true'
                     {
-                    lv_isTrue_2_0=(Token)match(input,96,FOLLOW_96_in_ruleXBooleanLiteral13103); if (state.failed) return current;
+                    lv_isTrue_2_0=(Token)match(input,97,FOLLOW_97_in_ruleXBooleanLiteral13094); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isTrue_2_0, grammarAccess.getXBooleanLiteralAccess().getIsTrueTrueKeyword_1_1_0());
@@ -16097,7 +16047,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXNullLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral13153);
+            pushFollow(FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral13144);
             iv_ruleXNullLiteral=ruleXNullLiteral();
 
             state._fsp--;
@@ -16105,7 +16055,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXNullLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXNullLiteral13163); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXNullLiteral13154); if (state.failed) return current;
 
             }
 
@@ -16151,7 +16101,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,97,FOLLOW_97_in_ruleXNullLiteral13209); if (state.failed) return current;
+            otherlv_1=(Token)match(input,98,FOLLOW_98_in_ruleXNullLiteral13200); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXNullLiteralAccess().getNullKeyword_1());
@@ -16194,7 +16144,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXNumberLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral13245);
+            pushFollow(FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral13236);
             iv_ruleXNumberLiteral=ruleXNumberLiteral();
 
             state._fsp--;
@@ -16202,7 +16152,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXNumberLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXNumberLiteral13255); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXNumberLiteral13246); if (state.failed) return current;
 
             }
 
@@ -16260,7 +16210,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXNumberLiteralAccess().getValueNumberParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleNumber_in_ruleXNumberLiteral13310);
+            pushFollow(FOLLOW_ruleNumber_in_ruleXNumberLiteral13301);
             lv_value_1_0=ruleNumber();
 
             state._fsp--;
@@ -16321,7 +16271,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXStringLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXStringLiteral_in_entryRuleXStringLiteral13346);
+            pushFollow(FOLLOW_ruleXStringLiteral_in_entryRuleXStringLiteral13337);
             iv_ruleXStringLiteral=ruleXStringLiteral();
 
             state._fsp--;
@@ -16329,7 +16279,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXStringLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXStringLiteral13356); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXStringLiteral13347); if (state.failed) return current;
 
             }
 
@@ -16381,7 +16331,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5667:1: (lv_value_1_0= RULE_STRING )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5668:3: lv_value_1_0= RULE_STRING
             {
-            lv_value_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXStringLiteral13407); if (state.failed) return current;
+            lv_value_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXStringLiteral13398); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_1_0, grammarAccess.getXStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0()); 
@@ -16442,7 +16392,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXTypeLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral13448);
+            pushFollow(FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral13439);
             iv_ruleXTypeLiteral=ruleXTypeLiteral();
 
             state._fsp--;
@@ -16450,7 +16400,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXTypeLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXTypeLiteral13458); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXTypeLiteral13449); if (state.failed) return current;
 
             }
 
@@ -16500,13 +16450,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,98,FOLLOW_98_in_ruleXTypeLiteral13504); if (state.failed) return current;
+            otherlv_1=(Token)match(input,99,FOLLOW_99_in_ruleXTypeLiteral13495); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXTypeLiteralAccess().getTypeofKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXTypeLiteral13516); if (state.failed) return current;
+            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXTypeLiteral13507); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXTypeLiteralAccess().getLeftParenthesisKeyword_2());
@@ -16530,7 +16480,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXTypeLiteralAccess().getTypeJvmTypeCrossReference_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral13539);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral13530);
             ruleQualifiedName();
 
             state._fsp--;
@@ -16547,17 +16497,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5734:2: ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )*
-            loop108:
+            loop105:
             do {
-                int alt108=2;
-                int LA108_0 = input.LA(1);
+                int alt105=2;
+                int LA105_0 = input.LA(1);
 
-                if ( (LA108_0==44) ) {
-                    alt108=1;
+                if ( (LA105_0==45) ) {
+                    alt105=1;
                 }
 
 
-                switch (alt108) {
+                switch (alt105) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5735:1: (lv_arrayDimensions_4_0= ruleArrayBrackets )
             	    {
@@ -16569,7 +16519,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getXTypeLiteralAccess().getArrayDimensionsArrayBracketsParserRuleCall_4_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleArrayBrackets_in_ruleXTypeLiteral13560);
+            	    pushFollow(FOLLOW_ruleArrayBrackets_in_ruleXTypeLiteral13551);
             	    lv_arrayDimensions_4_0=ruleArrayBrackets();
 
             	    state._fsp--;
@@ -16595,11 +16545,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop108;
+            	    break loop105;
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,41,FOLLOW_41_in_ruleXTypeLiteral13573); if (state.failed) return current;
+            otherlv_5=(Token)match(input,42,FOLLOW_42_in_ruleXTypeLiteral13564); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_5, grammarAccess.getXTypeLiteralAccess().getRightParenthesisKeyword_5());
@@ -16642,7 +16592,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXThrowExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression13609);
+            pushFollow(FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression13600);
             iv_ruleXThrowExpression=ruleXThrowExpression();
 
             state._fsp--;
@@ -16650,7 +16600,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXThrowExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXThrowExpression13619); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXThrowExpression13610); if (state.failed) return current;
 
             }
 
@@ -16698,7 +16648,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,99,FOLLOW_99_in_ruleXThrowExpression13665); if (state.failed) return current;
+            otherlv_1=(Token)match(input,100,FOLLOW_100_in_ruleXThrowExpression13656); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXThrowExpressionAccess().getThrowKeyword_1());
@@ -16715,7 +16665,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXThrowExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXThrowExpression13686);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXThrowExpression13677);
             lv_expression_2_0=ruleXExpression();
 
             state._fsp--;
@@ -16776,7 +16726,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXReturnExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression13722);
+            pushFollow(FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression13713);
             iv_ruleXReturnExpression=ruleXReturnExpression();
 
             state._fsp--;
@@ -16784,7 +16734,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXReturnExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXReturnExpression13732); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXReturnExpression13723); if (state.failed) return current;
 
             }
 
@@ -16832,16 +16782,16 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,100,FOLLOW_100_in_ruleXReturnExpression13778); if (state.failed) return current;
+            otherlv_1=(Token)match(input,101,FOLLOW_101_in_ruleXReturnExpression13769); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXReturnExpressionAccess().getReturnKeyword_1());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5836:1: ( ( 'extends' | 'static' | 'import' | 'extension' | '!' | '-' | '+' | 'new' | '{' | 'switch' | 'synchronized' | '<' | 'super' | '#' | '[' | 'false' | 'true' | 'null' | 'typeof' | 'if' | 'for' | 'while' | 'do' | 'throw' | 'return' | 'try' | '(' | RULE_ID | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_STRING )=> (lv_expression_2_0= ruleXExpression ) )?
-            int alt109=2;
-            alt109 = dfa109.predict(input);
-            switch (alt109) {
+            int alt106=2;
+            alt106 = dfa106.predict(input);
+            switch (alt106) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5836:2: ( 'extends' | 'static' | 'import' | 'extension' | '!' | '-' | '+' | 'new' | '{' | 'switch' | 'synchronized' | '<' | 'super' | '#' | '[' | 'false' | 'true' | 'null' | 'typeof' | 'if' | 'for' | 'while' | 'do' | 'throw' | 'return' | 'try' | '(' | RULE_ID | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_STRING )=> (lv_expression_2_0= ruleXExpression )
                     {
@@ -16853,7 +16803,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXReturnExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXReturnExpression14013);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXReturnExpression14004);
                     lv_expression_2_0=ruleXExpression();
 
                     state._fsp--;
@@ -16917,7 +16867,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression14050);
+            pushFollow(FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression14041);
             iv_ruleXTryCatchFinallyExpression=ruleXTryCatchFinallyExpression();
 
             state._fsp--;
@@ -16925,7 +16875,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXTryCatchFinallyExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression14060); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression14051); if (state.failed) return current;
 
             }
 
@@ -16981,7 +16931,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,101,FOLLOW_101_in_ruleXTryCatchFinallyExpression14106); if (state.failed) return current;
+            otherlv_1=(Token)match(input,102,FOLLOW_102_in_ruleXTryCatchFinallyExpression14097); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXTryCatchFinallyExpressionAccess().getTryKeyword_1());
@@ -16998,7 +16948,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14127);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14118);
             lv_expression_2_0=ruleXExpression();
 
             state._fsp--;
@@ -17023,23 +16973,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5930:2: ( ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
-            int alt112=2;
-            int LA112_0 = input.LA(1);
+            int alt109=2;
+            int LA109_0 = input.LA(1);
 
-            if ( (LA112_0==104) ) {
-                alt112=1;
+            if ( (LA109_0==105) ) {
+                alt109=1;
             }
-            else if ( (LA112_0==102) ) {
-                alt112=2;
+            else if ( (LA109_0==103) ) {
+                alt109=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 112, 0, input);
+                    new NoViableAltException("", 109, 0, input);
 
                 throw nvae;
             }
-            switch (alt112) {
+            switch (alt109) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5930:3: ( ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
                     {
@@ -17047,24 +16997,24 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5930:4: ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+ ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5930:4: ( ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause ) )+
-                    int cnt110=0;
-                    loop110:
+                    int cnt107=0;
+                    loop107:
                     do {
-                        int alt110=2;
-                        int LA110_0 = input.LA(1);
+                        int alt107=2;
+                        int LA107_0 = input.LA(1);
 
-                        if ( (LA110_0==104) ) {
-                            int LA110_2 = input.LA(2);
+                        if ( (LA107_0==105) ) {
+                            int LA107_2 = input.LA(2);
 
                             if ( (synpred45_InternalDatatypeGrammar()) ) {
-                                alt110=1;
+                                alt107=1;
                             }
 
 
                         }
 
 
-                        switch (alt110) {
+                        switch (alt107) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5930:5: ( 'catch' )=> (lv_catchClauses_3_0= ruleXCatchClause )
                     	    {
@@ -17076,7 +17026,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getCatchClausesXCatchClauseParserRuleCall_3_0_0_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression14157);
+                    	    pushFollow(FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression14148);
                     	    lv_catchClauses_3_0=ruleXCatchClause();
 
                     	    state._fsp--;
@@ -17102,34 +17052,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt110 >= 1 ) break loop110;
+                    	    if ( cnt107 >= 1 ) break loop107;
                     	    if (state.backtracking>0) {state.failed=true; return current;}
                                 EarlyExitException eee =
-                                    new EarlyExitException(110, input);
+                                    new EarlyExitException(107, input);
                                 throw eee;
                         }
-                        cnt110++;
+                        cnt107++;
                     } while (true);
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5949:3: ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
-                    int alt111=2;
-                    int LA111_0 = input.LA(1);
+                    int alt108=2;
+                    int LA108_0 = input.LA(1);
 
-                    if ( (LA111_0==102) ) {
-                        int LA111_1 = input.LA(2);
+                    if ( (LA108_0==103) ) {
+                        int LA108_1 = input.LA(2);
 
                         if ( (synpred46_InternalDatatypeGrammar()) ) {
-                            alt111=1;
+                            alt108=1;
                         }
                     }
-                    switch (alt111) {
+                    switch (alt108) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5949:4: ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) )
                             {
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5949:4: ( ( 'finally' )=>otherlv_4= 'finally' )
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5949:5: ( 'finally' )=>otherlv_4= 'finally'
                             {
-                            otherlv_4=(Token)match(input,102,FOLLOW_102_in_ruleXTryCatchFinallyExpression14179); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,103,FOLLOW_103_in_ruleXTryCatchFinallyExpression14170); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_4, grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyKeyword_3_0_1_0());
@@ -17149,7 +17099,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyExpressionXExpressionParserRuleCall_3_0_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14201);
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14192);
                             lv_finallyExpression_5_0=ruleXExpression();
 
                             state._fsp--;
@@ -17191,7 +17141,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5973:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5973:8: otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) )
                     {
-                    otherlv_6=(Token)match(input,102,FOLLOW_102_in_ruleXTryCatchFinallyExpression14223); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,103,FOLLOW_103_in_ruleXTryCatchFinallyExpression14214); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyKeyword_3_1_0());
@@ -17208,7 +17158,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyExpressionXExpressionParserRuleCall_3_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14244);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14235);
                     lv_finallyExpression_7_0=ruleXExpression();
 
                     state._fsp--;
@@ -17278,7 +17228,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXSynchronizedExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXSynchronizedExpression_in_entryRuleXSynchronizedExpression14282);
+            pushFollow(FOLLOW_ruleXSynchronizedExpression_in_entryRuleXSynchronizedExpression14273);
             iv_ruleXSynchronizedExpression=ruleXSynchronizedExpression();
 
             state._fsp--;
@@ -17286,7 +17236,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXSynchronizedExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXSynchronizedExpression14292); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXSynchronizedExpression14283); if (state.failed) return current;
 
             }
 
@@ -17344,13 +17294,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,103,FOLLOW_103_in_ruleXSynchronizedExpression14356); if (state.failed) return current;
+            otherlv_1=(Token)match(input,104,FOLLOW_104_in_ruleXSynchronizedExpression14347); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXSynchronizedExpressionAccess().getSynchronizedKeyword_0_0_1());
                   
             }
-            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXSynchronizedExpression14368); if (state.failed) return current;
+            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleXSynchronizedExpression14359); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXSynchronizedExpressionAccess().getLeftParenthesisKeyword_0_0_2());
@@ -17373,7 +17323,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXSynchronizedExpressionAccess().getParamXExpressionParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXSynchronizedExpression14391);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXSynchronizedExpression14382);
             lv_param_3_0=ruleXExpression();
 
             state._fsp--;
@@ -17397,7 +17347,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXSynchronizedExpression14403); if (state.failed) return current;
+            otherlv_4=(Token)match(input,42,FOLLOW_42_in_ruleXSynchronizedExpression14394); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getXSynchronizedExpressionAccess().getRightParenthesisKeyword_2());
@@ -17414,7 +17364,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXSynchronizedExpressionAccess().getExpressionXExpressionParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXSynchronizedExpression14424);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXSynchronizedExpression14415);
             lv_expression_5_0=ruleXExpression();
 
             state._fsp--;
@@ -17475,7 +17425,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXCatchClauseRule()); 
             }
-            pushFollow(FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause14460);
+            pushFollow(FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause14451);
             iv_ruleXCatchClause=ruleXCatchClause();
 
             state._fsp--;
@@ -17483,7 +17433,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXCatchClause; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXCatchClause14470); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXCatchClause14461); if (state.failed) return current;
 
             }
 
@@ -17525,7 +17475,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6094:2: ( ( 'catch' )=>otherlv_0= 'catch' )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6094:3: ( 'catch' )=>otherlv_0= 'catch'
             {
-            otherlv_0=(Token)match(input,104,FOLLOW_104_in_ruleXCatchClause14515); if (state.failed) return current;
+            otherlv_0=(Token)match(input,105,FOLLOW_105_in_ruleXCatchClause14506); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getXCatchClauseAccess().getCatchKeyword_0());
@@ -17534,7 +17484,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,40,FOLLOW_40_in_ruleXCatchClause14528); if (state.failed) return current;
+            otherlv_1=(Token)match(input,40,FOLLOW_40_in_ruleXCatchClause14519); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXCatchClauseAccess().getLeftParenthesisKeyword_1());
@@ -17551,7 +17501,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXCatchClauseAccess().getDeclaredParamFullJvmFormalParameterParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_ruleXCatchClause14549);
+            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_ruleXCatchClause14540);
             lv_declaredParam_2_0=ruleFullJvmFormalParameter();
 
             state._fsp--;
@@ -17575,7 +17525,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,41,FOLLOW_41_in_ruleXCatchClause14561); if (state.failed) return current;
+            otherlv_3=(Token)match(input,42,FOLLOW_42_in_ruleXCatchClause14552); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getXCatchClauseAccess().getRightParenthesisKeyword_3());
@@ -17592,7 +17542,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXCatchClauseAccess().getExpressionXExpressionParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXCatchClause14582);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXCatchClause14573);
             lv_expression_4_0=ruleXExpression();
 
             state._fsp--;
@@ -17653,7 +17603,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName14619);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName14610);
             iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
@@ -17661,7 +17611,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName14630); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName14621); if (state.failed) return current;
 
             }
 
@@ -17703,7 +17653,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName14677);
+            pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName14668);
             this_ValidID_0=ruleValidID();
 
             state._fsp--;
@@ -17719,19 +17669,19 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6175:1: ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
-            loop113:
+            loop110:
             do {
-                int alt113=2;
-                int LA113_0 = input.LA(1);
+                int alt110=2;
+                int LA110_0 = input.LA(1);
 
-                if ( (LA113_0==26) ) {
-                    int LA113_2 = input.LA(2);
+                if ( (LA110_0==26) ) {
+                    int LA110_2 = input.LA(2);
 
-                    if ( (LA113_2==RULE_ID) ) {
-                        int LA113_3 = input.LA(3);
+                    if ( (LA110_2==RULE_ID) ) {
+                        int LA110_3 = input.LA(3);
 
                         if ( (synpred49_InternalDatatypeGrammar()) ) {
-                            alt113=1;
+                            alt110=1;
                         }
 
 
@@ -17741,14 +17691,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 }
 
 
-                switch (alt113) {
+                switch (alt110) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6175:2: ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID
             	    {
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6175:2: ( ( '.' )=>kw= '.' )
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6175:3: ( '.' )=>kw= '.'
             	    {
-            	    kw=(Token)match(input,26,FOLLOW_26_in_ruleQualifiedName14705); if (state.failed) return current;
+            	    kw=(Token)match(input,26,FOLLOW_26_in_ruleQualifiedName14696); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              current.merge(kw);
@@ -17763,7 +17713,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	              newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_1_1()); 
             	          
             	    }
-            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName14728);
+            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName14719);
             	    this_ValidID_2=ruleValidID();
 
             	    state._fsp--;
@@ -17783,7 +17733,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop113;
+            	    break loop110;
                 }
             } while (true);
 
@@ -17827,7 +17777,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNumberRule()); 
             }
-            pushFollow(FOLLOW_ruleNumber_in_entryRuleNumber14782);
+            pushFollow(FOLLOW_ruleNumber_in_entryRuleNumber14773);
             iv_ruleNumber=ruleNumber();
 
             state._fsp--;
@@ -17835,7 +17785,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNumber.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNumber14793); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNumber14784); if (state.failed) return current;
 
             }
 
@@ -17875,27 +17825,27 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6222:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6222:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
-            int alt117=2;
-            int LA117_0 = input.LA(1);
+            int alt114=2;
+            int LA114_0 = input.LA(1);
 
-            if ( (LA117_0==RULE_HEX) ) {
-                alt117=1;
+            if ( (LA114_0==RULE_HEX) ) {
+                alt114=1;
             }
-            else if ( ((LA117_0>=RULE_INT && LA117_0<=RULE_DECIMAL)) ) {
-                alt117=2;
+            else if ( ((LA114_0>=RULE_INT && LA114_0<=RULE_DECIMAL)) ) {
+                alt114=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 117, 0, input);
+                    new NoViableAltException("", 114, 0, input);
 
                 throw nvae;
             }
-            switch (alt117) {
+            switch (alt114) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6222:6: this_HEX_0= RULE_HEX
                     {
-                    this_HEX_0=(Token)match(input,RULE_HEX,FOLLOW_RULE_HEX_in_ruleNumber14837); if (state.failed) return current;
+                    this_HEX_0=(Token)match(input,RULE_HEX,FOLLOW_RULE_HEX_in_ruleNumber14828); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_HEX_0);
@@ -17916,27 +17866,27 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6230:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6230:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL )
-                    int alt114=2;
-                    int LA114_0 = input.LA(1);
+                    int alt111=2;
+                    int LA111_0 = input.LA(1);
 
-                    if ( (LA114_0==RULE_INT) ) {
-                        alt114=1;
+                    if ( (LA111_0==RULE_INT) ) {
+                        alt111=1;
                     }
-                    else if ( (LA114_0==RULE_DECIMAL) ) {
-                        alt114=2;
+                    else if ( (LA111_0==RULE_DECIMAL) ) {
+                        alt111=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 114, 0, input);
+                            new NoViableAltException("", 111, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt114) {
+                    switch (alt111) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6230:12: this_INT_1= RULE_INT
                             {
-                            this_INT_1=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber14865); if (state.failed) return current;
+                            this_INT_1=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber14856); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               		current.merge(this_INT_1);
@@ -17953,7 +17903,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         case 2 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6238:10: this_DECIMAL_2= RULE_DECIMAL
                             {
-                            this_DECIMAL_2=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber14891); if (state.failed) return current;
+                            this_DECIMAL_2=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber14882); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               		current.merge(this_DECIMAL_2);
@@ -17971,21 +17921,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6245:2: (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
-                    int alt116=2;
-                    int LA116_0 = input.LA(1);
+                    int alt113=2;
+                    int LA113_0 = input.LA(1);
 
-                    if ( (LA116_0==26) ) {
-                        int LA116_1 = input.LA(2);
+                    if ( (LA113_0==26) ) {
+                        int LA113_1 = input.LA(2);
 
-                        if ( ((LA116_1>=RULE_INT && LA116_1<=RULE_DECIMAL)) ) {
-                            alt116=1;
+                        if ( ((LA113_1>=RULE_INT && LA113_1<=RULE_DECIMAL)) ) {
+                            alt113=1;
                         }
                     }
-                    switch (alt116) {
+                    switch (alt113) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6246:2: kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
                             {
-                            kw=(Token)match(input,26,FOLLOW_26_in_ruleNumber14911); if (state.failed) return current;
+                            kw=(Token)match(input,26,FOLLOW_26_in_ruleNumber14902); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
@@ -17993,27 +17943,27 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                                   
                             }
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6251:1: (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
-                            int alt115=2;
-                            int LA115_0 = input.LA(1);
+                            int alt112=2;
+                            int LA112_0 = input.LA(1);
 
-                            if ( (LA115_0==RULE_INT) ) {
-                                alt115=1;
+                            if ( (LA112_0==RULE_INT) ) {
+                                alt112=1;
                             }
-                            else if ( (LA115_0==RULE_DECIMAL) ) {
-                                alt115=2;
+                            else if ( (LA112_0==RULE_DECIMAL) ) {
+                                alt112=2;
                             }
                             else {
                                 if (state.backtracking>0) {state.failed=true; return current;}
                                 NoViableAltException nvae =
-                                    new NoViableAltException("", 115, 0, input);
+                                    new NoViableAltException("", 112, 0, input);
 
                                 throw nvae;
                             }
-                            switch (alt115) {
+                            switch (alt112) {
                                 case 1 :
                                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6251:6: this_INT_4= RULE_INT
                                     {
-                                    this_INT_4=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber14927); if (state.failed) return current;
+                                    this_INT_4=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber14918); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       		current.merge(this_INT_4);
@@ -18030,7 +17980,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                                 case 2 :
                                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6259:10: this_DECIMAL_5= RULE_DECIMAL
                                     {
-                                    this_DECIMAL_5=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber14953); if (state.failed) return current;
+                                    this_DECIMAL_5=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber14944); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       		current.merge(this_DECIMAL_5);
@@ -18099,7 +18049,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference15008);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference14999);
             iv_ruleJvmTypeReference=ruleJvmTypeReference();
 
             state._fsp--;
@@ -18107,7 +18057,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmTypeReference15018); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmTypeReference15009); if (state.failed) return current;
 
             }
 
@@ -18141,23 +18091,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6292:1: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6292:1: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) | this_XFunctionTypeRef_3= ruleXFunctionTypeRef )
-            int alt119=2;
-            int LA119_0 = input.LA(1);
+            int alt116=2;
+            int LA116_0 = input.LA(1);
 
-            if ( (LA119_0==RULE_ID) ) {
-                alt119=1;
+            if ( (LA116_0==RULE_ID) ) {
+                alt116=1;
             }
-            else if ( (LA119_0==40||LA119_0==64) ) {
-                alt119=2;
+            else if ( (LA116_0==40||LA116_0==65) ) {
+                alt116=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 119, 0, input);
+                    new NoViableAltException("", 116, 0, input);
 
                 throw nvae;
             }
-            switch (alt119) {
+            switch (alt116) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6292:2: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
                     {
@@ -18169,7 +18119,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getJvmTypeReferenceAccess().getJvmParameterizedTypeReferenceParserRuleCall_0_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference15066);
+                    pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference15057);
                     this_JvmParameterizedTypeReference_0=ruleJvmParameterizedTypeReference();
 
                     state._fsp--;
@@ -18181,19 +18131,19 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                           
                     }
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6301:1: ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
-                    loop118:
+                    loop115:
                     do {
-                        int alt118=2;
-                        int LA118_0 = input.LA(1);
+                        int alt115=2;
+                        int LA115_0 = input.LA(1);
 
-                        if ( (LA118_0==44) ) {
-                            int LA118_2 = input.LA(2);
+                        if ( (LA115_0==45) ) {
+                            int LA115_2 = input.LA(2);
 
-                            if ( (LA118_2==45) ) {
-                                int LA118_3 = input.LA(3);
+                            if ( (LA115_2==46) ) {
+                                int LA115_3 = input.LA(3);
 
                                 if ( (synpred50_InternalDatatypeGrammar()) ) {
-                                    alt118=1;
+                                    alt115=1;
                                 }
 
 
@@ -18203,7 +18153,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         }
 
 
-                        switch (alt118) {
+                        switch (alt115) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6301:2: ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets )
                     	    {
@@ -18228,7 +18178,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	              newCompositeNode(grammarAccess.getJvmTypeReferenceAccess().getArrayBracketsParserRuleCall_0_1_0_1()); 
                     	          
                     	    }
-                    	    pushFollow(FOLLOW_ruleArrayBrackets_in_ruleJvmTypeReference15102);
+                    	    pushFollow(FOLLOW_ruleArrayBrackets_in_ruleJvmTypeReference15093);
                     	    ruleArrayBrackets();
 
                     	    state._fsp--;
@@ -18246,7 +18196,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop118;
+                    	    break loop115;
                         }
                     } while (true);
 
@@ -18264,7 +18214,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getJvmTypeReferenceAccess().getXFunctionTypeRefParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleXFunctionTypeRef_in_ruleJvmTypeReference15133);
+                    pushFollow(FOLLOW_ruleXFunctionTypeRef_in_ruleJvmTypeReference15124);
                     this_XFunctionTypeRef_3=ruleXFunctionTypeRef();
 
                     state._fsp--;
@@ -18315,7 +18265,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArrayBracketsRule()); 
             }
-            pushFollow(FOLLOW_ruleArrayBrackets_in_entryRuleArrayBrackets15169);
+            pushFollow(FOLLOW_ruleArrayBrackets_in_entryRuleArrayBrackets15160);
             iv_ruleArrayBrackets=ruleArrayBrackets();
 
             state._fsp--;
@@ -18323,7 +18273,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleArrayBrackets.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayBrackets15180); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayBrackets15171); if (state.failed) return current;
 
             }
 
@@ -18356,14 +18306,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6347:1: (kw= '[' kw= ']' )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6348:2: kw= '[' kw= ']'
             {
-            kw=(Token)match(input,44,FOLLOW_44_in_ruleArrayBrackets15218); if (state.failed) return current;
+            kw=(Token)match(input,45,FOLLOW_45_in_ruleArrayBrackets15209); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
                       newLeafNode(kw, grammarAccess.getArrayBracketsAccess().getLeftSquareBracketKeyword_0()); 
                   
             }
-            kw=(Token)match(input,45,FOLLOW_45_in_ruleArrayBrackets15231); if (state.failed) return current;
+            kw=(Token)match(input,46,FOLLOW_46_in_ruleArrayBrackets15222); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -18407,7 +18357,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXFunctionTypeRefRule()); 
             }
-            pushFollow(FOLLOW_ruleXFunctionTypeRef_in_entryRuleXFunctionTypeRef15271);
+            pushFollow(FOLLOW_ruleXFunctionTypeRef_in_entryRuleXFunctionTypeRef15262);
             iv_ruleXFunctionTypeRef=ruleXFunctionTypeRef();
 
             state._fsp--;
@@ -18415,7 +18365,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXFunctionTypeRef; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXFunctionTypeRef15281); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXFunctionTypeRef15272); if (state.failed) return current;
 
             }
 
@@ -18458,30 +18408,30 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6380:2: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )? otherlv_5= '=>' ( (lv_returnType_6_0= ruleJvmTypeReference ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6380:2: (otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')' )?
-            int alt122=2;
-            int LA122_0 = input.LA(1);
+            int alt119=2;
+            int LA119_0 = input.LA(1);
 
-            if ( (LA122_0==40) ) {
-                alt122=1;
+            if ( (LA119_0==40) ) {
+                alt119=1;
             }
-            switch (alt122) {
+            switch (alt119) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6380:4: otherlv_0= '(' ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )? otherlv_4= ')'
                     {
-                    otherlv_0=(Token)match(input,40,FOLLOW_40_in_ruleXFunctionTypeRef15319); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,40,FOLLOW_40_in_ruleXFunctionTypeRef15310); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_0, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0());
                           
                     }
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6384:1: ( ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )* )?
-                    int alt121=2;
-                    int LA121_0 = input.LA(1);
+                    int alt118=2;
+                    int LA118_0 = input.LA(1);
 
-                    if ( (LA121_0==RULE_ID||LA121_0==40||LA121_0==64) ) {
-                        alt121=1;
+                    if ( (LA118_0==RULE_ID||LA118_0==40||LA118_0==65) ) {
+                        alt118=1;
                     }
-                    switch (alt121) {
+                    switch (alt118) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6384:2: ( (lv_paramTypes_1_0= ruleJvmTypeReference ) ) (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
                             {
@@ -18496,7 +18446,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXFunctionTypeRefAccess().getParamTypesJvmTypeReferenceParserRuleCall_0_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15341);
+                            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15332);
                             lv_paramTypes_1_0=ruleJvmTypeReference();
 
                             state._fsp--;
@@ -18521,21 +18471,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             }
 
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6402:2: (otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) ) )*
-                            loop120:
+                            loop117:
                             do {
-                                int alt120=2;
-                                int LA120_0 = input.LA(1);
+                                int alt117=2;
+                                int LA117_0 = input.LA(1);
 
-                                if ( (LA120_0==25) ) {
-                                    alt120=1;
+                                if ( (LA117_0==41) ) {
+                                    alt117=1;
                                 }
 
 
-                                switch (alt120) {
+                                switch (alt117) {
                             	case 1 :
                             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6402:4: otherlv_2= ',' ( (lv_paramTypes_3_0= ruleJvmTypeReference ) )
                             	    {
-                            	    otherlv_2=(Token)match(input,25,FOLLOW_25_in_ruleXFunctionTypeRef15354); if (state.failed) return current;
+                            	    otherlv_2=(Token)match(input,41,FOLLOW_41_in_ruleXFunctionTypeRef15345); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_2, grammarAccess.getXFunctionTypeRefAccess().getCommaKeyword_0_1_1_0());
@@ -18552,7 +18502,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getXFunctionTypeRefAccess().getParamTypesJvmTypeReferenceParserRuleCall_0_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15375);
+                            	    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15366);
                             	    lv_paramTypes_3_0=ruleJvmTypeReference();
 
                             	    state._fsp--;
@@ -18581,7 +18531,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop120;
+                            	    break loop117;
                                 }
                             } while (true);
 
@@ -18591,7 +18541,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,41,FOLLOW_41_in_ruleXFunctionTypeRef15391); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,42,FOLLOW_42_in_ruleXFunctionTypeRef15382); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2());
@@ -18603,7 +18553,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,64,FOLLOW_64_in_ruleXFunctionTypeRef15405); if (state.failed) return current;
+            otherlv_5=(Token)match(input,65,FOLLOW_65_in_ruleXFunctionTypeRef15396); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_5, grammarAccess.getXFunctionTypeRefAccess().getEqualsSignGreaterThanSignKeyword_1());
@@ -18620,7 +18570,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXFunctionTypeRefAccess().getReturnTypeJvmTypeReferenceParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15426);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15417);
             lv_returnType_6_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -18681,7 +18631,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference15462);
+            pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference15453);
             iv_ruleJvmParameterizedTypeReference=ruleJvmParameterizedTypeReference();
 
             state._fsp--;
@@ -18689,7 +18639,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmParameterizedTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference15472); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference15463); if (state.failed) return current;
 
             }
 
@@ -18746,7 +18696,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeCrossReference_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference15520);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference15511);
             ruleQualifiedName();
 
             state._fsp--;
@@ -18763,16 +18713,16 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6486:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
-            int alt124=2;
-            alt124 = dfa124.predict(input);
-            switch (alt124) {
+            int alt121=2;
+            alt121 = dfa121.predict(input);
+            switch (alt121) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6486:3: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>'
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6486:3: ( ( '<' )=>otherlv_1= '<' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6486:4: ( '<' )=>otherlv_1= '<'
                     {
-                    otherlv_1=(Token)match(input,51,FOLLOW_51_in_ruleJvmParameterizedTypeReference15541); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,52,FOLLOW_52_in_ruleJvmParameterizedTypeReference15532); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getJvmParameterizedTypeReferenceAccess().getLessThanSignKeyword_1_0());
@@ -18792,7 +18742,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference15563);
+                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference15554);
                     lv_arguments_2_0=ruleJvmArgumentTypeReference();
 
                     state._fsp--;
@@ -18817,21 +18767,21 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6509:2: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
-                    loop123:
+                    loop120:
                     do {
-                        int alt123=2;
-                        int LA123_0 = input.LA(1);
+                        int alt120=2;
+                        int LA120_0 = input.LA(1);
 
-                        if ( (LA123_0==25) ) {
-                            alt123=1;
+                        if ( (LA120_0==41) ) {
+                            alt120=1;
                         }
 
 
-                        switch (alt123) {
+                        switch (alt120) {
                     	case 1 :
                     	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6509:4: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,25,FOLLOW_25_in_ruleJvmParameterizedTypeReference15576); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,41,FOLLOW_41_in_ruleJvmParameterizedTypeReference15567); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_2_0());
@@ -18848,7 +18798,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference15597);
+                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference15588);
                     	    lv_arguments_4_0=ruleJvmArgumentTypeReference();
 
                     	    state._fsp--;
@@ -18877,11 +18827,11 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop123;
+                    	    break loop120;
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,52,FOLLOW_52_in_ruleJvmParameterizedTypeReference15611); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,53,FOLLOW_53_in_ruleJvmParameterizedTypeReference15602); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_3());
@@ -18930,7 +18880,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference15649);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference15640);
             iv_ruleJvmArgumentTypeReference=ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -18938,7 +18888,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmArgumentTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference15659); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference15650); if (state.failed) return current;
 
             }
 
@@ -18972,23 +18922,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6556:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6556:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
-            int alt125=2;
-            int LA125_0 = input.LA(1);
+            int alt122=2;
+            int LA122_0 = input.LA(1);
 
-            if ( (LA125_0==RULE_ID||LA125_0==40||LA125_0==64) ) {
-                alt125=1;
+            if ( (LA122_0==RULE_ID||LA122_0==40||LA122_0==65) ) {
+                alt122=1;
             }
-            else if ( (LA125_0==105) ) {
-                alt125=2;
+            else if ( (LA122_0==106) ) {
+                alt122=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 125, 0, input);
+                    new NoViableAltException("", 122, 0, input);
 
                 throw nvae;
             }
-            switch (alt125) {
+            switch (alt122) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6557:5: this_JvmTypeReference_0= ruleJvmTypeReference
                     {
@@ -18997,7 +18947,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceAccess().getJvmTypeReferenceParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference15706);
+                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference15697);
                     this_JvmTypeReference_0=ruleJvmTypeReference();
 
                     state._fsp--;
@@ -19019,7 +18969,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceAccess().getJvmWildcardTypeReferenceParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference15733);
+                    pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference15724);
                     this_JvmWildcardTypeReference_1=ruleJvmWildcardTypeReference();
 
                     state._fsp--;
@@ -19070,7 +19020,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference15768);
+            pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference15759);
             iv_ruleJvmWildcardTypeReference=ruleJvmWildcardTypeReference();
 
             state._fsp--;
@@ -19078,7 +19028,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmWildcardTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference15778); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference15769); if (state.failed) return current;
 
             }
 
@@ -19128,23 +19078,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,105,FOLLOW_105_in_ruleJvmWildcardTypeReference15824); if (state.failed) return current;
+            otherlv_1=(Token)match(input,106,FOLLOW_106_in_ruleJvmWildcardTypeReference15815); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getJvmWildcardTypeReferenceAccess().getQuestionMarkKeyword_1());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6606:1: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
-            int alt126=3;
-            int LA126_0 = input.LA(1);
+            int alt123=3;
+            int LA123_0 = input.LA(1);
 
-            if ( (LA126_0==90) ) {
-                alt126=1;
+            if ( (LA123_0==91) ) {
+                alt123=1;
             }
-            else if ( (LA126_0==93) ) {
-                alt126=2;
+            else if ( (LA123_0==94) ) {
+                alt123=2;
             }
-            switch (alt126) {
+            switch (alt123) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6606:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
                     {
@@ -19159,7 +19109,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmUpperBoundParserRuleCall_2_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference15846);
+                    pushFollow(FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference15837);
                     lv_constraints_2_0=ruleJvmUpperBound();
 
                     state._fsp--;
@@ -19200,7 +19150,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmLowerBoundParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference15873);
+                    pushFollow(FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference15864);
                     lv_constraints_3_0=ruleJvmLowerBound();
 
                     state._fsp--;
@@ -19267,7 +19217,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound15911);
+            pushFollow(FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound15902);
             iv_ruleJvmUpperBound=ruleJvmUpperBound();
 
             state._fsp--;
@@ -19275,7 +19225,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmUpperBound; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBound15921); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBound15912); if (state.failed) return current;
 
             }
 
@@ -19310,7 +19260,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6664:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6664:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,90,FOLLOW_90_in_ruleJvmUpperBound15958); if (state.failed) return current;
+            otherlv_0=(Token)match(input,91,FOLLOW_91_in_ruleJvmUpperBound15949); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAccess().getExtendsKeyword_0());
@@ -19327,7 +19277,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getJvmUpperBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound15979);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound15970);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -19388,7 +19338,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundAndedRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded16015);
+            pushFollow(FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded16006);
             iv_ruleJvmUpperBoundAnded=ruleJvmUpperBoundAnded();
 
             state._fsp--;
@@ -19396,7 +19346,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmUpperBoundAnded; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded16025); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded16016); if (state.failed) return current;
 
             }
 
@@ -19431,7 +19381,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6707:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6707:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,106,FOLLOW_106_in_ruleJvmUpperBoundAnded16062); if (state.failed) return current;
+            otherlv_0=(Token)match(input,107,FOLLOW_107_in_ruleJvmUpperBoundAnded16053); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAndedAccess().getAmpersandKeyword_0());
@@ -19448,7 +19398,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getJvmUpperBoundAndedAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded16083);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded16074);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -19509,7 +19459,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmLowerBoundRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound16119);
+            pushFollow(FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound16110);
             iv_ruleJvmLowerBound=ruleJvmLowerBound();
 
             state._fsp--;
@@ -19517,7 +19467,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmLowerBound; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmLowerBound16129); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmLowerBound16120); if (state.failed) return current;
 
             }
 
@@ -19552,7 +19502,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6750:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6750:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,93,FOLLOW_93_in_ruleJvmLowerBound16166); if (state.failed) return current;
+            otherlv_0=(Token)match(input,94,FOLLOW_94_in_ruleJvmLowerBound16157); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmLowerBoundAccess().getSuperKeyword_0());
@@ -19569,7 +19519,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getJvmLowerBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound16187);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound16178);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -19630,7 +19580,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameWithWildcardRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard16226);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard16217);
             iv_ruleQualifiedNameWithWildcard=ruleQualifiedNameWithWildcard();
 
             state._fsp--;
@@ -19638,7 +19588,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedNameWithWildcard.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard16237); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard16228); if (state.failed) return current;
 
             }
 
@@ -19678,7 +19628,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard16284);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard16275);
             this_QualifiedName_0=ruleQualifiedName();
 
             state._fsp--;
@@ -19693,14 +19643,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            kw=(Token)match(input,26,FOLLOW_26_in_ruleQualifiedNameWithWildcard16302); if (state.failed) return current;
+            kw=(Token)match(input,26,FOLLOW_26_in_ruleQualifiedNameWithWildcard16293); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
                       newLeafNode(kw, grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1()); 
                   
             }
-            kw=(Token)match(input,27,FOLLOW_27_in_ruleQualifiedNameWithWildcard16315); if (state.failed) return current;
+            kw=(Token)match(input,27,FOLLOW_27_in_ruleQualifiedNameWithWildcard16306); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -19744,7 +19694,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValidIDRule()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID16356);
+            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID16347);
             iv_ruleValidID=ruleValidID();
 
             state._fsp--;
@@ -19752,7 +19702,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleValidID.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID16367); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID16358); if (state.failed) return current;
 
             }
 
@@ -19782,7 +19732,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6838:28: (this_ID_0= RULE_ID )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6839:5: this_ID_0= RULE_ID
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidID16406); if (state.failed) return current;
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidID16397); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_ID_0);
@@ -19827,7 +19777,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXImportDeclarationRule()); 
             }
-            pushFollow(FOLLOW_ruleXImportDeclaration_in_entryRuleXImportDeclaration16452);
+            pushFollow(FOLLOW_ruleXImportDeclaration_in_entryRuleXImportDeclaration16443);
             iv_ruleXImportDeclaration=ruleXImportDeclaration();
 
             state._fsp--;
@@ -19835,7 +19785,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXImportDeclaration; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXImportDeclaration16462); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXImportDeclaration16453); if (state.failed) return current;
 
             }
 
@@ -19876,16 +19826,16 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6869:1: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6869:3: otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )?
             {
-            otherlv_0=(Token)match(input,17,FOLLOW_17_in_ruleXImportDeclaration16499); if (state.failed) return current;
+            otherlv_0=(Token)match(input,17,FOLLOW_17_in_ruleXImportDeclaration16490); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getXImportDeclarationAccess().getImportKeyword_0());
                   
             }
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6873:1: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )
-            int alt129=3;
-            alt129 = dfa129.predict(input);
-            switch (alt129) {
+            int alt126=3;
+            alt126 = dfa126.predict(input);
+            switch (alt126) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6873:2: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
                     {
@@ -19898,7 +19848,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6874:1: (lv_static_1_0= 'static' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6875:3: lv_static_1_0= 'static'
                     {
-                    lv_static_1_0=(Token)match(input,91,FOLLOW_91_in_ruleXImportDeclaration16519); if (state.failed) return current;
+                    lv_static_1_0=(Token)match(input,92,FOLLOW_92_in_ruleXImportDeclaration16510); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_static_1_0, grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0());
@@ -19919,20 +19869,20 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6888:2: ( (lv_extension_2_0= 'extension' ) )?
-                    int alt127=2;
-                    int LA127_0 = input.LA(1);
+                    int alt124=2;
+                    int LA124_0 = input.LA(1);
 
-                    if ( (LA127_0==92) ) {
-                        alt127=1;
+                    if ( (LA124_0==93) ) {
+                        alt124=1;
                     }
-                    switch (alt127) {
+                    switch (alt124) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6889:1: (lv_extension_2_0= 'extension' )
                             {
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6889:1: (lv_extension_2_0= 'extension' )
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6890:3: lv_extension_2_0= 'extension'
                             {
-                            lv_extension_2_0=(Token)match(input,92,FOLLOW_92_in_ruleXImportDeclaration16550); if (state.failed) return current;
+                            lv_extension_2_0=(Token)match(input,93,FOLLOW_93_in_ruleXImportDeclaration16541); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       newLeafNode(lv_extension_2_0, grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0());
@@ -19973,7 +19923,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeCrossReference_1_0_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedNameInStaticImport_in_ruleXImportDeclaration16587);
+                    pushFollow(FOLLOW_ruleQualifiedNameInStaticImport_in_ruleXImportDeclaration16578);
                     ruleQualifiedNameInStaticImport();
 
                     state._fsp--;
@@ -19990,23 +19940,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     }
 
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6918:2: ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
-                    int alt128=2;
-                    int LA128_0 = input.LA(1);
+                    int alt125=2;
+                    int LA125_0 = input.LA(1);
 
-                    if ( (LA128_0==27) ) {
-                        alt128=1;
+                    if ( (LA125_0==27) ) {
+                        alt125=1;
                     }
-                    else if ( (LA128_0==RULE_ID) ) {
-                        alt128=2;
+                    else if ( (LA125_0==RULE_ID) ) {
+                        alt125=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 128, 0, input);
+                            new NoViableAltException("", 125, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt128) {
+                    switch (alt125) {
                         case 1 :
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6918:3: ( (lv_wildcard_4_0= '*' ) )
                             {
@@ -20016,7 +19966,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6919:1: (lv_wildcard_4_0= '*' )
                             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6920:3: lv_wildcard_4_0= '*'
                             {
-                            lv_wildcard_4_0=(Token)match(input,27,FOLLOW_27_in_ruleXImportDeclaration16606); if (state.failed) return current;
+                            lv_wildcard_4_0=(Token)match(input,27,FOLLOW_27_in_ruleXImportDeclaration16597); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       newLeafNode(lv_wildcard_4_0, grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_1_0_3_0_0());
@@ -20053,7 +20003,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getXImportDeclarationAccess().getMemberNameValidIDParserRuleCall_1_0_3_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleValidID_in_ruleXImportDeclaration16646);
+                            pushFollow(FOLLOW_ruleValidID_in_ruleXImportDeclaration16637);
                             lv_memberName_5_0=ruleValidID();
 
                             state._fsp--;
@@ -20110,7 +20060,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeCrossReference_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleXImportDeclaration16677);
+                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleXImportDeclaration16668);
                     ruleQualifiedName();
 
                     state._fsp--;
@@ -20143,7 +20093,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_ruleXImportDeclaration16704);
+                    pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_ruleXImportDeclaration16695);
                     lv_importedNamespace_7_0=ruleQualifiedNameWithWildcard();
 
                     state._fsp--;
@@ -20174,17 +20124,17 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             }
 
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6987:3: (otherlv_8= ';' )?
-            int alt130=2;
-            int LA130_0 = input.LA(1);
+            int alt127=2;
+            int LA127_0 = input.LA(1);
 
-            if ( (LA130_0==18) ) {
-                alt130=1;
+            if ( (LA127_0==18) ) {
+                alt127=1;
             }
-            switch (alt130) {
+            switch (alt127) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6987:5: otherlv_8= ';'
                     {
-                    otherlv_8=(Token)match(input,18,FOLLOW_18_in_ruleXImportDeclaration16718); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,18,FOLLOW_18_in_ruleXImportDeclaration16709); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getXImportDeclarationAccess().getSemicolonKeyword_2());
@@ -20233,7 +20183,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameInStaticImportRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedNameInStaticImport_in_entryRuleQualifiedNameInStaticImport16757);
+            pushFollow(FOLLOW_ruleQualifiedNameInStaticImport_in_entryRuleQualifiedNameInStaticImport16748);
             iv_ruleQualifiedNameInStaticImport=ruleQualifiedNameInStaticImport();
 
             state._fsp--;
@@ -20241,7 +20191,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedNameInStaticImport.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameInStaticImport16768); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameInStaticImport16759); if (state.failed) return current;
 
             }
 
@@ -20274,24 +20224,24 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7012:1: (this_ValidID_0= ruleValidID kw= '.' )+
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7012:1: (this_ValidID_0= ruleValidID kw= '.' )+
-            int cnt131=0;
-            loop131:
+            int cnt128=0;
+            loop128:
             do {
-                int alt131=2;
-                int LA131_0 = input.LA(1);
+                int alt128=2;
+                int LA128_0 = input.LA(1);
 
-                if ( (LA131_0==RULE_ID) ) {
-                    int LA131_2 = input.LA(2);
+                if ( (LA128_0==RULE_ID) ) {
+                    int LA128_2 = input.LA(2);
 
-                    if ( (LA131_2==26) ) {
-                        alt131=1;
+                    if ( (LA128_2==26) ) {
+                        alt128=1;
                     }
 
 
                 }
 
 
-                switch (alt131) {
+                switch (alt128) {
             	case 1 :
             	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7013:5: this_ValidID_0= ruleValidID kw= '.'
             	    {
@@ -20300,7 +20250,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	              newCompositeNode(grammarAccess.getQualifiedNameInStaticImportAccess().getValidIDParserRuleCall_0()); 
             	          
             	    }
-            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedNameInStaticImport16815);
+            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedNameInStaticImport16806);
             	    this_ValidID_0=ruleValidID();
 
             	    state._fsp--;
@@ -20315,7 +20265,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	              afterParserOrEnumRuleCall();
             	          
             	    }
-            	    kw=(Token)match(input,26,FOLLOW_26_in_ruleQualifiedNameInStaticImport16833); if (state.failed) return current;
+            	    kw=(Token)match(input,26,FOLLOW_26_in_ruleQualifiedNameInStaticImport16824); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              current.merge(kw);
@@ -20327,13 +20277,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt131 >= 1 ) break loop131;
+            	    if ( cnt128 >= 1 ) break loop128;
             	    if (state.backtracking>0) {state.failed=true; return current;}
                         EarlyExitException eee =
-                            new EarlyExitException(131, input);
+                            new EarlyExitException(128, input);
                         throw eee;
                 }
-                cnt131++;
+                cnt128++;
             } while (true);
 
 
@@ -20370,39 +20320,39 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7040:1: ( (enumLiteral_0= 'date' ) | (enumLiteral_1= 'time' ) | (enumLiteral_2= 'timestamp' ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7040:1: ( (enumLiteral_0= 'date' ) | (enumLiteral_1= 'time' ) | (enumLiteral_2= 'timestamp' ) )
-            int alt132=3;
+            int alt129=3;
             switch ( input.LA(1) ) {
             case 38:
                 {
-                alt132=1;
-                }
-                break;
-            case 107:
-                {
-                alt132=2;
+                alt129=1;
                 }
                 break;
             case 108:
                 {
-                alt132=3;
+                alt129=2;
+                }
+                break;
+            case 109:
+                {
+                alt129=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 132, 0, input);
+                    new NoViableAltException("", 129, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt132) {
+            switch (alt129) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7040:2: (enumLiteral_0= 'date' )
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7040:2: (enumLiteral_0= 'date' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7040:4: enumLiteral_0= 'date'
                     {
-                    enumLiteral_0=(Token)match(input,38,FOLLOW_38_in_ruleDateType16888); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,38,FOLLOW_38_in_ruleDateType16879); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getDateTypeAccess().getDATEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -20421,7 +20371,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7046:6: (enumLiteral_1= 'time' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7046:8: enumLiteral_1= 'time'
                     {
-                    enumLiteral_1=(Token)match(input,107,FOLLOW_107_in_ruleDateType16905); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,108,FOLLOW_108_in_ruleDateType16896); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getDateTypeAccess().getTIMEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -20440,7 +20390,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7052:6: (enumLiteral_2= 'timestamp' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7052:8: enumLiteral_2= 'timestamp'
                     {
-                    enumLiteral_2=(Token)match(input,108,FOLLOW_108_in_ruleDateType16922); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,109,FOLLOW_109_in_ruleDateType16913); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getDateTypeAccess().getTIMESTAMPEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -20491,44 +20441,44 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7065:1: ( (enumLiteral_0= 'package' ) | (enumLiteral_1= 'private' ) | (enumLiteral_2= 'protected' ) | (enumLiteral_3= 'public' ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7065:1: ( (enumLiteral_0= 'package' ) | (enumLiteral_1= 'private' ) | (enumLiteral_2= 'protected' ) | (enumLiteral_3= 'public' ) )
-            int alt133=4;
+            int alt130=4;
             switch ( input.LA(1) ) {
             case 13:
                 {
-                alt133=1;
-                }
-                break;
-            case 109:
-                {
-                alt133=2;
+                alt130=1;
                 }
                 break;
             case 110:
                 {
-                alt133=3;
+                alt130=2;
                 }
                 break;
             case 111:
                 {
-                alt133=4;
+                alt130=3;
+                }
+                break;
+            case 112:
+                {
+                alt130=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 133, 0, input);
+                    new NoViableAltException("", 130, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt133) {
+            switch (alt130) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7065:2: (enumLiteral_0= 'package' )
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7065:2: (enumLiteral_0= 'package' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7065:4: enumLiteral_0= 'package'
                     {
-                    enumLiteral_0=(Token)match(input,13,FOLLOW_13_in_ruleLVisibility16967); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,13,FOLLOW_13_in_ruleLVisibility16958); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLVisibilityAccess().getPACKAGEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -20547,7 +20497,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7071:6: (enumLiteral_1= 'private' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7071:8: enumLiteral_1= 'private'
                     {
-                    enumLiteral_1=(Token)match(input,109,FOLLOW_109_in_ruleLVisibility16984); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,110,FOLLOW_110_in_ruleLVisibility16975); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLVisibilityAccess().getPRIVATEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -20566,7 +20516,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7077:6: (enumLiteral_2= 'protected' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7077:8: enumLiteral_2= 'protected'
                     {
-                    enumLiteral_2=(Token)match(input,110,FOLLOW_110_in_ruleLVisibility17001); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,111,FOLLOW_111_in_ruleLVisibility16992); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLVisibilityAccess().getPROTECTEDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -20585,7 +20535,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7083:6: (enumLiteral_3= 'public' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7083:8: enumLiteral_3= 'public'
                     {
-                    enumLiteral_3=(Token)match(input,111,FOLLOW_111_in_ruleLVisibility17018); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,112,FOLLOW_112_in_ruleLVisibility17009); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLVisibilityAccess().getPUBLICEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -20637,49 +20587,49 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7096:1: ( (enumLiteral_0= '*' ) | (enumLiteral_1= '0' ) | (enumLiteral_2= '?' ) | (enumLiteral_3= '+' ) | (enumLiteral_4= '1' ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7096:1: ( (enumLiteral_0= '*' ) | (enumLiteral_1= '0' ) | (enumLiteral_2= '?' ) | (enumLiteral_3= '+' ) | (enumLiteral_4= '1' ) )
-            int alt134=5;
+            int alt131=5;
             switch ( input.LA(1) ) {
             case 27:
                 {
-                alt134=1;
-                }
-                break;
-            case 112:
-                {
-                alt134=2;
-                }
-                break;
-            case 105:
-                {
-                alt134=3;
-                }
-                break;
-            case 67:
-                {
-                alt134=4;
+                alt131=1;
                 }
                 break;
             case 113:
                 {
-                alt134=5;
+                alt131=2;
+                }
+                break;
+            case 106:
+                {
+                alt131=3;
+                }
+                break;
+            case 68:
+                {
+                alt131=4;
+                }
+                break;
+            case 114:
+                {
+                alt131=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 134, 0, input);
+                    new NoViableAltException("", 131, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt134) {
+            switch (alt131) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7096:2: (enumLiteral_0= '*' )
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7096:2: (enumLiteral_0= '*' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7096:4: enumLiteral_0= '*'
                     {
-                    enumLiteral_0=(Token)match(input,27,FOLLOW_27_in_ruleLowerBound17063); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,27,FOLLOW_27_in_ruleLowerBound17054); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLowerBoundAccess().getMANYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -20698,7 +20648,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7102:6: (enumLiteral_1= '0' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7102:8: enumLiteral_1= '0'
                     {
-                    enumLiteral_1=(Token)match(input,112,FOLLOW_112_in_ruleLowerBound17080); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,113,FOLLOW_113_in_ruleLowerBound17071); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLowerBoundAccess().getZEROEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -20717,7 +20667,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7108:6: (enumLiteral_2= '?' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7108:8: enumLiteral_2= '?'
                     {
-                    enumLiteral_2=(Token)match(input,105,FOLLOW_105_in_ruleLowerBound17097); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,106,FOLLOW_106_in_ruleLowerBound17088); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLowerBoundAccess().getOPTIONALEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -20736,7 +20686,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7114:6: (enumLiteral_3= '+' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7114:8: enumLiteral_3= '+'
                     {
-                    enumLiteral_3=(Token)match(input,67,FOLLOW_67_in_ruleLowerBound17114); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,68,FOLLOW_68_in_ruleLowerBound17105); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLowerBoundAccess().getATLEASTONEEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -20755,7 +20705,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7120:6: (enumLiteral_4= '1' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7120:8: enumLiteral_4= '1'
                     {
-                    enumLiteral_4=(Token)match(input,113,FOLLOW_113_in_ruleLowerBound17131); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,114,FOLLOW_114_in_ruleLowerBound17122); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLowerBoundAccess().getONEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
@@ -20804,30 +20754,30 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7133:1: ( (enumLiteral_0= '*' ) | (enumLiteral_1= '1' ) )
             {
             // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7133:1: ( (enumLiteral_0= '*' ) | (enumLiteral_1= '1' ) )
-            int alt135=2;
-            int LA135_0 = input.LA(1);
+            int alt132=2;
+            int LA132_0 = input.LA(1);
 
-            if ( (LA135_0==27) ) {
-                alt135=1;
+            if ( (LA132_0==27) ) {
+                alt132=1;
             }
-            else if ( (LA135_0==113) ) {
-                alt135=2;
+            else if ( (LA132_0==114) ) {
+                alt132=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 135, 0, input);
+                    new NoViableAltException("", 132, 0, input);
 
                 throw nvae;
             }
-            switch (alt135) {
+            switch (alt132) {
                 case 1 :
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7133:2: (enumLiteral_0= '*' )
                     {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7133:2: (enumLiteral_0= '*' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7133:4: enumLiteral_0= '*'
                     {
-                    enumLiteral_0=(Token)match(input,27,FOLLOW_27_in_ruleUpperBound17176); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,27,FOLLOW_27_in_ruleUpperBound17167); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUpperBoundAccess().getMANYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -20846,7 +20796,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7139:6: (enumLiteral_1= '1' )
                     // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:7139:8: enumLiteral_1= '1'
                     {
-                    enumLiteral_1=(Token)match(input,113,FOLLOW_113_in_ruleUpperBound17193); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,114,FOLLOW_114_in_ruleUpperBound17184); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getUpperBoundAccess().getONEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -20885,7 +20835,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:846:4: ( '(' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:846:6: '('
         {
-        match(input,40,FOLLOW_40_in_synpred2_InternalDatatypeGrammar1921); if (state.failed) return ;
+        match(input,40,FOLLOW_40_in_synpred2_InternalDatatypeGrammar1912); if (state.failed) return ;
 
         }
     }
@@ -20905,7 +20855,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:852:1: ( ruleValidID )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:853:3: ruleValidID
         {
-        pushFollow(FOLLOW_ruleValidID_in_synpred3_InternalDatatypeGrammar1950);
+        pushFollow(FOLLOW_ruleValidID_in_synpred3_InternalDatatypeGrammar1941);
         ruleValidID();
 
         state._fsp--;
@@ -20916,7 +20866,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
         }
 
-        match(input,42,FOLLOW_42_in_synpred3_InternalDatatypeGrammar1956); if (state.failed) return ;
+        match(input,43,FOLLOW_43_in_synpred3_InternalDatatypeGrammar1947); if (state.failed) return ;
 
         }
 
@@ -20938,8 +20888,8 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,43,FOLLOW_43_in_synpred6_InternalDatatypeGrammar2312); if (state.failed) return ;
-        match(input,44,FOLLOW_44_in_synpred6_InternalDatatypeGrammar2316); if (state.failed) return ;
+        match(input,44,FOLLOW_44_in_synpred6_InternalDatatypeGrammar2303); if (state.failed) return ;
+        match(input,45,FOLLOW_45_in_synpred6_InternalDatatypeGrammar2307); if (state.failed) return ;
 
         }
 
@@ -20961,8 +20911,8 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,43,FOLLOW_43_in_synpred7_InternalDatatypeGrammar2587); if (state.failed) return ;
-        match(input,44,FOLLOW_44_in_synpred7_InternalDatatypeGrammar2591); if (state.failed) return ;
+        match(input,44,FOLLOW_44_in_synpred7_InternalDatatypeGrammar2578); if (state.failed) return ;
+        match(input,45,FOLLOW_45_in_synpred7_InternalDatatypeGrammar2582); if (state.failed) return ;
 
         }
 
@@ -20990,7 +20940,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1349:1: ( ruleOpMultiAssign )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1350:3: ruleOpMultiAssign
         {
-        pushFollow(FOLLOW_ruleOpMultiAssign_in_synpred8_InternalDatatypeGrammar3124);
+        pushFollow(FOLLOW_ruleOpMultiAssign_in_synpred8_InternalDatatypeGrammar3115);
         ruleOpMultiAssign();
 
         state._fsp--;
@@ -21028,7 +20978,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1543:1: ( ruleOpOr )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1544:3: ruleOpOr
         {
-        pushFollow(FOLLOW_ruleOpOr_in_synpred9_InternalDatatypeGrammar3647);
+        pushFollow(FOLLOW_ruleOpOr_in_synpred9_InternalDatatypeGrammar3638);
         ruleOpOr();
 
         state._fsp--;
@@ -21066,7 +21016,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1644:1: ( ruleOpAnd )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1645:3: ruleOpAnd
         {
-        pushFollow(FOLLOW_ruleOpAnd_in_synpred10_InternalDatatypeGrammar3906);
+        pushFollow(FOLLOW_ruleOpAnd_in_synpred10_InternalDatatypeGrammar3897);
         ruleOpAnd();
 
         state._fsp--;
@@ -21104,7 +21054,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1745:1: ( ruleOpEquality )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1746:3: ruleOpEquality
         {
-        pushFollow(FOLLOW_ruleOpEquality_in_synpred11_InternalDatatypeGrammar4165);
+        pushFollow(FOLLOW_ruleOpEquality_in_synpred11_InternalDatatypeGrammar4156);
         ruleOpEquality();
 
         state._fsp--;
@@ -21136,7 +21086,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,60,FOLLOW_60_in_synpred12_InternalDatatypeGrammar4479); if (state.failed) return ;
+        match(input,61,FOLLOW_61_in_synpred12_InternalDatatypeGrammar4470); if (state.failed) return ;
 
         }
 
@@ -21164,7 +21114,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1898:1: ( ruleOpCompare )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:1899:3: ruleOpCompare
         {
-        pushFollow(FOLLOW_ruleOpCompare_in_synpred13_InternalDatatypeGrammar4550);
+        pushFollow(FOLLOW_ruleOpCompare_in_synpred13_InternalDatatypeGrammar4541);
         ruleOpCompare();
 
         state._fsp--;
@@ -21202,7 +21152,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2026:1: ( ruleOpOther )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2027:3: ruleOpOther
         {
-        pushFollow(FOLLOW_ruleOpOther_in_synpred14_InternalDatatypeGrammar4884);
+        pushFollow(FOLLOW_ruleOpOther_in_synpred14_InternalDatatypeGrammar4875);
         ruleOpOther();
 
         state._fsp--;
@@ -21229,8 +21179,8 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2136:4: ( '>' '>' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2137:2: '>' '>'
         {
-        match(input,52,FOLLOW_52_in_synpred15_InternalDatatypeGrammar5153); if (state.failed) return ;
-        match(input,52,FOLLOW_52_in_synpred15_InternalDatatypeGrammar5158); if (state.failed) return ;
+        match(input,53,FOLLOW_53_in_synpred15_InternalDatatypeGrammar5144); if (state.failed) return ;
+        match(input,53,FOLLOW_53_in_synpred15_InternalDatatypeGrammar5149); if (state.failed) return ;
 
         }
 
@@ -21247,8 +21197,8 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2166:4: ( '<' '<' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2167:2: '<' '<'
         {
-        match(input,51,FOLLOW_51_in_synpred16_InternalDatatypeGrammar5240); if (state.failed) return ;
-        match(input,51,FOLLOW_51_in_synpred16_InternalDatatypeGrammar5245); if (state.failed) return ;
+        match(input,52,FOLLOW_52_in_synpred16_InternalDatatypeGrammar5231); if (state.failed) return ;
+        match(input,52,FOLLOW_52_in_synpred16_InternalDatatypeGrammar5236); if (state.failed) return ;
 
         }
 
@@ -21276,7 +21226,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2242:1: ( ruleOpAdd )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2243:3: ruleOpAdd
         {
-        pushFollow(FOLLOW_ruleOpAdd_in_synpred17_InternalDatatypeGrammar5467);
+        pushFollow(FOLLOW_ruleOpAdd_in_synpred17_InternalDatatypeGrammar5458);
         ruleOpAdd();
 
         state._fsp--;
@@ -21314,7 +21264,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2350:1: ( ruleOpMulti )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2351:3: ruleOpMulti
         {
-        pushFollow(FOLLOW_ruleOpMulti_in_synpred18_InternalDatatypeGrammar5747);
+        pushFollow(FOLLOW_ruleOpMulti_in_synpred18_InternalDatatypeGrammar5738);
         ruleOpMulti();
 
         state._fsp--;
@@ -21346,7 +21296,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,73,FOLLOW_73_in_synpred19_InternalDatatypeGrammar6341); if (state.failed) return ;
+        match(input,74,FOLLOW_74_in_synpred19_InternalDatatypeGrammar6332); if (state.failed) return ;
 
         }
 
@@ -21374,7 +21324,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2643:1: ( ruleOpPostfix )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2644:3: ruleOpPostfix
         {
-        pushFollow(FOLLOW_ruleOpPostfix_in_synpred20_InternalDatatypeGrammar6498);
+        pushFollow(FOLLOW_ruleOpPostfix_in_synpred20_InternalDatatypeGrammar6489);
         ruleOpPostfix();
 
         state._fsp--;
@@ -21407,27 +21357,27 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2732:2: ( '.' | ( ( '::' ) ) )
-        int alt136=2;
-        int LA136_0 = input.LA(1);
+        int alt133=2;
+        int LA133_0 = input.LA(1);
 
-        if ( (LA136_0==26) ) {
-            alt136=1;
+        if ( (LA133_0==26) ) {
+            alt133=1;
         }
-        else if ( (LA136_0==76) ) {
-            alt136=2;
+        else if ( (LA133_0==77) ) {
+            alt133=2;
         }
         else {
             if (state.backtracking>0) {state.failed=true; return ;}
             NoViableAltException nvae =
-                new NoViableAltException("", 136, 0, input);
+                new NoViableAltException("", 133, 0, input);
 
             throw nvae;
         }
-        switch (alt136) {
+        switch (alt133) {
             case 1 :
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2732:4: '.'
                 {
-                match(input,26,FOLLOW_26_in_synpred21_InternalDatatypeGrammar6753); if (state.failed) return ;
+                match(input,26,FOLLOW_26_in_synpred21_InternalDatatypeGrammar6744); if (state.failed) return ;
 
                 }
                 break;
@@ -21440,7 +21390,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2735:1: ( '::' )
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2736:2: '::'
                 {
-                match(input,76,FOLLOW_76_in_synpred21_InternalDatatypeGrammar6767); if (state.failed) return ;
+                match(input,77,FOLLOW_77_in_synpred21_InternalDatatypeGrammar6758); if (state.failed) return ;
 
                 }
 
@@ -21459,7 +21409,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2741:1: ( ruleFeatureCallID )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2742:3: ruleFeatureCallID
         {
-        pushFollow(FOLLOW_ruleFeatureCallID_in_synpred21_InternalDatatypeGrammar6783);
+        pushFollow(FOLLOW_ruleFeatureCallID_in_synpred21_InternalDatatypeGrammar6774);
         ruleFeatureCallID();
 
         state._fsp--;
@@ -21470,7 +21420,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
         }
 
-        pushFollow(FOLLOW_ruleOpSingleAssign_in_synpred21_InternalDatatypeGrammar6789);
+        pushFollow(FOLLOW_ruleOpSingleAssign_in_synpred21_InternalDatatypeGrammar6780);
         ruleOpSingleAssign();
 
         state._fsp--;
@@ -21497,36 +21447,36 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2813:2: ( '.' | ( ( '?.' ) ) | ( ( '::' ) ) )
-        int alt137=3;
+        int alt134=3;
         switch ( input.LA(1) ) {
         case 26:
             {
-            alt137=1;
+            alt134=1;
+            }
+            break;
+        case 78:
+            {
+            alt134=2;
             }
             break;
         case 77:
             {
-            alt137=2;
-            }
-            break;
-        case 76:
-            {
-            alt137=3;
+            alt134=3;
             }
             break;
         default:
             if (state.backtracking>0) {state.failed=true; return ;}
             NoViableAltException nvae =
-                new NoViableAltException("", 137, 0, input);
+                new NoViableAltException("", 134, 0, input);
 
             throw nvae;
         }
 
-        switch (alt137) {
+        switch (alt134) {
             case 1 :
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2813:4: '.'
                 {
-                match(input,26,FOLLOW_26_in_synpred22_InternalDatatypeGrammar6931); if (state.failed) return ;
+                match(input,26,FOLLOW_26_in_synpred22_InternalDatatypeGrammar6922); if (state.failed) return ;
 
                 }
                 break;
@@ -21539,7 +21489,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2816:1: ( '?.' )
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2817:2: '?.'
                 {
-                match(input,77,FOLLOW_77_in_synpred22_InternalDatatypeGrammar6945); if (state.failed) return ;
+                match(input,78,FOLLOW_78_in_synpred22_InternalDatatypeGrammar6936); if (state.failed) return ;
 
                 }
 
@@ -21558,7 +21508,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2823:1: ( '::' )
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2824:2: '::'
                 {
-                match(input,76,FOLLOW_76_in_synpred22_InternalDatatypeGrammar6965); if (state.failed) return ;
+                match(input,77,FOLLOW_77_in_synpred22_InternalDatatypeGrammar6956); if (state.failed) return ;
 
                 }
 
@@ -21587,7 +21537,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2934:1: ( '(' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2935:2: '('
         {
-        match(input,40,FOLLOW_40_in_synpred23_InternalDatatypeGrammar7192); if (state.failed) return ;
+        match(input,40,FOLLOW_40_in_synpred23_InternalDatatypeGrammar7183); if (state.failed) return ;
 
         }
 
@@ -21610,13 +21560,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2955:2: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt139=2;
-        int LA139_0 = input.LA(1);
+        int alt136=2;
+        int LA136_0 = input.LA(1);
 
-        if ( (LA139_0==RULE_ID||LA139_0==40||LA139_0==64) ) {
-            alt139=1;
+        if ( (LA136_0==RULE_ID||LA136_0==40||LA136_0==65) ) {
+            alt136=1;
         }
-        switch (alt139) {
+        switch (alt136) {
             case 1 :
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2955:3: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -21626,7 +21576,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2956:1: ( ruleJvmFormalParameter )
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2957:1: ruleJvmFormalParameter
                 {
-                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred24_InternalDatatypeGrammar7244);
+                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred24_InternalDatatypeGrammar7235);
                 ruleJvmFormalParameter();
 
                 state._fsp--;
@@ -21638,28 +21588,28 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 }
 
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2959:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop138:
+                loop135:
                 do {
-                    int alt138=2;
-                    int LA138_0 = input.LA(1);
+                    int alt135=2;
+                    int LA135_0 = input.LA(1);
 
-                    if ( (LA138_0==25) ) {
-                        alt138=1;
+                    if ( (LA135_0==41) ) {
+                        alt135=1;
                     }
 
 
-                    switch (alt138) {
+                    switch (alt135) {
                 	case 1 :
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2959:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
-                	    match(input,25,FOLLOW_25_in_synpred24_InternalDatatypeGrammar7251); if (state.failed) return ;
+                	    match(input,41,FOLLOW_41_in_synpred24_InternalDatatypeGrammar7242); if (state.failed) return ;
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2960:1: ( ( ruleJvmFormalParameter ) )
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2961:1: ( ruleJvmFormalParameter )
                 	    {
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2961:1: ( ruleJvmFormalParameter )
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2962:1: ruleJvmFormalParameter
                 	    {
-                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred24_InternalDatatypeGrammar7258);
+                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred24_InternalDatatypeGrammar7249);
                 	    ruleJvmFormalParameter();
 
                 	    state._fsp--;
@@ -21675,7 +21625,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop138;
+                	    break loop135;
                     }
                 } while (true);
 
@@ -21691,7 +21641,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2965:1: ( '|' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:2966:2: '|'
         {
-        match(input,78,FOLLOW_78_in_synpred24_InternalDatatypeGrammar7272); if (state.failed) return ;
+        match(input,79,FOLLOW_79_in_synpred24_InternalDatatypeGrammar7263); if (state.failed) return ;
 
         }
 
@@ -21719,7 +21669,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,44,FOLLOW_44_in_synpred25_InternalDatatypeGrammar7392); if (state.failed) return ;
+        match(input,45,FOLLOW_45_in_synpred25_InternalDatatypeGrammar7383); if (state.failed) return ;
 
         }
 
@@ -21741,8 +21691,8 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,103,FOLLOW_103_in_synpred26_InternalDatatypeGrammar7581); if (state.failed) return ;
-        match(input,40,FOLLOW_40_in_synpred26_InternalDatatypeGrammar7585); if (state.failed) return ;
+        match(input,104,FOLLOW_104_in_synpred26_InternalDatatypeGrammar7572); if (state.failed) return ;
+        match(input,40,FOLLOW_40_in_synpred26_InternalDatatypeGrammar7576); if (state.failed) return ;
 
         }
 
@@ -21764,15 +21714,15 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,85,FOLLOW_85_in_synpred27_InternalDatatypeGrammar7707); if (state.failed) return ;
-        match(input,40,FOLLOW_40_in_synpred27_InternalDatatypeGrammar7711); if (state.failed) return ;
+        match(input,86,FOLLOW_86_in_synpred27_InternalDatatypeGrammar7698); if (state.failed) return ;
+        match(input,40,FOLLOW_40_in_synpred27_InternalDatatypeGrammar7702); if (state.failed) return ;
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3150:1: ( ( ruleJvmFormalParameter ) )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3151:1: ( ruleJvmFormalParameter )
         {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3151:1: ( ruleJvmFormalParameter )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3152:1: ruleJvmFormalParameter
         {
-        pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred27_InternalDatatypeGrammar7718);
+        pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred27_InternalDatatypeGrammar7709);
         ruleJvmFormalParameter();
 
         state._fsp--;
@@ -21783,7 +21733,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
         }
 
-        match(input,82,FOLLOW_82_in_synpred27_InternalDatatypeGrammar7724); if (state.failed) return ;
+        match(input,83,FOLLOW_83_in_synpred27_InternalDatatypeGrammar7715); if (state.failed) return ;
 
         }
 
@@ -21805,7 +21755,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,44,FOLLOW_44_in_synpred28_InternalDatatypeGrammar8046); if (state.failed) return ;
+        match(input,45,FOLLOW_45_in_synpred28_InternalDatatypeGrammar8037); if (state.failed) return ;
 
         }
 
@@ -21823,13 +21773,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3557:6: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) )
         {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3557:6: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt141=2;
-        int LA141_0 = input.LA(1);
+        int alt138=2;
+        int LA138_0 = input.LA(1);
 
-        if ( (LA141_0==RULE_ID||LA141_0==40||LA141_0==64) ) {
-            alt141=1;
+        if ( (LA138_0==RULE_ID||LA138_0==40||LA138_0==65) ) {
+            alt138=1;
         }
-        switch (alt141) {
+        switch (alt138) {
             case 1 :
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3557:7: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -21839,7 +21789,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3558:1: ( ruleJvmFormalParameter )
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3559:1: ruleJvmFormalParameter
                 {
-                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred30_InternalDatatypeGrammar8796);
+                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred30_InternalDatatypeGrammar8787);
                 ruleJvmFormalParameter();
 
                 state._fsp--;
@@ -21851,28 +21801,28 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 }
 
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3561:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop140:
+                loop137:
                 do {
-                    int alt140=2;
-                    int LA140_0 = input.LA(1);
+                    int alt137=2;
+                    int LA137_0 = input.LA(1);
 
-                    if ( (LA140_0==25) ) {
-                        alt140=1;
+                    if ( (LA137_0==41) ) {
+                        alt137=1;
                     }
 
 
-                    switch (alt140) {
+                    switch (alt137) {
                 	case 1 :
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3561:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
-                	    match(input,25,FOLLOW_25_in_synpred30_InternalDatatypeGrammar8803); if (state.failed) return ;
+                	    match(input,41,FOLLOW_41_in_synpred30_InternalDatatypeGrammar8794); if (state.failed) return ;
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3562:1: ( ( ruleJvmFormalParameter ) )
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3563:1: ( ruleJvmFormalParameter )
                 	    {
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3563:1: ( ruleJvmFormalParameter )
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3564:1: ruleJvmFormalParameter
                 	    {
-                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred30_InternalDatatypeGrammar8810);
+                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred30_InternalDatatypeGrammar8801);
                 	    ruleJvmFormalParameter();
 
                 	    state._fsp--;
@@ -21888,7 +21838,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop140;
+                	    break loop137;
                     }
                 } while (true);
 
@@ -21904,7 +21854,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3567:1: ( '|' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3568:2: '|'
         {
-        match(input,78,FOLLOW_78_in_synpred30_InternalDatatypeGrammar8824); if (state.failed) return ;
+        match(input,79,FOLLOW_79_in_synpred30_InternalDatatypeGrammar8815); if (state.failed) return ;
 
         }
 
@@ -21924,7 +21874,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3927:4: ( 'else' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3927:6: 'else'
         {
-        match(input,80,FOLLOW_80_in_synpred32_InternalDatatypeGrammar9607); if (state.failed) return ;
+        match(input,81,FOLLOW_81_in_synpred32_InternalDatatypeGrammar9598); if (state.failed) return ;
 
         }
     }
@@ -21938,14 +21888,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3981:5: ( '(' ( ( ruleJvmFormalParameter ) ) ':' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3981:7: '(' ( ( ruleJvmFormalParameter ) ) ':'
         {
-        match(input,40,FOLLOW_40_in_synpred33_InternalDatatypeGrammar9746); if (state.failed) return ;
+        match(input,40,FOLLOW_40_in_synpred33_InternalDatatypeGrammar9737); if (state.failed) return ;
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3982:1: ( ( ruleJvmFormalParameter ) )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3983:1: ( ruleJvmFormalParameter )
         {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3983:1: ( ruleJvmFormalParameter )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:3984:1: ruleJvmFormalParameter
         {
-        pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred33_InternalDatatypeGrammar9753);
+        pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred33_InternalDatatypeGrammar9744);
         ruleJvmFormalParameter();
 
         state._fsp--;
@@ -21956,7 +21906,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
         }
 
-        match(input,82,FOLLOW_82_in_synpred33_InternalDatatypeGrammar9759); if (state.failed) return ;
+        match(input,83,FOLLOW_83_in_synpred33_InternalDatatypeGrammar9750); if (state.failed) return ;
 
         }
 
@@ -21979,7 +21929,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4037:1: ( ruleJvmFormalParameter )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4038:1: ruleJvmFormalParameter
         {
-        pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred34_InternalDatatypeGrammar9861);
+        pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred34_InternalDatatypeGrammar9852);
         ruleJvmFormalParameter();
 
         state._fsp--;
@@ -21990,7 +21940,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
 
         }
 
-        match(input,82,FOLLOW_82_in_synpred34_InternalDatatypeGrammar9867); if (state.failed) return ;
+        match(input,83,FOLLOW_83_in_synpred34_InternalDatatypeGrammar9858); if (state.failed) return ;
 
         }
 
@@ -22013,7 +21963,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4794:1: ( ruleJvmTypeReference )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4795:1: ruleJvmTypeReference
         {
-        pushFollow(FOLLOW_ruleJvmTypeReference_in_synpred36_InternalDatatypeGrammar11476);
+        pushFollow(FOLLOW_ruleJvmTypeReference_in_synpred36_InternalDatatypeGrammar11467);
         ruleJvmTypeReference();
 
         state._fsp--;
@@ -22030,7 +21980,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4798:1: ( ruleValidID )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:4799:1: ruleValidID
         {
-        pushFollow(FOLLOW_ruleValidID_in_synpred36_InternalDatatypeGrammar11485);
+        pushFollow(FOLLOW_ruleValidID_in_synpred36_InternalDatatypeGrammar11476);
         ruleValidID();
 
         state._fsp--;
@@ -22057,7 +22007,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5083:1: ( '(' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5084:2: '('
         {
-        match(input,40,FOLLOW_40_in_synpred37_InternalDatatypeGrammar12023); if (state.failed) return ;
+        match(input,40,FOLLOW_40_in_synpred37_InternalDatatypeGrammar12014); if (state.failed) return ;
 
         }
 
@@ -22080,13 +22030,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5104:2: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt145=2;
-        int LA145_0 = input.LA(1);
+        int alt142=2;
+        int LA142_0 = input.LA(1);
 
-        if ( (LA145_0==RULE_ID||LA145_0==40||LA145_0==64) ) {
-            alt145=1;
+        if ( (LA142_0==RULE_ID||LA142_0==40||LA142_0==65) ) {
+            alt142=1;
         }
-        switch (alt145) {
+        switch (alt142) {
             case 1 :
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5104:3: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -22096,7 +22046,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5105:1: ( ruleJvmFormalParameter )
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5106:1: ruleJvmFormalParameter
                 {
-                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalDatatypeGrammar12075);
+                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalDatatypeGrammar12066);
                 ruleJvmFormalParameter();
 
                 state._fsp--;
@@ -22108,28 +22058,28 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 }
 
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5108:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop144:
+                loop141:
                 do {
-                    int alt144=2;
-                    int LA144_0 = input.LA(1);
+                    int alt141=2;
+                    int LA141_0 = input.LA(1);
 
-                    if ( (LA144_0==25) ) {
-                        alt144=1;
+                    if ( (LA141_0==41) ) {
+                        alt141=1;
                     }
 
 
-                    switch (alt144) {
+                    switch (alt141) {
                 	case 1 :
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5108:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
-                	    match(input,25,FOLLOW_25_in_synpred38_InternalDatatypeGrammar12082); if (state.failed) return ;
+                	    match(input,41,FOLLOW_41_in_synpred38_InternalDatatypeGrammar12073); if (state.failed) return ;
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5109:1: ( ( ruleJvmFormalParameter ) )
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5110:1: ( ruleJvmFormalParameter )
                 	    {
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5110:1: ( ruleJvmFormalParameter )
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5111:1: ruleJvmFormalParameter
                 	    {
-                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalDatatypeGrammar12089);
+                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalDatatypeGrammar12080);
                 	    ruleJvmFormalParameter();
 
                 	    state._fsp--;
@@ -22145,7 +22095,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop144;
+                	    break loop141;
                     }
                 } while (true);
 
@@ -22161,7 +22111,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5114:1: ( '|' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5115:2: '|'
         {
-        match(input,78,FOLLOW_78_in_synpred38_InternalDatatypeGrammar12103); if (state.failed) return ;
+        match(input,79,FOLLOW_79_in_synpred38_InternalDatatypeGrammar12094); if (state.failed) return ;
 
         }
 
@@ -22189,7 +22139,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,44,FOLLOW_44_in_synpred39_InternalDatatypeGrammar12223); if (state.failed) return ;
+        match(input,45,FOLLOW_45_in_synpred39_InternalDatatypeGrammar12214); if (state.failed) return ;
 
         }
 
@@ -22203,7 +22153,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5347:4: ( '<' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5347:6: '<'
         {
-        match(input,51,FOLLOW_51_in_synpred40_InternalDatatypeGrammar12672); if (state.failed) return ;
+        match(input,52,FOLLOW_52_in_synpred40_InternalDatatypeGrammar12663); if (state.failed) return ;
 
         }
     }
@@ -22217,7 +22167,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5397:1: ( '(' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5398:2: '('
         {
-        match(input,40,FOLLOW_40_in_synpred41_InternalDatatypeGrammar12768); if (state.failed) return ;
+        match(input,40,FOLLOW_40_in_synpred41_InternalDatatypeGrammar12759); if (state.failed) return ;
 
         }
 
@@ -22240,13 +22190,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5418:2: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt147=2;
-        int LA147_0 = input.LA(1);
+        int alt144=2;
+        int LA144_0 = input.LA(1);
 
-        if ( (LA147_0==RULE_ID||LA147_0==40||LA147_0==64) ) {
-            alt147=1;
+        if ( (LA144_0==RULE_ID||LA144_0==40||LA144_0==65) ) {
+            alt144=1;
         }
-        switch (alt147) {
+        switch (alt144) {
             case 1 :
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5418:3: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -22256,7 +22206,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5419:1: ( ruleJvmFormalParameter )
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5420:1: ruleJvmFormalParameter
                 {
-                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalDatatypeGrammar12820);
+                pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalDatatypeGrammar12811);
                 ruleJvmFormalParameter();
 
                 state._fsp--;
@@ -22268,28 +22218,28 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 }
 
                 // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5422:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop146:
+                loop143:
                 do {
-                    int alt146=2;
-                    int LA146_0 = input.LA(1);
+                    int alt143=2;
+                    int LA143_0 = input.LA(1);
 
-                    if ( (LA146_0==25) ) {
-                        alt146=1;
+                    if ( (LA143_0==41) ) {
+                        alt143=1;
                     }
 
 
-                    switch (alt146) {
+                    switch (alt143) {
                 	case 1 :
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5422:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
-                	    match(input,25,FOLLOW_25_in_synpred42_InternalDatatypeGrammar12827); if (state.failed) return ;
+                	    match(input,41,FOLLOW_41_in_synpred42_InternalDatatypeGrammar12818); if (state.failed) return ;
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5423:1: ( ( ruleJvmFormalParameter ) )
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5424:1: ( ruleJvmFormalParameter )
                 	    {
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5424:1: ( ruleJvmFormalParameter )
                 	    // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5425:1: ruleJvmFormalParameter
                 	    {
-                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalDatatypeGrammar12834);
+                	    pushFollow(FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalDatatypeGrammar12825);
                 	    ruleJvmFormalParameter();
 
                 	    state._fsp--;
@@ -22305,7 +22255,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop146;
+                	    break loop143;
                     }
                 } while (true);
 
@@ -22321,7 +22271,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5428:1: ( '|' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5429:2: '|'
         {
-        match(input,78,FOLLOW_78_in_synpred42_InternalDatatypeGrammar12848); if (state.failed) return ;
+        match(input,79,FOLLOW_79_in_synpred42_InternalDatatypeGrammar12839); if (state.failed) return ;
 
         }
 
@@ -22349,7 +22299,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        match(input,44,FOLLOW_44_in_synpred43_InternalDatatypeGrammar12968); if (state.failed) return ;
+        match(input,45,FOLLOW_45_in_synpred43_InternalDatatypeGrammar12959); if (state.failed) return ;
 
         }
 
@@ -22363,7 +22313,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5836:2: ( 'extends' | 'static' | 'import' | 'extension' | '!' | '-' | '+' | 'new' | '{' | 'switch' | 'synchronized' | '<' | 'super' | '#' | '[' | 'false' | 'true' | 'null' | 'typeof' | 'if' | 'for' | 'while' | 'do' | 'throw' | 'return' | 'try' | '(' | RULE_ID | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_STRING )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:
         {
-        if ( (input.LA(1)>=RULE_ID && input.LA(1)<=RULE_DECIMAL)||input.LA(1)==14||input.LA(1)==17||input.LA(1)==40||(input.LA(1)>=43 && input.LA(1)<=44)||input.LA(1)==51||(input.LA(1)>=67 && input.LA(1)<=68)||input.LA(1)==72||input.LA(1)==79||input.LA(1)==81||(input.LA(1)>=85 && input.LA(1)<=87)||(input.LA(1)>=90 && input.LA(1)<=101)||input.LA(1)==103 ) {
+        if ( (input.LA(1)>=RULE_ID && input.LA(1)<=RULE_DECIMAL)||input.LA(1)==14||input.LA(1)==17||input.LA(1)==40||(input.LA(1)>=44 && input.LA(1)<=45)||input.LA(1)==52||(input.LA(1)>=68 && input.LA(1)<=69)||input.LA(1)==73||input.LA(1)==80||input.LA(1)==82||(input.LA(1)>=86 && input.LA(1)<=88)||(input.LA(1)>=91 && input.LA(1)<=102)||input.LA(1)==104 ) {
             input.consume();
             state.errorRecovery=false;state.failed=false;
         }
@@ -22383,7 +22333,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5930:5: ( 'catch' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5930:7: 'catch'
         {
-        match(input,104,FOLLOW_104_in_synpred45_InternalDatatypeGrammar14141); if (state.failed) return ;
+        match(input,105,FOLLOW_105_in_synpred45_InternalDatatypeGrammar14132); if (state.failed) return ;
 
         }
     }
@@ -22394,7 +22344,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5949:5: ( 'finally' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:5949:7: 'finally'
         {
-        match(input,102,FOLLOW_102_in_synpred46_InternalDatatypeGrammar14171); if (state.failed) return ;
+        match(input,103,FOLLOW_103_in_synpred46_InternalDatatypeGrammar14162); if (state.failed) return ;
 
         }
     }
@@ -22405,7 +22355,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6175:3: ( '.' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6176:2: '.'
         {
-        match(input,26,FOLLOW_26_in_synpred49_InternalDatatypeGrammar14696); if (state.failed) return ;
+        match(input,26,FOLLOW_26_in_synpred49_InternalDatatypeGrammar14687); if (state.failed) return ;
 
         }
     }
@@ -22424,7 +22374,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         {
         }
 
-        pushFollow(FOLLOW_ruleArrayBrackets_in_synpred50_InternalDatatypeGrammar15081);
+        pushFollow(FOLLOW_ruleArrayBrackets_in_synpred50_InternalDatatypeGrammar15072);
         ruleArrayBrackets();
 
         state._fsp--;
@@ -22442,7 +22392,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6486:4: ( '<' )
         // ../org.lunifera.dsl.datatype.xtext/src-gen/org/lunifera/dsl/datatype/xtext/parser/antlr/internal/InternalDatatypeGrammar.g:6486:6: '<'
         {
-        match(input,51,FOLLOW_51_in_synpred51_InternalDatatypeGrammar15533); if (state.failed) return ;
+        match(input,52,FOLLOW_52_in_synpred51_InternalDatatypeGrammar15524); if (state.failed) return ;
 
         }
     }
@@ -23054,45 +23004,45 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
     }
 
 
-    protected DFA16 dfa16 = new DFA16(this);
+    protected DFA13 dfa13 = new DFA13(this);
+    protected DFA19 dfa19 = new DFA19(this);
     protected DFA22 dfa22 = new DFA22(this);
-    protected DFA25 dfa25 = new DFA25(this);
-    protected DFA27 dfa27 = new DFA27(this);
+    protected DFA24 dfa24 = new DFA24(this);
+    protected DFA34 dfa34 = new DFA34(this);
     protected DFA37 dfa37 = new DFA37(this);
-    protected DFA40 dfa40 = new DFA40(this);
+    protected DFA53 dfa53 = new DFA53(this);
+    protected DFA52 dfa52 = new DFA52(this);
+    protected DFA54 dfa54 = new DFA54(this);
     protected DFA56 dfa56 = new DFA56(this);
-    protected DFA55 dfa55 = new DFA55(this);
-    protected DFA57 dfa57 = new DFA57(this);
-    protected DFA59 dfa59 = new DFA59(this);
-    protected DFA68 dfa68 = new DFA68(this);
-    protected DFA75 dfa75 = new DFA75(this);
-    protected DFA74 dfa74 = new DFA74(this);
-    protected DFA97 dfa97 = new DFA97(this);
-    protected DFA96 dfa96 = new DFA96(this);
-    protected DFA98 dfa98 = new DFA98(this);
+    protected DFA65 dfa65 = new DFA65(this);
+    protected DFA72 dfa72 = new DFA72(this);
+    protected DFA71 dfa71 = new DFA71(this);
+    protected DFA94 dfa94 = new DFA94(this);
+    protected DFA93 dfa93 = new DFA93(this);
+    protected DFA95 dfa95 = new DFA95(this);
+    protected DFA99 dfa99 = new DFA99(this);
     protected DFA102 dfa102 = new DFA102(this);
-    protected DFA105 dfa105 = new DFA105(this);
-    protected DFA104 dfa104 = new DFA104(this);
+    protected DFA101 dfa101 = new DFA101(this);
+    protected DFA103 dfa103 = new DFA103(this);
     protected DFA106 dfa106 = new DFA106(this);
-    protected DFA109 dfa109 = new DFA109(this);
-    protected DFA124 dfa124 = new DFA124(this);
-    protected DFA129 dfa129 = new DFA129(this);
-    static final String DFA16_eotS =
+    protected DFA121 dfa121 = new DFA121(this);
+    protected DFA126 dfa126 = new DFA126(this);
+    static final String DFA13_eotS =
         "\44\uffff";
-    static final String DFA16_eofS =
+    static final String DFA13_eofS =
         "\44\uffff";
-    static final String DFA16_minS =
+    static final String DFA13_minS =
         "\1\4\1\0\42\uffff";
-    static final String DFA16_maxS =
-        "\1\147\1\0\42\uffff";
-    static final String DFA16_acceptS =
+    static final String DFA13_maxS =
+        "\1\150\1\0\42\uffff";
+    static final String DFA13_acceptS =
         "\2\uffff\1\2\37\uffff\1\3\1\1";
-    static final String DFA16_specialS =
+    static final String DFA13_specialS =
         "\1\uffff\1\0\42\uffff}>";
-    static final String[] DFA16_transitionS = {
-            "\1\1\4\2\5\uffff\1\2\2\uffff\1\2\25\uffff\2\2\1\42\1\uffff\2"+
-            "\2\6\uffff\1\2\17\uffff\2\2\3\uffff\1\2\6\uffff\1\2\1\uffff"+
-            "\1\2\3\uffff\3\2\2\uffff\14\2\1\uffff\1\2",
+    static final String[] DFA13_transitionS = {
+            "\1\1\4\2\5\uffff\1\2\2\uffff\1\2\25\uffff\2\2\1\uffff\1\42\1"+
+            "\uffff\2\2\6\uffff\1\2\17\uffff\2\2\3\uffff\1\2\6\uffff\1\2"+
+            "\1\uffff\1\2\3\uffff\3\2\2\uffff\14\2\1\uffff\1\2",
             "\1\uffff",
             "",
             "",
@@ -23130,34 +23080,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA16_eot = DFA.unpackEncodedString(DFA16_eotS);
-    static final short[] DFA16_eof = DFA.unpackEncodedString(DFA16_eofS);
-    static final char[] DFA16_min = DFA.unpackEncodedStringToUnsignedChars(DFA16_minS);
-    static final char[] DFA16_max = DFA.unpackEncodedStringToUnsignedChars(DFA16_maxS);
-    static final short[] DFA16_accept = DFA.unpackEncodedString(DFA16_acceptS);
-    static final short[] DFA16_special = DFA.unpackEncodedString(DFA16_specialS);
-    static final short[][] DFA16_transition;
+    static final short[] DFA13_eot = DFA.unpackEncodedString(DFA13_eotS);
+    static final short[] DFA13_eof = DFA.unpackEncodedString(DFA13_eofS);
+    static final char[] DFA13_min = DFA.unpackEncodedStringToUnsignedChars(DFA13_minS);
+    static final char[] DFA13_max = DFA.unpackEncodedStringToUnsignedChars(DFA13_maxS);
+    static final short[] DFA13_accept = DFA.unpackEncodedString(DFA13_acceptS);
+    static final short[] DFA13_special = DFA.unpackEncodedString(DFA13_specialS);
+    static final short[][] DFA13_transition;
 
     static {
-        int numStates = DFA16_transitionS.length;
-        DFA16_transition = new short[numStates][];
+        int numStates = DFA13_transitionS.length;
+        DFA13_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA16_transition[i] = DFA.unpackEncodedString(DFA16_transitionS[i]);
+            DFA13_transition[i] = DFA.unpackEncodedString(DFA13_transitionS[i]);
         }
     }
 
-    class DFA16 extends DFA {
+    class DFA13 extends DFA {
 
-        public DFA16(BaseRecognizer recognizer) {
+        public DFA13(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 16;
-            this.eot = DFA16_eot;
-            this.eof = DFA16_eof;
-            this.min = DFA16_min;
-            this.max = DFA16_max;
-            this.accept = DFA16_accept;
-            this.special = DFA16_special;
-            this.transition = DFA16_transition;
+            this.decisionNumber = 13;
+            this.eot = DFA13_eot;
+            this.eof = DFA13_eof;
+            this.min = DFA13_min;
+            this.max = DFA13_max;
+            this.accept = DFA13_accept;
+            this.special = DFA13_special;
+            this.transition = DFA13_transition;
         }
         public String getDescription() {
             return "851:2: ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_4_0= ruleXAnnotationElementValuePair ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_elementValuePairs_6_0= ruleXAnnotationElementValuePair ) ) )* ) | ( (lv_value_7_0= ruleXAnnotationElementValueOrCommaList ) ) )?";
@@ -23167,10 +23117,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA16_1 = input.LA(1);
+                        int LA13_1 = input.LA(1);
 
                          
-                        int index16_1 = input.index();
+                        int index13_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred3_InternalDatatypeGrammar()) ) {s = 35;}
@@ -23178,13 +23128,124 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index16_1);
+                        input.seek(index13_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 16, _s, input);
+                new NoViableAltException(getDescription(), 13, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String DFA19_eotS =
+        "\43\uffff";
+    static final String DFA19_eofS =
+        "\43\uffff";
+    static final String DFA19_minS =
+        "\1\4\1\0\41\uffff";
+    static final String DFA19_maxS =
+        "\1\150\1\0\41\uffff";
+    static final String DFA19_acceptS =
+        "\2\uffff\1\2\37\uffff\1\1";
+    static final String DFA19_specialS =
+        "\1\uffff\1\0\41\uffff}>";
+    static final String[] DFA19_transitionS = {
+            "\5\2\5\uffff\1\2\2\uffff\1\2\25\uffff\2\2\3\uffff\1\1\1\2\6"+
+            "\uffff\1\2\17\uffff\2\2\3\uffff\1\2\6\uffff\1\2\1\uffff\1\2"+
+            "\3\uffff\3\2\2\uffff\14\2\1\uffff\1\2",
+            "\1\uffff",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] DFA19_eot = DFA.unpackEncodedString(DFA19_eotS);
+    static final short[] DFA19_eof = DFA.unpackEncodedString(DFA19_eofS);
+    static final char[] DFA19_min = DFA.unpackEncodedStringToUnsignedChars(DFA19_minS);
+    static final char[] DFA19_max = DFA.unpackEncodedStringToUnsignedChars(DFA19_maxS);
+    static final short[] DFA19_accept = DFA.unpackEncodedString(DFA19_acceptS);
+    static final short[] DFA19_special = DFA.unpackEncodedString(DFA19_specialS);
+    static final short[][] DFA19_transition;
+
+    static {
+        int numStates = DFA19_transitionS.length;
+        DFA19_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA19_transition[i] = DFA.unpackEncodedString(DFA19_transitionS[i]);
+        }
+    }
+
+    class DFA19 extends DFA {
+
+        public DFA19(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 19;
+            this.eot = DFA19_eot;
+            this.eof = DFA19_eof;
+            this.min = DFA19_min;
+            this.max = DFA19_max;
+            this.accept = DFA19_accept;
+            this.special = DFA19_special;
+            this.transition = DFA19_transition;
+        }
+        public String getDescription() {
+            return "1008:1: ( ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' ) | (this_XAnnotationOrExpression_7= ruleXAnnotationOrExpression ( () (otherlv_9= ',' ( (lv_elements_10_0= ruleXAnnotationOrExpression ) ) )+ )? ) )";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA19_1 = input.LA(1);
+
+                         
+                        int index19_1 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred6_InternalDatatypeGrammar()) ) {s = 34;}
+
+                        else if ( (true) ) {s = 2;}
+
+                         
+                        input.seek(index19_1);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            if (state.backtracking>0) {state.failed=true; return -1;}
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 19, _s, input);
             error(nvae);
             throw nvae;
         }
@@ -23196,13 +23257,13 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
     static final String DFA22_minS =
         "\1\4\1\0\41\uffff";
     static final String DFA22_maxS =
-        "\1\147\1\0\41\uffff";
+        "\1\150\1\0\41\uffff";
     static final String DFA22_acceptS =
         "\2\uffff\1\2\37\uffff\1\1";
     static final String DFA22_specialS =
         "\1\uffff\1\0\41\uffff}>";
     static final String[] DFA22_transitionS = {
-            "\5\2\5\uffff\1\2\2\uffff\1\2\25\uffff\2\2\2\uffff\1\1\1\2\6"+
+            "\5\2\5\uffff\1\2\2\uffff\1\2\25\uffff\2\2\3\uffff\1\1\1\2\6"+
             "\uffff\1\2\17\uffff\2\2\3\uffff\1\2\6\uffff\1\2\1\uffff\1\2"+
             "\3\uffff\3\2\2\uffff\14\2\1\uffff\1\2",
             "\1\uffff",
@@ -23271,7 +23332,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             this.transition = DFA22_transition;
         }
         public String getDescription() {
-            return "1008:1: ( ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' ) | (this_XAnnotationOrExpression_7= ruleXAnnotationOrExpression ( () (otherlv_9= ',' ( (lv_elements_10_0= ruleXAnnotationOrExpression ) ) )+ )? ) )";
+            return "1128:1: ( ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' ) | this_XAnnotationOrExpression_7= ruleXAnnotationOrExpression )";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -23284,7 +23345,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         int index22_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred6_InternalDatatypeGrammar()) ) {s = 34;}
+                        if ( (synpred7_InternalDatatypeGrammar()) ) {s = 34;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -23300,131 +23361,20 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             throw nvae;
         }
     }
-    static final String DFA25_eotS =
-        "\43\uffff";
-    static final String DFA25_eofS =
-        "\43\uffff";
-    static final String DFA25_minS =
-        "\1\4\1\0\41\uffff";
-    static final String DFA25_maxS =
-        "\1\147\1\0\41\uffff";
-    static final String DFA25_acceptS =
-        "\2\uffff\1\2\37\uffff\1\1";
-    static final String DFA25_specialS =
-        "\1\uffff\1\0\41\uffff}>";
-    static final String[] DFA25_transitionS = {
-            "\5\2\5\uffff\1\2\2\uffff\1\2\25\uffff\2\2\2\uffff\1\1\1\2\6"+
-            "\uffff\1\2\17\uffff\2\2\3\uffff\1\2\6\uffff\1\2\1\uffff\1\2"+
-            "\3\uffff\3\2\2\uffff\14\2\1\uffff\1\2",
-            "\1\uffff",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA25_eot = DFA.unpackEncodedString(DFA25_eotS);
-    static final short[] DFA25_eof = DFA.unpackEncodedString(DFA25_eofS);
-    static final char[] DFA25_min = DFA.unpackEncodedStringToUnsignedChars(DFA25_minS);
-    static final char[] DFA25_max = DFA.unpackEncodedStringToUnsignedChars(DFA25_maxS);
-    static final short[] DFA25_accept = DFA.unpackEncodedString(DFA25_acceptS);
-    static final short[] DFA25_special = DFA.unpackEncodedString(DFA25_specialS);
-    static final short[][] DFA25_transition;
-
-    static {
-        int numStates = DFA25_transitionS.length;
-        DFA25_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA25_transition[i] = DFA.unpackEncodedString(DFA25_transitionS[i]);
-        }
-    }
-
-    class DFA25 extends DFA {
-
-        public DFA25(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 25;
-            this.eot = DFA25_eot;
-            this.eof = DFA25_eof;
-            this.min = DFA25_min;
-            this.max = DFA25_max;
-            this.accept = DFA25_accept;
-            this.special = DFA25_special;
-            this.transition = DFA25_transition;
-        }
-        public String getDescription() {
-            return "1128:1: ( ( ( ( ( () '#' '[' ) )=> ( () otherlv_1= '#' otherlv_2= '[' ) ) ( ( (lv_elements_3_0= ruleXAnnotationOrExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXAnnotationOrExpression ) ) )* )? otherlv_6= ']' ) | this_XAnnotationOrExpression_7= ruleXAnnotationOrExpression )";
-        }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-            TokenStream input = (TokenStream)_input;
-        	int _s = s;
-            switch ( s ) {
-                    case 0 : 
-                        int LA25_1 = input.LA(1);
-
-                         
-                        int index25_1 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred7_InternalDatatypeGrammar()) ) {s = 34;}
-
-                        else if ( (true) ) {s = 2;}
-
-                         
-                        input.seek(index25_1);
-                        if ( s>=0 ) return s;
-                        break;
-            }
-            if (state.backtracking>0) {state.failed=true; return -1;}
-            NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 25, _s, input);
-            error(nvae);
-            throw nvae;
-        }
-    }
-    static final String DFA27_eotS =
+    static final String DFA24_eotS =
         "\12\uffff";
-    static final String DFA27_eofS =
+    static final String DFA24_eofS =
         "\1\10\11\uffff";
-    static final String DFA27_minS =
+    static final String DFA24_minS =
         "\1\4\7\0\2\uffff";
-    static final String DFA27_maxS =
-        "\1\150\7\0\2\uffff";
-    static final String DFA27_acceptS =
+    static final String DFA24_maxS =
+        "\1\151\7\0\2\uffff";
+    static final String DFA24_acceptS =
         "\10\uffff\1\2\1\1";
-    static final String DFA27_specialS =
-        "\1\uffff\1\5\1\2\1\1\1\4\1\3\1\0\1\6\2\uffff}>";
-    static final String[] DFA27_transitionS = {
-            "\5\10\5\uffff\2\10\1\uffff\2\10\6\uffff\3\10\14\uffff\2\10\1"+
+    static final String DFA24_specialS =
+        "\1\uffff\1\2\1\0\1\1\1\6\1\5\1\4\1\3\2\uffff}>";
+    static final String[] DFA24_transitionS = {
+            "\5\10\5\uffff\2\10\1\uffff\2\10\7\uffff\2\10\14\uffff\3\10\1"+
             "\uffff\3\10\1\1\1\2\1\3\1\4\1\5\1\6\1\7\31\10\1\uffff\32\10",
             "\1\uffff",
             "\1\uffff",
@@ -23437,34 +23387,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA27_eot = DFA.unpackEncodedString(DFA27_eotS);
-    static final short[] DFA27_eof = DFA.unpackEncodedString(DFA27_eofS);
-    static final char[] DFA27_min = DFA.unpackEncodedStringToUnsignedChars(DFA27_minS);
-    static final char[] DFA27_max = DFA.unpackEncodedStringToUnsignedChars(DFA27_maxS);
-    static final short[] DFA27_accept = DFA.unpackEncodedString(DFA27_acceptS);
-    static final short[] DFA27_special = DFA.unpackEncodedString(DFA27_specialS);
-    static final short[][] DFA27_transition;
+    static final short[] DFA24_eot = DFA.unpackEncodedString(DFA24_eotS);
+    static final short[] DFA24_eof = DFA.unpackEncodedString(DFA24_eofS);
+    static final char[] DFA24_min = DFA.unpackEncodedStringToUnsignedChars(DFA24_minS);
+    static final char[] DFA24_max = DFA.unpackEncodedStringToUnsignedChars(DFA24_maxS);
+    static final short[] DFA24_accept = DFA.unpackEncodedString(DFA24_acceptS);
+    static final short[] DFA24_special = DFA.unpackEncodedString(DFA24_specialS);
+    static final short[][] DFA24_transition;
 
     static {
-        int numStates = DFA27_transitionS.length;
-        DFA27_transition = new short[numStates][];
+        int numStates = DFA24_transitionS.length;
+        DFA24_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA27_transition[i] = DFA.unpackEncodedString(DFA27_transitionS[i]);
+            DFA24_transition[i] = DFA.unpackEncodedString(DFA24_transitionS[i]);
         }
     }
 
-    class DFA27 extends DFA {
+    class DFA24 extends DFA {
 
-        public DFA27(BaseRecognizer recognizer) {
+        public DFA24(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 27;
-            this.eot = DFA27_eot;
-            this.eof = DFA27_eof;
-            this.min = DFA27_min;
-            this.max = DFA27_max;
-            this.accept = DFA27_accept;
-            this.special = DFA27_special;
-            this.transition = DFA27_transition;
+            this.decisionNumber = 24;
+            this.eot = DFA24_eot;
+            this.eof = DFA24_eof;
+            this.min = DFA24_min;
+            this.max = DFA24_max;
+            this.accept = DFA24_accept;
+            this.special = DFA24_special;
+            this.transition = DFA24_transition;
         }
         public String getDescription() {
             return "1347:1: ( ( ( ( () ( ( ruleOpMultiAssign ) ) ) )=> ( () ( ( ruleOpMultiAssign ) ) ) ) ( (lv_rightOperand_7_0= ruleXAssignment ) ) )?";
@@ -23474,10 +23424,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA27_6 = input.LA(1);
+                        int LA24_2 = input.LA(1);
 
                          
-                        int index27_6 = input.index();
+                        int index24_2 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred8_InternalDatatypeGrammar()) ) {s = 9;}
@@ -23485,14 +23435,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 8;}
 
                          
-                        input.seek(index27_6);
+                        input.seek(index24_2);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA27_3 = input.LA(1);
+                        int LA24_3 = input.LA(1);
 
                          
-                        int index27_3 = input.index();
+                        int index24_3 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred8_InternalDatatypeGrammar()) ) {s = 9;}
@@ -23500,14 +23450,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 8;}
 
                          
-                        input.seek(index27_3);
+                        input.seek(index24_3);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA27_2 = input.LA(1);
+                        int LA24_1 = input.LA(1);
 
                          
-                        int index27_2 = input.index();
+                        int index24_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred8_InternalDatatypeGrammar()) ) {s = 9;}
@@ -23515,14 +23465,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 8;}
 
                          
-                        input.seek(index27_2);
+                        input.seek(index24_1);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA27_5 = input.LA(1);
+                        int LA24_7 = input.LA(1);
 
                          
-                        int index27_5 = input.index();
+                        int index24_7 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred8_InternalDatatypeGrammar()) ) {s = 9;}
@@ -23530,14 +23480,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 8;}
 
                          
-                        input.seek(index27_5);
+                        input.seek(index24_7);
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA27_4 = input.LA(1);
+                        int LA24_6 = input.LA(1);
 
                          
-                        int index27_4 = input.index();
+                        int index24_6 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred8_InternalDatatypeGrammar()) ) {s = 9;}
@@ -23545,14 +23495,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 8;}
 
                          
-                        input.seek(index27_4);
+                        input.seek(index24_6);
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA27_1 = input.LA(1);
+                        int LA24_5 = input.LA(1);
 
                          
-                        int index27_1 = input.index();
+                        int index24_5 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred8_InternalDatatypeGrammar()) ) {s = 9;}
@@ -23560,14 +23510,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 8;}
 
                          
-                        input.seek(index27_1);
+                        input.seek(index24_5);
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA27_7 = input.LA(1);
+                        int LA24_4 = input.LA(1);
 
                          
-                        int index27_7 = input.index();
+                        int index24_4 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred8_InternalDatatypeGrammar()) ) {s = 9;}
@@ -23575,31 +23525,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 8;}
 
                          
-                        input.seek(index27_7);
+                        input.seek(index24_4);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 27, _s, input);
+                new NoViableAltException(getDescription(), 24, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA37_eotS =
+    static final String DFA34_eotS =
         "\13\uffff";
-    static final String DFA37_eofS =
+    static final String DFA34_eofS =
         "\1\1\12\uffff";
-    static final String DFA37_minS =
+    static final String DFA34_minS =
         "\1\4\1\uffff\10\0\1\uffff";
-    static final String DFA37_maxS =
-        "\1\150\1\uffff\10\0\1\uffff";
-    static final String DFA37_acceptS =
+    static final String DFA34_maxS =
+        "\1\151\1\uffff\10\0\1\uffff";
+    static final String DFA34_acceptS =
         "\1\uffff\1\2\10\uffff\1\1";
-    static final String DFA37_specialS =
-        "\2\uffff\1\1\1\7\1\5\1\6\1\4\1\0\1\3\1\2\1\uffff}>";
-    static final String[] DFA37_transitionS = {
-            "\5\1\5\uffff\2\1\1\uffff\2\1\6\uffff\3\1\14\uffff\2\1\1\uffff"+
+    static final String DFA34_specialS =
+        "\2\uffff\1\5\1\7\1\6\1\0\1\4\1\2\1\3\1\1\1\uffff}>";
+    static final String[] DFA34_transitionS = {
+            "\5\1\5\uffff\2\1\1\uffff\2\1\7\uffff\2\1\14\uffff\3\1\1\uffff"+
             "\10\1\1\2\1\3\10\1\1\4\1\5\1\6\1\7\1\10\1\11\13\1\1\uffff\32"+
             "\1",
             "",
@@ -23611,6 +23561,196 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
+            ""
+    };
+
+    static final short[] DFA34_eot = DFA.unpackEncodedString(DFA34_eotS);
+    static final short[] DFA34_eof = DFA.unpackEncodedString(DFA34_eofS);
+    static final char[] DFA34_min = DFA.unpackEncodedStringToUnsignedChars(DFA34_minS);
+    static final char[] DFA34_max = DFA.unpackEncodedStringToUnsignedChars(DFA34_maxS);
+    static final short[] DFA34_accept = DFA.unpackEncodedString(DFA34_acceptS);
+    static final short[] DFA34_special = DFA.unpackEncodedString(DFA34_specialS);
+    static final short[][] DFA34_transition;
+
+    static {
+        int numStates = DFA34_transitionS.length;
+        DFA34_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA34_transition[i] = DFA.unpackEncodedString(DFA34_transitionS[i]);
+        }
+    }
+
+    class DFA34 extends DFA {
+
+        public DFA34(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 34;
+            this.eot = DFA34_eot;
+            this.eof = DFA34_eof;
+            this.min = DFA34_min;
+            this.max = DFA34_max;
+            this.accept = DFA34_accept;
+            this.special = DFA34_special;
+            this.transition = DFA34_transition;
+        }
+        public String getDescription() {
+            return "()* loopback of 2024:1: ( ( ( ( () ( ( ruleOpOther ) ) ) )=> ( () ( ( ruleOpOther ) ) ) ) ( (lv_rightOperand_3_0= ruleXAdditiveExpression ) ) )*";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA34_5 = input.LA(1);
+
+                         
+                        int index34_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA34_9 = input.LA(1);
+
+                         
+                        int index34_9 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_9);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA34_7 = input.LA(1);
+
+                         
+                        int index34_7 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_7);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA34_8 = input.LA(1);
+
+                         
+                        int index34_8 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_8);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA34_6 = input.LA(1);
+
+                         
+                        int index34_6 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_6);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA34_2 = input.LA(1);
+
+                         
+                        int index34_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_2);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA34_4 = input.LA(1);
+
+                         
+                        int index34_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_4);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA34_3 = input.LA(1);
+
+                         
+                        int index34_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_3);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            if (state.backtracking>0) {state.failed=true; return -1;}
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 34, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String DFA37_eotS =
+        "\13\uffff";
+    static final String DFA37_eofS =
+        "\13\uffff";
+    static final String DFA37_minS =
+        "\1\64\2\uffff\1\65\7\uffff";
+    static final String DFA37_maxS =
+        "\1\103\2\uffff\1\100\7\uffff";
+    static final String DFA37_acceptS =
+        "\1\uffff\1\1\1\2\1\uffff\1\4\1\5\1\7\1\10\1\11\1\6\1\3";
+    static final String DFA37_specialS =
+        "\13\uffff}>";
+    static final String[] DFA37_transitionS = {
+            "\1\6\1\3\10\uffff\1\1\1\2\1\4\1\5\1\7\1\10",
+            "",
+            "",
+            "\1\11\12\uffff\1\12",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             ""
     };
 
@@ -23644,213 +23784,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             this.transition = DFA37_transition;
         }
         public String getDescription() {
-            return "()* loopback of 2024:1: ( ( ( ( () ( ( ruleOpOther ) ) ) )=> ( () ( ( ruleOpOther ) ) ) ) ( (lv_rightOperand_3_0= ruleXAdditiveExpression ) ) )*";
-        }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-            TokenStream input = (TokenStream)_input;
-        	int _s = s;
-            switch ( s ) {
-                    case 0 : 
-                        int LA37_7 = input.LA(1);
-
-                         
-                        int index37_7 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index37_7);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA37_2 = input.LA(1);
-
-                         
-                        int index37_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index37_2);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA37_9 = input.LA(1);
-
-                         
-                        int index37_9 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index37_9);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA37_8 = input.LA(1);
-
-                         
-                        int index37_8 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index37_8);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA37_6 = input.LA(1);
-
-                         
-                        int index37_6 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index37_6);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 5 : 
-                        int LA37_4 = input.LA(1);
-
-                         
-                        int index37_4 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index37_4);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA37_5 = input.LA(1);
-
-                         
-                        int index37_5 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index37_5);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
-                        int LA37_3 = input.LA(1);
-
-                         
-                        int index37_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred14_InternalDatatypeGrammar()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index37_3);
-                        if ( s>=0 ) return s;
-                        break;
-            }
-            if (state.backtracking>0) {state.failed=true; return -1;}
-            NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 37, _s, input);
-            error(nvae);
-            throw nvae;
-        }
-    }
-    static final String DFA40_eotS =
-        "\13\uffff";
-    static final String DFA40_eofS =
-        "\13\uffff";
-    static final String DFA40_minS =
-        "\1\63\2\uffff\1\64\7\uffff";
-    static final String DFA40_maxS =
-        "\1\102\2\uffff\1\77\7\uffff";
-    static final String DFA40_acceptS =
-        "\1\uffff\1\1\1\2\1\uffff\1\4\1\5\1\7\1\10\1\11\1\3\1\6";
-    static final String DFA40_specialS =
-        "\13\uffff}>";
-    static final String[] DFA40_transitionS = {
-            "\1\6\1\3\10\uffff\1\1\1\2\1\4\1\5\1\7\1\10",
-            "",
-            "",
-            "\1\12\12\uffff\1\11",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA40_eot = DFA.unpackEncodedString(DFA40_eotS);
-    static final short[] DFA40_eof = DFA.unpackEncodedString(DFA40_eofS);
-    static final char[] DFA40_min = DFA.unpackEncodedStringToUnsignedChars(DFA40_minS);
-    static final char[] DFA40_max = DFA.unpackEncodedStringToUnsignedChars(DFA40_maxS);
-    static final short[] DFA40_accept = DFA.unpackEncodedString(DFA40_acceptS);
-    static final short[] DFA40_special = DFA.unpackEncodedString(DFA40_specialS);
-    static final short[][] DFA40_transition;
-
-    static {
-        int numStates = DFA40_transitionS.length;
-        DFA40_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA40_transition[i] = DFA.unpackEncodedString(DFA40_transitionS[i]);
-        }
-    }
-
-    class DFA40 extends DFA {
-
-        public DFA40(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 40;
-            this.eot = DFA40_eot;
-            this.eof = DFA40_eof;
-            this.min = DFA40_min;
-            this.max = DFA40_max;
-            this.accept = DFA40_accept;
-            this.special = DFA40_special;
-            this.transition = DFA40_transition;
-        }
-        public String getDescription() {
             return "2089:1: (kw= '->' | kw= '..<' | (kw= '>' kw= '..' ) | kw= '..' | kw= '=>' | (kw= '>' ( ( ( ( '>' '>' ) )=> (kw= '>' kw= '>' ) ) | kw= '>' ) ) | (kw= '<' ( ( ( ( '<' '<' ) )=> (kw= '<' kw= '<' ) ) | kw= '<' | kw= '=>' ) ) | kw= '<>' | kw= '?:' )";
         }
     }
-    static final String DFA56_eotS =
+    static final String DFA53_eotS =
         "\116\uffff";
-    static final String DFA56_eofS =
+    static final String DFA53_eofS =
         "\1\2\115\uffff";
-    static final String DFA56_minS =
+    static final String DFA53_minS =
         "\1\4\1\0\114\uffff";
-    static final String DFA56_maxS =
-        "\1\150\1\0\114\uffff";
-    static final String DFA56_acceptS =
+    static final String DFA53_maxS =
+        "\1\151\1\0\114\uffff";
+    static final String DFA53_acceptS =
         "\2\uffff\1\2\112\uffff\1\1";
-    static final String DFA56_specialS =
+    static final String DFA53_specialS =
         "\1\uffff\1\0\114\uffff}>";
-    static final String[] DFA56_transitionS = {
-            "\5\2\5\uffff\2\2\1\uffff\2\2\6\uffff\3\2\14\uffff\1\1\1\2\1"+
+    static final String[] DFA53_transitionS = {
+            "\5\2\5\uffff\2\2\1\uffff\2\2\7\uffff\2\2\14\uffff\1\1\2\2\1"+
             "\uffff\43\2\1\uffff\32\2",
             "\1\uffff",
             "",
@@ -23931,34 +23881,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA56_eot = DFA.unpackEncodedString(DFA56_eotS);
-    static final short[] DFA56_eof = DFA.unpackEncodedString(DFA56_eofS);
-    static final char[] DFA56_min = DFA.unpackEncodedStringToUnsignedChars(DFA56_minS);
-    static final char[] DFA56_max = DFA.unpackEncodedStringToUnsignedChars(DFA56_maxS);
-    static final short[] DFA56_accept = DFA.unpackEncodedString(DFA56_acceptS);
-    static final short[] DFA56_special = DFA.unpackEncodedString(DFA56_specialS);
-    static final short[][] DFA56_transition;
+    static final short[] DFA53_eot = DFA.unpackEncodedString(DFA53_eotS);
+    static final short[] DFA53_eof = DFA.unpackEncodedString(DFA53_eofS);
+    static final char[] DFA53_min = DFA.unpackEncodedStringToUnsignedChars(DFA53_minS);
+    static final char[] DFA53_max = DFA.unpackEncodedStringToUnsignedChars(DFA53_maxS);
+    static final short[] DFA53_accept = DFA.unpackEncodedString(DFA53_acceptS);
+    static final short[] DFA53_special = DFA.unpackEncodedString(DFA53_specialS);
+    static final short[][] DFA53_transition;
 
     static {
-        int numStates = DFA56_transitionS.length;
-        DFA56_transition = new short[numStates][];
+        int numStates = DFA53_transitionS.length;
+        DFA53_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA56_transition[i] = DFA.unpackEncodedString(DFA56_transitionS[i]);
+            DFA53_transition[i] = DFA.unpackEncodedString(DFA53_transitionS[i]);
         }
     }
 
-    class DFA56 extends DFA {
+    class DFA53 extends DFA {
 
-        public DFA56(BaseRecognizer recognizer) {
+        public DFA53(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 56;
-            this.eot = DFA56_eot;
-            this.eof = DFA56_eof;
-            this.min = DFA56_min;
-            this.max = DFA56_max;
-            this.accept = DFA56_accept;
-            this.special = DFA56_special;
-            this.transition = DFA56_transition;
+            this.decisionNumber = 53;
+            this.eot = DFA53_eot;
+            this.eof = DFA53_eof;
+            this.min = DFA53_min;
+            this.max = DFA53_max;
+            this.accept = DFA53_accept;
+            this.special = DFA53_special;
+            this.transition = DFA53_transition;
         }
         public String getDescription() {
             return "2933:2: ( ( ( ( '(' ) )=> (lv_explicitOperationCall_17_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_memberCallArguments_18_0= ruleXShortClosure ) ) | ( ( (lv_memberCallArguments_19_0= ruleXExpression ) ) (otherlv_20= ',' ( (lv_memberCallArguments_21_0= ruleXExpression ) ) )* ) )? otherlv_22= ')' )?";
@@ -23968,10 +23918,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA56_1 = input.LA(1);
+                        int LA53_1 = input.LA(1);
 
                          
-                        int index56_1 = input.index();
+                        int index53_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred23_InternalDatatypeGrammar()) ) {s = 77;}
@@ -23979,33 +23929,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index56_1);
+                        input.seek(index53_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 56, _s, input);
+                new NoViableAltException(getDescription(), 53, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA55_eotS =
+    static final String DFA52_eotS =
         "\44\uffff";
-    static final String DFA55_eofS =
+    static final String DFA52_eofS =
         "\44\uffff";
-    static final String DFA55_minS =
+    static final String DFA52_minS =
         "\1\4\2\0\41\uffff";
-    static final String DFA55_maxS =
-        "\1\147\2\0\41\uffff";
-    static final String DFA55_acceptS =
+    static final String DFA52_maxS =
+        "\1\150\2\0\41\uffff";
+    static final String DFA52_acceptS =
         "\3\uffff\2\1\1\2\35\uffff\1\3";
-    static final String DFA55_specialS =
+    static final String DFA52_specialS =
         "\1\0\1\1\1\2\41\uffff}>";
-    static final String[] DFA55_transitionS = {
-            "\1\1\4\5\5\uffff\1\5\2\uffff\1\5\26\uffff\1\2\1\43\1\uffff\2"+
-            "\5\6\uffff\1\5\14\uffff\1\3\2\uffff\2\5\3\uffff\1\5\5\uffff"+
-            "\1\4\1\5\1\uffff\1\5\3\uffff\3\5\2\uffff\14\5\1\uffff\1\5",
+    static final String[] DFA52_transitionS = {
+            "\1\1\4\5\5\uffff\1\5\2\uffff\1\5\26\uffff\1\2\1\uffff\1\43\1"+
+            "\uffff\2\5\6\uffff\1\5\14\uffff\1\3\2\uffff\2\5\3\uffff\1\5"+
+            "\5\uffff\1\4\1\5\1\uffff\1\5\3\uffff\3\5\2\uffff\14\5\1\uffff"+
+            "\1\5",
             "\1\uffff",
             "\1\uffff",
             "",
@@ -24043,34 +23994,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA55_eot = DFA.unpackEncodedString(DFA55_eotS);
-    static final short[] DFA55_eof = DFA.unpackEncodedString(DFA55_eofS);
-    static final char[] DFA55_min = DFA.unpackEncodedStringToUnsignedChars(DFA55_minS);
-    static final char[] DFA55_max = DFA.unpackEncodedStringToUnsignedChars(DFA55_maxS);
-    static final short[] DFA55_accept = DFA.unpackEncodedString(DFA55_acceptS);
-    static final short[] DFA55_special = DFA.unpackEncodedString(DFA55_specialS);
-    static final short[][] DFA55_transition;
+    static final short[] DFA52_eot = DFA.unpackEncodedString(DFA52_eotS);
+    static final short[] DFA52_eof = DFA.unpackEncodedString(DFA52_eofS);
+    static final char[] DFA52_min = DFA.unpackEncodedStringToUnsignedChars(DFA52_minS);
+    static final char[] DFA52_max = DFA.unpackEncodedStringToUnsignedChars(DFA52_maxS);
+    static final short[] DFA52_accept = DFA.unpackEncodedString(DFA52_acceptS);
+    static final short[] DFA52_special = DFA.unpackEncodedString(DFA52_specialS);
+    static final short[][] DFA52_transition;
 
     static {
-        int numStates = DFA55_transitionS.length;
-        DFA55_transition = new short[numStates][];
+        int numStates = DFA52_transitionS.length;
+        DFA52_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA55_transition[i] = DFA.unpackEncodedString(DFA55_transitionS[i]);
+            DFA52_transition[i] = DFA.unpackEncodedString(DFA52_transitionS[i]);
         }
     }
 
-    class DFA55 extends DFA {
+    class DFA52 extends DFA {
 
-        public DFA55(BaseRecognizer recognizer) {
+        public DFA52(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 55;
-            this.eot = DFA55_eot;
-            this.eof = DFA55_eof;
-            this.min = DFA55_min;
-            this.max = DFA55_max;
-            this.accept = DFA55_accept;
-            this.special = DFA55_special;
-            this.transition = DFA55_transition;
+            this.decisionNumber = 52;
+            this.eot = DFA52_eot;
+            this.eof = DFA52_eof;
+            this.min = DFA52_min;
+            this.max = DFA52_max;
+            this.accept = DFA52_accept;
+            this.special = DFA52_special;
+            this.transition = DFA52_transition;
         }
         public String getDescription() {
             return "2954:2: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_memberCallArguments_18_0= ruleXShortClosure ) ) | ( ( (lv_memberCallArguments_19_0= ruleXExpression ) ) (otherlv_20= ',' ( (lv_memberCallArguments_21_0= ruleXExpression ) ) )* ) )?";
@@ -24080,33 +24031,33 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA55_0 = input.LA(1);
+                        int LA52_0 = input.LA(1);
 
                          
-                        int index55_0 = input.index();
+                        int index52_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA55_0==RULE_ID) ) {s = 1;}
+                        if ( (LA52_0==RULE_ID) ) {s = 1;}
 
-                        else if ( (LA55_0==40) ) {s = 2;}
+                        else if ( (LA52_0==40) ) {s = 2;}
 
-                        else if ( (LA55_0==64) && (synpred24_InternalDatatypeGrammar())) {s = 3;}
+                        else if ( (LA52_0==65) && (synpred24_InternalDatatypeGrammar())) {s = 3;}
 
-                        else if ( (LA55_0==78) && (synpred24_InternalDatatypeGrammar())) {s = 4;}
+                        else if ( (LA52_0==79) && (synpred24_InternalDatatypeGrammar())) {s = 4;}
 
-                        else if ( ((LA55_0>=RULE_STRING && LA55_0<=RULE_DECIMAL)||LA55_0==14||LA55_0==17||(LA55_0>=43 && LA55_0<=44)||LA55_0==51||(LA55_0>=67 && LA55_0<=68)||LA55_0==72||LA55_0==79||LA55_0==81||(LA55_0>=85 && LA55_0<=87)||(LA55_0>=90 && LA55_0<=101)||LA55_0==103) ) {s = 5;}
+                        else if ( ((LA52_0>=RULE_STRING && LA52_0<=RULE_DECIMAL)||LA52_0==14||LA52_0==17||(LA52_0>=44 && LA52_0<=45)||LA52_0==52||(LA52_0>=68 && LA52_0<=69)||LA52_0==73||LA52_0==80||LA52_0==82||(LA52_0>=86 && LA52_0<=88)||(LA52_0>=91 && LA52_0<=102)||LA52_0==104) ) {s = 5;}
 
-                        else if ( (LA55_0==41) ) {s = 35;}
+                        else if ( (LA52_0==42) ) {s = 35;}
 
                          
-                        input.seek(index55_0);
+                        input.seek(index52_0);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA55_1 = input.LA(1);
+                        int LA52_1 = input.LA(1);
 
                          
-                        int index55_1 = input.index();
+                        int index52_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred24_InternalDatatypeGrammar()) ) {s = 4;}
@@ -24114,14 +24065,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 5;}
 
                          
-                        input.seek(index55_1);
+                        input.seek(index52_1);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA55_2 = input.LA(1);
+                        int LA52_2 = input.LA(1);
 
                          
-                        int index55_2 = input.index();
+                        int index52_2 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred24_InternalDatatypeGrammar()) ) {s = 4;}
@@ -24129,31 +24080,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 5;}
 
                          
-                        input.seek(index55_2);
+                        input.seek(index52_2);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 55, _s, input);
+                new NoViableAltException(getDescription(), 52, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA57_eotS =
+    static final String DFA54_eotS =
         "\116\uffff";
-    static final String DFA57_eofS =
+    static final String DFA54_eofS =
         "\1\2\115\uffff";
-    static final String DFA57_minS =
+    static final String DFA54_minS =
         "\1\4\1\0\114\uffff";
-    static final String DFA57_maxS =
-        "\1\150\1\0\114\uffff";
-    static final String DFA57_acceptS =
+    static final String DFA54_maxS =
+        "\1\151\1\0\114\uffff";
+    static final String DFA54_acceptS =
         "\2\uffff\1\2\112\uffff\1\1";
-    static final String DFA57_specialS =
+    static final String DFA54_specialS =
         "\1\uffff\1\0\114\uffff}>";
-    static final String[] DFA57_transitionS = {
-            "\5\2\5\uffff\2\2\1\uffff\2\2\6\uffff\3\2\14\uffff\2\2\1\uffff"+
+    static final String[] DFA54_transitionS = {
+            "\5\2\5\uffff\2\2\1\uffff\2\2\7\uffff\2\2\14\uffff\3\2\1\uffff"+
             "\1\2\1\1\41\2\1\uffff\32\2",
             "\1\uffff",
             "",
@@ -24234,34 +24185,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA57_eot = DFA.unpackEncodedString(DFA57_eotS);
-    static final short[] DFA57_eof = DFA.unpackEncodedString(DFA57_eofS);
-    static final char[] DFA57_min = DFA.unpackEncodedStringToUnsignedChars(DFA57_minS);
-    static final char[] DFA57_max = DFA.unpackEncodedStringToUnsignedChars(DFA57_maxS);
-    static final short[] DFA57_accept = DFA.unpackEncodedString(DFA57_acceptS);
-    static final short[] DFA57_special = DFA.unpackEncodedString(DFA57_specialS);
-    static final short[][] DFA57_transition;
+    static final short[] DFA54_eot = DFA.unpackEncodedString(DFA54_eotS);
+    static final short[] DFA54_eof = DFA.unpackEncodedString(DFA54_eofS);
+    static final char[] DFA54_min = DFA.unpackEncodedStringToUnsignedChars(DFA54_minS);
+    static final char[] DFA54_max = DFA.unpackEncodedStringToUnsignedChars(DFA54_maxS);
+    static final short[] DFA54_accept = DFA.unpackEncodedString(DFA54_acceptS);
+    static final short[] DFA54_special = DFA.unpackEncodedString(DFA54_specialS);
+    static final short[][] DFA54_transition;
 
     static {
-        int numStates = DFA57_transitionS.length;
-        DFA57_transition = new short[numStates][];
+        int numStates = DFA54_transitionS.length;
+        DFA54_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA57_transition[i] = DFA.unpackEncodedString(DFA57_transitionS[i]);
+            DFA54_transition[i] = DFA.unpackEncodedString(DFA54_transitionS[i]);
         }
     }
 
-    class DFA57 extends DFA {
+    class DFA54 extends DFA {
 
-        public DFA57(BaseRecognizer recognizer) {
+        public DFA54(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 57;
-            this.eot = DFA57_eot;
-            this.eof = DFA57_eof;
-            this.min = DFA57_min;
-            this.max = DFA57_max;
-            this.accept = DFA57_accept;
-            this.special = DFA57_special;
-            this.transition = DFA57_transition;
+            this.decisionNumber = 54;
+            this.eot = DFA54_eot;
+            this.eof = DFA54_eof;
+            this.min = DFA54_min;
+            this.max = DFA54_max;
+            this.accept = DFA54_accept;
+            this.special = DFA54_special;
+            this.transition = DFA54_transition;
         }
         public String getDescription() {
             return "3033:3: ( ( ( () '[' ) )=> (lv_memberCallArguments_23_0= ruleXClosure ) )?";
@@ -24271,10 +24222,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA57_1 = input.LA(1);
+                        int LA54_1 = input.LA(1);
 
                          
-                        int index57_1 = input.index();
+                        int index54_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred25_InternalDatatypeGrammar()) ) {s = 77;}
@@ -24282,32 +24233,32 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index57_1);
+                        input.seek(index54_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 57, _s, input);
+                new NoViableAltException(getDescription(), 54, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA59_eotS =
+    static final String DFA56_eotS =
         "\40\uffff";
-    static final String DFA59_eofS =
+    static final String DFA56_eofS =
         "\40\uffff";
-    static final String DFA59_minS =
+    static final String DFA56_minS =
         "\1\4\26\uffff\1\0\10\uffff";
-    static final String DFA59_maxS =
-        "\1\147\26\uffff\1\0\10\uffff";
-    static final String DFA59_acceptS =
+    static final String DFA56_maxS =
+        "\1\150\26\uffff\1\0\10\uffff";
+    static final String DFA56_acceptS =
         "\1\uffff\1\1\1\2\1\3\1\4\1\5\6\uffff\1\6\11\uffff\1\7\1\uffff\1"+
         "\12\1\13\1\14\1\15\1\16\1\17\1\10\1\11";
-    static final String DFA59_specialS =
+    static final String DFA56_specialS =
         "\1\0\26\uffff\1\1\10\uffff}>";
-    static final String[] DFA59_transitionS = {
-            "\1\5\4\14\5\uffff\1\2\2\uffff\1\5\26\uffff\1\35\2\uffff\2\14"+
+    static final String[] DFA56_transitionS = {
+            "\1\5\4\14\5\uffff\1\2\2\uffff\1\5\26\uffff\1\35\3\uffff\2\14"+
             "\6\uffff\1\5\33\uffff\1\26\1\uffff\1\3\3\uffff\1\27\1\30\1\31"+
             "\2\uffff\4\5\1\1\4\14\1\32\1\33\1\34\1\uffff\1\4",
             "",
@@ -24343,34 +24294,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA59_eot = DFA.unpackEncodedString(DFA59_eotS);
-    static final short[] DFA59_eof = DFA.unpackEncodedString(DFA59_eofS);
-    static final char[] DFA59_min = DFA.unpackEncodedStringToUnsignedChars(DFA59_minS);
-    static final char[] DFA59_max = DFA.unpackEncodedStringToUnsignedChars(DFA59_maxS);
-    static final short[] DFA59_accept = DFA.unpackEncodedString(DFA59_acceptS);
-    static final short[] DFA59_special = DFA.unpackEncodedString(DFA59_specialS);
-    static final short[][] DFA59_transition;
+    static final short[] DFA56_eot = DFA.unpackEncodedString(DFA56_eotS);
+    static final short[] DFA56_eof = DFA.unpackEncodedString(DFA56_eofS);
+    static final char[] DFA56_min = DFA.unpackEncodedStringToUnsignedChars(DFA56_minS);
+    static final char[] DFA56_max = DFA.unpackEncodedStringToUnsignedChars(DFA56_maxS);
+    static final short[] DFA56_accept = DFA.unpackEncodedString(DFA56_acceptS);
+    static final short[] DFA56_special = DFA.unpackEncodedString(DFA56_specialS);
+    static final short[][] DFA56_transition;
 
     static {
-        int numStates = DFA59_transitionS.length;
-        DFA59_transition = new short[numStates][];
+        int numStates = DFA56_transitionS.length;
+        DFA56_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA59_transition[i] = DFA.unpackEncodedString(DFA59_transitionS[i]);
+            DFA56_transition[i] = DFA.unpackEncodedString(DFA56_transitionS[i]);
         }
     }
 
-    class DFA59 extends DFA {
+    class DFA56 extends DFA {
 
-        public DFA59(BaseRecognizer recognizer) {
+        public DFA56(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 59;
-            this.eot = DFA59_eot;
-            this.eof = DFA59_eof;
-            this.min = DFA59_min;
-            this.max = DFA59_max;
-            this.accept = DFA59_accept;
-            this.special = DFA59_special;
-            this.transition = DFA59_transition;
+            this.decisionNumber = 56;
+            this.eot = DFA56_eot;
+            this.eof = DFA56_eof;
+            this.min = DFA56_min;
+            this.max = DFA56_max;
+            this.accept = DFA56_accept;
+            this.special = DFA56_special;
+            this.transition = DFA56_transition;
         }
         public String getDescription() {
             return "3074:1: (this_XConstructorCall_0= ruleXConstructorCall | this_XBlockExpression_1= ruleXBlockExpression | this_XSwitchExpression_2= ruleXSwitchExpression | ( ( ( () 'synchronized' '(' ) )=>this_XSynchronizedExpression_3= ruleXSynchronizedExpression ) | this_XFeatureCall_4= ruleXFeatureCall | this_XLiteral_5= ruleXLiteral | this_XIfExpression_6= ruleXIfExpression | ( ( ( () 'for' '(' ( ( ruleJvmFormalParameter ) ) ':' ) )=>this_XForLoopExpression_7= ruleXForLoopExpression ) | this_XBasicForLoopExpression_8= ruleXBasicForLoopExpression | this_XWhileExpression_9= ruleXWhileExpression | this_XDoWhileExpression_10= ruleXDoWhileExpression | this_XThrowExpression_11= ruleXThrowExpression | this_XReturnExpression_12= ruleXReturnExpression | this_XTryCatchFinallyExpression_13= ruleXTryCatchFinallyExpression | this_XParenthesizedExpression_14= ruleXParenthesizedExpression )";
@@ -24380,49 +24331,49 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA59_0 = input.LA(1);
+                        int LA56_0 = input.LA(1);
 
                          
-                        int index59_0 = input.index();
+                        int index56_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA59_0==94) ) {s = 1;}
+                        if ( (LA56_0==95) ) {s = 1;}
 
-                        else if ( (LA59_0==14) ) {s = 2;}
+                        else if ( (LA56_0==14) ) {s = 2;}
 
-                        else if ( (LA59_0==81) ) {s = 3;}
+                        else if ( (LA56_0==82) ) {s = 3;}
 
-                        else if ( (LA59_0==103) && (synpred26_InternalDatatypeGrammar())) {s = 4;}
+                        else if ( (LA56_0==104) && (synpred26_InternalDatatypeGrammar())) {s = 4;}
 
-                        else if ( (LA59_0==RULE_ID||LA59_0==17||LA59_0==51||(LA59_0>=90 && LA59_0<=93)) ) {s = 5;}
+                        else if ( (LA56_0==RULE_ID||LA56_0==17||LA56_0==52||(LA56_0>=91 && LA56_0<=94)) ) {s = 5;}
 
-                        else if ( ((LA59_0>=RULE_STRING && LA59_0<=RULE_DECIMAL)||(LA59_0>=43 && LA59_0<=44)||(LA59_0>=95 && LA59_0<=98)) ) {s = 12;}
+                        else if ( ((LA56_0>=RULE_STRING && LA56_0<=RULE_DECIMAL)||(LA56_0>=44 && LA56_0<=45)||(LA56_0>=96 && LA56_0<=99)) ) {s = 12;}
 
-                        else if ( (LA59_0==79) ) {s = 22;}
+                        else if ( (LA56_0==80) ) {s = 22;}
 
-                        else if ( (LA59_0==85) ) {s = 23;}
+                        else if ( (LA56_0==86) ) {s = 23;}
 
-                        else if ( (LA59_0==86) ) {s = 24;}
+                        else if ( (LA56_0==87) ) {s = 24;}
 
-                        else if ( (LA59_0==87) ) {s = 25;}
+                        else if ( (LA56_0==88) ) {s = 25;}
 
-                        else if ( (LA59_0==99) ) {s = 26;}
+                        else if ( (LA56_0==100) ) {s = 26;}
 
-                        else if ( (LA59_0==100) ) {s = 27;}
+                        else if ( (LA56_0==101) ) {s = 27;}
 
-                        else if ( (LA59_0==101) ) {s = 28;}
+                        else if ( (LA56_0==102) ) {s = 28;}
 
-                        else if ( (LA59_0==40) ) {s = 29;}
+                        else if ( (LA56_0==40) ) {s = 29;}
 
                          
-                        input.seek(index59_0);
+                        input.seek(index56_0);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA59_23 = input.LA(1);
+                        int LA56_23 = input.LA(1);
 
                          
-                        int index59_23 = input.index();
+                        int index56_23 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred27_InternalDatatypeGrammar()) ) {s = 30;}
@@ -24430,31 +24381,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 31;}
 
                          
-                        input.seek(index59_23);
+                        input.seek(index56_23);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 59, _s, input);
+                new NoViableAltException(getDescription(), 56, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA68_eotS =
+    static final String DFA65_eotS =
         "\46\uffff";
-    static final String DFA68_eofS =
+    static final String DFA65_eofS =
         "\46\uffff";
-    static final String DFA68_minS =
+    static final String DFA65_minS =
         "\1\4\2\0\43\uffff";
-    static final String DFA68_maxS =
-        "\1\147\2\0\43\uffff";
-    static final String DFA68_acceptS =
+    static final String DFA65_maxS =
+        "\1\150\2\0\43\uffff";
+    static final String DFA65_acceptS =
         "\3\uffff\2\1\1\2\40\uffff";
-    static final String DFA68_specialS =
+    static final String DFA65_specialS =
         "\1\0\1\1\1\2\43\uffff}>";
-    static final String[] DFA68_transitionS = {
-            "\1\1\4\5\5\uffff\1\5\2\uffff\1\5\26\uffff\1\2\2\uffff\3\5\5"+
+    static final String[] DFA65_transitionS = {
+            "\1\1\4\5\5\uffff\1\5\2\uffff\1\5\26\uffff\1\2\3\uffff\3\5\5"+
             "\uffff\1\5\14\uffff\1\3\2\uffff\2\5\3\uffff\1\5\5\uffff\1\4"+
             "\1\5\1\uffff\1\5\3\uffff\21\5\1\uffff\1\5",
             "\1\uffff",
@@ -24496,34 +24447,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA68_eot = DFA.unpackEncodedString(DFA68_eotS);
-    static final short[] DFA68_eof = DFA.unpackEncodedString(DFA68_eofS);
-    static final char[] DFA68_min = DFA.unpackEncodedStringToUnsignedChars(DFA68_minS);
-    static final char[] DFA68_max = DFA.unpackEncodedStringToUnsignedChars(DFA68_maxS);
-    static final short[] DFA68_accept = DFA.unpackEncodedString(DFA68_acceptS);
-    static final short[] DFA68_special = DFA.unpackEncodedString(DFA68_specialS);
-    static final short[][] DFA68_transition;
+    static final short[] DFA65_eot = DFA.unpackEncodedString(DFA65_eotS);
+    static final short[] DFA65_eof = DFA.unpackEncodedString(DFA65_eofS);
+    static final char[] DFA65_min = DFA.unpackEncodedStringToUnsignedChars(DFA65_minS);
+    static final char[] DFA65_max = DFA.unpackEncodedStringToUnsignedChars(DFA65_maxS);
+    static final short[] DFA65_accept = DFA.unpackEncodedString(DFA65_acceptS);
+    static final short[] DFA65_special = DFA.unpackEncodedString(DFA65_specialS);
+    static final short[][] DFA65_transition;
 
     static {
-        int numStates = DFA68_transitionS.length;
-        DFA68_transition = new short[numStates][];
+        int numStates = DFA65_transitionS.length;
+        DFA65_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA68_transition[i] = DFA.unpackEncodedString(DFA68_transitionS[i]);
+            DFA65_transition[i] = DFA.unpackEncodedString(DFA65_transitionS[i]);
         }
     }
 
-    class DFA68 extends DFA {
+    class DFA65 extends DFA {
 
-        public DFA68(BaseRecognizer recognizer) {
+        public DFA65(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 68;
-            this.eot = DFA68_eot;
-            this.eof = DFA68_eof;
-            this.min = DFA68_min;
-            this.max = DFA68_max;
-            this.accept = DFA68_accept;
-            this.special = DFA68_special;
-            this.transition = DFA68_transition;
+            this.decisionNumber = 65;
+            this.eot = DFA65_eot;
+            this.eof = DFA65_eof;
+            this.min = DFA65_min;
+            this.max = DFA65_max;
+            this.accept = DFA65_accept;
+            this.special = DFA65_special;
+            this.transition = DFA65_transition;
         }
         public String getDescription() {
             return "3557:3: ( ( ( ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> ( ( ( (lv_declaredFormalParameters_2_0= ruleJvmFormalParameter ) ) (otherlv_3= ',' ( (lv_declaredFormalParameters_4_0= ruleJvmFormalParameter ) ) )* )? ( (lv_explicitSyntax_5_0= '|' ) ) ) )?";
@@ -24533,31 +24484,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA68_0 = input.LA(1);
+                        int LA65_0 = input.LA(1);
 
                          
-                        int index68_0 = input.index();
+                        int index65_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA68_0==RULE_ID) ) {s = 1;}
+                        if ( (LA65_0==RULE_ID) ) {s = 1;}
 
-                        else if ( (LA68_0==40) ) {s = 2;}
+                        else if ( (LA65_0==40) ) {s = 2;}
 
-                        else if ( (LA68_0==64) && (synpred30_InternalDatatypeGrammar())) {s = 3;}
+                        else if ( (LA65_0==65) && (synpred30_InternalDatatypeGrammar())) {s = 3;}
 
-                        else if ( (LA68_0==78) && (synpred30_InternalDatatypeGrammar())) {s = 4;}
+                        else if ( (LA65_0==79) && (synpred30_InternalDatatypeGrammar())) {s = 4;}
 
-                        else if ( ((LA68_0>=RULE_STRING && LA68_0<=RULE_DECIMAL)||LA68_0==14||LA68_0==17||(LA68_0>=43 && LA68_0<=45)||LA68_0==51||(LA68_0>=67 && LA68_0<=68)||LA68_0==72||LA68_0==79||LA68_0==81||(LA68_0>=85 && LA68_0<=101)||LA68_0==103) ) {s = 5;}
+                        else if ( ((LA65_0>=RULE_STRING && LA65_0<=RULE_DECIMAL)||LA65_0==14||LA65_0==17||(LA65_0>=44 && LA65_0<=46)||LA65_0==52||(LA65_0>=68 && LA65_0<=69)||LA65_0==73||LA65_0==80||LA65_0==82||(LA65_0>=86 && LA65_0<=102)||LA65_0==104) ) {s = 5;}
 
                          
-                        input.seek(index68_0);
+                        input.seek(index65_0);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA68_1 = input.LA(1);
+                        int LA65_1 = input.LA(1);
 
                          
-                        int index68_1 = input.index();
+                        int index65_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred30_InternalDatatypeGrammar()) ) {s = 4;}
@@ -24565,14 +24516,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 5;}
 
                          
-                        input.seek(index68_1);
+                        input.seek(index65_1);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA68_2 = input.LA(1);
+                        int LA65_2 = input.LA(1);
 
                          
-                        int index68_2 = input.index();
+                        int index65_2 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred30_InternalDatatypeGrammar()) ) {s = 4;}
@@ -24580,31 +24531,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 5;}
 
                          
-                        input.seek(index68_2);
+                        input.seek(index65_2);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 68, _s, input);
+                new NoViableAltException(getDescription(), 65, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA75_eotS =
+    static final String DFA72_eotS =
         "\43\uffff";
-    static final String DFA75_eofS =
+    static final String DFA72_eofS =
         "\43\uffff";
-    static final String DFA75_minS =
+    static final String DFA72_minS =
         "\1\4\1\0\41\uffff";
-    static final String DFA75_maxS =
-        "\1\147\1\0\41\uffff";
-    static final String DFA75_acceptS =
+    static final String DFA72_maxS =
+        "\1\150\1\0\41\uffff";
+    static final String DFA72_acceptS =
         "\2\uffff\1\2\37\uffff\1\1";
-    static final String DFA75_specialS =
+    static final String DFA72_specialS =
         "\1\uffff\1\0\41\uffff}>";
-    static final String[] DFA75_transitionS = {
-            "\5\2\5\uffff\1\2\2\uffff\1\2\26\uffff\1\1\2\uffff\2\2\6\uffff"+
+    static final String[] DFA72_transitionS = {
+            "\5\2\5\uffff\1\2\2\uffff\1\2\26\uffff\1\1\3\uffff\2\2\6\uffff"+
             "\1\2\14\uffff\1\2\2\uffff\2\2\3\uffff\1\2\6\uffff\1\2\1\uffff"+
             "\1\2\3\uffff\3\2\2\uffff\14\2\1\uffff\1\2",
             "\1\uffff",
@@ -24643,34 +24594,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA75_eot = DFA.unpackEncodedString(DFA75_eotS);
-    static final short[] DFA75_eof = DFA.unpackEncodedString(DFA75_eofS);
-    static final char[] DFA75_min = DFA.unpackEncodedStringToUnsignedChars(DFA75_minS);
-    static final char[] DFA75_max = DFA.unpackEncodedStringToUnsignedChars(DFA75_maxS);
-    static final short[] DFA75_accept = DFA.unpackEncodedString(DFA75_acceptS);
-    static final short[] DFA75_special = DFA.unpackEncodedString(DFA75_specialS);
-    static final short[][] DFA75_transition;
+    static final short[] DFA72_eot = DFA.unpackEncodedString(DFA72_eotS);
+    static final short[] DFA72_eof = DFA.unpackEncodedString(DFA72_eofS);
+    static final char[] DFA72_min = DFA.unpackEncodedStringToUnsignedChars(DFA72_minS);
+    static final char[] DFA72_max = DFA.unpackEncodedStringToUnsignedChars(DFA72_maxS);
+    static final short[] DFA72_accept = DFA.unpackEncodedString(DFA72_acceptS);
+    static final short[] DFA72_special = DFA.unpackEncodedString(DFA72_specialS);
+    static final short[][] DFA72_transition;
 
     static {
-        int numStates = DFA75_transitionS.length;
-        DFA75_transition = new short[numStates][];
+        int numStates = DFA72_transitionS.length;
+        DFA72_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA75_transition[i] = DFA.unpackEncodedString(DFA75_transitionS[i]);
+            DFA72_transition[i] = DFA.unpackEncodedString(DFA72_transitionS[i]);
         }
     }
 
-    class DFA75 extends DFA {
+    class DFA72 extends DFA {
 
-        public DFA75(BaseRecognizer recognizer) {
+        public DFA72(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 75;
-            this.eot = DFA75_eot;
-            this.eof = DFA75_eof;
-            this.min = DFA75_min;
-            this.max = DFA75_max;
-            this.accept = DFA75_accept;
-            this.special = DFA75_special;
-            this.transition = DFA75_transition;
+            this.decisionNumber = 72;
+            this.eot = DFA72_eot;
+            this.eof = DFA72_eof;
+            this.min = DFA72_min;
+            this.max = DFA72_max;
+            this.accept = DFA72_accept;
+            this.special = DFA72_special;
+            this.transition = DFA72_transition;
         }
         public String getDescription() {
             return "3981:1: ( ( ( ( ( '(' ( ( ruleJvmFormalParameter ) ) ':' ) )=> (otherlv_2= '(' ( (lv_declaredParam_3_0= ruleJvmFormalParameter ) ) otherlv_4= ':' ) ) ( (lv_switch_5_0= ruleXExpression ) ) otherlv_6= ')' ) | ( ( ( ( ( ( ruleJvmFormalParameter ) ) ':' ) )=> ( ( (lv_declaredParam_7_0= ruleJvmFormalParameter ) ) otherlv_8= ':' ) )? ( (lv_switch_9_0= ruleXExpression ) ) ) )";
@@ -24680,10 +24631,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA75_1 = input.LA(1);
+                        int LA72_1 = input.LA(1);
 
                          
-                        int index75_1 = input.index();
+                        int index72_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred33_InternalDatatypeGrammar()) ) {s = 34;}
@@ -24691,31 +24642,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index75_1);
+                        input.seek(index72_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 75, _s, input);
+                new NoViableAltException(getDescription(), 72, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA74_eotS =
+    static final String DFA71_eotS =
         "\42\uffff";
-    static final String DFA74_eofS =
+    static final String DFA71_eofS =
         "\42\uffff";
-    static final String DFA74_minS =
+    static final String DFA71_minS =
         "\1\4\2\0\37\uffff";
-    static final String DFA74_maxS =
-        "\1\147\2\0\37\uffff";
-    static final String DFA74_acceptS =
+    static final String DFA71_maxS =
+        "\1\150\2\0\37\uffff";
+    static final String DFA71_acceptS =
         "\3\uffff\1\1\1\2\35\uffff";
-    static final String DFA74_specialS =
+    static final String DFA71_specialS =
         "\1\0\1\1\1\2\37\uffff}>";
-    static final String[] DFA74_transitionS = {
-            "\1\1\4\4\5\uffff\1\4\2\uffff\1\4\26\uffff\1\2\2\uffff\2\4\6"+
+    static final String[] DFA71_transitionS = {
+            "\1\1\4\4\5\uffff\1\4\2\uffff\1\4\26\uffff\1\2\3\uffff\2\4\6"+
             "\uffff\1\4\14\uffff\1\3\2\uffff\2\4\3\uffff\1\4\6\uffff\1\4"+
             "\1\uffff\1\4\3\uffff\3\4\2\uffff\14\4\1\uffff\1\4",
             "\1\uffff",
@@ -24753,34 +24704,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA74_eot = DFA.unpackEncodedString(DFA74_eotS);
-    static final short[] DFA74_eof = DFA.unpackEncodedString(DFA74_eofS);
-    static final char[] DFA74_min = DFA.unpackEncodedStringToUnsignedChars(DFA74_minS);
-    static final char[] DFA74_max = DFA.unpackEncodedStringToUnsignedChars(DFA74_maxS);
-    static final short[] DFA74_accept = DFA.unpackEncodedString(DFA74_acceptS);
-    static final short[] DFA74_special = DFA.unpackEncodedString(DFA74_specialS);
-    static final short[][] DFA74_transition;
+    static final short[] DFA71_eot = DFA.unpackEncodedString(DFA71_eotS);
+    static final short[] DFA71_eof = DFA.unpackEncodedString(DFA71_eofS);
+    static final char[] DFA71_min = DFA.unpackEncodedStringToUnsignedChars(DFA71_minS);
+    static final char[] DFA71_max = DFA.unpackEncodedStringToUnsignedChars(DFA71_maxS);
+    static final short[] DFA71_accept = DFA.unpackEncodedString(DFA71_acceptS);
+    static final short[] DFA71_special = DFA.unpackEncodedString(DFA71_specialS);
+    static final short[][] DFA71_transition;
 
     static {
-        int numStates = DFA74_transitionS.length;
-        DFA74_transition = new short[numStates][];
+        int numStates = DFA71_transitionS.length;
+        DFA71_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA74_transition[i] = DFA.unpackEncodedString(DFA74_transitionS[i]);
+            DFA71_transition[i] = DFA.unpackEncodedString(DFA71_transitionS[i]);
         }
     }
 
-    class DFA74 extends DFA {
+    class DFA71 extends DFA {
 
-        public DFA74(BaseRecognizer recognizer) {
+        public DFA71(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 74;
-            this.eot = DFA74_eot;
-            this.eof = DFA74_eof;
-            this.min = DFA74_min;
-            this.max = DFA74_max;
-            this.accept = DFA74_accept;
-            this.special = DFA74_special;
-            this.transition = DFA74_transition;
+            this.decisionNumber = 71;
+            this.eot = DFA71_eot;
+            this.eof = DFA71_eof;
+            this.min = DFA71_min;
+            this.max = DFA71_max;
+            this.accept = DFA71_accept;
+            this.special = DFA71_special;
+            this.transition = DFA71_transition;
         }
         public String getDescription() {
             return "4036:7: ( ( ( ( ( ruleJvmFormalParameter ) ) ':' ) )=> ( ( (lv_declaredParam_7_0= ruleJvmFormalParameter ) ) otherlv_8= ':' ) )?";
@@ -24790,29 +24741,29 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA74_0 = input.LA(1);
+                        int LA71_0 = input.LA(1);
 
                          
-                        int index74_0 = input.index();
+                        int index71_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA74_0==RULE_ID) ) {s = 1;}
+                        if ( (LA71_0==RULE_ID) ) {s = 1;}
 
-                        else if ( (LA74_0==40) ) {s = 2;}
+                        else if ( (LA71_0==40) ) {s = 2;}
 
-                        else if ( (LA74_0==64) && (synpred34_InternalDatatypeGrammar())) {s = 3;}
+                        else if ( (LA71_0==65) && (synpred34_InternalDatatypeGrammar())) {s = 3;}
 
-                        else if ( ((LA74_0>=RULE_STRING && LA74_0<=RULE_DECIMAL)||LA74_0==14||LA74_0==17||(LA74_0>=43 && LA74_0<=44)||LA74_0==51||(LA74_0>=67 && LA74_0<=68)||LA74_0==72||LA74_0==79||LA74_0==81||(LA74_0>=85 && LA74_0<=87)||(LA74_0>=90 && LA74_0<=101)||LA74_0==103) ) {s = 4;}
+                        else if ( ((LA71_0>=RULE_STRING && LA71_0<=RULE_DECIMAL)||LA71_0==14||LA71_0==17||(LA71_0>=44 && LA71_0<=45)||LA71_0==52||(LA71_0>=68 && LA71_0<=69)||LA71_0==73||LA71_0==80||LA71_0==82||(LA71_0>=86 && LA71_0<=88)||(LA71_0>=91 && LA71_0<=102)||LA71_0==104) ) {s = 4;}
 
                          
-                        input.seek(index74_0);
+                        input.seek(index71_0);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA74_1 = input.LA(1);
+                        int LA71_1 = input.LA(1);
 
                          
-                        int index74_1 = input.index();
+                        int index71_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred34_InternalDatatypeGrammar()) ) {s = 3;}
@@ -24820,14 +24771,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 4;}
 
                          
-                        input.seek(index74_1);
+                        input.seek(index71_1);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA74_2 = input.LA(1);
+                        int LA71_2 = input.LA(1);
 
                          
-                        int index74_2 = input.index();
+                        int index71_2 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred34_InternalDatatypeGrammar()) ) {s = 3;}
@@ -24835,31 +24786,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 4;}
 
                          
-                        input.seek(index74_2);
+                        input.seek(index71_2);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 74, _s, input);
+                new NoViableAltException(getDescription(), 71, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA97_eotS =
+    static final String DFA94_eotS =
         "\116\uffff";
-    static final String DFA97_eofS =
+    static final String DFA94_eofS =
         "\1\2\115\uffff";
-    static final String DFA97_minS =
+    static final String DFA94_minS =
         "\1\4\1\0\114\uffff";
-    static final String DFA97_maxS =
-        "\1\150\1\0\114\uffff";
-    static final String DFA97_acceptS =
+    static final String DFA94_maxS =
+        "\1\151\1\0\114\uffff";
+    static final String DFA94_acceptS =
         "\2\uffff\1\2\112\uffff\1\1";
-    static final String DFA97_specialS =
+    static final String DFA94_specialS =
         "\1\uffff\1\0\114\uffff}>";
-    static final String[] DFA97_transitionS = {
-            "\5\2\5\uffff\2\2\1\uffff\2\2\6\uffff\3\2\14\uffff\1\1\1\2\1"+
+    static final String[] DFA94_transitionS = {
+            "\5\2\5\uffff\2\2\1\uffff\2\2\7\uffff\2\2\14\uffff\1\1\2\2\1"+
             "\uffff\43\2\1\uffff\32\2",
             "\1\uffff",
             "",
@@ -24940,34 +24891,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA97_eot = DFA.unpackEncodedString(DFA97_eotS);
-    static final short[] DFA97_eof = DFA.unpackEncodedString(DFA97_eofS);
-    static final char[] DFA97_min = DFA.unpackEncodedStringToUnsignedChars(DFA97_minS);
-    static final char[] DFA97_max = DFA.unpackEncodedStringToUnsignedChars(DFA97_maxS);
-    static final short[] DFA97_accept = DFA.unpackEncodedString(DFA97_acceptS);
-    static final short[] DFA97_special = DFA.unpackEncodedString(DFA97_specialS);
-    static final short[][] DFA97_transition;
+    static final short[] DFA94_eot = DFA.unpackEncodedString(DFA94_eotS);
+    static final short[] DFA94_eof = DFA.unpackEncodedString(DFA94_eofS);
+    static final char[] DFA94_min = DFA.unpackEncodedStringToUnsignedChars(DFA94_minS);
+    static final char[] DFA94_max = DFA.unpackEncodedStringToUnsignedChars(DFA94_maxS);
+    static final short[] DFA94_accept = DFA.unpackEncodedString(DFA94_acceptS);
+    static final short[] DFA94_special = DFA.unpackEncodedString(DFA94_specialS);
+    static final short[][] DFA94_transition;
 
     static {
-        int numStates = DFA97_transitionS.length;
-        DFA97_transition = new short[numStates][];
+        int numStates = DFA94_transitionS.length;
+        DFA94_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA97_transition[i] = DFA.unpackEncodedString(DFA97_transitionS[i]);
+            DFA94_transition[i] = DFA.unpackEncodedString(DFA94_transitionS[i]);
         }
     }
 
-    class DFA97 extends DFA {
+    class DFA94 extends DFA {
 
-        public DFA97(BaseRecognizer recognizer) {
+        public DFA94(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 97;
-            this.eot = DFA97_eot;
-            this.eof = DFA97_eof;
-            this.min = DFA97_min;
-            this.max = DFA97_max;
-            this.accept = DFA97_accept;
-            this.special = DFA97_special;
-            this.transition = DFA97_transition;
+            this.decisionNumber = 94;
+            this.eot = DFA94_eot;
+            this.eof = DFA94_eof;
+            this.min = DFA94_min;
+            this.max = DFA94_max;
+            this.accept = DFA94_accept;
+            this.special = DFA94_special;
+            this.transition = DFA94_transition;
         }
         public String getDescription() {
             return "5082:2: ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_featureCallArguments_8_0= ruleXShortClosure ) ) | ( ( (lv_featureCallArguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_featureCallArguments_11_0= ruleXExpression ) ) )* ) )? otherlv_12= ')' )?";
@@ -24977,10 +24928,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA97_1 = input.LA(1);
+                        int LA94_1 = input.LA(1);
 
                          
-                        int index97_1 = input.index();
+                        int index94_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred37_InternalDatatypeGrammar()) ) {s = 77;}
@@ -24988,33 +24939,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index97_1);
+                        input.seek(index94_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 97, _s, input);
+                new NoViableAltException(getDescription(), 94, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA96_eotS =
+    static final String DFA93_eotS =
         "\44\uffff";
-    static final String DFA96_eofS =
+    static final String DFA93_eofS =
         "\44\uffff";
-    static final String DFA96_minS =
+    static final String DFA93_minS =
         "\1\4\2\0\41\uffff";
-    static final String DFA96_maxS =
-        "\1\147\2\0\41\uffff";
-    static final String DFA96_acceptS =
+    static final String DFA93_maxS =
+        "\1\150\2\0\41\uffff";
+    static final String DFA93_acceptS =
         "\3\uffff\2\1\1\2\35\uffff\1\3";
-    static final String DFA96_specialS =
+    static final String DFA93_specialS =
         "\1\0\1\1\1\2\41\uffff}>";
-    static final String[] DFA96_transitionS = {
-            "\1\1\4\5\5\uffff\1\5\2\uffff\1\5\26\uffff\1\2\1\43\1\uffff\2"+
-            "\5\6\uffff\1\5\14\uffff\1\3\2\uffff\2\5\3\uffff\1\5\5\uffff"+
-            "\1\4\1\5\1\uffff\1\5\3\uffff\3\5\2\uffff\14\5\1\uffff\1\5",
+    static final String[] DFA93_transitionS = {
+            "\1\1\4\5\5\uffff\1\5\2\uffff\1\5\26\uffff\1\2\1\uffff\1\43\1"+
+            "\uffff\2\5\6\uffff\1\5\14\uffff\1\3\2\uffff\2\5\3\uffff\1\5"+
+            "\5\uffff\1\4\1\5\1\uffff\1\5\3\uffff\3\5\2\uffff\14\5\1\uffff"+
+            "\1\5",
             "\1\uffff",
             "\1\uffff",
             "",
@@ -25052,34 +25004,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA96_eot = DFA.unpackEncodedString(DFA96_eotS);
-    static final short[] DFA96_eof = DFA.unpackEncodedString(DFA96_eofS);
-    static final char[] DFA96_min = DFA.unpackEncodedStringToUnsignedChars(DFA96_minS);
-    static final char[] DFA96_max = DFA.unpackEncodedStringToUnsignedChars(DFA96_maxS);
-    static final short[] DFA96_accept = DFA.unpackEncodedString(DFA96_acceptS);
-    static final short[] DFA96_special = DFA.unpackEncodedString(DFA96_specialS);
-    static final short[][] DFA96_transition;
+    static final short[] DFA93_eot = DFA.unpackEncodedString(DFA93_eotS);
+    static final short[] DFA93_eof = DFA.unpackEncodedString(DFA93_eofS);
+    static final char[] DFA93_min = DFA.unpackEncodedStringToUnsignedChars(DFA93_minS);
+    static final char[] DFA93_max = DFA.unpackEncodedStringToUnsignedChars(DFA93_maxS);
+    static final short[] DFA93_accept = DFA.unpackEncodedString(DFA93_acceptS);
+    static final short[] DFA93_special = DFA.unpackEncodedString(DFA93_specialS);
+    static final short[][] DFA93_transition;
 
     static {
-        int numStates = DFA96_transitionS.length;
-        DFA96_transition = new short[numStates][];
+        int numStates = DFA93_transitionS.length;
+        DFA93_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA96_transition[i] = DFA.unpackEncodedString(DFA96_transitionS[i]);
+            DFA93_transition[i] = DFA.unpackEncodedString(DFA93_transitionS[i]);
         }
     }
 
-    class DFA96 extends DFA {
+    class DFA93 extends DFA {
 
-        public DFA96(BaseRecognizer recognizer) {
+        public DFA93(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 96;
-            this.eot = DFA96_eot;
-            this.eof = DFA96_eof;
-            this.min = DFA96_min;
-            this.max = DFA96_max;
-            this.accept = DFA96_accept;
-            this.special = DFA96_special;
-            this.transition = DFA96_transition;
+            this.decisionNumber = 93;
+            this.eot = DFA93_eot;
+            this.eof = DFA93_eof;
+            this.min = DFA93_min;
+            this.max = DFA93_max;
+            this.accept = DFA93_accept;
+            this.special = DFA93_special;
+            this.transition = DFA93_transition;
         }
         public String getDescription() {
             return "5103:2: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_featureCallArguments_8_0= ruleXShortClosure ) ) | ( ( (lv_featureCallArguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_featureCallArguments_11_0= ruleXExpression ) ) )* ) )?";
@@ -25089,33 +25041,33 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA96_0 = input.LA(1);
+                        int LA93_0 = input.LA(1);
 
                          
-                        int index96_0 = input.index();
+                        int index93_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA96_0==RULE_ID) ) {s = 1;}
+                        if ( (LA93_0==RULE_ID) ) {s = 1;}
 
-                        else if ( (LA96_0==40) ) {s = 2;}
+                        else if ( (LA93_0==40) ) {s = 2;}
 
-                        else if ( (LA96_0==64) && (synpred38_InternalDatatypeGrammar())) {s = 3;}
+                        else if ( (LA93_0==65) && (synpred38_InternalDatatypeGrammar())) {s = 3;}
 
-                        else if ( (LA96_0==78) && (synpred38_InternalDatatypeGrammar())) {s = 4;}
+                        else if ( (LA93_0==79) && (synpred38_InternalDatatypeGrammar())) {s = 4;}
 
-                        else if ( ((LA96_0>=RULE_STRING && LA96_0<=RULE_DECIMAL)||LA96_0==14||LA96_0==17||(LA96_0>=43 && LA96_0<=44)||LA96_0==51||(LA96_0>=67 && LA96_0<=68)||LA96_0==72||LA96_0==79||LA96_0==81||(LA96_0>=85 && LA96_0<=87)||(LA96_0>=90 && LA96_0<=101)||LA96_0==103) ) {s = 5;}
+                        else if ( ((LA93_0>=RULE_STRING && LA93_0<=RULE_DECIMAL)||LA93_0==14||LA93_0==17||(LA93_0>=44 && LA93_0<=45)||LA93_0==52||(LA93_0>=68 && LA93_0<=69)||LA93_0==73||LA93_0==80||LA93_0==82||(LA93_0>=86 && LA93_0<=88)||(LA93_0>=91 && LA93_0<=102)||LA93_0==104) ) {s = 5;}
 
-                        else if ( (LA96_0==41) ) {s = 35;}
+                        else if ( (LA93_0==42) ) {s = 35;}
 
                          
-                        input.seek(index96_0);
+                        input.seek(index93_0);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA96_1 = input.LA(1);
+                        int LA93_1 = input.LA(1);
 
                          
-                        int index96_1 = input.index();
+                        int index93_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalDatatypeGrammar()) ) {s = 4;}
@@ -25123,14 +25075,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 5;}
 
                          
-                        input.seek(index96_1);
+                        input.seek(index93_1);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA96_2 = input.LA(1);
+                        int LA93_2 = input.LA(1);
 
                          
-                        int index96_2 = input.index();
+                        int index93_2 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalDatatypeGrammar()) ) {s = 4;}
@@ -25138,31 +25090,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 5;}
 
                          
-                        input.seek(index96_2);
+                        input.seek(index93_2);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 96, _s, input);
+                new NoViableAltException(getDescription(), 93, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA98_eotS =
+    static final String DFA95_eotS =
         "\116\uffff";
-    static final String DFA98_eofS =
+    static final String DFA95_eofS =
         "\1\2\115\uffff";
-    static final String DFA98_minS =
+    static final String DFA95_minS =
         "\1\4\1\0\114\uffff";
-    static final String DFA98_maxS =
-        "\1\150\1\0\114\uffff";
-    static final String DFA98_acceptS =
+    static final String DFA95_maxS =
+        "\1\151\1\0\114\uffff";
+    static final String DFA95_acceptS =
         "\2\uffff\1\2\112\uffff\1\1";
-    static final String DFA98_specialS =
+    static final String DFA95_specialS =
         "\1\uffff\1\0\114\uffff}>";
-    static final String[] DFA98_transitionS = {
-            "\5\2\5\uffff\2\2\1\uffff\2\2\6\uffff\3\2\14\uffff\2\2\1\uffff"+
+    static final String[] DFA95_transitionS = {
+            "\5\2\5\uffff\2\2\1\uffff\2\2\7\uffff\2\2\14\uffff\3\2\1\uffff"+
             "\1\2\1\1\41\2\1\uffff\32\2",
             "\1\uffff",
             "",
@@ -25243,34 +25195,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA98_eot = DFA.unpackEncodedString(DFA98_eotS);
-    static final short[] DFA98_eof = DFA.unpackEncodedString(DFA98_eofS);
-    static final char[] DFA98_min = DFA.unpackEncodedStringToUnsignedChars(DFA98_minS);
-    static final char[] DFA98_max = DFA.unpackEncodedStringToUnsignedChars(DFA98_maxS);
-    static final short[] DFA98_accept = DFA.unpackEncodedString(DFA98_acceptS);
-    static final short[] DFA98_special = DFA.unpackEncodedString(DFA98_specialS);
-    static final short[][] DFA98_transition;
+    static final short[] DFA95_eot = DFA.unpackEncodedString(DFA95_eotS);
+    static final short[] DFA95_eof = DFA.unpackEncodedString(DFA95_eofS);
+    static final char[] DFA95_min = DFA.unpackEncodedStringToUnsignedChars(DFA95_minS);
+    static final char[] DFA95_max = DFA.unpackEncodedStringToUnsignedChars(DFA95_maxS);
+    static final short[] DFA95_accept = DFA.unpackEncodedString(DFA95_acceptS);
+    static final short[] DFA95_special = DFA.unpackEncodedString(DFA95_specialS);
+    static final short[][] DFA95_transition;
 
     static {
-        int numStates = DFA98_transitionS.length;
-        DFA98_transition = new short[numStates][];
+        int numStates = DFA95_transitionS.length;
+        DFA95_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA98_transition[i] = DFA.unpackEncodedString(DFA98_transitionS[i]);
+            DFA95_transition[i] = DFA.unpackEncodedString(DFA95_transitionS[i]);
         }
     }
 
-    class DFA98 extends DFA {
+    class DFA95 extends DFA {
 
-        public DFA98(BaseRecognizer recognizer) {
+        public DFA95(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 98;
-            this.eot = DFA98_eot;
-            this.eof = DFA98_eof;
-            this.min = DFA98_min;
-            this.max = DFA98_max;
-            this.accept = DFA98_accept;
-            this.special = DFA98_special;
-            this.transition = DFA98_transition;
+            this.decisionNumber = 95;
+            this.eot = DFA95_eot;
+            this.eof = DFA95_eof;
+            this.min = DFA95_min;
+            this.max = DFA95_max;
+            this.accept = DFA95_accept;
+            this.special = DFA95_special;
+            this.transition = DFA95_transition;
         }
         public String getDescription() {
             return "5182:3: ( ( ( () '[' ) )=> (lv_featureCallArguments_13_0= ruleXClosure ) )?";
@@ -25280,10 +25232,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA98_1 = input.LA(1);
+                        int LA95_1 = input.LA(1);
 
                          
-                        int index98_1 = input.index();
+                        int index95_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred39_InternalDatatypeGrammar()) ) {s = 77;}
@@ -25291,13 +25243,166 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index98_1);
+                        input.seek(index95_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 98, _s, input);
+                new NoViableAltException(getDescription(), 95, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String DFA99_eotS =
+        "\116\uffff";
+    static final String DFA99_eofS =
+        "\1\2\115\uffff";
+    static final String DFA99_minS =
+        "\1\4\1\0\114\uffff";
+    static final String DFA99_maxS =
+        "\1\151\1\0\114\uffff";
+    static final String DFA99_acceptS =
+        "\2\uffff\1\2\112\uffff\1\1";
+    static final String DFA99_specialS =
+        "\1\uffff\1\0\114\uffff}>";
+    static final String[] DFA99_transitionS = {
+            "\5\2\5\uffff\2\2\1\uffff\2\2\7\uffff\2\2\14\uffff\3\2\1\uffff"+
+            "\10\2\1\1\32\2\1\uffff\32\2",
+            "\1\uffff",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] DFA99_eot = DFA.unpackEncodedString(DFA99_eotS);
+    static final short[] DFA99_eof = DFA.unpackEncodedString(DFA99_eofS);
+    static final char[] DFA99_min = DFA.unpackEncodedStringToUnsignedChars(DFA99_minS);
+    static final char[] DFA99_max = DFA.unpackEncodedStringToUnsignedChars(DFA99_maxS);
+    static final short[] DFA99_accept = DFA.unpackEncodedString(DFA99_acceptS);
+    static final short[] DFA99_special = DFA.unpackEncodedString(DFA99_specialS);
+    static final short[][] DFA99_transition;
+
+    static {
+        int numStates = DFA99_transitionS.length;
+        DFA99_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA99_transition[i] = DFA.unpackEncodedString(DFA99_transitionS[i]);
+        }
+    }
+
+    class DFA99 extends DFA {
+
+        public DFA99(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 99;
+            this.eot = DFA99_eot;
+            this.eof = DFA99_eof;
+            this.min = DFA99_min;
+            this.max = DFA99_max;
+            this.accept = DFA99_accept;
+            this.special = DFA99_special;
+            this.transition = DFA99_transition;
+        }
+        public String getDescription() {
+            return "5347:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA99_1 = input.LA(1);
+
+                         
+                        int index99_1 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred40_InternalDatatypeGrammar()) ) {s = 77;}
+
+                        else if ( (true) ) {s = 2;}
+
+                         
+                        input.seek(index99_1);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            if (state.backtracking>0) {state.failed=true; return -1;}
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 99, _s, input);
             error(nvae);
             throw nvae;
         }
@@ -25309,14 +25414,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
     static final String DFA102_minS =
         "\1\4\1\0\114\uffff";
     static final String DFA102_maxS =
-        "\1\150\1\0\114\uffff";
+        "\1\151\1\0\114\uffff";
     static final String DFA102_acceptS =
         "\2\uffff\1\2\112\uffff\1\1";
     static final String DFA102_specialS =
         "\1\uffff\1\0\114\uffff}>";
     static final String[] DFA102_transitionS = {
-            "\5\2\5\uffff\2\2\1\uffff\2\2\6\uffff\3\2\14\uffff\2\2\1\uffff"+
-            "\10\2\1\1\32\2\1\uffff\32\2",
+            "\5\2\5\uffff\2\2\1\uffff\2\2\7\uffff\2\2\14\uffff\1\1\2\2\1"+
+            "\uffff\43\2\1\uffff\32\2",
             "\1\uffff",
             "",
             "",
@@ -25426,7 +25531,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             this.transition = DFA102_transition;
         }
         public String getDescription() {
-            return "5347:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?";
+            return "5396:3: ( ( ( ( '(' ) )=> (lv_explicitConstructorCall_8_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -25439,7 +25544,7 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         int index102_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred40_InternalDatatypeGrammar()) ) {s = 77;}
+                        if ( (synpred41_InternalDatatypeGrammar()) ) {s = 77;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -25455,175 +25560,23 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             throw nvae;
         }
     }
-    static final String DFA105_eotS =
-        "\116\uffff";
-    static final String DFA105_eofS =
-        "\1\2\115\uffff";
-    static final String DFA105_minS =
-        "\1\4\1\0\114\uffff";
-    static final String DFA105_maxS =
-        "\1\150\1\0\114\uffff";
-    static final String DFA105_acceptS =
-        "\2\uffff\1\2\112\uffff\1\1";
-    static final String DFA105_specialS =
-        "\1\uffff\1\0\114\uffff}>";
-    static final String[] DFA105_transitionS = {
-            "\5\2\5\uffff\2\2\1\uffff\2\2\6\uffff\3\2\14\uffff\1\1\1\2\1"+
-            "\uffff\43\2\1\uffff\32\2",
-            "\1\uffff",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA105_eot = DFA.unpackEncodedString(DFA105_eotS);
-    static final short[] DFA105_eof = DFA.unpackEncodedString(DFA105_eofS);
-    static final char[] DFA105_min = DFA.unpackEncodedStringToUnsignedChars(DFA105_minS);
-    static final char[] DFA105_max = DFA.unpackEncodedStringToUnsignedChars(DFA105_maxS);
-    static final short[] DFA105_accept = DFA.unpackEncodedString(DFA105_acceptS);
-    static final short[] DFA105_special = DFA.unpackEncodedString(DFA105_specialS);
-    static final short[][] DFA105_transition;
-
-    static {
-        int numStates = DFA105_transitionS.length;
-        DFA105_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA105_transition[i] = DFA.unpackEncodedString(DFA105_transitionS[i]);
-        }
-    }
-
-    class DFA105 extends DFA {
-
-        public DFA105(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 105;
-            this.eot = DFA105_eot;
-            this.eof = DFA105_eof;
-            this.min = DFA105_min;
-            this.max = DFA105_max;
-            this.accept = DFA105_accept;
-            this.special = DFA105_special;
-            this.transition = DFA105_transition;
-        }
-        public String getDescription() {
-            return "5396:3: ( ( ( ( '(' ) )=> (lv_explicitConstructorCall_8_0= '(' ) ) ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )? otherlv_13= ')' )?";
-        }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-            TokenStream input = (TokenStream)_input;
-        	int _s = s;
-            switch ( s ) {
-                    case 0 : 
-                        int LA105_1 = input.LA(1);
-
-                         
-                        int index105_1 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred41_InternalDatatypeGrammar()) ) {s = 77;}
-
-                        else if ( (true) ) {s = 2;}
-
-                         
-                        input.seek(index105_1);
-                        if ( s>=0 ) return s;
-                        break;
-            }
-            if (state.backtracking>0) {state.failed=true; return -1;}
-            NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 105, _s, input);
-            error(nvae);
-            throw nvae;
-        }
-    }
-    static final String DFA104_eotS =
+    static final String DFA101_eotS =
         "\44\uffff";
-    static final String DFA104_eofS =
+    static final String DFA101_eofS =
         "\44\uffff";
-    static final String DFA104_minS =
+    static final String DFA101_minS =
         "\1\4\2\0\41\uffff";
-    static final String DFA104_maxS =
-        "\1\147\2\0\41\uffff";
-    static final String DFA104_acceptS =
+    static final String DFA101_maxS =
+        "\1\150\2\0\41\uffff";
+    static final String DFA101_acceptS =
         "\3\uffff\2\1\1\2\35\uffff\1\3";
-    static final String DFA104_specialS =
+    static final String DFA101_specialS =
         "\1\0\1\1\1\2\41\uffff}>";
-    static final String[] DFA104_transitionS = {
-            "\1\1\4\5\5\uffff\1\5\2\uffff\1\5\26\uffff\1\2\1\43\1\uffff\2"+
-            "\5\6\uffff\1\5\14\uffff\1\3\2\uffff\2\5\3\uffff\1\5\5\uffff"+
-            "\1\4\1\5\1\uffff\1\5\3\uffff\3\5\2\uffff\14\5\1\uffff\1\5",
+    static final String[] DFA101_transitionS = {
+            "\1\1\4\5\5\uffff\1\5\2\uffff\1\5\26\uffff\1\2\1\uffff\1\43\1"+
+            "\uffff\2\5\6\uffff\1\5\14\uffff\1\3\2\uffff\2\5\3\uffff\1\5"+
+            "\5\uffff\1\4\1\5\1\uffff\1\5\3\uffff\3\5\2\uffff\14\5\1\uffff"+
+            "\1\5",
             "\1\uffff",
             "\1\uffff",
             "",
@@ -25661,34 +25614,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA104_eot = DFA.unpackEncodedString(DFA104_eotS);
-    static final short[] DFA104_eof = DFA.unpackEncodedString(DFA104_eofS);
-    static final char[] DFA104_min = DFA.unpackEncodedStringToUnsignedChars(DFA104_minS);
-    static final char[] DFA104_max = DFA.unpackEncodedStringToUnsignedChars(DFA104_maxS);
-    static final short[] DFA104_accept = DFA.unpackEncodedString(DFA104_acceptS);
-    static final short[] DFA104_special = DFA.unpackEncodedString(DFA104_specialS);
-    static final short[][] DFA104_transition;
+    static final short[] DFA101_eot = DFA.unpackEncodedString(DFA101_eotS);
+    static final short[] DFA101_eof = DFA.unpackEncodedString(DFA101_eofS);
+    static final char[] DFA101_min = DFA.unpackEncodedStringToUnsignedChars(DFA101_minS);
+    static final char[] DFA101_max = DFA.unpackEncodedStringToUnsignedChars(DFA101_maxS);
+    static final short[] DFA101_accept = DFA.unpackEncodedString(DFA101_acceptS);
+    static final short[] DFA101_special = DFA.unpackEncodedString(DFA101_specialS);
+    static final short[][] DFA101_transition;
 
     static {
-        int numStates = DFA104_transitionS.length;
-        DFA104_transition = new short[numStates][];
+        int numStates = DFA101_transitionS.length;
+        DFA101_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA104_transition[i] = DFA.unpackEncodedString(DFA104_transitionS[i]);
+            DFA101_transition[i] = DFA.unpackEncodedString(DFA101_transitionS[i]);
         }
     }
 
-    class DFA104 extends DFA {
+    class DFA101 extends DFA {
 
-        public DFA104(BaseRecognizer recognizer) {
+        public DFA101(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 104;
-            this.eot = DFA104_eot;
-            this.eof = DFA104_eof;
-            this.min = DFA104_min;
-            this.max = DFA104_max;
-            this.accept = DFA104_accept;
-            this.special = DFA104_special;
-            this.transition = DFA104_transition;
+            this.decisionNumber = 101;
+            this.eot = DFA101_eot;
+            this.eof = DFA101_eof;
+            this.min = DFA101_min;
+            this.max = DFA101_max;
+            this.accept = DFA101_accept;
+            this.special = DFA101_special;
+            this.transition = DFA101_transition;
         }
         public String getDescription() {
             return "5417:2: ( ( ( ( () ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) ) ) )=> (lv_arguments_9_0= ruleXShortClosure ) ) | ( ( (lv_arguments_10_0= ruleXExpression ) ) (otherlv_11= ',' ( (lv_arguments_12_0= ruleXExpression ) ) )* ) )?";
@@ -25698,33 +25651,33 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA104_0 = input.LA(1);
+                        int LA101_0 = input.LA(1);
 
                          
-                        int index104_0 = input.index();
+                        int index101_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA104_0==RULE_ID) ) {s = 1;}
+                        if ( (LA101_0==RULE_ID) ) {s = 1;}
 
-                        else if ( (LA104_0==40) ) {s = 2;}
+                        else if ( (LA101_0==40) ) {s = 2;}
 
-                        else if ( (LA104_0==64) && (synpred42_InternalDatatypeGrammar())) {s = 3;}
+                        else if ( (LA101_0==65) && (synpred42_InternalDatatypeGrammar())) {s = 3;}
 
-                        else if ( (LA104_0==78) && (synpred42_InternalDatatypeGrammar())) {s = 4;}
+                        else if ( (LA101_0==79) && (synpred42_InternalDatatypeGrammar())) {s = 4;}
 
-                        else if ( ((LA104_0>=RULE_STRING && LA104_0<=RULE_DECIMAL)||LA104_0==14||LA104_0==17||(LA104_0>=43 && LA104_0<=44)||LA104_0==51||(LA104_0>=67 && LA104_0<=68)||LA104_0==72||LA104_0==79||LA104_0==81||(LA104_0>=85 && LA104_0<=87)||(LA104_0>=90 && LA104_0<=101)||LA104_0==103) ) {s = 5;}
+                        else if ( ((LA101_0>=RULE_STRING && LA101_0<=RULE_DECIMAL)||LA101_0==14||LA101_0==17||(LA101_0>=44 && LA101_0<=45)||LA101_0==52||(LA101_0>=68 && LA101_0<=69)||LA101_0==73||LA101_0==80||LA101_0==82||(LA101_0>=86 && LA101_0<=88)||(LA101_0>=91 && LA101_0<=102)||LA101_0==104) ) {s = 5;}
 
-                        else if ( (LA104_0==41) ) {s = 35;}
+                        else if ( (LA101_0==42) ) {s = 35;}
 
                          
-                        input.seek(index104_0);
+                        input.seek(index101_0);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA104_1 = input.LA(1);
+                        int LA101_1 = input.LA(1);
 
                          
-                        int index104_1 = input.index();
+                        int index101_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred42_InternalDatatypeGrammar()) ) {s = 4;}
@@ -25732,14 +25685,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 5;}
 
                          
-                        input.seek(index104_1);
+                        input.seek(index101_1);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA104_2 = input.LA(1);
+                        int LA101_2 = input.LA(1);
 
                          
-                        int index104_2 = input.index();
+                        int index101_2 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred42_InternalDatatypeGrammar()) ) {s = 4;}
@@ -25747,31 +25700,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 5;}
 
                          
-                        input.seek(index104_2);
+                        input.seek(index101_2);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 104, _s, input);
+                new NoViableAltException(getDescription(), 101, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA106_eotS =
+    static final String DFA103_eotS =
         "\116\uffff";
-    static final String DFA106_eofS =
+    static final String DFA103_eofS =
         "\1\2\115\uffff";
-    static final String DFA106_minS =
+    static final String DFA103_minS =
         "\1\4\1\0\114\uffff";
-    static final String DFA106_maxS =
-        "\1\150\1\0\114\uffff";
-    static final String DFA106_acceptS =
+    static final String DFA103_maxS =
+        "\1\151\1\0\114\uffff";
+    static final String DFA103_acceptS =
         "\2\uffff\1\2\112\uffff\1\1";
-    static final String DFA106_specialS =
+    static final String DFA103_specialS =
         "\1\uffff\1\0\114\uffff}>";
-    static final String[] DFA106_transitionS = {
-            "\5\2\5\uffff\2\2\1\uffff\2\2\6\uffff\3\2\14\uffff\2\2\1\uffff"+
+    static final String[] DFA103_transitionS = {
+            "\5\2\5\uffff\2\2\1\uffff\2\2\7\uffff\2\2\14\uffff\3\2\1\uffff"+
             "\1\2\1\1\41\2\1\uffff\32\2",
             "\1\uffff",
             "",
@@ -25852,34 +25805,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA106_eot = DFA.unpackEncodedString(DFA106_eotS);
-    static final short[] DFA106_eof = DFA.unpackEncodedString(DFA106_eofS);
-    static final char[] DFA106_min = DFA.unpackEncodedStringToUnsignedChars(DFA106_minS);
-    static final char[] DFA106_max = DFA.unpackEncodedStringToUnsignedChars(DFA106_maxS);
-    static final short[] DFA106_accept = DFA.unpackEncodedString(DFA106_acceptS);
-    static final short[] DFA106_special = DFA.unpackEncodedString(DFA106_specialS);
-    static final short[][] DFA106_transition;
+    static final short[] DFA103_eot = DFA.unpackEncodedString(DFA103_eotS);
+    static final short[] DFA103_eof = DFA.unpackEncodedString(DFA103_eofS);
+    static final char[] DFA103_min = DFA.unpackEncodedStringToUnsignedChars(DFA103_minS);
+    static final char[] DFA103_max = DFA.unpackEncodedStringToUnsignedChars(DFA103_maxS);
+    static final short[] DFA103_accept = DFA.unpackEncodedString(DFA103_acceptS);
+    static final short[] DFA103_special = DFA.unpackEncodedString(DFA103_specialS);
+    static final short[][] DFA103_transition;
 
     static {
-        int numStates = DFA106_transitionS.length;
-        DFA106_transition = new short[numStates][];
+        int numStates = DFA103_transitionS.length;
+        DFA103_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA106_transition[i] = DFA.unpackEncodedString(DFA106_transitionS[i]);
+            DFA103_transition[i] = DFA.unpackEncodedString(DFA103_transitionS[i]);
         }
     }
 
-    class DFA106 extends DFA {
+    class DFA103 extends DFA {
 
-        public DFA106(BaseRecognizer recognizer) {
+        public DFA103(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 106;
-            this.eot = DFA106_eot;
-            this.eof = DFA106_eof;
-            this.min = DFA106_min;
-            this.max = DFA106_max;
-            this.accept = DFA106_accept;
-            this.special = DFA106_special;
-            this.transition = DFA106_transition;
+            this.decisionNumber = 103;
+            this.eot = DFA103_eot;
+            this.eof = DFA103_eof;
+            this.min = DFA103_min;
+            this.max = DFA103_max;
+            this.accept = DFA103_accept;
+            this.special = DFA103_special;
+            this.transition = DFA103_transition;
         }
         public String getDescription() {
             return "5496:3: ( ( ( () '[' ) )=> (lv_arguments_14_0= ruleXClosure ) )?";
@@ -25889,10 +25842,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA106_1 = input.LA(1);
+                        int LA103_1 = input.LA(1);
 
                          
-                        int index106_1 = input.index();
+                        int index103_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred43_InternalDatatypeGrammar()) ) {s = 77;}
@@ -25900,34 +25853,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index106_1);
+                        input.seek(index103_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 106, _s, input);
+                new NoViableAltException(getDescription(), 103, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA109_eotS =
+    static final String DFA106_eotS =
         "\116\uffff";
-    static final String DFA109_eofS =
+    static final String DFA106_eofS =
         "\1\41\115\uffff";
-    static final String DFA109_minS =
+    static final String DFA106_minS =
         "\1\4\40\0\55\uffff";
-    static final String DFA109_maxS =
-        "\1\150\40\0\55\uffff";
-    static final String DFA109_acceptS =
+    static final String DFA106_maxS =
+        "\1\151\40\0\55\uffff";
+    static final String DFA106_acceptS =
         "\41\uffff\1\2\53\uffff\1\1";
-    static final String DFA109_specialS =
+    static final String DFA106_specialS =
         "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
         "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
         "\1\32\1\33\1\34\1\35\1\36\1\37\55\uffff}>";
-    static final String[] DFA109_transitionS = {
+    static final String[] DFA106_transitionS = {
             "\1\1\1\27\1\23\1\24\1\25\5\uffff\1\12\1\41\1\uffff\1\4\1\41"+
-            "\6\uffff\3\41\14\uffff\1\40\1\41\1\uffff\1\17\1\20\6\41\1\15"+
+            "\7\uffff\2\41\14\uffff\1\40\2\41\1\uffff\1\17\1\20\6\41\1\15"+
             "\17\41\1\10\1\7\3\41\1\6\5\41\1\uffff\1\31\1\41\1\13\3\41\1"+
             "\32\1\33\1\34\2\41\1\2\1\3\1\5\1\16\1\11\1\21\1\22\1\26\1\30"+
             "\1\35\1\36\1\37\1\41\1\14\1\41",
@@ -26010,34 +25963,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA109_eot = DFA.unpackEncodedString(DFA109_eotS);
-    static final short[] DFA109_eof = DFA.unpackEncodedString(DFA109_eofS);
-    static final char[] DFA109_min = DFA.unpackEncodedStringToUnsignedChars(DFA109_minS);
-    static final char[] DFA109_max = DFA.unpackEncodedStringToUnsignedChars(DFA109_maxS);
-    static final short[] DFA109_accept = DFA.unpackEncodedString(DFA109_acceptS);
-    static final short[] DFA109_special = DFA.unpackEncodedString(DFA109_specialS);
-    static final short[][] DFA109_transition;
+    static final short[] DFA106_eot = DFA.unpackEncodedString(DFA106_eotS);
+    static final short[] DFA106_eof = DFA.unpackEncodedString(DFA106_eofS);
+    static final char[] DFA106_min = DFA.unpackEncodedStringToUnsignedChars(DFA106_minS);
+    static final char[] DFA106_max = DFA.unpackEncodedStringToUnsignedChars(DFA106_maxS);
+    static final short[] DFA106_accept = DFA.unpackEncodedString(DFA106_acceptS);
+    static final short[] DFA106_special = DFA.unpackEncodedString(DFA106_specialS);
+    static final short[][] DFA106_transition;
 
     static {
-        int numStates = DFA109_transitionS.length;
-        DFA109_transition = new short[numStates][];
+        int numStates = DFA106_transitionS.length;
+        DFA106_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA109_transition[i] = DFA.unpackEncodedString(DFA109_transitionS[i]);
+            DFA106_transition[i] = DFA.unpackEncodedString(DFA106_transitionS[i]);
         }
     }
 
-    class DFA109 extends DFA {
+    class DFA106 extends DFA {
 
-        public DFA109(BaseRecognizer recognizer) {
+        public DFA106(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 109;
-            this.eot = DFA109_eot;
-            this.eof = DFA109_eof;
-            this.min = DFA109_min;
-            this.max = DFA109_max;
-            this.accept = DFA109_accept;
-            this.special = DFA109_special;
-            this.transition = DFA109_transition;
+            this.decisionNumber = 106;
+            this.eot = DFA106_eot;
+            this.eof = DFA106_eof;
+            this.min = DFA106_min;
+            this.max = DFA106_max;
+            this.accept = DFA106_accept;
+            this.special = DFA106_special;
+            this.transition = DFA106_transition;
         }
         public String getDescription() {
             return "5836:1: ( ( 'extends' | 'static' | 'import' | 'extension' | '!' | '-' | '+' | 'new' | '{' | 'switch' | 'synchronized' | '<' | 'super' | '#' | '[' | 'false' | 'true' | 'null' | 'typeof' | 'if' | 'for' | 'while' | 'do' | 'throw' | 'return' | 'try' | '(' | RULE_ID | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_STRING )=> (lv_expression_2_0= ruleXExpression ) )?";
@@ -26047,10 +26000,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA109_1 = input.LA(1);
+                        int LA106_1 = input.LA(1);
 
                          
-                        int index109_1 = input.index();
+                        int index106_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26058,14 +26011,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_1);
+                        input.seek(index106_1);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA109_2 = input.LA(1);
+                        int LA106_2 = input.LA(1);
 
                          
-                        int index109_2 = input.index();
+                        int index106_2 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26073,14 +26026,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_2);
+                        input.seek(index106_2);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA109_3 = input.LA(1);
+                        int LA106_3 = input.LA(1);
 
                          
-                        int index109_3 = input.index();
+                        int index106_3 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26088,14 +26041,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_3);
+                        input.seek(index106_3);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA109_4 = input.LA(1);
+                        int LA106_4 = input.LA(1);
 
                          
-                        int index109_4 = input.index();
+                        int index106_4 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26103,14 +26056,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_4);
+                        input.seek(index106_4);
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA109_5 = input.LA(1);
+                        int LA106_5 = input.LA(1);
 
                          
-                        int index109_5 = input.index();
+                        int index106_5 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26118,14 +26071,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_5);
+                        input.seek(index106_5);
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA109_6 = input.LA(1);
+                        int LA106_6 = input.LA(1);
 
                          
-                        int index109_6 = input.index();
+                        int index106_6 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26133,14 +26086,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_6);
+                        input.seek(index106_6);
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA109_7 = input.LA(1);
+                        int LA106_7 = input.LA(1);
 
                          
-                        int index109_7 = input.index();
+                        int index106_7 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26148,14 +26101,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_7);
+                        input.seek(index106_7);
                         if ( s>=0 ) return s;
                         break;
                     case 7 : 
-                        int LA109_8 = input.LA(1);
+                        int LA106_8 = input.LA(1);
 
                          
-                        int index109_8 = input.index();
+                        int index106_8 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26163,14 +26116,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_8);
+                        input.seek(index106_8);
                         if ( s>=0 ) return s;
                         break;
                     case 8 : 
-                        int LA109_9 = input.LA(1);
+                        int LA106_9 = input.LA(1);
 
                          
-                        int index109_9 = input.index();
+                        int index106_9 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26178,14 +26131,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_9);
+                        input.seek(index106_9);
                         if ( s>=0 ) return s;
                         break;
                     case 9 : 
-                        int LA109_10 = input.LA(1);
+                        int LA106_10 = input.LA(1);
 
                          
-                        int index109_10 = input.index();
+                        int index106_10 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26193,14 +26146,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_10);
+                        input.seek(index106_10);
                         if ( s>=0 ) return s;
                         break;
                     case 10 : 
-                        int LA109_11 = input.LA(1);
+                        int LA106_11 = input.LA(1);
 
                          
-                        int index109_11 = input.index();
+                        int index106_11 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26208,14 +26161,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_11);
+                        input.seek(index106_11);
                         if ( s>=0 ) return s;
                         break;
                     case 11 : 
-                        int LA109_12 = input.LA(1);
+                        int LA106_12 = input.LA(1);
 
                          
-                        int index109_12 = input.index();
+                        int index106_12 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26223,14 +26176,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_12);
+                        input.seek(index106_12);
                         if ( s>=0 ) return s;
                         break;
                     case 12 : 
-                        int LA109_13 = input.LA(1);
+                        int LA106_13 = input.LA(1);
 
                          
-                        int index109_13 = input.index();
+                        int index106_13 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26238,14 +26191,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_13);
+                        input.seek(index106_13);
                         if ( s>=0 ) return s;
                         break;
                     case 13 : 
-                        int LA109_14 = input.LA(1);
+                        int LA106_14 = input.LA(1);
 
                          
-                        int index109_14 = input.index();
+                        int index106_14 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26253,14 +26206,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_14);
+                        input.seek(index106_14);
                         if ( s>=0 ) return s;
                         break;
                     case 14 : 
-                        int LA109_15 = input.LA(1);
+                        int LA106_15 = input.LA(1);
 
                          
-                        int index109_15 = input.index();
+                        int index106_15 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26268,14 +26221,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_15);
+                        input.seek(index106_15);
                         if ( s>=0 ) return s;
                         break;
                     case 15 : 
-                        int LA109_16 = input.LA(1);
+                        int LA106_16 = input.LA(1);
 
                          
-                        int index109_16 = input.index();
+                        int index106_16 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26283,14 +26236,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_16);
+                        input.seek(index106_16);
                         if ( s>=0 ) return s;
                         break;
                     case 16 : 
-                        int LA109_17 = input.LA(1);
+                        int LA106_17 = input.LA(1);
 
                          
-                        int index109_17 = input.index();
+                        int index106_17 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26298,14 +26251,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_17);
+                        input.seek(index106_17);
                         if ( s>=0 ) return s;
                         break;
                     case 17 : 
-                        int LA109_18 = input.LA(1);
+                        int LA106_18 = input.LA(1);
 
                          
-                        int index109_18 = input.index();
+                        int index106_18 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26313,14 +26266,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_18);
+                        input.seek(index106_18);
                         if ( s>=0 ) return s;
                         break;
                     case 18 : 
-                        int LA109_19 = input.LA(1);
+                        int LA106_19 = input.LA(1);
 
                          
-                        int index109_19 = input.index();
+                        int index106_19 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26328,14 +26281,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_19);
+                        input.seek(index106_19);
                         if ( s>=0 ) return s;
                         break;
                     case 19 : 
-                        int LA109_20 = input.LA(1);
+                        int LA106_20 = input.LA(1);
 
                          
-                        int index109_20 = input.index();
+                        int index106_20 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26343,14 +26296,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_20);
+                        input.seek(index106_20);
                         if ( s>=0 ) return s;
                         break;
                     case 20 : 
-                        int LA109_21 = input.LA(1);
+                        int LA106_21 = input.LA(1);
 
                          
-                        int index109_21 = input.index();
+                        int index106_21 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26358,14 +26311,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_21);
+                        input.seek(index106_21);
                         if ( s>=0 ) return s;
                         break;
                     case 21 : 
-                        int LA109_22 = input.LA(1);
+                        int LA106_22 = input.LA(1);
 
                          
-                        int index109_22 = input.index();
+                        int index106_22 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26373,14 +26326,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_22);
+                        input.seek(index106_22);
                         if ( s>=0 ) return s;
                         break;
                     case 22 : 
-                        int LA109_23 = input.LA(1);
+                        int LA106_23 = input.LA(1);
 
                          
-                        int index109_23 = input.index();
+                        int index106_23 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26388,14 +26341,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_23);
+                        input.seek(index106_23);
                         if ( s>=0 ) return s;
                         break;
                     case 23 : 
-                        int LA109_24 = input.LA(1);
+                        int LA106_24 = input.LA(1);
 
                          
-                        int index109_24 = input.index();
+                        int index106_24 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26403,14 +26356,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_24);
+                        input.seek(index106_24);
                         if ( s>=0 ) return s;
                         break;
                     case 24 : 
-                        int LA109_25 = input.LA(1);
+                        int LA106_25 = input.LA(1);
 
                          
-                        int index109_25 = input.index();
+                        int index106_25 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26418,14 +26371,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_25);
+                        input.seek(index106_25);
                         if ( s>=0 ) return s;
                         break;
                     case 25 : 
-                        int LA109_26 = input.LA(1);
+                        int LA106_26 = input.LA(1);
 
                          
-                        int index109_26 = input.index();
+                        int index106_26 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26433,14 +26386,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_26);
+                        input.seek(index106_26);
                         if ( s>=0 ) return s;
                         break;
                     case 26 : 
-                        int LA109_27 = input.LA(1);
+                        int LA106_27 = input.LA(1);
 
                          
-                        int index109_27 = input.index();
+                        int index106_27 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26448,14 +26401,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_27);
+                        input.seek(index106_27);
                         if ( s>=0 ) return s;
                         break;
                     case 27 : 
-                        int LA109_28 = input.LA(1);
+                        int LA106_28 = input.LA(1);
 
                          
-                        int index109_28 = input.index();
+                        int index106_28 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26463,14 +26416,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_28);
+                        input.seek(index106_28);
                         if ( s>=0 ) return s;
                         break;
                     case 28 : 
-                        int LA109_29 = input.LA(1);
+                        int LA106_29 = input.LA(1);
 
                          
-                        int index109_29 = input.index();
+                        int index106_29 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26478,14 +26431,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_29);
+                        input.seek(index106_29);
                         if ( s>=0 ) return s;
                         break;
                     case 29 : 
-                        int LA109_30 = input.LA(1);
+                        int LA106_30 = input.LA(1);
 
                          
-                        int index109_30 = input.index();
+                        int index106_30 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26493,14 +26446,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_30);
+                        input.seek(index106_30);
                         if ( s>=0 ) return s;
                         break;
                     case 30 : 
-                        int LA109_31 = input.LA(1);
+                        int LA106_31 = input.LA(1);
 
                          
-                        int index109_31 = input.index();
+                        int index106_31 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26508,14 +26461,14 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_31);
+                        input.seek(index106_31);
                         if ( s>=0 ) return s;
                         break;
                     case 31 : 
-                        int LA109_32 = input.LA(1);
+                        int LA106_32 = input.LA(1);
 
                          
-                        int index109_32 = input.index();
+                        int index106_32 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred44_InternalDatatypeGrammar()) ) {s = 77;}
@@ -26523,32 +26476,32 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 33;}
 
                          
-                        input.seek(index109_32);
+                        input.seek(index106_32);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 109, _s, input);
+                new NoViableAltException(getDescription(), 106, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA124_eotS =
+    static final String DFA121_eotS =
         "\117\uffff";
-    static final String DFA124_eofS =
+    static final String DFA121_eofS =
         "\1\2\116\uffff";
-    static final String DFA124_minS =
+    static final String DFA121_minS =
         "\1\4\1\0\115\uffff";
-    static final String DFA124_maxS =
-        "\1\150\1\0\115\uffff";
-    static final String DFA124_acceptS =
+    static final String DFA121_maxS =
+        "\1\151\1\0\115\uffff";
+    static final String DFA121_acceptS =
         "\2\uffff\1\2\113\uffff\1\1";
-    static final String DFA124_specialS =
+    static final String DFA121_specialS =
         "\1\uffff\1\0\115\uffff}>";
-    static final String[] DFA124_transitionS = {
-            "\5\2\5\uffff\2\2\1\uffff\2\2\2\uffff\1\2\3\uffff\3\2\14\uffff"+
-            "\2\2\1\uffff\10\2\1\1\32\2\1\uffff\32\2",
+    static final String[] DFA121_transitionS = {
+            "\5\2\5\uffff\2\2\1\uffff\2\2\2\uffff\1\2\4\uffff\2\2\14\uffff"+
+            "\3\2\1\uffff\10\2\1\1\32\2\1\uffff\32\2",
             "\1\uffff",
             "",
             "",
@@ -26629,34 +26582,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA124_eot = DFA.unpackEncodedString(DFA124_eotS);
-    static final short[] DFA124_eof = DFA.unpackEncodedString(DFA124_eofS);
-    static final char[] DFA124_min = DFA.unpackEncodedStringToUnsignedChars(DFA124_minS);
-    static final char[] DFA124_max = DFA.unpackEncodedStringToUnsignedChars(DFA124_maxS);
-    static final short[] DFA124_accept = DFA.unpackEncodedString(DFA124_acceptS);
-    static final short[] DFA124_special = DFA.unpackEncodedString(DFA124_specialS);
-    static final short[][] DFA124_transition;
+    static final short[] DFA121_eot = DFA.unpackEncodedString(DFA121_eotS);
+    static final short[] DFA121_eof = DFA.unpackEncodedString(DFA121_eofS);
+    static final char[] DFA121_min = DFA.unpackEncodedStringToUnsignedChars(DFA121_minS);
+    static final char[] DFA121_max = DFA.unpackEncodedStringToUnsignedChars(DFA121_maxS);
+    static final short[] DFA121_accept = DFA.unpackEncodedString(DFA121_acceptS);
+    static final short[] DFA121_special = DFA.unpackEncodedString(DFA121_specialS);
+    static final short[][] DFA121_transition;
 
     static {
-        int numStates = DFA124_transitionS.length;
-        DFA124_transition = new short[numStates][];
+        int numStates = DFA121_transitionS.length;
+        DFA121_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA124_transition[i] = DFA.unpackEncodedString(DFA124_transitionS[i]);
+            DFA121_transition[i] = DFA.unpackEncodedString(DFA121_transitionS[i]);
         }
     }
 
-    class DFA124 extends DFA {
+    class DFA121 extends DFA {
 
-        public DFA124(BaseRecognizer recognizer) {
+        public DFA121(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 124;
-            this.eot = DFA124_eot;
-            this.eof = DFA124_eof;
-            this.min = DFA124_min;
-            this.max = DFA124_max;
-            this.accept = DFA124_accept;
-            this.special = DFA124_special;
-            this.transition = DFA124_transition;
+            this.decisionNumber = 121;
+            this.eot = DFA121_eot;
+            this.eof = DFA121_eof;
+            this.min = DFA121_min;
+            this.max = DFA121_max;
+            this.accept = DFA121_accept;
+            this.special = DFA121_special;
+            this.transition = DFA121_transition;
         }
         public String getDescription() {
             return "6486:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?";
@@ -26666,10 +26619,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA124_1 = input.LA(1);
+                        int LA121_1 = input.LA(1);
 
                          
-                        int index124_1 = input.index();
+                        int index121_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred51_InternalDatatypeGrammar()) ) {s = 78;}
@@ -26677,31 +26630,31 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index124_1);
+                        input.seek(index121_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 124, _s, input);
+                new NoViableAltException(getDescription(), 121, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA129_eotS =
+    static final String DFA126_eotS =
         "\7\uffff";
-    static final String DFA129_eofS =
+    static final String DFA126_eofS =
         "\2\uffff\1\4\2\uffff\1\4\1\uffff";
-    static final String DFA129_minS =
+    static final String DFA126_minS =
         "\1\4\1\uffff\1\22\1\4\1\uffff\1\22\1\uffff";
-    static final String DFA129_maxS =
-        "\1\133\1\uffff\1\32\1\33\1\uffff\1\32\1\uffff";
-    static final String DFA129_acceptS =
+    static final String DFA126_maxS =
+        "\1\134\1\uffff\1\32\1\33\1\uffff\1\32\1\uffff";
+    static final String DFA126_acceptS =
         "\1\uffff\1\1\2\uffff\1\2\1\uffff\1\3";
-    static final String DFA129_specialS =
+    static final String DFA126_specialS =
         "\7\uffff}>";
-    static final String[] DFA129_transitionS = {
-            "\1\2\126\uffff\1\1",
+    static final String[] DFA126_transitionS = {
+            "\1\2\127\uffff\1\1",
             "",
             "\1\4\7\uffff\1\3",
             "\1\5\26\uffff\1\6",
@@ -26710,34 +26663,34 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA129_eot = DFA.unpackEncodedString(DFA129_eotS);
-    static final short[] DFA129_eof = DFA.unpackEncodedString(DFA129_eofS);
-    static final char[] DFA129_min = DFA.unpackEncodedStringToUnsignedChars(DFA129_minS);
-    static final char[] DFA129_max = DFA.unpackEncodedStringToUnsignedChars(DFA129_maxS);
-    static final short[] DFA129_accept = DFA.unpackEncodedString(DFA129_acceptS);
-    static final short[] DFA129_special = DFA.unpackEncodedString(DFA129_specialS);
-    static final short[][] DFA129_transition;
+    static final short[] DFA126_eot = DFA.unpackEncodedString(DFA126_eotS);
+    static final short[] DFA126_eof = DFA.unpackEncodedString(DFA126_eofS);
+    static final char[] DFA126_min = DFA.unpackEncodedStringToUnsignedChars(DFA126_minS);
+    static final char[] DFA126_max = DFA.unpackEncodedStringToUnsignedChars(DFA126_maxS);
+    static final short[] DFA126_accept = DFA.unpackEncodedString(DFA126_acceptS);
+    static final short[] DFA126_special = DFA.unpackEncodedString(DFA126_specialS);
+    static final short[][] DFA126_transition;
 
     static {
-        int numStates = DFA129_transitionS.length;
-        DFA129_transition = new short[numStates][];
+        int numStates = DFA126_transitionS.length;
+        DFA126_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA129_transition[i] = DFA.unpackEncodedString(DFA129_transitionS[i]);
+            DFA126_transition[i] = DFA.unpackEncodedString(DFA126_transitionS[i]);
         }
     }
 
-    class DFA129 extends DFA {
+    class DFA126 extends DFA {
 
-        public DFA129(BaseRecognizer recognizer) {
+        public DFA126(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 129;
-            this.eot = DFA129_eot;
-            this.eof = DFA129_eof;
-            this.min = DFA129_min;
-            this.max = DFA129_max;
-            this.accept = DFA129_accept;
-            this.special = DFA129_special;
-            this.transition = DFA129_transition;
+            this.decisionNumber = 126;
+            this.eot = DFA126_eot;
+            this.eof = DFA126_eof;
+            this.min = DFA126_min;
+            this.max = DFA126_max;
+            this.accept = DFA126_accept;
+            this.special = DFA126_special;
+            this.transition = DFA126_transition;
         }
         public String getDescription() {
             return "6873:1: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )";
@@ -26769,10 +26722,10 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleDataType601 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_19_in_ruleDataType638 = new BitSet(new long[]{0x0000007FF0000010L});
     public static final BitSet FOLLOW_ruleValidIDWithKeywords_in_ruleDataType659 = new BitSet(new long[]{0x0000000000D00000L});
-    public static final BitSet FOLLOW_20_in_ruleDataType673 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
+    public static final BitSet FOLLOW_20_in_ruleDataType673 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleDataType694 = new BitSet(new long[]{0x0000000000240000L});
     public static final BitSet FOLLOW_21_in_ruleDataType712 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_22_in_ruleDataType752 = new BitSet(new long[]{0x0000004000000000L,0x0000180000000000L});
+    public static final BitSet FOLLOW_22_in_ruleDataType752 = new BitSet(new long[]{0x0000004000000000L,0x0000300000000000L});
     public static final BitSet FOLLOW_ruleDateType_in_ruleDataType786 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_23_in_ruleDataType811 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_18_in_ruleDataType837 = new BitSet(new long[]{0x0000000000000002L});
@@ -26783,668 +26736,668 @@ public class InternalDatatypeGrammarParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleEnum_in_entryRuleEnum994 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleEnum1004 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_24_in_ruleEnum1041 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnum1058 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_14_in_ruleEnum1076 = new BitSet(new long[]{0x0000000000008010L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_ruleEnum1098 = new BitSet(new long[]{0x0000000002008010L});
-    public static final BitSet FOLLOW_25_in_ruleEnum1112 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_ruleEnum1135 = new BitSet(new long[]{0x0000000002008010L});
-    public static final BitSet FOLLOW_15_in_ruleEnum1151 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1189 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumLiteral1199 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumLiteral1240 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationDef_in_entryRuleAnnotationDef1280 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotationDef1290 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotation_in_ruleAnnotationDef1348 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLQualifiedNameWithWildCard_in_entryRuleLQualifiedNameWithWildCard1385 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLQualifiedNameWithWildCard1396 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleLQualifiedNameWithWildCard1443 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_26_in_ruleLQualifiedNameWithWildCard1462 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_ruleLQualifiedNameWithWildCard1475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidIDWithKeywords_in_entryRuleValidIDWithKeywords1520 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValidIDWithKeywords1531 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleValidIDWithKeywords1569 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_ruleValidIDWithKeywords1588 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_ruleValidIDWithKeywords1607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_ruleValidIDWithKeywords1626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_ruleValidIDWithKeywords1645 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_ruleValidIDWithKeywords1664 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_ruleValidIDWithKeywords1683 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_ruleValidIDWithKeywords1702 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_ruleValidIDWithKeywords1721 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_ruleValidIDWithKeywords1740 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_ruleValidIDWithKeywords1759 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleValidIDWithKeywords1780 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotation_in_entryRuleXAnnotation1829 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotation1839 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_ruleXAnnotation1885 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXAnnotation1908 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_40_in_ruleXAnnotation1929 = new BitSet(new long[]{0x00081B80000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAnnotationElementValuePair_in_ruleXAnnotation1973 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXAnnotation1986 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleXAnnotationElementValuePair_in_ruleXAnnotation2027 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_ruleXAnnotationElementValueOrCommaList_in_ruleXAnnotation2057 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXAnnotation2071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotationElementValuePair_in_entryRuleXAnnotationElementValuePair2109 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotationElementValuePair2119 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleXAnnotationElementValuePair2189 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_ruleXAnnotationElementValuePair2201 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAnnotationElementValue_in_ruleXAnnotationElementValuePair2224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotationElementValueOrCommaList_in_entryRuleXAnnotationElementValueOrCommaList2260 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotationElementValueOrCommaList2270 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_ruleXAnnotationElementValueOrCommaList2335 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_ruleXAnnotationElementValueOrCommaList2347 = new BitSet(new long[]{0x00083980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2371 = new BitSet(new long[]{0x0000200002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXAnnotationElementValueOrCommaList2384 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2405 = new BitSet(new long[]{0x0000200002000000L});
-    public static final BitSet FOLLOW_45_in_ruleXAnnotationElementValueOrCommaList2421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2451 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_25_in_ruleXAnnotationElementValueOrCommaList2473 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2494 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_ruleXAnnotationElementValue_in_entryRuleXAnnotationElementValue2535 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotationElementValue2545 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_ruleXAnnotationElementValue2610 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_ruleXAnnotationElementValue2622 = new BitSet(new long[]{0x00083980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2646 = new BitSet(new long[]{0x0000200002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXAnnotationElementValue2659 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2680 = new BitSet(new long[]{0x0000200002000000L});
-    public static final BitSet FOLLOW_45_in_ruleXAnnotationElementValue2696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2725 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_entryRuleXAnnotationOrExpression2760 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotationOrExpression2770 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAnnotation_in_ruleXAnnotationOrExpression2817 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXAnnotationOrExpression2844 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_entryRuleXExpression2879 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXExpression2889 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAssignment_in_ruleXExpression2935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAssignment_in_entryRuleXAssignment2969 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXAssignment2979 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleXAssignment3037 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_ruleOpSingleAssign_in_ruleXAssignment3053 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAssignment_in_ruleXAssignment3073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXOrExpression_in_ruleXAssignment3103 = new BitSet(new long[]{0x001FC00000000002L});
-    public static final BitSet FOLLOW_ruleOpMultiAssign_in_ruleXAssignment3156 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAssignment_in_ruleXAssignment3179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpSingleAssign_in_entryRuleOpSingleAssign3219 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpSingleAssign3230 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_ruleOpSingleAssign3267 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpMultiAssign_in_entryRuleOpMultiAssign3307 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpMultiAssign3318 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_ruleOpMultiAssign3356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_47_in_ruleOpMultiAssign3375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleOpMultiAssign3394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_ruleOpMultiAssign3413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_ruleOpMultiAssign3432 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleOpMultiAssign3452 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_ruleOpMultiAssign3465 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_ruleOpMultiAssign3478 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_ruleOpMultiAssign3499 = new BitSet(new long[]{0x0030000000000000L});
-    public static final BitSet FOLLOW_52_in_ruleOpMultiAssign3513 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_ruleOpMultiAssign3528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXOrExpression_in_entryRuleXOrExpression3569 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXOrExpression3579 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAndExpression_in_ruleXOrExpression3626 = new BitSet(new long[]{0x0040000000000002L});
-    public static final BitSet FOLLOW_ruleOpOr_in_ruleXOrExpression3679 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAndExpression_in_ruleXOrExpression3702 = new BitSet(new long[]{0x0040000000000002L});
-    public static final BitSet FOLLOW_ruleOpOr_in_entryRuleOpOr3741 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpOr3752 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_54_in_ruleOpOr3789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAndExpression_in_entryRuleXAndExpression3828 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXAndExpression3838 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression3885 = new BitSet(new long[]{0x0080000000000002L});
-    public static final BitSet FOLLOW_ruleOpAnd_in_ruleXAndExpression3938 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression3961 = new BitSet(new long[]{0x0080000000000002L});
-    public static final BitSet FOLLOW_ruleOpAnd_in_entryRuleOpAnd4000 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpAnd4011 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_ruleOpAnd4048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXEqualityExpression_in_entryRuleXEqualityExpression4087 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXEqualityExpression4097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression4144 = new BitSet(new long[]{0x0F00000000000002L});
-    public static final BitSet FOLLOW_ruleOpEquality_in_ruleXEqualityExpression4197 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression4220 = new BitSet(new long[]{0x0F00000000000002L});
-    public static final BitSet FOLLOW_ruleOpEquality_in_entryRuleOpEquality4259 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpEquality4270 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_ruleOpEquality4308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_ruleOpEquality4327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_ruleOpEquality4346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_59_in_ruleOpEquality4365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXRelationalExpression_in_entryRuleXRelationalExpression4405 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXRelationalExpression4415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_ruleXRelationalExpression4462 = new BitSet(new long[]{0x1038000000000002L});
-    public static final BitSet FOLLOW_60_in_ruleXRelationalExpression4498 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXRelationalExpression4521 = new BitSet(new long[]{0x1038000000000002L});
-    public static final BitSet FOLLOW_ruleOpCompare_in_ruleXRelationalExpression4582 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_ruleXRelationalExpression4605 = new BitSet(new long[]{0x1038000000000002L});
-    public static final BitSet FOLLOW_ruleOpCompare_in_entryRuleOpCompare4645 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpCompare4656 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_ruleOpCompare4694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleOpCompare4714 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_ruleOpCompare4727 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_ruleOpCompare4747 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleOpCompare4766 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_entryRuleXOtherOperatorExpression4806 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXOtherOperatorExpression4816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAdditiveExpression_in_ruleXOtherOperatorExpression4863 = new BitSet(new long[]{0xE018000000000002L,0x0000000000000007L});
-    public static final BitSet FOLLOW_ruleOpOther_in_ruleXOtherOperatorExpression4916 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAdditiveExpression_in_ruleXOtherOperatorExpression4939 = new BitSet(new long[]{0xE018000000000002L,0x0000000000000007L});
-    public static final BitSet FOLLOW_ruleOpOther_in_entryRuleOpOther4978 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpOther4989 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_61_in_ruleOpOther5027 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_62_in_ruleOpOther5046 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_ruleOpOther5066 = new BitSet(new long[]{0x8000000000000000L});
-    public static final BitSet FOLLOW_63_in_ruleOpOther5079 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_63_in_ruleOpOther5099 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_64_in_ruleOpOther5118 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_ruleOpOther5138 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_ruleOpOther5169 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_ruleOpOther5182 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_ruleOpOther5203 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleOpOther5225 = new BitSet(new long[]{0x0008000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_51_in_ruleOpOther5256 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_ruleOpOther5269 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleOpOther5290 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_64_in_ruleOpOther5309 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_ruleOpOther5330 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_ruleOpOther5349 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAdditiveExpression_in_entryRuleXAdditiveExpression5389 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXAdditiveExpression5399 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression5446 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000018L});
-    public static final BitSet FOLLOW_ruleOpAdd_in_ruleXAdditiveExpression5499 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression5522 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000018L});
-    public static final BitSet FOLLOW_ruleOpAdd_in_entryRuleOpAdd5561 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpAdd5572 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_67_in_ruleOpAdd5610 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_68_in_ruleOpAdd5629 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_entryRuleXMultiplicativeExpression5669 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXMultiplicativeExpression5679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXUnaryOperation_in_ruleXMultiplicativeExpression5726 = new BitSet(new long[]{0x0000000008000002L,0x00000000000000E0L});
-    public static final BitSet FOLLOW_ruleOpMulti_in_ruleXMultiplicativeExpression5779 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXUnaryOperation_in_ruleXMultiplicativeExpression5802 = new BitSet(new long[]{0x0000000008000002L,0x00000000000000E0L});
-    public static final BitSet FOLLOW_ruleOpMulti_in_entryRuleOpMulti5841 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpMulti5852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleOpMulti5890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_69_in_ruleOpMulti5909 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_70_in_ruleOpMulti5928 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_71_in_ruleOpMulti5947 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXUnaryOperation_in_entryRuleXUnaryOperation5987 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXUnaryOperation5997 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpUnary_in_ruleXUnaryOperation6055 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXUnaryOperation_in_ruleXUnaryOperation6076 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCastedExpression_in_ruleXUnaryOperation6105 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpUnary_in_entryRuleOpUnary6141 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpUnary6152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_72_in_ruleOpUnary6190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_68_in_ruleOpUnary6209 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_67_in_ruleOpUnary6228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCastedExpression_in_entryRuleXCastedExpression6268 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXCastedExpression6278 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXPostfixOperation_in_ruleXCastedExpression6325 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_73_in_ruleXCastedExpression6360 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXCastedExpression6383 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_ruleXPostfixOperation_in_entryRuleXPostfixOperation6421 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXPostfixOperation6431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXMemberFeatureCall_in_ruleXPostfixOperation6478 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000C00L});
-    public static final BitSet FOLLOW_ruleOpPostfix_in_ruleXPostfixOperation6530 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpPostfix_in_entryRuleOpPostfix6570 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpPostfix6581 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_74_in_ruleOpPostfix6619 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_75_in_ruleOpPostfix6638 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXMemberFeatureCall_in_entryRuleXMemberFeatureCall6678 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXMemberFeatureCall6688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXPrimaryExpression_in_ruleXMemberFeatureCall6735 = new BitSet(new long[]{0x0000000004000002L,0x0000000000003000L});
-    public static final BitSet FOLLOW_26_in_ruleXMemberFeatureCall6807 = new BitSet(new long[]{0x0000000000020010L,0x000000001C000000L});
-    public static final BitSet FOLLOW_76_in_ruleXMemberFeatureCall6831 = new BitSet(new long[]{0x0000000000020010L,0x000000001C000000L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleXMemberFeatureCall6868 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_ruleOpSingleAssign_in_ruleXMemberFeatureCall6884 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXAssignment_in_ruleXMemberFeatureCall6906 = new BitSet(new long[]{0x0000000004000002L,0x0000000000003000L});
-    public static final BitSet FOLLOW_26_in_ruleXMemberFeatureCall6992 = new BitSet(new long[]{0x0008000000020010L,0x000000003C000000L});
-    public static final BitSet FOLLOW_77_in_ruleXMemberFeatureCall7016 = new BitSet(new long[]{0x0008000000020010L,0x000000003C000000L});
-    public static final BitSet FOLLOW_76_in_ruleXMemberFeatureCall7053 = new BitSet(new long[]{0x0008000000020010L,0x000000003C000000L});
-    public static final BitSet FOLLOW_51_in_ruleXMemberFeatureCall7082 = new BitSet(new long[]{0x0000010000000010L,0x0000020000000001L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall7103 = new BitSet(new long[]{0x0010000002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXMemberFeatureCall7116 = new BitSet(new long[]{0x0000010000000010L,0x0000020000000001L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall7137 = new BitSet(new long[]{0x0010000002000000L});
-    public static final BitSet FOLLOW_52_in_ruleXMemberFeatureCall7151 = new BitSet(new long[]{0x0008000000020010L,0x000000003C000000L});
-    public static final BitSet FOLLOW_ruleIdOrSuper_in_ruleXMemberFeatureCall7176 = new BitSet(new long[]{0x0000110004000002L,0x0000000000003000L});
-    public static final BitSet FOLLOW_40_in_ruleXMemberFeatureCall7210 = new BitSet(new long[]{0x00081B80000341F0L,0x000000BFFCE2C119L});
-    public static final BitSet FOLLOW_ruleXShortClosure_in_ruleXMemberFeatureCall7295 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall7323 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXMemberFeatureCall7336 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall7357 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_41_in_ruleXMemberFeatureCall7374 = new BitSet(new long[]{0x0000100004000002L,0x0000000000003000L});
-    public static final BitSet FOLLOW_ruleXClosure_in_ruleXMemberFeatureCall7409 = new BitSet(new long[]{0x0000000004000002L,0x0000000000003000L});
-    public static final BitSet FOLLOW_ruleXPrimaryExpression_in_entryRuleXPrimaryExpression7449 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXPrimaryExpression7459 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXConstructorCall_in_ruleXPrimaryExpression7506 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBlockExpression_in_ruleXPrimaryExpression7533 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXSwitchExpression_in_ruleXPrimaryExpression7560 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXSynchronizedExpression_in_ruleXPrimaryExpression7604 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXFeatureCall_in_ruleXPrimaryExpression7632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXLiteral_in_ruleXPrimaryExpression7659 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXIfExpression_in_ruleXPrimaryExpression7686 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXForLoopExpression_in_ruleXPrimaryExpression7743 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBasicForLoopExpression_in_ruleXPrimaryExpression7771 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXWhileExpression_in_ruleXPrimaryExpression7798 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXDoWhileExpression_in_ruleXPrimaryExpression7825 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXThrowExpression_in_ruleXPrimaryExpression7852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXReturnExpression_in_ruleXPrimaryExpression7879 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTryCatchFinallyExpression_in_ruleXPrimaryExpression7906 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXParenthesizedExpression_in_ruleXPrimaryExpression7933 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXLiteral_in_entryRuleXLiteral7968 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXLiteral7978 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCollectionLiteral_in_ruleXLiteral8025 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_ruleXLiteral8065 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBooleanLiteral_in_ruleXLiteral8093 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXNumberLiteral_in_ruleXLiteral8120 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXNullLiteral_in_ruleXLiteral8147 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXStringLiteral_in_ruleXLiteral8174 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTypeLiteral_in_ruleXLiteral8201 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCollectionLiteral_in_entryRuleXCollectionLiteral8236 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXCollectionLiteral8246 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXSetLiteral_in_ruleXCollectionLiteral8293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXListLiteral_in_ruleXCollectionLiteral8320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXSetLiteral_in_entryRuleXSetLiteral8355 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXSetLiteral8365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_ruleXSetLiteral8411 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleXSetLiteral8423 = new BitSet(new long[]{0x000819800003C1F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSetLiteral8445 = new BitSet(new long[]{0x0000000002008000L});
-    public static final BitSet FOLLOW_25_in_ruleXSetLiteral8458 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSetLiteral8479 = new BitSet(new long[]{0x0000000002008000L});
-    public static final BitSet FOLLOW_15_in_ruleXSetLiteral8495 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXListLiteral_in_entryRuleXListLiteral8531 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXListLiteral8541 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_ruleXListLiteral8587 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_ruleXListLiteral8599 = new BitSet(new long[]{0x00083980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXListLiteral8621 = new BitSet(new long[]{0x0000200002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXListLiteral8634 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXListLiteral8655 = new BitSet(new long[]{0x0000200002000000L});
-    public static final BitSet FOLLOW_45_in_ruleXListLiteral8671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_entryRuleXClosure8707 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXClosure8717 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_ruleXClosure8777 = new BitSet(new long[]{0x00083980000341F0L,0x000000BFFFE2C119L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXClosure8850 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_25_in_ruleXClosure8863 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXClosure8884 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_78_in_ruleXClosure8906 = new BitSet(new long[]{0x00083980000341F0L,0x000000BFFFE28118L});
-    public static final BitSet FOLLOW_ruleXExpressionInClosure_in_ruleXClosure8943 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_45_in_ruleXClosure8955 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpressionInClosure_in_entryRuleXExpressionInClosure8991 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXExpressionInClosure9001 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXExpressionInClosure9057 = new BitSet(new long[]{0x00081980000741F2L,0x000000BFFFE28118L});
-    public static final BitSet FOLLOW_18_in_ruleXExpressionInClosure9070 = new BitSet(new long[]{0x00081980000341F2L,0x000000BFFFE28118L});
-    public static final BitSet FOLLOW_ruleXShortClosure_in_entryRuleXShortClosure9110 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXShortClosure9120 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXShortClosure9228 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_25_in_ruleXShortClosure9241 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXShortClosure9262 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_78_in_ruleXShortClosure9284 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXShortClosure9320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXParenthesizedExpression_in_entryRuleXParenthesizedExpression9356 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXParenthesizedExpression9366 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleXParenthesizedExpression9403 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXParenthesizedExpression9425 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXParenthesizedExpression9436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXIfExpression_in_entryRuleXIfExpression9472 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXIfExpression9482 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_79_in_ruleXIfExpression9528 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleXIfExpression9540 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression9561 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXIfExpression9573 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression9594 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
-    public static final BitSet FOLLOW_80_in_ruleXIfExpression9615 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression9637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXSwitchExpression_in_entryRuleXSwitchExpression9675 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXSwitchExpression9685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_81_in_ruleXSwitchExpression9731 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28119L});
-    public static final BitSet FOLLOW_40_in_ruleXSwitchExpression9769 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXSwitchExpression9790 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_ruleXSwitchExpression9802 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression9825 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXSwitchExpression9837 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXSwitchExpression9886 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_ruleXSwitchExpression9898 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression9922 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleXSwitchExpression9936 = new BitSet(new long[]{0x0000010002008010L,0x00000000001C0001L});
-    public static final BitSet FOLLOW_ruleXCasePart_in_ruleXSwitchExpression9957 = new BitSet(new long[]{0x0000010002008010L,0x00000000001C0001L});
-    public static final BitSet FOLLOW_83_in_ruleXSwitchExpression9971 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_ruleXSwitchExpression9983 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression10004 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_ruleXSwitchExpression10018 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCasePart_in_entryRuleXCasePart10054 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXCasePart10064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXCasePart10119 = new BitSet(new long[]{0x0000000002000000L,0x0000000000140000L});
-    public static final BitSet FOLLOW_84_in_ruleXCasePart10133 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCasePart10154 = new BitSet(new long[]{0x0000000002000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_ruleXCasePart10170 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCasePart10191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ruleXCasePart10210 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXForLoopExpression_in_entryRuleXForLoopExpression10247 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXForLoopExpression10257 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_85_in_ruleXForLoopExpression10334 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleXForLoopExpression10346 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXForLoopExpression10367 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_ruleXForLoopExpression10379 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXForLoopExpression10402 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXForLoopExpression10414 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXForLoopExpression10435 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBasicForLoopExpression_in_entryRuleXBasicForLoopExpression10471 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXBasicForLoopExpression10481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_85_in_ruleXBasicForLoopExpression10527 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleXBasicForLoopExpression10539 = new BitSet(new long[]{0x00081980000741F0L,0x000000BFFFE28118L});
-    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBasicForLoopExpression10561 = new BitSet(new long[]{0x0000000002040000L});
-    public static final BitSet FOLLOW_25_in_ruleXBasicForLoopExpression10574 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFFE28118L});
-    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBasicForLoopExpression10595 = new BitSet(new long[]{0x0000000002040000L});
-    public static final BitSet FOLLOW_18_in_ruleXBasicForLoopExpression10611 = new BitSet(new long[]{0x00081980000741F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10632 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_ruleXBasicForLoopExpression10645 = new BitSet(new long[]{0x00081B80000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10667 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXBasicForLoopExpression10680 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10701 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_41_in_ruleXBasicForLoopExpression10717 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10738 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXWhileExpression_in_entryRuleXWhileExpression10774 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXWhileExpression10784 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_86_in_ruleXWhileExpression10830 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleXWhileExpression10842 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXWhileExpression10863 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXWhileExpression10875 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXWhileExpression10896 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXDoWhileExpression_in_entryRuleXDoWhileExpression10932 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXDoWhileExpression10942 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_87_in_ruleXDoWhileExpression10988 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXDoWhileExpression11009 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-    public static final BitSet FOLLOW_86_in_ruleXDoWhileExpression11021 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleXDoWhileExpression11033 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXDoWhileExpression11054 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXDoWhileExpression11066 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBlockExpression_in_entryRuleXBlockExpression11102 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXBlockExpression11112 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleXBlockExpression11158 = new BitSet(new long[]{0x000819800003C1F0L,0x000000BFFFE28118L});
-    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBlockExpression11180 = new BitSet(new long[]{0x000819800007C1F0L,0x000000BFFFE28118L});
-    public static final BitSet FOLLOW_18_in_ruleXBlockExpression11193 = new BitSet(new long[]{0x000819800003C1F0L,0x000000BFFFE28118L});
-    public static final BitSet FOLLOW_15_in_ruleXBlockExpression11209 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_entryRuleXExpressionOrVarDeclaration11245 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXExpressionOrVarDeclaration11255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXVariableDeclaration_in_ruleXExpressionOrVarDeclaration11302 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXExpressionOrVarDeclaration11329 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXVariableDeclaration_in_entryRuleXVariableDeclaration11364 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXVariableDeclaration11374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_88_in_ruleXVariableDeclaration11427 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_89_in_ruleXVariableDeclaration11458 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXVariableDeclaration11506 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleXVariableDeclaration11527 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleXVariableDeclaration11556 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_42_in_ruleXVariableDeclaration11570 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXVariableDeclaration11591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_entryRuleJvmFormalParameter11629 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmFormalParameter11639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmFormalParameter11685 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleJvmFormalParameter11707 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_entryRuleFullJvmFormalParameter11743 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFullJvmFormalParameter11753 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleFullJvmFormalParameter11799 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleFullJvmFormalParameter11820 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXFeatureCall_in_entryRuleXFeatureCall11856 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXFeatureCall11866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleXFeatureCall11913 = new BitSet(new long[]{0x0000010000000010L,0x0000020000000001L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall11934 = new BitSet(new long[]{0x0010000002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXFeatureCall11947 = new BitSet(new long[]{0x0000010000000010L,0x0000020000000001L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall11968 = new BitSet(new long[]{0x0010000002000000L});
-    public static final BitSet FOLLOW_52_in_ruleXFeatureCall11982 = new BitSet(new long[]{0x0008000000020010L,0x000000003C000000L});
-    public static final BitSet FOLLOW_ruleIdOrSuper_in_ruleXFeatureCall12007 = new BitSet(new long[]{0x0000110000000002L});
-    public static final BitSet FOLLOW_40_in_ruleXFeatureCall12041 = new BitSet(new long[]{0x00081B80000341F0L,0x000000BFFCE2C119L});
-    public static final BitSet FOLLOW_ruleXShortClosure_in_ruleXFeatureCall12126 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFeatureCall12154 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXFeatureCall12167 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFeatureCall12188 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_41_in_ruleXFeatureCall12205 = new BitSet(new long[]{0x0000100000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_ruleXFeatureCall12240 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_entryRuleFeatureCallID12278 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFeatureCallID12289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleFeatureCallID12336 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_90_in_ruleFeatureCallID12360 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_91_in_ruleFeatureCallID12379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_ruleFeatureCallID12398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_92_in_ruleFeatureCallID12417 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIdOrSuper_in_entryRuleIdOrSuper12458 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIdOrSuper12469 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleIdOrSuper12516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_93_in_ruleIdOrSuper12540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall12580 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXConstructorCall12590 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_94_in_ruleXConstructorCall12636 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXConstructorCall12659 = new BitSet(new long[]{0x0008110000000002L});
-    public static final BitSet FOLLOW_51_in_ruleXConstructorCall12680 = new BitSet(new long[]{0x0000010000000010L,0x0000020000000001L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall12702 = new BitSet(new long[]{0x0010000002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXConstructorCall12715 = new BitSet(new long[]{0x0000010000000010L,0x0000020000000001L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall12736 = new BitSet(new long[]{0x0010000002000000L});
-    public static final BitSet FOLLOW_52_in_ruleXConstructorCall12750 = new BitSet(new long[]{0x0000110000000002L});
-    public static final BitSet FOLLOW_40_in_ruleXConstructorCall12786 = new BitSet(new long[]{0x00081B80000341F0L,0x000000BFFCE2C119L});
-    public static final BitSet FOLLOW_ruleXShortClosure_in_ruleXConstructorCall12871 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall12899 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXConstructorCall12912 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall12933 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_41_in_ruleXConstructorCall12950 = new BitSet(new long[]{0x0000100000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_ruleXConstructorCall12985 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral13022 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXBooleanLiteral13032 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_95_in_ruleXBooleanLiteral13079 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_96_in_ruleXBooleanLiteral13103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral13153 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXNullLiteral13163 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_97_in_ruleXNullLiteral13209 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral13245 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXNumberLiteral13255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumber_in_ruleXNumberLiteral13310 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXStringLiteral_in_entryRuleXStringLiteral13346 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXStringLiteral13356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleXStringLiteral13407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral13448 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXTypeLiteral13458 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_98_in_ruleXTypeLiteral13504 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleXTypeLiteral13516 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral13539 = new BitSet(new long[]{0x0000120000000000L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_ruleXTypeLiteral13560 = new BitSet(new long[]{0x0000120000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXTypeLiteral13573 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression13609 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXThrowExpression13619 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_99_in_ruleXThrowExpression13665 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXThrowExpression13686 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression13722 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXReturnExpression13732 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_100_in_ruleXReturnExpression13778 = new BitSet(new long[]{0x00081980000341F2L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXReturnExpression14013 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression14050 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression14060 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_101_in_ruleXTryCatchFinallyExpression14106 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14127 = new BitSet(new long[]{0x0000000000000000L,0x0000014000000000L});
-    public static final BitSet FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression14157 = new BitSet(new long[]{0x0000000000000002L,0x0000014000000000L});
-    public static final BitSet FOLLOW_102_in_ruleXTryCatchFinallyExpression14179 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14201 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_102_in_ruleXTryCatchFinallyExpression14223 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14244 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXSynchronizedExpression_in_entryRuleXSynchronizedExpression14282 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXSynchronizedExpression14292 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_103_in_ruleXSynchronizedExpression14356 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleXSynchronizedExpression14368 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSynchronizedExpression14391 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXSynchronizedExpression14403 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSynchronizedExpression14424 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause14460 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXCatchClause14470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_104_in_ruleXCatchClause14515 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleXCatchClause14528 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_ruleXCatchClause14549 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleXCatchClause14561 = new BitSet(new long[]{0x00081980000341F0L,0x000000BFFCE28118L});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCatchClause14582 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName14619 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName14630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName14677 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_26_in_ruleQualifiedName14705 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName14728 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_ruleNumber_in_entryRuleNumber14782 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNumber14793 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_HEX_in_ruleNumber14837 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber14865 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber14891 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_26_in_ruleNumber14911 = new BitSet(new long[]{0x0000000000000180L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber14927 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber14953 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference15008 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmTypeReference15018 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference15066 = new BitSet(new long[]{0x0000100000000002L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_ruleJvmTypeReference15102 = new BitSet(new long[]{0x0000100000000002L});
-    public static final BitSet FOLLOW_ruleXFunctionTypeRef_in_ruleJvmTypeReference15133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_entryRuleArrayBrackets15169 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArrayBrackets15180 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_ruleArrayBrackets15218 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_45_in_ruleArrayBrackets15231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXFunctionTypeRef_in_entryRuleXFunctionTypeRef15271 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXFunctionTypeRef15281 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleXFunctionTypeRef15319 = new BitSet(new long[]{0x0000030000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15341 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_25_in_ruleXFunctionTypeRef15354 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15375 = new BitSet(new long[]{0x0000020002000000L});
-    public static final BitSet FOLLOW_41_in_ruleXFunctionTypeRef15391 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_64_in_ruleXFunctionTypeRef15405 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15426 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference15462 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference15472 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference15520 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleJvmParameterizedTypeReference15541 = new BitSet(new long[]{0x0000010000000010L,0x0000020000000001L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference15563 = new BitSet(new long[]{0x0010000002000000L});
-    public static final BitSet FOLLOW_25_in_ruleJvmParameterizedTypeReference15576 = new BitSet(new long[]{0x0000010000000010L,0x0000020000000001L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference15597 = new BitSet(new long[]{0x0010000002000000L});
-    public static final BitSet FOLLOW_52_in_ruleJvmParameterizedTypeReference15611 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference15649 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference15659 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference15706 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference15733 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference15768 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference15778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_105_in_ruleJvmWildcardTypeReference15824 = new BitSet(new long[]{0x0000000000000002L,0x0000000024000000L});
-    public static final BitSet FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference15846 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference15873 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound15911 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBound15921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_90_in_ruleJvmUpperBound15958 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound15979 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded16015 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded16025 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_106_in_ruleJvmUpperBoundAnded16062 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded16083 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound16119 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmLowerBound16129 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_93_in_ruleJvmLowerBound16166 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound16187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard16226 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard16237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard16284 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleQualifiedNameWithWildcard16302 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_ruleQualifiedNameWithWildcard16315 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID16356 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValidID16367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleValidID16406 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXImportDeclaration_in_entryRuleXImportDeclaration16452 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXImportDeclaration16462 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_ruleXImportDeclaration16499 = new BitSet(new long[]{0x0000000000000010L,0x0000000008000000L});
-    public static final BitSet FOLLOW_91_in_ruleXImportDeclaration16519 = new BitSet(new long[]{0x0000000000000010L,0x0000000010000000L});
-    public static final BitSet FOLLOW_92_in_ruleXImportDeclaration16550 = new BitSet(new long[]{0x0000000000000010L,0x0000000010000000L});
-    public static final BitSet FOLLOW_ruleQualifiedNameInStaticImport_in_ruleXImportDeclaration16587 = new BitSet(new long[]{0x0000000008000010L});
-    public static final BitSet FOLLOW_27_in_ruleXImportDeclaration16606 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleXImportDeclaration16646 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXImportDeclaration16677 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_ruleXImportDeclaration16704 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_18_in_ruleXImportDeclaration16718 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameInStaticImport_in_entryRuleQualifiedNameInStaticImport16757 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameInStaticImport16768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedNameInStaticImport16815 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleQualifiedNameInStaticImport16833 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_38_in_ruleDateType16888 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_107_in_ruleDateType16905 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_108_in_ruleDateType16922 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_ruleLVisibility16967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_109_in_ruleLVisibility16984 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_110_in_ruleLVisibility17001 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_111_in_ruleLVisibility17018 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleLowerBound17063 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_112_in_ruleLowerBound17080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_105_in_ruleLowerBound17097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_67_in_ruleLowerBound17114 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_113_in_ruleLowerBound17131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleUpperBound17176 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_113_in_ruleUpperBound17193 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_synpred2_InternalDatatypeGrammar1921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_synpred3_InternalDatatypeGrammar1950 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_synpred3_InternalDatatypeGrammar1956 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_synpred6_InternalDatatypeGrammar2312 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_synpred6_InternalDatatypeGrammar2316 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_synpred7_InternalDatatypeGrammar2587 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_synpred7_InternalDatatypeGrammar2591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpMultiAssign_in_synpred8_InternalDatatypeGrammar3124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpOr_in_synpred9_InternalDatatypeGrammar3647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpAnd_in_synpred10_InternalDatatypeGrammar3906 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpEquality_in_synpred11_InternalDatatypeGrammar4165 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_60_in_synpred12_InternalDatatypeGrammar4479 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpCompare_in_synpred13_InternalDatatypeGrammar4550 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpOther_in_synpred14_InternalDatatypeGrammar4884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_synpred15_InternalDatatypeGrammar5153 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_synpred15_InternalDatatypeGrammar5158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_synpred16_InternalDatatypeGrammar5240 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_synpred16_InternalDatatypeGrammar5245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpAdd_in_synpred17_InternalDatatypeGrammar5467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpMulti_in_synpred18_InternalDatatypeGrammar5747 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_synpred19_InternalDatatypeGrammar6341 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpPostfix_in_synpred20_InternalDatatypeGrammar6498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_synpred21_InternalDatatypeGrammar6753 = new BitSet(new long[]{0x0000000000020010L,0x000000001C000000L});
-    public static final BitSet FOLLOW_76_in_synpred21_InternalDatatypeGrammar6767 = new BitSet(new long[]{0x0000000000020010L,0x000000001C000000L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_synpred21_InternalDatatypeGrammar6783 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_ruleOpSingleAssign_in_synpred21_InternalDatatypeGrammar6789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_synpred22_InternalDatatypeGrammar6931 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_77_in_synpred22_InternalDatatypeGrammar6945 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_76_in_synpred22_InternalDatatypeGrammar6965 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_synpred23_InternalDatatypeGrammar7192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred24_InternalDatatypeGrammar7244 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_25_in_synpred24_InternalDatatypeGrammar7251 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred24_InternalDatatypeGrammar7258 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_78_in_synpred24_InternalDatatypeGrammar7272 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_synpred25_InternalDatatypeGrammar7392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_103_in_synpred26_InternalDatatypeGrammar7581 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_synpred26_InternalDatatypeGrammar7585 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_85_in_synpred27_InternalDatatypeGrammar7707 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_synpred27_InternalDatatypeGrammar7711 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred27_InternalDatatypeGrammar7718 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_synpred27_InternalDatatypeGrammar7724 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_synpred28_InternalDatatypeGrammar8046 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred30_InternalDatatypeGrammar8796 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_25_in_synpred30_InternalDatatypeGrammar8803 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred30_InternalDatatypeGrammar8810 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_78_in_synpred30_InternalDatatypeGrammar8824 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_80_in_synpred32_InternalDatatypeGrammar9607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_synpred33_InternalDatatypeGrammar9746 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred33_InternalDatatypeGrammar9753 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_synpred33_InternalDatatypeGrammar9759 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred34_InternalDatatypeGrammar9861 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_synpred34_InternalDatatypeGrammar9867 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_synpred36_InternalDatatypeGrammar11476 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleValidID_in_synpred36_InternalDatatypeGrammar11485 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_synpred37_InternalDatatypeGrammar12023 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalDatatypeGrammar12075 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_25_in_synpred38_InternalDatatypeGrammar12082 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalDatatypeGrammar12089 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_78_in_synpred38_InternalDatatypeGrammar12103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_synpred39_InternalDatatypeGrammar12223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_synpred40_InternalDatatypeGrammar12672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_synpred41_InternalDatatypeGrammar12768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalDatatypeGrammar12820 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_25_in_synpred42_InternalDatatypeGrammar12827 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalDatatypeGrammar12834 = new BitSet(new long[]{0x0000000002000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_78_in_synpred42_InternalDatatypeGrammar12848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_synpred43_InternalDatatypeGrammar12968 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_synpred44_InternalDatatypeGrammar13788 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_104_in_synpred45_InternalDatatypeGrammar14141 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_102_in_synpred46_InternalDatatypeGrammar14171 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_synpred49_InternalDatatypeGrammar14696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_synpred50_InternalDatatypeGrammar15081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_synpred51_InternalDatatypeGrammar15533 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnum1058 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleEnum1075 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleEnumLiteral_in_ruleEnum1096 = new BitSet(new long[]{0x0000000002008000L});
+    public static final BitSet FOLLOW_25_in_ruleEnum1109 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleEnumLiteral_in_ruleEnum1130 = new BitSet(new long[]{0x0000000002008000L});
+    public static final BitSet FOLLOW_15_in_ruleEnum1144 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1180 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumLiteral1190 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumLiteral1231 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationDef_in_entryRuleAnnotationDef1271 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotationDef1281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotation_in_ruleAnnotationDef1339 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLQualifiedNameWithWildCard_in_entryRuleLQualifiedNameWithWildCard1376 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLQualifiedNameWithWildCard1387 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleLQualifiedNameWithWildCard1434 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleLQualifiedNameWithWildCard1453 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleLQualifiedNameWithWildCard1466 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidIDWithKeywords_in_entryRuleValidIDWithKeywords1511 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValidIDWithKeywords1522 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleValidIDWithKeywords1560 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_ruleValidIDWithKeywords1579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_ruleValidIDWithKeywords1598 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_ruleValidIDWithKeywords1617 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_ruleValidIDWithKeywords1636 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_ruleValidIDWithKeywords1655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleValidIDWithKeywords1674 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_ruleValidIDWithKeywords1693 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_ruleValidIDWithKeywords1712 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_ruleValidIDWithKeywords1731 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_ruleValidIDWithKeywords1750 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleValidIDWithKeywords1771 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotation_in_entryRuleXAnnotation1820 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotation1830 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_ruleXAnnotation1876 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXAnnotation1899 = new BitSet(new long[]{0x0000010000000002L});
+    public static final BitSet FOLLOW_40_in_ruleXAnnotation1920 = new BitSet(new long[]{0x00103580000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAnnotationElementValuePair_in_ruleXAnnotation1964 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXAnnotation1977 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleXAnnotationElementValuePair_in_ruleXAnnotation2018 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_ruleXAnnotationElementValueOrCommaList_in_ruleXAnnotation2048 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXAnnotation2062 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotationElementValuePair_in_entryRuleXAnnotationElementValuePair2100 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotationElementValuePair2110 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleXAnnotationElementValuePair2180 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_43_in_ruleXAnnotationElementValuePair2192 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAnnotationElementValue_in_ruleXAnnotationElementValuePair2215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotationElementValueOrCommaList_in_entryRuleXAnnotationElementValueOrCommaList2251 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotationElementValueOrCommaList2261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_ruleXAnnotationElementValueOrCommaList2326 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_45_in_ruleXAnnotationElementValueOrCommaList2338 = new BitSet(new long[]{0x00107180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2362 = new BitSet(new long[]{0x0000420000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXAnnotationElementValueOrCommaList2375 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2396 = new BitSet(new long[]{0x0000420000000000L});
+    public static final BitSet FOLLOW_46_in_ruleXAnnotationElementValueOrCommaList2412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2442 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_41_in_ruleXAnnotationElementValueOrCommaList2464 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValueOrCommaList2485 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotationElementValue_in_entryRuleXAnnotationElementValue2526 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotationElementValue2536 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_ruleXAnnotationElementValue2601 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_45_in_ruleXAnnotationElementValue2613 = new BitSet(new long[]{0x00107180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2637 = new BitSet(new long[]{0x0000420000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXAnnotationElementValue2650 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2671 = new BitSet(new long[]{0x0000420000000000L});
+    public static final BitSet FOLLOW_46_in_ruleXAnnotationElementValue2687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_ruleXAnnotationElementValue2716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotationOrExpression_in_entryRuleXAnnotationOrExpression2751 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXAnnotationOrExpression2761 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAnnotation_in_ruleXAnnotationOrExpression2808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXAnnotationOrExpression2835 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_entryRuleXExpression2870 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXExpression2880 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAssignment_in_ruleXExpression2926 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAssignment_in_entryRuleXAssignment2960 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXAssignment2970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleXAssignment3028 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_ruleOpSingleAssign_in_ruleXAssignment3044 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAssignment_in_ruleXAssignment3064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXOrExpression_in_ruleXAssignment3094 = new BitSet(new long[]{0x003F800000000002L});
+    public static final BitSet FOLLOW_ruleOpMultiAssign_in_ruleXAssignment3147 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAssignment_in_ruleXAssignment3170 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpSingleAssign_in_entryRuleOpSingleAssign3210 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpSingleAssign3221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_ruleOpSingleAssign3258 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpMultiAssign_in_entryRuleOpMultiAssign3298 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpMultiAssign3309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_ruleOpMultiAssign3347 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleOpMultiAssign3366 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_ruleOpMultiAssign3385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_ruleOpMultiAssign3404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_ruleOpMultiAssign3423 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleOpMultiAssign3443 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_52_in_ruleOpMultiAssign3456 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_43_in_ruleOpMultiAssign3469 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleOpMultiAssign3490 = new BitSet(new long[]{0x0060000000000000L});
+    public static final BitSet FOLLOW_53_in_ruleOpMultiAssign3504 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleOpMultiAssign3519 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXOrExpression_in_entryRuleXOrExpression3560 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXOrExpression3570 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAndExpression_in_ruleXOrExpression3617 = new BitSet(new long[]{0x0080000000000002L});
+    public static final BitSet FOLLOW_ruleOpOr_in_ruleXOrExpression3670 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAndExpression_in_ruleXOrExpression3693 = new BitSet(new long[]{0x0080000000000002L});
+    public static final BitSet FOLLOW_ruleOpOr_in_entryRuleOpOr3732 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpOr3743 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_ruleOpOr3780 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAndExpression_in_entryRuleXAndExpression3819 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXAndExpression3829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression3876 = new BitSet(new long[]{0x0100000000000002L});
+    public static final BitSet FOLLOW_ruleOpAnd_in_ruleXAndExpression3929 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression3952 = new BitSet(new long[]{0x0100000000000002L});
+    public static final BitSet FOLLOW_ruleOpAnd_in_entryRuleOpAnd3991 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpAnd4002 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_ruleOpAnd4039 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXEqualityExpression_in_entryRuleXEqualityExpression4078 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXEqualityExpression4088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression4135 = new BitSet(new long[]{0x1E00000000000002L});
+    public static final BitSet FOLLOW_ruleOpEquality_in_ruleXEqualityExpression4188 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression4211 = new BitSet(new long[]{0x1E00000000000002L});
+    public static final BitSet FOLLOW_ruleOpEquality_in_entryRuleOpEquality4250 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpEquality4261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_ruleOpEquality4299 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_ruleOpEquality4318 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_ruleOpEquality4337 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_60_in_ruleOpEquality4356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXRelationalExpression_in_entryRuleXRelationalExpression4396 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXRelationalExpression4406 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_ruleXRelationalExpression4453 = new BitSet(new long[]{0x2070000000000002L});
+    public static final BitSet FOLLOW_61_in_ruleXRelationalExpression4489 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXRelationalExpression4512 = new BitSet(new long[]{0x2070000000000002L});
+    public static final BitSet FOLLOW_ruleOpCompare_in_ruleXRelationalExpression4573 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_ruleXRelationalExpression4596 = new BitSet(new long[]{0x2070000000000002L});
+    public static final BitSet FOLLOW_ruleOpCompare_in_entryRuleOpCompare4636 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpCompare4647 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_54_in_ruleOpCompare4685 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleOpCompare4705 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_43_in_ruleOpCompare4718 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleOpCompare4738 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleOpCompare4757 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_entryRuleXOtherOperatorExpression4797 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXOtherOperatorExpression4807 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAdditiveExpression_in_ruleXOtherOperatorExpression4854 = new BitSet(new long[]{0xC030000000000002L,0x000000000000000FL});
+    public static final BitSet FOLLOW_ruleOpOther_in_ruleXOtherOperatorExpression4907 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAdditiveExpression_in_ruleXOtherOperatorExpression4930 = new BitSet(new long[]{0xC030000000000002L,0x000000000000000FL});
+    public static final BitSet FOLLOW_ruleOpOther_in_entryRuleOpOther4969 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpOther4980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_62_in_ruleOpOther5018 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_63_in_ruleOpOther5037 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleOpOther5057 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_ruleOpOther5070 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_64_in_ruleOpOther5090 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_ruleOpOther5109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleOpOther5129 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_ruleOpOther5160 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_ruleOpOther5173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleOpOther5194 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleOpOther5216 = new BitSet(new long[]{0x0010000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleOpOther5247 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_52_in_ruleOpOther5260 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleOpOther5281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_ruleOpOther5300 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_66_in_ruleOpOther5321 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_67_in_ruleOpOther5340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAdditiveExpression_in_entryRuleXAdditiveExpression5380 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXAdditiveExpression5390 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression5437 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000030L});
+    public static final BitSet FOLLOW_ruleOpAdd_in_ruleXAdditiveExpression5490 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression5513 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000030L});
+    public static final BitSet FOLLOW_ruleOpAdd_in_entryRuleOpAdd5552 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpAdd5563 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_68_in_ruleOpAdd5601 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_69_in_ruleOpAdd5620 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_entryRuleXMultiplicativeExpression5660 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXMultiplicativeExpression5670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXUnaryOperation_in_ruleXMultiplicativeExpression5717 = new BitSet(new long[]{0x0000000008000002L,0x00000000000001C0L});
+    public static final BitSet FOLLOW_ruleOpMulti_in_ruleXMultiplicativeExpression5770 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXUnaryOperation_in_ruleXMultiplicativeExpression5793 = new BitSet(new long[]{0x0000000008000002L,0x00000000000001C0L});
+    public static final BitSet FOLLOW_ruleOpMulti_in_entryRuleOpMulti5832 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpMulti5843 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleOpMulti5881 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_70_in_ruleOpMulti5900 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_71_in_ruleOpMulti5919 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_72_in_ruleOpMulti5938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXUnaryOperation_in_entryRuleXUnaryOperation5978 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXUnaryOperation5988 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpUnary_in_ruleXUnaryOperation6046 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXUnaryOperation_in_ruleXUnaryOperation6067 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCastedExpression_in_ruleXUnaryOperation6096 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpUnary_in_entryRuleOpUnary6132 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpUnary6143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_ruleOpUnary6181 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_69_in_ruleOpUnary6200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_68_in_ruleOpUnary6219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCastedExpression_in_entryRuleXCastedExpression6259 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXCastedExpression6269 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXPostfixOperation_in_ruleXCastedExpression6316 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000400L});
+    public static final BitSet FOLLOW_74_in_ruleXCastedExpression6351 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXCastedExpression6374 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000400L});
+    public static final BitSet FOLLOW_ruleXPostfixOperation_in_entryRuleXPostfixOperation6412 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXPostfixOperation6422 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXMemberFeatureCall_in_ruleXPostfixOperation6469 = new BitSet(new long[]{0x0000000000000002L,0x0000000000001800L});
+    public static final BitSet FOLLOW_ruleOpPostfix_in_ruleXPostfixOperation6521 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpPostfix_in_entryRuleOpPostfix6561 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpPostfix6572 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_75_in_ruleOpPostfix6610 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_76_in_ruleOpPostfix6629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXMemberFeatureCall_in_entryRuleXMemberFeatureCall6669 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXMemberFeatureCall6679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXPrimaryExpression_in_ruleXMemberFeatureCall6726 = new BitSet(new long[]{0x0000000004000002L,0x0000000000006000L});
+    public static final BitSet FOLLOW_26_in_ruleXMemberFeatureCall6798 = new BitSet(new long[]{0x0000000000020010L,0x0000000038000000L});
+    public static final BitSet FOLLOW_77_in_ruleXMemberFeatureCall6822 = new BitSet(new long[]{0x0000000000020010L,0x0000000038000000L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleXMemberFeatureCall6859 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_ruleOpSingleAssign_in_ruleXMemberFeatureCall6875 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXAssignment_in_ruleXMemberFeatureCall6897 = new BitSet(new long[]{0x0000000004000002L,0x0000000000006000L});
+    public static final BitSet FOLLOW_26_in_ruleXMemberFeatureCall6983 = new BitSet(new long[]{0x0010000000020010L,0x0000000078000000L});
+    public static final BitSet FOLLOW_78_in_ruleXMemberFeatureCall7007 = new BitSet(new long[]{0x0010000000020010L,0x0000000078000000L});
+    public static final BitSet FOLLOW_77_in_ruleXMemberFeatureCall7044 = new BitSet(new long[]{0x0010000000020010L,0x0000000078000000L});
+    public static final BitSet FOLLOW_52_in_ruleXMemberFeatureCall7073 = new BitSet(new long[]{0x0000010000000010L,0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall7094 = new BitSet(new long[]{0x0020020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXMemberFeatureCall7107 = new BitSet(new long[]{0x0000010000000010L,0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall7128 = new BitSet(new long[]{0x0020020000000000L});
+    public static final BitSet FOLLOW_53_in_ruleXMemberFeatureCall7142 = new BitSet(new long[]{0x0010000000020010L,0x0000000078000000L});
+    public static final BitSet FOLLOW_ruleIdOrSuper_in_ruleXMemberFeatureCall7167 = new BitSet(new long[]{0x0000210004000002L,0x0000000000006000L});
+    public static final BitSet FOLLOW_40_in_ruleXMemberFeatureCall7201 = new BitSet(new long[]{0x00103580000341F0L,0x0000017FF9C58232L});
+    public static final BitSet FOLLOW_ruleXShortClosure_in_ruleXMemberFeatureCall7286 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall7314 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXMemberFeatureCall7327 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall7348 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXMemberFeatureCall7365 = new BitSet(new long[]{0x0000200004000002L,0x0000000000006000L});
+    public static final BitSet FOLLOW_ruleXClosure_in_ruleXMemberFeatureCall7400 = new BitSet(new long[]{0x0000000004000002L,0x0000000000006000L});
+    public static final BitSet FOLLOW_ruleXPrimaryExpression_in_entryRuleXPrimaryExpression7440 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXPrimaryExpression7450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXConstructorCall_in_ruleXPrimaryExpression7497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBlockExpression_in_ruleXPrimaryExpression7524 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXSwitchExpression_in_ruleXPrimaryExpression7551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXSynchronizedExpression_in_ruleXPrimaryExpression7595 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXFeatureCall_in_ruleXPrimaryExpression7623 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXLiteral_in_ruleXPrimaryExpression7650 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXIfExpression_in_ruleXPrimaryExpression7677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXForLoopExpression_in_ruleXPrimaryExpression7734 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBasicForLoopExpression_in_ruleXPrimaryExpression7762 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXWhileExpression_in_ruleXPrimaryExpression7789 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXDoWhileExpression_in_ruleXPrimaryExpression7816 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXThrowExpression_in_ruleXPrimaryExpression7843 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXReturnExpression_in_ruleXPrimaryExpression7870 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTryCatchFinallyExpression_in_ruleXPrimaryExpression7897 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXParenthesizedExpression_in_ruleXPrimaryExpression7924 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXLiteral_in_entryRuleXLiteral7959 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXLiteral7969 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCollectionLiteral_in_ruleXLiteral8016 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_ruleXLiteral8056 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBooleanLiteral_in_ruleXLiteral8084 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXNumberLiteral_in_ruleXLiteral8111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXNullLiteral_in_ruleXLiteral8138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXStringLiteral_in_ruleXLiteral8165 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTypeLiteral_in_ruleXLiteral8192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCollectionLiteral_in_entryRuleXCollectionLiteral8227 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXCollectionLiteral8237 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXSetLiteral_in_ruleXCollectionLiteral8284 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXListLiteral_in_ruleXCollectionLiteral8311 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXSetLiteral_in_entryRuleXSetLiteral8346 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXSetLiteral8356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_ruleXSetLiteral8402 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleXSetLiteral8414 = new BitSet(new long[]{0x001031800003C1F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSetLiteral8436 = new BitSet(new long[]{0x0000020000008000L});
+    public static final BitSet FOLLOW_41_in_ruleXSetLiteral8449 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSetLiteral8470 = new BitSet(new long[]{0x0000020000008000L});
+    public static final BitSet FOLLOW_15_in_ruleXSetLiteral8486 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXListLiteral_in_entryRuleXListLiteral8522 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXListLiteral8532 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_ruleXListLiteral8578 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_45_in_ruleXListLiteral8590 = new BitSet(new long[]{0x00107180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXListLiteral8612 = new BitSet(new long[]{0x0000420000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXListLiteral8625 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXListLiteral8646 = new BitSet(new long[]{0x0000420000000000L});
+    public static final BitSet FOLLOW_46_in_ruleXListLiteral8662 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_entryRuleXClosure8698 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXClosure8708 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_ruleXClosure8768 = new BitSet(new long[]{0x00107180000341F0L,0x0000017FFFC58232L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXClosure8841 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_41_in_ruleXClosure8854 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXClosure8875 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_79_in_ruleXClosure8897 = new BitSet(new long[]{0x00107180000341F0L,0x0000017FFFC50230L});
+    public static final BitSet FOLLOW_ruleXExpressionInClosure_in_ruleXClosure8934 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_ruleXClosure8946 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpressionInClosure_in_entryRuleXExpressionInClosure8982 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXExpressionInClosure8992 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXExpressionInClosure9048 = new BitSet(new long[]{0x00103180000741F2L,0x0000017FFFC50230L});
+    public static final BitSet FOLLOW_18_in_ruleXExpressionInClosure9061 = new BitSet(new long[]{0x00103180000341F2L,0x0000017FFFC50230L});
+    public static final BitSet FOLLOW_ruleXShortClosure_in_entryRuleXShortClosure9101 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXShortClosure9111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXShortClosure9219 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_41_in_ruleXShortClosure9232 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXShortClosure9253 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_79_in_ruleXShortClosure9275 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXShortClosure9311 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXParenthesizedExpression_in_entryRuleXParenthesizedExpression9347 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXParenthesizedExpression9357 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_ruleXParenthesizedExpression9394 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXParenthesizedExpression9416 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXParenthesizedExpression9427 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXIfExpression_in_entryRuleXIfExpression9463 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXIfExpression9473 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_80_in_ruleXIfExpression9519 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleXIfExpression9531 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression9552 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXIfExpression9564 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression9585 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
+    public static final BitSet FOLLOW_81_in_ruleXIfExpression9606 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression9628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXSwitchExpression_in_entryRuleXSwitchExpression9666 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXSwitchExpression9676 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_82_in_ruleXSwitchExpression9722 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50232L});
+    public static final BitSet FOLLOW_40_in_ruleXSwitchExpression9760 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXSwitchExpression9781 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_83_in_ruleXSwitchExpression9793 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression9816 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXSwitchExpression9828 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXSwitchExpression9877 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_83_in_ruleXSwitchExpression9889 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression9913 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleXSwitchExpression9927 = new BitSet(new long[]{0x0000030000008010L,0x0000000000380002L});
+    public static final BitSet FOLLOW_ruleXCasePart_in_ruleXSwitchExpression9948 = new BitSet(new long[]{0x0000030000008010L,0x0000000000380002L});
+    public static final BitSet FOLLOW_84_in_ruleXSwitchExpression9962 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_83_in_ruleXSwitchExpression9974 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression9995 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_ruleXSwitchExpression10009 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCasePart_in_entryRuleXCasePart10045 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXCasePart10055 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXCasePart10110 = new BitSet(new long[]{0x0000020000000000L,0x0000000000280000L});
+    public static final BitSet FOLLOW_85_in_ruleXCasePart10124 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCasePart10145 = new BitSet(new long[]{0x0000020000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_83_in_ruleXCasePart10161 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCasePart10182 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_ruleXCasePart10201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXForLoopExpression_in_entryRuleXForLoopExpression10238 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXForLoopExpression10248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_86_in_ruleXForLoopExpression10325 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleXForLoopExpression10337 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXForLoopExpression10358 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_83_in_ruleXForLoopExpression10370 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXForLoopExpression10393 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXForLoopExpression10405 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXForLoopExpression10426 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBasicForLoopExpression_in_entryRuleXBasicForLoopExpression10462 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXBasicForLoopExpression10472 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_86_in_ruleXBasicForLoopExpression10518 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleXBasicForLoopExpression10530 = new BitSet(new long[]{0x00103180000741F0L,0x0000017FFFC50230L});
+    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBasicForLoopExpression10552 = new BitSet(new long[]{0x0000020000040000L});
+    public static final BitSet FOLLOW_41_in_ruleXBasicForLoopExpression10565 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FFFC50230L});
+    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBasicForLoopExpression10586 = new BitSet(new long[]{0x0000020000040000L});
+    public static final BitSet FOLLOW_18_in_ruleXBasicForLoopExpression10602 = new BitSet(new long[]{0x00103180000741F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10623 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_18_in_ruleXBasicForLoopExpression10636 = new BitSet(new long[]{0x00103580000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10658 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXBasicForLoopExpression10671 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10692 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXBasicForLoopExpression10708 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXBasicForLoopExpression10729 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXWhileExpression_in_entryRuleXWhileExpression10765 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXWhileExpression10775 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_87_in_ruleXWhileExpression10821 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleXWhileExpression10833 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXWhileExpression10854 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXWhileExpression10866 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXWhileExpression10887 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXDoWhileExpression_in_entryRuleXDoWhileExpression10923 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXDoWhileExpression10933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_88_in_ruleXDoWhileExpression10979 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXDoWhileExpression11000 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_87_in_ruleXDoWhileExpression11012 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleXDoWhileExpression11024 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXDoWhileExpression11045 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXDoWhileExpression11057 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBlockExpression_in_entryRuleXBlockExpression11093 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXBlockExpression11103 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_ruleXBlockExpression11149 = new BitSet(new long[]{0x001031800003C1F0L,0x0000017FFFC50230L});
+    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_ruleXBlockExpression11171 = new BitSet(new long[]{0x001031800007C1F0L,0x0000017FFFC50230L});
+    public static final BitSet FOLLOW_18_in_ruleXBlockExpression11184 = new BitSet(new long[]{0x001031800003C1F0L,0x0000017FFFC50230L});
+    public static final BitSet FOLLOW_15_in_ruleXBlockExpression11200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpressionOrVarDeclaration_in_entryRuleXExpressionOrVarDeclaration11236 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXExpressionOrVarDeclaration11246 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXVariableDeclaration_in_ruleXExpressionOrVarDeclaration11293 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXExpressionOrVarDeclaration11320 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXVariableDeclaration_in_entryRuleXVariableDeclaration11355 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXVariableDeclaration11365 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_89_in_ruleXVariableDeclaration11418 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_90_in_ruleXVariableDeclaration11449 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXVariableDeclaration11497 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleXVariableDeclaration11518 = new BitSet(new long[]{0x0000080000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleXVariableDeclaration11547 = new BitSet(new long[]{0x0000080000000002L});
+    public static final BitSet FOLLOW_43_in_ruleXVariableDeclaration11561 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXVariableDeclaration11582 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_entryRuleJvmFormalParameter11620 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmFormalParameter11630 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmFormalParameter11676 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleJvmFormalParameter11698 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_entryRuleFullJvmFormalParameter11734 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFullJvmFormalParameter11744 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleFullJvmFormalParameter11790 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleFullJvmFormalParameter11811 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXFeatureCall_in_entryRuleXFeatureCall11847 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXFeatureCall11857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleXFeatureCall11904 = new BitSet(new long[]{0x0000010000000010L,0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall11925 = new BitSet(new long[]{0x0020020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXFeatureCall11938 = new BitSet(new long[]{0x0000010000000010L,0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall11959 = new BitSet(new long[]{0x0020020000000000L});
+    public static final BitSet FOLLOW_53_in_ruleXFeatureCall11973 = new BitSet(new long[]{0x0010000000020010L,0x0000000078000000L});
+    public static final BitSet FOLLOW_ruleIdOrSuper_in_ruleXFeatureCall11998 = new BitSet(new long[]{0x0000210000000002L});
+    public static final BitSet FOLLOW_40_in_ruleXFeatureCall12032 = new BitSet(new long[]{0x00103580000341F0L,0x0000017FF9C58232L});
+    public static final BitSet FOLLOW_ruleXShortClosure_in_ruleXFeatureCall12117 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFeatureCall12145 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXFeatureCall12158 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFeatureCall12179 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXFeatureCall12196 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_ruleXFeatureCall12231 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_entryRuleFeatureCallID12269 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFeatureCallID12280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleFeatureCallID12327 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_91_in_ruleFeatureCallID12351 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_92_in_ruleFeatureCallID12370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_ruleFeatureCallID12389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_93_in_ruleFeatureCallID12408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIdOrSuper_in_entryRuleIdOrSuper12449 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIdOrSuper12460 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleIdOrSuper12507 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_94_in_ruleIdOrSuper12531 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall12571 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXConstructorCall12581 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_95_in_ruleXConstructorCall12627 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXConstructorCall12650 = new BitSet(new long[]{0x0010210000000002L});
+    public static final BitSet FOLLOW_52_in_ruleXConstructorCall12671 = new BitSet(new long[]{0x0000010000000010L,0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall12693 = new BitSet(new long[]{0x0020020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXConstructorCall12706 = new BitSet(new long[]{0x0000010000000010L,0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall12727 = new BitSet(new long[]{0x0020020000000000L});
+    public static final BitSet FOLLOW_53_in_ruleXConstructorCall12741 = new BitSet(new long[]{0x0000210000000002L});
+    public static final BitSet FOLLOW_40_in_ruleXConstructorCall12777 = new BitSet(new long[]{0x00103580000341F0L,0x0000017FF9C58232L});
+    public static final BitSet FOLLOW_ruleXShortClosure_in_ruleXConstructorCall12862 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall12890 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXConstructorCall12903 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall12924 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXConstructorCall12941 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_ruleXConstructorCall12976 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral13013 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXBooleanLiteral13023 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_96_in_ruleXBooleanLiteral13070 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_97_in_ruleXBooleanLiteral13094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral13144 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXNullLiteral13154 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_98_in_ruleXNullLiteral13200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral13236 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXNumberLiteral13246 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumber_in_ruleXNumberLiteral13301 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXStringLiteral_in_entryRuleXStringLiteral13337 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXStringLiteral13347 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleXStringLiteral13398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral13439 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXTypeLiteral13449 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_99_in_ruleXTypeLiteral13495 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleXTypeLiteral13507 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral13530 = new BitSet(new long[]{0x0000240000000000L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_ruleXTypeLiteral13551 = new BitSet(new long[]{0x0000240000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXTypeLiteral13564 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression13600 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXThrowExpression13610 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_100_in_ruleXThrowExpression13656 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXThrowExpression13677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression13713 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXReturnExpression13723 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_101_in_ruleXReturnExpression13769 = new BitSet(new long[]{0x00103180000341F2L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXReturnExpression14004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression14041 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression14051 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_102_in_ruleXTryCatchFinallyExpression14097 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14118 = new BitSet(new long[]{0x0000000000000000L,0x0000028000000000L});
+    public static final BitSet FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression14148 = new BitSet(new long[]{0x0000000000000002L,0x0000028000000000L});
+    public static final BitSet FOLLOW_103_in_ruleXTryCatchFinallyExpression14170 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_103_in_ruleXTryCatchFinallyExpression14214 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression14235 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXSynchronizedExpression_in_entryRuleXSynchronizedExpression14273 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXSynchronizedExpression14283 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_104_in_ruleXSynchronizedExpression14347 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleXSynchronizedExpression14359 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSynchronizedExpression14382 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXSynchronizedExpression14394 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXSynchronizedExpression14415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause14451 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXCatchClause14461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_105_in_ruleXCatchClause14506 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleXCatchClause14519 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_ruleXCatchClause14540 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXCatchClause14552 = new BitSet(new long[]{0x00103180000341F0L,0x0000017FF9C50230L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCatchClause14573 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName14610 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName14621 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName14668 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleQualifiedName14696 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName14719 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_ruleNumber_in_entryRuleNumber14773 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNumber14784 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_HEX_in_ruleNumber14828 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber14856 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber14882 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleNumber14902 = new BitSet(new long[]{0x0000000000000180L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber14918 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber14944 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference14999 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmTypeReference15009 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference15057 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_ruleJvmTypeReference15093 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_ruleXFunctionTypeRef_in_ruleJvmTypeReference15124 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_entryRuleArrayBrackets15160 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleArrayBrackets15171 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_ruleArrayBrackets15209 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_ruleArrayBrackets15222 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXFunctionTypeRef_in_entryRuleXFunctionTypeRef15262 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXFunctionTypeRef15272 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_ruleXFunctionTypeRef15310 = new BitSet(new long[]{0x0000050000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15332 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_41_in_ruleXFunctionTypeRef15345 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15366 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_42_in_ruleXFunctionTypeRef15382 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_ruleXFunctionTypeRef15396 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXFunctionTypeRef15417 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference15453 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference15463 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference15511 = new BitSet(new long[]{0x0010000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleJvmParameterizedTypeReference15532 = new BitSet(new long[]{0x0000010000000010L,0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference15554 = new BitSet(new long[]{0x0020020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleJvmParameterizedTypeReference15567 = new BitSet(new long[]{0x0000010000000010L,0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference15588 = new BitSet(new long[]{0x0020020000000000L});
+    public static final BitSet FOLLOW_53_in_ruleJvmParameterizedTypeReference15602 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference15640 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference15650 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference15697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference15724 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference15759 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference15769 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_106_in_ruleJvmWildcardTypeReference15815 = new BitSet(new long[]{0x0000000000000002L,0x0000000048000000L});
+    public static final BitSet FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference15837 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference15864 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound15902 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBound15912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_91_in_ruleJvmUpperBound15949 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound15970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded16006 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded16016 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_107_in_ruleJvmUpperBoundAnded16053 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded16074 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound16110 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmLowerBound16120 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_94_in_ruleJvmLowerBound16157 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound16178 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard16217 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard16228 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard16275 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleQualifiedNameWithWildcard16293 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleQualifiedNameWithWildcard16306 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID16347 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValidID16358 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleValidID16397 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXImportDeclaration_in_entryRuleXImportDeclaration16443 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXImportDeclaration16453 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_ruleXImportDeclaration16490 = new BitSet(new long[]{0x0000000000000010L,0x0000000010000000L});
+    public static final BitSet FOLLOW_92_in_ruleXImportDeclaration16510 = new BitSet(new long[]{0x0000000000000010L,0x0000000020000000L});
+    public static final BitSet FOLLOW_93_in_ruleXImportDeclaration16541 = new BitSet(new long[]{0x0000000000000010L,0x0000000020000000L});
+    public static final BitSet FOLLOW_ruleQualifiedNameInStaticImport_in_ruleXImportDeclaration16578 = new BitSet(new long[]{0x0000000008000010L});
+    public static final BitSet FOLLOW_27_in_ruleXImportDeclaration16597 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleXImportDeclaration16637 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXImportDeclaration16668 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_ruleXImportDeclaration16695 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_18_in_ruleXImportDeclaration16709 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameInStaticImport_in_entryRuleQualifiedNameInStaticImport16748 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameInStaticImport16759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedNameInStaticImport16806 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleQualifiedNameInStaticImport16824 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_38_in_ruleDateType16879 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_108_in_ruleDateType16896 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_109_in_ruleDateType16913 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_ruleLVisibility16958 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_110_in_ruleLVisibility16975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_111_in_ruleLVisibility16992 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_112_in_ruleLVisibility17009 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleLowerBound17054 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_113_in_ruleLowerBound17071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_106_in_ruleLowerBound17088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_68_in_ruleLowerBound17105 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_114_in_ruleLowerBound17122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleUpperBound17167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_114_in_ruleUpperBound17184 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_synpred2_InternalDatatypeGrammar1912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_synpred3_InternalDatatypeGrammar1941 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_43_in_synpred3_InternalDatatypeGrammar1947 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_synpred6_InternalDatatypeGrammar2303 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_45_in_synpred6_InternalDatatypeGrammar2307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_synpred7_InternalDatatypeGrammar2578 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_45_in_synpred7_InternalDatatypeGrammar2582 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpMultiAssign_in_synpred8_InternalDatatypeGrammar3115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpOr_in_synpred9_InternalDatatypeGrammar3638 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpAnd_in_synpred10_InternalDatatypeGrammar3897 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpEquality_in_synpred11_InternalDatatypeGrammar4156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_61_in_synpred12_InternalDatatypeGrammar4470 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpCompare_in_synpred13_InternalDatatypeGrammar4541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpOther_in_synpred14_InternalDatatypeGrammar4875 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_synpred15_InternalDatatypeGrammar5144 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_synpred15_InternalDatatypeGrammar5149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_synpred16_InternalDatatypeGrammar5231 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_52_in_synpred16_InternalDatatypeGrammar5236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpAdd_in_synpred17_InternalDatatypeGrammar5458 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpMulti_in_synpred18_InternalDatatypeGrammar5738 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_74_in_synpred19_InternalDatatypeGrammar6332 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpPostfix_in_synpred20_InternalDatatypeGrammar6489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_synpred21_InternalDatatypeGrammar6744 = new BitSet(new long[]{0x0000000000020010L,0x0000000038000000L});
+    public static final BitSet FOLLOW_77_in_synpred21_InternalDatatypeGrammar6758 = new BitSet(new long[]{0x0000000000020010L,0x0000000038000000L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_synpred21_InternalDatatypeGrammar6774 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_ruleOpSingleAssign_in_synpred21_InternalDatatypeGrammar6780 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_synpred22_InternalDatatypeGrammar6922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_78_in_synpred22_InternalDatatypeGrammar6936 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_77_in_synpred22_InternalDatatypeGrammar6956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_synpred23_InternalDatatypeGrammar7183 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred24_InternalDatatypeGrammar7235 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_41_in_synpred24_InternalDatatypeGrammar7242 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred24_InternalDatatypeGrammar7249 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_79_in_synpred24_InternalDatatypeGrammar7263 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_synpred25_InternalDatatypeGrammar7383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_104_in_synpred26_InternalDatatypeGrammar7572 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_synpred26_InternalDatatypeGrammar7576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_86_in_synpred27_InternalDatatypeGrammar7698 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_synpred27_InternalDatatypeGrammar7702 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred27_InternalDatatypeGrammar7709 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_83_in_synpred27_InternalDatatypeGrammar7715 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_synpred28_InternalDatatypeGrammar8037 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred30_InternalDatatypeGrammar8787 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_41_in_synpred30_InternalDatatypeGrammar8794 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred30_InternalDatatypeGrammar8801 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_79_in_synpred30_InternalDatatypeGrammar8815 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_81_in_synpred32_InternalDatatypeGrammar9598 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_synpred33_InternalDatatypeGrammar9737 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred33_InternalDatatypeGrammar9744 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_83_in_synpred33_InternalDatatypeGrammar9750 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred34_InternalDatatypeGrammar9852 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_83_in_synpred34_InternalDatatypeGrammar9858 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_synpred36_InternalDatatypeGrammar11467 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleValidID_in_synpred36_InternalDatatypeGrammar11476 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_synpred37_InternalDatatypeGrammar12014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalDatatypeGrammar12066 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_41_in_synpred38_InternalDatatypeGrammar12073 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred38_InternalDatatypeGrammar12080 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_79_in_synpred38_InternalDatatypeGrammar12094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_synpred39_InternalDatatypeGrammar12214 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_synpred40_InternalDatatypeGrammar12663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_synpred41_InternalDatatypeGrammar12759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalDatatypeGrammar12811 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_41_in_synpred42_InternalDatatypeGrammar12818 = new BitSet(new long[]{0x0000010000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred42_InternalDatatypeGrammar12825 = new BitSet(new long[]{0x0000020000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_79_in_synpred42_InternalDatatypeGrammar12839 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_synpred43_InternalDatatypeGrammar12959 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_synpred44_InternalDatatypeGrammar13779 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_105_in_synpred45_InternalDatatypeGrammar14132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_103_in_synpred46_InternalDatatypeGrammar14162 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_synpred49_InternalDatatypeGrammar14687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_synpred50_InternalDatatypeGrammar15072 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_synpred51_InternalDatatypeGrammar15524 = new BitSet(new long[]{0x0000000000000002L});
 
 }

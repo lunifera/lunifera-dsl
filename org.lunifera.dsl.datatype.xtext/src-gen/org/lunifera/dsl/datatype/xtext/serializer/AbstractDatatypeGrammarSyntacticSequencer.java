@@ -18,8 +18,6 @@ import org.lunifera.dsl.datatype.xtext.services.DatatypeGrammarGrammarAccess;
 public abstract class AbstractDatatypeGrammarSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DatatypeGrammarGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Enum_CommaKeyword_2_1_1_0_q;
-	protected AbstractElementAlias match_Enum___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q;
 	protected AbstractElementAlias match_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
@@ -32,8 +30,6 @@ public abstract class AbstractDatatypeGrammarSyntacticSequencer extends Abstract
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DatatypeGrammarGrammarAccess) access;
-		match_Enum_CommaKeyword_2_1_1_0_q = new TokenAlias(false, true, grammarAccess.getEnumAccess().getCommaKeyword_2_1_1_0());
-		match_Enum___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_2_2()));
 		match_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTypedPackageAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getTypedPackageAccess().getRightCurlyBracketKeyword_3_3()));
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
@@ -81,11 +77,7 @@ public abstract class AbstractDatatypeGrammarSyntacticSequencer extends Abstract
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_Enum_CommaKeyword_2_1_1_0_q.equals(syntax))
-				emit_Enum_CommaKeyword_2_1_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Enum___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q.equals(syntax))
-				emit_Enum___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q.equals(syntax))
+			if(match_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q.equals(syntax))
 				emit_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -105,22 +97,6 @@ public abstract class AbstractDatatypeGrammarSyntacticSequencer extends Abstract
 		}
 	}
 
-	/**
-	 * Syntax:
-	 *     ','?
-	 */
-	protected void emit_Enum_CommaKeyword_2_1_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     ('{' '}')?
-	 */
-	protected void emit_Enum___LeftCurlyBracketKeyword_2_0_RightCurlyBracketKeyword_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 	/**
 	 * Syntax:
 	 *     ('{' '}')?

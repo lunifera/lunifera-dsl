@@ -146,18 +146,18 @@ ruleEnum :
 RULE_ID
 
 )
-)(	'{' 
-((
+)	'{' 
+(
 (
 ruleEnumLiteral
 )
-)((	',' 
-)?(
+)(	', ' 
+(
 (
 ruleEnumLiteral
 )
-))*)?	'}' 
-)?)
+))*	'}' 
+)
 ;
 
 

@@ -7,22 +7,16 @@
  */
 package org.lunifera.dsl.entity.xtext.tests.classinheritance;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
 @Entity
 @Table(name = "BASE_BY_SUBCLASS")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "DISC", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue(value = "BASE_BY_SUBCLASS")
 @SuppressWarnings("all")
 public class BaseBySubclass {

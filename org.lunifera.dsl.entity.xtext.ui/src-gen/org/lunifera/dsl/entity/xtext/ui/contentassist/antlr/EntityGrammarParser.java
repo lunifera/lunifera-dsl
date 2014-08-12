@@ -151,9 +151,7 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDataTypeAccess().getGroup_2_0(), "rule__DataType__Group_2_0__0");
 					put(grammarAccess.getDataTypeAccess().getGroup_2_1(), "rule__DataType__Group_2_1__0");
 					put(grammarAccess.getEnumAccess().getGroup(), "rule__Enum__Group__0");
-					put(grammarAccess.getEnumAccess().getGroup_2(), "rule__Enum__Group_2__0");
-					put(grammarAccess.getEnumAccess().getGroup_2_1(), "rule__Enum__Group_2_1__0");
-					put(grammarAccess.getEnumAccess().getGroup_2_1_1(), "rule__Enum__Group_2_1_1__0");
+					put(grammarAccess.getEnumAccess().getGroup_4(), "rule__Enum__Group_4__0");
 					put(grammarAccess.getAnnotationDefAccess().getGroup(), "rule__AnnotationDef__Group__0");
 					put(grammarAccess.getLQualifiedNameWithWildCardAccess().getGroup(), "rule__LQualifiedNameWithWildCard__Group__0");
 					put(grammarAccess.getLQualifiedNameWithWildCardAccess().getGroup_1(), "rule__LQualifiedNameWithWildCard__Group_1__0");
@@ -440,8 +438,8 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModifierAccess().getStaticAssignment_1(), "rule__Modifier__StaticAssignment_1");
 					put(grammarAccess.getModifierAccess().getVisibilityAssignment_2(), "rule__Modifier__VisibilityAssignment_2");
 					put(grammarAccess.getEnumAccess().getNameAssignment_1(), "rule__Enum__NameAssignment_1");
-					put(grammarAccess.getEnumAccess().getLiteralsAssignment_2_1_0(), "rule__Enum__LiteralsAssignment_2_1_0");
-					put(grammarAccess.getEnumAccess().getLiteralsAssignment_2_1_1_1(), "rule__Enum__LiteralsAssignment_2_1_1_1");
+					put(grammarAccess.getEnumAccess().getLiteralsAssignment_3(), "rule__Enum__LiteralsAssignment_3");
+					put(grammarAccess.getEnumAccess().getLiteralsAssignment_4_1(), "rule__Enum__LiteralsAssignment_4_1");
 					put(grammarAccess.getEnumLiteralAccess().getNameAssignment(), "rule__EnumLiteral__NameAssignment");
 					put(grammarAccess.getAnnotationDefAccess().getAnnotationAssignment_0(), "rule__AnnotationDef__AnnotationAssignment_0");
 					put(grammarAccess.getMultiplicityAccess().getLowerAssignment_1(), "rule__Multiplicity__LowerAssignment_1");

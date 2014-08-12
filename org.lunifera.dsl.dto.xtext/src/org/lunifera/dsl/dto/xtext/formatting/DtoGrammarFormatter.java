@@ -43,7 +43,7 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 
 		configureClassDef(c, f.getClassAccess());
 		configureDtoFeature(c, f.getDtoFeatureAccess());
-		configureDtoMapper(c, f.getDtoMapperAccess());
+		configureDtoMapper(c, f.getDtoMapperAccess()); 
 		configureLimitedMapperDtoMapper(c, f.getLimitedMapperDtoMapperAccess());
 
 		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());

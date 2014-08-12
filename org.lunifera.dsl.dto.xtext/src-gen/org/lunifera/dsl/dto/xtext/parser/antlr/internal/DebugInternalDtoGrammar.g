@@ -253,7 +253,7 @@ ruleValidIDWithKeywords
 (
 ruleFullJvmFormalParameter
 )
-)(	',' 
+)(	', ' 
 (
 (
 ruleFullJvmFormalParameter
@@ -431,18 +431,18 @@ ruleEnum :
 RULE_ID
 
 )
-)(	'{' 
-((
+)	'{' 
+(
 (
 ruleEnumLiteral
 )
-)((	',' 
-)?(
+)(	', ' 
+(
 (
 ruleEnumLiteral
 )
-))*)?	'}' 
-)?)
+))*	'}' 
+)
 ;
 
 

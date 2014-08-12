@@ -139,7 +139,7 @@ class LDtoReference  extends LDtoAbstractReference {
 
 class LDtoOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LDtoFeature {
 }
-
+ 
 type DtoFeatureList wraps java.util.List<LDtoFeature>
 
 type OperationsList wraps java.util.List<LDtoOperation>
