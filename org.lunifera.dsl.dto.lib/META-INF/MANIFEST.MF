@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.dto.lib
 Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.7.0
+Bundle-Version: 0.7.1.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.dto.lib
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.lunifera.dsl.dto.lib;version="0.7.0"
+Export-Package: org.lunifera.dsl.dto.lib;version="0.7.1"

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.lunifera.dsl.semantic.dto;singleton:=true
-Bundle-Version: 0.7.0
+Bundle-Version: 0.7.1.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.lunifera.dsl.semantic.dto.Activator
 Bundle-Vendor: %providerName
@@ -17,7 +17,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.lunifera.dsl.semantic.entity;bundle-version="[0.7.0,0.8.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: model;version="0.7.0",
- org.lunifera.dsl.semantic.dto;version="0.7.0",
- org.lunifera.dsl.semantic.dto.impl;version="0.7.0",
- org.lunifera.dsl.semantic.dto.util;version="0.7.0"
+Export-Package: model;version="0.7.1",org.lunifera.dsl.semantic.dto;ve
+ rsion="0.7.1",org.lunifera.dsl.semantic.dto.impl;version="0.7.1",org.
+ lunifera.dsl.semantic.dto.util;version="0.7.1"
