@@ -14,8 +14,8 @@
 
 	<parent>
 		<groupId>org.lunifera.releng.maven</groupId>
-		<artifactId>org.lunifera.releng.maven.parent.tycho.aggregator</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>lunifera-releng-maven-parent-tycho</artifactId>
+		<version>0.10.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.lunifera.dsl</groupId>
@@ -236,5 +236,5 @@
 			</modules>
 		</profile>
 	</profiles>
-<version>0.7.1-SNAPSHOT</version>
+<version>0.7.3-SNAPSHOT</version>
 </project>

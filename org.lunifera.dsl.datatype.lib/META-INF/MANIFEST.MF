@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.datatype.lib
 Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.7.1.qualifier
+Bundle-Version: 0.7.3.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.datatype.lib
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="[2.6.0,2.7.0)"
