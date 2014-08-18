@@ -49,9 +49,9 @@
 		<module>org.lunifera.dsl.dto.lib</module>
 		<module>org.lunifera.dsl.dto.xtext</module>
 		<module>org.lunifera.dsl.dto.xtext.ui</module>
-		<!-- <module>org.lunifera.dsl.services.lib</module> -->
-		<!-- <module>org.lunifera.dsl.services.xtext</module> -->
-		<!-- <module>org.lunifera.dsl.services.xtext.ui</module> -->
+		<module>org.lunifera.dsl.services.lib</module>
+		<module>org.lunifera.dsl.services.xtext</module>
+		<module>org.lunifera.dsl.services.xtext.ui</module>
 		<module>org.lunifera.dsl.eclipse.ui</module>
 
 		<module>org.lunifera.dsl.xtext.builder.participant</module>
