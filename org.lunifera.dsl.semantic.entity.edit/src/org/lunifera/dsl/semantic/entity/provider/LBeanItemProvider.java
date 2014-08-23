@@ -16,22 +16,15 @@ package org.lunifera.dsl.semantic.entity.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
-
 import org.lunifera.dsl.semantic.common.types.provider.LClassItemProvider;
-
 import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LunEntityFactory;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
@@ -154,6 +147,14 @@ public class LBeanItemProvider extends LClassItemProvider {
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/LBean"));
 	}
+
+	private Object getOverlay(LBean object) {
+		if (object.isAbstract()) {
+			return getResourceLocator().getImage("full/ovr/abstract.gif");
+		} 
+		return null;
+	}
+	
 
 	/**
 	 * This returns the label text for the adapted class.

@@ -316,6 +316,20 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/LBeanAttribute"));
 	}
 
+	private Object getOverlay(LBeanAttribute object) {
+		if (object.isTransient()) {
+			return getResourceLocator().getImage("full/ovr/transient.gif");
+		}
+		return null;
+	}
+
+	private Object getImage(LBeanAttribute object) {
+		if (object.isId() || object.isUuid()) {
+			return getResourceLocator().getImage("full/obj/LAttribute_id.gif");
+		}
+		return getResourceLocator().getImage("full/obj/LAttribute.gif");
+	}
+
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
@@ -370,6 +384,11 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
+				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -515,11 +534,6 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
 				 XbaseFactory.eINSTANCE.createXSynchronizedExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
-				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 	}
 
 	private static final class AddImportForDatatypeCommand extends
