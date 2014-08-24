@@ -23,18 +23,6 @@
       <discovery label="Kepler" url="http://download.eclipse.org/releases/kepler"/>
    </url>
 
-   <requires>
-      <import feature="org.lunifera.dsl.feature.common.headless" version="0.0.0"/>
-      <import feature="org.eclipse.xtext.sdk" version="2.6.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.xtend.sdk" version="2.6.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecore.xcore.sdk" version="1.1.2"/>
-      <import feature="org.eclipse.xpand.sdk" version="2.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.xpand.support" version="1.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.mwe2.language.sdk" version="2.6.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.mwe2.launcher" version="2.6.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.mwe2.runtime.sdk" version="2.6.0" match="greaterOrEqual"/>
-   </requires>
-
    <plugin
          id="org.lunifera.dsl.common.xtext.ui"
          download-size="0"
