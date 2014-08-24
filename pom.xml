@@ -102,56 +102,7 @@
 				</plugins>
 			</build>
 		</profile>
-		<profile>
-			<id>build.features</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>clean verify</defaultGoal>
-			</build>
-			<modules>
-				<module>org.lunifera.dsl.parent</module>
-				<!-- P2 bundles -->
-				<module>org.lunifera.dsl.mwe</module>
-				<module>org.lunifera.dsl.semantic.common</module>
-				<module>org.lunifera.dsl.semantic.entity</module>
-				<module>org.lunifera.dsl.semantic.dto</module>
-				<module>org.lunifera.dsl.semantic.service</module>
-				<module>org.lunifera.dsl.common.xtext</module>
-				<module>org.lunifera.dsl.common.xtext.ui</module>
-				<module>org.lunifera.dsl.datatype.xtext</module>
-				<module>org.lunifera.dsl.datatype.xtext.ui</module>
-				<module>org.lunifera.dsl.datatype.lib</module>
-				<module>org.lunifera.dsl.entity.xtext</module>
-				<module>org.lunifera.dsl.entity.xtext.ui</module>
-				<module>org.lunifera.dsl.dto.lib</module>
-				<module>org.lunifera.dsl.dto.xtext</module>
-				<module>org.lunifera.dsl.dto.xtext.ui</module>
-				<!-- <module>org.lunifera.dsl.services.lib</module> -->
-				<!-- <module>org.lunifera.dsl.services.xtext</module> -->
-				<!-- <module>org.lunifera.dsl.services.xtext.ui</module> -->
-				<module>org.lunifera.dsl.eclipse.ui</module>
-
-				<module>org.lunifera.dsl.xtext.builder.participant</module>
-
-				<!-- Tests -->
-				<module>org.lunifera.dsl.xtext.builder.participant.tests</module>
-
-				<!-- P2 feature -->
-				<module>org.lunifera.dsl.feature.entities</module>
-				<module>org.lunifera.dsl.feature.entities.headless</module>
-				<module>org.lunifera.dsl.feature.common</module>
-				<module>org.lunifera.dsl.feature.common.headless</module>
-				<module>org.lunifera.dsl.feature.dto</module>
-				<module>org.lunifera.dsl.feature.dto.headless</module>
-				<module>org.lunifera.dsl.feature.eclipse.ui</module>
-				<module>org.lunifera.dsl.feature.metadata.builder.participant</module>
-			</modules>
-		</profile>
-
-
-
+		
 		<profile>
 			<id>build.common</id>
 			<activation>
@@ -217,15 +168,15 @@
 		<profile>
 			<id>build.p2</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>lunifera.build.p2</name>
+				</property>
 			</activation>
-			<build>
-				<defaultGoal>clean verify</defaultGoal>
-			</build>
 			<modules>
 				<module>org.lunifera.dsl.p2</module>
 			</modules>
 		</profile>
+		
 		<profile>
 			<id>stage.p2</id>
 			<activation>
