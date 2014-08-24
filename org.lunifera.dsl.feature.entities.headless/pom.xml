@@ -61,21 +61,21 @@
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>org.lunifera.dsl</groupId>
-			<artifactId>org.lunifera.dsl.semantic.entity</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.lunifera.dsl</groupId>
-			<artifactId>org.lunifera.dsl.entity.xtext</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.lunifera.dsl</groupId>
-			<artifactId>org.lunifera.dsl.feature.common.headless</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
+<!-- 	<dependencies> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.lunifera.dsl</groupId> -->
+<!-- 			<artifactId>org.lunifera.dsl.semantic.entity</artifactId> -->
+<!-- 			<version>${project.version}</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.lunifera.dsl</groupId> -->
+<!-- 			<artifactId>org.lunifera.dsl.entity.xtext</artifactId> -->
+<!-- 			<version>${project.version}</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.lunifera.dsl</groupId> -->
+<!-- 			<artifactId>org.lunifera.dsl.feature.common.headless</artifactId> -->
+<!-- 			<version>${project.version}</version> -->
+<!-- 		</dependency> -->
+<!-- 	</dependencies> -->
 </project>
