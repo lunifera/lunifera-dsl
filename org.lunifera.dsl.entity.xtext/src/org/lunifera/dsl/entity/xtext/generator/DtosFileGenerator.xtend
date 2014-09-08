@@ -13,7 +13,6 @@ package org.lunifera.dsl.entity.xtext.generator
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LDataType
@@ -37,12 +36,11 @@ import org.lunifera.dsl.semantic.entity.LEntityReference
  */
 class DtosFileGenerator {
 
-	@Inject extension IQualifiedNameProvider
 	@Inject extension JvmTypesBuilder
 
 	def getContent(LTypedPackage pkg) '''
 		«pkg.toDocu»
-		package «pkg.name» {
+		package «pkg.toDtoName» {
 			
 			/* Imports the original entity package */
 			import «pkg.name».*;
@@ -83,6 +81,10 @@ class DtosFileGenerator {
 			«ENDFOR»
 		}
 	'''
+	
+	def String getToDtoName(LTypedPackage pkg){
+		return pkg.name +".dtos"
+	}
 
 	def toEntityDeclaration(LEntity lEntity) {
 		return '''

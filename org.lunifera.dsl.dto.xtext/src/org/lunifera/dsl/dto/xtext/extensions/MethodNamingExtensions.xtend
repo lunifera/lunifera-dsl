@@ -16,8 +16,6 @@ import org.eclipse.emf.mwe2.language.scoping.QualifiedNameProvider
 import org.eclipse.xtext.xbase.XExpression
 import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
 import org.lunifera.dsl.semantic.common.types.LType
-import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
-import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.semantic.dto.LDtoFeature
 
 class MethodNamingExtensions extends NamingExtensions {
@@ -56,6 +54,16 @@ class MethodNamingExtensions extends NamingExtensions {
 			return "setMISSING_NAME"
 		}
 		dto.fullyQualifiedName.skipLast(1).append("mapper").toString
+	}
+	
+	def String toDTOBeanFullyQualifiedName(LType type) {
+		val pkg = type.package.name
+		return pkg + ".dtos." + type.toDTOBeanSimpleName
+	}
+	
+	def String toDTOBeanSimpleName(LType type) {
+		val name = type.name
+		return name + "Dto"
 	}
 
 	def XExpression toMapToEntityExpression(LDtoFeature prop) {

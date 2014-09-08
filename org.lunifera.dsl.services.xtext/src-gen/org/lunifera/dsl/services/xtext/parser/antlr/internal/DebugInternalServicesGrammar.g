@@ -333,14 +333,19 @@ ruleValidIDWithKeywords :
 	'id' 
 
     |
+	'uuid' 
+
+    |
 	'transient' 
 
     |
 	'version' 
 
-    |
-	'collection' 
+    |(
+	'derived' 
 
+	'collection' 
+)
     |
 	'refers' 
 
@@ -359,8 +364,22 @@ ruleValidIDWithKeywords :
     |
 	'date' 
 
+    |
+	'mapto' 
+
+    |
+	'ref' 
+
+    |
+	'cascade' 
+
+    |
+	'var' 
+
     | RULE_ID)
     ;
+
+
 
 
 

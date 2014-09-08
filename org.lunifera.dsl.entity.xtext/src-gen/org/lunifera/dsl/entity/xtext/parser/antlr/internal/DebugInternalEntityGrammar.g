@@ -214,15 +214,20 @@ ruleLFQN :
 ruleValidIDWithKeywords :
 	'cachable' |
 	'id' |
+	'uuid' |
 	'transient' |
 	'version' |
-	'collection' |
+	'derived' 'collection' |
 	'refers' |
 	'settings' |
 	'lazy' |
 	'notnull' |
 	'dto' |
 	'date' |
+	'mapto' |
+	'ref' |
+	'cascade' |
+	'var' |
 	RULE_ID
 ;
 

@@ -1500,7 +1500,12 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=DtoFeature_LDtoInheritedAttribute_2_0_0_0 inheritedFeature=[LEntityAttribute|LFQN] type=[LDto|ID]? mapper=DtoMapper?)
+	 *     (
+	 *         annotationInfo=DtoFeature_LDtoInheritedAttribute_2_0_0_0 
+	 *         inheritedFeature=[LEntityAttribute|ValidLFQNWithKeywords] 
+	 *         type=[LDto|ID]? 
+	 *         mapper=DtoMapper?
+	 *     )
 	 */
 	protected void sequence_DtoFeature(EObject context, LDtoInheritedAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1509,7 +1514,12 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=DtoFeature_LDtoInheritedReference_2_1_0 inheritedFeature=[LEntityReference|LFQN] type=[LDto|ID] mapper=DtoMapper?)
+	 *     (
+	 *         annotationInfo=DtoFeature_LDtoInheritedReference_2_1_0 
+	 *         inheritedFeature=[LEntityReference|ValidLFQNWithKeywords] 
+	 *         type=[LDto|ID] 
+	 *         mapper=DtoMapper?
+	 *     )
 	 */
 	protected void sequence_DtoFeature(EObject context, LDtoInheritedReference semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

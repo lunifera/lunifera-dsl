@@ -454,24 +454,31 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cCachableKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cIdKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cTransientKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cVersionKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cCollectionKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		private final Keyword cRefersKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
-		private final Keyword cSettingsKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
-		private final Keyword cLazyKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
-		private final Keyword cNotnullKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
-		private final Keyword cDtoKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
-		private final Keyword cDateKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
-		private final RuleCall cIDTerminalRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
+		private final Keyword cUuidKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cTransientKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cVersionKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Keyword cDerivedKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Keyword cCollectionKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Keyword cRefersKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cSettingsKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cLazyKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Keyword cNotnullKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
+		private final Keyword cDtoKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		private final Keyword cDateKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cMaptoKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
+		private final Keyword cRefKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
+		private final Keyword cCascadeKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
+		private final Keyword cVarKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
+		private final RuleCall cIDTerminalRuleCall_16 = (RuleCall)cAlternatives.eContents().get(16);
 		
 		//ValidIDWithKeywords:
-		//	"cachable" | "id" | "transient" | "version" | "collection" | "refers" | "settings" | "lazy" | "notnull" | "dto" |
-		//	"date" | ID;
+		//	"cachable" | "id" | "uuid" | "transient" | "version" | "derived" "collection" | "refers" | "settings" | "lazy" |
+		//	"notnull" | "dto" | "date" | "mapto" | "ref" | "cascade" | "var" | ID;
 		public ParserRule getRule() { return rule; }
 
-		//"cachable" | "id" | "transient" | "version" | "collection" | "refers" | "settings" | "lazy" | "notnull" | "dto" | "date"
-		//| ID
+		//"cachable" | "id" | "uuid" | "transient" | "version" | "derived" "collection" | "refers" | "settings" | "lazy" |
+		//"notnull" | "dto" | "date" | "mapto" | "ref" | "cascade" | "var" | ID
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"cachable"
@@ -480,35 +487,84 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"id"
 		public Keyword getIdKeyword_1() { return cIdKeyword_1; }
 
+		//"uuid"
+		public Keyword getUuidKeyword_2() { return cUuidKeyword_2; }
+
 		//"transient"
-		public Keyword getTransientKeyword_2() { return cTransientKeyword_2; }
+		public Keyword getTransientKeyword_3() { return cTransientKeyword_3; }
 
 		//"version"
-		public Keyword getVersionKeyword_3() { return cVersionKeyword_3; }
+		public Keyword getVersionKeyword_4() { return cVersionKeyword_4; }
+
+		//"derived" "collection"
+		public Group getGroup_5() { return cGroup_5; }
+
+		//"derived"
+		public Keyword getDerivedKeyword_5_0() { return cDerivedKeyword_5_0; }
 
 		//"collection"
-		public Keyword getCollectionKeyword_4() { return cCollectionKeyword_4; }
+		public Keyword getCollectionKeyword_5_1() { return cCollectionKeyword_5_1; }
 
 		//"refers"
-		public Keyword getRefersKeyword_5() { return cRefersKeyword_5; }
+		public Keyword getRefersKeyword_6() { return cRefersKeyword_6; }
 
 		//"settings"
-		public Keyword getSettingsKeyword_6() { return cSettingsKeyword_6; }
+		public Keyword getSettingsKeyword_7() { return cSettingsKeyword_7; }
 
 		//"lazy"
-		public Keyword getLazyKeyword_7() { return cLazyKeyword_7; }
+		public Keyword getLazyKeyword_8() { return cLazyKeyword_8; }
 
 		//"notnull"
-		public Keyword getNotnullKeyword_8() { return cNotnullKeyword_8; }
+		public Keyword getNotnullKeyword_9() { return cNotnullKeyword_9; }
 
 		//"dto"
-		public Keyword getDtoKeyword_9() { return cDtoKeyword_9; }
+		public Keyword getDtoKeyword_10() { return cDtoKeyword_10; }
 
 		//"date"
-		public Keyword getDateKeyword_10() { return cDateKeyword_10; }
+		public Keyword getDateKeyword_11() { return cDateKeyword_11; }
+
+		//"mapto"
+		public Keyword getMaptoKeyword_12() { return cMaptoKeyword_12; }
+
+		//"ref"
+		public Keyword getRefKeyword_13() { return cRefKeyword_13; }
+
+		//"cascade"
+		public Keyword getCascadeKeyword_14() { return cCascadeKeyword_14; }
+
+		//"var"
+		public Keyword getVarKeyword_15() { return cVarKeyword_15; }
 
 		//ID
-		public RuleCall getIDTerminalRuleCall_11() { return cIDTerminalRuleCall_11; }
+		public RuleCall getIDTerminalRuleCall_16() { return cIDTerminalRuleCall_16; }
+	}
+
+	public class ValidLFQNWithKeywordsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidLFQNWithKeywords");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cValidIDWithKeywordsParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cValidIDWithKeywordsParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//ValidLFQNWithKeywords:
+		//	ValidIDWithKeywords ("." ValidIDWithKeywords)*;
+		public ParserRule getRule() { return rule; }
+
+		//ValidIDWithKeywords ("." ValidIDWithKeywords)*
+		public Group getGroup() { return cGroup; }
+
+		//ValidIDWithKeywords
+		public RuleCall getValidIDWithKeywordsParserRuleCall_0() { return cValidIDWithKeywordsParserRuleCall_0; }
+
+		//("." ValidIDWithKeywords)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+
+		//ValidIDWithKeywords
+		public RuleCall getValidIDWithKeywordsParserRuleCall_1_1() { return cValidIDWithKeywordsParserRuleCall_1_1; }
 	}
 
 	public class MultiplicityElements extends AbstractParserRuleElementFinder {
@@ -743,6 +799,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	private LQualifiedNameWithWildCardElements pLQualifiedNameWithWildCard;
 	private LFQNElements pLFQN;
 	private ValidIDWithKeywordsElements pValidIDWithKeywords;
+	private ValidLFQNWithKeywordsElements pValidLFQNWithKeywords;
 	private MultiplicityElements pMultiplicity;
 	private LowerBoundElements unknownRuleLowerBound;
 	private UpperBoundElements unknownRuleUpperBound;
@@ -930,14 +987,24 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ValidIDWithKeywords:
-	//	"cachable" | "id" | "transient" | "version" | "collection" | "refers" | "settings" | "lazy" | "notnull" | "dto" |
-	//	"date" | ID;
+	//	"cachable" | "id" | "uuid" | "transient" | "version" | "derived" "collection" | "refers" | "settings" | "lazy" |
+	//	"notnull" | "dto" | "date" | "mapto" | "ref" | "cascade" | "var" | ID;
 	public ValidIDWithKeywordsElements getValidIDWithKeywordsAccess() {
 		return (pValidIDWithKeywords != null) ? pValidIDWithKeywords : (pValidIDWithKeywords = new ValidIDWithKeywordsElements());
 	}
 	
 	public ParserRule getValidIDWithKeywordsRule() {
 		return getValidIDWithKeywordsAccess().getRule();
+	}
+
+	//ValidLFQNWithKeywords:
+	//	ValidIDWithKeywords ("." ValidIDWithKeywords)*;
+	public ValidLFQNWithKeywordsElements getValidLFQNWithKeywordsAccess() {
+		return (pValidLFQNWithKeywords != null) ? pValidLFQNWithKeywords : (pValidLFQNWithKeywords = new ValidLFQNWithKeywordsElements());
+	}
+	
+	public ParserRule getValidLFQNWithKeywordsRule() {
+		return getValidLFQNWithKeywordsAccess().getRule();
 	}
 
 	//Multiplicity returns types::LMultiplicity:

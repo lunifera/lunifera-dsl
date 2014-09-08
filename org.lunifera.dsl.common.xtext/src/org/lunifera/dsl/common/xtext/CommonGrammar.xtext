@@ -76,10 +76,13 @@ LFQN:
 	ID ('.' ID)*;
 
 ValidIDWithKeywords:
-	'cachable' | 'id' | 'transient' | 'version' |
+	'cachable' | 'id' | 'uuid' | 'transient' | 'version' | 'derived'
 	'collection' | 'refers' | 'settings' | 'lazy' |
-	'notnull' | 'dto' |  'date' | 
+	'notnull' | 'dto' |  'date' | 'mapto' | 'ref' | 'cascade' | 'var' |
 	ID;
+	
+ValidLFQNWithKeywords:
+	ValidIDWithKeywords ('.' ValidIDWithKeywords)*;
 
 Multiplicity returns types::LMultiplicity:
 	'[' (lower=LowerBound) ('..' upper=UpperBound)? ']';

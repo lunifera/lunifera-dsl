@@ -32,10 +32,13 @@ import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
 import org.lunifera.dsl.semantic.dto.LDtoInheritedReference
 import org.lunifera.dsl.semantic.dto.LDtoOperation
 import org.lunifera.dsl.semantic.dto.LDtoReference
+import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.eclipse.xtext.common.types.JvmType
+import org.lunifera.dsl.semantic.common.types.LScalarType
 
 class DtoModelExtensions extends ModelExtensions {
 
@@ -53,6 +56,22 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch JvmTypeReference toTypeReference(LDtoAbstractAttribute prop) {
 		var JvmTypeReference jvmTypeRef = prop.toDtoTypeParameterReference
 		return jvmTypeRef
+	}
+
+	def dispatch JvmTypeReference toTypeReference(LEntityAttribute prop) {
+		if (prop.type instanceof LBean) {
+			return references.getTypeForName(prop.type.toDTOBeanFullyQualifiedName, prop, null)
+		} else {
+			return super.toTypeReference(prop)
+		}
+	}
+	
+	def dispatch JvmTypeReference toTypeReference(LBeanAttribute prop) {
+		if (prop.type instanceof LBean) {
+			return references.getTypeForName(prop.type.toDTOBeanFullyQualifiedName, prop, null)
+		} else {
+			return super.toTypeReference(prop)
+		}
 	}
 
 	/**

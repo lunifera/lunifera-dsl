@@ -1,0 +1,16 @@
+package org.lunifera.dsl.xtext.builder.participant.tests {
+	
+	/* Imports the original entity package */
+	import org.lunifera.dsl.xtext.builder.participant.tests.*;
+	
+
+
+	dto SuperClassDto wraps SuperClass {
+		inherit var id;
+	}
+	
+	dto MyEntityDto extends SuperClassDto wraps MyEntity {
+		inherit var someValue;
+	}
+	
+}

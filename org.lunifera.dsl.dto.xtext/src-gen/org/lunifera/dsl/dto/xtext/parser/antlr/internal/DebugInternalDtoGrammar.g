@@ -74,7 +74,7 @@ ruleAnnotationDef
 )	'inherit var' 
 (
 (
-		ruleLFQN
+		ruleValidLFQNWithKeywords
 )
 ))(	'mapto' 
 (
@@ -93,7 +93,7 @@ ruleDtoMapper
 )(	'inherit ref' 
 (
 (
-		ruleLFQN
+		ruleValidLFQNWithKeywords
 )
 ))	'mapto' 
 (
@@ -518,14 +518,19 @@ ruleValidIDWithKeywords :
 	'id' 
 
     |
+	'uuid' 
+
+    |
 	'transient' 
 
     |
 	'version' 
 
-    |
-	'collection' 
+    |(
+	'derived' 
 
+	'collection' 
+)
     |
 	'refers' 
 
@@ -544,7 +549,31 @@ ruleValidIDWithKeywords :
     |
 	'date' 
 
+    |
+	'mapto' 
+
+    |
+	'ref' 
+
+    |
+	'cascade' 
+
+    |
+	'var' 
+
     | RULE_ID)
+    ;
+
+
+
+
+
+
+// Rule ValidLFQNWithKeywords
+ruleValidLFQNWithKeywords :
+( ruleValidIDWithKeywords(
+	'.' 
+ruleValidIDWithKeywords)*)
     ;
 
 

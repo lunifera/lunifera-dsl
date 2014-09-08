@@ -134,6 +134,9 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLQualifiedNameWithWildCardAccess().getGroup_1(), "rule__LQualifiedNameWithWildCard__Group_1__0");
 					put(grammarAccess.getLFQNAccess().getGroup(), "rule__LFQN__Group__0");
 					put(grammarAccess.getLFQNAccess().getGroup_1(), "rule__LFQN__Group_1__0");
+					put(grammarAccess.getValidIDWithKeywordsAccess().getGroup_5(), "rule__ValidIDWithKeywords__Group_5__0");
+					put(grammarAccess.getValidLFQNWithKeywordsAccess().getGroup(), "rule__ValidLFQNWithKeywords__Group__0");
+					put(grammarAccess.getValidLFQNWithKeywordsAccess().getGroup_1(), "rule__ValidLFQNWithKeywords__Group_1__0");
 					put(grammarAccess.getMultiplicityAccess().getGroup(), "rule__Multiplicity__Group__0");
 					put(grammarAccess.getMultiplicityAccess().getGroup_2(), "rule__Multiplicity__Group_2__0");
 					put(grammarAccess.getXAnnotationAccess().getGroup(), "rule__XAnnotation__Group__0");

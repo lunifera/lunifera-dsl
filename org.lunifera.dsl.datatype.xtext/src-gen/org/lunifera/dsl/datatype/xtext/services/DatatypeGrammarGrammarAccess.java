@@ -289,14 +289,24 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ValidIDWithKeywords:
-	//	"cachable" | "id" | "transient" | "version" | "collection" | "refers" | "settings" | "lazy" | "notnull" | "dto" |
-	//	"date" | ID;
+	//	"cachable" | "id" | "uuid" | "transient" | "version" | "derived" "collection" | "refers" | "settings" | "lazy" |
+	//	"notnull" | "dto" | "date" | "mapto" | "ref" | "cascade" | "var" | ID;
 	public CommonGrammarGrammarAccess.ValidIDWithKeywordsElements getValidIDWithKeywordsAccess() {
 		return gaCommonGrammar.getValidIDWithKeywordsAccess();
 	}
 	
 	public ParserRule getValidIDWithKeywordsRule() {
 		return getValidIDWithKeywordsAccess().getRule();
+	}
+
+	//ValidLFQNWithKeywords:
+	//	ValidIDWithKeywords ("." ValidIDWithKeywords)*;
+	public CommonGrammarGrammarAccess.ValidLFQNWithKeywordsElements getValidLFQNWithKeywordsAccess() {
+		return gaCommonGrammar.getValidLFQNWithKeywordsAccess();
+	}
+	
+	public ParserRule getValidLFQNWithKeywordsRule() {
+		return getValidLFQNWithKeywordsAccess().getRule();
 	}
 
 	//Multiplicity returns types::LMultiplicity:
