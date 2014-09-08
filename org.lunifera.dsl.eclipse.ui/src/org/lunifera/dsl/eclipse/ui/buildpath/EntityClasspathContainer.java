@@ -39,7 +39,7 @@ final public class EntityClasspathContainer implements IClasspathContainer {
 	private static final String OSGI_SERVICES_BUNDLE_ID = "org.eclipse.osgi.services";
 	private static final String DATATYPES_BUNDLE_ID = "org.lunifera.dsl.datatype.lib";
 	private static final String DTO_BUNDLE_ID = "org.lunifera.dsl.dto.lib";
-	private static final String ECVIEW_COMMON_BUNDLE_ID = "org.eclipse.emf.ecp.ecview.common";
+	private static final String ECVIEW_COMMON_BUNDLE_ID = "org.lunifera.ecview.core.common";
 	private static final String UI_GRAMMAR_BUNDLE_ID = "org.lunifera.ecview.dsl.lib";
 
 	public static final String[] BUNDLE_IDS_TO_INCLUDE = new String[] {
