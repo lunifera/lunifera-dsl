@@ -261,7 +261,7 @@ public class LEntityItemProvider extends LClassItemProvider {
 	@Override
 	public Object getImage(Object object) {
 		return composeImage(getResourceLocator()
-				.getImage("full/obj/LEntity.gif"), getOverlay((LEntity) object));
+				.getImage("full/obj16/LEntity.gif"), getOverlay((LEntity) object));
 	}
 
 	private Object getOverlay(LEntity object) {
