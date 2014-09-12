@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.lunifera.dsl.semantic.entity.edit;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.7.3.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.lunifera.dsl.semantic.entity.provider.EntityEditPlugin$Implementation
 Bundle-Vendor: %providerName
