@@ -221,6 +221,26 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch String toTypeName(LDtoInheritedReference prop) {
 		prop.type?.name
 	}
+	
+	def dispatch String toQualifiedTypeName(LDtoAttribute prop) {
+		prop.type.fullyQualifiedName.toString
+	}
+
+	def dispatch String toQualifiedTypeName(LDtoInheritedAttribute prop) {
+		if (prop.type != null) {
+			prop.type.fullyQualifiedName.toString
+		} else {
+			prop.inheritedFeature.^type.fullyQualifiedName.toString
+		}
+	}
+
+	def dispatch String toQualifiedTypeName(LDtoReference prop) {
+		prop.type?.fullyQualifiedName.toString
+	}
+
+	def dispatch String toQualifiedTypeName(LDtoInheritedReference prop) {
+		prop.type?.fullyQualifiedName.toString
+	}
 
 	def dispatch LType toRawType(LFeature prop) {
 		throw new IllegalStateException("not a valid call")

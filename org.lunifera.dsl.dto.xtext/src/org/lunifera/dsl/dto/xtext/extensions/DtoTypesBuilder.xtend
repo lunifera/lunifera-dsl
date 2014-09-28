@@ -591,7 +591,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				val fieldRef = "this." + fieldName
 				p >> "if (" + fieldRef + " == null)" >>> " {"
 				{
-					p >> fieldRef >> " = new java.util.ArrayList<" + prop.toTypeName + ">();"
+					p >> fieldRef >> " = new java.util.ArrayList<" + prop.toQualifiedTypeName + ">();"
 				}
 				p <<< "}"
 				p >> "return " + fieldRef + ";"
