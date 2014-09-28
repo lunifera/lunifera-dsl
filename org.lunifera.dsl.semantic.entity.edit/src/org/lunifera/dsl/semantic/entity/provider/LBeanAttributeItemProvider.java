@@ -313,7 +313,8 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/LBeanAttribute"));
+		return composeImage(getImage((LBeanAttribute) object),
+				getOverlay((LBeanAttribute) object));
 	}
 
 	private Object getOverlay(LBeanAttribute object) {
@@ -327,9 +328,27 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 		if (object.isId() || object.isUuid()) {
 			return getResourceLocator().getImage("full/obj/LAttribute_id.gif");
 		}
-		return getResourceLocator().getImage("full/obj/LAttribute.gif");
+		return getResourceLocator().getImage("full/obj16/LBeanAttribute.gif");
+	}
+	/*@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LBeanAttribute"));
 	}
 
+	private Object getOverlay(LBeanAttribute object) {
+		if (object.isTransient()) {
+			return getResourceLocator().getImage("full/ovr/transient.gif");
+		}
+		return null;
+	}
+
+	private Object getImage(LBeanAttribute object) {
+		if (object.isId() || object.isUuid()) {
+			return getResourceLocator().getImage("full/obj16/LAttribute_id.gif");
+		}
+		return getResourceLocator().getImage("full/obj16/LBeanAttribute.gif");
+	}
+*/
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc

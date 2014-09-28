@@ -36,7 +36,9 @@
 		<!-- P2 bundles -->
 		<module>org.lunifera.dsl.mwe</module>
 		<module>org.lunifera.dsl.semantic.common</module>
+		<module>org.lunifera.dsl.semantic.common.edit</module>
 		<module>org.lunifera.dsl.semantic.entity</module>
+		<module>org.lunifera.dsl.semantic.entity.edit</module>
 		<module>org.lunifera.dsl.semantic.dto</module>
 		<module>org.lunifera.dsl.semantic.service</module>
 		<module>org.lunifera.dsl.common.xtext</module>

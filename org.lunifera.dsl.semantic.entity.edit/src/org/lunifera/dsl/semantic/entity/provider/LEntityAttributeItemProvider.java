@@ -329,7 +329,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 		if (object.isId() || object.isUuid()) {
 			return getResourceLocator().getImage("full/obj/LAttribute_id.gif");
 		}
-		return getResourceLocator().getImage("full/obj/LAttribute.gif");
+		return getResourceLocator().getImage("full/obj16/LEntityAttribute.gif");
 	}
 
 	/**
