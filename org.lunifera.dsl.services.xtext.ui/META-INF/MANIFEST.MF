@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.services.xtext.ui
 Bundle-Vendor: My Company
-Bundle-Version: 0.7.4
+Bundle-Version: 0.7.5.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.services.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ui,

@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.xtext.builder.participant
 Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.7.4
+Bundle-Version: 0.7.5.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.xtext.builder.participant
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.lunifera.dsl.xtext.builder.participant;version="0.7.4",
- org.lunifera.dsl.xtext.builder.participant.impl;version="0.7.4";x-internal:="true"
+Export-Package: org.lunifera.dsl.xtext.builder.participant;version="0.7.5",
+ org.lunifera.dsl.xtext.builder.participant.impl;version="0.7.5";x-internal:="true"
 Require-Bundle: com.google.guava;bundle-version="15.0.0",
  org.objectweb.asm;bundle-version="3.3.1",
  org.eclipse.xtext.common.types;bundle-version="[2.6.0,2.7.0)",
