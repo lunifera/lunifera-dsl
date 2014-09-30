@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.lunifera.dsl.semantic.entity;singleton:=true
-Bundle-Version: 0.7.3.qualifier
+Bundle-Version: 0.7.4
 Bundle-ClassPath: .
 Bundle-Activator: org.lunifera.dsl.semantic.entity.Activator
 Bundle-Vendor: %providerName
@@ -16,10 +16,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.common.types;bundle-version="[2.6.0,2.7.0)";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: model;version="0.7.3",
- org.lunifera.dsl.semantic.entity;version="0.7.3",
- org.lunifera.dsl.semantic.entity.impl;version="0.7.3",
- org.lunifera.dsl.semantic.entity.util;version="0.7.3"
+Export-Package: model;version="0.7.4",
+ org.lunifera.dsl.semantic.entity;version="0.7.4",
+ org.lunifera.dsl.semantic.entity.impl;version="0.7.4",
+ org.lunifera.dsl.semantic.entity.util;version="0.7.4"
 Import-Package: org.eclipse.emf.edit.command,
  org.eclipse.emf.edit.domain
 
