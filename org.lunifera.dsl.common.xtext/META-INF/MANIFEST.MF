@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.common.xtext
 Bundle-Vendor: My Company
-Bundle-Version: 0.7.3.qualifier
+Bundle-Version: 0.7.5.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.common.xtext; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.0,2.7.0)";visibility:=reexport,
@@ -25,15 +25,15 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.0,2.7.0)";visibility:=ree
  org.lunifera.xtext.builder.xbase.setups;bundle-version="[0.8.0,0.9.0)",
  org.lunifera.runtime.common;bundle-version="0.7.5"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.lunifera.dsl.common.xtext;version="0.7.3";uses:="org.eclipse.xtext,  org.eclipse.xtext.xtype,  org.eclipse.xtext.service,  org.eclipse.xtext.common.types,  com.google.inject",
- org.lunifera.dsl.common.xtext.extensions;version="0.7.3";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.semantic.common.types,  org.lunifera.dsl.semantic.common.helper,  org.eclipse.xtext.common.types",
- org.lunifera.dsl.common.xtext.formatting;version="0.7.3";uses:="org.eclipse.xtext.formatting.impl,org.lunifera.dsl.common.xtext.services",
- org.lunifera.dsl.common.xtext.jvmmodel;version="0.7.3";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.semantic.common.types,  org.eclipse.xtext.naming,  org.eclipse.xtext.xbase.jvmmodel,  org.eclipse.xtext.common.types,  org.eclipse.xtext.xbase.lib",
- org.lunifera.dsl.common.xtext.parser.antlr;version="0.7.3";uses:="org.lunifera.dsl.common.xtext.services,org.eclipse.xtext.parser.antlr,org.lunifera.dsl.common.xtext.parser.antlr.internal",
- org.lunifera.dsl.common.xtext.parser.antlr.internal;version="0.7.3";uses:="org.eclipse.emf.ecore,  org.eclipse.emf.common.util,  org.lunifera.dsl.common.xtext.services,  org.antlr.runtime,  org.eclipse.xtext.parser.antlr",
- org.lunifera.dsl.common.xtext.scope;version="0.7.3";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.common.xtext.extensions,  org.eclipse.xtext.naming,  org.eclipse.xtext.scoping.impl,  org.eclipse.xtext.xbase.annotations.scoping",
- org.lunifera.dsl.common.xtext.serializer;version="0.7.3";uses:="org.eclipse.xtext,  org.eclipse.emf.ecore,  org.eclipse.xtext.serializer.sequencer,  org.lunifera.dsl.semantic.common.types,  org.eclipse.xtext.serializer.analysis,  org.lunifera.dsl.common.xtext.services,  org.eclipse.xtext.nodemodel,  org.eclipse.xtext.xbase.annotations.serializer",
- org.lunifera.dsl.common.xtext.services;version="0.7.3";uses:="org.eclipse.xtext,  org.eclipse.xtext.xbase.services,  org.eclipse.xtext.service,  org.eclipse.xtext.xbase.annotations.services",
- org.lunifera.dsl.common.xtext.validation;version="0.7.3";uses:="org.eclipse.xtext.xbase.annotations.validation",
- org.lunifera.dsl.common.xtext.valueconverter;version="0.7.3";uses:="org.eclipse.xtext.xbase.conversion,  org.eclipse.emf.ecore,  org.eclipse.xtext.xbase.scoping,  org.eclipse.xtext.naming,  org.eclipse.xtext.conversion"
+Export-Package: org.lunifera.dsl.common.xtext;version="0.7.5";uses:="org.eclipse.xtext,  org.eclipse.xtext.xtype,  org.eclipse.xtext.service,  org.eclipse.xtext.common.types,  com.google.inject",
+ org.lunifera.dsl.common.xtext.extensions;version="0.7.5";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.semantic.common.types,  org.lunifera.dsl.semantic.common.helper,  org.eclipse.xtext.common.types",
+ org.lunifera.dsl.common.xtext.formatting;version="0.7.5";uses:="org.eclipse.xtext.formatting.impl,org.lunifera.dsl.common.xtext.services",
+ org.lunifera.dsl.common.xtext.jvmmodel;version="0.7.5";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.semantic.common.types,  org.eclipse.xtext.naming,  org.eclipse.xtext.xbase.jvmmodel,  org.eclipse.xtext.common.types,  org.eclipse.xtext.xbase.lib",
+ org.lunifera.dsl.common.xtext.parser.antlr;version="0.7.5";uses:="org.lunifera.dsl.common.xtext.services,org.eclipse.xtext.parser.antlr,org.lunifera.dsl.common.xtext.parser.antlr.internal",
+ org.lunifera.dsl.common.xtext.parser.antlr.internal;version="0.7.5";uses:="org.eclipse.emf.ecore,  org.eclipse.emf.common.util,  org.lunifera.dsl.common.xtext.services,  org.antlr.runtime,  org.eclipse.xtext.parser.antlr",
+ org.lunifera.dsl.common.xtext.scope;version="0.7.5";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.common.xtext.extensions,  org.eclipse.xtext.naming,  org.eclipse.xtext.scoping.impl,  org.eclipse.xtext.xbase.annotations.scoping",
+ org.lunifera.dsl.common.xtext.serializer;version="0.7.5";uses:="org.eclipse.xtext,  org.eclipse.emf.ecore,  org.eclipse.xtext.serializer.sequencer,  org.lunifera.dsl.semantic.common.types,  org.eclipse.xtext.serializer.analysis,  org.lunifera.dsl.common.xtext.services,  org.eclipse.xtext.nodemodel,  org.eclipse.xtext.xbase.annotations.serializer",
+ org.lunifera.dsl.common.xtext.services;version="0.7.5";uses:="org.eclipse.xtext,  org.eclipse.xtext.xbase.services,  org.eclipse.xtext.service,  org.eclipse.xtext.xbase.annotations.services",
+ org.lunifera.dsl.common.xtext.validation;version="0.7.5";uses:="org.eclipse.xtext.xbase.annotations.validation",
+ org.lunifera.dsl.common.xtext.valueconverter;version="0.7.5";uses:="org.eclipse.xtext.xbase.conversion,  org.eclipse.emf.ecore,  org.eclipse.xtext.xbase.scoping,  org.eclipse.xtext.naming,  org.eclipse.xtext.conversion"
 Import-Package: org.apache.log4j
