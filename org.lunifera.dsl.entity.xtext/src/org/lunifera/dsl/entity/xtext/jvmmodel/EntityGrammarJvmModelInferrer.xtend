@@ -13,6 +13,7 @@ package org.lunifera.dsl.entity.xtext.jvmmodel
 import com.google.inject.Inject
 import java.io.Serializable
 import org.apache.log4j.Logger
+import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
@@ -153,6 +154,8 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		if(hasSyntaxErrors(entity)) return;
 
 		acceptor.accept(entity.toJvmType).initializeLater [
+			var LAttribute idAttribute = null
+			var JvmField idField = null
 			fileHeader = (entity.eContainer as LTypedPackage).documentation
 			documentation = entity.documentation
 			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
@@ -172,7 +175,13 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				switch f {
 					LAttribute: {
 						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
-							members += f.toField
+							if (f.id || f.uuid) {
+								idAttribute = f
+								idField = f.toField
+								members += idField
+							} else {
+								members += f.toField
+							}
 						}
 					}
 					LReference: {
@@ -235,6 +244,10 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					}
 					body = op.body
 				]
+			}
+			if (idAttribute != null) {
+				members += idAttribute.toEqualsMethod(it, false, idField)
+				members += idAttribute.toHashCodeMethod(false, idField)
 			}
 		]
 

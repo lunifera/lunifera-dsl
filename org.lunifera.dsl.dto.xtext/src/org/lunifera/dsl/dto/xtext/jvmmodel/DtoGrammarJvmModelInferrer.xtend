@@ -28,6 +28,7 @@ import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
+import org.eclipse.xtext.common.types.JvmField
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -44,6 +45,10 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(dto.toJvmType).initializeLater [
+			
+			var LAttribute idAttribute = null
+			var JvmField idField = null
+			
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = dto.getDocumentation
 			if (dto.getSuperType != null && !dto.getSuperType.fullyQualifiedName.toString.empty) {
@@ -65,7 +70,13 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				switch f {
 					LAttribute: {
 						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
-							members += f.toField
+							if(f.id || f.uuid){
+								idAttribute = f
+								idField = f.toField
+								members += idField
+							}else{
+								members += f.toField
+							}
 						}
 					}
 					LReference: {
@@ -132,6 +143,13 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					body = op.getBody
 				]
 			}
+			
+			
+			if(idAttribute != null){
+				members += idAttribute.toEqualsMethod(it, false, idField)
+				members += idAttribute.toHashCodeMethod(false, idField)
+			}
+			
 		]
 
 		/**
