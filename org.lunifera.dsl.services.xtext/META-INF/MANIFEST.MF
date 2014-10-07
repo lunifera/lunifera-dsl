@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.0,2.7.0)";visibility:=ree
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
- org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;bundle-version="[2.6.0,2.7.0)";resolution:=optional,
  org.lunifera.dsl.common.xtext;bundle-version="[0.7.0,0.8.0)",
  org.lunifera.dsl.semantic.common;bundle-version="[0.7.0,0.8.0)",
  org.lunifera.dsl.semantic.entity;bundle-version="[0.7.0,0.8.0)",
