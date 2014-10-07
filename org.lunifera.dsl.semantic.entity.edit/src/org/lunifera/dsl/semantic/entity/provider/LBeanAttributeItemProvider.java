@@ -313,8 +313,7 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return composeImage(getImage((LBeanAttribute) object),
-				getOverlay((LBeanAttribute) object));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LBeanAttribute"));
 	}
 
 	private Object getOverlay(LBeanAttribute object) {
