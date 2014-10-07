@@ -11,7 +11,7 @@
 package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
-import java.io.Serializable 
+import java.io.Serializable
 import org.apache.log4j.Logger
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
@@ -21,7 +21,6 @@ import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LEnum
-import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.entity.LBean
@@ -80,7 +79,12 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			for (f : bean.getFeatures) {
 				switch f {
-					LFeature: {
+					LAttribute: {
+						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
+							members += f.toField
+						}
+					}
+					LReference: {
 						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
 							members += f.toField
 						}
@@ -97,18 +101,20 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			members += bean.toDispose()
 			for (f : bean.getFeatures) {
 				switch f {
-					case f instanceof LAttribute: {
+					LAttribute: {
 						members += f.toGetter()
-						if (f.isToMany) {
-							members += f.toCollectionSetter(f.name)
-							members += f.toInternalCollectionGetter(f.getName)
-							members += f.toAdder(f.getName)
-							members += f.toRemover(f.getName)
-						} else {
-							members += f.toSetter()
+						if (!f.derived) {
+							if (f.isToMany) {
+								members += f.toCollectionSetter(f.name)
+								members += f.toInternalCollectionGetter(f.getName)
+								members += f.toAdder(f.getName)
+								members += f.toRemover(f.getName)
+							} else {
+								members += f.toSetter()
+							}
 						}
 					}
-					case f instanceof LReference: {
+					LReference: {
 						members += f.toGetter()
 						if (f.isToMany) {
 							members += f.toCollectionSetter(f.name)
@@ -164,7 +170,12 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			//
 			for (f : entity.features.filter[!(it instanceof LOperation)]) {
 				switch f {
-					LFeature: {
+					LAttribute: {
+						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
+							members += f.toField
+						}
+					}
+					LReference: {
 						if (f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
 							members += f.toField
 						}
@@ -181,18 +192,20 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			members += entity.toDispose()
 			for (f : entity.features) {
 				switch f {
-					case f instanceof LAttribute: {
+					LAttribute: {
 						members += f.toGetter()
-						if (f.toMany) {
-							members += f.toCollectionSetter(f.name)
-							members += f.toInternalCollectionGetter(f.name)
-							members += f.toAdder(f.name)
-							members += f.toRemover(f.name)
-						} else {
-							members += f.toSetter()
+						if (!f.derived) {
+							if (f.toMany) {
+								members += f.toCollectionSetter(f.name)
+								members += f.toInternalCollectionGetter(f.name)
+								members += f.toAdder(f.name)
+								members += f.toRemover(f.name)
+							} else {
+								members += f.toSetter()
+							}
 						}
 					}
-					case f instanceof LReference: {
+					LReference: {
 						members += f.toGetter()
 						if (f.toMany) {
 							members += f.toCollectionSetter(f.name)

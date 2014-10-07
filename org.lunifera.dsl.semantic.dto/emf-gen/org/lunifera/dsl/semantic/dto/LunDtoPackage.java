@@ -427,13 +427,31 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_ABSTRACT_ATTRIBUTE__DERIVED = LDTO_FEATURE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Domain Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY = LDTO_FEATURE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Domain Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION = LDTO_FEATURE_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION = LDTO_FEATURE_FEATURE_COUNT + 7;
+	int LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION = LDTO_FEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -442,7 +460,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_ATTRIBUTE__TYPE = LDTO_FEATURE_FEATURE_COUNT + 8;
+	int LDTO_ABSTRACT_ATTRIBUTE__TYPE = LDTO_FEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>LDto Abstract Attribute</em>' class.
@@ -451,7 +469,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_ATTRIBUTE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 9;
+	int LDTO_ABSTRACT_ATTRIBUTE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedAttributeImpl <em>LDto Inherited Attribute</em>}' class.
@@ -570,6 +588,24 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_INHERITED_ATTRIBUTE__DERIVED = LDTO_ABSTRACT_ATTRIBUTE__DERIVED;
+
+	/**
+	 * The feature id for the '<em><b>Domain Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_INHERITED_ATTRIBUTE__DOMAIN_KEY = LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY;
+
+	/**
+	 * The feature id for the '<em><b>Domain Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_INHERITED_ATTRIBUTE__DOMAIN_DESCRIPTION = LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
@@ -724,6 +760,24 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_ATTRIBUTE__DERIVED = LDTO_ABSTRACT_ATTRIBUTE__DERIVED;
+
+	/**
+	 * The feature id for the '<em><b>Domain Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ATTRIBUTE__DOMAIN_KEY = LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY;
+
+	/**
+	 * The feature id for the '<em><b>Domain Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ATTRIBUTE__DOMAIN_DESCRIPTION = LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.

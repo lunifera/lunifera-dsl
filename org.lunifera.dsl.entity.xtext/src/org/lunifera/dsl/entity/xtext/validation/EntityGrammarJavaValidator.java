@@ -76,6 +76,12 @@ public class EntityGrammarJavaValidator extends
 	public static final String CODE__MISSING_ID_FOR_VERSIONED = "116";
 	public static final String CODE__HISTORIZED_IN_SUBCLASS = "117";
 	public static final String CODE__TIMEDEPENDENT_IN_SUBCLASS = "118";
+	private static final String CODE__DUPLICATE_DOMAIN_KEY = "119";
+	private static final String CODE__DUPLICATE_DOMAIN_DESCRIPTION = "120";
+	private static final String CODE__DOMAIN_KEY__NO_MANY = "121";
+	private static final String CODE__DOMAIN_DESCRIPTION__NO_MANY = "122";
+	private static final String CODE__DOMAIN_KEY__TYPE = "123";
+	private static final String CODE__DOMAIN_DESCRIPTION__TYPE = "124";
 
 	@Inject
 	private IQualifiedNameProvider qnp;
@@ -278,6 +284,43 @@ public class EntityGrammarJavaValidator extends
 						CODE__UUID_WRONG_TYPE, new String[0]);
 			}
 		}
+
+		if (prop.isDomainKey()) {
+			if (extensions.isToMany(prop)) {
+				error("DomainDescription is not valid for one to many relations.",
+						LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+						CODE__DOMAIN_KEY__NO_MANY, new String[0]);
+			}
+			
+			if (prop.getType() instanceof LDataType) {
+				LDataType type = (LDataType) prop.getType();
+				String typename = type.getJvmTypeReference().getQualifiedName();
+				if (!typename.equals("java.lang.String")) {
+					error("DomainDescription must be of type String.",
+							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+							CODE__DOMAIN_KEY__TYPE, new String[0]);
+				}
+			}
+		}
+
+		if (prop.isDomainDescription()) {
+			if (extensions.isToMany(prop)) {
+				error("DomainKey is not valid for one to many relations.",
+						LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_DESCRIPTION,
+						CODE__DOMAIN_DESCRIPTION__NO_MANY, new String[0]);
+			}
+			
+			if (prop.getType() instanceof LDataType) {
+				LDataType type = (LDataType) prop.getType();
+				String typename = type.getJvmTypeReference().getQualifiedName();
+				if (!typename.equals("java.lang.String")) {
+					error("DomainDescription must be of type String.",
+							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+							CODE__DOMAIN_DESCRIPTION__TYPE, new String[0]);
+				}
+			}
+		}
+
 	}
 
 	@Check(CheckType.NORMAL)
@@ -300,15 +343,13 @@ public class EntityGrammarJavaValidator extends
 			}
 		}
 	}
-	
+
 	@Check(CheckType.NORMAL)
 	public void checkIndex_Features(LIndex index) {
-		// TODO Features must by unique
 	}
-	
+
 	@Check(CheckType.NORMAL)
 	public void checkEntity_Index(LEntity entity) {
-		// TODO Index names must by unique
 	}
 
 	@Check(CheckType.NORMAL)
@@ -316,14 +357,24 @@ public class EntityGrammarJavaValidator extends
 
 		int idCounter = 0;
 		int versionCounter = 0;
+		int domainKeyCounter = 0;
+		int domainDescriptionCounter = 0;
 		Map<String, Integer> attNames = new HashMap<String, Integer>();
 		for (LEntityFeature feature : entity.getAllFeatures()) {
 			if (feature instanceof LEntityAttribute) {
 				LEntityAttribute att = (LEntityAttribute) feature;
-				if (att.isId() || att.isUuid())
+				if (att.isId() || att.isUuid()) {
 					idCounter++;
-				if (att.isVersion())
+				}
+				if (att.isVersion()) {
 					versionCounter++;
+				}
+				if (att.isDomainKey()) {
+					domainKeyCounter++;
+				}
+				if (att.isDomainDescription()) {
+					domainDescriptionCounter++;
+				}
 			}
 
 			if (!attNames.containsKey(feature.getName())) {
@@ -343,7 +394,8 @@ public class EntityGrammarJavaValidator extends
 
 		if (idCounter == 0) {
 			warning("An entity should have an ID property",
-					LunEntityPackage.Literals.LENTITY__FEATURES, CODE__MISSING_ID);
+					LunEntityPackage.Literals.LENTITY__FEATURES,
+					CODE__MISSING_ID);
 		} else if (idCounter > 1) {
 			int i = 0;
 			for (LEntityFeature feature : entity.getFeatures()) {
@@ -368,6 +420,37 @@ public class EntityGrammarJavaValidator extends
 						error("An entity must only have one Version property.",
 								LunEntityPackage.Literals.LENTITY__FEATURES, i,
 								CODE__DUPLICATE_VERSION, new String[0]);
+						break;
+					}
+				}
+				i++;
+			}
+		}
+
+		if (domainKeyCounter > 1) {
+			int i = 0;
+			for (LEntityFeature feature : entity.getFeatures()) {
+				if (feature instanceof LEntityAttribute) {
+					if (((LEntityAttribute) feature).isDomainKey()) {
+						error("An entity must only have one DomainKey property.",
+								LunEntityPackage.Literals.LENTITY__FEATURES, i,
+								CODE__DUPLICATE_DOMAIN_KEY, new String[0]);
+						break;
+					}
+				}
+				i++;
+			}
+		}
+
+		if (domainDescriptionCounter > 1) {
+			int i = 0;
+			for (LEntityFeature feature : entity.getFeatures()) {
+				if (feature instanceof LEntityAttribute) {
+					if (((LEntityAttribute) feature).isDomainDescription()) {
+						error("An entity must only have one DomainDescription property.",
+								LunEntityPackage.Literals.LENTITY__FEATURES, i,
+								CODE__DUPLICATE_DOMAIN_DESCRIPTION,
+								new String[0]);
 						break;
 					}
 				}
@@ -476,9 +559,10 @@ public class EntityGrammarJavaValidator extends
 		for (LEntityInheritanceStrategy stgy : stgies) {
 			String value = extensions.toDiscriminatorValue(stgy);
 			if (value.equals(currentValue)) {
-				error(String.format(
-						"The discrimator value %s is already used by supertype!",
-						value), entity,
+				error(String
+						.format("The discrimator value %s is already used by supertype!",
+								value),
+						entity,
 						LunEntityPackage.Literals.LENTITY__INHERITANCE_STRATEGY,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 						CODE__INHERITANCE_DISCRIMINATOR_VALUE_NOT_UNIQUE,

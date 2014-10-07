@@ -26,7 +26,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.0,2.7.0)";visibility:=ree
  org.eclipse.emf.mwe2.language;bundle-version="2.5.1",
  org.lunifera.xtext.builder.types.bundles,
  org.eclipse.emf.mwe2.launch;bundle-version="2.6.1",
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.lunifera.runtime.common;bundle-version="0.7.5"
 Import-Package: org.apache.log4j,
  org.osgi.service.component.annotations;version="1.2.0"
 Export-Package: org.lunifera.dsl.dto.xtext;version="0.7.3";x-internal:="true",

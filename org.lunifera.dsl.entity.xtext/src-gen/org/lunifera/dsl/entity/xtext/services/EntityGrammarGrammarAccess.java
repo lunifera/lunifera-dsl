@@ -559,24 +559,40 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_1_0_2_0 = (RuleCall)cNameAssignment_2_1_1_0_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_2_1_1_0_3 = (Keyword)cGroup_2_1_1_0.eContents().get(3);
 		private final Group cGroup_2_1_1_1 = (Group)cAlternatives_2_1_1.eContents().get(1);
-		private final Alternatives cAlternatives_2_1_1_1_0 = (Alternatives)cGroup_2_1_1_1.eContents().get(0);
-		private final Keyword cVarKeyword_2_1_1_1_0_0 = (Keyword)cAlternatives_2_1_1_1_0.eContents().get(0);
-		private final Assignment cIdAssignment_2_1_1_1_0_1 = (Assignment)cAlternatives_2_1_1_1_0.eContents().get(1);
-		private final Keyword cIdIdKeyword_2_1_1_1_0_1_0 = (Keyword)cIdAssignment_2_1_1_1_0_1.eContents().get(0);
-		private final Assignment cUuidAssignment_2_1_1_1_0_2 = (Assignment)cAlternatives_2_1_1_1_0.eContents().get(2);
-		private final Keyword cUuidUuidKeyword_2_1_1_1_0_2_0 = (Keyword)cUuidAssignment_2_1_1_1_0_2.eContents().get(0);
-		private final Assignment cVersionAssignment_2_1_1_1_0_3 = (Assignment)cAlternatives_2_1_1_1_0.eContents().get(3);
-		private final Keyword cVersionVersionKeyword_2_1_1_1_0_3_0 = (Keyword)cVersionAssignment_2_1_1_1_0_3.eContents().get(0);
-		private final Assignment cTypeAssignment_2_1_1_1_1 = (Assignment)cGroup_2_1_1_1.eContents().get(1);
-		private final CrossReference cTypeLScalarTypeCrossReference_2_1_1_1_1_0 = (CrossReference)cTypeAssignment_2_1_1_1_1.eContents().get(0);
-		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_1_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_1_1_1_1_0.eContents().get(1);
-		private final Assignment cMultiplicityAssignment_2_1_1_1_2 = (Assignment)cGroup_2_1_1_1.eContents().get(2);
-		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_1_1_1_2_0 = (RuleCall)cMultiplicityAssignment_2_1_1_1_2.eContents().get(0);
+		private final Assignment cDerivedAssignment_2_1_1_1_0 = (Assignment)cGroup_2_1_1_1.eContents().get(0);
+		private final Keyword cDerivedDerivedKeyword_2_1_1_1_0_0 = (Keyword)cDerivedAssignment_2_1_1_1_0.eContents().get(0);
+		private final Assignment cDomainDescriptionAssignment_2_1_1_1_1 = (Assignment)cGroup_2_1_1_1.eContents().get(1);
+		private final Keyword cDomainDescriptionDomainDescriptionKeyword_2_1_1_1_1_0 = (Keyword)cDomainDescriptionAssignment_2_1_1_1_1.eContents().get(0);
+		private final Assignment cTypeAssignment_2_1_1_1_2 = (Assignment)cGroup_2_1_1_1.eContents().get(2);
+		private final CrossReference cTypeLScalarTypeCrossReference_2_1_1_1_2_0 = (CrossReference)cTypeAssignment_2_1_1_1_2.eContents().get(0);
+		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_2_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_1_1_1_2_0.eContents().get(1);
 		private final Assignment cNameAssignment_2_1_1_1_3 = (Assignment)cGroup_2_1_1_1.eContents().get(3);
 		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_1_1_3_0 = (RuleCall)cNameAssignment_2_1_1_1_3.eContents().get(0);
-		private final Assignment cPersistenceInfoAssignment_2_1_1_1_4 = (Assignment)cGroup_2_1_1_1.eContents().get(4);
-		private final RuleCall cPersistenceInfoColumnPersistenceInfoParserRuleCall_2_1_1_1_4_0 = (RuleCall)cPersistenceInfoAssignment_2_1_1_1_4.eContents().get(0);
-		private final Keyword cSemicolonKeyword_2_1_1_1_5 = (Keyword)cGroup_2_1_1_1.eContents().get(5);
+		private final Assignment cDerivedGetterExpressionAssignment_2_1_1_1_4 = (Assignment)cGroup_2_1_1_1.eContents().get(4);
+		private final RuleCall cDerivedGetterExpressionXBlockExpressionParserRuleCall_2_1_1_1_4_0 = (RuleCall)cDerivedGetterExpressionAssignment_2_1_1_1_4.eContents().get(0);
+		private final Group cGroup_2_1_1_2 = (Group)cAlternatives_2_1_1.eContents().get(2);
+		private final Alternatives cAlternatives_2_1_1_2_0 = (Alternatives)cGroup_2_1_1_2.eContents().get(0);
+		private final Keyword cVarKeyword_2_1_1_2_0_0 = (Keyword)cAlternatives_2_1_1_2_0.eContents().get(0);
+		private final Assignment cIdAssignment_2_1_1_2_0_1 = (Assignment)cAlternatives_2_1_1_2_0.eContents().get(1);
+		private final Keyword cIdIdKeyword_2_1_1_2_0_1_0 = (Keyword)cIdAssignment_2_1_1_2_0_1.eContents().get(0);
+		private final Assignment cUuidAssignment_2_1_1_2_0_2 = (Assignment)cAlternatives_2_1_1_2_0.eContents().get(2);
+		private final Keyword cUuidUuidKeyword_2_1_1_2_0_2_0 = (Keyword)cUuidAssignment_2_1_1_2_0_2.eContents().get(0);
+		private final Assignment cVersionAssignment_2_1_1_2_0_3 = (Assignment)cAlternatives_2_1_1_2_0.eContents().get(3);
+		private final Keyword cVersionVersionKeyword_2_1_1_2_0_3_0 = (Keyword)cVersionAssignment_2_1_1_2_0_3.eContents().get(0);
+		private final Assignment cDomainDescriptionAssignment_2_1_1_2_0_4 = (Assignment)cAlternatives_2_1_1_2_0.eContents().get(4);
+		private final Keyword cDomainDescriptionDomainDescriptionKeyword_2_1_1_2_0_4_0 = (Keyword)cDomainDescriptionAssignment_2_1_1_2_0_4.eContents().get(0);
+		private final Assignment cDomainKeyAssignment_2_1_1_2_0_5 = (Assignment)cAlternatives_2_1_1_2_0.eContents().get(5);
+		private final Keyword cDomainKeyDomainKeyKeyword_2_1_1_2_0_5_0 = (Keyword)cDomainKeyAssignment_2_1_1_2_0_5.eContents().get(0);
+		private final Assignment cTypeAssignment_2_1_1_2_1 = (Assignment)cGroup_2_1_1_2.eContents().get(1);
+		private final CrossReference cTypeLScalarTypeCrossReference_2_1_1_2_1_0 = (CrossReference)cTypeAssignment_2_1_1_2_1.eContents().get(0);
+		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_1_1_2_1_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_1_1_2_1_0.eContents().get(1);
+		private final Assignment cMultiplicityAssignment_2_1_1_2_2 = (Assignment)cGroup_2_1_1_2.eContents().get(2);
+		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_1_1_2_2_0 = (RuleCall)cMultiplicityAssignment_2_1_1_2_2.eContents().get(0);
+		private final Assignment cNameAssignment_2_1_1_2_3 = (Assignment)cGroup_2_1_1_2.eContents().get(3);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_1_2_3_0 = (RuleCall)cNameAssignment_2_1_1_2_3.eContents().get(0);
+		private final Assignment cPersistenceInfoAssignment_2_1_1_2_4 = (Assignment)cGroup_2_1_1_2.eContents().get(4);
+		private final RuleCall cPersistenceInfoColumnPersistenceInfoParserRuleCall_2_1_1_2_4_0 = (RuleCall)cPersistenceInfoAssignment_2_1_1_2_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2_1_1_2_5 = (Keyword)cGroup_2_1_1_2.eContents().get(5);
 		private final Group cGroup_2_2 = (Group)cAlternatives_2.eContents().get(2);
 		private final Action cLOperationAnnotationInfoAction_2_2_0 = (Action)cGroup_2_2.eContents().get(0);
 		private final Group cGroup_2_2_1 = (Group)cGroup_2_2.eContents().get(1);
@@ -602,7 +618,9 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//	cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
 		//	persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])?) ";" |
 		//	{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords
-		//	";" | ("var" | id?="id" | uuid?="uuid" | version?="version") type=[LScalarType] multiplicity=Multiplicity?
+		//	";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
+		//	derivedGetterExpression=XBlockExpression | ("var" | id?="id" | uuid?="uuid" | version?="version" |
+		//	domainDescription?="domainDescription" | domainKey?="domainKey") type=[LScalarType] multiplicity=Multiplicity?
 		//	name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ";") | {entity::LOperation.annotationInfo=current}
 		//	("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
 		//	params+=FullJvmFormalParameter)*)? ")" body=XExpression));
@@ -612,7 +630,9 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
 		//persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])?) ";" |
 		//{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords
-		//";" | ("var" | id?="id" | uuid?="uuid" | version?="version") type=[LScalarType] multiplicity=Multiplicity?
+		//";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
+		//derivedGetterExpression=XBlockExpression | ("var" | id?="id" | uuid?="uuid" | version?="version" |
+		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[LScalarType] multiplicity=Multiplicity?
 		//name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ";") | {entity::LOperation.annotationInfo=current}
 		//("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
 		//params+=FullJvmFormalParameter)*)? ")" body=XExpression))
@@ -630,11 +650,13 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//{entity::LEntityReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LEntity]
 		//multiplicity=Multiplicity? name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ("opposite"
 		//opposite=[entity::LEntityReference|LFQN])?) ";" | {entity::LEntityAttribute.annotationInfo=current}
-		//(transient?="transient" type=[LScalarType] name=ValidIDWithKeywords ";" | ("var" | id?="id" | uuid?="uuid" |
-		//version?="version") type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords
-		//persistenceInfo=ColumnPersistenceInfo? ";") | {entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference
-		//name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")"
-		//body=XExpression)
+		//(transient?="transient" type=[LScalarType] name=ValidIDWithKeywords ";" | derived?="derived"
+		//domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
+		//derivedGetterExpression=XBlockExpression | ("var" | id?="id" | uuid?="uuid" | version?="version" |
+		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[LScalarType] multiplicity=Multiplicity?
+		//name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ";") | {entity::LOperation.annotationInfo=current}
+		//("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
+		//params+=FullJvmFormalParameter)*)? ")" body=XExpression)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//{entity::LEntityReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LEntity]
@@ -704,16 +726,20 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getSemicolonKeyword_2_0_2() { return cSemicolonKeyword_2_0_2; }
 
 		//{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords
-		//";" | ("var" | id?="id" | uuid?="uuid" | version?="version") type=[LScalarType] multiplicity=Multiplicity?
+		//";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
+		//derivedGetterExpression=XBlockExpression | ("var" | id?="id" | uuid?="uuid" | version?="version" |
+		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[LScalarType] multiplicity=Multiplicity?
 		//name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ";")
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//{entity::LEntityAttribute.annotationInfo=current}
 		public Action getLEntityAttributeAnnotationInfoAction_2_1_0() { return cLEntityAttributeAnnotationInfoAction_2_1_0; }
 
-		//transient?="transient" type=[LScalarType] name=ValidIDWithKeywords ";" | ("var" | id?="id" | uuid?="uuid" |
-		//version?="version") type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords
-		//persistenceInfo=ColumnPersistenceInfo? ";"
+		//transient?="transient" type=[LScalarType] name=ValidIDWithKeywords ";" | derived?="derived"
+		//domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
+		//derivedGetterExpression=XBlockExpression | ("var" | id?="id" | uuid?="uuid" | version?="version" |
+		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[LScalarType] multiplicity=Multiplicity?
+		//name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ";"
 		public Alternatives getAlternatives_2_1_1() { return cAlternatives_2_1_1; }
 
 		//transient?="transient" type=[LScalarType] name=ValidIDWithKeywords ";"
@@ -743,48 +769,30 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//";"
 		public Keyword getSemicolonKeyword_2_1_1_0_3() { return cSemicolonKeyword_2_1_1_0_3; }
 
-		//("var" | id?="id" | uuid?="uuid" | version?="version") type=[LScalarType] multiplicity=Multiplicity?
-		//name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ";"
+		//derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
+		//derivedGetterExpression=XBlockExpression
 		public Group getGroup_2_1_1_1() { return cGroup_2_1_1_1; }
 
-		//"var" | id?="id" | uuid?="uuid" | version?="version"
-		public Alternatives getAlternatives_2_1_1_1_0() { return cAlternatives_2_1_1_1_0; }
+		//derived?="derived"
+		public Assignment getDerivedAssignment_2_1_1_1_0() { return cDerivedAssignment_2_1_1_1_0; }
 
-		//"var"
-		public Keyword getVarKeyword_2_1_1_1_0_0() { return cVarKeyword_2_1_1_1_0_0; }
+		//"derived"
+		public Keyword getDerivedDerivedKeyword_2_1_1_1_0_0() { return cDerivedDerivedKeyword_2_1_1_1_0_0; }
 
-		//id?="id"
-		public Assignment getIdAssignment_2_1_1_1_0_1() { return cIdAssignment_2_1_1_1_0_1; }
+		//domainDescription?="domainDescription"?
+		public Assignment getDomainDescriptionAssignment_2_1_1_1_1() { return cDomainDescriptionAssignment_2_1_1_1_1; }
 
-		//"id"
-		public Keyword getIdIdKeyword_2_1_1_1_0_1_0() { return cIdIdKeyword_2_1_1_1_0_1_0; }
-
-		//uuid?="uuid"
-		public Assignment getUuidAssignment_2_1_1_1_0_2() { return cUuidAssignment_2_1_1_1_0_2; }
-
-		//"uuid"
-		public Keyword getUuidUuidKeyword_2_1_1_1_0_2_0() { return cUuidUuidKeyword_2_1_1_1_0_2_0; }
-
-		//version?="version"
-		public Assignment getVersionAssignment_2_1_1_1_0_3() { return cVersionAssignment_2_1_1_1_0_3; }
-
-		//"version"
-		public Keyword getVersionVersionKeyword_2_1_1_1_0_3_0() { return cVersionVersionKeyword_2_1_1_1_0_3_0; }
+		//"domainDescription"
+		public Keyword getDomainDescriptionDomainDescriptionKeyword_2_1_1_1_1_0() { return cDomainDescriptionDomainDescriptionKeyword_2_1_1_1_1_0; }
 
 		//type=[LScalarType]
-		public Assignment getTypeAssignment_2_1_1_1_1() { return cTypeAssignment_2_1_1_1_1; }
+		public Assignment getTypeAssignment_2_1_1_1_2() { return cTypeAssignment_2_1_1_1_2; }
 
 		//[LScalarType]
-		public CrossReference getTypeLScalarTypeCrossReference_2_1_1_1_1_0() { return cTypeLScalarTypeCrossReference_2_1_1_1_1_0; }
+		public CrossReference getTypeLScalarTypeCrossReference_2_1_1_1_2_0() { return cTypeLScalarTypeCrossReference_2_1_1_1_2_0; }
 
 		//ID
-		public RuleCall getTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_1_0_1() { return cTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_1_0_1; }
-
-		//multiplicity=Multiplicity?
-		public Assignment getMultiplicityAssignment_2_1_1_1_2() { return cMultiplicityAssignment_2_1_1_1_2; }
-
-		//Multiplicity
-		public RuleCall getMultiplicityMultiplicityParserRuleCall_2_1_1_1_2_0() { return cMultiplicityMultiplicityParserRuleCall_2_1_1_1_2_0; }
+		public RuleCall getTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_2_0_1() { return cTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_2_0_1; }
 
 		//name=ValidIDWithKeywords
 		public Assignment getNameAssignment_2_1_1_1_3() { return cNameAssignment_2_1_1_1_3; }
@@ -792,14 +800,81 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidIDWithKeywords
 		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_1_1_1_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_1_1_1_3_0; }
 
+		//derivedGetterExpression=XBlockExpression
+		public Assignment getDerivedGetterExpressionAssignment_2_1_1_1_4() { return cDerivedGetterExpressionAssignment_2_1_1_1_4; }
+
+		//XBlockExpression
+		public RuleCall getDerivedGetterExpressionXBlockExpressionParserRuleCall_2_1_1_1_4_0() { return cDerivedGetterExpressionXBlockExpressionParserRuleCall_2_1_1_1_4_0; }
+
+		//("var" | id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey")
+		//type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ";"
+		public Group getGroup_2_1_1_2() { return cGroup_2_1_1_2; }
+
+		//"var" | id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey"
+		public Alternatives getAlternatives_2_1_1_2_0() { return cAlternatives_2_1_1_2_0; }
+
+		//"var"
+		public Keyword getVarKeyword_2_1_1_2_0_0() { return cVarKeyword_2_1_1_2_0_0; }
+
+		//id?="id"
+		public Assignment getIdAssignment_2_1_1_2_0_1() { return cIdAssignment_2_1_1_2_0_1; }
+
+		//"id"
+		public Keyword getIdIdKeyword_2_1_1_2_0_1_0() { return cIdIdKeyword_2_1_1_2_0_1_0; }
+
+		//uuid?="uuid"
+		public Assignment getUuidAssignment_2_1_1_2_0_2() { return cUuidAssignment_2_1_1_2_0_2; }
+
+		//"uuid"
+		public Keyword getUuidUuidKeyword_2_1_1_2_0_2_0() { return cUuidUuidKeyword_2_1_1_2_0_2_0; }
+
+		//version?="version"
+		public Assignment getVersionAssignment_2_1_1_2_0_3() { return cVersionAssignment_2_1_1_2_0_3; }
+
+		//"version"
+		public Keyword getVersionVersionKeyword_2_1_1_2_0_3_0() { return cVersionVersionKeyword_2_1_1_2_0_3_0; }
+
+		//domainDescription?="domainDescription"
+		public Assignment getDomainDescriptionAssignment_2_1_1_2_0_4() { return cDomainDescriptionAssignment_2_1_1_2_0_4; }
+
+		//"domainDescription"
+		public Keyword getDomainDescriptionDomainDescriptionKeyword_2_1_1_2_0_4_0() { return cDomainDescriptionDomainDescriptionKeyword_2_1_1_2_0_4_0; }
+
+		//domainKey?="domainKey"
+		public Assignment getDomainKeyAssignment_2_1_1_2_0_5() { return cDomainKeyAssignment_2_1_1_2_0_5; }
+
+		//"domainKey"
+		public Keyword getDomainKeyDomainKeyKeyword_2_1_1_2_0_5_0() { return cDomainKeyDomainKeyKeyword_2_1_1_2_0_5_0; }
+
+		//type=[LScalarType]
+		public Assignment getTypeAssignment_2_1_1_2_1() { return cTypeAssignment_2_1_1_2_1; }
+
+		//[LScalarType]
+		public CrossReference getTypeLScalarTypeCrossReference_2_1_1_2_1_0() { return cTypeLScalarTypeCrossReference_2_1_1_2_1_0; }
+
+		//ID
+		public RuleCall getTypeLScalarTypeIDTerminalRuleCall_2_1_1_2_1_0_1() { return cTypeLScalarTypeIDTerminalRuleCall_2_1_1_2_1_0_1; }
+
+		//multiplicity=Multiplicity?
+		public Assignment getMultiplicityAssignment_2_1_1_2_2() { return cMultiplicityAssignment_2_1_1_2_2; }
+
+		//Multiplicity
+		public RuleCall getMultiplicityMultiplicityParserRuleCall_2_1_1_2_2_0() { return cMultiplicityMultiplicityParserRuleCall_2_1_1_2_2_0; }
+
+		//name=ValidIDWithKeywords
+		public Assignment getNameAssignment_2_1_1_2_3() { return cNameAssignment_2_1_1_2_3; }
+
+		//ValidIDWithKeywords
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_1_1_2_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_1_1_2_3_0; }
+
 		//persistenceInfo=ColumnPersistenceInfo?
-		public Assignment getPersistenceInfoAssignment_2_1_1_1_4() { return cPersistenceInfoAssignment_2_1_1_1_4; }
+		public Assignment getPersistenceInfoAssignment_2_1_1_2_4() { return cPersistenceInfoAssignment_2_1_1_2_4; }
 
 		//ColumnPersistenceInfo
-		public RuleCall getPersistenceInfoColumnPersistenceInfoParserRuleCall_2_1_1_1_4_0() { return cPersistenceInfoColumnPersistenceInfoParserRuleCall_2_1_1_1_4_0; }
+		public RuleCall getPersistenceInfoColumnPersistenceInfoParserRuleCall_2_1_1_2_4_0() { return cPersistenceInfoColumnPersistenceInfoParserRuleCall_2_1_1_2_4_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_2_1_1_1_5() { return cSemicolonKeyword_2_1_1_1_5; }
+		public Keyword getSemicolonKeyword_2_1_1_2_5() { return cSemicolonKeyword_2_1_1_2_5; }
 
 		//{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
 		//(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression)
@@ -1570,7 +1645,9 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
 	//	persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])?) ";" |
 	//	{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords
-	//	";" | ("var" | id?="id" | uuid?="uuid" | version?="version") type=[LScalarType] multiplicity=Multiplicity?
+	//	";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
+	//	derivedGetterExpression=XBlockExpression | ("var" | id?="id" | uuid?="uuid" | version?="version" |
+	//	domainDescription?="domainDescription" | domainKey?="domainKey") type=[LScalarType] multiplicity=Multiplicity?
 	//	name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ";") | {entity::LOperation.annotationInfo=current}
 	//	("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
 	//	params+=FullJvmFormalParameter)*)? ")" body=XExpression));

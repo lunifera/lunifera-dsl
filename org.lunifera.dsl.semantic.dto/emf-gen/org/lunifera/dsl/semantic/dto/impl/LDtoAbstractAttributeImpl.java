@@ -44,6 +44,8 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isDomainKey <em>Domain Key</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getType <em>Type</em>}</li>
  * </ul>
@@ -191,6 +193,46 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * @ordered
 	 */
 	protected boolean derived = DERIVED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDomainKey() <em>Domain Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDomainKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DOMAIN_KEY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDomainKey() <em>Domain Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDomainKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean domainKey = DOMAIN_KEY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDomainDescription() <em>Domain Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDomainDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DOMAIN_DESCRIPTION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDomainDescription() <em>Domain Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDomainDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean domainDescription = DOMAIN_DESCRIPTION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getDerivedGetterExpression() <em>Derived Getter Expression</em>}' containment reference.
@@ -383,6 +425,48 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDomainKey() {
+		return domainKey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDomainKey(boolean newDomainKey) {
+		boolean oldDomainKey = domainKey;
+		domainKey = newDomainKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY, oldDomainKey, domainKey));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isDomainDescription() {
+		return domainDescription;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDomainDescription(boolean newDomainDescription) {
+		boolean oldDomainDescription = domainDescription;
+		domainDescription = newDomainDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION, oldDomainDescription, domainDescription));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public XExpression getDerivedGetterExpression() {
 		return derivedGetterExpression;
 	}
@@ -495,6 +579,10 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return isTransient();
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED:
 				return isDerived();
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY:
+				return isDomainKey();
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION:
+				return isDomainDescription();
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				return getDerivedGetterExpression();
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE:
@@ -532,6 +620,12 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED:
 				setDerived((Boolean)newValue);
+				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY:
+				setDomainKey((Boolean)newValue);
+				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION:
+				setDomainDescription((Boolean)newValue);
 				return;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				setDerivedGetterExpression((XExpression)newValue);
@@ -572,6 +666,12 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED:
 				setDerived(DERIVED_EDEFAULT);
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY:
+				setDomainKey(DOMAIN_KEY_EDEFAULT);
+				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION:
+				setDomainDescription(DOMAIN_DESCRIPTION_EDEFAULT);
+				return;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				setDerivedGetterExpression((XExpression)null);
 				return;
@@ -604,6 +704,10 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return transient_ != TRANSIENT_EDEFAULT;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED:
 				return derived != DERIVED_EDEFAULT;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY:
+				return domainKey != DOMAIN_KEY_EDEFAULT;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION:
+				return domainDescription != DOMAIN_DESCRIPTION_EDEFAULT;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				return derivedGetterExpression != null;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE:
@@ -628,6 +732,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CASCADING: return LunTypesPackage.LATTRIBUTE__CASCADING;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TRANSIENT: return LunTypesPackage.LATTRIBUTE__TRANSIENT;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED: return LunTypesPackage.LATTRIBUTE__DERIVED;
+				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY: return LunTypesPackage.LATTRIBUTE__DOMAIN_KEY;
+				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION: return LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
 				default: return -1;
@@ -652,6 +758,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				case LunTypesPackage.LATTRIBUTE__CASCADING: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CASCADING;
 				case LunTypesPackage.LATTRIBUTE__TRANSIENT: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TRANSIENT;
 				case LunTypesPackage.LATTRIBUTE__DERIVED: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED;
+				case LunTypesPackage.LATTRIBUTE__DOMAIN_KEY: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY;
+				case LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunTypesPackage.LATTRIBUTE__TYPE: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE;
 				default: return -1;
@@ -684,6 +792,10 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 		result.append(transient_);
 		result.append(", derived: ");
 		result.append(derived);
+		result.append(", domainKey: ");
+		result.append(domainKey);
+		result.append(", domainDescription: ");
+		result.append(domainDescription);
 		result.append(')');
 		return result.toString();
 	}

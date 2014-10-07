@@ -22,7 +22,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.0,2.7.0)";visibility:=ree
  org.eclipse.emf.ecore.xcore;bundle-version="1.2.0",
  org.lunifera.dsl.mwe;bundle-version="[0.7.0,0.8.0)",
  org.lunifera.xtext.builder.types.bundles;bundle-version="[0.8.0,0.9.0)",
- org.lunifera.xtext.builder.xbase.setups;bundle-version="[0.8.0,0.9.0)"
+ org.lunifera.xtext.builder.xbase.setups;bundle-version="[0.8.0,0.9.0)",
+ org.lunifera.runtime.common;bundle-version="0.7.5"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.dsl.common.xtext;version="0.7.3";uses:="org.eclipse.xtext,  org.eclipse.xtext.xtype,  org.eclipse.xtext.service,  org.eclipse.xtext.common.types,  com.google.inject",
  org.lunifera.dsl.common.xtext.extensions;version="0.7.3";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.semantic.common.types,  org.lunifera.dsl.semantic.common.helper,  org.eclipse.xtext.common.types",

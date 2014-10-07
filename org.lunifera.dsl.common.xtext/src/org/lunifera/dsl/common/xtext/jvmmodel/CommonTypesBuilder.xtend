@@ -37,6 +37,7 @@ import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LOperation
 import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.runtime.common.annotations.DomainDescription
 
 class CommonTypesBuilder extends JvmTypesBuilder {
 	@Inject extension IQualifiedNameProvider
@@ -197,7 +198,13 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 				@return «prop.name» The derived property value'''
 			}
 
+			// set the domain description annotation
+			if(prop.domainDescription){
+				op.annotations +=  prop.toAnnotation(typeof(DomainDescription))
+			}
+
 			setBody(op, prop.derivedGetterExpression)
+			
 		} else {
 			op.documentation = if (prop.toMany) {
 				"Returns an unmodifiable list of " + propertyName + "."

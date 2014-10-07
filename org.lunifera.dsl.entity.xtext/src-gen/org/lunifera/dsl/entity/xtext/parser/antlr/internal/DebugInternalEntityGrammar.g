@@ -68,11 +68,15 @@ ruleEntityFeature :
 		) ';' |
 		(
 			'transient' RULE_ID ruleValidIDWithKeywords ';' |
+			'derived' 'domainDescription'? RULE_ID ruleValidIDWithKeywords
+			ruleXBlockExpression |
 			(
 				'var' |
 				'id' |
 				'uuid' |
-				'version'
+				'version' |
+				'domainDescription' |
+				'domainKey'
 			) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords
 			ruleColumnPersistenceInfo? ';'
 		) |

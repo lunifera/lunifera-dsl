@@ -74,6 +74,8 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			addCascadingPropertyDescriptor(object);
 			addTransientPropertyDescriptor(object);
 			addDerivedPropertyDescriptor(object);
+			addDomainKeyPropertyDescriptor(object);
+			addDomainDescriptionPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
 			addTypedNamePropertyDescriptor(object);
 		}
@@ -235,6 +237,50 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Domain Key feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDomainKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LAttribute_domainKey_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LAttribute_domainKey_feature", "_UI_LAttribute_type"),
+				 LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Domain Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDomainDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LAttribute_domainDescription_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LAttribute_domainDescription_feature", "_UI_LAttribute_type"),
+				 LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Type feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
@@ -365,6 +411,8 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			case LunEntityPackage.LENTITY_ATTRIBUTE__CASCADING:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPED_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
@@ -386,6 +434,11 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
+				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -531,11 +584,6 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
 				 XbaseFactory.eINSTANCE.createXSynchronizedExpression()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
-				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 	}
 
 	@Override

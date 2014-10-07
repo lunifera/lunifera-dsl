@@ -1612,7 +1612,14 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *         (
 	 *             (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords) | 
 	 *             (
-	 *                 (id?='id' | uuid?='uuid' | version?='version')? 
+	 *                 derived?='derived' 
+	 *                 domainDescription?='domainDescription'? 
+	 *                 type=[LScalarType|ID] 
+	 *                 name=ValidIDWithKeywords 
+	 *                 derivedGetterExpression=XBlockExpression
+	 *             ) | 
+	 *             (
+	 *                 (id?='id' | uuid?='uuid' | version?='version' | domainDescription?='domainDescription' | domainKey?='domainKey')? 
 	 *                 type=[LScalarType|ID] 
 	 *                 multiplicity=Multiplicity? 
 	 *                 name=ValidIDWithKeywords 

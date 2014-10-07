@@ -1466,11 +1466,17 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 *         (annotationInfo=DtoFeature_LDtoAttribute_2_2_0 (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords)) | 
 	 *         (
 	 *             annotationInfo=DtoFeature_LDtoAttribute_2_3_0 
-	 *             (derived?='derived' type=[LScalarType|ID] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression)
+	 *             (
+	 *                 derived?='derived' 
+	 *                 domainDescription?='domainDescription'? 
+	 *                 type=[LScalarType|ID] 
+	 *                 name=ValidIDWithKeywords 
+	 *                 derivedGetterExpression=XBlockExpression
+	 *             )
 	 *         ) | 
 	 *         (
 	 *             annotationInfo=DtoFeature_LDtoAttribute_2_4_0 
-	 *             (id?='id' | version?='version' | uuid?='uuid') 
+	 *             (id?='id' | version?='version' | uuid?='uuid' | domainDescription?='domainDescription' | domainKey?='domainKey') 
 	 *             type=[LScalarType|ID] 
 	 *             multiplicity=Multiplicity? 
 	 *             name=ValidIDWithKeywords
