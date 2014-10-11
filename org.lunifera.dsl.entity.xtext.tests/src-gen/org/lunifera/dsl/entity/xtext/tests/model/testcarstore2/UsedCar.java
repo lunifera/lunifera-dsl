@@ -14,14 +14,12 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car;
-import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Customer;
 
 @Entity
 @Table(name = "USED_CAR")
 @DiscriminatorValue(value = "USED_CAR")
 @SuppressWarnings("all")
-public class UsedCar extends Car {
+public class UsedCar implements org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car {
   @Column(name = "STATE")
   private String state;
   
@@ -30,7 +28,7 @@ public class UsedCar extends Car {
   
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
   @JoinColumn(name = "SELLER", nullable = false)
-  private Customer seller;
+  private org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Customer seller;
   
   /**
    * Checks whether the object is disposed.
@@ -91,7 +89,7 @@ public class UsedCar extends Car {
   /**
    * Returns the <em>required</em> seller property.
    */
-  public Customer getSeller() {
+  public org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Customer getSeller() {
     checkDisposed();
     return this.seller;
   }
@@ -99,7 +97,7 @@ public class UsedCar extends Car {
   /**
    * Sets the seller property to this instance.
    */
-  public void setSeller(final Customer seller) {
+  public void setSeller(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Customer seller) {
     checkDisposed();
     this.seller = seller;
   }

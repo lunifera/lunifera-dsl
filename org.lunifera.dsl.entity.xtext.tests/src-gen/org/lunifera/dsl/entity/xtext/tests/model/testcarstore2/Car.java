@@ -25,7 +25,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Manufacturer;
 
 @Entity
 @Table(name = "CAR")
@@ -53,7 +52,7 @@ public class Car {
   
   @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "MANUFACTURER", nullable = false)
-  private Manufacturer manufacturer;
+  private org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Manufacturer manufacturer;
   
   /**
    * Returns true, if the object is disposed. 
@@ -166,7 +165,7 @@ public class Car {
   /**
    * Returns the <em>required</em> manufacturer property.
    */
-  public Manufacturer getManufacturer() {
+  public org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Manufacturer getManufacturer() {
     checkDisposed();
     return this.manufacturer;
   }
@@ -177,7 +176,7 @@ public class Car {
    * of the manufacturer will be handled automatically and no further coding is required to keep them in sync.
    * See {@link Manufacturer#setCars(Manufacturer)}.
    */
-  public void setManufacturer(final Manufacturer manufacturer) {
+  public void setManufacturer(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Manufacturer manufacturer) {
     checkDisposed();
     if (this.manufacturer != null) {
       this.manufacturer.internalRemoveFromCars(this);
@@ -189,7 +188,7 @@ public class Car {
     
   }
   
-  void internalSetManufacturer(final Manufacturer manufacturer) {
+  void internalSetManufacturer(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Manufacturer manufacturer) {
     this.manufacturer = manufacturer;
   }
 }

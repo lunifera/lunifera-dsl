@@ -11,13 +11,12 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseBySubclass;
 
 @Entity
 @Table(name = "ONE_BY_SUBCLASS")
 @DiscriminatorValue(value = "ONE_BY_SUBCLASS")
 @SuppressWarnings("all")
-public class OneBySubclass extends BaseBySubclass {
+public class OneBySubclass implements org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseBySubclass {
   @Column(name = "NAME")
   private String name;
   

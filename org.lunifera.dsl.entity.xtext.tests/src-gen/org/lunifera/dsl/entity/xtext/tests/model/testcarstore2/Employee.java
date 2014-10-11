@@ -22,13 +22,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Person;
 
 @Entity
 @Table(name = "EMPLOYEE")
 @DiscriminatorValue(value = "EMPLOYEE")
 @SuppressWarnings("all")
-public class Employee extends Person {
+public class Employee implements org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Person {
   @Column(name = "EMPLOYEENUMBER")
   private long employeenumber;
   
@@ -44,11 +43,11 @@ public class Employee extends Person {
   
   @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "BOSS", nullable = false)
-  private Employee boss;
+  private org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee boss;
   
   @JoinColumn(name = "SUBORDINATES")
   @OneToMany(mappedBy = "boss", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Employee> subordinates;
+  private /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee> */Object subordinates;
   
   /**
    * Checks whether the object is disposed.
@@ -158,7 +157,7 @@ public class Employee extends Person {
   /**
    * Returns the <em>required</em> boss property.
    */
-  public Employee getBoss() {
+  public org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee getBoss() {
     checkDisposed();
     return this.boss;
   }
@@ -169,7 +168,7 @@ public class Employee extends Person {
    * of the boss will be handled automatically and no further coding is required to keep them in sync.
    * See {@link Employee#setSubordinates(Employee)}.
    */
-  public void setBoss(final Employee boss) {
+  public void setBoss(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee boss) {
     checkDisposed();
     if (this.boss != null) {
       this.boss.internalRemoveFromSubordinates(this);
@@ -181,14 +180,14 @@ public class Employee extends Person {
     
   }
   
-  void internalSetBoss(final Employee boss) {
+  void internalSetBoss(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee boss) {
     this.boss = boss;
   }
   
   /**
    * Returns an unmodifiable list of subordinates.
    */
-  public List<Employee> getSubordinates() {
+  public /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee> */Object getSubordinates() {
     checkDisposed();
     return Collections.unmodifiableList(internalGetSubordinates());
   }
@@ -198,7 +197,7 @@ public class Employee extends Person {
    * 
    * @param subordinates the list of new instances
    */
-  public void setSubordinates(final List<Employee> subordinates) {
+  public void setSubordinates(final /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee> */Object subordinates) {
     // remove the old employee
     for(Employee oldElement : new ArrayList<Employee>(this.internalGetSubordinates())){
       removeFromSubordinates(oldElement);
@@ -213,7 +212,7 @@ public class Employee extends Person {
   /**
    * Returns the list of <code>Employee</code>s thereby lazy initializing it.
    */
-  private List<Employee> internalGetSubordinates() {
+  private /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee> */Object internalGetSubordinates() {
     if (this.subordinates == null) {
       this.subordinates = new ArrayList<Employee>();
     }
@@ -227,7 +226,7 @@ public class Employee extends Person {
    * See {@link Employee#setBoss(Employee)}.
    * 
    */
-  public void addToSubordinates(final Employee employee) {
+  public void addToSubordinates(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee employee) {
     checkDisposed();
     employee.setBoss(this);
   }
@@ -239,16 +238,16 @@ public class Employee extends Person {
    * See {@link Employee#setBoss(Employee)}.
    * 
    */
-  public void removeFromSubordinates(final Employee employee) {
+  public void removeFromSubordinates(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee employee) {
     checkDisposed();
     employee.setBoss(null);
   }
   
-  void internalAddToSubordinates(final Employee employee) {
+  void internalAddToSubordinates(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee employee) {
     internalGetSubordinates().add(employee);
   }
   
-  void internalRemoveFromSubordinates(final Employee employee) {
+  void internalRemoveFromSubordinates(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee employee) {
     internalGetSubordinates().remove(employee);
   }
 }
