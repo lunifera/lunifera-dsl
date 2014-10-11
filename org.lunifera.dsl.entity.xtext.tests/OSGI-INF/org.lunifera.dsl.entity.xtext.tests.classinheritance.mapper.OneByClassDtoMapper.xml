@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+   <scr:component name="org.lunifera.dsl.entity.xtext.tests.classinheritance.mapper.onebyclassdtomapper">
+       <implementation class="org.lunifera.dsl.entity.xtext.tests.classinheritance.mapper.OneByClassDtoMapper"/>
+       <property name="dto" value="org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClassDto"/>
+       <property name="entity" value="org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClass"/>
+       <property name="service.pid" value="org.lunifera.dsl.entity.xtext.tests.classinheritance.mapper.onebyclassdtomapper"/>
+       <reference name="bind" interface="org.lunifera.dsl.dto.common.IMapperAccess" 
+       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+   </scr:component>
+</components>

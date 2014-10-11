@@ -79,7 +79,9 @@ EntityFeature returns entity::LEntityFeature:
 	({entity::LEntityAttribute.annotationInfo=current}
 	((transient?='transient' type=[LScalarType] name=ValidIDWithKeywords ';')
 	|
-	(('var' | id?='id' | uuid?='uuid' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
+	(derived?='derived' (domainDescription?='domainDescription')? type=[LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression)
+	|
+	(('var' | id?='id' | uuid?='uuid' | version?="version" | domainDescription?='domainDescription' | domainKey?='domainKey') type=[LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords (persistenceInfo=ColumnPersistenceInfo)?
 	';')))
 	|

@@ -17,6 +17,9 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAttribute
 import org.lunifera.dsl.semantic.dto.LDtoReference
+import org.lunifera.runtime.common.annotations.DomainKey
+import org.lunifera.runtime.common.annotations.DomainDescription
+import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -35,9 +38,30 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoReference prop, JvmField field) {
+		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
 	}
 
-	def protected dispatch void internalProcessAnnotation(LDtoAttribute prop, JvmGenericType jvmType) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+	def protected dispatch void internalProcessAnnotation(LDtoAttribute prop, JvmField field) {
+		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
+
+		if (prop.domainKey) {
+			field.annotations += prop.toAnnotation(typeof(DomainKey))
+		}
+
+		if (prop.domainDescription) {
+			field.annotations += prop.toAnnotation(typeof(DomainDescription))
+		}
+	}
+
+	def protected dispatch void internalProcessAnnotation(LDtoInheritedAttribute prop, JvmField field) {
+		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
+
+		if (prop.inheritedFeature.domainKey) {
+			field.annotations += prop.toAnnotation(typeof(DomainKey))
+		}
+
+		if (prop.inheritedFeature.domainDescription) {
+			field.annotations += prop.toAnnotation(typeof(DomainDescription))
+		}
 	}
 }

@@ -347,12 +347,15 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDtoFeatureAccess().getTypeAssignment_2_2_1_1(), "rule__DtoFeature__TypeAssignment_2_2_1_1");
 					put(grammarAccess.getDtoFeatureAccess().getNameAssignment_2_2_1_2(), "rule__DtoFeature__NameAssignment_2_2_1_2");
 					put(grammarAccess.getDtoFeatureAccess().getDerivedAssignment_2_3_1_0(), "rule__DtoFeature__DerivedAssignment_2_3_1_0");
-					put(grammarAccess.getDtoFeatureAccess().getTypeAssignment_2_3_1_1(), "rule__DtoFeature__TypeAssignment_2_3_1_1");
-					put(grammarAccess.getDtoFeatureAccess().getNameAssignment_2_3_1_2(), "rule__DtoFeature__NameAssignment_2_3_1_2");
-					put(grammarAccess.getDtoFeatureAccess().getDerivedGetterExpressionAssignment_2_3_1_3(), "rule__DtoFeature__DerivedGetterExpressionAssignment_2_3_1_3");
+					put(grammarAccess.getDtoFeatureAccess().getDomainDescriptionAssignment_2_3_1_1(), "rule__DtoFeature__DomainDescriptionAssignment_2_3_1_1");
+					put(grammarAccess.getDtoFeatureAccess().getTypeAssignment_2_3_1_2(), "rule__DtoFeature__TypeAssignment_2_3_1_2");
+					put(grammarAccess.getDtoFeatureAccess().getNameAssignment_2_3_1_3(), "rule__DtoFeature__NameAssignment_2_3_1_3");
+					put(grammarAccess.getDtoFeatureAccess().getDerivedGetterExpressionAssignment_2_3_1_4(), "rule__DtoFeature__DerivedGetterExpressionAssignment_2_3_1_4");
 					put(grammarAccess.getDtoFeatureAccess().getIdAssignment_2_4_1_0(), "rule__DtoFeature__IdAssignment_2_4_1_0");
 					put(grammarAccess.getDtoFeatureAccess().getVersionAssignment_2_4_1_1(), "rule__DtoFeature__VersionAssignment_2_4_1_1");
 					put(grammarAccess.getDtoFeatureAccess().getUuidAssignment_2_4_1_2(), "rule__DtoFeature__UuidAssignment_2_4_1_2");
+					put(grammarAccess.getDtoFeatureAccess().getDomainDescriptionAssignment_2_4_1_3(), "rule__DtoFeature__DomainDescriptionAssignment_2_4_1_3");
+					put(grammarAccess.getDtoFeatureAccess().getDomainKeyAssignment_2_4_1_4(), "rule__DtoFeature__DomainKeyAssignment_2_4_1_4");
 					put(grammarAccess.getDtoFeatureAccess().getTypeAssignment_2_4_2(), "rule__DtoFeature__TypeAssignment_2_4_2");
 					put(grammarAccess.getDtoFeatureAccess().getMultiplicityAssignment_2_4_3(), "rule__DtoFeature__MultiplicityAssignment_2_4_3");
 					put(grammarAccess.getDtoFeatureAccess().getNameAssignment_2_4_4(), "rule__DtoFeature__NameAssignment_2_4_4");

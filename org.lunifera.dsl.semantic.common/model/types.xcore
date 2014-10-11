@@ -148,6 +148,14 @@ interface LAttribute extends LFeature {
 	boolean cascading
 	boolean ^transient
 	boolean ^derived
+	/**
+	 * The domainKey is a human readable value for a dto or entity
+	 */
+	boolean domainKey
+	/**
+	 * The domainKey is the human readable description for a dto or entity
+	 */
+	boolean domainDescription
 	contains XExpression derivedGetterExpression
 	refers LScalarType ^type
 }

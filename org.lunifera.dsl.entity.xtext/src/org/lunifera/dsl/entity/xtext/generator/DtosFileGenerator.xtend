@@ -26,6 +26,8 @@ import org.lunifera.dsl.semantic.entity.LBeanFeature
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityFeature
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
+import org.eclipse.xtext.resource.XtextResource
 
 /**
  *  This generator automatically creates a generic .dtos-file from a given entity model.
@@ -37,6 +39,7 @@ import org.lunifera.dsl.semantic.entity.LEntityReference
 class DtosFileGenerator {
 
 	@Inject extension JvmTypesBuilder
+	@Inject extension ModelExtensions
 
 	def getContent(LTypedPackage pkg) '''
 		«pkg.toDocu»
@@ -58,8 +61,11 @@ class DtosFileGenerator {
 			«FOR LEntity lEntity : pkg.entities»
 				«lEntity.toDocu»
 				«lEntity.toEntityDeclaration»
-					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute) || (it instanceof LReference)]»
+					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute && !(it as LAttribute).derived) || (it instanceof LReference)]»
 						«feature.toFeature»
+					«ENDFOR»
+					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute && (it as LAttribute).derived)]»
+						«(feature as LAttribute).toDerivedAttribute»
 					«ENDFOR»
 				}
 				
@@ -67,7 +73,7 @@ class DtosFileGenerator {
 			«FOR LBean lBean : pkg.beans»
 				«lBean.toDocu»
 				«lBean.toBeanDeclaration»
-					«FOR LBeanFeature feature : lBean.features.filter[(it instanceof LAttribute) || (it instanceof LReference)]»
+					«FOR LBeanFeature feature : lBean.features.filter[(it instanceof LAttribute&& !(it as LAttribute).derived) || (it instanceof LReference)]»
 						«feature.toFeature»
 					«ENDFOR»
 				}
@@ -130,6 +136,11 @@ class DtosFileGenerator {
 		«att.toDocu»
 		inherit ref «att.name» mapto «att.type.name»Dto;
 	'''
+	
+	def toDerivedAttribute(LAttribute att) '''
+		«att.toDocu»
+		derived «IF att.domainDescription»domainDescription «ENDIF» «att.type.name» «att.name» «att.blockExpression»
+	'''
 
 	def toLiterals(LEnum lEnum) {
 		var result = new StringBuilder
@@ -167,6 +178,11 @@ class DtosFileGenerator {
 
 	def Iterable<LEnum> enums(LTypedPackage pkg) {
 		pkg.types.filter[it instanceof LEnum].map[it as LEnum];
+	}
+
+	def String blockExpression(LAttribute attribute){
+		val resource = attribute.eResource as XtextResource
+		return resource.serializer.serialize(attribute.derivedGetterExpression)		
 	}
 
 }

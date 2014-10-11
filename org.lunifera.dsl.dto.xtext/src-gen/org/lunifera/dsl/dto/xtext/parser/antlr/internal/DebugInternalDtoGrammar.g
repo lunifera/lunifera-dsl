@@ -135,6 +135,12 @@ ruleValidIDWithKeywords
 )
 )(
 (
+	'domainDescription' 
+ 
+
+)
+)?(
+(
 	RULE_ID
 
 )
@@ -165,6 +171,20 @@ ruleXBlockExpression
     |(
 (
 	'uuid' 
+ 
+
+)
+)
+    |(
+(
+	'domainDescription' 
+ 
+
+)
+)
+    |(
+(
+	'domainKey' 
  
 
 )

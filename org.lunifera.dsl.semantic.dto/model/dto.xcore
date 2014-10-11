@@ -118,7 +118,7 @@ class LDtoInheritedAttribute extends LDtoAbstractAttribute{
 		return inheritedFeature.multiplicity
 	}
 }
-
+  
 class LDtoAttribute  extends LDtoAbstractAttribute {
 }
 

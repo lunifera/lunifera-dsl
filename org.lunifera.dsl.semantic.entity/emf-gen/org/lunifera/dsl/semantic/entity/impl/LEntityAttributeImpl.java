@@ -46,6 +46,8 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDomainKey <em>Domain Key</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getTypedName <em>Typed Name</em>}</li>
@@ -194,6 +196,46 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * @ordered
 	 */
 	protected boolean derived = DERIVED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDomainKey() <em>Domain Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDomainKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DOMAIN_KEY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDomainKey() <em>Domain Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDomainKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean domainKey = DOMAIN_KEY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDomainDescription() <em>Domain Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDomainDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DOMAIN_DESCRIPTION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDomainDescription() <em>Domain Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDomainDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean domainDescription = DOMAIN_DESCRIPTION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getDerivedGetterExpression() <em>Derived Getter Expression</em>}' containment reference.
@@ -396,6 +438,48 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDomainKey() {
+		return domainKey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDomainKey(boolean newDomainKey) {
+		boolean oldDomainKey = domainKey;
+		domainKey = newDomainKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY, oldDomainKey, domainKey));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isDomainDescription() {
+		return domainDescription;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDomainDescription(boolean newDomainDescription) {
+		boolean oldDomainDescription = domainDescription;
+		domainDescription = newDomainDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION, oldDomainDescription, domainDescription));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public XExpression getDerivedGetterExpression() {
 		return derivedGetterExpression;
 	}
@@ -538,6 +622,10 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return isTransient();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
 				return isDerived();
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
+				return isDomainKey();
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION:
+				return isDomainDescription();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				return getDerivedGetterExpression();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE:
@@ -578,6 +666,12 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
 				setDerived((Boolean)newValue);
 				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
+				setDomainKey((Boolean)newValue);
+				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION:
+				setDomainDescription((Boolean)newValue);
+				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				setDerivedGetterExpression((XExpression)newValue);
 				return;
@@ -617,6 +711,12 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
 				setDerived(DERIVED_EDEFAULT);
 				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
+				setDomainKey(DOMAIN_KEY_EDEFAULT);
+				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION:
+				setDomainDescription(DOMAIN_DESCRIPTION_EDEFAULT);
+				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				setDerivedGetterExpression((XExpression)null);
 				return;
@@ -649,6 +749,10 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return transient_ != TRANSIENT_EDEFAULT;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
 				return derived != DERIVED_EDEFAULT;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
+				return domainKey != DOMAIN_KEY_EDEFAULT;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION:
+				return domainDescription != DOMAIN_DESCRIPTION_EDEFAULT;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				return derivedGetterExpression != null;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE:
@@ -675,6 +779,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				case LunEntityPackage.LENTITY_ATTRIBUTE__CASCADING: return LunTypesPackage.LATTRIBUTE__CASCADING;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT: return LunTypesPackage.LATTRIBUTE__TRANSIENT;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED: return LunTypesPackage.LATTRIBUTE__DERIVED;
+				case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY: return LunTypesPackage.LATTRIBUTE__DOMAIN_KEY;
+				case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION: return LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
 				default: return -1;
@@ -699,6 +805,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				case LunTypesPackage.LATTRIBUTE__CASCADING: return LunEntityPackage.LENTITY_ATTRIBUTE__CASCADING;
 				case LunTypesPackage.LATTRIBUTE__TRANSIENT: return LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT;
 				case LunTypesPackage.LATTRIBUTE__DERIVED: return LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED;
+				case LunTypesPackage.LATTRIBUTE__DOMAIN_KEY: return LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY;
+				case LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION: return LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunTypesPackage.LATTRIBUTE__TYPE: return LunEntityPackage.LENTITY_ATTRIBUTE__TYPE;
 				default: return -1;
@@ -731,6 +839,10 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 		result.append(transient_);
 		result.append(", derived: ");
 		result.append(derived);
+		result.append(", domainKey: ");
+		result.append(domainKey);
+		result.append(", domainDescription: ");
+		result.append(domainDescription);
 		result.append(')');
 		return result.toString();
 	}

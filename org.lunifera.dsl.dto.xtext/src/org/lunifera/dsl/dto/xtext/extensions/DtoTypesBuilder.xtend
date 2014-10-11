@@ -40,6 +40,7 @@ import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.semantic.dto.LDtoFeature
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LOperation
+import org.lunifera.runtime.common.annotations.DomainDescription
 
 class DtoTypesBuilder extends CommonTypesBuilder {
 
@@ -215,36 +216,36 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		return associate(prop, op);
 	}
 
-	def dispatch JvmOperation toGetter(LDtoFeature prop, String methodName) {
-		val typeRef = prop.toDtoTypeParameterReferenceWithMultiplicity
-		val propertyName = prop.toName
-		val op = typesFactory.createJvmOperation();
-		op.visibility = JvmVisibility::PUBLIC
-		op.simpleName = methodName
-		op.returnType = cloneWithProxies(typeRef)
-		op.documentation = if (prop.toMany) {
-			"Returns an unmodifiable list of " + propertyName + "."
-		} else if (propertyName != null) {
-			"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
-				concat(" property").concat(
-					(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
-		}
-
-		setBody(op,
-			[ // ITreeAppendable it |
-				if(it == null) return
-				val p = it.trace(prop);
-				p >> prop.toCheckDisposedCall()
-				if (prop.toMany) {
-					p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
-						"(" + prop.toCollectionInternalGetterName + "());"
-				} else {
-					p >> "return this." + propertyName + ";"
-				}
-			])
-
-		return associate(prop, op);
-	}
+//	def dispatch JvmOperation toGetter(LDtoFeature prop, String methodName) {
+//		val typeRef = prop.toDtoTypeParameterReferenceWithMultiplicity
+//		val propertyName = prop.toName
+//		val op = typesFactory.createJvmOperation();
+//		op.visibility = JvmVisibility::PUBLIC
+//		op.simpleName = methodName
+//		op.returnType = cloneWithProxies(typeRef)
+//		op.documentation = if (prop.toMany) {
+//			"Returns an unmodifiable list of " + propertyName + "."
+//		} else if (propertyName != null) {
+//			"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
+//				concat(" property").concat(
+//					(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
+//		}
+//		
+//		setBody(op,
+//			[ // ITreeAppendable it |
+//				if(it == null) return
+//				val p = it.trace(prop);
+//				p >> prop.toCheckDisposedCall()
+//				if (prop.toMany) {
+//					p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
+//						"(" + prop.toCollectionInternalGetterName + "());"
+//				} else {
+//					p >> "return this." + propertyName + ";"
+//				}
+//			])
+//
+//		return associate(prop, op);
+//	}
 
 	def JvmOperation toProxySetter(LDtoAbstractReference prop) {
 		if (prop.toMany) {
