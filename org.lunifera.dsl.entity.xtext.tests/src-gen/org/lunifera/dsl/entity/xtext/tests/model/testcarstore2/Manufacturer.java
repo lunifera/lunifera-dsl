@@ -23,7 +23,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address;
 import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car;
 
 @Entity
@@ -44,11 +43,11 @@ public class Manufacturer {
   @Embedded
   @AttributeOverrides(value = { @AttributeOverride(name = "streetname", column = @Column(name = "ADDRESS_STREETNAME")), @AttributeOverride(name = "housenumber", column = @Column(name = "ADDRESS_HOUSENUMBER")), @AttributeOverride(name = "city", column = @Column(name = "ADDRESS_CITY")), @AttributeOverride(name = "zipcode", column = @Column(name = "ADDRESS_ZIPCODE")) })
   @Column(name = "ADDRESS")
-  private Address address;
+  private org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address address;
   
   @JoinColumn(name = "CARS")
   @OneToMany(mappedBy = "manufacturer", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Car> cars;
+  private /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car> */Object cars;
   
   /**
    * Returns true, if the object is disposed. 
@@ -131,7 +130,7 @@ public class Manufacturer {
   /**
    * Returns the address property or <code>null</code> if not present.
    */
-  public Address getAddress() {
+  public org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address getAddress() {
     checkDisposed();
     return this.address;
   }
@@ -139,7 +138,7 @@ public class Manufacturer {
   /**
    * Sets the address property to this instance.
    */
-  public void setAddress(final Address address) {
+  public void setAddress(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address address) {
     checkDisposed();
     this.address = address;
   }
@@ -147,7 +146,7 @@ public class Manufacturer {
   /**
    * Returns an unmodifiable list of cars.
    */
-  public List<Car> getCars() {
+  public /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car> */Object getCars() {
     checkDisposed();
     return Collections.unmodifiableList(internalGetCars());
   }
@@ -157,7 +156,7 @@ public class Manufacturer {
    * 
    * @param cars the list of new instances
    */
-  public void setCars(final List<Car> cars) {
+  public void setCars(final /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car> */Object cars) {
     // remove the old car
     for(Car oldElement : new ArrayList<Car>(this.internalGetCars())){
       removeFromCars(oldElement);
@@ -172,7 +171,7 @@ public class Manufacturer {
   /**
    * Returns the list of <code>Car</code>s thereby lazy initializing it.
    */
-  private List<Car> internalGetCars() {
+  private /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car> */Object internalGetCars() {
     if (this.cars == null) {
       this.cars = new ArrayList<Car>();
     }
@@ -186,7 +185,7 @@ public class Manufacturer {
    * See {@link Car#setManufacturer(Car)}.
    * 
    */
-  public void addToCars(final Car car) {
+  public void addToCars(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car car) {
     checkDisposed();
     car.setManufacturer(this);
   }
@@ -198,16 +197,16 @@ public class Manufacturer {
    * See {@link Car#setManufacturer(Car)}.
    * 
    */
-  public void removeFromCars(final Car car) {
+  public void removeFromCars(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car car) {
     checkDisposed();
     car.setManufacturer(null);
   }
   
-  void internalAddToCars(final Car car) {
+  void internalAddToCars(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car car) {
     internalGetCars().add(car);
   }
   
-  void internalRemoveFromCars(final Car car) {
+  void internalRemoveFromCars(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Car car) {
     internalGetCars().remove(car);
   }
 }

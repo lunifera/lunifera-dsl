@@ -11,13 +11,12 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Person;
 
 @Entity
 @Table(name = "CUSTOMER")
 @DiscriminatorValue(value = "CUSTOMER")
 @SuppressWarnings("all")
-public class Customer extends Person {
+public class Customer implements org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Person {
   @Column(name = "ISSELLER")
   private boolean isseller;
   

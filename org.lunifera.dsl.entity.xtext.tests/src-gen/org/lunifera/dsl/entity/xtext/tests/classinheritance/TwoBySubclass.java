@@ -11,13 +11,12 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.lunifera.dsl.entity.xtext.tests.classinheritance.OneBySubclass;
 
 @Entity
 @Table(name = "TWO_BY_SUBCLASS")
 @DiscriminatorValue(value = "TWO_BY_SUBCLASS")
 @SuppressWarnings("all")
-public class TwoBySubclass extends OneBySubclass {
+public class TwoBySubclass implements org.lunifera.dsl.entity.xtext.tests.classinheritance.OneBySubclass {
   @Column(name = "STUFF")
   private Long stuff;
   

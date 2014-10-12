@@ -53,7 +53,7 @@ public class Person {
   
   @ElementCollection
   @Column(name = "ADDRESS", nullable = false)
-  private List<Address> address;
+  private /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address> */Object address;
   
   /**
    * Returns true, if the object is disposed. 
@@ -155,7 +155,7 @@ public class Person {
   /**
    * Returns an unmodifiable list of address.
    */
-  public List<Address> getAddress() {
+  public /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address> */Object getAddress() {
     checkDisposed();
     return Collections.unmodifiableList(internalGetAddress());
   }
@@ -165,7 +165,7 @@ public class Person {
    * 
    * @param address the list of new instances
    */
-  public void setAddress(final List<Address> address) {
+  public void setAddress(final /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address> */Object address) {
     // remove the old address
     for(Address oldElement : new ArrayList<Address>(this.internalGetAddress())){
       removeFromAddress(oldElement);
@@ -180,7 +180,7 @@ public class Person {
   /**
    * Returns the list of <code>Address</code>s thereby lazy initializing it.
    */
-  private List<Address> internalGetAddress() {
+  private /* List<org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address> */Object internalGetAddress() {
     if (this.address == null) {
       this.address = new ArrayList<Address>();
     }
@@ -195,7 +195,7 @@ public class Person {
    * is set properly.
    * 
    */
-  public void addToAddress(final Address address) {
+  public void addToAddress(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address address) {
     checkDisposed();
     if (!internalGetAddress().contains(address)){
       internalGetAddress().add(address);
@@ -203,7 +203,7 @@ public class Person {
     
   }
   
-  public void removeFromAddress(final Address address) {
+  public void removeFromAddress(final org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Address address) {
     checkDisposed();
     getAddress().remove(address);
   }

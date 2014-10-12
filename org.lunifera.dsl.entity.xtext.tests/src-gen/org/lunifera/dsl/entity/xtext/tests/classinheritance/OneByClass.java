@@ -10,12 +10,11 @@ package org.lunifera.dsl.entity.xtext.tests.classinheritance;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseByClass;
 
 @Entity
 @DiscriminatorValue(value = "ONE_BY_CLASS")
 @SuppressWarnings("all")
-public class OneByClass extends BaseByClass {
+public class OneByClass implements org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseByClass {
   @Column(name = "NAME")
   private String name;
   
