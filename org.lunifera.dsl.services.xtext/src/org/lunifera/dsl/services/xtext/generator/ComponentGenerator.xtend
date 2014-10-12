@@ -24,12 +24,18 @@ class ComponentGenerator {
 		       </service>
 		       <property name="dto" value="«service.dto.fullyQualifiedName.toString»"/>
 		       <property name="service.pid" value="«service.fullyQualifiedName.toLowerCase»"/>
-		       «IF service.injectedServices != null»
+		       «IF service.injectedServices != null && !service.injectedServices.services.empty»
 		       «FOR ref : service.injectedServices.services»
-		       	<reference name="«ref.attributeName.toFirstLower»" interface="«ref.service.qualifiedName.toString»" 
+		       	<reference name="«ref.attributeName.toFirstLower»" interface="«ref.service.type?.qualifiedName.toString»" 
 		       			cardinality="«ref.cardinality.cardinalityString»" policy="dynamic" bind="bind«ref.attributeName.
-			toFirstUpper»" unbind="unbind«ref.attributeName.toFirstUpper»"/>
+						toFirstUpper»" unbind="unbind«ref.attributeName.toFirstUpper»/>
 		       «ENDFOR»
+		       «ELSE»
+		       	<reference name="emf" interface="javax.persistence.EntityManagerFactory" cardinality="1..1" 
+		       			policy="dynamic" bind="bindEmf" unbind="unbindEmf/>
+		       	<reference name="mapper" interface="org.lunifera.dsl.dto.lib.IMapper" cardinality="1..1" 
+		       			policy="dynamic" bind="bindMapper" unbind="unbindMapper" 
+		       			target="(&(dto=«service.dto.fullyQualifiedName»)(entity=«service.dto.wrappedType.fullyQualifiedName»))"/>
 		       «ENDIF»
 		   </scr:component>
 		</components>

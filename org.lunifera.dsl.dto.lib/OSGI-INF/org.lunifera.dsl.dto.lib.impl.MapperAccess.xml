@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="org.lunifera.dsl.dto.lib.impl.MapperAccess">
+   <implementation class="org.lunifera.dsl.dto.lib.impl.MapperAccess"/>
+   <service>
+      <provide interface="org.lunifera.dsl.dto.lib.IMapperAccess"/>
+   </service>
+</scr:component>

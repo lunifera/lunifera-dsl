@@ -30,6 +30,8 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainKey <em>Domain Key</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getType <em>Type</em>}</li>
  * </ul>
@@ -221,6 +223,58 @@ public interface LAttribute extends LFeature {
 	 * @generated
 	 */
 	void setDerived(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Domain Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * The domainKey is a human readable value for a dto or entity
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Domain Key</em>' attribute.
+	 * @see #setDomainKey(boolean)
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAttribute_DomainKey()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isDomainKey();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainKey <em>Domain Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Domain Key</em>' attribute.
+	 * @see #isDomainKey()
+	 * @generated
+	 */
+	void setDomainKey(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Domain Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * The domainKey is the human readable description for a dto or entity
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Domain Description</em>' attribute.
+	 * @see #setDomainDescription(boolean)
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAttribute_DomainDescription()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isDomainDescription();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainDescription <em>Domain Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Domain Description</em>' attribute.
+	 * @see #isDomainDescription()
+	 * @generated
+	 */
+	void setDomainDescription(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Derived Getter Expression</b></em>' containment reference.

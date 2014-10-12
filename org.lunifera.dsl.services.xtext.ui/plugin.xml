@@ -10,6 +10,7 @@
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="services"
+            icon="images/16x16_EntityDSL.png"
             id="org.lunifera.dsl.services.xtext.ServicesGrammar"
             matchingStrategy="org.lunifera.dsl.services.xtext.ui.ServicesGrammarExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
             name="ServicesGrammar Editor">
@@ -105,6 +106,7 @@
             point="org.eclipse.ui.propertyPages">
         <page
             class="org.lunifera.dsl.services.xtext.ui.ServicesGrammarExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            icon="images/16x16_EntityDSL.png"
             id="org.lunifera.dsl.services.xtext.ServicesGrammar"
             name="ServicesGrammar">
             <keywordReference id="org.lunifera.dsl.services.xtext.ui.keyword_ServicesGrammar"/>

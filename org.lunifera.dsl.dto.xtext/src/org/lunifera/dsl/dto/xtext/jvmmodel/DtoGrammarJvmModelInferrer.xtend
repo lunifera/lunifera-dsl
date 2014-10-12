@@ -108,6 +108,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 								members += f.toInternalCollectionGetter(f.toName)
 								members += f.toAdder(f.toName)
 								members += f.toRemover(f.toName)
+								members += f.toSetter()
 							} else {
 								members += f.toSetter()
 							}
@@ -121,6 +122,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 							members += f.toRemover(f.toName)
 							members += f.toInternalAdder
 							members += f.toInternalRemover
+							members += f.toSetter()
 						} else {
 							members += f.toSetter()
 

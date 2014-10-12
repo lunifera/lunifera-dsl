@@ -19,13 +19,14 @@ class Generator extends JvmModelGenerator {
 		
 		for (tmp : input.allContents.filter[it instanceof LService].toList) {
 			val LService service = tmp as LService
-			fsa.deleteFile(service.toServiceComponentName);
-			fsa.generateFile(service.toServiceComponentName, "OSGI-INF", service.getServiceContent);
+			if(service.name != null) {
+				fsa.deleteFile(service.toServiceComponentName);
+				fsa.generateFile(service.toServiceComponentName, "OSGI-INF", service.getServiceContent);
+			}
 		}
 	}
 
 	def toServiceComponentName(LService service) {
 		service.fullyQualifiedName.toString + ".xml"
 	}
-
 }

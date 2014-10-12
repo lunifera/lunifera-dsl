@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: org.lunifera.dsl.services.lib
-Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.7.5.qualifier
-Bundle-SymbolicName: org.lunifera.dsl.services.lib
-Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.lunifera.dsl.service.lib;version="0.7.0"

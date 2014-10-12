@@ -138,11 +138,11 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 	}
 
 	def dispatch JvmOperation toSetter(LDtoAbstractAttribute prop) {
-		if (prop.toMany) {
-			throw new RuntimeException("toMany-References not allowed for setters!");
-		}
+//		if (prop.toMany) {
+//			throw new RuntimeException("toMany-References not allowed for setters!");
+//		}
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toDtoTypeParameterReference
+		val typeRef = prop.toDtoTypeParameterReferenceWithMultiplicity
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -155,17 +155,40 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			@throws RuntimeException if instance is <code>disposed</code>
 		'''
 
-		setBody(op, '''firePropertyChange("«paramName»", this.«paramName», this.«paramName» = «paramName» );''')
+		if (!prop.toMany) {
+			setBody(op, '''firePropertyChange("«paramName»", this.«paramName», this.«paramName» = «paramName» );''')
+		} else {
+			setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(prop);
+				p >> prop.toCheckDisposedCall()
+				val fieldRef = "this." + prop.toName
+
+				p >> "for (" +prop.toDtoTypeParameterReference.simpleName  + " dto : " + prop.toCollectionInternalGetterName + "().toArray(new " + prop.toDtoTypeParameterReference.simpleName + "[" + fieldRef + ".size()])) " >>> "{"
+				
+				p >> prop.toCollectionRemoverName + "(dto);"
+				p <<< "}"
+					
+				p >> "if(" + paramName +" == null)" >>> "{"
+					p >> "return;"
+				p <<< "}"
+						
+				p >> "for (" +prop.toDtoTypeParameterReference.simpleName  + " dto : " + paramName + ") " >>> "{"
+						p >> prop.toCollectionAdderName + "(dto);"
+				p <<< "}"
+				])
+			}
 
 		return associate(prop, op);
 	}
 
 	def dispatch JvmOperation toSetter(LDtoAbstractReference prop) {
-		if (prop.toMany) {
-			throw new RuntimeException("toMany-References not allowed for setters!");
-		}
+//		if (prop.toMany) {
+//			throw new RuntimeException("toMany-References not allowed for setters!");
+//		}
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toDtoTypeParameterReference
+		val typeRef = prop.toDtoTypeParameterReferenceWithMultiplicity
 		val opposite = prop.opposite
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
@@ -195,21 +218,36 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					p >> "firePropertyChange(\"" + paramName + "\", this." + paramName + ", this." + paramName + " = " +
 						paramName + ");"
 				} else {
-					p >> "if (" + fieldRef + " != null) " >>> "{"
-					if (opposite.toMany) {
-						p >> fieldRef + "." + opposite.toCollectionInternalRemoverName + "(this);"
+					if(!prop.toMany) {
+						p >> "if (" + fieldRef + " != null) " >>> "{"
+						if (opposite.toMany) {
+							p >> fieldRef + "." + opposite.toCollectionInternalRemoverName + "(this);"
+						} else {
+							p >> fieldRef + "." + opposite.toInternalSetterName + "(null);"
+						}
+						p <<< "}"
+						p >> prop.toInternalSetterName + "(" + paramName + ");\n"
+						p >> "if (" + fieldRef + " != null) " >>> "{"
+						if (opposite.toMany) {
+							p >> fieldRef + "." + opposite.toCollectionInternalAdderName + "(this);"
+						} else {
+							p >> fieldRef + "." + opposite.toInternalSetterName + "(this);"
+						}
+						p <<< "}"
 					} else {
-						p >> fieldRef + "." + opposite.toInternalSetterName + "(null);"
+						
+						p >> "for (" +prop.toDtoTypeParameterReference.simpleName  + " dto : " + prop.toCollectionInternalGetterName + "().toArray(new " + prop.toDtoTypeParameterReference.simpleName + "[" + fieldRef + ".size()])) " >>> "{"
+							p >> prop.toCollectionRemoverName + "(dto);"
+						p <<< "}"
+						
+						p >> "if(" + paramName +" == null)" >>> "{"
+							p >> "return;"
+						p <<< "}"
+						
+						p >> "for (" +prop.toDtoTypeParameterReference.simpleName  + " dto : " + paramName + ") " >>> "{"
+							p >> prop.toCollectionAdderName + "(dto);"
+						p <<< "}"
 					}
-					p <<< "}"
-					p >> prop.toInternalSetterName + "(" + paramName + ");\n"
-					p >> "if (" + fieldRef + " != null) " >>> "{"
-					if (opposite.toMany) {
-						p >> fieldRef + "." + opposite.toCollectionInternalAdderName + "(this);"
-					} else {
-						p >> fieldRef + "." + opposite.toInternalSetterName + "(this);"
-					}
-					p <<< "}"
 				}
 			])
 
@@ -331,9 +369,9 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				if (prop.opposite != null) {
 					p >> paramName + "." + prop.opposite.toSetterName + "(this);"
 				} else {
-					p >> "if (!" + prop.toGetterName + "().contains(" + paramName + "))" >>> "{"
+					p >> "if (!" + prop.toCollectionInternalGetterName + "().contains(" + paramName + "))" >>> "{"
 					{
-						p >> prop.toGetterName + "().add(" + paramName + ");"
+						p >> prop.toCollectionInternalGetterName + "().add(" + paramName + ");"
 					}
 					p <<< "}"
 				}
@@ -635,7 +673,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				if (prop.opposite != null) {
 					p >> paramName + "." + prop.opposite.toSetterName + "(null);"
 				} else {
-					p >> prop.toGetterName + "().remove(" + paramName + ");"
+					p >> prop.toCollectionInternalGetterName + "().remove(" + paramName + ");"
 				}
 			])
 		return associate(prop, op);
@@ -696,7 +734,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				if (prop.opposite != null) {
 					p >> paramName + "." + prop.opposite.toSetterName + "(null);"
 				} else {
-					p >> prop.toGetterName + "().remove(" + paramName + ");"
+					p >> prop.toCollectionInternalGetterName + "().remove(" + paramName + ");"
 				}
 			])
 		return associate(prop, op);

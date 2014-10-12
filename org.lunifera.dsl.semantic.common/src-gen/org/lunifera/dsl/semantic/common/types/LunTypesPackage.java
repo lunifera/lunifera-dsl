@@ -1133,13 +1133,31 @@ public interface LunTypesPackage extends EPackage {
 	int LATTRIBUTE__DERIVED = LFEATURE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Domain Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE__DOMAIN_KEY = LFEATURE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Domain Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE__DOMAIN_DESCRIPTION = LFEATURE_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__DERIVED_GETTER_EXPRESSION = LFEATURE_FEATURE_COUNT + 7;
+	int LATTRIBUTE__DERIVED_GETTER_EXPRESSION = LFEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1148,7 +1166,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 8;
+	int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>LAttribute</em>' class.
@@ -1157,7 +1175,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 9;
+	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -2039,6 +2057,28 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLAttribute_Derived();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainKey <em>Domain Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain Key</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#isDomainKey()
+	 * @see #getLAttribute()
+	 * @generated
+	 */
+	EAttribute getLAttribute_DomainKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainDescription <em>Domain Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain Description</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#isDomainDescription()
+	 * @see #getLAttribute()
+	 * @generated
+	 */
+	EAttribute getLAttribute_DomainDescription();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression <em>Derived Getter Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2782,6 +2822,22 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LATTRIBUTE__DERIVED = eINSTANCE.getLAttribute_Derived();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LATTRIBUTE__DOMAIN_KEY = eINSTANCE.getLAttribute_DomainKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LATTRIBUTE__DOMAIN_DESCRIPTION = eINSTANCE.getLAttribute_DomainDescription();
 
 		/**
 		 * The meta object literal for the '<em><b>Derived Getter Expression</b></em>' containment reference feature.

@@ -296,9 +296,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
 		XAnnotationsPackage.eINSTANCE.eClass();
 		XbasePackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theLunTypesPackage.createPackageContents();
@@ -833,8 +833,26 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLAttribute_DomainKey() {
+		return (EAttribute)lAttributeEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLAttribute_DomainDescription() {
+		return (EAttribute)lAttributeEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getLAttribute_DerivedGetterExpression() {
-		return (EReference)lAttributeEClass.getEStructuralFeatures().get(7);
+		return (EReference)lAttributeEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -843,7 +861,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * @generated
 	 */
 	public EReference getLAttribute_Type() {
-		return (EReference)lAttributeEClass.getEStructuralFeatures().get(8);
+		return (EReference)lAttributeEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -1126,6 +1144,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		createEAttribute(lAttributeEClass, LATTRIBUTE__CASCADING);
 		createEAttribute(lAttributeEClass, LATTRIBUTE__TRANSIENT);
 		createEAttribute(lAttributeEClass, LATTRIBUTE__DERIVED);
+		createEAttribute(lAttributeEClass, LATTRIBUTE__DOMAIN_KEY);
+		createEAttribute(lAttributeEClass, LATTRIBUTE__DOMAIN_DESCRIPTION);
 		createEReference(lAttributeEClass, LATTRIBUTE__DERIVED_GETTER_EXPRESSION);
 		createEReference(lAttributeEClass, LATTRIBUTE__TYPE);
 
@@ -1279,6 +1299,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEAttribute(getLAttribute_Cascading(), theEcorePackage.getEBoolean(), "cascading", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLAttribute_Transient(), theEcorePackage.getEBoolean(), "transient", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLAttribute_Derived(), theEcorePackage.getEBoolean(), "derived", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLAttribute_DomainKey(), theEcorePackage.getEBoolean(), "domainKey", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLAttribute_DomainDescription(), theEcorePackage.getEBoolean(), "domainDescription", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLAttribute_DerivedGetterExpression(), theXbasePackage.getXExpression(), null, "derivedGetterExpression", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLAttribute_Type(), this.getLScalarType(), null, "type", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -15,8 +15,7 @@ import org.lunifera.dsl.common.xtext.jvmmodel.AnnotationCompiler
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder
 import org.lunifera.dsl.semantic.service.LDTOService
 import org.lunifera.dsl.semantic.service.LInjectedService
-import org.lunifera.dsl.service.lib.IFilter
-import org.lunifera.dsl.service.lib.ISortOrder
+import org.lunifera.dsl.dto.lib.services.IQuery
 
 class ServicesTypesBuilder extends CommonTypesBuilder {
 
@@ -79,8 +78,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(typeof(Collection), service, service.getDto().toTypeReference)
 		op.simpleName = 'find'
-		op.parameters += service.toParameter('filter', references.getTypeForName(typeof(IFilter), service))
-		op.parameters += service.toParameter('sortorder', references.getTypeForName(typeof(ISortOrder), service))
+		op.parameters += service.toParameter('query', references.getTypeForName(typeof(IQuery), service))
 		op.documentation = '''
 			{@inherit doc}
 		'''
@@ -95,8 +93,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(typeof(Collection), service, service.getDto().toTypeReference)
 		op.simpleName = 'find'
-		op.parameters += service.toParameter('filter', references.getTypeForName(typeof(IFilter), service))
-		op.parameters += service.toParameter('sortorder', references.getTypeForName(typeof(ISortOrder), service))
+		op.parameters += service.toParameter('query', references.getTypeForName(typeof(IQuery), service))
 		op.parameters += service.toParameter('startindex', references.getTypeForName(Integer::TYPE, service))
 		op.documentation = '''
 			{@inherit doc}
