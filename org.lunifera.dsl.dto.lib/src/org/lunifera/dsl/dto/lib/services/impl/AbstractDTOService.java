@@ -9,6 +9,7 @@
  * 		Florian Pirchner - Initial implementation
  */
 package org.lunifera.dsl.dto.lib.services.impl;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,7 +17,6 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 
 import org.lunifera.dsl.dto.lib.IMapper;
-import org.lunifera.dsl.dto.lib.services.IDTOService;
 import org.lunifera.dsl.dto.lib.services.IQuery;
 import org.lunifera.dsl.dto.lib.services.jpa.metadata.EntityDelegate;
 
@@ -25,7 +25,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		org.lunifera.dsl.dto.lib.services.IDTOService<DTO> {
 
 	private EntityManagerFactory emf;
-	private IMapper<DTO, ENTITY> mapper;
+	protected IMapper<DTO, ENTITY> mapper;
 
 	protected abstract Class<DTO> getDtoClass();
 
@@ -45,7 +45,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 				getEntityClass(), em, 1);
 
 		// find the entity
-		DTO result = null;
+		DTO result = createDto();
 		try {
 			ENTITY entity = delegate.getEntity(id);
 			mapper.mapToDTO(result, entity);
@@ -111,6 +111,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		javax.persistence.EntityTransaction txn = em.getTransaction();
 
 		try {
+			txn.begin();
 			ENTITY entity = em.find(getEntityClass(), getId(dto));
 			mapper.mapToEntity(dto, entity);
 			em.persist(entity);
@@ -132,8 +133,9 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	public void delete(final DTO dto) {
 		javax.persistence.EntityManager em = emf.createEntityManager();
 		javax.persistence.EntityTransaction txn = em.getTransaction();
-
+		
 		try {
+			txn.begin();
 			ENTITY entity = em.find(getEntityClass(), getId(dto));
 			em.remove(entity);
 
@@ -212,7 +214,18 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 	@Override
 	public boolean contains(Object dto, IQuery query) {
-		return false;
+		javax.persistence.EntityManager em = emf.createEntityManager();
+		EntityDelegate<ENTITY> delegate = new EntityDelegate<ENTITY>(
+				getEntityClass(), em, 1);
+
+		boolean result = false;
+		try {
+			result = delegate.containsEntityIdentifier(dto, query);
+		} finally {
+			em.close();
+		}
+
+		return result;
 	}
 
 	@Override
@@ -223,7 +236,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 		DTO result = null;
 		try {
-			ENTITY entity = delegate.getPreviousEntity(getId(dto), query);
+			ENTITY entity = delegate.getNextEntity(getId(dto), query);
 			if (entity != null) {
 				result = createDto();
 				mapper.mapToEntity(result, entity);
@@ -335,7 +348,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 	@Override
 	public int indexOf(DTO dto, IQuery query) {
-		throw new UnsupportedOperationException();
+		return 1;
 	}
 
 	@Override

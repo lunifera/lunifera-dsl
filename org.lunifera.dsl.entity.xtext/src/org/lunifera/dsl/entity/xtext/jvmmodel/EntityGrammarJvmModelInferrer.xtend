@@ -67,9 +67,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				superTypes += references.getTypeForName(typeof(Serializable), bean, null)
 			}
 			if (bean.getSuperType != null && !bean.getSuperType.fullyQualifiedName.toString.empty) {
-				var superType = references.getTypeForName(bean.getSuperType.fullyQualifiedName.toString, bean, null)
-				EcoreUtil.resolveAll(superType)
-				superTypes += superType
+				superTypes += references.getTypeForName(bean.getSuperType.fullyQualifiedName.toString, bean, null)
 			}
 			
 			// 
@@ -157,14 +155,13 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(entity)) return;
 		acceptor.accept(entity.toJvmType).initializeLater [
+			
 			var LAttribute idAttribute = null
 			var JvmField idField = null
 			fileHeader = (entity.eContainer as LTypedPackage).documentation
 			documentation = entity.documentation
 			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
-				var superType = references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
-				EcoreUtil.resolveAll(superType)
-				superTypes += superType
+				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
 			}
 			
 			//

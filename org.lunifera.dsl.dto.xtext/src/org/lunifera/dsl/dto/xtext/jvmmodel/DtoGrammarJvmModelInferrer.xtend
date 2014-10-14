@@ -8,7 +8,6 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-
 package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
@@ -29,6 +28,10 @@ import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
 import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.TypesFactory
+import org.eclipse.xtext.common.types.JvmTypeParameterDeclarator
+import org.eclipse.xtext.common.types.JvmWildcardTypeReference
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -45,10 +48,8 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(dto.toJvmType).initializeLater [
-			
 			var LAttribute idAttribute = null
 			var JvmField idField = null
-			
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = dto.getDocumentation
 			if (dto.getSuperType != null && !dto.getSuperType.fullyQualifiedName.toString.empty) {
@@ -70,11 +71,11 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				switch f {
 					LAttribute: {
 						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
-							if(f.id || f.uuid){
+							if (f.id || f.uuid) {
 								idAttribute = f
 								idField = f.toField
 								members += idField
-							}else{
+							} else {
 								members += f.toField
 							}
 						}
@@ -145,13 +146,10 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					body = op.getBody
 				]
 			}
-			
-			
-			if(idAttribute != null){
+			if (idAttribute != null) {
 				members += idAttribute.toEqualsMethod(it, false, idField)
 				members += idAttribute.toHashCodeMethod(false, idField)
 			}
-			
 		]
 
 		/**
@@ -159,7 +157,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		 */
 		dto.inferMapper(acceptor, isPrelinkingPhase)
 	}
-	
+
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(enumX)) return;
 
@@ -180,22 +178,43 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		}
 
 		acceptor.accept(dto.toMapperJvmType).initializeLater [
+			 
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = '''
 				This class maps the dto {@link «dto.toName»} to and from the entity {@link «dto.wrappedType.toName»}.
 			'''
-			// 
+			//
 			// Constructor
 			//
 			members += dto.toConstructor()[]
 			if (dto.wrappedType != null) {
+				val dtoParam = TypesFactory.eINSTANCE.createJvmTypeParameter
+				dtoParam.name = "DTO"
+				val dtoUpper = TypesFactory.eINSTANCE.createJvmUpperBound
+				dtoUpper.typeReference = dto.toTypeReference
+				dtoParam.constraints += dtoUpper
+				typeParameters += dtoParam
 
+				val entityParam = TypesFactory.eINSTANCE.createJvmTypeParameter
+				entityParam.name = "ENTITY"
+				val entityUpper = TypesFactory.eINSTANCE.createJvmUpperBound
+				entityUpper.typeReference = dto.wrappedType.toTypeReference
+				entityParam.constraints += entityUpper
+				typeParameters += entityParam
+
+				val entityType = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference;
+				entityType.type = entityParam
+					
+				val dtoType = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference;
+				dtoType.type = dtoParam
 				if (dto.getSuperType != null) {
 					superTypes +=
-						references.getTypeForName(dto.getSuperType.toMapperJvmType.qualifiedName.toString, dto, null)
+						references.createTypeRef(dto.getSuperType.toMapperTypeReference.type, dtoType,
+							entityType)
+
 				} else {
-					superTypes += references.getTypeForName(typeof(IMapper), dto, dto.toTypeReference,
-						dto.wrappedType.toTypeReference)
+					superTypes += references.getTypeForName(typeof(IMapper), dto, dtoType,
+						entityType)
 					members += dto.toField("mapperAccess", references.getTypeForName(typeof(IMapperAccess), dto, null))
 					members += dto.toGetMapperAccess
 

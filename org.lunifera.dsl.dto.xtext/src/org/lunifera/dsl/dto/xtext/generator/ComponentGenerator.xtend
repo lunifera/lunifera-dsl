@@ -23,15 +23,16 @@ class ComponentGenerator {
 
 	def getServiceContent(LDto dto) '''
 		<?xml version="1.0" encoding="UTF-8"?>
-		<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
-		   <scr:component name="«dto.toFqnMapperName.toLowerCase»">
+		<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="«dto.toFqnMapperName.toLowerCase»">
 		       <implementation class="«dto.toFqnMapperName»"/>
-		       <property name="dto" value="«dto.fullyQualifiedName.toString»"/>
-		       <property name="entity" value="«dto.wrappedType.fullyQualifiedName.toString»"/>
-		       <property name="service.pid" value="«dto.toFqnMapperName.toLowerCase»"/>
-		       <reference name="bind" interface="org.lunifera.dsl.dto.common.IMapperAccess" 
+		       <service>
+				<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+			   </service>
+		       <property name="dto" type="String" value="«dto.fullyQualifiedName.toString»"/>
+		       <property name="entity" type="String" value="«dto.wrappedType.fullyQualifiedName.toString»"/>
+		       <property name="service.pid" type="String" value="«dto.toFqnMapperName.toLowerCase»"/>
+		       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
 		       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
-		   </scr:component>
-		</components>
+		</scr:component>
 	'''
 }

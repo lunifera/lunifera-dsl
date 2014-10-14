@@ -40,7 +40,7 @@ public class DtoServiceAccess {
 	public static <D> IDTOService<D> getService(Class<D> dto) {
 		Bundle bundle = FrameworkUtil.getBundle(DtoServiceAccess.class);
 
-		String filterString = String.format("&((objectClass=%s)(dto=%s)",
+		String filterString = String.format("(&(objectClass=%s)(dto=%s))",
 				IDTOService.class.getCanonicalName(), dto.getCanonicalName());
 		try {
 			Filter filter = FrameworkUtil.createFilter(filterString);
@@ -48,7 +48,7 @@ public class DtoServiceAccess {
 					bundle.getBundleContext(), filter, null);
 			tracker.open();
 
-			IDTOService<D> service = tracker.waitForService(5000);
+			IDTOService<D> service = tracker.waitForService(1000);
 			tracker.close();
 			return service;
 		} catch (InvalidSyntaxException e) {

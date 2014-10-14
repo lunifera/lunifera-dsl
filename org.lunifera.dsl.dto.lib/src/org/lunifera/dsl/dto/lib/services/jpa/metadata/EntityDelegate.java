@@ -40,12 +40,12 @@ import javax.persistence.criteria.Root;
 
 import org.lunifera.dsl.dto.lib.services.IQuery;
 import org.lunifera.dsl.dto.lib.services.SortBy;
+import org.lunifera.dsl.dto.lib.services.filters.ILFilter;
 import org.lunifera.dsl.dto.lib.services.filters.LAdvancedFilterableSupport;
 import org.lunifera.dsl.dto.lib.services.filters.LAnd;
 import org.lunifera.dsl.dto.lib.services.filters.LCompare.Equal;
 import org.lunifera.dsl.dto.lib.services.filters.LCompare.Greater;
 import org.lunifera.dsl.dto.lib.services.filters.LCompare.Less;
-import org.lunifera.dsl.dto.lib.services.filters.ILFilter;
 import org.lunifera.dsl.dto.lib.services.filters.LOr;
 
 /**
@@ -284,8 +284,9 @@ public class EntityDelegate<T> implements Serializable {
 	 * Creates a filtered query that does not do any sorting.
 	 * 
 	 * @see #createFilteredQuery(com.vaadin.addon.jpacontainer.EntityContainer,
-	 *      java.util.List, org.lunifera.dsl.dto.lib.services.filters.ILFilter.data.Container.IFilter, java.util.List,
-	 *      boolean)
+	 *      java.util.List,
+	 *      org.lunifera.dsl.dto.lib.services.filters.ILFilter.data.Container.IFilter,
+	 *      java.util.List, boolean)
 	 * @param fieldsToSelect
 	 *            the fields to select (must not be null).
 	 * @param filter
@@ -362,6 +363,61 @@ public class EntityDelegate<T> implements Serializable {
 		return doGetEntityManager().createQuery(query);
 	}
 
+	// /**
+	// * Creates a filtered, optionally sorted, query.
+	// *
+	// * @param filter
+	// * the filter to apply, or null if no filters should be applied.
+	// * @param sortBy
+	// * the fields to sort by (must include at least one field), or
+	// * null if the result should not be sorted at all.
+	// * @param swapSortOrder
+	// * true to swap the sort order, false to use the sort order
+	// * specified in <code>sortBy</code>. Only applies if
+	// * <code>sortBy</code> is not null.
+	// * @return the query (never null).
+	// */
+	// protected TypedQuery<Long> createFilteredCountQuery(ILFilter filter,
+	// List<SortBy> sortBy, boolean swapSortOrder) {
+	// assert sortBy == null || !sortBy.isEmpty() :
+	// "sortBy must be either null or non-empty";
+	//
+	// CriteriaBuilder cb = doGetEntityManager().getCriteriaBuilder();
+	// CriteriaQuery<Long> query = cb.createQuery(Long.class);
+	// Root<T> root = query.from(entityClassMetadata.getMappedClass());
+	//
+	// tellDelegateQueryWillBeBuilt(cb, query);
+	//
+	// List<Predicate> predicates = new ArrayList<Predicate>();
+	// if (filter != null) {
+	// predicates.add(FilterConverter.convertFilter(filter, cb, root));
+	// }
+	// tellDelegateFiltersWillBeAdded(cb, query, predicates);
+	// if (!predicates.isEmpty()) {
+	// query.where(CollectionUtil.toArray(Predicate.class, predicates));
+	// }
+	// tellDelegateFiltersWereAdded(cb, query);
+	//
+	// // List<Order> orderBy = new ArrayList<Order>();
+	// // if (sortBy != null && sortBy.size() > 0) {
+	// // for (SortBy sortedProperty : sortBy) {
+	// // orderBy.add(translateSortBy(sortedProperty, swapSortOrder, cb,
+	// // root));
+	// // }
+	// // }
+	// // tellDelegateOrderByWillBeAdded(cb, query, orderBy);
+	// // query.orderBy(orderBy);
+	// // tellDelegateOrderByWereAdded(cb, query);
+	//
+	// String entityIdPropertyName = getEntityClassMetadata()
+	// .getIdentifierProperty().getName();
+	// query.select(cb.count(root.get(entityIdPropertyName)));
+	// // query.groupBy(root.get(entityIdPropertyName));
+	//
+	// tellDelegateQueryHasBeenBuilt(cb, query);
+	// return doGetEntityManager().createQuery(query);
+	// }
+
 	/**
 	 * Creates a filtered, optionally sorted, query.
 	 * 
@@ -414,7 +470,8 @@ public class EntityDelegate<T> implements Serializable {
 		return (TypedQuery<T>) doGetEntityManager().createQuery(query);
 	}
 
-	protected boolean doContainsEntityIdentifier(Object entityId, ILFilter filter) {
+	protected boolean doContainsEntityIdentifier(Object entityId,
+			ILFilter filter) {
 		assert entityId != null : "entityId must not be null";
 		String entityIdPropertyName = getEntityClassMetadata()
 				.getIdentifierProperty().getName();
@@ -492,8 +549,8 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public Object getEntityIdentifierAt(IQuery query, int index) {
-		return doGetEntityIdentifierAt(query.getFilter(), query.getSortOrder().getSortBy(),
-				index);
+		return doGetEntityIdentifierAt(query.getFilter(), query.getSortOrder()
+				.getSortBy(), index);
 	}
 
 	protected int doGetEntityCount(ILFilter filter) {
@@ -540,6 +597,13 @@ public class EntityDelegate<T> implements Serializable {
 		return doGetEntityCount(query.getFilter());
 	}
 
+	//
+	// public int getEntityIndex(Object entityId, IQuery query) {
+	// TypedQuery<Long> tQuery = createSiblingIndexQuery(entityId,
+	// query.getFilter(), query.getSortOrder().getSortBy(), true);
+	// return tQuery.getSingleResult().intValue();
+	// }
+
 	protected Object doGetFirstEntityIdentifier(ILFilter filter,
 			List<SortBy> sortBy) {
 		if (sortBy == null) {
@@ -568,8 +632,8 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public Object getFirstEntityIdentifier(IQuery query) {
-		return doGetFirstEntityIdentifier(query.getFilter(),
-				query.getSortOrder().getSortBy());
+		return doGetFirstEntityIdentifier(query.getFilter(), query
+				.getSortOrder().getSortBy());
 	}
 
 	protected T doGetFirstEntity(ILFilter filter, List<SortBy> sortBy) {
@@ -589,7 +653,8 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public T getFirstEntity(IQuery query) {
-		return doGetFirstEntity(query.getFilter(), query.getSortOrder().getSortBy());
+		return doGetFirstEntity(query.getFilter(), query.getSortOrder()
+				.getSortBy());
 	}
 
 	protected Object doGetLastEntityIdentifier(ILFilter filter,
@@ -613,8 +678,8 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public Object getLastEntityIdentifier(IQuery query) {
-		return doGetLastEntityIdentifier(query.getFilter(),
-				query.getSortOrder().getSortBy());
+		return doGetLastEntityIdentifier(query.getFilter(), query
+				.getSortOrder().getSortBy());
 	}
 
 	protected T doGetLastEntity(ILFilter filter, List<SortBy> sortBy) {
@@ -635,7 +700,8 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public T getLastEntity(IQuery query) {
-		return doGetLastEntity(query.getFilter(), query.getSortOrder().getSortBy());
+		return doGetLastEntity(query.getFilter(), query.getSortOrder()
+				.getSortBy());
 	}
 
 	/**
@@ -763,8 +829,100 @@ public class EntityDelegate<T> implements Serializable {
 		return query;
 	}
 
-	protected Object doGetNextEntityIdentifier(Object entityId, ILFilter filter,
-			List<SortBy> sortBy) {
+	// /**
+	// * This method creates a query that can be used to fetch the siblings of a
+	// * specific entity. If <code>backwards</code> is false, the query will
+	// begin
+	// * with the entity next to the entity identified by <code>entityId</code>.
+	// * If <code>backwards</code> is false, the query will begin with the
+	// entity
+	// * prior to the entity identified by <code>entityId</code>.
+	// *
+	// * @param entityId
+	// * the identifier of the entity whose sibling to retrieve (must
+	// * not be null).
+	// * @param filter
+	// * an optional filter to limit the entities (may be null).
+	// * @param sortBy
+	// * the order in which the list should be sorted (must not be
+	// * null).
+	// * @param backwards
+	// * true to fetch the previous sibling, false to fetch the next
+	// * sibling.
+	// * @return the query that will return the sibling and all the subsequent
+	// * entities unless limited.
+	// */
+	// protected TypedQuery<Long> createSiblingIndexQuery(Object entityId,
+	// ILFilter filter, List<SortBy> sortBy, boolean backwards) {
+	// assert entityId != null : "entityId must not be null";
+	// assert sortBy != null : "sortBy must not be null";
+	// ILFilter limitingFilter;
+	// sortBy = addPrimaryKeyToSortList(sortBy);
+	// if (sortBy.size() == 1) {
+	// // The list is sorted by primary key
+	// if (backwards) {
+	// limitingFilter = new Less(getEntityClassMetadata()
+	// .getIdentifierProperty().getName(), entityId);
+	// } else {
+	// limitingFilter = new Greater(getEntityClassMetadata()
+	// .getIdentifierProperty().getName(), entityId);
+	// }
+	// } else {
+	// // We have to fetch the values of the sorted fields
+	// T currentEntity = getEntity(entityId);
+	// if (currentEntity == null) {
+	// throw new EntityNotFoundException(
+	// "No entity found with the ID " + entityId);
+	// }
+	// // Collect the values into a map for easy access
+	// Map<Object, Object> filterValues = new HashMap<Object, Object>();
+	// for (SortBy sb : sortBy) {
+	// filterValues.put(
+	// sb.getPropertyId(),
+	// getEntityClassMetadata().getPropertyValue(
+	// currentEntity, sb.getPropertyId().toString()));
+	// }
+	// // Now we can build a filter that limits the query to the entities
+	// // below entityId
+	// List<ILFilter> orFilters = new ArrayList<ILFilter>();
+	// for (int i = sortBy.size() - 1; i >= 0; i--) {
+	// // TODO Document this code snippet once it works
+	// // TODO What happens with null values?
+	// List<ILFilter> caseFilters = new ArrayList<ILFilter>();
+	// SortBy sb;
+	// for (int j = 0; j < i; j++) {
+	// sb = sortBy.get(j);
+	// caseFilters.add(new Equal(sb.getPropertyId(), filterValues
+	// .get(sb.getPropertyId())));
+	// }
+	// sb = sortBy.get(i);
+	// if (sb.isAscending() ^ backwards) {
+	// caseFilters.add(new Greater(sb.getPropertyId(),
+	// filterValues.get(sb.getPropertyId())));
+	// } else {
+	// caseFilters.add(new Less(sb.getPropertyId(), filterValues
+	// .get(sb.getPropertyId())));
+	// }
+	// orFilters.add(new LAnd(CollectionUtil.toArray(ILFilter.class,
+	// caseFilters)));
+	// }
+	// limitingFilter = new LOr(CollectionUtil.toArray(ILFilter.class,
+	// orFilters));
+	// }
+	// // Now, we can create the query
+	// ILFilter queryFilter;
+	// if (filter == null) {
+	// queryFilter = limitingFilter;
+	// } else {
+	// queryFilter = new LAnd(filter, limitingFilter);
+	// }
+	// TypedQuery<Long> query = createFilteredCountQuery(queryFilter, sortBy,
+	// backwards);
+	// return query;
+	// }
+
+	protected Object doGetNextEntityIdentifier(Object entityId,
+			ILFilter filter, List<SortBy> sortBy) {
 		if (sortBy == null) {
 			sortBy = Collections.emptyList();
 		}
@@ -772,25 +930,25 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public Object getNextEntityIdentifier(Object entityId, IQuery query) {
-		return doGetNextEntityIdentifier(entityId, query.getFilter(),
-				query.getSortOrder().getSortBy());
+		return doGetNextEntityIdentifier(entityId, query.getFilter(), query
+				.getSortOrder().getSortBy());
 	}
-	
-	protected T doGetNextEntity(Object entityId,
-			ILFilter filter, List<SortBy> sortBy) {
+
+	protected T doGetNextEntity(Object entityId, ILFilter filter,
+			List<SortBy> sortBy) {
 		if (sortBy == null) {
 			sortBy = Collections.emptyList();
 		}
 		Object resultId = getSibling(entityId, filter, sortBy, false);
-		if(resultId != null){
+		if (resultId != null) {
 			return getEntity(resultId);
 		}
 		return null;
 	}
 
 	public T getNextEntity(Object entityId, IQuery query) {
-		return doGetNextEntity(entityId, query.getFilter(),
-				query.getSortOrder().getSortBy());
+		return doGetNextEntity(entityId, query.getFilter(), query
+				.getSortOrder().getSortBy());
 	}
 
 	protected Object doGetPreviousEntityIdentifier(Object entityId,
@@ -802,25 +960,25 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public Object getPreviousEntityIdentifier(Object entityId, IQuery query) {
-		return doGetPreviousEntityIdentifier(entityId, query.getFilter(),
-				query.getSortOrder().getSortBy());
+		return doGetPreviousEntityIdentifier(entityId, query.getFilter(), query
+				.getSortOrder().getSortBy());
 	}
-	
-	protected T doGetPreviousEntity(Object entityId,
-			ILFilter filter, List<SortBy> sortBy) {
+
+	protected T doGetPreviousEntity(Object entityId, ILFilter filter,
+			List<SortBy> sortBy) {
 		if (sortBy == null) {
 			sortBy = Collections.emptyList();
 		}
 		Object resultId = getSibling(entityId, filter, sortBy, true);
-		if(resultId != null){
+		if (resultId != null) {
 			return getEntity(resultId);
 		}
 		return null;
 	}
 
 	public T getPreviousEntity(Object entityId, IQuery query) {
-		return doGetPreviousEntity(entityId, query.getFilter(),
-				query.getSortOrder().getSortBy());
+		return doGetPreviousEntity(entityId, query.getFilter(), query
+				.getSortOrder().getSortBy());
 	}
 
 	/**
@@ -865,8 +1023,8 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public List<Object> getAllEntityIdentifiers(IQuery query) {
-		return doGetAllEntityIdentifiers(query.getFilter(),
-				query.getSortOrder().getSortBy());
+		return doGetAllEntityIdentifiers(query.getFilter(), query
+				.getSortOrder().getSortBy());
 	}
 
 	protected List<T> doGetAllEntities(ILFilter filter, List<SortBy> sortBy) {
@@ -880,7 +1038,8 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public List<T> getAllEntities(IQuery query) {
-		return doGetAllEntities(query.getFilter(), query.getSortOrder().getSortBy());
+		return doGetAllEntities(query.getFilter(), query.getSortOrder()
+				.getSortBy());
 	}
 
 	protected List<T> doGetAllEntities(ILFilter filter, List<SortBy> sortBy,
@@ -896,7 +1055,8 @@ public class EntityDelegate<T> implements Serializable {
 	}
 
 	public List<T> getAllEntities(IQuery query, int startIndex) {
-		return doGetAllEntities(query.getFilter(), query.getSortOrder().getSortBy());
+		return doGetAllEntities(query.getFilter(), query.getSortOrder()
+				.getSortBy());
 	}
 
 	/*

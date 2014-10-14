@@ -38,7 +38,7 @@ public class MapperAccess implements IMapperAccess {
 	public <D, E> IMapper<D, E> getMapper(Class<D> dto, Class<E> entity) {
 		Bundle bundle = FrameworkUtil.getBundle(getClass());
 
-		String filterString = String.format("&((objectClass=%s)(dto=%s)(entity=%s)",
+		String filterString = String.format("(&(&(objectClass=%s)(dto=%s))(entity=%s))",
 				IMapper.class.getCanonicalName(), dto.getCanonicalName(),
 				entity.getCanonicalName());
 		try {
@@ -47,7 +47,7 @@ public class MapperAccess implements IMapperAccess {
 					bundle.getBundleContext(), filter, null);
 			tracker.open();
 			
-			IMapper<D, E> mapper = tracker.waitForService(5000);
+			IMapper<D, E> mapper = tracker.waitForService(1000);
 			tracker.close();
 			return mapper;
 		} catch (InvalidSyntaxException e) {

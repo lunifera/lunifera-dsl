@@ -16,14 +16,13 @@ class ComponentGenerator {
 
 	def dispatch getServiceContent(LDTOService service) '''
 		<?xml version="1.0" encoding="UTF-8"?>
-		<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
-		   <scr:component name="«service.fullyQualifiedName.toLowerCase»">
+		<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="«service.fullyQualifiedName.toLowerCase»">
 		       <implementation class="«service.fullyQualifiedName»"/>
 		       <service>
-		       	<provide interface="org.lunifera.dsl.service.lib.IDTOService"/>
+		       	<provide interface="org.lunifera.dsl.dto.lib.services.IDTOService"/>
 		       </service>
-		       <property name="dto" value="«service.dto.fullyQualifiedName.toString»"/>
-		       <property name="service.pid" value="«service.fullyQualifiedName.toLowerCase»"/>
+		       <property name="dto" type="String" value="«service.dto.fullyQualifiedName.toString»"/>
+		       <property name="service.pid" type="String" value="«service.fullyQualifiedName.toLowerCase»"/>
 		       «IF service.injectedServices != null && !service.injectedServices.services.empty»
 		       «FOR ref : service.injectedServices.services»
 		       	<reference name="«ref.attributeName.toFirstLower»" interface="«ref.service.type?.qualifiedName.toString»" 
@@ -32,13 +31,12 @@ class ComponentGenerator {
 		       «ENDFOR»
 		       «ELSE»
 		       	<reference name="emf" interface="javax.persistence.EntityManagerFactory" cardinality="1..1" 
-		       			policy="dynamic" bind="bindEmf" unbind="unbindEmf/>
+		       			policy="dynamic" bind="bindEmf" unbind="unbindEmf"/>
 		       	<reference name="mapper" interface="org.lunifera.dsl.dto.lib.IMapper" cardinality="1..1" 
 		       			policy="dynamic" bind="bindMapper" unbind="unbindMapper" 
-		       			target="(&(dto=«service.dto.fullyQualifiedName»)(entity=«service.dto.wrappedType.fullyQualifiedName»))"/>
+		       			target="(dto=«service.dto.fullyQualifiedName»)"/>
 		       «ENDIF»
-		   </scr:component>
-		</components>
+		</scr:component>
 	'''
 
 	def dispatch getServiceContent(LService service) '''
