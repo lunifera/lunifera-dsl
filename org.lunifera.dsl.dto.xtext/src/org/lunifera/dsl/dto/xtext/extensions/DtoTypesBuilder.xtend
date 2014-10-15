@@ -630,7 +630,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				val fieldRef = "this." + fieldName
 				p >> "if (" + fieldRef + " == null)" >>> " {"
 				{
-					p >> fieldRef >> " = new java.util.ArrayList<" + prop.toQualifiedTypeName + ">();"
+					p >> fieldRef >> " = new java.util.ArrayList<" + prop.toDtoTypeParameterReference.qualifiedName + ">();"
 				}
 				p <<< "}"
 				p >> "return " + fieldRef + ";"
@@ -854,7 +854,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				«IF (!f.bounds.toMany)»
 					dto.set«f.toName.toFirstUpper»(«f.toMapPropertyToDto»(entity));
 				«ELSE»
-					for(«f.toTypeName» _dtoValue : «f.toMapPropertyToDto»(entity)) {
+					for(«f.toDtoTypeParameterReference.qualifiedName» _dtoValue : «f.toMapPropertyToDto»(entity)) {
 						dto.«f.toCollectionAdderName»(_dtoValue);
 					}
 				«ENDIF»
@@ -992,8 +992,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						} 
 						
 						List<«prop.toRawType.toDTOBeanSimpleName»> results = new java.util.ArrayList<«prop.toRawType.toDTOBeanSimpleName»>();
-						for («prop.toRawType.toName» _entity : in.get«prop.toName.toFirstUpper»()) {
-							«prop.type.toName» _dto = new «prop.type.toName»();
+						for («prop.toRawType.toName» _entity : in.«prop.toGetterName»()) {
+							«prop.toDtoTypeParameterReference.qualifiedName» _dto = new «prop.toDtoTypeParameterReference.qualifiedName»();
 							mapper.mapToDTO(_dto, _entity);
 							results.add(_dto);
 						}
@@ -1004,10 +1004,10 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						if(mapper == null) {
 							throw new IllegalStateException("Mapper must not be null!");
 						}
-						
+						 
 						if(in.get«prop.toName.toFirstUpper»() != null) {
 							«prop.toRawType.toDTOBeanSimpleName» dto = new «prop.toRawType.toDTOBeanSimpleName»();
-							mapper.mapToDTO(dto, in.get«prop.toName.toFirstUpper»());
+							mapper.mapToDTO(dto, in.«prop.toGetterName»());
 							return dto;
 						} else {
 							return null;
@@ -1111,7 +1111,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						}
 						
 						List<«prop.toRawType.toName»> results = new java.util.ArrayList<«prop.toRawType.toName»>();
-						for («prop.toRawType.toDTOBeanSimpleName» _dto : in.get«prop.toRawType.toDTOBeanSimpleName»()) {
+						for («prop.toRawType.toDTOBeanSimpleName» _dto : in.«prop.toGetterName»()) {
 							«prop.toRawType.toName» _entity = new «prop.toRawType.toName»();
 							mapper.mapToEntity(_dto, _entity);
 							results.add(_entity);
@@ -1126,7 +1126,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						
 						if(in.get«prop.toName.toFirstUpper»() != null) {
 							«prop.toRawType.toName» entity = new «prop.toRawType.name»();
-							mapper.mapToEntity(in.get«prop.toName.toFirstUpper»(), entity);
+							mapper.mapToEntity(in.«prop.toGetterName»(), entity);
 							return entity;							
 						} else {
 							return null;
