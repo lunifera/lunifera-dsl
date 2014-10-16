@@ -76,9 +76,9 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
 		c.setLinewrap().around(ele.getRule());
 
-		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_7());
-		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_9());
-		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_9());
+		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_2_0_5());
+		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_2_0_7());
+		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_1_8());
 	}
 
 	protected void configureDtoFeature(FormattingConfig c,

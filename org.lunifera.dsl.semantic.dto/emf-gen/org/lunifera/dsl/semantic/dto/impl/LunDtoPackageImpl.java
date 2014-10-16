@@ -27,6 +27,7 @@ import org.eclipse.xtext.xbase.XbasePackage;
 
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
+import org.lunifera.dsl.semantic.dto.LAutoInheritDto;
 import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference;
@@ -61,6 +62,13 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	 * @generated
 	 */
 	private EClass lDtoEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lAutoInheritDtoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -292,6 +300,15 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLAutoInheritDto() {
+		return lAutoInheritDtoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLDtoMapper() {
 		return lDtoMapperEClass;
 	}
@@ -513,6 +530,8 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 		createEReference(lDtoEClass, LDTO__SUB_TYPES);
 		createEReference(lDtoEClass, LDTO__WRAPPED_TYPE);
 
+		lAutoInheritDtoEClass = createEClass(LAUTO_INHERIT_DTO);
+
 		lDtoMapperEClass = createEClass(LDTO_MAPPER);
 		createEReference(lDtoMapperEClass, LDTO_MAPPER__TO_DTO);
 		createEReference(lDtoMapperEClass, LDTO_MAPPER__FROM_DTO);
@@ -581,6 +600,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 		lDtoEClass.getESuperTypes().add(theLunTypesPackage.getLClass());
 		lDtoEClass.getESuperTypes().add(theLunTypesPackage.getLFeaturesHolder());
 		lDtoEClass.getESuperTypes().add(theLunTypesPackage.getLScalarType());
+		lAutoInheritDtoEClass.getESuperTypes().add(this.getLDto());
 		lDtoFeatureEClass.getESuperTypes().add(theLunTypesPackage.getLFeature());
 		lDtoAbstractAttributeEClass.getESuperTypes().add(this.getLDtoFeature());
 		lDtoAbstractAttributeEClass.getESuperTypes().add(theLunTypesPackage.getLAttribute());
@@ -614,6 +634,8 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 		EOperation op = addEOperation(lDtoEClass, null, "collectAllLunFeatures", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLDto(), "current", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDtoFeatureList(), "result", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(lAutoInheritDtoEClass, LAutoInheritDto.class, "LAutoInheritDto", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(lDtoMapperEClass, LDtoMapper.class, "LDtoMapper", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLDtoMapper_ToDTO(), theXbasePackage.getXExpression(), null, "toDTO", null, 0, 1, LDtoMapper.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

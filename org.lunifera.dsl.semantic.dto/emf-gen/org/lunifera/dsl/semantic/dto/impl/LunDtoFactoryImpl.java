@@ -72,6 +72,7 @@ public class LunDtoFactoryImpl extends EFactoryImpl implements LunDtoFactory {
 		switch (eClass.getClassifierID()) {
 			case LunDtoPackage.LDTO_MODEL: return createLDtoModel();
 			case LunDtoPackage.LDTO: return createLDto();
+			case LunDtoPackage.LAUTO_INHERIT_DTO: return createLAutoInheritDto();
 			case LunDtoPackage.LDTO_MAPPER: return createLDtoMapper();
 			case LunDtoPackage.LDTO_FEATURE: return createLDtoFeature();
 			case LunDtoPackage.LDTO_INHERITED_ATTRIBUTE: return createLDtoInheritedAttribute();
@@ -148,6 +149,16 @@ public class LunDtoFactoryImpl extends EFactoryImpl implements LunDtoFactory {
 	public LDto createLDto() {
 		LDtoImpl lDto = new LDtoImpl();
 		return lDto;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LAutoInheritDto createLAutoInheritDto() {
+		LAutoInheritDtoImpl lAutoInheritDto = new LAutoInheritDtoImpl();
+		return lAutoInheritDto;
 	}
 
 	/**

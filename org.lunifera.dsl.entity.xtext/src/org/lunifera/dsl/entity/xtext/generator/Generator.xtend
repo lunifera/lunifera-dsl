@@ -25,11 +25,11 @@ class Generator extends JvmModelGenerator {
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		super.doGenerate(input, fsa)
 
-//		for (tmp : input.allContents.filter[it instanceof LTypedPackage].toList) {
-//			val LTypedPackage pkg = tmp as LTypedPackage
-//			fsa.deleteFile(pkg.toDtosFileName);
-//			fsa.generateFile(pkg.toDtosFileName, "DTOs", pkg.content);
-//		}
+		for (tmp : input.allContents.filter[it instanceof LTypedPackage].toList) {
+			val LTypedPackage pkg = tmp as LTypedPackage
+			fsa.deleteFile(pkg.toDtosFileName);
+			fsa.generateFile(pkg.toDtosFileName, "DTOs", pkg.content);
+		}
 	}
 
 	def toDtosFileName(LTypedPackage pkg) {

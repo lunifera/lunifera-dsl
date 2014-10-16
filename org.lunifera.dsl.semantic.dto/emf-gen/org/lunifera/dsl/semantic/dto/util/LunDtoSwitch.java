@@ -104,6 +104,18 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LunDtoPackage.LAUTO_INHERIT_DTO: {
+				LAutoInheritDto lAutoInheritDto = (LAutoInheritDto)theEObject;
+				T result = caseLAutoInheritDto(lAutoInheritDto);
+				if (result == null) result = caseLDto(lAutoInheritDto);
+				if (result == null) result = caseLClass(lAutoInheritDto);
+				if (result == null) result = caseLFeaturesHolder(lAutoInheritDto);
+				if (result == null) result = caseLScalarType(lAutoInheritDto);
+				if (result == null) result = caseLType(lAutoInheritDto);
+				if (result == null) result = caseLAnnotationTarget(lAutoInheritDto);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case LunDtoPackage.LDTO_MAPPER: {
 				LDtoMapper lDtoMapper = (LDtoMapper)theEObject;
 				T result = caseLDtoMapper(lDtoMapper);
@@ -223,6 +235,21 @@ public class LunDtoSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLDto(LDto object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LAuto Inherit Dto</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LAuto Inherit Dto</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLAutoInheritDto(LAutoInheritDto object) {
 		return null;
 	}
 

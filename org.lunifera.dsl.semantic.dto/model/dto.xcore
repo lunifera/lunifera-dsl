@@ -90,6 +90,10 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
 	}
 }
 
+class LAutoInheritDto extends LDto {
+	
+}
+
 class LDtoMapper {
 	contains XExpression toDTO
 	contains XExpression fromDTO

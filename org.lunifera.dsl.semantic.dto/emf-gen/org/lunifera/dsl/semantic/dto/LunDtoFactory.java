@@ -51,6 +51,15 @@ public interface LunDtoFactory extends EFactory {
 	LDto createLDto();
 
 	/**
+	 * Returns a new object of class '<em>LAuto Inherit Dto</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LAuto Inherit Dto</em>'.
+	 * @generated
+	 */
+	LAutoInheritDto createLAutoInheritDto();
+
+	/**
 	 * Returns a new object of class '<em>LDto Mapper</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

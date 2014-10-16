@@ -208,6 +208,115 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LAutoInheritDtoImpl <em>LAuto Inherit Dto</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.dto.impl.LAutoInheritDtoImpl
+	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLAutoInheritDto()
+	 * @generated
+	 */
+	int LAUTO_INHERIT_DTO = 2;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__ANNOTATIONS = LDTO__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__NAME = LDTO__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__ANNOTATION_INFO = LDTO__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__ABSTRACT = LDTO__ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Serializable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__SERIALIZABLE = LDTO__SERIALIZABLE;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__SHORT_NAME = LDTO__SHORT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__FEATURES = LDTO__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Super Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__SUPER_TYPE = LDTO__SUPER_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__SUB_TYPES = LDTO__SUB_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Wrapped Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__WRAPPED_TYPE = LDTO__WRAPPED_TYPE;
+
+	/**
+	 * The number of structural features of the '<em>LAuto Inherit Dto</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO_FEATURE_COUNT = LDTO_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoMapperImpl <em>LDto Mapper</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -215,7 +324,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoMapper()
 	 * @generated
 	 */
-	int LDTO_MAPPER = 2;
+	int LDTO_MAPPER = 3;
 
 	/**
 	 * The feature id for the '<em><b>To DTO</b></em>' containment reference.
@@ -252,7 +361,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoFeature()
 	 * @generated
 	 */
-	int LDTO_FEATURE = 3;
+	int LDTO_FEATURE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -316,7 +425,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoAbstractAttribute()
 	 * @generated
 	 */
-	int LDTO_ABSTRACT_ATTRIBUTE = 4;
+	int LDTO_ABSTRACT_ATTRIBUTE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -479,7 +588,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoInheritedAttribute()
 	 * @generated
 	 */
-	int LDTO_INHERITED_ATTRIBUTE = 5;
+	int LDTO_INHERITED_ATTRIBUTE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -651,7 +760,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoAttribute()
 	 * @generated
 	 */
-	int LDTO_ATTRIBUTE = 6;
+	int LDTO_ATTRIBUTE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -814,7 +923,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoAbstractReference()
 	 * @generated
 	 */
-	int LDTO_ABSTRACT_REFERENCE = 7;
+	int LDTO_ABSTRACT_REFERENCE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -905,7 +1014,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoInheritedReference()
 	 * @generated
 	 */
-	int LDTO_INHERITED_REFERENCE = 8;
+	int LDTO_INHERITED_REFERENCE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1005,7 +1114,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoReference()
 	 * @generated
 	 */
-	int LDTO_REFERENCE = 9;
+	int LDTO_REFERENCE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1105,7 +1214,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLDtoOperation()
 	 * @generated
 	 */
-	int LDTO_OPERATION = 10;
+	int LDTO_OPERATION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1205,7 +1314,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getDtoFeatureList()
 	 * @generated
 	 */
-	int DTO_FEATURE_LIST = 11;
+	int DTO_FEATURE_LIST = 12;
 
 	/**
 	 * The meta object id for the '<em>Operations List</em>' data type.
@@ -1215,7 +1324,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getOperationsList()
 	 * @generated
 	 */
-	int OPERATIONS_LIST = 12;
+	int OPERATIONS_LIST = 13;
 
 	/**
 	 * The meta object id for the '<em>Dto Reference List</em>' data type.
@@ -1225,7 +1334,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getDtoReferenceList()
 	 * @generated
 	 */
-	int DTO_REFERENCE_LIST = 13;
+	int DTO_REFERENCE_LIST = 14;
 
 	/**
 	 * The meta object id for the '<em>Dto Attribute List</em>' data type.
@@ -1235,7 +1344,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getDtoAttributeList()
 	 * @generated
 	 */
-	int DTO_ATTRIBUTE_LIST = 14;
+	int DTO_ATTRIBUTE_LIST = 15;
 
 	/**
 	 * The meta object id for the '<em>Dto Abstract Attribute List</em>' data type.
@@ -1245,7 +1354,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getDtoAbstractAttributeList()
 	 * @generated
 	 */
-	int DTO_ABSTRACT_ATTRIBUTE_LIST = 15;
+	int DTO_ABSTRACT_ATTRIBUTE_LIST = 16;
 
 
 	/**
@@ -1322,6 +1431,16 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLDto_WrappedType();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.dto.LAutoInheritDto <em>LAuto Inherit Dto</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LAuto Inherit Dto</em>'.
+	 * @see org.lunifera.dsl.semantic.dto.LAutoInheritDto
+	 * @generated
+	 */
+	EClass getLAutoInheritDto();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.dto.LDtoMapper <em>LDto Mapper</em>}'.
@@ -1626,6 +1745,16 @@ public interface LunDtoPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LDTO__WRAPPED_TYPE = eINSTANCE.getLDto_WrappedType();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.dto.impl.LAutoInheritDtoImpl <em>LAuto Inherit Dto</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.dto.impl.LAutoInheritDtoImpl
+		 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getLAutoInheritDto()
+		 * @generated
+		 */
+		EClass LAUTO_INHERIT_DTO = eINSTANCE.getLAutoInheritDto();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoMapperImpl <em>LDto Mapper</em>}' class.

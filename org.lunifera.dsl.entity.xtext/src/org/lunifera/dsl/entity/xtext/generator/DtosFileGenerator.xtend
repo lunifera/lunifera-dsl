@@ -13,21 +13,16 @@ package org.lunifera.dsl.entity.xtext.generator
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LDateType
 import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LImport
-import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.entity.LBean
-import org.lunifera.dsl.semantic.entity.LBeanFeature
 import org.lunifera.dsl.semantic.entity.LEntity
-import org.lunifera.dsl.semantic.entity.LEntityFeature
-import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
-import org.eclipse.xtext.resource.XtextResource
 
 /**
  *  This generator automatically creates a generic .dtos-file from a given entity model.
@@ -39,7 +34,7 @@ import org.eclipse.xtext.resource.XtextResource
 class DtosFileGenerator {
 
 	@Inject extension JvmTypesBuilder
-	@Inject extension ModelExtensions
+//	@Inject extension ModelExtensions
 
 	def getContent(LTypedPackage pkg) '''
 		«pkg.toDocu»
@@ -61,21 +56,21 @@ class DtosFileGenerator {
 			«FOR LEntity lEntity : pkg.entities»
 				«lEntity.toDocu»
 				«lEntity.toEntityDeclaration»
-					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute && !(it as LAttribute).derived) || (it instanceof LReference)]»
-						«feature.toFeature»
-					«ENDFOR»
-					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute && (it as LAttribute).derived)]»
-						«(feature as LAttribute).toDerivedAttribute»
-					«ENDFOR»
+«««					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute && !(it as LAttribute).derived) || (it instanceof LReference)]»
+«««						«feature.toFeature»
+«««					«ENDFOR»
+«««					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute && (it as LAttribute).derived)]»
+«««						«(feature as LAttribute).toDerivedAttribute»
+«««					«ENDFOR»
 				}
 				
 			«ENDFOR»
 			«FOR LBean lBean : pkg.beans»
 				«lBean.toDocu»
 				«lBean.toBeanDeclaration»
-					«FOR LBeanFeature feature : lBean.features.filter[(it instanceof LAttribute&& !(it as LAttribute).derived) || (it instanceof LReference)]»
-						«feature.toFeature»
-					«ENDFOR»
+«««					«FOR LBeanFeature feature : lBean.features.filter[(it instanceof LAttribute&& !(it as LAttribute).derived) || (it instanceof LReference)]»
+«««						«feature.toFeature»
+«««					«ENDFOR»
 				}
 				
 			«ENDFOR»
@@ -94,7 +89,7 @@ class DtosFileGenerator {
 
 	def toEntityDeclaration(LEntity lEntity) {
 		return '''
-			dto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
+			autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
 		'''
 	}
 
@@ -122,25 +117,25 @@ class DtosFileGenerator {
 		return ""
 	}
 
-	def dispatch toFeature(LAttribute att) '''
-		«att.toDocu»
-		inherit var «att.name»;
-	'''
+//	def dispatch toFeature(LAttribute att) '''
+//		«att.toDocu»
+//		inherit var «att.name»;
+//	'''
 
-	def dispatch toFeature(LReference att) '''
-		«att.toDocu»
-		inherit ref «att.name»;
-	'''
+//	def dispatch toFeature(LReference att) '''
+//		«att.toDocu»
+//		inherit ref «att.name»;
+//	'''
 
-	def dispatch toFeature(LEntityReference att) '''
-		«att.toDocu»
-		inherit ref «att.name» mapto «att.type.name»Dto;
-	'''
+//	def dispatch toFeature(LEntityReference att) '''
+//		«att.toDocu»
+//		inherit ref «att.name» mapto «att.type.name»Dto;
+//	'''
 	
-	def toDerivedAttribute(LAttribute att) '''
-		«att.toDocu»
-		derived «IF att.domainDescription»domainDescription «ENDIF» «att.type.name» «att.name» «att.blockExpression»
-	'''
+//	def toDerivedAttribute(LAttribute att) '''
+//		«att.toDocu»
+//		derived «IF att.domainDescription»domainDescription «ENDIF» «att.type.name» «att.name» «att.blockExpression»
+//	'''
 
 	def toLiterals(LEnum lEnum) {
 		var result = new StringBuilder

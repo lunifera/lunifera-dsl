@@ -97,6 +97,10 @@ public class LunDtoAdapterFactory extends AdapterFactoryImpl {
 				return createLDtoAdapter();
 			}
 			@Override
+			public Adapter caseLAutoInheritDto(LAutoInheritDto object) {
+				return createLAutoInheritDtoAdapter();
+			}
+			@Override
 			public Adapter caseLDtoMapper(LDtoMapper object) {
 				return createLDtoMapperAdapter();
 			}
@@ -213,6 +217,20 @@ public class LunDtoAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLDtoAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.dto.LAutoInheritDto <em>LAuto Inherit Dto</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.dto.LAutoInheritDto
+	 * @generated
+	 */
+	public Adapter createLAutoInheritDtoAdapter() {
 		return null;
 	}
 

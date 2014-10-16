@@ -37,6 +37,7 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getClassAccess().getAlternatives_2(), "rule__Class__Alternatives_2");
 					put(grammarAccess.getDtoFeatureAccess().getAlternatives_2(), "rule__DtoFeature__Alternatives_2");
 					put(grammarAccess.getDtoFeatureAccess().getAlternatives_2_0_2(), "rule__DtoFeature__Alternatives_2_0_2");
 					put(grammarAccess.getDtoFeatureAccess().getAlternatives_2_1_4(), "rule__DtoFeature__Alternatives_2_1_4");
@@ -95,8 +96,11 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLowerBoundAccess().getAlternatives(), "rule__LowerBound__Alternatives");
 					put(grammarAccess.getUpperBoundAccess().getAlternatives(), "rule__UpperBound__Alternatives");
 					put(grammarAccess.getClassAccess().getGroup(), "rule__Class__Group__0");
-					put(grammarAccess.getClassAccess().getGroup_5(), "rule__Class__Group_5__0");
-					put(grammarAccess.getClassAccess().getGroup_6(), "rule__Class__Group_6__0");
+					put(grammarAccess.getClassAccess().getGroup_2_0(), "rule__Class__Group_2_0__0");
+					put(grammarAccess.getClassAccess().getGroup_2_0_3(), "rule__Class__Group_2_0_3__0");
+					put(grammarAccess.getClassAccess().getGroup_2_0_4(), "rule__Class__Group_2_0_4__0");
+					put(grammarAccess.getClassAccess().getGroup_2_1(), "rule__Class__Group_2_1__0");
+					put(grammarAccess.getClassAccess().getGroup_2_1_3(), "rule__Class__Group_2_1_3__0");
 					put(grammarAccess.getDtoFeatureAccess().getGroup(), "rule__DtoFeature__Group__0");
 					put(grammarAccess.getDtoFeatureAccess().getGroup_2_0(), "rule__DtoFeature__Group_2_0__0");
 					put(grammarAccess.getDtoFeatureAccess().getGroup_2_0_0(), "rule__DtoFeature__Group_2_0_0__0");
@@ -332,10 +336,14 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
 					put(grammarAccess.getLDTOModelAccess().getPackagesAssignment(), "rule__LDTOModel__PackagesAssignment");
 					put(grammarAccess.getClassAccess().getAnnotationsAssignment_1(), "rule__Class__AnnotationsAssignment_1");
-					put(grammarAccess.getClassAccess().getNameAssignment_4(), "rule__Class__NameAssignment_4");
-					put(grammarAccess.getClassAccess().getSuperTypeAssignment_5_1(), "rule__Class__SuperTypeAssignment_5_1");
-					put(grammarAccess.getClassAccess().getWrappedTypeAssignment_6_1(), "rule__Class__WrappedTypeAssignment_6_1");
-					put(grammarAccess.getClassAccess().getFeaturesAssignment_8(), "rule__Class__FeaturesAssignment_8");
+					put(grammarAccess.getClassAccess().getNameAssignment_2_0_2(), "rule__Class__NameAssignment_2_0_2");
+					put(grammarAccess.getClassAccess().getSuperTypeAssignment_2_0_3_1(), "rule__Class__SuperTypeAssignment_2_0_3_1");
+					put(grammarAccess.getClassAccess().getWrappedTypeAssignment_2_0_4_1(), "rule__Class__WrappedTypeAssignment_2_0_4_1");
+					put(grammarAccess.getClassAccess().getFeaturesAssignment_2_0_6(), "rule__Class__FeaturesAssignment_2_0_6");
+					put(grammarAccess.getClassAccess().getNameAssignment_2_1_2(), "rule__Class__NameAssignment_2_1_2");
+					put(grammarAccess.getClassAccess().getSuperTypeAssignment_2_1_3_1(), "rule__Class__SuperTypeAssignment_2_1_3_1");
+					put(grammarAccess.getClassAccess().getWrappedTypeAssignment_2_1_5(), "rule__Class__WrappedTypeAssignment_2_1_5");
+					put(grammarAccess.getClassAccess().getFeaturesAssignment_2_1_7(), "rule__Class__FeaturesAssignment_2_1_7");
 					put(grammarAccess.getDtoFeatureAccess().getAnnotationsAssignment_1(), "rule__DtoFeature__AnnotationsAssignment_1");
 					put(grammarAccess.getDtoFeatureAccess().getInheritedFeatureAssignment_2_0_0_2(), "rule__DtoFeature__InheritedFeatureAssignment_2_0_0_2");
 					put(grammarAccess.getDtoFeatureAccess().getTypeAssignment_2_0_1_1(), "rule__DtoFeature__TypeAssignment_2_0_1_1");

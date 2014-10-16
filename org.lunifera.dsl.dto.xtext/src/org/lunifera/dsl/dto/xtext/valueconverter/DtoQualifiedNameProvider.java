@@ -11,7 +11,6 @@
  */
 package org.lunifera.dsl.dto.xtext.valueconverter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +24,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.lunifera.dsl.common.xtext.valueconverter.CommonQualifiedNameProvider;
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions;
 import org.lunifera.dsl.semantic.dto.LDtoFeature;
+import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
+import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
 
 import com.google.inject.Inject;
 
@@ -48,15 +49,27 @@ public class DtoQualifiedNameProvider extends CommonQualifiedNameProvider {
 
 			String name = "";
 			if (extensions.inherited(feature)) {
-				CompositeNodeWithSemanticElement node = (CompositeNodeWithSemanticElement) NodeModelUtils.getNode(feature);
-				List<ILeafNode> leafs = IterableExtensions.toList(node.getLeafNodes());
-				name = linkingHelper.getCrossRefNodeAsString(leafs.get(3), false);
+				CompositeNodeWithSemanticElement node = (CompositeNodeWithSemanticElement) NodeModelUtils
+						.getNode(feature);
+				if (node == null) {
+					// the model is beeing serialized. No grammar available yet
+					if(feature instanceof LDtoInheritedAttribute){
+						name = ((LDtoInheritedAttribute) feature).getInheritedFeature().getName();
+					}else{
+						name = ((LDtoInheritedReference) feature).getInheritedFeature().getName();
+					}
+				} else {
+					List<ILeafNode> leafs = IterableExtensions.toList(node
+							.getLeafNodes());
+					name = linkingHelper.getCrossRefNodeAsString(leafs.get(3),
+							false);
+				}
 			} else {
 				name = feature.getName();
 			}
 
-			return name != null ? qualifiedNameConverter
-					.toQualifiedName(name) : null;
+			return name != null ? qualifiedNameConverter.toQualifiedName(name)
+					: null;
 		}
 		return super.getFullyQualifiedName(obj);
 	}
