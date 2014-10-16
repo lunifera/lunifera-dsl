@@ -628,7 +628,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				if (prop.opposite != null) {
 					p >> paramName + "." + prop.opposite.toSetterName + "(null);"
 				} else {
-					p >> prop.toGetterName + "().remove(" + paramName + ");"
+					p >> prop.toCollectionInternalGetterName + "().remove(" + paramName + ");"
 				}
 			])
 		return associate(prop, op);

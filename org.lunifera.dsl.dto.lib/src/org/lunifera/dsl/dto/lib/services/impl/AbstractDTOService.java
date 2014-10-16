@@ -48,7 +48,9 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		DTO result = createDto();
 		try {
 			ENTITY entity = delegate.getEntity(id);
-			mapper.mapToDTO(result, entity);
+			if(entity != null){
+				mapper.mapToDTO(result, entity);
+			}
 		} finally {
 			em.close();
 		}
@@ -113,8 +115,10 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			txn.begin();
 			ENTITY entity = em.find(getEntityClass(), getId(dto));
-			mapper.mapToEntity(dto, entity);
-			em.persist(entity);
+			if (entity != null) {
+				mapper.mapToEntity(dto, entity);
+				em.persist(entity);
+			}
 
 			txn.commit();
 			txn = null;
@@ -133,11 +137,13 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	public void delete(final DTO dto) {
 		javax.persistence.EntityManager em = emf.createEntityManager();
 		javax.persistence.EntityTransaction txn = em.getTransaction();
-		
+
 		try {
 			txn.begin();
 			ENTITY entity = em.find(getEntityClass(), getId(dto));
-			em.remove(entity);
+			if (entity != null) {
+				em.remove(entity);
+			}
 
 			txn.commit();
 			txn = null;

@@ -887,9 +887,11 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				«IF (!f.bounds.toMany)»
 					entity.set«f.toName.toFirstUpper»(«f.toMapPropertyToEntity»(dto));
 				«ELSE»
+					List<«f.toRawTypeName»> «f.toName»_entities = new java.util.ArrayList<«f.toRawTypeName»>();
 					for(«f.toRawTypeName» _entityValue : «f.toMapPropertyToEntity»(dto)) {
-						entity.«f.toCollectionAdderName»(_entityValue);
+						«f.toName»_entities.add(_entityValue);
 					}
+					entity.«f.toSetterName»(«f.toName»_entities);
 				«ENDIF»
 				
 			«ENDFOR»
