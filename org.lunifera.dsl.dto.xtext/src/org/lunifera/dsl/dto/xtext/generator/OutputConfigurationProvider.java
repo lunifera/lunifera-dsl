@@ -24,13 +24,33 @@ public class OutputConfigurationProvider extends
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		Set<OutputConfiguration> configs = super.getOutputConfigurations();
 
-		OutputConfiguration servicesOutput = new OutputConfiguration("OSGI-INF");
-		servicesOutput.setDescription("Output Folder");
-		servicesOutput.setOutputDirectory("./OSGI-INF");
-		servicesOutput.setOverrideExistingResources(true);
+		OutputConfiguration componentOutput = new OutputConfiguration("OSGI-INF");
+		componentOutput.setDescription("OSGi-Services");
+		componentOutput.setOutputDirectory("./OSGI-INF");
+		componentOutput.setOverrideExistingResources(true);
+		componentOutput.setCreateOutputDirectory(true);
+		componentOutput.setCleanUpDerivedResources(true);
+		componentOutput.setSetDerivedProperty(true);
+		componentOutput.setKeepLocalHistory(true);
+		configs.add(componentOutput);
+		
+		OutputConfiguration dtoMapperOutput = new OutputConfiguration("Dto-Mappers");
+		dtoMapperOutput.setDescription("Dto Mappers");
+		dtoMapperOutput.setOutputDirectory("./src-gen");
+		dtoMapperOutput.setOverrideExistingResources(true);
+		dtoMapperOutput.setCreateOutputDirectory(true);
+		dtoMapperOutput.setCleanUpDerivedResources(true);
+		dtoMapperOutput.setSetDerivedProperty(true);
+		dtoMapperOutput.setKeepLocalHistory(true);
+		configs.add(dtoMapperOutput);
+		
+		OutputConfiguration servicesOutput = new OutputConfiguration("Services-DSL");
+		servicesOutput.setDescription("Services-DSL");
+		servicesOutput.setOutputDirectory("./service-models");
+		servicesOutput.setOverrideExistingResources(false);
 		servicesOutput.setCreateOutputDirectory(true);
-		servicesOutput.setCleanUpDerivedResources(true);
-		servicesOutput.setSetDerivedProperty(true);
+		servicesOutput.setCleanUpDerivedResources(false);
+		servicesOutput.setSetDerivedProperty(false);
 		servicesOutput.setKeepLocalHistory(true);
 		configs.add(servicesOutput);
 
