@@ -31,7 +31,7 @@ class ComponentGenerator {
 		       «ENDFOR»
 		       «ELSE»
 		       	<reference name="emf" interface="javax.persistence.EntityManagerFactory" cardinality="1..1" 
-		       			policy="dynamic" bind="bindEmf" unbind="unbindEmf"/>
+		       			policy="dynamic" bind="bindEmf" unbind="unbindEmf" «IF (service.persistenceId != null && !service.persistenceId.equals(""))»target="(osgi.unit.name=«service.persistenceId»)"«ENDIF»/>
 		       	<reference name="mapper" interface="org.lunifera.dsl.dto.lib.IMapper" cardinality="1..1" 
 		       			policy="dynamic" bind="bindMapper" unbind="unbindMapper" 
 		       			target="(dto=«service.dto.fullyQualifiedName»)"/>

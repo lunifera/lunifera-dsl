@@ -65,6 +65,7 @@ class LInjectedService {
 
 class LDTOService extends LService {
 	refers LDto dto
+	String persistenceId
 	contains LFilterableAttributes filterable opposite parent
 	contains LSortableAttributes sortable opposite parent
 	

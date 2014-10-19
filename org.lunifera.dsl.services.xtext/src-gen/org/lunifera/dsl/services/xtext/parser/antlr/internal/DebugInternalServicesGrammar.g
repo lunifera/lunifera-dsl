@@ -44,7 +44,12 @@ ruleValidIDWithKeywords
 
 )
 )	'{' 
+(	'persistenceID' 
 (
+(
+ruleQualifiedName
+)
+))?(
 (
 ruleInjectedServices
 )

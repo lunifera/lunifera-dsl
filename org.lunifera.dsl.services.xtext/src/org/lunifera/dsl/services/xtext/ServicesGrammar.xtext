@@ -17,6 +17,7 @@ Class returns service::LDTOService:
 	{service::LDTOService.annotationInfo=current}
 	'dtoservice' name=ValidIDWithKeywords 'provides' dto=[dto::LDto]
 	'{'
+	('persistenceID' persistenceId=QualifiedName)?
 	injectedServices=InjectedServices
 //	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
 	('get' getExpression=XBlockExpression)? 

@@ -52,40 +52,46 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cDtoLDtoCrossReference_6_0 = (CrossReference)cDtoAssignment_6.eContents().get(0);
 		private final RuleCall cDtoLDtoIDTerminalRuleCall_6_0_1 = (RuleCall)cDtoLDtoCrossReference_6_0.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cInjectedServicesAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cInjectedServicesInjectedServicesParserRuleCall_8_0 = (RuleCall)cInjectedServicesAssignment_8.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cGetKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cGetExpressionAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cGetExpressionXBlockExpressionParserRuleCall_9_1_0 = (RuleCall)cGetExpressionAssignment_9_1.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cPersistenceIDKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cPersistenceIdAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cPersistenceIdQualifiedNameParserRuleCall_8_1_0 = (RuleCall)cPersistenceIdAssignment_8_1.eContents().get(0);
+		private final Assignment cInjectedServicesAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cInjectedServicesInjectedServicesParserRuleCall_9_0 = (RuleCall)cInjectedServicesAssignment_9.eContents().get(0);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cFindKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Assignment cFindExpressionAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
-		private final RuleCall cFindExpressionXBlockExpressionParserRuleCall_10_1_0 = (RuleCall)cFindExpressionAssignment_10_1.eContents().get(0);
+		private final Keyword cGetKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cGetExpressionAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final RuleCall cGetExpressionXBlockExpressionParserRuleCall_10_1_0 = (RuleCall)cGetExpressionAssignment_10_1.eContents().get(0);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cFindWithDelimiterKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Assignment cFindExpressionWithDelimiterAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
-		private final RuleCall cFindExpressionWithDelimiterXBlockExpressionParserRuleCall_11_1_0 = (RuleCall)cFindExpressionWithDelimiterAssignment_11_1.eContents().get(0);
+		private final Keyword cFindKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cFindExpressionAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cFindExpressionXBlockExpressionParserRuleCall_11_1_0 = (RuleCall)cFindExpressionAssignment_11_1.eContents().get(0);
 		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cUpdateKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Assignment cUpdateExpressionAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
-		private final RuleCall cUpdateExpressionXBlockExpressionParserRuleCall_12_1_0 = (RuleCall)cUpdateExpressionAssignment_12_1.eContents().get(0);
+		private final Keyword cFindWithDelimiterKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cFindExpressionWithDelimiterAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cFindExpressionWithDelimiterXBlockExpressionParserRuleCall_12_1_0 = (RuleCall)cFindExpressionWithDelimiterAssignment_12_1.eContents().get(0);
 		private final Group cGroup_13 = (Group)cGroup.eContents().get(13);
-		private final Keyword cDeleteKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
-		private final Assignment cDeleteExpressionAssignment_13_1 = (Assignment)cGroup_13.eContents().get(1);
-		private final RuleCall cDeleteExpressionXBlockExpressionParserRuleCall_13_1_0 = (RuleCall)cDeleteExpressionAssignment_13_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Keyword cUpdateKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
+		private final Assignment cUpdateExpressionAssignment_13_1 = (Assignment)cGroup_13.eContents().get(1);
+		private final RuleCall cUpdateExpressionXBlockExpressionParserRuleCall_13_1_0 = (RuleCall)cUpdateExpressionAssignment_13_1.eContents().get(0);
+		private final Group cGroup_14 = (Group)cGroup.eContents().get(14);
+		private final Keyword cDeleteKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
+		private final Assignment cDeleteExpressionAssignment_14_1 = (Assignment)cGroup_14.eContents().get(1);
+		private final RuleCall cDeleteExpressionXBlockExpressionParserRuleCall_14_1_0 = (RuleCall)cDeleteExpressionAssignment_14_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
 		
 		//Class returns service::LDTOService:
 		//	{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-		//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" injectedServices=InjectedServices //	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
+		//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" ("persistenceID" persistenceId=QualifiedName)?
+		//	injectedServices=InjectedServices //	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
 		//	("get" getExpression=XBlockExpression)? ("find" findExpression=XBlockExpression)? ("findWithDelimiter"
 		//	findExpressionWithDelimiter=XBlockExpression)? ("update" updateExpression=XBlockExpression)? ("delete"
 		//	deleteExpression=XBlockExpression)? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-		//name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" injectedServices=InjectedServices //	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
+		//name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" ("persistenceID" persistenceId=QualifiedName)?
+		//injectedServices=InjectedServices //	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
 		//("get" getExpression=XBlockExpression)? ("find" findExpression=XBlockExpression)? ("findWithDelimiter"
 		//findExpressionWithDelimiter=XBlockExpression)? ("update" updateExpression=XBlockExpression)? ("delete"
 		//deleteExpression=XBlockExpression)? "}"
@@ -127,74 +133,86 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
 
+		//("persistenceID" persistenceId=QualifiedName)?
+		public Group getGroup_8() { return cGroup_8; }
+
+		//"persistenceID"
+		public Keyword getPersistenceIDKeyword_8_0() { return cPersistenceIDKeyword_8_0; }
+
+		//persistenceId=QualifiedName
+		public Assignment getPersistenceIdAssignment_8_1() { return cPersistenceIdAssignment_8_1; }
+
+		//QualifiedName
+		public RuleCall getPersistenceIdQualifiedNameParserRuleCall_8_1_0() { return cPersistenceIdQualifiedNameParserRuleCall_8_1_0; }
+
 		//injectedServices=InjectedServices
-		public Assignment getInjectedServicesAssignment_8() { return cInjectedServicesAssignment_8; }
+		public Assignment getInjectedServicesAssignment_9() { return cInjectedServicesAssignment_9; }
 
 		//InjectedServices
-		public RuleCall getInjectedServicesInjectedServicesParserRuleCall_8_0() { return cInjectedServicesInjectedServicesParserRuleCall_8_0; }
+		public RuleCall getInjectedServicesInjectedServicesParserRuleCall_9_0() { return cInjectedServicesInjectedServicesParserRuleCall_9_0; }
 
 		//("get" getExpression=XBlockExpression)?
-		public Group getGroup_9() { return cGroup_9; }
-
-		//"get"
-		public Keyword getGetKeyword_9_0() { return cGetKeyword_9_0; }
-
-		//getExpression=XBlockExpression
-		public Assignment getGetExpressionAssignment_9_1() { return cGetExpressionAssignment_9_1; }
-
-		//XBlockExpression
-		public RuleCall getGetExpressionXBlockExpressionParserRuleCall_9_1_0() { return cGetExpressionXBlockExpressionParserRuleCall_9_1_0; }
-
-		//("find" findExpression=XBlockExpression)?
 		public Group getGroup_10() { return cGroup_10; }
 
-		//"find"
-		public Keyword getFindKeyword_10_0() { return cFindKeyword_10_0; }
+		//"get"
+		public Keyword getGetKeyword_10_0() { return cGetKeyword_10_0; }
 
-		//findExpression=XBlockExpression
-		public Assignment getFindExpressionAssignment_10_1() { return cFindExpressionAssignment_10_1; }
+		//getExpression=XBlockExpression
+		public Assignment getGetExpressionAssignment_10_1() { return cGetExpressionAssignment_10_1; }
 
 		//XBlockExpression
-		public RuleCall getFindExpressionXBlockExpressionParserRuleCall_10_1_0() { return cFindExpressionXBlockExpressionParserRuleCall_10_1_0; }
+		public RuleCall getGetExpressionXBlockExpressionParserRuleCall_10_1_0() { return cGetExpressionXBlockExpressionParserRuleCall_10_1_0; }
 
-		//("findWithDelimiter" findExpressionWithDelimiter=XBlockExpression)?
+		//("find" findExpression=XBlockExpression)?
 		public Group getGroup_11() { return cGroup_11; }
 
-		//"findWithDelimiter"
-		public Keyword getFindWithDelimiterKeyword_11_0() { return cFindWithDelimiterKeyword_11_0; }
+		//"find"
+		public Keyword getFindKeyword_11_0() { return cFindKeyword_11_0; }
 
-		//findExpressionWithDelimiter=XBlockExpression
-		public Assignment getFindExpressionWithDelimiterAssignment_11_1() { return cFindExpressionWithDelimiterAssignment_11_1; }
+		//findExpression=XBlockExpression
+		public Assignment getFindExpressionAssignment_11_1() { return cFindExpressionAssignment_11_1; }
 
 		//XBlockExpression
-		public RuleCall getFindExpressionWithDelimiterXBlockExpressionParserRuleCall_11_1_0() { return cFindExpressionWithDelimiterXBlockExpressionParserRuleCall_11_1_0; }
+		public RuleCall getFindExpressionXBlockExpressionParserRuleCall_11_1_0() { return cFindExpressionXBlockExpressionParserRuleCall_11_1_0; }
 
-		//("update" updateExpression=XBlockExpression)?
+		//("findWithDelimiter" findExpressionWithDelimiter=XBlockExpression)?
 		public Group getGroup_12() { return cGroup_12; }
 
-		//"update"
-		public Keyword getUpdateKeyword_12_0() { return cUpdateKeyword_12_0; }
+		//"findWithDelimiter"
+		public Keyword getFindWithDelimiterKeyword_12_0() { return cFindWithDelimiterKeyword_12_0; }
 
-		//updateExpression=XBlockExpression
-		public Assignment getUpdateExpressionAssignment_12_1() { return cUpdateExpressionAssignment_12_1; }
+		//findExpressionWithDelimiter=XBlockExpression
+		public Assignment getFindExpressionWithDelimiterAssignment_12_1() { return cFindExpressionWithDelimiterAssignment_12_1; }
 
 		//XBlockExpression
-		public RuleCall getUpdateExpressionXBlockExpressionParserRuleCall_12_1_0() { return cUpdateExpressionXBlockExpressionParserRuleCall_12_1_0; }
+		public RuleCall getFindExpressionWithDelimiterXBlockExpressionParserRuleCall_12_1_0() { return cFindExpressionWithDelimiterXBlockExpressionParserRuleCall_12_1_0; }
 
-		//("delete" deleteExpression=XBlockExpression)?
+		//("update" updateExpression=XBlockExpression)?
 		public Group getGroup_13() { return cGroup_13; }
 
-		//"delete"
-		public Keyword getDeleteKeyword_13_0() { return cDeleteKeyword_13_0; }
+		//"update"
+		public Keyword getUpdateKeyword_13_0() { return cUpdateKeyword_13_0; }
 
-		//deleteExpression=XBlockExpression
-		public Assignment getDeleteExpressionAssignment_13_1() { return cDeleteExpressionAssignment_13_1; }
+		//updateExpression=XBlockExpression
+		public Assignment getUpdateExpressionAssignment_13_1() { return cUpdateExpressionAssignment_13_1; }
 
 		//XBlockExpression
-		public RuleCall getDeleteExpressionXBlockExpressionParserRuleCall_13_1_0() { return cDeleteExpressionXBlockExpressionParserRuleCall_13_1_0; }
+		public RuleCall getUpdateExpressionXBlockExpressionParserRuleCall_13_1_0() { return cUpdateExpressionXBlockExpressionParserRuleCall_13_1_0; }
+
+		//("delete" deleteExpression=XBlockExpression)?
+		public Group getGroup_14() { return cGroup_14; }
+
+		//"delete"
+		public Keyword getDeleteKeyword_14_0() { return cDeleteKeyword_14_0; }
+
+		//deleteExpression=XBlockExpression
+		public Assignment getDeleteExpressionAssignment_14_1() { return cDeleteExpressionAssignment_14_1; }
+
+		//XBlockExpression
+		public RuleCall getDeleteExpressionXBlockExpressionParserRuleCall_14_1_0() { return cDeleteExpressionXBlockExpressionParserRuleCall_14_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_14() { return cRightCurlyBracketKeyword_14; }
+		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
 	}
 
 	public class InjectedServicesElements extends AbstractParserRuleElementFinder {
@@ -493,7 +511,8 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Class returns service::LDTOService:
 	//	{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-	//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" injectedServices=InjectedServices //	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
+	//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" ("persistenceID" persistenceId=QualifiedName)?
+	//	injectedServices=InjectedServices //	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
 	//	("get" getExpression=XBlockExpression)? ("find" findExpression=XBlockExpression)? ("findWithDelimiter"
 	//	findExpressionWithDelimiter=XBlockExpression)? ("update" updateExpression=XBlockExpression)? ("delete"
 	//	deleteExpression=XBlockExpression)? "}";

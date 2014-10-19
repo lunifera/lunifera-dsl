@@ -38,6 +38,7 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getDto <em>Dto</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getPersistenceId <em>Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getFilterable <em>Filterable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getSortable <em>Sortable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getGetExpression <em>Get Expression</em>}</li>
@@ -60,6 +61,26 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 	 * @ordered
 	 */
 	protected LDto dto;
+
+	/**
+	 * The default value of the '{@link #getPersistenceId() <em>Persistence Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPersistenceId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PERSISTENCE_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPersistenceId() <em>Persistence Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPersistenceId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String persistenceId = PERSISTENCE_ID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getFilterable() <em>Filterable</em>}' containment reference.
@@ -186,6 +207,27 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 		dto = newDto;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__DTO, oldDto, dto));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPersistenceId() {
+		return persistenceId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPersistenceId(String newPersistenceId) {
+		String oldPersistenceId = persistenceId;
+		persistenceId = newPersistenceId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID, oldPersistenceId, persistenceId));
 	}
 
 	/**
@@ -546,6 +588,8 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 			case LunServicePackage.LDTO_SERVICE__DTO:
 				if (resolve) return getDto();
 				return basicGetDto();
+			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
+				return getPersistenceId();
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:
 				return getFilterable();
 			case LunServicePackage.LDTO_SERVICE__SORTABLE:
@@ -574,6 +618,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 		switch (featureID) {
 			case LunServicePackage.LDTO_SERVICE__DTO:
 				setDto((LDto)newValue);
+				return;
+			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
+				setPersistenceId((String)newValue);
 				return;
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:
 				setFilterable((LFilterableAttributes)newValue);
@@ -611,6 +658,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 			case LunServicePackage.LDTO_SERVICE__DTO:
 				setDto((LDto)null);
 				return;
+			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
+				setPersistenceId(PERSISTENCE_ID_EDEFAULT);
+				return;
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:
 				setFilterable((LFilterableAttributes)null);
 				return;
@@ -646,6 +696,8 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 		switch (featureID) {
 			case LunServicePackage.LDTO_SERVICE__DTO:
 				return dto != null;
+			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
+				return PERSISTENCE_ID_EDEFAULT == null ? persistenceId != null : !PERSISTENCE_ID_EDEFAULT.equals(persistenceId);
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:
 				return filterable != null;
 			case LunServicePackage.LDTO_SERVICE__SORTABLE:
@@ -662,6 +714,22 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 				return deleteExpression != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (persistenceId: ");
+		result.append(persistenceId);
+		result.append(')');
+		return result.toString();
 	}
 
 } //LDTOServiceImpl

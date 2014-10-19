@@ -1416,6 +1416,7 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	 *         annotationInfo=Class_LDTOService_2 
 	 *         name=ValidIDWithKeywords 
 	 *         dto=[LDto|ID] 
+	 *         persistenceId=QualifiedName? 
 	 *         injectedServices=InjectedServices 
 	 *         getExpression=XBlockExpression? 
 	 *         findExpression=XBlockExpression? 

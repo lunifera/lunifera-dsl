@@ -26,6 +26,7 @@ import org.lunifera.dsl.semantic.dto.LDto;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getDto <em>Dto</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getPersistenceId <em>Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getGetExpression <em>Get Expression</em>}</li>
@@ -66,6 +67,32 @@ public interface LDTOService extends LService {
 	 * @generated
 	 */
 	void setDto(LDto value);
+
+	/**
+	 * Returns the value of the '<em><b>Persistence Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Persistence Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Persistence Id</em>' attribute.
+	 * @see #setPersistenceId(String)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_PersistenceId()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getPersistenceId();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getPersistenceId <em>Persistence Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Persistence Id</em>' attribute.
+	 * @see #getPersistenceId()
+	 * @generated
+	 */
+	void setPersistenceId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Filterable</b></em>' containment reference.
