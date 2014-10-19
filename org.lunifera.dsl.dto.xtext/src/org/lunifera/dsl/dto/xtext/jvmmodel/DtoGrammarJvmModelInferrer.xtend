@@ -178,7 +178,6 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 		}
 
 		acceptor.accept(dto.toMapperJvmType).initializeLater [
-			 
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = '''
 				This class maps the dto {@link «dto.toName»} to and from the entity {@link «dto.wrappedType.toName»}.
@@ -204,17 +203,16 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 				val entityType = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference;
 				entityType.type = entityParam
-					
+
 				val dtoType = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference;
 				dtoType.type = dtoParam
 				if (dto.getSuperType != null) {
-					superTypes +=
-						references.createTypeRef(dto.getSuperType.toMapperTypeReference.type, dtoType,
+					if (dto.getSuperType.toMapperTypeReference.type != null) {
+						superTypes += references.createTypeRef(dto.getSuperType.toMapperTypeReference.type, dtoType,
 							entityType)
-
+					}
 				} else {
-					superTypes += references.getTypeForName(typeof(IMapper), dto, dtoType,
-						entityType)
+					superTypes += references.getTypeForName(typeof(IMapper), dto, dtoType, entityType)
 					members += dto.toField("mapperAccess", references.getTypeForName(typeof(IMapperAccess), dto, null))
 					members += dto.toGetMapperAccess
 
