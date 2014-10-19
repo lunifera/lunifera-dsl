@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
@@ -43,7 +42,7 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 
 		configureClassDef(c, f.getClassAccess());
 		configureDtoFeature(c, f.getDtoFeatureAccess());
-		configureDtoMapper(c, f.getDtoMapperAccess()); 
+		configureDtoMapper(c, f.getDtoMapperAccess());
 		configureLimitedMapperDtoMapper(c, f.getLimitedMapperDtoMapperAccess());
 
 		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
@@ -76,8 +75,10 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
 		c.setLinewrap().around(ele.getRule());
 
-		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_2_0_5());
-		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_2_0_7());
+		c.setIndentationIncrement().after(
+				ele.getLeftCurlyBracketKeyword_2_0_5());
+		c.setIndentationDecrement().before(
+				ele.getRightCurlyBracketKeyword_2_0_7());
 		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_1_8());
 	}
 
