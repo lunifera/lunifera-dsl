@@ -93,6 +93,8 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_6_5_1());
 
 		c.setLinewrap(1, 1, 2).around(ele.getRule());
+		c.setIndentationIncrement().before(ele.getRule());
+		c.setIndentationDecrement().after(ele.getRule());
 	}
 
 	protected void configureDtoMapper(FormattingConfig c,
