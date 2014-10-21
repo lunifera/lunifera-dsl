@@ -34,6 +34,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LMultiplicityImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LMultiplicityImpl#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LMultiplicityImpl#getToMultiplicityString <em>To Multiplicity String</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,6 +80,16 @@ public class LMultiplicityImpl extends MinimalEObjectImpl.Container implements L
 	 * @ordered
 	 */
 	protected LUpperBound upper = UPPER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getToMultiplicityString() <em>To Multiplicity String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getToMultiplicityString()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TO_MULTIPLICITY_STRING_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,6 +157,66 @@ public class LMultiplicityImpl extends MinimalEObjectImpl.Container implements L
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getToMultiplicityString() {
+		StringBuilder result = new StringBuilder();
+		LLowerBound _lower = this.getLower();
+		if (_lower != null) {
+			switch (_lower) {
+				case NULL:
+					result.append("0");
+					break;
+				case MANY:
+					result.append("1");
+					break;
+				case OPTIONAL:
+					result.append("0");
+					break;
+				case ATLEASTONE:
+					result.append("1");
+					break;
+				case ZERO:
+					result.append("0");
+					break;
+				case ONE:
+					result.append("1");
+					break;
+				default:
+					result.append("undefined");
+					break;
+			}
+		}
+		else {
+			result.append("undefined");
+		}
+		result.append("..");
+		LUpperBound _upper = this.getUpper();
+		if (_upper != null) {
+			switch (_upper) {
+				case NULL:
+					result.append("0");
+					break;
+				case MANY:
+					result.append("*");
+					break;
+				case ONE:
+					result.append("1");
+					break;
+				default:
+					result.append("undefined");
+					break;
+			}
+		}
+		else {
+			result.append("undefined");
+		}
+		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -153,6 +224,8 @@ public class LMultiplicityImpl extends MinimalEObjectImpl.Container implements L
 				return getLower();
 			case LunTypesPackage.LMULTIPLICITY__UPPER:
 				return getUpper();
+			case LunTypesPackage.LMULTIPLICITY__TO_MULTIPLICITY_STRING:
+				return getToMultiplicityString();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -205,6 +278,8 @@ public class LMultiplicityImpl extends MinimalEObjectImpl.Container implements L
 				return lower != LOWER_EDEFAULT;
 			case LunTypesPackage.LMULTIPLICITY__UPPER:
 				return upper != UPPER_EDEFAULT;
+			case LunTypesPackage.LMULTIPLICITY__TO_MULTIPLICITY_STRING:
+				return TO_MULTIPLICITY_STRING_EDEFAULT == null ? getToMultiplicityString() != null : !TO_MULTIPLICITY_STRING_EDEFAULT.equals(getToMultiplicityString());
 		}
 		return super.eIsSet(featureID);
 	}

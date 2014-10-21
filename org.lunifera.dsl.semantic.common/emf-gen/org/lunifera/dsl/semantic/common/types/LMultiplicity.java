@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LMultiplicity#getLower <em>Lower</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LMultiplicity#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LMultiplicity#getToMultiplicityString <em>To Multiplicity String</em>}</li>
  * </ul>
  * </p>
  *
@@ -90,5 +91,21 @@ public interface LMultiplicity extends EObject {
 	 * @generated
 	 */
 	void setUpper(LUpperBound value);
+
+	/**
+	 * Returns the value of the '<em><b>To Multiplicity String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>To Multiplicity String</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>To Multiplicity String</em>' attribute.
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLMultiplicity_ToMultiplicityString()
+	 * @model unique="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='<%java.lang.StringBuilder%> result = new <%java.lang.StringBuilder%>();\n<%org.lunifera.dsl.semantic.common.types.LLowerBound%> _lower = this.getLower();\nif (_lower != null)\n{\n\tswitch (_lower)\n\t{\n\t\tcase NULL:\n\t\t\tresult.append(\"0\");\n\t\t\tbreak;\n\t\tcase MANY:\n\t\t\tresult.append(\"1\");\n\t\t\tbreak;\n\t\tcase OPTIONAL:\n\t\t\tresult.append(\"0\");\n\t\t\tbreak;\n\t\tcase ATLEASTONE:\n\t\t\tresult.append(\"1\");\n\t\t\tbreak;\n\t\tcase ZERO:\n\t\t\tresult.append(\"0\");\n\t\t\tbreak;\n\t\tcase ONE:\n\t\t\tresult.append(\"1\");\n\t\t\tbreak;\n\t\tdefault:\n\t\t\tresult.append(\"undefined\");\n\t\t\tbreak;\n\t}\n}\nelse\n{\n\tresult.append(\"undefined\");\n}\nresult.append(\"..\");\n<%org.lunifera.dsl.semantic.common.types.LUpperBound%> _upper = this.getUpper();\nif (_upper != null)\n{\n\tswitch (_upper)\n\t{\n\t\tcase NULL:\n\t\t\tresult.append(\"0\");\n\t\t\tbreak;\n\t\tcase MANY:\n\t\t\tresult.append(\"*\");\n\t\t\tbreak;\n\t\tcase ONE:\n\t\t\tresult.append(\"1\");\n\t\t\tbreak;\n\t\tdefault:\n\t\t\tresult.append(\"undefined\");\n\t\t\tbreak;\n\t}\n}\nelse\n{\n\tresult.append(\"undefined\");\n}\nreturn result.toString();'"
+	 * @generated
+	 */
+	String getToMultiplicityString();
 
 } // LMultiplicity

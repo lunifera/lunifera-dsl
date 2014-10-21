@@ -1,4 +1,4 @@
-package org.lunifera.dsl.xtext.builder.participant.tests {
+package org.lunifera.dsl.xtext.builder.participant.tests.dtos {
 	
 	/* Imports the original entity package */
 	import org.lunifera.dsl.xtext.builder.participant.tests.*;

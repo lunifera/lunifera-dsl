@@ -1361,13 +1361,22 @@ public interface LunTypesPackage extends EPackage {
 	int LMULTIPLICITY__UPPER = 1;
 
 	/**
+	 * The feature id for the '<em><b>To Multiplicity String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LMULTIPLICITY__TO_MULTIPLICITY_STRING = 2;
+
+	/**
 	 * The number of structural features of the '<em>LMultiplicity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LMULTIPLICITY_FEATURE_COUNT = 2;
+	int LMULTIPLICITY_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>LMultiplicity</em>' class.
@@ -2240,6 +2249,17 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLMultiplicity_Upper();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LMultiplicity#getToMultiplicityString <em>To Multiplicity String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>To Multiplicity String</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LMultiplicity#getToMultiplicityString()
+	 * @see #getLMultiplicity()
+	 * @generated
+	 */
+	EAttribute getLMultiplicity_ToMultiplicityString();
+
+	/**
 	 * Returns the meta object for enum '{@link org.lunifera.dsl.semantic.common.types.LDateType <em>LDate Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2964,6 +2984,14 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LMULTIPLICITY__UPPER = eINSTANCE.getLMultiplicity_Upper();
+
+		/**
+		 * The meta object literal for the '<em><b>To Multiplicity String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LMULTIPLICITY__TO_MULTIPLICITY_STRING = eINSTANCE.getLMultiplicity_ToMultiplicityString();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.LDateType <em>LDate Type</em>}' enum.
