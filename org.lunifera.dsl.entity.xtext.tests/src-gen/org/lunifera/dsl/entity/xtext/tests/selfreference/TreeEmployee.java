@@ -43,14 +43,14 @@ public class TreeEmployee {
    */
   @JoinColumn(name = "SUBORDINATES")
   @OneToMany(mappedBy = "boss", cascade = CascadeType.ALL, orphanRemoval = true)
-  private /* List<org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee> */Object subordinates;
+  private List<TreeEmployee> subordinates;
   
   /**
    * Reference to parent
    */
   @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinColumn(name = "BOSS", nullable = false)
-  private org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee boss;
+  private TreeEmployee boss;
   
   /**
    * Returns true, if the object is disposed. 
@@ -133,7 +133,7 @@ public class TreeEmployee {
   /**
    * Returns an unmodifiable list of subordinates.
    */
-  public /* List<org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee> */Object getSubordinates() {
+  public List<TreeEmployee> getSubordinates() {
     checkDisposed();
     return Collections.unmodifiableList(internalGetSubordinates());
   }
@@ -143,7 +143,7 @@ public class TreeEmployee {
    * 
    * @param subordinates the list of new instances
    */
-  public void setSubordinates(final /* List<org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee> */Object subordinates) {
+  public void setSubordinates(final List<TreeEmployee> subordinates) {
     // remove the old treeEmployee
     for(TreeEmployee oldElement : new ArrayList<TreeEmployee>(this.internalGetSubordinates())){
       removeFromSubordinates(oldElement);
@@ -158,7 +158,7 @@ public class TreeEmployee {
   /**
    * Returns the list of <code>TreeEmployee</code>s thereby lazy initializing it.
    */
-  private /* List<org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee> */Object internalGetSubordinates() {
+  private List<TreeEmployee> internalGetSubordinates() {
     if (this.subordinates == null) {
       this.subordinates = new ArrayList<TreeEmployee>();
     }
@@ -172,7 +172,7 @@ public class TreeEmployee {
    * See {@link TreeEmployee#setBoss(TreeEmployee)}.
    * 
    */
-  public void addToSubordinates(final org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee treeEmployee) {
+  public void addToSubordinates(final TreeEmployee treeEmployee) {
     checkDisposed();
     treeEmployee.setBoss(this);
   }
@@ -184,23 +184,23 @@ public class TreeEmployee {
    * See {@link TreeEmployee#setBoss(TreeEmployee)}.
    * 
    */
-  public void removeFromSubordinates(final org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee treeEmployee) {
+  public void removeFromSubordinates(final TreeEmployee treeEmployee) {
     checkDisposed();
     treeEmployee.setBoss(null);
   }
   
-  void internalAddToSubordinates(final org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee treeEmployee) {
+  void internalAddToSubordinates(final TreeEmployee treeEmployee) {
     internalGetSubordinates().add(treeEmployee);
   }
   
-  void internalRemoveFromSubordinates(final org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee treeEmployee) {
+  void internalRemoveFromSubordinates(final TreeEmployee treeEmployee) {
     internalGetSubordinates().remove(treeEmployee);
   }
   
   /**
    * Returns the <em>required</em> boss property.
    */
-  public org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee getBoss() {
+  public TreeEmployee getBoss() {
     checkDisposed();
     return this.boss;
   }
@@ -211,7 +211,7 @@ public class TreeEmployee {
    * of the boss will be handled automatically and no further coding is required to keep them in sync.
    * See {@link TreeEmployee#setSubordinates(TreeEmployee)}.
    */
-  public void setBoss(final org.lunifera.dsl.entity.xtext.tests.selfreference.TreeEmployee boss) {
+  public void setBoss(final TreeEmployee boss) {
     checkDisposed();
     if (this.boss != null) {
       this.boss.internalRemoveFromSubordinates(this);
