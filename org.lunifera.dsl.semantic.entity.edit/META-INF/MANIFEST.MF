@@ -10,7 +10,6 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.lunifera.dsl.semantic.entity.provider
 Require-Bundle: org.eclipse.core.runtime,
- org.lunifera.dsl;visibility:=reexport,
  org.lunifera.dsl.semantic.entity;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  org.lunifera.dsl.semantic.common;visibility:=reexport,
