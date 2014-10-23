@@ -17,6 +17,7 @@ import org.eclipse.xtext.xbase.XExpression
 import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
 import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.dto.LDtoFeature
+import org.lunifera.dsl.semantic.entity.DtoNamings
 
 class MethodNamingExtensions extends NamingExtensions {
 
@@ -57,13 +58,11 @@ class MethodNamingExtensions extends NamingExtensions {
 	}
 	
 	def String toDTOBeanFullyQualifiedName(LType type) {
-		val pkg = type.package.name
-		return pkg + ".dtos." + type.toDTOBeanSimpleName
+		return DtoNamings.getDtoClassFullyQualifiedName(type)
 	}
-	
+	 
 	def String toDTOBeanSimpleName(LType type) {
-		val name = type.name
-		return name + "Dto"
+		return DtoNamings.getDtoClassSimpleName(type)
 	}
 
 	def XExpression toMapToEntityExpression(LDtoFeature prop) {

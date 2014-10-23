@@ -19,21 +19,15 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
-
 import org.lunifera.dsl.semantic.common.types.provider.LAnnotationTargetItemProvider;
-
 import org.lunifera.dsl.semantic.entity.LBeanFeature;
 import org.lunifera.dsl.semantic.entity.LunEntityFactory;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
@@ -228,6 +222,11 @@ public class LBeanFeatureItemProvider extends LAnnotationTargetItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LFEATURE__ANNOTATION_INFO,
 				 LunEntityFactory.eINSTANCE.createLBeanReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LFEATURE__ANNOTATION_INFO,
+				 LunEntityFactory.eINSTANCE.createLBeanToEntityReference()));
 
 		newChildDescriptors.add
 			(createChildParameter

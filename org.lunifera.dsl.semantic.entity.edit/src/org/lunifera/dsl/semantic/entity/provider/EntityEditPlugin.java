@@ -14,9 +14,7 @@
 package org.lunifera.dsl.semantic.entity.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.lunifera.dsl.semantic.common.types.provider.TypesEditPlugin;
 
 /**
@@ -51,8 +49,8 @@ public final class EntityEditPlugin extends EMFPlugin {
 	public EntityEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     TypesEditPlugin.INSTANCE,
 		     org.eclipse.xtext.common.types.provider.TypesEditPlugin.INSTANCE,
+		     TypesEditPlugin.INSTANCE,
 		   });
 	}
 

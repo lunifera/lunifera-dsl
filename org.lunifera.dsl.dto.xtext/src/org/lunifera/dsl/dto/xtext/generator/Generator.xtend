@@ -24,6 +24,8 @@ import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.dto.ServiceNamings
+import org.lunifera.dsl.semantic.entity.LEntity
 
 class Generator extends JvmModelGenerator {
 
@@ -54,7 +56,12 @@ class Generator extends JvmModelGenerator {
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		super.doGenerate(input, fsa)
 
-		for (tmp : input.allContents.filter[if(it instanceof LDto) wrappedType != null else false].toList) {
+		for (tmp : input.allContents.filter [
+			if (it instanceof LDto)
+				return wrappedType instanceof LEntity
+			else
+				false
+		].toList) {
 			val LDto dto = tmp as LDto
 			fsa.deleteFile(dto.toServiceComponentName);
 			fsa.generateFile(dto.toServiceComponentName, "OSGI-INF", dto.serviceContent);
@@ -71,7 +78,7 @@ class Generator extends JvmModelGenerator {
 	}
 
 	def toServiceName(LTypedPackage pkg) {
-		pkg.name + ".services"
+		ServiceNamings.getGeneratedServiceFileName(pkg)
 	}
 
 }

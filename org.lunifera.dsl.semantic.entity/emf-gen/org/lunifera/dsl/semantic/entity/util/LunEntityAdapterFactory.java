@@ -144,6 +144,10 @@ public class LunEntityAdapterFactory extends AdapterFactoryImpl {
 				return createLBeanReferenceAdapter();
 			}
 			@Override
+			public Adapter caseLBeanToEntityReference(LBeanToEntityReference object) {
+				return createLBeanToEntityReferenceAdapter();
+			}
+			@Override
 			public Adapter caseLIndex(LIndex object) {
 				return createLIndexAdapter();
 			}
@@ -400,6 +404,20 @@ public class LunEntityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLBeanReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.entity.LBeanToEntityReference <em>LBean To Entity Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanToEntityReference
+	 * @generated
+	 */
+	public Adapter createLBeanToEntityReferenceAdapter() {
 		return null;
 	}
 

@@ -16,7 +16,7 @@
 @Ecore(nsPrefix="entity")
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
-  
+
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LScalarType
@@ -93,7 +93,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		current.superType.collectAllLunFeatures(result)
 	}
 }
-
+ 
 /**
  * Represents a JPA entity.
  */
@@ -258,12 +258,15 @@ class LBeanAttribute extends LBeanFeature, LAttribute {
 		
 		return result.toString		
 	}
-	
 }
- 
+
 class LBeanReference extends LBeanFeature, LReference {
 	refers LBean ^type
 	refers LBeanReference ^opposite
+}
+
+class LBeanToEntityReference extends LBeanFeature, LReference {
+	refers LEntity ^type
 }
 
 class LIndex {

@@ -18,8 +18,11 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LEntityReference;
 
 public class BeanRefOppositeScope extends AbstractScope {
 	private final LBeanReference prop;
@@ -34,13 +37,28 @@ public class BeanRefOppositeScope extends AbstractScope {
 		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 		if (prop.getType() != null && prop.getType() instanceof LClass) {
 			LBean propClass = prop.getBean();
-			LBean type = prop.getType();
-			for (LBeanReference oppositeProp : type.getReferences()) {
-				if (oppositeProp.getType() == propClass) {
-					String name = oppositeProp.getName();
-					if (name != null) {
-						result.add(new EObjectDescription(QualifiedName
-								.create(name), oppositeProp, null));
+			LType temp = prop.getType();
+
+			if (temp instanceof LBean) {
+				LBean type = (LBean) temp;
+				for (LBeanReference oppositeProp : type.getReferences()) {
+					if (oppositeProp.getType() == propClass) {
+						String name = oppositeProp.getName();
+						if (name != null) {
+							result.add(new EObjectDescription(QualifiedName
+									.create(name), oppositeProp, null));
+						}
+					}
+				}
+			} else if (temp instanceof LEntity) {
+				LEntity type = (LEntity) temp;
+				for (LEntityReference oppositeProp : type.getReferences()) {
+					if (oppositeProp.getType() == propClass) {
+						String name = oppositeProp.getName();
+						if (name != null) {
+							result.add(new EObjectDescription(QualifiedName
+									.create(name), oppositeProp, null));
+						}
 					}
 				}
 			}

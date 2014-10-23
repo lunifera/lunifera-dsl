@@ -201,6 +201,16 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LunEntityPackage.LBEAN_TO_ENTITY_REFERENCE: {
+				LBeanToEntityReference lBeanToEntityReference = (LBeanToEntityReference)theEObject;
+				T result = caseLBeanToEntityReference(lBeanToEntityReference);
+				if (result == null) result = caseLBeanFeature(lBeanToEntityReference);
+				if (result == null) result = caseLReference(lBeanToEntityReference);
+				if (result == null) result = caseLFeature(lBeanToEntityReference);
+				if (result == null) result = caseLAnnotationTarget(lBeanToEntityReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case LunEntityPackage.LINDEX: {
 				LIndex lIndex = (LIndex)theEObject;
 				T result = caseLIndex(lIndex);
@@ -429,6 +439,21 @@ public class LunEntitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLBeanReference(LBeanReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LBean To Entity Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LBean To Entity Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLBeanToEntityReference(LBeanToEntityReference object) {
 		return null;
 	}
 

@@ -83,6 +83,7 @@ public class LunEntityFactoryImpl extends EFactoryImpl implements LunEntityFacto
 			case LunEntityPackage.LBEAN_FEATURE: return createLBeanFeature();
 			case LunEntityPackage.LBEAN_ATTRIBUTE: return createLBeanAttribute();
 			case LunEntityPackage.LBEAN_REFERENCE: return createLBeanReference();
+			case LunEntityPackage.LBEAN_TO_ENTITY_REFERENCE: return createLBeanToEntityReference();
 			case LunEntityPackage.LINDEX: return createLIndex();
 			case LunEntityPackage.LOPERATION: return createLOperation();
 			default:
@@ -276,6 +277,16 @@ public class LunEntityFactoryImpl extends EFactoryImpl implements LunEntityFacto
 	public LBeanReference createLBeanReference() {
 		LBeanReferenceImpl lBeanReference = new LBeanReferenceImpl();
 		return lBeanReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LBeanToEntityReference createLBeanToEntityReference() {
+		LBeanToEntityReferenceImpl lBeanToEntityReference = new LBeanToEntityReferenceImpl();
+		return lBeanToEntityReference;
 	}
 
 	/**

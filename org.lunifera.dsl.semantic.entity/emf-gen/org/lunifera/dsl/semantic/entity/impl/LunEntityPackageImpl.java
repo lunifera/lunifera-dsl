@@ -32,6 +32,7 @@ import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanAttribute;
 import org.lunifera.dsl.semantic.entity.LBeanFeature;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LBeanToEntityReference;
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
@@ -152,6 +153,13 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 	 * @generated
 	 */
 	private EClass lBeanReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lBeanToEntityReferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -841,6 +849,24 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLBeanToEntityReference() {
+		return lBeanToEntityReferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLBeanToEntityReference_Type() {
+		return (EReference)lBeanToEntityReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLIndex() {
 		return lIndexEClass;
 	}
@@ -1056,6 +1082,9 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		createEReference(lBeanReferenceEClass, LBEAN_REFERENCE__TYPE);
 		createEReference(lBeanReferenceEClass, LBEAN_REFERENCE__OPPOSITE);
 
+		lBeanToEntityReferenceEClass = createEClass(LBEAN_TO_ENTITY_REFERENCE);
+		createEReference(lBeanToEntityReferenceEClass, LBEAN_TO_ENTITY_REFERENCE__TYPE);
+
 		lIndexEClass = createEClass(LINDEX);
 		createEAttribute(lIndexEClass, LINDEX__UNIQUE);
 		createEAttribute(lIndexEClass, LINDEX__NAME);
@@ -1125,6 +1154,8 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		lBeanAttributeEClass.getESuperTypes().add(theLunTypesPackage.getLAttribute());
 		lBeanReferenceEClass.getESuperTypes().add(this.getLBeanFeature());
 		lBeanReferenceEClass.getESuperTypes().add(theLunTypesPackage.getLReference());
+		lBeanToEntityReferenceEClass.getESuperTypes().add(this.getLBeanFeature());
+		lBeanToEntityReferenceEClass.getESuperTypes().add(theLunTypesPackage.getLReference());
 		lOperationEClass.getESuperTypes().add(theLunTypesPackage.getLOperation());
 		lOperationEClass.getESuperTypes().add(this.getLBeanFeature());
 		lOperationEClass.getESuperTypes().add(this.getLEntityFeature());
@@ -1224,6 +1255,9 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		initEClass(lBeanReferenceEClass, LBeanReference.class, "LBeanReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLBeanReference_Type(), this.getLBean(), null, "type", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLBeanReference_Opposite(), this.getLBeanReference(), null, "opposite", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lBeanToEntityReferenceEClass, LBeanToEntityReference.class, "LBeanToEntityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLBeanToEntityReference_Type(), this.getLEntity(), null, "type", null, 0, 1, LBeanToEntityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lIndexEClass, LIndex.class, "LIndex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLIndex_Unique(), theEcorePackage.getEBoolean(), "unique", null, 0, 1, LIndex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

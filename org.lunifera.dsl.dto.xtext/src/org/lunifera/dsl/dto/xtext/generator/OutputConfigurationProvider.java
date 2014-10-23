@@ -46,7 +46,7 @@ public class OutputConfigurationProvider extends
 		
 		OutputConfiguration servicesOutput = new OutputConfiguration("Services-DSL");
 		servicesOutput.setDescription("Services-DSL");
-		servicesOutput.setOutputDirectory("./service-models");
+		servicesOutput.setOutputDirectory("./models");
 		servicesOutput.setOverrideExistingResources(false);
 		servicesOutput.setCreateOutputDirectory(true);
 		servicesOutput.setCleanUpDerivedResources(false);

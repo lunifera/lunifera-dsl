@@ -23,7 +23,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.inject;version="1.0.0",
  org.slf4j;version="1.7.2"
-Export-Package: org.lunifera.dsl.eclipse.ui.perspectives;version="0.7.5",
- org.lunifera.dsl.eclipse.ui.preferences;version="0.7.5",
+Export-Package: org.lunifera.dsl.eclipse.ui.preferences;version="0.7.5",
  org.lunifera.dsl.eclipse.ui.utils;version="0.7.5",
  org.lunifera.dsl.eclipse.ui.wizards;version="0.7.5"

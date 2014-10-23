@@ -1592,6 +1592,115 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_REFERENCE_OPERATION_COUNT = LBEAN_FEATURE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanToEntityReferenceImpl <em>LBean To Entity Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.entity.impl.LBeanToEntityReferenceImpl
+	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getLBeanToEntityReference()
+	 * @generated
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE__ANNOTATIONS = LBEAN_FEATURE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE__NAME = LBEAN_FEATURE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE__MULTIPLICITY = LBEAN_FEATURE__MULTIPLICITY;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE__ANNOTATION_INFO = LBEAN_FEATURE__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE__LAZY = LBEAN_FEATURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Cascading</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE__CASCADING = LBEAN_FEATURE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>LBean To Entity Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE___GET_RESOLVED_ANNOTATIONS = LBEAN_FEATURE___GET_RESOLVED_ANNOTATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Bean</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE___GET_BEAN = LBEAN_FEATURE___GET_BEAN;
+
+	/**
+	 * The number of operations of the '<em>LBean To Entity Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_TO_ENTITY_REFERENCE_OPERATION_COUNT = LBEAN_FEATURE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LIndexImpl <em>LIndex</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1599,7 +1708,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getLIndex()
 	 * @generated
 	 */
-	int LINDEX = 14;
+	int LINDEX = 15;
 
 	/**
 	 * The feature id for the '<em><b>Unique</b></em>' attribute.
@@ -1654,7 +1763,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getLOperation()
 	 * @generated
 	 */
-	int LOPERATION = 15;
+	int LOPERATION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1790,7 +1899,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getLDiscriminatorType()
 	 * @generated
 	 */
-	int LDISCRIMINATOR_TYPE = 16;
+	int LDISCRIMINATOR_TYPE = 17;
 
 	/**
 	 * The meta object id for the '<em>Operations List</em>' data type.
@@ -1800,7 +1909,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getOperationsList()
 	 * @generated
 	 */
-	int OPERATIONS_LIST = 17;
+	int OPERATIONS_LIST = 18;
 
 	/**
 	 * The meta object id for the '<em>Entity Feature List</em>' data type.
@@ -1810,7 +1919,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getEntityFeatureList()
 	 * @generated
 	 */
-	int ENTITY_FEATURE_LIST = 18;
+	int ENTITY_FEATURE_LIST = 19;
 
 	/**
 	 * The meta object id for the '<em>Entity Reference List</em>' data type.
@@ -1820,7 +1929,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getEntityReferenceList()
 	 * @generated
 	 */
-	int ENTITY_REFERENCE_LIST = 19;
+	int ENTITY_REFERENCE_LIST = 20;
 
 	/**
 	 * The meta object id for the '<em>Entity Attribute List</em>' data type.
@@ -1830,7 +1939,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getEntityAttributeList()
 	 * @generated
 	 */
-	int ENTITY_ATTRIBUTE_LIST = 20;
+	int ENTITY_ATTRIBUTE_LIST = 21;
 
 	/**
 	 * The meta object id for the '<em>Bean Feature List</em>' data type.
@@ -1840,7 +1949,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getBeanFeatureList()
 	 * @generated
 	 */
-	int BEAN_FEATURE_LIST = 21;
+	int BEAN_FEATURE_LIST = 22;
 
 	/**
 	 * The meta object id for the '<em>Bean Reference List</em>' data type.
@@ -1850,7 +1959,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getBeanReferenceList()
 	 * @generated
 	 */
-	int BEAN_REFERENCE_LIST = 22;
+	int BEAN_REFERENCE_LIST = 23;
 
 	/**
 	 * The meta object id for the '<em>Bean Attribute List</em>' data type.
@@ -1860,7 +1969,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getBeanAttributeList()
 	 * @generated
 	 */
-	int BEAN_ATTRIBUTE_LIST = 23;
+	int BEAN_ATTRIBUTE_LIST = 24;
 
 
 	/**
@@ -2503,6 +2612,27 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLBeanReference_Opposite();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LBeanToEntityReference <em>LBean To Entity Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LBean To Entity Reference</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanToEntityReference
+	 * @generated
+	 */
+	EClass getLBeanToEntityReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.entity.LBeanToEntityReference#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanToEntityReference#getType()
+	 * @see #getLBeanToEntityReference()
+	 * @generated
+	 */
+	EReference getLBeanToEntityReference_Type();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LIndex <em>LIndex</em>}'.
@@ -3182,6 +3312,24 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LBEAN_REFERENCE__OPPOSITE = eINSTANCE.getLBeanReference_Opposite();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanToEntityReferenceImpl <em>LBean To Entity Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.entity.impl.LBeanToEntityReferenceImpl
+		 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getLBeanToEntityReference()
+		 * @generated
+		 */
+		EClass LBEAN_TO_ENTITY_REFERENCE = eINSTANCE.getLBeanToEntityReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LBEAN_TO_ENTITY_REFERENCE__TYPE = eINSTANCE.getLBeanToEntityReference_Type();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LIndexImpl <em>LIndex</em>}' class.

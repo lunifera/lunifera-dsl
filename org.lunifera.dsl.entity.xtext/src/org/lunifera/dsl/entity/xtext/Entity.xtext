@@ -98,6 +98,9 @@ BeanFeature returns entity::LBeanFeature:
 	('opposite' opposite=[entity::LBeanReference|LFQN])?)
 	';')
 	|
+	({entity::LBeanToEntityReference.annotationInfo=current}
+	'entityRef' type=[entity::LEntity] name=ValidIDWithKeywords ';')
+	|
 	({entity::LBeanAttribute.annotationInfo=current}
 	((transient?='transient' type=[LScalarType] name=ValidIDWithKeywords)
 	|

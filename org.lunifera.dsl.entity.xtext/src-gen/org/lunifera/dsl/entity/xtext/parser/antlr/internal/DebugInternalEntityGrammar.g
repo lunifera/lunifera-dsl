@@ -96,6 +96,7 @@ ruleBeanFeature :
 				'opposite' ruleLFQN
 			)?
 		) ';' |
+		'entityRef' RULE_ID ruleValidIDWithKeywords ';' |
 		(
 			'transient' RULE_ID ruleValidIDWithKeywords |
 			(

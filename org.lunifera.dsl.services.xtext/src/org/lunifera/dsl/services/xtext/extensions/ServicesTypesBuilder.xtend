@@ -47,9 +47,9 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 			javax.persistence.EntityTransaction txn = em.getTransaction();
 			
 			// find the entity
-			«service.dto.wrappedEntity.toQualifiedName» entity = null;
+			«service.dto.wrappedType.toQualifiedName» entity = null;
 			try {
-				entity = em.find(«service.dto.wrappedEntity.toQualifiedName».class, id);
+				entity = em.find(«service.dto.wrappedType.toQualifiedName».class, id);
 				txn.commit();
 			   	txn = null;
 			}finally{
@@ -120,7 +120,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 				javax.persistence.EntityTransaction txn = em.getTransaction();
 				
 				try {
-					«service.dto.wrappedEntity.toQualifiedName» entity = em.find(«service.dto.wrappedEntity.toQualifiedName».class, dto.«service.dto.idAttribute?.toGetterName»());
+					«service.dto.wrappedType.toQualifiedName» entity = em.find(«service.dto.wrappedType.toQualifiedName».class, dto.«service.dto.idAttribute?.toGetterName»());
 					mapper.mapToEntity(dto, entity);
 					em.persist(entity);
 				
@@ -158,7 +158,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 				javax.persistence.EntityTransaction txn = em.getTransaction();
 				
 				try {
-					«service.dto.wrappedEntity.toQualifiedName» entity = em.find(«service.dto.wrappedEntity.toQualifiedName».class, dto.«service.dto.idAttribute?.toGetterName»());
+					«service.dto.wrappedType.toQualifiedName» entity = em.find(«service.dto.wrappedType.toQualifiedName».class, dto.«service.dto.idAttribute?.toGetterName»());
 					em.remove(entity);
 				
 					txn.commit();

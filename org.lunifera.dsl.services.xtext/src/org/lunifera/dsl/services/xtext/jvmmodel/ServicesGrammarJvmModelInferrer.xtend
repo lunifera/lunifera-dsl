@@ -19,6 +19,7 @@ import org.lunifera.dsl.services.xtext.extensions.ServicesTypesBuilder
 import static org.lunifera.dsl.semantic.service.LCardinality.*
 import org.lunifera.dsl.common.xtext.extensions.NamingExtensions
 import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOService
+import org.lunifera.dsl.semantic.entity.LEntity
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -40,13 +41,18 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 	private MethodNamingExtensions dtoNamings;
 
 	def dispatch void infer(LDTOService service, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		
+		if(service.dto.wrappedType != null && !(service.dto.wrappedType instanceof LEntity)) {
+			return;
+		}
+		
 		acceptor.accept(service.toJvmType).initializeLater [
 			fileHeader = (service.eContainer as LTypedPackage).documentation
 			documentation = service.getDocumentation
 			if (service.dto.basedOnEntity) {
 				superTypes +=
 					references.getTypeForName(typeof(AbstractDTOService), service, service.dto.toTypeReference,
-						service.dto.wrappedEntity.toTypeReference)
+						service.dto.wrappedType.toTypeReference)
 
 				// Constructor
 				members += service.toConstructor()[]
@@ -61,8 +67,8 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 				]
 
 				members += service.toMethod("getEntityClass",
-					references.getTypeForName(typeof(Class), service, service.dto.wrappedEntity.toTypeReference)) [
-					body = '''return «service.dto.wrappedEntity.toTypeReference.simpleName».class;'''
+					references.getTypeForName(typeof(Class), service, service.dto.wrappedType.toTypeReference)) [
+					body = '''return «service.dto.wrappedType.toTypeReference.simpleName».class;'''
 				]
 
 				members += service.toMethod("getId", references.getTypeForName(typeof(Object), service, null)) [

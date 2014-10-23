@@ -19,16 +19,6 @@
    </extension> -->
    
    <extension
-         point="org.eclipse.ui.perspectives">
-      <perspective
-            class="org.lunifera.eclipse.ui.utils.LuniferaUiExecutableExtensionFactory:org.lunifera.eclipse.ui.perspectives.LuniferaPerspective"
-            icon="icons/Lunifera_16.png"
-            id="org.lunifera.ide.ui.perspectives.LuniferaPerspective"
-            name="Lunifera">
-      </perspective>
-   </extension>
-   
-   <extension
          point="org.eclipse.ui.preferencePages">
       <page
             name="Lunifera Tools"
@@ -42,25 +32,6 @@
       <initializer
             class="org.lunifera.eclipse.ui.utils.LuniferaUiExecutableExtensionFactory:org.lunifera.eclipse.ui.preferences.PreferenceInitializer">
       </initializer>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views">
-      <category
-            id="org.lunifera.eclipse.ui.views.category.Resources"
-            name="Lunifera Views">
-      </category>
-      <view
-            name="View"
-            class="org.eclipse.ui.navigator.CommonNavigator"
-            id="example.view">
-      </view>
-      <view
-            category="org.lunifera.eclipse.ui.views.category.Resources"
-            class="org.lunifera.eclipse.ui.utils.LuniferaUiExecutableExtensionFactory:org.eclipse.ui.navigator.CommonNavigator"
-            icon="icons/Lunifera_16.png"
-            id="org.lunifera.eclipse.ui.views.Navigator"
-            name="Lunifera Navigator">
-      </view>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.viewer">

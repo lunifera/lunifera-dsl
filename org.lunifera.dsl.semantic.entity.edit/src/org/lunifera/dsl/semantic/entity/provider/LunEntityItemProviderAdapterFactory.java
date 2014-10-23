@@ -15,12 +15,11 @@ package org.lunifera.dsl.semantic.entity.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -37,7 +36,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
@@ -394,6 +392,29 @@ public class LunEntityItemProviderAdapterFactory extends LunEntityAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.entity.LBeanToEntityReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LBeanToEntityReferenceItemProvider lBeanToEntityReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.entity.LBeanToEntityReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLBeanToEntityReferenceAdapter() {
+		if (lBeanToEntityReferenceItemProvider == null) {
+			lBeanToEntityReferenceItemProvider = new LBeanToEntityReferenceItemProvider(this);
+		}
+
+		return lBeanToEntityReferenceItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.entity.LIndex} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -551,6 +572,7 @@ public class LunEntityItemProviderAdapterFactory extends LunEntityAdapterFactory
 		if (lBeanFeatureItemProvider != null) lBeanFeatureItemProvider.dispose();
 		if (lBeanAttributeItemProvider != null) lBeanAttributeItemProvider.dispose();
 		if (lBeanReferenceItemProvider != null) lBeanReferenceItemProvider.dispose();
+		if (lBeanToEntityReferenceItemProvider != null) lBeanToEntityReferenceItemProvider.dispose();
 		if (lIndexItemProvider != null) lIndexItemProvider.dispose();
 		if (lOperationItemProvider != null) lOperationItemProvider.dispose();
 	}
@@ -665,6 +687,11 @@ public class LunEntityItemProviderAdapterFactory extends LunEntityAdapterFactory
 				newChildDescriptors.add
 					(createChildParameter
 						(LunTypesPackage.Literals.LTYPE__ANNOTATION_INFO,
+						 LunEntityFactory.eINSTANCE.createLBeanToEntityReference()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(LunTypesPackage.Literals.LTYPE__ANNOTATION_INFO,
 						 LunEntityFactory.eINSTANCE.createLOperation()));
 
 				return null;
@@ -716,6 +743,11 @@ public class LunEntityItemProviderAdapterFactory extends LunEntityAdapterFactory
 					(createChildParameter
 						(LunTypesPackage.Literals.LFEATURE__ANNOTATION_INFO,
 						 LunEntityFactory.eINSTANCE.createLBeanReference()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(LunTypesPackage.Literals.LFEATURE__ANNOTATION_INFO,
+						 LunEntityFactory.eINSTANCE.createLBeanToEntityReference()));
 
 				newChildDescriptors.add
 					(createChildParameter

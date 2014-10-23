@@ -8,7 +8,6 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-
 package org.lunifera.dsl.entity.xtext.generator
 
 import com.google.inject.Inject
@@ -20,13 +19,14 @@ import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LDateType
 import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LImport
+import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.entity.LBean
+import org.lunifera.dsl.semantic.entity.LBeanFeature
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityFeature
-import org.lunifera.dsl.semantic.entity.LBeanFeature
-import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.DtoNamings
 
 /**
  *  This generator automatically creates a generic .dtos-file from a given entity model.
@@ -38,11 +38,11 @@ import org.lunifera.dsl.semantic.entity.LEntityReference
 class DtosFileGenerator {
 
 	@Inject extension JvmTypesBuilder
-//	@Inject extension ModelExtensions
 
+	//	@Inject extension ModelExtensions
 	def getContent(LTypedPackage pkg) '''
 		«pkg.toDocu»
-		package «pkg.toDtoName» {
+		package «DtoNamings.getDtoPackage(pkg)» {
 			
 			/* Imports the original entity package */
 			import «pkg.name».*;
@@ -60,7 +60,8 @@ class DtosFileGenerator {
 			«FOR LEntity lEntity : pkg.entities»
 				«lEntity.toDocu»
 				«lEntity.toEntityDeclaration»
-					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute && !(it as LAttribute).derived) || (it instanceof LReference)]»
+					«FOR LEntityFeature feature : lEntity.features.filter[
+			(it instanceof LAttribute && !(it as LAttribute).derived) || (it instanceof LReference)]»
 						«feature.toFeature»
 					«ENDFOR»
 					«FOR LEntityFeature feature : lEntity.features.filter[(it instanceof LAttribute && (it as LAttribute).derived)]»
@@ -72,7 +73,8 @@ class DtosFileGenerator {
 			«FOR LBean lBean : pkg.beans»
 				«lBean.toDocu»
 				«lBean.toBeanDeclaration»
-					«FOR LBeanFeature feature : lBean.features.filter[(it instanceof LAttribute&& !(it as LAttribute).derived) || (it instanceof LReference)]»
+					«FOR LBeanFeature feature : lBean.features.filter[
+			(it instanceof LAttribute && !(it as LAttribute).derived) || (it instanceof LReference)]»
 						«feature.toFeature»
 					«ENDFOR»
 				}
@@ -86,14 +88,11 @@ class DtosFileGenerator {
 			«ENDFOR»
 		}
 	'''
-	
-	def String getToDtoName(LTypedPackage pkg){
-		return pkg.name +".dtos"
-	}
 
 	def toEntityDeclaration(LEntity lEntity) {
 		return '''
-			autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
+			autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.
+				name» {
 		'''
 	}
 
@@ -135,7 +134,7 @@ class DtosFileGenerator {
 		«att.toDocu»
 		inherit ref «att.name» mapto «att.type.name»Dto;
 	'''
-	
+
 	def toDerivedAttribute(LAttribute att) '''
 		«att.toDocu»
 		derived «IF att.domainDescription»domainDescription «ENDIF» «att.type.name» «att.name» «att.blockExpression»
@@ -179,9 +178,9 @@ class DtosFileGenerator {
 		pkg.types.filter[it instanceof LEnum].map[it as LEnum];
 	}
 
-	def String blockExpression(LAttribute attribute){
+	def String blockExpression(LAttribute attribute) {
 		val resource = attribute.eResource as XtextResource
-		return resource.serializer.serialize(attribute.derivedGetterExpression)		
+		return resource.serializer.serialize(attribute.derivedGetterExpression)
 	}
 
 }

@@ -32,6 +32,7 @@ import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
+import org.lunifera.dsl.semantic.entity.LBeanToEntityReference
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
@@ -42,6 +43,10 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	@Inject TypeReferences references;
 
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
+		return prop.type?.toTypeReference
+	}
+	
+	def dispatch JvmTypeReference toTypeReference(LBeanToEntityReference prop) {
 		return prop.type?.toTypeReference
 	}
 
@@ -76,6 +81,10 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 
 	def dispatch isCascading(LBeanReference prop) {
 		prop.cascading || if(prop.opposite != null) prop.opposite.cascading else false
+	}
+	
+	def dispatch isCascading(LBeanToEntityReference prop) {
+		return false
 	}
 
 	def dispatch isCascading(LOperation prop) {
@@ -168,8 +177,12 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch String typeName(LEntityAttribute prop) {
 		prop.type.name
 	}
-
+	
 	def dispatch String typeName(LEntityReference prop) {
+		prop.type.name
+	}
+	
+	def dispatch String typeName(LBeanToEntityReference prop) {
 		prop.type.name
 	}
 
@@ -196,6 +209,10 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch type(LBeanReference prop) {
 		prop.type
 	}
+	
+	def dispatch type(LBeanToEntityReference prop) {
+		prop.type
+	}
 
 	def dispatch opposite(LEntityAttribute prop) {
 		null
@@ -206,6 +223,10 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch opposite(LBeanAttribute prop) {
+		null
+	}
+	
+	def dispatch opposite(LBeanToEntityReference prop) {
 		null
 	}
 

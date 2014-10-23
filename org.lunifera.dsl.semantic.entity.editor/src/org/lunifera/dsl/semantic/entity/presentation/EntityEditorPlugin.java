@@ -53,8 +53,8 @@ public final class EntityEditorPlugin extends EMFPlugin {
 	public EntityEditorPlugin() {
 		super
 			(new ResourceLocator [] {
-				org.lunifera.dsl.semantic.common.types.provider.TypesEditPlugin.INSTANCE,
 				TypesEditPlugin.INSTANCE,
+				org.lunifera.dsl.semantic.common.types.provider.TypesEditPlugin.INSTANCE,
 			});
 	}
 

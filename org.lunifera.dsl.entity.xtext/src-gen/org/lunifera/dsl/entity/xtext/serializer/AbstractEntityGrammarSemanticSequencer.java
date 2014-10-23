@@ -75,6 +75,7 @@ import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanAttribute;
 import org.lunifera.dsl.semantic.entity.LBeanFeature;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LBeanToEntityReference;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityColumnPersistenceInfo;
@@ -110,16 +111,23 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 				}
 				else break;
 			case LunEntityPackage.LBEAN_FEATURE:
-				if(context == grammarAccess.getBeanFeatureAccess().getLBeanAttributeAnnotationInfoAction_2_1_0() ||
+				if(context == grammarAccess.getBeanFeatureAccess().getLBeanAttributeAnnotationInfoAction_2_2_0() ||
 				   context == grammarAccess.getBeanFeatureAccess().getLBeanReferenceAnnotationInfoAction_2_0_0() ||
-				   context == grammarAccess.getBeanFeatureAccess().getLOperationAnnotationInfoAction_2_2_0()) {
-					sequence_BeanFeature_LBeanAttribute_2_1_0_LBeanReference_2_0_0_LOperation_2_2_0(context, (LBeanFeature) semanticObject); 
+				   context == grammarAccess.getBeanFeatureAccess().getLBeanToEntityReferenceAnnotationInfoAction_2_1_0() ||
+				   context == grammarAccess.getBeanFeatureAccess().getLOperationAnnotationInfoAction_2_3_0()) {
+					sequence_BeanFeature_LBeanAttribute_2_2_0_LBeanReference_2_0_0_LBeanToEntityReference_2_1_0_LOperation_2_3_0(context, (LBeanFeature) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunEntityPackage.LBEAN_REFERENCE:
 				if(context == grammarAccess.getBeanFeatureRule()) {
 					sequence_BeanFeature(context, (LBeanReference) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunEntityPackage.LBEAN_TO_ENTITY_REFERENCE:
+				if(context == grammarAccess.getBeanFeatureRule()) {
+					sequence_BeanFeature(context, (LBeanToEntityReference) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1495,7 +1503,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=BeanFeature_LBeanAttribute_2_1_0 
+	 *         annotationInfo=BeanFeature_LBeanAttribute_2_2_0 
 	 *         (
 	 *             (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords) | 
 	 *             ((id?='id' | version?='version')? type=[LScalarType|ID] multiplicity=Multiplicity? name=ValidIDWithKeywords)
@@ -1511,7 +1519,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     annotations+=AnnotationDef+
 	 */
-	protected void sequence_BeanFeature_LBeanAttribute_2_1_0_LBeanReference_2_0_0_LOperation_2_2_0(EObject context, LBeanFeature semanticObject) {
+	protected void sequence_BeanFeature_LBeanAttribute_2_2_0_LBeanReference_2_0_0_LBeanToEntityReference_2_1_0_LOperation_2_3_0(EObject context, LBeanFeature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1530,8 +1538,17 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	
 	/**
 	 * Constraint:
+	 *     (annotationInfo=BeanFeature_LBeanToEntityReference_2_1_0 type=[LEntity|ID] name=ValidIDWithKeywords)
+	 */
+	protected void sequence_BeanFeature(EObject context, LBeanToEntityReference semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
-	 *         annotationInfo=BeanFeature_LOperation_2_2_0 
+	 *         annotationInfo=BeanFeature_LOperation_2_3_0 
 	 *         (type=JvmTypeReference name=ValidIDWithKeywords (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
 	 *     )
 	 */

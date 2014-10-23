@@ -13,6 +13,8 @@ package org.lunifera.dsl.dto.xtext.generator
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.dto.ServiceNamings
+import org.lunifera.dsl.semantic.entity.LEntity
 
 /**
  *  This generator automatically creates a generic .dtos-file from a given entity model.
@@ -24,25 +26,24 @@ import org.lunifera.dsl.semantic.dto.LDto
 class ServicesFileGenerator {
 
 	def getContent(LTypedPackage pkg) '''
-		package «pkg.getPkgName» {
+		package «ServiceNamings.getServicePackage(pkg)» {
 			
 			/* Imports the original entity and dto package */
-			import «pkg.name».*;
-			import «pkg.name».dtos.*; 
+			import «pkg.toImportPackageName».*;
+			import «pkg.toImportPackageName».dtos.*; 
 			
 			«FOR LDto lDto : pkg.dtos»
-				dtoservice «lDto.wrappedType.name»Service provides «lDto.name» {
+				dtoservice «ServiceNamings.getServiceClassSimpleName(lDto)» provides «lDto.name» {
 				}
 			«ENDFOR»
 		}
 	'''
 
-	def String getPkgName(LTypedPackage pkg) {
-		return pkg.name + ".services"
-	}
-
-	def String toPackageName(LTypedPackage pkg) {
-		pkg.name + ".dtos"
+	def String toImportPackageName(LTypedPackage pkg) {
+		var temp = pkg.name
+		if (temp.endsWith(".dtos")) {
+			temp = temp.substring(0, temp.lastIndexOf(".dtos"))
+		}
 	}
 
 	def Iterable<LDataType> datatypes(LTypedPackage pkg) {
@@ -50,7 +51,7 @@ class ServicesFileGenerator {
 	}
 
 	def Iterable<LDto> dtos(LTypedPackage pkg) {
-		pkg.types.filter[it instanceof LDto].map[it as LDto].filter[it.wrappedType != null];
+		pkg.types.filter[it instanceof LDto].map[it as LDto].filter[it.wrappedType instanceof LEntity];
 	}
 
 }

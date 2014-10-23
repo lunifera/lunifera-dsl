@@ -16,6 +16,7 @@ package org.lunifera.dsl.semantic.entity.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -244,6 +245,11 @@ public class LBeanItemProvider extends LClassItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(LunTypesPackage.Literals.LTYPE__ANNOTATION_INFO,
+				 LunEntityFactory.eINSTANCE.createLBeanToEntityReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LTYPE__ANNOTATION_INFO,
 				 LunEntityFactory.eINSTANCE.createLOperation()));
 
 		newChildDescriptors.add
@@ -260,6 +266,11 @@ public class LBeanItemProvider extends LClassItemProvider {
 			(createChildParameter
 				(LunEntityPackage.Literals.LBEAN__FEATURES,
 				 LunEntityFactory.eINSTANCE.createLBeanReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__FEATURES,
+				 LunEntityFactory.eINSTANCE.createLBeanToEntityReference()));
 
 		newChildDescriptors.add
 			(createChildParameter

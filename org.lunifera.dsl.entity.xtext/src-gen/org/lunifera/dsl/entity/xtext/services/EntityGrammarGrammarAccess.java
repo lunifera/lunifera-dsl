@@ -963,55 +963,65 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOppositeLBeanReferenceLFQNParserRuleCall_2_0_1_5_1_0_1 = (RuleCall)cOppositeLBeanReferenceCrossReference_2_0_1_5_1_0.eContents().get(1);
 		private final Keyword cSemicolonKeyword_2_0_2 = (Keyword)cGroup_2_0.eContents().get(2);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
-		private final Action cLBeanAttributeAnnotationInfoAction_2_1_0 = (Action)cGroup_2_1.eContents().get(0);
-		private final Alternatives cAlternatives_2_1_1 = (Alternatives)cGroup_2_1.eContents().get(1);
-		private final Group cGroup_2_1_1_0 = (Group)cAlternatives_2_1_1.eContents().get(0);
-		private final Assignment cTransientAssignment_2_1_1_0_0 = (Assignment)cGroup_2_1_1_0.eContents().get(0);
-		private final Keyword cTransientTransientKeyword_2_1_1_0_0_0 = (Keyword)cTransientAssignment_2_1_1_0_0.eContents().get(0);
-		private final Assignment cTypeAssignment_2_1_1_0_1 = (Assignment)cGroup_2_1_1_0.eContents().get(1);
-		private final CrossReference cTypeLScalarTypeCrossReference_2_1_1_0_1_0 = (CrossReference)cTypeAssignment_2_1_1_0_1.eContents().get(0);
-		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_1_1_0_1_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_1_1_0_1_0.eContents().get(1);
-		private final Assignment cNameAssignment_2_1_1_0_2 = (Assignment)cGroup_2_1_1_0.eContents().get(2);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_1_0_2_0 = (RuleCall)cNameAssignment_2_1_1_0_2.eContents().get(0);
-		private final Group cGroup_2_1_1_1 = (Group)cAlternatives_2_1_1.eContents().get(1);
-		private final Alternatives cAlternatives_2_1_1_1_0 = (Alternatives)cGroup_2_1_1_1.eContents().get(0);
-		private final Keyword cVarKeyword_2_1_1_1_0_0 = (Keyword)cAlternatives_2_1_1_1_0.eContents().get(0);
-		private final Assignment cIdAssignment_2_1_1_1_0_1 = (Assignment)cAlternatives_2_1_1_1_0.eContents().get(1);
-		private final Keyword cIdIdKeyword_2_1_1_1_0_1_0 = (Keyword)cIdAssignment_2_1_1_1_0_1.eContents().get(0);
-		private final Assignment cVersionAssignment_2_1_1_1_0_2 = (Assignment)cAlternatives_2_1_1_1_0.eContents().get(2);
-		private final Keyword cVersionVersionKeyword_2_1_1_1_0_2_0 = (Keyword)cVersionAssignment_2_1_1_1_0_2.eContents().get(0);
-		private final Assignment cTypeAssignment_2_1_1_1_1 = (Assignment)cGroup_2_1_1_1.eContents().get(1);
-		private final CrossReference cTypeLScalarTypeCrossReference_2_1_1_1_1_0 = (CrossReference)cTypeAssignment_2_1_1_1_1.eContents().get(0);
-		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_1_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_1_1_1_1_0.eContents().get(1);
-		private final Assignment cMultiplicityAssignment_2_1_1_1_2 = (Assignment)cGroup_2_1_1_1.eContents().get(2);
-		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_1_1_1_2_0 = (RuleCall)cMultiplicityAssignment_2_1_1_1_2.eContents().get(0);
-		private final Assignment cNameAssignment_2_1_1_1_3 = (Assignment)cGroup_2_1_1_1.eContents().get(3);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_1_1_3_0 = (RuleCall)cNameAssignment_2_1_1_1_3.eContents().get(0);
-		private final Keyword cSemicolonKeyword_2_1_1_1_4 = (Keyword)cGroup_2_1_1_1.eContents().get(4);
+		private final Action cLBeanToEntityReferenceAnnotationInfoAction_2_1_0 = (Action)cGroup_2_1.eContents().get(0);
+		private final Keyword cEntityRefKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cTypeAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final CrossReference cTypeLEntityCrossReference_2_1_2_0 = (CrossReference)cTypeAssignment_2_1_2.eContents().get(0);
+		private final RuleCall cTypeLEntityIDTerminalRuleCall_2_1_2_0_1 = (RuleCall)cTypeLEntityCrossReference_2_1_2_0.eContents().get(1);
+		private final Assignment cNameAssignment_2_1_3 = (Assignment)cGroup_2_1.eContents().get(3);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_3_0 = (RuleCall)cNameAssignment_2_1_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2_1_4 = (Keyword)cGroup_2_1.eContents().get(4);
 		private final Group cGroup_2_2 = (Group)cAlternatives_2.eContents().get(2);
-		private final Action cLOperationAnnotationInfoAction_2_2_0 = (Action)cGroup_2_2.eContents().get(0);
-		private final Group cGroup_2_2_1 = (Group)cGroup_2_2.eContents().get(1);
-		private final Keyword cDefKeyword_2_2_1_0 = (Keyword)cGroup_2_2_1.eContents().get(0);
-		private final Assignment cTypeAssignment_2_2_1_1 = (Assignment)cGroup_2_2_1.eContents().get(1);
-		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_2_2_1_1_0 = (RuleCall)cTypeAssignment_2_2_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_2_2_1_2 = (Assignment)cGroup_2_2_1.eContents().get(2);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_2_1_2_0 = (RuleCall)cNameAssignment_2_2_1_2.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2_2_1_3 = (Keyword)cGroup_2_2_1.eContents().get(3);
-		private final Group cGroup_2_2_1_4 = (Group)cGroup_2_2_1.eContents().get(4);
-		private final Assignment cParamsAssignment_2_2_1_4_0 = (Assignment)cGroup_2_2_1_4.eContents().get(0);
-		private final RuleCall cParamsFullJvmFormalParameterParserRuleCall_2_2_1_4_0_0 = (RuleCall)cParamsAssignment_2_2_1_4_0.eContents().get(0);
-		private final Group cGroup_2_2_1_4_1 = (Group)cGroup_2_2_1_4.eContents().get(1);
-		private final Keyword cCommaKeyword_2_2_1_4_1_0 = (Keyword)cGroup_2_2_1_4_1.eContents().get(0);
-		private final Assignment cParamsAssignment_2_2_1_4_1_1 = (Assignment)cGroup_2_2_1_4_1.eContents().get(1);
-		private final RuleCall cParamsFullJvmFormalParameterParserRuleCall_2_2_1_4_1_1_0 = (RuleCall)cParamsAssignment_2_2_1_4_1_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2_2_1_5 = (Keyword)cGroup_2_2_1.eContents().get(5);
-		private final Assignment cBodyAssignment_2_2_1_6 = (Assignment)cGroup_2_2_1.eContents().get(6);
-		private final RuleCall cBodyXExpressionParserRuleCall_2_2_1_6_0 = (RuleCall)cBodyAssignment_2_2_1_6.eContents().get(0);
+		private final Action cLBeanAttributeAnnotationInfoAction_2_2_0 = (Action)cGroup_2_2.eContents().get(0);
+		private final Alternatives cAlternatives_2_2_1 = (Alternatives)cGroup_2_2.eContents().get(1);
+		private final Group cGroup_2_2_1_0 = (Group)cAlternatives_2_2_1.eContents().get(0);
+		private final Assignment cTransientAssignment_2_2_1_0_0 = (Assignment)cGroup_2_2_1_0.eContents().get(0);
+		private final Keyword cTransientTransientKeyword_2_2_1_0_0_0 = (Keyword)cTransientAssignment_2_2_1_0_0.eContents().get(0);
+		private final Assignment cTypeAssignment_2_2_1_0_1 = (Assignment)cGroup_2_2_1_0.eContents().get(1);
+		private final CrossReference cTypeLScalarTypeCrossReference_2_2_1_0_1_0 = (CrossReference)cTypeAssignment_2_2_1_0_1.eContents().get(0);
+		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_2_1_0_1_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_2_1_0_1_0.eContents().get(1);
+		private final Assignment cNameAssignment_2_2_1_0_2 = (Assignment)cGroup_2_2_1_0.eContents().get(2);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_2_1_0_2_0 = (RuleCall)cNameAssignment_2_2_1_0_2.eContents().get(0);
+		private final Group cGroup_2_2_1_1 = (Group)cAlternatives_2_2_1.eContents().get(1);
+		private final Alternatives cAlternatives_2_2_1_1_0 = (Alternatives)cGroup_2_2_1_1.eContents().get(0);
+		private final Keyword cVarKeyword_2_2_1_1_0_0 = (Keyword)cAlternatives_2_2_1_1_0.eContents().get(0);
+		private final Assignment cIdAssignment_2_2_1_1_0_1 = (Assignment)cAlternatives_2_2_1_1_0.eContents().get(1);
+		private final Keyword cIdIdKeyword_2_2_1_1_0_1_0 = (Keyword)cIdAssignment_2_2_1_1_0_1.eContents().get(0);
+		private final Assignment cVersionAssignment_2_2_1_1_0_2 = (Assignment)cAlternatives_2_2_1_1_0.eContents().get(2);
+		private final Keyword cVersionVersionKeyword_2_2_1_1_0_2_0 = (Keyword)cVersionAssignment_2_2_1_1_0_2.eContents().get(0);
+		private final Assignment cTypeAssignment_2_2_1_1_1 = (Assignment)cGroup_2_2_1_1.eContents().get(1);
+		private final CrossReference cTypeLScalarTypeCrossReference_2_2_1_1_1_0 = (CrossReference)cTypeAssignment_2_2_1_1_1.eContents().get(0);
+		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_2_1_1_1_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_2_1_1_1_0.eContents().get(1);
+		private final Assignment cMultiplicityAssignment_2_2_1_1_2 = (Assignment)cGroup_2_2_1_1.eContents().get(2);
+		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_2_1_1_2_0 = (RuleCall)cMultiplicityAssignment_2_2_1_1_2.eContents().get(0);
+		private final Assignment cNameAssignment_2_2_1_1_3 = (Assignment)cGroup_2_2_1_1.eContents().get(3);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_2_1_1_3_0 = (RuleCall)cNameAssignment_2_2_1_1_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2_2_1_1_4 = (Keyword)cGroup_2_2_1_1.eContents().get(4);
+		private final Group cGroup_2_3 = (Group)cAlternatives_2.eContents().get(3);
+		private final Action cLOperationAnnotationInfoAction_2_3_0 = (Action)cGroup_2_3.eContents().get(0);
+		private final Group cGroup_2_3_1 = (Group)cGroup_2_3.eContents().get(1);
+		private final Keyword cDefKeyword_2_3_1_0 = (Keyword)cGroup_2_3_1.eContents().get(0);
+		private final Assignment cTypeAssignment_2_3_1_1 = (Assignment)cGroup_2_3_1.eContents().get(1);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_2_3_1_1_0 = (RuleCall)cTypeAssignment_2_3_1_1.eContents().get(0);
+		private final Assignment cNameAssignment_2_3_1_2 = (Assignment)cGroup_2_3_1.eContents().get(2);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_3_1_2_0 = (RuleCall)cNameAssignment_2_3_1_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_3_1_3 = (Keyword)cGroup_2_3_1.eContents().get(3);
+		private final Group cGroup_2_3_1_4 = (Group)cGroup_2_3_1.eContents().get(4);
+		private final Assignment cParamsAssignment_2_3_1_4_0 = (Assignment)cGroup_2_3_1_4.eContents().get(0);
+		private final RuleCall cParamsFullJvmFormalParameterParserRuleCall_2_3_1_4_0_0 = (RuleCall)cParamsAssignment_2_3_1_4_0.eContents().get(0);
+		private final Group cGroup_2_3_1_4_1 = (Group)cGroup_2_3_1_4.eContents().get(1);
+		private final Keyword cCommaKeyword_2_3_1_4_1_0 = (Keyword)cGroup_2_3_1_4_1.eContents().get(0);
+		private final Assignment cParamsAssignment_2_3_1_4_1_1 = (Assignment)cGroup_2_3_1_4_1.eContents().get(1);
+		private final RuleCall cParamsFullJvmFormalParameterParserRuleCall_2_3_1_4_1_1_0 = (RuleCall)cParamsAssignment_2_3_1_4_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_3_1_5 = (Keyword)cGroup_2_3_1.eContents().get(5);
+		private final Assignment cBodyAssignment_2_3_1_6 = (Assignment)cGroup_2_3_1.eContents().get(6);
+		private final RuleCall cBodyXExpressionParserRuleCall_2_3_1_6_0 = (RuleCall)cBodyAssignment_2_3_1_6.eContents().get(0);
 		
 		//BeanFeature returns entity::LBeanFeature:
 		//	{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
 		//	cascading?="cascade"? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
-		//	opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanAttribute.annotationInfo=current}
+		//	opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanToEntityReference.annotationInfo=current} "entityRef"
+		//	type=[entity::LEntity] name=ValidIDWithKeywords ";" | {entity::LBeanAttribute.annotationInfo=current}
 		//	(transient?="transient" type=[LScalarType] name=ValidIDWithKeywords | ("var" | id?="id" | version?="version")
 		//	type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";") |
 		//	{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
@@ -1020,11 +1030,12 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
 		//cascading?="cascade"? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
-		//opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanAttribute.annotationInfo=current} (transient?="transient"
-		//type=[LScalarType] name=ValidIDWithKeywords | ("var" | id?="id" | version?="version") type=[LScalarType]
-		//multiplicity=Multiplicity? name=ValidIDWithKeywords ";") | {entity::LOperation.annotationInfo=current} ("def"
-		//type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (","
-		//params+=FullJvmFormalParameter)*)? ")" body=XExpression))
+		//opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanToEntityReference.annotationInfo=current} "entityRef"
+		//type=[entity::LEntity] name=ValidIDWithKeywords ";" | {entity::LBeanAttribute.annotationInfo=current}
+		//(transient?="transient" type=[LScalarType] name=ValidIDWithKeywords | ("var" | id?="id" | version?="version")
+		//type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";") |
+		//{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
+		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression))
 		public Group getGroup() { return cGroup; }
 
 		//{entity::LBeanFeature}
@@ -1038,7 +1049,8 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//{entity::LBeanReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LBean]
 		//multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[entity::LBeanReference|LFQN])?) ";" |
-		//{entity::LBeanAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords |
+		//{entity::LBeanToEntityReference.annotationInfo=current} "entityRef" type=[entity::LEntity] name=ValidIDWithKeywords ";"
+		//| {entity::LBeanAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords |
 		//("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";") |
 		//{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
 		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression)
@@ -1103,144 +1115,171 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//";"
 		public Keyword getSemicolonKeyword_2_0_2() { return cSemicolonKeyword_2_0_2; }
 
-		//{entity::LBeanAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords |
-		//("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";")
+		//{entity::LBeanToEntityReference.annotationInfo=current} "entityRef" type=[entity::LEntity] name=ValidIDWithKeywords ";"
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
+		//{entity::LBeanToEntityReference.annotationInfo=current}
+		public Action getLBeanToEntityReferenceAnnotationInfoAction_2_1_0() { return cLBeanToEntityReferenceAnnotationInfoAction_2_1_0; }
+
+		//"entityRef"
+		public Keyword getEntityRefKeyword_2_1_1() { return cEntityRefKeyword_2_1_1; }
+
+		//type=[entity::LEntity]
+		public Assignment getTypeAssignment_2_1_2() { return cTypeAssignment_2_1_2; }
+
+		//[entity::LEntity]
+		public CrossReference getTypeLEntityCrossReference_2_1_2_0() { return cTypeLEntityCrossReference_2_1_2_0; }
+
+		//ID
+		public RuleCall getTypeLEntityIDTerminalRuleCall_2_1_2_0_1() { return cTypeLEntityIDTerminalRuleCall_2_1_2_0_1; }
+
+		//name=ValidIDWithKeywords
+		public Assignment getNameAssignment_2_1_3() { return cNameAssignment_2_1_3; }
+
+		//ValidIDWithKeywords
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_1_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_1_3_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_2_1_4() { return cSemicolonKeyword_2_1_4; }
+
+		//{entity::LBeanAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords |
+		//("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";")
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
 		//{entity::LBeanAttribute.annotationInfo=current}
-		public Action getLBeanAttributeAnnotationInfoAction_2_1_0() { return cLBeanAttributeAnnotationInfoAction_2_1_0; }
+		public Action getLBeanAttributeAnnotationInfoAction_2_2_0() { return cLBeanAttributeAnnotationInfoAction_2_2_0; }
 
 		//transient?="transient" type=[LScalarType] name=ValidIDWithKeywords | ("var" | id?="id" | version?="version")
 		//type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";"
-		public Alternatives getAlternatives_2_1_1() { return cAlternatives_2_1_1; }
+		public Alternatives getAlternatives_2_2_1() { return cAlternatives_2_2_1; }
 
 		//transient?="transient" type=[LScalarType] name=ValidIDWithKeywords
-		public Group getGroup_2_1_1_0() { return cGroup_2_1_1_0; }
+		public Group getGroup_2_2_1_0() { return cGroup_2_2_1_0; }
 
 		//transient?="transient"
-		public Assignment getTransientAssignment_2_1_1_0_0() { return cTransientAssignment_2_1_1_0_0; }
+		public Assignment getTransientAssignment_2_2_1_0_0() { return cTransientAssignment_2_2_1_0_0; }
 
 		//"transient"
-		public Keyword getTransientTransientKeyword_2_1_1_0_0_0() { return cTransientTransientKeyword_2_1_1_0_0_0; }
+		public Keyword getTransientTransientKeyword_2_2_1_0_0_0() { return cTransientTransientKeyword_2_2_1_0_0_0; }
 
 		//type=[LScalarType]
-		public Assignment getTypeAssignment_2_1_1_0_1() { return cTypeAssignment_2_1_1_0_1; }
+		public Assignment getTypeAssignment_2_2_1_0_1() { return cTypeAssignment_2_2_1_0_1; }
 
 		//[LScalarType]
-		public CrossReference getTypeLScalarTypeCrossReference_2_1_1_0_1_0() { return cTypeLScalarTypeCrossReference_2_1_1_0_1_0; }
+		public CrossReference getTypeLScalarTypeCrossReference_2_2_1_0_1_0() { return cTypeLScalarTypeCrossReference_2_2_1_0_1_0; }
 
 		//ID
-		public RuleCall getTypeLScalarTypeIDTerminalRuleCall_2_1_1_0_1_0_1() { return cTypeLScalarTypeIDTerminalRuleCall_2_1_1_0_1_0_1; }
+		public RuleCall getTypeLScalarTypeIDTerminalRuleCall_2_2_1_0_1_0_1() { return cTypeLScalarTypeIDTerminalRuleCall_2_2_1_0_1_0_1; }
 
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_1_1_0_2() { return cNameAssignment_2_1_1_0_2; }
+		public Assignment getNameAssignment_2_2_1_0_2() { return cNameAssignment_2_2_1_0_2; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_1_1_0_2_0() { return cNameValidIDWithKeywordsParserRuleCall_2_1_1_0_2_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_2_1_0_2_0() { return cNameValidIDWithKeywordsParserRuleCall_2_2_1_0_2_0; }
 
 		//("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";"
-		public Group getGroup_2_1_1_1() { return cGroup_2_1_1_1; }
+		public Group getGroup_2_2_1_1() { return cGroup_2_2_1_1; }
 
 		//"var" | id?="id" | version?="version"
-		public Alternatives getAlternatives_2_1_1_1_0() { return cAlternatives_2_1_1_1_0; }
+		public Alternatives getAlternatives_2_2_1_1_0() { return cAlternatives_2_2_1_1_0; }
 
 		//"var"
-		public Keyword getVarKeyword_2_1_1_1_0_0() { return cVarKeyword_2_1_1_1_0_0; }
+		public Keyword getVarKeyword_2_2_1_1_0_0() { return cVarKeyword_2_2_1_1_0_0; }
 
 		//id?="id"
-		public Assignment getIdAssignment_2_1_1_1_0_1() { return cIdAssignment_2_1_1_1_0_1; }
+		public Assignment getIdAssignment_2_2_1_1_0_1() { return cIdAssignment_2_2_1_1_0_1; }
 
 		//"id"
-		public Keyword getIdIdKeyword_2_1_1_1_0_1_0() { return cIdIdKeyword_2_1_1_1_0_1_0; }
+		public Keyword getIdIdKeyword_2_2_1_1_0_1_0() { return cIdIdKeyword_2_2_1_1_0_1_0; }
 
 		//version?="version"
-		public Assignment getVersionAssignment_2_1_1_1_0_2() { return cVersionAssignment_2_1_1_1_0_2; }
+		public Assignment getVersionAssignment_2_2_1_1_0_2() { return cVersionAssignment_2_2_1_1_0_2; }
 
 		//"version"
-		public Keyword getVersionVersionKeyword_2_1_1_1_0_2_0() { return cVersionVersionKeyword_2_1_1_1_0_2_0; }
+		public Keyword getVersionVersionKeyword_2_2_1_1_0_2_0() { return cVersionVersionKeyword_2_2_1_1_0_2_0; }
 
 		//type=[LScalarType]
-		public Assignment getTypeAssignment_2_1_1_1_1() { return cTypeAssignment_2_1_1_1_1; }
+		public Assignment getTypeAssignment_2_2_1_1_1() { return cTypeAssignment_2_2_1_1_1; }
 
 		//[LScalarType]
-		public CrossReference getTypeLScalarTypeCrossReference_2_1_1_1_1_0() { return cTypeLScalarTypeCrossReference_2_1_1_1_1_0; }
+		public CrossReference getTypeLScalarTypeCrossReference_2_2_1_1_1_0() { return cTypeLScalarTypeCrossReference_2_2_1_1_1_0; }
 
 		//ID
-		public RuleCall getTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_1_0_1() { return cTypeLScalarTypeIDTerminalRuleCall_2_1_1_1_1_0_1; }
+		public RuleCall getTypeLScalarTypeIDTerminalRuleCall_2_2_1_1_1_0_1() { return cTypeLScalarTypeIDTerminalRuleCall_2_2_1_1_1_0_1; }
 
 		//multiplicity=Multiplicity?
-		public Assignment getMultiplicityAssignment_2_1_1_1_2() { return cMultiplicityAssignment_2_1_1_1_2; }
+		public Assignment getMultiplicityAssignment_2_2_1_1_2() { return cMultiplicityAssignment_2_2_1_1_2; }
 
 		//Multiplicity
-		public RuleCall getMultiplicityMultiplicityParserRuleCall_2_1_1_1_2_0() { return cMultiplicityMultiplicityParserRuleCall_2_1_1_1_2_0; }
+		public RuleCall getMultiplicityMultiplicityParserRuleCall_2_2_1_1_2_0() { return cMultiplicityMultiplicityParserRuleCall_2_2_1_1_2_0; }
 
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_1_1_1_3() { return cNameAssignment_2_1_1_1_3; }
+		public Assignment getNameAssignment_2_2_1_1_3() { return cNameAssignment_2_2_1_1_3; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_1_1_1_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_1_1_1_3_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_2_1_1_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_2_1_1_3_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_2_1_1_1_4() { return cSemicolonKeyword_2_1_1_1_4; }
+		public Keyword getSemicolonKeyword_2_2_1_1_4() { return cSemicolonKeyword_2_2_1_1_4; }
 
 		//{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
 		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression)
-		public Group getGroup_2_2() { return cGroup_2_2; }
+		public Group getGroup_2_3() { return cGroup_2_3; }
 
 		//{entity::LOperation.annotationInfo=current}
-		public Action getLOperationAnnotationInfoAction_2_2_0() { return cLOperationAnnotationInfoAction_2_2_0; }
+		public Action getLOperationAnnotationInfoAction_2_3_0() { return cLOperationAnnotationInfoAction_2_3_0; }
 
 		//"def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (","
 		//params+=FullJvmFormalParameter)*)? ")" body=XExpression
-		public Group getGroup_2_2_1() { return cGroup_2_2_1; }
+		public Group getGroup_2_3_1() { return cGroup_2_3_1; }
 
 		//"def"
-		public Keyword getDefKeyword_2_2_1_0() { return cDefKeyword_2_2_1_0; }
+		public Keyword getDefKeyword_2_3_1_0() { return cDefKeyword_2_3_1_0; }
 
 		//type=JvmTypeReference
-		public Assignment getTypeAssignment_2_2_1_1() { return cTypeAssignment_2_2_1_1; }
+		public Assignment getTypeAssignment_2_3_1_1() { return cTypeAssignment_2_3_1_1; }
 
 		//JvmTypeReference
-		public RuleCall getTypeJvmTypeReferenceParserRuleCall_2_2_1_1_0() { return cTypeJvmTypeReferenceParserRuleCall_2_2_1_1_0; }
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_2_3_1_1_0() { return cTypeJvmTypeReferenceParserRuleCall_2_3_1_1_0; }
 
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_2_1_2() { return cNameAssignment_2_2_1_2; }
+		public Assignment getNameAssignment_2_3_1_2() { return cNameAssignment_2_3_1_2; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_2_1_2_0() { return cNameValidIDWithKeywordsParserRuleCall_2_2_1_2_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_3_1_2_0() { return cNameValidIDWithKeywordsParserRuleCall_2_3_1_2_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_2_2_1_3() { return cLeftParenthesisKeyword_2_2_1_3; }
+		public Keyword getLeftParenthesisKeyword_2_3_1_3() { return cLeftParenthesisKeyword_2_3_1_3; }
 
 		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)?
-		public Group getGroup_2_2_1_4() { return cGroup_2_2_1_4; }
+		public Group getGroup_2_3_1_4() { return cGroup_2_3_1_4; }
 
 		//params+=FullJvmFormalParameter
-		public Assignment getParamsAssignment_2_2_1_4_0() { return cParamsAssignment_2_2_1_4_0; }
+		public Assignment getParamsAssignment_2_3_1_4_0() { return cParamsAssignment_2_3_1_4_0; }
 
 		//FullJvmFormalParameter
-		public RuleCall getParamsFullJvmFormalParameterParserRuleCall_2_2_1_4_0_0() { return cParamsFullJvmFormalParameterParserRuleCall_2_2_1_4_0_0; }
+		public RuleCall getParamsFullJvmFormalParameterParserRuleCall_2_3_1_4_0_0() { return cParamsFullJvmFormalParameterParserRuleCall_2_3_1_4_0_0; }
 
 		//("," params+=FullJvmFormalParameter)*
-		public Group getGroup_2_2_1_4_1() { return cGroup_2_2_1_4_1; }
+		public Group getGroup_2_3_1_4_1() { return cGroup_2_3_1_4_1; }
 
 		//","
-		public Keyword getCommaKeyword_2_2_1_4_1_0() { return cCommaKeyword_2_2_1_4_1_0; }
+		public Keyword getCommaKeyword_2_3_1_4_1_0() { return cCommaKeyword_2_3_1_4_1_0; }
 
 		//params+=FullJvmFormalParameter
-		public Assignment getParamsAssignment_2_2_1_4_1_1() { return cParamsAssignment_2_2_1_4_1_1; }
+		public Assignment getParamsAssignment_2_3_1_4_1_1() { return cParamsAssignment_2_3_1_4_1_1; }
 
 		//FullJvmFormalParameter
-		public RuleCall getParamsFullJvmFormalParameterParserRuleCall_2_2_1_4_1_1_0() { return cParamsFullJvmFormalParameterParserRuleCall_2_2_1_4_1_1_0; }
+		public RuleCall getParamsFullJvmFormalParameterParserRuleCall_2_3_1_4_1_1_0() { return cParamsFullJvmFormalParameterParserRuleCall_2_3_1_4_1_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_2_2_1_5() { return cRightParenthesisKeyword_2_2_1_5; }
+		public Keyword getRightParenthesisKeyword_2_3_1_5() { return cRightParenthesisKeyword_2_3_1_5; }
 
 		//body=XExpression
-		public Assignment getBodyAssignment_2_2_1_6() { return cBodyAssignment_2_2_1_6; }
+		public Assignment getBodyAssignment_2_3_1_6() { return cBodyAssignment_2_3_1_6; }
 
 		//XExpression
-		public RuleCall getBodyXExpressionParserRuleCall_2_2_1_6_0() { return cBodyXExpressionParserRuleCall_2_2_1_6_0; }
+		public RuleCall getBodyXExpressionParserRuleCall_2_3_1_6_0() { return cBodyXExpressionParserRuleCall_2_3_1_6_0; }
 	}
 
 	public class EntityInheritanceStrategyElements extends AbstractParserRuleElementFinder {
@@ -1662,7 +1701,8 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//BeanFeature returns entity::LBeanFeature:
 	//	{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
 	//	cascading?="cascade"? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
-	//	opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanAttribute.annotationInfo=current}
+	//	opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanToEntityReference.annotationInfo=current} "entityRef"
+	//	type=[entity::LEntity] name=ValidIDWithKeywords ";" | {entity::LBeanAttribute.annotationInfo=current}
 	//	(transient?="transient" type=[LScalarType] name=ValidIDWithKeywords | ("var" | id?="id" | version?="version")
 	//	type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";") |
 	//	{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("

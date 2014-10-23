@@ -150,6 +150,15 @@ public interface LunEntityFactory extends EFactory {
 	LBeanReference createLBeanReference();
 
 	/**
+	 * Returns a new object of class '<em>LBean To Entity Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LBean To Entity Reference</em>'.
+	 * @generated
+	 */
+	LBeanToEntityReference createLBeanToEntityReference();
+
+	/**
 	 * Returns a new object of class '<em>LIndex</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
