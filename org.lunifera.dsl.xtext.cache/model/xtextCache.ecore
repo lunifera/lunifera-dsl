@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://www.lunifera.org/xtext/cache/v1" nsPrefix="model">
+  <eClassifiers xsi:type="ecore:EClass" name="XCCacheContent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelAssociation" eType="#//XCJvmModelAssociation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="membersInfo" upperBound="-1"
+        eType="#//XCMemberInfo" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XCJvmModelAssociation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceToTargets" upperBound="-1"
+        eType="#//XCSourceToTarget" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetToSources" upperBound="-1"
+        eType="#//XCTargetToSource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="localContainers" upperBound="-1"
+        eType="#//XCLogicalContainer" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XCSourceToTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XCTargetToSource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XCLogicalContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XCMemberInfo">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="member" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

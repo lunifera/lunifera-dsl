@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated xtextCache -->
+      <package
+            uri="http://www.lunifera.org/xtext/cache/v1"
+            class="org.lunifera.dsl.xtext.cache.model.XtextCachePackage"
+            genModel="model/xtextCache2.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated xtextCache -->
+      <package
+            uri="http://www.eclipse.org/xtext/common/JavaVMTypes"
+            class="types.TypesPackage"
+            genModel="model/xtextCache2.genmodel"/>
+   </extension>
+
+</plugin>
