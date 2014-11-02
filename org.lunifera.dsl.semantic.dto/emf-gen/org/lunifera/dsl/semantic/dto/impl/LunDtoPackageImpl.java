@@ -619,8 +619,8 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 
 		initEClass(lDtoEClass, LDto.class, "LDto", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLDto_Features(), this.getLDtoFeature(), null, "features", null, 0, -1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLDto_SuperType(), this.getLDto(), this.getLDto_SubTypes(), "superType", null, 0, 1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLDto_SubTypes(), this.getLDto(), this.getLDto_SuperType(), "subTypes", null, 0, -1, LDto.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDto_SuperType(), this.getLDto(), this.getLDto_SubTypes(), "superType", null, 0, 1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDto_SubTypes(), this.getLDto(), this.getLDto_SuperType(), "subTypes", null, 0, -1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDto_WrappedType(), theLunTypesPackage.getLType(), null, "wrappedType", null, 0, 1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(lDtoEClass, this.getOperationsList(), "getOperations", 0, 1, !IS_UNIQUE, IS_ORDERED);

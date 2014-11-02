@@ -77,7 +77,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * @see #setSuperType(LDto)
 	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDto_SuperType()
 	 * @see org.lunifera.dsl.semantic.dto.LDto#getSubTypes
-	 * @model opposite="subTypes" resolveProxies="false"
+	 * @model opposite="subTypes"
 	 * @generated
 	 */
 	LDto getSuperType();
@@ -105,7 +105,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * @return the value of the '<em>Sub Types</em>' reference list.
 	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDto_SubTypes()
 	 * @see org.lunifera.dsl.semantic.dto.LDto#getSuperType
-	 * @model opposite="superType" transient="true"
+	 * @model opposite="superType"
 	 * @generated
 	 */
 	EList<LDto> getSubTypes();

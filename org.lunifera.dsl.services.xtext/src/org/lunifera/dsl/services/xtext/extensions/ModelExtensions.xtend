@@ -9,7 +9,7 @@
  * 		Florian Pirchner - Initial implementation
  */
 package org.lunifera.dsl.services.xtext.extensions
-
+ 
 import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
@@ -397,7 +397,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def boolean basedOnEntity(LDto dto) {
-		dto.wrappedType != null
+		dto.wrappedType != null && dto.wrappedType instanceof LEntity
 	}
 	
 	def Iterable<LDtoAbstractAttribute> collectAllAttributes(LDto dto){

@@ -43,10 +43,10 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	@Inject extension EntityTypesBuilder;
 	@Inject extension ModelExtensions;
 	@Inject TypeReferences references
-
+ 
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(enumX)) return;
-
+ 
 		acceptor.accept(enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)).initializeLater [
 			fileHeader = (enumX.eContainer as LTypedPackage).documentation
 			documentation = enumX.documentation
@@ -154,6 +154,9 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(entity)) return;
+		
+		println("executing inferrer for " + entity.eResource.URI + ":  " + entity.name)
+		
 		acceptor.accept(entity.toJvmType).initializeLater [
 			
 			var LAttribute idAttribute = null

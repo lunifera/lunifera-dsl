@@ -32,9 +32,9 @@ public class DtoImportedNamespaceAwareLocalScopeProvider extends
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
 		List<ImportNormalizer> temp = super.getImplicitImports(ignoreCase);
 
-		temp.add(new ImportNormalizer(qualifiedNameConverter
-				.toQualifiedName("org.lunifera.dsl.common.datatypes"), true,
-				ignoreCase));
+//		temp.add(new ImportNormalizer(qualifiedNameConverter
+//				.toQualifiedName("org.lunifera.dsl.common.datatypes"), true,
+//				ignoreCase));
 
 		return temp;
 	}

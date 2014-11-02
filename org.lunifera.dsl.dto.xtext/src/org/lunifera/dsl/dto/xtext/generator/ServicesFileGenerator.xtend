@@ -13,6 +13,7 @@ package org.lunifera.dsl.dto.xtext.generator
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.entity.LEntity
 
 /**
  *  This generator automatically creates a generic .dtos-file from a given entity model.
@@ -50,7 +51,8 @@ class ServicesFileGenerator {
 	}
 
 	def Iterable<LDto> dtos(LTypedPackage pkg) {
-		pkg.types.filter[it instanceof LDto].map[it as LDto].filter[it.wrappedType != null];
+		pkg.types.filter[it instanceof LDto].map[it as LDto].filter[
+			wrappedType != null && wrappedType instanceof LEntity];
 	}
 
 }

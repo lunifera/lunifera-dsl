@@ -19,6 +19,7 @@ import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
@@ -32,6 +33,8 @@ import org.lunifera.dsl.dto.xtext.scope.DtoImportedNamespaceAwareLocalScopeProvi
 import org.lunifera.dsl.dto.xtext.scope.DtoScopeProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoQualifiedNameProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoValueConverterService;
+import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator;
+import org.lunifera.dsl.xtext.cache.impl.ICache;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -112,6 +115,18 @@ public class DtoGrammarRuntimeModule extends
 	
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return DtoValueConverterService.class;
+	}
+	
+	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
+		return CacheAwareJvmModelAssociator.class;
+	}
+	
+	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+		return org.lunifera.dsl.xtext.cache.resource.CachingResource.class;
+	}
+
+	public Class<? extends ICache> bindIChache() {
+		return org.lunifera.dsl.xtext.cache.impl.Cache.class;
 	}
 
 }

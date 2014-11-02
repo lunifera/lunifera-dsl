@@ -1,0 +1,7 @@
+package org.lunifera.dsl.entity.datatypes.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.dsl.entity.datatypes.dtos.*;
+	import org.lunifera.dsl.entity.datatypes.dtos.dtos.*; 
+	
+}

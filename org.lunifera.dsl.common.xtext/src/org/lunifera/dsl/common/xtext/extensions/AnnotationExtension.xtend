@@ -103,7 +103,7 @@ class AnnotationExtension {
 		annRef.explicitValues += value
 
 		// create the enum type
-		val declaredType = references.findDeclaredType(typeof(Boolean), context) as JvmDeclaredType
+		val declaredType = references.findDeclaredType(annRef.annotation.qualifiedName, context) as JvmDeclaredType
 
 		// create the operation
 		val JvmOperation op = typesFactory.createJvmOperation
@@ -125,7 +125,7 @@ class AnnotationExtension {
 		annRef.explicitValues += value
 
 		// create the enum type
-		val declaredType = references.findDeclaredType(typeof(String), context) as JvmDeclaredType
+		val declaredType = references.findDeclaredType(annRef.annotation.qualifiedName, context) as JvmDeclaredType
 
 		// create the operation
 		val JvmOperation op = typesFactory.createJvmOperation
@@ -154,7 +154,7 @@ class AnnotationExtension {
 		annRef.explicitValues += value
 
 		// create the enum type
-		val declaredType = references.findDeclaredType(typeof(Integer), context) as JvmDeclaredType
+		val declaredType = references.findDeclaredType(annRef.annotation.qualifiedName, context) as JvmDeclaredType
 
 		// create the operation
 		val JvmOperation op = typesFactory.createJvmOperation
@@ -177,7 +177,7 @@ class AnnotationExtension {
 		annRef.explicitValues += value
 
 		// create the enum type
-		val declaredType = references.findDeclaredType(typeof(JvmAnnotationReference), context) as JvmDeclaredType
+		val declaredType = references.findDeclaredType(annRef.annotation.qualifiedName, context) as JvmDeclaredType
 
 		// create the operation
 		val JvmOperation op = typesFactory.createJvmOperation
@@ -200,7 +200,7 @@ class AnnotationExtension {
 		annRef.explicitValues += value
 
 		// create the enum type
-		val declaredType = references.findDeclaredType(typeof(JvmAnnotationReference), context) as JvmDeclaredType
+		val declaredType = references.findDeclaredType(annRef.annotation.qualifiedName, context) as JvmDeclaredType
 
 		// create the operation
 		val JvmOperation op = typesFactory.createJvmOperation

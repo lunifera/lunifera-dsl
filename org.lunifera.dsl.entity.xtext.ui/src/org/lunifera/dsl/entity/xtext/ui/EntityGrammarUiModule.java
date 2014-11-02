@@ -45,4 +45,13 @@ public class EntityGrammarUiModule extends AbstractEntityGrammarUiModule {
 		return EntityJdtTypeProviderFactory.class;
 	}
 
+	// public Class<? extends IResourceSetInitializer>
+	// bindIResourceSetInitializer() {
+	// return
+	// org.eclipse.xtext.common.types.access.jdt.JvmTypesAwareResourceSetInitializer.class;
+	// }
+
+	// public Class<? extends IResourceSetProvider> bindIResourceSetProvider() {
+	// return JvmTypesAwareResourceSetProvider.class;
+	// }
 }

@@ -8,7 +8,6 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-
 package org.lunifera.dsl.entity.xtext.generator
 
 import com.google.inject.Inject

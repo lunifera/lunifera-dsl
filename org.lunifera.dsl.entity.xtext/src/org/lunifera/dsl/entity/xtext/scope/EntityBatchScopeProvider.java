@@ -12,6 +12,7 @@ package org.lunifera.dsl.entity.xtext.scope;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.scoping.IScope;
 import org.lunifera.dsl.common.xtext.scope.CommonBatchScopeProvider;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
@@ -21,15 +22,14 @@ import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LIndex;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
-/**
- * This class contains custom scoping description.
- * 
- * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping on
- * how and when to use it
- * 
- */
+import com.google.inject.Inject;
+
 @SuppressWarnings("restriction")
 public class EntityBatchScopeProvider extends CommonBatchScopeProvider {
+
+	@Inject
+	private IResourceDescriptions resourceDescriptions;
+
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
 		if (reference == LunEntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE) {
@@ -37,8 +37,10 @@ public class EntityBatchScopeProvider extends CommonBatchScopeProvider {
 		} else if (reference == LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
 			return new BeanRefOppositeScope((LBeanReference) context);
 		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {
-			return new DatatypesScope(super.getScope(context, reference),
-					(LAttribute) context, reference);
+			return new BatchDatatypesScope((LAttribute) context, reference,
+					resourceDescriptions);
+//			return new DatatypesScope(super.getScope(context, reference),
+//					(LAttribute) context, reference);
 		} else if (reference == LunEntityPackage.Literals.LINDEX__FEATURES) {
 			return new IndexScope((LIndex) context);
 		}

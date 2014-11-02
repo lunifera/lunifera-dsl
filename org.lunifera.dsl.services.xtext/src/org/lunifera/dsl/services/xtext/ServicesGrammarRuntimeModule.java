@@ -7,6 +7,7 @@ import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
@@ -18,6 +19,7 @@ import org.lunifera.dsl.services.xtext.scope.ServicesBatchScopeProvider;
 import org.lunifera.dsl.services.xtext.scope.ServicesImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.services.xtext.scope.ServicesScopeProvider;
 import org.lunifera.dsl.services.xtext.valueconverter.ServicesQualifiedNameProvider;
+import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -83,6 +85,10 @@ public class ServicesGrammarRuntimeModule extends
 
 	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
 		return org.lunifera.dsl.services.xtext.generator.OutputConfigurationProvider.class;
+	}
+
+	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
+		return CacheAwareJvmModelAssociator.class;
 	}
 
 }

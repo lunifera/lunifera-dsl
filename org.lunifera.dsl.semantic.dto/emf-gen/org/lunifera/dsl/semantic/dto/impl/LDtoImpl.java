@@ -145,6 +145,23 @@ public class LDtoImpl extends LClassImpl implements LDto {
 	 * @generated
 	 */
 	public LDto getSuperType() {
+		if (superType != null && superType.eIsProxy()) {
+			InternalEObject oldSuperType = (InternalEObject)superType;
+			superType = (LDto)eResolveProxy(oldSuperType);
+			if (superType != oldSuperType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunDtoPackage.LDTO__SUPER_TYPE, oldSuperType, superType));
+			}
+		}
+		return superType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDto basicGetSuperType() {
 		return superType;
 	}
 
@@ -340,7 +357,8 @@ public class LDtoImpl extends LClassImpl implements LDto {
 			case LunDtoPackage.LDTO__FEATURES:
 				return getFeatures();
 			case LunDtoPackage.LDTO__SUPER_TYPE:
-				return getSuperType();
+				if (resolve) return getSuperType();
+				return basicGetSuperType();
 			case LunDtoPackage.LDTO__SUB_TYPES:
 				return getSubTypes();
 			case LunDtoPackage.LDTO__WRAPPED_TYPE:

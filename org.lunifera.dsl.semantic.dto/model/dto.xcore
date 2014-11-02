@@ -36,7 +36,7 @@ import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.common.types.LMultiplicity
 import org.eclipse.xtext.xbase.XStringLiteral
-
+ 
 class LDtoModel {
 	contains LTypedPackage[] packages
 }
@@ -46,8 +46,8 @@ class LDtoModel {
  */
 class LDto extends LClass, LFeaturesHolder, LScalarType {
 	contains LDtoFeature[] features
-	refers local LDto superType opposite subTypes
-	refers transient LDto[] subTypes opposite superType
+	refers LDto superType opposite subTypes
+	refers LDto[] subTypes opposite superType
 	refers LType wrappedType
 	/** 
  	 * Returns all features of type LOperation

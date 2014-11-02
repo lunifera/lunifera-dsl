@@ -27,7 +27,7 @@ import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LDateType
 import java.util.List
 import GenModel
-
+ 
 class LEntityModel {
 	contains LTypedPackage[] packages
 }

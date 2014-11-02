@@ -27,7 +27,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.0,2.7.0)";visibility:=ree
  org.objectweb.asm;bundle-version="3.3.1",
  org.eclipse.jdt.core;bundle-version="3.9.1",
  org.lunifera.xtext.builder.types.bundles,
- org.lunifera.runtime.common;bundle-version="0.7.5"
+ org.lunifera.runtime.common;bundle-version="0.7.5",
+ org.lunifera.dsl.xtext.cache;bundle-version="0.7.5"
 Import-Package: javax.persistence;version="2.1.0",
  org.apache.commons.logging,
  org.apache.log4j

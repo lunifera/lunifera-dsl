@@ -20,7 +20,7 @@ import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
 
-public class LDtoImplCustom extends LDtoImpl {
+public class LAutoInheritDtoImplCustom extends LAutoInheritDtoImpl {
 
 	/**
 	 * Overrides super type to ensure bidirectional proxy resolving
@@ -39,13 +39,14 @@ public class LDtoImplCustom extends LDtoImpl {
 				for (LDto subType : oldSuperEntity.getSubTypes()) {
 					((InternalEObject) superType).eInverseAdd(
 							(InternalEObject) subType,
-							LunDtoPackage.LDTO__SUB_TYPES, LDto.class, null);
+							LunDtoPackage.LAUTO_INHERIT_DTO__SUB_TYPES,
+							LDto.class, null);
 				}
 
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							LunDtoPackage.LDTO__SUPER_TYPE, oldSuperType,
-							superType));
+							LunDtoPackage.LAUTO_INHERIT_DTO__SUPER_TYPE,
+							oldSuperType, superType));
 			}
 		}
 		return superType;
@@ -54,7 +55,7 @@ public class LDtoImplCustom extends LDtoImpl {
 	@Override
 	public EList<LAnnotationDef> getAnnotations() {
 		LAnnotationTarget info = getAnnotationInfo();
-		if(info != null){
+		if (info != null) {
 			return info.getAnnotations();
 		}
 		return new BasicEList<LAnnotationDef>();

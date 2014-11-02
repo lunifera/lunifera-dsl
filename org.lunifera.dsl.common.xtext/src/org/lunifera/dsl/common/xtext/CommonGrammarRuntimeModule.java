@@ -10,6 +10,9 @@
  */
 package org.lunifera.dsl.common.xtext;
 
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
+import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator;
+
 /**
  * Use this class to register components to be used at runtime / without the
  * Equinox extension registry.
@@ -17,4 +20,8 @@ package org.lunifera.dsl.common.xtext;
 public class CommonGrammarRuntimeModule extends
 		org.lunifera.dsl.common.xtext.AbstractCommonGrammarRuntimeModule {
 
+	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
+		return CacheAwareJvmModelAssociator.class;
+	}
+	
 }

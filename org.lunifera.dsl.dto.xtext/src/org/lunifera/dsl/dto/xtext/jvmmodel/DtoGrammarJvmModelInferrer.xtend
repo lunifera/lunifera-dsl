@@ -12,12 +12,15 @@ package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
 import java.io.Serializable
+import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.lib.IMapperAccess
+import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LEnum
@@ -26,12 +29,6 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
-import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
-import org.eclipse.xtext.common.types.JvmField
-import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.common.types.JvmTypeParameterDeclarator
-import org.eclipse.xtext.common.types.JvmWildcardTypeReference
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -207,10 +204,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				val dtoType = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference;
 				dtoType.type = dtoParam
 				if (dto.getSuperType != null) {
-					if (dto.getSuperType.toMapperTypeReference.type != null) {
-						superTypes += references.createTypeRef(dto.getSuperType.toMapperTypeReference.type, dtoType,
-							entityType)
-					}
+					superTypes += dto.getSuperType.toMapperTypeReference(dtoType, entityType)
 				} else {
 					superTypes += references.getTypeForName(typeof(IMapper), dto, dtoType, entityType)
 					members += dto.toField("mapperAccess", references.getTypeForName(typeof(IMapperAccess), dto, null))

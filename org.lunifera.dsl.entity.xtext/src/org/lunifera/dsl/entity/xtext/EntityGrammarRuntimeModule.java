@@ -12,21 +12,25 @@ package org.lunifera.dsl.entity.xtext;
 
 import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
 import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.generator.Generator;
 import org.lunifera.dsl.entity.xtext.generator.OutputConfigurationProvider;
-import org.lunifera.dsl.entity.xtext.jvmmodel.DerivedStateComputer;
 import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
+import org.lunifera.dsl.entity.xtext.linker.EntityLinkingService;
 import org.lunifera.dsl.entity.xtext.scope.EntityBatchScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.serializer.EntityGrammarTransientValueService;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
+import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator;
+import org.lunifera.dsl.xtext.cache.impl.ICache;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -81,10 +85,6 @@ public class EntityGrammarRuntimeModule extends
 		return EntityLinker.class;
 	}
 
-	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
-		return DerivedStateComputer.class;
-	}
-
 	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
 		return Generator.class;
 	}
@@ -96,4 +96,21 @@ public class EntityGrammarRuntimeModule extends
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ITransientValueService> bindSerializerITransientValueService() {
 		return EntityGrammarTransientValueService.class;
 	}
+
+	public Class<? extends ILinkingService> bindILinkingService() {
+		return EntityLinkingService.class;
+	}
+	
+	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
+		return CacheAwareJvmModelAssociator.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+		return org.lunifera.dsl.xtext.cache.resource.CachingResource.class;
+	}
+
+	public Class<? extends ICache> bindIChache() {
+		return org.lunifera.dsl.xtext.cache.impl.Cache.class;
+	}
+
 }

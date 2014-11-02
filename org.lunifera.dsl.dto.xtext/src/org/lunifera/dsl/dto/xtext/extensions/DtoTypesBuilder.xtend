@@ -802,12 +802,12 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		eTypeParam.name = "E"
 		op.typeParameters += eTypeParam
 
-		val dType = typesFactory.createJvmGenericType("D")
+//		val dType = typesFactory.createJvmGenericType("D")
 		val dTypeRef = typesFactory.createJvmParameterizedTypeReference()
-		dTypeRef.type = dType
-		val eType = typesFactory.createJvmGenericType("E")
+		dTypeRef.type = dTypeParam
+//		val eType = typesFactory.createJvmGenericType("E")
 		val eTypeRef = typesFactory.createJvmParameterizedTypeReference()
-		eTypeRef.type = eType
+		eTypeRef.type = eTypeParam
 
 		op.returnType = references.getTypeForName(typeof(IMapper), dto, dTypeRef.cloneWithProxies,
 			eTypeRef.cloneWithProxies)

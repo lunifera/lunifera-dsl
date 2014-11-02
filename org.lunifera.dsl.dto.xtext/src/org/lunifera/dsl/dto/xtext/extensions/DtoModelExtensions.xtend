@@ -433,8 +433,8 @@ class DtoModelExtensions extends ModelExtensions {
 	//		}
 	//		return true
 	//	}
-	def toMapperTypeReference(LType type) {
-		references.getTypeForName(type.toFqnMapperName, type, null)
+	def toMapperTypeReference(LType type, JvmTypeReference... typRefs) {
+		references.getTypeForName(type.toFqnMapperName, type, typRefs)
 	}
 
 	def toMapperTypeReference(LDtoAbstractReference ref) {
