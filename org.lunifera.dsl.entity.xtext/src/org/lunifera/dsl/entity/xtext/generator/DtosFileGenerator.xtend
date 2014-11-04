@@ -12,6 +12,7 @@
 package org.lunifera.dsl.entity.xtext.generator
 
 import com.google.inject.Inject
+import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
@@ -20,12 +21,13 @@ import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LDateType
 import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LImport
+import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.entity.LBean
-import org.lunifera.dsl.semantic.entity.LEntity
-import org.lunifera.dsl.semantic.entity.LEntityFeature
 import org.lunifera.dsl.semantic.entity.LBeanFeature
-import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.entity.LEntity
+import org.lunifera.dsl.semantic.entity.LEntityAttribute
+import org.lunifera.dsl.semantic.entity.LEntityFeature
 import org.lunifera.dsl.semantic.entity.LEntityReference
 
 /**
@@ -44,13 +46,13 @@ class DtosFileGenerator {
 		«pkg.toDocu»
 		package «pkg.toDtoName» {
 			
-			/* Imports the original entity package */
-			import «pkg.name».*;
-			
-			«FOR LImport lImport : pkg.imports»
-				«lImport.toDocu»
-				import «lImport.importedNamespace»;
-			«ENDFOR»
+			/* Imports the required artifacts */
+			«pkg.toImports»
+		
+«««			«FOR LImport lImport : pkg.imports»
+«««				«lImport.toDocu»
+«««				import «lImport.importedNamespace»;
+«««			«ENDFOR»
 		
 			«FOR LDataType lDatatype : pkg.datatypes»
 				«lDatatype.toDocu»
@@ -95,6 +97,53 @@ class DtosFileGenerator {
 		return '''
 			autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
 		'''
+	}
+
+	def String toImports(LTypedPackage pkg) {
+		val List<String> imports = newArrayList()
+		
+		for(LImport lImport : pkg.imports){
+			imports += lImport.importedNamespace
+		}
+		 
+		for(EObject element : pkg.eAllContents.toIterable){
+			switch(element){
+				 LEntity: {
+					val LTypedPackage lPkg = element.eContainer as LTypedPackage;
+					imports += lPkg.name + "." + (element as LEntity).name
+				}
+				 LBean: {
+					val LTypedPackage lPkg = element.eContainer as LTypedPackage;
+					imports += lPkg.name + "." + (element as LBean).name
+				}
+				 LEntityReference: {
+					val LEntityReference lRef = element as LEntityReference;
+					val LEntity lEntity = lRef.type
+					val LTypedPackage lPkg = lEntity.eContainer as LTypedPackage;
+					imports += lPkg.name + "." + lEntity.name
+					imports += lPkg.name + ".dtos." + lEntity.name + "Dto"
+				}
+				 LEntityAttribute: {
+					val LEntityAttribute lRef = element as LEntityAttribute;
+					if(lRef.type instanceof LBean){
+						val LBean lBean = lRef.type as LBean
+						val LTypedPackage lPkg = lBean.eContainer as LTypedPackage;
+						imports += lPkg.name + "." + lBean.name
+						imports += lPkg.name + ".dtos." + lBean.name + "Dto"
+					}
+				}
+			}			
+		}
+		
+		val StringBuilder b = new StringBuilder
+		for(String imported : imports){
+			b.append("import ")
+			b.append(imported)
+			b.append(";")
+			b.append("\n")
+		}
+		
+		return b.toString
 	}
 
 	def toBeanDeclaration(LBean lBean) {

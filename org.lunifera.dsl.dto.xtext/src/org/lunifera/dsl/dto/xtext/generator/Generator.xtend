@@ -66,10 +66,10 @@ class Generator extends JvmModelGenerator {
 			fsa.generateFile(dto.toServiceComponentName, "OSGI-INF", dto.serviceContent);
 		}
 
-		input.allContents.filter[it instanceof LTypedPackage].map[it as LTypedPackage].forEach [
-			fsa.deleteFile(toServiceName);
-			fsa.generateFile(toServiceName, "Services-DSL", it.content);
-		]
+//		input.allContents.filter[it instanceof LTypedPackage].map[it as LTypedPackage].forEach [
+//			fsa.deleteFile(toServiceName);
+//			fsa.generateFile(toServiceName, "Services-DSL", it.content);
+//		]
 	}
 
 	def toServiceComponentName(LDto dto) {

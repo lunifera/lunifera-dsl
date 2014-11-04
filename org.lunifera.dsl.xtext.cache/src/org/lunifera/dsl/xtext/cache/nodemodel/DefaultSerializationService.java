@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.core.runtime.Platform;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
@@ -68,7 +70,6 @@ import org.lunifera.dsl.xtext.cache.model.XCJvmModelAssociation;
 import org.lunifera.dsl.xtext.cache.model.XCMemberInfo;
 import org.lunifera.dsl.xtext.cache.model.XtextCacheFactory;
 import org.lunifera.dsl.xtext.cache.resource.CachingResource;
-import org.lunifera.dsl.xtext.cache.resource.IndexResolvingURIConstants;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Version;
 import org.slf4j.Logger;
@@ -112,6 +113,9 @@ public class DefaultSerializationService implements ISerializationService {
 	protected void deserializeEMFModel(Resource resource, InputStream in)
 			throws IOException {
 		if (isCapableEMFVersion()) {
+
+			LOGGER.info("Start deserializing " + resource.getURI());
+
 			EObjectInputStream objectInputStream = new BinaryResourceImpl.EObjectInputStream(
 					in, ImmutableMap.of());
 			objectInputStream.loadResource(resource);
@@ -232,13 +236,14 @@ public class DefaultSerializationService implements ISerializationService {
 	}
 
 	public void write(XtextResource resource, OutputStream emfOut,
-			OutputStream nodeModelOut) throws IOException {
+			OutputStream nodeModelOut) throws IOException,
+			SerializeVetoException {
 		serializeEMF(resource, emfOut);
 		serializeNodeModel(resource, nodeModelOut);
 	}
 
 	protected void serializeEMF(XtextResource resource, OutputStream out)
-			throws IOException {
+			throws IOException, SerializeVetoException {
 		if (isCapableEMFVersion()) {
 			EObjectOutputStream objectOutputStream = new BinaryResourceImpl.EObjectOutputStream(
 					out, ImmutableMap.of());
@@ -250,12 +255,16 @@ public class DefaultSerializationService implements ISerializationService {
 			EList<EObject> contents = cachingResource
 					.getContentsWithDerivedState();
 
-			EObject result = cachingResource.getContents().get(1);
-			if (result instanceof JvmGenericType) {
-				JvmGenericType type = (JvmGenericType) result;
-				for (JvmTypeReference typeRef : type.getSuperTypes()) {
-					if (typeRef instanceof JvmUnknownTypeReference) {
-						System.out.println("hoppala");
+			Iterator<EObject> contentsIter = cachingResource.getAllContents();
+			while (contentsIter.hasNext()) {
+				EObject result = contentsIter.next();
+				if (result instanceof JvmGenericType) {
+					JvmGenericType type = (JvmGenericType) result;
+
+				} else if (result instanceof JvmField) {
+					JvmField field = (JvmField) result;
+					if (field.getSimpleName() == null) {
+						throw new SerializeVetoException("Huhu");
 					}
 				}
 			}
@@ -265,7 +274,7 @@ public class DefaultSerializationService implements ISerializationService {
 			} catch (SerializeVetoException e) {
 				// No serializiation MUST be done
 				LOGGER.info(e.getMessage());
-				return;
+				throw e;
 			}
 
 			CacheAwareJvmModelAssociator.Adapter adapter = (Adapter) EcoreUtil
@@ -561,12 +570,15 @@ public class DefaultSerializationService implements ISerializationService {
 						// create new JvmGenericTypeProxy
 						InternalEObject internal = (InternalEObject) TypesFactory.eINSTANCE
 								.createJvmGenericType();
-						URI newProxyURI = URI.createURI(String.format(
-								"%s/%s#%s",
-								IndexResolvingURIConstants.BASE_URI.toString(),
-								typeRef.getQualifiedName(),
-								typeRef.getQualifiedName()));
-						internal.eSetProxyURI(newProxyURI);
+						Resource thisResource = typeRef.eResource();
+						if (thisResource instanceof TypeResource) {
+							System.out.println("uuuuups");
+						}
+						URI thisResourceResourceURI = thisResource.getURI();
+						thisResourceResourceURI = thisResourceResourceURI
+								.appendFragment("unresolvedtypeslink:"
+										+ typeRef.getQualifiedName().toString());
+						internal.eSetProxyURI(thisResourceResourceURI);
 						// set proxy to generic type
 						newTypeRef.setType((JvmType) internal);
 
@@ -585,15 +597,19 @@ public class DefaultSerializationService implements ISerializationService {
 						if (type instanceof JvmTypeParameter) {
 							JvmTypeParameter typeParam = (JvmTypeParameter) type;
 							typeParam.getQualifiedName();
-							for(JvmTypeConstraint constraint : typeParam.getConstraints()){
-								JvmTypeReference constRef = constraint.getTypeReference();
-								if(constRef == null){
+							for (JvmTypeConstraint constraint : typeParam
+									.getConstraints()) {
+								JvmTypeReference constRef = constraint
+										.getTypeReference();
+								if (constRef == null) {
 									continue;
 								}
-								if(constRef instanceof JvmUnknownTypeReference){
+								if (constRef instanceof JvmUnknownTypeReference) {
 									if (constRef.getQualifiedName() == null
-											|| constRef.getQualifiedName().equals("")) {
-										// never ever serialize unknown type references!
+											|| constRef.getQualifiedName()
+													.equals("")) {
+										// never ever serialize unknown type
+										// references!
 										throw new SerializeVetoException(
 												String.format(
 														"JvmUnknownTypeReference detected for %s::%s",
@@ -606,32 +622,53 @@ public class DefaultSerializationService implements ISerializationService {
 									// create new JvmGenericTypeProxy
 									InternalEObject internal = (InternalEObject) TypesFactory.eINSTANCE
 											.createJvmGenericType();
-									URI newProxyURI = URI.createURI(String.format(
-											"%s/%s#%s",
-											IndexResolvingURIConstants.BASE_URI.toString(),
-											constRef.getQualifiedName(),
-											constRef.getQualifiedName()));
-									internal.eSetProxyURI(newProxyURI);
+									Resource thisResource = constRef
+											.eResource();
+									if (thisResource instanceof TypeResource) {
+										System.out.println("uuuuups");
+									}
+									URI thisResourceURI = thisResource.getURI();
+									thisResourceURI = thisResourceURI
+											.appendFragment("unresolvedtypeslink:"
+													+ constRef
+															.getQualifiedName()
+															.toString());
+									internal.eSetProxyURI(thisResourceURI);
 									// set proxy to generic type
 									newTypeRef.setType((JvmType) internal);
 
 									constraint.setTypeReference(newTypeRef);
-								}else{
+								} else {
 									JvmParameterizedTypeReference newTypeRef = (JvmParameterizedTypeReference) TypesFactory.eINSTANCE
 											.createJvmParameterizedTypeReference();
 									// create new JvmGenericTypeProxy
 									InternalEObject internal = (InternalEObject) TypesFactory.eINSTANCE
 											.createJvmGenericType();
 									try {
-										URI newProxyURI = URI.createURI(String.format(
-												"%s/%s#%s",
-												IndexResolvingURIConstants.BASE_URI
-														.toString(), constRef
-														.getQualifiedName(), constRef
-														.getQualifiedName()));
-										internal.eSetProxyURI(newProxyURI);
+										// URI newProxyURI =
+										// URI.createURI(String.format(
+										// "%s/%s#%s",
+										// IndexResolvingURIConstants.BASE_URI
+										// .toString(), constRef
+										// .getQualifiedName(), constRef
+										// .getQualifiedName()));
+										JvmType parameterType = constRef
+												.getType();
+										Resource derivedStateResource = parameterType
+												.eResource();
+										if (derivedStateResource instanceof TypeResource) {
+											System.out.println("uuuuups");
+										}
+										URI derivedStateResourceURI = derivedStateResource
+												.getURI();
+										derivedStateResourceURI = derivedStateResourceURI
+												.appendFragment("typeslink:"
+														+ constRef
+																.getQualifiedName()
+																.toString());
+										internal.eSetProxyURI(derivedStateResourceURI);
 										newTypeRef.setType((JvmType) internal);
-										
+
 										constraint.setTypeReference(newTypeRef);
 									} catch (NullPointerException e) {
 										throw e;
@@ -644,13 +681,23 @@ public class DefaultSerializationService implements ISerializationService {
 							// create new JvmGenericTypeProxy
 							InternalEObject internal = (InternalEObject) TypesFactory.eINSTANCE
 									.createJvmGenericType();
-							URI newProxyURI = URI.createURI(String.format(
-									"%s/%s#%s",
-									IndexResolvingURIConstants.BASE_URI
-											.toString(), typeRef
-											.getQualifiedName(), typeRef
-											.getQualifiedName()));
-							internal.eSetProxyURI(newProxyURI);
+
+							if (typeRef.getType().eIsProxy()) {
+								return;
+							}
+
+							Resource derivedStateResource = typeRef.getType()
+									.eResource();
+							if (derivedStateResource instanceof TypeResource) {
+								System.out.println("uuuuups");
+							}
+							URI derivedStateResourceURI = derivedStateResource
+									.getURI();
+							derivedStateResourceURI = derivedStateResourceURI
+									.appendFragment("typeslink:"
+											+ typeRef.getQualifiedName()
+													.toString());
+							internal.eSetProxyURI(derivedStateResourceURI);
 							newTypeRef.setType((JvmType) internal);
 							if (reference.isMany()) {
 								@SuppressWarnings("unchecked")

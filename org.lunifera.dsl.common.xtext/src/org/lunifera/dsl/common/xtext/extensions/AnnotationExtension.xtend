@@ -47,9 +47,10 @@ class AnnotationExtension {
 		annRef.explicitValues += value
 
 		// create the enum type
-		val declaredType = references.findDeclaredType(enums.get(0).declaringClass, context) as JvmDeclaredType
+		val declaredType = references.findDeclaredType(annRef.annotation.qualifiedName, context) as JvmDeclaredType
 		for (Enum<?> enumxx : enums) {
-
+			val enumType = references.findDeclaredType(enums.get(0).declaringClass, context) as JvmDeclaredType
+			
 			// create the operation
 			val JvmOperation op = typesFactory.createJvmOperation
 			op.setSimpleName(name)
@@ -58,7 +59,7 @@ class AnnotationExtension {
 
 			// create the literal
 			val JvmEnumerationLiteral literal = typesFactory.createJvmEnumerationLiteral
-			literal.setDeclaringType(declaredType)
+			literal.setDeclaringType(enumType)
 			literal.setSimpleName(enumxx.name)
 			value.values += literal
 		}
@@ -76,7 +77,8 @@ class AnnotationExtension {
 		annRef.explicitValues += value
 
 		// create the enum type
-		val declaredType = references.findDeclaredType(enumX.declaringClass, context) as JvmDeclaredType
+		val declaredType = references.findDeclaredType(annRef.annotation.qualifiedName, context) as JvmDeclaredType
+		val enumType = references.findDeclaredType(enumX.declaringClass, context) as JvmDeclaredType
 
 		// create the operation
 		val JvmOperation op = typesFactory.createJvmOperation
@@ -86,7 +88,7 @@ class AnnotationExtension {
 
 		// create the literal
 		val JvmEnumerationLiteral literal = typesFactory.createJvmEnumerationLiteral
-		literal.setDeclaringType(declaredType)
+		literal.setDeclaringType(enumType)
 		literal.setSimpleName(enumX.name)
 		value.values += literal
 

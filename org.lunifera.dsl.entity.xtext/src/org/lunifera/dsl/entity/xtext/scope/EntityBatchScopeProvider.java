@@ -37,10 +37,10 @@ public class EntityBatchScopeProvider extends CommonBatchScopeProvider {
 		} else if (reference == LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
 			return new BeanRefOppositeScope((LBeanReference) context);
 		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {
-			return new BatchDatatypesScope((LAttribute) context, reference,
-					resourceDescriptions);
-//			return new DatatypesScope(super.getScope(context, reference),
-//					(LAttribute) context, reference);
+			// return new BatchDatatypesScope((LAttribute) context, reference,
+			// resourceDescriptions);
+			return new DatatypesScope(super.getScope(context, reference),
+					(LAttribute) context, reference);
 		} else if (reference == LunEntityPackage.Literals.LINDEX__FEATURES) {
 			return new IndexScope((LIndex) context);
 		}

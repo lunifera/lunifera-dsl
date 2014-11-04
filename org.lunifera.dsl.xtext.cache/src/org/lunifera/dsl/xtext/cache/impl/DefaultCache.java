@@ -23,6 +23,7 @@ import java.util.zip.GZIPOutputStream;
 import org.eclipse.xtext.nodemodel.serialization.SerializationUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+import org.lunifera.dsl.xtext.cache.nodemodel.DefaultSerializationService.SerializeVetoException;
 import org.lunifera.dsl.xtext.cache.nodemodel.ISerializationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +38,8 @@ import com.google.inject.Inject;
  */
 
 public class DefaultCache implements ICache {
-	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultCache.class);
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(DefaultCache.class);
 
 	private ICacheIndex index;
 	private final ISerializationService serializationService;
@@ -47,19 +49,22 @@ public class DefaultCache implements ICache {
 	private File cacheLocation;
 
 	@Inject
-	public DefaultCache(ISerializationService serializationService, IReplacementStrategy replacementStrategy) {
+	public DefaultCache(ISerializationService serializationService,
+			IReplacementStrategy replacementStrategy) {
 		this.serializationService = serializationService;
 		this.replacementStrategy = replacementStrategy;
 	}
 
-	public XtextResource load(XtextResource xr, byte[] content, String encoding, boolean requireNodeModel)
-			throws IOException {
+	public XtextResource load(XtextResource xr, byte[] content,
+			String encoding, boolean requireNodeModel) throws IOException {
 		checkProperlyInitialized();
 
 		try {
-			return loadResourceFromCache(xr, content, encoding, requireNodeModel);
+			return loadResourceFromCache(xr, content, encoding,
+					requireNodeModel);
 		} catch (IOException e) {
-			LOGGER.error("Could not load " + xr.getURI() + " from cache: clearing resource cache", e);
+			LOGGER.error("Could not load " + xr.getURI()
+					+ " from cache: clearing resource cache", e);
 			try {
 				clear();
 				return null;
@@ -72,11 +77,13 @@ public class DefaultCache implements ICache {
 
 	protected void checkProperlyInitialized() {
 		if (cacheLocation == null) {
-			throw new IllegalStateException("The cache's location has not yet been configured.");
+			throw new IllegalStateException(
+					"The cache's location has not yet been configured.");
 		}
 	}
 
-	public void add(final XtextResource xr, byte[] content, String encoding) throws IOException {
+	public void add(final XtextResource xr, byte[] content, String encoding)
+			throws IOException {
 		checkProperlyInitialized();
 
 		if (xr == null) {
@@ -91,13 +98,16 @@ public class DefaultCache implements ICache {
 		}
 
 		if (xr.getParseResult().getRootNode() == null) {
-			LOGGER.error("Unable to add resource with uri: " + xr.getURI() + " since it has no node model");
+			LOGGER.error("Unable to add resource with uri: " + xr.getURI()
+					+ " since it has no node model");
 		}
 
-		final DigestInfo digestInfo = CacheUtil.calcDigestInfo(new ByteArrayInputStream(content), encoding);
+		final DigestInfo digestInfo = CacheUtil.calcDigestInfo(
+				new ByteArrayInputStream(content), encoding);
 
 		IUnitOfWork<Object, IReadWriteLockedCacheIndex> addEntryWork = new IUnitOfWork<Object, IReadWriteLockedCacheIndex>() {
-			public Object exec(IReadWriteLockedCacheIndex rwlIndex) throws Exception {
+			public Object exec(IReadWriteLockedCacheIndex rwlIndex)
+					throws Exception {
 				if (rwlIndex.get(digestInfo.getDigest()) != null) {
 					return null;
 				}
@@ -105,14 +115,14 @@ public class DefaultCache implements ICache {
 				ICacheEntry cacheEntry = rwlIndex.createNewEntry(digestInfo);
 				try {
 					if (replacementStrategy.canFit(cacheEntry)) {
-						ImmutableList<ICacheEntry> toRemove = replacementStrategy.selectReplacementCandidates(index,
-								cacheEntry);
+						ImmutableList<ICacheEntry> toRemove = replacementStrategy
+								.selectReplacementCandidates(index, cacheEntry);
 						removeEntries(rwlIndex, toRemove);
 						writeEntryContent(xr, cacheEntry);
 						rwlIndex.add(cacheEntry);
 						CacheUtil.write(rwlIndex, getIndexFile(), LOGGER);
 					}
-				} catch (IOException e) {
+				} catch (Exception e) {
 					CacheUtil.deleteFileOrDirectory(getEntryDir(cacheEntry));
 					rwlIndex.remove(cacheEntry.getDigest());
 					LOGGER.error("Could not add an entry to the cache: " + e);
@@ -158,11 +168,13 @@ public class DefaultCache implements ICache {
 		}
 
 		if (!getContentDirectory().exists()) {
-			throw new IOException("There is no content directory for the model cache");
+			throw new IOException(
+					"There is no content directory for the model cache");
 		}
 	}
 
-	protected DataInputStream getIndexStream() throws FileNotFoundException, IOException {
+	protected DataInputStream getIndexStream() throws FileNotFoundException,
+			IOException {
 		FileInputStream fis = null;
 
 		try {
@@ -185,30 +197,37 @@ public class DefaultCache implements ICache {
 		return new File(cacheLocation, "index.ser");
 	}
 
-	protected XtextResource loadResourceFromCache(final XtextResource xr, final byte[] content, final String encoding,
+	protected XtextResource loadResourceFromCache(final XtextResource xr,
+			final byte[] content, final String encoding,
 			final boolean requireNodeModel) throws IOException {
-		final DigestInfo digestInfo = calcDigestInfo(new ByteArrayInputStream(content), encoding);
+		final DigestInfo digestInfo = calcDigestInfo(new ByteArrayInputStream(
+				content), encoding);
 
 		IUnitOfWork<XtextResource, IReadLockedCacheIndex> loadResourceWork = new IUnitOfWork<XtextResource, IReadLockedCacheIndex>() {
-			public XtextResource exec(IReadLockedCacheIndex rlIndex) throws Exception {
+			public XtextResource exec(IReadLockedCacheIndex rlIndex)
+					throws Exception {
 				ICacheEntry cacheEntry = rlIndex.get(digestInfo.getDigest());
 
 				if (cacheEntry != null) {
-					ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(content);
-					String completeContent = SerializationUtil.getCompleteContent(encoding, byteArrayInputStream);
+					ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(
+							content);
+					String completeContent = SerializationUtil
+							.getCompleteContent(encoding, byteArrayInputStream);
 
-					return handleHit(xr, cacheEntry, completeContent, requireNodeModel);
+					return handleHit(xr, cacheEntry, completeContent,
+							requireNodeModel);
 				}
 
 				return null;
 
 			}
 		};
-		
+
 		return index.readOnly(loadResourceWork);
 	}
 
-	private void removeEntries(IReadWriteLockedCacheIndex rwlIndex, ImmutableList<ICacheEntry> toRemove) throws IOException {
+	private void removeEntries(IReadWriteLockedCacheIndex rwlIndex,
+			ImmutableList<ICacheEntry> toRemove) throws IOException {
 		for (ICacheEntry entry : toRemove) {
 			LOGGER.info("Removing entry for digest " + entry.getDigest());
 			rwlIndex.remove(entry.getDigest());
@@ -216,8 +235,9 @@ public class DefaultCache implements ICache {
 		}
 	}
 
-	protected void writeEntryContent(XtextResource resource, ICacheEntry cacheEntry) throws IOException,
-			FileNotFoundException {
+	protected void writeEntryContent(XtextResource resource,
+			final ICacheEntry cacheEntry) throws IOException,
+			FileNotFoundException, SerializeVetoException {
 		File entryDir = getEntryDir(cacheEntry);
 		File emfFile = getEMFFile(cacheEntry);
 		File nodeModelFile = getNodeModelFile(cacheEntry);
@@ -233,6 +253,7 @@ public class DefaultCache implements ICache {
 			nodeOut = getOutputStream(nodeModelFile);
 
 			serializationService.write(resource, emfOut, nodeOut);
+
 		} finally {
 			CacheUtil.tryClose(emfOut, LOGGER);
 			CacheUtil.tryClose(nodeOut, LOGGER);
@@ -251,23 +272,28 @@ public class DefaultCache implements ICache {
 	}
 
 	protected File getNodeModelFile(ICacheEntry cacheEntry) {
-		return combinePaths(getContentDirectory(), cacheEntry.getRelativeNodeModelFilePath());
+		return combinePaths(getContentDirectory(),
+				cacheEntry.getRelativeNodeModelFilePath());
 	}
 
 	protected File getEMFFile(ICacheEntry cacheEntry) {
-		return combinePaths(getContentDirectory(), cacheEntry.getRelativeEMFFilePath());
+		return combinePaths(getContentDirectory(),
+				cacheEntry.getRelativeEMFFilePath());
 	}
 
 	protected File getEntryDir(ICacheEntry cacheEntry) {
-		return combinePaths(getContentDirectory(), cacheEntry.getRelativeCacheEntryDirPath());
+		return combinePaths(getContentDirectory(),
+				cacheEntry.getRelativeCacheEntryDirPath());
 	}
 
-	protected XtextResource handleHit(XtextResource xr, ICacheEntry cacheEntry, String completeContent,
-			boolean requireNodeModel) throws IOException {
+	protected XtextResource handleHit(XtextResource xr, ICacheEntry cacheEntry,
+			String completeContent, boolean requireNodeModel)
+			throws IOException {
 		return loadResource(xr, cacheEntry, completeContent, requireNodeModel);
 	}
 
-	protected XtextResource loadResource(XtextResource xr, ICacheEntry cacheEntry, String completeContent,
+	protected XtextResource loadResource(XtextResource xr,
+			ICacheEntry cacheEntry, String completeContent,
 			boolean requireNodeModel) throws IOException {
 		File emfFile = getEMFFile(cacheEntry);
 		File nodeFile = getNodeModelFile(cacheEntry);
@@ -279,7 +305,8 @@ public class DefaultCache implements ICache {
 			emfIn = getInputStream(emfFile);
 			nodeIn = requireNodeModel ? getInputStream(nodeFile) : null;
 
-			XtextResource resource = serializationService.loadResource(xr, emfIn, nodeIn, completeContent);
+			XtextResource resource = serializationService.loadResource(xr,
+					emfIn, nodeIn, completeContent);
 
 			return resource;
 		} finally {

@@ -211,6 +211,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			case LDiscriminatorType::INTEGER:
 				return DiscriminatorType::INTEGER
 			default: {
+				throw new IllegalArgumentException(type + " is not allowed!")
 			}
 		}
 	}

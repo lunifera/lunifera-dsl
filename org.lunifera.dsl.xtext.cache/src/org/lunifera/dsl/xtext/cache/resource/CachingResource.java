@@ -8,10 +8,17 @@ import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.common.types.access.TypeResource;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.serialization.SerializationUtil;
 import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.util.ReplaceRegion;
@@ -35,6 +42,9 @@ public class CachingResource extends BatchLinkableResource {
 
 	@Inject
 	private ICache cache;
+
+	@Inject
+	private IResourceDescriptions descriptions;
 
 	public CachingResource() {
 		super();
@@ -75,7 +85,7 @@ public class CachingResource extends BatchLinkableResource {
 
 		IParseResult oldParseResult = getParseResult();
 		unload();
-		
+
 		/*
 		 * Copy is necessary since we need the input multiple times (for digest)
 		 */
@@ -97,6 +107,70 @@ public class CachingResource extends BatchLinkableResource {
 		if (options != null
 				&& Boolean.TRUE.equals(options.get(OPTION_RESOLVE_ALL)))
 			EcoreUtil.resolveAll(this);
+	}
+
+	@Override
+	public EObject getEObject(String uriFragment) {
+		if (uriFragment.startsWith("typeslink")) {
+			String typeFQN = normalizeTypeName(uriFragment.replace(
+					"typeslink:", ""));
+			for (EObject content : getContents()) {
+				if (content instanceof JvmType) {
+					JvmType type = (JvmType) content;
+					if (type.getQualifiedName().equals(typeFQN)) {
+						return type;
+					}
+				}
+			}
+			return null;
+		} else if (uriFragment.startsWith("unresolvedtypeslink")) {
+			String typeFQN = normalizeTypeName(uriFragment.replace(
+					"unresolvedtypeslink:", ""));
+
+			// first try this resource
+			for (EObject content : getContents()) {
+				if (content instanceof JvmType) {
+					JvmType type = (JvmType) content;
+					if (type.getQualifiedName().equals(typeFQN)) {
+						return type;
+					}
+				}
+			}
+
+			// then try all resources available in resourceSet
+			for (Resource resource : resourceSet.getResources()) {
+				if (resource instanceof TypeResource || resource == this) {
+					continue;
+				}
+				for (EObject content : resource.getContents()) {
+					if (content instanceof JvmType) {
+						JvmType type = (JvmType) content;
+						if (type.getQualifiedName().equals(typeFQN)) {
+							return type;
+						}
+					}
+				}
+			}
+
+			Iterable<IEObjectDescription> temp = descriptions
+					.getExportedObjects(TypesPackage.Literals.JVM_TYPE,
+							QualifiedName.create(typeFQN.split("\\.")), true);
+			if (temp.iterator().hasNext()) {
+				IEObjectDescription desc = temp.iterator().next();
+				return resourceSet.getEObject(desc.getEObjectURI(), true);
+			}
+
+			return null;
+		} else {
+			return super.getEObject(uriFragment);
+		}
+	}
+
+	private String normalizeTypeName(String uriFragment) {
+		if (uriFragment.contains("<")) {
+			uriFragment = uriFragment.substring(0, uriFragment.indexOf("<"));
+		}
+		return uriFragment;
 	}
 
 	@SuppressWarnings("sync-override")
@@ -126,7 +200,7 @@ public class CachingResource extends BatchLinkableResource {
 		} catch (Throwable ee) {
 			LOGGER.error("Could not add resource to cache for uri: " + uri, ee);
 			try {
-				cache.clear();
+				// cache.clear();
 			} catch (Throwable eee) {
 				/* We've done what we could. Ignoring. */
 				LOGGER.error("Failed to clear resource cache", eee);
@@ -164,6 +238,7 @@ public class CachingResource extends BatchLinkableResource {
 				addSyntaxErrors();
 			}
 		} catch (WrappedException e) {
+			LOGGER.error("{}", e);
 			if (resource != null) {
 				resource.getContents().clear();
 				resource.eAdapters().clear();
@@ -232,11 +307,11 @@ public class CachingResource extends BatchLinkableResource {
 	 * @since 2.3
 	 */
 	protected boolean shouldAttemptCacheLoad(Map<?, ?> options) {
-		
-//		if(1==1){
-//			return false;
-//		}
-		
+
+		if (1 == 1) {
+			return false;
+		}
+
 		boolean resourceIsFine = getContents().isEmpty() && resourceSet != null
 				&& uri != null;
 		boolean noCacheVeto = options == null

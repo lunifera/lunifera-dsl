@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.eclipse.xtext.resource.XtextResource;
+import org.lunifera.dsl.xtext.cache.nodemodel.DefaultSerializationService.SerializeVetoException;
 
 import com.google.inject.ImplementedBy;
 
@@ -23,7 +24,7 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(DefaultSerializationService.class)
 public interface ISerializationService {
 	public void write(XtextResource resource, OutputStream emfOut, OutputStream nodeModelOut)
-			throws IOException;
+			throws IOException, SerializeVetoException;
 
 	public XtextResource loadResource(XtextResource xr, InputStream emfIn, InputStream nodeModelIn, String completeContent) throws IOException;
 }

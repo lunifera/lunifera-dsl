@@ -27,7 +27,7 @@ class CommonGrammarJvmModelInferrer extends AbstractModelInferrer {
 	
 	/**
      * Returns true if the resource of the specified object has syntax errors.
-     * This method allows an eary abort of inferring that would cause NPEs because of not loaded 
+     * This method allows an early abort of inferring that would cause NPEs because of not loaded 
      * Ecore proxy instances.
      * Inspired by DefaultFoldingStructureProvider.modelChanged().
      */

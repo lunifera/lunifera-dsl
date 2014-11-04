@@ -44,7 +44,11 @@ public class ProfilingSerializationService extends DefaultSerializationService {
 	@Override
 	protected void serializeEMF(XtextResource resource, OutputStream out) throws IOException {
 		long saveStart = System.nanoTime();
-		super.serializeEMF(resource, out);
+		try {
+			super.serializeEMF(resource, out);
+		} catch (SerializeVetoException e) {
+			e.printStackTrace();
+		}
 		long saveDone = System.nanoTime();
 
 		LOGGER.info("Writing EMF model for " + resource.getURI() + ": " + SerializationUtil.milliDiff(saveStart, saveDone) + " ms");
