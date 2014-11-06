@@ -121,9 +121,9 @@ public class DtoGrammarRuntimeModule extends
 		return CacheAwareJvmModelAssociator.class;
 	}
 	
-	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
-		return org.lunifera.dsl.xtext.cache.resource.CachingResource.class;
-	}
+//	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+//		return org.lunifera.dsl.xtext.cache.resource.CachingResource.class;
+//	}
 
 	public Class<? extends ICache> bindIChache() {
 		return org.lunifera.dsl.xtext.cache.impl.Cache.class;

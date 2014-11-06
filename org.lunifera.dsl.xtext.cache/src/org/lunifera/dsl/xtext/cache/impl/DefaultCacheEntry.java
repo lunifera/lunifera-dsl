@@ -90,6 +90,11 @@ public class DefaultCacheEntry implements ICacheEntry {
 	public File getRelativeEMFFilePath() {
 		return new File(relativeLocation, "emf.ser"); 
 	}
+	
+	@Override
+	public File getRelativeDSFilePath() {
+		return new File(relativeLocation, "ds.ser"); 
+	}
 
 	public File getRelativeNodeModelFilePath() {
 		return new File(relativeLocation, "node.ser");
@@ -102,4 +107,5 @@ public class DefaultCacheEntry implements ICacheEntry {
 	public void updateUsageTime() {
 		lastUsageTime = System.currentTimeMillis(); 
 	}
+
 }

@@ -14,8 +14,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.eclipse.xtext.resource.XtextResource;
 
-/** 
- * @author Mark Christiaens - Initial contribution 
+/**
+ * @author Mark Christiaens - Initial contribution
  * @since 2.3
  */
 public class ReadWriteLockedCache implements ICache {
@@ -28,8 +28,8 @@ public class ReadWriteLockedCache implements ICache {
 		this.lock = new ReentrantReadWriteLock(true);
 	}
 
-	public XtextResource load(XtextResource xr, byte[] content, String encoding, boolean addNodeModel)
-			throws IOException {
+	public ICacheEntry load(XtextResource xr, byte[] content, String encoding,
+			boolean addNodeModel) throws IOException {
 		lock.readLock().lock();
 		try {
 			return delegate.load(xr, content, encoding, addNodeModel);
@@ -57,12 +57,39 @@ public class ReadWriteLockedCache implements ICache {
 		}
 	}
 
-	public void add(XtextResource xr, byte[] content, String encoding) throws IOException {
+	public ICacheEntry add(XtextResource xr, byte[] content, String encoding)
+			throws IOException {
 		lock.writeLock().lock();
 		try {
-			delegate.add(xr, content, encoding);
+			return delegate.add(xr, content, encoding);
 		} finally {
 			lock.writeLock().unlock();
+		}
+	}
+
+	@Override
+	public ICacheEntry addDerivedState(XtextResource xr, ICacheEntry changeEntry)
+			throws IOException {
+
+		lock.readLock().lock();
+		try {
+			return delegate.addDerivedState(xr, changeEntry);
+		} finally {
+			lock.readLock().unlock();
+		}
+
+	}
+
+	@Override
+	public XtextResource loadDS(XtextResource xr, ICacheEntry cacheEntry,
+			String completeContent, boolean requireNodeModel)
+			throws IOException {
+		lock.readLock().lock();
+		try {
+			return delegate.loadDS(xr, cacheEntry, completeContent,
+					requireNodeModel);
+		} finally {
+			lock.readLock().unlock();
 		}
 	}
 

@@ -17,14 +17,18 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.serialization.SerializationUtil;
 import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.resource.IDerivedStateComputer;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.eclipse.xtext.util.TextRegion;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.resource.BatchLinkableResource;
+import org.lunifera.dsl.semantic.common.types.LScalarType;
+import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.xtext.cache.impl.ICache;
+import org.lunifera.dsl.xtext.cache.impl.ICacheEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,8 +50,18 @@ public class CachingResource extends BatchLinkableResource {
 	@Inject
 	private IResourceDescriptions descriptions;
 
+	@Inject(optional = true)
+	private IDerivedStateComputer derivedStateComputer;
+	private ICacheEntry cacheEntry;
+	private boolean installingDerivedState;
+
 	public CachingResource() {
 		super();
+	}
+
+	public void setDerivedStateComputer(IDerivedStateComputer lateInitialization) {
+		super.setDerivedStateComputer(lateInitialization);
+		this.derivedStateComputer = lateInitialization;
 	}
 
 	@Override
@@ -56,20 +70,27 @@ public class CachingResource extends BatchLinkableResource {
 		if (shouldAttemptCacheLoad(options)) {
 			setEncodingFromOptions(options);
 
+			IParseResult oldParseResult = getParseResult();
 			/*
 			 * Copy is necessary since we need the input multiple times (for
 			 * digest)
 			 */
 			byte[] content = SerializationUtil.getCompleteContent(inputStream);
 
-			XtextResource cachedResource = doCacheLoad(content, getEncoding(),
+			cacheEntry = doCacheLoad(content, getEncoding(),
 					shouldLoadNodeModel(options));
-			if (cachedResource == null) {
+			if (cacheEntry == null) {
 				doLoadAndAddToCache(content, getEncoding(), options);
+				if (contents.size() == 0) {
+					System.out.println("hmmm");
+				}
 			} else {
 				LOGGER.info("Resource found in cache: " + getURI());
 			}
-			fullyInitialized = true;
+
+//			if (cacheEntry != null) {
+//				updateInternalState(oldParseResult, getParseResult());
+//			}
 		} else {
 			super.doLoad(inputStream, options);
 		}
@@ -79,35 +100,101 @@ public class CachingResource extends BatchLinkableResource {
 			EcoreUtil.resolveAll(this);
 	}
 
-	protected void doUpdateCacheLoad(InputStream inputStream, Map<?, ?> options)
-			throws IOException {
-		setEncodingFromOptions(options);
-
-		IParseResult oldParseResult = getParseResult();
-		unload();
-
-		/*
-		 * Copy is necessary since we need the input multiple times (for digest)
-		 */
-		byte[] content = SerializationUtil.getCompleteContent(inputStream);
-
-		XtextResource cachedResource = doCacheLoad(content, getEncoding(),
-				shouldLoadNodeModel(options));
-		if (cachedResource == null) {
-			doLoadAndAddToCache(content, getEncoding(), options);
-			fullyInitialized = true;
-		} else {
-			fullyInitialized = true;
-			IParseResult newParseResult = getParseResult();
-			doUpdateInternalState(oldParseResult, newParseResult);
-
-			LOGGER.info("Resource found in cache: " + getURI());
+	public void installDerivedState(boolean preIndexingPhase) {
+		if (!isLoaded)
+			throw new IllegalStateException(
+					"The resource must be loaded, before installDerivedState can be called.");
+		if (!fullyInitialized && !isInitializing) {
+			if (preIndexingPhase) {
+				try {
+					isInitializing = true;
+					if (derivedStateComputer != null)
+						derivedStateComputer.installDerivedState(this,
+								preIndexingPhase);
+					fullyInitialized = true;
+				} finally {
+					isInitializing = false;
+					getCache().clear(this);
+				}
+			} else {
+				installingDerivedState = true;
+				isInitializing = true;
+				try {
+					doAddDerivedStateToCache();
+				} finally {
+					getCache().clear(this);
+					fullyInitialized = true;
+					installingDerivedState = false;
+				}
+			}
 		}
-
-		if (options != null
-				&& Boolean.TRUE.equals(options.get(OPTION_RESOLVE_ALL)))
-			EcoreUtil.resolveAll(this);
 	}
+
+	@SuppressWarnings("sync-override")
+	@Override
+	public EList<EObject> getContents() {
+		synchronized (getLock()) {
+			if (isLoaded && !isLoading && !isInitializing && !isUpdating
+					&& !fullyInitialized && !installingDerivedState) {
+				try {
+					eSetDeliver(false);
+					installDerivedState(false);
+				} finally {
+					eSetDeliver(true);
+				}
+			}
+			return doGetContents();
+		}
+	}
+
+	public void installDerivedStateDirectly() {
+		try {
+			isInitializing = true;
+			if (derivedStateComputer != null)
+				derivedStateComputer.installDerivedState(this, false);
+			fullyInitialized = true;
+		} finally {
+			isInitializing = false;
+			getCache().clear(this);
+		}
+	}
+
+	// protected void doUpdateCacheLoad(InputStream inputStream, Map<?, ?>
+	// options)
+	// throws IOException {
+	// setEncodingFromOptions(options);
+	//
+	// IParseResult oldParseResult = getParseResult();
+	// unload();
+	//
+	// /*
+	// * Copy is necessary since we need the input multiple times (for digest)
+	// */
+	// byte[] content = SerializationUtil.getCompleteContent(inputStream);
+	//
+	// if (content.length == 0) {
+	// System.out.println("ojeeeee");
+	// }
+	//
+	// ICacheEntry cacheEntry = doCacheLoad(content, getEncoding(),
+	// shouldLoadNodeModel(options));
+	// if (cacheEntry == null) {
+	// doLoadAndAddToCache(content, getEncoding(), options);
+	// } else {
+	// // IParseResult newParseResult = getParseResult();
+	// // doUpdateInternalState(oldParseResult, newParseResult);
+	//
+	// LOGGER.info("Resource found in cache: " + getURI());
+	// }
+	//
+	// if (cacheEntry != null) {
+	// updateInternalState(oldParseResult, getParseResult());
+	// }
+	//
+	// if (options != null
+	// && Boolean.TRUE.equals(options.get(OPTION_RESOLVE_ALL)))
+	// EcoreUtil.resolveAll(this);
+	// }
 
 	@Override
 	public EObject getEObject(String uriFragment) {
@@ -118,6 +205,30 @@ public class CachingResource extends BatchLinkableResource {
 				if (content instanceof JvmType) {
 					JvmType type = (JvmType) content;
 					if (type.getQualifiedName().equals(typeFQN)) {
+						return type;
+					}
+				}
+			}
+			return null;
+		} else if (uriFragment.startsWith("luniferareflink")) {
+			String typeFQN = normalizeTypeName(uriFragment.replace(
+					"luniferareflink:", ""));
+			for (EObject content : IteratorExtensions.toIterable(getContents().get(0).eAllContents())) {
+				if (content instanceof LEntity) {
+					LEntity type = (LEntity) content;
+					if (type.getName().equals(typeFQN)) {
+						return type;
+					}
+				}
+			}
+			return null;
+		}  else if (uriFragment.startsWith("luniferaattlink")) {
+			String typeFQN = normalizeTypeName(uriFragment.replace(
+					"luniferaattlink:", ""));
+			for (EObject content : IteratorExtensions.toIterable(getContents().get(0).eAllContents())) {
+				if (content instanceof LScalarType) {
+					LScalarType type = (LScalarType) content;
+					if (type.getName().equals(typeFQN)) {
 						return type;
 					}
 				}
@@ -162,8 +273,13 @@ public class CachingResource extends BatchLinkableResource {
 
 			return null;
 		} else {
-			return super.getEObject(uriFragment);
+			try {
+				return super.getEObject(uriFragment);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		return null;
 	}
 
 	private String normalizeTypeName(String uriFragment) {
@@ -173,22 +289,6 @@ public class CachingResource extends BatchLinkableResource {
 		return uriFragment;
 	}
 
-	@SuppressWarnings("sync-override")
-	public EList<EObject> getContentsWithDerivedState() {
-		synchronized (getLock()) {
-			if (isLoaded && !isInitializing) {
-				try {
-					discardDerivedState();
-					eSetDeliver(false);
-					installDerivedState(false);
-				} finally {
-					eSetDeliver(true);
-				}
-			}
-			return doGetContents();
-		}
-	}
-
 	/**
 	 * @since 2.3
 	 */
@@ -196,7 +296,7 @@ public class CachingResource extends BatchLinkableResource {
 			Map<?, ?> options) throws IOException {
 		super.doLoad(new ByteArrayInputStream(content), options);
 		try {
-			cache.add(this, content, encoding);
+			cacheEntry = cache.add(this, content, encoding);
 		} catch (Throwable ee) {
 			LOGGER.error("Could not add resource to cache for uri: " + uri, ee);
 			try {
@@ -211,14 +311,45 @@ public class CachingResource extends BatchLinkableResource {
 	/**
 	 * @since 2.3
 	 */
-	protected XtextResource doCacheLoad(byte[] content, String encoding,
+	protected void doAddDerivedStateToCache() {
+		try {
+			if (cacheEntry != null) {
+				cache.loadDS(this, cacheEntry, "", true);
+				if (contents.size() <= 1) {
+					cache.addDerivedState(this, cacheEntry);
+				}
+			}
+
+			if (contents == null || contents.size() == 0) {
+				System.out.println("hmmm");
+			}
+
+			fullyInitialized = true;
+		} catch (Throwable ee) {
+
+			LOGGER.error("Could not add resource to cache for uri: " + uri, ee);
+			try {
+				// cache.clear();
+			} catch (Throwable eee) {
+				/* We've done what we could. Ignoring. */
+				LOGGER.error("Failed to clear resource cache", eee);
+			}
+		}
+	}
+
+	/**
+	 * @since 2.3
+	 */
+	protected ICacheEntry doCacheLoad(byte[] content, String encoding,
 			boolean loadNodeModel) throws IOException {
-		XtextResource resource = null;
+		ICacheEntry cacheEntry = null;
 		try {
 			IParseResult oldParseResult = getParseResult();
-			resource = cache.load(this, content, encoding, loadNodeModel);
+			cacheEntry = cache.load(this, content, encoding, loadNodeModel);
 			IParseResult newParseResult = getParseResult();
-
+			if (contents.size() == 0) {
+				System.out.println("hmmm");
+			}
 			clearErrorsAndWarnings();
 
 			if (oldParseResult != null
@@ -232,46 +363,41 @@ public class CachingResource extends BatchLinkableResource {
 				}
 			}
 
-			if (resource != null && loadNodeModel) {
+			if (cacheEntry != null && loadNodeModel) {
 				reattachModificationTracker(getParseResult()
 						.getRootASTElement());
 				addSyntaxErrors();
 			}
 		} catch (WrappedException e) {
 			LOGGER.error("{}", e);
-			if (resource != null) {
-				resource.getContents().clear();
-				resource.eAdapters().clear();
-				resource = null;
-			}
 		}
 
-		return resource;
+		return cacheEntry;
 	}
 
-	/**
-	 * @param oldParseResult
-	 *            the previous parse result that should be detached if
-	 *            necessary.
-	 * @param newParseResult
-	 *            the current parse result that should be attached to the
-	 *            content of this resource
-	 * @since 2.1
-	 */
-	protected void doUpdateInternalState(IParseResult oldParseResult,
-			IParseResult newParseResult) {
-		if (oldParseResult != null
-				&& oldParseResult.getRootASTElement() != null
-				&& oldParseResult.getRootASTElement() != newParseResult
-						.getRootASTElement()) {
-			EObject oldRootAstElement = oldParseResult.getRootASTElement();
-			if (oldRootAstElement != newParseResult.getRootASTElement()) {
-				unload(oldRootAstElement);
-				getContents().remove(oldRootAstElement);
-			}
-		}
-		updateInternalState(newParseResult);
-	}
+	// /**
+	// * @param oldParseResult
+	// * the previous parse result that should be detached if
+	// * necessary.
+	// * @param newParseResult
+	// * the current parse result that should be attached to the
+	// * content of this resource
+	// * @since 2.1
+	// */
+	// protected void doUpdateInternalState(IParseResult oldParseResult,
+	// IParseResult newParseResult) {
+	// if (oldParseResult != null
+	// && oldParseResult.getRootASTElement() != null
+	// && oldParseResult.getRootASTElement() != newParseResult
+	// .getRootASTElement()) {
+	// EObject oldRootAstElement = oldParseResult.getRootASTElement();
+	// if (oldRootAstElement != newParseResult.getRootASTElement()) {
+	// unload(oldRootAstElement);
+	// getContents().remove(oldRootAstElement);
+	// }
+	// }
+	// updateInternalState(newParseResult);
+	// }
 
 	public void update(int offset, int replacedTextLength, String newText) {
 		if (!isLoaded()) {
@@ -280,14 +406,18 @@ public class CachingResource extends BatchLinkableResource {
 		}
 		try {
 			isUpdating = true;
+			IParseResult oldParseResult = getParseResult();
 			ReplaceRegion replaceRegion = new ReplaceRegion(new TextRegion(
 					offset, replacedTextLength), newText);
 			String newContent = insertChangeIntoReplaceRegion(getParseResult()
 					.getRootNode(), replaceRegion);
+			if (newContent == null || newContent.equals("")) {
+				System.out.println("nix gut");
+			}
 			try {
-				unload();
 				doLoad(new ByteArrayInputStream(newContent.getBytes()),
 						getResourceSet().getLoadOptions());
+				// updateInternalState(oldParseResult, getParseResult());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -308,9 +438,9 @@ public class CachingResource extends BatchLinkableResource {
 	 */
 	protected boolean shouldAttemptCacheLoad(Map<?, ?> options) {
 
-		if (1 == 1) {
-			return false;
-		}
+		// if (1 == 1) {
+		// return false;
+		// }
 
 		boolean resourceIsFine = getContents().isEmpty() && resourceSet != null
 				&& uri != null;

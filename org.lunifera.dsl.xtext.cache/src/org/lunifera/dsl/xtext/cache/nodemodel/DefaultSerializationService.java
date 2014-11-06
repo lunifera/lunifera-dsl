@@ -15,7 +15,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.core.runtime.Platform;
@@ -32,10 +31,9 @@ import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl.EObjectInputStream
 import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl.EObjectOutputStream;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.common.types.JvmField;
-import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
@@ -54,8 +52,8 @@ import org.eclipse.xtext.nodemodel.impl.SerializableNodeModel;
 import org.eclipse.xtext.nodemodel.serialization.DeserializationConversionContext;
 import org.eclipse.xtext.nodemodel.serialization.SerializationConversionContext;
 import org.eclipse.xtext.parser.ParseResult;
+import org.eclipse.xtext.resource.CompilerPhases;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.resource.impl.ListBasedDiagnosticConsumer;
 import org.eclipse.xtext.xbase.compiler.CompilationStrategyAdapter;
 import org.eclipse.xtext.xbase.compiler.CompilationTemplateAdapter;
 import org.eclipse.xtext.xbase.compiler.DocumentationAdapter;
@@ -63,6 +61,12 @@ import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.Procedures;
+import org.lunifera.dsl.semantic.common.types.LScalarType;
+import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
+import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LEntityAttribute;
+import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LunEntityFactory;
 import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator;
 import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator.Adapter;
 import org.lunifera.dsl.xtext.cache.model.XCCacheContent;
@@ -93,6 +97,8 @@ public class DefaultSerializationService implements ISerializationService {
 
 	@Inject
 	private ILinker linker;
+	@Inject
+	private CompilerPhases phases;
 
 	public XtextResource loadResource(XtextResource xr, InputStream emfIn,
 			InputStream nodeModelIn, String completeContent) throws IOException {
@@ -105,8 +111,14 @@ public class DefaultSerializationService implements ISerializationService {
 	protected XtextResource loadEMFModel(XtextResource xr, InputStream emfIn)
 			throws IOException {
 		deserializeEMFModel(xr, emfIn);
-		fixupProxies(xr);
+		return xr;
+	}
 
+	@Override
+	public XtextResource loadDerivedState(XtextResource xr, InputStream dsIn,
+			String completeContent) throws IOException {
+		deserializeDSModel(xr, dsIn);
+		fixupProxies(xr);
 		return xr;
 	}
 
@@ -120,18 +132,44 @@ public class DefaultSerializationService implements ISerializationService {
 					in, ImmutableMap.of());
 			objectInputStream.loadResource(resource);
 
-			EObject result = resource.getContents().get(1);
-			if (result instanceof JvmGenericType) {
-				JvmGenericType type = (JvmGenericType) result;
-				for (JvmTypeReference typeRef : type.getSuperTypes()) {
-					if (typeRef instanceof JvmUnknownTypeReference) {
-						System.out.println("hoppala");
-					}
-				}
+		} else {
+			XMLResourceImpl intermediate = new XMLResourceImpl();
+			intermediate.setEncoding("UTF-8");
+			intermediate.load(in, ImmutableMap.of());
+			resource.getContents().addAll(intermediate.getContents());
+		}
+	}
+
+	protected void deserializeDSModel(Resource resource, InputStream in)
+			throws IOException {
+		if (isCapableEMFVersion()) {
+
+			LOGGER.info("Start deserializing " + resource.getURI());
+
+			XMLResourceImpl intermediate = new XMLResourceImpl(
+					resource.getURI());
+			// intermediate.load(in, ImmutableMap.of());
+			EObjectInputStream objectInputStream = new BinaryResourceImpl.EObjectInputStream(
+					in, ImmutableMap.of());
+			try {
+				objectInputStream.loadResource(intermediate);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
-			EObject lastElement = resource.getContents().get(
-					resource.getContents().size() - 1);
+			// EObject result = resource.getContents().get(1);
+			// if (result instanceof JvmGenericType) {
+			// JvmGenericType type = (JvmGenericType) result;
+			// for (JvmTypeReference typeRef : type.getSuperTypes()) {
+			// if (typeRef instanceof JvmUnknownTypeReference) {
+			// System.out.println("hoppala");
+			// }
+			// }
+			// }
+
+			EObject lastElement = intermediate.getContents().get(
+					intermediate.getContents().size() - 1);
 			if (lastElement instanceof XCCacheContent) {
 				XCCacheContent cacheContent = (XCCacheContent) lastElement;
 
@@ -145,7 +183,8 @@ public class DefaultSerializationService implements ISerializationService {
 				}
 
 				// create operation bodies, documentation,...
-				TreeIterator<EObject> allContents = resource.getAllContents();
+				TreeIterator<EObject> allContents = intermediate
+						.getAllContents();
 				while (allContents.hasNext()) {
 					EObject object = allContents.next();
 					if (object instanceof JvmOperation) {
@@ -179,14 +218,17 @@ public class DefaultSerializationService implements ISerializationService {
 				}
 
 				// remove the last element. Was just a helper element
-				resource.getContents().remove(cacheContent);
+				intermediate.getContents().remove(cacheContent);
 
-				for (EObject content : resource.getContents()) {
+				for (EObject content : intermediate.getContents()) {
 					if (content instanceof XCCacheContent) {
 						System.out.println("Uuups!");
 					}
 				}
 			}
+
+			resource.getContents().addAll(intermediate.getContents());
+
 		} else {
 			XMLResourceImpl intermediate = new XMLResourceImpl();
 			intermediate.load(in, ImmutableMap.of());
@@ -238,43 +280,84 @@ public class DefaultSerializationService implements ISerializationService {
 	public void write(XtextResource resource, OutputStream emfOut,
 			OutputStream nodeModelOut) throws IOException,
 			SerializeVetoException {
+
 		serializeEMF(resource, emfOut);
 		serializeNodeModel(resource, nodeModelOut);
+	}
+
+	public void writeDerivedState(XtextResource resource, OutputStream emfOut)
+			throws IOException, SerializeVetoException {
+		serializeDerivedState(resource, emfOut);
 	}
 
 	protected void serializeEMF(XtextResource resource, OutputStream out)
 			throws IOException, SerializeVetoException {
 		if (isCapableEMFVersion()) {
+			((CachingResource) resource).resolveLazyCrossReferences(null);
+			fixupSerializeProxies(resource);
+
+			EObjectOutputStream objectOutputStream = new BinaryResourceImpl.EObjectOutputStream(
+					out, ImmutableMap.of());
+			objectOutputStream.saveResource(resource);
+		} else {
+			XMLResourceImpl intermediate = new XMLResourceImpl();
+			try {
+				// CachingResource cachingResource = (CachingResource) resource;
+				// // load the derived state
+				// cachingResource.getContentsWithDerivedState();
+				intermediate.getContents().addAll(resource.getContents());
+				intermediate.save(out, ImmutableMap.of());
+			} finally {
+				/*
+				 * TODO: A bit worried whether this could trigger listener
+				 * updates or something.
+				 */
+				resource.getContents().addAll(intermediate.getContents());
+			}
+		}
+	}
+
+	protected void serializeDerivedState(XtextResource resource,
+			OutputStream out) throws IOException, SerializeVetoException {
+		if (isCapableEMFVersion()) {
 			EObjectOutputStream objectOutputStream = new BinaryResourceImpl.EObjectOutputStream(
 					out, ImmutableMap.of());
 
+			XMLResource intermediate = new XMLResourceImpl(resource.getURI());
+			// intermediate.setEncoding("UTF-8");
+
 			CachingResource cachingResource = (CachingResource) resource;
 
-			// Map<EObject, URI> proxies = collectXtextProxies(cachingResource);
 			// load the derived state
-			EList<EObject> contents = cachingResource
-					.getContentsWithDerivedState();
+			cachingResource.installDerivedStateDirectly();
+			// cachingResource.resolveLazyCrossReferences(null);
 
-			Iterator<EObject> contentsIter = cachingResource.getAllContents();
-			while (contentsIter.hasNext()) {
-				EObject result = contentsIter.next();
-				if (result instanceof JvmGenericType) {
-					JvmGenericType type = (JvmGenericType) result;
+			intermediate.getContents().addAll(
+					cachingResource.getContents().subList(1,
+							cachingResource.getContents().size()));
 
-				} else if (result instanceof JvmField) {
-					JvmField field = (JvmField) result;
-					if (field.getSimpleName() == null) {
-						throw new SerializeVetoException("Huhu");
-					}
-				}
-			}
+			// EList<EObject> contents = cachingResource.getContents();
+			// Iterator<EObject> contentsIter =
+			// cachingResource.getAllContents();
+			// while (contentsIter.hasNext()) {
+			// EObject result = contentsIter.next();
+			// if (result instanceof JvmGenericType) {
+			// JvmGenericType type = (JvmGenericType) result;
+			//
+			// } else if (result instanceof JvmField) {
+			// JvmField field = (JvmField) result;
+			// if (field.getSimpleName() == null) {
+			// throw new SerializeVetoException("Huhu");
+			// }
+			// }
+			// }
 
 			try {
-				fixupSerializeProxies(cachingResource);
+				fixupSerializeProxies(intermediate);
 			} catch (SerializeVetoException e) {
 				// No serializiation MUST be done
 				LOGGER.info(e.getMessage());
-				throw e;
+				// throw e;
 			}
 
 			CacheAwareJvmModelAssociator.Adapter adapter = (Adapter) EcoreUtil
@@ -290,8 +373,7 @@ public class DefaultSerializationService implements ISerializationService {
 			cacheContent.setModelAssociation(modelAssociations);
 
 			// create operation bodies, documentation,...
-			TreeIterator<EObject> allContents = cachingResource
-					.getAllContents();
+			TreeIterator<EObject> allContents = intermediate.getAllContents();
 			while (allContents.hasNext()) {
 				EObject object = allContents.next();
 				if (object instanceof JvmOperation) {
@@ -335,16 +417,14 @@ public class DefaultSerializationService implements ISerializationService {
 				}
 			}
 
-			contents.add(cacheContent);
-
-			// now link the model again with xtext proxies
-			ListBasedDiagnosticConsumer consumer = new ListBasedDiagnosticConsumer();
-			linker.linkModel(contents.get(0), consumer);
-
-			objectOutputStream.saveResource(cachingResource);
+			intermediate.getContents().add(cacheContent);
+			// intermediate.save(out, null);
+			objectOutputStream.saveResource(intermediate);
 
 			// remove the cacheContent after serializiation
-			contents.remove(cacheContent);
+			intermediate.getContents().remove(cacheContent);
+
+			cachingResource.getContents().addAll(intermediate.getContents());
 		} else {
 			XMLResourceImpl intermediate = new XMLResourceImpl();
 			try {
@@ -444,72 +524,37 @@ public class DefaultSerializationService implements ISerializationService {
 	}
 
 	protected void fixupProxies(XtextResource xr) {
-		URI uri = xr.getURI();
-		TreeIterator<EObject> allContents = xr.getAllContents();
-		while (allContents.hasNext()) {
-			EObject object = allContents.next();
-			EClass c = object.eClass();
-			EList<EReference> references = c.getEAllReferences();
-			for (EReference reference : references) {
-				if (!reference.isContainment()) {
-					if (reference.isMany()) {
-						@SuppressWarnings("unchecked")
-						InternalEList<EObject> targets = (InternalEList<EObject>) object
-								.eGet(reference, false);
-						for (int i = 0; i < targets.size(); ++i) {
-							EObject target = targets.basicGet(i);
-							fixupProxy(target, uri, reference);
-						}
-					} else {
-						EObject target = (EObject) object
-								.eGet(reference, false);
-						fixupProxy(target, uri, reference);
-					}
-				}
-			}
-		}
+		// URI uri = xr.getURI();
+		// TreeIterator<EObject> allContents = xr.getAllContents();
+		// while (allContents.hasNext()) {
+		// EObject object = allContents.next();
+		// EClass c = object.eClass();
+		// EList<EReference> references = c.getEAllReferences();
+		// for (EReference reference : references) {
+		// if (!reference.isContainment()) {
+		// if (reference.isMany()) {
+		// @SuppressWarnings("unchecked")
+		// InternalEList<EObject> targets = (InternalEList<EObject>) object
+		// .eGet(reference, false);
+		// for (int i = 0; i < targets.size(); ++i) {
+		// EObject target = targets.basicGet(i);
+		// fixupProxy(target, uri, reference);
+		// }
+		// } else {
+		// EObject target = (EObject) object
+		// .eGet(reference, false);
+		// fixupProxy(target, uri, reference);
+		// }
+		// }
+		// }
+		// }
 	}
 
 	protected void fixupProxy(EObject target, URI newResourceURI,
 			EReference reference) {
-		if (target != null) {
-			if (target.eIsProxy()) {
-				InternalEObject internal = (InternalEObject) target;
-				URI proxyURI = internal.eProxyURI();
-				if (proxyURI.scheme().equals("java")) {
-					return;
-				}
-				// URI newProxyURI = newResourceURI.appendFragment(proxyURI
-				// .fragment());
-				// internal.eSetProxyURI(newProxyURI);
-			} else {
-				// if (target instanceof JvmType) {
-				// JvmType type = (JvmType) target;
-				// InternalEObject internal = (InternalEObject) target;
-				//
-				// if (type instanceof JvmPrimitiveType) {
-				// URI newProxyURI = URI.createURI(String.format(
-				// "java:/Primitives/%s#%s",
-				// type.getQualifiedName(),
-				// type.getQualifiedName()));
-				// internal.eSetProxyURI(newProxyURI);
-				// } else {
-				// URI newProxyURI = URI.createURI(String.format(
-				// "java:/Objects/%s#%s", type.getQualifiedName(),
-				// type.getQualifiedName()));
-				// internal.eSetProxyURI(newProxyURI);
-				// }
-				// }
-			}
-
-			if (target instanceof JvmTypeReference) {
-				JvmTypeReference type = (JvmTypeReference) target;
-				InternalEObject internal = (InternalEObject) target;
-			}
-		}
 	}
 
-	protected void fixupSerializeProxies(CachingResource xr)
+	protected void fixupSerializeProxies(Resource xr)
 			throws SerializeVetoException {
 		URI uri = xr.getURI();
 		TreeIterator<EObject> allContents = xr.getAllContents();
@@ -535,10 +580,40 @@ public class DefaultSerializationService implements ISerializationService {
 	}
 
 	protected void fixupSerializeProxy(EObject featureHolder, EObject target,
-			URI newResourceURI, EReference reference, CachingResource xr)
+			URI newResourceURI, EReference reference, Resource xr)
 			throws SerializeVetoException {
 		if (target != null) {
-			if (target instanceof JvmTypeReference) {
+			if (target instanceof LEntityAttribute) {
+				LScalarType lType = ((LEntityAttribute) target).getType();
+				if (!lType.eIsProxy()) {
+					InternalEObject internal = (InternalEObject) LunTypesFactory.eINSTANCE
+							.createLScalarType();
+					Resource thisResource = lType.eResource();
+					URI thisResourceResourceURI = thisResource.getURI();
+					thisResourceResourceURI = thisResourceResourceURI
+							.appendFragment("luniferaattlink:"
+									+ lType.getName().toString());
+					internal.eSetProxyURI(thisResourceResourceURI);
+					((LEntityAttribute) target).setType((LScalarType) internal);
+				} else{
+					System.out.println("noproxy");
+				}
+			} else if (target instanceof LEntityReference) {
+				LEntity lType = ((LEntityReference) target).getType();
+				if (!lType.eIsProxy()) {
+					InternalEObject internal = (InternalEObject) LunEntityFactory.eINSTANCE
+							.createLEntity();
+					Resource thisResource = lType.eResource();
+					URI thisResourceResourceURI = thisResource.getURI();
+					thisResourceResourceURI = thisResourceResourceURI
+							.appendFragment("luniferareflink:"
+									+ lType.getName().toString());
+					internal.eSetProxyURI(thisResourceResourceURI);
+					((LEntityReference) target).setType((LEntity) internal);
+				} else{
+					System.out.println("noproxy");
+				}
+			} else if (target instanceof JvmTypeReference) {
 				JvmTypeReference typeRef = (JvmTypeReference) target;
 				URI uri = null;
 				JvmType type = typeRef.getType();
@@ -558,11 +633,12 @@ public class DefaultSerializationService implements ISerializationService {
 						if (typeRef.getQualifiedName() == null
 								|| typeRef.getQualifiedName().equals("")) {
 							// never ever serialize unknown type references!
-							throw new SerializeVetoException(
-									String.format(
-											"JvmUnknownTypeReference detected for %s::%s",
-											target.toString(),
-											reference.toString()));
+							// throw new SerializeVetoException(
+							// String.format(
+							// "JvmUnknownTypeReference detected for %s::%s",
+							// target.toString(),
+							// reference.toString()));
+							return;
 						}
 
 						JvmParameterizedTypeReference newTypeRef = (JvmParameterizedTypeReference) TypesFactory.eINSTANCE
@@ -610,11 +686,12 @@ public class DefaultSerializationService implements ISerializationService {
 													.equals("")) {
 										// never ever serialize unknown type
 										// references!
-										throw new SerializeVetoException(
-												String.format(
-														"JvmUnknownTypeReference detected for %s::%s",
-														constRef.toString(),
-														"constraints"));
+										// throw new SerializeVetoException(
+										// String.format(
+										// "JvmUnknownTypeReference detected for %s::%s",
+										// constRef.toString(),
+										// "constraints"));
+										return;
 									}
 
 									JvmParameterizedTypeReference newTypeRef = (JvmParameterizedTypeReference) TypesFactory.eINSTANCE
@@ -790,4 +867,5 @@ public class DefaultSerializationService implements ISerializationService {
 			super(message);
 		}
 	}
+
 }

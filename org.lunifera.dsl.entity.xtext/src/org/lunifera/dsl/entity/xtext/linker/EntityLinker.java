@@ -214,4 +214,25 @@ public class EntityLinker extends XbaseLazyLinker {
 		}
 		return datatype;
 	}
+
+	// protected EObject createProxy(EObject obj, INode node, EReference eRef) {
+	//
+	// if(eRef == LunTypesPackage.Literals.LATTRIBUTE__TYPE){
+	// final Resource resource = obj.eResource();
+	// if (resource == null)
+	// throw new
+	// IllegalStateException("object must be contained in a resource");
+	// final URI uri = resource.getURI();
+	// final URI encodedLink = uri.appendFragment(encoder.encode(obj, eRef,
+	// node));
+	// EClass referenceType = ecoreGenericsUtil.getReferenceType(eRef,
+	// obj.eClass());
+	// EClass instantiableType = instantiableSubTypes.get(referenceType);
+	// final EObject proxy = EcoreUtil.create(instantiableType);
+	// ((InternalEObject) proxy).eSetProxyURI(encodedLink);
+	// return proxy;
+	// }
+	//
+	// return super.createProxy(obj, node, eRef);
+	// }
 }

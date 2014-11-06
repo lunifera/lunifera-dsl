@@ -37,6 +37,8 @@ public interface ICacheEntry {
 	public File getRelativeCacheEntryDirPath();
 
 	public File getRelativeEMFFilePath();
+	
+	public File getRelativeDSFilePath();
 
 	public File getRelativeNodeModelFilePath();
 

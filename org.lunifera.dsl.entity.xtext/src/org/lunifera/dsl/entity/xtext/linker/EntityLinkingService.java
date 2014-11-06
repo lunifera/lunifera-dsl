@@ -39,20 +39,21 @@ public class EntityLinkingService extends DefaultLinkingService {
 
 		String name = "";
 		String uri = context.eResource().getURI().toString();
+		EClass eClass = context.eClass();
 		if (context instanceof LEntityAttribute) {
 			String eName = "";
 			String refName = ((LEntityAttribute) context).getName();
 			if (context.eContainer() instanceof LEntity) {
 				eName = ((LEntity) context.eContainer()).getName();
 			}
-			name = uri +":  " + eName + "#" + refName + ":" + ref.getName();
+			name = uri +":  " + eClass.getName() + ": " + eName + "#" + refName + ":" + ref.getName();
 		} else if(context instanceof LEntityReference){
 			String eName = "";
 			String refName = ((LEntityReference) context).getName();
 			if (context.eContainer() instanceof LEntity) {
 				eName = ((LEntity) context.eContainer()).getName();
 			}
-			name = uri +":  " + eName + "#" + refName + ":" + ref.getName();
+			name = uri +":  " + eClass.getName() + ": " + "#" + refName + ":" + ref.getName();
 		} else {
 			String className = context.eClass().getName();
 			name = uri +":  " + className + "#" + ref.getName();

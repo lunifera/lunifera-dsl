@@ -32,11 +32,24 @@ public class AlwaysMissCache implements ICache {
 	public void init(File cacheLocation) throws IOException {
 	}
 
-	public XtextResource load(XtextResource xr, byte[] content, String encoding, boolean addNodeModel)
+	public ICacheEntry load(XtextResource xr, byte[] content, String encoding, boolean addNodeModel)
 			throws IOException {
 		return null;
 	}
 
-	public void add(XtextResource xr, byte[] content, String encoding) throws IOException {
+	public ICacheEntry add(XtextResource xr, byte[] content, String encoding) throws IOException {
+		return null;
+	}
+
+	@Override
+	public ICacheEntry addDerivedState(XtextResource xr, ICacheEntry changeEntry) throws IOException {
+		return null;
+	}
+
+	@Override
+	public XtextResource loadDS(XtextResource xr, ICacheEntry cacheEntry,
+			String completeContent, boolean requireNodeModel)
+			throws IOException {
+		return null;
 	}
 }

@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.xtext.xbase,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.jdt.core,
- org.eclipse.xtext.common.types.ui
+ org.eclipse.xtext.common.types.ui,
+ org.lunifera.dsl.semantic.entity;bundle-version="0.7.5"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.runtime;version="3.4.0",
  org.osgi.framework;version="1.8.0",

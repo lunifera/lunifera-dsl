@@ -23,8 +23,17 @@ import com.google.inject.ImplementedBy;
 
 @ImplementedBy(DefaultSerializationService.class)
 public interface ISerializationService {
-	public void write(XtextResource resource, OutputStream emfOut, OutputStream nodeModelOut)
+
+	void write(XtextResource resource, OutputStream emfOut,
+			OutputStream nodeModelOut) throws IOException,
+			SerializeVetoException;
+
+	void writeDerivedState(XtextResource resource, OutputStream emfOut)
 			throws IOException, SerializeVetoException;
 
-	public XtextResource loadResource(XtextResource xr, InputStream emfIn, InputStream nodeModelIn, String completeContent) throws IOException;
+	XtextResource loadResource(XtextResource xr, InputStream emfIn,
+			InputStream nodeModelIn, String completeContent) throws IOException;
+
+	XtextResource loadDerivedState(XtextResource xr, InputStream dsIn,
+			String completeContent) throws IOException;
 }
