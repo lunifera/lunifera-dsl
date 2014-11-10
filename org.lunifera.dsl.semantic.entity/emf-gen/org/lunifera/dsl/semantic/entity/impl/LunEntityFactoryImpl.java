@@ -71,6 +71,8 @@ public class LunEntityFactoryImpl extends EFactoryImpl implements LunEntityFacto
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case LunEntityPackage.LENTITY_MODEL: return createLEntityModel();
+			case LunEntityPackage.LENTITY_TYPE_REFERENCE: return createLEntityTypeReference();
+			case LunEntityPackage.LBEAN_TYPE_REFERENCE: return createLBeanTypeReference();
 			case LunEntityPackage.LBEAN: return createLBean();
 			case LunEntityPackage.LENTITY: return createLEntity();
 			case LunEntityPackage.LENTITY_PERSISTENCE_INFO: return createLEntityPersistenceInfo();
@@ -156,6 +158,26 @@ public class LunEntityFactoryImpl extends EFactoryImpl implements LunEntityFacto
 	public LEntityModel createLEntityModel() {
 		LEntityModelImpl lEntityModel = new LEntityModelImpl();
 		return lEntityModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LEntityTypeReference createLEntityTypeReference() {
+		LEntityTypeReferenceImpl lEntityTypeReference = new LEntityTypeReferenceImpl();
+		return lEntityTypeReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LBeanTypeReference createLBeanTypeReference() {
+		LBeanTypeReferenceImpl lBeanTypeReference = new LBeanTypeReferenceImpl();
+		return lBeanTypeReference;
 	}
 
 	/**

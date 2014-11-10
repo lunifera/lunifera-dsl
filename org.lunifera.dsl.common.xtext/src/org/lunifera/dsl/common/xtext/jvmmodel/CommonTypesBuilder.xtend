@@ -391,7 +391,14 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		}
 	}
 
-	def JvmGenericType toJvmType(LClass lClass) {
+	def JvmGenericType toInitialJvmType(LClass lClass) {
+		val type = createJvmGenericType(lClass, lClass.fullyQualifiedName.toString)
+		type.setAbstract(lClass.isAbstract());
+
+		associate(lClass, type)
+	}
+	
+		def JvmGenericType toJvmType(LClass lClass) {
 		val type = createJvmGenericType(lClass, lClass.fullyQualifiedName.toString)
 		type.setAbstract(lClass.isAbstract());
 

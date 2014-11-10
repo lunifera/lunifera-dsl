@@ -14,6 +14,7 @@
 package org.lunifera.dsl.semantic.entity.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -23,8 +24,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
-import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LBeanTypeReference;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
 /**
@@ -85,14 +86,14 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	protected boolean cascading = CASCADING_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected LBean type;
+	protected LBeanTypeReference type;
 
 	/**
 	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
@@ -170,15 +171,7 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBean getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject)type;
-			type = (LBean)eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LBEAN_REFERENCE__TYPE, oldType, type));
-			}
-		}
+	public LBeanTypeReference getType() {
 		return type;
 	}
 
@@ -187,20 +180,33 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBean basicGetType() {
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setType(LBean newType) {
-		LBean oldType = type;
+	public NotificationChain basicSetType(LBeanTypeReference newType, NotificationChain msgs) {
+		LBeanTypeReference oldType = type;
 		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__TYPE, oldType, type));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__TYPE, oldType, newType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(LBeanTypeReference newType) {
+		if (newType != type) {
+			NotificationChain msgs = null;
+			if (type != null)
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN_REFERENCE__TYPE, null, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN_REFERENCE__TYPE, null, msgs);
+			msgs = basicSetType(newType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__TYPE, newType, newType));
 	}
 
 	/**
@@ -247,6 +253,20 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
+				return basicSetType(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LunEntityPackage.LBEAN_REFERENCE__LAZY:
@@ -254,8 +274,7 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 			case LunEntityPackage.LBEAN_REFERENCE__CASCADING:
 				return isCascading();
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
+				return getType();
 			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
@@ -278,7 +297,7 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				setCascading((Boolean)newValue);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
-				setType((LBean)newValue);
+				setType((LBeanTypeReference)newValue);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
 				setOpposite((LBeanReference)newValue);
@@ -302,7 +321,7 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				setCascading(CASCADING_EDEFAULT);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
-				setType((LBean)null);
+				setType((LBeanTypeReference)null);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
 				setOpposite((LBeanReference)null);

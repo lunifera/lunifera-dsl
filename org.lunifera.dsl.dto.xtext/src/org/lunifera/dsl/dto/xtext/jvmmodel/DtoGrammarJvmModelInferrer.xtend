@@ -29,6 +29,7 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
+import org.lunifera.dsl.semantic.dto.impl.LDtoImpl
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -42,9 +43,11 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	@Inject extension DtoTypesBuilder;
 	@Inject extension DtoModelExtensions;
 	@Inject TypeReferences references
+	@Inject AnnotationCompiler annotationCompiler
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		acceptor.accept(dto.toJvmType).initializeLater [
+		acceptor.accept(dto.toInitialJvmType).initializeLater [
+			annotationCompiler.processAnnotation(dto, it)
 			var LAttribute idAttribute = null
 			var JvmField idField = null
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
@@ -170,7 +173,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 	def void inferMapper(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
-		if (dto.wrappedType == null) {
+		if ((dto as LDtoImpl).basicGetWrappedType == null) {
 			return;
 		}
 

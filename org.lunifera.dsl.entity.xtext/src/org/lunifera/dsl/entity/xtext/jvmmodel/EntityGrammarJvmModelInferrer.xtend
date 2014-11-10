@@ -43,6 +43,7 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	@Inject extension EntityTypesBuilder;
 	@Inject extension ModelExtensions;
 	@Inject TypeReferences references
+	@Inject AnnotationCompiler annotationCompiler
  
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(enumX)) return;
@@ -60,7 +61,10 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	def dispatch void infer(LBean bean, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(bean)) return;
 
-		acceptor.accept(bean.toJvmType).initializeLater [
+		acceptor.accept(bean.toInitialJvmType).initializeLater [
+			
+			annotationCompiler.processAnnotation(bean, it)
+			
 			fileHeader = (bean.eContainer as LTypedPackage).documentation
 			documentation = bean.getDocumentation
 			if (bean.getSuperType == null) {
@@ -155,9 +159,11 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(entity)) return;
 		
-		println("executing inferrer for " + entity.eResource.URI + ":  " + entity.name)
+		println("executing inferrer for " + entity.eResource.URI + ":  " + entity.name + "  prelinking=" + isPrelinkingPhase)
 		
-		acceptor.accept(entity.toJvmType).initializeLater [
+		acceptor.accept(entity.toInitialJvmType).initializeLater [
+			
+			annotationCompiler.processAnnotation(entity, it)
 			
 			var LAttribute idAttribute = null
 			var JvmField idField = null

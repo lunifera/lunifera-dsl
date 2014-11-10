@@ -30,7 +30,7 @@ Class returns LClass:
 	(timedependent?='timedependent' ('(' timedependentDateType=LHistorizedDateType ')')?)
 	)? &
 	(cacheable?="cacheable")?)
-	'entity' name=ValidIDWithKeywords ('extends' superType=[entity::LEntity])?
+	'entity' name=ValidIDWithKeywords ('extends' superType=EntityTypeReference)?
 	'{'
 	(persistenceInfo=EntityPersistenceInfo)
 	(inheritanceStrategy=EntityInheritanceStrategy)?
@@ -40,17 +40,23 @@ Class returns LClass:
 	'}'
 	|
 	{entity::LEntity.annotationInfo=current}
-	mappedSuperclass?='mapped superclass' ('extends' superType=[entity::LEntity])?
+	mappedSuperclass?='mapped superclass' ('extends' superType=EntityTypeReference)?
 	name=ValidIDWithKeywords
 	'{'
 	features+=EntityFeature*
 	'}'
 	|
 	{entity::LBean.annotationInfo=current}
-	'bean' name=ValidIDWithKeywords ('extends' superType=[entity::LBean])?
+	'bean' name=ValidIDWithKeywords ('extends' superType=BeanTypeReference)?
 	'{'
 	features+=BeanFeature*
 	'}');
+	 
+EntityTypeReference returns entity::LEntityTypeReference:
+  type=[entity::LEntity|QualifiedName];
+
+BeanTypeReference returns entity::LBeanTypeReference:
+  type=[entity::LBean|QualifiedName];
 
 Index returns entity::LIndex:
 	(unique?='unique')? 'index' name=ID '{'
@@ -71,7 +77,7 @@ EntityFeature returns entity::LEntityFeature:
 	{entity::LEntityFeature}
 	annotations+=AnnotationDef*
 	(({entity::LEntityReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	('ref' (cascading?='cascade')? type=EntityTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords
 	(persistenceInfo=ColumnPersistenceInfo)?
 	('opposite' opposite=[entity::LEntityReference|LFQN])?)
 	';')
@@ -94,7 +100,7 @@ BeanFeature returns entity::LBeanFeature:
 	{entity::LBeanFeature}
 	annotations+=AnnotationDef*
 	(({entity::LBeanReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	('ref' (cascading?='cascade')? type=BeanTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords
 	('opposite' opposite=[entity::LBeanReference|LFQN])?)
 	';')
 	|
@@ -131,4 +137,5 @@ enum DiscriminatorType returns entity::LDiscriminatorType:
 
 enum LHistorizedDateType returns LDateType:
 	DATE="DATE" | TIMESTAMP="TIMESTAMP";
+  
 	

@@ -314,15 +314,20 @@ ruleClass returns [EObject current=null]
     }
 (
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getClassRule());
+		{ 
+	        newCompositeNode(grammarAccess.getClassAccess().getSuperTypeEntityTypeReferenceParserRuleCall_2_0_4_1_0()); 
+	    }
+		lv_superType_14_0=ruleEntityTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
-        }
-	otherlv_14=RULE_ID
-	{
-		newLeafNode(otherlv_14, grammarAccess.getClassAccess().getSuperTypeLEntityCrossReference_2_0_4_1_0()); 
-	}
+       		set(
+       			$current, 
+       			"superType",
+        		lv_superType_14_0, 
+        		"EntityTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 ))?	otherlv_15='{' 
@@ -433,15 +438,20 @@ ruleClass returns [EObject current=null]
     }
 (
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getClassRule());
+		{ 
+	        newCompositeNode(grammarAccess.getClassAccess().getSuperTypeEntityTypeReferenceParserRuleCall_2_1_2_1_0()); 
+	    }
+		lv_superType_24_0=ruleEntityTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
-        }
-	otherlv_24=RULE_ID
-	{
-		newLeafNode(otherlv_24, grammarAccess.getClassAccess().getSuperTypeLEntityCrossReference_2_1_2_1_0()); 
-	}
+       		set(
+       			$current, 
+       			"superType",
+        		lv_superType_24_0, 
+        		"EntityTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 ))?(
@@ -523,15 +533,20 @@ ruleClass returns [EObject current=null]
     }
 (
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getClassRule());
+		{ 
+	        newCompositeNode(grammarAccess.getClassAccess().getSuperTypeBeanTypeReferenceParserRuleCall_2_2_3_1_0()); 
+	    }
+		lv_superType_33_0=ruleBeanTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
-        }
-	otherlv_33=RULE_ID
-	{
-		newLeafNode(otherlv_33, grammarAccess.getClassAccess().getSuperTypeLBeanCrossReference_2_2_3_1_0()); 
-	}
+       		set(
+       			$current, 
+       			"superType",
+        		lv_superType_33_0, 
+        		"BeanTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 ))?	otherlv_34='{' 
@@ -561,6 +576,78 @@ ruleClass returns [EObject current=null]
     	newLeafNode(otherlv_36, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_2_6());
     }
 )))
+;
+
+
+
+
+
+// Entry rule entryRuleEntityTypeReference
+entryRuleEntityTypeReference returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getEntityTypeReferenceRule()); }
+	 iv_ruleEntityTypeReference=ruleEntityTypeReference 
+	 { $current=$iv_ruleEntityTypeReference.current; } 
+	 EOF 
+;
+
+// Rule EntityTypeReference
+ruleEntityTypeReference returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEntityTypeReferenceRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getEntityTypeReferenceAccess().getTypeLEntityCrossReference_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+;
+
+
+
+
+
+// Entry rule entryRuleBeanTypeReference
+entryRuleBeanTypeReference returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getBeanTypeReferenceRule()); }
+	 iv_ruleBeanTypeReference=ruleBeanTypeReference 
+	 { $current=$iv_ruleBeanTypeReference.current; } 
+	 EOF 
+;
+
+// Rule BeanTypeReference
+ruleBeanTypeReference returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBeanTypeReferenceRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getBeanTypeReferenceAccess().getTypeLBeanCrossReference_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
 ;
 
 
@@ -900,15 +987,20 @@ ruleEntityFeature returns [EObject current=null]
 )
 )?(
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getEntityFeatureRule());
+		{ 
+	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getTypeEntityTypeReferenceParserRuleCall_2_0_1_2_0()); 
+	    }
+		lv_type_5_0=ruleEntityTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getEntityFeatureRule());
 	        }
-        }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getEntityFeatureAccess().getTypeLEntityCrossReference_2_0_1_2_0()); 
-	}
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_5_0, 
+        		"EntityTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )(
@@ -1466,15 +1558,20 @@ ruleBeanFeature returns [EObject current=null]
 )
 )?(
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getBeanFeatureRule());
+		{ 
+	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getTypeBeanTypeReferenceParserRuleCall_2_0_1_2_0()); 
+	    }
+		lv_type_5_0=ruleBeanTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getBeanFeatureRule());
 	        }
-        }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getBeanFeatureAccess().getTypeLBeanCrossReference_2_0_1_2_0()); 
-	}
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_5_0, 
+        		"BeanTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )(

@@ -42,6 +42,24 @@ public interface LunEntityFactory extends EFactory {
 	LEntityModel createLEntityModel();
 
 	/**
+	 * Returns a new object of class '<em>LEntity Type Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LEntity Type Reference</em>'.
+	 * @generated
+	 */
+	LEntityTypeReference createLEntityTypeReference();
+
+	/**
+	 * Returns a new object of class '<em>LBean Type Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LBean Type Reference</em>'.
+	 * @generated
+	 */
+	LBeanTypeReference createLBeanTypeReference();
+
+	/**
 	 * Returns a new object of class '<em>LBean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

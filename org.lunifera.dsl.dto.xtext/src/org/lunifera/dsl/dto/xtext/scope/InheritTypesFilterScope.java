@@ -32,9 +32,7 @@ public class InheritTypesFilterScope extends AbstractScope {
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
 		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 		for (IEObjectDescription desc : scope.getAllElements()) {
-			LType type = (LType) desc.getEObjectOrProxy();
-			type = (LType) EcoreUtil.resolve(type, context);
-			if (type != context && type.getName() != null) {
+			if (desc.getEObjectOrProxy() != context && desc.getName() != null) {
 				result.add(desc);
 			}
 		}

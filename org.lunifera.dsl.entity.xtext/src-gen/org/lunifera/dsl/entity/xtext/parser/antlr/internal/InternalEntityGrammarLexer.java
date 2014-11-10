@@ -2919,10 +2919,10 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:12: ( '0x' | '0X' )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -2950,7 +2950,7 @@ public class InternalEntityGrammarLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:13: '0x'
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:13: '0x'
                     {
                     match("0x"); 
 
@@ -2958,7 +2958,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:18: '0X'
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:18: '0X'
                     {
                     match("0X"); 
 
@@ -2968,7 +2968,7 @@ public class InternalEntityGrammarLexer extends Lexer {
 
             }
 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -3006,7 +3006,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -3015,10 +3015,10 @@ public class InternalEntityGrammarLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -3036,7 +3036,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -3060,7 +3060,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9404:84: ( 'l' | 'L' )
+                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9501:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -3099,11 +3099,11 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9406:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9406:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9503:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9503:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9406:21: ( '0' .. '9' | '_' )*
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9503:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -3152,11 +3152,11 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9408:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9408:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9505:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9505:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9408:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9505:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -3165,7 +3165,7 @@ public class InternalEntityGrammarLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9408:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9505:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -3176,7 +3176,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9408:36: ( '+' | '-' )?
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9505:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -3209,7 +3209,7 @@ public class InternalEntityGrammarLexer extends Lexer {
 
             }
 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9408:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9505:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -3221,7 +3221,7 @@ public class InternalEntityGrammarLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9408:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9505:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -3245,7 +3245,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9408:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9505:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -3278,10 +3278,10 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9410:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9410:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9507:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9507:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9410:11: ( '^' )?
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9507:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -3290,7 +3290,7 @@ public class InternalEntityGrammarLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9410:11: '^'
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9507:11: '^'
                     {
                     match('^'); 
 
@@ -3308,7 +3308,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9410:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9507:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -3357,10 +3357,10 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -3378,10 +3378,10 @@ public class InternalEntityGrammarLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -3397,7 +3397,7 @@ public class InternalEntityGrammarLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3413,7 +3413,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3438,10 +3438,10 @@ public class InternalEntityGrammarLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -3457,7 +3457,7 @@ public class InternalEntityGrammarLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3473,7 +3473,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9412:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9509:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3516,12 +3516,12 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9414:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9414:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9511:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9511:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9414:24: ( options {greedy=false; } : . )*
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9511:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -3546,7 +3546,7 @@ public class InternalEntityGrammarLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9414:52: .
+            	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9511:52: .
             	    {
             	    matchAny(); 
 
@@ -3576,12 +3576,12 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9416:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9416:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9513:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9513:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9416:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9513:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -3594,7 +3594,7 @@ public class InternalEntityGrammarLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9416:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9513:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3614,7 +3614,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9416:40: ( ( '\\r' )? '\\n' )?
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9513:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -3623,9 +3623,9 @@ public class InternalEntityGrammarLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9416:41: ( '\\r' )? '\\n'
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9513:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9416:41: ( '\\r' )?
+                    // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9513:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -3634,7 +3634,7 @@ public class InternalEntityGrammarLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9416:41: '\\r'
+                            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9513:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3666,10 +3666,10 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9418:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9418:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9515:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9515:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9418:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9515:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -3723,8 +3723,8 @@ public class InternalEntityGrammarLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9420:16: ( . )
-            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9420:18: .
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9517:16: ( . )
+            // ../org.lunifera.dsl.entity.xtext/src-gen/org/lunifera/dsl/entity/xtext/parser/antlr/internal/InternalEntityGrammar.g:9517:18: .
             {
             matchAny(); 
 

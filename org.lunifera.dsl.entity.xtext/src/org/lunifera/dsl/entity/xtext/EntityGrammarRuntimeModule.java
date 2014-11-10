@@ -15,7 +15,6 @@ import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
@@ -29,8 +28,6 @@ import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScop
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.serializer.EntityGrammarTransientValueService;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
-import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator;
-import org.lunifera.dsl.xtext.cache.impl.ICache;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -100,17 +97,18 @@ public class EntityGrammarRuntimeModule extends
 	public Class<? extends ILinkingService> bindILinkingService() {
 		return EntityLinkingService.class;
 	}
-	
-	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
-		return CacheAwareJvmModelAssociator.class;
-	}
 
-//	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
-//		return org.lunifera.dsl.xtext.cache.resource.CachingResource.class;
-//	}
-
-	public Class<? extends ICache> bindIChache() {
-		return org.lunifera.dsl.xtext.cache.impl.Cache.class;
-	}
+	// public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
+	// return CacheAwareJvmModelAssociator.class;
+	// }
+	//
+	// public Class<? extends org.eclipse.xtext.resource.XtextResource>
+	// bindXtextResource() {
+	// return org.lunifera.dsl.xtext.cache.resource.CachingResource.class;
+	// }
+	//
+	// public Class<? extends ICache> bindIChache() {
+	// return org.lunifera.dsl.xtext.cache.impl.Cache.class;
+	// }
 
 }

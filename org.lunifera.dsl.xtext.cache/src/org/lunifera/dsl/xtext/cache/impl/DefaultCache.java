@@ -20,7 +20,6 @@ import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.nodemodel.serialization.SerializationUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
@@ -64,15 +63,8 @@ public class DefaultCache implements ICache {
 			return loadResourceFromCache(xr, content, encoding,
 					requireNodeModel);
 		} catch (IOException e) {
-			LOGGER.error("Could not load " + xr.getURI()
-					+ " from cache: clearing resource cache", e);
-			try {
-				clear();
-				return null;
-			} catch (IOException ee) {
-				LOGGER.error("Could not clear resource cache", e);
-				throw ee;
-			}
+			LOGGER.error("Could not load " + xr.getURI() + " from cache", e);
+			return null;
 		}
 	}
 
@@ -173,10 +165,12 @@ public class DefaultCache implements ICache {
 						CacheUtil.write(rwlIndex, getIndexFile(), LOGGER);
 					}
 				} catch (Exception e) {
-					CacheUtil.deleteFileOrDirectory(getEntryDir(cacheEntry));
+					CacheUtil.deleteFileOrDirectory(getDSFile(cacheEntry));
 					rwlIndex.remove(cacheEntry.getDigest());
 					LOGGER.error("Could not add an entry to the cache: " + e);
-					throw e;
+					if (!(e instanceof SerializeVetoException)) {
+						throw e;
+					}
 				}
 
 				return cacheEntry;
@@ -405,7 +399,7 @@ public class DefaultCache implements ICache {
 			return resource;
 		} catch (IOException e) {
 			LOGGER.error("Could not load " + xr.getURI()
-					+ " from cache: clearing resource cache");
+					+ " from cache");
 		}
 		return xr;
 	}

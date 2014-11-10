@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xcore.lib;bundle-version="1.0.0";visibility:=reexport,
  org.eclipse.xtext.xbase;bundle-version="[2.6.0,2.7.0)";visibility:=reexport,
  org.lunifera.dsl.semantic.common;bundle-version="[0.7.0,0.8.0)";visibility:=reexport,
- org.eclipse.xtext.common.types;bundle-version="[2.6.0,2.7.0)";visibility:=reexport
+ org.eclipse.xtext.common.types;bundle-version="[2.6.0,2.7.0)";visibility:=reexport,
+ org.lunifera.dsl.lazyreferences;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: model;version="0.7.5",

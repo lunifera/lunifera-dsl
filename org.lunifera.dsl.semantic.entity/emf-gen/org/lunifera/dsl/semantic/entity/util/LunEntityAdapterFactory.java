@@ -92,6 +92,14 @@ public class LunEntityAdapterFactory extends AdapterFactoryImpl {
 				return createLEntityModelAdapter();
 			}
 			@Override
+			public Adapter caseLEntityTypeReference(LEntityTypeReference object) {
+				return createLEntityTypeReferenceAdapter();
+			}
+			@Override
+			public Adapter caseLBeanTypeReference(LBeanTypeReference object) {
+				return createLBeanTypeReferenceAdapter();
+			}
+			@Override
 			public Adapter caseLBean(LBean object) {
 				return createLBeanAdapter();
 			}
@@ -218,6 +226,34 @@ public class LunEntityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLEntityModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.entity.LEntityTypeReference <em>LEntity Type Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.entity.LEntityTypeReference
+	 * @generated
+	 */
+	public Adapter createLEntityTypeReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.entity.LBeanTypeReference <em>LBean Type Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanTypeReference
+	 * @generated
+	 */
+	public Adapter createLBeanTypeReferenceAdapter() {
 		return null;
 	}
 

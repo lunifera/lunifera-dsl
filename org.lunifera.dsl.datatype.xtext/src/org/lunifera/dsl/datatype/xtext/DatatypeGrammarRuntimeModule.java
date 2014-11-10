@@ -10,9 +10,7 @@
  */
 package org.lunifera.dsl.datatype.xtext;
 
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.lunifera.dsl.datatype.xtext.valueconverter.DatatypesQualifiedNameProvider;
-import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator;
 
 /**
  * Use this class to register components to be used at runtime / without the
@@ -25,11 +23,12 @@ public class DatatypeGrammarRuntimeModule extends
 		return DatatypesQualifiedNameProvider.class;
 	}
 	
-	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
-		return CacheAwareJvmModelAssociator.class;
-	}
-	
-	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
-		return CacheAwareJvmModelAssociator.class;
-	}
+	// public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer>
+	// bindIDerivedStateComputer() {
+	// return CacheAwareJvmModelAssociator.class;
+	// }
+	//
+	// public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
+	// return CacheAwareJvmModelAssociator.class;
+	// }
 }

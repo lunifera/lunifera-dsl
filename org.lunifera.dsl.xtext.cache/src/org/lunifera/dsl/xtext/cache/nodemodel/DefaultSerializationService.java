@@ -61,12 +61,6 @@ import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.Procedures;
-import org.lunifera.dsl.semantic.common.types.LScalarType;
-import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
-import org.lunifera.dsl.semantic.entity.LEntity;
-import org.lunifera.dsl.semantic.entity.LEntityAttribute;
-import org.lunifera.dsl.semantic.entity.LEntityReference;
-import org.lunifera.dsl.semantic.entity.LunEntityFactory;
 import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator;
 import org.lunifera.dsl.xtext.cache.CacheAwareJvmModelAssociator.Adapter;
 import org.lunifera.dsl.xtext.cache.model.XCCacheContent;
@@ -293,7 +287,7 @@ public class DefaultSerializationService implements ISerializationService {
 	protected void serializeEMF(XtextResource resource, OutputStream out)
 			throws IOException, SerializeVetoException {
 		if (isCapableEMFVersion()) {
-			((CachingResource) resource).resolveLazyCrossReferences(null);
+			// ((CachingResource) resource).resolveLazyCrossReferences(null);
 			fixupSerializeProxies(resource);
 
 			EObjectOutputStream objectOutputStream = new BinaryResourceImpl.EObjectOutputStream(
@@ -327,7 +321,7 @@ public class DefaultSerializationService implements ISerializationService {
 			// intermediate.setEncoding("UTF-8");
 
 			CachingResource cachingResource = (CachingResource) resource;
-
+			
 			// load the derived state
 			cachingResource.installDerivedStateDirectly();
 			// cachingResource.resolveLazyCrossReferences(null);
@@ -357,7 +351,7 @@ public class DefaultSerializationService implements ISerializationService {
 			} catch (SerializeVetoException e) {
 				// No serializiation MUST be done
 				LOGGER.info(e.getMessage());
-				// throw e;
+				throw e;
 			}
 
 			CacheAwareJvmModelAssociator.Adapter adapter = (Adapter) EcoreUtil
@@ -394,7 +388,11 @@ public class DefaultSerializationService implements ISerializationService {
 									CompilationStrategyAdapter.class);
 					if (bodyAdapter != null) {
 						FakeTreeAppendableCustom appendable = new FakeTreeAppendableCustom();
-						bodyAdapter.getCompilationStrategy().apply(appendable);
+						try {
+							bodyAdapter.getCompilationStrategy().apply(
+									appendable);
+						} catch (Exception e) {
+						}
 						info.setBody(appendable.toString());
 						// appendable.getImportManager().getImports()
 						toAdd = true;
@@ -583,37 +581,40 @@ public class DefaultSerializationService implements ISerializationService {
 			URI newResourceURI, EReference reference, Resource xr)
 			throws SerializeVetoException {
 		if (target != null) {
-			if (target instanceof LEntityAttribute) {
-				LScalarType lType = ((LEntityAttribute) target).getType();
-				if (!lType.eIsProxy()) {
-					InternalEObject internal = (InternalEObject) LunTypesFactory.eINSTANCE
-							.createLScalarType();
-					Resource thisResource = lType.eResource();
-					URI thisResourceResourceURI = thisResource.getURI();
-					thisResourceResourceURI = thisResourceResourceURI
-							.appendFragment("luniferaattlink:"
-									+ lType.getName().toString());
-					internal.eSetProxyURI(thisResourceResourceURI);
-					((LEntityAttribute) target).setType((LScalarType) internal);
-				} else{
-					System.out.println("noproxy");
-				}
-			} else if (target instanceof LEntityReference) {
-				LEntity lType = ((LEntityReference) target).getType();
-				if (!lType.eIsProxy()) {
-					InternalEObject internal = (InternalEObject) LunEntityFactory.eINSTANCE
-							.createLEntity();
-					Resource thisResource = lType.eResource();
-					URI thisResourceResourceURI = thisResource.getURI();
-					thisResourceResourceURI = thisResourceResourceURI
-							.appendFragment("luniferareflink:"
-									+ lType.getName().toString());
-					internal.eSetProxyURI(thisResourceResourceURI);
-					((LEntityReference) target).setType((LEntity) internal);
-				} else{
-					System.out.println("noproxy");
-				}
-			} else if (target instanceof JvmTypeReference) {
+			// if (target instanceof LEntityAttribute) {
+			// LScalarType lType = ((LEntityAttribute) target).getType();
+			// if (!lType.eIsProxy()) {
+			// InternalEObject internal = (InternalEObject)
+			// LunTypesFactory.eINSTANCE
+			// .createLScalarType();
+			// Resource thisResource = lType.eResource();
+			// URI thisResourceResourceURI = thisResource.getURI();
+			// thisResourceResourceURI = thisResourceResourceURI
+			// .appendFragment("luniferaattlink:"
+			// + lType.getName().toString());
+			// internal.eSetProxyURI(thisResourceResourceURI);
+			// ((LEntityAttribute) target).setType((LScalarType) internal);
+			// } else{
+			// System.out.println("noproxy");
+			// }
+			// } else if (target instanceof LEntityReference) {
+			// LEntity lType = ((LEntityReference) target).getType();
+			// if (!lType.eIsProxy()) {
+			// InternalEObject internal = (InternalEObject)
+			// LunEntityFactory.eINSTANCE
+			// .createLEntity();
+			// Resource thisResource = lType.eResource();
+			// URI thisResourceResourceURI = thisResource.getURI();
+			// thisResourceResourceURI = thisResourceResourceURI
+			// .appendFragment("luniferareflink:"
+			// + lType.getName().toString());
+			// internal.eSetProxyURI(thisResourceResourceURI);
+			// ((LEntityReference) target).setType((LEntity) internal);
+			// } else{
+			// System.out.println("noproxy");
+			// }
+			// } else
+			if (target instanceof JvmTypeReference) {
 				JvmTypeReference typeRef = (JvmTypeReference) target;
 				URI uri = null;
 				JvmType type = typeRef.getType();
@@ -633,12 +634,11 @@ public class DefaultSerializationService implements ISerializationService {
 						if (typeRef.getQualifiedName() == null
 								|| typeRef.getQualifiedName().equals("")) {
 							// never ever serialize unknown type references!
-							// throw new SerializeVetoException(
-							// String.format(
-							// "JvmUnknownTypeReference detected for %s::%s",
-							// target.toString(),
-							// reference.toString()));
-							return;
+							throw new SerializeVetoException(
+									String.format(
+											"JvmUnknownTypeReference detected for %s::%s",
+											target.toString(),
+											reference.toString()));
 						}
 
 						JvmParameterizedTypeReference newTypeRef = (JvmParameterizedTypeReference) TypesFactory.eINSTANCE
@@ -686,12 +686,11 @@ public class DefaultSerializationService implements ISerializationService {
 													.equals("")) {
 										// never ever serialize unknown type
 										// references!
-										// throw new SerializeVetoException(
-										// String.format(
-										// "JvmUnknownTypeReference detected for %s::%s",
-										// constRef.toString(),
-										// "constraints"));
-										return;
+										throw new SerializeVetoException(
+												String.format(
+														"JvmUnknownTypeReference detected for %s::%s",
+														constRef.toString(),
+														"constraints"));
 									}
 
 									JvmParameterizedTypeReference newTypeRef = (JvmParameterizedTypeReference) TypesFactory.eINSTANCE

@@ -17,39 +17,40 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
+import org.lunifera.dsl.semantic.entity.LBeanTypeReference;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.LBean;
 
 public class LBeanImplCustom extends LBeanImpl {
 
-	/**
-	 * Overrides super type to ensure bidirectional proxy resolving
-	 */
-	@Override
-	public LBean getSuperType() {
-		if (superType != null && superType.eIsProxy()) {
-			InternalEObject oldSuperType = (InternalEObject) superType;
-			LBean oldSuperEntity = (LBean) oldSuperType;
-			superType = (LBean) eResolveProxy(oldSuperType);
-			if (superType != oldSuperType) {
-
-				// ATENTION: inverse add must be called since bidirectional
-				// references uses proxy resolution for lazy linking. And the
-				// sub_types added to proxy must be added to new superType
-				for (LBean subType : oldSuperEntity.getSubTypes()) {
-					((InternalEObject) superType).eInverseAdd(
-							(InternalEObject) subType,
-							LunEntityPackage.LBEAN__SUB_TYPES, LBean.class, null);
-				}
-
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							LunEntityPackage.LBEAN__SUPER_TYPE, oldSuperType,
-							superType));
-			}
-		}
-		return superType;
-	}
+//	/**
+//	 * Overrides super type to ensure bidirectional proxy resolving
+//	 */
+//	@Override
+//	public LBeanTypeReference getSuperType() {
+//		if (superType != null && superType.eIsProxy()) {
+//			InternalEObject oldSuperType = (InternalEObject) superType;
+//			LBean oldSuperEntity = (LBean) oldSuperType;
+//			superType = (LBeanTypeReference) eResolveProxy(oldSuperType);
+//			if (superType != oldSuperType) {
+//
+//				// ATENTION: inverse add must be called since bidirectional
+//				// references uses proxy resolution for lazy linking. And the
+//				// sub_types added to proxy must be added to new superType
+//				for (LBeanTypeReference subType : oldSuperEntity.getSubTypes()) {
+//					((InternalEObject) superType).eInverseAdd(
+//							(InternalEObject) subType,
+//							LunEntityPackage.LBEAN__SUB_TYPES, LBean.class, null);
+//				}
+//
+//				if (eNotificationRequired())
+//					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+//							LunEntityPackage.LBEAN__SUPER_TYPE, oldSuperType,
+//							superType));
+//			}
+//		}
+//		return superType;
+//	}
 	
 	@Override
 	public EList<LAnnotationDef> getAnnotations() {

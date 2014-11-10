@@ -118,6 +118,52 @@ public class LunEntityItemProviderAdapterFactory extends LunEntityAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.entity.LEntityTypeReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LEntityTypeReferenceItemProvider lEntityTypeReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.entity.LEntityTypeReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLEntityTypeReferenceAdapter() {
+		if (lEntityTypeReferenceItemProvider == null) {
+			lEntityTypeReferenceItemProvider = new LEntityTypeReferenceItemProvider(this);
+		}
+
+		return lEntityTypeReferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.entity.LBeanTypeReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LBeanTypeReferenceItemProvider lBeanTypeReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.entity.LBeanTypeReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLBeanTypeReferenceAdapter() {
+		if (lBeanTypeReferenceItemProvider == null) {
+			lBeanTypeReferenceItemProvider = new LBeanTypeReferenceItemProvider(this);
+		}
+
+		return lBeanTypeReferenceItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.entity.LBean} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -539,6 +585,8 @@ public class LunEntityItemProviderAdapterFactory extends LunEntityAdapterFactory
 	 */
 	public void dispose() {
 		if (lEntityModelItemProvider != null) lEntityModelItemProvider.dispose();
+		if (lEntityTypeReferenceItemProvider != null) lEntityTypeReferenceItemProvider.dispose();
+		if (lBeanTypeReferenceItemProvider != null) lBeanTypeReferenceItemProvider.dispose();
 		if (lBeanItemProvider != null) lBeanItemProvider.dispose();
 		if (lEntityItemProvider != null) lEntityItemProvider.dispose();
 		if (lEntityPersistenceInfoItemProvider != null) lEntityPersistenceInfoItemProvider.dispose();

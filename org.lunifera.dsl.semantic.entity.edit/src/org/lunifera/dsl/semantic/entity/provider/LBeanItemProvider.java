@@ -57,32 +57,9 @@ public class LBeanItemProvider extends LClassItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSuperTypePropertyDescriptor(object);
 			addSubTypesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Super Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSuperTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LBean_superType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBean_superType_feature", "_UI_LBean_type"),
-				 LunEntityPackage.Literals.LBEAN__SUPER_TYPE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -120,6 +97,7 @@ public class LBeanItemProvider extends LClassItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(LunEntityPackage.Literals.LBEAN__FEATURES);
+			childrenFeatures.add(LunEntityPackage.Literals.LBEAN__SUPER_TYPE);
 		}
 		return childrenFeatures;
 	}
@@ -184,6 +162,7 @@ public class LBeanItemProvider extends LClassItemProvider {
 
 		switch (notification.getFeatureID(LBean.class)) {
 			case LunEntityPackage.LBEAN__FEATURES:
+			case LunEntityPackage.LBEAN__SUPER_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -265,6 +244,11 @@ public class LBeanItemProvider extends LClassItemProvider {
 			(createChildParameter
 				(LunEntityPackage.Literals.LBEAN__FEATURES,
 				 LunEntityFactory.eINSTANCE.createLOperation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE,
+				 LunEntityFactory.eINSTANCE.createLBeanTypeReference()));
 	}
 
 	/**

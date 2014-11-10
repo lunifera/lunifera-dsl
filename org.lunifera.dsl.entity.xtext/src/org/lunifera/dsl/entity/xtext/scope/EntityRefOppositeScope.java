@@ -33,7 +33,7 @@ public class EntityRefOppositeScope extends AbstractScope {
 		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 		if (prop.getType() != null) {
 			LEntity propClass = prop.getEntity();
-			LEntity type = prop.getType();
+			LEntity type = prop.getType().getLazyResolved();
 			for (LEntityReference oppositeProp : type.getReferences()) {
 				if (oppositeProp.getType() == propClass) {
 					String name = oppositeProp.getName();

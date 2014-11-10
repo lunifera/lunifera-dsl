@@ -157,7 +157,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		// Process inheritance.
 		// If the Entity has subclasses, setup @Inheritance
 		val superType = entity.superType
-		if (!entity.subTypes.empty && (superType == null || superType.checkIsMappedSuperclass)) {
+		if (!entity.subTypes.empty && (superType == null || superType.lazyResolved.checkIsMappedSuperclass)) {
 			val annRef = entity.toAnnotation(typeof(Inheritance))
 			annRef.addAnnAttr(entity, "strategy", InheritanceType::SINGLE_TABLE)
 			addAnno(entity, jvmType, annRef)
@@ -169,7 +169,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		}
 
 		// add the discriminator value only once
-		if (!entity.subTypes.empty || !superType.checkIsMappedSuperclass) {
+		if (!entity.subTypes.empty || !superType.lazyResolved.checkIsMappedSuperclass) {
 			val discrValue = entity.toAnnotation(typeof(DiscriminatorValue))
 			discrValue.addAnnAttr(entity, "value", strategy.discriminatorValue)
 			addAnno(entity, jvmType, discrValue)
@@ -183,7 +183,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		// Process inheritance.
 		// If the Entity has subclasses, setup @Inheritance
 		val superType = entity.superType
-		if (!entity.subTypes.empty && (superType == null || superType.checkIsMappedSuperclass)) {
+		if (!entity.subTypes.empty && (superType == null || superType.lazyResolved.checkIsMappedSuperclass)) {
 			val annRef = entity.toAnnotation(typeof(Inheritance))
 			annRef.addAnnAttr(entity, "strategy", InheritanceType::JOINED)
 			addAnno(entity, jvmType, annRef)
@@ -195,7 +195,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		}
 
 		// add the discriminator value only once
-		if (!entity.subTypes.empty || !superType.checkIsMappedSuperclass) {
+		if (!entity.subTypes.empty || !superType.lazyResolved.checkIsMappedSuperclass) {
 			val discrValue = entity.toAnnotation(typeof(DiscriminatorValue))
 			discrValue.addAnnAttr(entity, "value", strategy.discriminatorValue)
 			addAnno(entity, jvmType, discrValue)
@@ -344,7 +344,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 				collectedReferences += overrideAttributeAnno;
 			} else if (f instanceof LBeanReference) {
-				(f as LBeanReference).type.collectNestedAttributeOverride(collectedReferences, f.toName,
+				(f as LBeanReference).type.lazyResolved.collectNestedAttributeOverride(collectedReferences, f.toName,
 					(prop.toName + "_" + f.toName).toUpperCase)
 			}
 		}
@@ -377,7 +377,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 				collectedReferences += overrideAttributeAnno;
 			} else if (f instanceof LBeanReference) {
 				if ((f as LBeanReference).opposite?.type != bean) {
-					(f as LBeanReference).type.collectNestedAttributeOverride(collectedReferences,
+					(f as LBeanReference).type.lazyResolved.collectNestedAttributeOverride(collectedReferences,
 						propertyPath + "." + f.toName, persistencePath + "_" + f.toName.toUpperCase)
 				}
 			}

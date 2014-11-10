@@ -29,6 +29,7 @@ import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.xtext.cache.impl.ICache;
 import org.lunifera.dsl.xtext.cache.impl.ICacheEntry;
+import org.lunifera.dsl.xtext.cache.stackaware.StackAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,6 +55,7 @@ public class CachingResource extends BatchLinkableResource {
 	private IDerivedStateComputer derivedStateComputer;
 	private ICacheEntry cacheEntry;
 	private boolean installingDerivedState;
+	private boolean inferringStackVeto;
 
 	public CachingResource() {
 		super();
@@ -88,9 +90,9 @@ public class CachingResource extends BatchLinkableResource {
 				LOGGER.info("Resource found in cache: " + getURI());
 			}
 
-//			if (cacheEntry != null) {
-//				updateInternalState(oldParseResult, getParseResult());
-//			}
+			// if (cacheEntry != null) {
+			// updateInternalState(oldParseResult, getParseResult());
+			// }
 		} else {
 			super.doLoad(inputStream, options);
 		}
@@ -105,26 +107,69 @@ public class CachingResource extends BatchLinkableResource {
 			throw new IllegalStateException(
 					"The resource must be loaded, before installDerivedState can be called.");
 		if (!fullyInitialized && !isInitializing) {
-			if (preIndexingPhase) {
-				try {
+
+			boolean isBuilderWork = getResourceSet().getLoadOptions()
+					.containsKey(
+							ResourceDescriptionsProvider.NAMED_BUILDER_SCOPE);
+
+			if (isBuilderWork) {
+				StackAdapter stackAdapter = StackAdapter
+						.getOrInit(getResourceSet());
+				boolean skipInferringFully = !preIndexingPhase
+						&& stackAdapter.isMaxReached(getURI());
+
+				if (inferringStackVeto && skipInferringFully) {
+					// already initialized preindexing state
+					return;
+				}
+				if (inferringStackVeto) {
+					inferringStackVeto = false;
+					discardDerivedState();
+				}
+
+				if (preIndexingPhase || skipInferringFully) {
+					try {
+						isInitializing = true;
+						if (derivedStateComputer != null){
+							// only install preindexing state
+							derivedStateComputer
+									.installDerivedState(this, true);
+						}
+
+						if (skipInferringFully) {
+							System.out.println("----- Skipped inferrer for "
+									+ getURI());
+							fullyInitialized = false;
+							inferringStackVeto = true;
+						} else {
+							fullyInitialized = true;
+						}
+					} finally {
+						isInitializing = false;
+						getCache().clear(this);
+					}
+				} else {
+					installingDerivedState = true;
 					isInitializing = true;
-					if (derivedStateComputer != null)
-						derivedStateComputer.installDerivedState(this,
-								preIndexingPhase);
-					fullyInitialized = true;
+					try {
+						stackAdapter.push(getURI());
+						doGetDerivedState(true);
+					} finally {
+						stackAdapter.pop();
+						installingDerivedState = false;
+						isInitializing = false;
+						getCache().clear(this);
+						fullyInitialized = true;
+					}
+				}
+			} else {
+				isInitializing = true;
+				try {
+					doGetDerivedState(false);
 				} finally {
 					isInitializing = false;
 					getCache().clear(this);
-				}
-			} else {
-				installingDerivedState = true;
-				isInitializing = true;
-				try {
-					doAddDerivedStateToCache();
-				} finally {
-					getCache().clear(this);
 					fullyInitialized = true;
-					installingDerivedState = false;
 				}
 			}
 		}
@@ -213,7 +258,8 @@ public class CachingResource extends BatchLinkableResource {
 		} else if (uriFragment.startsWith("luniferareflink")) {
 			String typeFQN = normalizeTypeName(uriFragment.replace(
 					"luniferareflink:", ""));
-			for (EObject content : IteratorExtensions.toIterable(getContents().get(0).eAllContents())) {
+			for (EObject content : IteratorExtensions.toIterable(getContents()
+					.get(0).eAllContents())) {
 				if (content instanceof LEntity) {
 					LEntity type = (LEntity) content;
 					if (type.getName().equals(typeFQN)) {
@@ -222,10 +268,11 @@ public class CachingResource extends BatchLinkableResource {
 				}
 			}
 			return null;
-		}  else if (uriFragment.startsWith("luniferaattlink")) {
+		} else if (uriFragment.startsWith("luniferaattlink")) {
 			String typeFQN = normalizeTypeName(uriFragment.replace(
 					"luniferaattlink:", ""));
-			for (EObject content : IteratorExtensions.toIterable(getContents().get(0).eAllContents())) {
+			for (EObject content : IteratorExtensions.toIterable(getContents()
+					.get(0).eAllContents())) {
 				if (content instanceof LScalarType) {
 					LScalarType type = (LScalarType) content;
 					if (type.getName().equals(typeFQN)) {
@@ -311,11 +358,11 @@ public class CachingResource extends BatchLinkableResource {
 	/**
 	 * @since 2.3
 	 */
-	protected void doAddDerivedStateToCache() {
+	protected void doGetDerivedState(boolean add) {
 		try {
 			if (cacheEntry != null) {
 				cache.loadDS(this, cacheEntry, "", true);
-				if (contents.size() <= 1) {
+				if (add && contents.size() <= 1) {
 					cache.addDerivedState(this, cacheEntry);
 				}
 			}

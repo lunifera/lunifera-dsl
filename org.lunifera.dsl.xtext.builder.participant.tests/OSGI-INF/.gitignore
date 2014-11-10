@@ -1,2 +1,5 @@
 /org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.MyEntityDtoMapper.xml
 /org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.SuperDtoMapper.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.dtos.services.MyEntityService.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.dtos.services.SuperClassService.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.services.OtherEntityService.xml

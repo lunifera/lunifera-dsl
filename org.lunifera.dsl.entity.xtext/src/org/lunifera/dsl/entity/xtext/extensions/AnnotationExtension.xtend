@@ -35,7 +35,7 @@ class AnnotationExtension extends org.lunifera.dsl.common.xtext.extensions.Annot
 	def boolean isEntityAnnoExcluded(LClass lEntity) {
 		return typeof(Entity).isExcluded(lEntity.getAnnotations)
 	}
-
+ 
 	def boolean isEntityAnnoCreated(JvmAnnotationTarget target, EObject context) {
 		return target.containsAnnotation(typeof(Entity), context)
 	}

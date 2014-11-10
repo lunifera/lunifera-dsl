@@ -34,30 +34,30 @@ import org.lunifera.dsl.semantic.common.types.LReference;
  */
 public interface LEntityReference extends LEntityFeature, LReference {
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
+	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' reference isn't clear,
+	 * If the meaning of the '<em>Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(LEntity)
+	 * @return the value of the '<em>Type</em>' containment reference.
+	 * @see #setType(LEntityTypeReference)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntityReference_Type()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	LEntity getType();
+	LEntityTypeReference getType();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getType <em>Type</em>}' reference.
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getType <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
+	 * @param value the new value of the '<em>Type</em>' containment reference.
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(LEntity value);
+	void setType(LEntityTypeReference value);
 
 	/**
 	 * Returns the value of the '<em><b>Opposite</b></em>' reference.

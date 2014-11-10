@@ -22,10 +22,13 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
+import org.lunifera.dsl.semantic.entity.LBean;
+import org.lunifera.dsl.semantic.entity.LBeanTypeReference;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityColumnPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityFeature;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
+import org.lunifera.dsl.semantic.entity.LEntityTypeReference;
 
 import com.google.inject.Inject;
 
@@ -55,6 +58,14 @@ public class EntityQualifiedNameProvider extends CommonQualifiedNameProvider {
 			} else {
 				return QualifiedName.create("");
 			}
+		} else if (obj instanceof LEntityTypeReference) {
+			LEntityTypeReference ref = (LEntityTypeReference) obj;
+			LEntity entity = ref.getLazyResolved();
+			return getFullyQualifiedName(entity);
+		} else if (obj instanceof LBeanTypeReference) {
+			LBeanTypeReference ref = (LBeanTypeReference) obj;
+			LBean bean = ref.getLazyResolved();
+			return getFullyQualifiedName(bean);
 		} else if (obj instanceof LEnum) {
 			LPackage pkg = extensions.getPackage((LEnum) obj);
 			if (pkg != null) {

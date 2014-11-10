@@ -271,37 +271,34 @@ public interface LEntity extends LClass, LFeaturesHolder {
 	EList<LIndex> getIndexes();
 
 	/**
-	 * Returns the value of the '<em><b>Super Type</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.entity.LEntity#getSubTypes <em>Sub Types</em>}'.
+	 * Returns the value of the '<em><b>Super Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Super Type</em>' reference isn't clear,
+	 * If the meaning of the '<em>Super Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Super Type</em>' reference.
-	 * @see #setSuperType(LEntity)
+	 * @return the value of the '<em>Super Type</em>' containment reference.
+	 * @see #setSuperType(LEntityTypeReference)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntity_SuperType()
-	 * @see org.lunifera.dsl.semantic.entity.LEntity#getSubTypes
-	 * @model opposite="subTypes"
+	 * @model containment="true"
 	 * @generated
 	 */
-	LEntity getSuperType();
+	LEntityTypeReference getSuperType();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntity#getSuperType <em>Super Type</em>}' reference.
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntity#getSuperType <em>Super Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Super Type</em>' reference.
+	 * @param value the new value of the '<em>Super Type</em>' containment reference.
 	 * @see #getSuperType()
 	 * @generated
 	 */
-	void setSuperType(LEntity value);
+	void setSuperType(LEntityTypeReference value);
 
 	/**
 	 * Returns the value of the '<em><b>Sub Types</b></em>' reference list.
-	 * The list contents are of type {@link org.lunifera.dsl.semantic.entity.LEntity}.
-	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.entity.LEntity#getSuperType <em>Super Type</em>}'.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.entity.LEntityTypeReference}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Types</em>' reference list isn't clear,
@@ -310,11 +307,10 @@ public interface LEntity extends LClass, LFeaturesHolder {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Types</em>' reference list.
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntity_SubTypes()
-	 * @see org.lunifera.dsl.semantic.entity.LEntity#getSuperType
-	 * @model opposite="superType"
+	 * @model
 	 * @generated
 	 */
-	EList<LEntity> getSubTypes();
+	EList<LEntityTypeReference> getSubTypes();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -398,7 +394,7 @@ public interface LEntity extends LClass, LFeaturesHolder {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model currentUnique="false" resultDataType="org.lunifera.dsl.semantic.entity.EntityFeatureList" resultUnique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _equals = <%com.google.common.base.Objects%>.equal(current, null);\nif (_equals)\n{\n\treturn;\n}\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LEntityFeature%>> _features = current.getFeatures();\nresult.addAll(_features);\n<%org.lunifera.dsl.semantic.entity.LEntity%> _superType = current.getSuperType();\nthis.collectAllLunFeatures(_superType, result);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _equals = <%com.google.common.base.Objects%>.equal(current, null);\nif (_equals)\n{\n\treturn;\n}\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LEntityFeature%>> _features = current.getFeatures();\nresult.addAll(_features);\n<%org.lunifera.dsl.semantic.entity.LEntityTypeReference%> _superType = current.getSuperType();\n<%org.lunifera.dsl.semantic.entity.LEntity%> _type = null;\nif (_superType!=null)\n{\n\t_type=_superType.getType();\n}\nthis.collectAllLunFeatures(_type, result);'"
 	 * @generated
 	 */
 	void collectAllLunFeatures(LEntity current, List<LEntityFeature> result);

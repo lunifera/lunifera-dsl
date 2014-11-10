@@ -374,6 +374,8 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassAccess().getNameAssignment_2_2_2(), "rule__Class__NameAssignment_2_2_2");
 					put(grammarAccess.getClassAccess().getSuperTypeAssignment_2_2_3_1(), "rule__Class__SuperTypeAssignment_2_2_3_1");
 					put(grammarAccess.getClassAccess().getFeaturesAssignment_2_2_5(), "rule__Class__FeaturesAssignment_2_2_5");
+					put(grammarAccess.getEntityTypeReferenceAccess().getTypeAssignment(), "rule__EntityTypeReference__TypeAssignment");
+					put(grammarAccess.getBeanTypeReferenceAccess().getTypeAssignment(), "rule__BeanTypeReference__TypeAssignment");
 					put(grammarAccess.getIndexAccess().getUniqueAssignment_0(), "rule__Index__UniqueAssignment_0");
 					put(grammarAccess.getIndexAccess().getNameAssignment_2(), "rule__Index__NameAssignment_2");
 					put(grammarAccess.getIndexAccess().getFeaturesAssignment_4(), "rule__Index__FeaturesAssignment_4");

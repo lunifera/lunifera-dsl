@@ -62,7 +62,6 @@ public class LEntityItemProvider extends LClassItemProvider {
 			addTimedependentPropertyDescriptor(object);
 			addTimedependentDateTypePropertyDescriptor(object);
 			addMappedSuperclassPropertyDescriptor(object);
-			addSuperTypePropertyDescriptor(object);
 			addSubTypesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -178,28 +177,6 @@ public class LEntityItemProvider extends LClassItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Super Type feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addSuperTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LEntity_superType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LEntity_superType_feature", "_UI_LEntity_type"),
-				 LunEntityPackage.Literals.LENTITY__SUPER_TYPE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Sub Types feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -237,6 +214,7 @@ public class LEntityItemProvider extends LClassItemProvider {
 			childrenFeatures.add(LunEntityPackage.Literals.LENTITY__INHERITANCE_STRATEGY);
 			childrenFeatures.add(LunEntityPackage.Literals.LENTITY__FEATURES);
 			childrenFeatures.add(LunEntityPackage.Literals.LENTITY__INDEXES);
+			childrenFeatures.add(LunEntityPackage.Literals.LENTITY__SUPER_TYPE);
 		}
 		return childrenFeatures;
 	}
@@ -310,6 +288,7 @@ public class LEntityItemProvider extends LClassItemProvider {
 			case LunEntityPackage.LENTITY__INHERITANCE_STRATEGY:
 			case LunEntityPackage.LENTITY__FEATURES:
 			case LunEntityPackage.LENTITY__INDEXES:
+			case LunEntityPackage.LENTITY__SUPER_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -412,6 +391,11 @@ public class LEntityItemProvider extends LClassItemProvider {
 			(createChildParameter
 				(LunEntityPackage.Literals.LENTITY__INDEXES,
 				 LunEntityFactory.eINSTANCE.createLIndex()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LENTITY__SUPER_TYPE,
+				 LunEntityFactory.eINSTANCE.createLEntityTypeReference()));
 	}
 
 	/**

@@ -75,6 +75,7 @@ import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanAttribute;
 import org.lunifera.dsl.semantic.entity.LBeanFeature;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LBeanTypeReference;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityColumnPersistenceInfo;
@@ -82,6 +83,7 @@ import org.lunifera.dsl.semantic.entity.LEntityFeature;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LEntityTypeReference;
 import org.lunifera.dsl.semantic.entity.LIndex;
 import org.lunifera.dsl.semantic.entity.LOperation;
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
@@ -120,6 +122,12 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 			case LunEntityPackage.LBEAN_REFERENCE:
 				if(context == grammarAccess.getBeanFeatureRule()) {
 					sequence_BeanFeature(context, (LBeanReference) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunEntityPackage.LBEAN_TYPE_REFERENCE:
+				if(context == grammarAccess.getBeanTypeReferenceRule()) {
+					sequence_BeanTypeReference(context, (LBeanTypeReference) semanticObject); 
 					return; 
 				}
 				else break;
@@ -165,6 +173,12 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 			case LunEntityPackage.LENTITY_REFERENCE:
 				if(context == grammarAccess.getEntityFeatureRule()) {
 					sequence_EntityFeature(context, (LEntityReference) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunEntityPackage.LENTITY_TYPE_REFERENCE:
+				if(context == grammarAccess.getEntityTypeReferenceRule()) {
+					sequence_EntityTypeReference(context, (LEntityTypeReference) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1520,7 +1534,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanReference_2_0_0 
-	 *         (cascading?='cascade'? type=[LBean|ID] multiplicity=Multiplicity? name=ValidIDWithKeywords opposite=[LBeanReference|LFQN]?)
+	 *         (cascading?='cascade'? type=BeanTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords opposite=[LBeanReference|LFQN]?)
 	 *     )
 	 */
 	protected void sequence_BeanFeature(EObject context, LBeanReference semanticObject) {
@@ -1542,7 +1556,23 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Class_LBean_2_2_0 name=ValidIDWithKeywords superType=[LBean|ID]? features+=BeanFeature*)
+	 *     type=[LBean|QualifiedName]
+	 */
+	protected void sequence_BeanTypeReference(EObject context, LBeanTypeReference semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunEntityPackage.Literals.LBEAN_TYPE_REFERENCE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunEntityPackage.Literals.LBEAN_TYPE_REFERENCE__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getBeanTypeReferenceAccess().getTypeLBeanQualifiedNameParserRuleCall_0_1(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotationInfo=Class_LBean_2_2_0 name=ValidIDWithKeywords superType=BeanTypeReference? features+=BeanFeature*)
 	 */
 	protected void sequence_Class(EObject context, LBean semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1569,7 +1599,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *                 cacheable?='cacheable'?
 	 *             ) 
 	 *             name=ValidIDWithKeywords 
-	 *             superType=[LEntity|ID]? 
+	 *             superType=EntityTypeReference? 
 	 *             persistenceInfo=EntityPersistenceInfo 
 	 *             inheritanceStrategy=EntityInheritanceStrategy? 
 	 *             features+=EntityFeature* 
@@ -1578,7 +1608,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *         (
 	 *             annotationInfo=Class_LEntity_2_1_0 
 	 *             mappedSuperclass?='mapped superclass' 
-	 *             superType=[LEntity|ID]? 
+	 *             superType=EntityTypeReference? 
 	 *             name=ValidIDWithKeywords 
 	 *             features+=EntityFeature*
 	 *         )
@@ -1648,7 +1678,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *         annotationInfo=EntityFeature_LEntityReference_2_0_0 
 	 *         (
 	 *             cascading?='cascade'? 
-	 *             type=[LEntity|ID] 
+	 *             type=EntityTypeReference 
 	 *             multiplicity=Multiplicity? 
 	 *             name=ValidIDWithKeywords 
 	 *             persistenceInfo=ColumnPersistenceInfo? 
@@ -1688,6 +1718,22 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 */
 	protected void sequence_EntityPersistenceInfo(EObject context, LEntityPersistenceInfo semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     type=[LEntity|QualifiedName]
+	 */
+	protected void sequence_EntityTypeReference(EObject context, LEntityTypeReference semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunEntityPackage.Literals.LENTITY_TYPE_REFERENCE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunEntityPackage.Literals.LENTITY_TYPE_REFERENCE__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getEntityTypeReferenceAccess().getTypeLEntityQualifiedNameParserRuleCall_0_1(), semanticObject.getType());
+		feeder.finish();
 	}
 	
 	

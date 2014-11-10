@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -51,6 +51,7 @@ import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanAttribute;
 import org.lunifera.dsl.semantic.entity.LBeanFeature;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LBeanTypeReference;
 import org.lunifera.dsl.semantic.entity.LOperation;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
@@ -81,14 +82,14 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	protected EList<LBeanFeature> features;
 
 	/**
-	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
+	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSuperType()
 	 * @generated
 	 * @ordered
 	 */
-	protected LBean superType;
+	protected LBeanTypeReference superType;
 
 	/**
 	 * The cached value of the '{@link #getSubTypes() <em>Sub Types</em>}' reference list.
@@ -98,7 +99,7 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<LBean> subTypes;
+	protected EList<LBeanTypeReference> subTypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,15 +137,7 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBean getSuperType() {
-		if (superType != null && superType.eIsProxy()) {
-			InternalEObject oldSuperType = (InternalEObject)superType;
-			superType = (LBean)eResolveProxy(oldSuperType);
-			if (superType != oldSuperType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LBEAN__SUPER_TYPE, oldSuperType, superType));
-			}
-		}
+	public LBeanTypeReference getSuperType() {
 		return superType;
 	}
 
@@ -153,17 +146,8 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBean basicGetSuperType() {
-		return superType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSuperType(LBean newSuperType, NotificationChain msgs) {
-		LBean oldSuperType = superType;
+	public NotificationChain basicSetSuperType(LBeanTypeReference newSuperType, NotificationChain msgs) {
+		LBeanTypeReference oldSuperType = superType;
 		superType = newSuperType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN__SUPER_TYPE, oldSuperType, newSuperType);
@@ -177,13 +161,13 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSuperType(LBean newSuperType) {
+	public void setSuperType(LBeanTypeReference newSuperType) {
 		if (newSuperType != superType) {
 			NotificationChain msgs = null;
 			if (superType != null)
-				msgs = ((InternalEObject)superType).eInverseRemove(this, LunEntityPackage.LBEAN__SUB_TYPES, LBean.class, msgs);
+				msgs = ((InternalEObject)superType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN__SUPER_TYPE, null, msgs);
 			if (newSuperType != null)
-				msgs = ((InternalEObject)newSuperType).eInverseAdd(this, LunEntityPackage.LBEAN__SUB_TYPES, LBean.class, msgs);
+				msgs = ((InternalEObject)newSuperType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN__SUPER_TYPE, null, msgs);
 			msgs = basicSetSuperType(newSuperType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -196,9 +180,9 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<LBean> getSubTypes() {
+	public EList<LBeanTypeReference> getSubTypes() {
 		if (subTypes == null) {
-			subTypes = new EObjectWithInverseResolvingEList<LBean>(LBean.class, this, LunEntityPackage.LBEAN__SUB_TYPES, LunEntityPackage.LBEAN__SUPER_TYPE);
+			subTypes = new EObjectResolvingEList<LBeanTypeReference>(LBeanTypeReference.class, this, LunEntityPackage.LBEAN__SUB_TYPES);
 		}
 		return subTypes;
 	}
@@ -283,27 +267,12 @@ public class LBeanImpl extends LClassImpl implements LBean {
 		}
 		EList<LBeanFeature> _features = current.getFeatures();
 		result.addAll(_features);
-		LBean _superType = current.getSuperType();
-		this.collectAllLunFeatures(_superType, result);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LunEntityPackage.LBEAN__SUPER_TYPE:
-				if (superType != null)
-					msgs = ((InternalEObject)superType).eInverseRemove(this, LunEntityPackage.LBEAN__SUB_TYPES, LBean.class, msgs);
-				return basicSetSuperType((LBean)otherEnd, msgs);
-			case LunEntityPackage.LBEAN__SUB_TYPES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSubTypes()).basicAdd(otherEnd, msgs);
+		LBeanTypeReference _superType = current.getSuperType();
+		LBean _type = null;
+		if (_superType!=null) {
+			_type=_superType.getType();
 		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		this.collectAllLunFeatures(_type, result);
 	}
 
 	/**
@@ -318,8 +287,6 @@ public class LBeanImpl extends LClassImpl implements LBean {
 				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
 				return basicSetSuperType(null, msgs);
-			case LunEntityPackage.LBEAN__SUB_TYPES:
-				return ((InternalEList<?>)getSubTypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -335,8 +302,7 @@ public class LBeanImpl extends LClassImpl implements LBean {
 			case LunEntityPackage.LBEAN__FEATURES:
 				return getFeatures();
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
-				if (resolve) return getSuperType();
-				return basicGetSuperType();
+				return getSuperType();
 			case LunEntityPackage.LBEAN__SUB_TYPES:
 				return getSubTypes();
 		}
@@ -357,11 +323,11 @@ public class LBeanImpl extends LClassImpl implements LBean {
 				getFeatures().addAll((Collection<? extends LBeanFeature>)newValue);
 				return;
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
-				setSuperType((LBean)newValue);
+				setSuperType((LBeanTypeReference)newValue);
 				return;
 			case LunEntityPackage.LBEAN__SUB_TYPES:
 				getSubTypes().clear();
-				getSubTypes().addAll((Collection<? extends LBean>)newValue);
+				getSubTypes().addAll((Collection<? extends LBeanTypeReference>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -379,7 +345,7 @@ public class LBeanImpl extends LClassImpl implements LBean {
 				getFeatures().clear();
 				return;
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
-				setSuperType((LBean)null);
+				setSuperType((LBeanTypeReference)null);
 				return;
 			case LunEntityPackage.LBEAN__SUB_TYPES:
 				getSubTypes().clear();

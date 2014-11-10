@@ -92,6 +92,18 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LunEntityPackage.LENTITY_TYPE_REFERENCE: {
+				LEntityTypeReference lEntityTypeReference = (LEntityTypeReference)theEObject;
+				T result = caseLEntityTypeReference(lEntityTypeReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunEntityPackage.LBEAN_TYPE_REFERENCE: {
+				LBeanTypeReference lBeanTypeReference = (LBeanTypeReference)theEObject;
+				T result = caseLBeanTypeReference(lBeanTypeReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case LunEntityPackage.LBEAN: {
 				LBean lBean = (LBean)theEObject;
 				T result = caseLBean(lBean);
@@ -234,6 +246,36 @@ public class LunEntitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLEntityModel(LEntityModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LEntity Type Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LEntity Type Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLEntityTypeReference(LEntityTypeReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LBean Type Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LBean Type Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLBeanTypeReference(LBeanTypeReference object) {
 		return null;
 	}
 

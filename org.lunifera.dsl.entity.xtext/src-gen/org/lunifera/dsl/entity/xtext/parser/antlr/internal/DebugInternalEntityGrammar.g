@@ -21,16 +21,26 @@ ruleClass :
 			)? |
 			'cacheable'?
 		)* 'entity' ruleValidIDWithKeywords (
-			'extends' RULE_ID
+			'extends' ruleEntityTypeReference
 		)? '{' ruleEntityPersistenceInfo ruleEntityInheritanceStrategy?
 		ruleEntityFeature* ruleIndex* '}' |
 		'mapped superclass' (
-			'extends' RULE_ID
+			'extends' ruleEntityTypeReference
 		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' |
 		'bean' ruleValidIDWithKeywords (
-			'extends' RULE_ID
+			'extends' ruleBeanTypeReference
 		)? '{' ruleBeanFeature* '}'
 	)
+;
+
+// Rule EntityTypeReference
+ruleEntityTypeReference :
+	ruleQualifiedName
+;
+
+// Rule BeanTypeReference
+ruleBeanTypeReference :
+	ruleQualifiedName
 ;
 
 // Rule Index
@@ -61,8 +71,8 @@ ruleColumnPersistenceInfo :
 ruleEntityFeature :
 	ruleAnnotationDef* (
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleValidIDWithKeywords
-			ruleColumnPersistenceInfo? (
+			'ref' 'cascade'? ruleEntityTypeReference ruleMultiplicity?
+			ruleValidIDWithKeywords ruleColumnPersistenceInfo? (
 				'opposite' ruleLFQN
 			)?
 		) ';' |
@@ -92,7 +102,8 @@ ruleEntityFeature :
 ruleBeanFeature :
 	ruleAnnotationDef* (
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+			'ref' 'cascade'? ruleBeanTypeReference ruleMultiplicity?
+			ruleValidIDWithKeywords (
 				'opposite' ruleLFQN
 			)?
 		) ';' |

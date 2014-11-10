@@ -34,7 +34,7 @@ public class BeanRefOppositeScope extends AbstractScope {
 		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 		if (prop.getType() != null && prop.getType() instanceof LClass) {
 			LBean propClass = prop.getBean();
-			LBean type = prop.getType();
+			LBean type = prop.getType().getLazyResolved();
 			for (LBeanReference oppositeProp : type.getReferences()) {
 				if (oppositeProp.getType() == propClass) {
 					String name = oppositeProp.getName();

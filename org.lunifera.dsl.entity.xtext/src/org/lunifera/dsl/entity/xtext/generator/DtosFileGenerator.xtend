@@ -95,7 +95,7 @@ class DtosFileGenerator {
 
 	def toEntityDeclaration(LEntity lEntity) {
 		return '''
-			autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
+			autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.lazyResolved.name»Dto «ENDIF»wraps «lEntity.name» {
 		'''
 	}
 
@@ -110,23 +110,28 @@ class DtosFileGenerator {
 			switch(element){
 				 LEntity: {
 					val LTypedPackage lPkg = element.eContainer as LTypedPackage;
-					imports += lPkg.name + "." + (element as LEntity).name
+					imports += lPkg.name + "." + element.name
+					imports += lPkg.name + ".dtos." + element.name + "Dto"
+					
+					if(element.superType != null){
+						val LTypedPackage lSuperPkg = element.superType.eContainer as LTypedPackage;
+						imports += lSuperPkg.name + ".dtos." + element.superType.lazyResolved.name + "Dto"
+					}
 				}
 				 LBean: {
 					val LTypedPackage lPkg = element.eContainer as LTypedPackage;
-					imports += lPkg.name + "." + (element as LBean).name
+					imports += lPkg.name + "." + element.name
+					imports += lPkg.name + ".dtos." + element.name + "Dto"
 				}
 				 LEntityReference: {
-					val LEntityReference lRef = element as LEntityReference;
-					val LEntity lEntity = lRef.type
+					val LEntity lEntity = element.type.lazyResolved
 					val LTypedPackage lPkg = lEntity.eContainer as LTypedPackage;
 					imports += lPkg.name + "." + lEntity.name
 					imports += lPkg.name + ".dtos." + lEntity.name + "Dto"
 				}
 				 LEntityAttribute: {
-					val LEntityAttribute lRef = element as LEntityAttribute;
-					if(lRef.type instanceof LBean){
-						val LBean lBean = lRef.type as LBean
+					if(element.type instanceof LBean){
+						val LBean lBean = element.type as LBean
 						val LTypedPackage lPkg = lBean.eContainer as LTypedPackage;
 						imports += lPkg.name + "." + lBean.name
 						imports += lPkg.name + ".dtos." + lBean.name + "Dto"
@@ -148,7 +153,7 @@ class DtosFileGenerator {
 
 	def toBeanDeclaration(LBean lBean) {
 		return '''
-			autoDto «lBean.name»Dto «IF lBean.superType != null»extends «lBean.superType.name»Dto «ENDIF»wraps «lBean.name» {
+			autoDto «lBean.name»Dto «IF lBean.superType != null»extends «lBean.superType.lazyResolved.name»Dto «ENDIF»wraps «lBean.name» {
 		'''
 	}
 
@@ -182,7 +187,7 @@ class DtosFileGenerator {
 
 	def dispatch toFeature(LEntityReference att) '''
 		«att.toDocu»
-		inherit ref «att.name» mapto «att.type.name»Dto;
+		inherit ref «att.name» mapto «att.type.lazyResolved.name»Dto;
 	'''
 	
 	def toDerivedAttribute(LAttribute att) '''

@@ -42,11 +42,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	@Inject TypeReferences references;
 
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
-		return prop.type?.toTypeReference
+		return prop.type.lazyResolved?.toTypeReference
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LBeanReference prop) {
-		return prop.type?.toTypeReference
+		return prop.type.lazyResolved?.toTypeReference
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LOperation prop) {
@@ -124,7 +124,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		if (toCheckFqn.equals(superTypeFqn)) {
 			return true
 		} else {
-			val LClass toCheckSuperType = toCheck.getSuperType
+			val LClass toCheckSuperType = toCheck.getSuperType.lazyResolved
 			if (toCheckSuperType != null) {
 				return toCheckSuperType.isCastable(superType)
 			} else {
@@ -143,7 +143,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		if (toCheckFqn.equals(superTypeFqn)) {
 			return true
 		} else {
-			val LClass toCheckSuperType = toCheck.getSuperType
+			val LClass toCheckSuperType = toCheck.getSuperType.lazyResolved
 			if (toCheckSuperType != null) {
 				return toCheckSuperType.isCastable(superType)
 			} else {
@@ -170,7 +170,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch String typeName(LEntityReference prop) {
-		prop.type.name
+		prop.type.lazyResolved.name
 	}
 
 	def dispatch String typeName(LBeanAttribute prop) {
@@ -178,7 +178,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch String typeName(LBeanReference prop) {
-		prop.type.name
+		prop.type.lazyResolved.name
 	}
 
 	def dispatch type(LEntityAttribute prop) {
@@ -186,7 +186,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch type(LEntityReference prop) {
-		prop.type
+		prop.type.lazyResolved
 	}
 
 	def dispatch type(LBeanAttribute prop) {
@@ -194,7 +194,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch type(LBeanReference prop) {
-		prop.type
+		prop.type.lazyResolved
 	}
 
 	def dispatch opposite(LEntityAttribute prop) {
@@ -224,7 +224,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 		result += entity.toInheritanceStrategy
 
-		return entity.superType.collectAllInheritanceStrategies(result)
+		return entity.superType.lazyResolved.collectAllInheritanceStrategies(result)
 	}
 
 	def toInheritanceStrategy(LEntity entity) {
@@ -296,7 +296,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 			return EcoreUtil::copy(entity.inheritanceStrategy)
 		}
 		if (entity != entity.superType && entity.superType != null) {
-			return entity.superType.findStrategyFromSuper
+			return entity.superType.lazyResolved.findStrategyFromSuper
 		}
 		return null
 	}

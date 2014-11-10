@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -53,6 +53,7 @@ import org.lunifera.dsl.semantic.entity.LEntityFeature;
 import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LEntityTypeReference;
 import org.lunifera.dsl.semantic.entity.LIndex;
 import org.lunifera.dsl.semantic.entity.LOperation;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
@@ -222,14 +223,14 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	protected EList<LIndex> indexes;
 
 	/**
-	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
+	 * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSuperType()
 	 * @generated
 	 * @ordered
 	 */
-	protected LEntity superType;
+	protected LEntityTypeReference superType;
 
 	/**
 	 * The cached value of the '{@link #getSubTypes() <em>Sub Types</em>}' reference list.
@@ -239,7 +240,7 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<LEntity> subTypes;
+	protected EList<LEntityTypeReference> subTypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -480,15 +481,7 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LEntity getSuperType() {
-		if (superType != null && superType.eIsProxy()) {
-			InternalEObject oldSuperType = (InternalEObject)superType;
-			superType = (LEntity)eResolveProxy(oldSuperType);
-			if (superType != oldSuperType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LENTITY__SUPER_TYPE, oldSuperType, superType));
-			}
-		}
+	public LEntityTypeReference getSuperType() {
 		return superType;
 	}
 
@@ -497,17 +490,8 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LEntity basicGetSuperType() {
-		return superType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSuperType(LEntity newSuperType, NotificationChain msgs) {
-		LEntity oldSuperType = superType;
+	public NotificationChain basicSetSuperType(LEntityTypeReference newSuperType, NotificationChain msgs) {
+		LEntityTypeReference oldSuperType = superType;
 		superType = newSuperType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY__SUPER_TYPE, oldSuperType, newSuperType);
@@ -521,13 +505,13 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSuperType(LEntity newSuperType) {
+	public void setSuperType(LEntityTypeReference newSuperType) {
 		if (newSuperType != superType) {
 			NotificationChain msgs = null;
 			if (superType != null)
-				msgs = ((InternalEObject)superType).eInverseRemove(this, LunEntityPackage.LENTITY__SUB_TYPES, LEntity.class, msgs);
+				msgs = ((InternalEObject)superType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY__SUPER_TYPE, null, msgs);
 			if (newSuperType != null)
-				msgs = ((InternalEObject)newSuperType).eInverseAdd(this, LunEntityPackage.LENTITY__SUB_TYPES, LEntity.class, msgs);
+				msgs = ((InternalEObject)newSuperType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY__SUPER_TYPE, null, msgs);
 			msgs = basicSetSuperType(newSuperType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -540,9 +524,9 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<LEntity> getSubTypes() {
+	public EList<LEntityTypeReference> getSubTypes() {
 		if (subTypes == null) {
-			subTypes = new EObjectWithInverseResolvingEList<LEntity>(LEntity.class, this, LunEntityPackage.LENTITY__SUB_TYPES, LunEntityPackage.LENTITY__SUPER_TYPE);
+			subTypes = new EObjectResolvingEList<LEntityTypeReference>(LEntityTypeReference.class, this, LunEntityPackage.LENTITY__SUB_TYPES);
 		}
 		return subTypes;
 	}
@@ -627,27 +611,12 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 		}
 		EList<LEntityFeature> _features = current.getFeatures();
 		result.addAll(_features);
-		LEntity _superType = current.getSuperType();
-		this.collectAllLunFeatures(_superType, result);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LunEntityPackage.LENTITY__SUPER_TYPE:
-				if (superType != null)
-					msgs = ((InternalEObject)superType).eInverseRemove(this, LunEntityPackage.LENTITY__SUB_TYPES, LEntity.class, msgs);
-				return basicSetSuperType((LEntity)otherEnd, msgs);
-			case LunEntityPackage.LENTITY__SUB_TYPES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSubTypes()).basicAdd(otherEnd, msgs);
+		LEntityTypeReference _superType = current.getSuperType();
+		LEntity _type = null;
+		if (_superType!=null) {
+			_type=_superType.getType();
 		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		this.collectAllLunFeatures(_type, result);
 	}
 
 	/**
@@ -668,8 +637,6 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 				return ((InternalEList<?>)getIndexes()).basicRemove(otherEnd, msgs);
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
 				return basicSetSuperType(null, msgs);
-			case LunEntityPackage.LENTITY__SUB_TYPES:
-				return ((InternalEList<?>)getSubTypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -701,8 +668,7 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 			case LunEntityPackage.LENTITY__INDEXES:
 				return getIndexes();
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
-				if (resolve) return getSuperType();
-				return basicGetSuperType();
+				return getSuperType();
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				return getSubTypes();
 		}
@@ -748,11 +714,11 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 				getIndexes().addAll((Collection<? extends LIndex>)newValue);
 				return;
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
-				setSuperType((LEntity)newValue);
+				setSuperType((LEntityTypeReference)newValue);
 				return;
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				getSubTypes().clear();
-				getSubTypes().addAll((Collection<? extends LEntity>)newValue);
+				getSubTypes().addAll((Collection<? extends LEntityTypeReference>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -794,7 +760,7 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 				getIndexes().clear();
 				return;
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
-				setSuperType((LEntity)null);
+				setSuperType((LEntityTypeReference)null);
 				return;
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				getSubTypes().clear();

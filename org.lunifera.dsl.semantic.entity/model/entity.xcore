@@ -16,7 +16,7 @@
 @Ecore(nsPrefix="entity")
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
-  
+
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LScalarType
@@ -25,11 +25,45 @@ import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LDateType
+import org.lunifera.dsl.lazyreferences.EcoreUtil3
 import java.util.List
 import GenModel
- 
+import org.eclipse.emf.ecore.InternalEObject
+
 class LEntityModel {
 	contains LTypedPackage[] packages
+}
+
+class LEntityTypeReference {
+	refers LEntity ^type
+	op LEntity getLazyResolved() {
+		if (^type != null && ^type.eIsProxy()) {
+			val InternalEObject oldType = ^type as InternalEObject;
+			^type = EcoreUtil3.resolveLazy(oldType, this) as LEntity;
+
+		//			if (^type != oldType) {
+		//				if (eNotificationRequired())
+		//					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LENTITY_TYPE_REFERENCE__TYPE, oldType, ^type));
+		//			}
+		}
+		return ^type;
+	}
+}
+
+class LBeanTypeReference {
+	refers LBean ^type
+	op LBean getLazyResolved() {
+		if (^type != null && ^type.eIsProxy()) {
+			val InternalEObject oldType = ^type as InternalEObject;
+			^type = EcoreUtil3.resolveLazy(oldType, this) as LBean;
+
+		//			if (^type != oldType) {
+		//				if (eNotificationRequired())
+		//					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LENTITY_TYPE_REFERENCE__TYPE, oldType, ^type));
+		//			}
+		}
+		return ^type;
+	}
 }
 
 /**
@@ -37,12 +71,12 @@ class LEntityModel {
  */
 class LBean extends LClass, LScalarType, LFeaturesHolder {
 	contains LBeanFeature[] features
-	refers LBean superType opposite subTypes
-	refers LBean[] subTypes opposite superType
+	contains LBeanTypeReference superType
+	refers LBeanTypeReference[] subTypes
 	/**
  	 * Returns all features of type LOperation
  	 */
-	op OperationsList getOperations() { 
+	op OperationsList getOperations() {
 		features.filter(typeof(LOperation)).toList
 	}
 	/**
@@ -90,7 +124,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		result.addAll(current.features)
 
 		// call for super class
-		current.superType.collectAllLunFeatures(result)
+		current.superType?.^type.collectAllLunFeatures(result)
 	}
 }
 
@@ -107,14 +141,13 @@ class LEntity extends LClass, LFeaturesHolder {
 	contains LEntityInheritanceStrategy inheritanceStrategy
 	contains LEntityFeature[] features
 	contains LIndex[] indexes
-	refers LEntity superType opposite subTypes
-	refers LEntity[] subTypes opposite superType
-	
+	contains LEntityTypeReference superType
+	refers LEntityTypeReference[] subTypes
 	/**
  	 * Returns all features of type LOperation
  	 */
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList 
+		features.filter(typeof(LOperation)).toList
 	}
 	/**
  	 * Returns all features of type LEntityReference
@@ -161,7 +194,7 @@ class LEntity extends LClass, LFeaturesHolder {
 		result.addAll(current.features)
 
 		// call for super class
-		current.superType.collectAllLunFeatures(result)
+		current.superType?.^type.collectAllLunFeatures(result)
 	}
 }
 
@@ -204,30 +237,28 @@ class LEntityFeature extends LFeature {
 }
 
 class LEntityAttribute extends LEntityFeature, LAttribute {
-	
-	derived String typedName get 
-	{
+	derived String typedName get {
 		var result = new StringBuilder
-		if(name != null){
+		if (name != null) {
 			result.append = name
-		}else{
+		} else {
 			result.append = "empty"
 		}
-		
+
 		result.append = " : "
-		
-		if(^type != null){
+
+		if (^type != null) {
 			result.append = ^type.name
-		}else{
+		} else {
 			result.append = "undefined"
 		}
-		
-		return result.toString		
+
+		return result.toString
 	}
 }
 
 class LEntityReference extends LEntityFeature, LReference {
-	refers LEntity ^type
+	contains LEntityTypeReference ^type
 	refers LEntityReference ^opposite
 }
 
@@ -238,31 +269,28 @@ class LBeanFeature  extends LFeature {
 }
 
 class LBeanAttribute extends LBeanFeature, LAttribute {
-	
-	derived String typedName get 
-	{
+	derived String typedName get {
 		var result = new StringBuilder
-		if(name != null){
+		if (name != null) {
 			result.append = name
-		}else{
+		} else {
 			result.append = "empty"
 		}
-		
+
 		result.append = " : "
-		
-		if(^type != null){
+
+		if (^type != null) {
 			result.append = ^type.name
-		}else{
+		} else {
 			result.append = "undefined"
 		}
-		
-		return result.toString		
+
+		return result.toString
 	}
-	
 }
- 
+
 class LBeanReference extends LBeanFeature, LReference {
-	refers LBean ^type
+	contains LBeanTypeReference ^type
 	refers LBeanReference ^opposite
 }
 
@@ -277,7 +305,7 @@ class LIndex {
  */
 class LOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LBeanFeature, LEntityFeature {
 }
- 
+
 type OperationsList wraps java.util.List<LOperation>
 
 type EntityFeatureList wraps java.util.List<LEntityFeature>

@@ -62,37 +62,34 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder {
 	EList<LBeanFeature> getFeatures();
 
 	/**
-	 * Returns the value of the '<em><b>Super Type</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.entity.LBean#getSubTypes <em>Sub Types</em>}'.
+	 * Returns the value of the '<em><b>Super Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Super Type</em>' reference isn't clear,
+	 * If the meaning of the '<em>Super Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Super Type</em>' reference.
-	 * @see #setSuperType(LBean)
+	 * @return the value of the '<em>Super Type</em>' containment reference.
+	 * @see #setSuperType(LBeanTypeReference)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBean_SuperType()
-	 * @see org.lunifera.dsl.semantic.entity.LBean#getSubTypes
-	 * @model opposite="subTypes"
+	 * @model containment="true"
 	 * @generated
 	 */
-	LBean getSuperType();
+	LBeanTypeReference getSuperType();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LBean#getSuperType <em>Super Type</em>}' reference.
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LBean#getSuperType <em>Super Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Super Type</em>' reference.
+	 * @param value the new value of the '<em>Super Type</em>' containment reference.
 	 * @see #getSuperType()
 	 * @generated
 	 */
-	void setSuperType(LBean value);
+	void setSuperType(LBeanTypeReference value);
 
 	/**
 	 * Returns the value of the '<em><b>Sub Types</b></em>' reference list.
-	 * The list contents are of type {@link org.lunifera.dsl.semantic.entity.LBean}.
-	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.entity.LBean#getSuperType <em>Super Type</em>}'.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.entity.LBeanTypeReference}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Types</em>' reference list isn't clear,
@@ -101,11 +98,10 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Types</em>' reference list.
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBean_SubTypes()
-	 * @see org.lunifera.dsl.semantic.entity.LBean#getSuperType
-	 * @model opposite="superType"
+	 * @model
 	 * @generated
 	 */
-	EList<LBean> getSubTypes();
+	EList<LBeanTypeReference> getSubTypes();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,7 +185,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model currentUnique="false" resultDataType="org.lunifera.dsl.semantic.entity.BeanFeatureList" resultUnique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _equals = <%com.google.common.base.Objects%>.equal(current, null);\nif (_equals)\n{\n\treturn;\n}\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = current.getFeatures();\nresult.addAll(_features);\n<%org.lunifera.dsl.semantic.entity.LBean%> _superType = current.getSuperType();\nthis.collectAllLunFeatures(_superType, result);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _equals = <%com.google.common.base.Objects%>.equal(current, null);\nif (_equals)\n{\n\treturn;\n}\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.entity.LBeanFeature%>> _features = current.getFeatures();\nresult.addAll(_features);\n<%org.lunifera.dsl.semantic.entity.LBeanTypeReference%> _superType = current.getSuperType();\n<%org.lunifera.dsl.semantic.entity.LBean%> _type = null;\nif (_superType!=null)\n{\n\t_type=_superType.getType();\n}\nthis.collectAllLunFeatures(_type, result);'"
 	 * @generated
 	 */
 	void collectAllLunFeatures(LBean current, List<LBeanFeature> result);

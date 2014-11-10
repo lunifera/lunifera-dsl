@@ -68,8 +68,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2_0_4 = (Group)cGroup_2_0.eContents().get(4);
 		private final Keyword cExtendsKeyword_2_0_4_0 = (Keyword)cGroup_2_0_4.eContents().get(0);
 		private final Assignment cSuperTypeAssignment_2_0_4_1 = (Assignment)cGroup_2_0_4.eContents().get(1);
-		private final CrossReference cSuperTypeLEntityCrossReference_2_0_4_1_0 = (CrossReference)cSuperTypeAssignment_2_0_4_1.eContents().get(0);
-		private final RuleCall cSuperTypeLEntityIDTerminalRuleCall_2_0_4_1_0_1 = (RuleCall)cSuperTypeLEntityCrossReference_2_0_4_1_0.eContents().get(1);
+		private final RuleCall cSuperTypeEntityTypeReferenceParserRuleCall_2_0_4_1_0 = (RuleCall)cSuperTypeAssignment_2_0_4_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2_0_5 = (Keyword)cGroup_2_0.eContents().get(5);
 		private final Assignment cPersistenceInfoAssignment_2_0_6 = (Assignment)cGroup_2_0.eContents().get(6);
 		private final RuleCall cPersistenceInfoEntityPersistenceInfoParserRuleCall_2_0_6_0 = (RuleCall)cPersistenceInfoAssignment_2_0_6.eContents().get(0);
@@ -87,8 +86,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2_1_2 = (Group)cGroup_2_1.eContents().get(2);
 		private final Keyword cExtendsKeyword_2_1_2_0 = (Keyword)cGroup_2_1_2.eContents().get(0);
 		private final Assignment cSuperTypeAssignment_2_1_2_1 = (Assignment)cGroup_2_1_2.eContents().get(1);
-		private final CrossReference cSuperTypeLEntityCrossReference_2_1_2_1_0 = (CrossReference)cSuperTypeAssignment_2_1_2_1.eContents().get(0);
-		private final RuleCall cSuperTypeLEntityIDTerminalRuleCall_2_1_2_1_0_1 = (RuleCall)cSuperTypeLEntityCrossReference_2_1_2_1_0.eContents().get(1);
+		private final RuleCall cSuperTypeEntityTypeReferenceParserRuleCall_2_1_2_1_0 = (RuleCall)cSuperTypeAssignment_2_1_2_1.eContents().get(0);
 		private final Assignment cNameAssignment_2_1_3 = (Assignment)cGroup_2_1.eContents().get(3);
 		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_3_0 = (RuleCall)cNameAssignment_2_1_3.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2_1_4 = (Keyword)cGroup_2_1.eContents().get(4);
@@ -103,8 +101,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2_2_3 = (Group)cGroup_2_2.eContents().get(3);
 		private final Keyword cExtendsKeyword_2_2_3_0 = (Keyword)cGroup_2_2_3.eContents().get(0);
 		private final Assignment cSuperTypeAssignment_2_2_3_1 = (Assignment)cGroup_2_2_3.eContents().get(1);
-		private final CrossReference cSuperTypeLBeanCrossReference_2_2_3_1_0 = (CrossReference)cSuperTypeAssignment_2_2_3_1.eContents().get(0);
-		private final RuleCall cSuperTypeLBeanIDTerminalRuleCall_2_2_3_1_0_1 = (RuleCall)cSuperTypeLBeanCrossReference_2_2_3_1_0.eContents().get(1);
+		private final RuleCall cSuperTypeBeanTypeReferenceParserRuleCall_2_2_3_1_0 = (RuleCall)cSuperTypeAssignment_2_2_3_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2_2_4 = (Keyword)cGroup_2_2.eContents().get(4);
 		private final Assignment cFeaturesAssignment_2_2_5 = (Assignment)cGroup_2_2.eContents().get(5);
 		private final RuleCall cFeaturesBeanFeatureParserRuleCall_2_2_5_0 = (RuleCall)cFeaturesAssignment_2_2_5.eContents().get(0);
@@ -113,21 +110,21 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//Class returns LClass:
 		//	{LClass} annotations+=AnnotationDef* ({entity::LEntity.annotationInfo=current} (abstract?="abstract"? &
 		//	(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
-		//	cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{"
+		//	cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=EntityTypeReference)? "{"
 		//	persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
 		//	indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
-		//	superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
-		//	{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{"
+		//	superType=EntityTypeReference)? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
+		//	{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=BeanTypeReference)? "{"
 		//	features+=BeanFeature* "}");
 		public ParserRule getRule() { return rule; }
 
 		//{LClass} annotations+=AnnotationDef* ({entity::LEntity.annotationInfo=current} (abstract?="abstract"? &
 		//(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
-		//cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{"
+		//cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=EntityTypeReference)? "{"
 		//persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
 		//indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
-		//superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
-		//{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{"
+		//superType=EntityTypeReference)? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
+		//{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=BeanTypeReference)? "{"
 		//features+=BeanFeature* "}")
 		public Group getGroup() { return cGroup; }
 
@@ -142,16 +139,17 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//{entity::LEntity.annotationInfo=current} (abstract?="abstract"? & (historized?="historized" |
 		//timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? & cacheable?="cacheable"?)
-		//"entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{" persistenceInfo=EntityPersistenceInfo
+		//"entity" name=ValidIDWithKeywords ("extends" superType=EntityTypeReference)? "{" persistenceInfo=EntityPersistenceInfo
 		//inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature* indexes+=Index* "}" |
-		//{entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends" superType=[entity::LEntity])?
-		//name=ValidIDWithKeywords "{" features+=EntityFeature* "}" | {entity::LBean.annotationInfo=current} "bean"
-		//name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{" features+=BeanFeature* "}"
+		//{entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
+		//superType=EntityTypeReference)? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
+		//{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=BeanTypeReference)? "{"
+		//features+=BeanFeature* "}"
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//{entity::LEntity.annotationInfo=current} (abstract?="abstract"? & (historized?="historized" |
 		//timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? & cacheable?="cacheable"?)
-		//"entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{" persistenceInfo=EntityPersistenceInfo
+		//"entity" name=ValidIDWithKeywords ("extends" superType=EntityTypeReference)? "{" persistenceInfo=EntityPersistenceInfo
 		//inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature* indexes+=Index* "}"
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
@@ -216,20 +214,17 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidIDWithKeywords
 		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_0_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_0_3_0; }
 
-		//("extends" superType=[entity::LEntity])?
+		//("extends" superType=EntityTypeReference)?
 		public Group getGroup_2_0_4() { return cGroup_2_0_4; }
 
 		//"extends"
 		public Keyword getExtendsKeyword_2_0_4_0() { return cExtendsKeyword_2_0_4_0; }
 
-		//superType=[entity::LEntity]
+		//superType=EntityTypeReference
 		public Assignment getSuperTypeAssignment_2_0_4_1() { return cSuperTypeAssignment_2_0_4_1; }
 
-		//[entity::LEntity]
-		public CrossReference getSuperTypeLEntityCrossReference_2_0_4_1_0() { return cSuperTypeLEntityCrossReference_2_0_4_1_0; }
-
-		//ID
-		public RuleCall getSuperTypeLEntityIDTerminalRuleCall_2_0_4_1_0_1() { return cSuperTypeLEntityIDTerminalRuleCall_2_0_4_1_0_1; }
+		//EntityTypeReference
+		public RuleCall getSuperTypeEntityTypeReferenceParserRuleCall_2_0_4_1_0() { return cSuperTypeEntityTypeReferenceParserRuleCall_2_0_4_1_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2_0_5() { return cLeftCurlyBracketKeyword_2_0_5; }
@@ -261,8 +256,8 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2_0_10() { return cRightCurlyBracketKeyword_2_0_10; }
 
-		//{entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends" superType=[entity::LEntity])?
-		//name=ValidIDWithKeywords "{" features+=EntityFeature* "}"
+		//{entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
+		//superType=EntityTypeReference)? name=ValidIDWithKeywords "{" features+=EntityFeature* "}"
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//{entity::LEntity.annotationInfo=current}
@@ -274,20 +269,17 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"mapped superclass"
 		public Keyword getMappedSuperclassMappedSuperclassKeyword_2_1_1_0() { return cMappedSuperclassMappedSuperclassKeyword_2_1_1_0; }
 
-		//("extends" superType=[entity::LEntity])?
+		//("extends" superType=EntityTypeReference)?
 		public Group getGroup_2_1_2() { return cGroup_2_1_2; }
 
 		//"extends"
 		public Keyword getExtendsKeyword_2_1_2_0() { return cExtendsKeyword_2_1_2_0; }
 
-		//superType=[entity::LEntity]
+		//superType=EntityTypeReference
 		public Assignment getSuperTypeAssignment_2_1_2_1() { return cSuperTypeAssignment_2_1_2_1; }
 
-		//[entity::LEntity]
-		public CrossReference getSuperTypeLEntityCrossReference_2_1_2_1_0() { return cSuperTypeLEntityCrossReference_2_1_2_1_0; }
-
-		//ID
-		public RuleCall getSuperTypeLEntityIDTerminalRuleCall_2_1_2_1_0_1() { return cSuperTypeLEntityIDTerminalRuleCall_2_1_2_1_0_1; }
+		//EntityTypeReference
+		public RuleCall getSuperTypeEntityTypeReferenceParserRuleCall_2_1_2_1_0() { return cSuperTypeEntityTypeReferenceParserRuleCall_2_1_2_1_0; }
 
 		//name=ValidIDWithKeywords
 		public Assignment getNameAssignment_2_1_3() { return cNameAssignment_2_1_3; }
@@ -307,7 +299,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2_1_6() { return cRightCurlyBracketKeyword_2_1_6; }
 
-		//{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{"
+		//{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=BeanTypeReference)? "{"
 		//features+=BeanFeature* "}"
 		public Group getGroup_2_2() { return cGroup_2_2; }
 
@@ -323,20 +315,17 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidIDWithKeywords
 		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_2_2_0() { return cNameValidIDWithKeywordsParserRuleCall_2_2_2_0; }
 
-		//("extends" superType=[entity::LBean])?
+		//("extends" superType=BeanTypeReference)?
 		public Group getGroup_2_2_3() { return cGroup_2_2_3; }
 
 		//"extends"
 		public Keyword getExtendsKeyword_2_2_3_0() { return cExtendsKeyword_2_2_3_0; }
 
-		//superType=[entity::LBean]
+		//superType=BeanTypeReference
 		public Assignment getSuperTypeAssignment_2_2_3_1() { return cSuperTypeAssignment_2_2_3_1; }
 
-		//[entity::LBean]
-		public CrossReference getSuperTypeLBeanCrossReference_2_2_3_1_0() { return cSuperTypeLBeanCrossReference_2_2_3_1_0; }
-
-		//ID
-		public RuleCall getSuperTypeLBeanIDTerminalRuleCall_2_2_3_1_0_1() { return cSuperTypeLBeanIDTerminalRuleCall_2_2_3_1_0_1; }
+		//BeanTypeReference
+		public RuleCall getSuperTypeBeanTypeReferenceParserRuleCall_2_2_3_1_0() { return cSuperTypeBeanTypeReferenceParserRuleCall_2_2_3_1_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2_2_4() { return cLeftCurlyBracketKeyword_2_2_4; }
@@ -349,6 +338,46 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2_2_6() { return cRightCurlyBracketKeyword_2_2_6; }
+	}
+
+	public class EntityTypeReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EntityTypeReference");
+		private final Assignment cTypeAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cTypeLEntityCrossReference_0 = (CrossReference)cTypeAssignment.eContents().get(0);
+		private final RuleCall cTypeLEntityQualifiedNameParserRuleCall_0_1 = (RuleCall)cTypeLEntityCrossReference_0.eContents().get(1);
+		
+		//EntityTypeReference returns entity::LEntityTypeReference:
+		//	type=[entity::LEntity|QualifiedName];
+		public ParserRule getRule() { return rule; }
+
+		//type=[entity::LEntity|QualifiedName]
+		public Assignment getTypeAssignment() { return cTypeAssignment; }
+
+		//[entity::LEntity|QualifiedName]
+		public CrossReference getTypeLEntityCrossReference_0() { return cTypeLEntityCrossReference_0; }
+
+		//QualifiedName
+		public RuleCall getTypeLEntityQualifiedNameParserRuleCall_0_1() { return cTypeLEntityQualifiedNameParserRuleCall_0_1; }
+	}
+
+	public class BeanTypeReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BeanTypeReference");
+		private final Assignment cTypeAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cTypeLBeanCrossReference_0 = (CrossReference)cTypeAssignment.eContents().get(0);
+		private final RuleCall cTypeLBeanQualifiedNameParserRuleCall_0_1 = (RuleCall)cTypeLBeanCrossReference_0.eContents().get(1);
+		
+		//BeanTypeReference returns entity::LBeanTypeReference:
+		//	type=[entity::LBean|QualifiedName];
+		public ParserRule getRule() { return rule; }
+
+		//type=[entity::LBean|QualifiedName]
+		public Assignment getTypeAssignment() { return cTypeAssignment; }
+
+		//[entity::LBean|QualifiedName]
+		public CrossReference getTypeLBeanCrossReference_0() { return cTypeLBeanCrossReference_0; }
+
+		//QualifiedName
+		public RuleCall getTypeLBeanQualifiedNameParserRuleCall_0_1() { return cTypeLBeanQualifiedNameParserRuleCall_0_1; }
 	}
 
 	public class IndexElements extends AbstractParserRuleElementFinder {
@@ -532,8 +561,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCascadingAssignment_2_0_1_1 = (Assignment)cGroup_2_0_1.eContents().get(1);
 		private final Keyword cCascadingCascadeKeyword_2_0_1_1_0 = (Keyword)cCascadingAssignment_2_0_1_1.eContents().get(0);
 		private final Assignment cTypeAssignment_2_0_1_2 = (Assignment)cGroup_2_0_1.eContents().get(2);
-		private final CrossReference cTypeLEntityCrossReference_2_0_1_2_0 = (CrossReference)cTypeAssignment_2_0_1_2.eContents().get(0);
-		private final RuleCall cTypeLEntityIDTerminalRuleCall_2_0_1_2_0_1 = (RuleCall)cTypeLEntityCrossReference_2_0_1_2_0.eContents().get(1);
+		private final RuleCall cTypeEntityTypeReferenceParserRuleCall_2_0_1_2_0 = (RuleCall)cTypeAssignment_2_0_1_2.eContents().get(0);
 		private final Assignment cMultiplicityAssignment_2_0_1_3 = (Assignment)cGroup_2_0_1.eContents().get(3);
 		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_0_1_3_0 = (RuleCall)cMultiplicityAssignment_2_0_1_3.eContents().get(0);
 		private final Assignment cNameAssignment_2_0_1_4 = (Assignment)cGroup_2_0_1.eContents().get(4);
@@ -615,7 +643,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//EntityFeature returns entity::LEntityFeature:
 		//	{entity::LEntityFeature} annotations+=AnnotationDef* ({entity::LEntityReference.annotationInfo=current} ("ref"
-		//	cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
+		//	cascading?="cascade"? type=EntityTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords
 		//	persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])?) ";" |
 		//	{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords
 		//	";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
@@ -627,7 +655,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public ParserRule getRule() { return rule; }
 
 		//{entity::LEntityFeature} annotations+=AnnotationDef* ({entity::LEntityReference.annotationInfo=current} ("ref"
-		//cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
+		//cascading?="cascade"? type=EntityTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords
 		//persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])?) ";" |
 		//{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords
 		//";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
@@ -647,7 +675,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//AnnotationDef
 		public RuleCall getAnnotationsAnnotationDefParserRuleCall_1_0() { return cAnnotationsAnnotationDefParserRuleCall_1_0; }
 
-		//{entity::LEntityReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LEntity]
+		//{entity::LEntityReference.annotationInfo=current} ("ref" cascading?="cascade"? type=EntityTypeReference
 		//multiplicity=Multiplicity? name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ("opposite"
 		//opposite=[entity::LEntityReference|LFQN])?) ";" | {entity::LEntityAttribute.annotationInfo=current}
 		//(transient?="transient" type=[LScalarType] name=ValidIDWithKeywords ";" | derived?="derived"
@@ -659,7 +687,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//params+=FullJvmFormalParameter)*)? ")" body=XExpression)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//{entity::LEntityReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LEntity]
+		//{entity::LEntityReference.annotationInfo=current} ("ref" cascading?="cascade"? type=EntityTypeReference
 		//multiplicity=Multiplicity? name=ValidIDWithKeywords persistenceInfo=ColumnPersistenceInfo? ("opposite"
 		//opposite=[entity::LEntityReference|LFQN])?) ";"
 		public Group getGroup_2_0() { return cGroup_2_0; }
@@ -667,7 +695,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//{entity::LEntityReference.annotationInfo=current}
 		public Action getLEntityReferenceAnnotationInfoAction_2_0_0() { return cLEntityReferenceAnnotationInfoAction_2_0_0; }
 
-		//"ref" cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
+		//"ref" cascading?="cascade"? type=EntityTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords
 		//persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])?
 		public Group getGroup_2_0_1() { return cGroup_2_0_1; }
 
@@ -680,14 +708,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"cascade"
 		public Keyword getCascadingCascadeKeyword_2_0_1_1_0() { return cCascadingCascadeKeyword_2_0_1_1_0; }
 
-		//type=[entity::LEntity]
+		//type=EntityTypeReference
 		public Assignment getTypeAssignment_2_0_1_2() { return cTypeAssignment_2_0_1_2; }
 
-		//[entity::LEntity]
-		public CrossReference getTypeLEntityCrossReference_2_0_1_2_0() { return cTypeLEntityCrossReference_2_0_1_2_0; }
-
-		//ID
-		public RuleCall getTypeLEntityIDTerminalRuleCall_2_0_1_2_0_1() { return cTypeLEntityIDTerminalRuleCall_2_0_1_2_0_1; }
+		//EntityTypeReference
+		public RuleCall getTypeEntityTypeReferenceParserRuleCall_2_0_1_2_0() { return cTypeEntityTypeReferenceParserRuleCall_2_0_1_2_0; }
 
 		//multiplicity=Multiplicity?
 		public Assignment getMultiplicityAssignment_2_0_1_3() { return cMultiplicityAssignment_2_0_1_3; }
@@ -950,8 +975,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCascadingAssignment_2_0_1_1 = (Assignment)cGroup_2_0_1.eContents().get(1);
 		private final Keyword cCascadingCascadeKeyword_2_0_1_1_0 = (Keyword)cCascadingAssignment_2_0_1_1.eContents().get(0);
 		private final Assignment cTypeAssignment_2_0_1_2 = (Assignment)cGroup_2_0_1.eContents().get(2);
-		private final CrossReference cTypeLBeanCrossReference_2_0_1_2_0 = (CrossReference)cTypeAssignment_2_0_1_2.eContents().get(0);
-		private final RuleCall cTypeLBeanIDTerminalRuleCall_2_0_1_2_0_1 = (RuleCall)cTypeLBeanCrossReference_2_0_1_2_0.eContents().get(1);
+		private final RuleCall cTypeBeanTypeReferenceParserRuleCall_2_0_1_2_0 = (RuleCall)cTypeAssignment_2_0_1_2.eContents().get(0);
 		private final Assignment cMultiplicityAssignment_2_0_1_3 = (Assignment)cGroup_2_0_1.eContents().get(3);
 		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_0_1_3_0 = (RuleCall)cMultiplicityAssignment_2_0_1_3.eContents().get(0);
 		private final Assignment cNameAssignment_2_0_1_4 = (Assignment)cGroup_2_0_1.eContents().get(4);
@@ -1010,7 +1034,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//BeanFeature returns entity::LBeanFeature:
 		//	{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
-		//	cascading?="cascade"? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
+		//	cascading?="cascade"? type=BeanTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
 		//	opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanAttribute.annotationInfo=current}
 		//	(transient?="transient" type=[LScalarType] name=ValidIDWithKeywords | ("var" | id?="id" | version?="version")
 		//	type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";") |
@@ -1019,7 +1043,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public ParserRule getRule() { return rule; }
 
 		//{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
-		//cascading?="cascade"? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
+		//cascading?="cascade"? type=BeanTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
 		//opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanAttribute.annotationInfo=current} (transient?="transient"
 		//type=[LScalarType] name=ValidIDWithKeywords | ("var" | id?="id" | version?="version") type=[LScalarType]
 		//multiplicity=Multiplicity? name=ValidIDWithKeywords ";") | {entity::LOperation.annotationInfo=current} ("def"
@@ -1036,7 +1060,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//AnnotationDef
 		public RuleCall getAnnotationsAnnotationDefParserRuleCall_1_0() { return cAnnotationsAnnotationDefParserRuleCall_1_0; }
 
-		//{entity::LBeanReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LBean]
+		//{entity::LBeanReference.annotationInfo=current} ("ref" cascading?="cascade"? type=BeanTypeReference
 		//multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[entity::LBeanReference|LFQN])?) ";" |
 		//{entity::LBeanAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords |
 		//("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";") |
@@ -1044,14 +1068,14 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//{entity::LBeanReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LBean]
+		//{entity::LBeanReference.annotationInfo=current} ("ref" cascading?="cascade"? type=BeanTypeReference
 		//multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[entity::LBeanReference|LFQN])?) ";"
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//{entity::LBeanReference.annotationInfo=current}
 		public Action getLBeanReferenceAnnotationInfoAction_2_0_0() { return cLBeanReferenceAnnotationInfoAction_2_0_0; }
 
-		//"ref" cascading?="cascade"? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
+		//"ref" cascading?="cascade"? type=BeanTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
 		//opposite=[entity::LBeanReference|LFQN])?
 		public Group getGroup_2_0_1() { return cGroup_2_0_1; }
 
@@ -1064,14 +1088,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"cascade"
 		public Keyword getCascadingCascadeKeyword_2_0_1_1_0() { return cCascadingCascadeKeyword_2_0_1_1_0; }
 
-		//type=[entity::LBean]
+		//type=BeanTypeReference
 		public Assignment getTypeAssignment_2_0_1_2() { return cTypeAssignment_2_0_1_2; }
 
-		//[entity::LBean]
-		public CrossReference getTypeLBeanCrossReference_2_0_1_2_0() { return cTypeLBeanCrossReference_2_0_1_2_0; }
-
-		//ID
-		public RuleCall getTypeLBeanIDTerminalRuleCall_2_0_1_2_0_1() { return cTypeLBeanIDTerminalRuleCall_2_0_1_2_0_1; }
+		//BeanTypeReference
+		public RuleCall getTypeBeanTypeReferenceParserRuleCall_2_0_1_2_0() { return cTypeBeanTypeReferenceParserRuleCall_2_0_1_2_0; }
 
 		//multiplicity=Multiplicity?
 		public Assignment getMultiplicityAssignment_2_0_1_3() { return cMultiplicityAssignment_2_0_1_3; }
@@ -1532,6 +1553,8 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private EntityModelElements pEntityModel;
 	private ClassElements pClass;
+	private EntityTypeReferenceElements pEntityTypeReference;
+	private BeanTypeReferenceElements pBeanTypeReference;
 	private IndexElements pIndex;
 	private EntityPersistenceInfoElements pEntityPersistenceInfo;
 	private ColumnPersistenceInfoElements pColumnPersistenceInfo;
@@ -1594,11 +1617,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//Class returns LClass:
 	//	{LClass} annotations+=AnnotationDef* ({entity::LEntity.annotationInfo=current} (abstract?="abstract"? &
 	//	(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
-	//	cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=[entity::LEntity])? "{"
+	//	cacheable?="cacheable"?) "entity" name=ValidIDWithKeywords ("extends" superType=EntityTypeReference)? "{"
 	//	persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
 	//	indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
-	//	superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
-	//	{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{"
+	//	superType=EntityTypeReference)? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
+	//	{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=BeanTypeReference)? "{"
 	//	features+=BeanFeature* "}");
 	public ClassElements getClassAccess() {
 		return (pClass != null) ? pClass : (pClass = new ClassElements());
@@ -1606,6 +1629,26 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getClassRule() {
 		return getClassAccess().getRule();
+	}
+
+	//EntityTypeReference returns entity::LEntityTypeReference:
+	//	type=[entity::LEntity|QualifiedName];
+	public EntityTypeReferenceElements getEntityTypeReferenceAccess() {
+		return (pEntityTypeReference != null) ? pEntityTypeReference : (pEntityTypeReference = new EntityTypeReferenceElements());
+	}
+	
+	public ParserRule getEntityTypeReferenceRule() {
+		return getEntityTypeReferenceAccess().getRule();
+	}
+
+	//BeanTypeReference returns entity::LBeanTypeReference:
+	//	type=[entity::LBean|QualifiedName];
+	public BeanTypeReferenceElements getBeanTypeReferenceAccess() {
+		return (pBeanTypeReference != null) ? pBeanTypeReference : (pBeanTypeReference = new BeanTypeReferenceElements());
+	}
+	
+	public ParserRule getBeanTypeReferenceRule() {
+		return getBeanTypeReferenceAccess().getRule();
 	}
 
 	//Index returns entity::LIndex:
@@ -1642,7 +1685,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 	//EntityFeature returns entity::LEntityFeature:
 	//	{entity::LEntityFeature} annotations+=AnnotationDef* ({entity::LEntityReference.annotationInfo=current} ("ref"
-	//	cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	//	cascading?="cascade"? type=EntityTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords
 	//	persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])?) ";" |
 	//	{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=ValidIDWithKeywords
 	//	";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=ValidIDWithKeywords
@@ -1661,7 +1704,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 	//BeanFeature returns entity::LBeanFeature:
 	//	{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
-	//	cascading?="cascade"? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
+	//	cascading?="cascade"? type=BeanTypeReference multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
 	//	opposite=[entity::LBeanReference|LFQN])?) ";" | {entity::LBeanAttribute.annotationInfo=current}
 	//	(transient?="transient" type=[LScalarType] name=ValidIDWithKeywords | ("var" | id?="id" | version?="version")
 	//	type=[LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ";") |

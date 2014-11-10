@@ -32,6 +32,7 @@ import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanAttribute;
 import org.lunifera.dsl.semantic.entity.LBeanFeature;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LBeanTypeReference;
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
@@ -41,6 +42,7 @@ import org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy;
 import org.lunifera.dsl.semantic.entity.LEntityModel;
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
+import org.lunifera.dsl.semantic.entity.LEntityTypeReference;
 import org.lunifera.dsl.semantic.entity.LIndex;
 import org.lunifera.dsl.semantic.entity.LOperation;
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
@@ -61,6 +63,20 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 	 * @generated
 	 */
 	private EClass lEntityModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lEntityTypeReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lBeanTypeReferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -303,6 +319,60 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 	 */
 	public EReference getLEntityModel_Packages() {
 		return (EReference)lEntityModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLEntityTypeReference() {
+		return lEntityTypeReferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLEntityTypeReference_Type() {
+		return (EReference)lEntityTypeReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getLEntityTypeReference__GetLazyResolved() {
+		return lEntityTypeReferenceEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLBeanTypeReference() {
+		return lBeanTypeReferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLBeanTypeReference_Type() {
+		return (EReference)lBeanTypeReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getLBeanTypeReference__GetLazyResolved() {
+		return lBeanTypeReferenceEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -984,6 +1054,14 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		lEntityModelEClass = createEClass(LENTITY_MODEL);
 		createEReference(lEntityModelEClass, LENTITY_MODEL__PACKAGES);
 
+		lEntityTypeReferenceEClass = createEClass(LENTITY_TYPE_REFERENCE);
+		createEReference(lEntityTypeReferenceEClass, LENTITY_TYPE_REFERENCE__TYPE);
+		createEOperation(lEntityTypeReferenceEClass, LENTITY_TYPE_REFERENCE___GET_LAZY_RESOLVED);
+
+		lBeanTypeReferenceEClass = createEClass(LBEAN_TYPE_REFERENCE);
+		createEReference(lBeanTypeReferenceEClass, LBEAN_TYPE_REFERENCE__TYPE);
+		createEOperation(lBeanTypeReferenceEClass, LBEAN_TYPE_REFERENCE___GET_LAZY_RESOLVED);
+
 		lBeanEClass = createEClass(LBEAN);
 		createEReference(lBeanEClass, LBEAN__FEATURES);
 		createEReference(lBeanEClass, LBEAN__SUPER_TYPE);
@@ -1133,10 +1211,20 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		initEClass(lEntityModelEClass, LEntityModel.class, "LEntityModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLEntityModel_Packages(), theLunTypesPackage.getLTypedPackage(), null, "packages", null, 0, -1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(lEntityTypeReferenceEClass, LEntityTypeReference.class, "LEntityTypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLEntityTypeReference_Type(), this.getLEntity(), null, "type", null, 0, 1, LEntityTypeReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getLEntityTypeReference__GetLazyResolved(), this.getLEntity(), "getLazyResolved", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(lBeanTypeReferenceEClass, LBeanTypeReference.class, "LBeanTypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLBeanTypeReference_Type(), this.getLBean(), null, "type", null, 0, 1, LBeanTypeReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getLBeanTypeReference__GetLazyResolved(), this.getLBean(), "getLazyResolved", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(lBeanEClass, LBean.class, "LBean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLBean_Features(), this.getLBeanFeature(), null, "features", null, 0, -1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLBean_SuperType(), this.getLBean(), this.getLBean_SubTypes(), "superType", null, 0, 1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLBean_SubTypes(), this.getLBean(), this.getLBean_SuperType(), "subTypes", null, 0, -1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLBean_SuperType(), this.getLBeanTypeReference(), null, "superType", null, 0, 1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLBean_SubTypes(), this.getLBeanTypeReference(), null, "subTypes", null, 0, -1, LBean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getLBean__GetOperations(), this.getOperationsList(), "getOperations", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -1164,8 +1252,8 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		initEReference(getLEntity_InheritanceStrategy(), this.getLEntityInheritanceStrategy(), null, "inheritanceStrategy", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLEntity_Features(), this.getLEntityFeature(), null, "features", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLEntity_Indexes(), this.getLIndex(), null, "indexes", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLEntity_SuperType(), this.getLEntity(), this.getLEntity_SubTypes(), "superType", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLEntity_SubTypes(), this.getLEntity(), this.getLEntity_SuperType(), "subTypes", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLEntity_SuperType(), this.getLEntityTypeReference(), null, "superType", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLEntity_SubTypes(), this.getLEntityTypeReference(), null, "subTypes", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getLEntity__GetOperations(), this.getOperationsList(), "getOperations", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -1211,7 +1299,7 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		initEAttribute(getLEntityAttribute_TypedName(), theEcorePackage.getEString(), "typedName", null, 0, 1, LEntityAttribute.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(lEntityReferenceEClass, LEntityReference.class, "LEntityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLEntityReference_Type(), this.getLEntity(), null, "type", null, 0, 1, LEntityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLEntityReference_Type(), this.getLEntityTypeReference(), null, "type", null, 0, 1, LEntityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLEntityReference_Opposite(), this.getLEntityReference(), null, "opposite", null, 0, 1, LEntityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lBeanFeatureEClass, LBeanFeature.class, "LBeanFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1222,7 +1310,7 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		initEAttribute(getLBeanAttribute_TypedName(), theEcorePackage.getEString(), "typedName", null, 0, 1, LBeanAttribute.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(lBeanReferenceEClass, LBeanReference.class, "LBeanReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLBeanReference_Type(), this.getLBean(), null, "type", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLBeanReference_Type(), this.getLBeanTypeReference(), null, "type", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLBeanReference_Opposite(), this.getLBeanReference(), null, "opposite", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lIndexEClass, LIndex.class, "LIndex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

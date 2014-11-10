@@ -327,7 +327,7 @@ public class EntityGrammarJavaValidator extends
 	public void checkJPA_Historized(LEntity entity) {
 		if (entity.isHistorized()) {
 			if (entity.getSuperType() != null
-					&& !entity.getSuperType().isMappedSuperclass()) {
+					&& !entity.getSuperType().getLazyResolved().isMappedSuperclass()) {
 				error("Keyword historized may only be used in toplevel entities of inheritance hierarchy",
 						LunEntityPackage.Literals.LENTITY__HISTORIZED,
 						CODE__HISTORIZED_IN_SUBCLASS, new String[0]);
@@ -336,7 +336,7 @@ public class EntityGrammarJavaValidator extends
 
 		if (entity.isTimedependent()) {
 			if (entity.getSuperType() != null
-					&& !entity.getSuperType().isMappedSuperclass()) {
+					&& !entity.getSuperType().getLazyResolved().isMappedSuperclass()) {
 				error("Keyword timedependent may only be used in toplevel entities of inheritance hierarchy",
 						LunEntityPackage.Literals.LENTITY__TIMEDEPENDENT,
 						CODE__TIMEDEPENDENT_IN_SUBCLASS, new String[0]);
@@ -486,7 +486,7 @@ public class EntityGrammarJavaValidator extends
 
 	protected LEntityInheritanceStrategy searchDifferingSuperStrategy(
 			LEntityInheritanceStrategy stgy, LEntity entity) {
-		LEntity superEntity = entity.getSuperType();
+		LEntity superEntity = entity.getSuperType().getLazyResolved();
 		if (superEntity == null) {
 			return null;
 		}
@@ -513,7 +513,7 @@ public class EntityGrammarJavaValidator extends
 		}
 
 		if (entity.getSuperType() != null
-				&& !extensions.checkIsMappedSuperclass(entity.getSuperType())) {
+				&& !extensions.checkIsMappedSuperclass(entity.getSuperType().getLazyResolved())) {
 			if (LTablePerClassStrategy.class.isAssignableFrom(stgy.getClass())) {
 				LTablePerClassStrategy castStgy = (LTablePerClassStrategy) stgy;
 				if (castStgy.getDiscriminatorColumn() != null) {
@@ -554,7 +554,7 @@ public class EntityGrammarJavaValidator extends
 
 		// collect all super type strategies
 		List<LEntityInheritanceStrategy> stgies = extensions
-				.collectAllInheritanceStrategies(entity.getSuperType());
+				.collectAllInheritanceStrategies(entity.getSuperType().getLazyResolved());
 
 		for (LEntityInheritanceStrategy stgy : stgies) {
 			String value = extensions.toDiscriminatorValue(stgy);
