@@ -17,6 +17,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
@@ -36,6 +41,7 @@ import org.lunifera.dsl.semantic.common.types.LScalarType;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LBean#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LBean#getSuperType <em>Super Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LBean#getSuperTypeJvm <em>Super Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LBean#getSubTypes <em>Sub Types</em>}</li>
  * </ul>
  * </p>
@@ -88,6 +94,32 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder {
 	 * @generated
 	 */
 	void setSuperType(LBean value);
+
+	/**
+	 * Returns the value of the '<em><b>Super Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Super Type Jvm</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Super Type Jvm</em>' containment reference.
+	 * @see #setSuperTypeJvm(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBean_SuperTypeJvm()
+	 * @model containment="true"
+	 * @generated
+	 */
+	JvmTypeReference getSuperTypeJvm();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LBean#getSuperTypeJvm <em>Super Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Super Type Jvm</em>' containment reference.
+	 * @see #getSuperTypeJvm()
+	 * @generated
+	 */
+	void setSuperTypeJvm(JvmTypeReference value);
 
 	/**
 	 * Returns the value of the '<em><b>Sub Types</b></em>' reference list.
@@ -193,5 +225,14 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder {
 	 * @generated
 	 */
 	void collectAllLunFeatures(LBean current, List<LBeanFeature> result);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" proxyDataType="org.lunifera.dsl.semantic.entity.InternalEObject" proxyUnique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.ecore.resource.Resource%> _eResource = this.eResource();\n<%org.eclipse.emf.ecore.resource.ResourceSet%> _resourceSet = _eResource.getResourceSet();\nreturn <%org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3%>.resolve(proxy, _resourceSet);'"
+	 * @generated
+	 */
+	EObject eResolveProxy(InternalEObject proxy);
 
 } // LBean

@@ -41,6 +41,8 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
  */
 class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
+	@Inject AnnotationCompiler annotationCompiler
+
 	@Inject extension IQualifiedNameProvider
 	@Inject extension DtoTypesBuilder;
 	@Inject extension DtoModelExtensions;
@@ -48,6 +50,9 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(dto.toJvmType).initializeLater [
+			
+			annotationCompiler.processAnnotation(dto, it);
+			
 			var LAttribute idAttribute = null
 			var JvmField idField = null
 			fileHeader = (dto.eContainer as LTypedPackage).documentation

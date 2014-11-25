@@ -10,7 +10,7 @@
  */
 package org.lunifera.dsl.common.xtext.scope;
 
-import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProvider;
+import org.eclipse.xtext.xbase.annotations.typesystem.XbaseWithAnnotationsBatchScopeProvider;
 
 /**
  * This class contains custom scoping description.
@@ -20,6 +20,6 @@ import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProv
  * 
  */
 @SuppressWarnings("restriction")
-public class CommonScopeProvider extends XbaseWithAnnotationsScopeProvider {
+public class CommonScopeProvider extends XbaseWithAnnotationsBatchScopeProvider {
 
 }

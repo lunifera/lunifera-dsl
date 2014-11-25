@@ -41,6 +41,7 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 
 	def dispatch void infer(LDTOService service, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(service.toJvmType).initializeLater [
+			
 			fileHeader = (service.eContainer as LTypedPackage).documentation
 			documentation = service.getDocumentation
 			if (service.dto.basedOnEntity) {

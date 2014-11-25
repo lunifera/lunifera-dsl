@@ -14,8 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit;visibility:=reexport,
  org.lunifera.dsl.semantic.common;visibility:=reexport,
  org.lunifera.dsl.semantic.common.edit;visibility:=reexport,
- org.eclipse.xtext.xbase;visibility:=reexport,
+ org.eclipse.xtext.xbase;bundle-version="[2.7.3,2.8.0)";visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.xtext.common.types;visibility:=reexport,
- org.eclipse.xtext.common.types.edit;visibility:=reexport
+ org.eclipse.xtext.common.types;bundle-version="[2.7.3,2.8.0)";visibility:=reexport,
+ org.eclipse.xtext.common.types.edit;bundle-version="[2.7.3,2.8.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy

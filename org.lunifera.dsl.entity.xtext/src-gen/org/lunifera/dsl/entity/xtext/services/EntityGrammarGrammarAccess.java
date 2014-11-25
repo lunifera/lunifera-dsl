@@ -1530,28 +1530,40 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getTIMESTAMPTIMESTAMPKeyword_1_0() { return cTIMESTAMPTIMESTAMPKeyword_1_0; }
 	}
 	
-	private EntityModelElements pEntityModel;
-	private ClassElements pClass;
-	private IndexElements pIndex;
-	private EntityPersistenceInfoElements pEntityPersistenceInfo;
-	private ColumnPersistenceInfoElements pColumnPersistenceInfo;
-	private EntityFeatureElements pEntityFeature;
-	private BeanFeatureElements pBeanFeature;
-	private EntityInheritanceStrategyElements pEntityInheritanceStrategy;
-	private TablePerClassStrategyElements pTablePerClassStrategy;
-	private TablePerSubclassStrategyElements pTablePerSubclassStrategy;
-	private DiscriminatorTypeElements unknownRuleDiscriminatorType;
-	private LHistorizedDateTypeElements unknownRuleLHistorizedDateType;
+	private final EntityModelElements pEntityModel;
+	private final ClassElements pClass;
+	private final IndexElements pIndex;
+	private final EntityPersistenceInfoElements pEntityPersistenceInfo;
+	private final ColumnPersistenceInfoElements pColumnPersistenceInfo;
+	private final EntityFeatureElements pEntityFeature;
+	private final BeanFeatureElements pBeanFeature;
+	private final EntityInheritanceStrategyElements pEntityInheritanceStrategy;
+	private final TablePerClassStrategyElements pTablePerClassStrategy;
+	private final TablePerSubclassStrategyElements pTablePerSubclassStrategy;
+	private final DiscriminatorTypeElements unknownRuleDiscriminatorType;
+	private final LHistorizedDateTypeElements unknownRuleLHistorizedDateType;
 	
 	private final Grammar grammar;
 
-	private CommonGrammarGrammarAccess gaCommonGrammar;
+	private final CommonGrammarGrammarAccess gaCommonGrammar;
 
 	@Inject
 	public EntityGrammarGrammarAccess(GrammarProvider grammarProvider,
 		CommonGrammarGrammarAccess gaCommonGrammar) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaCommonGrammar = gaCommonGrammar;
+		this.pEntityModel = new EntityModelElements();
+		this.pClass = new ClassElements();
+		this.pIndex = new IndexElements();
+		this.pEntityPersistenceInfo = new EntityPersistenceInfoElements();
+		this.pColumnPersistenceInfo = new ColumnPersistenceInfoElements();
+		this.pEntityFeature = new EntityFeatureElements();
+		this.pBeanFeature = new BeanFeatureElements();
+		this.pEntityInheritanceStrategy = new EntityInheritanceStrategyElements();
+		this.pTablePerClassStrategy = new TablePerClassStrategyElements();
+		this.pTablePerSubclassStrategy = new TablePerSubclassStrategyElements();
+		this.unknownRuleDiscriminatorType = new DiscriminatorTypeElements();
+		this.unknownRuleLHistorizedDateType = new LHistorizedDateTypeElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1584,7 +1596,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//EntityModel returns entity::LEntityModel:
 	//	packages+=TypedPackage*;
 	public EntityModelElements getEntityModelAccess() {
-		return (pEntityModel != null) ? pEntityModel : (pEntityModel = new EntityModelElements());
+		return pEntityModel;
 	}
 	
 	public ParserRule getEntityModelRule() {
@@ -1601,7 +1613,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	{entity::LBean.annotationInfo=current} "bean" name=ValidIDWithKeywords ("extends" superType=[entity::LBean])? "{"
 	//	features+=BeanFeature* "}");
 	public ClassElements getClassAccess() {
-		return (pClass != null) ? pClass : (pClass = new ClassElements());
+		return pClass;
 	}
 	
 	public ParserRule getClassRule() {
@@ -1612,7 +1624,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	unique?="unique"? "index" name=ID "{" features+=[entity::LEntityFeature] (", " features+=[entity::LEntityFeature])*
 	//	"}";
 	public IndexElements getIndexAccess() {
-		return (pIndex != null) ? pIndex : (pIndex = new IndexElements());
+		return pIndex;
 	}
 	
 	public ParserRule getIndexRule() {
@@ -1623,7 +1635,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	{entity::LEntityPersistenceInfo} (("schemaName" schemaName=ValidIDWithKeywords ";")? & ("tableName"
 	//	tableName=ValidIDWithKeywords ";")?);
 	public EntityPersistenceInfoElements getEntityPersistenceInfoAccess() {
-		return (pEntityPersistenceInfo != null) ? pEntityPersistenceInfo : (pEntityPersistenceInfo = new EntityPersistenceInfoElements());
+		return pEntityPersistenceInfo;
 	}
 	
 	public ParserRule getEntityPersistenceInfoRule() {
@@ -1633,7 +1645,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//ColumnPersistenceInfo returns entity::LEntityColumnPersistenceInfo:
 	//	{entity::LEntityColumnPersistenceInfo} "(" columnName=ValidIDWithKeywords ")";
 	public ColumnPersistenceInfoElements getColumnPersistenceInfoAccess() {
-		return (pColumnPersistenceInfo != null) ? pColumnPersistenceInfo : (pColumnPersistenceInfo = new ColumnPersistenceInfoElements());
+		return pColumnPersistenceInfo;
 	}
 	
 	public ParserRule getColumnPersistenceInfoRule() {
@@ -1652,7 +1664,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
 	//	params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 	public EntityFeatureElements getEntityFeatureAccess() {
-		return (pEntityFeature != null) ? pEntityFeature : (pEntityFeature = new EntityFeatureElements());
+		return pEntityFeature;
 	}
 	
 	public ParserRule getEntityFeatureRule() {
@@ -1668,7 +1680,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
 	//	(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 	public BeanFeatureElements getBeanFeatureAccess() {
-		return (pBeanFeature != null) ? pBeanFeature : (pBeanFeature = new BeanFeatureElements());
+		return pBeanFeature;
 	}
 	
 	public ParserRule getBeanFeatureRule() {
@@ -1678,7 +1690,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//EntityInheritanceStrategy returns entity::LEntityInheritanceStrategy:
 	//	TablePerClassStrategy | TablePerSubclassStrategy;
 	public EntityInheritanceStrategyElements getEntityInheritanceStrategyAccess() {
-		return (pEntityInheritanceStrategy != null) ? pEntityInheritanceStrategy : (pEntityInheritanceStrategy = new EntityInheritanceStrategyElements());
+		return pEntityInheritanceStrategy;
 	}
 	
 	public ParserRule getEntityInheritanceStrategyRule() {
@@ -1690,7 +1702,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	discriminatorColumn=ValidIDWithKeywords ";")? & ("discriminatorType" discriminatorType=DiscriminatorType ";")? &
 	//	("discriminatorValue" discriminatorValue=ValidIDWithKeywords ";")?) "}";
 	public TablePerClassStrategyElements getTablePerClassStrategyAccess() {
-		return (pTablePerClassStrategy != null) ? pTablePerClassStrategy : (pTablePerClassStrategy = new TablePerClassStrategyElements());
+		return pTablePerClassStrategy;
 	}
 	
 	public ParserRule getTablePerClassStrategyRule() {
@@ -1702,7 +1714,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	discriminatorColumn=ValidIDWithKeywords ";")? & ("discriminatorType" discriminatorType=DiscriminatorType ";")? &
 	//	("discriminatorValue" discriminatorValue=ValidIDWithKeywords ";")?) "}";
 	public TablePerSubclassStrategyElements getTablePerSubclassStrategyAccess() {
-		return (pTablePerSubclassStrategy != null) ? pTablePerSubclassStrategy : (pTablePerSubclassStrategy = new TablePerSubclassStrategyElements());
+		return pTablePerSubclassStrategy;
 	}
 	
 	public ParserRule getTablePerSubclassStrategyRule() {
@@ -1712,7 +1724,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//enum DiscriminatorType returns entity::LDiscriminatorType:
 	//	INHERIT | STRING | CHAR | INTEGER="INT";
 	public DiscriminatorTypeElements getDiscriminatorTypeAccess() {
-		return (unknownRuleDiscriminatorType != null) ? unknownRuleDiscriminatorType : (unknownRuleDiscriminatorType = new DiscriminatorTypeElements());
+		return unknownRuleDiscriminatorType;
 	}
 	
 	public EnumRule getDiscriminatorTypeRule() {
@@ -1722,7 +1734,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//enum LHistorizedDateType returns LDateType:
 	//	DATE | TIMESTAMP;
 	public LHistorizedDateTypeElements getLHistorizedDateTypeAccess() {
-		return (unknownRuleLHistorizedDateType != null) ? unknownRuleLHistorizedDateType : (unknownRuleLHistorizedDateType = new LHistorizedDateTypeElements());
+		return unknownRuleLHistorizedDateType;
 	}
 	
 	public EnumRule getLHistorizedDateTypeRule() {
@@ -2347,7 +2359,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
-	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | ",");
+	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | fallThrough?=",");
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaCommonGrammar.getXCasePartAccess();
 	}
@@ -2679,8 +2691,9 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
-	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
-	//	">")?;
+	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)* ">"
+	//	(=> ({JvmInnerTypeReference.outer=current} ".") type=[JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">")?)*)?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaCommonGrammar.getJvmParameterizedTypeReferenceAccess();
 	}
@@ -2700,7 +2713,8 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaCommonGrammar.getJvmWildcardTypeReferenceAccess();
 	}
@@ -2737,6 +2751,16 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmLowerBoundRule() {
 		return getJvmLowerBoundAccess().getRule();
+	}
+
+	//JvmLowerBoundAnded returns JvmLowerBound:
+	//	"&" typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaCommonGrammar.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
 	}
 
 	//JvmTypeParameter:
@@ -2808,8 +2832,8 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING returns ecore::EString:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\""))* "\""? | "\'" ("\\" .
+	//	/ * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\'"))* "\'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaCommonGrammar.getSTRINGRule();
 	} 

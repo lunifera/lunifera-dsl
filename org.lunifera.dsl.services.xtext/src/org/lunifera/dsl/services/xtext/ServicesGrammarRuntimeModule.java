@@ -18,6 +18,7 @@ import org.lunifera.dsl.services.xtext.scope.ServicesBatchScopeProvider;
 import org.lunifera.dsl.services.xtext.scope.ServicesImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.services.xtext.scope.ServicesScopeProvider;
 import org.lunifera.dsl.services.xtext.valueconverter.ServicesQualifiedNameProvider;
+import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -85,4 +86,7 @@ public class ServicesGrammarRuntimeModule extends
 		return org.lunifera.dsl.services.xtext.generator.OutputConfigurationProvider.class;
 	}
 
+	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+		return SemanticLoadingResource.class;
+	}
 }

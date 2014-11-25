@@ -30,13 +30,19 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -54,6 +60,8 @@ import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LOperation;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>LBean</b></em>'.
@@ -63,6 +71,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanImpl#getSuperType <em>Super Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanImpl#getSuperTypeJvm <em>Super Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanImpl#getSubTypes <em>Sub Types</em>}</li>
  * </ul>
  * </p>
@@ -89,6 +98,16 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	 * @ordered
 	 */
 	protected LBean superType;
+
+	/**
+	 * The cached value of the '{@link #getSuperTypeJvm() <em>Super Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuperTypeJvm()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference superTypeJvm;
 
 	/**
 	 * The cached value of the '{@link #getSubTypes() <em>Sub Types</em>}' reference list.
@@ -196,6 +215,49 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public JvmTypeReference getSuperTypeJvm() {
+		return superTypeJvm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSuperTypeJvm(JvmTypeReference newSuperTypeJvm, NotificationChain msgs) {
+		JvmTypeReference oldSuperTypeJvm = superTypeJvm;
+		superTypeJvm = newSuperTypeJvm;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN__SUPER_TYPE_JVM, oldSuperTypeJvm, newSuperTypeJvm);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSuperTypeJvm(JvmTypeReference newSuperTypeJvm) {
+		if (newSuperTypeJvm != superTypeJvm) {
+			NotificationChain msgs = null;
+			if (superTypeJvm != null)
+				msgs = ((InternalEObject)superTypeJvm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN__SUPER_TYPE_JVM, null, msgs);
+			if (newSuperTypeJvm != null)
+				msgs = ((InternalEObject)newSuperTypeJvm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN__SUPER_TYPE_JVM, null, msgs);
+			msgs = basicSetSuperTypeJvm(newSuperTypeJvm, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN__SUPER_TYPE_JVM, newSuperTypeJvm, newSuperTypeJvm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<LBean> getSubTypes() {
 		if (subTypes == null) {
 			subTypes = new EObjectWithInverseResolvingEList<LBean>(LBean.class, this, LunEntityPackage.LBEAN__SUB_TYPES, LunEntityPackage.LBEAN__SUPER_TYPE);
@@ -292,6 +354,17 @@ public class LBeanImpl extends LClassImpl implements LBean {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EObject eResolveProxy(final InternalEObject proxy) {
+		Resource _eResource = this.eResource();
+		ResourceSet _resourceSet = _eResource.getResourceSet();
+		return EcoreUtil3.resolve(proxy, _resourceSet);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -318,6 +391,8 @@ public class LBeanImpl extends LClassImpl implements LBean {
 				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
 				return basicSetSuperType(null, msgs);
+			case LunEntityPackage.LBEAN__SUPER_TYPE_JVM:
+				return basicSetSuperTypeJvm(null, msgs);
 			case LunEntityPackage.LBEAN__SUB_TYPES:
 				return ((InternalEList<?>)getSubTypes()).basicRemove(otherEnd, msgs);
 		}
@@ -337,6 +412,8 @@ public class LBeanImpl extends LClassImpl implements LBean {
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
 				if (resolve) return getSuperType();
 				return basicGetSuperType();
+			case LunEntityPackage.LBEAN__SUPER_TYPE_JVM:
+				return getSuperTypeJvm();
 			case LunEntityPackage.LBEAN__SUB_TYPES:
 				return getSubTypes();
 		}
@@ -358,6 +435,9 @@ public class LBeanImpl extends LClassImpl implements LBean {
 				return;
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
 				setSuperType((LBean)newValue);
+				return;
+			case LunEntityPackage.LBEAN__SUPER_TYPE_JVM:
+				setSuperTypeJvm((JvmTypeReference)newValue);
 				return;
 			case LunEntityPackage.LBEAN__SUB_TYPES:
 				getSubTypes().clear();
@@ -381,6 +461,9 @@ public class LBeanImpl extends LClassImpl implements LBean {
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
 				setSuperType((LBean)null);
 				return;
+			case LunEntityPackage.LBEAN__SUPER_TYPE_JVM:
+				setSuperTypeJvm((JvmTypeReference)null);
+				return;
 			case LunEntityPackage.LBEAN__SUB_TYPES:
 				getSubTypes().clear();
 				return;
@@ -400,6 +483,8 @@ public class LBeanImpl extends LClassImpl implements LBean {
 				return features != null && !features.isEmpty();
 			case LunEntityPackage.LBEAN__SUPER_TYPE:
 				return superType != null;
+			case LunEntityPackage.LBEAN__SUPER_TYPE_JVM:
+				return superTypeJvm != null;
 			case LunEntityPackage.LBEAN__SUB_TYPES:
 				return subTypes != null && !subTypes.isEmpty();
 		}
@@ -452,6 +537,8 @@ public class LBeanImpl extends LClassImpl implements LBean {
 			case LunEntityPackage.LBEAN___COLLECT_ALL_LUN_FEATURES__LBEAN_LIST:
 				collectAllLunFeatures((LBean)arguments.get(0), (List<LBeanFeature>)arguments.get(1));
 				return null;
+			case LunEntityPackage.LBEAN___ERESOLVE_PROXY__INTERNALEOBJECT:
+				return eResolveProxy((InternalEObject)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

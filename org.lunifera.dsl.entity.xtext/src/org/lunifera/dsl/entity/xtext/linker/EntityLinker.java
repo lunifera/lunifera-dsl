@@ -11,10 +11,22 @@
 package org.lunifera.dsl.entity.xtext.linker;
 
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.util.EcoreGenericsUtil;
 import org.eclipse.xtext.util.OnChangeEvictingCache;
+import org.eclipse.xtext.util.SimpleCache;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.xbase.linking.XbaseLazyLinker;
 import org.lunifera.dsl.entity.xtext.extensions.Constants;
@@ -26,7 +38,9 @@ import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LunEntityFactory;
+import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
+import com.google.common.base.Function;
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
@@ -36,6 +50,28 @@ public class EntityLinker extends XbaseLazyLinker {
 	 * Move to DerivedStateAwareResource#installDerivedState
 	 */
 
+	private SimpleCache<EClass, EClass> instantiableSubTypes = new SimpleCache<EClass, EClass>(
+			new Function<EClass, EClass>() {
+				public EClass apply(EClass from) {
+					return findInstantiableCompatible(from);
+				}
+			});
+
+	@Inject
+	private EcoreGenericsUtil ecoreGenericsUtil;
+
+	@Inject
+	private JvmLinkingHelper linkingHelper;
+
+	@Override
+	protected void clearReference(EObject obj, EReference ref) {
+		super.clearReference(obj, ref);
+
+		SemanticLoadingResource resource = (SemanticLoadingResource) obj
+				.eResource();
+		resource.clearJvmTypeAssociation();
+	}
+	
 	@Inject
 	private OnChangeEvictingCache cache;
 
@@ -213,5 +249,52 @@ public class EntityLinker extends XbaseLazyLinker {
 			pkg.getTypes().add(datatype);
 		}
 		return datatype;
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected void createAndSetProxy(EObject obj, INode node, EReference eRef) {
+		final EObject proxy = createProxy(obj, node, eRef);
+		if (eRef.isMany()) {
+			((InternalEList<EObject>) obj.eGet(eRef, false)).addUnique(proxy);
+		} else {
+			obj.eSet(eRef, proxy);
+		}
+
+		if (linkingHelper.needsJvmLinking(eRef)) {
+			EReference jvmLinkReference = linkingHelper.getJvmLinking(eRef);
+			final JvmTypeReference jvmProxy = (JvmTypeReference) createLuniferaJvmProxy(obj, node,
+					jvmLinkReference);
+			if (eRef.isMany()) {
+				((InternalEList<EObject>) obj.eGet(jvmLinkReference, false))
+						.addUnique(jvmProxy);
+			} else {
+				obj.eSet(jvmLinkReference, jvmProxy);
+			}
+			SemanticLoadingResource resource = (SemanticLoadingResource) obj
+					.eResource();
+			resource.registerJvmTypeAssociation(
+					((InternalEObject) proxy).eProxyURI(),
+					((InternalEObject) jvmProxy.getType()).eProxyURI());
+		}
+	}
+
+	protected EObject createLuniferaJvmProxy(EObject obj, INode node,
+			EReference eRef) {
+		final Resource resource = obj.eResource();
+		if (resource == null)
+			throw new IllegalStateException(
+					"object must be contained in a resource");
+		final URI uri = resource.getURI();
+		final URI encodedLink = uri.appendFragment("luniferaJvm"
+				+ getEncoder().encode(obj, eRef, node));
+		JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+		final JvmType proxy = TypesFactory.eINSTANCE.createJvmGenericType();
+		typeRef.setType(proxy);
+		((InternalEObject) proxy).eSetProxyURI(encodedLink);
+		return typeRef;
+	}
+
+	public EClass getInstantiableSubTypes(EClass eType) {
+		return instantiableSubTypes.get(eType);
 	}
 }

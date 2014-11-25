@@ -32,6 +32,7 @@ import org.lunifera.dsl.dto.xtext.scope.DtoImportedNamespaceAwareLocalScopeProvi
 import org.lunifera.dsl.dto.xtext.scope.DtoScopeProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoQualifiedNameProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoValueConverterService;
+import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -112,6 +113,10 @@ public class DtoGrammarRuntimeModule extends
 	
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return DtoValueConverterService.class;
+	}
+	
+	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+		return SemanticLoadingResource.class;
 	}
 
 }

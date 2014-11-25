@@ -203,13 +203,13 @@ public class LOperationItemProvider extends LAnnotationTargetItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(LunTypesPackage.Literals.LOPERATION__PARAMS,
-				 TypesFactory.eINSTANCE.createJvmFormalParameter()));
+				(LunTypesPackage.Literals.LOPERATION__TYPE,
+				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(LunTypesPackage.Literals.LOPERATION__BODY,
-				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
+				(LunTypesPackage.Literals.LOPERATION__PARAMS,
+				 TypesFactory.eINSTANCE.createJvmFormalParameter()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -355,6 +355,11 @@ public class LOperationItemProvider extends LAnnotationTargetItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LOPERATION__BODY,
 				 XbaseFactory.eINSTANCE.createXSynchronizedExpression()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LOPERATION__BODY,
+				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 	}
 
 }

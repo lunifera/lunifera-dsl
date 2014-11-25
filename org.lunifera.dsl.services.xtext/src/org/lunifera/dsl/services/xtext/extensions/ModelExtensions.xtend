@@ -346,7 +346,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 	}
 
-	def dispatch isCascading(LDtoAbstractReference prop) {
+	def dispatch boolean isCascading(LDtoAbstractReference prop) {
 		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.cascading
 		} else {
@@ -354,7 +354,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 	}
 
-	def dispatch isCascading(LDtoAbstractAttribute prop) {
+	def dispatch boolean isCascading(LDtoAbstractAttribute prop) {
 		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.cascading
 		} else {

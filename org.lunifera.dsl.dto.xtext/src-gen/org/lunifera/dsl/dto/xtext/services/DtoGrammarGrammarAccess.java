@@ -946,22 +946,28 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private LDTOModelElements pLDTOModel;
-	private ClassElements pClass;
-	private DtoFeatureElements pDtoFeature;
-	private DtoMapperElements pDtoMapper;
-	private LimitedMapperDtoMapperElements pLimitedMapperDtoMapper;
-	private RefFQNElements pRefFQN;
+	private final LDTOModelElements pLDTOModel;
+	private final ClassElements pClass;
+	private final DtoFeatureElements pDtoFeature;
+	private final DtoMapperElements pDtoMapper;
+	private final LimitedMapperDtoMapperElements pLimitedMapperDtoMapper;
+	private final RefFQNElements pRefFQN;
 	
 	private final Grammar grammar;
 
-	private CommonGrammarGrammarAccess gaCommonGrammar;
+	private final CommonGrammarGrammarAccess gaCommonGrammar;
 
 	@Inject
 	public DtoGrammarGrammarAccess(GrammarProvider grammarProvider,
 		CommonGrammarGrammarAccess gaCommonGrammar) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaCommonGrammar = gaCommonGrammar;
+		this.pLDTOModel = new LDTOModelElements();
+		this.pClass = new ClassElements();
+		this.pDtoFeature = new DtoFeatureElements();
+		this.pDtoMapper = new DtoMapperElements();
+		this.pLimitedMapperDtoMapper = new LimitedMapperDtoMapperElements();
+		this.pRefFQN = new RefFQNElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -994,7 +1000,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//LDTOModel returns dto::LDtoModel:
 	//	packages+=TypedPackage*;
 	public LDTOModelElements getLDTOModelAccess() {
-		return (pLDTOModel != null) ? pLDTOModel : (pLDTOModel = new LDTOModelElements());
+		return pLDTOModel;
 	}
 	
 	public ParserRule getLDTOModelRule() {
@@ -1007,7 +1013,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	{dto::LAutoInheritDto.annotationInfo=current} "autoDto" name=ValidIDWithKeywords ("extends" superType=[dto::LDto])?
 	//	"wraps" wrappedType=[entity::LEntity] "{" features+=DtoFeature* "}");
 	public ClassElements getClassAccess() {
-		return (pClass != null) ? pClass : (pClass = new ClassElements());
+		return pClass;
 	}
 	
 	public ParserRule getClassRule() {
@@ -1032,7 +1038,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
 	//	params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 	public DtoFeatureElements getDtoFeatureAccess() {
-		return (pDtoFeature != null) ? pDtoFeature : (pDtoFeature = new DtoFeatureElements());
+		return pDtoFeature;
 	}
 	
 	public ParserRule getDtoFeatureRule() {
@@ -1042,7 +1048,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//DtoMapper returns dto::LDtoMapper:
 	//	"{" "toDTO" toDTO=XExpression ("fromDTO" fromDTO=XExpression)? "}";
 	public DtoMapperElements getDtoMapperAccess() {
-		return (pDtoMapper != null) ? pDtoMapper : (pDtoMapper = new DtoMapperElements());
+		return pDtoMapper;
 	}
 	
 	public ParserRule getDtoMapperRule() {
@@ -1053,7 +1059,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//LimitedMapperDtoMapper returns dto::LDtoMapper:
 	//	"{" "toDTO" toDTO=XExpression "}";
 	public LimitedMapperDtoMapperElements getLimitedMapperDtoMapperAccess() {
-		return (pLimitedMapperDtoMapper != null) ? pLimitedMapperDtoMapper : (pLimitedMapperDtoMapper = new LimitedMapperDtoMapperElements());
+		return pLimitedMapperDtoMapper;
 	}
 	
 	public ParserRule getLimitedMapperDtoMapperRule() {
@@ -1063,7 +1069,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//RefFQN:
 	//	ID ("." ID)*;
 	public RefFQNElements getRefFQNAccess() {
-		return (pRefFQN != null) ? pRefFQN : (pRefFQN = new RefFQNElements());
+		return pRefFQN;
 	}
 	
 	public ParserRule getRefFQNRule() {
@@ -1688,7 +1694,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
-	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | ",");
+	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | fallThrough?=",");
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaCommonGrammar.getXCasePartAccess();
 	}
@@ -2020,8 +2026,9 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
-	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
-	//	">")?;
+	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)* ">"
+	//	(=> ({JvmInnerTypeReference.outer=current} ".") type=[JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">")?)*)?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaCommonGrammar.getJvmParameterizedTypeReferenceAccess();
 	}
@@ -2041,7 +2048,8 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaCommonGrammar.getJvmWildcardTypeReferenceAccess();
 	}
@@ -2078,6 +2086,16 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmLowerBoundRule() {
 		return getJvmLowerBoundAccess().getRule();
+	}
+
+	//JvmLowerBoundAnded returns JvmLowerBound:
+	//	"&" typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaCommonGrammar.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
 	}
 
 	//JvmTypeParameter:
@@ -2149,8 +2167,8 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\""))* "\""? | "\'" ("\\" .
+	//	/ * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\'"))* "\'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaCommonGrammar.getSTRINGRule();
 	} 

@@ -27,6 +27,7 @@ import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScop
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.serializer.EntityGrammarTransientValueService;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
+import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -95,5 +96,10 @@ public class EntityGrammarRuntimeModule extends
 
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ITransientValueService> bindSerializerITransientValueService() {
 		return EntityGrammarTransientValueService.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+		return SemanticLoadingResource.class;
 	}
 }

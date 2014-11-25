@@ -453,23 +453,30 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getONE_TO_MANYOneToManyKeyword_3_0() { return cONE_TO_MANYOneToManyKeyword_3_0; }
 	}
 	
-	private LServiceModelElements pLServiceModel;
-	private ClassElements pClass;
-	private InjectedServicesElements pInjectedServices;
-	private InjectedServiceElements pInjectedService;
-	private FilterableAttributesElements pFilterableAttributes;
-	private SortableAttributesElements pSortableAttributes;
-	private CardinalityElements unknownRuleCardinality;
+	private final LServiceModelElements pLServiceModel;
+	private final ClassElements pClass;
+	private final InjectedServicesElements pInjectedServices;
+	private final InjectedServiceElements pInjectedService;
+	private final FilterableAttributesElements pFilterableAttributes;
+	private final SortableAttributesElements pSortableAttributes;
+	private final CardinalityElements unknownRuleCardinality;
 	
 	private final Grammar grammar;
 
-	private CommonGrammarGrammarAccess gaCommonGrammar;
+	private final CommonGrammarGrammarAccess gaCommonGrammar;
 
 	@Inject
 	public ServicesGrammarGrammarAccess(GrammarProvider grammarProvider,
 		CommonGrammarGrammarAccess gaCommonGrammar) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaCommonGrammar = gaCommonGrammar;
+		this.pLServiceModel = new LServiceModelElements();
+		this.pClass = new ClassElements();
+		this.pInjectedServices = new InjectedServicesElements();
+		this.pInjectedService = new InjectedServiceElements();
+		this.pFilterableAttributes = new FilterableAttributesElements();
+		this.pSortableAttributes = new SortableAttributesElements();
+		this.unknownRuleCardinality = new CardinalityElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -502,7 +509,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//LServiceModel returns service::LServiceModel:
 	//	packages+=TypedPackage*;
 	public LServiceModelElements getLServiceModelAccess() {
-		return (pLServiceModel != null) ? pLServiceModel : (pLServiceModel = new LServiceModelElements());
+		return pLServiceModel;
 	}
 	
 	public ParserRule getLServiceModelRule() {
@@ -517,7 +524,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	findExpressionWithDelimiter=XBlockExpression)? ("update" updateExpression=XBlockExpression)? ("delete"
 	//	deleteExpression=XBlockExpression)? "}";
 	public ClassElements getClassAccess() {
-		return (pClass != null) ? pClass : (pClass = new ClassElements());
+		return pClass;
 	}
 	
 	public ParserRule getClassRule() {
@@ -527,7 +534,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//InjectedServices returns service::LInjectedServices:
 	//	{service::LInjectedServices} services+=InjectedService*;
 	public InjectedServicesElements getInjectedServicesAccess() {
-		return (pInjectedServices != null) ? pInjectedServices : (pInjectedServices = new InjectedServicesElements());
+		return pInjectedServices;
 	}
 	
 	public ParserRule getInjectedServicesRule() {
@@ -537,7 +544,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//InjectedService returns service::LInjectedService:
 	//	{service::LInjectedService} "injectService" cardinality=Cardinality? service=JvmTypeReference attributeName=ID ";";
 	public InjectedServiceElements getInjectedServiceAccess() {
-		return (pInjectedService != null) ? pInjectedService : (pInjectedService = new InjectedServiceElements());
+		return pInjectedService;
 	}
 	
 	public ParserRule getInjectedServiceRule() {
@@ -548,7 +555,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	"filterable" "{" filterableFeatures+=[dto::LDtoFeature|LFQN] ("," filterableFeatures+=[dto::LDtoFeature|LFQN])* ";"
 	//	"}";
 	public FilterableAttributesElements getFilterableAttributesAccess() {
-		return (pFilterableAttributes != null) ? pFilterableAttributes : (pFilterableAttributes = new FilterableAttributesElements());
+		return pFilterableAttributes;
 	}
 	
 	public ParserRule getFilterableAttributesRule() {
@@ -558,7 +565,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//SortableAttributes returns service::LSortableAttributes:
 	//	"sortable" "{" sortableFeatures+=[dto::LDtoFeature|LFQN] ("," sortableFeatures+=[dto::LDtoFeature|LFQN])* ";" "}";
 	public SortableAttributesElements getSortableAttributesAccess() {
-		return (pSortableAttributes != null) ? pSortableAttributes : (pSortableAttributes = new SortableAttributesElements());
+		return pSortableAttributes;
 	}
 	
 	public ParserRule getSortableAttributesRule() {
@@ -568,7 +575,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//enum Cardinality returns service::LCardinality:
 	//	ZERO_TO_ONE="optional" | ONE_TO_ONE="mandatory" | ZERO_TO_MANY="zeroToMany" | ONE_TO_MANY="oneToMany";
 	public CardinalityElements getCardinalityAccess() {
-		return (unknownRuleCardinality != null) ? unknownRuleCardinality : (unknownRuleCardinality = new CardinalityElements());
+		return unknownRuleCardinality;
 	}
 	
 	public EnumRule getCardinalityRule() {
@@ -1193,7 +1200,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
-	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | ",");
+	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | fallThrough?=",");
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaCommonGrammar.getXCasePartAccess();
 	}
@@ -1525,8 +1532,9 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
-	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
-	//	">")?;
+	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)* ">"
+	//	(=> ({JvmInnerTypeReference.outer=current} ".") type=[JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">")?)*)?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaCommonGrammar.getJvmParameterizedTypeReferenceAccess();
 	}
@@ -1546,7 +1554,8 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaCommonGrammar.getJvmWildcardTypeReferenceAccess();
 	}
@@ -1583,6 +1592,16 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmLowerBoundRule() {
 		return getJvmLowerBoundAccess().getRule();
+	}
+
+	//JvmLowerBoundAnded returns JvmLowerBound:
+	//	"&" typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaCommonGrammar.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
 	}
 
 	//JvmTypeParameter:
@@ -1654,8 +1673,8 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\""))* "\""? | "\'" ("\\" .
+	//	/ * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\'"))* "\'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaCommonGrammar.getSTRINGRule();
 	} 

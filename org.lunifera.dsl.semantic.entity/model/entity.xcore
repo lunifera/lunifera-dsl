@@ -27,6 +27,10 @@ import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LDateType
 import java.util.List
 import GenModel
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.emf.ecore.EObject
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
+import org.eclipse.emf.ecore.InternalEObject
 
 class LEntityModel {
 	contains LTypedPackage[] packages
@@ -38,6 +42,7 @@ class LEntityModel {
 class LBean extends LClass, LScalarType, LFeaturesHolder {
 	contains LBeanFeature[] features
 	refers LBean superType opposite subTypes
+	contains JvmTypeReference superTypeJvm
 	refers LBean[] subTypes opposite superType
 	/**
  	 * Returns all features of type LOperation
@@ -92,6 +97,10 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		// call for super class
 		current.superType.collectAllLunFeatures(result)
 	}
+	
+	op EObject eResolveProxy(InternalEObject proxy) {
+		return EcoreUtil3.resolve(proxy, this.eResource().resourceSet);
+	}
 }
 
 /**
@@ -108,6 +117,7 @@ class LEntity extends LClass, LFeaturesHolder {
 	contains LEntityFeature[] features
 	contains LIndex[] indexes
 	refers LEntity superType opposite subTypes
+	contains JvmTypeReference superTypeJvm
 	refers LEntity[] subTypes opposite superType
 	
 	/**
@@ -163,7 +173,13 @@ class LEntity extends LClass, LFeaturesHolder {
 		// call for super class
 		current.superType.collectAllLunFeatures(result)
 	}
+	
+	op EObject eResolveProxy(InternalEObject proxy) {
+		return EcoreUtil3.resolve(proxy, this.eResource().resourceSet);
+	}
 }
+
+type InternalEObject wraps InternalEObject
 
 class LEntityPersistenceInfo {
 	String schemaName
@@ -228,7 +244,12 @@ class LEntityAttribute extends LEntityFeature, LAttribute {
 
 class LEntityReference extends LEntityFeature, LReference {
 	refers LEntity ^type
+	contains JvmTypeReference typeJvm
 	refers LEntityReference ^opposite
+	
+	op EObject eResolveProxy(InternalEObject proxy) {
+		return EcoreUtil3.resolve(proxy, this.eResource().resourceSet);
+	}
 }
 
 class LBeanFeature  extends LFeature {

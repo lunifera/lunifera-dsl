@@ -13,6 +13,11 @@
  */
 package org.lunifera.dsl.semantic.entity;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.lunifera.dsl.semantic.common.types.LReference;
 
 /**
@@ -24,6 +29,7 @@ import org.lunifera.dsl.semantic.common.types.LReference;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getOpposite <em>Opposite</em>}</li>
  * </ul>
  * </p>
@@ -60,6 +66,32 @@ public interface LEntityReference extends LEntityFeature, LReference {
 	void setType(LEntity value);
 
 	/**
+	 * Returns the value of the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type Jvm</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type Jvm</em>' containment reference.
+	 * @see #setTypeJvm(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntityReference_TypeJvm()
+	 * @model containment="true"
+	 * @generated
+	 */
+	JvmTypeReference getTypeJvm();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getTypeJvm <em>Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type Jvm</em>' containment reference.
+	 * @see #getTypeJvm()
+	 * @generated
+	 */
+	void setTypeJvm(JvmTypeReference value);
+
+	/**
 	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -84,5 +116,14 @@ public interface LEntityReference extends LEntityFeature, LReference {
 	 * @generated
 	 */
 	void setOpposite(LEntityReference value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" proxyDataType="org.lunifera.dsl.semantic.entity.InternalEObject" proxyUnique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.ecore.resource.Resource%> _eResource = this.eResource();\n<%org.eclipse.emf.ecore.resource.ResourceSet%> _resourceSet = _eResource.getResourceSet();\nreturn <%org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3%>.resolve(proxy, _resourceSet);'"
+	 * @generated
+	 */
+	EObject eResolveProxy(InternalEObject proxy);
 
 } // LEntityReference

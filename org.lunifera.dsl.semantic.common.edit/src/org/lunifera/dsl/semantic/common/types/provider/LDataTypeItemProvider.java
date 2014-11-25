@@ -405,6 +405,11 @@ public class LDataTypeItemProvider extends LScalarTypeItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LDATA_TYPE__JVM_TYPE_REFERENCE,
 				 TypesFactory.eINSTANCE.createJvmUnknownTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__JVM_TYPE_REFERENCE,
+				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
 	}
 
 }

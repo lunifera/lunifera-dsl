@@ -395,8 +395,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 		val type = createJvmGenericType(lClass, lClass.fullyQualifiedName.toString)
 		type.setAbstract(lClass.isAbstract());
 
-		annotationCompiler.processAnnotation(lClass, type);
-
 		associate(lClass, type)
 	}
+	
 }

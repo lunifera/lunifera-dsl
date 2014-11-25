@@ -12,16 +12,24 @@ package org.lunifera.dsl.entity.xtext.extensions
 
 import com.google.inject.Inject
 import java.util.ArrayList
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.util.EcoreGenericsUtil
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder
 import org.lunifera.dsl.entity.xtext.jvmmodel.AnnotationCompiler
+import org.lunifera.dsl.entity.xtext.linker.EntityLinker
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage
@@ -33,7 +41,8 @@ import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityFeature
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LOperation
-import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.entity.LunEntityPackage
+import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource
 
 class EntityTypesBuilder extends CommonTypesBuilder {
 
@@ -44,6 +53,9 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 	@Inject AnnotationCompiler annotationCompiler
 	@Inject TypesFactory typesFactory;
 	@Inject TypeReferences references;
+
+	@Inject EcoreGenericsUtil ecoreGenericsUtil;
+	@Inject EntityLinker linker;
 
 	def htmlCode(CharSequence s) {
 		"<code>".concat(String::valueOf(s)).concat("</code>")
@@ -200,7 +212,32 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
+
 		jvmField.type = cloneWithProxies(prop.toTypeReferenceWithMultiplicity)
+		jvmField.documentation = prop.getDocumentation
+
+		// if uuid or historized entity and property name == oid AND a uuid property is present too
+		if (prop.isUUID || ((entity.timedependent || entity.historized) && prop.toName.equals(Constants::PROP__OID) &&
+			entity.uuidPresent)) {
+			jvmField.setInitializer [
+				if(it == null) return
+				val p = it.trace(prop)
+				p >> '''java.util.UUID.randomUUID().toString()'''
+			]
+		}
+
+		annotationCompiler.processAnnotation(prop, jvmField);
+		associate(prop, jvmField);
+	}
+
+	def dispatch JvmField internalToField(LEntityReference prop) {
+		val LEntity entity = prop.entity
+		val JvmField jvmField = typesFactory.createJvmField();
+		jvmField.simpleName = prop.toName
+		jvmField.visibility = JvmVisibility::PRIVATE
+
+		jvmField.type = prop.createLuniferaJvmProxy(LunEntityPackage.Literals.LENTITY_REFERENCE__TYPE,
+			LunEntityPackage.Literals.LENTITY_REFERENCE__TYPE_JVM, prop.eResource as SemanticLoadingResource) as JvmTypeReference
 		jvmField.documentation = prop.getDocumentation
 
 		// if uuid or historized entity and property name == oid AND a uuid property is present too
@@ -472,9 +509,9 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 			op.parameters += prop.toParameter(propertyName, prop.toTypeReferenceWithMultiplicity)
 		}
 		op.documentation = '''
-			Sets the given «propertyName» to the object. Currently contained «propertyName» instances will be removed.
-			
-			@param «propertyName» the list of new instances'''
+		Sets the given «propertyName» to the object. Currently contained «propertyName» instances will be removed.
+		
+		@param «propertyName» the list of new instances'''
 		op.body = '''
 			// remove the old «paramName»
 			for(«prop.typeName» oldElement : new ArrayList<«prop.typeName»>(this.«prop.toCollectionInternalGetterName»())){
@@ -632,6 +669,19 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				}
 			])
 		return associate(prop, op);
+	}
+
+	def EObject createLuniferaJvmProxy(EObject obj, EReference eRef, EReference eJvmRef,
+		SemanticLoadingResource resource) {
+		if (resource == null)
+			throw new IllegalStateException("object must be contained in a resource");
+		val InternalEObject target = (obj as InternalEObject).eGet(eRef, false, false) as InternalEObject;
+		val URI jvmTypeURI = resource.getJvmTypeURI(target.eProxyURI)
+		val JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+		val JvmType proxy = TypesFactory.eINSTANCE.createJvmGenericType();
+		typeRef.setType(proxy);
+		(proxy as InternalEObject).eSetProxyURI(jvmTypeURI);
+		return typeRef;
 	}
 
 }

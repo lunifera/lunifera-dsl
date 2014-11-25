@@ -194,13 +194,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN__SUPER_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Super Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN__SUPER_TYPE_JVM = LunTypesPackage.LCLASS_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 2;
+	int LBEAN__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>LBean</em>' class.
@@ -209,7 +218,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
+	int LBEAN_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -293,13 +302,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN___COLLECT_ALL_LUN_FEATURES__LBEAN_LIST = LunTypesPackage.LCLASS_OPERATION_COUNT + 8;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LCLASS_OPERATION_COUNT + 9;
+
+	/**
 	 * The number of operations of the '<em>LBean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_OPERATION_COUNT = LunTypesPackage.LCLASS_OPERATION_COUNT + 9;
+	int LBEAN_OPERATION_COUNT = LunTypesPackage.LCLASS_OPERATION_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl <em>LEntity</em>}' class.
@@ -456,13 +474,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY__SUPER_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Super Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__SUPER_TYPE_JVM = LunTypesPackage.LCLASS_FEATURE_COUNT + 10;
+
+	/**
 	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 10;
+	int LENTITY__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>LEntity</em>' class.
@@ -471,7 +498,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 11;
+	int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 12;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -555,13 +582,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY___COLLECT_ALL_LUN_FEATURES__LENTITY_LIST = LunTypesPackage.LCLASS_OPERATION_COUNT + 8;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LCLASS_OPERATION_COUNT + 9;
+
+	/**
 	 * The number of operations of the '<em>LEntity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_OPERATION_COUNT = LunTypesPackage.LCLASS_OPERATION_COUNT + 9;
+	int LENTITY_OPERATION_COUNT = LunTypesPackage.LCLASS_OPERATION_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityPersistenceInfoImpl <em>LEntity Persistence Info</em>}' class.
@@ -1157,13 +1193,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_REFERENCE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_REFERENCE__TYPE_JVM = LENTITY_FEATURE_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 3;
+	int LENTITY_REFERENCE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Reference</em>' class.
@@ -1172,7 +1217,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 4;
+	int LENTITY_REFERENCE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1193,13 +1238,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_REFERENCE___GET_ENTITY = LENTITY_FEATURE___GET_ENTITY;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_REFERENCE___ERESOLVE_PROXY__INTERNALEOBJECT = LENTITY_FEATURE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>LEntity Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE_OPERATION_COUNT = LENTITY_FEATURE_OPERATION_COUNT + 0;
+	int LENTITY_REFERENCE_OPERATION_COUNT = LENTITY_FEATURE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanFeatureImpl <em>LBean Feature</em>}' class.
@@ -1793,6 +1847,16 @@ public interface LunEntityPackage extends EPackage {
 	int LDISCRIMINATOR_TYPE = 16;
 
 	/**
+	 * The meta object id for the '<em>Internal EObject</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.ecore.InternalEObject
+	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getInternalEObject()
+	 * @generated
+	 */
+	int INTERNAL_EOBJECT = 17;
+
+	/**
 	 * The meta object id for the '<em>Operations List</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1800,7 +1864,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getOperationsList()
 	 * @generated
 	 */
-	int OPERATIONS_LIST = 17;
+	int OPERATIONS_LIST = 18;
 
 	/**
 	 * The meta object id for the '<em>Entity Feature List</em>' data type.
@@ -1810,7 +1874,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getEntityFeatureList()
 	 * @generated
 	 */
-	int ENTITY_FEATURE_LIST = 18;
+	int ENTITY_FEATURE_LIST = 19;
 
 	/**
 	 * The meta object id for the '<em>Entity Reference List</em>' data type.
@@ -1820,7 +1884,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getEntityReferenceList()
 	 * @generated
 	 */
-	int ENTITY_REFERENCE_LIST = 19;
+	int ENTITY_REFERENCE_LIST = 20;
 
 	/**
 	 * The meta object id for the '<em>Entity Attribute List</em>' data type.
@@ -1830,7 +1894,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getEntityAttributeList()
 	 * @generated
 	 */
-	int ENTITY_ATTRIBUTE_LIST = 20;
+	int ENTITY_ATTRIBUTE_LIST = 21;
 
 	/**
 	 * The meta object id for the '<em>Bean Feature List</em>' data type.
@@ -1840,7 +1904,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getBeanFeatureList()
 	 * @generated
 	 */
-	int BEAN_FEATURE_LIST = 21;
+	int BEAN_FEATURE_LIST = 22;
 
 	/**
 	 * The meta object id for the '<em>Bean Reference List</em>' data type.
@@ -1850,7 +1914,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getBeanReferenceList()
 	 * @generated
 	 */
-	int BEAN_REFERENCE_LIST = 22;
+	int BEAN_REFERENCE_LIST = 23;
 
 	/**
 	 * The meta object id for the '<em>Bean Attribute List</em>' data type.
@@ -1860,7 +1924,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getBeanAttributeList()
 	 * @generated
 	 */
-	int BEAN_ATTRIBUTE_LIST = 23;
+	int BEAN_ATTRIBUTE_LIST = 24;
 
 
 	/**
@@ -1915,6 +1979,17 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLBean_SuperType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LBean#getSuperTypeJvm <em>Super Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Super Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LBean#getSuperTypeJvm()
+	 * @see #getLBean()
+	 * @generated
+	 */
+	EReference getLBean_SuperTypeJvm();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.semantic.entity.LBean#getSubTypes <em>Sub Types</em>}'.
@@ -1996,6 +2071,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getLBean__CollectAllLunFeatures__LBean_List();
+
+	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.entity.LBean#eResolveProxy(org.eclipse.emf.ecore.InternalEObject) <em>EResolve Proxy</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>EResolve Proxy</em>' operation.
+	 * @see org.lunifera.dsl.semantic.entity.LBean#eResolveProxy(org.eclipse.emf.ecore.InternalEObject)
+	 * @generated
+	 */
+	EOperation getLBean__EResolveProxy__InternalEObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LEntity <em>LEntity</em>}'.
@@ -2118,6 +2203,17 @@ public interface LunEntityPackage extends EPackage {
 	EReference getLEntity_SuperType();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LEntity#getSuperTypeJvm <em>Super Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Super Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LEntity#getSuperTypeJvm()
+	 * @see #getLEntity()
+	 * @generated
+	 */
+	EReference getLEntity_SuperTypeJvm();
+
+	/**
 	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.semantic.entity.LEntity#getSubTypes <em>Sub Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2197,6 +2293,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getLEntity__CollectAllLunFeatures__LEntity_List();
+
+	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.entity.LEntity#eResolveProxy(org.eclipse.emf.ecore.InternalEObject) <em>EResolve Proxy</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>EResolve Proxy</em>' operation.
+	 * @see org.lunifera.dsl.semantic.entity.LEntity#eResolveProxy(org.eclipse.emf.ecore.InternalEObject)
+	 * @generated
+	 */
+	EOperation getLEntity__EResolveProxy__InternalEObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo <em>LEntity Persistence Info</em>}'.
@@ -2421,6 +2527,17 @@ public interface LunEntityPackage extends EPackage {
 	EReference getLEntityReference_Type();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getTypeJvm <em>Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LEntityReference#getTypeJvm()
+	 * @see #getLEntityReference()
+	 * @generated
+	 */
+	EReference getLEntityReference_TypeJvm();
+
+	/**
 	 * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getOpposite <em>Opposite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2430,6 +2547,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLEntityReference_Opposite();
+
+	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.entity.LEntityReference#eResolveProxy(org.eclipse.emf.ecore.InternalEObject) <em>EResolve Proxy</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>EResolve Proxy</em>' operation.
+	 * @see org.lunifera.dsl.semantic.entity.LEntityReference#eResolveProxy(org.eclipse.emf.ecore.InternalEObject)
+	 * @generated
+	 */
+	EOperation getLEntityReference__EResolveProxy__InternalEObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LBeanFeature <em>LBean Feature</em>}'.
@@ -2566,6 +2693,17 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getLDiscriminatorType();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.emf.ecore.InternalEObject <em>Internal EObject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Internal EObject</em>'.
+	 * @see org.eclipse.emf.ecore.InternalEObject
+	 * @model instanceClass="org.eclipse.emf.ecore.InternalEObject"
+	 * @generated
+	 */
+	EDataType getInternalEObject();
 
 	/**
 	 * Returns the meta object for data type '{@link java.util.List <em>Operations List</em>}'.
@@ -2712,6 +2850,14 @@ public interface LunEntityPackage extends EPackage {
 		EReference LBEAN__SUPER_TYPE = eINSTANCE.getLBean_SuperType();
 
 		/**
+		 * The meta object literal for the '<em><b>Super Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LBEAN__SUPER_TYPE_JVM = eINSTANCE.getLBean_SuperTypeJvm();
+
+		/**
 		 * The meta object literal for the '<em><b>Sub Types</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2774,6 +2920,14 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation LBEAN___COLLECT_ALL_LUN_FEATURES__LBEAN_LIST = eINSTANCE.getLBean__CollectAllLunFeatures__LBean_List();
+
+		/**
+		 * The meta object literal for the '<em><b>EResolve Proxy</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LBEAN___ERESOLVE_PROXY__INTERNALEOBJECT = eINSTANCE.getLBean__EResolveProxy__InternalEObject();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl <em>LEntity</em>}' class.
@@ -2866,6 +3020,14 @@ public interface LunEntityPackage extends EPackage {
 		EReference LENTITY__SUPER_TYPE = eINSTANCE.getLEntity_SuperType();
 
 		/**
+		 * The meta object literal for the '<em><b>Super Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LENTITY__SUPER_TYPE_JVM = eINSTANCE.getLEntity_SuperTypeJvm();
+
+		/**
 		 * The meta object literal for the '<em><b>Sub Types</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2928,6 +3090,14 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation LENTITY___COLLECT_ALL_LUN_FEATURES__LENTITY_LIST = eINSTANCE.getLEntity__CollectAllLunFeatures__LEntity_List();
+
+		/**
+		 * The meta object literal for the '<em><b>EResolve Proxy</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LENTITY___ERESOLVE_PROXY__INTERNALEOBJECT = eINSTANCE.getLEntity__EResolveProxy__InternalEObject();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityPersistenceInfoImpl <em>LEntity Persistence Info</em>}' class.
@@ -3114,12 +3284,28 @@ public interface LunEntityPackage extends EPackage {
 		EReference LENTITY_REFERENCE__TYPE = eINSTANCE.getLEntityReference_Type();
 
 		/**
+		 * The meta object literal for the '<em><b>Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LENTITY_REFERENCE__TYPE_JVM = eINSTANCE.getLEntityReference_TypeJvm();
+
+		/**
 		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference LENTITY_REFERENCE__OPPOSITE = eINSTANCE.getLEntityReference_Opposite();
+
+		/**
+		 * The meta object literal for the '<em><b>EResolve Proxy</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LENTITY_REFERENCE___ERESOLVE_PROXY__INTERNALEOBJECT = eINSTANCE.getLEntityReference__EResolveProxy__InternalEObject();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanFeatureImpl <em>LBean Feature</em>}' class.
@@ -3236,6 +3422,16 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum LDISCRIMINATOR_TYPE = eINSTANCE.getLDiscriminatorType();
+
+		/**
+		 * The meta object literal for the '<em>Internal EObject</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.ecore.InternalEObject
+		 * @see org.lunifera.dsl.semantic.entity.impl.LunEntityPackageImpl#getInternalEObject()
+		 * @generated
+		 */
+		EDataType INTERNAL_EOBJECT = eINSTANCE.getInternalEObject();
 
 		/**
 		 * The meta object literal for the '<em>Operations List</em>' data type.
