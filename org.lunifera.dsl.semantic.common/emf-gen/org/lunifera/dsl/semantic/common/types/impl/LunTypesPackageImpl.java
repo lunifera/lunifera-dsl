@@ -296,9 +296,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
+		XAnnotationsPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 		XbasePackage.eINSTANCE.eClass();
-		XAnnotationsPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theLunTypesPackage.createPackageContents();
@@ -986,6 +986,15 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLMultiplicity_ToMultiplicityString() {
+		return (EAttribute)lMultiplicityEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLDateType() {
 		return lDateTypeEEnum;
 	}
@@ -1164,6 +1173,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		lMultiplicityEClass = createEClass(LMULTIPLICITY);
 		createEAttribute(lMultiplicityEClass, LMULTIPLICITY__LOWER);
 		createEAttribute(lMultiplicityEClass, LMULTIPLICITY__UPPER);
+		createEAttribute(lMultiplicityEClass, LMULTIPLICITY__TO_MULTIPLICITY_STRING);
 
 		// Create enums
 		lDateTypeEEnum = createEEnum(LDATE_TYPE);
@@ -1320,6 +1330,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEClass(lMultiplicityEClass, LMultiplicity.class, "LMultiplicity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLMultiplicity_Lower(), this.getLLowerBound(), "lower", null, 0, 1, LMultiplicity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLMultiplicity_Upper(), this.getLUpperBound(), "upper", null, 0, 1, LMultiplicity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLMultiplicity_ToMultiplicityString(), theEcorePackage.getEString(), "toMultiplicityString", null, 0, 1, LMultiplicity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(lDateTypeEEnum, LDateType.class, "LDateType");

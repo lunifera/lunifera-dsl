@@ -15,7 +15,6 @@ package org.lunifera.dsl.semantic.entity.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -438,11 +437,6 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
-				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
 				 XbaseFactory.eINSTANCE.createXIfExpression()));
 
 		newChildDescriptors.add
@@ -584,6 +578,11 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
 				 XbaseFactory.eINSTANCE.createXSynchronizedExpression()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
+				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 	}
 
 	@Override

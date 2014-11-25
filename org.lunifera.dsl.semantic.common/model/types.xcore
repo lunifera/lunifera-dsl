@@ -16,13 +16,14 @@
 @Ecore(nsPrefix="types")
 @Ecore(rootPackage="types")
 package org.lunifera.dsl.semantic.common.types
-        
+
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.eclipse.emf.common.util.EList
- 
+import java.util.concurrent.atomic.AtomicLongFieldUpdater.LockedUpdater
+
 class LCommonModel {
 	contains LTypedPackage[] packages
 }
@@ -54,12 +55,12 @@ class LType extends LAnnotationTarget {
 		}
 	}
 }
- 
+
 class LAnnotationDef {
 	boolean exclude
-	contains XAnnotation ^annotation  
+	contains XAnnotation ^annotation
 }
- 
+
 class LAnnotationTarget {
 	contains LAnnotationDef[] annotations
 }
@@ -87,7 +88,7 @@ class LDataType extends LScalarType {
 	// for instance if the feature is contained in a superclass
 	refers LType syntheticType
 }
- 
+
 enum LDateType {
 	DATE
 	, TIME
@@ -189,6 +190,49 @@ enum LVisibility {
 class LMultiplicity {
 	LLowerBound lower
 	LUpperBound upper
+	derived String toMultiplicityString get {
+		var result = new StringBuilder
+		switch lower {
+			case LLowerBound.NULL: {
+				result.append = "0";
+			}
+			case LLowerBound.MANY: {
+				result.append = "1";
+			}
+			case LLowerBound.OPTIONAL: {
+				result.append = "0";
+			}
+			case LLowerBound.ATLEASTONE: {
+				result.append = "1";
+			}
+			case LLowerBound.ZERO: {
+				result.append = "0";
+			}
+			case LLowerBound.ONE: {
+				result.append = "1";
+			}
+			default: {
+				result.append = "undefined";
+
+			}
+		}
+		result.append = ".."
+		switch upper {
+			case LUpperBound.NULL: {
+				result.append = "0";
+			}
+			case LUpperBound.MANY: {
+				result.append = "*";
+			}
+			case LUpperBound.ONE: {
+				result.append = "1";
+			}
+			default: {
+				result.append = "undefined"
+			}
+		}
+		return result.toString
+	}
 }
 
 enum LLowerBound {

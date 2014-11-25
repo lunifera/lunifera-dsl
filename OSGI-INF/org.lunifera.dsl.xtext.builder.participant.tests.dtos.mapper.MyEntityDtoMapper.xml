@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+   <scr:component name="org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.myentitydtomapper">
+       <implementation class="org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.MyEntityDtoMapper"/>
+       <property name="dto" value="org.lunifera.dsl.xtext.builder.participant.tests.dtos.MyEntityDto"/>
+       <property name="entity" value="org.lunifera.dsl.xtext.builder.participant.tests.MyEntity"/>
+       <property name="service.pid" value="org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.myentitydtomapper"/>
+       <reference name="bind" interface="org.lunifera.dsl.dto.common.IMapperAccess" 
+       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+   </scr:component>
+</components>
