@@ -51,11 +51,7 @@ public final class EntityEditorPlugin extends EMFPlugin {
 		super
 			(new ResourceLocator [] {
 				TypesEditPlugin.INSTANCE,
-<<<<<<< HEAD
-				org.lunifera.dsl.semantic.common.types.provider.TypesEditPlugin.INSTANCE,
-=======
 				org.eclipse.xtext.common.types.provider.TypesEditPlugin.INSTANCE,
->>>>>>> branch 'development' of git@github.com:lunifera/lunifera-dsl.git
 			});
 	}
 

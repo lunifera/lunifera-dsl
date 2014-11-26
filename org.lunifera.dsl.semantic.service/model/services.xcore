@@ -19,30 +19,13 @@
 @Ecore(rootPackage="services")
 package org.lunifera.dsl.semantic.service
 
-import GenModel
-import org.lunifera.dsl.semantic.common.types.LTypedPackage
-import org.lunifera.dsl.semantic.common.types.LClass
-import org.lunifera.dsl.semantic.common.types.LScalarType
-import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.common.types.LAttribute
-import org.lunifera.dsl.semantic.common.types.LReference
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
-import org.lunifera.dsl.semantic.common.types.LType
-import java.util.List
-import org.lunifera.dsl.semantic.common.types.FeaturesList
-import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
-import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.lunifera.dsl.semantic.entity.LEntityAttribute
-import org.lunifera.dsl.semantic.entity.LEntity
-import org.lunifera.dsl.semantic.common.types.LMultiplicity
-import org.eclipse.xtext.xbase.XStringLiteral
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LOperation
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoFeature
-import org.lunifera.dsl.semantic.dto.LDtoOperation
-import org.lunifera.dsl.semantic.dto.LDtoReference
-import org.lunifera.dsl.semantic.dto.LDtoAttribute
-import org.lunifera.dsl.semantic.common.types.LOperation
-import org.eclipse.xtext.common.types.JvmTypeReference
 
 class LServiceModel {
 	contains LTypedPackage[] packages
@@ -68,7 +51,7 @@ class LDTOService extends LService {
 	String persistenceId
 	contains LFilterableAttributes filterable opposite parent
 	contains LSortableAttributes sortable opposite parent
-	
+	 
 	contains XExpression getExpression
 	contains XExpression findExpression
 	contains XExpression findExpressionWithDelimiter

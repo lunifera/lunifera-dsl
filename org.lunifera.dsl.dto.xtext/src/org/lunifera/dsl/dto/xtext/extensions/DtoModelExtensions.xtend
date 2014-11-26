@@ -37,8 +37,6 @@ import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.eclipse.xtext.common.types.JvmType
-import org.lunifera.dsl.semantic.common.types.LScalarType
 
 class DtoModelExtensions extends ModelExtensions {
 

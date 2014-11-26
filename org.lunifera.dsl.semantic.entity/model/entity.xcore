@@ -16,21 +16,20 @@
 @Ecore(nsPrefix="entity")
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
-  
-import org.lunifera.dsl.semantic.common.types.LTypedPackage
-import org.lunifera.dsl.semantic.common.types.LClass
-import org.lunifera.dsl.semantic.common.types.LScalarType
-import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
-import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.common.types.LAttribute
-import org.lunifera.dsl.semantic.common.types.LReference
-import org.lunifera.dsl.semantic.common.types.LDateType
+
 import java.util.List
-import GenModel
-import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.emf.ecore.EObject
-import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
 import org.eclipse.emf.ecore.InternalEObject
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LDateType
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
+import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
 
 class LEntityModel {
 	contains LTypedPackage[] packages

@@ -70,23 +70,23 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 	}
 
-	def dispatch isCascading(LEntityReference prop) {
+	def dispatch boolean isCascading(LEntityReference prop) {
 		prop.cascading || if(prop.opposite != null) prop.opposite.cascading else false
 	}
 
-	def dispatch isCascading(LBeanReference prop) {
+	def dispatch boolean isCascading(LBeanReference prop) {
 		prop.cascading || if(prop.opposite != null) prop.opposite.cascading else false
 	}
 
-	def dispatch isCascading(LOperation prop) {
+	def dispatch boolean isCascading(LOperation prop) {
 		return false
 	}
 
-	def dispatch isUUID(LFeature prop) {
+	def dispatch boolean isUUID(LFeature prop) {
 		false
 	}
 
-	def dispatch isUUID(LEntityAttribute prop) {
+	def dispatch boolean isUUID(LEntityAttribute prop) {
 		prop.uuid
 	}
  

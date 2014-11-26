@@ -226,19 +226,19 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch LType toRawType(LEntityReference prop) {
-		prop.type
+		prop.type as LType
 	}
 
 	def dispatch LType toRawType(LEntityAttribute prop) {
-		prop.type
+		prop.type as LType
 	}
 
 	def dispatch LType toRawType(LBeanReference prop) {
-		prop.type
+		prop.type as LType
 	}
 
 	def dispatch LType toRawType(LBeanAttribute prop) {
-		prop.type
+		prop.type as LType
 	}
 
 	def toRawTypeRefernce(LDtoFeature prop) {
@@ -266,11 +266,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch LReference opposite(LEntityReference prop) {
-		prop.opposite
+		prop.opposite as LReference
 	}
 
 	def dispatch LReference opposite(LBeanReference prop) {
-		prop.opposite
+		prop.opposite as LReference
 	}
 
 	def dispatch Bounds getBounds(LDtoFeature prop) {

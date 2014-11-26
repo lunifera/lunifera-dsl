@@ -14,7 +14,6 @@ import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmType
-import org.eclipse.xtext.common.types.util.SuperTypeCollector
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.xbase.compiler.DisableCodeGenerationAdapter
