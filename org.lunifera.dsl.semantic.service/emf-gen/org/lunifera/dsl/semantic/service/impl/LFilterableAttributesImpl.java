@@ -24,10 +24,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl;
 
 import org.lunifera.dsl.semantic.dto.LDtoFeature;
 
@@ -49,7 +50,7 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  *
  * @generated
  */
-public class LFilterableAttributesImpl extends MinimalEObjectImpl.Container implements LFilterableAttributes {
+public class LFilterableAttributesImpl extends LLazyResolverImpl implements LFilterableAttributes {
 	/**
 	 * The cached value of the '{@link #getFilterableFeatures() <em>Filterable Features</em>}' reference list.
 	 * <!-- begin-user-doc -->

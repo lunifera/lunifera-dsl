@@ -20,9 +20,13 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,6 +35,8 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 
 import org.lunifera.dsl.semantic.dto.LDtoModel;
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
+
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3;
 
 /**
  * <!-- begin-user-doc -->
@@ -85,6 +91,17 @@ public class LDtoModelImpl extends MinimalEObjectImpl.Container implements LDtoM
 			packages = new EObjectContainmentEList<LTypedPackage>(LTypedPackage.class, this, LunDtoPackage.LDTO_MODEL__PACKAGES);
 		}
 		return packages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject eResolveProxy(final InternalEObject proxy) {
+		Resource _eResource = this.eResource();
+		ResourceSet _resourceSet = _eResource.getResourceSet();
+		return EcoreUtil3.resolve(proxy, _resourceSet);
 	}
 
 	/**

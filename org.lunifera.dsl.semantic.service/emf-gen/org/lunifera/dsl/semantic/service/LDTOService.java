@@ -13,6 +13,8 @@
  */
 package org.lunifera.dsl.semantic.service;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.dto.LDto;
@@ -26,6 +28,7 @@ import org.lunifera.dsl.semantic.dto.LDto;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getDto <em>Dto</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getDtoJvm <em>Dto Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getPersistenceId <em>Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}</li>
@@ -67,6 +70,32 @@ public interface LDTOService extends LService {
 	 * @generated
 	 */
 	void setDto(LDto value);
+
+	/**
+	 * Returns the value of the '<em><b>Dto Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Dto Jvm</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Dto Jvm</em>' containment reference.
+	 * @see #setDtoJvm(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_DtoJvm()
+	 * @model containment="true"
+	 * @generated
+	 */
+	JvmTypeReference getDtoJvm();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#getDtoJvm <em>Dto Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dto Jvm</em>' containment reference.
+	 * @see #getDtoJvm()
+	 * @generated
+	 */
+	void setDtoJvm(JvmTypeReference value);
 
 	/**
 	 * Returns the value of the '<em><b>Persistence Id</b></em>' attribute.

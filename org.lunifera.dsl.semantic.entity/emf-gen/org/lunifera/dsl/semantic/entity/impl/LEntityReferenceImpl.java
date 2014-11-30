@@ -13,21 +13,13 @@
  */
 package org.lunifera.dsl.semantic.entity.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
@@ -37,8 +29,6 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
-
-import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3;
 
 /**
  * <!-- begin-user-doc -->
@@ -313,17 +303,6 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject eResolveProxy(final InternalEObject proxy) {
-		Resource _eResource = this.eResource();
-		ResourceSet _resourceSet = _eResource.getResourceSet();
-		return EcoreUtil3.resolve(proxy, _resourceSet);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -465,20 +444,6 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case LunEntityPackage.LENTITY_REFERENCE___ERESOLVE_PROXY__INTERNALEOBJECT:
-				return eResolveProxy((InternalEObject)arguments.get(0));
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

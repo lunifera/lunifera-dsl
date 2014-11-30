@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -46,6 +47,7 @@ import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
 import org.lunifera.dsl.semantic.common.types.LImport;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 import org.lunifera.dsl.semantic.common.types.LLowerBound;
 import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
@@ -73,6 +75,13 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * @generated
 	 */
 	private EClass lCommonModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lLazyResolverEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -250,6 +259,13 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	private EDataType annotationListEDataType = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType internalEObjectEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -296,9 +312,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		XbasePackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 		XAnnotationsPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
+		XbasePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theLunTypesPackage.createPackageContents();
@@ -331,6 +347,24 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 */
 	public EReference getLCommonModel_Packages() {
 		return (EReference)lCommonModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLLazyResolver() {
+		return lLazyResolverEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getLLazyResolver__EResolveProxy__InternalEObject() {
+		return lLazyResolverEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1058,6 +1092,15 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getInternalEObject() {
+		return internalEObjectEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LunTypesFactory getLunTypesFactory() {
 		return (LunTypesFactory)getEFactoryInstance();
 	}
@@ -1083,6 +1126,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		// Create classes and their features
 		lCommonModelEClass = createEClass(LCOMMON_MODEL);
 		createEReference(lCommonModelEClass, LCOMMON_MODEL__PACKAGES);
+
+		lLazyResolverEClass = createEClass(LLAZY_RESOLVER);
+		createEOperation(lLazyResolverEClass, LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT);
 
 		lPackageEClass = createEClass(LPACKAGE);
 		createEAttribute(lPackageEClass, LPACKAGE__NAME);
@@ -1185,6 +1231,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		operationsListEDataType = createEDataType(OPERATIONS_LIST);
 		featuresListEDataType = createEDataType(FEATURES_LIST);
 		annotationListEDataType = createEDataType(ANNOTATION_LIST);
+		internalEObjectEDataType = createEDataType(INTERNAL_EOBJECT);
 	}
 
 	/**
@@ -1221,20 +1268,31 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		lCommonModelEClass.getESuperTypes().add(this.getLLazyResolver());
+		lPackageEClass.getESuperTypes().add(this.getLLazyResolver());
 		lTypedPackageEClass.getESuperTypes().add(this.getLPackage());
 		lTypeEClass.getESuperTypes().add(this.getLAnnotationTarget());
+		lAnnotationDefEClass.getESuperTypes().add(this.getLLazyResolver());
+		lAnnotationTargetEClass.getESuperTypes().add(this.getLLazyResolver());
 		lScalarTypeEClass.getESuperTypes().add(this.getLType());
 		lDataTypeEClass.getESuperTypes().add(this.getLScalarType());
 		lEnumEClass.getESuperTypes().add(this.getLScalarType());
+		lEnumLiteralEClass.getESuperTypes().add(this.getLLazyResolver());
 		lClassEClass.getESuperTypes().add(this.getLType());
 		lFeatureEClass.getESuperTypes().add(this.getLAnnotationTarget());
 		lReferenceEClass.getESuperTypes().add(this.getLFeature());
 		lAttributeEClass.getESuperTypes().add(this.getLFeature());
 		lOperationEClass.getESuperTypes().add(this.getLAnnotationTarget());
+		lModifierEClass.getESuperTypes().add(this.getLLazyResolver());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(lCommonModelEClass, LCommonModel.class, "LCommonModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLCommonModel_Packages(), this.getLTypedPackage(), null, "packages", null, 0, -1, LCommonModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lLazyResolverEClass, LLazyResolver.class, "LLazyResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = initEOperation(getLLazyResolver__EResolveProxy__InternalEObject(), theEcorePackage.getEObject(), "eResolveProxy", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getInternalEObject(), "proxy", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(lPackageEClass, LPackage.class, "LPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLPackage_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1361,6 +1419,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEDataType(operationsListEDataType, List.class, "OperationsList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.common.types.LOperation>");
 		initEDataType(featuresListEDataType, List.class, "FeaturesList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<? extends org.lunifera.dsl.semantic.common.types.LFeature>");
 		initEDataType(annotationListEDataType, EList.class, "AnnotationList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "org.eclipse.emf.common.util.EList<org.lunifera.dsl.semantic.common.types.LAnnotationDef>");
+		initEDataType(internalEObjectEDataType, InternalEObject.class, "InternalEObject", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

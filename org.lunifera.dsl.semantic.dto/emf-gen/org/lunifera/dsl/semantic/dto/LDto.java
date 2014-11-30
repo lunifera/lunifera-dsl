@@ -17,6 +17,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
@@ -38,8 +40,10 @@ import org.lunifera.dsl.semantic.common.types.LType;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.dto.LDto#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.LDto#getSuperType <em>Super Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.LDto#getSuperTypeJvm <em>Super Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.LDto#getSubTypes <em>Sub Types</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.LDto#getWrappedType <em>Wrapped Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.LDto#getWrappedTypeJvm <em>Wrapped Type Jvm</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,7 +81,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * @see #setSuperType(LDto)
 	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDto_SuperType()
 	 * @see org.lunifera.dsl.semantic.dto.LDto#getSubTypes
-	 * @model opposite="subTypes" resolveProxies="false"
+	 * @model opposite="subTypes"
 	 * @generated
 	 */
 	LDto getSuperType();
@@ -93,6 +97,32 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	void setSuperType(LDto value);
 
 	/**
+	 * Returns the value of the '<em><b>Super Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Super Type Jvm</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Super Type Jvm</em>' containment reference.
+	 * @see #setSuperTypeJvm(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDto_SuperTypeJvm()
+	 * @model containment="true"
+	 * @generated
+	 */
+	JvmTypeReference getSuperTypeJvm();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDto#getSuperTypeJvm <em>Super Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Super Type Jvm</em>' containment reference.
+	 * @see #getSuperTypeJvm()
+	 * @generated
+	 */
+	void setSuperTypeJvm(JvmTypeReference value);
+
+	/**
 	 * Returns the value of the '<em><b>Sub Types</b></em>' reference list.
 	 * The list contents are of type {@link org.lunifera.dsl.semantic.dto.LDto}.
 	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.dto.LDto#getSuperType <em>Super Type</em>}'.
@@ -105,7 +135,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * @return the value of the '<em>Sub Types</em>' reference list.
 	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDto_SubTypes()
 	 * @see org.lunifera.dsl.semantic.dto.LDto#getSuperType
-	 * @model opposite="superType" transient="true"
+	 * @model opposite="superType"
 	 * @generated
 	 */
 	EList<LDto> getSubTypes();
@@ -135,6 +165,32 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * @generated
 	 */
 	void setWrappedType(LType value);
+
+	/**
+	 * Returns the value of the '<em><b>Wrapped Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wrapped Type Jvm</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wrapped Type Jvm</em>' containment reference.
+	 * @see #setWrappedTypeJvm(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDto_WrappedTypeJvm()
+	 * @model containment="true"
+	 * @generated
+	 */
+	JvmTypeReference getWrappedTypeJvm();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDto#getWrappedTypeJvm <em>Wrapped Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wrapped Type Jvm</em>' containment reference.
+	 * @see #getWrappedTypeJvm()
+	 * @generated
+	 */
+	void setWrappedTypeJvm(JvmTypeReference value);
 
 	/**
 	 * <!-- begin-user-doc -->

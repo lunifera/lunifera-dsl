@@ -201,7 +201,21 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
+		
 		jvmField.type = cloneWithProxies(prop.toTypeReferenceWithMultiplicity)
+		jvmField.documentation = prop.getDocumentation
+
+		annotationCompiler.processAnnotation(prop, jvmField);
+		associate(prop, jvmField);
+	}
+	
+	def dispatch JvmField internalToField(LBeanReference prop) {
+		val JvmField jvmField = typesFactory.createJvmField();
+		jvmField.simpleName = prop.toName
+		jvmField.visibility = JvmVisibility::PRIVATE
+		
+		jvmField.type = prop.toTypeReferenceWithMultiplicity
+		jvmField.documentation = prop.getDocumentation
 
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
@@ -236,8 +250,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
 
-		jvmField.type = prop.createLuniferaJvmProxy(LunEntityPackage.Literals.LENTITY_REFERENCE__TYPE,
-			LunEntityPackage.Literals.LENTITY_REFERENCE__TYPE_JVM, prop.eResource as SemanticLoadingResource) as JvmTypeReference
+		jvmField.type = prop.toTypeReferenceWithMultiplicity
 		jvmField.documentation = prop.getDocumentation
 
 		// if uuid or historized entity and property name == oid AND a uuid property is present too
@@ -671,17 +684,17 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		return associate(prop, op);
 	}
 
-	def EObject createLuniferaJvmProxy(EObject obj, EReference eRef, EReference eJvmRef,
-		SemanticLoadingResource resource) {
-		if (resource == null)
-			throw new IllegalStateException("object must be contained in a resource");
-		val InternalEObject target = (obj as InternalEObject).eGet(eRef, false, false) as InternalEObject;
-		val URI jvmTypeURI = resource.getJvmTypeURI(target.eProxyURI)
-		val JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
-		val JvmType proxy = TypesFactory.eINSTANCE.createJvmGenericType();
-		typeRef.setType(proxy);
-		(proxy as InternalEObject).eSetProxyURI(jvmTypeURI);
-		return typeRef;
-	}
+//	def EObject createLuniferaJvmProxy(EObject obj, EReference eRef, EReference eJvmRef,
+//		SemanticLoadingResource resource) {
+//		if (resource == null)
+//			throw new IllegalStateException("object must be contained in a resource");
+//		val InternalEObject target = (obj as InternalEObject).eGet(eRef, false, false) as InternalEObject;
+//		val URI jvmTypeURI = resource.getJvmTypeURI(target.eProxyURI)
+//		val JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+//		val JvmType proxy = TypesFactory.eINSTANCE.createJvmGenericType();
+//		typeRef.setType(proxy);
+//		(proxy as InternalEObject).eSetProxyURI(jvmTypeURI);
+//		return typeRef;
+//	}
 
 }

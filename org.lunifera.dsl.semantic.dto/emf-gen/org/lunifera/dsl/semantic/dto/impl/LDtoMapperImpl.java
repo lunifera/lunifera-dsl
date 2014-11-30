@@ -20,9 +20,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.xtext.xbase.XExpression;
+
+import org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl;
 
 import org.lunifera.dsl.semantic.dto.LDtoMapper;
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
@@ -41,7 +42,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *
  * @generated
  */
-public class LDtoMapperImpl extends MinimalEObjectImpl.Container implements LDtoMapper {
+public class LDtoMapperImpl extends LLazyResolverImpl implements LDtoMapper {
 	/**
 	 * The cached value of the '{@link #getToDTO() <em>To DTO</em>}' containment reference.
 	 * <!-- begin-user-doc -->

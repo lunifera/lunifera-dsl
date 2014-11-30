@@ -12,7 +12,6 @@ package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
 import java.io.Serializable
-import org.apache.log4j.Logger
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
@@ -28,6 +27,9 @@ import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LOperation
+import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
@@ -35,7 +37,7 @@ import org.lunifera.dsl.semantic.entity.LOperation
  */
 class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
-	protected val Logger log = Logger::getLogger(getClass())
+	protected val Logger log = LoggerFactory::getLogger(getClass())
 
 	@Inject AnnotationCompiler annotationCompiler
 
@@ -68,8 +70,9 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				superTypes += references.getTypeForName(typeof(Serializable), bean, null)
 			}
 			if (bean.getSuperType != null && !bean.getSuperType.fullyQualifiedName.toString.empty) {
-				superTypes += references.getTypeForName(bean.getSuperType.fullyQualifiedName.toString, bean, null)
+				superTypes += bean.superTypeJvm.cloneWithProxies
 			}
+			
 			// 
 			// Constructor
 			//
@@ -150,20 +153,21 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			}
 		]
 	}
-
+ 
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		if(hasSyntaxErrors(entity)) return;
 		acceptor.accept(entity.toJvmType).initializeLater [
-			println("inferring " + entity.name)
+			println("inferring entity " + entity.name)
 			annotationCompiler.processAnnotation(entity, it);
 			var LAttribute idAttribute = null
 			var JvmField idField = null
 			fileHeader = (entity.eContainer as LTypedPackage).documentation
 			documentation = entity.documentation
-//			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
+			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
 //				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
-//			}
-			
+				superTypes += entity.superTypeJvm.cloneWithProxies
+			}
+
 			//
 			// Constructor
 			//
@@ -194,64 +198,64 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					}
 				}
 			}
-//			//
-//			// Field accessors
-//			//
-//			if (entity.getSuperType == null) {
-//				members += entity.toIsDisposed()
-//			}
-//			members += entity.toCheckDisposed()
-//			members += entity.toDispose()
-//			for (f : entity.features) {
-//				switch f {
-//					LAttribute: {
-//						members += f.toGetter()
-//						if (!f.derived) {
-//							if (f.toMany) {
-//								members += f.toCollectionSetter(f.name)
-//								members += f.toInternalCollectionGetter(f.name)
-//								members += f.toAdder(f.name)
-//								members += f.toRemover(f.name)
-//							} else {
-//								members += f.toSetter()
-//							}
-//						}
-//					}
-//					LReference: {
-//						members += f.toGetter()
-//						if (f.toMany) {
-//							members += f.toCollectionSetter(f.name)
-//							members += f.toInternalCollectionGetter(f.name)
-//							members += f.toAdder(f.name)
-//							members += f.toRemover(f.name)
-//							members += f.toInternalAdder
-//							members += f.toInternalRemover
-//						} else {
-//							members += f.toSetter()
-//
-//							if (f.cascading && (f as LEntityReference).opposite != null) {
-//								members += f.toInternalSetter
-//							}
-//						}
-//					}
-//				}
-//			}
+			//
+			// Field accessors
+			//
+			if (entity.getSuperType == null) {
+				members += entity.toIsDisposed()
+			}
+			members += entity.toCheckDisposed()
+			members += entity.toDispose()
+			for (f : entity.features) {
+				switch f {
+					LAttribute: {
+						members += f.toGetter()
+						if (!f.derived) {
+							if (f.toMany) {
+								members += f.toCollectionSetter(f.name)
+								members += f.toInternalCollectionGetter(f.name)
+								members += f.toAdder(f.name)
+								members += f.toRemover(f.name)
+							} else {
+								members += f.toSetter()
+							}
+						}
+					}
+					LReference: {
+						members += f.toGetter()
+						if (f.toMany) {
+							members += f.toCollectionSetter(f.name)
+							members += f.toInternalCollectionGetter(f.name)
+							members += f.toAdder(f.name)
+							members += f.toRemover(f.name)
+							members += f.toInternalAdder
+							members += f.toInternalRemover
+						} else {
+							members += f.toSetter()
+
+							if (f.cascading && (f as LEntityReference).opposite != null) {
+								members += f.toInternalSetter
+							}
+						}
+					}
+				}
+			}
 			//
 			// Methods.
 			//
-//			for (op : entity.operations) {
-//				members += op.toMethod(op.name, op.type) [
-//					documentation = op.documentation
-//					for (p : op.params) {
-//						parameters += p.toParameter(p.name, p.parameterType)
-//					}
-//					body = op.body
-//				]
-//			}
-//			if (idAttribute != null) {
-//				members += idAttribute.toEqualsMethod(it, false, idField)
-//				members += idAttribute.toHashCodeMethod(false, idField)
-//			}
+			for (op : entity.operations) {
+				members += op.toMethod(op.name, op.type) [
+					documentation = op.documentation
+					for (p : op.params) {
+						parameters += p.toParameter(p.name, p.parameterType)
+					}
+					body = op.body
+				]
+			}
+			if (idAttribute != null) {
+				members += idAttribute.toEqualsMethod(it, false, idField)
+				members += idAttribute.toHashCodeMethod(false, idField)
+			}
 		]
 
 	}

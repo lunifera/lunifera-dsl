@@ -13,9 +13,9 @@
  */
 package org.lunifera.dsl.semantic.dto;
 
-import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtext.xbase.XExpression;
+
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface LDtoMapper extends EObject {
+public interface LDtoMapper extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>To DTO</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

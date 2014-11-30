@@ -51,6 +51,8 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(dto.toJvmType).initializeLater [
 			
+			println("inferring dto " + dto.name)
+			
 			annotationCompiler.processAnnotation(dto, it);
 			
 			var LAttribute idAttribute = null
@@ -202,7 +204,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				val entityParam = TypesFactory.eINSTANCE.createJvmTypeParameter
 				entityParam.name = "ENTITY"
 				val entityUpper = TypesFactory.eINSTANCE.createJvmUpperBound
-				entityUpper.typeReference = dto.wrappedType.toTypeReference
+				entityUpper.typeReference = dto.wrappedTypeJvm?.cloneWithProxies
 				entityParam.constraints += entityUpper
 				typeParameters += entityParam
 

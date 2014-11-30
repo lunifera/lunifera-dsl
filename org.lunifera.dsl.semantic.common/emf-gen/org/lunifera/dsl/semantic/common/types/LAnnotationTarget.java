@@ -15,8 +15,6 @@ package org.lunifera.dsl.semantic.common.types;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>LAnnotation Target</b></em>'.
@@ -33,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LAnnotationTarget extends EObject {
+public interface LAnnotationTarget extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
 	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LAnnotationDef}.

@@ -42,11 +42,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	@Inject TypeReferences references;
 
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
-		return prop.type?.toTypeReference
+		return prop.typeJvm?.cloneWithProxies
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LBeanReference prop) {
-		return prop.type?.toTypeReference
+		return prop.typeJvm?.cloneWithProxies
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LOperation prop) {

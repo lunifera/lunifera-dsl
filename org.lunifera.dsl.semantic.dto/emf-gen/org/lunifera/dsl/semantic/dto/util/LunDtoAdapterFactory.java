@@ -25,6 +25,7 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 import org.lunifera.dsl.semantic.common.types.LOperation;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
@@ -135,6 +136,10 @@ public class LunDtoAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLDtoOperation(LDtoOperation object) {
 				return createLDtoOperationAdapter();
+			}
+			@Override
+			public Adapter caseLLazyResolver(LLazyResolver object) {
+				return createLLazyResolverAdapter();
 			}
 			@Override
 			public Adapter caseLAnnotationTarget(LAnnotationTarget object) {
@@ -357,6 +362,20 @@ public class LunDtoAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLDtoOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LLazyResolver <em>LLazy Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LLazyResolver
+	 * @generated
+	 */
+	public Adapter createLLazyResolverAdapter() {
 		return null;
 	}
 

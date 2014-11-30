@@ -13,7 +13,6 @@
  */
 package org.lunifera.dsl.semantic.common.types;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LEnumLiteral extends EObject {
+public interface LEnumLiteral extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

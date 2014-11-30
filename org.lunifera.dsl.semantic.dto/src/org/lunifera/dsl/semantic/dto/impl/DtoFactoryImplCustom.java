@@ -10,6 +10,7 @@
  */
 package org.lunifera.dsl.semantic.dto.impl;
 
+import org.lunifera.dsl.semantic.dto.LAutoInheritDto;
 import org.lunifera.dsl.semantic.dto.LDto;
 
 public class DtoFactoryImplCustom extends LunDtoFactoryImpl {
@@ -17,6 +18,11 @@ public class DtoFactoryImplCustom extends LunDtoFactoryImpl {
 	@Override
 	public LDto createLDto() {
 		return new LDtoImplCustom();
+	}
+	
+	@Override
+	public LAutoInheritDto createLAutoInheritDto() {
+		return new LAutoinheritDtoImplCustom();
 	}
 
 }

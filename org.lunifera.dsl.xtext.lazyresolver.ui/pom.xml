@@ -1,0 +1,32 @@
+<!--#======================================================================= -->
+<!--# Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), -->
+<!--# Loetz KG (Heidelberg) -->
+<!--# All rights reserved. This program and the accompanying materials -->
+<!--# are made available under the terms of the Eclipse Public License v1.0 -->
+<!--# which accompanies this distribution, and is available at -->
+<!--# http://www.eclipse.org/legal/epl-v10.html -->
+<!--# -->
+<!--# Contributors: -->
+<!--# Florian Pirchner - Initial implementation -->
+<!--#======================================================================= -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.lunifera.dsl</groupId>
+		<artifactId>org.lunifera.dsl.parent</artifactId>
+		<version>0.7.5-SNAPSHOT</version>
+		<relativePath>../org.lunifera.dsl.parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>org.lunifera.dsl.xtext.lazyresolver.ui</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<name>Xtext lazy resolver</name>
+	<description>This bundle contains a builder participant. It will setup the Xtext types model and exposes a service IJvmTypeMetadataService. 
+
+Using the method &quot;JvmType getJvmType(String qualifiedName)&quot; the JvmType for the given name will be returned. All bundles in the BundleSpace will be scanned for a matching class.</description>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+	</build>
+</project>

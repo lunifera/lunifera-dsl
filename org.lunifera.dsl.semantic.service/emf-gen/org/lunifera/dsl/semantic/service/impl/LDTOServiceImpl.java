@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.dto.LDto;
@@ -38,6 +40,7 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getDto <em>Dto</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getDtoJvm <em>Dto Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getPersistenceId <em>Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getFilterable <em>Filterable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getSortable <em>Sortable</em>}</li>
@@ -61,6 +64,16 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 	 * @ordered
 	 */
 	protected LDto dto;
+
+	/**
+	 * The cached value of the '{@link #getDtoJvm() <em>Dto Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDtoJvm()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference dtoJvm;
 
 	/**
 	 * The default value of the '{@link #getPersistenceId() <em>Persistence Id</em>}' attribute.
@@ -207,6 +220,49 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 		dto = newDto;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__DTO, oldDto, dto));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JvmTypeReference getDtoJvm() {
+		return dtoJvm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDtoJvm(JvmTypeReference newDtoJvm, NotificationChain msgs) {
+		JvmTypeReference oldDtoJvm = dtoJvm;
+		dtoJvm = newDtoJvm;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__DTO_JVM, oldDtoJvm, newDtoJvm);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDtoJvm(JvmTypeReference newDtoJvm) {
+		if (newDtoJvm != dtoJvm) {
+			NotificationChain msgs = null;
+			if (dtoJvm != null)
+				msgs = ((InternalEObject)dtoJvm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__DTO_JVM, null, msgs);
+			if (newDtoJvm != null)
+				msgs = ((InternalEObject)newDtoJvm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__DTO_JVM, null, msgs);
+			msgs = basicSetDtoJvm(newDtoJvm, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__DTO_JVM, newDtoJvm, newDtoJvm));
 	}
 
 	/**
@@ -559,6 +615,8 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
+				return basicSetDtoJvm(null, msgs);
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:
 				return basicSetFilterable(null, msgs);
 			case LunServicePackage.LDTO_SERVICE__SORTABLE:
@@ -588,6 +646,8 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 			case LunServicePackage.LDTO_SERVICE__DTO:
 				if (resolve) return getDto();
 				return basicGetDto();
+			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
+				return getDtoJvm();
 			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
 				return getPersistenceId();
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:
@@ -618,6 +678,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 		switch (featureID) {
 			case LunServicePackage.LDTO_SERVICE__DTO:
 				setDto((LDto)newValue);
+				return;
+			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
+				setDtoJvm((JvmTypeReference)newValue);
 				return;
 			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
 				setPersistenceId((String)newValue);
@@ -658,6 +721,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 			case LunServicePackage.LDTO_SERVICE__DTO:
 				setDto((LDto)null);
 				return;
+			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
+				setDtoJvm((JvmTypeReference)null);
+				return;
 			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
 				setPersistenceId(PERSISTENCE_ID_EDEFAULT);
 				return;
@@ -696,6 +762,8 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 		switch (featureID) {
 			case LunServicePackage.LDTO_SERVICE__DTO:
 				return dto != null;
+			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
+				return dtoJvm != null;
 			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
 				return PERSISTENCE_ID_EDEFAULT == null ? persistenceId != null : !PERSISTENCE_ID_EDEFAULT.equals(persistenceId);
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:

@@ -35,12 +35,12 @@ public class LAutoinheritDtoImplCustom extends LAutoInheritDtoImpl {
 				for (LDto subType : oldSuperEntity.getSubTypes()) {
 					((InternalEObject) superType).eInverseAdd(
 							(InternalEObject) subType,
-							LunDtoPackage.LDTO__SUB_TYPES, LDto.class, null);
+							LunDtoPackage.LAUTO_INHERIT_DTO__SUB_TYPES, LDto.class, null);
 				}
 
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							LunDtoPackage.LDTO__SUPER_TYPE, oldSuperType,
+							LunDtoPackage.LAUTO_INHERIT_DTO__SUPER_TYPE, oldSuperType,
 							superType));
 			}
 		}

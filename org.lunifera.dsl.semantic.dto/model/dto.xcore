@@ -31,9 +31,18 @@ import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LScalarType
 import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
+import org.eclipse.emf.ecore.InternalEObject
+import org.eclipse.emf.ecore.EObject
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.lunifera.dsl.semantic.common.types.LLazyResolver
 
 class LDtoModel {
 	contains LTypedPackage[] packages
+	
+	op EObject eResolveProxy(InternalEObject proxy) {
+		return EcoreUtil3.resolve(proxy, this.eResource().resourceSet);
+	}
 }
 
 /**
@@ -41,9 +50,12 @@ class LDtoModel {
  */
 class LDto extends LClass, LFeaturesHolder, LScalarType {
 	contains LDtoFeature[] features
-	refers local LDto superType opposite subTypes
-	refers transient LDto[] subTypes opposite superType
+	refers LDto superType opposite subTypes
+	contains JvmTypeReference superTypeJvm
+	refers LDto[] subTypes opposite superType
 	refers LType wrappedType
+	contains JvmTypeReference wrappedTypeJvm
+	
 	/** 
  	 * Returns all features of type LOperation
  	 */
@@ -83,13 +95,13 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
 		// call for super class
 		current.superType.collectAllLunFeatures(result)
 	}
-}
-
-class LAutoInheritDto extends LDto {
 	
 }
 
-class LDtoMapper {
+class LAutoInheritDto extends LDto {
+}
+
+class LDtoMapper extends LLazyResolver {
 	contains XExpression toDTO
 	contains XExpression fromDTO
 }
@@ -106,6 +118,7 @@ class LDtoFeature extends LFeature {
 }
 
 abstract class LDtoAbstractAttribute extends LDtoFeature, LAttribute {
+	
 }
 
 class LDtoInheritedAttribute extends LDtoAbstractAttribute{
@@ -116,13 +129,17 @@ class LDtoInheritedAttribute extends LDtoAbstractAttribute{
 	op LMultiplicity getInheritedMultiplicity() {
 		return inheritedFeature.multiplicity
 	}
+	
 }
   
 class LDtoAttribute  extends LDtoAbstractAttribute {
+	
 }
 
 abstract class LDtoAbstractReference extends LDtoFeature, LReference {
 	refers LDto ^type
+	contains JvmTypeReference typeJvm
+	
 }
 
 class LDtoInheritedReference extends LDtoAbstractReference{
@@ -130,13 +147,16 @@ class LDtoInheritedReference extends LDtoAbstractReference{
 	op LMultiplicity getInheritedMultiplicity() {
 		return inheritedFeature.multiplicity
 	}
+	
 }
 
 class LDtoReference  extends LDtoAbstractReference {
 	refers LDtoReference ^opposite
+	
 }
 
 class LDtoOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LDtoFeature {
+	
 }
  
 type DtoFeatureList wraps java.util.List<LDtoFeature>
@@ -149,7 +169,7 @@ type DtoAttributeList wraps java.util.List<LDtoAttribute>
 
 type DtoAbstractAttributeList wraps java.util.List<LDtoAbstractAttribute>
 
-	
+type InternalEObject wraps InternalEObject
 	
 	
 	

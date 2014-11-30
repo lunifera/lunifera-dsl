@@ -26,8 +26,9 @@ import org.lunifera.dsl.semantic.common.types.LOperation
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoFeature
+import org.lunifera.dsl.semantic.common.types.LLazyResolver
 
-class LServiceModel {
+class LServiceModel extends LLazyResolver {
 	contains LTypedPackage[] packages
 }
 
@@ -36,11 +37,11 @@ abstract class LService extends LClass {
 	contains LOperation[] operations
 }
 
-class LInjectedServices {
+class LInjectedServices extends LLazyResolver {
 	contains LInjectedService[*] services
 }
  
-class LInjectedService {
+class LInjectedService extends LLazyResolver {
 	LCardinality cardinality
 	String attributeName
 	contains JvmTypeReference service
@@ -48,6 +49,7 @@ class LInjectedService {
 
 class LDTOService extends LService {
 	refers LDto dto
+	contains JvmTypeReference dtoJvm
 	String persistenceId
 	contains LFilterableAttributes filterable opposite parent
 	contains LSortableAttributes sortable opposite parent
@@ -59,12 +61,12 @@ class LDTOService extends LService {
 	contains XExpression deleteExpression
 }
 
-class LFilterableAttributes {
+class LFilterableAttributes extends LLazyResolver {
 	refers LDTOService parent opposite filterable
 	refers LDtoFeature[*] filterableFeatures
 }
 
-class LSortableAttributes {
+class LSortableAttributes extends LLazyResolver {
 	refers LDTOService parent opposite sortable
 	refers LDtoFeature[*] sortableFeatures
 }

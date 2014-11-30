@@ -10,4 +10,6 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.0",
  org.eclipse.xtext.xbase;bundle-version="[2.7.3,2.8.0)",
  org.eclipse.xtext;bundle-version="[2.7.3,2.8.0)",
  org.lunifera.dsl.xtext.lazyresolver.api;bundle-version="0.7.5"
-Export-Package: org.lunifera.dsl.xtext.lazyresolver;x-friends:="org.lunifera.dsl.entity.xtext,org.lunifera.dsl.dto.xtext,org.lunifera.dsl.services.xtext"
+Export-Package: org.lunifera.dsl.xtext.lazyresolver,
+ org.lunifera.dsl.xtext.lazyresolver.linker,
+ org.lunifera.dsl.xtext.lazyresolver.scoping

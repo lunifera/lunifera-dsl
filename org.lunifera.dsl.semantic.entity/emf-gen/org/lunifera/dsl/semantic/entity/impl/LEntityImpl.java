@@ -30,13 +30,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
@@ -62,8 +58,6 @@ import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LIndex;
 import org.lunifera.dsl.semantic.entity.LOperation;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
-
-import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3;
 
 /**
  * <!-- begin-user-doc -->
@@ -698,17 +692,6 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject eResolveProxy(final InternalEObject proxy) {
-		Resource _eResource = this.eResource();
-		ResourceSet _resourceSet = _eResource.getResourceSet();
-		return EcoreUtil3.resolve(proxy, _resourceSet);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -963,8 +946,6 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 			case LunEntityPackage.LENTITY___COLLECT_ALL_LUN_FEATURES__LENTITY_LIST:
 				collectAllLunFeatures((LEntity)arguments.get(0), (List<LEntityFeature>)arguments.get(1));
 				return null;
-			case LunEntityPackage.LENTITY___ERESOLVE_PROXY__INTERNALEOBJECT:
-				return eResolveProxy((InternalEObject)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

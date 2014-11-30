@@ -30,8 +30,10 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	protected abstract Class<DTO> getDtoClass();
 
 	protected abstract DTO createDto();
-
+	
 	protected abstract Class<ENTITY> getEntityClass();
+
+	protected abstract ENTITY createEntity();
 
 	protected abstract Object getId(DTO dto);
 
@@ -108,26 +110,33 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	 * {@inherit doc}
 	 * 
 	 */
-	public void update(final DTO dto) {
+	public DTO update(final DTO dto) {
 		javax.persistence.EntityManager em = emf.createEntityManager();
 		javax.persistence.EntityTransaction txn = em.getTransaction();
 
+		DTO result = createDto();
 		try {
 			txn.begin();
 			ENTITY entity = em.find(getEntityClass(), getId(dto));
 			if (entity != null) {
 				mapper.mapToEntity(dto, entity);
 				em.persist(entity);
+				// map the entity back to the dto since values may be changed in dto
+				mapper.mapToDTO(result, entity);
+			} else{
+				entity = createEntity();
+				mapper.mapToEntity(dto, entity);
+				em.persist(entity);
+				// map the entity back to the dto since values may be changed in dto
+				mapper.mapToDTO(result, entity);
 			}
 
 			txn.commit();
-			txn = null;
 		} finally {
-			if (txn != null) {
-				txn.rollback();
-			}
 			em.close();
 		}
+		
+		return result;
 	}
 
 	/**
@@ -146,11 +155,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 			}
 
 			txn.commit();
-			txn = null;
 		} finally {
-			if (txn != null) {
-				txn.rollback();
-			}
 			em.close();
 		}
 	}

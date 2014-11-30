@@ -181,13 +181,22 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO__SUPER_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Super Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO__SUPER_TYPE_JVM = LunTypesPackage.LCLASS_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 2;
+	int LDTO__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Wrapped Type</b></em>' reference.
@@ -196,7 +205,16 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO__WRAPPED_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 3;
+	int LDTO__WRAPPED_TYPE = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Wrapped Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO__WRAPPED_TYPE_JVM = LunTypesPackage.LCLASS_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>LDto</em>' class.
@@ -205,7 +223,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
+	int LDTO_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LAutoInheritDtoImpl <em>LAuto Inherit Dto</em>}' class.
@@ -290,6 +308,15 @@ public interface LunDtoPackage extends EPackage {
 	int LAUTO_INHERIT_DTO__SUPER_TYPE = LDTO__SUPER_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Super Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__SUPER_TYPE_JVM = LDTO__SUPER_TYPE_JVM;
+
+	/**
 	 * The feature id for the '<em><b>Sub Types</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,6 +333,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LAUTO_INHERIT_DTO__WRAPPED_TYPE = LDTO__WRAPPED_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Wrapped Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUTO_INHERIT_DTO__WRAPPED_TYPE_JVM = LDTO__WRAPPED_TYPE_JVM;
 
 	/**
 	 * The number of structural features of the '<em>LAuto Inherit Dto</em>' class.
@@ -333,7 +369,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_MAPPER__TO_DTO = 0;
+	int LDTO_MAPPER__TO_DTO = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>From DTO</b></em>' containment reference.
@@ -342,7 +378,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_MAPPER__FROM_DTO = 1;
+	int LDTO_MAPPER__FROM_DTO = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>LDto Mapper</em>' class.
@@ -351,7 +387,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_MAPPER_FEATURE_COUNT = 2;
+	int LDTO_MAPPER_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoFeatureImpl <em>LDto Feature</em>}' class.
@@ -998,13 +1034,22 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_ABSTRACT_REFERENCE__TYPE = LDTO_FEATURE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ABSTRACT_REFERENCE__TYPE_JVM = LDTO_FEATURE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>LDto Abstract Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_REFERENCE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 3;
+	int LDTO_ABSTRACT_REFERENCE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedReferenceImpl <em>LDto Inherited Reference</em>}' class.
@@ -1087,6 +1132,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_INHERITED_REFERENCE__TYPE = LDTO_ABSTRACT_REFERENCE__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_INHERITED_REFERENCE__TYPE_JVM = LDTO_ABSTRACT_REFERENCE__TYPE_JVM;
 
 	/**
 	 * The feature id for the '<em><b>Inherited Feature</b></em>' reference.
@@ -1187,6 +1241,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_REFERENCE__TYPE = LDTO_ABSTRACT_REFERENCE__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_REFERENCE__TYPE_JVM = LDTO_ABSTRACT_REFERENCE__TYPE_JVM;
 
 	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
@@ -1356,6 +1419,16 @@ public interface LunDtoPackage extends EPackage {
 	 */
 	int DTO_ABSTRACT_ATTRIBUTE_LIST = 16;
 
+	/**
+	 * The meta object id for the '<em>Internal EObject</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.ecore.InternalEObject
+	 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getInternalEObject()
+	 * @generated
+	 */
+	int INTERNAL_EOBJECT = 17;
+
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.dto.LDtoModel <em>LDto Model</em>}'.
@@ -1411,6 +1484,17 @@ public interface LunDtoPackage extends EPackage {
 	EReference getLDto_SuperType();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.dto.LDto#getSuperTypeJvm <em>Super Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Super Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.dto.LDto#getSuperTypeJvm()
+	 * @see #getLDto()
+	 * @generated
+	 */
+	EReference getLDto_SuperTypeJvm();
+
+	/**
 	 * Returns the meta object for the reference list '{@link org.lunifera.dsl.semantic.dto.LDto#getSubTypes <em>Sub Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1431,6 +1515,17 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLDto_WrappedType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.dto.LDto#getWrappedTypeJvm <em>Wrapped Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Wrapped Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.dto.LDto#getWrappedTypeJvm()
+	 * @see #getLDto()
+	 * @generated
+	 */
+	EReference getLDto_WrappedTypeJvm();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.dto.LAutoInheritDto <em>LAuto Inherit Dto</em>}'.
@@ -1558,6 +1653,17 @@ public interface LunDtoPackage extends EPackage {
 	EReference getLDtoAbstractReference_Type();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.dto.LDtoAbstractReference#getTypeJvm <em>Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.dto.LDtoAbstractReference#getTypeJvm()
+	 * @see #getLDtoAbstractReference()
+	 * @generated
+	 */
+	EReference getLDtoAbstractReference_TypeJvm();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.dto.LDtoInheritedReference <em>LDto Inherited Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1665,6 +1771,17 @@ public interface LunDtoPackage extends EPackage {
 	EDataType getDtoAbstractAttributeList();
 
 	/**
+	 * Returns the meta object for data type '{@link org.eclipse.emf.ecore.InternalEObject <em>Internal EObject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Internal EObject</em>'.
+	 * @see org.eclipse.emf.ecore.InternalEObject
+	 * @model instanceClass="org.eclipse.emf.ecore.InternalEObject"
+	 * @generated
+	 */
+	EDataType getInternalEObject();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1731,6 +1848,14 @@ public interface LunDtoPackage extends EPackage {
 		EReference LDTO__SUPER_TYPE = eINSTANCE.getLDto_SuperType();
 
 		/**
+		 * The meta object literal for the '<em><b>Super Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO__SUPER_TYPE_JVM = eINSTANCE.getLDto_SuperTypeJvm();
+
+		/**
 		 * The meta object literal for the '<em><b>Sub Types</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1745,6 +1870,14 @@ public interface LunDtoPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LDTO__WRAPPED_TYPE = eINSTANCE.getLDto_WrappedType();
+
+		/**
+		 * The meta object literal for the '<em><b>Wrapped Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO__WRAPPED_TYPE_JVM = eINSTANCE.getLDto_WrappedTypeJvm();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.dto.impl.LAutoInheritDtoImpl <em>LAuto Inherit Dto</em>}' class.
@@ -1857,6 +1990,14 @@ public interface LunDtoPackage extends EPackage {
 		EReference LDTO_ABSTRACT_REFERENCE__TYPE = eINSTANCE.getLDtoAbstractReference_Type();
 
 		/**
+		 * The meta object literal for the '<em><b>Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO_ABSTRACT_REFERENCE__TYPE_JVM = eINSTANCE.getLDtoAbstractReference_TypeJvm();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedReferenceImpl <em>LDto Inherited Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1951,6 +2092,16 @@ public interface LunDtoPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType DTO_ABSTRACT_ATTRIBUTE_LIST = eINSTANCE.getDtoAbstractAttributeList();
+
+		/**
+		 * The meta object literal for the '<em>Internal EObject</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.ecore.InternalEObject
+		 * @see org.lunifera.dsl.semantic.dto.impl.LunDtoPackageImpl#getInternalEObject()
+		 * @generated
+		 */
+		EDataType INTERNAL_EOBJECT = eINSTANCE.getInternalEObject();
 
 	}
 

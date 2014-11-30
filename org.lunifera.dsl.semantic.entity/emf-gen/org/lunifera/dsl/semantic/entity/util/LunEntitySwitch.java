@@ -23,6 +23,7 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LType;
@@ -100,6 +101,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = caseLFeaturesHolder(lBean);
 				if (result == null) result = caseLType(lBean);
 				if (result == null) result = caseLAnnotationTarget(lBean);
+				if (result == null) result = caseLLazyResolver(lBean);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -110,24 +112,28 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = caseLFeaturesHolder(lEntity);
 				if (result == null) result = caseLType(lEntity);
 				if (result == null) result = caseLAnnotationTarget(lEntity);
+				if (result == null) result = caseLLazyResolver(lEntity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunEntityPackage.LENTITY_PERSISTENCE_INFO: {
 				LEntityPersistenceInfo lEntityPersistenceInfo = (LEntityPersistenceInfo)theEObject;
 				T result = caseLEntityPersistenceInfo(lEntityPersistenceInfo);
+				if (result == null) result = caseLLazyResolver(lEntityPersistenceInfo);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunEntityPackage.LENTITY_COLUMN_PERSISTENCE_INFO: {
 				LEntityColumnPersistenceInfo lEntityColumnPersistenceInfo = (LEntityColumnPersistenceInfo)theEObject;
 				T result = caseLEntityColumnPersistenceInfo(lEntityColumnPersistenceInfo);
+				if (result == null) result = caseLLazyResolver(lEntityColumnPersistenceInfo);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunEntityPackage.LENTITY_INHERITANCE_STRATEGY: {
 				LEntityInheritanceStrategy lEntityInheritanceStrategy = (LEntityInheritanceStrategy)theEObject;
 				T result = caseLEntityInheritanceStrategy(lEntityInheritanceStrategy);
+				if (result == null) result = caseLLazyResolver(lEntityInheritanceStrategy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,6 +141,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				LTablePerClassStrategy lTablePerClassStrategy = (LTablePerClassStrategy)theEObject;
 				T result = caseLTablePerClassStrategy(lTablePerClassStrategy);
 				if (result == null) result = caseLEntityInheritanceStrategy(lTablePerClassStrategy);
+				if (result == null) result = caseLLazyResolver(lTablePerClassStrategy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -142,6 +149,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				LTablePerSubclassStrategy lTablePerSubclassStrategy = (LTablePerSubclassStrategy)theEObject;
 				T result = caseLTablePerSubclassStrategy(lTablePerSubclassStrategy);
 				if (result == null) result = caseLEntityInheritanceStrategy(lTablePerSubclassStrategy);
+				if (result == null) result = caseLLazyResolver(lTablePerSubclassStrategy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,6 +158,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				T result = caseLEntityFeature(lEntityFeature);
 				if (result == null) result = caseLFeature(lEntityFeature);
 				if (result == null) result = caseLAnnotationTarget(lEntityFeature);
+				if (result == null) result = caseLLazyResolver(lEntityFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -160,6 +169,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = caseLAttribute(lEntityAttribute);
 				if (result == null) result = caseLFeature(lEntityAttribute);
 				if (result == null) result = caseLAnnotationTarget(lEntityAttribute);
+				if (result == null) result = caseLLazyResolver(lEntityAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -170,6 +180,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = caseLReference(lEntityReference);
 				if (result == null) result = caseLFeature(lEntityReference);
 				if (result == null) result = caseLAnnotationTarget(lEntityReference);
+				if (result == null) result = caseLLazyResolver(lEntityReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -178,6 +189,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				T result = caseLBeanFeature(lBeanFeature);
 				if (result == null) result = caseLFeature(lBeanFeature);
 				if (result == null) result = caseLAnnotationTarget(lBeanFeature);
+				if (result == null) result = caseLLazyResolver(lBeanFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -188,6 +200,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = caseLAttribute(lBeanAttribute);
 				if (result == null) result = caseLFeature(lBeanAttribute);
 				if (result == null) result = caseLAnnotationTarget(lBeanAttribute);
+				if (result == null) result = caseLLazyResolver(lBeanAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -198,6 +211,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = caseLReference(lBeanReference);
 				if (result == null) result = caseLFeature(lBeanReference);
 				if (result == null) result = caseLAnnotationTarget(lBeanReference);
+				if (result == null) result = caseLLazyResolver(lBeanReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -215,6 +229,7 @@ public class LunEntitySwitch<T> extends Switch<T> {
 				if (result == null) result = caseLEntityFeature(lOperation);
 				if (result == null) result = caseLFeature(lOperation);
 				if (result == null) result = caseLAnnotationTarget(lOperation);
+				if (result == null) result = caseLLazyResolver(lOperation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -459,6 +474,21 @@ public class LunEntitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLOperation(LOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLLazyResolver(LLazyResolver object) {
 		return null;
 	}
 

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 import org.lunifera.dsl.semantic.common.types.LType;
 
 import org.lunifera.dsl.semantic.service.*;
@@ -117,6 +118,10 @@ public class LunServiceAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLFreeService(LFreeService object) {
 				return createLFreeServiceAdapter();
+			}
+			@Override
+			public Adapter caseLLazyResolver(LLazyResolver object) {
+				return createLLazyResolverAdapter();
 			}
 			@Override
 			public Adapter caseLAnnotationTarget(LAnnotationTarget object) {
@@ -273,6 +278,20 @@ public class LunServiceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLFreeServiceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LLazyResolver <em>LLazy Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LLazyResolver
+	 * @generated
+	 */
+	public Adapter createLLazyResolverAdapter() {
 		return null;
 	}
 

@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
@@ -41,7 +40,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *
  * @generated
  */
-public class LAnnotationDefImpl extends MinimalEObjectImpl.Container implements LAnnotationDef {
+public class LAnnotationDefImpl extends LLazyResolverImpl implements LAnnotationDef {
 	/**
 	 * The default value of the '{@link #isExclude() <em>Exclude</em>}' attribute.
 	 * <!-- begin-user-doc -->

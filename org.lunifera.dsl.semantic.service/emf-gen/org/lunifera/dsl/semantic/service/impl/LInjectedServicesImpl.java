@@ -22,10 +22,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl;
 
 import org.lunifera.dsl.semantic.service.LInjectedService;
 import org.lunifera.dsl.semantic.service.LInjectedServices;
@@ -44,7 +44,7 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  *
  * @generated
  */
-public class LInjectedServicesImpl extends MinimalEObjectImpl.Container implements LInjectedServices {
+public class LInjectedServicesImpl extends LLazyResolverImpl implements LInjectedServices {
 	/**
 	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

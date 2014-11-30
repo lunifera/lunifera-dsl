@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ */
 package org.lunifera.dsl.xtext.lazyresolver.api;
 
 import org.eclipse.emf.common.util.URI;
@@ -8,6 +18,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+/**
+ * A helper class that uses the {@link ISemanticLoadingResource} to resolve the
+ * semantic element without installing the derived state.
+ */
 public class EcoreUtil3 {
 
 	public static EObject resolve(EObject proxy, ResourceSet resourceSet) {

@@ -836,7 +836,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.returnType = references.getTypeForName(Void::TYPE, dto)
 		op.simpleName = "mapToDTO"
 		op.parameters += dto.toParameter("dto", dto.toTypeReference)
-		op.parameters += dto.toParameter("entity", dto.wrappedType.toTypeReference)
+		op.parameters += dto.toParameter("entity", dto.wrappedTypeJvm?.cloneWithProxies)
 		op.documentation = '''
 			Maps the entity {@link «dto.wrappedType.toName»} to the dto {@link «dto.toName»}.
 			
@@ -869,7 +869,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.returnType = references.getTypeForName(Void::TYPE, dto)
 		op.simpleName = "mapToEntity"
 		op.parameters += dto.toParameter("dto", dto.toTypeReference)
-		op.parameters += dto.toParameter("entity", dto.wrappedType.toTypeReference)
+		op.parameters += dto.toParameter("entity", dto.wrappedTypeJvm?.cloneWithProxies)
 		op.documentation = '''
 			Maps the dto {@link «dto.toName»} to the entity {@link «dto.wrappedType.toName»}.
 			
@@ -974,7 +974,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		associate(prop, op);
 
 		initializeSafely(op) [
-			parameters += prop.toParameter("in", dto.wrappedType.toTypeReference)
+			parameters += prop.toParameter("in", dto.wrappedTypeJvm?.cloneWithProxies)
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to dto property.
 				
@@ -1038,7 +1038,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		associate(prop, op);
 
 		initializeSafely(op) [
-			parameters += prop.toParameter("in", dto.wrappedType.toTypeReference)
+			parameters += prop.toParameter("in", dto.wrappedTypeJvm?.cloneWithProxies)
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to the dto.
 				

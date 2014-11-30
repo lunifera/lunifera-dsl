@@ -41,36 +41,44 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 
 	def dispatch void infer(LDTOService service, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(service.toJvmType).initializeLater [
-			
 			fileHeader = (service.eContainer as LTypedPackage).documentation
 			documentation = service.getDocumentation
 			if (service.dto.basedOnEntity) {
-				superTypes +=
-					references.getTypeForName(typeof(AbstractDTOService), service, service.dto.toTypeReference,
-						service.dto.wrappedEntity.toTypeReference)
+				superTypes += references.getTypeForName(typeof(AbstractDTOService), service, service.dto.toTypeReference,
+					service.dto.wrappedEntity.toTypeReference)
 
 				// Constructor
 				members += service.toConstructor()[]
 
 				members += service.toMethod("getDtoClass",
-					references.getTypeForName(typeof(Class), service, service.dto.toTypeReference)) [
-					body = '''return «service.dto.toTypeReference.simpleName».class;'''
+					references.getTypeForName(typeof(Class), service, service.dtoJvm.cloneWithProxies)) [
+					body = '''return «service.dto.name».class;'''
 				]
 
-				members += service.toMethod("createDto", service.dto.toTypeReference) [
-					body = '''return new «service.dto.toTypeReference.simpleName»();'''
+				members += service.toMethod("createDto", service.dtoJvm.cloneWithProxies) [
+					body = '''return new «service.dto.name»();'''
+				]
+
+				members += service.toMethod("createEntity", service.dto.wrappedTypeJvm.cloneWithProxies) [
+					body = '''return new «service.dto.wrappedEntity.name»();'''
 				]
 
 				members += service.toMethod("getEntityClass",
-					references.getTypeForName(typeof(Class), service, service.dto.wrappedEntity.toTypeReference)) [
-					body = '''return «service.dto.wrappedEntity.toTypeReference.simpleName».class;'''
+					references.getTypeForName(typeof(Class), service, service.dto.wrappedTypeJvm.cloneWithProxies)) [
+					body = '''return «service.dto.wrappedEntity.name».class;'''
 				]
 
-				members += service.toMethod("getId", references.getTypeForName(typeof(Object), service, null)) [
-					parameters += service.toParameter('dto', service.dto.toTypeReference)
-					body = '''return dto.«service.dto.idAttribute?.toGetterName»();'''
-				]
-
+				if (service.dto.idAttribute != null) {
+					members += service.toMethod("getId", references.getTypeForName(typeof(Object), service, null)) [
+						parameters += service.toParameter('dto', service.dto.toTypeReference)
+						body = '''return dto.«service.dto.idAttribute?.toGetterName»();'''
+					]
+				}else{
+					members += service.toMethod("getId", references.getTypeForName(typeof(Object), service, null)) [
+						parameters += service.toParameter('dto', service.dtoJvm.cloneWithProxies)
+						body = '''throw new UnsupportedOperationException("No id available for DTO.");'''
+					]
+				}
 			} else {
 
 				// Constructor

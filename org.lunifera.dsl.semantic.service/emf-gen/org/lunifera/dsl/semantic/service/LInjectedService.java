@@ -13,9 +13,9 @@
  */
 package org.lunifera.dsl.semantic.service;
 
-import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtext.common.types.JvmTypeReference;
+
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +35,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * @model
  * @generated
  */
-public interface LInjectedService extends EObject {
+public interface LInjectedService extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Cardinality</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.lunifera.dsl.semantic.service.LCardinality}.

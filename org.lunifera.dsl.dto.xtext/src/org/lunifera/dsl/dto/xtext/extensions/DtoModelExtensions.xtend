@@ -37,6 +37,7 @@ import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.eclipse.xtext.common.types.TypesFactory
 
 class DtoModelExtensions extends ModelExtensions {
 
@@ -78,7 +79,7 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractReference prop) {
 
 		// prop.type is instanceof DTO
-		return prop.type?.toTypeReference.cloneWithProxies
+		return prop.typeJvm?.cloneWithProxies
 	}
 
 	/**
@@ -112,7 +113,7 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedReference prop) {
 
 		// for inherited references, the dto type is specified -> So use it
-		return prop.type?.toTypeReference.cloneWithProxies
+		return prop.typeJvm?.cloneWithProxies
 	}
 
 	/**
@@ -276,7 +277,21 @@ class DtoModelExtensions extends ModelExtensions {
 		prop.type
 	}
 
-	def toRawTypeRefernce(LDtoFeature prop) {
+	def dispatch toRawTypeRefernce(LDtoFeature prop) {
+		prop.toRawType?.toTypeReference
+	}
+	
+	def dispatch toRawTypeRefernce(LDtoInheritedReference prop) {
+		val LReference ref = prop.inheritedFeature
+		if(ref instanceof LEntityReference){
+			return ref.typeJvm.cloneWithProxies
+		}else if(ref instanceof LBeanReference){
+			return ref.typeJvm.cloneWithProxies
+		}
+		return TypesFactory.eINSTANCE.createJvmUnknownTypeReference
+	}
+	
+	def dispatch toRawTypeRefernce(LDtoAbstractReference prop) {
 		prop.toRawType?.toTypeReference
 	}
 
@@ -405,32 +420,6 @@ class DtoModelExtensions extends ModelExtensions {
 		return prop instanceof LReference && !prop.cascading
 	}
 
-	//	def dispatch boolean shouldUseCrossReference(LDtoFeature prop) {
-	//
-	//		//		if (prop.crossReference) {
-	//		//			if (prop.inherited && prop.inheritedFeature != null) {
-	//		//				return prop.inheritedFeature.shouldUseCrossReference
-	//		//			} else {
-	//		//				return true
-	//		//			}
-	//		//		}
-	//		return false
-	//	}
-	//
-	//	def dispatch boolean shouldUseCrossReference(LEntityReference prop) {
-	//		if (prop.cascading) {
-	//			return false
-	//		}
-	//
-	//		if (prop.opposite == null) {
-	//			return true
-	//		}
-	//
-	//		if (prop.opposite.cascading) {
-	//			return false
-	//		}
-	//		return true
-	//	}
 	def toMapperTypeReference(LType type) {
 		references.getTypeForName(type.toFqnMapperName, type, null)
 	}

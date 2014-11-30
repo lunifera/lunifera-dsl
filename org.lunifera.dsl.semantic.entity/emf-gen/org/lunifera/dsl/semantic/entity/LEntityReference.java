@@ -13,9 +13,6 @@
  */
 package org.lunifera.dsl.semantic.entity;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.dsl.semantic.common.types.LReference;
@@ -116,14 +113,5 @@ public interface LEntityReference extends LEntityFeature, LReference {
 	 * @generated
 	 */
 	void setOpposite(LEntityReference value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false" proxyDataType="org.lunifera.dsl.semantic.entity.InternalEObject" proxyUnique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.ecore.resource.Resource%> _eResource = this.eResource();\n<%org.eclipse.emf.ecore.resource.ResourceSet%> _resourceSet = _eResource.getResourceSet();\nreturn <%org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3%>.resolve(proxy, _resourceSet);'"
-	 * @generated
-	 */
-	EObject eResolveProxy(InternalEObject proxy);
 
 } // LEntityReference

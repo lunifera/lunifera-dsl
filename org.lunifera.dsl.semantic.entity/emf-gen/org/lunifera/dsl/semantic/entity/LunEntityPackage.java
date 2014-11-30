@@ -221,6 +221,15 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LCLASS___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -302,22 +311,13 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN___COLLECT_ALL_LUN_FEATURES__LBEAN_LIST = LunTypesPackage.LCLASS_OPERATION_COUNT + 8;
 
 	/**
-	 * The operation id for the '<em>EResolve Proxy</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LBEAN___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LCLASS_OPERATION_COUNT + 9;
-
-	/**
 	 * The number of operations of the '<em>LBean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_OPERATION_COUNT = LunTypesPackage.LCLASS_OPERATION_COUNT + 10;
+	int LBEAN_OPERATION_COUNT = LunTypesPackage.LCLASS_OPERATION_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl <em>LEntity</em>}' class.
@@ -501,6 +501,15 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 12;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LCLASS___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -582,22 +591,13 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY___COLLECT_ALL_LUN_FEATURES__LENTITY_LIST = LunTypesPackage.LCLASS_OPERATION_COUNT + 8;
 
 	/**
-	 * The operation id for the '<em>EResolve Proxy</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENTITY___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LCLASS_OPERATION_COUNT + 9;
-
-	/**
 	 * The number of operations of the '<em>LEntity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_OPERATION_COUNT = LunTypesPackage.LCLASS_OPERATION_COUNT + 10;
+	int LENTITY_OPERATION_COUNT = LunTypesPackage.LCLASS_OPERATION_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityPersistenceInfoImpl <em>LEntity Persistence Info</em>}' class.
@@ -616,7 +616,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_PERSISTENCE_INFO__SCHEMA_NAME = 0;
+	int LENTITY_PERSISTENCE_INFO__SCHEMA_NAME = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Table Name</b></em>' attribute.
@@ -625,7 +625,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_PERSISTENCE_INFO__TABLE_NAME = 1;
+	int LENTITY_PERSISTENCE_INFO__TABLE_NAME = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Persistence Info</em>' class.
@@ -634,7 +634,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_PERSISTENCE_INFO_FEATURE_COUNT = 2;
+	int LENTITY_PERSISTENCE_INFO_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_PERSISTENCE_INFO___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LEntity Persistence Info</em>' class.
@@ -643,7 +652,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_PERSISTENCE_INFO_OPERATION_COUNT = 0;
+	int LENTITY_PERSISTENCE_INFO_OPERATION_COUNT = LunTypesPackage.LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityColumnPersistenceInfoImpl <em>LEntity Column Persistence Info</em>}' class.
@@ -662,7 +671,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_COLUMN_PERSISTENCE_INFO__COLUMN_NAME = 0;
+	int LENTITY_COLUMN_PERSISTENCE_INFO__COLUMN_NAME = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Column Persistence Info</em>' class.
@@ -671,7 +680,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_COLUMN_PERSISTENCE_INFO_FEATURE_COUNT = 1;
+	int LENTITY_COLUMN_PERSISTENCE_INFO_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_COLUMN_PERSISTENCE_INFO___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LEntity Column Persistence Info</em>' class.
@@ -680,7 +698,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_COLUMN_PERSISTENCE_INFO_OPERATION_COUNT = 0;
+	int LENTITY_COLUMN_PERSISTENCE_INFO_OPERATION_COUNT = LunTypesPackage.LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.LEntityInheritanceStrategy <em>LEntity Inheritance Strategy</em>}' class.
@@ -699,7 +717,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_INHERITANCE_STRATEGY_FEATURE_COUNT = 0;
+	int LENTITY_INHERITANCE_STRATEGY_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_INHERITANCE_STRATEGY___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LEntity Inheritance Strategy</em>' class.
@@ -708,7 +735,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_INHERITANCE_STRATEGY_OPERATION_COUNT = 0;
+	int LENTITY_INHERITANCE_STRATEGY_OPERATION_COUNT = LunTypesPackage.LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LTablePerClassStrategyImpl <em>LTable Per Class Strategy</em>}' class.
@@ -755,6 +782,15 @@ public interface LunEntityPackage extends EPackage {
 	 * @ordered
 	 */
 	int LTABLE_PER_CLASS_STRATEGY_FEATURE_COUNT = LENTITY_INHERITANCE_STRATEGY_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LTABLE_PER_CLASS_STRATEGY___ERESOLVE_PROXY__INTERNALEOBJECT = LENTITY_INHERITANCE_STRATEGY___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LTable Per Class Strategy</em>' class.
@@ -810,6 +846,15 @@ public interface LunEntityPackage extends EPackage {
 	 * @ordered
 	 */
 	int LTABLE_PER_SUBCLASS_STRATEGY_FEATURE_COUNT = LENTITY_INHERITANCE_STRATEGY_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LTABLE_PER_SUBCLASS_STRATEGY___ERESOLVE_PROXY__INTERNALEOBJECT = LENTITY_INHERITANCE_STRATEGY___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LTable Per Subclass Strategy</em>' class.
@@ -883,6 +928,15 @@ public interface LunEntityPackage extends EPackage {
 	 * @ordered
 	 */
 	int LENTITY_FEATURE_FEATURE_COUNT = LunTypesPackage.LFEATURE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_FEATURE___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LFEATURE___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1084,6 +1138,15 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 12;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE___ERESOLVE_PROXY__INTERNALEOBJECT = LENTITY_FEATURE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1220,6 +1283,15 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_REFERENCE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_REFERENCE___ERESOLVE_PROXY__INTERNALEOBJECT = LENTITY_FEATURE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1238,22 +1310,13 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_REFERENCE___GET_ENTITY = LENTITY_FEATURE___GET_ENTITY;
 
 	/**
-	 * The operation id for the '<em>EResolve Proxy</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENTITY_REFERENCE___ERESOLVE_PROXY__INTERNALEOBJECT = LENTITY_FEATURE_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>LEntity Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE_OPERATION_COUNT = LENTITY_FEATURE_OPERATION_COUNT + 1;
+	int LENTITY_REFERENCE_OPERATION_COUNT = LENTITY_FEATURE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanFeatureImpl <em>LBean Feature</em>}' class.
@@ -1309,6 +1372,15 @@ public interface LunEntityPackage extends EPackage {
 	 * @ordered
 	 */
 	int LBEAN_FEATURE_FEATURE_COUNT = LunTypesPackage.LFEATURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_FEATURE___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LFEATURE___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1501,6 +1573,15 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 12;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_ATTRIBUTE___ERESOLVE_PROXY__INTERNALEOBJECT = LBEAN_FEATURE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1601,13 +1682,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_REFERENCE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_REFERENCE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE__OPPOSITE = LBEAN_FEATURE_FEATURE_COUNT + 3;
+	int LBEAN_REFERENCE__OPPOSITE = LBEAN_FEATURE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>LBean Reference</em>' class.
@@ -1616,7 +1706,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 4;
+	int LBEAN_REFERENCE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_REFERENCE___ERESOLVE_PROXY__INTERNALEOBJECT = LBEAN_FEATURE___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1799,6 +1898,15 @@ public interface LunEntityPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOPERATION_FEATURE_COUNT = LunTypesPackage.LOPERATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOPERATION___ERESOLVE_PROXY__INTERNALEOBJECT = LunTypesPackage.LOPERATION___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -2073,16 +2181,6 @@ public interface LunEntityPackage extends EPackage {
 	EOperation getLBean__CollectAllLunFeatures__LBean_List();
 
 	/**
-	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.entity.LBean#eResolveProxy(org.eclipse.emf.ecore.InternalEObject) <em>EResolve Proxy</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>EResolve Proxy</em>' operation.
-	 * @see org.lunifera.dsl.semantic.entity.LBean#eResolveProxy(org.eclipse.emf.ecore.InternalEObject)
-	 * @generated
-	 */
-	EOperation getLBean__EResolveProxy__InternalEObject();
-
-	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LEntity <em>LEntity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2293,16 +2391,6 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getLEntity__CollectAllLunFeatures__LEntity_List();
-
-	/**
-	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.entity.LEntity#eResolveProxy(org.eclipse.emf.ecore.InternalEObject) <em>EResolve Proxy</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>EResolve Proxy</em>' operation.
-	 * @see org.lunifera.dsl.semantic.entity.LEntity#eResolveProxy(org.eclipse.emf.ecore.InternalEObject)
-	 * @generated
-	 */
-	EOperation getLEntity__EResolveProxy__InternalEObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo <em>LEntity Persistence Info</em>}'.
@@ -2549,16 +2637,6 @@ public interface LunEntityPackage extends EPackage {
 	EReference getLEntityReference_Opposite();
 
 	/**
-	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.entity.LEntityReference#eResolveProxy(org.eclipse.emf.ecore.InternalEObject) <em>EResolve Proxy</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>EResolve Proxy</em>' operation.
-	 * @see org.lunifera.dsl.semantic.entity.LEntityReference#eResolveProxy(org.eclipse.emf.ecore.InternalEObject)
-	 * @generated
-	 */
-	EOperation getLEntityReference__EResolveProxy__InternalEObject();
-
-	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LBeanFeature <em>LBean Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2619,6 +2697,17 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLBeanReference_Type();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getTypeJvm <em>Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanReference#getTypeJvm()
+	 * @see #getLBeanReference()
+	 * @generated
+	 */
+	EReference getLBeanReference_TypeJvm();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getOpposite <em>Opposite</em>}'.
@@ -2922,14 +3011,6 @@ public interface LunEntityPackage extends EPackage {
 		EOperation LBEAN___COLLECT_ALL_LUN_FEATURES__LBEAN_LIST = eINSTANCE.getLBean__CollectAllLunFeatures__LBean_List();
 
 		/**
-		 * The meta object literal for the '<em><b>EResolve Proxy</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LBEAN___ERESOLVE_PROXY__INTERNALEOBJECT = eINSTANCE.getLBean__EResolveProxy__InternalEObject();
-
-		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl <em>LEntity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3090,14 +3171,6 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation LENTITY___COLLECT_ALL_LUN_FEATURES__LENTITY_LIST = eINSTANCE.getLEntity__CollectAllLunFeatures__LEntity_List();
-
-		/**
-		 * The meta object literal for the '<em><b>EResolve Proxy</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LENTITY___ERESOLVE_PROXY__INTERNALEOBJECT = eINSTANCE.getLEntity__EResolveProxy__InternalEObject();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityPersistenceInfoImpl <em>LEntity Persistence Info</em>}' class.
@@ -3300,14 +3373,6 @@ public interface LunEntityPackage extends EPackage {
 		EReference LENTITY_REFERENCE__OPPOSITE = eINSTANCE.getLEntityReference_Opposite();
 
 		/**
-		 * The meta object literal for the '<em><b>EResolve Proxy</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LENTITY_REFERENCE___ERESOLVE_PROXY__INTERNALEOBJECT = eINSTANCE.getLEntityReference__EResolveProxy__InternalEObject();
-
-		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanFeatureImpl <em>LBean Feature</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3360,6 +3425,14 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LBEAN_REFERENCE__TYPE = eINSTANCE.getLBeanReference_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LBEAN_REFERENCE__TYPE_JVM = eINSTANCE.getLBeanReference_TypeJvm();
 
 		/**
 		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.

@@ -21,12 +21,14 @@ import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.generator.Generator;
 import org.lunifera.dsl.entity.xtext.generator.OutputConfigurationProvider;
 import org.lunifera.dsl.entity.xtext.jvmmodel.DerivedStateComputer;
+import org.lunifera.dsl.entity.xtext.linker.EntityJvmLinkingHelper;
 import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
 import org.lunifera.dsl.entity.xtext.scope.EntityBatchScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.serializer.EntityGrammarTransientValueService;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
 import com.google.inject.Binder;
@@ -98,8 +100,19 @@ public class EntityGrammarRuntimeModule extends
 		return EntityGrammarTransientValueService.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
 	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
 		return SemanticLoadingResource.class;
+	}
+
+	public Class<? extends LazyJvmTypeLinkingHelper> bindJvmLinkingHelper() {
+		return EntityJvmLinkingHelper.class;
+	}
+
+	@Override
+	public void configureSerializerIScopeProvider(Binder binder) {
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class)
+				.annotatedWith(
+						org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class)
+				.to(EntityScopeProvider.class);
 	}
 }

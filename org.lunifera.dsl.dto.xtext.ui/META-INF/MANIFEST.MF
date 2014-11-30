@@ -23,7 +23,8 @@ Require-Bundle: org.lunifera.dsl.dto.xtext;bundle-version="[0.7.0,0.8.0)";visibi
  org.eclipse.jdt.core,
  org.lunifera.dsl.semantic.common;bundle-version="[0.7.0,0.8.0)",
  org.lunifera.dsl.semantic.dto;bundle-version="[0.7.0,0.8.0)",
- org.eclipse.jdt.debug.ui
+ org.eclipse.jdt.debug.ui,
+ org.lunifera.dsl.xtext.lazyresolver.ui
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.lunifera.dsl.dto.xtext.ui.contentassist;version="0.7.5",

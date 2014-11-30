@@ -13,7 +13,7 @@
  */
 package org.lunifera.dsl.semantic.entity;
 
-import org.eclipse.emf.ecore.EObject;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,5 +25,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface LEntityInheritanceStrategy extends EObject {
+public interface LEntityInheritanceStrategy extends LLazyResolver {
 } // LEntityInheritanceStrategy

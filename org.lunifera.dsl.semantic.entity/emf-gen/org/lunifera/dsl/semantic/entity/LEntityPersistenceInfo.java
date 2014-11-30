@@ -13,7 +13,7 @@
  */
 package org.lunifera.dsl.semantic.entity;
 
-import org.eclipse.emf.ecore.EObject;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LEntityPersistenceInfo extends EObject {
+public interface LEntityPersistenceInfo extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Schema Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

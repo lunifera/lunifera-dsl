@@ -1,26 +1,46 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ */
 package org.lunifera.dsl.xtext.lazyresolver;
 
-import java.util.HashMap;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.xbase.resource.BatchLinkableResource;
 import org.lunifera.dsl.xtext.lazyresolver.api.ISemanticLoadingResource;
 
 @SuppressWarnings("restriction")
-public class SemanticLoadingResource extends BatchLinkableResource implements ISemanticLoadingResource {
+public class SemanticLoadingResource extends BatchLinkableResource implements
+		ISemanticLoadingResource {
 
 	private boolean suppressDerivedState;
 
-	/* (non-Javadoc)
-	 * @see org.lunifera.dsl.xtext.lazyresolver.ISemanticLoadingResource#getSemanticElement(java.lang.String)
-	 */
 	@Override
 	public EObject getSemanticElement(String fragment) {
 		try {
 			suppressDerivedState = true;
 			return super.getEObject(fragment);
+		} finally {
+			suppressDerivedState = false;
+		}
+	}
+
+	@Override
+	public EObject getSemanticElement() {
+		try {
+			suppressDerivedState = true;
+			return getContents().get(0);
 		} finally {
 			suppressDerivedState = false;
 		}
@@ -32,61 +52,42 @@ public class SemanticLoadingResource extends BatchLinkableResource implements IS
 		}
 	}
 
-	Map<URI, URI> uris = new HashMap<URI, URI>();
+	@Override
+	public void doSave(OutputStream outputStream, Map<?, ?> options)
+			throws IOException {
 
+		EObject semanticElement = getSemanticElement();
+		if (semanticElement == null)
+			throw new IllegalStateException(
+					"The Xtext resource must contain at least one element.");
+		SaveOptions saveOptions = SaveOptions.getOptions(options);
+		setEncodingFromOptions(options);
+		getSerializer().serialize(semanticElement,
+				new OutputStreamWriter(outputStream, getEncoding()),
+				saveOptions);
+	}
+
+	@Override
 	public EObject getEObject(String uriFragment) {
-		// if (uriFragment.startsWith("luniferaJvm")) {
-		// String newUriFragment = uriFragment.replace("luniferaJvm", "");
-		// Triple<EObject, EReference, INode> triple = getEncoder().decode(
-		// this, newUriFragment);
-		//
-		// try {
-		// if (triple.getFirst() instanceof LEntity) {
-		// Triple<EObject, EReference, INode> fakeTriple = Tuples
-		// .create((EObject) ((LEntity) triple.getFirst())
-		// .getSuperTypeJvm(),
-		// TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE,
-		// triple.getThird());
-		// return super.getEObject(newUriFragment, fakeTriple);
-		// } else if (triple.getFirst() instanceof LEntityReference) {
-		// Triple<EObject, EReference, INode> fakeTriple = Tuples
-		// .create(triple.getFirst(),
-		// TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE,
-		// triple.getThird());
-		// return super.getEObject(newUriFragment, fakeTriple);
-		// } else {
-		// return super.getEObject(newUriFragment);
-		// }
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// return null;
-		// }
-		// } else {
-		return super.getEObject(uriFragment);
-		// }
+		if (uriFragment.startsWith("/0")) {
+			// will access semantic model -> No need to install derived state
+			try {
+				suppressDerivedState = true;
+				return super.getEObject(uriFragment);
+			} finally {
+				suppressDerivedState = false;
+			}
+		} else {
+			return super.getEObject(uriFragment);
+		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.lunifera.dsl.xtext.lazyresolver.ISemanticLoadingResource#registerJvmTypeAssociation(org.eclipse.emf.common.util.URI, org.eclipse.emf.common.util.URI)
-	 */
-	@Override
-	public void registerJvmTypeAssociation(URI semanticURI, URI jvmTypeURI) {
-		uris.put(semanticURI, jvmTypeURI);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.lunifera.dsl.xtext.lazyresolver.ISemanticLoadingResource#clearJvmTypeAssociation()
-	 */
-	@Override
-	public void clearJvmTypeAssociation() {
-		uris.clear();
-	}
-
-	/* (non-Javadoc)
-	 * @see org.lunifera.dsl.xtext.lazyresolver.ISemanticLoadingResource#getJvmTypeURI(org.eclipse.emf.common.util.URI)
-	 */
-	@Override
-	public URI getJvmTypeURI(URI semanticURI) {
-		return uris.get(semanticURI);
+	protected void clearInternalState() {
+		try {
+			suppressDerivedState = true;
+			super.clearInternalState();
+		} finally {
+			suppressDerivedState = false;
+		}
 	}
 }

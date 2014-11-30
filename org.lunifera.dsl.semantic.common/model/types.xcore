@@ -22,18 +22,30 @@ import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
+import org.eclipse.emf.ecore.EObject
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
+import org.eclipse.emf.ecore.InternalEObject
+import org.eclipse.xtext.xtype.XImportSection
 
-class LCommonModel {
+class LCommonModel extends LLazyResolver {
 	contains LTypedPackage[] packages
+	
 }
 
-class LPackage {
+class LLazyResolver {
+	op EObject eResolveProxy(InternalEObject proxy) {
+		return EcoreUtil3.resolve(proxy, this.eResource().resourceSet);
+	}
+}
+
+class LPackage extends LLazyResolver {
 	String name
 	contains LImport[] imports
 }
 
 class LTypedPackage extends LPackage {
 	contains LType[] types
+	
 }
 
 class LImport {
@@ -55,12 +67,12 @@ class LType extends LAnnotationTarget {
 	}
 }
 
-class LAnnotationDef {
+class LAnnotationDef extends LLazyResolver {
 	boolean exclude
 	contains XAnnotation ^annotation
 }
 
-class LAnnotationTarget {
+class LAnnotationTarget extends LLazyResolver {
 	contains LAnnotationDef[] annotations
 }
 
@@ -86,6 +98,7 @@ class LDataType extends LScalarType {
 	// used to target a feature in the current entity, but avoids resolving cross refernces too early.
 	// for instance if the feature is contained in a superclass
 	refers LType syntheticType
+	
 }
 
 enum LDateType {
@@ -96,16 +109,19 @@ enum LDateType {
 
 class LEnum extends LScalarType {
 	contains LEnumLiteral[] literals
+	
 }
 
-class LEnumLiteral {
+class LEnumLiteral extends LLazyResolver {
 	String name
+	
 }
 
 class LClass extends LType {
 	boolean ^abstract
 	boolean serializable
 	String shortName
+	
 }
 
 interface LFeaturesHolder {
@@ -171,9 +187,10 @@ class LOperation extends LAnnotationTarget {
 	op AnnotationList getResolvedAnnotations() {
 		annotations
 	}
+	
 }
 
-class LModifier {
+class LModifier extends LLazyResolver {
 	boolean final
 	boolean ^static
 	LVisibility visibility
@@ -232,6 +249,7 @@ class LMultiplicity {
 		}
 		return result.toString
 	}
+	
 }
 
 enum LLowerBound {
@@ -255,7 +273,7 @@ type FeaturesList wraps java.util.List<? extends LFeature>
 
 type AnnotationList wraps EList<LAnnotationDef>
 
-
+type InternalEObject wraps InternalEObject
 	
 	
 	
