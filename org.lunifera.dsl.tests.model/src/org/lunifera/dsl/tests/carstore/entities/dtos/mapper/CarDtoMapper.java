@@ -27,18 +27,22 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 	 * 
 	 */
 	public void mapToDTO(final CarDto dto, final Car entity, Context context) {
+		try {
+			context.increaseLevel();
+			context.register(entity, dto);
 
-		context.register(entity, dto);
+			super.mapToDTO(dto, entity, context);
 
-		super.mapToDTO(dto, entity, context);
-
-		dto.setNumber(toDto_number(entity));
-		dto.setFinishingDate(toDto_finishingDate(entity));
-		for (org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto _dtoValue : toDto_addons(
-				entity, context)) {
-			dto.addToAddons(_dtoValue);
+			dto.setNumber(toDto_number(entity));
+			dto.setFinishingDate(toDto_finishingDate(entity));
+			for (org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto _dtoValue : toDto_addons(
+					entity, context)) {
+				dto.addToAddons(_dtoValue);
+			}
+			dto.setOwner(toDto_owner(entity, context));
+		} finally {
+			context.decreaseLevel();
 		}
-		dto.setOwner(toDto_owner(entity, context));
 	}
 
 	/**
@@ -51,23 +55,27 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 	 * 
 	 */
 	public void mapToEntity(final CarDto dto, final Car entity, Context context) {
-		
-		context.register(entity, dto);
-		
-		super.mapToEntity(dto, entity, context);
 
-		entity.setNumber(toEntity_number(dto));
+		try {
+			context.increaseLevel();
+			context.register(entity, dto);
 
-		entity.setFinishingDate(toEntity_finishingDate(dto));
+			super.mapToEntity(dto, entity, context);
 
-		List<Addon> addons_entities = new java.util.ArrayList<Addon>();
-		for (Addon _entityValue : toEntity_addons(dto, context)) {
-			addons_entities.add(_entityValue);
+			entity.setNumber(toEntity_number(dto));
+
+			entity.setFinishingDate(toEntity_finishingDate(dto));
+
+			List<Addon> addons_entities = new java.util.ArrayList<Addon>();
+			for (Addon _entityValue : toEntity_addons(dto, context)) {
+				addons_entities.add(_entityValue);
+			}
+			entity.setAddons(addons_entities);
+
+			entity.setOwner(toEntity_owner(dto, context));
+		} finally {
+			context.decreaseLevel();
 		}
-		entity.setAddons(addons_entities);
-
-		entity.setOwner(toEntity_owner(dto, context));
-
 	}
 
 	/**
@@ -138,7 +146,6 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 			AddonDto _dto = context.getDto(_entity);
 			if (_dto == null) {
 				_dto = new AddonDto();
-				context.register(_entity, _dto);
 				mapper.mapToDTO(_dto, _entity, context);
 			}
 			if (!results.contains(_dto)) {
@@ -168,7 +175,6 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 			Addon _entity = context.getEntity(_dto);
 			if (_entity == null) {
 				_entity = new Addon();
-				context.register(_entity, _dto);
 				mapper.mapToEntity(_dto, _entity, context);
 			}
 			if (!results.contains(_entity)) {
@@ -199,7 +205,6 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 				return dto;
 			}
 			dto = new PersonDto();
-			context.register(in, dto);
 			mapper.mapToDTO(dto, in.getOwner(), context);
 			return dto;
 		} else {
@@ -228,7 +233,6 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 				return entity;
 			}
 			entity = new Person();
-			context.register(entity, in);
 			mapper.mapToEntity(in.getOwner(), entity, context);
 			return entity;
 		} else {

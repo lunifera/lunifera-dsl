@@ -28,19 +28,23 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person>
 	 */
 	public void mapToDTO(final PersonDto dto, final Person entity,
 			Context context) {
+		try {
+			context.increaseLevel();
+			context.register(dto, entity);
 
-		context.register(dto, entity);
+			super.mapToDTO(dto, entity, context);
 
-		super.mapToDTO(dto, entity, context);
-
-		dto.setFirstname(toDto_firstname(entity));
-		dto.setLastname(toDto_lastname(entity));
-		for (org.lunifera.dsl.tests.carstore.entities.dtos.CarDto _dtoValue : toDto_ownsCars(
-				entity, context)) {
-			dto.addToOwnsCars(_dtoValue);
+			dto.setFirstname(toDto_firstname(entity));
+			dto.setLastname(toDto_lastname(entity));
+			for (org.lunifera.dsl.tests.carstore.entities.dtos.CarDto _dtoValue : toDto_ownsCars(
+					entity, context)) {
+				dto.addToOwnsCars(_dtoValue);
+			}
+			dto.setHomeAddress(toDto_homeAddress(entity, context));
+			dto.setWorkAddress(toDto_workAddress(entity, context));
+		} finally {
+			context.decreaseLevel();
 		}
-		dto.setHomeAddress(toDto_homeAddress(entity, context));
-		dto.setWorkAddress(toDto_workAddress(entity, context));
 	}
 
 	/**
@@ -54,24 +58,29 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person>
 	 */
 	public void mapToEntity(final PersonDto dto, final Person entity,
 			Context context) {
+		try {
+			context.increaseLevel();
+			context.register(dto, entity);
 
-		context.register(dto, entity);
+			super.mapToEntity(dto, entity, context);
 
-		super.mapToEntity(dto, entity, context);
+			entity.setFirstname(toEntity_firstname(dto));
+			
+			entity.setLastname(toEntity_lastname(dto));
 
-		entity.setFirstname(toEntity_firstname(dto));
-
-		entity.setLastname(toEntity_lastname(dto));
-
-		List<Car> ownsCars_entities = new java.util.ArrayList<Car>();
-		for (Car _entityValue : toEntity_ownsCars(dto, context)) {
-			ownsCars_entities.add(_entityValue);
+			List<Car> ownsCars_entities = new java.util.ArrayList<Car>();
+			for (Car _entityValue : toEntity_ownsCars(dto, context)) {
+				ownsCars_entities.add(_entityValue);
+			}
+			
+			entity.setOwnsCars(ownsCars_entities);
+			
+			entity.setHomeAddress(toEntity_homeAddress(dto, context));
+			
+			entity.setWorkAddress(toEntity_workAddress(dto, context));
+		} finally {
+			context.decreaseLevel();
 		}
-		entity.setOwnsCars(ownsCars_entities);
-
-		entity.setHomeAddress(toEntity_homeAddress(dto, context));
-
-		entity.setWorkAddress(toEntity_workAddress(dto, context));
 
 	}
 
@@ -141,7 +150,6 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person>
 		List<CarDto> results = new java.util.ArrayList<CarDto>();
 		for (Car _entity : in.getOwnsCars()) {
 			CarDto _dto = new CarDto();
-			context.register(_dto, _entity);
 			mapper.mapToDTO(_dto, _entity, context);
 			results.add(_dto);
 		}
@@ -166,7 +174,6 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person>
 		List<Car> results = new java.util.ArrayList<Car>();
 		for (CarDto _dto : in.getOwnsCars()) {
 			Car _entity = new Car();
-			context.register(_dto, _entity);
 			mapper.mapToEntity(_dto, _entity, context);
 			results.add(_entity);
 		}
@@ -190,7 +197,6 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person>
 
 		if (in.getHomeAddress() != null) {
 			AddressDto dto = new AddressDto();
-			context.register(dto, in.getHomeAddress());
 			mapper.mapToDTO(dto, in.getHomeAddress(), context);
 			return dto;
 		} else {
@@ -215,7 +221,6 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person>
 
 		if (in.getHomeAddress() != null) {
 			Address entity = new Address();
-			context.register(entity, in.getHomeAddress());
 			mapper.mapToEntity(in.getHomeAddress(), entity, context);
 			return entity;
 		} else {
@@ -240,7 +245,6 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person>
 
 		if (in.getWorkAddress() != null) {
 			AddressDto dto = new AddressDto();
-			context.register(in.getWorkAddress(), dto);
 			mapper.mapToDTO(dto, in.getWorkAddress(), context);
 			return dto;
 		} else {
@@ -265,7 +269,6 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person>
 
 		if (in.getWorkAddress() != null) {
 			Address entity = new Address();
-			context.register(entity, in.getWorkAddress());
 			mapper.mapToEntity(in.getWorkAddress(), entity, context);
 			return entity;
 		} else {

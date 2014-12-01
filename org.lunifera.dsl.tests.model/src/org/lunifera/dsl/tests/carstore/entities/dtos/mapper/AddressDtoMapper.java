@@ -64,10 +64,15 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address>
 	public void mapToDTO(final AddressDto dto, final Address entity,
 			Context context) {
 
-		context.register(dto, entity);
+		try {
+			context.increaseLevel();
+			context.register(dto, entity);
 
-		dto.setStreetname(toDto_streetname(entity));
-		dto.setPostalcode(toDto_postalcode(entity));
+			dto.setStreetname(toDto_streetname(entity));
+			dto.setPostalcode(toDto_postalcode(entity));
+		} finally {
+			context.decreaseLevel();
+		}
 	}
 
 	/**
@@ -81,13 +86,16 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address>
 	 */
 	public void mapToEntity(final AddressDto dto, final Address entity,
 			Context context) {
+		try {
+			context.increaseLevel();
+			context.register(dto, entity);
 
-		context.register(dto, entity);
+			entity.setStreetname(toEntity_streetname(dto));
 
-		entity.setStreetname(toEntity_streetname(dto));
-
-		entity.setPostalcode(toEntity_postalcode(dto));
-
+			entity.setPostalcode(toEntity_postalcode(dto));
+		} finally {
+			context.decreaseLevel();
+		}
 	}
 
 	/**

@@ -23,12 +23,17 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends
 	 * 
 	 */
 	public void mapToDTO(final AddonDto dto, final Addon entity, Context context) {
-		context.register(dto, entity);
+		try {
+			context.increaseLevel();
+			context.register(dto, entity);
 
-		super.mapToDTO(dto, entity, context);
+			super.mapToDTO(dto, entity, context);
 
-		dto.setDescription(toDto_description(entity));
-		dto.setCar(toDto_car(entity, context));
+			dto.setDescription(toDto_description(entity));
+			dto.setCar(toDto_car(entity, context));
+		} finally {
+			context.decreaseLevel();
+		}
 	}
 
 	/**
@@ -42,13 +47,18 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends
 	 */
 	public void mapToEntity(final AddonDto dto, final Addon entity,
 			Context context) {
-		context.register(dto, entity);
+		try {
+			context.increaseLevel();
+			context.register(dto, entity);
 
-		super.mapToEntity(dto, entity, context);
+			super.mapToEntity(dto, entity, context);
 
-		entity.setDescription(toEntity_description(dto));
+			entity.setDescription(toEntity_description(dto));
 
-		entity.setCar(toEntity_car(dto, context));
+			entity.setCar(toEntity_car(dto, context));
+		} finally {
+			context.decreaseLevel();
+		}
 
 	}
 
@@ -95,7 +105,6 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends
 			CarDto _dto = context.getDto(in.getCar());
 			if (_dto == null) {
 				_dto = new CarDto();
-				context.register(in.getCar(), _dto);
 				mapper.mapToDTO(_dto, in.getCar(), context);
 			}
 			return _dto;
@@ -123,7 +132,6 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends
 			Car _entity = context.getEntity(in.getCar());
 			if (_entity == null) {
 				_entity = new Car();
-				context.register(_entity, in.getCar());
 				mapper.mapToDTO(in.getCar(), _entity, context);
 			}
 			return _entity;
