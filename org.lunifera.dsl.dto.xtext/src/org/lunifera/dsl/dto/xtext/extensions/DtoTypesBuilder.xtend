@@ -41,6 +41,7 @@ import org.lunifera.dsl.semantic.dto.LDtoFeature
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.runtime.common.annotations.DomainDescription
+import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
 
 class DtoTypesBuilder extends CommonTypesBuilder {
 
@@ -447,7 +448,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		jvmField.transient = prop.transient
 
 		// if uuid
-		if (prop instanceof LAttribute && (prop as LAttribute).uuid) {
+		if (prop instanceof LAttribute && (prop as LAttribute).isCreateUuid) {
 			jvmField.setInitializer [
 				if(it == null) return
 				val p = it.trace(prop)
@@ -457,6 +458,15 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		annotationCompiler.processAnnotation(prop, jvmField);
 		associate(prop, jvmField);
+	}
+	
+	def boolean isCreateUuid(LAttribute att) {
+		if(att instanceof LDtoInheritedAttribute) {
+			val iAtt = att as LDtoInheritedAttribute
+			return iAtt.inheritedFeature.isUuid
+		}else{
+			att.isUuid
+		}
 	}
 
 	def JvmField toProxyField(LFeature prop) {

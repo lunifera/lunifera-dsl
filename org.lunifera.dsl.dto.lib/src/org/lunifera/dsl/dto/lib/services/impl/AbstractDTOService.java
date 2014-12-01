@@ -30,7 +30,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	protected abstract Class<DTO> getDtoClass();
 
 	protected abstract DTO createDto();
-	
+
 	protected abstract Class<ENTITY> getEntityClass();
 
 	protected abstract ENTITY createEntity();
@@ -47,11 +47,12 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 				getEntityClass(), em, 1);
 
 		// find the entity
-		DTO result = createDto();
+		DTO result = null;
 		try {
 			ENTITY entity = delegate.getEntity(id);
-			if(entity != null){
-				mapper.mapToDTO(result, entity);
+			if (entity != null) {
+				result = createDto();
+				mapper.mapToDTO(result, entity, new IMapper.Context());
 			}
 		} finally {
 			em.close();
@@ -73,7 +74,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			for (ENTITY entity : delegate.getAllEntities(query)) {
 				DTO dto = createDto();
-				mapper.mapToDTO(dto, entity);
+				mapper.mapToDTO(dto, entity, new IMapper.Context());
 				result.add(dto);
 			}
 		} finally {
@@ -96,7 +97,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			for (ENTITY entity : delegate.getAllEntities(query, startindex)) {
 				DTO dto = createDto();
-				mapper.mapToDTO(dto, entity);
+				mapper.mapToDTO(dto, entity, new IMapper.Context());
 				result.add(dto);
 			}
 		} finally {
@@ -117,25 +118,40 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		DTO result = createDto();
 		try {
 			txn.begin();
-			ENTITY entity = em.find(getEntityClass(), getId(dto));
-			if (entity != null) {
-				mapper.mapToEntity(dto, entity);
-				em.persist(entity);
-				// map the entity back to the dto since values may be changed in dto
-				mapper.mapToDTO(result, entity);
-			} else{
+
+			ENTITY entity = null;
+
+			Object id = getId(dto);
+			if (id != null) {
+				entity = em.find(getEntityClass(), getId(dto));
+				if (entity != null) {
+					mapper.mapToEntity(dto, entity, new IMapper.Context());
+					em.persist(entity);
+					// map the entity back to the dto since values may be
+					// changed in dto
+					mapper.mapToDTO(result, entity, new IMapper.Context());
+				} else {
+					entity = createEntity();
+					mapper.mapToEntity(dto, entity, new IMapper.Context());
+					em.persist(entity);
+					// map the entity back to the dto since values may be
+					// changed in dto
+					mapper.mapToDTO(result, entity, new IMapper.Context());
+				}
+			} else {
 				entity = createEntity();
-				mapper.mapToEntity(dto, entity);
+				mapper.mapToEntity(dto, entity, new IMapper.Context());
 				em.persist(entity);
-				// map the entity back to the dto since values may be changed in dto
-				mapper.mapToDTO(result, entity);
+				// map the entity back to the dto since values may be changed in
+				// dto
+				mapper.mapToDTO(result, entity, new IMapper.Context());
 			}
 
 			txn.commit();
 		} finally {
 			em.close();
 		}
-		
+
 		return result;
 	}
 
@@ -250,7 +266,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 			ENTITY entity = delegate.getNextEntity(getId(dto), query);
 			if (entity != null) {
 				result = createDto();
-				mapper.mapToEntity(result, entity);
+				mapper.mapToEntity(result, entity, new IMapper.Context());
 			}
 		} finally {
 			em.close();
@@ -270,7 +286,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 			ENTITY entity = delegate.getPreviousEntity(getId(dto), query);
 			if (entity != null) {
 				result = createDto();
-				mapper.mapToEntity(result, entity);
+				mapper.mapToEntity(result, entity, new IMapper.Context());
 			}
 		} finally {
 			em.close();
@@ -290,7 +306,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 			ENTITY entity = delegate.getFirstEntity(query);
 			if (entity != null) {
 				result = createDto();
-				mapper.mapToEntity(result, entity);
+				mapper.mapToEntity(result, entity, new IMapper.Context());
 			}
 		} finally {
 			em.close();
@@ -310,7 +326,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 			ENTITY entity = delegate.getLastEntity(query);
 			if (entity != null) {
 				result = createDto();
-				mapper.mapToEntity(result, entity);
+				mapper.mapToEntity(result, entity, new IMapper.Context());
 			}
 		} finally {
 			em.close();
@@ -372,7 +388,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			for (ENTITY entity : delegate.getAllEntities(query, index)) {
 				result = createDto();
-				mapper.mapToDTO(result, entity);
+				mapper.mapToDTO(result, entity, new IMapper.Context());
 				break;
 			}
 		} finally {
@@ -392,7 +408,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			for (ENTITY entity : delegate.getAllEntities(query, startIndex)) {
 				DTO dto = createDto();
-				mapper.mapToDTO(dto, entity);
+				mapper.mapToDTO(dto, entity, new IMapper.Context());
 				result.add(dto);
 			}
 		} finally {

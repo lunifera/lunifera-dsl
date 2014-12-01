@@ -29,6 +29,6 @@ package org.lunifera.dsl.common.datatypes {
 	datatype Byte jvmType java.lang.Byte;
 
 	datatype String jvmType java.lang.String;
-	datatype Date jvmType java.util.Date;
+	datatype Date dateType date;
 	 
 }
