@@ -19,7 +19,7 @@
    </license>
 
    <url>
-      <discovery label="Xtext 2.6.0" url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+      <discovery label="Xtext 2.7.3" url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
       <discovery label="Luna" url="http://download.eclipse.org/releases/luna"/>
    </url>
 
@@ -27,7 +27,7 @@
          id="org.lunifera.dsl.eclipse.ui"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.7.5"
          unpack="false"/>
 
    <plugin

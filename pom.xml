@@ -46,6 +46,8 @@
 		<module>org.lunifera.dsl.datatype.xtext</module>
 		<module>org.lunifera.dsl.datatype.xtext.ui</module>
 		<module>org.lunifera.dsl.datatype.lib</module>
+		<module>org.lunifera.dsl.eclipse.ui</module>
+		<module>org.lunifera.dsl.eclipse.ui.examples</module>
 		<module>org.lunifera.dsl.entity.xtext</module>
 		<module>org.lunifera.dsl.entity.xtext.ui</module>
 		<module>org.lunifera.dsl.dto.lib</module>
@@ -54,7 +56,10 @@
 
 		<module>org.lunifera.dsl.services.xtext</module>
 		<module>org.lunifera.dsl.services.xtext.ui</module>
-		<module>org.lunifera.dsl.eclipse.ui</module>
+
+		<module>org.lunifera.dsl.xtext.lazyresolver</module>
+		<module>org.lunifera.dsl.xtext.lazyresolver.ui</module>
+		<module>org.lunifera.dsl.xtext.lazyresolver.api</module>
 
 		<module>org.lunifera.dsl.xtext.builder.participant</module>
 
@@ -104,7 +109,7 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
 		<profile>
 			<id>build.common</id>
 			<activation>
@@ -178,7 +183,7 @@
 				<module>org.lunifera.dsl.p2</module>
 			</modules>
 		</profile>
-		
+
 		<profile>
 			<id>stage.p2</id>
 			<activation>
@@ -189,5 +194,5 @@
 			</modules>
 		</profile>
 	</profiles>
-<version>0.7.5-SNAPSHOT</version>
+	<version>0.7.5-SNAPSHOT</version>
 </project>
