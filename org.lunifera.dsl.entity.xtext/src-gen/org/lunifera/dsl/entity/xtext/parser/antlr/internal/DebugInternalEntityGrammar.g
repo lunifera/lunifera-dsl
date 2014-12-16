@@ -20,14 +20,14 @@ ruleClass :
 				)?
 			)? |
 			'cacheable'?
-		)* 'entity' ruleValidIDWithKeywords (
+		)* 'entity' ruleTRANSLATEABLEID (
 			'extends' RULE_ID
 		)? '{' ruleEntityPersistenceInfo ruleEntityInheritanceStrategy?
 		ruleEntityFeature* ruleIndex* '}' |
 		'mapped superclass' (
 			'extends' RULE_ID
 		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' |
-		'bean' ruleValidIDWithKeywords (
+		'bean' ruleTRANSLATEABLEID (
 			'extends' RULE_ID
 		)? '{' ruleBeanFeature* '}'
 	)
@@ -61,14 +61,14 @@ ruleColumnPersistenceInfo :
 ruleEntityFeature :
 	ruleAnnotationDef* (
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleValidIDWithKeywords
+			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATEABLEID
 			ruleColumnPersistenceInfo? (
 				'opposite' ruleLFQN
 			)?
 		) ';' |
 		(
-			'transient' RULE_ID ruleValidIDWithKeywords ';' |
-			'derived' 'domainDescription'? RULE_ID ruleValidIDWithKeywords
+			'transient' RULE_ID ruleTRANSLATEABLEID ';' |
+			'derived' 'domainDescription'? RULE_ID ruleTRANSLATEABLEID
 			ruleXBlockExpression |
 			(
 				'var' |
@@ -77,10 +77,10 @@ ruleEntityFeature :
 				'version' |
 				'domainDescription' |
 				'domainKey'
-			) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords
-			ruleColumnPersistenceInfo? ';'
+			) RULE_ID ruleMultiplicity? ruleTRANSLATEABLEID ruleColumnPersistenceInfo?
+			';'
 		) |
-		'def' ruleJvmTypeReference ruleValidIDWithKeywords '(' (
+		'def' ruleJvmTypeReference ruleTRANSLATEABLEID '(' (
 			ruleFullJvmFormalParameter (
 				', ' ruleFullJvmFormalParameter
 			)*
@@ -92,19 +92,19 @@ ruleEntityFeature :
 ruleBeanFeature :
 	ruleAnnotationDef* (
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATEABLEID (
 				'opposite' ruleLFQN
 			)?
 		) ';' |
 		(
-			'transient' RULE_ID ruleValidIDWithKeywords |
+			'transient' RULE_ID ruleTRANSLATEABLEID |
 			(
 				'var' |
 				'id' |
 				'version'
-			) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords ';'
+			) RULE_ID ruleMultiplicity? ruleTRANSLATEABLEID ';'
 		) |
-		'def' ruleJvmTypeReference ruleValidIDWithKeywords '(' (
+		'def' ruleJvmTypeReference ruleTRANSLATEABLEID '(' (
 			ruleFullJvmFormalParameter (
 				',' ruleFullJvmFormalParameter
 			)*
@@ -146,6 +146,11 @@ ruleTablePerSubclassStrategy :
 			'discriminatorValue' ruleValidIDWithKeywords ';'
 		)?
 	)* '}'
+;
+
+// Rule TRANSLATEABLEID
+ruleTRANSLATEABLEID :
+	ruleValidIDWithKeywords
 ;
 
 // Rule TypedPackage

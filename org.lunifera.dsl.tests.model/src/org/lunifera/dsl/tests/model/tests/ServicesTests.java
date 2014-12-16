@@ -4,10 +4,13 @@ import java.util.Date;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.dto.lib.impl.DtoServiceAccess;
 import org.lunifera.dsl.dto.lib.services.IDTOService;
 import org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto;
+import org.lunifera.dsl.tests.carstore.entities.dtos.AddressDto;
 import org.lunifera.dsl.tests.carstore.entities.dtos.CarDto;
+import org.lunifera.dsl.tests.carstore.entities.dtos.PersonDto;
 import org.lunifera.dsl.tests.model.AbstractJPATest;
 
 @SuppressWarnings("restriction")
@@ -75,6 +78,46 @@ public class ServicesTests extends AbstractJPATest {
 		
 		rCar = carService.get(car.getUuid());
 		Assert.assertNull(rCar);
+	}
+	
+	@Test
+	public void testCopyDto() throws Exception {
+		CarDto car = new CarDto();
+		car.setNumber("777777");
+		car.setFinishingDate(new Date());
+		
+		AddonDto addon1 = new AddonDto();
+		addon1.setDescription("addon1");
+		car.addToAddons(addon1);
+		
+		AddonDto addon2 = new AddonDto();
+		addon2.setDescription("addon2");
+		car.addToAddons(addon2);
+		
+		PersonDto personDto = new PersonDto();
+		personDto.addToOwnsCars(car);
+
+		personDto.setFirstname("Florian");
+		personDto.setLastname("Pirchner");
+		
+		AddressDto address = new AddressDto();
+		address.setPostalcode("112233");
+		address.setStreetname("Near the beach");
+		
+		AddressDto addressWork = new AddressDto();
+		address.setPostalcode("332211");
+		address.setStreetname("Near the moon");
+		
+		personDto.setHomeAddress(address);
+		personDto.setWorkAddress(addressWork);
+
+		CarDto newCar = car.copy(new Context());
+		Assert.assertEquals(car.getNumber(), newCar.getNumber());
+		Assert.assertEquals(car.getUuid(), newCar.getUuid());
+		Assert.assertEquals(2, car.getAddons().size());
+		Assert.assertEquals("addon1", car.getAddons().get(0).getDescription());
+		Assert.assertEquals("addon2", car.getAddons().get(1).getDescription());
+		
 	}
 
 }

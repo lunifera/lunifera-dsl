@@ -4,6 +4,10 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 
+import org.lunifera.dsl.dto.lib.Context;
+import org.lunifera.dsl.dto.lib.Copier;
+import org.lunifera.dsl.tests.carstore.entities.Base;
+
 @SuppressWarnings("all")
 public class BaseDto implements Serializable {
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(
@@ -12,7 +16,7 @@ public class BaseDto implements Serializable {
 	private boolean disposed;
 
 	private String uuid = java.util.UUID.randomUUID().toString();
-
+	
 	/**
 	 * Returns true, if the object is disposed. Disposed means, that it is
 	 * prepared for garbage collection and may not be used anymore. Accessing
@@ -140,4 +144,21 @@ public class BaseDto implements Serializable {
 		return true;
 	}
 
+	public static class BaseCopier<A extends BaseDto> extends Copier<A> {
+
+		@Override
+		public A createDto() {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public void copyContainments(A dto, A newDto) {
+			newDto.setUuid(dto.getUuid());
+		}
+
+		@Override
+		public void copyCrossReferences(A dto, A newDto) {
+			
+		}
+	}
 }

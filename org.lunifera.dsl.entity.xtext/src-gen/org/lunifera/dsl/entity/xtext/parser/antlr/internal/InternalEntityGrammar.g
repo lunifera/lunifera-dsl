@@ -293,9 +293,9 @@ ruleClass returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getNameValidIDWithKeywordsParserRuleCall_2_0_3_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getNameTRANSLATEABLEIDParserRuleCall_2_0_3_0()); 
 	    }
-		lv_name_12_0=ruleValidIDWithKeywords		{
+		lv_name_12_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
@@ -303,7 +303,7 @@ ruleClass returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_12_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -502,9 +502,9 @@ ruleClass returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getNameValidIDWithKeywordsParserRuleCall_2_2_2_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getNameTRANSLATEABLEIDParserRuleCall_2_2_2_0()); 
 	    }
-		lv_name_31_0=ruleValidIDWithKeywords		{
+		lv_name_31_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
@@ -512,7 +512,7 @@ ruleClass returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_31_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -932,9 +932,9 @@ ruleEntityFeature returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_0_1_4_0()); 
+	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_0_1_4_0()); 
 	    }
-		lv_name_7_0=ruleValidIDWithKeywords		{
+		lv_name_7_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getEntityFeatureRule());
 	        }
@@ -942,7 +942,7 @@ ruleEntityFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_7_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1026,9 +1026,9 @@ ruleEntityFeature returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_1_1_0_2_0()); 
+	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_1_1_0_2_0()); 
 	    }
-		lv_name_15_0=ruleValidIDWithKeywords		{
+		lv_name_15_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getEntityFeatureRule());
 	        }
@@ -1036,7 +1036,7 @@ ruleEntityFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_15_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1092,9 +1092,9 @@ ruleEntityFeature returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_1_1_1_3_0()); 
+	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_1_1_1_3_0()); 
 	    }
-		lv_name_20_0=ruleValidIDWithKeywords		{
+		lv_name_20_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getEntityFeatureRule());
 	        }
@@ -1102,7 +1102,7 @@ ruleEntityFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_20_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1244,9 +1244,9 @@ ruleEntityFeature returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_1_1_2_3_0()); 
+	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_1_1_2_3_0()); 
 	    }
-		lv_name_30_0=ruleValidIDWithKeywords		{
+		lv_name_30_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getEntityFeatureRule());
 	        }
@@ -1254,7 +1254,7 @@ ruleEntityFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_30_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1313,9 +1313,9 @@ ruleEntityFeature returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_2_1_2_0()); 
+	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_2_1_2_0()); 
 	    }
-		lv_name_36_0=ruleValidIDWithKeywords		{
+		lv_name_36_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getEntityFeatureRule());
 	        }
@@ -1323,7 +1323,7 @@ ruleEntityFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_36_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1498,9 +1498,9 @@ ruleBeanFeature returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_0_1_4_0()); 
+	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_0_1_4_0()); 
 	    }
-		lv_name_7_0=ruleValidIDWithKeywords		{
+		lv_name_7_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBeanFeatureRule());
 	        }
@@ -1508,7 +1508,7 @@ ruleBeanFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_7_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1574,9 +1574,9 @@ ruleBeanFeature returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_1_1_0_2_0()); 
+	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_1_1_0_2_0()); 
 	    }
-		lv_name_14_0=ruleValidIDWithKeywords		{
+		lv_name_14_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBeanFeatureRule());
 	        }
@@ -1584,7 +1584,7 @@ ruleBeanFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_14_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1660,9 +1660,9 @@ ruleBeanFeature returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_1_1_1_3_0()); 
+	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_1_1_1_3_0()); 
 	    }
-		lv_name_20_0=ruleValidIDWithKeywords		{
+		lv_name_20_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBeanFeatureRule());
 	        }
@@ -1670,7 +1670,7 @@ ruleBeanFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_20_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1711,9 +1711,9 @@ ruleBeanFeature returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getNameValidIDWithKeywordsParserRuleCall_2_2_1_2_0()); 
+	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getNameTRANSLATEABLEIDParserRuleCall_2_2_1_2_0()); 
 	    }
-		lv_name_25_0=ruleValidIDWithKeywords		{
+		lv_name_25_0=ruleTRANSLATEABLEID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBeanFeatureRule());
 	        }
@@ -1721,7 +1721,7 @@ ruleBeanFeature returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_25_0, 
-        		"ValidIDWithKeywords");
+        		"TRANSLATEABLEID");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2172,6 +2172,40 @@ ruleTablePerSubclassStrategy returns [EObject current=null]
     }
 )
 ;
+
+
+
+
+
+// Entry rule entryRuleTRANSLATEABLEID
+entryRuleTRANSLATEABLEID returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getTRANSLATEABLEIDRule()); } 
+	 iv_ruleTRANSLATEABLEID=ruleTRANSLATEABLEID 
+	 { $current=$iv_ruleTRANSLATEABLEID.current.getText(); }  
+	 EOF 
+;
+
+// Rule TRANSLATEABLEID
+ruleTRANSLATEABLEID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+
+    { 
+        newCompositeNode(grammarAccess.getTRANSLATEABLEIDAccess().getValidIDWithKeywordsParserRuleCall()); 
+    }
+    this_ValidIDWithKeywords_0=ruleValidIDWithKeywords    {
+		$current.merge(this_ValidIDWithKeywords_0);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
+    }
+
+    ;
+
+
 
 
 

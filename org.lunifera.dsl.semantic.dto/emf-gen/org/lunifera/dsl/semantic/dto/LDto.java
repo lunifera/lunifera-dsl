@@ -213,10 +213,10 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * Returns all features of type LDtoReference
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.lunifera.dsl.semantic.dto.DtoReferenceList" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoReference%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoReference%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoReference%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoReference%>>toList(_filter);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoAbstractReference%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoAbstractReference%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoAbstractReference%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoAbstractReference%>>toList(_filter);'"
 	 * @generated
 	 */
-	List<LDtoReference> getReferences();
+	List<LDtoAbstractReference> getReferences();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -226,10 +226,10 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * Returns all features of type LDtoAttribute
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.lunifera.dsl.semantic.dto.DtoAttributeList" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoAttribute%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoAttribute%>>toList(_filter);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.dto.LDtoFeature%>> _features = this.getFeatures();\n<%java.lang.Iterable%><<%org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute%>> _filter = <%com.google.common.collect.Iterables%>.<<%org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute%>>filter(_features, <%org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute%>.class);\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute%>>toList(_filter);'"
 	 * @generated
 	 */
-	List<LDtoAttribute> getAttributes();
+	List<LDtoAbstractAttribute> getAttributes();
 
 	/**
 	 * <!-- begin-user-doc -->

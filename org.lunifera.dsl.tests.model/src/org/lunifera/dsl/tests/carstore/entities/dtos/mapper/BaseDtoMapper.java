@@ -1,5 +1,6 @@
 package org.lunifera.dsl.tests.carstore.entities.dtos.mapper;
 
+import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.dto.lib.IMapper;
 import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.tests.carstore.entities.Base;

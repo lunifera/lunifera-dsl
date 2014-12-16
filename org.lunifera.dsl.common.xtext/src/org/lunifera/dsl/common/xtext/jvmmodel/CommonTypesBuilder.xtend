@@ -99,6 +99,28 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 
 		associate(sourceElement, op)
 	}
+	
+	
+	def JvmOperation toIsCopy(LClass sourceElement) {
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = "isCopy"
+		op.returnType = references.getTypeForName(Boolean::TYPE, sourceElement, null)
+
+		op.documentation = '''
+		Returns true, if the object is a copy for a different object. 
+		In that special case of "copy" opposite references are treated differently
+		to ensure the crossreferences untouched about changes.'''
+
+		setBody(op,
+			[ // ITreeAppendable
+				if(it == null) return
+				val p = it.trace(sourceElement)
+				p >> "return this.isCopy;"
+			])
+
+		associate(sourceElement, op)
+	}
 
 	def JvmOperation toCheckDisposed(LClass sourceElement) {
 		val op = typesFactory.createJvmOperation();

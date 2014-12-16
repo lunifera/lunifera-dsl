@@ -47,10 +47,10 @@ import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.impl.LClassImpl;
 
 import org.lunifera.dsl.semantic.dto.LDto;
-import org.lunifera.dsl.semantic.dto.LDtoAttribute;
+import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute;
+import org.lunifera.dsl.semantic.dto.LDtoAbstractReference;
 import org.lunifera.dsl.semantic.dto.LDtoFeature;
 import org.lunifera.dsl.semantic.dto.LDtoOperation;
-import org.lunifera.dsl.semantic.dto.LDtoReference;
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
 
 /**
@@ -375,10 +375,10 @@ public class LDtoImpl extends LClassImpl implements LDto {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<LDtoReference> getReferences() {
+	public List<LDtoAbstractReference> getReferences() {
 		EList<LDtoFeature> _features = this.getFeatures();
-		Iterable<LDtoReference> _filter = Iterables.<LDtoReference>filter(_features, LDtoReference.class);
-		return IterableExtensions.<LDtoReference>toList(_filter);
+		Iterable<LDtoAbstractReference> _filter = Iterables.<LDtoAbstractReference>filter(_features, LDtoAbstractReference.class);
+		return IterableExtensions.<LDtoAbstractReference>toList(_filter);
 	}
 
 	/**
@@ -386,10 +386,10 @@ public class LDtoImpl extends LClassImpl implements LDto {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<LDtoAttribute> getAttributes() {
+	public List<LDtoAbstractAttribute> getAttributes() {
 		EList<LDtoFeature> _features = this.getFeatures();
-		Iterable<LDtoAttribute> _filter = Iterables.<LDtoAttribute>filter(_features, LDtoAttribute.class);
-		return IterableExtensions.<LDtoAttribute>toList(_filter);
+		Iterable<LDtoAbstractAttribute> _filter = Iterables.<LDtoAbstractAttribute>filter(_features, LDtoAbstractAttribute.class);
+		return IterableExtensions.<LDtoAbstractAttribute>toList(_filter);
 	}
 
 	/**

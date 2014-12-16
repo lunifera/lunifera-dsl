@@ -4,6 +4,8 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+import org.lunifera.dsl.dto.lib.Context;
+
 @MappedSuperclass
 @SuppressWarnings("all")
 public class Base {
@@ -86,4 +88,5 @@ public class Base {
     result = prime * result + ((this.uuid== null) ? 0 : this.uuid.hashCode());
     return result;
   }
+
 }

@@ -8,7 +8,6 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-
 package org.lunifera.dsl.dto.xtext.extensions
 
 import com.google.inject.Inject
@@ -208,83 +207,50 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			@param «paramName» - the property
 			@throws RuntimeException if instance is <code>disposed</code>
 		'''
-
-		setBody(op,
-			[ // ITreeAppendable
-				if(it == null) return
-				val p = it.trace(prop);
-				p >> prop.toCheckDisposedCall()
-				val fieldRef = "this." + prop.toName
-				if (opposite == null) {
-					p >> "firePropertyChange(\"" + paramName + "\", this." + paramName + ", this." + paramName + " = " +
-						paramName + ");"
-				} else {
-					if(!prop.toMany) {
-						p >> "if (" + fieldRef + " != null) " >>> "{"
-						if (opposite.toMany) {
-							p >> fieldRef + "." + opposite.toCollectionInternalRemoverName + "(this);"
-						} else {
-							p >> fieldRef + "." + opposite.toInternalSetterName + "(null);"
-						}
-						p <<< "}"
-						p >> prop.toInternalSetterName + "(" + paramName + ");\n"
-						p >> "if (" + fieldRef + " != null) " >>> "{"
-						if (opposite.toMany) {
-							p >> fieldRef + "." + opposite.toCollectionInternalAdderName + "(this);"
-						} else {
-							p >> fieldRef + "." + opposite.toInternalSetterName + "(this);"
-						}
-						p <<< "}"
-					} else {
-						
-						p >> "for (" +prop.toDtoTypeParameterReference.simpleName  + " dto : " + prop.toCollectionInternalGetterName + "().toArray(new " + prop.toDtoTypeParameterReference.simpleName + "[" + fieldRef + ".size()])) " >>> "{"
-							p >> prop.toCollectionRemoverName + "(dto);"
-						p <<< "}"
-						
-						p >> "if(" + paramName +" == null)" >>> "{"
-							p >> "return;"
-						p <<< "}"
-						
-						p >> "for (" +prop.toDtoTypeParameterReference.simpleName  + " dto : " + paramName + ") " >>> "{"
-							p >> prop.toCollectionAdderName + "(dto);"
-						p <<< "}"
-					}
+		
+		op.body = '''
+		checkDisposed();
+		
+		«IF opposite == null»
+			firePropertyChange("«paramName»", this.«paramName», this.«paramName» = «paramName»);
+		«ELSE»
+			«IF !prop.toMany»
+				if (this.«prop.toName» != null) {
+					«IF opposite.toMany»
+						this.«prop.toName».«opposite.toCollectionInternalRemoverName»(this);
+					«ELSE»
+						this.«prop.toName».«opposite.toInternalSetterName»(null);
+					«ENDIF»
 				}
-			])
+				
+				«prop.toInternalSetterName»(«paramName»);
+				
+				if (this.«prop.toName» != null) {
+					«IF opposite.toMany»
+						this.«prop.toName».«opposite.toCollectionInternalAdderName»(this);
+					«ELSE»
+						this.«prop.toName».«opposite.toInternalSetterName»(this);
+					«ENDIF»
+				}
+			«ELSE»
+				for («prop.toDtoTypeParameterReference.simpleName» dto : «prop.toCollectionInternalGetterName»().toArray(new «prop.toDtoTypeParameterReference.simpleName»[this.«prop.toName».size()])) {
+					«prop.toCollectionRemoverName»(dto);
+				}
+
+				if(«paramName» == null) {
+					return;
+				}
+				
+				for («prop.toDtoTypeParameterReference.simpleName» dto : «paramName») {
+					«prop.toCollectionAdderName»(dto);
+				}
+			«ENDIF»
+		«ENDIF»
+		'''
+
 
 		return associate(prop, op);
 	}
-
-//	def dispatch JvmOperation toGetter(LDtoFeature prop, String methodName) {
-//		val typeRef = prop.toDtoTypeParameterReferenceWithMultiplicity
-//		val propertyName = prop.toName
-//		val op = typesFactory.createJvmOperation();
-//		op.visibility = JvmVisibility::PUBLIC
-//		op.simpleName = methodName
-//		op.returnType = cloneWithProxies(typeRef)
-//		op.documentation = if (prop.toMany) {
-//			"Returns an unmodifiable list of " + propertyName + "."
-//		} else if (propertyName != null) {
-//			"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
-//				concat(" property").concat(
-//					(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
-//		}
-//		
-//		setBody(op,
-//			[ // ITreeAppendable it |
-//				if(it == null) return
-//				val p = it.trace(prop);
-//				p >> prop.toCheckDisposedCall()
-//				if (prop.toMany) {
-//					p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
-//						"(" + prop.toCollectionInternalGetterName + "());"
-//				} else {
-//					p >> "return this." + propertyName + ";"
-//				}
-//			])
-//
-//		return associate(prop, op);
-//	}
 
 	def JvmOperation toProxySetter(LDtoAbstractReference prop) {
 		if (prop.toMany) {
@@ -362,21 +328,19 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			@throws RuntimeException if instance is <code>disposed</code>
 		'''
 
-		setBody(op,
-			[ // ITreeAppendable
-				if(it == null) return
-				val p = it.trace(prop);
-				p += prop.toCheckDisposedCall()
-				if (prop.opposite != null) {
-					p >> paramName + "." + prop.opposite.toSetterName + "(this);"
-				} else {
-					p >> "if (!" + prop.toCollectionInternalGetterName + "().contains(" + paramName + "))" >>> "{"
-					{
-						p >> prop.toCollectionInternalGetterName + "().add(" + paramName + ");"
-					}
-					p <<< "}"
-				}
-			])
+		val opposite = prop.opposite
+		op.body = '''
+		checkDisposed();
+		
+		«IF opposite != null»
+			«paramName».«prop.opposite.toSetterName»(this);
+		«ELSE»
+			if(!«prop.toCollectionInternalGetterName»().contains(«paramName»)){
+				«prop.toCollectionInternalGetterName»().add(«paramName»);
+			}
+		«ENDIF»
+		'''
+
 		return associate(prop, op);
 	}
 
@@ -675,17 +639,35 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				@throws RuntimeException if instance is <code>disposed</code>
 			'''
 		}
-		setBody(op,
-			[ // ITreeAppendable
-				if(it == null) return
-				val p = it.trace(prop);
-				p += prop.toCheckDisposedCall()
-				if (prop.opposite != null) {
-					p >> paramName + "." + prop.opposite.toSetterName + "(null);"
-				} else {
-					p >> prop.toCollectionInternalGetterName + "().remove(" + paramName + ");"
-				}
-			])
+		
+		val opposite = prop.opposite
+		val cascading = prop.isCascading
+		op.body = '''
+		checkDisposed();
+		
+		«IF opposite != null»
+			«paramName».«prop.opposite.toSetterName»(null);
+		«ELSE»
+			«prop.toCollectionInternalGetterName»().remove(«paramName»);
+		«ENDIF»
+		'''
+		
+//		setBody(op,
+//			[ // ITreeAppendable
+//				if(it == null) return
+//				val p = it.trace(prop);
+//				p += prop.toCheckDisposedCall()
+//				if (prop.opposite != null) {
+//					p >> "if (isCopy())" >>> "{"
+//						p >>> "// avoid opposite reference update"
+//						p >> prop.toCollectionInternalGetterName + "().remove(" + paramName + ");"
+//					p <<< "} else {" 
+//					p >>> paramName + "." + prop.opposite.toSetterName + "(null);"
+//					p <<< "}"
+//				} else {
+//					p >> prop.toCollectionInternalGetterName + "().remove(" + paramName + ");"
+//				}
+//			])
 		return associate(prop, op);
 	}
 
@@ -736,17 +718,17 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			'''
 		} else {
 		}
-		setBody(op,
-			[ // ITreeAppendable
-				if(it == null) return
-				val p = it.trace(prop);
-				p += prop.toCheckDisposedCall()
-				if (prop.opposite != null) {
-					p >> paramName + "." + prop.opposite.toSetterName + "(null);"
-				} else {
-					p >> prop.toCollectionInternalGetterName + "().remove(" + paramName + ");"
-				}
-			])
+		val opposite = prop.opposite
+		val cascading = prop.isCascading
+		op.body = '''
+		checkDisposed();
+		
+		«IF opposite != null»
+			«paramName».«prop.opposite.toSetterName»(null);
+		«ELSE»
+			«prop.toCollectionInternalGetterName»().remove(«paramName»);
+		«ENDIF»
+		'''
 		return associate(prop, op);
 	}
 

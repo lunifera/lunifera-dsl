@@ -485,7 +485,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		addAnno(prop, jvmAnnTarget, manyToOne)
 
 		val joinColumn = prop.toAnnotation(typeof(JoinColumn))
-		joinColumn.addAnnAttr(prop, "name", prop.toColumnName)
+		joinColumn.addAnnAttr(prop, "name", prop.toColumnName + "_ID")
 		if (prop.bounds.required) {
 			joinColumn.addAnnAttr(prop, "nullable", false)
 		}
@@ -511,7 +511,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 		if (opposite != null && opposite.cascading) {
 			val joinColumn = prop.toAnnotation(typeof(JoinColumn))
-			joinColumn.addAnnAttr(prop, "name", prop.name)
+			joinColumn.addAnnAttr(prop, "name", prop.name + "_ID")
 			if (prop.bounds.required) {
 				joinColumn.addAnnAttr(prop, "nullable", false)
 			}

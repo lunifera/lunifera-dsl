@@ -415,9 +415,37 @@ class DtoModelExtensions extends ModelExtensions {
 			return prop.cascading;
 		}
 	}
-
+	
+	def isAttribute(LDtoFeature prop) {
+		return prop instanceof LAttribute
+	}
+	
+	def isContainmentReference(LDtoFeature prop) {
+		return prop instanceof LReference && prop.cascading
+	}
+	
 	def isCrossReference(LDtoFeature prop) {
 		return prop instanceof LReference && !prop.cascading
+	}
+	
+	def dispatch isContainerReference(LDtoAttribute prop) {
+		return false
+	}
+	
+	def dispatch isContainerReference(LDtoReference prop) {
+		val opposite = prop.opposite
+		if(opposite != null && opposite.cascading){
+			return true
+		}
+		return false
+	}
+	
+	def dispatch isContainerReference(LDtoInheritedReference prop) {
+		val opposite = prop.inheritedFeature.opposite
+		if(opposite != null && opposite.cascading){
+			return true
+		}
+		return false
 	}
 
 	def toMapperTypeReference(LType type) {
@@ -426,6 +454,33 @@ class DtoModelExtensions extends ModelExtensions {
 
 	def toMapperTypeReference(LDtoAbstractReference ref) {
 		ref.type.toMapperTypeReference
+	}
+	
+	/**
+	 * Returns all containment features that need to be copied.
+	 */
+	def getContainmentReferencesToCopy(LDto dto){
+		dto.features.filter[
+			it.containmentReference
+		]
+	}
+
+	/**
+	 * Returns all attributes that need to be copied.
+	 */
+	def getAttributesToCopy(LDto dto){
+		dto.features.filter[
+			it.attribute
+		]
+	}
+	
+	/**
+	 * Returns all crossreferences that need to be copied.
+	 */
+	def getCrossReferencesToCopy(LDto dto){
+		dto.features.filter[
+			return !it.containerReference && it.crossReference
+		]
 	}
 
 }

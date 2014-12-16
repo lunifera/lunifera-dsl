@@ -1,6 +1,7 @@
 package org.lunifera.dsl.tests.carstore.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;

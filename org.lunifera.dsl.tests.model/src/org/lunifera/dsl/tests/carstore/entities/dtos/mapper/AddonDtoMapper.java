@@ -1,5 +1,6 @@
 package org.lunifera.dsl.tests.carstore.entities.dtos.mapper;
 
+import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.tests.carstore.entities.Addon;
 import org.lunifera.dsl.tests.carstore.entities.Car;
 import org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto;
@@ -102,7 +103,7 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends
 		}
 
 		if (in.getCar() != null) {
-			CarDto _dto = context.getDto(in.getCar());
+			CarDto _dto = context.getSource(in.getCar());
 			if (_dto == null) {
 				_dto = new CarDto();
 				mapper.mapToDTO(_dto, in.getCar(), context);
@@ -129,7 +130,7 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends
 		}
 
 		if (in.getCar() != null) {
-			Car _entity = context.getEntity(in.getCar());
+			Car _entity = context.getTarget(in.getCar());
 			if (_entity == null) {
 				_entity = new Car();
 				mapper.mapToDTO(in.getCar(), _entity, context);

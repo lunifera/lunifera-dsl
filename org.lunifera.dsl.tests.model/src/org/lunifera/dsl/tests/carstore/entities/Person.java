@@ -3,6 +3,7 @@ package org.lunifera.dsl.tests.carstore.entities;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -11,9 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.lunifera.dsl.tests.carstore.entities.Address;
-import org.lunifera.dsl.tests.carstore.entities.Base;
-import org.lunifera.dsl.tests.carstore.entities.Car;
 
 @Entity
 @Table(name = "PERSON")

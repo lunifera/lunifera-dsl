@@ -1743,7 +1743,7 @@ public interface LunDtoPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Dto Reference List</em>'.
 	 * @see java.util.List
-	 * @model instanceClass="java.util.List<org.lunifera.dsl.semantic.dto.LDtoReference>"
+	 * @model instanceClass="java.util.List<org.lunifera.dsl.semantic.dto.LDtoAbstractReference>"
 	 * @generated
 	 */
 	EDataType getDtoReferenceList();
@@ -1754,7 +1754,7 @@ public interface LunDtoPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Dto Attribute List</em>'.
 	 * @see java.util.List
-	 * @model instanceClass="java.util.List<org.lunifera.dsl.semantic.dto.LDtoAttribute>"
+	 * @model instanceClass="java.util.List<org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute>"
 	 * @generated
 	 */
 	EDataType getDtoAttributeList();

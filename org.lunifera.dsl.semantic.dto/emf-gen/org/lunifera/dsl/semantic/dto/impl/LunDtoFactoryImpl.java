@@ -280,8 +280,8 @@ public class LunDtoFactoryImpl extends EFactoryImpl implements LunDtoFactory {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public List<LDtoReference> createDtoReferenceListFromString(EDataType eDataType, String initialValue) {
-		return (List<LDtoReference>)super.createFromString(initialValue);
+	public List<LDtoAbstractReference> createDtoReferenceListFromString(EDataType eDataType, String initialValue) {
+		return (List<LDtoAbstractReference>)super.createFromString(initialValue);
 	}
 
 	/**
@@ -299,8 +299,8 @@ public class LunDtoFactoryImpl extends EFactoryImpl implements LunDtoFactory {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public List<LDtoAttribute> createDtoAttributeListFromString(EDataType eDataType, String initialValue) {
-		return (List<LDtoAttribute>)super.createFromString(initialValue);
+	public List<LDtoAbstractAttribute> createDtoAttributeListFromString(EDataType eDataType, String initialValue) {
+		return (List<LDtoAbstractAttribute>)super.createFromString(initialValue);
 	}
 
 	/**

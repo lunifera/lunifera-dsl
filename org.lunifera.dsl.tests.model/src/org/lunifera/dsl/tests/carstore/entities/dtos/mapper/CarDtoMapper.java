@@ -3,6 +3,7 @@ package org.lunifera.dsl.tests.carstore.entities.dtos.mapper;
 import java.util.Date;
 import java.util.List;
 
+import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.tests.carstore.entities.Addon;
 import org.lunifera.dsl.tests.carstore.entities.Car;
 import org.lunifera.dsl.tests.carstore.entities.Person;
@@ -143,7 +144,7 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 
 		List<AddonDto> results = new java.util.ArrayList<AddonDto>();
 		for (Addon _entity : in.getAddons()) {
-			AddonDto _dto = context.getDto(_entity);
+			AddonDto _dto = context.getSource(_entity);
 			if (_dto == null) {
 				_dto = new AddonDto();
 				mapper.mapToDTO(_dto, _entity, context);
@@ -172,7 +173,7 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 
 		List<Addon> results = new java.util.ArrayList<Addon>();
 		for (AddonDto _dto : in.getAddons()) {
-			Addon _entity = context.getEntity(_dto);
+			Addon _entity = context.getTarget(_dto);
 			if (_entity == null) {
 				_entity = new Addon();
 				mapper.mapToEntity(_dto, _entity, context);
@@ -200,7 +201,7 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 		}
 
 		if (in.getOwner() != null) {
-			PersonDto dto = context.getDto(in.getOwner());
+			PersonDto dto = context.getSource(in.getOwner());
 			if (dto != null) {
 				return dto;
 			}
@@ -228,7 +229,7 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends
 		}
 
 		if (in.getOwner() != null) {
-			Person entity = context.getEntity(in.getOwner());
+			Person entity = context.getTarget(in.getOwner());
 			if (entity != null) {
 				return entity;
 			}

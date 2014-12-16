@@ -733,8 +733,8 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 		// Initialize data types
 		initEDataType(dtoFeatureListEDataType, List.class, "DtoFeatureList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoFeature>");
 		initEDataType(operationsListEDataType, List.class, "OperationsList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoOperation>");
-		initEDataType(dtoReferenceListEDataType, List.class, "DtoReferenceList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoReference>");
-		initEDataType(dtoAttributeListEDataType, List.class, "DtoAttributeList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoAttribute>");
+		initEDataType(dtoReferenceListEDataType, List.class, "DtoReferenceList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoAbstractReference>");
+		initEDataType(dtoAttributeListEDataType, List.class, "DtoAttributeList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute>");
 		initEDataType(dtoAbstractAttributeListEDataType, List.class, "DtoAbstractAttributeList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute>");
 		initEDataType(internalEObjectEDataType, InternalEObject.class, "InternalEObject", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 

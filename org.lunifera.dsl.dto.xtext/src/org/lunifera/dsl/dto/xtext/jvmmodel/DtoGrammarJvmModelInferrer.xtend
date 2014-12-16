@@ -12,12 +12,17 @@ package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
 import java.io.Serializable
+import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
+import org.lunifera.dsl.dto.lib.Context
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.lib.IMapperAccess
+import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LEnum
@@ -26,12 +31,7 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
-import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
-import org.eclipse.xtext.common.types.JvmField
-import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.common.types.JvmTypeParameterDeclarator
-import org.eclipse.xtext.common.types.JvmWildcardTypeReference
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -45,16 +45,14 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 
 	@Inject extension IQualifiedNameProvider
 	@Inject extension DtoTypesBuilder;
+	@Inject extension MethodNamingExtensions
 	@Inject extension DtoModelExtensions;
 	@Inject TypeReferences references
 
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(dto.toJvmType).initializeLater [
-			
 			println("inferring dto " + dto.name)
-			
 			annotationCompiler.processAnnotation(dto, it);
-			
 			var LAttribute idAttribute = null
 			var JvmField idField = null
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
@@ -63,10 +61,6 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				superTypes += references.getTypeForName(dto.getSuperType.fullyQualifiedName.toString, dto, null)
 			}
 			superTypes += references.getTypeForName(typeof(Serializable), dto, null)
-			// 
-			// Constructor
-			//
-			members += dto.toConstructor()[]
 			if (dto.getSuperType == null) {
 				members += dto.toPropertyChangeSupportField()
 				members += dto.toPrimitiveTypeField("disposed", Boolean::TYPE)
@@ -94,6 +88,10 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					}
 				}
 			}
+			// 
+			// Constructor
+			//
+			members += dto.toConstructor()[]
 			//
 			// Field accessors
 			//
@@ -157,6 +155,96 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				members += idAttribute.toEqualsMethod(it, false, idField)
 				members += idAttribute.toHashCodeMethod(false, idField)
 			}
+			
+			val JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference
+				typeRef.type = it
+				val contextTypeRef = newTypeRef(typeof(Context).name, null)
+
+				if (!dto.abstract) {
+					members += dto.toMethod("createDto", typeRef) [
+						body = '''return new «dto.name»();'''
+					]
+
+					members += dto.toMethod("copy", typeRef.cloneWithProxies) [
+						parameters += dto.toParameter("context", contextTypeRef.cloneWithProxies)
+						body = '''
+							checkDisposed();
+							
+							if (context == null) {
+								throw new IllegalArgumentException("Context must not be null!");
+							}
+							
+							// if context contains a copied instance of this object
+							// then return it
+							«dto.name» newDto = context.getTarget(this);
+							if(newDto != null){
+								return newDto;
+							}
+							
+							try{
+								context.increaseLevel();
+								
+								newDto = createDto();
+								context.register(this, newDto);
+								
+								// first copy the containments and attributes
+								copyContainments(this, newDto, context);
+								
+								// then copy cross references to ensure proper
+								// opposite references are copied too.
+								copyCrossReferences(this, newDto, context);
+							} finally {
+								context.decreaseLevel();
+							}
+							
+							return newDto;
+						'''
+					]
+				}
+
+				members += dto.toMethod("copyContainments", references.getTypeForName(Void::TYPE, dto)) [
+					parameters += dto.toParameter("dto", typeRef.cloneWithProxies)
+					parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
+					parameters += dto.toParameter("context", contextTypeRef.cloneWithProxies)
+					body = '''
+						checkDisposed();
+						
+						if (context == null) {
+							throw new IllegalArgumentException("Context must not be null!");
+						}
+						
+						«IF dto.superType != null»
+						super.copyContainments(dto, newDto, context);
+						«ENDIF»
+						
+						«FOR att : dto.attributes»
+						newDto.«att.toSetterName»(«att.toGetterName»());
+						«ENDFOR»
+						
+						«FOR ref : dto.containmentReferencesToCopy»
+						if(«ref.toGetterName»() != null) {
+							newDto.«ref.toSetterName»(«ref.toGetterName»().copy());
+						}
+						«ENDFOR»
+					'''
+				]
+
+				members += dto.toMethod("copyCrossReferences", references.getTypeForName(Void::TYPE, dto)) [
+					parameters += dto.toParameter("dto", typeRef.cloneWithProxies)
+					parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
+					parameters += dto.toParameter("context", newTypeRef(typeof(Context).name, null))
+					body = '''
+						checkDisposed();
+						
+						if (context == null) {
+							throw new IllegalArgumentException("Context must not be null!");
+						}
+						
+						«IF dto.superType != null»
+						super.copyCrossReferences(dto, newDto, context);
+						«ENDIF»
+					'''
+				]
 		]
 
 		/**
