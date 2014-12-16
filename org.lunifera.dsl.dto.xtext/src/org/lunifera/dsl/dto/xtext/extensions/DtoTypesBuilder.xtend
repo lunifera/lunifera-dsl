@@ -41,6 +41,7 @@ import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.runtime.common.annotations.DomainDescription
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
+import org.lunifera.dsl.dto.lib.Context
 
 class DtoTypesBuilder extends CommonTypesBuilder {
 
@@ -829,24 +830,29 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.simpleName = "mapToDTO"
 		op.parameters += dto.toParameter("dto", dto.toTypeReference)
 		op.parameters += dto.toParameter("entity", dto.wrappedTypeJvm?.cloneWithProxies)
+		op.parameters += dto.toParameter("context", references.getTypeForName(typeof(Context), dto))
 		op.documentation = '''
 			Maps the entity {@link «dto.wrappedType.toName»} to the dto {@link «dto.toName»}.
 			
 			@param dto - The target dto
 			@param entity - The source entity
+			@param context - The context to get information about depth,...
 		''';
 
 		op.body = '''
+			if(context == null){
+				throw new IllegalArgumentException("Please pass a context!");
+			}
+			
 			«IF dto.superType != null»
-				super.mapToDTO(dto, entity);
-				
+				super.mapToDTO(dto, entity, context);
 			«ENDIF»
 			
 			«FOR f : dto.features.filter[inherited || mapper?.toDTO != null]»
 				«IF (!f.bounds.toMany)»
-					dto.set«f.toName.toFirstUpper»(«f.toMapPropertyToDto»(entity));
+					dto.set«f.toName.toFirstUpper»(«f.toMapPropertyToDto»(entity, context));
 				«ELSE»
-					for(«f.toDtoTypeParameterReference.qualifiedName» _dtoValue : «f.toMapPropertyToDto»(entity)) {
+					for(«f.toDtoTypeParameterReference.qualifiedName» _dtoValue : «f.toMapPropertyToDto»(entity, context)) {
 						dto.«f.toCollectionAdderName»(_dtoValue);
 					}
 				«ENDIF»
@@ -862,25 +868,31 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.simpleName = "mapToEntity"
 		op.parameters += dto.toParameter("dto", dto.toTypeReference)
 		op.parameters += dto.toParameter("entity", dto.wrappedTypeJvm?.cloneWithProxies)
+		op.parameters += dto.toParameter("context", references.getTypeForName(typeof(Context), dto))
 		op.documentation = '''
 			Maps the dto {@link «dto.toName»} to the entity {@link «dto.wrappedType.toName»}.
 			
 			@param dto - The source dto
 			@param entity - The target entity
+			@param context - The context to get information about depth,...
 		''';
 
 		op.body = '''
+			if(context == null){
+				throw new IllegalArgumentException("Please pass a context!");
+			}
+			
 			«IF dto.superType != null»
-				super.mapToEntity(dto, entity);
+				super.mapToEntity(dto, entity, context);
 				
 			«ENDIF»
 			
 			«FOR f : dto.features.filter[inherited || mapper?.fromDTO != null]»
 				«IF (!f.bounds.toMany)»
-					entity.set«f.toName.toFirstUpper»(«f.toMapPropertyToEntity»(dto));
+					entity.set«f.toName.toFirstUpper»(«f.toMapPropertyToEntity»(dto, context));
 				«ELSE»
 					List<«f.toRawTypeName»> «f.toName»_entities = new java.util.ArrayList<«f.toRawTypeName»>();
-					for(«f.toRawTypeName» _entityValue : «f.toMapPropertyToEntity»(dto)) {
+					for(«f.toRawTypeName» _entityValue : «f.toMapPropertyToEntity»(dto, context)) {
 						«f.toName»_entities.add(_entityValue);
 					}
 					entity.«f.toSetterName»(«f.toName»_entities);
@@ -967,10 +979,12 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		initializeSafely(op) [
 			parameters += prop.toParameter("in", dto.wrappedTypeJvm?.cloneWithProxies)
+			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to dto property.
 				
 				@param in - The source entity
+				@param context - The context to get information about depth,...
 				@return the mapped value
 			''';
 			val XExpression mapExpression = prop.toMapToDtoExpression
@@ -988,7 +1002,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						List<«prop.toRawType.toDTOBeanSimpleName»> results = new java.util.ArrayList<«prop.toRawType.toDTOBeanSimpleName»>();
 						for («prop.toRawType.toName» _entity : in.«prop.toGetterName»()) {
 							«prop.toDtoTypeParameterReference.qualifiedName» _dto = new «prop.toDtoTypeParameterReference.qualifiedName»();
-							mapper.mapToDTO(_dto, _entity);
+							mapper.mapToDTO(_dto, _entity, context);
 							results.add(_dto);
 						}
 						return results;'''
@@ -1001,7 +1015,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						 
 						if(in.get«prop.toName.toFirstUpper»() != null) {
 							«prop.toRawType.toDTOBeanSimpleName» dto = new «prop.toRawType.toDTOBeanSimpleName»();
-							mapper.mapToDTO(dto, in.«prop.toGetterName»());
+							mapper.mapToDTO(dto, in.«prop.toGetterName»(), context);
 							return dto;
 						} else {
 							return null;
@@ -1031,10 +1045,12 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		initializeSafely(op) [
 			parameters += prop.toParameter("in", dto.wrappedTypeJvm?.cloneWithProxies)
+			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to the dto.
 				
 				@param in - The source entity
+				@param context - The context to get information about depth,...
 				@return «IF (!prop.bounds.toMany)»the mapped dto«ELSE»A list of mapped dtos«ENDIF»
 			''';
 			val XExpression mapExpression = prop.toMapToDtoExpression
@@ -1051,7 +1067,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					List<«prop.toRawType.toDTOBeanSimpleName»> results = new java.util.ArrayList<«prop.toRawType.toDTOBeanSimpleName»>();
 					for («prop.toRawType.toName» _entity : in.get«prop.toName.toFirstUpper»()) {
 						«prop.toRawType.toDTOBeanSimpleName» _dto = new «prop.toRawType.toDTOBeanSimpleName»();
-						mapper.mapToDTO(_dto, _entity);
+						mapper.mapToDTO(_dto, _entity, context);
 						results.add(_dto);
 					}
 					return results;'''
@@ -1064,7 +1080,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					
 					if(in.get«prop.toName.toFirstUpper»() != null) {
 						«prop.toRawType.toDTOBeanSimpleName» dto = new «prop.toRawType.toDTOBeanSimpleName»();
-						mapper.mapToDTO(dto, in.get«prop.toName.toFirstUpper»());
+						mapper.mapToDTO(dto, in.get«prop.toName.toFirstUpper»(), context);
 						return dto;
 					} else {
 						return null;
@@ -1086,10 +1102,12 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		initializeSafely(op) [
 			parameters += prop.toParameter("in", dto.toTypeReference)
+			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to dto property.
 				
 				@param in - The source entity
+				@param context - The context to get information about depth,...
 				@return the mapped value
 			''';
 			val XExpression mapExpression = prop.toMapToEntityExpression
@@ -1107,7 +1125,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						List<«prop.toRawType.toName»> results = new java.util.ArrayList<«prop.toRawType.toName»>();
 						for («prop.toRawType.toDTOBeanSimpleName» _dto : in.«prop.toGetterName»()) {
 							«prop.toRawType.toName» _entity = new «prop.toRawType.toName»();
-							mapper.mapToEntity(_dto, _entity);
+							mapper.mapToEntity(_dto, _entity, context);
 							results.add(_entity);
 						}
 						return results;'''
@@ -1117,10 +1135,10 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						if(mapper == null) {
 							throw new IllegalStateException("Mapper must not be null!");
 						}
-						
+						 
 						if(in.get«prop.toName.toFirstUpper»() != null) {
 							«prop.toRawType.toName» entity = new «prop.toRawType.name»();
-							mapper.mapToEntity(in.«prop.toGetterName»(), entity);
+							mapper.mapToEntity(in.«prop.toGetterName»(), entity, context);
 							return entity;							
 						} else {
 							return null;
@@ -1148,10 +1166,12 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		initializeSafely(op) [
 			parameters += prop.toParameter("in", dto.toTypeReference)
+			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given dto to the entity.
 				
 				@param in - The source dto
+				@param context - The context to get information about depth,...
 				@return «IF (!prop.bounds.toMany)»the mapped entity«ELSE»A list of mapped entities«ENDIF»
 			''';
 			val XExpression mapExpression = prop.toMapToEntityExpression
@@ -1169,7 +1189,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					List<«prop.toRawType.toName»> results = new java.util.ArrayList<«prop.toRawType.toName»>();
 					for («prop.type.toName» _dto : in.get«prop.toName.toFirstUpper»()) {
 						«prop.toRawType.toName» _entity = new «prop.toRawType.toName»();
-						mapper.mapToEntity(_dto, _entity);
+						mapper.mapToEntity(_dto, _entity, context);
 						results.add(_entity);
 					}
 					return results;'''
@@ -1183,7 +1203,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					
 					if(in.get«prop.toName.toFirstUpper»() != null) {
 						«prop.toRawType.toName» entity = new «prop.toRawType.name»();
-						mapper.mapToEntity(in.get«prop.toName.toFirstUpper»(), entity);	
+						mapper.mapToEntity(in.get«prop.toName.toFirstUpper»(), entity, context);	
 						return entity;
 					} else {
 						return null;

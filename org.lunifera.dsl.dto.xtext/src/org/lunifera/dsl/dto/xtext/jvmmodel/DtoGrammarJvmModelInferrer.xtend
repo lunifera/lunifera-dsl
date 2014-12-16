@@ -213,19 +213,19 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 							throw new IllegalArgumentException("Context must not be null!");
 						}
 						
-						«IF dto.superType != null»
-						super.copyContainments(dto, newDto, context);
-						«ENDIF»
-						
-						«FOR att : dto.attributes»
-						newDto.«att.toSetterName»(«att.toGetterName»());
-						«ENDFOR»
-						
-						«FOR ref : dto.containmentReferencesToCopy»
-						if(«ref.toGetterName»() != null) {
-							newDto.«ref.toSetterName»(«ref.toGetterName»().copy());
-						}
-						«ENDFOR»
+«««						«IF dto.superType != null»
+«««						super.copyContainments(dto, newDto, context);
+«««						«ENDIF»
+«««						
+«««						«FOR att : dto.attributes»
+«««						newDto.«att.toSetterName»(«att.toGetterName»());
+«««						«ENDFOR»
+«««						
+«««						«FOR ref : dto.containmentReferencesToCopy»
+«««						if(«ref.toGetterName»() != null) {
+«««							newDto.«ref.toSetterName»(«ref.toGetterName»().copy());
+«««						}
+«««						«ENDFOR»
 					'''
 				]
 
@@ -234,15 +234,15 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
 					parameters += dto.toParameter("context", newTypeRef(typeof(Context).name, null))
 					body = '''
-						checkDisposed();
-						
-						if (context == null) {
-							throw new IllegalArgumentException("Context must not be null!");
-						}
-						
-						«IF dto.superType != null»
-						super.copyCrossReferences(dto, newDto, context);
-						«ENDIF»
+«««						checkDisposed();
+«««						
+«««						if (context == null) {
+«««							throw new IllegalArgumentException("Context must not be null!");
+«««						}
+«««						
+«««						«IF dto.superType != null»
+«««						super.copyCrossReferences(dto, newDto, context);
+«««						«ENDIF»
 					'''
 				]
 		]
