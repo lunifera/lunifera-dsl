@@ -1,4 +1,4 @@
-@xcore.lang.GenModel(fileExtensions="entitymodel", editDirectory="/org.lunifera.dsl.semantic.entity.edit/src", editorDirectory="/org.lunifera.dsl.semantic.entity.editor/src", childCreationExtenders="true")
+@GenModel(fileExtensions="entitymodel", editDirectory="/org.lunifera.dsl.semantic.entity.edit/src", editorDirectory="/org.lunifera.dsl.semantic.entity.editor/src", childCreationExtenders="true")
 @GenModel(modelName="Entity")
 @GenModel(prefix="LunEntity")
 @GenModel(copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
@@ -17,6 +17,7 @@
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
 
+import xcore.lang.GenModel
 import java.util.List
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.common.types.JvmTypeReference
