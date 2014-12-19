@@ -13,6 +13,7 @@ package org.lunifera.dsl.dto.xtext.generator
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.entity.LEntity
 
 /**
  *  This generator automatically creates a generic .dtos-file from a given entity model.
@@ -30,12 +31,16 @@ class ServicesFileGenerator {
 			import «pkg.name».*;
 			import «pkg.name».dtos.*; 
 			
-			«FOR LDto lDto : pkg.dtos»
+			«FOR LDto lDto : pkg.dtos.filter[basedOnEntity]»
 				dtoservice «lDto.wrappedType.name»Service provides «lDto.name» {
 				}
 			«ENDFOR»
 		}
 	'''
+	
+	def basedOnEntity(LDto lDto){
+		lDto.wrappedType instanceof LEntity
+	}
 
 	def String getPkgName(LTypedPackage pkg) {
 		return pkg.name + ".services"

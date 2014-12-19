@@ -89,18 +89,20 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 				mapperService.attributeName = "mapper"
 				mapperService.cardinality = LCardinality.ONE_TO_ONE
 				mapperService.service = references.getTypeForName(dtoNamings.toFqnMapperName(service.dto), service, null)
+				service.injectedServices.services += mapperService
 
 				// create the emf service
 				val LInjectedService emfService = LunServiceFactory.eINSTANCE.createLInjectedService
 				emfService.attributeName = "emf"
 				emfService.cardinality = LCardinality.ONE_TO_ONE
 				emfService.service = references.getTypeForName(typeof(EntityManagerFactory), service, null)
+				service.injectedServices.services += emfService
 
-				if (service.dto.basedOnEntity) {
-					members +=
-						mapperService.toField(mapperService.attributeName, mapperService.service.cloneWithProxies)
-					members += emfService.toField(emfService.attributeName, emfService.service.cloneWithProxies)
-				}
+//				if (service.dto.basedOnEntity) {
+//					members +=
+//						mapperService.toField(mapperService.attributeName, mapperService.service.cloneWithProxies)
+//					members += emfService.toField(emfService.attributeName, emfService.service.cloneWithProxies)
+//				}
 
 				if (service.injectedServices != null) {
 					for (f : service.injectedServices.services) {
@@ -138,15 +140,15 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 					]
 				}
 
-				// mapper service
-				members +=
-					mapperService.toBindService(mapperService.attributeName, mapperService.service.cloneWithProxies)
-				members += mapperService.toUnbindService(mapperService.attributeName,
-					mapperService.service.cloneWithProxies)
-
-				// entity manager factory
-				members += emfService.toBindService(emfService.attributeName, emfService.service.cloneWithProxies)
-				members += emfService.toUnbindService(emfService.attributeName, emfService.service.cloneWithProxies)
+//				// mapper service
+//				members +=
+//					mapperService.toBindService(mapperService.attributeName, mapperService.service.cloneWithProxies)
+//				members += mapperService.toUnbindService(mapperService.attributeName,
+//					mapperService.service.cloneWithProxies)
+//
+//				// entity manager factory
+//				members += emfService.toBindService(emfService.attributeName, emfService.service.cloneWithProxies)
+//				members += emfService.toUnbindService(emfService.attributeName, emfService.service.cloneWithProxies)
 
 				// other services
 				if (service.injectedServices != null) {
