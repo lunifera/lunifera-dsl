@@ -428,7 +428,7 @@ class DtoModelExtensions extends ModelExtensions {
 		return prop instanceof LReference && !prop.cascading
 	}
 	
-	def dispatch isContainerReference(LDtoAttribute prop) {
+	def dispatch isContainerReference(LDtoAbstractAttribute prop) {
 		return false
 	}
 	
@@ -479,7 +479,7 @@ class DtoModelExtensions extends ModelExtensions {
 	 */
 	def getCrossReferencesToCopy(LDto dto){
 		dto.features.filter[
-			return !it.containerReference && it.crossReference
+			return !it.containerReference && it.isCrossReference
 		]
 	}
 
