@@ -456,6 +456,18 @@ class DtoModelExtensions extends ModelExtensions {
 		ref.type.toMapperTypeReference
 	}
 	
+	def dispatch isIDorUUID(LAttribute prop) {
+		return false
+	}
+	
+	def dispatch isIDorUUID(LDtoAttribute prop) {
+		return prop.id || prop.uuid
+	}
+	
+	def dispatch isIDorUUID(LDtoInheritedAttribute prop) {
+		return prop.inheritedFeature.id || prop.inheritedFeature.uuid
+	}
+	
 	/**
 	 * Returns all containment features that need to be copied.
 	 */

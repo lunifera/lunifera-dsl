@@ -73,7 +73,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				switch f {
 					LAttribute: {
 						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
-							if (f.id || f.uuid) {
+							if (f.isIDorUUID) {
 								idAttribute = f
 								idField = f.toField
 								members += idField
@@ -151,7 +151,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					}
 					body = op.getBody
 				]
-			}
+			} 
 			if (idAttribute != null) {
 				members += idAttribute.toEqualsMethod(it, false, idField)
 				members += idAttribute.toHashCodeMethod(false, idField)
