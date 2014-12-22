@@ -20,8 +20,12 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LLazyResolver;
+import org.lunifera.dsl.semantic.common.types.LOperation;
 import org.lunifera.dsl.semantic.common.types.LType;
+
+import org.lunifera.dsl.semantic.dto.LDtoFeature;
 
 import org.lunifera.dsl.semantic.service.*;
 
@@ -157,6 +161,17 @@ public class LunServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLType(lFreeService);
 				if (result == null) result = caseLAnnotationTarget(lFreeService);
 				if (result == null) result = caseLLazyResolver(lFreeService);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunServicePackage.LSERVICE_OPERATION: {
+				LServiceOperation lServiceOperation = (LServiceOperation)theEObject;
+				T result = caseLServiceOperation(lServiceOperation);
+				if (result == null) result = caseLOperation(lServiceOperation);
+				if (result == null) result = caseLDtoFeature(lServiceOperation);
+				if (result == null) result = caseLFeature(lServiceOperation);
+				if (result == null) result = caseLAnnotationTarget(lServiceOperation);
+				if (result == null) result = caseLLazyResolver(lServiceOperation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -300,6 +315,21 @@ public class LunServiceSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LService Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LService Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLServiceOperation(LServiceOperation object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -356,6 +386,51 @@ public class LunServiceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLClass(LClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LOperation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LOperation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLOperation(LOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LFeature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LFeature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLFeature(LFeature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LDto Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LDto Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLDtoFeature(LDtoFeature object) {
 		return null;
 	}
 

@@ -76,6 +76,7 @@ public class LunServiceFactoryImpl extends EFactoryImpl implements LunServiceFac
 			case LunServicePackage.LSORTABLE_ATTRIBUTES: return createLSortableAttributes();
 			case LunServicePackage.LCHART_SERVICE: return createLChartService();
 			case LunServicePackage.LFREE_SERVICE: return createLFreeService();
+			case LunServicePackage.LSERVICE_OPERATION: return createLServiceOperation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -189,6 +190,16 @@ public class LunServiceFactoryImpl extends EFactoryImpl implements LunServiceFac
 	public LFreeService createLFreeService() {
 		LFreeServiceImpl lFreeService = new LFreeServiceImpl();
 		return lFreeService;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LServiceOperation createLServiceOperation() {
+		LServiceOperationImpl lServiceOperation = new LServiceOperationImpl();
+		return lServiceOperation;
 	}
 
 	/**

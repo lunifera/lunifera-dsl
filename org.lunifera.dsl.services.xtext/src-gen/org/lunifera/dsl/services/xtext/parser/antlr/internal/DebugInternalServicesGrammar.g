@@ -53,32 +53,11 @@ ruleQualifiedName
 (
 ruleInjectedServices
 )
-)(	'get' 
+)(
 (
-(
-ruleXBlockExpression
+ruleOperation
 )
-))?(	'find' 
-(
-(
-ruleXBlockExpression
-)
-))?(	'findWithDelimiter' 
-(
-(
-ruleXBlockExpression
-)
-))?(	'update' 
-(
-(
-ruleXBlockExpression
-)
-))?(	'delete' 
-(
-(
-ruleXBlockExpression
-)
-))?	'}' 
+)*	'}' 
 )
 ;
 
@@ -126,6 +105,46 @@ RULE_ID
 
 
 
+
+
+
+
+
+
+// Rule Operation
+ruleOperation :
+((
+)(
+(
+ruleAnnotationDef
+)
+)*(	'def' 
+(
+(
+ruleJvmTypeReference
+)
+)(
+(
+RULE_ID
+
+)
+)	'(' 
+((
+(
+ruleFullJvmFormalParameter
+)
+)(	', ' 
+(
+(
+ruleFullJvmFormalParameter
+)
+))*)?	')' 
+(
+(
+ruleXExpression
+)
+)))
+;
 
 
 

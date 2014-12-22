@@ -35,7 +35,7 @@ class LServiceModel extends LLazyResolver {
 
 abstract class LService extends LClass {
 	contains LInjectedServices injectedServices
-	contains LOperation[] operations
+	contains LServiceOperation[*] operations
 }
 
 class LInjectedServices extends LLazyResolver {
@@ -54,12 +54,6 @@ class LDTOService extends LService {
 	String persistenceId
 	contains LFilterableAttributes filterable opposite parent
 	contains LSortableAttributes sortable opposite parent
-	 
-	contains XExpression getExpression
-	contains XExpression findExpression
-	contains XExpression findExpressionWithDelimiter
-	contains XExpression updateExpression
-	contains XExpression deleteExpression
 }
 
 class LFilterableAttributes extends LLazyResolver {
@@ -80,4 +74,8 @@ class LFreeService extends LService {
 
 enum LCardinality {
 	ZERO_TO_ONE, ONE_TO_ONE, ZERO_TO_MANY, ONE_TO_MANY 
+}
+
+class LServiceOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LDtoFeature {
+	
 }

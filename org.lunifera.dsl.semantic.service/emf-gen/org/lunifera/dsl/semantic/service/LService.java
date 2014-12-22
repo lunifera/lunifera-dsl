@@ -16,7 +16,6 @@ package org.lunifera.dsl.semantic.service;
 import org.eclipse.emf.common.util.EList;
 
 import org.lunifera.dsl.semantic.common.types.LClass;
-import org.lunifera.dsl.semantic.common.types.LOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +63,7 @@ public interface LService extends LClass {
 
 	/**
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LOperation}.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.service.LServiceOperation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Operations</em>' containment reference list isn't clear,
@@ -76,6 +75,6 @@ public interface LService extends LClass {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<LOperation> getOperations();
+	EList<LServiceOperation> getOperations();
 
 } // LService

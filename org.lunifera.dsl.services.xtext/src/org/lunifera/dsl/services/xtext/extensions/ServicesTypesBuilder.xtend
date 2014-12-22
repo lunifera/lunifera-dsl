@@ -41,7 +41,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 			{@inherit doc}
 		'''
 
-		if (service.dto.basedOnEntity && service.getExpression == null) {
+		if (service.dto.basedOnEntity) {
 			op.body = '''
 			javax.persistence.EntityManager em = emf.createEntityManager();
 			javax.persistence.EntityTransaction txn = em.getTransaction();
@@ -64,8 +64,8 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 			mapper.mapToDTO(dto, entity);
 			return dto;
 			'''
-		} else if(service.getExpression != null){
-			op.body = service.getExpression
+//		} else if(service.getExpression != null){
+//			op.body = service.getExpression
 		} else{
 			op.body = '''throw new UnsupportedOperationException();'''
 		}
@@ -114,7 +114,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 			{@inherit doc}
 		'''
 
-		if (service.dto.basedOnEntity && service.updateExpression == null) {
+		if (service.dto.basedOnEntity) {
 			op.body = '''
 				javax.persistence.EntityManager em = emf.createEntityManager();
 				javax.persistence.EntityTransaction txn = em.getTransaction();
@@ -133,8 +133,8 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 					em.close();
 				}
 			'''
-		} else if(service.updateExpression != null) {
-			op.body = service.updateExpression
+//		} else if(service.updateExpression != null) {
+//			op.body = service.updateExpression
 		} else{
 			op.body = '''throw new UnsupportedOperationException();'''
 		}
@@ -152,7 +152,7 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 			{@inherit doc}
 		'''
 
-		if (service.dto.basedOnEntity && service.deleteExpression == null) {
+		if (service.dto.basedOnEntity) {
 			op.body = '''
 				javax.persistence.EntityManager em = emf.createEntityManager();
 				javax.persistence.EntityTransaction txn = em.getTransaction();
@@ -170,8 +170,8 @@ class ServicesTypesBuilder extends CommonTypesBuilder {
 					em.close();
 				}
 			'''
-		} else if(service.deleteExpression != null) {
-			op.body = service.deleteExpression
+//		} else if(service.deleteExpression != null) {
+//			op.body = service.deleteExpression
 		} else{
 			op.body = '''throw new UnsupportedOperationException();'''
 		}

@@ -72,6 +72,7 @@ import org.lunifera.dsl.semantic.service.LFilterableAttributes;
 import org.lunifera.dsl.semantic.service.LInjectedService;
 import org.lunifera.dsl.semantic.service.LInjectedServices;
 import org.lunifera.dsl.semantic.service.LServiceModel;
+import org.lunifera.dsl.semantic.service.LServiceOperation;
 import org.lunifera.dsl.semantic.service.LSortableAttributes;
 import org.lunifera.dsl.semantic.service.LunServicePackage;
 import org.lunifera.dsl.services.xtext.services.ServicesGrammarGrammarAccess;
@@ -116,6 +117,12 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 			case LunServicePackage.LSERVICE_MODEL:
 				if(context == grammarAccess.getLServiceModelRule()) {
 					sequence_LServiceModel(context, (LServiceModel) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunServicePackage.LSERVICE_OPERATION:
+				if(context == grammarAccess.getOperationRule()) {
+					sequence_Operation(context, (LServiceOperation) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1434,11 +1441,7 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	 *         dto=[LDto|ID] 
 	 *         persistenceId=QualifiedName? 
 	 *         injectedServices=InjectedServices 
-	 *         getExpression=XBlockExpression? 
-	 *         findExpression=XBlockExpression? 
-	 *         findExpressionWithDelimiter=XBlockExpression? 
-	 *         updateExpression=XBlockExpression? 
-	 *         deleteExpression=XBlockExpression?
+	 *         operations+=Operation*
 	 *     )
 	 */
 	protected void sequence_Class(EObject context, LDTOService semanticObject) {
@@ -1487,6 +1490,15 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	 *     packages+=TypedPackage*
 	 */
 	protected void sequence_LServiceModel(EObject context, LServiceModel semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotations+=AnnotationDef* type=JvmTypeReference name=ID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
+	 */
+	protected void sequence_Operation(EObject context, LServiceOperation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

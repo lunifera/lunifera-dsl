@@ -84,25 +84,12 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 				// Constructor
 				members += service.toConstructor()[]
 
-				// create the dto mapper service
-				val LInjectedService mapperService = LunServiceFactory.eINSTANCE.createLInjectedService
-				mapperService.attributeName = "mapper"
-				mapperService.cardinality = LCardinality.ONE_TO_ONE
-				mapperService.service = references.getTypeForName(dtoNamings.toFqnMapperName(service.dto), service, null)
-				service.injectedServices.services += mapperService
-
 				// create the emf service
 				val LInjectedService emfService = LunServiceFactory.eINSTANCE.createLInjectedService
 				emfService.attributeName = "emf"
 				emfService.cardinality = LCardinality.ONE_TO_ONE
 				emfService.service = references.getTypeForName(typeof(EntityManagerFactory), service, null)
 				service.injectedServices.services += emfService
-
-//				if (service.dto.basedOnEntity) {
-//					members +=
-//						mapperService.toField(mapperService.attributeName, mapperService.service.cloneWithProxies)
-//					members += emfService.toField(emfService.attributeName, emfService.service.cloneWithProxies)
-//				}
 
 				if (service.injectedServices != null) {
 					for (f : service.injectedServices.services) {
@@ -124,12 +111,6 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 				}
 
 				//
-				// to methods
-				members += service.toGetMethod
-				members += service.toFindMethod
-				members += service.toFindMethodWithStartindex
-				members += service.toUpdateMethod
-				members += service.toDeleteMethod
 				for (f : service.operations) {
 					members += f.toMethod(f.toName, f.getType) [
 						documentation = f.getDocumentation
@@ -139,16 +120,6 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 						body = f.getBody
 					]
 				}
-
-//				// mapper service
-//				members +=
-//					mapperService.toBindService(mapperService.attributeName, mapperService.service.cloneWithProxies)
-//				members += mapperService.toUnbindService(mapperService.attributeName,
-//					mapperService.service.cloneWithProxies)
-//
-//				// entity manager factory
-//				members += emfService.toBindService(emfService.attributeName, emfService.service.cloneWithProxies)
-//				members += emfService.toUnbindService(emfService.attributeName, emfService.service.cloneWithProxies)
 
 				// other services
 				if (service.injectedServices != null) {
@@ -174,13 +145,6 @@ class ServicesGrammarJvmModelInferrer extends AbstractModelInferrer {
 					}
 				}
 			}
-		//
-		// Methods.
-		// 
-		//			for (op : service.getOperations) {
-		//			}
 		]
-
-	//		service.inferMapper(acceptor, isPrelinkingPhase)
 	}
 }
