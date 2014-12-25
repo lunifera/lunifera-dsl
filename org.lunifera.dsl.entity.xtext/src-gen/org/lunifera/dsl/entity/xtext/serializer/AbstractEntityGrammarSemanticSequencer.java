@@ -1513,8 +1513,8 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanAttribute_2_1_0 
 	 *         (
-	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATEABLEID) | 
-	 *             ((id?='id' | version?='version')? type=[LScalarType|ID] multiplicity=Multiplicity? name=TRANSLATEABLEID)
+	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID) | 
+	 *             ((id?='id' | version?='version')? type=[LScalarType|ID] multiplicity=Multiplicity? name=TRANSLATABLEID)
 	 *         )
 	 *     )
 	 */
@@ -1536,7 +1536,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanReference_2_0_0 
-	 *         (cascading?='cascade'? type=[LBean|ID] multiplicity=Multiplicity? name=TRANSLATEABLEID opposite=[LBeanReference|LFQN]?)
+	 *         (cascading?='cascade'? type=[LBean|ID] multiplicity=Multiplicity? name=TRANSLATABLEID opposite=[LBeanReference|LFQN]?)
 	 *     )
 	 */
 	protected void sequence_BeanFeature(EObject context, LBeanReference semanticObject) {
@@ -1548,7 +1548,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=BeanFeature_LOperation_2_2_0 
-	 *         (type=JvmTypeReference name=TRANSLATEABLEID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
+	 *         (type=JvmTypeReference name=TRANSLATABLEID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
 	 *     )
 	 */
 	protected void sequence_BeanFeature(EObject context, LOperation semanticObject) {
@@ -1558,7 +1558,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Class_LBean_2_2_0 name=TRANSLATEABLEID superType=[LBean|ID]? features+=BeanFeature*)
+	 *     (annotationInfo=Class_LBean_2_2_0 name=TRANSLATABLEID superType=[LBean|ID]? features+=BeanFeature*)
 	 */
 	protected void sequence_Class(EObject context, LBean semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1584,7 +1584,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *                 (historized?='historized' | (timedependent?='timedependent' timedependentDateType=LHistorizedDateType?))? 
 	 *                 cacheable?='cacheable'?
 	 *             ) 
-	 *             name=TRANSLATEABLEID 
+	 *             name=TRANSLATABLEID 
 	 *             superType=[LEntity|ID]? 
 	 *             persistenceInfo=EntityPersistenceInfo 
 	 *             inheritanceStrategy=EntityInheritanceStrategy? 
@@ -1626,13 +1626,13 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (
 	 *         annotationInfo=EntityFeature_LEntityAttribute_2_1_0 
 	 *         (
-	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATEABLEID) | 
-	 *             (derived?='derived' domainDescription?='domainDescription'? type=[LScalarType|ID] name=TRANSLATEABLEID derivedGetterExpression=XBlockExpression) | 
+	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID) | 
+	 *             (derived?='derived' domainDescription?='domainDescription'? type=[LScalarType|ID] name=TRANSLATABLEID derivedGetterExpression=XBlockExpression) | 
 	 *             (
 	 *                 (id?='id' | uuid?='uuid' | version?='version' | domainDescription?='domainDescription' | domainKey?='domainKey')? 
 	 *                 type=[LScalarType|ID] 
 	 *                 multiplicity=Multiplicity? 
-	 *                 name=TRANSLATEABLEID 
+	 *                 name=TRANSLATABLEID 
 	 *                 persistenceInfo=ColumnPersistenceInfo?
 	 *             )
 	 *         )
@@ -1660,7 +1660,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *             cascading?='cascade'? 
 	 *             type=[LEntity|ID] 
 	 *             multiplicity=Multiplicity? 
-	 *             name=TRANSLATEABLEID 
+	 *             name=TRANSLATABLEID 
 	 *             persistenceInfo=ColumnPersistenceInfo? 
 	 *             opposite=[LEntityReference|LFQN]?
 	 *         )
@@ -1675,7 +1675,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=EntityFeature_LOperation_2_2_0 
-	 *         (type=JvmTypeReference name=TRANSLATEABLEID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
+	 *         (type=JvmTypeReference name=TRANSLATABLEID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
 	 *     )
 	 */
 	protected void sequence_EntityFeature(EObject context, LOperation semanticObject) {
