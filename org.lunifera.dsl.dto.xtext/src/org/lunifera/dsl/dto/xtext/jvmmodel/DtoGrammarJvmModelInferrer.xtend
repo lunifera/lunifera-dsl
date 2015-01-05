@@ -32,6 +32,7 @@ import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
+import org.lunifera.dsl.semantic.entity.LBean
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -72,7 +73,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 				switch f {
 					LAttribute: {
 						if (!f.derived && f.fullyQualifiedName != null && !f.fullyQualifiedName.toString.empty) {
-							if (f.id || f.uuid) {
+							if (f.isIDorUUID) {
 								idAttribute = f
 								idField = f.toField
 								members += idField
@@ -150,7 +151,7 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					}
 					body = op.getBody
 				]
-			}
+			} 
 			if (idAttribute != null) {
 				members += idAttribute.toEqualsMethod(it, false, idField)
 				members += idAttribute.toHashCodeMethod(false, idField)
@@ -172,6 +173,10 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 							
 							if (context == null) {
 								throw new IllegalArgumentException("Context must not be null!");
+							}
+							
+							if(context.isMaxLevel()){
+								return null;
 							}
 							
 							// if context contains a copied instance of this object
@@ -213,19 +218,51 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 							throw new IllegalArgumentException("Context must not be null!");
 						}
 						
-«««						«IF dto.superType != null»
-«««						super.copyContainments(dto, newDto, context);
-«««						«ENDIF»
-«««						
-«««						«FOR att : dto.attributes»
-«««						newDto.«att.toSetterName»(«att.toGetterName»());
-«««						«ENDFOR»
-«««						
-«««						«FOR ref : dto.containmentReferencesToCopy»
-«««						if(«ref.toGetterName»() != null) {
-«««							newDto.«ref.toSetterName»(«ref.toGetterName»().copy());
-«««						}
-«««						«ENDFOR»
+						«IF dto.superType != null»
+						super.copyContainments(dto, newDto, context);
+						«ENDIF»
+						
+						// copy attributes and beans (beans if derived from entity model)
+						«FOR att : dto.attributesToCopy»
+							«IF att.internalIsToMany»
+								«IF att.toRawType instanceof LBean»
+								// copy list of «att.toName» dtos
+								for(«att.toRawType.toDTOBeanFullyQualifiedName» _dto : «att.toGetterName»()) {
+									newDto.«att.toCollectionAdderName»(_dto.copy(context));
+								}
+								«ELSE»
+								// copy list of «att.toName»
+								for(«att.toRawType.toName» _att : «att.toGetterName»()) {
+									newDto.«att.toCollectionAdderName»(_att);
+								}
+								«ENDIF»
+							«ELSE»
+								«IF att.toRawType instanceof LBean»
+								// copy dto «att.toName»
+								if(«att.toGetterName»() != null) {
+									newDto.«att.toSetterName»(«att.toGetterName»().copy(context));
+								}
+								«ELSE»
+								// copy «att.toName»
+								newDto.«att.toSetterName»(«att.toGetterName»());
+								«ENDIF»
+							«ENDIF»
+						«ENDFOR»
+						
+						// copy containment references (cascading is true)
+						«FOR ref : dto.containmentReferencesToCopy»
+							«IF ref.internalIsToMany»
+								// copy list of «ref.toName» dtos
+								for(«ref.toRawType.toDTOBeanFullyQualifiedName» _dto : «ref.toGetterName»()) {
+									newDto.«ref.toCollectionAdderName»(_dto.copy(context));
+								}
+							«ELSE»
+								// copy dto «ref.toName»
+								if(«ref.toGetterName»() != null) {
+									newDto.«ref.toSetterName»(«ref.toGetterName»().copy(context));
+								}
+							«ENDIF»
+						«ENDFOR»
 					'''
 				]
 
@@ -234,15 +271,30 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
 					parameters += dto.toParameter("context", newTypeRef(typeof(Context).name, null))
 					body = '''
-«««						checkDisposed();
-«««						
-«««						if (context == null) {
-«««							throw new IllegalArgumentException("Context must not be null!");
-«««						}
-«««						
-«««						«IF dto.superType != null»
-«««						super.copyCrossReferences(dto, newDto, context);
-«««						«ENDIF»
+						checkDisposed();
+						
+						if (context == null) {
+							throw new IllegalArgumentException("Context must not be null!");
+						}
+						
+						«IF dto.superType != null»
+						super.copyCrossReferences(dto, newDto, context);
+						«ENDIF»
+						
+						// copy cross references (cascading is false)
+						«FOR ref : dto.crossReferencesToCopy»
+							«IF ref.internalIsToMany»
+								// copy list of «ref.toName» dtos
+								for(«ref.toRawType.toDTOBeanFullyQualifiedName» _dto : «ref.toGetterName»()) {
+									newDto.«ref.toCollectionAdderName»(_dto.copy(context));
+								}
+							«ELSE»
+								// copy dto «ref.toName»
+								if(«ref.toGetterName»() != null) {
+									newDto.«ref.toSetterName»(«ref.toGetterName»().copy(context));
+								}
+							«ENDIF»
+						«ENDFOR»
 					'''
 				]
 		]

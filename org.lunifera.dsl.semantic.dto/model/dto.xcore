@@ -19,6 +19,7 @@
 @Ecore(rootPackage="dto")
 package org.lunifera.dsl.semantic.dto
 
+import xcore.lang.GenModel
 import java.util.List
 import org.eclipse.xtext.xbase.XExpression
 import org.lunifera.dsl.semantic.common.types.FeaturesList

@@ -20,14 +20,14 @@ ruleClass :
 				)?
 			)? |
 			'cacheable'?
-		)* 'entity' ruleTRANSLATEABLEID (
+		)* 'entity' ruleTRANSLATABLEID (
 			'extends' RULE_ID
 		)? '{' ruleEntityPersistenceInfo ruleEntityInheritanceStrategy?
 		ruleEntityFeature* ruleIndex* '}' |
 		'mapped superclass' (
 			'extends' RULE_ID
 		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' |
-		'bean' ruleTRANSLATEABLEID (
+		'bean' ruleTRANSLATABLEID (
 			'extends' RULE_ID
 		)? '{' ruleBeanFeature* '}'
 	)
@@ -61,14 +61,14 @@ ruleColumnPersistenceInfo :
 ruleEntityFeature :
 	ruleAnnotationDef* (
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATEABLEID
+			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID
 			ruleColumnPersistenceInfo? (
 				'opposite' ruleLFQN
 			)?
 		) ';' |
 		(
-			'transient' RULE_ID ruleTRANSLATEABLEID ';' |
-			'derived' 'domainDescription'? RULE_ID ruleTRANSLATEABLEID
+			'transient' RULE_ID ruleTRANSLATABLEID ';' |
+			'derived' 'domainDescription'? RULE_ID ruleTRANSLATABLEID
 			ruleXBlockExpression |
 			(
 				'var' |
@@ -77,10 +77,10 @@ ruleEntityFeature :
 				'version' |
 				'domainDescription' |
 				'domainKey'
-			) RULE_ID ruleMultiplicity? ruleTRANSLATEABLEID ruleColumnPersistenceInfo?
+			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ruleColumnPersistenceInfo?
 			';'
 		) |
-		'def' ruleJvmTypeReference ruleTRANSLATEABLEID '(' (
+		'def' ruleJvmTypeReference ruleTRANSLATABLEID '(' (
 			ruleFullJvmFormalParameter (
 				', ' ruleFullJvmFormalParameter
 			)*
@@ -92,19 +92,19 @@ ruleEntityFeature :
 ruleBeanFeature :
 	ruleAnnotationDef* (
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATEABLEID (
+			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
 				'opposite' ruleLFQN
 			)?
 		) ';' |
 		(
-			'transient' RULE_ID ruleTRANSLATEABLEID |
+			'transient' RULE_ID ruleTRANSLATABLEID |
 			(
 				'var' |
 				'id' |
 				'version'
-			) RULE_ID ruleMultiplicity? ruleTRANSLATEABLEID ';'
+			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ';'
 		) |
-		'def' ruleJvmTypeReference ruleTRANSLATEABLEID '(' (
+		'def' ruleJvmTypeReference ruleTRANSLATABLEID '(' (
 			ruleFullJvmFormalParameter (
 				',' ruleFullJvmFormalParameter
 			)*
@@ -148,8 +148,8 @@ ruleTablePerSubclassStrategy :
 	)* '}'
 ;
 
-// Rule TRANSLATEABLEID
-ruleTRANSLATEABLEID :
+// Rule TRANSLATABLEID
+ruleTRANSLATABLEID :
 	ruleValidIDWithKeywords
 ;
 

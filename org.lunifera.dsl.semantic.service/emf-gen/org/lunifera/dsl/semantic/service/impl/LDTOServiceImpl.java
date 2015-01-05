@@ -23,8 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
-import org.eclipse.xtext.xbase.XExpression;
-
 import org.lunifera.dsl.semantic.dto.LDto;
 
 import org.lunifera.dsl.semantic.service.LDTOService;
@@ -44,11 +42,6 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getPersistenceId <em>Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getFilterable <em>Filterable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getSortable <em>Sortable</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getGetExpression <em>Get Expression</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getFindExpression <em>Find Expression</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getFindExpressionWithDelimiter <em>Find Expression With Delimiter</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getUpdateExpression <em>Update Expression</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getDeleteExpression <em>Delete Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,56 +107,6 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 	 * @ordered
 	 */
 	protected LSortableAttributes sortable;
-
-	/**
-	 * The cached value of the '{@link #getGetExpression() <em>Get Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGetExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected XExpression getExpression;
-
-	/**
-	 * The cached value of the '{@link #getFindExpression() <em>Find Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFindExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected XExpression findExpression;
-
-	/**
-	 * The cached value of the '{@link #getFindExpressionWithDelimiter() <em>Find Expression With Delimiter</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFindExpressionWithDelimiter()
-	 * @generated
-	 * @ordered
-	 */
-	protected XExpression findExpressionWithDelimiter;
-
-	/**
-	 * The cached value of the '{@link #getUpdateExpression() <em>Update Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpdateExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected XExpression updateExpression;
-
-	/**
-	 * The cached value of the '{@link #getDeleteExpression() <em>Delete Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeleteExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected XExpression deleteExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -377,221 +320,6 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getGetExpression() {
-		return getExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetGetExpression(XExpression newGetExpression, NotificationChain msgs) {
-		XExpression oldGetExpression = getExpression;
-		getExpression = newGetExpression;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__GET_EXPRESSION, oldGetExpression, newGetExpression);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setGetExpression(XExpression newGetExpression) {
-		if (newGetExpression != getExpression) {
-			NotificationChain msgs = null;
-			if (getExpression != null)
-				msgs = ((InternalEObject)getExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__GET_EXPRESSION, null, msgs);
-			if (newGetExpression != null)
-				msgs = ((InternalEObject)newGetExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__GET_EXPRESSION, null, msgs);
-			msgs = basicSetGetExpression(newGetExpression, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__GET_EXPRESSION, newGetExpression, newGetExpression));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XExpression getFindExpression() {
-		return findExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetFindExpression(XExpression newFindExpression, NotificationChain msgs) {
-		XExpression oldFindExpression = findExpression;
-		findExpression = newFindExpression;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION, oldFindExpression, newFindExpression);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFindExpression(XExpression newFindExpression) {
-		if (newFindExpression != findExpression) {
-			NotificationChain msgs = null;
-			if (findExpression != null)
-				msgs = ((InternalEObject)findExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION, null, msgs);
-			if (newFindExpression != null)
-				msgs = ((InternalEObject)newFindExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION, null, msgs);
-			msgs = basicSetFindExpression(newFindExpression, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION, newFindExpression, newFindExpression));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XExpression getFindExpressionWithDelimiter() {
-		return findExpressionWithDelimiter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetFindExpressionWithDelimiter(XExpression newFindExpressionWithDelimiter, NotificationChain msgs) {
-		XExpression oldFindExpressionWithDelimiter = findExpressionWithDelimiter;
-		findExpressionWithDelimiter = newFindExpressionWithDelimiter;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER, oldFindExpressionWithDelimiter, newFindExpressionWithDelimiter);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFindExpressionWithDelimiter(XExpression newFindExpressionWithDelimiter) {
-		if (newFindExpressionWithDelimiter != findExpressionWithDelimiter) {
-			NotificationChain msgs = null;
-			if (findExpressionWithDelimiter != null)
-				msgs = ((InternalEObject)findExpressionWithDelimiter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER, null, msgs);
-			if (newFindExpressionWithDelimiter != null)
-				msgs = ((InternalEObject)newFindExpressionWithDelimiter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER, null, msgs);
-			msgs = basicSetFindExpressionWithDelimiter(newFindExpressionWithDelimiter, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER, newFindExpressionWithDelimiter, newFindExpressionWithDelimiter));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XExpression getUpdateExpression() {
-		return updateExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetUpdateExpression(XExpression newUpdateExpression, NotificationChain msgs) {
-		XExpression oldUpdateExpression = updateExpression;
-		updateExpression = newUpdateExpression;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION, oldUpdateExpression, newUpdateExpression);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUpdateExpression(XExpression newUpdateExpression) {
-		if (newUpdateExpression != updateExpression) {
-			NotificationChain msgs = null;
-			if (updateExpression != null)
-				msgs = ((InternalEObject)updateExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION, null, msgs);
-			if (newUpdateExpression != null)
-				msgs = ((InternalEObject)newUpdateExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION, null, msgs);
-			msgs = basicSetUpdateExpression(newUpdateExpression, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION, newUpdateExpression, newUpdateExpression));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XExpression getDeleteExpression() {
-		return deleteExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDeleteExpression(XExpression newDeleteExpression, NotificationChain msgs) {
-		XExpression oldDeleteExpression = deleteExpression;
-		deleteExpression = newDeleteExpression;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION, oldDeleteExpression, newDeleteExpression);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDeleteExpression(XExpression newDeleteExpression) {
-		if (newDeleteExpression != deleteExpression) {
-			NotificationChain msgs = null;
-			if (deleteExpression != null)
-				msgs = ((InternalEObject)deleteExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION, null, msgs);
-			if (newDeleteExpression != null)
-				msgs = ((InternalEObject)newDeleteExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION, null, msgs);
-			msgs = basicSetDeleteExpression(newDeleteExpression, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION, newDeleteExpression, newDeleteExpression));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -621,16 +349,6 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 				return basicSetFilterable(null, msgs);
 			case LunServicePackage.LDTO_SERVICE__SORTABLE:
 				return basicSetSortable(null, msgs);
-			case LunServicePackage.LDTO_SERVICE__GET_EXPRESSION:
-				return basicSetGetExpression(null, msgs);
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION:
-				return basicSetFindExpression(null, msgs);
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER:
-				return basicSetFindExpressionWithDelimiter(null, msgs);
-			case LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION:
-				return basicSetUpdateExpression(null, msgs);
-			case LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION:
-				return basicSetDeleteExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -654,16 +372,6 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 				return getFilterable();
 			case LunServicePackage.LDTO_SERVICE__SORTABLE:
 				return getSortable();
-			case LunServicePackage.LDTO_SERVICE__GET_EXPRESSION:
-				return getGetExpression();
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION:
-				return getFindExpression();
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER:
-				return getFindExpressionWithDelimiter();
-			case LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION:
-				return getUpdateExpression();
-			case LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION:
-				return getDeleteExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -690,21 +398,6 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 				return;
 			case LunServicePackage.LDTO_SERVICE__SORTABLE:
 				setSortable((LSortableAttributes)newValue);
-				return;
-			case LunServicePackage.LDTO_SERVICE__GET_EXPRESSION:
-				setGetExpression((XExpression)newValue);
-				return;
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION:
-				setFindExpression((XExpression)newValue);
-				return;
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER:
-				setFindExpressionWithDelimiter((XExpression)newValue);
-				return;
-			case LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION:
-				setUpdateExpression((XExpression)newValue);
-				return;
-			case LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION:
-				setDeleteExpression((XExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -733,21 +426,6 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 			case LunServicePackage.LDTO_SERVICE__SORTABLE:
 				setSortable((LSortableAttributes)null);
 				return;
-			case LunServicePackage.LDTO_SERVICE__GET_EXPRESSION:
-				setGetExpression((XExpression)null);
-				return;
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION:
-				setFindExpression((XExpression)null);
-				return;
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER:
-				setFindExpressionWithDelimiter((XExpression)null);
-				return;
-			case LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION:
-				setUpdateExpression((XExpression)null);
-				return;
-			case LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION:
-				setDeleteExpression((XExpression)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -770,16 +448,6 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 				return filterable != null;
 			case LunServicePackage.LDTO_SERVICE__SORTABLE:
 				return sortable != null;
-			case LunServicePackage.LDTO_SERVICE__GET_EXPRESSION:
-				return getExpression != null;
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION:
-				return findExpression != null;
-			case LunServicePackage.LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER:
-				return findExpressionWithDelimiter != null;
-			case LunServicePackage.LDTO_SERVICE__UPDATE_EXPRESSION:
-				return updateExpression != null;
-			case LunServicePackage.LDTO_SERVICE__DELETE_EXPRESSION:
-				return deleteExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -1,5 +1,5 @@
-@xcore.lang.GenModel(fileExtensions="typesmodel", editDirectory="/org.lunifera.dsl.semantic.common.edit/src", editorDirectory="/org.lunifera.dsl.semantic.common.editor/src", extensibleProviderFactory="true")
-@xcore.lang.GenModel(modelName="Types")
+@GenModel(fileExtensions="typesmodel", editDirectory="/org.lunifera.dsl.semantic.common.edit/src", editorDirectory="/org.lunifera.dsl.semantic.common.editor/src", extensibleProviderFactory="true")
+@GenModel(modelName="Types")
 @GenModel(prefix="LunTypes")
 @GenModel(copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
  All rights reserved. This program and the accompanying materials 
@@ -17,6 +17,7 @@
 @Ecore(rootPackage="types")
 package org.lunifera.dsl.semantic.common.types
 
+import xcore.lang.GenModel
 import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.eclipse.xtext.common.types.JvmTypeReference

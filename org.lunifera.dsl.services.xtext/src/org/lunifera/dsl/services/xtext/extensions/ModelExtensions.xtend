@@ -397,12 +397,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def boolean basedOnEntity(LDto dto) {
-		dto.wrappedType != null
+		dto.wrappedType != null && dto.wrappedType instanceof LEntity
 	}
-	
-	def Iterable<LDtoAbstractAttribute> collectAllAttributes(LDto dto){
-		return dto.allFeatures.filter[it instanceof LDtoAbstractAttribute].map[
-			it as LDtoAbstractAttribute]
+
+	def Iterable<LDtoAbstractAttribute> collectAllAttributes(LDto dto) {
+		return dto.allFeatures.filter[it instanceof LDtoAbstractAttribute].map[it as LDtoAbstractAttribute]
 	}
 
 	def LAttribute idAttribute(LDto dto) {

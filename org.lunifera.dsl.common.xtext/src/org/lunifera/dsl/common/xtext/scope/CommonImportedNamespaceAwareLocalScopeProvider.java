@@ -26,7 +26,7 @@ import com.google.inject.Inject;
 
 public class CommonImportedNamespaceAwareLocalScopeProvider extends
 		FastImportedNamespaceAwareLocalScopeProvider {
-
+ 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
 	@Inject

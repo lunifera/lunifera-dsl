@@ -28,12 +28,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.lunifera.dsl.semantic.common.types.LOperation;
-
 import org.lunifera.dsl.semantic.common.types.impl.LClassImpl;
 
 import org.lunifera.dsl.semantic.service.LInjectedServices;
 import org.lunifera.dsl.semantic.service.LService;
+import org.lunifera.dsl.semantic.service.LServiceOperation;
 import org.lunifera.dsl.semantic.service.LunServicePackage;
 
 /**
@@ -69,7 +68,7 @@ public abstract class LServiceImpl extends LClassImpl implements LService {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<LOperation> operations;
+	protected EList<LServiceOperation> operations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,9 +137,9 @@ public abstract class LServiceImpl extends LClassImpl implements LService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<LOperation> getOperations() {
+	public EList<LServiceOperation> getOperations() {
 		if (operations == null) {
-			operations = new EObjectContainmentEList<LOperation>(LOperation.class, this, LunServicePackage.LSERVICE__OPERATIONS);
+			operations = new EObjectContainmentEList<LServiceOperation>(LServiceOperation.class, this, LunServicePackage.LSERVICE__OPERATIONS);
 		}
 		return operations;
 	}
@@ -191,7 +190,7 @@ public abstract class LServiceImpl extends LClassImpl implements LService {
 				return;
 			case LunServicePackage.LSERVICE__OPERATIONS:
 				getOperations().clear();
-				getOperations().addAll((Collection<? extends LOperation>)newValue);
+				getOperations().addAll((Collection<? extends LServiceOperation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

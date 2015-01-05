@@ -428,7 +428,7 @@ class DtoModelExtensions extends ModelExtensions {
 		return prop instanceof LReference && !prop.cascading
 	}
 	
-	def dispatch isContainerReference(LDtoAttribute prop) {
+	def dispatch isContainerReference(LDtoAbstractAttribute prop) {
 		return false
 	}
 	
@@ -456,6 +456,18 @@ class DtoModelExtensions extends ModelExtensions {
 		ref.type.toMapperTypeReference
 	}
 	
+	def dispatch isIDorUUID(LAttribute prop) {
+		return false
+	}
+	
+	def dispatch isIDorUUID(LDtoAttribute prop) {
+		return prop.id || prop.uuid
+	}
+	
+	def dispatch isIDorUUID(LDtoInheritedAttribute prop) {
+		return prop.inheritedFeature.id || prop.inheritedFeature.uuid
+	}
+	
 	/**
 	 * Returns all containment features that need to be copied.
 	 */
@@ -479,7 +491,7 @@ class DtoModelExtensions extends ModelExtensions {
 	 */
 	def getCrossReferencesToCopy(LDto dto){
 		dto.features.filter[
-			return !it.containerReference && it.crossReference
+			return !it.containerReference && it.isCrossReference
 		]
 	}
 
