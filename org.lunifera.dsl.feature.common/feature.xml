@@ -2,7 +2,7 @@
 <feature
       id="org.lunifera.dsl.feature.common"
       label="%featureName"
-      version="0.7.4"
+      version="0.8.0"
       provider-name="%providerName"
       plugin="org.lunifera.dsl.common.xtext.ui">
 
@@ -32,6 +32,27 @@
          
    <plugin
          id="org.lunifera.dsl.datatype.xtext.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.lunifera.dsl.xtext.lazyresolver"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.dsl.xtext.lazyresolver.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.lunifera.dsl.xtext.lazyresolver.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

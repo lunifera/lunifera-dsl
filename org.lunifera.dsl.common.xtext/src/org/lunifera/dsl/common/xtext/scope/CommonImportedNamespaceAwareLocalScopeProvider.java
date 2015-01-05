@@ -17,16 +17,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
-import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.xtext.lazyresolver.scoping.FastImportedNamespaceAwareLocalScopeProvider;
 
 import com.google.inject.Inject;
 
 public class CommonImportedNamespaceAwareLocalScopeProvider extends
-		ImportedNamespaceAwareLocalScopeProvider {
-
+		FastImportedNamespaceAwareLocalScopeProvider {
+ 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
 	@Inject
@@ -35,10 +35,10 @@ public class CommonImportedNamespaceAwareLocalScopeProvider extends
 	@Override
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
 		List<ImportNormalizer> temp = new ArrayList<ImportNormalizer>();
-		temp.add(new ImportNormalizer(qualifiedNameConverter.toQualifiedName("java.lang"), true,
-				ignoreCase));
-		temp.add(new ImportNormalizer(qualifiedNameConverter.toQualifiedName("java.util"), true,
-				ignoreCase));
+		temp.add(new ImportNormalizer(qualifiedNameConverter
+				.toQualifiedName("java.lang"), true, ignoreCase));
+		temp.add(new ImportNormalizer(qualifiedNameConverter
+				.toQualifiedName("java.util"), true, ignoreCase));
 		return temp;
 	}
 

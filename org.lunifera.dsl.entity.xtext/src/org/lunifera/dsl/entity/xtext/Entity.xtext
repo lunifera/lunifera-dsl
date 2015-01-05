@@ -30,7 +30,7 @@ Class returns LClass:
 	(timedependent?='timedependent' ('(' timedependentDateType=LHistorizedDateType ')')?)
 	)? &
 	(cacheable?="cacheable")?)
-	'entity' name=ValidIDWithKeywords ('extends' superType=[entity::LEntity])?
+	'entity' name=TRANSLATABLEID ('extends' superType=[entity::LEntity])?
 	'{'
 	(persistenceInfo=EntityPersistenceInfo)
 	(inheritanceStrategy=EntityInheritanceStrategy)?
@@ -47,7 +47,7 @@ Class returns LClass:
 	'}'
 	|
 	{entity::LBean.annotationInfo=current}
-	'bean' name=ValidIDWithKeywords ('extends' superType=[entity::LBean])?
+	'bean' name=TRANSLATABLEID ('extends' superType=[entity::LBean])?
 	'{'
 	features+=BeanFeature*
 	'}');
@@ -71,20 +71,22 @@ EntityFeature returns entity::LEntityFeature:
 	{entity::LEntityFeature}
 	annotations+=AnnotationDef*
 	(({entity::LEntityReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
 	(persistenceInfo=ColumnPersistenceInfo)?
 	('opposite' opposite=[entity::LEntityReference|LFQN])?)
 	';')
 	|
 	({entity::LEntityAttribute.annotationInfo=current}
-	((transient?='transient' type=[LScalarType] name=ValidIDWithKeywords ';')
+	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID ';')
 	|
-	(('var' | id?='id' | uuid?='uuid' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
-	name=ValidIDWithKeywords (persistenceInfo=ColumnPersistenceInfo)?
+	(derived?='derived' (domainDescription?='domainDescription')? type=[LScalarType] name=TRANSLATABLEID derivedGetterExpression=XBlockExpression)
+	|
+	(('var' | id?='id' | uuid?='uuid' | version?="version" | domainDescription?='domainDescription' | domainKey?='domainKey') type=[LScalarType] multiplicity=Multiplicity?
+	name=TRANSLATABLEID (persistenceInfo=ColumnPersistenceInfo)?
 	';')))
 	|
 	({entity::LOperation.annotationInfo=current}
-	('def' type=JvmTypeReference name=ValidIDWithKeywords
+	('def' type=JvmTypeReference name=TRANSLATABLEID
 	'(' (params+=FullJvmFormalParameter (', ' params+=FullJvmFormalParameter)*)? ')'
 	body=XExpression)));
 
@@ -92,19 +94,19 @@ BeanFeature returns entity::LBeanFeature:
 	{entity::LBeanFeature}
 	annotations+=AnnotationDef*
 	(({entity::LBeanReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[entity::LBean] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	('ref' (cascading?='cascade')? type=[entity::LBean] multiplicity=Multiplicity? name=TRANSLATABLEID
 	('opposite' opposite=[entity::LBeanReference|LFQN])?)
 	';')
 	|
 	({entity::LBeanAttribute.annotationInfo=current}
-	((transient?='transient' type=[LScalarType] name=ValidIDWithKeywords)
+	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID)
 	|
 	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
-	name=ValidIDWithKeywords
+	name=TRANSLATABLEID
 	';')))
 	|
 	({entity::LOperation.annotationInfo=current}
-	('def' type=JvmTypeReference name=ValidIDWithKeywords
+	('def' type=JvmTypeReference name=TRANSLATABLEID
 	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
 	body=XExpression)));
 
@@ -129,4 +131,12 @@ enum DiscriminatorType returns entity::LDiscriminatorType:
 
 enum LHistorizedDateType returns LDateType:
 	DATE="DATE" | TIMESTAMP="TIMESTAMP";
+
+TRANSLATABLEID:
+	ValidIDWithKeywords
+;
+
+TRANSLATABLESTRING:
+	STRING
+;
 	

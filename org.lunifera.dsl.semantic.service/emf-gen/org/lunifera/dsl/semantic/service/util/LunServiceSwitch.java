@@ -20,7 +20,12 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LFeature;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
+import org.lunifera.dsl.semantic.common.types.LOperation;
 import org.lunifera.dsl.semantic.common.types.LType;
+
+import org.lunifera.dsl.semantic.dto.LDtoFeature;
 
 import org.lunifera.dsl.semantic.service.*;
 
@@ -84,6 +89,7 @@ public class LunServiceSwitch<T> extends Switch<T> {
 			case LunServicePackage.LSERVICE_MODEL: {
 				LServiceModel lServiceModel = (LServiceModel)theEObject;
 				T result = caseLServiceModel(lServiceModel);
+				if (result == null) result = caseLLazyResolver(lServiceModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -93,18 +99,21 @@ public class LunServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLClass(lService);
 				if (result == null) result = caseLType(lService);
 				if (result == null) result = caseLAnnotationTarget(lService);
+				if (result == null) result = caseLLazyResolver(lService);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunServicePackage.LINJECTED_SERVICES: {
 				LInjectedServices lInjectedServices = (LInjectedServices)theEObject;
 				T result = caseLInjectedServices(lInjectedServices);
+				if (result == null) result = caseLLazyResolver(lInjectedServices);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunServicePackage.LINJECTED_SERVICE: {
 				LInjectedService lInjectedService = (LInjectedService)theEObject;
 				T result = caseLInjectedService(lInjectedService);
+				if (result == null) result = caseLLazyResolver(lInjectedService);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,18 +124,21 @@ public class LunServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLClass(ldtoService);
 				if (result == null) result = caseLType(ldtoService);
 				if (result == null) result = caseLAnnotationTarget(ldtoService);
+				if (result == null) result = caseLLazyResolver(ldtoService);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunServicePackage.LFILTERABLE_ATTRIBUTES: {
 				LFilterableAttributes lFilterableAttributes = (LFilterableAttributes)theEObject;
 				T result = caseLFilterableAttributes(lFilterableAttributes);
+				if (result == null) result = caseLLazyResolver(lFilterableAttributes);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunServicePackage.LSORTABLE_ATTRIBUTES: {
 				LSortableAttributes lSortableAttributes = (LSortableAttributes)theEObject;
 				T result = caseLSortableAttributes(lSortableAttributes);
+				if (result == null) result = caseLLazyResolver(lSortableAttributes);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -137,6 +149,7 @@ public class LunServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLClass(lChartService);
 				if (result == null) result = caseLType(lChartService);
 				if (result == null) result = caseLAnnotationTarget(lChartService);
+				if (result == null) result = caseLLazyResolver(lChartService);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -147,6 +160,18 @@ public class LunServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLClass(lFreeService);
 				if (result == null) result = caseLType(lFreeService);
 				if (result == null) result = caseLAnnotationTarget(lFreeService);
+				if (result == null) result = caseLLazyResolver(lFreeService);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunServicePackage.LSERVICE_OPERATION: {
+				LServiceOperation lServiceOperation = (LServiceOperation)theEObject;
+				T result = caseLServiceOperation(lServiceOperation);
+				if (result == null) result = caseLOperation(lServiceOperation);
+				if (result == null) result = caseLDtoFeature(lServiceOperation);
+				if (result == null) result = caseLFeature(lServiceOperation);
+				if (result == null) result = caseLAnnotationTarget(lServiceOperation);
+				if (result == null) result = caseLLazyResolver(lServiceOperation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -290,6 +315,36 @@ public class LunServiceSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LService Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LService Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLServiceOperation(LServiceOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLLazyResolver(LLazyResolver object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>LAnnotation Target</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -331,6 +386,51 @@ public class LunServiceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLClass(LClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LOperation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LOperation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLOperation(LOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LFeature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LFeature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLFeature(LFeature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LDto Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LDto Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLDtoFeature(LDtoFeature object) {
 		return null;
 	}
 

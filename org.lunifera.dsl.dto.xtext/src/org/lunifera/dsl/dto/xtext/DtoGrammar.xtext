@@ -8,10 +8,7 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-
 grammar org.lunifera.dsl.dto.xtext.DtoGrammar with org.lunifera.dsl.common.xtext.CommonGrammar
-
-
 
 import "http://www.lunifera.org/dsl/dto/v1" as dto
 import "http://www.lunifera.org/dsl/common/types/v1" as common
@@ -26,11 +23,20 @@ LDTOModel returns dto::LDtoModel:
 
 Class returns dto::LDto:
 	{dto::LDto} annotations+=AnnotationDef*
-	{dto::LDto.annotationInfo=current}
+	
+	(({dto::LDto.annotationInfo=current}
 	'dto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? ('wraps' wrappedType=[entity::LEntity])?
 	'{'
 	features+=DtoFeature*
-	'}';
+	'}')
+	|
+	({dto::LAutoInheritDto.annotationInfo=current}
+	'autoDto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? 'wraps' wrappedType=[entity::LEntity]
+	'{'
+	features+=DtoFeature*
+	'}')
+	)
+	;
 
 DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
@@ -47,10 +53,10 @@ DtoFeature returns dto::LDtoFeature:
 	(transient?='transient' type=[common::LScalarType] name=ValidIDWithKeywords ';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(derived?='derived' type=[common::LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression))
+	(derived?='derived' (domainDescription?='domainDescription')? type=[common::LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(id?='id' | version?="version" | uuid?="uuid") type=[common::LScalarType] multiplicity=Multiplicity?
+	(id?='id' | version?="version" | uuid?="uuid" | domainDescription?='domainDescription' | domainKey?='domainKey') type=[common::LScalarType] multiplicity=Multiplicity?
 	name=ValidIDWithKeywords
 	';')
 	|

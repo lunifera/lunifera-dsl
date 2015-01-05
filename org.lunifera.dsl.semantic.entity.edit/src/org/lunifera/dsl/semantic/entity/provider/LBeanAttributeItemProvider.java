@@ -15,7 +15,6 @@ package org.lunifera.dsl.semantic.entity.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -72,6 +71,8 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 			addCascadingPropertyDescriptor(object);
 			addTransientPropertyDescriptor(object);
 			addDerivedPropertyDescriptor(object);
+			addDomainKeyPropertyDescriptor(object);
+			addDomainDescriptionPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
 			addTypedNamePropertyDescriptor(object);
 		}
@@ -233,6 +234,50 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Domain Key feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDomainKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LAttribute_domainKey_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LAttribute_domainKey_feature", "_UI_LAttribute_type"),
+				 LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Domain Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDomainDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LAttribute_domainDescription_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LAttribute_domainDescription_feature", "_UI_LAttribute_type"),
+				 LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Type feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
@@ -381,6 +426,8 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 			case LunEntityPackage.LBEAN_ATTRIBUTE__CASCADING:
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TRANSIENT:
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED:
+			case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_KEY:
+			case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION:
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPED_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

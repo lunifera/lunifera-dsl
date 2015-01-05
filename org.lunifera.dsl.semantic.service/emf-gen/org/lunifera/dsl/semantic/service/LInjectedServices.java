@@ -15,7 +15,7 @@ package org.lunifera.dsl.semantic.service;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LInjectedServices extends EObject {
+public interface LInjectedServices extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Services</b></em>' containment reference list.
 	 * The list contents are of type {@link org.lunifera.dsl.semantic.service.LInjectedService}.

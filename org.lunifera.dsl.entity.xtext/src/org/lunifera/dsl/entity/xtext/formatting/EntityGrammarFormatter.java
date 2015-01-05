@@ -32,8 +32,6 @@ public class EntityGrammarFormatter extends CommonGrammarFormatter {
 		configure(c, (EntityGrammarGrammarAccess) getGrammarAccess());
 	}
 
-	// TODO formatting for index
-
 	public void configure(FormattingConfig c, EntityGrammarGrammarAccess ga) {
 		EntityGrammarGrammarAccess f = (EntityGrammarGrammarAccess) getGrammarAccess();
 

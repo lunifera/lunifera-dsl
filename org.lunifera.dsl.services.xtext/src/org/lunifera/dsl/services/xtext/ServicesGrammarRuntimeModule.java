@@ -14,10 +14,15 @@ import org.lunifera.dsl.services.xtext.extensions.ServicesTypesBuilder;
 import org.lunifera.dsl.services.xtext.formatting.ServicesGrammarFormatter;
 import org.lunifera.dsl.services.xtext.generator.Generator;
 import org.lunifera.dsl.services.xtext.jvmmodel.ServicesGrammarJvmModelInferrer;
+import org.lunifera.dsl.services.xtext.linker.ServicesJvmLinkingHelper;
 import org.lunifera.dsl.services.xtext.scope.ServicesBatchScopeProvider;
 import org.lunifera.dsl.services.xtext.scope.ServicesImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.services.xtext.scope.ServicesScopeProvider;
+import org.lunifera.dsl.services.xtext.serializer.ServiceGrammarTransientValueService;
 import org.lunifera.dsl.services.xtext.valueconverter.ServicesQualifiedNameProvider;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
+import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -59,12 +64,6 @@ public class ServicesGrammarRuntimeModule extends
 		return ServicesGrammarFormatter.class;
 	}
 
-	// public Class<? extends
-	// org.lunifera.dsl.common.xtext.jvmmodel.AnnotationCompiler>
-	// bindAnnotationCompiler() {
-	// return org.lunifera.dsl.services.xtext.jvmmodel.AnnotationCompiler.class;
-	// }
-
 	public Class<? extends org.lunifera.dsl.common.xtext.extensions.AnnotationExtension> bindAnnotationExtension() {
 		return org.lunifera.dsl.services.xtext.extensions.AnnotationExtension.class;
 	}
@@ -85,4 +84,27 @@ public class ServicesGrammarRuntimeModule extends
 		return org.lunifera.dsl.services.xtext.generator.OutputConfigurationProvider.class;
 	}
 
+	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+		return SemanticLoadingResource.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.linking.ILinker> bindILinker() {
+		return LazyJvmTypeLinker.class;
+	}
+
+	public Class<? extends LazyJvmTypeLinkingHelper> bindJvmLinkingHelper() {
+		return ServicesJvmLinkingHelper.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.serializer.sequencer.ITransientValueService> bindSerializerITransientValueService() {
+		return ServiceGrammarTransientValueService.class;
+	}
+
+	@Override
+	public void configureSerializerIScopeProvider(Binder binder) {
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class)
+				.annotatedWith(
+						org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class)
+				.to(ServicesBatchScopeProvider.class);
+	}
 }

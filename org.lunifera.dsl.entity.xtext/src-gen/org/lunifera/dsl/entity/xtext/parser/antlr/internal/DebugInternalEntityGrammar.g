@@ -20,14 +20,14 @@ ruleClass :
 				)?
 			)? |
 			'cacheable'?
-		)* 'entity' ruleValidIDWithKeywords (
+		)* 'entity' ruleTRANSLATABLEID (
 			'extends' RULE_ID
 		)? '{' ruleEntityPersistenceInfo ruleEntityInheritanceStrategy?
 		ruleEntityFeature* ruleIndex* '}' |
 		'mapped superclass' (
 			'extends' RULE_ID
 		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' |
-		'bean' ruleValidIDWithKeywords (
+		'bean' ruleTRANSLATABLEID (
 			'extends' RULE_ID
 		)? '{' ruleBeanFeature* '}'
 	)
@@ -61,22 +61,26 @@ ruleColumnPersistenceInfo :
 ruleEntityFeature :
 	ruleAnnotationDef* (
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleValidIDWithKeywords
+			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID
 			ruleColumnPersistenceInfo? (
 				'opposite' ruleLFQN
 			)?
 		) ';' |
 		(
-			'transient' RULE_ID ruleValidIDWithKeywords ';' |
+			'transient' RULE_ID ruleTRANSLATABLEID ';' |
+			'derived' 'domainDescription'? RULE_ID ruleTRANSLATABLEID
+			ruleXBlockExpression |
 			(
 				'var' |
 				'id' |
 				'uuid' |
-				'version'
-			) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords
-			ruleColumnPersistenceInfo? ';'
+				'version' |
+				'domainDescription' |
+				'domainKey'
+			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ruleColumnPersistenceInfo?
+			';'
 		) |
-		'def' ruleJvmTypeReference ruleValidIDWithKeywords '(' (
+		'def' ruleJvmTypeReference ruleTRANSLATABLEID '(' (
 			ruleFullJvmFormalParameter (
 				', ' ruleFullJvmFormalParameter
 			)*
@@ -88,19 +92,19 @@ ruleEntityFeature :
 ruleBeanFeature :
 	ruleAnnotationDef* (
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
 				'opposite' ruleLFQN
 			)?
 		) ';' |
 		(
-			'transient' RULE_ID ruleValidIDWithKeywords |
+			'transient' RULE_ID ruleTRANSLATABLEID |
 			(
 				'var' |
 				'id' |
 				'version'
-			) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords ';'
+			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ';'
 		) |
-		'def' ruleJvmTypeReference ruleValidIDWithKeywords '(' (
+		'def' ruleJvmTypeReference ruleTRANSLATABLEID '(' (
 			ruleFullJvmFormalParameter (
 				',' ruleFullJvmFormalParameter
 			)*
@@ -142,6 +146,11 @@ ruleTablePerSubclassStrategy :
 			'discriminatorValue' ruleValidIDWithKeywords ';'
 		)?
 	)* '}'
+;
+
+// Rule TRANSLATABLEID
+ruleTRANSLATABLEID :
+	ruleValidIDWithKeywords
 ;
 
 // Rule TypedPackage
@@ -989,7 +998,17 @@ ruleJvmParameterizedTypeReference :
 		'<'
 		) => '<' ) ruleJvmArgumentTypeReference (
 			',' ruleJvmArgumentTypeReference
-		)* '>'
+		)* '>' (
+			( (
+			'.'
+			) => '.' ) ruleValidID (
+				( (
+				'<'
+				) => '<' ) ruleJvmArgumentTypeReference (
+					',' ruleJvmArgumentTypeReference
+				)* '>'
+			)?
+		)*
 	)?
 ;
 
@@ -1002,8 +1021,8 @@ ruleJvmArgumentTypeReference :
 // Rule JvmWildcardTypeReference
 ruleJvmWildcardTypeReference :
 	'?' (
-		ruleJvmUpperBound |
-		ruleJvmLowerBound
+		ruleJvmUpperBound ruleJvmUpperBoundAnded* |
+		ruleJvmLowerBound ruleJvmLowerBoundAnded*
 	)?
 ;
 
@@ -1020,6 +1039,11 @@ ruleJvmUpperBoundAnded :
 // Rule JvmLowerBound
 ruleJvmLowerBound :
 	'super' ruleJvmTypeReference
+;
+
+// Rule JvmLowerBoundAnded
+ruleJvmLowerBoundAnded :
+	'&' ruleJvmTypeReference
 ;
 
 // Rule QualifiedNameWithWildcard
@@ -1175,39 +1199,19 @@ RULE_ID :
 
 RULE_STRING :
 	'"' (
-		'\\' (
-			'b' |
-			't' |
-			'n' |
-			'f' |
-			'r' |
-			'u' |
-			'"' |
-			'\'' |
-			'\\'
-		) |
+		'\\' . |
 		~ (
 			'\\' |
 			'"'
 		)
-	)* '"' |
+	)* '"'? |
 	'\'' (
-		'\\' (
-			'b' |
-			't' |
-			'n' |
-			'f' |
-			'r' |
-			'u' |
-			'"' |
-			'\'' |
-			'\\'
-		) |
+		'\\' . |
 		~ (
 			'\\' |
 			'\''
 		)
-	)* '\''
+	)* '\''?
 ;
 
 RULE_ML_COMMENT :

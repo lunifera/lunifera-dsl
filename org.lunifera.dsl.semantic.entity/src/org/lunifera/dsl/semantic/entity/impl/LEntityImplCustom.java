@@ -13,12 +13,15 @@ package org.lunifera.dsl.semantic.entity.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
-import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.semantic.entity.LEntity;
+import org.lunifera.dsl.semantic.entity.LunEntityPackage;
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3;
 
 public class LEntityImplCustom extends LEntityImpl {
 
@@ -54,10 +57,14 @@ public class LEntityImplCustom extends LEntityImpl {
 	@Override
 	public EList<LAnnotationDef> getAnnotations() {
 		LAnnotationTarget info = getAnnotationInfo();
-		if(info != null){
+		if (info != null) {
 			return info.getAnnotations();
 		}
 		return new BasicEList<LAnnotationDef>();
+	}
+
+	public EObject eResolveProxy(InternalEObject proxy) {
+		return EcoreUtil3.resolve(proxy, this.eResource().getResourceSet());
 	}
 
 }

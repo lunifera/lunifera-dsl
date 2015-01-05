@@ -5,6 +5,7 @@ import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
+import org.eclipse.xtext.common.types.JvmInnerTypeReference;
 import org.eclipse.xtext.common.types.JvmLowerBound;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeParameter;
@@ -67,6 +68,7 @@ import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
+import org.lunifera.dsl.semantic.dto.LAutoInheritDto;
 import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.dto.LDtoAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoFeature;
@@ -86,14 +88,22 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == LunDtoPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case LunDtoPackage.LDTO:
+			case LunDtoPackage.LAUTO_INHERIT_DTO:
 				if(context == grammarAccess.getClassRule() ||
 				   context == grammarAccess.getTypeRule()) {
-					sequence_Class(context, (LDto) semanticObject); 
+					sequence_Class(context, (LAutoInheritDto) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getClassAccess().getLDtoAnnotationInfoAction_2()) {
-					sequence_Class_LDto_2(context, (LDto) semanticObject); 
+				else break;
+			case LunDtoPackage.LDTO:
+				if(context == grammarAccess.getClassAccess().getLAutoInheritDtoAnnotationInfoAction_2_1_0() ||
+				   context == grammarAccess.getClassAccess().getLDtoAnnotationInfoAction_2_0_0()) {
+					sequence_Class_LAutoInheritDto_2_1_0_LDto_2_0_0(context, (LDto) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getClassRule() ||
+				   context == grammarAccess.getTypeRule()) {
+					sequence_Class(context, (LDto) semanticObject); 
 					return; 
 				}
 				else break;
@@ -230,8 +240,22 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 					return; 
 				}
 				else break;
+			case TypesPackage.JVM_INNER_TYPE_REFERENCE:
+				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceAccess().getJvmInnerTypeReferenceOuterAction_1_4_0_0_0() ||
+				   context == grammarAccess.getJvmTypeReferenceRule() ||
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
+					sequence_JvmParameterizedTypeReference(context, (JvmInnerTypeReference) semanticObject); 
+					return; 
+				}
+				else break;
 			case TypesPackage.JVM_LOWER_BOUND:
-				if(context == grammarAccess.getJvmLowerBoundRule()) {
+				if(context == grammarAccess.getJvmLowerBoundAndedRule()) {
+					sequence_JvmLowerBoundAnded(context, (JvmLowerBound) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getJvmLowerBoundRule()) {
 					sequence_JvmLowerBound(context, (JvmLowerBound) semanticObject); 
 					return; 
 				}
@@ -239,6 +263,7 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 			case TypesPackage.JVM_PARAMETERIZED_TYPE_REFERENCE:
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceAccess().getJvmInnerTypeReferenceOuterAction_1_4_0_0_0() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
 					sequence_JvmParameterizedTypeReference(context, (JvmParameterizedTypeReference) semanticObject); 
@@ -1444,9 +1469,9 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Class_LDto_2 name=ValidIDWithKeywords superType=[LDto|ID]? wrappedType=[LEntity|ID]? features+=DtoFeature*)
+	 *     (annotationInfo=Class_LAutoInheritDto_2_1_0 name=ValidIDWithKeywords superType=[LDto|ID]? wrappedType=[LEntity|ID] features+=DtoFeature*)
 	 */
-	protected void sequence_Class(EObject context, LDto semanticObject) {
+	protected void sequence_Class(EObject context, LAutoInheritDto semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1455,7 +1480,16 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 * Constraint:
 	 *     annotations+=AnnotationDef+
 	 */
-	protected void sequence_Class_LDto_2(EObject context, LDto semanticObject) {
+	protected void sequence_Class_LAutoInheritDto_2_1_0_LDto_2_0_0(EObject context, LDto semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotationInfo=Class_LDto_2_0_0 name=ValidIDWithKeywords superType=[LDto|ID]? wrappedType=[LEntity|ID]? features+=DtoFeature*)
+	 */
+	protected void sequence_Class(EObject context, LDto semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1466,11 +1500,17 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 *         (annotationInfo=DtoFeature_LDtoAttribute_2_2_0 (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords)) | 
 	 *         (
 	 *             annotationInfo=DtoFeature_LDtoAttribute_2_3_0 
-	 *             (derived?='derived' type=[LScalarType|ID] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression)
+	 *             (
+	 *                 derived?='derived' 
+	 *                 domainDescription?='domainDescription'? 
+	 *                 type=[LScalarType|ID] 
+	 *                 name=ValidIDWithKeywords 
+	 *                 derivedGetterExpression=XBlockExpression
+	 *             )
 	 *         ) | 
 	 *         (
 	 *             annotationInfo=DtoFeature_LDtoAttribute_2_4_0 
-	 *             (id?='id' | version?='version' | uuid?='uuid') 
+	 *             (id?='id' | version?='version' | uuid?='uuid' | domainDescription?='domainDescription' | domainKey?='domainKey') 
 	 *             type=[LScalarType|ID] 
 	 *             multiplicity=Multiplicity? 
 	 *             name=ValidIDWithKeywords

@@ -105,6 +105,15 @@ public interface LunServiceFactory extends EFactory {
 	LFreeService createLFreeService();
 
 	/**
+	 * Returns a new object of class '<em>LService Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LService Operation</em>'.
+	 * @generated
+	 */
+	LServiceOperation createLServiceOperation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

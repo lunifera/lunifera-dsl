@@ -17,15 +17,13 @@ Class returns service::LDTOService:
 	{service::LDTOService.annotationInfo=current}
 	'dtoservice' name=ValidIDWithKeywords 'provides' dto=[dto::LDto]
 	'{'
+	('persistenceID' persistenceId=QualifiedName)?
 	injectedServices=InjectedServices
-//	((((filterable=FilterableAttributes)? & (sortable=SortableAttributes)?)) | ';')
-	('get' getExpression=XBlockExpression)? 
-	('find' findExpression=XBlockExpression)? 
-	('findWithDelimiter' findExpressionWithDelimiter=XBlockExpression)? 
-	('update' updateExpression=XBlockExpression)? 
-	('delete' deleteExpression=XBlockExpression)?
+	
+	operations+=Operation*
+	
 	'}';
- 
+	
 InjectedServices returns service::LInjectedServices:
 	{service::LInjectedServices}
 	(services+=InjectedService)*;
@@ -43,6 +41,13 @@ SortableAttributes returns service::LSortableAttributes:
 	'sortable' '{'
 	sortableFeatures+=[dto::LDtoFeature|LFQN] (',' sortableFeatures+=[dto::LDtoFeature|LFQN])* ';'
 	'}';
+	 
+Operation returns service::LServiceOperation:
+	{service::LServiceOperation} annotations+=AnnotationDef*
+	('def' type=JvmTypeReference name=ID
+	'(' (params+=FullJvmFormalParameter (', ' params+=FullJvmFormalParameter)*)? ')'
+	body=XExpression)
+;
 
 enum Cardinality returns service::LCardinality:
 	ZERO_TO_ONE="optional" | ONE_TO_ONE="mandatory" | ZERO_TO_MANY="zeroToMany" | ONE_TO_MANY="oneToMany";

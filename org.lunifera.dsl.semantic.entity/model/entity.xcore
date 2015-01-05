@@ -1,4 +1,4 @@
-@xcore.lang.GenModel(fileExtensions="entitymodel", editDirectory="/org.lunifera.dsl.semantic.entity.edit/src", editorDirectory="/org.lunifera.dsl.semantic.entity.editor/src", childCreationExtenders="true")
+@GenModel(fileExtensions="entitymodel", editDirectory="/org.lunifera.dsl.semantic.entity.edit/src", editorDirectory="/org.lunifera.dsl.semantic.entity.editor/src", childCreationExtenders="true")
 @GenModel(modelName="Entity")
 @GenModel(prefix="LunEntity")
 @GenModel(copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
@@ -16,17 +16,20 @@
 @Ecore(nsPrefix="entity")
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
-  
-import org.lunifera.dsl.semantic.common.types.LTypedPackage
-import org.lunifera.dsl.semantic.common.types.LClass
-import org.lunifera.dsl.semantic.common.types.LScalarType
-import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
-import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.common.types.LAttribute
-import org.lunifera.dsl.semantic.common.types.LReference
-import org.lunifera.dsl.semantic.common.types.LDateType
+
+import xcore.lang.GenModel
 import java.util.List
-import GenModel
+import org.eclipse.emf.ecore.InternalEObject
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LDateType
+import org.lunifera.dsl.semantic.common.types.LFeature
+import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
+import org.lunifera.dsl.semantic.common.types.LLazyResolver
+import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
 
 class LEntityModel {
 	contains LTypedPackage[] packages
@@ -38,6 +41,7 @@ class LEntityModel {
 class LBean extends LClass, LScalarType, LFeaturesHolder {
 	contains LBeanFeature[] features
 	refers LBean superType opposite subTypes
+	contains JvmTypeReference superTypeJvm
 	refers LBean[] subTypes opposite superType
 	/**
  	 * Returns all features of type LOperation
@@ -92,6 +96,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		// call for super class
 		current.superType.collectAllLunFeatures(result)
 	}
+	
 }
 
 /**
@@ -108,6 +113,7 @@ class LEntity extends LClass, LFeaturesHolder {
 	contains LEntityFeature[] features
 	contains LIndex[] indexes
 	refers LEntity superType opposite subTypes
+	contains JvmTypeReference superTypeJvm
 	refers LEntity[] subTypes opposite superType
 	
 	/**
@@ -163,30 +169,38 @@ class LEntity extends LClass, LFeaturesHolder {
 		// call for super class
 		current.superType.collectAllLunFeatures(result)
 	}
+	
 }
 
-class LEntityPersistenceInfo {
+type InternalEObject wraps InternalEObject
+
+class LEntityPersistenceInfo extends LLazyResolver {
 	String schemaName
 	String tableName
+	
 }
 
-class LEntityColumnPersistenceInfo {
+class LEntityColumnPersistenceInfo extends LLazyResolver {
 	String columnName
+	
+
 }
 
-interface LEntityInheritanceStrategy {
+interface LEntityInheritanceStrategy extends LLazyResolver {
 }
 
 class LTablePerClassStrategy extends LEntityInheritanceStrategy {
 	String discriminatorColumn
 	LDiscriminatorType discriminatorType
 	String discriminatorValue
+
 }
 
 class LTablePerSubclassStrategy extends LEntityInheritanceStrategy {
 	String discriminatorColumn
 	LDiscriminatorType discriminatorType
 	String discriminatorValue
+	
 }
 
 enum LDiscriminatorType {
@@ -201,6 +215,7 @@ class LEntityFeature extends LFeature {
 	op LEntity getEntity() {
 		return eContainer as LEntity
 	}
+	
 }
 
 class LEntityAttribute extends LEntityFeature, LAttribute {
@@ -224,22 +239,26 @@ class LEntityAttribute extends LEntityFeature, LAttribute {
 		
 		return result.toString		
 	}
+	
 }
 
 class LEntityReference extends LEntityFeature, LReference {
 	refers LEntity ^type
+	contains JvmTypeReference typeJvm
 	refers LEntityReference ^opposite
+	
 }
 
 class LBeanFeature  extends LFeature {
 	op LBean getBean() {
 		return eContainer as LBean
 	}
+	
 }
 
 class LBeanAttribute extends LBeanFeature, LAttribute {
 	
-	derived String typedName get 
+	derived String typedName get
 	{
 		var result = new StringBuilder
 		if(name != null){
@@ -260,22 +279,26 @@ class LBeanAttribute extends LBeanFeature, LAttribute {
 	}
 	
 }
- 
+
 class LBeanReference extends LBeanFeature, LReference {
 	refers LBean ^type
+	contains JvmTypeReference typeJvm
 	refers LBeanReference ^opposite
+	
 }
 
 class LIndex {
 	boolean ^unique
 	String name
 	refers LEntityFeature[] features
+	
 }
 
 /**
  * Overwrites LOperation to add bean and entity feature as supertype
  */
 class LOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LBeanFeature, LEntityFeature {
+	
 }
  
 type OperationsList wraps java.util.List<LOperation>

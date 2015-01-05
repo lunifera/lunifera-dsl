@@ -14,11 +14,14 @@
 package org.lunifera.dsl.semantic.entity.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -37,6 +40,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getOpposite <em>Opposite</em>}</li>
  * </ul>
  * </p>
@@ -93,6 +97,16 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * @ordered
 	 */
 	protected LEntity type;
+
+	/**
+	 * The cached value of the '{@link #getTypeJvm() <em>Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeJvm()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference typeJvm;
 
 	/**
 	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
@@ -208,6 +222,49 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public JvmTypeReference getTypeJvm() {
+		return typeJvm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTypeJvm(JvmTypeReference newTypeJvm, NotificationChain msgs) {
+		JvmTypeReference oldTypeJvm = typeJvm;
+		typeJvm = newTypeJvm;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM, oldTypeJvm, newTypeJvm);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTypeJvm(JvmTypeReference newTypeJvm) {
+		if (newTypeJvm != typeJvm) {
+			NotificationChain msgs = null;
+			if (typeJvm != null)
+				msgs = ((InternalEObject)typeJvm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM, null, msgs);
+			if (newTypeJvm != null)
+				msgs = ((InternalEObject)newTypeJvm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM, null, msgs);
+			msgs = basicSetTypeJvm(newTypeJvm, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM, newTypeJvm, newTypeJvm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LEntityReference getOpposite() {
 		if (opposite != null && opposite.eIsProxy()) {
 			InternalEObject oldOpposite = (InternalEObject)opposite;
@@ -247,6 +304,20 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
+				return basicSetTypeJvm(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LunEntityPackage.LENTITY_REFERENCE__LAZY:
@@ -256,6 +327,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
+			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
+				return getTypeJvm();
 			case LunEntityPackage.LENTITY_REFERENCE__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
@@ -279,6 +352,9 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				return;
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				setType((LEntity)newValue);
+				return;
+			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
+				setTypeJvm((JvmTypeReference)newValue);
 				return;
 			case LunEntityPackage.LENTITY_REFERENCE__OPPOSITE:
 				setOpposite((LEntityReference)newValue);
@@ -304,6 +380,9 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				setType((LEntity)null);
 				return;
+			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
+				setTypeJvm((JvmTypeReference)null);
+				return;
 			case LunEntityPackage.LENTITY_REFERENCE__OPPOSITE:
 				setOpposite((LEntityReference)null);
 				return;
@@ -325,6 +404,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				return cascading != CASCADING_EDEFAULT;
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				return type != null;
+			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
+				return typeJvm != null;
 			case LunEntityPackage.LENTITY_REFERENCE__OPPOSITE:
 				return opposite != null;
 		}

@@ -80,12 +80,20 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LCOMMON_MODEL: {
 				LCommonModel lCommonModel = (LCommonModel)theEObject;
 				T result = caseLCommonModel(lCommonModel);
+				if (result == null) result = caseLLazyResolver(lCommonModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LLAZY_RESOLVER: {
+				LLazyResolver lLazyResolver = (LLazyResolver)theEObject;
+				T result = caseLLazyResolver(lLazyResolver);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunTypesPackage.LPACKAGE: {
 				LPackage lPackage = (LPackage)theEObject;
 				T result = caseLPackage(lPackage);
+				if (result == null) result = caseLLazyResolver(lPackage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -93,6 +101,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				LTypedPackage lTypedPackage = (LTypedPackage)theEObject;
 				T result = caseLTypedPackage(lTypedPackage);
 				if (result == null) result = caseLPackage(lTypedPackage);
+				if (result == null) result = caseLLazyResolver(lTypedPackage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -106,18 +115,21 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				LType lType = (LType)theEObject;
 				T result = caseLType(lType);
 				if (result == null) result = caseLAnnotationTarget(lType);
+				if (result == null) result = caseLLazyResolver(lType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunTypesPackage.LANNOTATION_DEF: {
 				LAnnotationDef lAnnotationDef = (LAnnotationDef)theEObject;
 				T result = caseLAnnotationDef(lAnnotationDef);
+				if (result == null) result = caseLLazyResolver(lAnnotationDef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunTypesPackage.LANNOTATION_TARGET: {
 				LAnnotationTarget lAnnotationTarget = (LAnnotationTarget)theEObject;
 				T result = caseLAnnotationTarget(lAnnotationTarget);
+				if (result == null) result = caseLLazyResolver(lAnnotationTarget);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,6 +138,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				T result = caseLScalarType(lScalarType);
 				if (result == null) result = caseLType(lScalarType);
 				if (result == null) result = caseLAnnotationTarget(lScalarType);
+				if (result == null) result = caseLLazyResolver(lScalarType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,6 +148,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLScalarType(lDataType);
 				if (result == null) result = caseLType(lDataType);
 				if (result == null) result = caseLAnnotationTarget(lDataType);
+				if (result == null) result = caseLLazyResolver(lDataType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -144,12 +158,14 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLScalarType(lEnum);
 				if (result == null) result = caseLType(lEnum);
 				if (result == null) result = caseLAnnotationTarget(lEnum);
+				if (result == null) result = caseLLazyResolver(lEnum);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunTypesPackage.LENUM_LITERAL: {
 				LEnumLiteral lEnumLiteral = (LEnumLiteral)theEObject;
 				T result = caseLEnumLiteral(lEnumLiteral);
+				if (result == null) result = caseLLazyResolver(lEnumLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -158,6 +174,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				T result = caseLClass(lClass);
 				if (result == null) result = caseLType(lClass);
 				if (result == null) result = caseLAnnotationTarget(lClass);
+				if (result == null) result = caseLLazyResolver(lClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -171,6 +188,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				LFeature lFeature = (LFeature)theEObject;
 				T result = caseLFeature(lFeature);
 				if (result == null) result = caseLAnnotationTarget(lFeature);
+				if (result == null) result = caseLLazyResolver(lFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -179,6 +197,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				T result = caseLReference(lReference);
 				if (result == null) result = caseLFeature(lReference);
 				if (result == null) result = caseLAnnotationTarget(lReference);
+				if (result == null) result = caseLLazyResolver(lReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -187,6 +206,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				T result = caseLAttribute(lAttribute);
 				if (result == null) result = caseLFeature(lAttribute);
 				if (result == null) result = caseLAnnotationTarget(lAttribute);
+				if (result == null) result = caseLLazyResolver(lAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -194,12 +214,14 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				LOperation lOperation = (LOperation)theEObject;
 				T result = caseLOperation(lOperation);
 				if (result == null) result = caseLAnnotationTarget(lOperation);
+				if (result == null) result = caseLLazyResolver(lOperation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunTypesPackage.LMODIFIER: {
 				LModifier lModifier = (LModifier)theEObject;
 				T result = caseLModifier(lModifier);
+				if (result == null) result = caseLLazyResolver(lModifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -225,6 +247,21 @@ public class LunTypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLCommonModel(LCommonModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLLazyResolver(LLazyResolver object) {
 		return null;
 	}
 

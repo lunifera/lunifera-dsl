@@ -94,18 +94,20 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private LCommonModelElements pLCommonModel;
-	private TypedPackageElements pTypedPackage;
+	private final LCommonModelElements pLCommonModel;
+	private final TypedPackageElements pTypedPackage;
 	
 	private final Grammar grammar;
 
-	private CommonGrammarGrammarAccess gaCommonGrammar;
+	private final CommonGrammarGrammarAccess gaCommonGrammar;
 
 	@Inject
 	public DatatypeGrammarGrammarAccess(GrammarProvider grammarProvider,
 		CommonGrammarGrammarAccess gaCommonGrammar) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaCommonGrammar = gaCommonGrammar;
+		this.pLCommonModel = new LCommonModelElements();
+		this.pTypedPackage = new TypedPackageElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -138,7 +140,7 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//LCommonModel returns types::LCommonModel:
 	//	packages+=TypedPackage*;
 	public LCommonModelElements getLCommonModelAccess() {
-		return (pLCommonModel != null) ? pLCommonModel : (pLCommonModel = new LCommonModelElements());
+		return pLCommonModel;
 	}
 	
 	public ParserRule getLCommonModelRule() {
@@ -148,7 +150,7 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//TypedPackage returns types::LTypedPackage:
 	//	{types::LTypedPackage} "package" name=QualifiedName ("{" imports+=Import* types+=ScalarType* "}")?;
 	public TypedPackageElements getTypedPackageAccess() {
-		return (pTypedPackage != null) ? pTypedPackage : (pTypedPackage = new TypedPackageElements());
+		return pTypedPackage;
 	}
 	
 	public ParserRule getTypedPackageRule() {
@@ -775,7 +777,7 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
-	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | ",");
+	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | fallThrough?=",");
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaCommonGrammar.getXCasePartAccess();
 	}
@@ -1107,8 +1109,9 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
-	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
-	//	">")?;
+	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)* ">"
+	//	(=> ({JvmInnerTypeReference.outer=current} ".") type=[JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">")?)*)?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaCommonGrammar.getJvmParameterizedTypeReferenceAccess();
 	}
@@ -1128,7 +1131,8 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaCommonGrammar.getJvmWildcardTypeReferenceAccess();
 	}
@@ -1165,6 +1169,16 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmLowerBoundRule() {
 		return getJvmLowerBoundAccess().getRule();
+	}
+
+	//JvmLowerBoundAnded returns JvmLowerBound:
+	//	"&" typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaCommonGrammar.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
 	}
 
 	//JvmTypeParameter:
@@ -1236,8 +1250,8 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\""))* "\""? | "\'" ("\\" .
+	//	/ * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\'"))* "\'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaCommonGrammar.getSTRINGRule();
 	} 

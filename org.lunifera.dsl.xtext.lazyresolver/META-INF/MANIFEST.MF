@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.lunifera.dsl.xtext.lazyresolver
+Bundle-Vendor: Lunifera.org
+Bundle-Version: 0.8.0
+Bundle-SymbolicName: org.lunifera.dsl.xtext.lazyresolver
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.0",
+ org.eclipse.xtext.xbase;bundle-version="[2.7.3,2.8.0)",
+ org.eclipse.xtext;bundle-version="[2.7.3,2.8.0)",
+ org.lunifera.dsl.xtext.lazyresolver.api;bundle-version="0.8.0"
+Export-Package: org.lunifera.dsl.xtext.lazyresolver,
+ org.lunifera.dsl.xtext.lazyresolver.linker,
+ org.lunifera.dsl.xtext.lazyresolver.scoping

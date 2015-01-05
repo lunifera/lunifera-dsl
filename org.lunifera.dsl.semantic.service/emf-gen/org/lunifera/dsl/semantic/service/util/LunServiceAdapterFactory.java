@@ -22,7 +22,12 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LFeature;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
+import org.lunifera.dsl.semantic.common.types.LOperation;
 import org.lunifera.dsl.semantic.common.types.LType;
+
+import org.lunifera.dsl.semantic.dto.LDtoFeature;
 
 import org.lunifera.dsl.semantic.service.*;
 
@@ -119,6 +124,14 @@ public class LunServiceAdapterFactory extends AdapterFactoryImpl {
 				return createLFreeServiceAdapter();
 			}
 			@Override
+			public Adapter caseLServiceOperation(LServiceOperation object) {
+				return createLServiceOperationAdapter();
+			}
+			@Override
+			public Adapter caseLLazyResolver(LLazyResolver object) {
+				return createLLazyResolverAdapter();
+			}
+			@Override
 			public Adapter caseLAnnotationTarget(LAnnotationTarget object) {
 				return createLAnnotationTargetAdapter();
 			}
@@ -129,6 +142,18 @@ public class LunServiceAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLClass(LClass object) {
 				return createLClassAdapter();
+			}
+			@Override
+			public Adapter caseLOperation(LOperation object) {
+				return createLOperationAdapter();
+			}
+			@Override
+			public Adapter caseLFeature(LFeature object) {
+				return createLFeatureAdapter();
+			}
+			@Override
+			public Adapter caseLDtoFeature(LDtoFeature object) {
+				return createLDtoFeatureAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -277,6 +302,34 @@ public class LunServiceAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.service.LServiceOperation <em>LService Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.service.LServiceOperation
+	 * @generated
+	 */
+	public Adapter createLServiceOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LLazyResolver <em>LLazy Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LLazyResolver
+	 * @generated
+	 */
+	public Adapter createLLazyResolverAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LAnnotationTarget <em>LAnnotation Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -315,6 +368,48 @@ public class LunServiceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LOperation <em>LOperation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LOperation
+	 * @generated
+	 */
+	public Adapter createLOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LFeature <em>LFeature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LFeature
+	 * @generated
+	 */
+	public Adapter createLFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.dto.LDtoFeature <em>LDto Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.dto.LDtoFeature
+	 * @generated
+	 */
+	public Adapter createLDtoFeatureAdapter() {
 		return null;
 	}
 

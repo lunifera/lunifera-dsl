@@ -17,7 +17,7 @@
 	<parent>
 		<groupId>org.lunifera.releng.maven</groupId>
 		<artifactId>lunifera-releng-maven-parent-tycho</artifactId>
-		<version>0.10.1-SNAPSHOT</version>
+		<version>0.12.3-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.lunifera.dsl</groupId>
@@ -38,7 +38,7 @@
 		<lunifera.build.p2.project.name>org.lunifera.dsl.p2</lunifera.build.p2.project.name>
 		<tychoExtrasVersion>0.19.0</tychoExtrasVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<xtext.version>2.6.1</xtext.version>
+		<xtext.version>2.7.3</xtext.version>
 		<lunifera.jacoco.include>org.lunifera.dsl.*</lunifera.jacoco.include>
 		<sonar.skippedModules>
 			org.lunifera.dsl.common.xtext.tests,
@@ -53,6 +53,10 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
@@ -123,8 +127,32 @@
 		</pluginManagement>
 		<plugins>
 			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>xtend-gen</directory>
+							<includes>
+								<include>**</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>xtend-gen</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -153,5 +181,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-<version>0.7.4</version>
+	<version>0.8.0</version>
 </project>

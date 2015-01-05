@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.lunifera.dsl.semantic.common.edit;singleton:=true
-Bundle-Version: 0.7.4
+Bundle-Version: 0.8.0
 Bundle-ClassPath: .
 Bundle-Activator: org.lunifera.dsl.semantic.common.types.provider.TypesEditPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -12,8 +12,8 @@ Export-Package: org.lunifera.dsl.semantic.common.types.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.lunifera.dsl.semantic.common;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- org.eclipse.xtext.xbase;visibility:=reexport,
- org.eclipse.xtext.common.types;visibility:=reexport,
- org.eclipse.xtext.common.types.edit;visibility:=reexport,
+ org.eclipse.xtext.xbase;bundle-version="[2.7.3,2.8.0)";visibility:=reexport,
+ org.eclipse.xtext.common.types;bundle-version="[2.7.3,2.8.0)";visibility:=reexport,
+ org.eclipse.xtext.common.types.edit;bundle-version="[2.7.3,2.8.0)";visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

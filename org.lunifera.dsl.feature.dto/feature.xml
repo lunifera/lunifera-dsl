@@ -2,7 +2,7 @@
 <feature
       id="org.lunifera.dsl.feature.dto"
       label="%featureName"
-      version="0.7.4"
+      version="0.8.0"
       provider-name="%providerName"
       plugin="org.lunifera.dsl.entity.xtext.ui">
 
@@ -26,6 +26,27 @@
 
    <plugin
          id="org.lunifera.dsl.dto.xtext.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   
+   <plugin
+         id="org.lunifera.dsl.semantic.service"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   
+   <plugin
+         id="org.lunifera.dsl.services.xtext"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   
+   <plugin
+         id="org.lunifera.dsl.services.xtext.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

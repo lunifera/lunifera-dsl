@@ -16,21 +16,14 @@ package org.lunifera.dsl.semantic.common.types.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.xtext.common.types.TypesFactory;
-
 import org.eclipse.xtext.xbase.XbaseFactory;
-
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsFactory;
-
 import org.lunifera.dsl.semantic.common.types.LOperation;
 import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -200,6 +193,11 @@ public class LOperationItemProvider extends LAnnotationTargetItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LOPERATION__TYPE,
 				 TypesFactory.eINSTANCE.createJvmUnknownTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LOPERATION__TYPE,
+				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -1,5 +1,3 @@
-
- 
 /**
  * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
  * All rights reserved. This program and the accompanying materials
@@ -10,7 +8,6 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-
 
 package org.lunifera.dsl.dto.xtext;
 
@@ -27,15 +24,19 @@ import org.lunifera.dsl.dto.xtext.formatting.DtoGrammarFormatter;
 import org.lunifera.dsl.dto.xtext.generator.Generator;
 import org.lunifera.dsl.dto.xtext.generator.OutputConfigurationProvider;
 import org.lunifera.dsl.dto.xtext.jvmmodel.DtoGrammarJvmModelInferrer;
+import org.lunifera.dsl.dto.xtext.linker.DtoJvmLinkingHelper;
 import org.lunifera.dsl.dto.xtext.scope.DtoBatchScopeProvider;
 import org.lunifera.dsl.dto.xtext.scope.DtoImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.dsl.dto.xtext.scope.DtoScopeProvider;
+import org.lunifera.dsl.dto.xtext.serializer.DtoGrammarTransientValueService;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoQualifiedNameProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoValueConverterService;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
+import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
-
 
 /**
  * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
@@ -109,9 +110,33 @@ public class DtoGrammarRuntimeModule extends
 	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
 		return OutputConfigurationProvider.class;
 	}
-	
+
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return DtoValueConverterService.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+		return SemanticLoadingResource.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.linking.ILinker> bindILinker() {
+		return LazyJvmTypeLinker.class;
+	}
+
+	public Class<? extends LazyJvmTypeLinkingHelper> bindJvmLinkingHelper() {
+		return DtoJvmLinkingHelper.class;
+	}
+
+	@Override
+	public void configureSerializerIScopeProvider(Binder binder) {
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class)
+				.annotatedWith(
+						org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class)
+				.to(DtoScopeProvider.class);
+	}
+	
+	public Class<? extends org.eclipse.xtext.serializer.sequencer.ITransientValueService> bindSerializerITransientValueService() {
+		return DtoGrammarTransientValueService.class;
 	}
 
 }

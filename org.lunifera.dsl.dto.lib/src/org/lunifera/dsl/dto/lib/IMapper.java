@@ -10,9 +10,13 @@
  */
 package org.lunifera.dsl.dto.lib;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public interface IMapper<D, E> {
 	
-	void mapToDTO(D dto, E entity);
+	void mapToDTO(D dto, E entity, Context context);
+
+	void mapToEntity(D dto, E entity, Context context);
 	
-	void mapToEntity(D dto, E entity);
 }

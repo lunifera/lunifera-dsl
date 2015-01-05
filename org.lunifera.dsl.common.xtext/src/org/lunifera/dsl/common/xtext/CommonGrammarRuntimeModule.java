@@ -10,11 +10,17 @@
  */
 package org.lunifera.dsl.common.xtext;
 
+import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
+
 /**
  * Use this class to register components to be used at runtime / without the
  * Equinox extension registry.
  */
 public class CommonGrammarRuntimeModule extends
 		org.lunifera.dsl.common.xtext.AbstractCommonGrammarRuntimeModule {
+
+	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
+		return SemanticLoadingResource.class;
+	}
 
 }

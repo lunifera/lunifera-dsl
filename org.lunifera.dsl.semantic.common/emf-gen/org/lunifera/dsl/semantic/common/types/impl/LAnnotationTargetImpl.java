@@ -22,8 +22,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -44,7 +42,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *
  * @generated
  */
-public class LAnnotationTargetImpl extends MinimalEObjectImpl.Container implements LAnnotationTarget {
+public class LAnnotationTargetImpl extends LLazyResolverImpl implements LAnnotationTarget {
 	/**
 	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

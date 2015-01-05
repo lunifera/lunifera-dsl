@@ -18,7 +18,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl;
 
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
@@ -37,7 +38,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *
  * @generated
  */
-public class LEntityPersistenceInfoImpl extends MinimalEObjectImpl.Container implements LEntityPersistenceInfo {
+public class LEntityPersistenceInfoImpl extends LLazyResolverImpl implements LEntityPersistenceInfo {
 	/**
 	 * The default value of the '{@link #getSchemaName() <em>Schema Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

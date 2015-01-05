@@ -15,7 +15,7 @@ package org.lunifera.dsl.semantic.service;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 
 import org.lunifera.dsl.semantic.dto.LDtoFeature;
 
@@ -36,7 +36,7 @@ import org.lunifera.dsl.semantic.dto.LDtoFeature;
  * @model
  * @generated
  */
-public interface LSortableAttributes extends EObject {
+public interface LSortableAttributes extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}'.

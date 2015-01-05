@@ -1,5 +1,5 @@
-@xcore.lang.GenModel(fileExtensions="typesmodel", editDirectory="/org.lunifera.dsl.semantic.common.edit/src", editorDirectory="/org.lunifera.dsl.semantic.common.editor/src", extensibleProviderFactory="true")
-@xcore.lang.GenModel(modelName="Types")
+@GenModel(fileExtensions="typesmodel", editDirectory="/org.lunifera.dsl.semantic.common.edit/src", editorDirectory="/org.lunifera.dsl.semantic.common.editor/src", extensibleProviderFactory="true")
+@GenModel(modelName="Types")
 @GenModel(prefix="LunTypes")
 @GenModel(copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
  All rights reserved. This program and the accompanying materials 
@@ -16,24 +16,37 @@
 @Ecore(nsPrefix="types")
 @Ecore(rootPackage="types")
 package org.lunifera.dsl.semantic.common.types
-        
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
+
+import xcore.lang.GenModel
+import org.eclipse.emf.common.util.EList
+import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
-import org.eclipse.xtext.common.types.JvmFormalParameter
-import org.eclipse.emf.common.util.EList
- 
-class LCommonModel {
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
+import org.eclipse.emf.ecore.EObject
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
+import org.eclipse.emf.ecore.InternalEObject
+import org.eclipse.xtext.xtype.XImportSection
+
+class LCommonModel extends LLazyResolver {
 	contains LTypedPackage[] packages
+	
 }
 
-class LPackage {
+class LLazyResolver {
+	op EObject eResolveProxy(InternalEObject proxy) {
+		return EcoreUtil3.resolve(proxy, this.eResource().resourceSet);
+	}
+}
+
+class LPackage extends LLazyResolver {
 	String name
 	contains LImport[] imports
 }
 
 class LTypedPackage extends LPackage {
 	contains LType[] types
+	
 }
 
 class LImport {
@@ -54,13 +67,13 @@ class LType extends LAnnotationTarget {
 		}
 	}
 }
- 
-class LAnnotationDef {
+
+class LAnnotationDef extends LLazyResolver {
 	boolean exclude
-	contains XAnnotation ^annotation  
+	contains XAnnotation ^annotation
 }
- 
-class LAnnotationTarget {
+
+class LAnnotationTarget extends LLazyResolver {
 	contains LAnnotationDef[] annotations
 }
 
@@ -86,8 +99,9 @@ class LDataType extends LScalarType {
 	// used to target a feature in the current entity, but avoids resolving cross refernces too early.
 	// for instance if the feature is contained in a superclass
 	refers LType syntheticType
+	
 }
- 
+
 enum LDateType {
 	DATE
 	, TIME
@@ -96,16 +110,19 @@ enum LDateType {
 
 class LEnum extends LScalarType {
 	contains LEnumLiteral[] literals
+	
 }
 
-class LEnumLiteral {
+class LEnumLiteral extends LLazyResolver {
 	String name
+	
 }
 
 class LClass extends LType {
 	boolean ^abstract
 	boolean serializable
 	String shortName
+	
 }
 
 interface LFeaturesHolder {
@@ -148,6 +165,14 @@ interface LAttribute extends LFeature {
 	boolean cascading
 	boolean ^transient
 	boolean ^derived
+	/**
+	 * The domainKey is a human readable value for a dto or entity
+	 */
+	boolean domainKey
+	/**
+	 * The domainKey is the human readable description for a dto or entity
+	 */
+	boolean domainDescription
 	contains XExpression derivedGetterExpression
 	refers LScalarType ^type
 }
@@ -163,9 +188,10 @@ class LOperation extends LAnnotationTarget {
 	op AnnotationList getResolvedAnnotations() {
 		annotations
 	}
+	
 }
 
-class LModifier {
+class LModifier extends LLazyResolver {
 	boolean final
 	boolean ^static
 	LVisibility visibility
@@ -181,6 +207,50 @@ enum LVisibility {
 class LMultiplicity {
 	LLowerBound lower
 	LUpperBound upper
+	derived String toMultiplicityString get {
+		var result = new StringBuilder
+		switch lower {
+			case LLowerBound.NULL: {
+				result.append = "0";
+			}
+			case LLowerBound.MANY: {
+				result.append = "1";
+			}
+			case LLowerBound.OPTIONAL: {
+				result.append = "0";
+			}
+			case LLowerBound.ATLEASTONE: {
+				result.append = "1";
+			}
+			case LLowerBound.ZERO: {
+				result.append = "0";
+			}
+			case LLowerBound.ONE: {
+				result.append = "1";
+			}
+			default: {
+				result.append = "undefined";
+
+			}
+		}
+		result.append = ".."
+		switch upper {
+			case LUpperBound.NULL: {
+				result.append = "0";
+			}
+			case LUpperBound.MANY: {
+				result.append = "*";
+			}
+			case LUpperBound.ONE: {
+				result.append = "1";
+			}
+			default: {
+				result.append = "undefined"
+			}
+		}
+		return result.toString
+	}
+	
 }
 
 enum LLowerBound {
@@ -204,7 +274,7 @@ type FeaturesList wraps java.util.List<? extends LFeature>
 
 type AnnotationList wraps EList<LAnnotationDef>
 
-
+type InternalEObject wraps InternalEObject
 	
 	
 	

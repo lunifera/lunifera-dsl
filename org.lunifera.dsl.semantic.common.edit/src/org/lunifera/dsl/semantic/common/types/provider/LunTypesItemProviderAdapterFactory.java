@@ -120,6 +120,29 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LLazyResolver} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LLazyResolverItemProvider lLazyResolverItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LLazyResolver}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLLazyResolverAdapter() {
+		if (lLazyResolverItemProvider == null) {
+			lLazyResolverItemProvider = new LLazyResolverItemProvider(this);
+		}
+
+		return lLazyResolverItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LPackage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -568,6 +591,7 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 	 */
 	public void dispose() {
 		if (lCommonModelItemProvider != null) lCommonModelItemProvider.dispose();
+		if (lLazyResolverItemProvider != null) lLazyResolverItemProvider.dispose();
 		if (lPackageItemProvider != null) lPackageItemProvider.dispose();
 		if (lTypedPackageItemProvider != null) lTypedPackageItemProvider.dispose();
 		if (lImportItemProvider != null) lImportItemProvider.dispose();

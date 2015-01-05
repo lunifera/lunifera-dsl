@@ -5,6 +5,7 @@ import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
+import org.eclipse.xtext.common.types.JvmInnerTypeReference;
 import org.eclipse.xtext.common.types.JvmLowerBound;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeParameter;
@@ -71,6 +72,7 @@ import org.lunifera.dsl.semantic.service.LFilterableAttributes;
 import org.lunifera.dsl.semantic.service.LInjectedService;
 import org.lunifera.dsl.semantic.service.LInjectedServices;
 import org.lunifera.dsl.semantic.service.LServiceModel;
+import org.lunifera.dsl.semantic.service.LServiceOperation;
 import org.lunifera.dsl.semantic.service.LSortableAttributes;
 import org.lunifera.dsl.semantic.service.LunServicePackage;
 import org.lunifera.dsl.services.xtext.services.ServicesGrammarGrammarAccess;
@@ -115,6 +117,12 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 			case LunServicePackage.LSERVICE_MODEL:
 				if(context == grammarAccess.getLServiceModelRule()) {
 					sequence_LServiceModel(context, (LServiceModel) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunServicePackage.LSERVICE_OPERATION:
+				if(context == grammarAccess.getOperationRule()) {
+					sequence_Operation(context, (LServiceOperation) semanticObject); 
 					return; 
 				}
 				else break;
@@ -198,8 +206,22 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 					return; 
 				}
 				else break;
+			case TypesPackage.JVM_INNER_TYPE_REFERENCE:
+				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceAccess().getJvmInnerTypeReferenceOuterAction_1_4_0_0_0() ||
+				   context == grammarAccess.getJvmTypeReferenceRule() ||
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
+					sequence_JvmParameterizedTypeReference(context, (JvmInnerTypeReference) semanticObject); 
+					return; 
+				}
+				else break;
 			case TypesPackage.JVM_LOWER_BOUND:
-				if(context == grammarAccess.getJvmLowerBoundRule()) {
+				if(context == grammarAccess.getJvmLowerBoundAndedRule()) {
+					sequence_JvmLowerBoundAnded(context, (JvmLowerBound) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getJvmLowerBoundRule()) {
 					sequence_JvmLowerBound(context, (JvmLowerBound) semanticObject); 
 					return; 
 				}
@@ -207,6 +229,7 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 			case TypesPackage.JVM_PARAMETERIZED_TYPE_REFERENCE:
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceAccess().getJvmInnerTypeReferenceOuterAction_1_4_0_0_0() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
 					sequence_JvmParameterizedTypeReference(context, (JvmParameterizedTypeReference) semanticObject); 
@@ -1416,12 +1439,9 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	 *         annotationInfo=Class_LDTOService_2 
 	 *         name=ValidIDWithKeywords 
 	 *         dto=[LDto|ID] 
+	 *         persistenceId=QualifiedName? 
 	 *         injectedServices=InjectedServices 
-	 *         getExpression=XBlockExpression? 
-	 *         findExpression=XBlockExpression? 
-	 *         findExpressionWithDelimiter=XBlockExpression? 
-	 *         updateExpression=XBlockExpression? 
-	 *         deleteExpression=XBlockExpression?
+	 *         operations+=Operation*
 	 *     )
 	 */
 	protected void sequence_Class(EObject context, LDTOService semanticObject) {
@@ -1470,6 +1490,15 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	 *     packages+=TypedPackage*
 	 */
 	protected void sequence_LServiceModel(EObject context, LServiceModel semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotations+=AnnotationDef* type=JvmTypeReference name=ID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
+	 */
+	protected void sequence_Operation(EObject context, LServiceOperation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

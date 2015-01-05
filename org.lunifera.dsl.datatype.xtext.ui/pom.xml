@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>org.lunifera.dsl</groupId>
 		<artifactId>org.lunifera.dsl.parent</artifactId>
-		<version>0.7.4</version>
+		<version>0.8.0</version>
 		<relativePath>../org.lunifera.dsl.parent/pom.xml</relativePath>
 	</parent>
 	

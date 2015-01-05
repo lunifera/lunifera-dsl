@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LVisibility;
@@ -39,7 +38,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *
  * @generated
  */
-public class LModifierImpl extends MinimalEObjectImpl.Container implements LModifier {
+public class LModifierImpl extends LLazyResolverImpl implements LModifier {
 	/**
 	 * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
 	 * <!-- begin-user-doc -->

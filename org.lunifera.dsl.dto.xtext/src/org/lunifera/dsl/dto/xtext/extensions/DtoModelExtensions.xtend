@@ -37,8 +37,7 @@ import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.eclipse.xtext.common.types.JvmType
-import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.eclipse.xtext.common.types.TypesFactory
 
 class DtoModelExtensions extends ModelExtensions {
 
@@ -80,7 +79,7 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractReference prop) {
 
 		// prop.type is instanceof DTO
-		return prop.type?.toTypeReference.cloneWithProxies
+		return prop.typeJvm?.cloneWithProxies
 	}
 
 	/**
@@ -114,7 +113,7 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedReference prop) {
 
 		// for inherited references, the dto type is specified -> So use it
-		return prop.type?.toTypeReference.cloneWithProxies
+		return prop.typeJvm?.cloneWithProxies
 	}
 
 	/**
@@ -278,7 +277,21 @@ class DtoModelExtensions extends ModelExtensions {
 		prop.type
 	}
 
-	def toRawTypeRefernce(LDtoFeature prop) {
+	def dispatch toRawTypeRefernce(LDtoFeature prop) {
+		prop.toRawType?.toTypeReference
+	}
+	
+	def dispatch toRawTypeRefernce(LDtoInheritedReference prop) {
+		val LReference ref = prop.inheritedFeature
+		if(ref instanceof LEntityReference){
+			return ref.typeJvm.cloneWithProxies
+		}else if(ref instanceof LBeanReference){
+			return ref.typeJvm.cloneWithProxies
+		}
+		return TypesFactory.eINSTANCE.createJvmUnknownTypeReference
+	}
+	
+	def dispatch toRawTypeRefernce(LDtoAbstractReference prop) {
 		prop.toRawType?.toTypeReference
 	}
 
@@ -387,7 +400,7 @@ class DtoModelExtensions extends ModelExtensions {
 		}
 	}
 
-	def dispatch isCascading(LDtoAbstractReference prop) {
+	def dispatch boolean isCascading(LDtoAbstractReference prop) {
 		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.cascading
 		} else {
@@ -395,50 +408,91 @@ class DtoModelExtensions extends ModelExtensions {
 		}
 	}
 
-	def dispatch isCascading(LDtoAbstractAttribute prop) {
+	def dispatch boolean isCascading(LDtoAbstractAttribute prop) {
 		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.cascading
 		} else {
 			return prop.cascading;
 		}
 	}
-
+	
+	def isAttribute(LDtoFeature prop) {
+		return prop instanceof LAttribute
+	}
+	
+	def isContainmentReference(LDtoFeature prop) {
+		return prop instanceof LReference && prop.cascading
+	}
+	
 	def isCrossReference(LDtoFeature prop) {
 		return prop instanceof LReference && !prop.cascading
 	}
+	
+	def dispatch isContainerReference(LDtoAbstractAttribute prop) {
+		return false
+	}
+	
+	def dispatch isContainerReference(LDtoReference prop) {
+		val opposite = prop.opposite
+		if(opposite != null && opposite.cascading){
+			return true
+		}
+		return false
+	}
+	
+	def dispatch isContainerReference(LDtoInheritedReference prop) {
+		val opposite = prop.inheritedFeature.opposite
+		if(opposite != null && opposite.cascading){
+			return true
+		}
+		return false
+	}
 
-	//	def dispatch boolean shouldUseCrossReference(LDtoFeature prop) {
-	//
-	//		//		if (prop.crossReference) {
-	//		//			if (prop.inherited && prop.inheritedFeature != null) {
-	//		//				return prop.inheritedFeature.shouldUseCrossReference
-	//		//			} else {
-	//		//				return true
-	//		//			}
-	//		//		}
-	//		return false
-	//	}
-	//
-	//	def dispatch boolean shouldUseCrossReference(LEntityReference prop) {
-	//		if (prop.cascading) {
-	//			return false
-	//		}
-	//
-	//		if (prop.opposite == null) {
-	//			return true
-	//		}
-	//
-	//		if (prop.opposite.cascading) {
-	//			return false
-	//		}
-	//		return true
-	//	}
 	def toMapperTypeReference(LType type) {
 		references.getTypeForName(type.toFqnMapperName, type, null)
 	}
 
 	def toMapperTypeReference(LDtoAbstractReference ref) {
 		ref.type.toMapperTypeReference
+	}
+	
+	def dispatch isIDorUUID(LAttribute prop) {
+		return false
+	}
+	
+	def dispatch isIDorUUID(LDtoAttribute prop) {
+		return prop.id || prop.uuid
+	}
+	
+	def dispatch isIDorUUID(LDtoInheritedAttribute prop) {
+		return prop.inheritedFeature.id || prop.inheritedFeature.uuid
+	}
+	
+	/**
+	 * Returns all containment features that need to be copied.
+	 */
+	def getContainmentReferencesToCopy(LDto dto){
+		dto.features.filter[
+			it.containmentReference
+		]
+	}
+
+	/**
+	 * Returns all attributes that need to be copied.
+	 */
+	def getAttributesToCopy(LDto dto){
+		dto.features.filter[
+			it.attribute
+		]
+	}
+	
+	/**
+	 * Returns all crossreferences that need to be copied.
+	 */
+	def getCrossReferencesToCopy(LDto dto){
+		dto.features.filter[
+			return !it.containerReference && it.isCrossReference
+		]
 	}
 
 }

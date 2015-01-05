@@ -75,6 +75,7 @@ public class LMultiplicityItemProvider
 
 			addLowerPropertyDescriptor(object);
 			addUpperPropertyDescriptor(object);
+			addToMultiplicityStringPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -124,6 +125,28 @@ public class LMultiplicityItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the To Multiplicity String feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addToMultiplicityStringPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LMultiplicity_toMultiplicityString_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LMultiplicity_toMultiplicityString_feature", "_UI_LMultiplicity_type"),
+				 LunTypesPackage.Literals.LMULTIPLICITY__TO_MULTIPLICITY_STRING,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns LMultiplicity.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -164,6 +187,7 @@ public class LMultiplicityItemProvider
 		switch (notification.getFeatureID(LMultiplicity.class)) {
 			case LunTypesPackage.LMULTIPLICITY__LOWER:
 			case LunTypesPackage.LMULTIPLICITY__UPPER:
+			case LunTypesPackage.LMULTIPLICITY__TO_MULTIPLICITY_STRING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

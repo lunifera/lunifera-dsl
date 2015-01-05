@@ -73,6 +73,43 @@ public interface LunTypesPackage extends EPackage {
 	LunTypesPackage eINSTANCE = org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl <em>LLazy Resolver</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLLazyResolver()
+	 * @generated
+	 */
+	int LLAZY_RESOLVER = 1;
+
+	/**
+	 * The number of structural features of the '<em>LLazy Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LLAZY_RESOLVER_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT = 0;
+
+	/**
+	 * The number of operations of the '<em>LLazy Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LLAZY_RESOLVER_OPERATION_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LCommonModelImpl <em>LCommon Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,7 +126,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LCOMMON_MODEL__PACKAGES = 0;
+	int LCOMMON_MODEL__PACKAGES = LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>LCommon Model</em>' class.
@@ -98,7 +135,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LCOMMON_MODEL_FEATURE_COUNT = 1;
+	int LCOMMON_MODEL_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCOMMON_MODEL___ERESOLVE_PROXY__INTERNALEOBJECT = LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LCommon Model</em>' class.
@@ -107,7 +153,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LCOMMON_MODEL_OPERATION_COUNT = 0;
+	int LCOMMON_MODEL_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LPackageImpl <em>LPackage</em>}' class.
@@ -117,7 +163,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLPackage()
 	 * @generated
 	 */
-	int LPACKAGE = 1;
+	int LPACKAGE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -126,7 +172,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPACKAGE__NAME = 0;
+	int LPACKAGE__NAME = LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -135,7 +181,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPACKAGE__IMPORTS = 1;
+	int LPACKAGE__IMPORTS = LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>LPackage</em>' class.
@@ -144,7 +190,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPACKAGE_FEATURE_COUNT = 2;
+	int LPACKAGE_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPACKAGE___ERESOLVE_PROXY__INTERNALEOBJECT = LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LPackage</em>' class.
@@ -153,7 +208,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LPACKAGE_OPERATION_COUNT = 0;
+	int LPACKAGE_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LTypedPackageImpl <em>LTyped Package</em>}' class.
@@ -163,7 +218,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLTypedPackage()
 	 * @generated
 	 */
-	int LTYPED_PACKAGE = 2;
+	int LTYPED_PACKAGE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -202,6 +257,15 @@ public interface LunTypesPackage extends EPackage {
 	int LTYPED_PACKAGE_FEATURE_COUNT = LPACKAGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LTYPED_PACKAGE___ERESOLVE_PROXY__INTERNALEOBJECT = LPACKAGE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The number of operations of the '<em>LTyped Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,7 +282,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLImport()
 	 * @generated
 	 */
-	int LIMPORT = 3;
+	int LIMPORT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -255,7 +319,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAnnotationTarget()
 	 * @generated
 	 */
-	int LANNOTATION_TARGET = 6;
+	int LANNOTATION_TARGET = 7;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -264,7 +328,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_TARGET__ANNOTATIONS = 0;
+	int LANNOTATION_TARGET__ANNOTATIONS = LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>LAnnotation Target</em>' class.
@@ -273,7 +337,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_TARGET_FEATURE_COUNT = 1;
+	int LANNOTATION_TARGET_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANNOTATION_TARGET___ERESOLVE_PROXY__INTERNALEOBJECT = LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LAnnotation Target</em>' class.
@@ -282,7 +355,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_TARGET_OPERATION_COUNT = 0;
+	int LANNOTATION_TARGET_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LTypeImpl <em>LType</em>}' class.
@@ -292,7 +365,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLType()
 	 * @generated
 	 */
-	int LTYPE = 4;
+	int LTYPE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -331,6 +404,15 @@ public interface LunTypesPackage extends EPackage {
 	int LTYPE_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LTYPE___ERESOLVE_PROXY__INTERNALEOBJECT = LANNOTATION_TARGET___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -356,7 +438,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAnnotationDef()
 	 * @generated
 	 */
-	int LANNOTATION_DEF = 5;
+	int LANNOTATION_DEF = 6;
 
 	/**
 	 * The feature id for the '<em><b>Exclude</b></em>' attribute.
@@ -365,7 +447,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_DEF__EXCLUDE = 0;
+	int LANNOTATION_DEF__EXCLUDE = LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
@@ -374,7 +456,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_DEF__ANNOTATION = 1;
+	int LANNOTATION_DEF__ANNOTATION = LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>LAnnotation Def</em>' class.
@@ -383,7 +465,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_DEF_FEATURE_COUNT = 2;
+	int LANNOTATION_DEF_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANNOTATION_DEF___ERESOLVE_PROXY__INTERNALEOBJECT = LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LAnnotation Def</em>' class.
@@ -392,7 +483,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANNOTATION_DEF_OPERATION_COUNT = 0;
+	int LANNOTATION_DEF_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LScalarTypeImpl <em>LScalar Type</em>}' class.
@@ -402,7 +493,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLScalarType()
 	 * @generated
 	 */
-	int LSCALAR_TYPE = 7;
+	int LSCALAR_TYPE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -441,6 +532,15 @@ public interface LunTypesPackage extends EPackage {
 	int LSCALAR_TYPE_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSCALAR_TYPE___ERESOLVE_PROXY__INTERNALEOBJECT = LTYPE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -466,7 +566,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDataType()
 	 * @generated
 	 */
-	int LDATA_TYPE = 8;
+	int LDATA_TYPE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -595,6 +695,15 @@ public interface LunTypesPackage extends EPackage {
 	int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 10;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDATA_TYPE___ERESOLVE_PROXY__INTERNALEOBJECT = LSCALAR_TYPE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -620,7 +729,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLEnum()
 	 * @generated
 	 */
-	int LENUM = 9;
+	int LENUM = 10;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -668,6 +777,15 @@ public interface LunTypesPackage extends EPackage {
 	int LENUM_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM___ERESOLVE_PROXY__INTERNALEOBJECT = LSCALAR_TYPE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -693,7 +811,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLEnumLiteral()
 	 * @generated
 	 */
-	int LENUM_LITERAL = 10;
+	int LENUM_LITERAL = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -702,7 +820,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENUM_LITERAL__NAME = 0;
+	int LENUM_LITERAL__NAME = LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>LEnum Literal</em>' class.
@@ -711,7 +829,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENUM_LITERAL_FEATURE_COUNT = 1;
+	int LENUM_LITERAL_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM_LITERAL___ERESOLVE_PROXY__INTERNALEOBJECT = LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LEnum Literal</em>' class.
@@ -720,7 +847,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENUM_LITERAL_OPERATION_COUNT = 0;
+	int LENUM_LITERAL_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LClassImpl <em>LClass</em>}' class.
@@ -730,7 +857,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLClass()
 	 * @generated
 	 */
-	int LCLASS = 11;
+	int LCLASS = 12;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -796,6 +923,15 @@ public interface LunTypesPackage extends EPackage {
 	int LCLASS_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCLASS___ERESOLVE_PROXY__INTERNALEOBJECT = LTYPE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -821,7 +957,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLFeaturesHolder()
 	 * @generated
 	 */
-	int LFEATURES_HOLDER = 12;
+	int LFEATURES_HOLDER = 13;
 
 	/**
 	 * The number of structural features of the '<em>LFeatures Holder</em>' class.
@@ -867,7 +1003,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLFeature()
 	 * @generated
 	 */
-	int LFEATURE = 13;
+	int LFEATURE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -915,6 +1051,15 @@ public interface LunTypesPackage extends EPackage {
 	int LFEATURE_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LFEATURE___ERESOLVE_PROXY__INTERNALEOBJECT = LANNOTATION_TARGET___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -940,7 +1085,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLReference()
 	 * @generated
 	 */
-	int LREFERENCE = 14;
+	int LREFERENCE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1006,6 +1151,15 @@ public interface LunTypesPackage extends EPackage {
 	int LREFERENCE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LREFERENCE___ERESOLVE_PROXY__INTERNALEOBJECT = LFEATURE___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1031,7 +1185,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAttribute()
 	 * @generated
 	 */
-	int LATTRIBUTE = 15;
+	int LATTRIBUTE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1133,13 +1287,31 @@ public interface LunTypesPackage extends EPackage {
 	int LATTRIBUTE__DERIVED = LFEATURE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Domain Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE__DOMAIN_KEY = LFEATURE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Domain Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE__DOMAIN_DESCRIPTION = LFEATURE_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__DERIVED_GETTER_EXPRESSION = LFEATURE_FEATURE_COUNT + 7;
+	int LATTRIBUTE__DERIVED_GETTER_EXPRESSION = LFEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1148,7 +1320,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 8;
+	int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>LAttribute</em>' class.
@@ -1157,7 +1329,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 9;
+	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 11;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE___ERESOLVE_PROXY__INTERNALEOBJECT = LFEATURE___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
@@ -1185,7 +1366,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLOperation()
 	 * @generated
 	 */
-	int LOPERATION = 16;
+	int LOPERATION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1242,6 +1423,15 @@ public interface LunTypesPackage extends EPackage {
 	int LOPERATION_FEATURE_COUNT = LANNOTATION_TARGET_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOPERATION___ERESOLVE_PROXY__INTERNALEOBJECT = LANNOTATION_TARGET___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
 	 * The operation id for the '<em>Get Resolved Annotations</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1267,7 +1457,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLModifier()
 	 * @generated
 	 */
-	int LMODIFIER = 17;
+	int LMODIFIER = 18;
 
 	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -1276,7 +1466,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LMODIFIER__FINAL = 0;
+	int LMODIFIER__FINAL = LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Static</b></em>' attribute.
@@ -1285,7 +1475,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LMODIFIER__STATIC = 1;
+	int LMODIFIER__STATIC = LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -1294,7 +1484,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LMODIFIER__VISIBILITY = 2;
+	int LMODIFIER__VISIBILITY = LLAZY_RESOLVER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>LModifier</em>' class.
@@ -1303,7 +1493,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LMODIFIER_FEATURE_COUNT = 3;
+	int LMODIFIER_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LMODIFIER___ERESOLVE_PROXY__INTERNALEOBJECT = LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
 	 * The number of operations of the '<em>LModifier</em>' class.
@@ -1312,7 +1511,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LMODIFIER_OPERATION_COUNT = 0;
+	int LMODIFIER_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LMultiplicityImpl <em>LMultiplicity</em>}' class.
@@ -1322,7 +1521,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLMultiplicity()
 	 * @generated
 	 */
-	int LMULTIPLICITY = 18;
+	int LMULTIPLICITY = 19;
 
 	/**
 	 * The feature id for the '<em><b>Lower</b></em>' attribute.
@@ -1343,13 +1542,22 @@ public interface LunTypesPackage extends EPackage {
 	int LMULTIPLICITY__UPPER = 1;
 
 	/**
+	 * The feature id for the '<em><b>To Multiplicity String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LMULTIPLICITY__TO_MULTIPLICITY_STRING = 2;
+
+	/**
 	 * The number of structural features of the '<em>LMultiplicity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LMULTIPLICITY_FEATURE_COUNT = 2;
+	int LMULTIPLICITY_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>LMultiplicity</em>' class.
@@ -1368,7 +1576,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDateType()
 	 * @generated
 	 */
-	int LDATE_TYPE = 19;
+	int LDATE_TYPE = 20;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LVisibility <em>LVisibility</em>}' enum.
@@ -1378,7 +1586,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLVisibility()
 	 * @generated
 	 */
-	int LVISIBILITY = 20;
+	int LVISIBILITY = 21;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LLowerBound <em>LLower Bound</em>}' enum.
@@ -1388,7 +1596,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLLowerBound()
 	 * @generated
 	 */
-	int LLOWER_BOUND = 21;
+	int LLOWER_BOUND = 22;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LUpperBound <em>LUpper Bound</em>}' enum.
@@ -1398,7 +1606,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLUpperBound()
 	 * @generated
 	 */
-	int LUPPER_BOUND = 22;
+	int LUPPER_BOUND = 23;
 
 	/**
 	 * The meta object id for the '<em>Operations List</em>' data type.
@@ -1408,7 +1616,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getOperationsList()
 	 * @generated
 	 */
-	int OPERATIONS_LIST = 23;
+	int OPERATIONS_LIST = 24;
 
 	/**
 	 * The meta object id for the '<em>Features List</em>' data type.
@@ -1418,7 +1626,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getFeaturesList()
 	 * @generated
 	 */
-	int FEATURES_LIST = 24;
+	int FEATURES_LIST = 25;
 
 	/**
 	 * The meta object id for the '<em>Annotation List</em>' data type.
@@ -1428,7 +1636,17 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getAnnotationList()
 	 * @generated
 	 */
-	int ANNOTATION_LIST = 25;
+	int ANNOTATION_LIST = 26;
+
+	/**
+	 * The meta object id for the '<em>Internal EObject</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.ecore.InternalEObject
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getInternalEObject()
+	 * @generated
+	 */
+	int INTERNAL_EOBJECT = 27;
 
 
 	/**
@@ -1451,6 +1669,26 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLCommonModel_Packages();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LLazyResolver <em>LLazy Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LLazy Resolver</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LLazyResolver
+	 * @generated
+	 */
+	EClass getLLazyResolver();
+
+	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LLazyResolver#eResolveProxy(org.eclipse.emf.ecore.InternalEObject) <em>EResolve Proxy</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>EResolve Proxy</em>' operation.
+	 * @see org.lunifera.dsl.semantic.common.types.LLazyResolver#eResolveProxy(org.eclipse.emf.ecore.InternalEObject)
+	 * @generated
+	 */
+	EOperation getLLazyResolver__EResolveProxy__InternalEObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LPackage <em>LPackage</em>}'.
@@ -2039,6 +2277,28 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLAttribute_Derived();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainKey <em>Domain Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain Key</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#isDomainKey()
+	 * @see #getLAttribute()
+	 * @generated
+	 */
+	EAttribute getLAttribute_DomainKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainDescription <em>Domain Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Domain Description</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#isDomainDescription()
+	 * @see #getLAttribute()
+	 * @generated
+	 */
+	EAttribute getLAttribute_DomainDescription();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression <em>Derived Getter Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2200,6 +2460,17 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLMultiplicity_Upper();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LMultiplicity#getToMultiplicityString <em>To Multiplicity String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>To Multiplicity String</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LMultiplicity#getToMultiplicityString()
+	 * @see #getLMultiplicity()
+	 * @generated
+	 */
+	EAttribute getLMultiplicity_ToMultiplicityString();
+
+	/**
 	 * Returns the meta object for enum '{@link org.lunifera.dsl.semantic.common.types.LDateType <em>LDate Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2273,6 +2544,17 @@ public interface LunTypesPackage extends EPackage {
 	EDataType getAnnotationList();
 
 	/**
+	 * Returns the meta object for data type '{@link org.eclipse.emf.ecore.InternalEObject <em>Internal EObject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Internal EObject</em>'.
+	 * @see org.eclipse.emf.ecore.InternalEObject
+	 * @model instanceClass="org.eclipse.emf.ecore.InternalEObject"
+	 * @generated
+	 */
+	EDataType getInternalEObject();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2312,6 +2594,24 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LCOMMON_MODEL__PACKAGES = eINSTANCE.getLCommonModel_Packages();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl <em>LLazy Resolver</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLLazyResolver()
+		 * @generated
+		 */
+		EClass LLAZY_RESOLVER = eINSTANCE.getLLazyResolver();
+
+		/**
+		 * The meta object literal for the '<em><b>EResolve Proxy</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT = eINSTANCE.getLLazyResolver__EResolveProxy__InternalEObject();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LPackageImpl <em>LPackage</em>}' class.
@@ -2784,6 +3084,22 @@ public interface LunTypesPackage extends EPackage {
 		EAttribute LATTRIBUTE__DERIVED = eINSTANCE.getLAttribute_Derived();
 
 		/**
+		 * The meta object literal for the '<em><b>Domain Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LATTRIBUTE__DOMAIN_KEY = eINSTANCE.getLAttribute_DomainKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LATTRIBUTE__DOMAIN_DESCRIPTION = eINSTANCE.getLAttribute_DomainDescription();
+
+		/**
 		 * The meta object literal for the '<em><b>Derived Getter Expression</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2910,6 +3226,14 @@ public interface LunTypesPackage extends EPackage {
 		EAttribute LMULTIPLICITY__UPPER = eINSTANCE.getLMultiplicity_Upper();
 
 		/**
+		 * The meta object literal for the '<em><b>To Multiplicity String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LMULTIPLICITY__TO_MULTIPLICITY_STRING = eINSTANCE.getLMultiplicity_ToMultiplicityString();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.LDateType <em>LDate Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2978,6 +3302,16 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType ANNOTATION_LIST = eINSTANCE.getAnnotationList();
+
+		/**
+		 * The meta object literal for the '<em>Internal EObject</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.ecore.InternalEObject
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getInternalEObject()
+		 * @generated
+		 */
+		EDataType INTERNAL_EOBJECT = eINSTANCE.getInternalEObject();
 
 	}
 

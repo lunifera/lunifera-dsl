@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
@@ -73,6 +74,7 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case LunTypesPackage.LCOMMON_MODEL: return createLCommonModel();
+			case LunTypesPackage.LLAZY_RESOLVER: return createLLazyResolver();
 			case LunTypesPackage.LPACKAGE: return createLPackage();
 			case LunTypesPackage.LTYPED_PACKAGE: return createLTypedPackage();
 			case LunTypesPackage.LIMPORT: return createLImport();
@@ -114,6 +116,8 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 				return createFeaturesListFromString(eDataType, initialValue);
 			case LunTypesPackage.ANNOTATION_LIST:
 				return createAnnotationListFromString(eDataType, initialValue);
+			case LunTypesPackage.INTERNAL_EOBJECT:
+				return createInternalEObjectFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -141,6 +145,8 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 				return convertFeaturesListToString(eDataType, instanceValue);
 			case LunTypesPackage.ANNOTATION_LIST:
 				return convertAnnotationListToString(eDataType, instanceValue);
+			case LunTypesPackage.INTERNAL_EOBJECT:
+				return convertInternalEObjectToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -154,6 +160,16 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	public LCommonModel createLCommonModel() {
 		LCommonModelImpl lCommonModel = new LCommonModelImpl();
 		return lCommonModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LLazyResolver createLLazyResolver() {
+		LLazyResolverImpl lLazyResolver = new LLazyResolverImpl();
+		return lLazyResolver;
 	}
 
 	/**
@@ -431,6 +447,24 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	 */
 	public String convertAnnotationListToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InternalEObject createInternalEObjectFromString(EDataType eDataType, String initialValue) {
+		return (InternalEObject)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInternalEObjectToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

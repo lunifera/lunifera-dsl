@@ -27,10 +27,10 @@ public class OutputConfigurationProvider extends
 		OutputConfiguration servicesOutput = new OutputConfiguration("DTOs");
 		servicesOutput.setDescription("derived DTOs");
 		servicesOutput.setOutputDirectory("./dto-models");
-		servicesOutput.setOverrideExistingResources(true);
+		servicesOutput.setOverrideExistingResources(false);
 		servicesOutput.setCreateOutputDirectory(true);
-		servicesOutput.setCleanUpDerivedResources(true);
-		servicesOutput.setSetDerivedProperty(true);
+		servicesOutput.setCleanUpDerivedResources(false);
+		servicesOutput.setSetDerivedProperty(false);
 		servicesOutput.setKeepLocalHistory(true);
 		configs.add(servicesOutput);
 

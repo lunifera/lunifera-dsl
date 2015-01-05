@@ -42,6 +42,15 @@ public interface LunTypesFactory extends EFactory {
 	LCommonModel createLCommonModel();
 
 	/**
+	 * Returns a new object of class '<em>LLazy Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LLazy Resolver</em>'.
+	 * @generated
+	 */
+	LLazyResolver createLLazyResolver();
+
+	/**
 	 * Returns a new object of class '<em>LPackage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

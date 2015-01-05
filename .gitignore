@@ -7,5 +7,7 @@ target
 xtend-gen/
 plugin.xml_gen
 /build.dsl.kepler.latest.log.properties
+/build.dsl.luna.latest.log.properties
+/build.org.lunifera.dsl.p2.luna.latest.log.properties
 org.lunifera.dsl.entity.xtext.tests/luniferaDb/*
 org.lunifera.dsl.eclipse.ui.examples/contents/*

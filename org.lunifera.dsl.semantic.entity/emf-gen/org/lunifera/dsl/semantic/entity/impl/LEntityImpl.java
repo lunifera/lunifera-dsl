@@ -38,6 +38,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -74,6 +76,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getIndexes <em>Indexes</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getSuperType <em>Super Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getSuperTypeJvm <em>Super Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getSubTypes <em>Sub Types</em>}</li>
  * </ul>
  * </p>
@@ -230,6 +233,16 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * @ordered
 	 */
 	protected LEntity superType;
+
+	/**
+	 * The cached value of the '{@link #getSuperTypeJvm() <em>Super Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuperTypeJvm()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference superTypeJvm;
 
 	/**
 	 * The cached value of the '{@link #getSubTypes() <em>Sub Types</em>}' reference list.
@@ -540,6 +553,49 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public JvmTypeReference getSuperTypeJvm() {
+		return superTypeJvm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSuperTypeJvm(JvmTypeReference newSuperTypeJvm, NotificationChain msgs) {
+		JvmTypeReference oldSuperTypeJvm = superTypeJvm;
+		superTypeJvm = newSuperTypeJvm;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY__SUPER_TYPE_JVM, oldSuperTypeJvm, newSuperTypeJvm);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSuperTypeJvm(JvmTypeReference newSuperTypeJvm) {
+		if (newSuperTypeJvm != superTypeJvm) {
+			NotificationChain msgs = null;
+			if (superTypeJvm != null)
+				msgs = ((InternalEObject)superTypeJvm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY__SUPER_TYPE_JVM, null, msgs);
+			if (newSuperTypeJvm != null)
+				msgs = ((InternalEObject)newSuperTypeJvm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY__SUPER_TYPE_JVM, null, msgs);
+			msgs = basicSetSuperTypeJvm(newSuperTypeJvm, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY__SUPER_TYPE_JVM, newSuperTypeJvm, newSuperTypeJvm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<LEntity> getSubTypes() {
 		if (subTypes == null) {
 			subTypes = new EObjectWithInverseResolvingEList<LEntity>(LEntity.class, this, LunEntityPackage.LENTITY__SUB_TYPES, LunEntityPackage.LENTITY__SUPER_TYPE);
@@ -668,6 +724,8 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 				return ((InternalEList<?>)getIndexes()).basicRemove(otherEnd, msgs);
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
 				return basicSetSuperType(null, msgs);
+			case LunEntityPackage.LENTITY__SUPER_TYPE_JVM:
+				return basicSetSuperTypeJvm(null, msgs);
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				return ((InternalEList<?>)getSubTypes()).basicRemove(otherEnd, msgs);
 		}
@@ -703,6 +761,8 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
 				if (resolve) return getSuperType();
 				return basicGetSuperType();
+			case LunEntityPackage.LENTITY__SUPER_TYPE_JVM:
+				return getSuperTypeJvm();
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				return getSubTypes();
 		}
@@ -750,6 +810,9 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
 				setSuperType((LEntity)newValue);
 				return;
+			case LunEntityPackage.LENTITY__SUPER_TYPE_JVM:
+				setSuperTypeJvm((JvmTypeReference)newValue);
+				return;
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				getSubTypes().clear();
 				getSubTypes().addAll((Collection<? extends LEntity>)newValue);
@@ -796,6 +859,9 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
 				setSuperType((LEntity)null);
 				return;
+			case LunEntityPackage.LENTITY__SUPER_TYPE_JVM:
+				setSuperTypeJvm((JvmTypeReference)null);
+				return;
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				getSubTypes().clear();
 				return;
@@ -831,6 +897,8 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 				return indexes != null && !indexes.isEmpty();
 			case LunEntityPackage.LENTITY__SUPER_TYPE:
 				return superType != null;
+			case LunEntityPackage.LENTITY__SUPER_TYPE_JVM:
+				return superTypeJvm != null;
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				return subTypes != null && !subTypes.isEmpty();
 		}

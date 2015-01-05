@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Mon Dec 01 13:43:10 CET 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014a-05e0-3fc3-000005178d48 
+on database directory memory:/Users/admin/git/lunifera-dsl/org.lunifera.dsl.tests.model/model1  with class loader org.eclipse.osgi.internal.loader.EquinoxClassLoader@57f3a147[org.apache.derby:10.8.2.2(id=29)] 
+Loaded from file:/daten/dev/lunifera/ws_ecviewaddon/.metadata/.plugins/org.eclipse.pde.core/pde-junit/org.eclipse.osgi/29/0/.cp/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_10-b18
+user.dir=/Users/admin/git/lunifera-dsl/org.lunifera.dsl.tests.model
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

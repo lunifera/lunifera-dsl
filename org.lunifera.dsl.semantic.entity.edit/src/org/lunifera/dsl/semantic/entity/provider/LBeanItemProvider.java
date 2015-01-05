@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.xtext.common.types.TypesFactory;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.common.types.provider.LClassItemProvider;
 import org.lunifera.dsl.semantic.entity.LBean;
@@ -120,6 +121,7 @@ public class LBeanItemProvider extends LClassItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(LunEntityPackage.Literals.LBEAN__FEATURES);
+			childrenFeatures.add(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM);
 		}
 		return childrenFeatures;
 	}
@@ -184,6 +186,7 @@ public class LBeanItemProvider extends LClassItemProvider {
 
 		switch (notification.getFeatureID(LBean.class)) {
 			case LunEntityPackage.LBEAN__FEATURES:
+			case LunEntityPackage.LBEAN__SUPER_TYPE_JVM:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -265,6 +268,51 @@ public class LBeanItemProvider extends LClassItemProvider {
 			(createChildParameter
 				(LunEntityPackage.Literals.LBEAN__FEATURES,
 				 LunEntityFactory.eINSTANCE.createLOperation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmParameterizedTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmGenericArrayTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmWildcardTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmAnyTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmMultiTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmDelegateTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmSynonymTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmUnknownTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
 	}
 
 	/**

@@ -14,9 +14,22 @@
  */
 package org.lunifera.dsl.dto.xtext.ui.outline;
 
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
+import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
+import org.eclipse.xtext.util.TextRegion;
+import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
+import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.semantic.common.types.LTypedPackage;
+import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference;
+import org.lunifera.dsl.semantic.dto.LDtoAttribute;
+import org.lunifera.dsl.semantic.dto.LDtoFeature;
 import org.lunifera.dsl.semantic.dto.LDtoMapper;
+import org.lunifera.dsl.semantic.dto.LDtoOperation;
+import org.lunifera.dsl.semantic.dto.LDtoReference;
 import org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl;
+import org.lunifera.dsl.xtext.lazyresolver.ui.FastDocumentRootNode;
 
 /**
  * Customization of the default outline structure.
@@ -45,6 +58,32 @@ public class DtoGrammarOutlineTreeProvider extends
 	 */
 	protected boolean _isLeaf(LDtoAbstractAttributeImpl element) {
 		return element.getMapper() == null;
+	}
+
+	public IOutlineNode createRoot(IXtextDocument document) {
+		DocumentRootNode documentNode = new FastDocumentRootNode(
+				labelProvider.getImage(document),
+				labelProvider.getText(document), document, this);
+		documentNode.setTextRegion(new TextRegion(0, document.getLength()));
+		return documentNode;
+	}
+
+	protected void _createChildren(IOutlineNode parentNode,
+			LTypedPackage modelElement) {
+		for (LType childElement : modelElement.getTypes()) {
+			createNode(parentNode, childElement);
+		}
+	}
+
+	protected void _createChildren(IOutlineNode parentNode, LDto modelElement) {
+		for (LAnnotationDef childElement : modelElement.getAnnotations()) {
+			createNode(parentNode, childElement);
+		}
+ 
+		for (LDtoFeature childElement : modelElement.getFeatures()) {
+			createNode(parentNode, childElement);
+		}
+
 	}
 
 }

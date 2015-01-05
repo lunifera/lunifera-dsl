@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+   <scr:component name="org.lunifera.entitydsl.documentation.demo.mapper.bardtomapper">
+       <implementation class="org.lunifera.entitydsl.documentation.demo.mapper.BarDtoMapper"/>
+       <property name="dto" value="org.lunifera.entitydsl.documentation.demo.BarDto"/>
+       <property name="entity" value="org.lunifera.entitydsl.documentation.demo.Bar"/>
+       <property name="service.pid" value="org.lunifera.entitydsl.documentation.demo.mapper.bardtomapper"/>
+       <reference name="bind" interface="org.lunifera.dsl.dto.common.IMapperAccess" 
+       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+   </scr:component>
+</components>

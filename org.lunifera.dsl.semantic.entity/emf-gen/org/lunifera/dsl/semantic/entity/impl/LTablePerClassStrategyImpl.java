@@ -18,7 +18,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl;
 
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
@@ -39,7 +40,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *
  * @generated
  */
-public class LTablePerClassStrategyImpl extends MinimalEObjectImpl.Container implements LTablePerClassStrategy {
+public class LTablePerClassStrategyImpl extends LLazyResolverImpl implements LTablePerClassStrategy {
 	/**
 	 * The default value of the '{@link #getDiscriminatorColumn() <em>Discriminator Column</em>}' attribute.
 	 * <!-- begin-user-doc -->

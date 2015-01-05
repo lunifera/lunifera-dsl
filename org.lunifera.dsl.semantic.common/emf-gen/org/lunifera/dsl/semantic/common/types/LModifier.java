@@ -13,7 +13,6 @@
  */
 package org.lunifera.dsl.semantic.common.types;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LModifier extends EObject {
+public interface LModifier extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->

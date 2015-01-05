@@ -88,7 +88,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LSERVICE_MODEL__PACKAGES = 0;
+	int LSERVICE_MODEL__PACKAGES = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>LService Model</em>' class.
@@ -97,7 +97,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LSERVICE_MODEL_FEATURE_COUNT = 1;
+	int LSERVICE_MODEL_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LServiceImpl <em>LService</em>}' class.
@@ -207,7 +207,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINJECTED_SERVICES__SERVICES = 0;
+	int LINJECTED_SERVICES__SERVICES = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>LInjected Services</em>' class.
@@ -216,7 +216,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINJECTED_SERVICES_FEATURE_COUNT = 1;
+	int LINJECTED_SERVICES_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LInjectedServiceImpl <em>LInjected Service</em>}' class.
@@ -235,7 +235,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINJECTED_SERVICE__CARDINALITY = 0;
+	int LINJECTED_SERVICE__CARDINALITY = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Attribute Name</b></em>' attribute.
@@ -244,7 +244,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINJECTED_SERVICE__ATTRIBUTE_NAME = 1;
+	int LINJECTED_SERVICE__ATTRIBUTE_NAME = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Service</b></em>' containment reference.
@@ -253,7 +253,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINJECTED_SERVICE__SERVICE = 2;
+	int LINJECTED_SERVICE__SERVICE = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>LInjected Service</em>' class.
@@ -262,7 +262,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINJECTED_SERVICE_FEATURE_COUNT = 3;
+	int LINJECTED_SERVICE_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl <em>LDTO Service</em>}' class.
@@ -356,13 +356,31 @@ public interface LunServicePackage extends EPackage {
 	int LDTO_SERVICE__DTO = LSERVICE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Dto Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_SERVICE__DTO_JVM = LSERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Persistence Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_SERVICE__PERSISTENCE_ID = LSERVICE_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Filterable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_SERVICE__FILTERABLE = LSERVICE_FEATURE_COUNT + 1;
+	int LDTO_SERVICE__FILTERABLE = LSERVICE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Sortable</b></em>' containment reference.
@@ -371,52 +389,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_SERVICE__SORTABLE = LSERVICE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Get Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDTO_SERVICE__GET_EXPRESSION = LSERVICE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Find Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDTO_SERVICE__FIND_EXPRESSION = LSERVICE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Find Expression With Delimiter</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER = LSERVICE_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Update Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDTO_SERVICE__UPDATE_EXPRESSION = LSERVICE_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Delete Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LDTO_SERVICE__DELETE_EXPRESSION = LSERVICE_FEATURE_COUNT + 7;
+	int LDTO_SERVICE__SORTABLE = LSERVICE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>LDTO Service</em>' class.
@@ -425,7 +398,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_SERVICE_FEATURE_COUNT = LSERVICE_FEATURE_COUNT + 8;
+	int LDTO_SERVICE_FEATURE_COUNT = LSERVICE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LFilterableAttributesImpl <em>LFilterable Attributes</em>}' class.
@@ -444,7 +417,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LFILTERABLE_ATTRIBUTES__PARENT = 0;
+	int LFILTERABLE_ATTRIBUTES__PARENT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Filterable Features</b></em>' reference list.
@@ -453,7 +426,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LFILTERABLE_ATTRIBUTES__FILTERABLE_FEATURES = 1;
+	int LFILTERABLE_ATTRIBUTES__FILTERABLE_FEATURES = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>LFilterable Attributes</em>' class.
@@ -462,7 +435,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LFILTERABLE_ATTRIBUTES_FEATURE_COUNT = 2;
+	int LFILTERABLE_ATTRIBUTES_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LSortableAttributesImpl <em>LSortable Attributes</em>}' class.
@@ -481,7 +454,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LSORTABLE_ATTRIBUTES__PARENT = 0;
+	int LSORTABLE_ATTRIBUTES__PARENT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Sortable Features</b></em>' reference list.
@@ -490,7 +463,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LSORTABLE_ATTRIBUTES__SORTABLE_FEATURES = 1;
+	int LSORTABLE_ATTRIBUTES__SORTABLE_FEATURES = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>LSortable Attributes</em>' class.
@@ -499,7 +472,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LSORTABLE_ATTRIBUTES_FEATURE_COUNT = 2;
+	int LSORTABLE_ATTRIBUTES_FEATURE_COUNT = LunTypesPackage.LLAZY_RESOLVER_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LChartServiceImpl <em>LChart Service</em>}' class.
@@ -684,6 +657,106 @@ public interface LunServicePackage extends EPackage {
 	int LFREE_SERVICE_FEATURE_COUNT = LSERVICE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LServiceOperationImpl <em>LService Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.service.impl.LServiceOperationImpl
+	 * @see org.lunifera.dsl.semantic.service.impl.LunServicePackageImpl#getLServiceOperation()
+	 * @generated
+	 */
+	int LSERVICE_OPERATION = 9;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__ANNOTATIONS = LunTypesPackage.LOPERATION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Modifier</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__MODIFIER = LunTypesPackage.LOPERATION__MODIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__TYPE = LunTypesPackage.LOPERATION__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Params</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__PARAMS = LunTypesPackage.LOPERATION__PARAMS;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__BODY = LunTypesPackage.LOPERATION__BODY;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__NAME = LunTypesPackage.LOPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__MULTIPLICITY = LunTypesPackage.LOPERATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__ANNOTATION_INFO = LunTypesPackage.LOPERATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Mapper</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION__MAPPER = LunTypesPackage.LOPERATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>LService Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LSERVICE_OPERATION_FEATURE_COUNT = LunTypesPackage.LOPERATION_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.LCardinality <em>LCardinality</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -691,7 +764,7 @@ public interface LunServicePackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.service.impl.LunServicePackageImpl#getLCardinality()
 	 * @generated
 	 */
-	int LCARDINALITY = 9;
+	int LCARDINALITY = 10;
 
 
 	/**
@@ -833,6 +906,28 @@ public interface LunServicePackage extends EPackage {
 	EReference getLDTOService_Dto();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getDtoJvm <em>Dto Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Dto Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getDtoJvm()
+	 * @see #getLDTOService()
+	 * @generated
+	 */
+	EReference getLDTOService_DtoJvm();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.service.LDTOService#getPersistenceId <em>Persistence Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Persistence Id</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#getPersistenceId()
+	 * @see #getLDTOService()
+	 * @generated
+	 */
+	EAttribute getLDTOService_PersistenceId();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -853,61 +948,6 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLDTOService_Sortable();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getGetExpression <em>Get Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Get Expression</em>'.
-	 * @see org.lunifera.dsl.semantic.service.LDTOService#getGetExpression()
-	 * @see #getLDTOService()
-	 * @generated
-	 */
-	EReference getLDTOService_GetExpression();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getFindExpression <em>Find Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Find Expression</em>'.
-	 * @see org.lunifera.dsl.semantic.service.LDTOService#getFindExpression()
-	 * @see #getLDTOService()
-	 * @generated
-	 */
-	EReference getLDTOService_FindExpression();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getFindExpressionWithDelimiter <em>Find Expression With Delimiter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Find Expression With Delimiter</em>'.
-	 * @see org.lunifera.dsl.semantic.service.LDTOService#getFindExpressionWithDelimiter()
-	 * @see #getLDTOService()
-	 * @generated
-	 */
-	EReference getLDTOService_FindExpressionWithDelimiter();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getUpdateExpression <em>Update Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Update Expression</em>'.
-	 * @see org.lunifera.dsl.semantic.service.LDTOService#getUpdateExpression()
-	 * @see #getLDTOService()
-	 * @generated
-	 */
-	EReference getLDTOService_UpdateExpression();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.service.LDTOService#getDeleteExpression <em>Delete Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Delete Expression</em>'.
-	 * @see org.lunifera.dsl.semantic.service.LDTOService#getDeleteExpression()
-	 * @see #getLDTOService()
-	 * @generated
-	 */
-	EReference getLDTOService_DeleteExpression();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.service.LFilterableAttributes <em>LFilterable Attributes</em>}'.
@@ -992,6 +1032,16 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLFreeService();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.service.LServiceOperation <em>LService Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LService Operation</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LServiceOperation
+	 * @generated
+	 */
+	EClass getLServiceOperation();
 
 	/**
 	 * Returns the meta object for enum '{@link org.lunifera.dsl.semantic.service.LCardinality <em>LCardinality</em>}'.
@@ -1140,6 +1190,22 @@ public interface LunServicePackage extends EPackage {
 		EReference LDTO_SERVICE__DTO = eINSTANCE.getLDTOService_Dto();
 
 		/**
+		 * The meta object literal for the '<em><b>Dto Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDTO_SERVICE__DTO_JVM = eINSTANCE.getLDTOService_DtoJvm();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistence Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDTO_SERVICE__PERSISTENCE_ID = eINSTANCE.getLDTOService_PersistenceId();
+
+		/**
 		 * The meta object literal for the '<em><b>Filterable</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1154,46 +1220,6 @@ public interface LunServicePackage extends EPackage {
 		 * @generated
 		 */
 		EReference LDTO_SERVICE__SORTABLE = eINSTANCE.getLDTOService_Sortable();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LDTO_SERVICE__GET_EXPRESSION = eINSTANCE.getLDTOService_GetExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Find Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LDTO_SERVICE__FIND_EXPRESSION = eINSTANCE.getLDTOService_FindExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Find Expression With Delimiter</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LDTO_SERVICE__FIND_EXPRESSION_WITH_DELIMITER = eINSTANCE.getLDTOService_FindExpressionWithDelimiter();
-
-		/**
-		 * The meta object literal for the '<em><b>Update Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LDTO_SERVICE__UPDATE_EXPRESSION = eINSTANCE.getLDTOService_UpdateExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Delete Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LDTO_SERVICE__DELETE_EXPRESSION = eINSTANCE.getLDTOService_DeleteExpression();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.service.impl.LFilterableAttributesImpl <em>LFilterable Attributes</em>}' class.
@@ -1266,6 +1292,16 @@ public interface LunServicePackage extends EPackage {
 		 * @generated
 		 */
 		EClass LFREE_SERVICE = eINSTANCE.getLFreeService();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.service.impl.LServiceOperationImpl <em>LService Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.service.impl.LServiceOperationImpl
+		 * @see org.lunifera.dsl.semantic.service.impl.LunServicePackageImpl#getLServiceOperation()
+		 * @generated
+		 */
+		EClass LSERVICE_OPERATION = eINSTANCE.getLServiceOperation();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.service.LCardinality <em>LCardinality</em>}' enum.

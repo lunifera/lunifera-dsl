@@ -15,8 +15,7 @@ package org.lunifera.dsl.semantic.service;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 
 /**
@@ -35,7 +34,7 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage;
  * @model
  * @generated
  */
-public interface LServiceModel extends EObject {
+public interface LServiceModel extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
 	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LTypedPackage}.

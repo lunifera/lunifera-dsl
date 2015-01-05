@@ -66,6 +66,8 @@ import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 
 import static org.lunifera.dsl.semantic.common.types.LDateType.*
+import org.lunifera.runtime.common.annotations.DomainKey
+import org.lunifera.runtime.common.annotations.DomainDescription
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -132,7 +134,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 					collectedIndizes.add(indexAnn);
 				}
 
-				if(collectedIndizes.size > 0){
+				if (collectedIndizes.size > 0) {
 					val JvmAnnotationReference[] result = collectedIndizes.toArray(newArrayOfSize(collectedIndizes.size));
 					tableAnn.addAnnAttr(entity, "indexes", result)
 				}
@@ -274,6 +276,14 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 					jvmField.toAttributesOverride(prop)
 				}
+
+				if (prop.domainKey) {
+					addAnno(prop, jvmField, prop.toAnnotation(typeof(DomainKey)))
+				}
+
+				if (prop.domainDescription) {
+					addAnno(prop, jvmField, prop.toAnnotation(typeof(DomainDescription)))
+				}
 			}
 
 			val ann = prop.toAnnotation(typeof(Column))
@@ -294,6 +304,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 							temp.addAnnAttr(prop, "value", TemporalType::TIME)
 						case TIMESTAMP:
 							temp.addAnnAttr(prop, "value", TemporalType::TIMESTAMP)
+						default: {
+						}
 					}
 					addAnno(prop, jvmField, temp)
 				} else if (datatype.asBlob) {
@@ -473,7 +485,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		addAnno(prop, jvmAnnTarget, manyToOne)
 
 		val joinColumn = prop.toAnnotation(typeof(JoinColumn))
-		joinColumn.addAnnAttr(prop, "name", prop.toColumnName)
+		joinColumn.addAnnAttr(prop, "name", prop.toColumnName + "_ID")
 		if (prop.bounds.required) {
 			joinColumn.addAnnAttr(prop, "nullable", false)
 		}
@@ -499,7 +511,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 		if (opposite != null && opposite.cascading) {
 			val joinColumn = prop.toAnnotation(typeof(JoinColumn))
-			joinColumn.addAnnAttr(prop, "name", prop.name)
+			joinColumn.addAnnAttr(prop, "name", prop.name + "_ID")
 			if (prop.bounds.required) {
 				joinColumn.addAnnAttr(prop, "nullable", false)
 			}

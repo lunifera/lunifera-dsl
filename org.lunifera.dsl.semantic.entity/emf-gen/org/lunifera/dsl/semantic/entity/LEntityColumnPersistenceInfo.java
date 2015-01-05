@@ -13,7 +13,7 @@
  */
 package org.lunifera.dsl.semantic.entity;
 
-import org.eclipse.emf.ecore.EObject;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LEntityColumnPersistenceInfo extends EObject {
+public interface LEntityColumnPersistenceInfo extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Column Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

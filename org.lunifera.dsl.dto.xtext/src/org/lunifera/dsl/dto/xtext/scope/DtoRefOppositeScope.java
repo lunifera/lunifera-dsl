@@ -18,6 +18,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.lunifera.dsl.semantic.dto.LDto;
+import org.lunifera.dsl.semantic.dto.LDtoAbstractReference;
 import org.lunifera.dsl.semantic.dto.LDtoReference;
 
 public class DtoRefOppositeScope extends AbstractScope {
@@ -27,14 +28,14 @@ public class DtoRefOppositeScope extends AbstractScope {
 		super(IScope.NULLSCOPE, true);
 		this.prop = prop;
 	}
-
+ 
 	@Override
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
 		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 		if (prop.getType() != null) {
 			LDto propClass = prop.getDTO();
 			LDto type = prop.getType();
-			for (LDtoReference oppositeProp : type.getReferences()) {
+			for (LDtoAbstractReference oppositeProp : type.getReferences()) {
 				if (oppositeProp.getType() == propClass) {
 					String name = oppositeProp.getName();
 					if (name != null) {

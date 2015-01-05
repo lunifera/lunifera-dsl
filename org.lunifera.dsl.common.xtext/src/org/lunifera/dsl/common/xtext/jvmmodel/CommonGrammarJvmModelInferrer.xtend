@@ -10,10 +10,11 @@
  */
 package org.lunifera.dsl.common.xtext.jvmmodel
 
-import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.resource.XtextSyntaxDiagnostic
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -23,7 +24,7 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
  */
 class CommonGrammarJvmModelInferrer extends AbstractModelInferrer {
 	
-	protected val Logger log = Logger::getLogger(getClass())
+	protected val Logger log = LoggerFactory.getLogger(getClass())
 	
 	/**
      * Returns true if the resource of the specified object has syntax errors.

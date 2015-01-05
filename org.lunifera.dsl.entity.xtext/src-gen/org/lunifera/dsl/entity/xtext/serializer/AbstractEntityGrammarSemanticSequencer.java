@@ -5,6 +5,7 @@ import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
+import org.eclipse.xtext.common.types.JvmInnerTypeReference;
 import org.eclipse.xtext.common.types.JvmLowerBound;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeParameter;
@@ -280,8 +281,22 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 					return; 
 				}
 				else break;
+			case TypesPackage.JVM_INNER_TYPE_REFERENCE:
+				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceAccess().getJvmInnerTypeReferenceOuterAction_1_4_0_0_0() ||
+				   context == grammarAccess.getJvmTypeReferenceRule() ||
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
+					sequence_JvmParameterizedTypeReference(context, (JvmInnerTypeReference) semanticObject); 
+					return; 
+				}
+				else break;
 			case TypesPackage.JVM_LOWER_BOUND:
-				if(context == grammarAccess.getJvmLowerBoundRule()) {
+				if(context == grammarAccess.getJvmLowerBoundAndedRule()) {
+					sequence_JvmLowerBoundAnded(context, (JvmLowerBound) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getJvmLowerBoundRule()) {
 					sequence_JvmLowerBound(context, (JvmLowerBound) semanticObject); 
 					return; 
 				}
@@ -289,6 +304,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 			case TypesPackage.JVM_PARAMETERIZED_TYPE_REFERENCE:
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
+				   context == grammarAccess.getJvmParameterizedTypeReferenceAccess().getJvmInnerTypeReferenceOuterAction_1_4_0_0_0() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
 					sequence_JvmParameterizedTypeReference(context, (JvmParameterizedTypeReference) semanticObject); 
@@ -1497,8 +1513,8 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanAttribute_2_1_0 
 	 *         (
-	 *             (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords) | 
-	 *             ((id?='id' | version?='version')? type=[LScalarType|ID] multiplicity=Multiplicity? name=ValidIDWithKeywords)
+	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID) | 
+	 *             ((id?='id' | version?='version')? type=[LScalarType|ID] multiplicity=Multiplicity? name=TRANSLATABLEID)
 	 *         )
 	 *     )
 	 */
@@ -1520,7 +1536,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanReference_2_0_0 
-	 *         (cascading?='cascade'? type=[LBean|ID] multiplicity=Multiplicity? name=ValidIDWithKeywords opposite=[LBeanReference|LFQN]?)
+	 *         (cascading?='cascade'? type=[LBean|ID] multiplicity=Multiplicity? name=TRANSLATABLEID opposite=[LBeanReference|LFQN]?)
 	 *     )
 	 */
 	protected void sequence_BeanFeature(EObject context, LBeanReference semanticObject) {
@@ -1532,7 +1548,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=BeanFeature_LOperation_2_2_0 
-	 *         (type=JvmTypeReference name=ValidIDWithKeywords (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
+	 *         (type=JvmTypeReference name=TRANSLATABLEID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
 	 *     )
 	 */
 	protected void sequence_BeanFeature(EObject context, LOperation semanticObject) {
@@ -1542,7 +1558,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Class_LBean_2_2_0 name=ValidIDWithKeywords superType=[LBean|ID]? features+=BeanFeature*)
+	 *     (annotationInfo=Class_LBean_2_2_0 name=TRANSLATABLEID superType=[LBean|ID]? features+=BeanFeature*)
 	 */
 	protected void sequence_Class(EObject context, LBean semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1568,7 +1584,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *                 (historized?='historized' | (timedependent?='timedependent' timedependentDateType=LHistorizedDateType?))? 
 	 *                 cacheable?='cacheable'?
 	 *             ) 
-	 *             name=ValidIDWithKeywords 
+	 *             name=TRANSLATABLEID 
 	 *             superType=[LEntity|ID]? 
 	 *             persistenceInfo=EntityPersistenceInfo 
 	 *             inheritanceStrategy=EntityInheritanceStrategy? 
@@ -1610,12 +1626,13 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (
 	 *         annotationInfo=EntityFeature_LEntityAttribute_2_1_0 
 	 *         (
-	 *             (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords) | 
+	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID) | 
+	 *             (derived?='derived' domainDescription?='domainDescription'? type=[LScalarType|ID] name=TRANSLATABLEID derivedGetterExpression=XBlockExpression) | 
 	 *             (
-	 *                 (id?='id' | uuid?='uuid' | version?='version')? 
+	 *                 (id?='id' | uuid?='uuid' | version?='version' | domainDescription?='domainDescription' | domainKey?='domainKey')? 
 	 *                 type=[LScalarType|ID] 
 	 *                 multiplicity=Multiplicity? 
-	 *                 name=ValidIDWithKeywords 
+	 *                 name=TRANSLATABLEID 
 	 *                 persistenceInfo=ColumnPersistenceInfo?
 	 *             )
 	 *         )
@@ -1643,7 +1660,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *             cascading?='cascade'? 
 	 *             type=[LEntity|ID] 
 	 *             multiplicity=Multiplicity? 
-	 *             name=ValidIDWithKeywords 
+	 *             name=TRANSLATABLEID 
 	 *             persistenceInfo=ColumnPersistenceInfo? 
 	 *             opposite=[LEntityReference|LFQN]?
 	 *         )
@@ -1658,7 +1675,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=EntityFeature_LOperation_2_2_0 
-	 *         (type=JvmTypeReference name=ValidIDWithKeywords (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
+	 *         (type=JvmTypeReference name=TRANSLATABLEID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
 	 *     )
 	 */
 	protected void sequence_EntityFeature(EObject context, LOperation semanticObject) {

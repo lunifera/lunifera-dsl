@@ -22,12 +22,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
+
+import org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl;
 
 import org.lunifera.dsl.semantic.service.LServiceModel;
 import org.lunifera.dsl.semantic.service.LunServicePackage;
@@ -45,7 +45,7 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  *
  * @generated
  */
-public class LServiceModelImpl extends MinimalEObjectImpl.Container implements LServiceModel {
+public class LServiceModelImpl extends LLazyResolverImpl implements LServiceModel {
 	/**
 	 * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

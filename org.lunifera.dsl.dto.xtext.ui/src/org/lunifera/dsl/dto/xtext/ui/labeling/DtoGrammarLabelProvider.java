@@ -15,22 +15,15 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jdt.ui.JavaElementImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.xtext.common.types.JvmField;
-import org.eclipse.xtext.common.types.JvmGenericType;
-import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
-import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LFeature;
-import org.lunifera.dsl.semantic.common.types.LImport;
 import org.lunifera.dsl.semantic.common.types.LPackage;
 import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.dto.LDtoAttribute;
@@ -53,25 +46,12 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 	private DtoGrammarImages images;
 
 	@Inject
-	private IJvmModelAssociations associations;
-
-	@Inject
-	private org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions extension;
-
-	@Inject
 	public DtoGrammarLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
 
-	public String image(LImport element) {
-		return "import.gif";
-	}
-
 	public ImageDescriptor image(LDto element) {
-		final JvmGenericType inferredType = getFirstOrNull(
-				associations.getJvmElements(element), JvmGenericType.class);
-		return images.forClass(inferredType.getVisibility(),
-				JavaElementImageDescriptor.STATIC);
+		return images.forClass(JvmVisibility.PUBLIC, 0);
 	}
 
 	public ImageDescriptor image(LEnum element) {
@@ -92,9 +72,7 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 
 	public ImageDescriptor image(LDtoReference element) {
 		if (!element.isCascading()) {
-			JvmField inferredField = getFirstOrNull(
-					associations.getJvmElements(element), JvmField.class);
-			return images.forField(inferredField.getVisibility(), 0);
+			return images.forField(JvmVisibility.PUBLIC, 0);
 		} else {
 			return images.forCascading(JvmVisibility.PUBLIC);
 		}
@@ -103,24 +81,18 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 	public String image(LDtoInheritedAttribute element) {
 		return "inheritedfeature.gif";
 	}
-	
+
 	public ImageDescriptor image(LDtoOperation element) {
-		JvmOperation inferredOperation = getFirstOrNull(
-				associations.getJvmElements(element), JvmOperation.class);
-		return images.forOperation(inferredOperation.getVisibility(), 0);
+		return images.forOperation(JvmVisibility.PUBLIC, 0);
 	}
 
 	public ImageDescriptor image(LDtoAttribute element) {
 		if (!element.isCascading()) {
-			JvmField inferredField = getFirstOrNull(
-					associations.getJvmElements(element), JvmField.class);
-			return images.forField(inferredField.getVisibility(), 0);
+			return images.forField(JvmVisibility.PUBLIC, 0);
 		} else {
 			return images.forCascading(JvmVisibility.PUBLIC);
 		}
 	}
-
-	
 
 	public ImageDescriptor image(LDataType element) {
 		return images.forDatatype();
@@ -134,23 +106,19 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 		return images.forTypeParameter(0);
 	}
 
-	public String text(LImport element) {
-		return element.getImportedNamespace();
-	}
-
 	public String text(LClass element) {
 		return element.getName();
 	}
 
 	public String text(LFeature element) {
-		JvmField inferredField = getFirstOrNull(
-				associations.getJvmElements(element), JvmField.class);
-		if (inferredField != null) {
-			JvmTypeReference type = inferredField.getType();
-			if (type != null) {
-				return element.getName() + " : " + type.getSimpleName();
-			}
-		}
+//		JvmField inferredField = getFirstOrNull(
+//				associations.getJvmElements(element), JvmField.class);
+//		if (inferredField != null) {
+//			JvmTypeReference type = inferredField.getType();
+//			if (type != null) {
+//				return element.getName() + " : " + type.getSimpleName();
+//			}
+//		}
 		return element.getName();
 	}
 
@@ -159,29 +127,29 @@ public class DtoGrammarLabelProvider extends XbaseLabelProvider {
 	}
 
 	public String text(LDtoInheritedAttribute element) {
-		JvmField inferredField = getFirstOrNull(
-				associations.getJvmElements(element), JvmField.class);
-		if (inferredField != null) {
-			JvmTypeReference type = inferredField.getType();
-			if (type != null) {
-				return extension.inheritedFeature(element).getName() + " : "
-						+ type.getSimpleName();
-			}
-		}
-		return element.getName();
+//		JvmField inferredField = getFirstOrNull(
+//				associations.getJvmElements(element), JvmField.class);
+//		if (inferredField != null) {
+//			JvmTypeReference type = inferredField.getType();
+//			if (type != null) {
+//				return extension.inheritedFeature(element).getName() + " : "
+//						+ type.getSimpleName();
+//			}
+//		}
+		return element.getInheritedFeature().getName();
 	}
 
 	public String text(LDtoInheritedReference element) {
-		JvmField inferredField = getFirstOrNull(
-				associations.getJvmElements(element), JvmField.class);
-		if (inferredField != null) {
-			JvmTypeReference type = inferredField.getType();
-			if (type != null) {
-				return extension.inheritedFeature(element).getName() + " : "
-						+ type.getSimpleName();
-			}
-		}
-		return element.getName();
+//		JvmField inferredField = getFirstOrNull(
+//				associations.getJvmElements(element), JvmField.class);
+//		if (inferredField != null) {
+//			JvmTypeReference type = inferredField.getType();
+//			if (type != null) {
+//				return extension.inheritedFeature(element).getName() + " : "
+//						+ type.getSimpleName();
+//			}
+//		}
+		return element.getInheritedFeature().getName();
 	}
 
 	public String text(JvmParameterizedTypeReference typeRef) {

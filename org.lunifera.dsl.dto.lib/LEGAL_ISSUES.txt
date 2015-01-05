@@ -5,3 +5,7 @@ org.eclipse.xtext.xbase
 org.eclipse.xtend
 
 We are using parts of their semantics, syntactics and also written code.
+
+
+Source contained in org.lunifera.dsl.dto.lib.services.jpa.metadata and org.lunifera.dsl.dto.lib.services.filters 
+are licensed under the EPL. Was copied from com.vaadin.

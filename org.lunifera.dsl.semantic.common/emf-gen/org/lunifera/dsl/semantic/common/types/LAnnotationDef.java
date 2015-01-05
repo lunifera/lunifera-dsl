@@ -13,8 +13,6 @@
  */
 package org.lunifera.dsl.semantic.common.types;
 
-import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
 /**
@@ -34,7 +32,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
  * @model
  * @generated
  */
-public interface LAnnotationDef extends EObject {
+public interface LAnnotationDef extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Exclude</b></em>' attribute.
 	 * <!-- begin-user-doc -->

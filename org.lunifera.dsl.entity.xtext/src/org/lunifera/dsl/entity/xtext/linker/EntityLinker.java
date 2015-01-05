@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
 import org.eclipse.xtext.util.OnChangeEvictingCache;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-import org.eclipse.xtext.xbase.linking.XbaseLazyLinker;
 import org.lunifera.dsl.entity.xtext.extensions.Constants;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
@@ -26,15 +25,11 @@ import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LunEntityFactory;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
 
 import com.google.inject.Inject;
 
-@SuppressWarnings("restriction")
-public class EntityLinker extends XbaseLazyLinker {
-
-	/**
-	 * Move to DerivedStateAwareResource#installDerivedState
-	 */
+public class EntityLinker extends LazyJvmTypeLinker {
 
 	@Inject
 	private OnChangeEvictingCache cache;

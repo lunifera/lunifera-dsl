@@ -784,36 +784,56 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getONE1Keyword_1_0() { return cONE1Keyword_1_0; }
 	}
 	
-	private TypedPackageElements pTypedPackage;
-	private TypeElements pType;
-	private ClassElements pClass;
-	private ImportElements pImport;
-	private DataTypeElements pDataType;
-	private DateTypeElements unknownRuleDateType;
-	private ScalarTypeElements pScalarType;
-	private ModifierElements pModifier;
-	private EnumElements pEnum;
-	private EnumLiteralElements pEnumLiteral;
-	private AnnotationDefElements pAnnotationDef;
-	private LVisibilityElements unknownRuleLVisibility;
-	private LQualifiedNameWithWildCardElements pLQualifiedNameWithWildCard;
-	private LFQNElements pLFQN;
-	private ValidIDWithKeywordsElements pValidIDWithKeywords;
-	private ValidLFQNWithKeywordsElements pValidLFQNWithKeywords;
-	private MultiplicityElements pMultiplicity;
-	private LowerBoundElements unknownRuleLowerBound;
-	private UpperBoundElements unknownRuleUpperBound;
-	private LIntElements pLInt;
+	private final TypedPackageElements pTypedPackage;
+	private final TypeElements pType;
+	private final ClassElements pClass;
+	private final ImportElements pImport;
+	private final DataTypeElements pDataType;
+	private final DateTypeElements unknownRuleDateType;
+	private final ScalarTypeElements pScalarType;
+	private final ModifierElements pModifier;
+	private final EnumElements pEnum;
+	private final EnumLiteralElements pEnumLiteral;
+	private final AnnotationDefElements pAnnotationDef;
+	private final LVisibilityElements unknownRuleLVisibility;
+	private final LQualifiedNameWithWildCardElements pLQualifiedNameWithWildCard;
+	private final LFQNElements pLFQN;
+	private final ValidIDWithKeywordsElements pValidIDWithKeywords;
+	private final ValidLFQNWithKeywordsElements pValidLFQNWithKeywords;
+	private final MultiplicityElements pMultiplicity;
+	private final LowerBoundElements unknownRuleLowerBound;
+	private final UpperBoundElements unknownRuleUpperBound;
+	private final LIntElements pLInt;
 	
 	private final Grammar grammar;
 
-	private XbaseWithAnnotationsGrammarAccess gaXbaseWithAnnotations;
+	private final XbaseWithAnnotationsGrammarAccess gaXbaseWithAnnotations;
 
 	@Inject
 	public CommonGrammarGrammarAccess(GrammarProvider grammarProvider,
 		XbaseWithAnnotationsGrammarAccess gaXbaseWithAnnotations) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaXbaseWithAnnotations = gaXbaseWithAnnotations;
+		this.pTypedPackage = new TypedPackageElements();
+		this.pType = new TypeElements();
+		this.pClass = new ClassElements();
+		this.pImport = new ImportElements();
+		this.pDataType = new DataTypeElements();
+		this.unknownRuleDateType = new DateTypeElements();
+		this.pScalarType = new ScalarTypeElements();
+		this.pModifier = new ModifierElements();
+		this.pEnum = new EnumElements();
+		this.pEnumLiteral = new EnumLiteralElements();
+		this.pAnnotationDef = new AnnotationDefElements();
+		this.unknownRuleLVisibility = new LVisibilityElements();
+		this.pLQualifiedNameWithWildCard = new LQualifiedNameWithWildCardElements();
+		this.pLFQN = new LFQNElements();
+		this.pValidIDWithKeywords = new ValidIDWithKeywordsElements();
+		this.pValidLFQNWithKeywords = new ValidLFQNWithKeywordsElements();
+		this.pMultiplicity = new MultiplicityElements();
+		this.unknownRuleLowerBound = new LowerBoundElements();
+		this.unknownRuleUpperBound = new UpperBoundElements();
+		this.pLInt = new LIntElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -846,7 +866,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//TypedPackage returns types::LTypedPackage:
 	//	{types::LTypedPackage} "package" name=QualifiedName ("{" imports+=Import* types+=Type* "}")?;
 	public TypedPackageElements getTypedPackageAccess() {
-		return (pTypedPackage != null) ? pTypedPackage : (pTypedPackage = new TypedPackageElements());
+		return pTypedPackage;
 	}
 	
 	public ParserRule getTypedPackageRule() {
@@ -856,7 +876,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//Type returns types::LType:
 	//	ScalarType | Class;
 	public TypeElements getTypeAccess() {
-		return (pType != null) ? pType : (pType = new TypeElements());
+		return pType;
 	}
 	
 	public ParserRule getTypeRule() {
@@ -868,7 +888,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	// * / Class returns types::LClass:
 	//	{types::LClass} annotations+=AnnotationDef* {types::LClass.annotationInfo=current} "class";
 	public ClassElements getClassAccess() {
-		return (pClass != null) ? pClass : (pClass = new ClassElements());
+		return pClass;
 	}
 	
 	public ParserRule getClassRule() {
@@ -878,7 +898,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//Import returns types::LImport:
 	//	"import" importedNamespace=LQualifiedNameWithWildCard ";";
 	public ImportElements getImportAccess() {
-		return (pImport != null) ? pImport : (pImport = new ImportElements());
+		return pImport;
 	}
 	
 	public ParserRule getImportRule() {
@@ -889,7 +909,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? |
 	//	date?="dateType" dateType=DateType | asBlob?="as blob") ";";
 	public DataTypeElements getDataTypeAccess() {
-		return (pDataType != null) ? pDataType : (pDataType = new DataTypeElements());
+		return pDataType;
 	}
 	
 	public ParserRule getDataTypeRule() {
@@ -899,7 +919,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//enum DateType returns types::LDateType:
 	//	DATE="date" | TIME="time" | TIMESTAMP="timestamp";
 	public DateTypeElements getDateTypeAccess() {
-		return (unknownRuleDateType != null) ? unknownRuleDateType : (unknownRuleDateType = new DateTypeElements());
+		return unknownRuleDateType;
 	}
 	
 	public EnumRule getDateTypeRule() {
@@ -909,7 +929,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//ScalarType returns types::LScalarType:
 	//	DataType | Enum;
 	public ScalarTypeElements getScalarTypeAccess() {
-		return (pScalarType != null) ? pScalarType : (pScalarType = new ScalarTypeElements());
+		return pScalarType;
 	}
 	
 	public ParserRule getScalarTypeRule() {
@@ -919,7 +939,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//Modifier returns types::LModifier:
 	//	final?="final"? & static?="static"? & visibility=LVisibility;
 	public ModifierElements getModifierAccess() {
-		return (pModifier != null) ? pModifier : (pModifier = new ModifierElements());
+		return pModifier;
 	}
 	
 	public ParserRule getModifierRule() {
@@ -929,7 +949,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//Enum returns types::LEnum:
 	//	"enum" name=ID "{" literals+=EnumLiteral (", " literals+=EnumLiteral)* "}";
 	public EnumElements getEnumAccess() {
-		return (pEnum != null) ? pEnum : (pEnum = new EnumElements());
+		return pEnum;
 	}
 	
 	public ParserRule getEnumRule() {
@@ -939,7 +959,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumLiteral returns types::LEnumLiteral:
 	//	name=ID;
 	public EnumLiteralElements getEnumLiteralAccess() {
-		return (pEnumLiteral != null) ? pEnumLiteral : (pEnumLiteral = new EnumLiteralElements());
+		return pEnumLiteral;
 	}
 	
 	public ParserRule getEnumLiteralRule() {
@@ -949,7 +969,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//AnnotationDef returns types::LAnnotationDef:
 	//	=> (annotation=XAnnotation);
 	public AnnotationDefElements getAnnotationDefAccess() {
-		return (pAnnotationDef != null) ? pAnnotationDef : (pAnnotationDef = new AnnotationDefElements());
+		return pAnnotationDef;
 	}
 	
 	public ParserRule getAnnotationDefRule() {
@@ -959,7 +979,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//enum LVisibility returns types::LVisibility:
 	//	PACKAGE="package" | PRIVATE="private" | PROTECTED="protected" | PUBLIC="public";
 	public LVisibilityElements getLVisibilityAccess() {
-		return (unknownRuleLVisibility != null) ? unknownRuleLVisibility : (unknownRuleLVisibility = new LVisibilityElements());
+		return unknownRuleLVisibility;
 	}
 	
 	public EnumRule getLVisibilityRule() {
@@ -969,7 +989,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//LQualifiedNameWithWildCard:
 	//	QualifiedName ("." "*")?;
 	public LQualifiedNameWithWildCardElements getLQualifiedNameWithWildCardAccess() {
-		return (pLQualifiedNameWithWildCard != null) ? pLQualifiedNameWithWildCard : (pLQualifiedNameWithWildCard = new LQualifiedNameWithWildCardElements());
+		return pLQualifiedNameWithWildCard;
 	}
 	
 	public ParserRule getLQualifiedNameWithWildCardRule() {
@@ -979,7 +999,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//LFQN:
 	//	ID ("." ID)*;
 	public LFQNElements getLFQNAccess() {
-		return (pLFQN != null) ? pLFQN : (pLFQN = new LFQNElements());
+		return pLFQN;
 	}
 	
 	public ParserRule getLFQNRule() {
@@ -990,7 +1010,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	"cachable" | "id" | "uuid" | "transient" | "version" | "derived" "collection" | "refers" | "settings" | "lazy" |
 	//	"notnull" | "dto" | "date" | "mapto" | "ref" | "cascade" | "var" | ID;
 	public ValidIDWithKeywordsElements getValidIDWithKeywordsAccess() {
-		return (pValidIDWithKeywords != null) ? pValidIDWithKeywords : (pValidIDWithKeywords = new ValidIDWithKeywordsElements());
+		return pValidIDWithKeywords;
 	}
 	
 	public ParserRule getValidIDWithKeywordsRule() {
@@ -1000,7 +1020,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//ValidLFQNWithKeywords:
 	//	ValidIDWithKeywords ("." ValidIDWithKeywords)*;
 	public ValidLFQNWithKeywordsElements getValidLFQNWithKeywordsAccess() {
-		return (pValidLFQNWithKeywords != null) ? pValidLFQNWithKeywords : (pValidLFQNWithKeywords = new ValidLFQNWithKeywordsElements());
+		return pValidLFQNWithKeywords;
 	}
 	
 	public ParserRule getValidLFQNWithKeywordsRule() {
@@ -1010,7 +1030,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//Multiplicity returns types::LMultiplicity:
 	//	"[" lower=LowerBound (".." upper=UpperBound)? "]";
 	public MultiplicityElements getMultiplicityAccess() {
-		return (pMultiplicity != null) ? pMultiplicity : (pMultiplicity = new MultiplicityElements());
+		return pMultiplicity;
 	}
 	
 	public ParserRule getMultiplicityRule() {
@@ -1020,7 +1040,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//enum LowerBound returns types::LLowerBound:
 	//	MANY="*" | ZERO="0" | OPTIONAL="?" | ATLEASTONE="+" | ONE="1";
 	public LowerBoundElements getLowerBoundAccess() {
-		return (unknownRuleLowerBound != null) ? unknownRuleLowerBound : (unknownRuleLowerBound = new LowerBoundElements());
+		return unknownRuleLowerBound;
 	}
 	
 	public EnumRule getLowerBoundRule() {
@@ -1030,7 +1050,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//enum UpperBound returns types::LUpperBound:
 	//	MANY="*" | ONE="1";
 	public UpperBoundElements getUpperBoundAccess() {
-		return (unknownRuleUpperBound != null) ? unknownRuleUpperBound : (unknownRuleUpperBound = new UpperBoundElements());
+		return unknownRuleUpperBound;
 	}
 	
 	public EnumRule getUpperBoundRule() {
@@ -1040,7 +1060,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//LInt returns ecore::EInt:
 	//	INT;
 	public LIntElements getLIntAccess() {
-		return (pLInt != null) ? pLInt : (pLInt = new LIntElements());
+		return pLInt;
 	}
 	
 	public ParserRule getLIntRule() {
@@ -1473,7 +1493,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
-	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | ",");
+	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | fallThrough?=",");
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaXbaseWithAnnotations.getXCasePartAccess();
 	}
@@ -1805,8 +1825,9 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
-	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
-	//	">")?;
+	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)* ">"
+	//	(=> ({JvmInnerTypeReference.outer=current} ".") type=[JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">")?)*)?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaXbaseWithAnnotations.getJvmParameterizedTypeReferenceAccess();
 	}
@@ -1826,7 +1847,8 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaXbaseWithAnnotations.getJvmWildcardTypeReferenceAccess();
 	}
@@ -1863,6 +1885,16 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmLowerBoundRule() {
 		return getJvmLowerBoundAccess().getRule();
+	}
+
+	//JvmLowerBoundAnded returns JvmLowerBound:
+	//	"&" typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaXbaseWithAnnotations.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
 	}
 
 	//JvmTypeParameter:
@@ -1934,8 +1966,8 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\""))* "\""? | "\'" ("\\" .
+	//	/ * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\'"))* "\'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaXbaseWithAnnotations.getSTRINGRule();
 	} 

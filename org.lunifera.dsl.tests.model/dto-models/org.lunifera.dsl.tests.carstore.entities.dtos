@@ -1,0 +1,60 @@
+package org.lunifera.dsl.tests.carstore.entities.dtos {
+
+ 	/* Imports the required artifacts */
+	import org.lunifera.dsl.tests.carstore.entities.Base;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.BaseDto;
+	import org.lunifera.dsl.tests.carstore.entities.Car;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.CarDto;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.BaseDto;
+	import org.lunifera.dsl.tests.carstore.entities.Addon;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto;
+	import org.lunifera.dsl.tests.carstore.entities.Person;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.PersonDto; 
+	import org.lunifera.dsl.tests.carstore.entities.Addon;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.BaseDto;
+	import org.lunifera.dsl.tests.carstore.entities.Car;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.CarDto; 
+	import org.lunifera.dsl.tests.carstore.entities.Person;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.PersonDto;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.BaseDto;
+	import org.lunifera.dsl.tests.carstore.entities.Car;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.CarDto;
+	import org.lunifera.dsl.tests.carstore.entities.Address;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.AddressDto;
+	import org.lunifera.dsl.tests.carstore.entities.Address;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.AddressDto;
+	import org.lunifera.dsl.tests.carstore.entities.Address;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.AddressDto;
+
+ 
+ 	autoDto BaseDto wraps Base {
+		inherit var uuid;
+	}
+	
+	autoDto CarDto extends BaseDto wraps Car {
+		inherit var number;
+		inherit var finishingDate;
+		inherit ref addons mapto AddonDto;
+		inherit ref owner mapto PersonDto;
+	}
+	
+	autoDto AddonDto extends BaseDto wraps Addon {
+		inherit var description;
+		inherit ref car mapto CarDto;
+	}
+	  
+	autoDto PersonDto extends BaseDto wraps Person {
+		inherit var firstname;
+		inherit var lastname;
+		inherit ref ownsCars mapto CarDto; 
+		inherit var homeAddress;
+		inherit var workAddress;
+	}
+	     
+	autoDto AddressDto wraps Address {
+		inherit var streetname;
+		inherit var postalcode;
+	}
+	
+}

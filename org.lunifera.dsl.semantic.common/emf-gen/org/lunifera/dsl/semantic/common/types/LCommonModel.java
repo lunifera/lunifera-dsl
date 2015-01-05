@@ -15,8 +15,6 @@ package org.lunifera.dsl.semantic.common.types;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>LCommon Model</b></em>'.
@@ -33,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LCommonModel extends EObject {
+public interface LCommonModel extends LLazyResolver {
 	/**
 	 * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
 	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LTypedPackage}.

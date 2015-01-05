@@ -226,19 +226,19 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch LType toRawType(LEntityReference prop) {
-		prop.type
+		prop.type as LType
 	}
 
 	def dispatch LType toRawType(LEntityAttribute prop) {
-		prop.type
+		prop.type as LType
 	}
 
 	def dispatch LType toRawType(LBeanReference prop) {
-		prop.type
+		prop.type as LType
 	}
 
 	def dispatch LType toRawType(LBeanAttribute prop) {
-		prop.type
+		prop.type as LType
 	}
 
 	def toRawTypeRefernce(LDtoFeature prop) {
@@ -266,11 +266,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch LReference opposite(LEntityReference prop) {
-		prop.opposite
+		prop.opposite as LReference
 	}
 
 	def dispatch LReference opposite(LBeanReference prop) {
-		prop.opposite
+		prop.opposite as LReference
 	}
 
 	def dispatch Bounds getBounds(LDtoFeature prop) {
@@ -346,7 +346,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 	}
 
-	def dispatch isCascading(LDtoAbstractReference prop) {
+	def dispatch boolean isCascading(LDtoAbstractReference prop) {
 		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.cascading
 		} else {
@@ -354,7 +354,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 		}
 	}
 
-	def dispatch isCascading(LDtoAbstractAttribute prop) {
+	def dispatch boolean isCascading(LDtoAbstractAttribute prop) {
 		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.cascading
 		} else {
@@ -397,12 +397,11 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def boolean basedOnEntity(LDto dto) {
-		dto.wrappedType != null
+		dto.wrappedType != null && dto.wrappedType instanceof LEntity
 	}
-	
-	def Iterable<LDtoAbstractAttribute> collectAllAttributes(LDto dto){
-		return dto.allFeatures.filter[it instanceof LDtoAbstractAttribute].map[
-			it as LDtoAbstractAttribute]
+
+	def Iterable<LDtoAbstractAttribute> collectAllAttributes(LDto dto) {
+		return dto.allFeatures.filter[it instanceof LDtoAbstractAttribute].map[it as LDtoAbstractAttribute]
 	}
 
 	def LAttribute idAttribute(LDto dto) {

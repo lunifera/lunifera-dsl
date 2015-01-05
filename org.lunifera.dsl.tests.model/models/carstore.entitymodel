@@ -1,0 +1,32 @@
+package org.lunifera.dsl.tests.carstore.entities {
+	
+	mapped superclass Base {
+		uuid String uuid;
+	}
+	
+	entity Car extends Base {
+		var String number;
+		var Date finishingDate;
+		ref cascade Addon[*] addons opposite car; 
+		ref Person owner opposite ownsCars;
+	}
+	
+	entity Addon extends Base {
+		var String description;
+		ref Car car opposite addons;
+	}
+	 
+	entity Person extends Base {
+		var String firstname;
+		var String lastname;
+		ref Car[*] ownsCars opposite owner;
+		
+		var Address homeAddress;
+		var Address workAddress;
+	}
+	
+	bean Address {
+		var String streetname;
+		var String postalcode;
+	}
+}

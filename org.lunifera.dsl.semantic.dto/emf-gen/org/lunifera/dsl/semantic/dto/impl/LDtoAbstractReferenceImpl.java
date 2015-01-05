@@ -14,11 +14,14 @@
 package org.lunifera.dsl.semantic.dto.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -37,6 +40,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,6 +96,16 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 	 * @ordered
 	 */
 	protected LDto type;
+
+	/**
+	 * The cached value of the '{@link #getTypeJvm() <em>Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeJvm()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference typeJvm;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -197,6 +211,63 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public JvmTypeReference getTypeJvm() {
+		return typeJvm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTypeJvm(JvmTypeReference newTypeJvm, NotificationChain msgs) {
+		JvmTypeReference oldTypeJvm = typeJvm;
+		typeJvm = newTypeJvm;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM, oldTypeJvm, newTypeJvm);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTypeJvm(JvmTypeReference newTypeJvm) {
+		if (newTypeJvm != typeJvm) {
+			NotificationChain msgs = null;
+			if (typeJvm != null)
+				msgs = ((InternalEObject)typeJvm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM, null, msgs);
+			if (newTypeJvm != null)
+				msgs = ((InternalEObject)newTypeJvm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM, null, msgs);
+			msgs = basicSetTypeJvm(newTypeJvm, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM, newTypeJvm, newTypeJvm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
+				return basicSetTypeJvm(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -207,6 +278,8 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
+				return getTypeJvm();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -227,6 +300,9 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				return;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				setType((LDto)newValue);
+				return;
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
+				setTypeJvm((JvmTypeReference)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -249,6 +325,9 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				setType((LDto)null);
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
+				setTypeJvm((JvmTypeReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -267,6 +346,8 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				return cascading != CASCADING_EDEFAULT;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				return type != null;
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
+				return typeJvm != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -23,6 +23,7 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
+import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 import org.lunifera.dsl.semantic.common.types.LOperation;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
@@ -101,12 +102,27 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLScalarType(lDto);
 				if (result == null) result = caseLType(lDto);
 				if (result == null) result = caseLAnnotationTarget(lDto);
+				if (result == null) result = caseLLazyResolver(lDto);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunDtoPackage.LAUTO_INHERIT_DTO: {
+				LAutoInheritDto lAutoInheritDto = (LAutoInheritDto)theEObject;
+				T result = caseLAutoInheritDto(lAutoInheritDto);
+				if (result == null) result = caseLDto(lAutoInheritDto);
+				if (result == null) result = caseLClass(lAutoInheritDto);
+				if (result == null) result = caseLFeaturesHolder(lAutoInheritDto);
+				if (result == null) result = caseLScalarType(lAutoInheritDto);
+				if (result == null) result = caseLType(lAutoInheritDto);
+				if (result == null) result = caseLAnnotationTarget(lAutoInheritDto);
+				if (result == null) result = caseLLazyResolver(lAutoInheritDto);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LunDtoPackage.LDTO_MAPPER: {
 				LDtoMapper lDtoMapper = (LDtoMapper)theEObject;
 				T result = caseLDtoMapper(lDtoMapper);
+				if (result == null) result = caseLLazyResolver(lDtoMapper);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,6 +131,7 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				T result = caseLDtoFeature(lDtoFeature);
 				if (result == null) result = caseLFeature(lDtoFeature);
 				if (result == null) result = caseLAnnotationTarget(lDtoFeature);
+				if (result == null) result = caseLLazyResolver(lDtoFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -125,6 +142,7 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLAttribute(lDtoAbstractAttribute);
 				if (result == null) result = caseLFeature(lDtoAbstractAttribute);
 				if (result == null) result = caseLAnnotationTarget(lDtoAbstractAttribute);
+				if (result == null) result = caseLLazyResolver(lDtoAbstractAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -136,6 +154,7 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLAttribute(lDtoInheritedAttribute);
 				if (result == null) result = caseLFeature(lDtoInheritedAttribute);
 				if (result == null) result = caseLAnnotationTarget(lDtoInheritedAttribute);
+				if (result == null) result = caseLLazyResolver(lDtoInheritedAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -147,6 +166,7 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLAttribute(lDtoAttribute);
 				if (result == null) result = caseLFeature(lDtoAttribute);
 				if (result == null) result = caseLAnnotationTarget(lDtoAttribute);
+				if (result == null) result = caseLLazyResolver(lDtoAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -157,6 +177,7 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLReference(lDtoAbstractReference);
 				if (result == null) result = caseLFeature(lDtoAbstractReference);
 				if (result == null) result = caseLAnnotationTarget(lDtoAbstractReference);
+				if (result == null) result = caseLLazyResolver(lDtoAbstractReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -168,6 +189,7 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLReference(lDtoInheritedReference);
 				if (result == null) result = caseLFeature(lDtoInheritedReference);
 				if (result == null) result = caseLAnnotationTarget(lDtoInheritedReference);
+				if (result == null) result = caseLLazyResolver(lDtoInheritedReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -179,6 +201,7 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLReference(lDtoReference);
 				if (result == null) result = caseLFeature(lDtoReference);
 				if (result == null) result = caseLAnnotationTarget(lDtoReference);
+				if (result == null) result = caseLLazyResolver(lDtoReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -189,6 +212,7 @@ public class LunDtoSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLDtoFeature(lDtoOperation);
 				if (result == null) result = caseLFeature(lDtoOperation);
 				if (result == null) result = caseLAnnotationTarget(lDtoOperation);
+				if (result == null) result = caseLLazyResolver(lDtoOperation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -223,6 +247,21 @@ public class LunDtoSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLDto(LDto object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LAuto Inherit Dto</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LAuto Inherit Dto</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLAutoInheritDto(LAutoInheritDto object) {
 		return null;
 	}
 
@@ -358,6 +397,21 @@ public class LunDtoSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLDtoOperation(LDtoOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LLazy Resolver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLLazyResolver(LLazyResolver object) {
 		return null;
 	}
 

@@ -20,9 +20,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
+
+import org.lunifera.dsl.semantic.common.types.impl.LLazyResolverImpl;
 
 import org.lunifera.dsl.semantic.service.LCardinality;
 import org.lunifera.dsl.semantic.service.LInjectedService;
@@ -43,7 +44,7 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  *
  * @generated
  */
-public class LInjectedServiceImpl extends MinimalEObjectImpl.Container implements LInjectedService {
+public class LInjectedServiceImpl extends LLazyResolverImpl implements LInjectedService {
 	/**
 	 * The default value of the '{@link #getCardinality() <em>Cardinality</em>}' attribute.
 	 * <!-- begin-user-doc -->

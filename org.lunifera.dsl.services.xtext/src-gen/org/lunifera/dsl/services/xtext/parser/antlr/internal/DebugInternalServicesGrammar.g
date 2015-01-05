@@ -44,36 +44,20 @@ ruleValidIDWithKeywords
 
 )
 )	'{' 
+(	'persistenceID' 
 (
+(
+ruleQualifiedName
+)
+))?(
 (
 ruleInjectedServices
 )
-)(	'get' 
+)(
 (
-(
-ruleXBlockExpression
+ruleOperation
 )
-))?(	'find' 
-(
-(
-ruleXBlockExpression
-)
-))?(	'findWithDelimiter' 
-(
-(
-ruleXBlockExpression
-)
-))?(	'update' 
-(
-(
-ruleXBlockExpression
-)
-))?(	'delete' 
-(
-(
-ruleXBlockExpression
-)
-))?	'}' 
+)*	'}' 
 )
 ;
 
@@ -121,6 +105,46 @@ RULE_ID
 
 
 
+
+
+
+
+
+
+// Rule Operation
+ruleOperation :
+((
+)(
+(
+ruleAnnotationDef
+)
+)*(	'def' 
+(
+(
+ruleJvmTypeReference
+)
+)(
+(
+RULE_ID
+
+)
+)	'(' 
+((
+(
+ruleFullJvmFormalParameter
+)
+)(	', ' 
+(
+(
+ruleFullJvmFormalParameter
+)
+))*)?	')' 
+(
+(
+ruleXExpression
+)
+)))
+;
 
 
 
@@ -1529,8 +1553,13 @@ ruleXExpression
 ruleXExpression
 )
 ))
-    |	',' 
-))
+    |(
+(
+	',' 
+ 
+
+)
+)))
 ;
 
 
@@ -2282,7 +2311,27 @@ ruleJvmArgumentTypeReference
 ruleJvmArgumentTypeReference
 )
 ))*	'>' 
-)?)
+(((((
+)	'.' 
+))=>((
+)	'.' 
+))(
+(
+		ruleValidID
+)
+)(((	'<' 
+)=>	'<' 
+)(
+(
+ruleJvmArgumentTypeReference
+)
+)(	',' 
+(
+(
+ruleJvmArgumentTypeReference
+)
+))*	'>' 
+)?)*)?)
 ;
 
 
@@ -2305,16 +2354,24 @@ ruleJvmArgumentTypeReference :
 ruleJvmWildcardTypeReference :
 ((
 )	'?' 
-((
+(((
 (
 ruleJvmUpperBound
 )
+)(
+(
+ruleJvmUpperBoundAnded
 )
-    |(
+)*)
+    |((
 (
 ruleJvmLowerBound
 )
-))?)
+)(
+(
+ruleJvmLowerBoundAnded
+)
+)*))?)
 ;
 
 
@@ -2355,6 +2412,21 @@ ruleJvmTypeReference
 // Rule JvmLowerBound
 ruleJvmLowerBound :
 (	'super' 
+(
+(
+ruleJvmTypeReference
+)
+))
+;
+
+
+
+
+
+
+// Rule JvmLowerBoundAnded
+ruleJvmLowerBoundAnded :
+(	'&' 
 (
 (
 ruleJvmTypeReference
@@ -2524,7 +2596,7 @@ RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
 
-RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
+RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'?|'\'' ('\\' .|~(('\\'|'\'')))* '\''?);
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/' {skip();};
 

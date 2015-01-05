@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
@@ -100,6 +101,8 @@ public class LunEntityFactoryImpl extends EFactoryImpl implements LunEntityFacto
 		switch (eDataType.getClassifierID()) {
 			case LunEntityPackage.LDISCRIMINATOR_TYPE:
 				return createLDiscriminatorTypeFromString(eDataType, initialValue);
+			case LunEntityPackage.INTERNAL_EOBJECT:
+				return createInternalEObjectFromString(eDataType, initialValue);
 			case LunEntityPackage.OPERATIONS_LIST:
 				return createOperationsListFromString(eDataType, initialValue);
 			case LunEntityPackage.ENTITY_FEATURE_LIST:
@@ -129,6 +132,8 @@ public class LunEntityFactoryImpl extends EFactoryImpl implements LunEntityFacto
 		switch (eDataType.getClassifierID()) {
 			case LunEntityPackage.LDISCRIMINATOR_TYPE:
 				return convertLDiscriminatorTypeToString(eDataType, instanceValue);
+			case LunEntityPackage.INTERNAL_EOBJECT:
+				return convertInternalEObjectToString(eDataType, instanceValue);
 			case LunEntityPackage.OPERATIONS_LIST:
 				return convertOperationsListToString(eDataType, instanceValue);
 			case LunEntityPackage.ENTITY_FEATURE_LIST:
@@ -316,6 +321,24 @@ public class LunEntityFactoryImpl extends EFactoryImpl implements LunEntityFacto
 	 */
 	public String convertLDiscriminatorTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InternalEObject createInternalEObjectFromString(EDataType eDataType, String initialValue) {
+		return (InternalEObject)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInternalEObjectToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

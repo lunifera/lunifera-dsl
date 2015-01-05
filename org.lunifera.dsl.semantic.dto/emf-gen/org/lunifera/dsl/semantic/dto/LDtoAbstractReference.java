@@ -13,6 +13,8 @@
  */
 package org.lunifera.dsl.semantic.dto;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.lunifera.dsl.semantic.common.types.LReference;
 
 /**
@@ -24,6 +26,7 @@ import org.lunifera.dsl.semantic.common.types.LReference;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.dto.LDtoAbstractReference#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.LDtoAbstractReference#getTypeJvm <em>Type Jvm</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,5 +60,31 @@ public interface LDtoAbstractReference extends LDtoFeature, LReference {
 	 * @generated
 	 */
 	void setType(LDto value);
+
+	/**
+	 * Returns the value of the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type Jvm</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type Jvm</em>' containment reference.
+	 * @see #setTypeJvm(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoAbstractReference_TypeJvm()
+	 * @model containment="true"
+	 * @generated
+	 */
+	JvmTypeReference getTypeJvm();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoAbstractReference#getTypeJvm <em>Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type Jvm</em>' containment reference.
+	 * @see #getTypeJvm()
+	 * @generated
+	 */
+	void setTypeJvm(JvmTypeReference value);
 
 } // LDtoAbstractReference

@@ -12,11 +12,11 @@ package org.lunifera.dsl.dto.xtext.scope;
 
 import java.util.ArrayList;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3;
 
 public class InheritTypesFilterScope extends AbstractScope {
 	private final LType context;
@@ -33,7 +33,7 @@ public class InheritTypesFilterScope extends AbstractScope {
 		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
 		for (IEObjectDescription desc : scope.getAllElements()) {
 			LType type = (LType) desc.getEObjectOrProxy();
-			type = (LType) EcoreUtil.resolve(type, context);
+			type = (LType) EcoreUtil3.resolve(type, context.eResource().getResourceSet());
 			if (type != context && type.getName() != null) {
 				result.add(desc);
 			}
