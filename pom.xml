@@ -64,7 +64,7 @@
 		<module>org.lunifera.dsl.xtext.builder.participant</module>
 
 		<!-- Tests -->
-		<module>org.lunifera.dsl.xtext.builder.participant.tests</module>
+<!-- 		<module>org.lunifera.dsl.xtext.builder.participant.tests</module> -->
 
 		<!-- P2 feature -->
 		<module>org.lunifera.dsl.feature.entities</module>
