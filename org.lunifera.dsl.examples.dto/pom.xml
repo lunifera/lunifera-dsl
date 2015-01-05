@@ -15,7 +15,7 @@
 	
 	<groupId>org.lunifera.dsl</groupId>
 	<artifactId>org.lunifera.dsl.examples.dto</artifactId>
-	<version>0.7.0</version>
+	<version>0.8.0</version>
 	<name>Entity DSL Examples</name>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
