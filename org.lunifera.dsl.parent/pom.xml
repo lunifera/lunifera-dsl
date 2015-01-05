@@ -181,5 +181,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<version>0.7.5-SNAPSHOT</version>
+	<version>0.8.0</version>
 </project>
