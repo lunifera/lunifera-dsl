@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.dto.xtext.ui
 Bundle-Vendor: lunifera DOT org
-Bundle-Version: 0.8.0
+Bundle-Version: 0.8.1.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.dto.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.lunifera.dsl.dto.xtext;bundle-version="[0.8.0,0.9.0)";visibility:=reexport,
@@ -27,7 +27,7 @@ Require-Bundle: org.lunifera.dsl.dto.xtext;bundle-version="[0.8.0,0.9.0)";visibi
  org.lunifera.dsl.xtext.lazyresolver.ui
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.lunifera.dsl.dto.xtext.ui.contentassist;version="0.8.0",
- org.lunifera.dsl.dto.xtext.ui.contentassist.antlr;version="0.8.0",
- org.lunifera.dsl.dto.xtext.ui.quickfix;version="0.8.0"
+Export-Package: org.lunifera.dsl.dto.xtext.ui.contentassist;version="0.8.1",
+ org.lunifera.dsl.dto.xtext.ui.contentassist.antlr;version="0.8.1",
+ org.lunifera.dsl.dto.xtext.ui.quickfix;version="0.8.1"
 Bundle-Activator: org.lunifera.dsl.dto.xtext.ui.internal.DtoGrammarActivator

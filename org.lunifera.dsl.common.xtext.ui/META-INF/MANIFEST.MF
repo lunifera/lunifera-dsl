@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.common.xtext.ui
 Bundle-Vendor: Lunifera GmbH
-Bundle-Version: 0.8.0
+Bundle-Version: 0.8.1.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.common.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.lunifera.dsl.common.xtext;bundle-version="[0.8.0,0.9.0)";visibility:=reexport,
@@ -20,7 +20,7 @@ Require-Bundle: org.lunifera.dsl.common.xtext;bundle-version="[0.8.0,0.9.0)";vis
  org.eclipse.jdt.debug.ui
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.lunifera.dsl.common.xtext.ui.contentassist;version="0.8.0",
- org.lunifera.dsl.common.xtext.ui.contentassist.antlr;version="0.8.0",
- org.lunifera.dsl.common.xtext.ui.quickfix;version="0.8.0"
+Export-Package: org.lunifera.dsl.common.xtext.ui.contentassist;version="0.8.1",
+ org.lunifera.dsl.common.xtext.ui.contentassist.antlr;version="0.8.1",
+ org.lunifera.dsl.common.xtext.ui.quickfix;version="0.8.1"
 Bundle-Activator: org.lunifera.dsl.common.xtext.ui.internal.CommonGrammarActivator
