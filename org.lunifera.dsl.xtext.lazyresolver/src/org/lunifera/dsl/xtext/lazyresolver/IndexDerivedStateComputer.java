@@ -1,9 +1,18 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ */
 package org.lunifera.dsl.xtext.lazyresolver;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
 import org.eclipse.xtext.util.internal.Stopwatches;
 import org.eclipse.xtext.util.internal.Stopwatches.StoppedTask;
@@ -42,6 +51,9 @@ public class IndexDerivedStateComputer extends JvmModelAssociator implements
 		this.inferrerProvider = inferrerProvider;
 	}
 
+	/**
+	 * Never installs the fully derived state by invoking doLater.
+	 */
 	@SuppressWarnings("restriction")
 	public void installDerivedState(final DerivedStateAwareResource resource,
 			boolean preIndexingPhase) {
@@ -63,28 +75,13 @@ public class IndexDerivedStateComputer extends JvmModelAssociator implements
 		} catch (RuntimeException e) {
 			// LOG.error("Error calling inferrer", e);
 		}
-		// if (!preIndexingPhase) {
-		// for (Pair<JvmDeclaredType, Procedure1<? super JvmDeclaredType>>
-		// initializer : acceptor.later) {
-		// try {
-		// initializer.getValue().apply(initializer.getKey());
-		// } catch (RuntimeException e) {
-		// // LOG.error("Error calling inferrer", e);
-		// }
-		// }
-		// }
 		task.stop();
-
-		// if (!preIndexingPhase) {
-		// for (EObject object : resource.getContents()) {
-		// if (object instanceof JvmIdentifiableElement) {
-		// JvmIdentifiableElement element = (JvmIdentifiableElement) object;
-		// completer.complete(element);
-		// }
-		// }
-		// }
 	}
 
+	/**
+	 * Installs the complete derived state for the {@link EObject} at the given
+	 * index in the resource.
+	 */
 	@SuppressWarnings("restriction")
 	@Override
 	public void installDerivedState(DerivedStateAwareResource resource,
