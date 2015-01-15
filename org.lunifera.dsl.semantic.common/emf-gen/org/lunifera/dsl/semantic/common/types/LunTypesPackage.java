@@ -266,13 +266,22 @@ public interface LunTypesPackage extends EPackage {
 	int LTYPED_PACKAGE___ERESOLVE_PROXY__INTERNALEOBJECT = LPACKAGE___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
+	 * The operation id for the '<em>Get Resource Simple Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LTYPED_PACKAGE___GET_RESOURCE_SIMPLE_NAME = LPACKAGE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>LTyped Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LTYPED_PACKAGE_OPERATION_COUNT = LPACKAGE_OPERATION_COUNT + 0;
+	int LTYPED_PACKAGE_OPERATION_COUNT = LPACKAGE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LImportImpl <em>LImport</em>}' class.
@@ -1744,6 +1753,16 @@ public interface LunTypesPackage extends EPackage {
 	EReference getLTypedPackage_Types();
 
 	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LTypedPackage#getResourceSimpleName() <em>Get Resource Simple Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Resource Simple Name</em>' operation.
+	 * @see org.lunifera.dsl.semantic.common.types.LTypedPackage#getResourceSimpleName()
+	 * @generated
+	 */
+	EOperation getLTypedPackage__GetResourceSimpleName();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LImport <em>LImport</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2656,6 +2675,14 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LTYPED_PACKAGE__TYPES = eINSTANCE.getLTypedPackage_Types();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Resource Simple Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LTYPED_PACKAGE___GET_RESOURCE_SIMPLE_NAME = eINSTANCE.getLTypedPackage__GetResourceSimpleName();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LImportImpl <em>LImport</em>}' class.

@@ -48,4 +48,13 @@ public interface LTypedPackage extends LPackage {
 	 */
 	EList<LType> getTypes();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final <%org.eclipse.emf.ecore.resource.Resource%> resource = this.eResource();\nboolean _equals = <%com.google.common.base.Objects%>.equal(resource, null);\nif (_equals)\n{\n\treturn \"\";\n}\n<%org.eclipse.emf.common.util.URI%> _uRI = resource.getURI();\n<%java.lang.String%> _lastSegment = _uRI.lastSegment();\n<%java.lang.String%> _plus = (_lastSegment + \" - \");\n<%java.lang.String%> _name = this.getName();\nreturn (_plus + _name);'"
+	 * @generated
+	 */
+	String getResourceSimpleName();
+
 } // LTypedPackage

@@ -20,6 +20,7 @@ import org.lunifera.dsl.services.xtext.scope.ServicesImportedNamespaceAwareLocal
 import org.lunifera.dsl.services.xtext.scope.ServicesScopeProvider;
 import org.lunifera.dsl.services.xtext.serializer.ServiceGrammarTransientValueService;
 import org.lunifera.dsl.services.xtext.valueconverter.ServicesQualifiedNameProvider;
+import org.lunifera.dsl.xtext.lazyresolver.IndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
@@ -106,5 +107,9 @@ public class ServicesGrammarRuntimeModule extends
 				.annotatedWith(
 						org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class)
 				.to(ServicesBatchScopeProvider.class);
+	}
+
+	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
+		return IndexDerivedStateComputer.class;
 	}
 }

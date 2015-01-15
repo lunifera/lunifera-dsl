@@ -13,14 +13,21 @@
  */
 package org.lunifera.dsl.semantic.common.types.impl;
 
+import com.google.common.base.Objects;
+
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -82,6 +89,24 @@ public class LTypedPackageImpl extends LPackageImpl implements LTypedPackage {
 			types = new EObjectContainmentEList<LType>(LType.class, this, LunTypesPackage.LTYPED_PACKAGE__TYPES);
 		}
 		return types;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResourceSimpleName() {
+		final Resource resource = this.eResource();
+		boolean _equals = Objects.equal(resource, null);
+		if (_equals) {
+			return "";
+		}
+		URI _uRI = resource.getURI();
+		String _lastSegment = _uRI.lastSegment();
+		String _plus = (_lastSegment + " - ");
+		String _name = this.getName();
+		return (_plus + _name);
 	}
 
 	/**
@@ -156,6 +181,20 @@ public class LTypedPackageImpl extends LPackageImpl implements LTypedPackage {
 				return types != null && !types.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case LunTypesPackage.LTYPED_PACKAGE___GET_RESOURCE_SIMPLE_NAME:
+				return getResourceSimpleName();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //LTypedPackageImpl

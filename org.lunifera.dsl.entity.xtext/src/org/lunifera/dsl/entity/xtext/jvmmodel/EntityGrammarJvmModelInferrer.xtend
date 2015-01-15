@@ -12,11 +12,13 @@ package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
 import java.io.Serializable
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
 import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
@@ -26,8 +28,9 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
-import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.dsl.semantic.entity.LOperation
+import org.lunifera.dsl.xtext.lazyresolver.IndexModelInferrer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -35,7 +38,7 @@ import org.slf4j.LoggerFactory
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
  * It dispatches to specific model inferrers depending on the metamodel element.
  */
-class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
+class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	protected val Logger log = LoggerFactory::getLogger(getClass())
 
@@ -47,9 +50,22 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	@Inject TypeReferences references
 
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		if(hasSyntaxErrors(enumX)) return;
 
-		acceptor.accept(enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)).initializeLater [
+		if(enumX.hasSyntaxErrors) return;
+
+		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
+		type.markAsToBeDerivedLater(enumX, isPrelinkingPhase)
+		acceptor.accept(type);
+
+	}
+
+	def dispatch void inferForLater(JvmDeclaredType type, LEnum enumX, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase, String selector) {
+
+		if(enumX.hasSyntaxErrors) return;
+
+		acceptor.accept(type).initializeLater [
+			type.markAsDerived
 			fileHeader = (enumX.eContainer as LTypedPackage).documentation
 			documentation = enumX.documentation
 			for (f : enumX.literals) {
@@ -60,9 +76,22 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	}
 
 	def dispatch void infer(LBean bean, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		if(hasSyntaxErrors(bean)) return;
+		
+		if(bean.hasSyntaxErrors) return;
+		
+		val type = bean.toJvmType;
+		type.markAsToBeDerivedLater(bean, isPrelinkingPhase)
+		acceptor.accept(type);
+	}
 
-		acceptor.accept(bean.toJvmType).initializeLater [
+	def dispatch void inferForLater(JvmDeclaredType type, LBean bean, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase, String selector) {
+
+		if(bean.hasSyntaxErrors) return;
+
+		acceptor.accept(type).initializeLater [
+			// mark the type as derived
+			type.markAsDerived()
 			annotationCompiler.processAnnotation(bean, it);
 			fileHeader = (bean.eContainer as LTypedPackage).documentation
 			documentation = bean.getDocumentation
@@ -72,7 +101,6 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			if (bean.getSuperType != null && !bean.getSuperType.fullyQualifiedName.toString.empty) {
 				superTypes += bean.superTypeJvm.cloneWithProxies
 			}
-			
 			// 
 			// Constructor
 			//
@@ -153,10 +181,27 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			}
 		]
 	}
- 
+
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		if(hasSyntaxErrors(entity)) return;
-		acceptor.accept(entity.toJvmType).initializeLater [
+		
+		if(entity.hasSyntaxErrors) return;
+		
+		val type = entity.toJvmType;
+		type.markAsToBeDerivedLater(entity, isPrelinkingPhase)
+		acceptor.accept(type);
+	}
+
+	def dispatch void inferForLater(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase, String selector) {
+	}
+
+	def dispatch void inferForLater(JvmDeclaredType type, LEntity entity, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase, String selector) {
+
+		if(entity.hasSyntaxErrors) return;
+
+		acceptor.accept(type).initializeLater [
+			type.markAsDerived
 			println("inferring entity " + entity.name)
 			annotationCompiler.processAnnotation(entity, it);
 			var LAttribute idAttribute = null
@@ -164,10 +209,10 @@ class EntityGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 			fileHeader = (entity.eContainer as LTypedPackage).documentation
 			documentation = entity.documentation
 			if (entity.getSuperType != null && !entity.getSuperType.fullyQualifiedName.toString.empty) {
-//				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
+
+				//				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
 				superTypes += entity.superTypeJvm.cloneWithProxies
 			}
-
 			//
 			// Constructor
 			//

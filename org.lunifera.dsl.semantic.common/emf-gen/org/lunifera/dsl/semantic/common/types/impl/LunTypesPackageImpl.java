@@ -312,9 +312,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
-		XbasePackage.eINSTANCE.eClass();
 		XAnnotationsPackage.eINSTANCE.eClass();
+		XbasePackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theLunTypesPackage.createPackageContents();
@@ -410,6 +410,15 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 */
 	public EReference getLTypedPackage_Types() {
 		return (EReference)lTypedPackageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getLTypedPackage__GetResourceSimpleName() {
+		return lTypedPackageEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1136,6 +1145,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 
 		lTypedPackageEClass = createEClass(LTYPED_PACKAGE);
 		createEReference(lTypedPackageEClass, LTYPED_PACKAGE__TYPES);
+		createEOperation(lTypedPackageEClass, LTYPED_PACKAGE___GET_RESOURCE_SIMPLE_NAME);
 
 		lImportEClass = createEClass(LIMPORT);
 		createEAttribute(lImportEClass, LIMPORT__IMPORTED_NAMESPACE);
@@ -1300,6 +1310,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 
 		initEClass(lTypedPackageEClass, LTypedPackage.class, "LTypedPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLTypedPackage_Types(), this.getLType(), null, "types", null, 0, -1, LTypedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getLTypedPackage__GetResourceSimpleName(), theEcorePackage.getEString(), "getResourceSimpleName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(lImportEClass, LImport.class, "LImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLImport_ImportedNamespace(), theEcorePackage.getEString(), "importedNamespace", null, 0, 1, LImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -12,18 +12,22 @@ package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
 import java.io.Serializable
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.lunifera.dsl.common.xtext.jvmmodel.CommonGrammarJvmModelInferrer
 import org.lunifera.dsl.dto.lib.Context
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.lib.IMapperAccess
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
+import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LReference
@@ -31,8 +35,8 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
-import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.entity.LBean
+import org.lunifera.dsl.xtext.lazyresolver.IndexModelInferrer
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -40,7 +44,7 @@ import org.lunifera.dsl.semantic.entity.LBean
  * <p>The JVM model should contain all elements that would appear in the Java code 
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
-class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
+class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	@Inject AnnotationCompiler annotationCompiler
 
@@ -50,8 +54,43 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 	@Inject extension DtoModelExtensions;
 	@Inject TypeReferences references
 
+	def dispatch void inferForLater(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase, String selector) {
+	}
+
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		acceptor.accept(dto.toJvmType).initializeLater [
+
+		if(dto.hasSyntaxErrors) return;
+
+		// create dto type
+		val type = dto.toJvmType;
+		type.markAsToBeDerivedLater(dto, isPrelinkingPhase)
+		acceptor.accept(type);
+
+		// create mapper type
+		if (dto.wrappedType != null) {
+			val mapperType = dto.toMapperJvmType;
+			mapperType.markAsToBeDerivedLater(dto, isPrelinkingPhase, "mapper")
+			acceptor.accept(mapperType)
+		}
+	}
+
+	def dispatch void inferForLater(JvmGenericType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase, String selector) {
+		if (selector.equals("mapper")) {
+			type.inferMapperForLater(dto, acceptor, isPrelinkingPhase)
+		} else {
+			type.inferDtoForLater(dto, acceptor, isPrelinkingPhase)
+		}
+	}
+
+	def void inferDtoForLater(JvmDeclaredType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase) {
+
+		if(dto.hasSyntaxErrors) return;
+
+		acceptor.accept(type).initializeLater [
+			type.markAsDerived
 			println("inferring dto " + dto.name)
 			annotationCompiler.processAnnotation(dto, it);
 			var LAttribute idAttribute = null
@@ -151,65 +190,20 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 					}
 					body = op.getBody
 				]
-			} 
+			}
 			if (idAttribute != null) {
 				members += idAttribute.toEqualsMethod(it, false, idField)
 				members += idAttribute.toHashCodeMethod(false, idField)
 			}
-			
 			val JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference
-				typeRef.type = it
-				val contextTypeRef = newTypeRef(typeof(Context).name, null)
+			typeRef.type = it
+			val contextTypeRef = newTypeRef(typeof(Context).name, null)
+			if (!dto.abstract) {
+				members += dto.toMethod("createDto", typeRef) [
+					body = '''return new «dto.name»();'''
+				]
 
-				if (!dto.abstract) {
-					members += dto.toMethod("createDto", typeRef) [
-						body = '''return new «dto.name»();'''
-					]
-
-					members += dto.toMethod("copy", typeRef.cloneWithProxies) [
-						parameters += dto.toParameter("context", contextTypeRef.cloneWithProxies)
-						body = '''
-							checkDisposed();
-							
-							if (context == null) {
-								throw new IllegalArgumentException("Context must not be null!");
-							}
-							
-							if(context.isMaxLevel()){
-								return null;
-							}
-							
-							// if context contains a copied instance of this object
-							// then return it
-							«dto.name» newDto = context.getTarget(this);
-							if(newDto != null){
-								return newDto;
-							}
-							
-							try{
-								context.increaseLevel();
-								
-								newDto = createDto();
-								context.register(this, newDto);
-								
-								// first copy the containments and attributes
-								copyContainments(this, newDto, context);
-								
-								// then copy cross references to ensure proper
-								// opposite references are copied too.
-								copyCrossReferences(this, newDto, context);
-							} finally {
-								context.decreaseLevel();
-							}
-							
-							return newDto;
-						'''
-					]
-				}
-
-				members += dto.toMethod("copyContainments", references.getTypeForName(Void::TYPE, dto)) [
-					parameters += dto.toParameter("dto", typeRef.cloneWithProxies)
-					parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
+				members += dto.toMethod("copy", typeRef.cloneWithProxies) [
 					parameters += dto.toParameter("context", contextTypeRef.cloneWithProxies)
 					body = '''
 						checkDisposed();
@@ -218,113 +212,137 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 							throw new IllegalArgumentException("Context must not be null!");
 						}
 						
-						«IF dto.superType != null»
-						super.copyContainments(dto, newDto, context);
-						«ENDIF»
+						if(context.isMaxLevel()){
+							return null;
+						}
 						
-						// copy attributes and beans (beans if derived from entity model)
-						«FOR att : dto.attributesToCopy»
-							«IF att.internalIsToMany»
-								«IF att.toRawType instanceof LBean»
+						// if context contains a copied instance of this object
+						// then return it
+						«dto.name» newDto = context.getTarget(this);
+						if(newDto != null){
+							return newDto;
+						}
+						
+						try{
+							context.increaseLevel();
+							
+							newDto = createDto();
+							context.register(this, newDto);
+							
+							// first copy the containments and attributes
+							copyContainments(this, newDto, context);
+							
+							// then copy cross references to ensure proper
+							// opposite references are copied too.
+							copyCrossReferences(this, newDto, context);
+						} finally {
+							context.decreaseLevel();
+						}
+						
+						return newDto;
+					'''
+				]
+			}
+			members += dto.toMethod("copyContainments", references.getTypeForName(Void::TYPE, dto)) [
+				parameters += dto.toParameter("dto", typeRef.cloneWithProxies)
+				parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
+				parameters += dto.toParameter("context", contextTypeRef.cloneWithProxies)
+				body = '''
+					checkDisposed();
+					
+					if (context == null) {
+						throw new IllegalArgumentException("Context must not be null!");
+					}
+					
+					«IF dto.superType != null»
+						super.copyContainments(dto, newDto, context);
+					«ENDIF»
+					
+					// copy attributes and beans (beans if derived from entity model)
+					«FOR att : dto.attributesToCopy»
+						«IF att.internalIsToMany»
+							«IF att.toRawType instanceof LBean»
 								// copy list of «att.toName» dtos
 								for(«att.toRawType.toDTOBeanFullyQualifiedName» _dto : «att.toGetterName»()) {
 									newDto.«att.toCollectionAdderName»(_dto.copy(context));
 								}
-								«ELSE»
+							«ELSE»
 								// copy list of «att.toName»
 								for(«att.toRawType.toName» _att : «att.toGetterName»()) {
 									newDto.«att.toCollectionAdderName»(_att);
 								}
-								«ENDIF»
-							«ELSE»
-								«IF att.toRawType instanceof LBean»
+							«ENDIF»
+						«ELSE»
+							«IF att.toRawType instanceof LBean»
 								// copy dto «att.toName»
 								if(«att.toGetterName»() != null) {
 									newDto.«att.toSetterName»(«att.toGetterName»().copy(context));
 								}
-								«ELSE»
+							«ELSE»
 								// copy «att.toName»
 								newDto.«att.toSetterName»(«att.toGetterName»());
-								«ENDIF»
 							«ENDIF»
-						«ENDFOR»
-						
-						// copy containment references (cascading is true)
-						«FOR ref : dto.containmentReferencesToCopy»
-							«IF ref.internalIsToMany»
-								// copy list of «ref.toName» dtos
-								for(«ref.toRawType.toDTOBeanFullyQualifiedName» _dto : «ref.toGetterName»()) {
-									newDto.«ref.toCollectionAdderName»(_dto.copy(context));
-								}
-							«ELSE»
-								// copy dto «ref.toName»
-								if(«ref.toGetterName»() != null) {
-									newDto.«ref.toSetterName»(«ref.toGetterName»().copy(context));
-								}
-							«ENDIF»
-						«ENDFOR»
-					'''
-				]
-
-				members += dto.toMethod("copyCrossReferences", references.getTypeForName(Void::TYPE, dto)) [
-					parameters += dto.toParameter("dto", typeRef.cloneWithProxies)
-					parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
-					parameters += dto.toParameter("context", newTypeRef(typeof(Context).name, null))
-					body = '''
-						checkDisposed();
-						
-						if (context == null) {
-							throw new IllegalArgumentException("Context must not be null!");
-						}
-						
-						«IF dto.superType != null»
-						super.copyCrossReferences(dto, newDto, context);
 						«ENDIF»
-						
-						// copy cross references (cascading is false)
-						«FOR ref : dto.crossReferencesToCopy»
-							«IF ref.internalIsToMany»
-								// copy list of «ref.toName» dtos
-								for(«ref.toRawType.toDTOBeanFullyQualifiedName» _dto : «ref.toGetterName»()) {
-									newDto.«ref.toCollectionAdderName»(_dto.copy(context));
-								}
-							«ELSE»
-								// copy dto «ref.toName»
-								if(«ref.toGetterName»() != null) {
-									newDto.«ref.toSetterName»(«ref.toGetterName»().copy(context));
-								}
-							«ENDIF»
-						«ENDFOR»
-					'''
-				]
+					«ENDFOR»
+					
+					// copy containment references (cascading is true)
+					«FOR ref : dto.containmentReferencesToCopy»
+						«IF ref.internalIsToMany»
+							// copy list of «ref.toName» dtos
+							for(«ref.toRawType.toDTOBeanFullyQualifiedName» _dto : «ref.toGetterName»()) {
+								newDto.«ref.toCollectionAdderName»(_dto.copy(context));
+							}
+						«ELSE»
+							// copy dto «ref.toName»
+							if(«ref.toGetterName»() != null) {
+								newDto.«ref.toSetterName»(«ref.toGetterName»().copy(context));
+							}
+						«ENDIF»
+					«ENDFOR»
+				'''
+			]
+			members += dto.toMethod("copyCrossReferences", references.getTypeForName(Void::TYPE, dto)) [
+				parameters += dto.toParameter("dto", typeRef.cloneWithProxies)
+				parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
+				parameters += dto.toParameter("context", newTypeRef(typeof(Context).name, null))
+				body = '''
+					checkDisposed();
+					
+					if (context == null) {
+						throw new IllegalArgumentException("Context must not be null!");
+					}
+					
+					«IF dto.superType != null»
+						super.copyCrossReferences(dto, newDto, context);
+					«ENDIF»
+					
+					// copy cross references (cascading is false)
+					«FOR ref : dto.crossReferencesToCopy»
+						«IF ref.internalIsToMany»
+							// copy list of «ref.toName» dtos
+							for(«ref.toRawType.toDTOBeanFullyQualifiedName» _dto : «ref.toGetterName»()) {
+								newDto.«ref.toCollectionAdderName»(_dto.copy(context));
+							}
+						«ELSE»
+							// copy dto «ref.toName»
+							if(«ref.toGetterName»() != null) {
+								newDto.«ref.toSetterName»(«ref.toGetterName»().copy(context));
+							}
+						«ENDIF»
+					«ENDFOR»
+				'''
+			]
 		]
 
-		/**
-		 * Infers the DTO mapper
-		 */
-		dto.inferMapper(acceptor, isPrelinkingPhase)
 	}
 
-	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		if(hasSyntaxErrors(enumX)) return;
+	def void inferMapperForLater(JvmGenericType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase) {
 
-		acceptor.accept(enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)).initializeLater [
-			fileHeader = (enumX.eContainer as LTypedPackage).documentation
-			documentation = enumX.documentation
-			for (f : enumX.literals) {
-				documentation = f.documentation
-				members += f.toEnumerationLiteral(f.name)
-			}
-		]
-	}
+		if(hasSyntaxErrors(dto)) return;
 
-	def void inferMapper(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-
-		if (dto.wrappedType == null) {
-			return;
-		}
-
-		acceptor.accept(dto.toMapperJvmType).initializeLater [
+		acceptor.accept(type).initializeLater [
+			type.markAsDerived
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = '''
 				This class maps the dto {@link «dto.toName»} to and from the entity {@link «dto.wrappedType.toName»}.
@@ -392,6 +410,30 @@ class DtoGrammarJvmModelInferrer extends CommonGrammarJvmModelInferrer {
 						}
 					}
 				}
+			}
+		]
+	}
+
+	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+
+		if(enumX.hasSyntaxErrors) return;
+
+		// create dto type
+		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
+		type.markAsToBeDerivedLater(enumX, isPrelinkingPhase)
+		acceptor.accept(type);
+	}
+
+	def dispatch void inferForLater(JvmDeclaredType type, LEnum enumX, IJvmDeclaredTypeAcceptor acceptor,
+		boolean isPrelinkingPhase, String selector) {
+		if(hasSyntaxErrors(enumX)) return;
+
+		acceptor.accept(type).initializeLater [
+			fileHeader = (enumX.eContainer as LTypedPackage).documentation
+			documentation = enumX.documentation
+			for (f : enumX.literals) {
+				documentation = f.documentation
+				members += f.toEnumerationLiteral(f.name)
 			}
 		]
 	}

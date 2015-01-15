@@ -20,7 +20,6 @@ import org.lunifera.dsl.entity.xtext.extensions.EntityTypesBuilder;
 import org.lunifera.dsl.entity.xtext.formatting.EntityGrammarFormatter;
 import org.lunifera.dsl.entity.xtext.generator.Generator;
 import org.lunifera.dsl.entity.xtext.generator.OutputConfigurationProvider;
-import org.lunifera.dsl.entity.xtext.jvmmodel.DerivedStateComputer;
 import org.lunifera.dsl.entity.xtext.linker.EntityJvmLinkingHelper;
 import org.lunifera.dsl.entity.xtext.linker.EntityLinker;
 import org.lunifera.dsl.entity.xtext.scope.EntityBatchScopeProvider;
@@ -28,6 +27,7 @@ import org.lunifera.dsl.entity.xtext.scope.EntityImportedNamespaceAwareLocalScop
 import org.lunifera.dsl.entity.xtext.scope.EntityScopeProvider;
 import org.lunifera.dsl.entity.xtext.serializer.EntityGrammarTransientValueService;
 import org.lunifera.dsl.entity.xtext.valueconverter.EntityQualifiedNameProvider;
+import org.lunifera.dsl.xtext.lazyresolver.IndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
@@ -85,7 +85,7 @@ public class EntityGrammarRuntimeModule extends
 	}
 
 	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
-		return DerivedStateComputer.class;
+		return IndexDerivedStateComputer.class;
 	}
 
 	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {

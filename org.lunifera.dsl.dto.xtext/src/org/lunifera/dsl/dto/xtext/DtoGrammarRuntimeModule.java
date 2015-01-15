@@ -31,8 +31,9 @@ import org.lunifera.dsl.dto.xtext.scope.DtoScopeProvider;
 import org.lunifera.dsl.dto.xtext.serializer.DtoGrammarTransientValueService;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoQualifiedNameProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoValueConverterService;
-import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
+import org.lunifera.dsl.xtext.lazyresolver.IndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
 
 import com.google.inject.Binder;
@@ -134,9 +135,13 @@ public class DtoGrammarRuntimeModule extends
 						org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class)
 				.to(DtoScopeProvider.class);
 	}
-	
+
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ITransientValueService> bindSerializerITransientValueService() {
 		return DtoGrammarTransientValueService.class;
+	}
+	
+	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
+		return IndexDerivedStateComputer.class;
 	}
 
 }

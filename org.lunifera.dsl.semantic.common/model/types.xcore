@@ -47,6 +47,15 @@ class LPackage extends LLazyResolver {
 class LTypedPackage extends LPackage {
 	contains LType[] types
 	
+	op String getResourceSimpleName() {
+		val resource = eResource
+		if(resource == null){
+			return ""
+		}
+		
+		return resource.URI.lastSegment + " - " + name
+	}
+	
 }
 
 class LImport {
