@@ -59,6 +59,19 @@ public class IndexModelInferrer extends AbstractModelInferrer {
 			infer(child, acceptor, preIndexingPhase);
 		}
 	}
+	
+	public void inferTypesOnly(EObject e,
+			final/* @NonNull */IJvmDeclaredTypeAcceptor acceptor,
+			boolean preIndexingPhase) {
+		_inferTypesOnly(e, acceptor, preIndexingPhase);
+	}
+
+	public void _inferTypesOnly(EObject e, /* @NonNull */
+			IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+		for (EObject child : e.eContents()) {
+			inferTypesOnly(child, acceptor, preIndexingPhase);
+		}
+	}
 
 	public void inferForLater(JvmType type, EObject e, /* @NonNull */
 			IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase, String selector) {
@@ -87,13 +100,5 @@ public class IndexModelInferrer extends AbstractModelInferrer {
 		if (adapter != null) {
 			type.eAdapters().remove(adapter);
 		}
-	}
-
-	protected boolean hasSyntaxErrors(EObject o) {
-		if (!o.eResource().getErrors().isEmpty()) {
-			log.warn("Abort inferring due to syntax errors: " + o);
-			return true;
-		}
-		return false;
 	}
 }

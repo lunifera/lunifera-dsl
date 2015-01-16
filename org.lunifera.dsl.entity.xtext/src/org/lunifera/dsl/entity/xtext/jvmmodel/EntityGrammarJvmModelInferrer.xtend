@@ -49,9 +49,14 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 	@Inject extension ModelExtensions;
 	@Inject TypeReferences references
 
+	// used for test cases with old derived state computer
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
-		if(enumX.hasSyntaxErrors) return;
+		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
+		type.inferForLater(enumX, acceptor, isPrelinkingPhase, "")
+	}
+
+	def dispatch void inferTypesOnly(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
 		type.markAsToBeDerivedLater(enumX, isPrelinkingPhase)
@@ -61,8 +66,6 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	def dispatch void inferForLater(JvmDeclaredType type, LEnum enumX, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
-
-		if(enumX.hasSyntaxErrors) return;
 
 		acceptor.accept(type).initializeLater [
 			type.markAsDerived
@@ -75,10 +78,15 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 		]
 	}
 
+	// used for test cases with old derived state computer
 	def dispatch void infer(LBean bean, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		
-		if(bean.hasSyntaxErrors) return;
-		
+
+		val type = bean.toJvmType;
+		type.inferForLater(bean, acceptor, isPrelinkingPhase, "")
+	}
+
+	def dispatch void inferTypesOnly(LBean bean, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+
 		val type = bean.toJvmType;
 		type.markAsToBeDerivedLater(bean, isPrelinkingPhase)
 		acceptor.accept(type);
@@ -86,8 +94,6 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	def dispatch void inferForLater(JvmDeclaredType type, LBean bean, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
-
-		if(bean.hasSyntaxErrors) return;
 
 		acceptor.accept(type).initializeLater [
 			// mark the type as derived
@@ -182,10 +188,15 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 		]
 	}
 
+	// used for test cases with old derived state computer
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		
-		if(entity.hasSyntaxErrors) return;
-		
+
+		val type = entity.toJvmType;
+		type.inferForLater(entity, acceptor, isPrelinkingPhase, "")
+	}
+
+	def dispatch void inferTypesOnly(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+
 		val type = entity.toJvmType;
 		type.markAsToBeDerivedLater(entity, isPrelinkingPhase)
 		acceptor.accept(type);
@@ -197,8 +208,6 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	def dispatch void inferForLater(JvmDeclaredType type, LEntity entity, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
-
-		if(entity.hasSyntaxErrors) return;
 
 		acceptor.accept(type).initializeLater [
 			type.markAsDerived
@@ -285,6 +294,7 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 					}
 				}
 			}
+			
 			//
 			// Methods.
 			//
@@ -302,6 +312,5 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 				members += idAttribute.toHashCodeMethod(false, idField)
 			}
 		]
-
 	}
 }

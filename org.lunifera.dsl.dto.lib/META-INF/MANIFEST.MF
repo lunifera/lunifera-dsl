@@ -19,5 +19,4 @@ Import-Package: javax.persistence,
  org.osgi.service.component.annotations;version="1.2.0",
  org.osgi.util.tracker;version="1.5.1",
  org.slf4j;version="1.7.2"
-Service-Component: OSGI-INF/org.lunifera.dsl.dto.lib.impl.MapperAccess.xml,
- OSGI-INF/org.lunifera.dsl.dto.lib.impl.DtoServiceAccess.xml
+Service-Component: OSGI-INF/org.lunifera.dsl.dto.lib.impl.MapperAccess.xml

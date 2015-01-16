@@ -139,7 +139,7 @@ public class DtoGrammarRuntimeModule extends
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ITransientValueService> bindSerializerITransientValueService() {
 		return DtoGrammarTransientValueService.class;
 	}
-	
+
 	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
 		return IndexDerivedStateComputer.class;
 	}

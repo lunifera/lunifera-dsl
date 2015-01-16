@@ -44,8 +44,14 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 	}
 
+	// used for test cases with old derived state computer
 	def dispatch void infer(LDTOService service, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		if(service.hasSyntaxErrors) return;
+
+		val type = service.toJvmType;
+		type.inferForLater(service, acceptor, isPrelinkingPhase, "")
+	}
+
+	def dispatch void inferTypesOnly(LDTOService service, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		val type = service.toJvmType
 		type.markAsToBeDerivedLater(service, isPrelinkingPhase)
@@ -54,13 +60,9 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	def dispatch void inferForLater(JvmGenericType type, LDTOService service, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
-			
-		if(service.hasSyntaxErrors) return;
 
 		acceptor.accept(type).initializeLater [
-			
 			type.markAsDerived
-			
 			fileHeader = (service.eContainer as LTypedPackage).documentation
 			documentation = service.getDocumentation
 			if (service.dto.basedOnEntity) {

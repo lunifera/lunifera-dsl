@@ -67,11 +67,10 @@ public class IndexDerivedStateComputer extends JvmModelAssociator implements
 		task.start();
 		JvmDeclaredTypeAcceptor acceptor = new JvmDeclaredTypeAcceptor(resource);
 		try {
-			IJvmModelInferrer inferrer = inferrerProvider.get();
-			if (inferrer instanceof IndexModelInferrer) {
-				((IndexModelInferrer) inferrer).setContext(resource);
-			}
-			inferrer.infer(eObject, acceptor, preIndexingPhase);
+			IndexModelInferrer inferrer = (IndexModelInferrer) inferrerProvider
+					.get();
+			inferrer.setContext(resource);
+			inferrer.inferTypesOnly(eObject, acceptor, preIndexingPhase);
 		} catch (RuntimeException e) {
 			// LOG.error("Error calling inferrer", e);
 		}
@@ -102,9 +101,7 @@ public class IndexDerivedStateComputer extends JvmModelAssociator implements
 		try {
 			IndexModelInferrer inferrer = (IndexModelInferrer) inferrerProvider
 					.get();
-			if (inferrer instanceof IndexModelInferrer) {
-				((IndexModelInferrer) inferrer).setContext(resource);
-			}
+			inferrer.setContext(resource);
 			inferrer.inferForLater(derivedOne, derivedSemantic, acceptor,
 					preIndexingPhase, derivedRootAdapter.getSelector());
 		} catch (RuntimeException e) {

@@ -84,10 +84,6 @@ public class EntityGrammarRuntimeModule extends
 		return EntityLinker.class;
 	}
 
-	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
-		return IndexDerivedStateComputer.class;
-	}
-
 	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
 		return Generator.class;
 	}
@@ -114,5 +110,9 @@ public class EntityGrammarRuntimeModule extends
 				.annotatedWith(
 						org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class)
 				.to(EntityScopeProvider.class);
+	}
+	
+	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
+		return IndexDerivedStateComputer.class;
 	}
 }

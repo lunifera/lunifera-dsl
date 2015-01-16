@@ -57,10 +57,23 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 	def dispatch void inferForLater(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 	}
-
+	
+	
+	// used for test cases with old derived state computer
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
-		if(dto.hasSyntaxErrors) return;
+		// create dto type
+		val type = dto.toJvmType;
+		type.inferDtoForLater(dto, acceptor, isPrelinkingPhase)
+
+		// create mapper type
+		if (dto.wrappedType != null) {
+			val mapperType = dto.toMapperJvmType;
+			mapperType.inferMapperForLater(dto, acceptor, isPrelinkingPhase)
+		}
+	}
+	
+	def dispatch void inferTypesOnly(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		// create dto type
 		val type = dto.toJvmType;
@@ -86,8 +99,6 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	def void inferDtoForLater(JvmDeclaredType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase) {
-
-		if(dto.hasSyntaxErrors) return;
 
 		acceptor.accept(type).initializeLater [
 			type.markAsDerived
@@ -339,8 +350,6 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 	def void inferMapperForLater(JvmGenericType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase) {
 
-		if(hasSyntaxErrors(dto)) return;
-
 		acceptor.accept(type).initializeLater [
 			type.markAsDerived
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
@@ -413,10 +422,16 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 			}
 		]
 	}
-
+	
+	// used for test cases with old derived state computer
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
-		if(enumX.hasSyntaxErrors) return;
+		// create dto type
+		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
+		type.inferForLater(enumX, acceptor, isPrelinkingPhase, "")
+	}
+
+	def dispatch void inferTypesOnly(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		// create dto type
 		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
@@ -426,7 +441,6 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	def dispatch void inferForLater(JvmDeclaredType type, LEnum enumX, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
-		if(hasSyntaxErrors(enumX)) return;
 
 		acceptor.accept(type).initializeLater [
 			fileHeader = (enumX.eContainer as LTypedPackage).documentation

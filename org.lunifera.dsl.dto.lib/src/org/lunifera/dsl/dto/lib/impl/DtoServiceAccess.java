@@ -10,14 +10,11 @@
  */
 package org.lunifera.dsl.dto.lib.impl;
 
-import org.lunifera.dsl.dto.lib.IMapper;
-import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.dto.lib.services.IDTOService;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Filter;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.service.component.annotations.Component;
 import org.osgi.util.tracker.ServiceTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +22,6 @@ import org.slf4j.LoggerFactory;
 /**
  * Is responsible to return mappers for the given types.
  */
-@Component(immediate = true)
 public class DtoServiceAccess {
 
 	private static final Logger LOGGER = LoggerFactory
