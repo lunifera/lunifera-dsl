@@ -44,12 +44,10 @@ public class DtoServiceAccess {
 					bundle.getBundleContext(), filter, null);
 			tracker.open();
 
-			IDTOService<D> service = tracker.waitForService(1000);
+			IDTOService<D> service = tracker.getService();
 			tracker.close();
 			return service;
 		} catch (InvalidSyntaxException e) {
-			LOGGER.error("{}", e);
-		} catch (InterruptedException e) {
 			LOGGER.error("{}", e);
 		}
 

@@ -50,11 +50,16 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
    * 
    * @param dto - The target dto
    * @param entity - The source entity
+   * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToDTO(final BaseDto dto, final Base entity) {
+  public void mapToDTO(final BaseDto dto, final Base entity, final Context context) {
+    if(context == null){
+    	throw new IllegalArgumentException("Please pass a context!");
+    }
     
-    dto.setUuid(toDto_uuid(entity));
+    
+    dto.setUuid(toDto_uuid(entity, context));
   }
   
   /**
@@ -62,11 +67,16 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
    * 
    * @param dto - The source dto
    * @param entity - The target entity
+   * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToEntity(final BaseDto dto, final Base entity) {
+  public void mapToEntity(final BaseDto dto, final Base entity, final Context context) {
+    if(context == null){
+    	throw new IllegalArgumentException("Please pass a context!");
+    }
     
-    entity.setUuid(toEntity_uuid(dto));
+    
+    entity.setUuid(toEntity_uuid(dto, context));
     
   }
   
@@ -74,10 +84,11 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
    * Maps the property uuid from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toDto_uuid(final Base in) {
+  protected Object toDto_uuid(final Base in, final Context context) {
     return in.getUuid();
   }
   
@@ -85,46 +96,11 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
    * Maps the property uuid from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toEntity_uuid(final BaseDto in) {
+  protected Object toEntity_uuid(final BaseDto in, final Context context) {
     return in.getUuid();
-  }
-  
-  public BaseDtoMapper createDto() {
-    return new BaseDto();
-  }
-  
-  public BaseDtoMapper copy(final BaseDtoMapper dto, final Context context) {
-    this.context = context;
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    BaseDto newDto = createDto();
-    context.register(dto, newDto);
-    
-    copyContainments(dto, newDto);
-    copyCrossReferences(dto, newDto);
-    
-    return newDto;
-  }
-  
-  public void copyContainments(final BaseDtoMapper dto, final BaseDtoMapper newDto, final Context context) {
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    super.copyContainments(dto, newDto, context);
-    
-  }
-  
-  public void copyCrossReferences(final BaseDtoMapper dto, final BaseDtoMapper newDto, final org.lunifera.dsl.dto.lib.Context context) {
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    super.copyCrossReferences(dto, newDto, context);
   }
 }

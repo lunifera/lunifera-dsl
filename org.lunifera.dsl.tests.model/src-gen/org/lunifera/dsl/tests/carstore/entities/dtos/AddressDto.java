@@ -3,6 +3,7 @@ package org.lunifera.dsl.tests.carstore.entities.dtos;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
+import org.lunifera.dsl.dto.lib.Context;
 
 @SuppressWarnings("all")
 public class AddressDto implements Serializable {
@@ -10,9 +11,9 @@ public class AddressDto implements Serializable {
   
   private boolean disposed;
   
-  private String streetname;
+  private Object streetname;
   
-  private String postalcode;
+  private Object postalcode;
   
   /**
    * Returns true, if the object is disposed. 
@@ -21,15 +22,6 @@ public class AddressDto implements Serializable {
    */
   public boolean isDisposed() {
     return this.disposed;
-  }
-  
-  /**
-   * Returns true, if the object is a copy for a different object. 
-   * In that special case of "copy" opposite references are treated differently
-   * to ensure the crossreferences untouched about changes.
-   */
-  public boolean isCopy() {
-    return this.isCopy;
   }
   
   /**
@@ -94,7 +86,7 @@ public class AddressDto implements Serializable {
   /**
    * Returns the streetname property or <code>null</code> if not present.
    */
-  public String getStreetname() {
+  public Object getStreetname() {
     checkDisposed();
     return this.streetname;
   }
@@ -106,14 +98,14 @@ public class AddressDto implements Serializable {
    * @throws RuntimeException if instance is <code>disposed</code>
    * 
    */
-  public void setStreetname(final String streetname) {
+  public void setStreetname(final  streetname) {
     firePropertyChange("streetname", this.streetname, this.streetname = streetname );
   }
   
   /**
    * Returns the postalcode property or <code>null</code> if not present.
    */
-  public String getPostalcode() {
+  public Object getPostalcode() {
     checkDisposed();
     return this.postalcode;
   }
@@ -125,7 +117,76 @@ public class AddressDto implements Serializable {
    * @throws RuntimeException if instance is <code>disposed</code>
    * 
    */
-  public void setPostalcode(final String postalcode) {
+  public void setPostalcode(final  postalcode) {
     firePropertyChange("postalcode", this.postalcode, this.postalcode = postalcode );
+  }
+  
+  public AddressDto createDto() {
+    return new AddressDto();
+  }
+  
+  public AddressDto copy(final Context context) {
+    checkDisposed();
+    
+    if (context == null) {
+    	throw new IllegalArgumentException("Context must not be null!");
+    }
+    
+    if(context.isMaxLevel()){
+    	return null;
+    }
+    
+    // if context contains a copied instance of this object
+    // then return it
+    AddressDto newDto = context.getTarget(this);
+    if(newDto != null){
+    	return newDto;
+    }
+    
+    try{
+    	context.increaseLevel();
+    	
+    	newDto = createDto();
+    	context.register(this, newDto);
+    	
+    	// first copy the containments and attributes
+    	copyContainments(this, newDto, context);
+    	
+    	// then copy cross references to ensure proper
+    	// opposite references are copied too.
+    	copyCrossReferences(this, newDto, context);
+    } finally {
+    	context.decreaseLevel();
+    }
+    
+    return newDto;
+  }
+  
+  public void copyContainments(final AddressDto dto, final AddressDto newDto, final Context context) {
+    checkDisposed();
+    
+    if (context == null) {
+    	throw new IllegalArgumentException("Context must not be null!");
+    }
+    
+    
+    // copy attributes and beans (beans if derived from entity model)
+    // copy streetname
+    newDto.setStreetname(getStreetname());
+    // copy postalcode
+    newDto.setPostalcode(getPostalcode());
+    
+    // copy containment references (cascading is true)
+  }
+  
+  public void copyCrossReferences(final AddressDto dto, final AddressDto newDto, final org.lunifera.dsl.dto.lib.Context context) {
+    checkDisposed();
+    
+    if (context == null) {
+    	throw new IllegalArgumentException("Context must not be null!");
+    }
+    
+    
+    // copy cross references (cascading is false)
   }
 }

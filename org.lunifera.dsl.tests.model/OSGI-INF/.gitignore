@@ -21,3 +21,8 @@
 /org.lunifera.dsl.tests.carstore.entities.dtos.services.BaseService.xml
 /org.lunifera.dsl.tests.carstore.entities.dtos.services.CarService.xml
 /org.lunifera.dsl.tests.carstore.entities.dtos.services.PersonService.xml
+/org.lunifera.dsl.tests.carstore.entities.dtos.mapper.AddonDtoMapper.xml
+/org.lunifera.dsl.tests.carstore.entities.dtos.mapper.AddressDtoMapper.xml
+/org.lunifera.dsl.tests.carstore.entities.dtos.mapper.BaseDtoMapper.xml
+/org.lunifera.dsl.tests.carstore.entities.dtos.mapper.CarDtoMapper.xml
+/org.lunifera.dsl.tests.carstore.entities.dtos.mapper.PersonDtoMapper.xml

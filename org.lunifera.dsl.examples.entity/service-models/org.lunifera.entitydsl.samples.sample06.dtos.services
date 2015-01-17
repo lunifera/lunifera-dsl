@@ -1,0 +1,13 @@
+package org.lunifera.entitydsl.samples.sample06.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.entitydsl.samples.sample06.dtos.*;
+	import org.lunifera.entitydsl.samples.sample06.dtos.dtos.*; 
+	
+	dtoservice VehicleService provides VehicleDto {
+	}
+	dtoservice BikeService provides BikeDto {
+	}
+	dtoservice BoatService provides BoatDto {
+	}
+}

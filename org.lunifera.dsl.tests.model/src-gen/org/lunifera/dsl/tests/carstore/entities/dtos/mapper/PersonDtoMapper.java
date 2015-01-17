@@ -21,19 +21,23 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * 
    * @param dto - The target dto
    * @param entity - The source entity
+   * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToDTO(final PersonDto dto, final Person entity) {
-    super.mapToDTO(dto, entity);
+  public void mapToDTO(final PersonDto dto, final Person entity, final Context context) {
+    if(context == null){
+    	throw new IllegalArgumentException("Please pass a context!");
+    }
     
+    super.mapToDTO(dto, entity, context);
     
-    dto.setFirstname(toDto_firstname(entity));
-    dto.setLastname(toDto_lastname(entity));
-    for(org.lunifera.dsl.tests.carstore.entities.dtos.CarDto _dtoValue : toDto_ownsCars(entity)) {
+    dto.setFirstname(toDto_firstname(entity, context));
+    dto.setLastname(toDto_lastname(entity, context));
+    for(org.lunifera.dsl.tests.carstore.entities.dtos.CarDto _dtoValue : toDto_ownsCars(entity, context)) {
     	dto.addToOwnsCars(_dtoValue);
     }
-    dto.setHomeAddress(toDto_homeAddress(entity));
-    dto.setWorkAddress(toDto_workAddress(entity));
+    dto.setHomeAddress(toDto_homeAddress(entity, context));
+    dto.setWorkAddress(toDto_workAddress(entity, context));
   }
   
   /**
@@ -41,25 +45,30 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * 
    * @param dto - The source dto
    * @param entity - The target entity
+   * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToEntity(final PersonDto dto, final Person entity) {
-    super.mapToEntity(dto, entity);
+  public void mapToEntity(final PersonDto dto, final Person entity, final Context context) {
+    if(context == null){
+    	throw new IllegalArgumentException("Please pass a context!");
+    }
+    
+    super.mapToEntity(dto, entity, context);
     
     
-    entity.setFirstname(toEntity_firstname(dto));
+    entity.setFirstname(toEntity_firstname(dto, context));
     
-    entity.setLastname(toEntity_lastname(dto));
+    entity.setLastname(toEntity_lastname(dto, context));
     
     List<Car> ownsCars_entities = new java.util.ArrayList<Car>();
-    for(Car _entityValue : toEntity_ownsCars(dto)) {
+    for(Car _entityValue : toEntity_ownsCars(dto, context)) {
     	ownsCars_entities.add(_entityValue);
     }
     entity.setOwnsCars(ownsCars_entities);
     
-    entity.setHomeAddress(toEntity_homeAddress(dto));
+    entity.setHomeAddress(toEntity_homeAddress(dto, context));
     
-    entity.setWorkAddress(toEntity_workAddress(dto));
+    entity.setWorkAddress(toEntity_workAddress(dto, context));
     
   }
   
@@ -67,10 +76,11 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property firstname from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toDto_firstname(final Person in) {
+  protected Object toDto_firstname(final Person in, final Context context) {
     return in.getFirstname();
   }
   
@@ -78,10 +88,11 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property firstname from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toEntity_firstname(final PersonDto in) {
+  protected Object toEntity_firstname(final PersonDto in, final Context context) {
     return in.getFirstname();
   }
   
@@ -89,10 +100,11 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property lastname from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toDto_lastname(final Person in) {
+  protected Object toDto_lastname(final Person in, final Context context) {
     return in.getLastname();
   }
   
@@ -100,10 +112,11 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property lastname from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toEntity_lastname(final PersonDto in) {
+  protected Object toEntity_lastname(final PersonDto in, final Context context) {
     return in.getLastname();
   }
   
@@ -111,10 +124,11 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property ownsCars from the given entity to the dto.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return A list of mapped dtos
    * 
    */
-  protected List<CarDto> toDto_ownsCars(final Person in) {
+  protected List<CarDto> toDto_ownsCars(final Person in, final Context context) {
     org.lunifera.dsl.dto.lib.IMapper<CarDto, Car> mapper = getMapper(CarDto.class, Car.class);
     if(mapper == null) {
     	throw new IllegalStateException("Mapper must not be null!");
@@ -123,7 +137,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
     List<CarDto> results = new java.util.ArrayList<CarDto>();
     for (Car _entity : in.getOwnsCars()) {
     	CarDto _dto = new CarDto();
-    	mapper.mapToDTO(_dto, _entity);
+    	mapper.mapToDTO(_dto, _entity, context);
     	results.add(_dto);
     }
     return results;
@@ -133,10 +147,11 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property ownsCars from the given dto to the entity.
    * 
    * @param in - The source dto
+   * @param context - The context to get information about depth,...
    * @return A list of mapped entities
    * 
    */
-  protected List<Car> toEntity_ownsCars(final PersonDto in) {
+  protected List<Car> toEntity_ownsCars(final PersonDto in, final Context context) {
     org.lunifera.dsl.dto.lib.IMapper<CarDto, Car> mapper = getMapper(CarDto.class, Car.class);
     if(mapper == null) {
     	throw new IllegalStateException("Mapper must not be null!");
@@ -145,7 +160,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
     List<Car> results = new java.util.ArrayList<Car>();
     for (CarDto _dto : in.getOwnsCars()) {
     	Car _entity = new Car();
-    	mapper.mapToEntity(_dto, _entity);
+    	mapper.mapToEntity(_dto, _entity, context);
     	results.add(_entity);
     }
     return results;
@@ -155,10 +170,11 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property homeAddress from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected AddressDto toDto_homeAddress(final Person in) {
+  protected AddressDto toDto_homeAddress(final Person in, final Context context) {
     org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = getMapper(AddressDto.class, Address.class);
     if(mapper == null) {
     	throw new IllegalStateException("Mapper must not be null!");
@@ -166,7 +182,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
      
     if(in.getHomeAddress() != null) {
     	AddressDto dto = new AddressDto();
-    	mapper.mapToDTO(dto, in.getHomeAddress());
+    	mapper.mapToDTO(dto, in.getHomeAddress(), context);
     	return dto;
     } else {
     	return null;
@@ -177,18 +193,19 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property homeAddress from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected Address toEntity_homeAddress(final PersonDto in) {
+  protected Address toEntity_homeAddress(final PersonDto in, final Context context) {
     org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = getMapper(AddressDto.class, Address.class);
     if(mapper == null) {
     	throw new IllegalStateException("Mapper must not be null!");
     }
-    
+     
     if(in.getHomeAddress() != null) {
     	Address entity = new Address();
-    	mapper.mapToEntity(in.getHomeAddress(), entity);
+    	mapper.mapToEntity(in.getHomeAddress(), entity, context);
     	return entity;							
     } else {
     	return null;
@@ -199,10 +216,11 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property workAddress from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected AddressDto toDto_workAddress(final Person in) {
+  protected AddressDto toDto_workAddress(final Person in, final Context context) {
     org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = getMapper(AddressDto.class, Address.class);
     if(mapper == null) {
     	throw new IllegalStateException("Mapper must not be null!");
@@ -210,7 +228,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
      
     if(in.getWorkAddress() != null) {
     	AddressDto dto = new AddressDto();
-    	mapper.mapToDTO(dto, in.getWorkAddress());
+    	mapper.mapToDTO(dto, in.getWorkAddress(), context);
     	return dto;
     } else {
     	return null;
@@ -221,57 +239,22 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * Maps the property workAddress from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected Address toEntity_workAddress(final PersonDto in) {
+  protected Address toEntity_workAddress(final PersonDto in, final Context context) {
     org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = getMapper(AddressDto.class, Address.class);
     if(mapper == null) {
     	throw new IllegalStateException("Mapper must not be null!");
     }
-    
+     
     if(in.getWorkAddress() != null) {
     	Address entity = new Address();
-    	mapper.mapToEntity(in.getWorkAddress(), entity);
+    	mapper.mapToEntity(in.getWorkAddress(), entity, context);
     	return entity;							
     } else {
     	return null;
     }
-  }
-  
-  public PersonDtoMapper createDto() {
-    return new PersonDto();
-  }
-  
-  public PersonDtoMapper copy(final PersonDtoMapper dto, final Context context) {
-    this.context = context;
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    PersonDto newDto = createDto();
-    context.register(dto, newDto);
-    
-    copyContainments(dto, newDto);
-    copyCrossReferences(dto, newDto);
-    
-    return newDto;
-  }
-  
-  public void copyContainments(final PersonDtoMapper dto, final PersonDtoMapper newDto, final Context context) {
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    super.copyContainments(dto, newDto, context);
-    
-  }
-  
-  public void copyCrossReferences(final PersonDtoMapper dto, final PersonDtoMapper newDto, final org.lunifera.dsl.dto.lib.Context context) {
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    super.copyCrossReferences(dto, newDto, context);
   }
 }
