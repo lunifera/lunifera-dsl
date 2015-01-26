@@ -443,6 +443,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [
+			type.markAsDerived
 			fileHeader = (enumX.eContainer as LTypedPackage).documentation
 			documentation = enumX.documentation
 			for (f : enumX.literals) {
