@@ -850,7 +850,10 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			
 			«FOR f : dto.features.filter[inherited || mapper?.toDTO != null]»
 				«IF (!f.bounds.toMany)»
+					// TODO PIF quickfix
+					«IF !f.isContainerReference»
 					dto.set«f.toName.toFirstUpper»(«f.toMapPropertyToDto»(entity, context));
+					«ENDIF»
 				«ELSE»
 					for(«f.toDtoTypeParameterReference.qualifiedName» _dtoValue : «f.toMapPropertyToDto»(entity, context)) {
 						dto.«f.toCollectionAdderName»(_dtoValue);
@@ -889,7 +892,10 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			
 			«FOR f : dto.features.filter[inherited || mapper?.fromDTO != null]»
 				«IF (!f.bounds.toMany)»
+					// TODO PIF quickfix
+					«IF !f.isContainerReference»
 					entity.set«f.toName.toFirstUpper»(«f.toMapPropertyToEntity»(dto, context));
+					«ENDIF»
 				«ELSE»
 					List<«f.toRawTypeName»> «f.toName»_entities = new java.util.ArrayList<«f.toRawTypeName»>();
 					for(«f.toRawTypeName» _entityValue : «f.toMapPropertyToEntity»(dto, context)) {
