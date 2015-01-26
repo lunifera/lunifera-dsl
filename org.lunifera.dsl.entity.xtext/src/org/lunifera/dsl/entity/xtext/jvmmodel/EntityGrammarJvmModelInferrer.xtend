@@ -31,6 +31,7 @@ import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.xtext.lazyresolver.IndexModelInferrer
+import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -68,6 +69,9 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [
+			
+			val TimeLogger doInferLog = TimeLogger.start(getClass());
+			
 			type.markAsDerived
 			fileHeader = (enumX.eContainer as LTypedPackage).documentation
 			documentation = enumX.documentation
@@ -75,6 +79,8 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 				documentation = f.documentation
 				members += f.toEnumerationLiteral(f.name)
 			}
+			
+			doInferLog.stop(log, "Inferring enum " + enumX.name)
 		]
 	}
 
@@ -96,6 +102,9 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [
+			
+			val TimeLogger doInferLog = TimeLogger.start(getClass());
+			
 			// mark the type as derived
 			type.markAsDerived()
 			annotationCompiler.processAnnotation(bean, it);
@@ -185,6 +194,8 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 					body = op.getBody
 				]
 			}
+			
+			doInferLog.stop(log, "Inferring bean " + bean.name)
 		]
 	}
 
@@ -210,8 +221,10 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [
+			
+			val TimeLogger doInferLog = TimeLogger.start(getClass());
+			
 			type.markAsDerived
-			println("inferring entity " + entity.name)
 			annotationCompiler.processAnnotation(entity, it);
 			var LAttribute idAttribute = null
 			var JvmField idField = null
@@ -311,6 +324,8 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 				members += idAttribute.toEqualsMethod(it, false, idField)
 				members += idAttribute.toHashCodeMethod(false, idField)
 			}
+			
+			doInferLog.stop(log, "Inferring entity " + entity.name)
 		]
 	}
 }

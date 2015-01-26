@@ -73,7 +73,7 @@ public interface LEntityReference extends LEntityFeature, LReference {
 	 * @return the value of the '<em>Type Jvm</em>' containment reference.
 	 * @see #setTypeJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntityReference_TypeJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getTypeJvm();

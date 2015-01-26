@@ -50,7 +50,7 @@ class LInjectedService extends LLazyResolver {
 
 class LDTOService extends LService {
 	refers LDto dto
-	contains JvmTypeReference dtoJvm
+	contains transient JvmTypeReference dtoJvm
 	String persistenceId
 	contains LFilterableAttributes filterable opposite parent
 	contains LSortableAttributes sortable opposite parent

@@ -52,10 +52,10 @@ class LDtoModel {
 class LDto extends LClass, LFeaturesHolder, LScalarType {
 	contains LDtoFeature[] features
 	refers LDto superType opposite subTypes
-	contains JvmTypeReference superTypeJvm
+	contains transient JvmTypeReference superTypeJvm
 	refers LDto[] subTypes opposite superType
 	refers LType wrappedType
-	contains JvmTypeReference wrappedTypeJvm
+	contains transient JvmTypeReference wrappedTypeJvm
 	
 	/** 
  	 * Returns all features of type LOperation
@@ -139,7 +139,7 @@ class LDtoAttribute  extends LDtoAbstractAttribute {
 
 abstract class LDtoAbstractReference extends LDtoFeature, LReference {
 	refers LDto ^type
-	contains JvmTypeReference typeJvm
+	contains transient JvmTypeReference typeJvm
 	
 }
 

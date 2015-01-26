@@ -10,40 +10,37 @@
  */
 package org.lunifera.dsl.dto.xtext.scope;
 
-import java.util.ArrayList;
-
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.AbstractScope;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LType;
 
-public class UUIdFilterScope extends AbstractScope {
-	private final IScope scope;
+import com.google.common.base.Predicate;
+
+public class UUIdFilterScope extends FilteringScope {
 
 	public UUIdFilterScope(IScope scope) {
-		super(IScope.NULLSCOPE, true);
-		this.scope = scope;
+		super(scope, createPredicate());
 	}
 
-	@Override
-	protected Iterable<IEObjectDescription> getAllLocalElements() {
-		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-		for (IEObjectDescription desc : scope.getAllElements()) {
-			LType temp = (LType) desc.getEObjectOrProxy();
-			if (temp instanceof LDataType) {
-				LDataType type = (LDataType) temp;
-				if (type.getJvmTypeReference() == null) {
-					continue;
-				}
-				if (type.getJvmTypeReference().getQualifiedName()
-						.equals("java.lang.String")) {
-					result.add(desc);
-					break;
-				}
-			}
-		}
+	private static Predicate<IEObjectDescription> createPredicate() {
+		return new Predicate<IEObjectDescription>() {
 
-		return result;
+			@Override
+			public boolean apply(IEObjectDescription input) {
+				LType temp = (LType) input.getEObjectOrProxy();
+				if (temp instanceof LDataType) {
+					LDataType type = (LDataType) temp;
+					if (type.getJvmTypeReference() != null) {
+						if (type.getJvmTypeReference().getQualifiedName()
+								.equals("java.lang.String")) {
+							return true;
+						}
+					}
+				}
+				return false;
+			}
+		};
 	}
 }

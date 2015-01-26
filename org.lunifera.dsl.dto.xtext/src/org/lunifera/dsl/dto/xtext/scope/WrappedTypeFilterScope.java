@@ -10,35 +10,31 @@
  */
 package org.lunifera.dsl.dto.xtext.scope;
 
-import java.util.ArrayList;
-
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.AbstractScope;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LEntity;
 
-public class WrappedTypeFilterScope extends AbstractScope {
-	private final IScope scope;
+import com.google.common.base.Predicate;
+
+public class WrappedTypeFilterScope extends FilteringScope {
 
 	public WrappedTypeFilterScope(IScope scope) {
-		super(IScope.NULLSCOPE, true);
-		this.scope = scope;
+		super(scope, createPredicate());
 	}
 
-	@Override
-	protected Iterable<IEObjectDescription> getAllLocalElements() {
-		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-		for (IEObjectDescription desc : scope.getAllElements()) {
-			LType type = (LType) desc.getEObjectOrProxy();
-			if (type instanceof LEntity || type instanceof LBean) {
-
-					result.add(desc);
-
+	private static Predicate<IEObjectDescription> createPredicate() {
+		return new Predicate<IEObjectDescription>() {
+			@Override
+			public boolean apply(IEObjectDescription input) {
+				LType type = (LType) input.getEObjectOrProxy();
+				if (type instanceof LEntity || type instanceof LBean) {
+					return true;
+				}
+				return false;
 			}
-		}
-
-		return result;
+		};
 	}
 }

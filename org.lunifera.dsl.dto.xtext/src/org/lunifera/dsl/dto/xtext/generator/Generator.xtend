@@ -23,8 +23,13 @@ import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class Generator extends JvmModelGenerator {
+
+	static final Logger LOGGER = LoggerFactory.getLogger(typeof(Generator))
 
 	@Inject extension MethodNamingExtensions
 	@Inject extension ComponentGenerator
@@ -39,14 +44,18 @@ class Generator extends JvmModelGenerator {
 		if (DisableCodeGenerationAdapter.isDisabled(type))
 			return;
 		if (type.qualifiedName != null) {
+			val log = TimeLogger.start(typeof(Generator));
 			val JvmType mapper = typeRefs.getTypeForName(typeof(IMapper), type, null).type
 			if (mapper instanceof JvmDeclaredType && type.isSuperType(mapper as JvmDeclaredType)) {
 				fsa.generateFile(type.qualifiedName.replace('.', '/') + '.java', "Dto-Mappers",
 					type.generateType(generatorConfigProvider.get(type)))
 			} else {
-				fsa.generateFile(type.qualifiedName.replace('.', '/') + '.java',
-					type.generateType(generatorConfigProvider.get(type)))
+				val log2 = TimeLogger.start(typeof(Generator));
+				val output = type.generateType(generatorConfigProvider.get(type))
+				log2.stop(LOGGER, "raw class generation for " + type.qualifiedName)
+				fsa.generateFile(type.qualifiedName.replace('.', '/') + '.java', output)
 			}
+			log.stop(LOGGER, "generated " + type.qualifiedName)
 		}
 	}
 
@@ -55,13 +64,17 @@ class Generator extends JvmModelGenerator {
 
 		for (tmp : input.allContents.filter[if(it instanceof LDto) wrappedType != null else false].toList) {
 			val LDto dto = tmp as LDto
+			val log = TimeLogger.start(typeof(Generator));
 			fsa.deleteFile(dto.toServiceComponentName);
 			fsa.generateFile(dto.toServiceComponentName, "OSGI-INF", dto.serviceContent);
+			log.stop(LOGGER, "generated " + dto.toServiceComponentName)
 		}
 
 		input.allContents.filter[it instanceof LTypedPackage].map[it as LTypedPackage].forEach [
+			val log = TimeLogger.start(typeof(Generator));
 			fsa.deleteFile(toServiceName);
 			fsa.generateFile(toServiceName, "Services-DSL", it.content);
+			log.stop(LOGGER, "generated " + toServiceName)
 		]
 	}
 

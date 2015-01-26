@@ -73,7 +73,7 @@ public interface LBeanReference extends LBeanFeature, LReference {
 	 * @return the value of the '<em>Type Jvm</em>' containment reference.
 	 * @see #setTypeJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBeanReference_TypeJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getTypeJvm();

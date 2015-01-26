@@ -20,6 +20,9 @@ import org.lunifera.dsl.semantic.service.LunServiceFactory
 import org.lunifera.dsl.services.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.services.xtext.extensions.ServicesTypesBuilder
 import org.lunifera.dsl.xtext.lazyresolver.IndexModelInferrer
+import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -32,6 +35,8 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 	/**
      * convenience API to build and initialize JVM types and their members.
      */
+    protected val Logger log = LoggerFactory.getLogger(getClass())
+     
 	@Inject extension IQualifiedNameProvider
 	@Inject extension ServicesTypesBuilder
 	@Inject extension ModelExtensions
@@ -62,6 +67,10 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [
+			
+			val TimeLogger doInferLog = TimeLogger.start(getClass());
+			
+			
 			type.markAsDerived
 			fileHeader = (service.eContainer as LTypedPackage).documentation
 			documentation = service.getDocumentation
@@ -167,6 +176,8 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 					}
 				}
 			}
+			
+			doInferLog.stop(log, "Inferring service " + service.name)
 		]
 
 	}

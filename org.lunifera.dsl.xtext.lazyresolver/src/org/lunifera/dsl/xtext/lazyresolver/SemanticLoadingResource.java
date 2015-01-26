@@ -19,6 +19,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.IDerivedStateComputer;
@@ -27,12 +29,21 @@ import org.eclipse.xtext.xbase.resource.BatchLinkableResource;
 import org.lunifera.dsl.xtext.lazyresolver.api.DerivedRootAdapter;
 import org.lunifera.dsl.xtext.lazyresolver.api.IIndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.api.ISemanticLoadingResource;
+import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
 public class SemanticLoadingResource extends BatchLinkableResource implements
 		ISemanticLoadingResource {
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(SemanticLoadingResource.class);
+
+	@Inject
+	private LazyJvmTypeLinkingHelper linkingHelper;
 
 	@Inject
 	private IDerivedStateComputer derivedStateComputer;
@@ -57,6 +68,20 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 		} finally {
 			suppressDerivedState = false;
 		}
+	}
+
+	protected void resolveLazyCrossReference(InternalEObject source,
+			EStructuralFeature crossRef) {
+		if (isPotentialLazyCrossReference(crossRef)
+				&& !isJvmHelperLink(source, crossRef)) {
+			doResolveLazyCrossReference(source, crossRef);
+		}
+	}
+
+	protected boolean isJvmHelperLink(InternalEObject source,
+			EStructuralFeature crossRef) {
+		EStructuralFeature containingFeature = source.eContainingFeature();
+		return linkingHelper.isJvmLink(containingFeature);
 	}
 
 	public void installDerivedState(boolean preIndexingPhase) {
@@ -150,6 +175,7 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 		return contents;
 	}
 
+	@SuppressWarnings("serial")
 	protected class ContentsList<E extends Object & EObject> extends
 			ResourceImpl.ContentsEList<E> {
 
@@ -161,9 +187,12 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 				try {
 					initializing = true;
 					if (isUnDerived(index)) {
+						TimeLogger logger = TimeLogger.start(getClass());
 						IndexDerivedStateComputer computer = (IndexDerivedStateComputer) derivedStateComputer;
 						computer.installDerivedState(
 								SemanticLoadingResource.this, index, false);
+						logger.stop(LOGGER, "Inferring index " + index
+								+ " for resource " + getURI() + " took");
 					}
 				} finally {
 					initializing = false;
