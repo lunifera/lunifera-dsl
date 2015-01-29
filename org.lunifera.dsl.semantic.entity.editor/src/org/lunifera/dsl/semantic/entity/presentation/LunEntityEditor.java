@@ -675,8 +675,8 @@ public class LunEntityEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new LunEntityItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new LunTypesItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new TypesItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new LunTypesItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
