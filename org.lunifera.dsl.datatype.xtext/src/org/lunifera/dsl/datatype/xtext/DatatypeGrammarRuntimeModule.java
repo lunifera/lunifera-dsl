@@ -10,8 +10,10 @@
  */
 package org.lunifera.dsl.datatype.xtext;
 
+import org.eclipse.xtext.linking.ILinkingService;
 import org.lunifera.dsl.datatype.xtext.valueconverter.DatatypesQualifiedNameProvider;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
+import org.lunifera.dsl.xtext.lazyresolver.linker.FastLinkingService;
 
 /**
  * Use this class to register components to be used at runtime / without the
@@ -26,5 +28,9 @@ public class DatatypeGrammarRuntimeModule extends
 	
 	public Class<? extends org.eclipse.xtext.resource.XtextResource> bindXtextResource() {
 		return SemanticLoadingResource.class;
+	}
+	
+	public Class<? extends ILinkingService> bindILinkingService() {
+		return FastLinkingService.class;
 	}
 }

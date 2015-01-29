@@ -10,35 +10,36 @@
  */
 package org.lunifera.dsl.dto.xtext.scope;
 
-import java.util.ArrayList;
-
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.AbstractScope;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3;
 
-public class InheritTypesFilterScope extends AbstractScope {
-	private final LType context;
-	private final IScope scope;
+import com.google.common.base.Predicate;
+
+public class InheritTypesFilterScope extends FilteringScope {
 
 	public InheritTypesFilterScope(LType context, IScope scope) {
-		super(IScope.NULLSCOPE, true);
-		this.context = context;
-		this.scope = scope;
+		super(scope, createPredicate(context));
 	}
 
-	@Override
-	protected Iterable<IEObjectDescription> getAllLocalElements() {
-		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-		for (IEObjectDescription desc : scope.getAllElements()) {
-			LType type = (LType) desc.getEObjectOrProxy();
-			type = (LType) EcoreUtil3.resolve(type, context.eResource().getResourceSet());
-			if (type != context && type.getName() != null) {
-				result.add(desc);
-			}
-		}
+	private static Predicate<IEObjectDescription> createPredicate(
+			final LType context) {
+		return new Predicate<IEObjectDescription>() {
 
-		return result;
+			@Override
+			public boolean apply(IEObjectDescription input) {
+				LType type = (LType) input.getEObjectOrProxy();
+				if (type.eIsProxy()) {
+					type = (LType) EcoreUtil3.resolve(type, context.eResource()
+							.getResourceSet());
+				}
+				if (type != context && type.getName() != null) {
+					return true;
+				}
+				return false;
+			}
+		};
 	}
 }

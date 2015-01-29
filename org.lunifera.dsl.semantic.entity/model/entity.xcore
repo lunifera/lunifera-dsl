@@ -41,7 +41,7 @@ class LEntityModel {
 class LBean extends LClass, LScalarType, LFeaturesHolder {
 	contains LBeanFeature[] features
 	refers LBean superType opposite subTypes
-	contains JvmTypeReference superTypeJvm
+	contains transient JvmTypeReference superTypeJvm
 	refers LBean[] subTypes opposite superType
 	/**
  	 * Returns all features of type LOperation
@@ -113,7 +113,7 @@ class LEntity extends LClass, LFeaturesHolder {
 	contains LEntityFeature[] features
 	contains LIndex[] indexes
 	refers LEntity superType opposite subTypes
-	contains JvmTypeReference superTypeJvm
+	contains transient JvmTypeReference superTypeJvm
 	refers LEntity[] subTypes opposite superType
 	
 	/**
@@ -244,7 +244,7 @@ class LEntityAttribute extends LEntityFeature, LAttribute {
 
 class LEntityReference extends LEntityFeature, LReference {
 	refers LEntity ^type
-	contains JvmTypeReference typeJvm
+	contains transient JvmTypeReference typeJvm
 	refers LEntityReference ^opposite
 	
 }
@@ -282,7 +282,7 @@ class LBeanAttribute extends LBeanFeature, LAttribute {
 
 class LBeanReference extends LBeanFeature, LReference {
 	refers LBean ^type
-	contains JvmTypeReference typeJvm
+	contains transient JvmTypeReference typeJvm
 	refers LBeanReference ^opposite
 	
 }

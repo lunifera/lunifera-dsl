@@ -50,8 +50,8 @@ public final class EntityEditorPlugin extends EMFPlugin {
 	public EntityEditorPlugin() {
 		super
 			(new ResourceLocator [] {
-				org.eclipse.xtext.common.types.provider.TypesEditPlugin.INSTANCE,
 				TypesEditPlugin.INSTANCE,
+				org.eclipse.xtext.common.types.provider.TypesEditPlugin.INSTANCE,
 			});
 	}
 

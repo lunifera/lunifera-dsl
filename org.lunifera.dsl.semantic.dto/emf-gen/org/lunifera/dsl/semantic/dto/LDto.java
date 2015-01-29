@@ -107,7 +107,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * @return the value of the '<em>Super Type Jvm</em>' containment reference.
 	 * @see #setSuperTypeJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDto_SuperTypeJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getSuperTypeJvm();
@@ -177,7 +177,7 @@ public interface LDto extends LClass, LFeaturesHolder, LScalarType {
 	 * @return the value of the '<em>Wrapped Type Jvm</em>' containment reference.
 	 * @see #setWrappedTypeJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDto_WrappedTypeJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getWrappedTypeJvm();

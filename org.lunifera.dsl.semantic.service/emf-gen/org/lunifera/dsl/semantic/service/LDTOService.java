@@ -75,7 +75,7 @@ public interface LDTOService extends LService {
 	 * @return the value of the '<em>Dto Jvm</em>' containment reference.
 	 * @see #setDtoJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_DtoJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getDtoJvm();

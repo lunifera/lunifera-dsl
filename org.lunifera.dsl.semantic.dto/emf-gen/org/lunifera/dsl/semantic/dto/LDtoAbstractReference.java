@@ -72,7 +72,7 @@ public interface LDtoAbstractReference extends LDtoFeature, LReference {
 	 * @return the value of the '<em>Type Jvm</em>' containment reference.
 	 * @see #setTypeJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoAbstractReference_TypeJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getTypeJvm();

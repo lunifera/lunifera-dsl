@@ -844,6 +844,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				throw new IllegalArgumentException("Please pass a context!");
 			}
 			
+			context.register(entity, dto);
+			
 			«IF dto.superType != null»
 				super.mapToDTO(dto, entity, context);
 			«ENDIF»
@@ -884,6 +886,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			if(context == null){
 				throw new IllegalArgumentException("Please pass a context!");
 			}
+			
+			context.register(entity, dto);
 			
 			«IF dto.superType != null»
 				super.mapToEntity(dto, entity, context);
@@ -1007,20 +1011,29 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						
 						List<«prop.toRawType.toDTOBeanSimpleName»> results = new java.util.ArrayList<«prop.toRawType.toDTOBeanSimpleName»>();
 						for («prop.toRawType.toName» _entity : in.«prop.toGetterName»()) {
-							«prop.toDtoTypeParameterReference.qualifiedName» _dto = new «prop.toDtoTypeParameterReference.qualifiedName»();
-							mapper.mapToDTO(_dto, _entity, context);
+							«prop.toDtoTypeParameterReference.qualifiedName» _dto = context.getTarget(_entity);
+							if (_dto == null) {
+								_dto = new «prop.toDtoTypeParameterReference.qualifiedName»();
+								context.register(_entity, _dto);
+								mapper.mapToDTO(_dto, _entity, context);
+							}
 							results.add(_dto);
 						}
 						return results;'''
 					} else {
 						body = '''
+						«prop.toRawType.toDTOBeanSimpleName» dto = context.getTarget(in.«prop.toGetterName»());
+						if(dto != null) {
+							return dto;
+						}
+
 						org.lunifera.dsl.dto.lib.IMapper<«prop.toRawType.toDTOBeanSimpleName», «prop.toRawType.toName»> mapper = getMapper(«prop.toRawType.toDTOBeanSimpleName».class, «prop.toRawType.toName».class);
 						if(mapper == null) {
 							throw new IllegalStateException("Mapper must not be null!");
 						}
 						 
 						if(in.get«prop.toName.toFirstUpper»() != null) {
-							«prop.toRawType.toDTOBeanSimpleName» dto = new «prop.toRawType.toDTOBeanSimpleName»();
+							dto = new «prop.toRawType.toDTOBeanSimpleName»();
 							mapper.mapToDTO(dto, in.«prop.toGetterName»(), context);
 							return dto;
 						} else {
@@ -1072,20 +1085,29 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					
 					List<«prop.toRawType.toDTOBeanSimpleName»> results = new java.util.ArrayList<«prop.toRawType.toDTOBeanSimpleName»>();
 					for («prop.toRawType.toName» _entity : in.get«prop.toName.toFirstUpper»()) {
-						«prop.toRawType.toDTOBeanSimpleName» _dto = new «prop.toRawType.toDTOBeanSimpleName»();
-						mapper.mapToDTO(_dto, _entity, context);
+						«prop.toRawType.toDTOBeanSimpleName» _dto = context.getTarget(_entity);
+						if (_dto == null) {
+							_dto = new «prop.toRawType.toDTOBeanSimpleName»();
+							context.register(_entity, _dto);
+							mapper.mapToDTO(_dto, _entity, context);
+						}
 						results.add(_dto);
 					}
 					return results;'''
 				} else {
 					body = '''
+					«prop.toRawType.toDTOBeanSimpleName» dto = context.getTarget(in.get«prop.toName.toFirstUpper»());
+					if(dto != null) {
+						return dto;
+					}
+					
 					org.lunifera.dsl.dto.lib.IMapper<«prop.toRawType.toDTOBeanSimpleName», «prop.toRawType.toName»> mapper = getMapper(«prop.toRawType.toDTOBeanSimpleName».class, «prop.toRawType.toName».class);
 					if(mapper == null) {
 						throw new IllegalStateException("Mapper must not be null!");
 					}
 					
 					if(in.get«prop.toName.toFirstUpper»() != null) {
-						«prop.toRawType.toDTOBeanSimpleName» dto = new «prop.toRawType.toDTOBeanSimpleName»();
+						dto = new «prop.toRawType.toDTOBeanSimpleName»();
 						mapper.mapToDTO(dto, in.get«prop.toName.toFirstUpper»(), context);
 						return dto;
 					} else {
@@ -1137,13 +1159,18 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						return results;'''
 					} else {
 						body = '''
+						«prop.toRawType.toName» entity = context.getTarget(in.«prop.toGetterName»());
+						if(entity != null) {
+							return entity;
+						}
+						
 						org.lunifera.dsl.dto.lib.IMapper<«prop.toRawType.toDTOBeanSimpleName», «prop.toRawType.toName»> mapper = getMapper(«prop.toRawType.toDTOBeanSimpleName».class, «prop.toRawType.toName».class);
 						if(mapper == null) {
 							throw new IllegalStateException("Mapper must not be null!");
 						}
 						 
 						if(in.get«prop.toName.toFirstUpper»() != null) {
-							«prop.toRawType.toName» entity = new «prop.toRawType.name»();
+							entity = new «prop.toRawType.name»();
 							mapper.mapToEntity(in.«prop.toGetterName»(), entity, context);
 							return entity;							
 						} else {
@@ -1201,6 +1228,11 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					return results;'''
 				} else {
 					body = '''
+					«prop.toRawType.toName» entity = context.getTarget(in.get«prop.toName.toFirstUpper»());
+					if(entity != null) {
+						return entity;
+					}
+					
 					org.lunifera.dsl.dto.lib.IMapper<«prop.type.toName», «prop.toRawType.toName»> mapper = getMapper(«prop.
 						type.toName».class, «prop.toRawType.toName».class);
 					if(mapper == null) {
@@ -1208,7 +1240,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					}
 					
 					if(in.get«prop.toName.toFirstUpper»() != null) {
-						«prop.toRawType.toName» entity = new «prop.toRawType.name»();
+						entity = new «prop.toRawType.name»();
 						mapper.mapToEntity(in.get«prop.toName.toFirstUpper»(), entity, context);	
 						return entity;
 					} else {

@@ -9,4 +9,6 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.0",
  org.eclipse.xtext.xbase;bundle-version="[2.7.3,2.8.0)",
  org.eclipse.xtext;bundle-version="[2.7.3,2.8.0)"
-Export-Package: org.lunifera.dsl.xtext.lazyresolver.api
+Export-Package: org.lunifera.dsl.xtext.lazyresolver.api,
+ org.lunifera.dsl.xtext.lazyresolver.api.logger
+Import-Package: org.slf4j

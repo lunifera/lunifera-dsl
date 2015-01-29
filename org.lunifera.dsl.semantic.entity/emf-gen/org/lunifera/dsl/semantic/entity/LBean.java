@@ -103,7 +103,7 @@ public interface LBean extends LClass, LScalarType, LFeaturesHolder {
 	 * @return the value of the '<em>Super Type Jvm</em>' containment reference.
 	 * @see #setSuperTypeJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBean_SuperTypeJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getSuperTypeJvm();

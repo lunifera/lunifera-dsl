@@ -37,6 +37,9 @@ import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.xtext.lazyresolver.IndexModelInferrer
+import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -45,6 +48,8 @@ import org.lunifera.dsl.xtext.lazyresolver.IndexModelInferrer
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
 class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
+
+	protected val Logger log = LoggerFactory::getLogger(getClass())
 
 	@Inject AnnotationCompiler annotationCompiler
 
@@ -102,7 +107,9 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 		acceptor.accept(type).initializeLater [
 			type.markAsDerived
-			println("inferring dto " + dto.name)
+			
+			val TimeLogger doInferLog = TimeLogger.start(getClass());
+			
 			annotationCompiler.processAnnotation(dto, it);
 			var LAttribute idAttribute = null
 			var JvmField idField = null
@@ -343,6 +350,8 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 					«ENDFOR»
 				'''
 			]
+			 
+			doInferLog.stop(log, "Inferring dto " + dto.name)
 		]
 
 	}
@@ -351,6 +360,9 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase) {
 
 		acceptor.accept(type).initializeLater [
+			
+			val TimeLogger doInferLog = TimeLogger.start(getClass());
+			
 			type.markAsDerived
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = '''
@@ -420,6 +432,8 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 					}
 				}
 			}
+			
+			doInferLog.stop(log, "Inferring mapper " + dto.name)
 		]
 	}
 	
@@ -443,13 +457,16 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [
-			type.markAsDerived
+			type.markAsDerived			
+			val TimeLogger doInferLog = TimeLogger.start(getClass());
 			fileHeader = (enumX.eContainer as LTypedPackage).documentation
 			documentation = enumX.documentation
 			for (f : enumX.literals) {
 				documentation = f.documentation
 				members += f.toEnumerationLiteral(f.name)
 			}
+			
+			doInferLog.stop(log, "Inferring enum " + enumX.name)
 		]
 	}
 }

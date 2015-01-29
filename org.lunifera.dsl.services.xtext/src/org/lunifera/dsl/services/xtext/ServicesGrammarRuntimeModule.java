@@ -5,6 +5,7 @@ package org.lunifera.dsl.services.xtext;
 
 import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
@@ -24,6 +25,7 @@ import org.lunifera.dsl.xtext.lazyresolver.IndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
+import org.lunifera.dsl.xtext.lazyresolver.linker.FastLinkingService;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -111,5 +113,9 @@ public class ServicesGrammarRuntimeModule extends
 
 	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
 		return IndexDerivedStateComputer.class;
+	}
+	
+	public Class<? extends ILinkingService> bindILinkingService() {
+		return FastLinkingService.class;
 	}
 }
