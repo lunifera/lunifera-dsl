@@ -110,6 +110,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 			
 			val TimeLogger doInferLog = TimeLogger.start(getClass());
 			
+			abstract = dto.abstract
 			annotationCompiler.processAnnotation(dto, it);
 			var LAttribute idAttribute = null
 			var JvmField idField = null
@@ -260,6 +261,11 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 						return newDto;
 					'''
 				]
+			} else {
+				members += dto.toMethod("copy", typeRef.cloneWithProxies) [
+					abstract = true
+					parameters += dto.toParameter("context", contextTypeRef.cloneWithProxies)
+				]
 			}
 			members += dto.toMethod("copyContainments", references.getTypeForName(Void::TYPE, dto)) [
 				parameters += dto.toParameter("dto", typeRef.cloneWithProxies)
@@ -405,6 +411,20 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 					members += dto.toMapperBindMethod
 					members += dto.toMapperUnbindMethod
 				}
+				
+				members += dto.toMethod("createEntity", dto.wrappedTypeJvm) [
+					documentation = '''Creates a new instance of the entity'''
+					body = '''
+					«IF dto.wrappedType.abstract»throw new UnsupportedOperationException("Subclass needs to provide dto.");«ELSE»return new «dto.wrappedType.toName»();«ENDIF»
+					'''
+				]
+				
+				members += dto.toMethod("createDto", dto.toTypeReference) [
+					documentation = '''Creates a new instance of the dto'''
+					body = '''
+					«IF dto.abstract»throw new UnsupportedOperationException("Subclass needs to provide dto.");«ELSE»return new «dto.toName»();«ENDIF»
+					'''
+				]
 
 				members += dto.toMapToDto
 				members += dto.toMapToEntity

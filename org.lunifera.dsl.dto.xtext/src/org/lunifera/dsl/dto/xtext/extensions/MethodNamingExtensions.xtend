@@ -67,7 +67,7 @@ class MethodNamingExtensions extends NamingExtensions {
 	}
 	
 	def String toDTOBeanSimpleName(LType type) {
-		val name = type.name
+		val name = type?.name
 		if(type instanceof LDto){
 			return name
 		}else{

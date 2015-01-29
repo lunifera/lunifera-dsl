@@ -12,6 +12,7 @@
 package org.lunifera.dsl.dto.xtext.generator
 
 import com.google.inject.Inject
+import java.util.List
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.dto.LDto
@@ -28,11 +29,27 @@ class ComponentGenerator {
 		       <service>
 				<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
 			   </service>
-		       <property name="dto" type="String" value="«dto.fullyQualifiedName.toString»"/>
+				«FOR temp : dto.withParent»
+				<property name="dto" type="String" value="«temp.fullyQualifiedName.toString»"/>
+				«ENDFOR»
 		       <property name="entity" type="String" value="«dto.wrappedType.fullyQualifiedName.toString»"/>
 		       <property name="service.pid" type="String" value="«dto.toFqnMapperName.toLowerCase»"/>
 		       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
 		       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
 		</scr:component>
 	'''
+	
+	def List<LDto> getWithParent(LDto dto) {
+		val result = newArrayList()
+		collectWithParent(result, dto)
+		return result
+	}
+	
+	def void collectWithParent(List<LDto> result, LDto dto){
+		result+=dto
+		
+		if(dto.superType != null){
+			collectWithParent(result, dto.superType)
+		}
+	}
 }

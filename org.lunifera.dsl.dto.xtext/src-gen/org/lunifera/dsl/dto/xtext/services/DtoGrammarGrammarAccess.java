@@ -46,53 +46,59 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
 		private final Action cLDtoAnnotationInfoAction_2_0_0 = (Action)cGroup_2_0.eContents().get(0);
-		private final Keyword cDtoKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
-		private final Assignment cNameAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_0_2_0 = (RuleCall)cNameAssignment_2_0_2.eContents().get(0);
-		private final Group cGroup_2_0_3 = (Group)cGroup_2_0.eContents().get(3);
-		private final Keyword cExtendsKeyword_2_0_3_0 = (Keyword)cGroup_2_0_3.eContents().get(0);
-		private final Assignment cSuperTypeAssignment_2_0_3_1 = (Assignment)cGroup_2_0_3.eContents().get(1);
-		private final CrossReference cSuperTypeLDtoCrossReference_2_0_3_1_0 = (CrossReference)cSuperTypeAssignment_2_0_3_1.eContents().get(0);
-		private final RuleCall cSuperTypeLDtoIDTerminalRuleCall_2_0_3_1_0_1 = (RuleCall)cSuperTypeLDtoCrossReference_2_0_3_1_0.eContents().get(1);
+		private final Assignment cAbstractAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
+		private final Keyword cAbstractAbstractKeyword_2_0_1_0 = (Keyword)cAbstractAssignment_2_0_1.eContents().get(0);
+		private final Keyword cDtoKeyword_2_0_2 = (Keyword)cGroup_2_0.eContents().get(2);
+		private final Assignment cNameAssignment_2_0_3 = (Assignment)cGroup_2_0.eContents().get(3);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_0_3_0 = (RuleCall)cNameAssignment_2_0_3.eContents().get(0);
 		private final Group cGroup_2_0_4 = (Group)cGroup_2_0.eContents().get(4);
-		private final Keyword cWrapsKeyword_2_0_4_0 = (Keyword)cGroup_2_0_4.eContents().get(0);
-		private final Assignment cWrappedTypeAssignment_2_0_4_1 = (Assignment)cGroup_2_0_4.eContents().get(1);
-		private final CrossReference cWrappedTypeLEntityCrossReference_2_0_4_1_0 = (CrossReference)cWrappedTypeAssignment_2_0_4_1.eContents().get(0);
-		private final RuleCall cWrappedTypeLEntityIDTerminalRuleCall_2_0_4_1_0_1 = (RuleCall)cWrappedTypeLEntityCrossReference_2_0_4_1_0.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2_0_5 = (Keyword)cGroup_2_0.eContents().get(5);
-		private final Assignment cFeaturesAssignment_2_0_6 = (Assignment)cGroup_2_0.eContents().get(6);
-		private final RuleCall cFeaturesDtoFeatureParserRuleCall_2_0_6_0 = (RuleCall)cFeaturesAssignment_2_0_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2_0_7 = (Keyword)cGroup_2_0.eContents().get(7);
+		private final Keyword cExtendsKeyword_2_0_4_0 = (Keyword)cGroup_2_0_4.eContents().get(0);
+		private final Assignment cSuperTypeAssignment_2_0_4_1 = (Assignment)cGroup_2_0_4.eContents().get(1);
+		private final CrossReference cSuperTypeLDtoCrossReference_2_0_4_1_0 = (CrossReference)cSuperTypeAssignment_2_0_4_1.eContents().get(0);
+		private final RuleCall cSuperTypeLDtoIDTerminalRuleCall_2_0_4_1_0_1 = (RuleCall)cSuperTypeLDtoCrossReference_2_0_4_1_0.eContents().get(1);
+		private final Group cGroup_2_0_5 = (Group)cGroup_2_0.eContents().get(5);
+		private final Keyword cWrapsKeyword_2_0_5_0 = (Keyword)cGroup_2_0_5.eContents().get(0);
+		private final Assignment cWrappedTypeAssignment_2_0_5_1 = (Assignment)cGroup_2_0_5.eContents().get(1);
+		private final CrossReference cWrappedTypeLEntityCrossReference_2_0_5_1_0 = (CrossReference)cWrappedTypeAssignment_2_0_5_1.eContents().get(0);
+		private final RuleCall cWrappedTypeLEntityIDTerminalRuleCall_2_0_5_1_0_1 = (RuleCall)cWrappedTypeLEntityCrossReference_2_0_5_1_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2_0_6 = (Keyword)cGroup_2_0.eContents().get(6);
+		private final Assignment cFeaturesAssignment_2_0_7 = (Assignment)cGroup_2_0.eContents().get(7);
+		private final RuleCall cFeaturesDtoFeatureParserRuleCall_2_0_7_0 = (RuleCall)cFeaturesAssignment_2_0_7.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2_0_8 = (Keyword)cGroup_2_0.eContents().get(8);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
 		private final Action cLAutoInheritDtoAnnotationInfoAction_2_1_0 = (Action)cGroup_2_1.eContents().get(0);
-		private final Keyword cAutoDtoKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
-		private final Assignment cNameAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_2_0 = (RuleCall)cNameAssignment_2_1_2.eContents().get(0);
-		private final Group cGroup_2_1_3 = (Group)cGroup_2_1.eContents().get(3);
-		private final Keyword cExtendsKeyword_2_1_3_0 = (Keyword)cGroup_2_1_3.eContents().get(0);
-		private final Assignment cSuperTypeAssignment_2_1_3_1 = (Assignment)cGroup_2_1_3.eContents().get(1);
-		private final CrossReference cSuperTypeLDtoCrossReference_2_1_3_1_0 = (CrossReference)cSuperTypeAssignment_2_1_3_1.eContents().get(0);
-		private final RuleCall cSuperTypeLDtoIDTerminalRuleCall_2_1_3_1_0_1 = (RuleCall)cSuperTypeLDtoCrossReference_2_1_3_1_0.eContents().get(1);
-		private final Keyword cWrapsKeyword_2_1_4 = (Keyword)cGroup_2_1.eContents().get(4);
-		private final Assignment cWrappedTypeAssignment_2_1_5 = (Assignment)cGroup_2_1.eContents().get(5);
-		private final CrossReference cWrappedTypeLEntityCrossReference_2_1_5_0 = (CrossReference)cWrappedTypeAssignment_2_1_5.eContents().get(0);
-		private final RuleCall cWrappedTypeLEntityIDTerminalRuleCall_2_1_5_0_1 = (RuleCall)cWrappedTypeLEntityCrossReference_2_1_5_0.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2_1_6 = (Keyword)cGroup_2_1.eContents().get(6);
-		private final Assignment cFeaturesAssignment_2_1_7 = (Assignment)cGroup_2_1.eContents().get(7);
-		private final RuleCall cFeaturesDtoFeatureParserRuleCall_2_1_7_0 = (RuleCall)cFeaturesAssignment_2_1_7.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2_1_8 = (Keyword)cGroup_2_1.eContents().get(8);
+		private final Assignment cAbstractAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final Keyword cAbstractAbstractKeyword_2_1_1_0 = (Keyword)cAbstractAssignment_2_1_1.eContents().get(0);
+		private final Keyword cAutoDtoKeyword_2_1_2 = (Keyword)cGroup_2_1.eContents().get(2);
+		private final Assignment cNameAssignment_2_1_3 = (Assignment)cGroup_2_1.eContents().get(3);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_3_0 = (RuleCall)cNameAssignment_2_1_3.eContents().get(0);
+		private final Group cGroup_2_1_4 = (Group)cGroup_2_1.eContents().get(4);
+		private final Keyword cExtendsKeyword_2_1_4_0 = (Keyword)cGroup_2_1_4.eContents().get(0);
+		private final Assignment cSuperTypeAssignment_2_1_4_1 = (Assignment)cGroup_2_1_4.eContents().get(1);
+		private final CrossReference cSuperTypeLDtoCrossReference_2_1_4_1_0 = (CrossReference)cSuperTypeAssignment_2_1_4_1.eContents().get(0);
+		private final RuleCall cSuperTypeLDtoIDTerminalRuleCall_2_1_4_1_0_1 = (RuleCall)cSuperTypeLDtoCrossReference_2_1_4_1_0.eContents().get(1);
+		private final Keyword cWrapsKeyword_2_1_5 = (Keyword)cGroup_2_1.eContents().get(5);
+		private final Assignment cWrappedTypeAssignment_2_1_6 = (Assignment)cGroup_2_1.eContents().get(6);
+		private final CrossReference cWrappedTypeLEntityCrossReference_2_1_6_0 = (CrossReference)cWrappedTypeAssignment_2_1_6.eContents().get(0);
+		private final RuleCall cWrappedTypeLEntityIDTerminalRuleCall_2_1_6_0_1 = (RuleCall)cWrappedTypeLEntityCrossReference_2_1_6_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2_1_7 = (Keyword)cGroup_2_1.eContents().get(7);
+		private final Assignment cFeaturesAssignment_2_1_8 = (Assignment)cGroup_2_1.eContents().get(8);
+		private final RuleCall cFeaturesDtoFeatureParserRuleCall_2_1_8_0 = (RuleCall)cFeaturesAssignment_2_1_8.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2_1_9 = (Keyword)cGroup_2_1.eContents().get(9);
 		
 		//Class returns dto::LDto:
-		//	{dto::LDto} annotations+=AnnotationDef* ({dto::LDto.annotationInfo=current} "dto" name=ValidIDWithKeywords ("extends"
-		//	superType=[dto::LDto])? ("wraps" wrappedType=[entity::LEntity])? "{" features+=DtoFeature* "}" |
-		//	{dto::LAutoInheritDto.annotationInfo=current} "autoDto" name=ValidIDWithKeywords ("extends" superType=[dto::LDto])?
-		//	"wraps" wrappedType=[entity::LEntity] "{" features+=DtoFeature* "}");
+		//	{dto::LDto} annotations+=AnnotationDef* ({dto::LDto.annotationInfo=current} abstract?="abstract"? "dto"
+		//	name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? ("wraps" wrappedType=[entity::LEntity])? "{"
+		//	features+=DtoFeature* "}" | {dto::LAutoInheritDto.annotationInfo=current} abstract?="abstract"? "autoDto"
+		//	name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? "wraps" wrappedType=[entity::LEntity] "{"
+		//	features+=DtoFeature* "}");
 		public ParserRule getRule() { return rule; }
 
-		//{dto::LDto} annotations+=AnnotationDef* ({dto::LDto.annotationInfo=current} "dto" name=ValidIDWithKeywords ("extends"
-		//superType=[dto::LDto])? ("wraps" wrappedType=[entity::LEntity])? "{" features+=DtoFeature* "}" |
-		//{dto::LAutoInheritDto.annotationInfo=current} "autoDto" name=ValidIDWithKeywords ("extends" superType=[dto::LDto])?
-		//"wraps" wrappedType=[entity::LEntity] "{" features+=DtoFeature* "}")
+		//{dto::LDto} annotations+=AnnotationDef* ({dto::LDto.annotationInfo=current} abstract?="abstract"? "dto"
+		//name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? ("wraps" wrappedType=[entity::LEntity])? "{"
+		//features+=DtoFeature* "}" | {dto::LAutoInheritDto.annotationInfo=current} abstract?="abstract"? "autoDto"
+		//name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? "wraps" wrappedType=[entity::LEntity] "{"
+		//features+=DtoFeature* "}")
 		public Group getGroup() { return cGroup; }
 
 		//{dto::LDto}
@@ -104,124 +110,136 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//AnnotationDef
 		public RuleCall getAnnotationsAnnotationDefParserRuleCall_1_0() { return cAnnotationsAnnotationDefParserRuleCall_1_0; }
 
-		//{dto::LDto.annotationInfo=current} "dto" name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? ("wraps"
-		//wrappedType=[entity::LEntity])? "{" features+=DtoFeature* "}" | {dto::LAutoInheritDto.annotationInfo=current} "autoDto"
-		//name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? "wraps" wrappedType=[entity::LEntity] "{"
-		//features+=DtoFeature* "}"
+		//{dto::LDto.annotationInfo=current} abstract?="abstract"? "dto" name=ValidIDWithKeywords ("extends"
+		//superType=[dto::LDto])? ("wraps" wrappedType=[entity::LEntity])? "{" features+=DtoFeature* "}" |
+		//{dto::LAutoInheritDto.annotationInfo=current} abstract?="abstract"? "autoDto" name=ValidIDWithKeywords ("extends"
+		//superType=[dto::LDto])? "wraps" wrappedType=[entity::LEntity] "{" features+=DtoFeature* "}"
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//{dto::LDto.annotationInfo=current} "dto" name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? ("wraps"
-		//wrappedType=[entity::LEntity])? "{" features+=DtoFeature* "}"
+		//{dto::LDto.annotationInfo=current} abstract?="abstract"? "dto" name=ValidIDWithKeywords ("extends"
+		//superType=[dto::LDto])? ("wraps" wrappedType=[entity::LEntity])? "{" features+=DtoFeature* "}"
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//{dto::LDto.annotationInfo=current}
 		public Action getLDtoAnnotationInfoAction_2_0_0() { return cLDtoAnnotationInfoAction_2_0_0; }
 
+		//abstract?="abstract"?
+		public Assignment getAbstractAssignment_2_0_1() { return cAbstractAssignment_2_0_1; }
+
+		//"abstract"
+		public Keyword getAbstractAbstractKeyword_2_0_1_0() { return cAbstractAbstractKeyword_2_0_1_0; }
+
 		//"dto"
-		public Keyword getDtoKeyword_2_0_1() { return cDtoKeyword_2_0_1; }
+		public Keyword getDtoKeyword_2_0_2() { return cDtoKeyword_2_0_2; }
 
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_0_2() { return cNameAssignment_2_0_2; }
+		public Assignment getNameAssignment_2_0_3() { return cNameAssignment_2_0_3; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_0_2_0() { return cNameValidIDWithKeywordsParserRuleCall_2_0_2_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_0_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_0_3_0; }
 
 		//("extends" superType=[dto::LDto])?
-		public Group getGroup_2_0_3() { return cGroup_2_0_3; }
-
-		//"extends"
-		public Keyword getExtendsKeyword_2_0_3_0() { return cExtendsKeyword_2_0_3_0; }
-
-		//superType=[dto::LDto]
-		public Assignment getSuperTypeAssignment_2_0_3_1() { return cSuperTypeAssignment_2_0_3_1; }
-
-		//[dto::LDto]
-		public CrossReference getSuperTypeLDtoCrossReference_2_0_3_1_0() { return cSuperTypeLDtoCrossReference_2_0_3_1_0; }
-
-		//ID
-		public RuleCall getSuperTypeLDtoIDTerminalRuleCall_2_0_3_1_0_1() { return cSuperTypeLDtoIDTerminalRuleCall_2_0_3_1_0_1; }
-
-		//("wraps" wrappedType=[entity::LEntity])?
 		public Group getGroup_2_0_4() { return cGroup_2_0_4; }
 
-		//"wraps"
-		public Keyword getWrapsKeyword_2_0_4_0() { return cWrapsKeyword_2_0_4_0; }
+		//"extends"
+		public Keyword getExtendsKeyword_2_0_4_0() { return cExtendsKeyword_2_0_4_0; }
 
-		//wrappedType=[entity::LEntity]
-		public Assignment getWrappedTypeAssignment_2_0_4_1() { return cWrappedTypeAssignment_2_0_4_1; }
+		//superType=[dto::LDto]
+		public Assignment getSuperTypeAssignment_2_0_4_1() { return cSuperTypeAssignment_2_0_4_1; }
 
-		//[entity::LEntity]
-		public CrossReference getWrappedTypeLEntityCrossReference_2_0_4_1_0() { return cWrappedTypeLEntityCrossReference_2_0_4_1_0; }
+		//[dto::LDto]
+		public CrossReference getSuperTypeLDtoCrossReference_2_0_4_1_0() { return cSuperTypeLDtoCrossReference_2_0_4_1_0; }
 
 		//ID
-		public RuleCall getWrappedTypeLEntityIDTerminalRuleCall_2_0_4_1_0_1() { return cWrappedTypeLEntityIDTerminalRuleCall_2_0_4_1_0_1; }
+		public RuleCall getSuperTypeLDtoIDTerminalRuleCall_2_0_4_1_0_1() { return cSuperTypeLDtoIDTerminalRuleCall_2_0_4_1_0_1; }
+
+		//("wraps" wrappedType=[entity::LEntity])?
+		public Group getGroup_2_0_5() { return cGroup_2_0_5; }
+
+		//"wraps"
+		public Keyword getWrapsKeyword_2_0_5_0() { return cWrapsKeyword_2_0_5_0; }
+
+		//wrappedType=[entity::LEntity]
+		public Assignment getWrappedTypeAssignment_2_0_5_1() { return cWrappedTypeAssignment_2_0_5_1; }
+
+		//[entity::LEntity]
+		public CrossReference getWrappedTypeLEntityCrossReference_2_0_5_1_0() { return cWrappedTypeLEntityCrossReference_2_0_5_1_0; }
+
+		//ID
+		public RuleCall getWrappedTypeLEntityIDTerminalRuleCall_2_0_5_1_0_1() { return cWrappedTypeLEntityIDTerminalRuleCall_2_0_5_1_0_1; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2_0_5() { return cLeftCurlyBracketKeyword_2_0_5; }
+		public Keyword getLeftCurlyBracketKeyword_2_0_6() { return cLeftCurlyBracketKeyword_2_0_6; }
 
 		//features+=DtoFeature*
-		public Assignment getFeaturesAssignment_2_0_6() { return cFeaturesAssignment_2_0_6; }
+		public Assignment getFeaturesAssignment_2_0_7() { return cFeaturesAssignment_2_0_7; }
 
 		//DtoFeature
-		public RuleCall getFeaturesDtoFeatureParserRuleCall_2_0_6_0() { return cFeaturesDtoFeatureParserRuleCall_2_0_6_0; }
+		public RuleCall getFeaturesDtoFeatureParserRuleCall_2_0_7_0() { return cFeaturesDtoFeatureParserRuleCall_2_0_7_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_2_0_7() { return cRightCurlyBracketKeyword_2_0_7; }
+		public Keyword getRightCurlyBracketKeyword_2_0_8() { return cRightCurlyBracketKeyword_2_0_8; }
 
-		//{dto::LAutoInheritDto.annotationInfo=current} "autoDto" name=ValidIDWithKeywords ("extends" superType=[dto::LDto])?
-		//"wraps" wrappedType=[entity::LEntity] "{" features+=DtoFeature* "}"
+		//{dto::LAutoInheritDto.annotationInfo=current} abstract?="abstract"? "autoDto" name=ValidIDWithKeywords ("extends"
+		//superType=[dto::LDto])? "wraps" wrappedType=[entity::LEntity] "{" features+=DtoFeature* "}"
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//{dto::LAutoInheritDto.annotationInfo=current}
 		public Action getLAutoInheritDtoAnnotationInfoAction_2_1_0() { return cLAutoInheritDtoAnnotationInfoAction_2_1_0; }
 
+		//abstract?="abstract"?
+		public Assignment getAbstractAssignment_2_1_1() { return cAbstractAssignment_2_1_1; }
+
+		//"abstract"
+		public Keyword getAbstractAbstractKeyword_2_1_1_0() { return cAbstractAbstractKeyword_2_1_1_0; }
+
 		//"autoDto"
-		public Keyword getAutoDtoKeyword_2_1_1() { return cAutoDtoKeyword_2_1_1; }
+		public Keyword getAutoDtoKeyword_2_1_2() { return cAutoDtoKeyword_2_1_2; }
 
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_1_2() { return cNameAssignment_2_1_2; }
+		public Assignment getNameAssignment_2_1_3() { return cNameAssignment_2_1_3; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_1_2_0() { return cNameValidIDWithKeywordsParserRuleCall_2_1_2_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_1_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_1_3_0; }
 
 		//("extends" superType=[dto::LDto])?
-		public Group getGroup_2_1_3() { return cGroup_2_1_3; }
+		public Group getGroup_2_1_4() { return cGroup_2_1_4; }
 
 		//"extends"
-		public Keyword getExtendsKeyword_2_1_3_0() { return cExtendsKeyword_2_1_3_0; }
+		public Keyword getExtendsKeyword_2_1_4_0() { return cExtendsKeyword_2_1_4_0; }
 
 		//superType=[dto::LDto]
-		public Assignment getSuperTypeAssignment_2_1_3_1() { return cSuperTypeAssignment_2_1_3_1; }
+		public Assignment getSuperTypeAssignment_2_1_4_1() { return cSuperTypeAssignment_2_1_4_1; }
 
 		//[dto::LDto]
-		public CrossReference getSuperTypeLDtoCrossReference_2_1_3_1_0() { return cSuperTypeLDtoCrossReference_2_1_3_1_0; }
+		public CrossReference getSuperTypeLDtoCrossReference_2_1_4_1_0() { return cSuperTypeLDtoCrossReference_2_1_4_1_0; }
 
 		//ID
-		public RuleCall getSuperTypeLDtoIDTerminalRuleCall_2_1_3_1_0_1() { return cSuperTypeLDtoIDTerminalRuleCall_2_1_3_1_0_1; }
+		public RuleCall getSuperTypeLDtoIDTerminalRuleCall_2_1_4_1_0_1() { return cSuperTypeLDtoIDTerminalRuleCall_2_1_4_1_0_1; }
 
 		//"wraps"
-		public Keyword getWrapsKeyword_2_1_4() { return cWrapsKeyword_2_1_4; }
+		public Keyword getWrapsKeyword_2_1_5() { return cWrapsKeyword_2_1_5; }
 
 		//wrappedType=[entity::LEntity]
-		public Assignment getWrappedTypeAssignment_2_1_5() { return cWrappedTypeAssignment_2_1_5; }
+		public Assignment getWrappedTypeAssignment_2_1_6() { return cWrappedTypeAssignment_2_1_6; }
 
 		//[entity::LEntity]
-		public CrossReference getWrappedTypeLEntityCrossReference_2_1_5_0() { return cWrappedTypeLEntityCrossReference_2_1_5_0; }
+		public CrossReference getWrappedTypeLEntityCrossReference_2_1_6_0() { return cWrappedTypeLEntityCrossReference_2_1_6_0; }
 
 		//ID
-		public RuleCall getWrappedTypeLEntityIDTerminalRuleCall_2_1_5_0_1() { return cWrappedTypeLEntityIDTerminalRuleCall_2_1_5_0_1; }
+		public RuleCall getWrappedTypeLEntityIDTerminalRuleCall_2_1_6_0_1() { return cWrappedTypeLEntityIDTerminalRuleCall_2_1_6_0_1; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2_1_6() { return cLeftCurlyBracketKeyword_2_1_6; }
+		public Keyword getLeftCurlyBracketKeyword_2_1_7() { return cLeftCurlyBracketKeyword_2_1_7; }
 
 		//features+=DtoFeature*
-		public Assignment getFeaturesAssignment_2_1_7() { return cFeaturesAssignment_2_1_7; }
+		public Assignment getFeaturesAssignment_2_1_8() { return cFeaturesAssignment_2_1_8; }
 
 		//DtoFeature
-		public RuleCall getFeaturesDtoFeatureParserRuleCall_2_1_7_0() { return cFeaturesDtoFeatureParserRuleCall_2_1_7_0; }
+		public RuleCall getFeaturesDtoFeatureParserRuleCall_2_1_8_0() { return cFeaturesDtoFeatureParserRuleCall_2_1_8_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_2_1_8() { return cRightCurlyBracketKeyword_2_1_8; }
+		public Keyword getRightCurlyBracketKeyword_2_1_9() { return cRightCurlyBracketKeyword_2_1_9; }
 	}
 
 	public class DtoFeatureElements extends AbstractParserRuleElementFinder {
@@ -1008,10 +1026,11 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Class returns dto::LDto:
-	//	{dto::LDto} annotations+=AnnotationDef* ({dto::LDto.annotationInfo=current} "dto" name=ValidIDWithKeywords ("extends"
-	//	superType=[dto::LDto])? ("wraps" wrappedType=[entity::LEntity])? "{" features+=DtoFeature* "}" |
-	//	{dto::LAutoInheritDto.annotationInfo=current} "autoDto" name=ValidIDWithKeywords ("extends" superType=[dto::LDto])?
-	//	"wraps" wrappedType=[entity::LEntity] "{" features+=DtoFeature* "}");
+	//	{dto::LDto} annotations+=AnnotationDef* ({dto::LDto.annotationInfo=current} abstract?="abstract"? "dto"
+	//	name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? ("wraps" wrappedType=[entity::LEntity])? "{"
+	//	features+=DtoFeature* "}" | {dto::LAutoInheritDto.annotationInfo=current} abstract?="abstract"? "autoDto"
+	//	name=ValidIDWithKeywords ("extends" superType=[dto::LDto])? "wraps" wrappedType=[entity::LEntity] "{"
+	//	features+=DtoFeature* "}");
 	public ClassElements getClassAccess() {
 		return pClass;
 	}

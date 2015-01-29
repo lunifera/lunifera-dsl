@@ -44,5 +44,5 @@ public class EntityGrammarUiModule extends AbstractEntityGrammarUiModule {
 	public Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
 		return EntityJdtTypeProviderFactory.class;
 	}
-
+	
 }

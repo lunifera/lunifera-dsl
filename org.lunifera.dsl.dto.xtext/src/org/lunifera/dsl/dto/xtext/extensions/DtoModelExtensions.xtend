@@ -14,6 +14,7 @@ import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
@@ -35,9 +36,9 @@ import org.lunifera.dsl.semantic.dto.LDtoReference
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.eclipse.xtext.common.types.TypesFactory
 
 class DtoModelExtensions extends ModelExtensions {
 
@@ -378,6 +379,18 @@ class DtoModelExtensions extends ModelExtensions {
 			return false
 		}
 		return internalIsToMany(prop);
+	}
+	
+	def dispatch boolean isAbstract(LType context) {
+		false
+	}
+
+	def dispatch boolean isAbstract(LEntity context) {
+		context.abstract
+	}
+	
+	def dispatch boolean isAbstract(LDto context) {
+		context.abstract
 	}
 
 	def dispatch boolean isTransient(EObject context) {

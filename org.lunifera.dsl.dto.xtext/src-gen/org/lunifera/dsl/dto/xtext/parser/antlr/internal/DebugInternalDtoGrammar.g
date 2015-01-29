@@ -11,12 +11,12 @@ ruleLDTOModel :
 // Rule Class
 ruleClass :
 	ruleAnnotationDef* (
-		'dto' ruleValidIDWithKeywords (
+		'abstract'? 'dto' ruleValidIDWithKeywords (
 			'extends' RULE_ID
 		)? (
 			'wraps' RULE_ID
 		)? '{' ruleDtoFeature* '}' |
-		'autoDto' ruleValidIDWithKeywords (
+		'abstract'? 'autoDto' ruleValidIDWithKeywords (
 			'extends' RULE_ID
 		)? 'wraps' RULE_ID '{' ruleDtoFeature* '}'
 	)

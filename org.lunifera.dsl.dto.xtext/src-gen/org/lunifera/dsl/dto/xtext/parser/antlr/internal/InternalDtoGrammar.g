@@ -147,31 +147,46 @@ ruleClass returns [EObject current=null]
             grammarAccess.getClassAccess().getLDtoAnnotationInfoAction_2_0_0(),
             $current);
     }
-)	otherlv_3='dto' 
+)(
+(
+		lv_abstract_3_0=	'abstract' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getClassAccess().getDtoKeyword_2_0_1());
+        newLeafNode(lv_abstract_3_0, grammarAccess.getClassAccess().getAbstractAbstractKeyword_2_0_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getClassRule());
+	        }
+       		setWithLastConsumed($current, "abstract", true, "abstract");
+	    }
+
+)
+)?	otherlv_4='dto' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getClassAccess().getDtoKeyword_2_0_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getNameValidIDWithKeywordsParserRuleCall_2_0_2_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getNameValidIDWithKeywordsParserRuleCall_2_0_3_0()); 
 	    }
-		lv_name_4_0=ruleValidIDWithKeywords		{
+		lv_name_5_0=ruleValidIDWithKeywords		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_4_0, 
+        		lv_name_5_0, 
         		"ValidIDWithKeywords");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_5='extends' 
+)(	otherlv_6='extends' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getClassAccess().getExtendsKeyword_2_0_3_0());
+    	newLeafNode(otherlv_6, grammarAccess.getClassAccess().getExtendsKeyword_2_0_4_0());
     }
 (
 (
@@ -180,15 +195,15 @@ ruleClass returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getClassRule());
 	        }
         }
-	otherlv_6=RULE_ID
+	otherlv_7=RULE_ID
 	{
-		newLeafNode(otherlv_6, grammarAccess.getClassAccess().getSuperTypeLDtoCrossReference_2_0_3_1_0()); 
+		newLeafNode(otherlv_7, grammarAccess.getClassAccess().getSuperTypeLDtoCrossReference_2_0_4_1_0()); 
 	}
 
 )
-))?(	otherlv_7='wraps' 
+))?(	otherlv_8='wraps' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getClassAccess().getWrapsKeyword_2_0_4_0());
+    	newLeafNode(otherlv_8, grammarAccess.getClassAccess().getWrapsKeyword_2_0_5_0());
     }
 (
 (
@@ -197,37 +212,37 @@ ruleClass returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getClassRule());
 	        }
         }
-	otherlv_8=RULE_ID
+	otherlv_9=RULE_ID
 	{
-		newLeafNode(otherlv_8, grammarAccess.getClassAccess().getWrappedTypeLEntityCrossReference_2_0_4_1_0()); 
+		newLeafNode(otherlv_9, grammarAccess.getClassAccess().getWrappedTypeLEntityCrossReference_2_0_5_1_0()); 
 	}
 
 )
-))?	otherlv_9='{' 
+))?	otherlv_10='{' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_2_0_5());
+    	newLeafNode(otherlv_10, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_2_0_6());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getFeaturesDtoFeatureParserRuleCall_2_0_6_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getFeaturesDtoFeatureParserRuleCall_2_0_7_0()); 
 	    }
-		lv_features_10_0=ruleDtoFeature		{
+		lv_features_11_0=ruleDtoFeature		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		add(
        			$current, 
        			"features",
-        		lv_features_10_0, 
+        		lv_features_11_0, 
         		"DtoFeature");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_11='}' 
+)*	otherlv_12='}' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_0_7());
+    	newLeafNode(otherlv_12, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_0_8());
     }
 )
     |((
@@ -236,48 +251,46 @@ ruleClass returns [EObject current=null]
             grammarAccess.getClassAccess().getLAutoInheritDtoAnnotationInfoAction_2_1_0(),
             $current);
     }
-)	otherlv_13='autoDto' 
+)(
+(
+		lv_abstract_14_0=	'abstract' 
     {
-    	newLeafNode(otherlv_13, grammarAccess.getClassAccess().getAutoDtoKeyword_2_1_1());
+        newLeafNode(lv_abstract_14_0, grammarAccess.getClassAccess().getAbstractAbstractKeyword_2_1_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getClassRule());
+	        }
+       		setWithLastConsumed($current, "abstract", true, "abstract");
+	    }
+
+)
+)?	otherlv_15='autoDto' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getClassAccess().getAutoDtoKeyword_2_1_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getNameValidIDWithKeywordsParserRuleCall_2_1_2_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getNameValidIDWithKeywordsParserRuleCall_2_1_3_0()); 
 	    }
-		lv_name_14_0=ruleValidIDWithKeywords		{
+		lv_name_16_0=ruleValidIDWithKeywords		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_14_0, 
+        		lv_name_16_0, 
         		"ValidIDWithKeywords");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_15='extends' 
+)(	otherlv_17='extends' 
     {
-    	newLeafNode(otherlv_15, grammarAccess.getClassAccess().getExtendsKeyword_2_1_3_0());
-    }
-(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getClassRule());
-	        }
-        }
-	otherlv_16=RULE_ID
-	{
-		newLeafNode(otherlv_16, grammarAccess.getClassAccess().getSuperTypeLDtoCrossReference_2_1_3_1_0()); 
-	}
-
-)
-))?	otherlv_17='wraps' 
-    {
-    	newLeafNode(otherlv_17, grammarAccess.getClassAccess().getWrapsKeyword_2_1_4());
+    	newLeafNode(otherlv_17, grammarAccess.getClassAccess().getExtendsKeyword_2_1_4_0());
     }
 (
 (
@@ -288,35 +301,52 @@ ruleClass returns [EObject current=null]
         }
 	otherlv_18=RULE_ID
 	{
-		newLeafNode(otherlv_18, grammarAccess.getClassAccess().getWrappedTypeLEntityCrossReference_2_1_5_0()); 
+		newLeafNode(otherlv_18, grammarAccess.getClassAccess().getSuperTypeLDtoCrossReference_2_1_4_1_0()); 
 	}
 
 )
-)	otherlv_19='{' 
+))?	otherlv_19='wraps' 
     {
-    	newLeafNode(otherlv_19, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_2_1_6());
+    	newLeafNode(otherlv_19, grammarAccess.getClassAccess().getWrapsKeyword_2_1_5());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getClassRule());
+	        }
+        }
+	otherlv_20=RULE_ID
+	{
+		newLeafNode(otherlv_20, grammarAccess.getClassAccess().getWrappedTypeLEntityCrossReference_2_1_6_0()); 
+	}
+
+)
+)	otherlv_21='{' 
+    {
+    	newLeafNode(otherlv_21, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_2_1_7());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getFeaturesDtoFeatureParserRuleCall_2_1_7_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getFeaturesDtoFeatureParserRuleCall_2_1_8_0()); 
 	    }
-		lv_features_20_0=ruleDtoFeature		{
+		lv_features_22_0=ruleDtoFeature		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		add(
        			$current, 
        			"features",
-        		lv_features_20_0, 
+        		lv_features_22_0, 
         		"DtoFeature");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_21='}' 
+)*	otherlv_23='}' 
     {
-    	newLeafNode(otherlv_21, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_1_8());
+    	newLeafNode(otherlv_23, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_2_1_9());
     }
 )))
 ;

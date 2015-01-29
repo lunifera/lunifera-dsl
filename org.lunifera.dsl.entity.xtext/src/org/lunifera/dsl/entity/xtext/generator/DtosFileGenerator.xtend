@@ -95,7 +95,7 @@ class DtosFileGenerator {
 
 	def toEntityDeclaration(LEntity lEntity) {
 		return '''
-			autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
+			«IF lEntity.abstract»abstract «ENDIF»autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
 		'''
 	}
 

@@ -31,7 +31,7 @@ class ServicesFileGenerator {
 			import «pkg.name».*;
 			import «pkg.name».dtos.*; 
 			
-			«FOR LDto lDto : pkg.dtos.filter[basedOnEntity]»
+			«FOR LDto lDto : pkg.dtos.filter[basedOnEntity].filter[!abstract]»
 				dtoservice «lDto.wrappedType.name»Service provides «lDto.name» {
 				}
 			«ENDFOR»

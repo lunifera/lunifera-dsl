@@ -25,13 +25,13 @@ Class returns dto::LDto:
 	{dto::LDto} annotations+=AnnotationDef*
 	
 	(({dto::LDto.annotationInfo=current}
-	'dto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? ('wraps' wrappedType=[entity::LEntity])?
+	(abstract?='abstract')? 'dto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? ('wraps' wrappedType=[entity::LEntity])?
 	'{'
 	features+=DtoFeature*
 	'}')
 	|
 	({dto::LAutoInheritDto.annotationInfo=current}
-	'autoDto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? 'wraps' wrappedType=[entity::LEntity]
+	(abstract?='abstract')? 'autoDto' name=ValidIDWithKeywords ('extends' superType=[dto::LDto])? 'wraps' wrappedType=[entity::LEntity]
 	'{'
 	features+=DtoFeature*
 	'}')
