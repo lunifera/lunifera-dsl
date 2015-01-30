@@ -16,6 +16,7 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LDateType
@@ -40,11 +41,11 @@ import org.lunifera.dsl.semantic.entity.LEntityReference
 class DtosFileGenerator {
 
 	@Inject extension JvmTypesBuilder
-//	@Inject extension ModelExtensions
+	@Inject extension ModelExtensions
 
 	def getContent(LTypedPackage pkg) '''
 		«pkg.toDocu»
-		package «pkg.toDtoName» {
+		package «pkg.toDtoPackageName» {
 			
 			/* Imports the required artifacts */
 			«pkg.toImports»
@@ -89,10 +90,6 @@ class DtosFileGenerator {
 		}
 	'''
 	
-	def String getToDtoName(LTypedPackage pkg){
-		return pkg.name +".dtos"
-	}
-
 	def toEntityDeclaration(LEntity lEntity) {
 		return '''
 			«IF lEntity.abstract»abstract «ENDIF»autoDto «lEntity.name»Dto «IF lEntity.superType != null»extends «lEntity.superType.name»Dto «ENDIF»wraps «lEntity.name» {
@@ -111,33 +108,33 @@ class DtosFileGenerator {
 				 LEntity: {
 					val LTypedPackage lPkg = element.eContainer as LTypedPackage;
 					imports += lPkg.name + "." + element.name
-					imports += lPkg.name + ".dtos." + element.name + "Dto"
+					imports += lPkg.toDtoPackageName + "." + element.name + "Dto"
 					
 					if(element.superType != null){
 						val LTypedPackage lSuperPkg = element.superType.eContainer as LTypedPackage;
-						imports += lSuperPkg.name + ".dtos." + element.superType.name + "Dto"
+						imports += lSuperPkg.toDtoPackageName + "." + element.superType.name + "Dto"
 					}
 				}
 				 LBean: {
 					val LTypedPackage lPkg = element.eContainer as LTypedPackage;
 					imports += lPkg.name + "." + element.name
-					imports += lPkg.name + ".dtos." + element.name + "Dto"
+					imports += lPkg.toDtoPackageName + "." + element.name + "Dto"
 				}
 				 LEntityReference: {
 					val LEntity lEntity = element.type
 					val LTypedPackage lPkg = lEntity.eContainer as LTypedPackage;
 					imports += lPkg.name + "." + lEntity.name
-					imports += lPkg.name + ".dtos." + lEntity.name + "Dto"
+					imports += lPkg.toDtoPackageName + "." + lEntity.name + "Dto"
 				}
 				 LEntityAttribute: {
 					if(element.type instanceof LBean){
 						val LBean lBean = element.type as LBean
 						val LTypedPackage lPkg = lBean.eContainer as LTypedPackage;
 						imports += lPkg.name + "." + lBean.name
-						imports += lPkg.name + ".dtos." + lBean.name + "Dto"
+						imports += lPkg.toDtoPackageName + "." + lBean.name + "Dto"
 					}
 				}
-			}			
+			}
 		}
 		
 		val StringBuilder b = new StringBuilder

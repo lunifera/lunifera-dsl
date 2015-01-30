@@ -72,9 +72,9 @@ class Generator extends JvmModelGenerator {
 
 		input.allContents.filter[it instanceof LTypedPackage].map[it as LTypedPackage].forEach [
 			val log = TimeLogger.start(typeof(Generator));
-			fsa.deleteFile(toServiceName);
-			fsa.generateFile(toServiceName, "Services-DSL", it.content);
-			log.stop(LOGGER, "generated " + toServiceName)
+			fsa.deleteFile(input.toServiceName);
+			fsa.generateFile(input.toServiceName, "Services-DSL", it.content);
+			log.stop(LOGGER, "generated " + input.toServiceName)
 		]
 	}
 
@@ -82,8 +82,9 @@ class Generator extends JvmModelGenerator {
 		dto.toFqnMapperName + ".xml"
 	}
 
-	def toServiceName(LTypedPackage pkg) {
-		pkg.name + ".services"
+	def toServiceName(Resource input) {
+		val r = input.URI.lastSegment.replace("dtos", "services")
+		return r
 	}
 
 }

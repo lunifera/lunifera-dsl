@@ -19,6 +19,7 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.helper.Bounds
+import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LDataType
@@ -26,7 +27,7 @@ import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
-import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
 
 class ModelExtensions {
 
@@ -195,5 +196,13 @@ class ModelExtensions {
 	 */
 	def static String operator_plus(String a, String b) {
 		return a.concat(b);
+	}
+	
+	def String toDtoPackageName(LTypedPackage pkg){
+		if(pkg.name.contains("entities")) {
+			return pkg.name.replace("entities", "dtos")		
+		}else{
+			return pkg.name +".dtos"
+		}
 	}
 }
