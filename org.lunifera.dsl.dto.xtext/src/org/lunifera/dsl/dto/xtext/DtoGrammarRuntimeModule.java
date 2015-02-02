@@ -59,7 +59,7 @@ import com.google.inject.name.Names;
 @SuppressWarnings("restriction")
 public class DtoGrammarRuntimeModule extends
 		org.lunifera.dsl.dto.xtext.AbstractDtoGrammarRuntimeModule {
-
+	
 	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
 		return DtoQualifiedNameProvider.class;
 	}

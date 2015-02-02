@@ -59,7 +59,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 	@Inject extension DtoModelExtensions;
 	@Inject TypeReferences references
 
-	def dispatch void inferForLater(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 	}
 	
@@ -69,12 +69,12 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 		// create dto type
 		val type = dto.toJvmType;
-		type.inferDtoForLater(dto, acceptor, isPrelinkingPhase)
+		type.inferDtoFullState(dto, acceptor, isPrelinkingPhase)
 
 		// create mapper type
 		if (dto.wrappedType != null) {
 			val mapperType = dto.toMapperJvmType;
-			mapperType.inferMapperForLater(dto, acceptor, isPrelinkingPhase)
+			mapperType.inferMapperFullState(dto, acceptor, isPrelinkingPhase)
 		}
 	}
 	
@@ -91,18 +91,21 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 			mapperType.markAsToBeDerivedLater(dto, isPrelinkingPhase, "mapper")
 			acceptor.accept(mapperType)
 		}
+		
+		// pass inferring to delegates
+		inferTypesOnlyByDelegates(dto, acceptor, isPrelinkingPhase);
 	}
 
-	def dispatch void inferForLater(JvmGenericType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmGenericType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 		if (selector.equals("mapper")) {
-			type.inferMapperForLater(dto, acceptor, isPrelinkingPhase)
+			type.inferMapperFullState(dto, acceptor, isPrelinkingPhase)
 		} else {
-			type.inferDtoForLater(dto, acceptor, isPrelinkingPhase)
+			type.inferDtoFullState(dto, acceptor, isPrelinkingPhase)
 		}
 	}
 
-	def void inferDtoForLater(JvmDeclaredType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
+	def void inferDtoFullState(JvmDeclaredType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase) {
 
 		acceptor.accept(type).initializeLater [
@@ -362,7 +365,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 	}
 
-	def void inferMapperForLater(JvmGenericType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
+	def void inferMapperFullState(JvmGenericType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase) {
 
 		acceptor.accept(type).initializeLater [
@@ -462,7 +465,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 		// create dto type
 		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
-		type.inferForLater(enumX, acceptor, isPrelinkingPhase, "")
+		type.inferFullState(enumX, acceptor, isPrelinkingPhase, "")
 	}
 
 	def dispatch void inferTypesOnly(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
@@ -471,9 +474,12 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
 		type.markAsToBeDerivedLater(enumX, isPrelinkingPhase)
 		acceptor.accept(type);
+		
+		// pass inferring to delegates
+		inferTypesOnlyByDelegates(enumX, acceptor, isPrelinkingPhase);
 	}
 
-	def dispatch void inferForLater(JvmDeclaredType type, LEnum enumX, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmDeclaredType type, LEnum enumX, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [

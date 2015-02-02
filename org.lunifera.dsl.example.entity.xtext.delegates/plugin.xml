@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.lunifera.dsl.xtext.lazyresolver.inferrerDelegate">
+      <inferrerDelegate
+            grammarName="org.lunifera.dsl.entity.xtext.EntityGrammar"
+            inferrerDelegateClass="org.lunifera.dsl.example.entity.xtext.delegates.JvmInferrerDelegate">
+      </inferrerDelegate>
+   </extension>
+</plugin>

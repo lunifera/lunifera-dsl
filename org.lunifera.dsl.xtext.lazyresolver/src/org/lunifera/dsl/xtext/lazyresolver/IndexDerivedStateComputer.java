@@ -27,6 +27,7 @@ import org.lunifera.dsl.xtext.lazyresolver.api.IIndexDerivedStateComputer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
+@SuppressWarnings("restriction")
 public class IndexDerivedStateComputer extends JvmModelAssociator implements
 		IIndexDerivedStateComputer {
 
@@ -54,7 +55,6 @@ public class IndexDerivedStateComputer extends JvmModelAssociator implements
 	/**
 	 * Never installs the fully derived state by invoking doLater.
 	 */
-	@SuppressWarnings("restriction")
 	public void installDerivedState(final DerivedStateAwareResource resource,
 			boolean preIndexingPhase) {
 		if (resource.getContents().isEmpty())
@@ -81,12 +81,12 @@ public class IndexDerivedStateComputer extends JvmModelAssociator implements
 	 * Installs the complete derived state for the {@link EObject} at the given
 	 * index in the resource.
 	 */
-	@SuppressWarnings("restriction")
 	@Override
 	public void installDerivedState(DerivedStateAwareResource resource,
 			int index, boolean preIndexingPhase) {
-		if (resource.getContents().isEmpty())
+		if (resource.getContents().isEmpty()) {
 			return;
+		}
 
 		JvmDeclaredType derivedOne = (JvmDeclaredType) resource.getContents()
 				.get(index);
@@ -102,8 +102,16 @@ public class IndexDerivedStateComputer extends JvmModelAssociator implements
 			IndexModelInferrer inferrer = (IndexModelInferrer) inferrerProvider
 					.get();
 			inferrer.setContext(resource);
-			inferrer.inferForLater(derivedOne, derivedSemantic, acceptor,
+
+			// infer the full state by the inferrer 
+			inferrer.inferFullState(derivedOne, derivedSemantic, acceptor,
 					preIndexingPhase, derivedRootAdapter.getSelector());
+			
+			// then delegate the inferring to all extension delegates
+			inferrer.inferFullStateByDelegates(derivedOne, derivedSemantic,
+					acceptor, preIndexingPhase,
+					derivedRootAdapter.getSelector());
+			
 		} catch (RuntimeException e) {
 			// LOG.error("Error calling inferrer", e);
 			System.out.println(e);

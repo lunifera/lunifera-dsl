@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Sample for dsl delegates
+Bundle-SymbolicName: org.lunifera.dsl.example.entity.xtext.delegates;singleton:=true
+Bundle-Version: 0.8.1.qualifier
+Bundle-Vendor: Lunifera GmbH
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.lunifera.dsl.entity.xtext;bundle-version="0.8.1",
+ org.lunifera.dsl.xtext.lazyresolver;bundle-version="0.8.1",
+ org.lunifera.dsl.xtext.lazyresolver.api;bundle-version="0.8.1",
+ org.lunifera.dsl.common.xtext;bundle-version="0.8.1"

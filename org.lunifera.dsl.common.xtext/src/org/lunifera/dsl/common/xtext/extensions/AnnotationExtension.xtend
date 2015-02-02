@@ -29,6 +29,7 @@ import org.lunifera.dsl.semantic.common.types.LAnnotationDef
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 import org.lunifera.dsl.semantic.common.types.LFeature
 
+@SuppressWarnings("restriction")
 class AnnotationExtension {
 
 	@Inject extension JvmTypesBuilder

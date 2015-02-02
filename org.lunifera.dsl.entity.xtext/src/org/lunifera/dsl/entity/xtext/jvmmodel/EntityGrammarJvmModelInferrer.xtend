@@ -54,7 +54,7 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
-		type.inferForLater(enumX, acceptor, isPrelinkingPhase, "")
+		type.inferFullState(enumX, acceptor, isPrelinkingPhase, "")
 	}
 
 	def dispatch void inferTypesOnly(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
@@ -63,9 +63,11 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 		type.markAsToBeDerivedLater(enumX, isPrelinkingPhase)
 		acceptor.accept(type);
 
+		// pass inferring to delegates
+		inferTypesOnlyByDelegates(enumX, acceptor, isPrelinkingPhase);
 	}
 
-	def dispatch void inferForLater(JvmDeclaredType type, LEnum enumX, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmDeclaredType type, LEnum enumX, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [
@@ -88,18 +90,25 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 	def dispatch void infer(LBean bean, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		val type = bean.toJvmType;
-		type.inferForLater(bean, acceptor, isPrelinkingPhase, "")
+		type.inferFullState(bean, acceptor, isPrelinkingPhase, "bean")
 	}
 
 	def dispatch void inferTypesOnly(LBean bean, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		val type = bean.toJvmType;
-		type.markAsToBeDerivedLater(bean, isPrelinkingPhase)
+		type.markAsToBeDerivedLater(bean, isPrelinkingPhase, "bean")
 		acceptor.accept(type);
+		
+		// pass inferring to delegates
+		inferTypesOnlyByDelegates(bean, acceptor, isPrelinkingPhase);
 	}
 
-	def dispatch void inferForLater(JvmDeclaredType type, LBean bean, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmDeclaredType type, LBean bean, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
+
+		if(selector == null || !selector.equals("bean")) {
+			return
+		}
 
 		acceptor.accept(type).initializeLater [
 			
@@ -203,22 +212,29 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 	def dispatch void infer(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		val type = entity.toJvmType;
-		type.inferForLater(entity, acceptor, isPrelinkingPhase, "")
+		type.inferFullState(entity, acceptor, isPrelinkingPhase, "")
 	}
 
 	def dispatch void inferTypesOnly(LEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		val type = entity.toJvmType;
-		type.markAsToBeDerivedLater(entity, isPrelinkingPhase)
+		type.markAsToBeDerivedLater(entity, isPrelinkingPhase, "entity")
 		acceptor.accept(type);
+		
+		// pass inferring to delegates
+		inferTypesOnlyByDelegates(entity, acceptor, isPrelinkingPhase);
 	}
 
-	def dispatch void inferForLater(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 	}
 
-	def dispatch void inferForLater(JvmDeclaredType type, LEntity entity, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmDeclaredType type, LEntity entity, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
+
+		if(selector == null || !selector.equals("entity")) {
+			return
+		}
 
 		acceptor.accept(type).initializeLater [
 			

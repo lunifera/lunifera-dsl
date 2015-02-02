@@ -12,7 +12,6 @@ package org.lunifera.dsl.xtext.lazyresolver;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
@@ -20,7 +19,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.JvmAnnotationReferenceBuilder;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypeReferenceBuilder;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.lunifera.dsl.xtext.lazyresolver.api.DerivedRootAdapter;
+import org.lunifera.dsl.xtext.lazyresolver.hook.ExtensionsInferrerDelegate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,6 +34,12 @@ public class IndexModelInferrer extends AbstractModelInferrer {
 
 	protected @Extension JvmAnnotationReferenceBuilder _annotationTypesBuilder;
 	protected @Extension JvmTypeReferenceBuilder _typeReferenceBuilder;
+
+	@Inject
+	private ExtensionsInferrerDelegate inferrerDelegate;
+
+	@Inject
+	private IndexDerivedStateHelper helper;
 
 	/**
 	 * @noreference This method is called by the framework
@@ -59,46 +64,71 @@ public class IndexModelInferrer extends AbstractModelInferrer {
 			infer(child, acceptor, preIndexingPhase);
 		}
 	}
-	
+
 	public void inferTypesOnly(EObject e,
 			final/* @NonNull */IJvmDeclaredTypeAcceptor acceptor,
 			boolean preIndexingPhase) {
+
+		// pass inferring to delegates first
+		inferTypesOnlyByDelegates(e, acceptor, preIndexingPhase);
+
+		// then iterate the contents
 		_inferTypesOnly(e, acceptor, preIndexingPhase);
 	}
 
-	public void _inferTypesOnly(EObject e, /* @NonNull */
-			IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+	public void _inferTypesOnly(EObject e, IJvmDeclaredTypeAcceptor acceptor,
+			boolean preIndexingPhase) {
 		for (EObject child : e.eContents()) {
 			inferTypesOnly(child, acceptor, preIndexingPhase);
 		}
 	}
 
-	public void inferForLater(JvmType type, EObject e, /* @NonNull */
-			IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase, String selector) {
+	/**
+	 * Delegates the inferTypes call to the delegates.
+	 * 
+	 * @param semanticElement
+	 * @param acceptor
+	 * @param preIndexingPhase
+	 */
+	protected void inferTypesOnlyByDelegates(EObject semanticElement,
+			IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+		inferrerDelegate.inferTypesOnly(semanticElement, acceptor,
+				preIndexingPhase);
+	}
+
+	public void inferFullState(JvmType type, EObject e,
+			IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase,
+			String selector) {
+	}
+
+	/**
+	 * Delegates the inferTypes call to the delegates.
+	 * 
+	 * @param jvmType
+	 * @param semanticElement
+	 * @param acceptor
+	 * @param preIndexingPhase
+	 * @param selector
+	 */
+	public void inferFullStateByDelegates(JvmType jvmType,
+			EObject semanticElement, IJvmDeclaredTypeAcceptor acceptor,
+			boolean preIndexingPhase, String selector) {
+		inferrerDelegate.inferFullState((JvmDeclaredType) jvmType, semanticElement, acceptor,
+				preIndexingPhase, selector);
 	}
 
 	protected void markAsToBeDerivedLater(JvmDeclaredType type,
 			EObject context, boolean isPrelinkingPhase) {
-		markAsToBeDerivedLater(type, context, isPrelinkingPhase, "");
+		helper.markAsToBeDerivedLater(type, context, isPrelinkingPhase, "");
 	}
 
 	protected void markAsToBeDerivedLater(JvmDeclaredType type,
 			EObject context, boolean isPrelinkingPhase, String selector) {
-		if (!isPrelinkingPhase) {
-
-			// if(hasSyntaxErrors(entity)) return;
-			// register the semantic element using an adapter
-			DerivedRootAdapter adapter = new DerivedRootAdapter(context,
-					selector);
-			type.eAdapters().add(adapter);
-		}
+		helper.markAsToBeDerivedLater(type, context, isPrelinkingPhase,
+				selector);
 	}
 
 	protected void markAsDerived(JvmDeclaredType type) {
-		DerivedRootAdapter adapter = (DerivedRootAdapter) EcoreUtil.getAdapter(
-				type.eAdapters(), DerivedRootAdapter.class);
-		if (adapter != null) {
-			type.eAdapters().remove(adapter);
-		}
+		helper.markAsDerived(type);
 	}
 }

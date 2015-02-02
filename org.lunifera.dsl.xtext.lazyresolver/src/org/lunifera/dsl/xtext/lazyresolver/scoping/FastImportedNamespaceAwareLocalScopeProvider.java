@@ -43,7 +43,6 @@ public class FastImportedNamespaceAwareLocalScopeProvider extends
 		ImportedNamespaceAwareLocalScopeProvider {
 
 	private boolean collectingParents;
-	private boolean cacheRefresh;
 
 	@Inject
 	private IResourceScopeCache cache = IResourceScopeCache.NullImpl.INSTANCE;

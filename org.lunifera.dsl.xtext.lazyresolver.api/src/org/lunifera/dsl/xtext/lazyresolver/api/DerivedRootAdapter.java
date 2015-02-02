@@ -17,7 +17,8 @@ import org.eclipse.xtext.common.types.JvmType;
 /**
  * An adapter to attach the semantic element and a selector to the
  * {@link JvmType}. The selector is used, if more then one {@link JvmType} is
- * inferred for a single {@link EObject}.
+ * inferred for a single {@link EObject}. Then the inferer needs to separate
+ * which JvmTypes needs to be inferrerd at this state.
  */
 public class DerivedRootAdapter extends AdapterImpl {
 

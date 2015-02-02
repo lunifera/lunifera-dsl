@@ -28,7 +28,7 @@ import com.google.inject.Inject;
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an
  * example
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "restriction"})
 public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 
 	@Inject
@@ -39,7 +39,6 @@ public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 		configure(c, (CommonGrammarGrammarAccess) getGrammarAccess());
 	}
 
-	@SuppressWarnings("restriction")
 	public void configure(FormattingConfig c, CommonGrammarGrammarAccess ga) {
 		xbaseFormatter.configure(c, ga.getXbaseWithAnnotationsGrammarAccess()
 				.getXbaseGrammarAccess());
