@@ -8,16 +8,20 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-
-package org.lunifera.dsl.entity.xtext.generator;
+package org.lunifera.dsl.xtext.lazyresolver.generator;
 
 import java.util.Set;
 
 import org.eclipse.xtext.generator.OutputConfiguration;
-import org.lunifera.dsl.xtext.lazyresolver.generator.DelegatingOutputConfigurationProvider;
+import org.eclipse.xtext.generator.OutputConfigurationProvider;
+import org.lunifera.dsl.xtext.lazyresolver.hook.ExtensionsGeneratorDelegate;
 
-public class OutputConfigurationProvider extends
-		DelegatingOutputConfigurationProvider {
+import com.google.inject.Inject;
+
+public class DelegatingOutputConfigurationProvider extends
+		OutputConfigurationProvider {
+
+	private @Inject ExtensionsGeneratorDelegate generatorDelegate;
 
 	/**
 	 * @return a set of {@link OutputConfiguration} available for the generator
@@ -25,17 +29,8 @@ public class OutputConfigurationProvider extends
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		Set<OutputConfiguration> configs = super.getOutputConfigurations();
 
-		OutputConfiguration servicesOutput = new OutputConfiguration("DTOs");
-		servicesOutput.setDescription("derived DTOs");
-		servicesOutput.setOutputDirectory("./dto-models");
-		servicesOutput.setOverrideExistingResources(false);
-		servicesOutput.setCreateOutputDirectory(true);
-		servicesOutput.setCleanUpDerivedResources(false);
-		servicesOutput.setSetDerivedProperty(false);
-		servicesOutput.setKeepLocalHistory(true);
-		configs.add(servicesOutput);
+		configs.addAll(generatorDelegate.getOutputConfigurations());
 
 		return configs;
 	}
-
 }

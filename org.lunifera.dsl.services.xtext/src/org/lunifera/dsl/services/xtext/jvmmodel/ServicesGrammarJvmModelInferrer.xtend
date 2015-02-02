@@ -45,7 +45,7 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 	@Inject
 	private MethodNamingExtensions dtoNamings;
 
-	def dispatch void inferForLater(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 	}
 
@@ -53,7 +53,7 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 	def dispatch void infer(LDTOService service, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		val type = service.toJvmType;
-		type.inferForLater(service, acceptor, isPrelinkingPhase, "")
+		type.inferFullState(service, acceptor, isPrelinkingPhase, "")
 	}
 
 	def dispatch void inferTypesOnly(LDTOService service, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
@@ -61,9 +61,12 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 		val type = service.toJvmType
 		type.markAsToBeDerivedLater(service, isPrelinkingPhase)
 		acceptor.accept(type);
+		
+		// pass inferring to delegates
+		inferTypesOnlyByDelegates(service, acceptor, isPrelinkingPhase);
 	}
 
-	def dispatch void inferForLater(JvmGenericType type, LDTOService service, IJvmDeclaredTypeAcceptor acceptor,
+	def dispatch void inferFullState(JvmGenericType type, LDTOService service, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [

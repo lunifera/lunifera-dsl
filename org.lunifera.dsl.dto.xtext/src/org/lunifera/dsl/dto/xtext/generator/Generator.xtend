@@ -18,16 +18,16 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.xbase.compiler.DisableCodeGenerationAdapter
 import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider
-import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
+import org.lunifera.dsl.xtext.lazyresolver.generator.DelegatingGenerator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-class Generator extends JvmModelGenerator {
+class Generator extends DelegatingGenerator {
 
 	static final Logger LOGGER = LoggerFactory.getLogger(typeof(Generator))
 

@@ -8,4 +8,11 @@
             inferrerDelegateClass="org.lunifera.dsl.example.entity.xtext.delegates.JvmInferrerDelegate">
       </inferrerDelegate>
    </extension>
+   <extension
+         point="org.lunifera.dsl.xtext.lazyresolver.generatorDelegate">
+      <generatorDelegate
+            generatorDelegateClass="org.lunifera.dsl.example.entity.xtext.delegates.SampleGeneratorDelegate"
+            grammarName="org.lunifera.dsl.entity.xtext.EntityGrammar">
+      </generatorDelegate>
+   </extension>
 </plugin>

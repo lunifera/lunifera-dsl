@@ -2,4 +2,5 @@
 
 <plugin>
      <extension-point id="inferrerDelegate" name="Inferrer Delegate" schema="schema/inferrerDelegate.exsd"/>
+     <extension-point id="generatorDelegate" name="Generator Delegate" schema="schema/generatorDelegate.exsd"/>
 </plugin>

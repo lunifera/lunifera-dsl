@@ -5,14 +5,14 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
 import org.lunifera.dsl.semantic.service.LService
 import org.lunifera.dsl.services.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
+import org.lunifera.dsl.xtext.lazyresolver.generator.DelegatingGenerator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-class Generator extends JvmModelGenerator {
+class Generator extends DelegatingGenerator {
 	
 	static final Logger LOGGER = LoggerFactory.getLogger(typeof(Generator))
 

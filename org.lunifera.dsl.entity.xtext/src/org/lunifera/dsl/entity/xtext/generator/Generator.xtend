@@ -20,8 +20,10 @@ import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.lunifera.dsl.xtext.lazyresolver.hook.ExtensionsGeneratorDelegate
+import org.lunifera.dsl.xtext.lazyresolver.generator.DelegatingGenerator
 
-class Generator extends JvmModelGenerator {
+class Generator extends DelegatingGenerator {
 
 	static final Logger LOGGER = LoggerFactory.getLogger(typeof(Generator))
 

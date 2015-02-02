@@ -12,7 +12,9 @@ package org.lunifera.dsl.xtext.lazyresolver.hook;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -23,11 +25,13 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.LanguageInfo;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.generator.OutputConfiguration;
 import org.lunifera.dsl.xtext.lazyresolver.api.hook.IGeneratorDelegate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
+import com.google.inject.Injector;
 
 /**
  * Delegates generation to registered extensions. See extensionpoint
@@ -39,11 +43,13 @@ public class ExtensionsGeneratorDelegate implements IGeneratorDelegate {
 			.getLogger(ExtensionsGeneratorDelegate.class);
 
 	private static final String ATTR_GRAMMAR = "grammarName"; //$NON-NLS-1$
-	private static final String ATTR_INFERRERHOOK = "generatorDelegate"; //$NON-NLS-1$
+	private static final String ATTR_INFERRERHOOK = "generatorDelegateClass"; //$NON-NLS-1$
 	private static final String INFERRER_HOOK_EXTPT = "generatorDelegate"; //$NON-NLS-1$
 
 	@Inject
 	private LanguageInfo languageInfo;
+	@Inject
+	private Injector injector;
 
 	@Override
 	public void generate(Resource input, IFileSystemAccess fsa) {
@@ -51,6 +57,16 @@ public class ExtensionsGeneratorDelegate implements IGeneratorDelegate {
 				.getLanguageName())) {
 			hook.generate(input, fsa);
 		}
+	}
+
+	@Override
+	public Set<OutputConfiguration> getOutputConfigurations() {
+		Set<OutputConfiguration> result = new HashSet<OutputConfiguration>();
+		for (IGeneratorDelegate hook : readExtentions(languageInfo
+				.getLanguageName())) {
+			result.addAll(hook.getOutputConfigurations());
+		}
+		return result;
 	}
 
 	/**
@@ -78,8 +94,10 @@ public class ExtensionsGeneratorDelegate implements IGeneratorDelegate {
 				String _grammarName = elements[j].getAttribute(ATTR_GRAMMAR);
 				if (_grammarName != null && _grammarName.equals(grammarName)) {
 					try {
-						delegates.add((IGeneratorDelegate) elements[j]
-								.createExecutableExtension(ATTR_INFERRERHOOK));
+						IGeneratorDelegate delegate = (IGeneratorDelegate) elements[j]
+								.createExecutableExtension(ATTR_INFERRERHOOK);
+						injector.injectMembers(delegate);
+						delegates.add(delegate);
 					} catch (CoreException e) {
 						LOGGER.error("{}", e);
 					}
@@ -88,4 +106,5 @@ public class ExtensionsGeneratorDelegate implements IGeneratorDelegate {
 		}
 		return delegates;
 	}
+
 }
