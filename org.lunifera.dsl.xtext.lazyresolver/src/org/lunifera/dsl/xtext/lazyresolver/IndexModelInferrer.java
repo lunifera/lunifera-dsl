@@ -69,15 +69,16 @@ public class IndexModelInferrer extends AbstractModelInferrer {
 			final/* @NonNull */IJvmDeclaredTypeAcceptor acceptor,
 			boolean preIndexingPhase) {
 
-		// pass inferring to delegates first
-		inferTypesOnlyByDelegates(e, acceptor, preIndexingPhase);
-
 		// then iterate the contents
 		_inferTypesOnly(e, acceptor, preIndexingPhase);
 	}
 
 	public void _inferTypesOnly(EObject e, IJvmDeclaredTypeAcceptor acceptor,
 			boolean preIndexingPhase) {
+		
+		// pass inferring to delegates first
+		inferTypesOnlyByDelegates(e, acceptor, preIndexingPhase);
+		
 		for (EObject child : e.eContents()) {
 			inferTypesOnly(child, acceptor, preIndexingPhase);
 		}
