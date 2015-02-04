@@ -29,15 +29,36 @@ class ComponentGenerator {
 		       <service>
 				<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
 			   </service>
-				«FOR temp : dto.withParent»
-				<property name="dto" type="String" value="«temp.fullyQualifiedName.toString»"/>
-				«ENDFOR»
+			    «val temps = dto.withParent»
+				«IF temps.length > 1»
+				<property name="dto" type="String">«temps.toOrString»
+				</property>
+				«ELSE»
+					<property name="dto" type="String" value="«dto.fullyQualifiedName.toString»"/>
+				«ENDIF»
+				
 		       <property name="entity" type="String" value="«dto.wrappedType.fullyQualifiedName.toString»"/>
 		       <property name="service.pid" type="String" value="«dto.toFqnMapperName.toLowerCase»"/>
 		       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
 		       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
 		</scr:component>
 	'''
+	
+	/**
+	 * Properties will be returned as a String that OSGi will interpret as a list.
+	 */
+	def String toOrString(List<LDto> dtos){
+		val StringBuilder b = new StringBuilder
+		
+		dtos.forEach[
+			if(b.length > 0){
+				b.append("\n")
+			}
+			b.append(fullyQualifiedName.toString)
+		]
+		
+		return b.toString
+	}
 	
 	def List<LDto> getWithParent(LDto dto) {
 		val result = newArrayList()
