@@ -10,8 +10,6 @@
  */
 package org.lunifera.dsl.common.xtext.jvmmodel
 
-import static com.google.common.collect.Iterables.*;
-
 import com.google.inject.Inject
 import java.beans.PropertyChangeListener
 import java.beans.PropertyChangeSupport
@@ -41,13 +39,26 @@ import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LOperation
 import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.xtext.lazyresolver.api.IIndexModelAssociator
 import org.lunifera.runtime.common.annotations.DomainDescription
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+import static com.google.common.collect.Iterables.*
+
+import static extension org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder.*
 
 class CommonTypesBuilder extends JvmTypesBuilder {
+
+	final static Logger LOGGER = LoggerFactory.getLogger(typeof(CommonTypesBuilder));
+
 	@Inject extension IQualifiedNameProvider
 	@Inject extension ModelExtensions
 	@Inject extension NamingExtensions
 	@Inject extension TreeAppendableExtensions
+
+	@Inject(optional=true)
+	IIndexModelAssociator associator;
 
 	@Inject AnnotationCompiler annotationCompiler
 	@Inject TypesFactory typesFactory;
@@ -103,8 +114,7 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 
 		associate(sourceElement, op)
 	}
-	
-	
+
 	def JvmOperation toIsCopy(LClass sourceElement) {
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
@@ -225,12 +235,12 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 			}
 
 			// set the domain description annotation
-			if(prop.domainDescription){
-				op.annotations +=  prop.toAnnotation(typeof(DomainDescription))
+			if (prop.domainDescription) {
+				op.annotations += prop.toAnnotation(typeof(DomainDescription))
 			}
 
 			setBody(op, prop.derivedGetterExpression)
-			
+
 		} else {
 			op.documentation = if (prop.toMany) {
 				"Returns an unmodifiable list of " + propertyName + "."
@@ -423,111 +433,135 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 
 		associate(lClass, type)
 	}
-	
-	override /* @Nullable */ JvmOperation toHashCodeMethod(/* @Nullable */  EObject sourceElement,  boolean extendsSomethingWithProperHashCode, /* @Nullable */  JvmDeclaredType declaredType) {
+
+	override /* @Nullable */ JvmOperation toHashCodeMethod(/* @Nullable */EObject sourceElement,
+		boolean extendsSomethingWithProperHashCode, /* @Nullable */ JvmDeclaredType declaredType) {
 		if (sourceElement == null || declaredType == null)
 			return null;
-		return toHashCodeMethod(sourceElement, extendsSomethingWithProperHashCode, toArray(filter(declaredType.getMembers(), typeof(JvmField)), typeof(JvmField)));
+		return toHashCodeMethod(sourceElement, extendsSomethingWithProperHashCode,
+			toArray(filter(declaredType.getMembers(), typeof(JvmField)), typeof(JvmField)));
 	}
-	
-	override /* @Nullable */ JvmOperation toHashCodeMethod(/* @Nullable */  EObject sourceElement,  boolean extendsSomethingWithProperHashCode,  JvmField ...jvmFields) {
+
+	override /* @Nullable */ JvmOperation toHashCodeMethod(/* @Nullable */EObject sourceElement,
+		boolean extendsSomethingWithProperHashCode, JvmField ... jvmFields) {
 		if (sourceElement == null)
 			return null;
-		val JvmOperation result = toMethod(sourceElement, "hashCode", this.references.getTypeForName(Integer.TYPE, sourceElement), null);
+		val JvmOperation result = toMethod(sourceElement, "hashCode",
+			this.references.getTypeForName(Integer.TYPE, sourceElement), null);
 		if (result == null)
 			return null;
 		result.getAnnotations().add(toAnnotation(sourceElement, typeof(Override)));
-		setBody(result, new Procedure1<ITreeAppendable>() {
-			override void apply(/* @Nullable */ ITreeAppendable p) {
-				if (p == null)
-					return;
-				p.append(" int prime = 31;");
-				if (extendsSomethingWithProperHashCode) {
-					p.newLine().append("int result = super.hashCode();");
-				} else{
-					p.newLine().append("int result = 1;");
-				}
-				for (JvmField field : jvmFields) {
-					val String typeName = field.getType().getIdentifier();
-					if (Boolean.TYPE.getName().equals(typeName)) {
-						p.newLine().append("result = prime * result + (this." + field.getSimpleName() +" ? 1231 : 1237);");
-					} else if (Integer.TYPE.getName().equals(typeName)
-							|| Character.TYPE.getName().equals(typeName)
-							|| Byte.TYPE.getName().equals(typeName)
-							|| Short.TYPE.getName().equals(typeName)) {
-						p.newLine().append("result = prime * result + this." + field.getSimpleName() +";");
-					} else if (Long.TYPE.getName().equals(typeName)) {
-						p.newLine().append("result = prime * result + (int) (this." + field.getSimpleName() +" ^ (this." + field.getSimpleName() + " >>> 32));");
-					} else if (Float.TYPE.getName().equals(typeName)) {
-						p.newLine().append("result = prime * result + Float.floatToIntBits(this." + field.getSimpleName() +");");
-					} else if (Double.TYPE.getName().equals(typeName)) {
-						p.newLine().append("result = prime * result + (int) (Double.doubleToLongBits(this." + field.getSimpleName() +") ^ (Double.doubleToLongBits(this." + field.getSimpleName() + ") >>> 32));");
+		setBody(result,
+			new Procedure1<ITreeAppendable>() {
+				override void apply(/* @Nullable */ITreeAppendable p) {
+					if (p == null)
+						return;
+					p.append(" int prime = 31;");
+					if (extendsSomethingWithProperHashCode) {
+						p.newLine().append("int result = super.hashCode();");
 					} else {
-						p.newLine().append("result = prime * result + ((this." + field.getSimpleName() +"== null) ? 0 : this."+field.getSimpleName()+".hashCode());");
+						p.newLine().append("int result = 1;");
 					}
+					for (JvmField field : jvmFields) {
+						val String typeName = field.getType().getIdentifier();
+						if (Boolean.TYPE.getName().equals(typeName)) {
+							p.newLine().append(
+								"result = prime * result + (this." + field.getSimpleName() + " ? 1231 : 1237);");
+						} else if (Integer.TYPE.getName().equals(typeName) || Character.TYPE.getName().equals(typeName) ||
+							Byte.TYPE.getName().equals(typeName) || Short.TYPE.getName().equals(typeName)) {
+							p.newLine().append("result = prime * result + this." + field.getSimpleName() + ";");
+						} else if (Long.TYPE.getName().equals(typeName)) {
+							p.newLine().append(
+								"result = prime * result + (int) (this." + field.getSimpleName() + " ^ (this." +
+									field.getSimpleName() + " >>> 32));");
+						} else if (Float.TYPE.getName().equals(typeName)) {
+							p.newLine().append(
+								"result = prime * result + Float.floatToIntBits(this." + field.getSimpleName() + ");");
+						} else if (Double.TYPE.getName().equals(typeName)) {
+							p.newLine().append(
+								"result = prime * result + (int) (Double.doubleToLongBits(this." + field.getSimpleName() +
+									") ^ (Double.doubleToLongBits(this." + field.getSimpleName() + ") >>> 32));");
+						} else {
+							p.newLine().append(
+								"result = prime * result + ((this." + field.getSimpleName() + "== null) ? 0 : this." +
+									field.getSimpleName() + ".hashCode());");
+						}
+					}
+					p.newLine().append("return result;");
 				}
-				p.newLine().append("return result;");
-			}
-		});
+			});
 		return result;
 	}
-	
-	override /* @Nullable */ JvmOperation toEqualsMethod(/* @Nullable */  EObject sourceElement, /* @Nullable */  JvmDeclaredType declaredType,  boolean isDelegateToSuperEquals) {
+
+	override /* @Nullable */ JvmOperation toEqualsMethod(/* @Nullable */EObject sourceElement, /* @Nullable */
+		JvmDeclaredType declaredType, boolean isDelegateToSuperEquals) {
 		if (sourceElement == null || declaredType == null)
 			return null;
-		return toEqualsMethod(sourceElement, declaredType, isDelegateToSuperEquals, toArray(filter(declaredType.getMembers(), typeof(JvmField)), typeof(JvmField)));
+		return toEqualsMethod(sourceElement, declaredType, isDelegateToSuperEquals,
+			toArray(filter(declaredType.getMembers(), typeof(JvmField)), typeof(JvmField)));
 	}
-	
+
 	/**
 	 * @deprecated build your own :-)
 	 */
-	override /* @Nullable */ JvmOperation toEqualsMethod(/* @Nullable */  EObject sourceElement, /* @Nullable */  JvmDeclaredType declaredType,  boolean isDelegateToSuperEquals,  JvmField ...jvmFields) {
+	override /* @Nullable */ JvmOperation toEqualsMethod(/* @Nullable */EObject sourceElement, /* @Nullable */
+		JvmDeclaredType declaredType, boolean isDelegateToSuperEquals, JvmField ... jvmFields) {
 		if (sourceElement == null || declaredType == null)
 			return null;
-		val JvmOperation result = toMethod(sourceElement, "equals", references.getTypeForName(Boolean.TYPE, sourceElement), null);
+		val JvmOperation result = toMethod(sourceElement, "equals",
+			references.getTypeForName(Boolean.TYPE, sourceElement), null);
 		if (result == null)
 			return null;
 		result.getAnnotations().add(toAnnotation(sourceElement, typeof(Override)));
-		result.getParameters().add( toParameter(sourceElement, "obj", references.getTypeForName(typeof(Object), sourceElement)));
-		setBody(result, new Procedure1<ITreeAppendable>() {
-				override void apply(/* @Nullable */ ITreeAppendable p) {
+		result.getParameters().add(
+			toParameter(sourceElement, "obj", references.getTypeForName(typeof(Object), sourceElement)));
+		setBody(result,
+			new Procedure1<ITreeAppendable>() {
+				override void apply(/* @Nullable */ITreeAppendable p) {
 					if (p == null)
 						return;
 					p.append("if (this == obj)").increaseIndentation();
-						p.newLine().append("return true;").decreaseIndentation();
+					p.newLine().append("return true;").decreaseIndentation();
 					p.newLine().append("if (obj == null)").increaseIndentation();
-						p.newLine().append("return false;").decreaseIndentation();
+					p.newLine().append("return false;").decreaseIndentation();
 					p.newLine().append("if (getClass() != obj.getClass())").increaseIndentation();
-						p.newLine().append("return false;").decreaseIndentation();
+					p.newLine().append("return false;").decreaseIndentation();
 					if (isDelegateToSuperEquals) {
 						p.newLine().append("if (!super.equals(obj))").increaseIndentation();
-							p.newLine().append("return false;").decreaseIndentation();
+						p.newLine().append("return false;").decreaseIndentation();
 					}
-					p.newLine().append(declaredType.getSimpleName()+" other = (" + declaredType.getSimpleName() + ") obj;");
+					p.newLine().append(
+						declaredType.getSimpleName() + " other = (" + declaredType.getSimpleName() + ") obj;");
 					for (JvmField field : jvmFields) {
 						val String typeName = field.getType().getIdentifier();
-						if (Boolean.TYPE.getName().equals(typeName) 
-								|| Integer.TYPE.getName().equals(typeName)
-								|| Long.TYPE.getName().equals(typeName)
-								|| Character.TYPE.getName().equals(typeName)
-								|| Byte.TYPE.getName().equals(typeName)
-								|| Short.TYPE.getName().equals(typeName)) {
-							p.newLine().append("if (other." + field.getSimpleName() +" != this." + field.getSimpleName() + ")").increaseIndentation();
-								p.newLine().append("return false;").decreaseIndentation();
-							
+						if (Boolean.TYPE.getName().equals(typeName) || Integer.TYPE.getName().equals(typeName) ||
+							Long.TYPE.getName().equals(typeName) || Character.TYPE.getName().equals(typeName) ||
+							Byte.TYPE.getName().equals(typeName) || Short.TYPE.getName().equals(typeName)) {
+							p.newLine().append(
+								"if (other." + field.getSimpleName() + " != this." + field.getSimpleName() + ")").
+								increaseIndentation();
+							p.newLine().append("return false;").decreaseIndentation();
+
 						} else if (Double.TYPE.getName().equals(typeName)) {
-							p.newLine().append("if (Double.doubleToLongBits(other." + field.getSimpleName() +") != Double.doubleToLongBits(this." + field.getSimpleName() + "))").increaseIndentation();
+							p.newLine().append(
+								"if (Double.doubleToLongBits(other." + field.getSimpleName() +
+									") != Double.doubleToLongBits(this." + field.getSimpleName() + "))").increaseIndentation();
 							p.newLine().append("return false;").decreaseIndentation();
 						} else if (Float.TYPE.getName().equals(typeName)) {
-							p.newLine().append("if (Float.floatToIntBits(other." + field.getSimpleName() +") != Float.floatToIntBits(this." + field.getSimpleName() + "))").increaseIndentation();
+							p.newLine().append(
+								"if (Float.floatToIntBits(other." + field.getSimpleName() +
+									") != Float.floatToIntBits(this." + field.getSimpleName() + "))").increaseIndentation();
 							p.newLine().append("return false;").decreaseIndentation();
 						} else {
-							p.newLine().append("if (this." + field.getSimpleName() +" == null) {").increaseIndentation();
-								p.newLine().append("if (other." + field.getSimpleName() +" != null)").increaseIndentation();
-									p.newLine().append("return false;").decreaseIndentation();
-								p.decreaseIndentation();
-							p.newLine().append("} else if (!this."+ field.getSimpleName() +".equals(other."+ field.getSimpleName() +"))").increaseIndentation();
-								p.newLine().append("return false;").decreaseIndentation();
+							p.newLine().append("if (this." + field.getSimpleName() + " == null) {").
+								increaseIndentation();
+							p.newLine().append("if (other." + field.getSimpleName() + " != null)").increaseIndentation();
+							p.newLine().append("return false;").decreaseIndentation();
+							p.decreaseIndentation();
+							p.newLine().append(
+								"} else if (!this." + field.getSimpleName() + ".equals(other." + field.getSimpleName() +
+									"))").increaseIndentation();
+							p.newLine().append("return false;").decreaseIndentation();
 						}
 					}
 					p.newLine().append("return true;");
@@ -535,5 +569,23 @@ class CommonTypesBuilder extends JvmTypesBuilder {
 			});
 		return result;
 	}
-	
+
+	def void associateBySelector(EObject sourceElement, JvmGenericType jvmElement, String selector) {
+		if (associator != null) {
+			associator.associateBySelector(sourceElement, jvmElement, selector)
+		} else {
+			LOGGER.error("Associator is null!")
+		}
+	}
+
+	def JvmGenericType getBySelector(EObject sourceElement, String selector) {
+		if (associator != null) {
+			return associator.getBySelector(sourceElement, selector)
+		}
+
+		LOGGER.error("Associator is null!")
+
+		return null
+	}
+
 }

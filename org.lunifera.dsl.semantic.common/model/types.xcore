@@ -184,6 +184,7 @@ interface LAttribute extends LFeature {
 	boolean domainDescription
 	contains XExpression derivedGetterExpression
 	refers LScalarType ^type
+	contains transient JvmTypeReference typeJvm
 }
 
 class LOperation extends LAnnotationTarget {

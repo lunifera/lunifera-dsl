@@ -42,12 +42,14 @@ final public class EntityClasspathContainer implements IClasspathContainer {
 	private static final String RUNTIME_COMMON_BUNDLE_ID = "org.lunifera.runtime.common";
 	private static final String ECVIEW_COMMON_BUNDLE_ID = "org.lunifera.ecview.core.common";
 	private static final String OSGI_SERVICES_BUNDLE_ID = "org.eclipse.osgi.services";
+	private static final String OSGI_BUNDLE_ID = "org.eclipse.osgi";
+	private static final String SLF4J_API = "org.slf4j.api";
 
 	public static final String[] BUNDLE_IDS_TO_INCLUDE = new String[] {
 			"com.google.guava", XTEXT_XBASE_LIB_BUNDLE_ID, XTEND_LIB_BUNDLE_ID,
-			PERSISTENCE_BUNDLE_ID, OSGI_SERVICES_BUNDLE_ID,
+			PERSISTENCE_BUNDLE_ID, OSGI_BUNDLE_ID, OSGI_SERVICES_BUNDLE_ID,
 			DATATYPES_BUNDLE_ID, DTO_BUNDLE_ID, ECVIEW_COMMON_BUNDLE_ID,
-			UI_GRAMMAR_BUNDLE_ID, RUNTIME_COMMON_BUNDLE_ID };
+			UI_GRAMMAR_BUNDLE_ID, RUNTIME_COMMON_BUNDLE_ID, SLF4J_API };
 
 	private static final String SOURCE_SUFIX = ".source"; //$NON-NLS-1$
 	private static final Logger LOG = LoggerFactory

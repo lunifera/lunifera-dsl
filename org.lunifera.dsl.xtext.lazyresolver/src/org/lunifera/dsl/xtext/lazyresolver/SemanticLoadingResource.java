@@ -19,13 +19,21 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
+import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider.ILinkingDiagnosticContext;
+import org.eclipse.xtext.linking.impl.LinkingHelper;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IDerivedStateComputer;
 import org.eclipse.xtext.resource.SaveOptions;
+import org.eclipse.xtext.util.Triple;
 import org.eclipse.xtext.xbase.resource.BatchLinkableResource;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper.IJvmLinkCrossRefStringEnhancer;
 import org.lunifera.dsl.xtext.lazyresolver.api.DerivedRootAdapter;
 import org.lunifera.dsl.xtext.lazyresolver.api.IIndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.api.ISemanticLoadingResource;
@@ -43,7 +51,7 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 			.getLogger(SemanticLoadingResource.class);
 
 	@Inject
-	private LazyJvmTypeLinkingHelper linkingHelper;
+	private LazyJvmTypeLinkingHelper jvmProxyLinkingHelper;
 
 	@Inject
 	private IDerivedStateComputer derivedStateComputer;
@@ -81,7 +89,7 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 	protected boolean isJvmHelperLink(InternalEObject source,
 			EStructuralFeature crossRef) {
 		EStructuralFeature containingFeature = source.eContainingFeature();
-		return linkingHelper.isJvmLink(containingFeature);
+		return jvmProxyLinkingHelper.isJvmLink(containingFeature);
 	}
 
 	public void installDerivedState(boolean preIndexingPhase) {
@@ -175,6 +183,12 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 		return contents;
 	}
 
+	protected ILinkingDiagnosticContext createDiagnosticMessageContext(
+			Triple<EObject, EReference, INode> triple) {
+		return new JvmLinkAwareDiagnosticMessageContext(triple,
+				getLinkingHelper(), jvmProxyLinkingHelper);
+	}
+
 	@SuppressWarnings("serial")
 	protected class ContentsList<E extends Object & EObject> extends
 			ResourceImpl.ContentsEList<E> {
@@ -186,24 +200,53 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 			if (!initializing && fullyInitialized && index > 0) {
 				try {
 					initializing = true;
-					if (isUnDerived(index)) {
+					EObject context = super.get(index);
+					if (isUnDerived(context)) {
 						TimeLogger logger = TimeLogger.start(getClass());
 						IndexDerivedStateComputer computer = (IndexDerivedStateComputer) derivedStateComputer;
 						computer.installDerivedState(
-								SemanticLoadingResource.this, index, false);
+								SemanticLoadingResource.this,
+								(JvmDeclaredType) context, false);
 						logger.stop(LOGGER, "Inferring index " + index
 								+ " for resource " + getURI() + " took");
 					}
 				} finally {
 					initializing = false;
 				}
+			} else if (initializing && fullyInitialized && index > 0) {
+				if (isDerivedStateChainAllowed()) {
+					EObject context = super.get(index);
+					if (isUnDerived(context)) {
+						TimeLogger logger = TimeLogger.start(getClass());
+						IndexDerivedStateComputer computer = (IndexDerivedStateComputer) derivedStateComputer;
+						computer.installDerivedState(
+								SemanticLoadingResource.this,
+								(JvmDeclaredType) context, false);
+						logger.stop(LOGGER, "Inferring index " + index
+								+ " for resource " + getURI() + " took");
+					}
+				} else {
+					LOGGER.error(String
+							.format("Index %s should be inferred. But another inferring is already active. Ensure you use the xyzJvm proxies in jvmInferrer. See LazyJvmTypeLinkingHelper. To allow this issue, pass -D%s in vm-arguments.",
+									Integer.toString(index),
+									SYS_PROPERTY__DERIVED_STATE_CHAIN_ALLOWED));
+					throw new IllegalStateException(
+							String.format(
+									"Index %s should be inferred. But another inferring is already active. Ensure you use the xyzJvm proxies in jvmInferrer. See LazyJvmTypeLinkingHelper. To allow this issue, pass -D%s in vm-arguments.",
+									Integer.toString(index),
+									SYS_PROPERTY__DERIVED_STATE_CHAIN_ALLOWED));
+				}
 			}
 			return super.get(index);
 		}
 
-		private boolean isUnDerived(int index) {
-			EObject eObject = get(index);
-			return EcoreUtil.getAdapter(eObject.eAdapters(),
+		private boolean isDerivedStateChainAllowed() {
+			return System
+					.getProperty(SYS_PROPERTY__DERIVED_STATE_CHAIN_ALLOWED) != null;
+		}
+
+		private boolean isUnDerived(EObject context) {
+			return EcoreUtil.getAdapter(context.eAdapters(),
 					DerivedRootAdapter.class) != null;
 		}
 
@@ -220,6 +263,52 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 		@Override
 		public ListIterator<E> listIterator(int index) {
 			return super.listIterator(index);
+		}
+	}
+
+	protected static class JvmLinkAwareDiagnosticMessageContext implements
+			ILinkingDiagnosticMessageProvider.ILinkingDiagnosticContext {
+
+		private final Triple<EObject, EReference, INode> triple;
+		private final String linkText;
+
+		protected JvmLinkAwareDiagnosticMessageContext(
+				Triple<EObject, EReference, INode> triple,
+				LinkingHelper linkingHelper,
+				LazyJvmTypeLinkingHelper crossRefStringHelper) {
+			this.triple = triple;
+			this.linkText = getCrossRefString(triple, linkingHelper,
+					crossRefStringHelper);
+		}
+
+		private String getCrossRefString(
+				Triple<EObject, EReference, INode> triple,
+				LinkingHelper linkingHelper,
+				LazyJvmTypeLinkingHelper crossRefStringHelper) {
+			String result = linkingHelper.getCrossRefNodeAsString(
+					triple.getThird(), true);
+
+			EStructuralFeature containingFeature = triple.getFirst()
+					.eContainingFeature();
+			IJvmLinkCrossRefStringEnhancer enhancer = crossRefStringHelper
+					.getEnhancer(containingFeature);
+			if (enhancer != null) {
+				result = enhancer.enhance(result);
+			}
+
+			return result;
+		}
+
+		public EObject getContext() {
+			return triple.getFirst();
+		}
+
+		public EReference getReference() {
+			return triple.getSecond();
+		}
+
+		public String getLinkText() {
+			return linkText;
 		}
 
 	}

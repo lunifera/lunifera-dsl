@@ -1120,13 +1120,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_ATTRIBUTE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE__TYPE_JVM = LENTITY_FEATURE_FEATURE_COUNT + 11;
+
+	/**
 	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 11;
+	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Attribute</em>' class.
@@ -1135,7 +1144,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 12;
+	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1555,13 +1564,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_ATTRIBUTE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_ATTRIBUTE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 11;
+
+	/**
 	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE__TYPED_NAME = LBEAN_FEATURE_FEATURE_COUNT + 11;
+	int LBEAN_ATTRIBUTE__TYPED_NAME = LBEAN_FEATURE_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>LBean Attribute</em>' class.
@@ -1570,7 +1588,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 12;
+	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.

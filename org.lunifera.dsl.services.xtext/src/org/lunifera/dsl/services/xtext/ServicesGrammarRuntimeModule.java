@@ -8,6 +8,8 @@ import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
@@ -25,6 +27,7 @@ import org.lunifera.dsl.xtext.lazyresolver.IndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
+import org.lunifera.dsl.xtext.lazyresolver.api.IIndexModelAssociator;
 import org.lunifera.dsl.xtext.lazyresolver.linker.FastLinkingService;
 
 import com.google.inject.Binder;
@@ -114,8 +117,20 @@ public class ServicesGrammarRuntimeModule extends
 	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
 		return IndexDerivedStateComputer.class;
 	}
-	
+
 	public Class<? extends ILinkingService> bindILinkingService() {
 		return FastLinkingService.class;
+	}
+
+	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
+		return IndexDerivedStateComputer.class;
+	}
+
+	public Class<? extends IIndexModelAssociator> bindIIndexModelAssociator() {
+		return IndexDerivedStateComputer.class;
+	}
+
+	public Class<? extends IJvmModelAssociations> bindIJvmModelAssociations() {
+		return IndexDerivedStateComputer.class;
 	}
 }

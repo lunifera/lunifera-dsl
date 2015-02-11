@@ -19,6 +19,12 @@ import org.eclipse.emf.ecore.EObject;
 public interface ISemanticLoadingResource {
 
 	/**
+	 * Enables the feature, that installing the derived state in an inferrer may
+	 * install another derived state for a referenced semantic element.
+	 */
+	public static final String SYS_PROPERTY__DERIVED_STATE_CHAIN_ALLOWED = "org.lunifera.dsl.xtext.lazyresolver.DerivedStateChainAllowed";
+
+	/**
 	 * Returns the semantic element for the given fragment without installing
 	 * the derived state.
 	 * 
@@ -26,10 +32,10 @@ public interface ISemanticLoadingResource {
 	 * @return
 	 */
 	EObject getSemanticElement(String fragment);
-	
+
 	/**
-	 * Returns the root semantic element for the given fragment without installing
-	 * the derived state.
+	 * Returns the root semantic element for the given fragment without
+	 * installing the derived state.
 	 * 
 	 * @param fragment
 	 * @return

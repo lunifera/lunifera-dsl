@@ -23,6 +23,7 @@ import org.lunifera.dsl.xtext.lazyresolver.IndexModelInferrer
 import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.lunifera.dsl.dto.lib.services.impl.AbstractDTOServiceWithMutablePersistence
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -73,13 +74,17 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 			
 			val TimeLogger doInferLog = TimeLogger.start(getClass());
 			
-			
 			type.markAsDerived
 			fileHeader = (service.eContainer as LTypedPackage).documentation
 			documentation = service.getDocumentation
 			if (service.dto.basedOnEntity) {
-				superTypes += references.getTypeForName(typeof(AbstractDTOService), service, service.dto.toTypeReference,
+				if(service.mutablePersistenceId){
+					superTypes += references.getTypeForName(typeof(AbstractDTOServiceWithMutablePersistence), service, service.dto.toTypeReference,
+					service.dto.wrappedEntity.toTypeReference)					
+				}else{
+					superTypes += references.getTypeForName(typeof(AbstractDTOService), service, service.dto.toTypeReference,
 					service.dto.wrappedEntity.toTypeReference)
+				}
 
 				// Constructor
 				members += service.toConstructor()[]

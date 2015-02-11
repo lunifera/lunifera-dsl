@@ -224,6 +224,13 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		this.emf = null;
 	}
 
+	/**
+	 * @return the emf
+	 */
+	protected EntityManagerFactory getEmf() {
+		return emf;
+	}
+
 	@Override
 	public int size(IQuery query) {
 		javax.persistence.EntityManager em = emf.createEntityManager();

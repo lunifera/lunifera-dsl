@@ -42,6 +42,9 @@ import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.runtime.common.annotations.DomainDescription
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
 import org.lunifera.dsl.dto.lib.Context
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 
 class DtoTypesBuilder extends CommonTypesBuilder {
 
@@ -828,7 +831,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, dto)
 		op.simpleName = "mapToDTO"
-		op.parameters += dto.toParameter("dto", dto.toTypeReference)
+		op.parameters += dto.toParameter("dto", dto.findDtoTypeReference)
 		op.parameters += dto.toParameter("entity", dto.wrappedTypeJvm?.cloneWithProxies)
 		op.parameters += dto.toParameter("context", references.getTypeForName(typeof(Context), dto))
 		op.documentation = '''
@@ -871,7 +874,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, dto)
 		op.simpleName = "mapToEntity"
-		op.parameters += dto.toParameter("dto", dto.toTypeReference)
+		op.parameters += dto.toParameter("dto", dto.findDtoTypeReference)
 		op.parameters += dto.toParameter("entity", dto.wrappedTypeJvm?.cloneWithProxies)
 		op.parameters += dto.toParameter("context", references.getTypeForName(typeof(Context), dto))
 		op.documentation = '''
@@ -1120,9 +1123,17 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			}
 		]
 	}
+	
+	def JvmGenericType findJvmType(LDto lDto){
+		return (associator as IJvmModelAssociations).getPrimaryJvmElement(lDto) as JvmGenericType
+	}
 
 	def dispatch JvmOperation toMapToEntityProperty(LDtoAbstractAttribute prop) {
 		val LDto dto = prop.eContainer as LDto
+		
+		// TODO change all stuff like this
+		val JvmGenericType dtoJvmType =	dto.findJvmType
+		
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PROTECTED
 		op.returnType = prop.toRawTypeReferenceWithMultiplicity
@@ -1131,7 +1142,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		associate(prop, op);
 
 		initializeSafely(op) [
-			parameters += prop.toParameter("in", dto.toTypeReference)
+			// TODO find typeref in sames resource!
+			parameters += prop.toParameter("in", dtoJvmType.newTypeRef(null))
 			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to dto property.
@@ -1201,7 +1213,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		associate(prop, op);
 
 		initializeSafely(op) [
-			parameters += prop.toParameter("in", dto.toTypeReference)
+			parameters += prop.toParameter("in", dto.findDtoTypeReference)
 			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given dto to the entity.
@@ -1252,5 +1264,29 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				}
 			}
 		]
+	}
+	
+	def findDtoTypeReference(LDto dto){
+		return getBySelector(dto, "dto").newTypeRef(null)
+	}
+	
+	def findDtoMapperTypeReference(LDto dto){
+		return getBySelector(dto, "mapper").newTypeRef(null)
+	}
+
+	def findSuperDtoMapperType(LDto dto, JvmTypeReference dtoType, JvmTypeReference entityType){
+		var type = getBySelector(dto.superType, "mapper")
+		if(type == null) {
+			val JvmParameterizedTypeReference ref = dto.superTypeMapperJvm.cloneWithProxies as JvmParameterizedTypeReference
+			ref.arguments += dtoType
+			ref.arguments += entityType
+			return ref
+		}else{
+			val JvmParameterizedTypeReference ref =  type.newTypeRef(null) as JvmParameterizedTypeReference
+			ref.arguments.clear
+			ref.arguments += dtoType
+			ref.arguments += entityType
+			return ref
+		}
 	}
 }

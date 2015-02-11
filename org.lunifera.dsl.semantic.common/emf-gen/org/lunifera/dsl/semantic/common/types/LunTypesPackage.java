@@ -1332,13 +1332,22 @@ public interface LunTypesPackage extends EPackage {
 	int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE__TYPE_JVM = LFEATURE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>LAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 11;
+	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 12;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -2340,6 +2349,17 @@ public interface LunTypesPackage extends EPackage {
 	EReference getLAttribute_Type();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getTypeJvm <em>Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#getTypeJvm()
+	 * @see #getLAttribute()
+	 * @generated
+	 */
+	EReference getLAttribute_TypeJvm();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LOperation <em>LOperation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3141,6 +3161,14 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LATTRIBUTE__TYPE = eINSTANCE.getLAttribute_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LATTRIBUTE__TYPE_JVM = eINSTANCE.getLAttribute_TypeJvm();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LOperationImpl <em>LOperation</em>}' class.

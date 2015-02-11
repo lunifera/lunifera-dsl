@@ -302,7 +302,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLDto_SubTypes() {
+	public EReference getLDto_SuperTypeMapperJvm() {
 		return (EReference)lDtoEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -311,7 +311,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLDto_WrappedType() {
+	public EReference getLDto_SubTypes() {
 		return (EReference)lDtoEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -320,8 +320,17 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLDto_WrappedTypeJvm() {
+	public EReference getLDto_WrappedType() {
 		return (EReference)lDtoEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDto_WrappedTypeJvm() {
+		return (EReference)lDtoEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -575,6 +584,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 		createEReference(lDtoEClass, LDTO__FEATURES);
 		createEReference(lDtoEClass, LDTO__SUPER_TYPE);
 		createEReference(lDtoEClass, LDTO__SUPER_TYPE_JVM);
+		createEReference(lDtoEClass, LDTO__SUPER_TYPE_MAPPER_JVM);
 		createEReference(lDtoEClass, LDTO__SUB_TYPES);
 		createEReference(lDtoEClass, LDTO__WRAPPED_TYPE);
 		createEReference(lDtoEClass, LDTO__WRAPPED_TYPE_JVM);
@@ -678,6 +688,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 		initEReference(getLDto_Features(), this.getLDtoFeature(), null, "features", null, 0, -1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDto_SuperType(), this.getLDto(), this.getLDto_SubTypes(), "superType", null, 0, 1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDto_SuperTypeJvm(), theTypesPackage.getJvmTypeReference(), null, "superTypeJvm", null, 0, 1, LDto.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDto_SuperTypeMapperJvm(), theTypesPackage.getJvmTypeReference(), null, "superTypeMapperJvm", null, 0, 1, LDto.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDto_SubTypes(), this.getLDto(), this.getLDto_SuperType(), "subTypes", null, 0, -1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDto_WrappedType(), theLunTypesPackage.getLType(), null, "wrappedType", null, 0, 1, LDto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDto_WrappedTypeJvm(), theTypesPackage.getJvmTypeReference(), null, "wrappedTypeJvm", null, 0, 1, LDto.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

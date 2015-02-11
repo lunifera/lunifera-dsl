@@ -28,7 +28,7 @@
 '0'=76
 '1'=78
 ':'=105
-'::'=124
+'::'=125
 ';'=85
 '<'=42
 '<>'=47
@@ -39,13 +39,13 @@
 '>'=41
 '>='=40
 '?'=77
-'?.'=125
+'?.'=126
 '?:'=48
 '@'=95
 '['=99
 ']'=97
-'as blob'=123
-'as primitive'=121
+'as blob'=124
+'as primitive'=122
 'as'=101
 'cachable'=16
 'cascade'=29
@@ -54,7 +54,7 @@
 'collection'=94
 'datatype'=90
 'date'=26
-'dateType'=122
+'dateType'=123
 'def'=86
 'default'=106
 'derived'=93
@@ -77,6 +77,7 @@
 'lazy'=23
 'mandatory'=67
 'mapto'=27
+'mutable'=121
 'new'=111
 'notnull'=24
 'null'=112
@@ -100,7 +101,7 @@
 'time'=70
 'timestamp'=71
 'transient'=19
-'true'=127
+'true'=128
 'try'=116
 'typeof'=113
 'uuid'=18
@@ -110,7 +111,7 @@
 'while'=109
 'zeroToMany'=68
 '{'=81
-'|'=126
+'|'=127
 '||'=14
 '}'=82
 RULE_ANY_OTHER=12
@@ -150,6 +151,7 @@ T__124=124
 T__125=125
 T__126=126
 T__127=127
+T__128=128
 T__13=13
 T__14=14
 T__15=15

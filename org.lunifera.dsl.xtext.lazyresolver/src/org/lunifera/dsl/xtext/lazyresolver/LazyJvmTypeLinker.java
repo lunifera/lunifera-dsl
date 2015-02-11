@@ -19,6 +19,7 @@ import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.linking.XbaseLazyLinker;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper.IJvmTypeRefFinisher;
 
 import com.google.inject.Inject;
 
@@ -52,21 +53,29 @@ public class LazyJvmTypeLinker extends XbaseLazyLinker {
 		}
 
 		if (linkingHelper.needsJvmLinking(eRef)) {
-			EReference jvmLinkReference = linkingHelper.getJvmLinkingReference(eRef);
-			final JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE
-					.createJvmParameterizedTypeReference();
-			if (eRef.isMany()) {
-				((InternalEList<EObject>) obj.eGet(jvmLinkReference, false))
-						.addUnique(typeRef);
-			} else {
-				obj.eSet(jvmLinkReference, typeRef);
+			for (EReference jvmLinkReference : linkingHelper
+					.getJvmLinkingReferences(eRef)) {
+				final JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE
+						.createJvmParameterizedTypeReference();
+				if (eRef.isMany()) {
+					((InternalEList<EObject>) obj.eGet(jvmLinkReference, false))
+							.addUnique(typeRef);
+				} else {
+					obj.eSet(jvmLinkReference, typeRef);
+				}
+
+				final JvmType jvmProxy = (JvmType) createProxy(
+						typeRef,
+						node,
+						TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE);
+				typeRef.setType(jvmProxy);
+
+				IJvmTypeRefFinisher finisher = linkingHelper
+						.getFinisher(jvmLinkReference);
+				if (finisher != null) {
+					finisher.finish(jvmLinkReference, typeRef);
+				}
 			}
-			
-			final JvmType jvmProxy = (JvmType) createProxy(
-					typeRef,
-					node,
-					TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE);
-			typeRef.setType(jvmProxy);
 		}
 	}
 }

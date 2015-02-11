@@ -190,23 +190,38 @@ ruleClass returns [EObject current=null]
     {
     	newLeafNode(otherlv_7, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_7());
     }
-(	otherlv_8='persistenceID' 
+((
+(
+		lv_mutablePersistenceId_8_0=	'mutable' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getClassAccess().getPersistenceIDKeyword_8_0());
+        newLeafNode(lv_mutablePersistenceId_8_0, grammarAccess.getClassAccess().getMutablePersistenceIdMutableKeyword_8_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getClassRule());
+	        }
+       		setWithLastConsumed($current, "mutablePersistenceId", true, "mutable");
+	    }
+
+)
+)?	otherlv_9='persistenceID' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getClassAccess().getPersistenceIDKeyword_8_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getPersistenceIdQualifiedNameParserRuleCall_8_1_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getPersistenceIdQualifiedNameParserRuleCall_8_2_0()); 
 	    }
-		lv_persistenceId_9_0=ruleQualifiedName		{
+		lv_persistenceId_10_0=ruleQualifiedName		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		set(
        			$current, 
        			"persistenceId",
-        		lv_persistenceId_9_0, 
+        		lv_persistenceId_10_0, 
         		"QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -217,14 +232,14 @@ ruleClass returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getClassAccess().getInjectedServicesInjectedServicesParserRuleCall_9_0()); 
 	    }
-		lv_injectedServices_10_0=ruleInjectedServices		{
+		lv_injectedServices_11_0=ruleInjectedServices		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		set(
        			$current, 
        			"injectedServices",
-        		lv_injectedServices_10_0, 
+        		lv_injectedServices_11_0, 
         		"InjectedServices");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -235,22 +250,22 @@ ruleClass returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getClassAccess().getOperationsOperationParserRuleCall_10_0()); 
 	    }
-		lv_operations_11_0=ruleOperation		{
+		lv_operations_12_0=ruleOperation		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		add(
        			$current, 
        			"operations",
-        		lv_operations_11_0, 
+        		lv_operations_12_0, 
         		"Operation");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_12='}' 
+)*	otherlv_13='}' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_11());
+    	newLeafNode(otherlv_13, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_11());
     }
 )
 ;

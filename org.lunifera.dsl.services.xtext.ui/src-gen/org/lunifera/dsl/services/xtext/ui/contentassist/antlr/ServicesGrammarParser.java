@@ -322,7 +322,8 @@ public class ServicesGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassAccess().getAnnotationsAssignment_1(), "rule__Class__AnnotationsAssignment_1");
 					put(grammarAccess.getClassAccess().getNameAssignment_4(), "rule__Class__NameAssignment_4");
 					put(grammarAccess.getClassAccess().getDtoAssignment_6(), "rule__Class__DtoAssignment_6");
-					put(grammarAccess.getClassAccess().getPersistenceIdAssignment_8_1(), "rule__Class__PersistenceIdAssignment_8_1");
+					put(grammarAccess.getClassAccess().getMutablePersistenceIdAssignment_8_0(), "rule__Class__MutablePersistenceIdAssignment_8_0");
+					put(grammarAccess.getClassAccess().getPersistenceIdAssignment_8_2(), "rule__Class__PersistenceIdAssignment_8_2");
 					put(grammarAccess.getClassAccess().getInjectedServicesAssignment_9(), "rule__Class__InjectedServicesAssignment_9");
 					put(grammarAccess.getClassAccess().getOperationsAssignment_10(), "rule__Class__OperationsAssignment_10");
 					put(grammarAccess.getInjectedServicesAccess().getServicesAssignment_1(), "rule__InjectedServices__ServicesAssignment_1");

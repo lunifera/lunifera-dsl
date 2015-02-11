@@ -44,7 +44,13 @@ ruleValidIDWithKeywords
 
 )
 )	'{' 
-(	'persistenceID' 
+((
+(
+	'mutable' 
+ 
+
+)
+)?	'persistenceID' 
 (
 (
 ruleQualifiedName

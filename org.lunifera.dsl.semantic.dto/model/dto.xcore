@@ -53,6 +53,8 @@ class LDto extends LClass, LFeaturesHolder, LScalarType {
 	contains LDtoFeature[] features
 	refers LDto superType opposite subTypes
 	contains transient JvmTypeReference superTypeJvm
+	// helper proxy for lazy loading the mapper from super type
+	contains transient JvmTypeReference superTypeMapperJvm
 	refers LDto[] subTypes opposite superType
 	refers LType wrappedType
 	contains transient JvmTypeReference wrappedTypeJvm

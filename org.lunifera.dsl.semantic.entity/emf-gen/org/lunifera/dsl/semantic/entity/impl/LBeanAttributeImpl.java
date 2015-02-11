@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.common.types.LAttribute;
@@ -50,6 +52,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getTypedName <em>Typed Name</em>}</li>
  * </ul>
  * </p>
@@ -256,6 +259,16 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 	 * @ordered
 	 */
 	protected LScalarType type;
+
+	/**
+	 * The cached value of the '{@link #getTypeJvm() <em>Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeJvm()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference typeJvm;
 
 	/**
 	 * The default value of the '{@link #getTypedName() <em>Typed Name</em>}' attribute.
@@ -561,6 +574,49 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public JvmTypeReference getTypeJvm() {
+		return typeJvm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTypeJvm(JvmTypeReference newTypeJvm, NotificationChain msgs) {
+		JvmTypeReference oldTypeJvm = typeJvm;
+		typeJvm = newTypeJvm;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM, oldTypeJvm, newTypeJvm);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTypeJvm(JvmTypeReference newTypeJvm) {
+		if (newTypeJvm != typeJvm) {
+			NotificationChain msgs = null;
+			if (typeJvm != null)
+				msgs = ((InternalEObject)typeJvm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM, null, msgs);
+			if (newTypeJvm != null)
+				msgs = ((InternalEObject)newTypeJvm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM, null, msgs);
+			msgs = basicSetTypeJvm(newTypeJvm, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM, newTypeJvm, newTypeJvm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getTypedName() {
 		StringBuilder result = new StringBuilder();
 		String _name = this.getName();
@@ -596,6 +652,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 		switch (featureID) {
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 				return basicSetDerivedGetterExpression(null, msgs);
+			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM:
+				return basicSetTypeJvm(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -631,6 +689,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
+			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM:
+				return getTypeJvm();
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPED_NAME:
 				return getTypedName();
 		}
@@ -678,6 +738,9 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE:
 				setType((LScalarType)newValue);
 				return;
+			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM:
+				setTypeJvm((JvmTypeReference)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -723,6 +786,9 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE:
 				setType((LScalarType)null);
 				return;
+			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM:
+				setTypeJvm((JvmTypeReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -757,6 +823,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				return derivedGetterExpression != null;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE:
 				return type != null;
+			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM:
+				return typeJvm != null;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPED_NAME:
 				return TYPED_NAME_EDEFAULT == null ? getTypedName() != null : !TYPED_NAME_EDEFAULT.equals(getTypedName());
 		}
@@ -783,6 +851,7 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION: return LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
+				case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM: return LunTypesPackage.LATTRIBUTE__TYPE_JVM;
 				default: return -1;
 			}
 		}
@@ -809,6 +878,7 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				case LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION: return LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunTypesPackage.LATTRIBUTE__TYPE: return LunEntityPackage.LBEAN_ATTRIBUTE__TYPE;
+				case LunTypesPackage.LATTRIBUTE__TYPE_JVM: return LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM;
 				default: return -1;
 			}
 		}

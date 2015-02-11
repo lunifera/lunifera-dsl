@@ -75,10 +75,10 @@ public class IndexModelInferrer extends AbstractModelInferrer {
 
 	public void _inferTypesOnly(EObject e, IJvmDeclaredTypeAcceptor acceptor,
 			boolean preIndexingPhase) {
-		
+
 		// pass inferring to delegates first
 		inferTypesOnlyByDelegates(e, acceptor, preIndexingPhase);
-		
+
 		for (EObject child : e.eContents()) {
 			inferTypesOnly(child, acceptor, preIndexingPhase);
 		}
@@ -114,8 +114,8 @@ public class IndexModelInferrer extends AbstractModelInferrer {
 	public void inferFullStateByDelegates(JvmType jvmType,
 			EObject semanticElement, IJvmDeclaredTypeAcceptor acceptor,
 			boolean preIndexingPhase, String selector) {
-		inferrerDelegate.inferFullState((JvmDeclaredType) jvmType, semanticElement, acceptor,
-				preIndexingPhase, selector);
+		inferrerDelegate.inferFullState((JvmDeclaredType) jvmType,
+				semanticElement, acceptor, preIndexingPhase, selector);
 	}
 
 	protected void markAsToBeDerivedLater(JvmDeclaredType type,

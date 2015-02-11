@@ -27,6 +27,7 @@ import org.lunifera.dsl.semantic.dto.LDto;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getDto <em>Dto</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getDtoJvm <em>Dto Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#isMutablePersistenceId <em>Mutable Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getPersistenceId <em>Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getFilterable <em>Filterable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.LDTOService#getSortable <em>Sortable</em>}</li>
@@ -89,6 +90,32 @@ public interface LDTOService extends LService {
 	 * @generated
 	 */
 	void setDtoJvm(JvmTypeReference value);
+
+	/**
+	 * Returns the value of the '<em><b>Mutable Persistence Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mutable Persistence Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mutable Persistence Id</em>' attribute.
+	 * @see #setMutablePersistenceId(boolean)
+	 * @see org.lunifera.dsl.semantic.service.LunServicePackage#getLDTOService_MutablePersistenceId()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isMutablePersistenceId();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.service.LDTOService#isMutablePersistenceId <em>Mutable Persistence Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mutable Persistence Id</em>' attribute.
+	 * @see #isMutablePersistenceId()
+	 * @generated
+	 */
+	void setMutablePersistenceId(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Persistence Id</b></em>' attribute.

@@ -3,10 +3,10 @@
 */
 package org.lunifera.dsl.entity.xtext.parser.antlr;
 
-import com.google.inject.Inject;
-
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.lunifera.dsl.entity.xtext.services.EntityGrammarGrammarAccess;
+
+import com.google.inject.Inject;
 
 public class EntityGrammarParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {
 	

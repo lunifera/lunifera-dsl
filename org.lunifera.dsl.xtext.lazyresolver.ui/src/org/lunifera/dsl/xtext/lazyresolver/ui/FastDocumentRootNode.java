@@ -37,6 +37,9 @@ public class FastDocumentRootNode extends DocumentRootNode {
 		return getDocument().readOnly(new IUnitOfWork<T, XtextResource>() {
 			public T exec(XtextResource resource) throws Exception {
 				ISemanticLoadingResource semanticLoadingResource = (ISemanticLoadingResource) resource;
+				if (semanticLoadingResource == null) {
+					return null;
+				}
 				EObject semanticElement = semanticLoadingResource
 						.getSemanticElement();
 				if (resource != null && semanticElement != null) {

@@ -426,8 +426,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionAdderName
-		if (prop.type.toTypeReference != null) {
-			op.parameters += prop.toParameter(paramName, prop.type.toTypeReference)
+		if (prop.toTypeReference != null) {
+			op.parameters += prop.toParameter(paramName, prop.toTypeReference)
 		}
 
 		op.documentation = '''
@@ -472,8 +472,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionAdderName
-		if (prop.type.toTypeReference != null) {
-			op.parameters += prop.toParameter(paramName, prop.type.toTypeReference)
+		if (prop.toTypeReference != null) {
+			op.parameters += prop.toParameter(paramName, prop.toTypeReference)
 		}
 
 		op.documentation = '''
@@ -518,7 +518,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toSetterName
-		if (prop.type.toTypeReference != null) {
+		if (prop.toTypeReference != null) {
 			op.parameters += prop.toParameter(propertyName, prop.toTypeReferenceWithMultiplicity)
 		}
 		op.documentation = '''
@@ -564,7 +564,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 
 	def JvmOperation toInternalSetter(LFeature prop) {
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.type.toTypeReference
+		val typeRef = prop.toTypeReference
 		val JvmOperation result = typesFactory.createJvmOperation();
 		result.visibility = getInternalMethodVisibility(prop)
 		result.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -582,7 +582,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 
 	def JvmOperation toInternalAdder(LFeature prop) {
 		val paramName = prop.typeName.toFirstLower
-		val typeRef = prop.type.toTypeReference
+		val typeRef = prop.toTypeReference
 		val JvmOperation op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -604,7 +604,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 
 	def JvmOperation toInternalRemover(LFeature prop) {
 		val paramName = prop.typeName.toFirstLower
-		val typeRef = prop.type.toTypeReference
+		val typeRef = prop.toTypeReference
 		val op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -638,7 +638,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				val fieldRef = "this." + fieldName
 				p >> "if (" + fieldRef + " == null)" >>> " {"
 				{
-					p >> fieldRef >> " = new " >> newTypeRef(prop, typeof(ArrayList), prop.type.toTypeReference) >>
+					p >> fieldRef >> " = new " >> newTypeRef(prop, typeof(ArrayList), prop.toTypeReference) >>
 						"();"
 				}
 				p <<< "}"
@@ -657,8 +657,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionRemoverName
-		if (prop.type.toTypeReference != null) {
-			op.parameters += prop.toParameter(paramName, prop.type.toTypeReference)
+		if (prop.toTypeReference != null) {
+			op.parameters += prop.toParameter(paramName, prop.toTypeReference)
 		}
 		if (prop.opposite != null) {
 			op.documentation = '''

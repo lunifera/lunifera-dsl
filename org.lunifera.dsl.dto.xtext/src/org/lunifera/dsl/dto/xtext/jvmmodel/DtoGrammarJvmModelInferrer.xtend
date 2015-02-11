@@ -63,17 +63,18 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 	}
 	
-	
 	// used for test cases with old derived state computer
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		// create dto type
 		val type = dto.toJvmType;
+		associateBySelector(dto, type, "dto")
 		type.inferDtoFullState(dto, acceptor, isPrelinkingPhase)
 
 		// create mapper type
 		if (dto.wrappedType != null) {
 			val mapperType = dto.toMapperJvmType;
+			associateBySelector(dto, mapperType, "mapper")
 			mapperType.inferMapperFullState(dto, acceptor, isPrelinkingPhase)
 		}
 	}
@@ -82,12 +83,14 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 		// create dto type
 		val type = dto.toJvmType;
+		associateBySelector(dto, type, "dto")
 		type.markAsToBeDerivedLater(dto, isPrelinkingPhase)
 		acceptor.accept(type);
-
+	
 		// create mapper type
 		if (dto.wrappedType != null) {
 			val mapperType = dto.toMapperJvmType;
+			associateBySelector(dto, mapperType, "mapper")
 			mapperType.markAsToBeDerivedLater(dto, isPrelinkingPhase, "mapper")
 			acceptor.accept(mapperType)
 		}
@@ -120,7 +123,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = dto.getDocumentation
 			if (dto.getSuperType != null && !dto.getSuperType.fullyQualifiedName.toString.empty) {
-				superTypes += references.getTypeForName(dto.getSuperType.fullyQualifiedName.toString, dto, null)
+				superTypes += dto.superTypeJvm.cloneWithProxies
 			}
 			superTypes += references.getTypeForName(typeof(Serializable), dto, null)
 			if (dto.getSuperType == null) {
@@ -385,7 +388,8 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 				val dtoParam = TypesFactory.eINSTANCE.createJvmTypeParameter
 				dtoParam.name = "DTO"
 				val dtoUpper = TypesFactory.eINSTANCE.createJvmUpperBound
-				dtoUpper.typeReference = dto.toTypeReference
+				
+				dtoUpper.typeReference = dto.findDtoTypeReference
 				dtoParam.constraints += dtoUpper
 				typeParameters += dtoParam
 
@@ -402,8 +406,8 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 				val dtoType = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference;
 				dtoType.type = dtoParam
 				if (dto.getSuperType != null) {
-					if (dto.getSuperType.toMapperTypeReference.type != null) {
-						superTypes += references.createTypeRef(dto.getSuperType.toMapperTypeReference.type, dtoType,
+					if (dto.getSuperType != null) {
+						superTypes += dto.findSuperDtoMapperType(dtoType,
 							entityType)
 					}
 				} else {
@@ -422,7 +426,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 					'''
 				]
 				
-				members += dto.toMethod("createDto", dto.toTypeReference) [
+				members += dto.toMethod("createDto", dto.findDtoTypeReference) [
 					documentation = '''Creates a new instance of the dto'''
 					body = '''
 					«IF dto.abstract»throw new UnsupportedOperationException("Subclass needs to provide dto.");«ELSE»return new «dto.toName»();«ENDIF»
