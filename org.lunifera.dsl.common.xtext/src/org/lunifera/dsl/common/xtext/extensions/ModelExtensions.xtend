@@ -90,7 +90,15 @@ class ModelExtensions {
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LAttribute prop) {
-		return prop.type?.toTypeReference
+		if(prop.type instanceof LDataType) {
+			val LDataType lDt = prop.type as LDataType
+			if(lDt.asBlob || lDt.date){
+				// do not create a proxy for it
+				return lDt.toTypeReference
+			}
+		}
+		
+		return prop.typeJvm.cloneWithProxies
 	}
 	
 	/**

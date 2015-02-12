@@ -21,6 +21,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.helper.Bounds
 import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
@@ -59,7 +60,7 @@ class DtoModelExtensions extends ModelExtensions {
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LEntityAttribute prop, LDtoInheritedAttribute dtoAtt) {
-		if (prop.type instanceof LBean || prop.type instanceof LEntity) {
+		if (prop.type instanceof LBean || prop.type instanceof LEntity  || prop.type instanceof LEnum) {
 			return dtoAtt.inheritedFeatureTypeJvm.cloneWithProxies
 		} else {
 			return super.toTypeReference(prop)
