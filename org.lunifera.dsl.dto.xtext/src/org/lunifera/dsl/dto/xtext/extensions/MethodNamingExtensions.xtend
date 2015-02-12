@@ -18,6 +18,7 @@ import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoFeature
+import com.google.inject.Singleton
 
 class MethodNamingExtensions extends NamingExtensions {
 
@@ -40,7 +41,11 @@ class MethodNamingExtensions extends NamingExtensions {
 		if (dto == null || dto.toName == null) {
 			return "setMISSING_NAME"
 		}
-		dto.toName + "Mapper"
+		dto.toName.toMapperName
+	}
+	
+	def toMapperName(String name) {
+		name + "Mapper"
 	}
 
 	def toFqnMapperName(LType dto) {
@@ -71,8 +76,12 @@ class MethodNamingExtensions extends NamingExtensions {
 		if (type instanceof LDto) {
 			return name
 		} else {
-			return name + "Dto"
+			return name.toDTOBeanSimpleName
 		}
+	}
+	
+	def String toDTOBeanSimpleName(String name) {
+		return name + "Dto"
 	}
 
 	def XExpression toMapToEntityExpression(LDtoFeature prop) {

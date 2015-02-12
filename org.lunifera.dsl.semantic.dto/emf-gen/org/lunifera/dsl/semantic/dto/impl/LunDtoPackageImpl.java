@@ -419,6 +419,15 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getLDtoInheritedAttribute_InheritedFeatureTypeJvm() {
+		return (EReference)lDtoInheritedAttributeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLDtoAttribute() {
 		return lDtoAttributeEClass;
 	}
@@ -466,6 +475,15 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 	 */
 	public EReference getLDtoInheritedReference_InheritedFeature() {
 		return (EReference)lDtoInheritedReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDtoInheritedReference_InheritedFeatureTypeJvm() {
+		return (EReference)lDtoInheritedReferenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -602,6 +620,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 
 		lDtoInheritedAttributeEClass = createEClass(LDTO_INHERITED_ATTRIBUTE);
 		createEReference(lDtoInheritedAttributeEClass, LDTO_INHERITED_ATTRIBUTE__INHERITED_FEATURE);
+		createEReference(lDtoInheritedAttributeEClass, LDTO_INHERITED_ATTRIBUTE__INHERITED_FEATURE_TYPE_JVM);
 
 		lDtoAttributeEClass = createEClass(LDTO_ATTRIBUTE);
 
@@ -611,6 +630,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 
 		lDtoInheritedReferenceEClass = createEClass(LDTO_INHERITED_REFERENCE);
 		createEReference(lDtoInheritedReferenceEClass, LDTO_INHERITED_REFERENCE__INHERITED_FEATURE);
+		createEReference(lDtoInheritedReferenceEClass, LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM);
 
 		lDtoReferenceEClass = createEClass(LDTO_REFERENCE);
 		createEReference(lDtoReferenceEClass, LDTO_REFERENCE__OPPOSITE);
@@ -720,6 +740,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 
 		initEClass(lDtoInheritedAttributeEClass, LDtoInheritedAttribute.class, "LDtoInheritedAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLDtoInheritedAttribute_InheritedFeature(), theLunTypesPackage.getLAttribute(), null, "inheritedFeature", null, 0, 1, LDtoInheritedAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDtoInheritedAttribute_InheritedFeatureTypeJvm(), theTypesPackage.getJvmTypeReference(), null, "inheritedFeatureTypeJvm", null, 0, 1, LDtoInheritedAttribute.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(lDtoInheritedAttributeEClass, theLunTypesPackage.getLScalarType(), "getInheritedType", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -733,6 +754,7 @@ public class LunDtoPackageImpl extends EPackageImpl implements LunDtoPackage {
 
 		initEClass(lDtoInheritedReferenceEClass, LDtoInheritedReference.class, "LDtoInheritedReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLDtoInheritedReference_InheritedFeature(), theLunTypesPackage.getLReference(), null, "inheritedFeature", null, 0, 1, LDtoInheritedReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDtoInheritedReference_InheritedFeatureTypeJvm(), theTypesPackage.getJvmTypeReference(), null, "inheritedFeatureTypeJvm", null, 0, 1, LDtoInheritedReference.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(lDtoInheritedReferenceEClass, theLunTypesPackage.getLMultiplicity(), "getInheritedMultiplicity", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

@@ -45,7 +45,9 @@ public abstract class AbstractDTOServiceWithMutablePersistence<DTO, ENTITY>
 	public void setPersistenceId(String persistenceId) {
 		this.persistenceId = persistenceId;
 
-		internalReset();
+		if (context != null) {
+			internalReset();
+		}
 	}
 
 	//
@@ -100,7 +102,7 @@ public abstract class AbstractDTOServiceWithMutablePersistence<DTO, ENTITY>
 	 */
 	protected void internalReset() {
 		internalDeactivate();
-		if (getEmf() != null) {
+		if (context != null && getEmf() != null) {
 			try {
 				internalActivate();
 			} catch (InvalidSyntaxException e) {

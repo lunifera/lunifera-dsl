@@ -87,7 +87,15 @@ class ServicesGrammarJvmModelInferrer extends IndexModelInferrer {
 				}
 
 				// Constructor
-				members += service.toConstructor()[]
+				if(service.mutablePersistenceId){
+					members += service.toConstructor()[
+						body = '''
+						// set the default persistence ID
+						setPersistenceId("«service.persistenceId»");'''
+					]
+				}else{
+					members += service.toConstructor()[]
+				}
 
 				members += service.toMethod("getDtoClass",
 					references.getTypeForName(typeof(Class), service, service.dtoJvm.cloneWithProxies)) [

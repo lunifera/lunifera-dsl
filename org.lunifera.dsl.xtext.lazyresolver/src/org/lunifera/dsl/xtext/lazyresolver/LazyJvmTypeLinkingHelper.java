@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -145,10 +146,13 @@ public class LazyJvmTypeLinkingHelper {
 		 * <p>
 		 * Example: given "ItemDTO" and returned "ItemDTOMapper".
 		 * 
+		 * @param context
+		 * @param feature
 		 * @param crossRefString
 		 * @return
 		 */
-		String enhance(String crossRefString);
+		String enhance(EObject context, EStructuralFeature feature,
+				String crossRefString);
 
 	}
 

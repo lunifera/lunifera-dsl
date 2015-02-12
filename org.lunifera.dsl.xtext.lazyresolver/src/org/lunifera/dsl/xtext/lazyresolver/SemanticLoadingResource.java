@@ -13,6 +13,7 @@ package org.lunifera.dsl.xtext.lazyresolver;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Map;
@@ -42,6 +43,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 @SuppressWarnings("restriction")
 public class SemanticLoadingResource extends BatchLinkableResource implements
@@ -130,17 +132,31 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 
 	@Override
 	public EObject getEObject(String uriFragment) {
+
+		// look up the fragment cache
+		FragmentCache cache = getFragmentCache();
+		if (cache.containsKey(uriFragment)) {
+			LOGGER.debug("Firstlevel-Fragment-Cache-Hit for " + uriFragment);
+			return cache.get(uriFragment);
+		}
+
+		EObject result = null;
 		if (uriFragment.startsWith("/0")) {
 			// will access semantic model -> No need to install derived state
 			try {
 				suppressDerivedState = true;
-				return super.getEObject(uriFragment);
+				result = super.getEObject(uriFragment);
 			} finally {
 				suppressDerivedState = false;
 			}
 		} else {
-			return super.getEObject(uriFragment);
+			result = super.getEObject(uriFragment);
 		}
+
+		// put result to fragment cache
+		cache.put(uriFragment, result);
+
+		return result;
 	}
 
 	protected void clearInternalState() {
@@ -187,6 +203,15 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 			Triple<EObject, EReference, INode> triple) {
 		return new JvmLinkAwareDiagnosticMessageContext(triple,
 				getLinkingHelper(), jvmProxyLinkingHelper);
+	}
+
+	public FragmentCache getFragmentCache() {
+		return getCache().get("lunifera-fragments", this,
+				new Provider<FragmentCache>() {
+					public FragmentCache get() {
+						return new FragmentCache();
+					}
+				});
 	}
 
 	@SuppressWarnings("serial")
@@ -293,12 +318,13 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 			IJvmLinkCrossRefStringEnhancer enhancer = crossRefStringHelper
 					.getEnhancer(containingFeature);
 			if (enhancer != null) {
-				result = enhancer.enhance(result);
+				result = enhancer.enhance(triple.getFirst(), containingFeature,
+						result);
 			}
 
 			return result;
 		}
-
+		
 		public EObject getContext() {
 			return triple.getFirst();
 		}
@@ -309,6 +335,16 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 
 		public String getLinkText() {
 			return linkText;
+		}
+	}
+
+	/**
+	 * A cache that caches the uriFragment with the scoped result.
+	 */
+	@SuppressWarnings("serial")
+	protected class FragmentCache extends HashMap<String, EObject> {
+
+		public FragmentCache() {
 		}
 
 	}

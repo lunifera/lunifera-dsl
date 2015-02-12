@@ -64,10 +64,11 @@ public class FastLinkingService extends DefaultLinkingService {
 				IJvmLinkCrossRefStringEnhancer enhancer = jvmTypeLinkingHelper
 						.getEnhancer(containingFeature);
 				if (enhancer != null) {
-					crossRefString = enhancer.enhance(crossRefString);
+					crossRefString = enhancer.enhance(context,
+							containingFeature, crossRefString);
 				}
 			}
-			
+
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("before getLinkedObjects: node: '"
 						+ crossRefString + "'");

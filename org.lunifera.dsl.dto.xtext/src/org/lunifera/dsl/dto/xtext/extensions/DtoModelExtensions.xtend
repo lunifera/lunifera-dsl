@@ -58,20 +58,28 @@ class DtoModelExtensions extends ModelExtensions {
 		return jvmTypeRef
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LEntityAttribute prop) {
-		if (prop.type instanceof LBean) {
-			return references.getTypeForName(prop.type.toDTOBeanFullyQualifiedName, prop, null)
+	def dispatch JvmTypeReference toTypeReference(LEntityAttribute prop, LDtoInheritedAttribute dtoAtt) {
+		if (prop.type instanceof LBean || prop.type instanceof LEntity) {
+			return dtoAtt.inheritedFeatureTypeJvm.cloneWithProxies
 		} else {
 			return super.toTypeReference(prop)
 		}
 	}
-	
-	def dispatch JvmTypeReference toTypeReference(LBeanAttribute prop) {
-		if (prop.type instanceof LBean) {
-			return references.getTypeForName(prop.type.toDTOBeanFullyQualifiedName, prop, null)
+
+	def dispatch JvmTypeReference toTypeReference(LBeanAttribute prop, LDtoInheritedAttribute dtoAtt) {
+		if (prop.type instanceof LBean || prop.type instanceof LEntity) {
+			return dtoAtt.inheritedFeatureTypeJvm.cloneWithProxies
 		} else {
 			return super.toTypeReference(prop)
 		}
+	}
+
+	def dispatch JvmTypeReference toTypeReference(LEntityReference prop, LDtoInheritedReference dtoRef) {
+		return dtoRef.inheritedFeatureTypeJvm.cloneWithProxies
+	}
+
+	def dispatch JvmTypeReference toTypeReference(LBeanReference prop, LDtoInheritedAttribute dtoRef) {
+		return dtoRef.inheritedFeatureTypeJvm.cloneWithProxies
 	}
 
 	/**
@@ -89,7 +97,7 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractAttribute prop) {
 
 		// prop.type is instanceof LDataType
-		return prop.type?.toTypeReference.cloneWithProxies
+		return prop.typeJvm?.cloneWithProxies
 	}
 
 	/**
@@ -98,14 +106,13 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedAttribute prop) {
 
 		if (prop.type != null) {
-
 			// if the type is a different one, then use the type of the property
-			// needs to be mapped by a custom mapper in dsl
-			return prop.type?.toTypeReference.cloneWithProxies
+			// it needs to be mapped by a custom mapper in dsl
+			return prop.typeJvm.cloneWithProxies
 		}
 
-		// creates a type reference for the inherited LDataType
-		return prop.inheritedFeature?.toTypeReference.cloneWithProxies
+		// creates a proxy reference
+		return prop.inheritedFeature?.toTypeReference(prop).cloneWithProxies
 	}
 
 	/**
@@ -113,8 +120,14 @@ class DtoModelExtensions extends ModelExtensions {
 	 */
 	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedReference prop) {
 
-		// for inherited references, the dto type is specified -> So use it
-		return prop.typeJvm?.cloneWithProxies
+		if (prop.type != null) {
+			// if the type is a different one, then use the type of the property
+			// it needs to be mapped by a custom mapper in dsl
+			return prop.typeJvm.cloneWithProxies
+		}
+
+		// creates a proxy reference
+		return prop.inheritedFeature?.toTypeReference(prop).cloneWithProxies
 	}
 
 	/**
@@ -221,7 +234,7 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch String toTypeName(LDtoInheritedReference prop) {
 		prop.type?.name
 	}
-	
+
 	def dispatch String toQualifiedTypeName(LDtoAttribute prop) {
 		prop.type.fullyQualifiedName.toString
 	}
@@ -281,17 +294,17 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch toRawTypeRefernce(LDtoFeature prop) {
 		prop.toRawType?.toTypeReference
 	}
-	
+
 	def dispatch toRawTypeRefernce(LDtoInheritedReference prop) {
 		val LReference ref = prop.inheritedFeature
-		if(ref instanceof LEntityReference){
+		if (ref instanceof LEntityReference) {
 			return ref.typeJvm.cloneWithProxies
-		}else if(ref instanceof LBeanReference){
+		} else if (ref instanceof LBeanReference) {
 			return ref.typeJvm.cloneWithProxies
 		}
 		return TypesFactory.eINSTANCE.createJvmUnknownTypeReference
 	}
-	
+
 	def dispatch toRawTypeRefernce(LDtoAbstractReference prop) {
 		prop.toRawType?.toTypeReference
 	}
@@ -380,7 +393,7 @@ class DtoModelExtensions extends ModelExtensions {
 		}
 		return internalIsToMany(prop);
 	}
-	
+
 	def dispatch boolean isAbstract(LType context) {
 		false
 	}
@@ -388,7 +401,7 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch boolean isAbstract(LEntity context) {
 		context.abstract
 	}
-	
+
 	def dispatch boolean isAbstract(LDto context) {
 		context.abstract
 	}
@@ -428,34 +441,34 @@ class DtoModelExtensions extends ModelExtensions {
 			return prop.cascading;
 		}
 	}
-	
+
 	def isAttribute(LDtoFeature prop) {
 		return prop instanceof LAttribute
 	}
-	
+
 	def isContainmentReference(LDtoFeature prop) {
 		return prop instanceof LReference && prop.cascading
 	}
-	
+
 	def isCrossReference(LDtoFeature prop) {
 		return prop instanceof LReference && !prop.cascading
 	}
-	
+
 	def dispatch isContainerReference(LDtoAbstractAttribute prop) {
 		return false
 	}
-	
+
 	def dispatch isContainerReference(LDtoReference prop) {
 		val opposite = prop.opposite
-		if(opposite != null && opposite.cascading){
+		if (opposite != null && opposite.cascading) {
 			return true
 		}
 		return false
 	}
-	
+
 	def dispatch isContainerReference(LDtoInheritedReference prop) {
 		val opposite = prop.inheritedFeature.opposite
-		if(opposite != null && opposite.cascading){
+		if (opposite != null && opposite.cascading) {
 			return true
 		}
 		return false
@@ -468,24 +481,24 @@ class DtoModelExtensions extends ModelExtensions {
 	def toMapperTypeReference(LDtoAbstractReference ref) {
 		ref.type.toMapperTypeReference
 	}
-	
+
 	def dispatch isIDorUUID(LAttribute prop) {
 		return false
 	}
-	
+
 	def dispatch isIDorUUID(LDtoAttribute prop) {
 		return prop.id || prop.uuid
 	}
-	
+
 	def dispatch isIDorUUID(LDtoInheritedAttribute prop) {
 		return prop.inheritedFeature.id || prop.inheritedFeature.uuid
 	}
-	
+
 	/**
 	 * Returns all containment features that need to be copied.
 	 */
-	def getContainmentReferencesToCopy(LDto dto){
-		dto.features.filter[
+	def getContainmentReferencesToCopy(LDto dto) {
+		dto.features.filter [
 			it.containmentReference
 		]
 	}
@@ -493,17 +506,17 @@ class DtoModelExtensions extends ModelExtensions {
 	/**
 	 * Returns all attributes that need to be copied.
 	 */
-	def getAttributesToCopy(LDto dto){
-		dto.features.filter[
+	def getAttributesToCopy(LDto dto) {
+		dto.features.filter [
 			it.attribute
 		]
 	}
-	
+
 	/**
 	 * Returns all crossreferences that need to be copied.
 	 */
-	def getCrossReferencesToCopy(LDto dto){
-		dto.features.filter[
+	def getCrossReferencesToCopy(LDto dto) {
+		dto.features.filter [
 			return !it.containerReference && it.isCrossReference
 		]
 	}

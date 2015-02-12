@@ -126,6 +126,8 @@ abstract class LDtoAbstractAttribute extends LDtoFeature, LAttribute {
 
 class LDtoInheritedAttribute extends LDtoAbstractAttribute{
 	refers LAttribute inheritedFeature
+	contains transient JvmTypeReference inheritedFeatureTypeJvm
+	
 	op LScalarType getInheritedType() {
 		return inheritedFeature.^type
 	}
@@ -147,6 +149,8 @@ abstract class LDtoAbstractReference extends LDtoFeature, LReference {
 
 class LDtoInheritedReference extends LDtoAbstractReference{
 	refers LReference inheritedFeature
+	contains transient JvmTypeReference inheritedFeatureTypeJvm
+	
 	op LMultiplicity getInheritedMultiplicity() {
 		return inheritedFeature.multiplicity
 	}
