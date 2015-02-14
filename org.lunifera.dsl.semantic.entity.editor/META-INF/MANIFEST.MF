@@ -8,7 +8,33 @@ Bundle-Activator: org.lunifera.dsl.semantic.entity.presentation.EntityEditorPlug
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.lunifera.dsl.semantic.entity.presentation
+Export-Package: org.lunifera.dsl.semantic.entity.presentation;
+  uses:="org.eclipse.jface.wizard,
+   org.eclipse.core.runtime,
+   org.eclipse.emf.edit.ui.provider,
+   org.eclipse.emf.common.notify,
+   org.eclipse.ui.ide,
+   org.eclipse.jface.action,
+   org.eclipse.emf.ecore.util,
+   org.eclipse.emf.ecore,
+   org.eclipse.ui.views.contentoutline,
+   org.eclipse.core.resources,
+   org.eclipse.jface.viewers,
+   org.eclipse.ui.dialogs,
+   org.eclipse.emf.ecore.resource,
+   org.eclipse.emf.common.ui.viewer,
+   org.eclipse.emf.edit.ui.action,
+   org.lunifera.dsl.semantic.entity,
+   org.eclipse.emf.common.util,
+   org.eclipse.swt.events,
+   org.eclipse.ui,
+   org.eclipse.ui.views.properties,
+   org.eclipse.ui.part,
+   org.eclipse.emf.common,
+   org.eclipse.emf.edit.provider,
+   org.eclipse.swt.widgets,
+   org.eclipse.emf.common.ui,
+   org.eclipse.emf.edit.domain"
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.lunifera.dsl.semantic.entity.edit;visibility:=reexport,
