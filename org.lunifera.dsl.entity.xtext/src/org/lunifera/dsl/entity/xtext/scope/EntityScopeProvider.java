@@ -17,6 +17,7 @@ import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
+import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.semantic.entity.LIndex;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
@@ -34,6 +35,8 @@ public class EntityScopeProvider extends CommonScopeProvider {
 	public IScope getScope(final EObject context, EReference reference) {
 		if (reference == LunEntityPackage.Literals.LENTITY_REFERENCE__OPPOSITE) {
 			return new EntityRefOppositeScope((LEntityReference) context);
+		} else if (reference == LunEntityPackage.Literals.LENTITY_ATTRIBUTE__OPPOSITE) {
+			return new EntityAttOppositeScope((LEntityAttribute) context);
 		} else if (reference == LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE) {
 			return new BeanRefOppositeScope((LBeanReference) context);
 		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE__TYPE) {

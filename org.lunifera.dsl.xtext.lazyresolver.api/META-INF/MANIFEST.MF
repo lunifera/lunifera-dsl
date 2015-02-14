@@ -9,7 +9,18 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.0",
  org.eclipse.xtext.xbase;bundle-version="[2.7.3,2.8.0)",
  org.eclipse.xtext;bundle-version="[2.7.3,2.8.0)"
-Export-Package: org.lunifera.dsl.xtext.lazyresolver.api,
- org.lunifera.dsl.xtext.lazyresolver.api.hook,
- org.lunifera.dsl.xtext.lazyresolver.api.logger
+Export-Package: org.lunifera.dsl.xtext.lazyresolver.api;
+  uses:="org.eclipse.emf.ecore.resource,
+   org.eclipse.emf.ecore,
+   org.eclipse.emf.common.notify.impl,
+   org.eclipse.xtext.resource,
+   org.eclipse.xtext.xbase.jvmmodel,
+   org.eclipse.xtext.common.types",
+ org.lunifera.dsl.xtext.lazyresolver.api.hook;
+  uses:="org.eclipse.emf.ecore.resource,
+   org.eclipse.emf.ecore,
+   org.eclipse.xtext.generator,
+   org.eclipse.xtext.xbase.jvmmodel,
+   org.eclipse.xtext.common.types",
+ org.lunifera.dsl.xtext.lazyresolver.api.logger;uses:="org.slf4j"
 Import-Package: org.slf4j

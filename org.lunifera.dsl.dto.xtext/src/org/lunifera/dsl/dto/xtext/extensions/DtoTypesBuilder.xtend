@@ -15,16 +15,19 @@ import java.util.Collections
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.XExpression
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder
+import org.lunifera.dsl.dto.lib.Context
 import org.lunifera.dsl.dto.lib.ICrossReference
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.lib.IMapperAccess
@@ -36,15 +39,13 @@ import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
+import org.lunifera.dsl.semantic.dto.LDtoAttribute
 import org.lunifera.dsl.semantic.dto.LDtoFeature
+import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
+import org.lunifera.dsl.semantic.dto.LDtoReference
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.runtime.common.annotations.DomainDescription
-import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
-import org.lunifera.dsl.dto.lib.Context
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 
 class DtoTypesBuilder extends CommonTypesBuilder {
 
@@ -146,7 +147,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 //			throw new RuntimeException("toMany-References not allowed for setters!");
 //		}
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toDtoTypeParameterReferenceWithMultiplicity
+		val typeRef = prop.toDtoTypeReferenceWithMultiplicity
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -169,7 +170,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				p >> prop.toCheckDisposedCall()
 				val fieldRef = "this." + prop.toName
 
-				p >> "for (" +prop.toDtoTypeParameterReference.simpleName  + " dto : " + prop.toCollectionInternalGetterName + "().toArray(new " + prop.toDtoTypeParameterReference.simpleName + "[" + fieldRef + ".size()])) " >>> "{"
+				p >> "for (" +prop.toDtoTypeReference.simpleName  + " dto : " + prop.toCollectionInternalGetterName + "().toArray(new " + prop.toDtoTypeReference.simpleName + "[" + fieldRef + ".size()])) " >>> "{"
 				
 				p >> prop.toCollectionRemoverName + "(dto);"
 				p <<< "}"
@@ -178,7 +179,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					p >> "return;"
 				p <<< "}"
 						
-				p >> "for (" +prop.toDtoTypeParameterReference.simpleName  + " dto : " + paramName + ") " >>> "{"
+				p >> "for (" +prop.toDtoTypeReference.simpleName  + " dto : " + paramName + ") " >>> "{"
 						p >> prop.toCollectionAdderName + "(dto);"
 				p <<< "}"
 				])
@@ -192,7 +193,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 //			throw new RuntimeException("toMany-References not allowed for setters!");
 //		}
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toDtoTypeParameterReferenceWithMultiplicity
+		val typeRef = prop.toDtoTypeReferenceWithMultiplicity
 		val opposite = prop.opposite
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PUBLIC
@@ -237,7 +238,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					«ENDIF»
 				}
 			«ELSE»
-				for («prop.toDtoTypeParameterReference.simpleName» dto : «prop.toCollectionInternalGetterName»().toArray(new «prop.toDtoTypeParameterReference.simpleName»[this.«prop.toName».size()])) {
+				for («prop.toDtoTypeReference.simpleName» dto : «prop.toCollectionInternalGetterName»().toArray(new «prop.toDtoTypeReference.simpleName»[this.«prop.toName».size()])) {
 					«prop.toCollectionRemoverName»(dto);
 				}
 
@@ -245,13 +246,93 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					return;
 				}
 				
-				for («prop.toDtoTypeParameterReference.simpleName» dto : «paramName») {
+				for («prop.toDtoTypeReference.simpleName» dto : «paramName») {
 					«prop.toCollectionAdderName»(dto);
 				}
 			«ENDIF»
 		«ENDIF»
 		'''
+		return associate(prop, op);
+	}
+	
+	// dispatch used by sub classes
+	def dispatch JvmOperation toGetter(LDtoAbstractAttribute prop, String methodName) {
+		val propertyName = prop.toName
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = methodName
+		op.returnType = cloneWithProxies(prop.toDtoTypeReferenceWithMultiplicity)
 
+		if (prop.derived) {
+			val customDoc = prop.documentation
+			if (customDoc != null) {
+				op.documentation = customDoc
+			} else {
+				op.documentation = '''
+				Calculates the value for the derived property «prop.name»
+				 
+				@return «prop.name» The derived property value'''
+			}
+
+			// set the domain description annotation
+			if (prop.domainDescription) {
+				op.annotations += prop.toAnnotation(typeof(DomainDescription))
+			}
+
+			setBody(op, prop.derivedGetterExpression)
+
+		} else {
+			op.documentation = if (prop.toMany) {
+				"Returns an unmodifiable list of " + propertyName + "."
+			} else if (propertyName != null) {
+				"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
+					concat(" property").concat(
+						(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
+			}
+
+			setBody(op,
+				[ // ITreeAppendable it |
+					if(it == null) return
+					val p = it.trace(prop);
+					p >> prop.toCheckDisposedCall()
+					if (prop.toMany) {
+						p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
+							"(" + prop.toCollectionInternalGetterName + "());"
+					} else {
+						p >> "return this." + propertyName + ";"
+					}
+				])
+		}
+		return associate(prop, op);
+	}
+	
+		// dispatch used by sub classes
+	def dispatch JvmOperation toGetter(LDtoAbstractReference prop, String methodName) {
+		val propertyName = prop.toName
+		val op = typesFactory.createJvmOperation();
+		op.visibility = JvmVisibility::PUBLIC
+		op.simpleName = methodName
+		op.returnType = cloneWithProxies(prop.toDtoTypeReferenceWithMultiplicity)
+		op.documentation = if (prop.toMany) {
+			"Returns an unmodifiable list of " + propertyName + "."
+		} else if (propertyName != null) {
+			"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
+				concat(" property").concat(
+					(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
+		}
+
+		setBody(op,
+			[ // ITreeAppendable it |
+				if(it == null) return
+				val p = it.trace(prop);
+				p >> prop.toCheckDisposedCall()
+				if (prop.toMany) {
+					p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
+						"(" + prop.toCollectionInternalGetterName + "());"
+				} else {
+					p >> "return this." + propertyName + ";"
+				}
+			])
 
 		return associate(prop, op);
 	}
@@ -316,8 +397,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionAdderName
-		if (prop.toDtoTypeParameterReference != null) {
-			op.parameters += prop.toParameter(paramName, prop.toDtoTypeParameterReference)
+		if (prop.toDtoTypeReference != null) {
+			op.parameters += prop.toParameter(paramName, prop.toDtoTypeReference)
 		}
 
 		op.documentation = '''
@@ -389,7 +470,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def dispatch JvmOperation toInternalSetter(LDtoAbstractReference prop) {
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toDtoTypeParameterReference
+		val typeRef = prop.toDtoTypeReference
 		val JvmOperation result = typesFactory.createJvmOperation();
 		result.visibility = getInternalMethodVisibility(prop)
 		result.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -412,7 +493,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		val JvmField jvmField = typesFactory.createJvmField();
 		jvmField.simpleName = prop.toName
 		jvmField.visibility = JvmVisibility::PRIVATE
-		jvmField.type = cloneWithProxies((prop as LDtoFeature).toDtoTypeParameterReferenceWithMultiplicity)
+		jvmField.type = (prop as LDtoFeature).toDtoTypeReferenceWithMultiplicity
 		jvmField.transient = prop.transient
 
 		// if uuid
@@ -449,7 +530,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def dispatch JvmOperation toInternalSetter(LDtoAbstractAttribute prop) {
 		val paramName = prop.toMethodParamName
-		val typeRef = prop.toDtoTypeParameterReference
+		val typeRef = prop.toDtoTypeReference
 		val JvmOperation result = typesFactory.createJvmOperation();
 		result.visibility = getInternalMethodVisibility(prop)
 		result.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -470,7 +551,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def dispatch JvmOperation toInternalAdder(LDtoAbstractReference prop) {
 		val paramName = prop.toTypeName.toFirstLower
-		val typeRef = prop.toDtoTypeParameterReference
+		val typeRef = prop.toDtoTypeReference
 		val JvmOperation op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -494,7 +575,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def dispatch JvmOperation toInternalAdder(LDtoAbstractAttribute prop) {
 		val paramName = prop.toTypeName.toFirstLower
-		val typeRef = prop.toDtoTypeParameterReference
+		val typeRef = prop.toDtoTypeReference
 		val JvmOperation op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -518,7 +599,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def dispatch JvmOperation toInternalRemover(LDtoAbstractReference prop) {
 		val paramName = prop.toTypeName.toFirstLower
-		val typeRef = prop.toDtoTypeParameterReference
+		val typeRef = prop.toDtoTypeReference
 		val op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -542,7 +623,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def dispatch JvmOperation toInternalRemover(LDtoAbstractAttribute prop) {
 		val paramName = prop.toTypeName.toFirstLower
-		val typeRef = prop.toDtoTypeParameterReference
+		val typeRef = prop.toDtoTypeReference
 		val op = typesFactory.createJvmOperation();
 		op.visibility = getInternalMethodVisibility(prop)
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
@@ -568,7 +649,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		val fieldName = name.toFirstLower
 		val JvmOperation op = typesFactory.createJvmOperation()
 		op.visibility = JvmVisibility::PRIVATE
-		op.returnType = prop.toDtoTypeParameterReferenceWithMultiplicity
+		op.returnType = prop.toDtoTypeReferenceWithMultiplicity
 		op.simpleName = prop.toCollectionInternalGetterName
 		op.documentation = '''
 			Returns the list of «htmlCode(prop.toTypeName)»s thereby lazy initializing it. For internal use only!
@@ -594,7 +675,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		val fieldName = name.toFirstLower
 		val JvmOperation op = typesFactory.createJvmOperation()
 		op.visibility = JvmVisibility::PRIVATE
-		op.returnType = prop.toDtoTypeParameterReferenceWithMultiplicity
+		op.returnType = prop.toDtoTypeReferenceWithMultiplicity
 		op.simpleName = prop.toCollectionInternalGetterName
 		op.documentation = '''
 			Returns the list of «htmlCode(prop.toTypeName)»s thereby lazy initializing it. For internal use only!
@@ -608,7 +689,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				val fieldRef = "this." + fieldName
 				p >> "if (" + fieldRef + " == null)" >>> " {"
 				{
-					p >> fieldRef >> " = new java.util.ArrayList<" + prop.toDtoTypeParameterReference.qualifiedName + ">();"
+					p >> fieldRef >> " = new java.util.ArrayList<" + prop.toDtoTypeReference.qualifiedName + ">();"
 				}
 				p <<< "}"
 				p >> "return " + fieldRef + ";"
@@ -626,8 +707,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionRemoverName
-		if (prop.toDtoTypeParameterReference != null) {
-			op.parameters += prop.toParameter(paramName, prop.toDtoTypeParameterReference)
+		if (prop.toDtoTypeReference != null) {
+			op.parameters += prop.toParameter(paramName, prop.toDtoTypeReference)
 		}
 		if (prop.opposite != null) {
 			op.documentation = '''
@@ -705,8 +786,8 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, prop)
 		op.simpleName = prop.toCollectionRemoverName
-		if (prop.toDtoTypeParameterReference != null) {
-			op.parameters += prop.toParameter(paramName, prop.toDtoTypeParameterReference)
+		if (prop.toDtoTypeReference != null) {
+			op.parameters += prop.toParameter(paramName, prop.toDtoTypeReference)
 		}
 		if (prop.opposite != null) {
 			op.documentation = '''
@@ -860,7 +941,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					dto.set«f.toName.toFirstUpper»(«f.toMapPropertyToDto»(entity, context));
 					«ENDIF»
 				«ELSE»
-					for(«f.toDtoTypeParameterReference.qualifiedName» _dtoValue : «f.toMapPropertyToDto»(entity, context)) {
+					for(«f.toDtoTypeReference.qualifiedName» _dtoValue : «f.toMapPropertyToDto»(entity, context)) {
 						dto.«f.toCollectionAdderName»(_dtoValue);
 					}
 				«ENDIF»
@@ -985,7 +1066,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		val LDto dto = prop.eContainer as LDto
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PROTECTED
-		op.returnType = prop.toDtoTypeParameterReferenceWithMultiplicity
+		op.returnType = prop.toDtoTypeReferenceWithMultiplicity
 		op.simpleName = prop.toMapPropertyToDto
 
 		associate(prop, op);
@@ -1014,7 +1095,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						
 						List<«prop.toRawType.toDTOBeanSimpleName»> results = new java.util.ArrayList<«prop.toRawType.toDTOBeanSimpleName»>();
 						for («prop.toRawType.toName» _entity : in.«prop.toGetterName»()) {
-							«prop.toDtoTypeParameterReference.qualifiedName» _dto = context.getTarget(_entity);
+							«prop.toDtoTypeReference.qualifiedName» _dto = context.getTarget(_entity);
 							if (_dto == null) {
 								_dto = mapper.createDto();
 								context.register(_entity, _dto);
@@ -1036,7 +1117,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 							if(mapper == null) {
 								throw new IllegalStateException("Mapper must not be null!");
 							}
-						 
+						
 							dto = mapper.createDto();
 							mapper.mapToDTO(dto, in.«prop.toGetterName»(), context);
 							return dto;
@@ -1048,6 +1129,14 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				} else {
 					if (prop.typeIsBoolean) {
 						body = '''return in.is«prop.toName.toFirstUpper»();'''
+					} else if(prop.typeIsEnum) {
+						body = '''
+						if(in.get«prop.toName.toFirstUpper»() != null) {
+							return «prop.toRawType.toDTOEnumFullyQualifiedName».valueOf(in.get«prop.toName.toFirstUpper»().name());
+						} else {
+							return null;
+						}
+						'''
 					} else {
 						body = '''return in.get«prop.toName.toFirstUpper»();'''
 					}
@@ -1060,7 +1149,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		val LDto dto = prop.eContainer as LDto
 		val op = typesFactory.createJvmOperation();
 		op.visibility = JvmVisibility::PROTECTED
-		op.returnType = prop.toDtoTypeParameterReferenceWithMultiplicity
+		op.returnType = prop.toDtoTypeReferenceWithMultiplicity
 
 		op.simpleName = prop.toMapPropertyToDto
 
@@ -1195,6 +1284,14 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				} else {
 					if (prop.typeIsBoolean) {
 						body = '''return in.is«prop.toName.toFirstUpper»();'''
+					} else if(prop.typeIsEnum) {
+						body = '''
+						if(in.get«prop.toName.toFirstUpper»() != null) {
+							return «prop.toRawType.fullyQualifiedName.toString».valueOf(in.get«prop.toName.toFirstUpper»().name());
+						} else {
+							return null;
+						}
+						'''
 					} else {
 						body = '''return in.get«prop.toName.toFirstUpper»();'''
 					}

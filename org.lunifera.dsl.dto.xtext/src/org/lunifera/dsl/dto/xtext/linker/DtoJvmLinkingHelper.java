@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions;
+import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
@@ -52,12 +54,15 @@ public class DtoJvmLinkingHelper extends LazyJvmTypeLinkingHelper {
 							EStructuralFeature feature, String crossRefString) {
 						LDtoInheritedAttribute lAtt = (LDtoInheritedAttribute) context
 								.eContainer();
-						if (lAtt.getInheritedFeature().getType() instanceof LBean) {
-							return namingExtension.toDTOBeanSimpleName(lAtt
-									.getInheritedFeature().getType().getName());
+						LAttribute lInhAtt = lAtt.getInheritedFeature();
+						if (lInhAtt.eIsProxy()) {
+							return crossRefString;
+						}
+						if (lInhAtt.getType() instanceof LBean) {
+							return namingExtension.toDTOBeanSimpleName(lInhAtt
+									.getType().getName());
 						} else {
-							return lAtt.getInheritedFeature().getType()
-									.getName();
+							return lInhAtt.getType().getName();
 						}
 					}
 				}, null);
@@ -74,8 +79,12 @@ public class DtoJvmLinkingHelper extends LazyJvmTypeLinkingHelper {
 							EStructuralFeature feature, String crossRefString) {
 						LDtoInheritedReference lRef = (LDtoInheritedReference) context
 								.eContainer();
-						LEntityReference lEntityRef = (LEntityReference) lRef
+						LReference lInhRef = lRef
 								.getInheritedFeature();
+						if(lInhRef.eIsProxy()){
+							return crossRefString;
+						}
+						LEntityReference lEntityRef = (LEntityReference) lInhRef;
 						if (lEntityRef.getType() instanceof LEntity) {
 							return namingExtension
 									.toDTOBeanSimpleName(lEntityRef.getType()

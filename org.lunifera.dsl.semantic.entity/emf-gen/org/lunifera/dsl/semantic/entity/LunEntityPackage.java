@@ -1129,13 +1129,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_ATTRIBUTE__TYPE_JVM = LENTITY_FEATURE_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 12;
+
+	/**
 	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 12;
+	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Attribute</em>' class.
@@ -1144,7 +1153,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 13;
+	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 14;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1700,22 +1709,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_REFERENCE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LBEAN_REFERENCE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE__OPPOSITE = LBEAN_FEATURE_FEATURE_COUNT + 4;
+	int LBEAN_REFERENCE__OPPOSITE = LBEAN_FEATURE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_REFERENCE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>LBean Reference</em>' class.
@@ -2601,6 +2610,17 @@ public interface LunEntityPackage extends EPackage {
 	EClass getLEntityAttribute();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.entity.LEntityAttribute#getOpposite <em>Opposite</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Opposite</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LEntityAttribute#getOpposite()
+	 * @see #getLEntityAttribute()
+	 * @generated
+	 */
+	EReference getLEntityAttribute_Opposite();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntityAttribute#getTypedName <em>Typed Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2717,17 +2737,6 @@ public interface LunEntityPackage extends EPackage {
 	EReference getLBeanReference_Type();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getTypeJvm <em>Type Jvm</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Type Jvm</em>'.
-	 * @see org.lunifera.dsl.semantic.entity.LBeanReference#getTypeJvm()
-	 * @see #getLBeanReference()
-	 * @generated
-	 */
-	EReference getLBeanReference_TypeJvm();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getOpposite <em>Opposite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2737,6 +2746,17 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLBeanReference_Opposite();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getTypeJvm <em>Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanReference#getTypeJvm()
+	 * @see #getLBeanReference()
+	 * @generated
+	 */
+	EReference getLBeanReference_TypeJvm();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LIndex <em>LIndex</em>}'.
@@ -3349,6 +3369,14 @@ public interface LunEntityPackage extends EPackage {
 		EClass LENTITY_ATTRIBUTE = eINSTANCE.getLEntityAttribute();
 
 		/**
+		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LENTITY_ATTRIBUTE__OPPOSITE = eINSTANCE.getLEntityAttribute_Opposite();
+
+		/**
 		 * The meta object literal for the '<em><b>Typed Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3445,20 +3473,20 @@ public interface LunEntityPackage extends EPackage {
 		EReference LBEAN_REFERENCE__TYPE = eINSTANCE.getLBeanReference_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Type Jvm</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LBEAN_REFERENCE__TYPE_JVM = eINSTANCE.getLBeanReference_TypeJvm();
-
-		/**
 		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference LBEAN_REFERENCE__OPPOSITE = eINSTANCE.getLBeanReference_Opposite();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LBEAN_REFERENCE__TYPE_JVM = eINSTANCE.getLBeanReference_TypeJvm();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LIndexImpl <em>LIndex</em>}' class.

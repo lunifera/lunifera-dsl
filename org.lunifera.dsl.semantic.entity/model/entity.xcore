@@ -17,7 +17,6 @@
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
 
-import xcore.lang.GenModel
 import java.util.List
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.common.types.JvmTypeReference
@@ -29,6 +28,7 @@ import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 import org.lunifera.dsl.semantic.common.types.LLazyResolver
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 
 class LEntityModel {
@@ -220,6 +220,9 @@ class LEntityFeature extends LFeature {
 
 class LEntityAttribute extends LEntityFeature, LAttribute {
 	
+	// in case that a bean has a reference to entity
+	refers LBeanReference ^opposite
+	
 	derived String typedName get 
 	{
 		var result = new StringBuilder
@@ -277,14 +280,13 @@ class LBeanAttribute extends LBeanFeature, LAttribute {
 		
 		return result.toString		
 	}
-	
 }
 
 class LBeanReference extends LBeanFeature, LReference {
-	refers LBean ^type
+	// can be entity or bean
+	refers LType ^type
+	refers LFeature ^opposite
 	contains transient JvmTypeReference typeJvm
-	refers LBeanReference ^opposite
-	
 }
 
 class LIndex {

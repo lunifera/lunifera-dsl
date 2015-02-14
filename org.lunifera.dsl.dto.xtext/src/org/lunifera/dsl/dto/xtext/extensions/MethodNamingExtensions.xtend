@@ -80,6 +80,19 @@ class MethodNamingExtensions extends NamingExtensions {
 		}
 	}
 	
+	def String toDTOEnumFullyQualifiedName(LType type) {
+		val LTypedPackage pkg = type.package as LTypedPackage
+		if (type instanceof LDto) {
+			return pkg.name + "." + type.toDTOEnumSimpleName
+		} else {
+			return pkg.toDtoPackageName + "." + type.toDTOEnumSimpleName
+		}
+	}
+
+	def String toDTOEnumSimpleName(LType type) {
+		return type?.name
+	}
+	
 	def String toDTOBeanSimpleName(String name) {
 		return name + "Dto"
 	}

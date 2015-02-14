@@ -59,14 +59,19 @@ public class FastLinkingService extends DefaultLinkingService {
 		if (crossRefString != null && !crossRefString.equals("")) {
 
 			// enhance the cross reference string before scoping
-			EStructuralFeature containingFeature = context.eContainingFeature();
-			if (jvmTypeLinkingHelper.isJvmLink(containingFeature)) {
-				IJvmLinkCrossRefStringEnhancer enhancer = jvmTypeLinkingHelper
-						.getEnhancer(containingFeature);
-				if (enhancer != null) {
-					crossRefString = enhancer.enhance(context,
-							containingFeature, crossRefString);
+			try {
+				EStructuralFeature containingFeature = context
+						.eContainingFeature();
+				if (jvmTypeLinkingHelper.isJvmLink(containingFeature)) {
+					IJvmLinkCrossRefStringEnhancer enhancer = jvmTypeLinkingHelper
+							.getEnhancer(containingFeature);
+					if (enhancer != null) {
+						crossRefString = enhancer.enhance(context,
+								containingFeature, crossRefString);
+					}
 				}
+			} catch (Exception e) {
+				LOGGER.error("{}", e);
 			}
 
 			if (LOGGER.isDebugEnabled()) {

@@ -4,7 +4,6 @@
 package org.lunifera.dsl.entity.xtext.parser.antlr;
 
 import java.io.InputStream;
-
 import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class EntityGrammarAntlrTokenFileProvider implements IAntlrTokenFileProvider {

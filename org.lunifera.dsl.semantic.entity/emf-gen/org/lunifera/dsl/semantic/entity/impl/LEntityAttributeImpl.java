@@ -31,6 +31,7 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
+import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
@@ -53,6 +54,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getTypeJvm <em>Type Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getTypedName <em>Typed Name</em>}</li>
  * </ul>
  * </p>
@@ -269,6 +271,16 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * @ordered
 	 */
 	protected JvmTypeReference typeJvm;
+
+	/**
+	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOpposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected LBeanReference opposite;
 
 	/**
 	 * The default value of the '{@link #getTypedName() <em>Typed Name</em>}' attribute.
@@ -617,6 +629,44 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LBeanReference getOpposite() {
+		if (opposite != null && opposite.eIsProxy()) {
+			InternalEObject oldOpposite = (InternalEObject)opposite;
+			opposite = (LBeanReference)eResolveProxy(oldOpposite);
+			if (opposite != oldOpposite) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE, oldOpposite, opposite));
+			}
+		}
+		return opposite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LBeanReference basicGetOpposite() {
+		return opposite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOpposite(LBeanReference newOpposite) {
+		LBeanReference oldOpposite = opposite;
+		opposite = newOpposite;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE, oldOpposite, opposite));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getTypedName() {
 		StringBuilder result = new StringBuilder();
 		String _name = this.getName();
@@ -691,6 +741,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return basicGetType();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				return getTypeJvm();
+			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
+				if (resolve) return getOpposite();
+				return basicGetOpposite();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPED_NAME:
 				return getTypedName();
 		}
@@ -741,6 +794,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)newValue);
 				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
+				setOpposite((LBeanReference)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -789,6 +845,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)null);
 				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
+				setOpposite((LBeanReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -825,6 +884,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return type != null;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				return typeJvm != null;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
+				return opposite != null;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPED_NAME:
 				return TYPED_NAME_EDEFAULT == null ? getTypedName() != null : !TYPED_NAME_EDEFAULT.equals(getTypedName());
 		}

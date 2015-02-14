@@ -11,4 +11,8 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.0",
  org.eclipse.xtext;bundle-version="[2.7.3,2.8.0)",
  org.lunifera.dsl.xtext.lazyresolver.api;bundle-version="0.8.0",
  org.eclipse.xtext.ui
-Export-Package: org.lunifera.dsl.xtext.lazyresolver.ui
+Export-Package: org.lunifera.dsl.xtext.lazyresolver.ui;
+  uses:="org.eclipse.xtext.ui.editor.model,
+   org.eclipse.swt.graphics,
+   org.eclipse.xtext.ui.editor.outline.impl,
+   org.eclipse.xtext.util.concurrent"

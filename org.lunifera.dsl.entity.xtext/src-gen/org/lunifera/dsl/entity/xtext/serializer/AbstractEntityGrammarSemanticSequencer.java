@@ -1,5 +1,7 @@
 package org.lunifera.dsl.entity.xtext.serializer;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
@@ -10,8 +12,14 @@ import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmUpperBound;
 import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
+import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
+import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
+import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
+import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBasicForLoopExpression;
@@ -80,8 +88,6 @@ import org.lunifera.dsl.semantic.entity.LOperation;
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy;
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
-
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGrammarSemanticSequencer {
@@ -1530,7 +1536,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanReference_2_0_0 
-	 *         (cascading?='cascade'? type=[LBean|ID] multiplicity=Multiplicity? name=TRANSLATABLEID opposite=[LBeanReference|LFQN]?)
+	 *         (cascading?='cascade'? type=[LType|ID] multiplicity=Multiplicity? name=TRANSLATABLEID opposite=[LReference|LFQN]?)
 	 *     )
 	 */
 	protected void sequence_BeanFeature(EObject context, LBeanReference semanticObject) {
@@ -1627,7 +1633,8 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *                 type=[LScalarType|ID] 
 	 *                 multiplicity=Multiplicity? 
 	 *                 name=TRANSLATABLEID 
-	 *                 persistenceInfo=ColumnPersistenceInfo?
+	 *                 persistenceInfo=ColumnPersistenceInfo? 
+	 *                 opposite=[LBeanReference|LFQN]?
 	 *             )
 	 *         )
 	 *     )

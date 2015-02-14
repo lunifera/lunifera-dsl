@@ -11,12 +11,13 @@
 package org.lunifera.dsl.entity.xtext.extensions
 
 import com.google.inject.Inject
+import org.lunifera.dsl.entity.xtext.util.PersistenceNamingUtils
 import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntity
 import org.lunifera.dsl.semantic.entity.LEntityAttribute
 import org.lunifera.dsl.semantic.entity.LEntityPersistenceInfo
 import org.lunifera.dsl.semantic.entity.LEntityReference
-import org.lunifera.dsl.entity.xtext.util.PersistenceNamingUtils
 
 class NamingExtensions extends org.lunifera.dsl.common.xtext.extensions.NamingExtensions {
 
@@ -28,7 +29,7 @@ class NamingExtensions extends org.lunifera.dsl.common.xtext.extensions.NamingEx
 		if (columnBaseName.nullOrEmpty) {
 			columnBaseName = PersistenceNamingUtils::camelCaseToUpperCase(prop.toName)
 		}
- 
+
 		// Compute the final column name using some settings. 
 		// E.g. to add some prefix like the shortName of the Entity.
 		// ### not yet implemented
@@ -57,6 +58,19 @@ class NamingExtensions extends org.lunifera.dsl.common.xtext.extensions.NamingEx
 			columnBaseName = PersistenceNamingUtils::camelCaseToUpperCase(prop.toName)
 		} else {
 			columnBaseName = PersistenceNamingUtils::camelCaseToUpperCase(columnBaseName)
+		}
+
+		// Compute the final column name using some settings. 
+		// E.g. to add some prefix like the shortName of the Entity.
+		// ### not yet implemented
+		columnBaseName
+	}
+
+	// ### Might move to PersistenceExtensions
+	def dispatch toColumnName(LBeanReference prop) {
+		var columnBaseName = prop.name
+		if (columnBaseName.nullOrEmpty) {
+			columnBaseName = PersistenceNamingUtils::camelCaseToUpperCase(prop.toName)
 		}
 
 		// Compute the final column name using some settings. 

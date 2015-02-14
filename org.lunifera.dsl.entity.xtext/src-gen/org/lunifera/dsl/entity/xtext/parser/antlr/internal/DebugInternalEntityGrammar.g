@@ -77,8 +77,9 @@ ruleEntityFeature :
 				'version' |
 				'domainDescription' |
 				'domainKey'
-			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ruleColumnPersistenceInfo?
-			';'
+			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ruleColumnPersistenceInfo? (
+				'opposite' ruleLFQN
+			)? ';'
 		) |
 		'def' ruleJvmTypeReference ruleTRANSLATABLEID '(' (
 			ruleFullJvmFormalParameter (

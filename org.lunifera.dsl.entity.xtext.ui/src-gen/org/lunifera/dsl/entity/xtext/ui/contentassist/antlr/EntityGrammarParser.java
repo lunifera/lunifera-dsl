@@ -122,6 +122,7 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityFeatureAccess().getGroup_2_1_1_0(), "rule__EntityFeature__Group_2_1_1_0__0");
 					put(grammarAccess.getEntityFeatureAccess().getGroup_2_1_1_1(), "rule__EntityFeature__Group_2_1_1_1__0");
 					put(grammarAccess.getEntityFeatureAccess().getGroup_2_1_1_2(), "rule__EntityFeature__Group_2_1_1_2__0");
+					put(grammarAccess.getEntityFeatureAccess().getGroup_2_1_1_2_5(), "rule__EntityFeature__Group_2_1_1_2_5__0");
 					put(grammarAccess.getEntityFeatureAccess().getGroup_2_2(), "rule__EntityFeature__Group_2_2__0");
 					put(grammarAccess.getEntityFeatureAccess().getGroup_2_2_1(), "rule__EntityFeature__Group_2_2_1__0");
 					put(grammarAccess.getEntityFeatureAccess().getGroup_2_2_1_4(), "rule__EntityFeature__Group_2_2_1_4__0");
@@ -413,6 +414,7 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityFeatureAccess().getMultiplicityAssignment_2_1_1_2_2(), "rule__EntityFeature__MultiplicityAssignment_2_1_1_2_2");
 					put(grammarAccess.getEntityFeatureAccess().getNameAssignment_2_1_1_2_3(), "rule__EntityFeature__NameAssignment_2_1_1_2_3");
 					put(grammarAccess.getEntityFeatureAccess().getPersistenceInfoAssignment_2_1_1_2_4(), "rule__EntityFeature__PersistenceInfoAssignment_2_1_1_2_4");
+					put(grammarAccess.getEntityFeatureAccess().getOppositeAssignment_2_1_1_2_5_1(), "rule__EntityFeature__OppositeAssignment_2_1_1_2_5_1");
 					put(grammarAccess.getEntityFeatureAccess().getTypeAssignment_2_2_1_1(), "rule__EntityFeature__TypeAssignment_2_2_1_1");
 					put(grammarAccess.getEntityFeatureAccess().getNameAssignment_2_2_1_2(), "rule__EntityFeature__NameAssignment_2_2_1_2");
 					put(grammarAccess.getEntityFeatureAccess().getParamsAssignment_2_2_1_4_0(), "rule__EntityFeature__ParamsAssignment_2_2_1_4_0");

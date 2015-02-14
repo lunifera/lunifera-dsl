@@ -770,8 +770,17 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getLEntityAttribute_Opposite() {
+		return (EReference)lEntityAttributeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getLEntityAttribute_TypedName() {
-		return (EAttribute)lEntityAttributeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)lEntityAttributeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -869,7 +878,7 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLBeanReference_TypeJvm() {
+	public EReference getLBeanReference_Opposite() {
 		return (EReference)lBeanReferenceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -878,7 +887,7 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLBeanReference_Opposite() {
+	public EReference getLBeanReference_TypeJvm() {
 		return (EReference)lBeanReferenceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1097,6 +1106,7 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		createEOperation(lEntityFeatureEClass, LENTITY_FEATURE___GET_ENTITY);
 
 		lEntityAttributeEClass = createEClass(LENTITY_ATTRIBUTE);
+		createEReference(lEntityAttributeEClass, LENTITY_ATTRIBUTE__OPPOSITE);
 		createEAttribute(lEntityAttributeEClass, LENTITY_ATTRIBUTE__TYPED_NAME);
 
 		lEntityReferenceEClass = createEClass(LENTITY_REFERENCE);
@@ -1112,8 +1122,8 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 
 		lBeanReferenceEClass = createEClass(LBEAN_REFERENCE);
 		createEReference(lBeanReferenceEClass, LBEAN_REFERENCE__TYPE);
-		createEReference(lBeanReferenceEClass, LBEAN_REFERENCE__TYPE_JVM);
 		createEReference(lBeanReferenceEClass, LBEAN_REFERENCE__OPPOSITE);
+		createEReference(lBeanReferenceEClass, LBEAN_REFERENCE__TYPE_JVM);
 
 		lIndexEClass = createEClass(LINDEX);
 		createEAttribute(lIndexEClass, LINDEX__UNIQUE);
@@ -1274,6 +1284,7 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		initEOperation(getLEntityFeature__GetEntity(), this.getLEntity(), "getEntity", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(lEntityAttributeEClass, LEntityAttribute.class, "LEntityAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLEntityAttribute_Opposite(), this.getLBeanReference(), null, "opposite", null, 0, 1, LEntityAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLEntityAttribute_TypedName(), theEcorePackage.getEString(), "typedName", null, 0, 1, LEntityAttribute.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(lEntityReferenceEClass, LEntityReference.class, "LEntityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1289,9 +1300,9 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		initEAttribute(getLBeanAttribute_TypedName(), theEcorePackage.getEString(), "typedName", null, 0, 1, LBeanAttribute.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(lBeanReferenceEClass, LBeanReference.class, "LBeanReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLBeanReference_Type(), this.getLBean(), null, "type", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLBeanReference_Type(), theLunTypesPackage.getLType(), null, "type", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLBeanReference_Opposite(), theLunTypesPackage.getLFeature(), null, "opposite", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLBeanReference_TypeJvm(), theTypesPackage.getJvmTypeReference(), null, "typeJvm", null, 0, 1, LBeanReference.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLBeanReference_Opposite(), this.getLBeanReference(), null, "opposite", null, 0, 1, LBeanReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lIndexEClass, LIndex.class, "LIndex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLIndex_Unique(), theEcorePackage.getEBoolean(), "unique", null, 0, 1, LIndex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

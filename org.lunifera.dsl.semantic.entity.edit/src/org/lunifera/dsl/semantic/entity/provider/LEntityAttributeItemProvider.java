@@ -77,6 +77,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			addDomainKeyPropertyDescriptor(object);
 			addDomainDescriptionPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
+			addOppositePropertyDescriptor(object);
 			addTypedNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -294,6 +295,28 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 				 getString("_UI_LAttribute_type_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_LAttribute_type_feature", "_UI_LAttribute_type"),
 				 LunTypesPackage.Literals.LATTRIBUTE__TYPE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Opposite feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOppositePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LEntityAttribute_opposite_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LEntityAttribute_opposite_feature", "_UI_LEntityAttribute_type"),
+				 LunEntityPackage.Literals.LENTITY_ATTRIBUTE__OPPOSITE,
 				 true,
 				 false,
 				 true,

@@ -21,6 +21,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.semantic.common.helper.Bounds
 import org.lunifera.dsl.semantic.common.types.LAttribute
+import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LReference
@@ -46,96 +47,109 @@ class DtoModelExtensions extends ModelExtensions {
 	@Inject extension IQualifiedNameProvider
 	@Inject extension JvmTypesBuilder
 	@Inject extension MethodNamingExtensions
-
+	
 	@Inject TypeReferences references;
 
-	def dispatch JvmTypeReference toTypeReference(LDtoAbstractReference prop) {
-		var JvmTypeReference jvmTypeRef = prop.toDtoTypeParameterReference
-		return jvmTypeRef
+	/**
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
+	 */
+	def dispatch JvmTypeReference toDtoTypeReference(LDtoAbstractReference prop) {
+
+		// always use the lazy resolving jvmType proxy
+		return prop.typeJvm?.cloneWithProxies
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LDtoAbstractAttribute prop) {
-		var JvmTypeReference jvmTypeRef = prop.toDtoTypeParameterReference
-		return jvmTypeRef
+	/**
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
+	 */
+	def dispatch JvmTypeReference toDtoTypeReference(LDtoAbstractAttribute prop) {
+		if (isAvoidJvmTypeProxiesForDatatype(prop)) {
+			return prop.toDataTypeTypeReference
+		}
+
+		// Use the jvmType proxy
+		return prop.typeJvm?.cloneWithProxies
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LEntityAttribute prop, LDtoInheritedAttribute dtoAtt) {
-		if (prop.type instanceof LBean || prop.type instanceof LEntity  || prop.type instanceof LEnum) {
+	/**
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
+	 */
+	def dispatch JvmTypeReference toDtoTypeReference(LEntityAttribute prop, LDtoInheritedAttribute dtoAtt) {
+		if (prop.type instanceof LBean || prop.type instanceof LEntity || prop.type instanceof LEnum) {
 			return dtoAtt.inheritedFeatureTypeJvm.cloneWithProxies
 		} else {
 			return super.toTypeReference(prop)
 		}
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LBeanAttribute prop, LDtoInheritedAttribute dtoAtt) {
-		if (prop.type instanceof LBean || prop.type instanceof LEntity) {
+	/**
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
+	 */
+	def dispatch JvmTypeReference toDtoTypeReference(LBeanAttribute prop, LDtoInheritedAttribute dtoAtt) {
+		if (prop.type instanceof LBean || prop.type instanceof LEntity || prop.type instanceof LEnum) {
 			return dtoAtt.inheritedFeatureTypeJvm.cloneWithProxies
 		} else {
 			return super.toTypeReference(prop)
 		}
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LEntityReference prop, LDtoInheritedReference dtoRef) {
+	/**
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
+	 */
+	def dispatch JvmTypeReference toDtoTypeReference(LEntityReference prop, LDtoInheritedReference dtoRef) {
 		return dtoRef.inheritedFeatureTypeJvm.cloneWithProxies
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LBeanReference prop, LDtoInheritedAttribute dtoRef) {
+	/**
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
+	 */
+	def dispatch JvmTypeReference toDtoTypeReference(LBeanReference prop, LDtoInheritedAttribute dtoRef) {
 		return dtoRef.inheritedFeatureTypeJvm.cloneWithProxies
 	}
 
 	/**
-	 * Creates a type references with respect to inherited features
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
 	 */
-	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractReference prop) {
-
-		// prop.type is instanceof DTO
-		return prop.typeJvm?.cloneWithProxies
-	}
-
-	/**
-	 * Creates a type references with respect to inherited features
-	 */
-	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoAbstractAttribute prop) {
-
-		// prop.type is instanceof LDataType
-		return prop.typeJvm?.cloneWithProxies
-	}
-
-	/**
-	 * Creates a type references with respect to inherited features
-	 */
-	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedAttribute prop) {
+	def dispatch JvmTypeReference toDtoTypeReference(LDtoInheritedAttribute prop) {
 
 		if (prop.type != null) {
+
+			// if the type is a different one, then use the type of the property
+			// it needs to be mapped by a custom mapper in dsl
+			if (prop.isAvoidJvmTypeProxiesForDatatype) {
+				return prop.toDataTypeTypeReference
+			} else {
+
+				// use the lazy resolving jvm type proxy
+				return prop.typeJvm.cloneWithProxies
+			}
+		}
+
+		// creates a proxy reference
+		return prop.inheritedFeature?.toDtoTypeReference(prop).cloneWithProxies
+	}
+
+	/**
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
+	 */
+	def dispatch JvmTypeReference toDtoTypeReference(LDtoInheritedReference prop) {
+
+		if (prop.type != null) {
+
 			// if the type is a different one, then use the type of the property
 			// it needs to be mapped by a custom mapper in dsl
 			return prop.typeJvm.cloneWithProxies
 		}
 
 		// creates a proxy reference
-		return prop.inheritedFeature?.toTypeReference(prop).cloneWithProxies
+		return prop.inheritedFeature?.toDtoTypeReference(prop).cloneWithProxies
 	}
 
 	/**
-	 * Creates a type references with respect to inherited features
+	 * Creates a type reference with respect to mappings to DTOs. For instance "Item"-Entity is mapped to ItemDTO
 	 */
-	def dispatch JvmTypeReference toDtoTypeParameterReference(LDtoInheritedReference prop) {
-
-		if (prop.type != null) {
-			// if the type is a different one, then use the type of the property
-			// it needs to be mapped by a custom mapper in dsl
-			return prop.typeJvm.cloneWithProxies
-		}
-
-		// creates a proxy reference
-		return prop.inheritedFeature?.toTypeReference(prop).cloneWithProxies
-	}
-
-	/**
-	 * Creates a type reference with respect to multiplicity
-	 */
-	def JvmTypeReference toDtoTypeParameterReferenceWithMultiplicity(LDtoFeature prop) {
-		var ref = prop.toDtoTypeParameterReference
+	def JvmTypeReference toDtoTypeReferenceWithMultiplicity(LDtoFeature prop) {
+		var ref = prop.toDtoTypeReference
 		if (ref != null && prop.bounds.toMany) {
 			ref = references.getTypeForName(typeof(List), prop, ref)
 		}
@@ -260,42 +274,72 @@ class DtoModelExtensions extends ModelExtensions {
 		throw new IllegalStateException("not a valid call")
 	}
 
+	/**
+	 * Returns the type of the property or reference without any mappings
+	 */
 	def dispatch LType toRawType(LDtoAttribute prop) {
 		prop.type
 	}
 
+	/**
+	 * Returns the type of the property or reference without any mappings
+	 */
 	def dispatch LType toRawType(LDtoInheritedAttribute prop) {
 		prop.inheritedFeature?.type
 	}
-
+	
+	/**
+	 * Returns the type of the property or reference without any mappings
+	 */
 	def dispatch LType toRawType(LDtoReference prop) {
 		prop.type
 	}
-
+	
+	/**
+	 * Returns the type of the property or reference without any mappings
+	 */
 	def dispatch LType toRawType(LDtoInheritedReference prop) {
 		prop.inheritedFeature?.toRawType
 	}
 
+	/**
+	 * Returns the type of the property or reference without any mappings
+	 */
 	def dispatch LType toRawType(LEntityReference prop) {
 		prop.type
 	}
-
+	
+	/**
+	 * Returns the type of the property or reference without any mappings
+	 */
 	def dispatch LType toRawType(LEntityAttribute prop) {
 		prop.type
 	}
-
+	
+	/**
+	 * Returns the type of the property or reference without any mappings
+	 */
 	def dispatch LType toRawType(LBeanReference prop) {
 		prop.type
 	}
 
+	/**
+	 * Returns the type of the property or reference without any mappings
+	 */
 	def dispatch LType toRawType(LBeanAttribute prop) {
 		prop.type
 	}
-
+	
+	/**
+	 * Returns the type reference of the property or reference without any mappings
+	 */
 	def dispatch toRawTypeRefernce(LDtoFeature prop) {
 		prop.toRawType?.toTypeReference
 	}
 
+	/**
+	 * Returns the type reference of the property or reference without any mappings
+	 */
 	def dispatch toRawTypeRefernce(LDtoInheritedReference prop) {
 		val LReference ref = prop.inheritedFeature
 		if (ref instanceof LEntityReference) {
@@ -305,36 +349,42 @@ class DtoModelExtensions extends ModelExtensions {
 		}
 		return TypesFactory.eINSTANCE.createJvmUnknownTypeReference
 	}
-
+	
+	/**
+	 * Returns the type reference of the property or reference without any mappings
+	 */
 	def dispatch toRawTypeRefernce(LDtoAbstractReference prop) {
 		prop.toRawType?.toTypeReference
 	}
-
+	
+	/**
+	 * Returns the type reference of the property or reference without any mappings
+	 */
 	def String toRawTypeName(LDtoFeature prop) {
 		prop.toRawType?.name
 	}
-
-	def dispatch LReference opposite(LDtoFeature prop) {
+	
+	def dispatch LFeature opposite(LDtoFeature prop) {
 		null
 	}
 
-	def dispatch LReference opposite(LDtoReference prop) {
+	def dispatch LFeature opposite(LDtoReference prop) {
 		return prop.opposite
 	}
 
-	def dispatch LReference opposite(LDtoInheritedReference prop) {
+	def dispatch LFeature opposite(LDtoInheritedReference prop) {
 		if (prop.inherited && prop.inheritedFeature != null) {
 			return prop.inheritedFeature.opposite
 		} else {
 			return null
 		}
 	}
-
-	def dispatch LReference opposite(LEntityReference prop) {
+ 
+	def dispatch LFeature opposite(LEntityReference prop) {
 		prop.opposite
 	}
 
-	def dispatch LReference opposite(LBeanReference prop) {
+	def dispatch LFeature opposite(LBeanReference prop) {
 		prop.opposite
 	}
 
@@ -502,6 +552,27 @@ class DtoModelExtensions extends ModelExtensions {
 		dto.features.filter [
 			it.containmentReference
 		]
+	}
+	
+	override boolean isBasedOnDatatype(LFeature feature){
+		if(feature instanceof LDtoInheritedAttribute){
+			return if(feature.inheritedFeature != null) feature.inheritedFeature.isBasedOnDatatype else false
+		}
+		return super.isBasedOnDatatype(feature)
+	}
+	
+	override LDataType getDatatype(LFeature feature){
+		if(feature instanceof LDtoInheritedAttribute){
+			return if(feature.inheritedFeature != null) feature.inheritedFeature.getDatatype else null
+		}
+		return super.getDatatype(feature)
+	}
+	
+	override typeIsEnum(LAttribute prop) {
+		if(prop instanceof LDtoInheritedAttribute){
+			return if(prop.inheritedFeature != null) prop.inheritedFeature.typeIsEnum else false
+		}
+		return super.typeIsEnum(prop)
 	}
 
 	/**
