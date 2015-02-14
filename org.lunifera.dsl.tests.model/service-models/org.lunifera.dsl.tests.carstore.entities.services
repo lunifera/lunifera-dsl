@@ -1,0 +1,15 @@
+package org.lunifera.dsl.tests.carstore.entities.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.dsl.tests.carstore.entities.dtos.*;
+	import org.lunifera.dsl.tests.carstore.entities.dtos.dtos.*; 
+	
+	dtoservice BaseService provides BaseDto {
+	}
+	dtoservice CarService provides CarDto {
+	}
+	dtoservice AddonService provides AddonDto {
+	}
+	dtoservice PersonService provides PersonDto {
+	}
+}

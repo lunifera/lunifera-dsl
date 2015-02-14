@@ -17,6 +17,20 @@ import org.lunifera.dsl.tests.carstore.entities.dtos.mapper.BaseDtoMapper;
 @SuppressWarnings("all")
 public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends BaseDtoMapper<DTO, ENTITY> {
   /**
+   * Creates a new instance of the entity
+   */
+  public Car createEntity() {
+    return new Car();
+  }
+  
+  /**
+   * Creates a new instance of the dto
+   */
+  public CarDto createDto() {
+    return new CarDto();
+  }
+  
+  /**
    * Maps the entity {@link Car} to the dto {@link CarDto}.
    * 
    * @param dto - The target dto
@@ -28,6 +42,8 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends BaseDt
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
+    context.register(entity, dto);
     
     super.mapToDTO(dto, entity, context);
     
@@ -51,6 +67,8 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends BaseDt
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
+    context.register(entity, dto);
     
     super.mapToEntity(dto, entity, context);
     
@@ -133,8 +151,12 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends BaseDt
     
     List<AddonDto> results = new java.util.ArrayList<AddonDto>();
     for (Addon _entity : in.getAddons()) {
-    	AddonDto _dto = new AddonDto();
-    	mapper.mapToDTO(_dto, _entity, context);
+    	AddonDto _dto = context.getTarget(_entity);
+    	if (_dto == null) {
+    		_dto = mapper.createDto();
+    		context.register(_entity, _dto);
+    		mapper.mapToDTO(_dto, _entity, context);
+    	}
     	results.add(_dto);
     }
     return results;
@@ -156,7 +178,7 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends BaseDt
     
     List<Addon> results = new java.util.ArrayList<Addon>();
     for (AddonDto _dto : in.getAddons()) {
-    	Addon _entity = new Addon();
+    	Addon _entity = mapper.createEntity();
     	mapper.mapToEntity(_dto, _entity, context);
     	results.add(_entity);
     }
@@ -172,13 +194,19 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends BaseDt
    * 
    */
   protected PersonDto toDto_owner(final Car in, final Context context) {
-    org.lunifera.dsl.dto.lib.IMapper<PersonDto, Person> mapper = getMapper(PersonDto.class, Person.class);
-    if(mapper == null) {
-    	throw new IllegalStateException("Mapper must not be null!");
+    PersonDto dto = context.getTarget(in.getOwner());
+    if(dto != null) {
+    	return dto;
     }
     
     if(in.getOwner() != null) {
-    	PersonDto dto = new PersonDto();
+    	// find a mapper that knows how to map the concrete input type.
+    	org.lunifera.dsl.dto.lib.IMapper<PersonDto, Person> mapper = (org.lunifera.dsl.dto.lib.IMapper<PersonDto, Person>) getMapper(PersonDto.class, in.getOwner().getClass());
+    	if(mapper == null) {
+    		throw new IllegalStateException("Mapper must not be null!");
+    	}
+    
+    	dto = mapper.createDto();
     	mapper.mapToDTO(dto, in.getOwner(), context);
     	return dto;
     } else {
@@ -195,13 +223,19 @@ public class CarDtoMapper<DTO extends CarDto, ENTITY extends Car> extends BaseDt
    * 
    */
   protected Person toEntity_owner(final CarDto in, final Context context) {
-    org.lunifera.dsl.dto.lib.IMapper<PersonDto, Person> mapper = getMapper(PersonDto.class, Person.class);
-    if(mapper == null) {
-    	throw new IllegalStateException("Mapper must not be null!");
+    Person entity = context.getTarget(in.getOwner());
+    if(entity != null) {
+    	return entity;
     }
     
     if(in.getOwner() != null) {
-    	Person entity = new Person();
+    	// find a mapper that knows how to map the concrete input type.
+    	org.lunifera.dsl.dto.lib.IMapper<PersonDto, Person> mapper = (org.lunifera.dsl.dto.lib.IMapper<PersonDto, Person>) getMapper(in.getOwner().getClass(), Person.class);
+    	if(mapper == null) {
+    		throw new IllegalStateException("Mapper must not be null!");
+    	}
+    
+    	entity = mapper.createEntity();
     	mapper.mapToEntity(in.getOwner(), entity, context);	
     	return entity;
     } else {

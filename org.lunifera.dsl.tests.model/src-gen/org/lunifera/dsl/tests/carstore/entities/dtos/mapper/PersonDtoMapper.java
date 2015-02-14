@@ -5,7 +5,6 @@ import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.tests.carstore.entities.Address;
 import org.lunifera.dsl.tests.carstore.entities.Car;
 import org.lunifera.dsl.tests.carstore.entities.Person;
-import org.lunifera.dsl.tests.carstore.entities.dtos.AddressDto;
 import org.lunifera.dsl.tests.carstore.entities.dtos.CarDto;
 import org.lunifera.dsl.tests.carstore.entities.dtos.PersonDto;
 import org.lunifera.dsl.tests.carstore.entities.dtos.mapper.BaseDtoMapper;
@@ -16,6 +15,20 @@ import org.lunifera.dsl.tests.carstore.entities.dtos.mapper.BaseDtoMapper;
  */
 @SuppressWarnings("all")
 public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> extends BaseDtoMapper<DTO, ENTITY> {
+  /**
+   * Creates a new instance of the entity
+   */
+  public Person createEntity() {
+    return new Person();
+  }
+  
+  /**
+   * Creates a new instance of the dto
+   */
+  public PersonDto createDto() {
+    return new PersonDto();
+  }
+  
   /**
    * Maps the entity {@link Person} to the dto {@link PersonDto}.
    * 
@@ -28,6 +41,8 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
+    context.register(entity, dto);
     
     super.mapToDTO(dto, entity, context);
     
@@ -52,6 +67,8 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
+    context.register(entity, dto);
     
     super.mapToEntity(dto, entity, context);
     
@@ -136,8 +153,12 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
     
     List<CarDto> results = new java.util.ArrayList<CarDto>();
     for (Car _entity : in.getOwnsCars()) {
-    	CarDto _dto = new CarDto();
-    	mapper.mapToDTO(_dto, _entity, context);
+    	CarDto _dto = context.getTarget(_entity);
+    	if (_dto == null) {
+    		_dto = mapper.createDto();
+    		context.register(_entity, _dto);
+    		mapper.mapToDTO(_dto, _entity, context);
+    	}
     	results.add(_dto);
     }
     return results;
@@ -159,7 +180,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
     
     List<Car> results = new java.util.ArrayList<Car>();
     for (CarDto _dto : in.getOwnsCars()) {
-    	Car _entity = new Car();
+    	Car _entity = mapper.createEntity();
     	mapper.mapToEntity(_dto, _entity, context);
     	results.add(_entity);
     }
@@ -174,14 +195,20 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected AddressDto toDto_homeAddress(final Person in, final Context context) {
-    org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = getMapper(AddressDto.class, Address.class);
-    if(mapper == null) {
-    	throw new IllegalStateException("Mapper must not be null!");
+  protected org.lunifera.dsl.tests.carstore.dtos.AddressDto toDto_homeAddress(final Person in, final Context context) {
+    AddressDto dto = context.getTarget(in.getHomeAddress());
+    if(dto != null) {
+    	return dto;
     }
-     
+    
     if(in.getHomeAddress() != null) {
-    	AddressDto dto = new AddressDto();
+    	// find a mapper that knows how to map the concrete input type.
+    	org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = (org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address>) getMapper(AddressDto.class, in.getHomeAddress().getClass());
+    	if(mapper == null) {
+    		throw new IllegalStateException("Mapper must not be null!");
+    	}
+     
+    	dto = mapper.createDto();
     	mapper.mapToDTO(dto, in.getHomeAddress(), context);
     	return dto;
     } else {
@@ -198,13 +225,19 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * 
    */
   protected Address toEntity_homeAddress(final PersonDto in, final Context context) {
-    org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = getMapper(AddressDto.class, Address.class);
-    if(mapper == null) {
-    	throw new IllegalStateException("Mapper must not be null!");
+    Address entity = context.getTarget(in.getHomeAddress());
+    if(entity != null) {
+    	return entity;
     }
-     
+    
     if(in.getHomeAddress() != null) {
-    	Address entity = new Address();
+    	// find a mapper that knows how to map the concrete input type.
+    	org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = (org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address>) getMapper(in.getHomeAddress().getClass(), Address.class);
+    	if(mapper == null) {
+    		throw new IllegalStateException("Mapper must not be null!");
+    	}
+     
+    	entity = mapper.createEntity();
     	mapper.mapToEntity(in.getHomeAddress(), entity, context);
     	return entity;							
     } else {
@@ -220,14 +253,20 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected AddressDto toDto_workAddress(final Person in, final Context context) {
-    org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = getMapper(AddressDto.class, Address.class);
-    if(mapper == null) {
-    	throw new IllegalStateException("Mapper must not be null!");
+  protected org.lunifera.dsl.tests.carstore.dtos.AddressDto toDto_workAddress(final Person in, final Context context) {
+    AddressDto dto = context.getTarget(in.getWorkAddress());
+    if(dto != null) {
+    	return dto;
     }
-     
+    
     if(in.getWorkAddress() != null) {
-    	AddressDto dto = new AddressDto();
+    	// find a mapper that knows how to map the concrete input type.
+    	org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = (org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address>) getMapper(AddressDto.class, in.getWorkAddress().getClass());
+    	if(mapper == null) {
+    		throw new IllegalStateException("Mapper must not be null!");
+    	}
+     
+    	dto = mapper.createDto();
     	mapper.mapToDTO(dto, in.getWorkAddress(), context);
     	return dto;
     } else {
@@ -244,13 +283,19 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * 
    */
   protected Address toEntity_workAddress(final PersonDto in, final Context context) {
-    org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = getMapper(AddressDto.class, Address.class);
-    if(mapper == null) {
-    	throw new IllegalStateException("Mapper must not be null!");
+    Address entity = context.getTarget(in.getWorkAddress());
+    if(entity != null) {
+    	return entity;
     }
-     
+    
     if(in.getWorkAddress() != null) {
-    	Address entity = new Address();
+    	// find a mapper that knows how to map the concrete input type.
+    	org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address> mapper = (org.lunifera.dsl.dto.lib.IMapper<AddressDto, Address>) getMapper(in.getWorkAddress().getClass(), Address.class);
+    	if(mapper == null) {
+    		throw new IllegalStateException("Mapper must not be null!");
+    	}
+     
+    	entity = mapper.createEntity();
     	mapper.mapToEntity(in.getWorkAddress(), entity, context);
     	return entity;							
     } else {

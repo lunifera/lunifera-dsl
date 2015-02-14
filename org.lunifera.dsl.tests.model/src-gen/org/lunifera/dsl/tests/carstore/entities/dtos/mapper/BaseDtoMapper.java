@@ -46,6 +46,20 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
   }
   
   /**
+   * Creates a new instance of the entity
+   */
+  public Base createEntity() {
+    return new Base();
+  }
+  
+  /**
+   * Creates a new instance of the dto
+   */
+  public BaseDto createDto() {
+    return new BaseDto();
+  }
+  
+  /**
    * Maps the entity {@link Base} to the dto {@link BaseDto}.
    * 
    * @param dto - The target dto
@@ -57,6 +71,8 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
+    context.register(entity, dto);
     
     
     dto.setUuid(toDto_uuid(entity, context));
@@ -74,6 +90,8 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
+    context.register(entity, dto);
     
     
     entity.setUuid(toEntity_uuid(dto, context));

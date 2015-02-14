@@ -4,7 +4,8 @@
        <service>
 		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
 	   </service>
-       <property name="dto" type="String" value="org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto"/>
+		<property name="dto" type="String" value="org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto"/>
+		<property name="dto" type="String" value="org.lunifera.dsl.tests.carstore.entities.dtos.BaseDto"/>
        <property name="entity" type="String" value="org.lunifera.dsl.tests.carstore.entities.Addon"/>
        <property name="service.pid" type="String" value="org.lunifera.dsl.tests.carstore.entities.dtos.mapper.addondtomapper"/>
        <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 

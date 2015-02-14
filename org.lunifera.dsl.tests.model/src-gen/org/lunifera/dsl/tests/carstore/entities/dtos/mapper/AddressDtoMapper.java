@@ -46,6 +46,20 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
   }
   
   /**
+   * Creates a new instance of the entity
+   */
+  public Address createEntity() {
+    return new Address();
+  }
+  
+  /**
+   * Creates a new instance of the dto
+   */
+  public AddressDto createDto() {
+    return new AddressDto();
+  }
+  
+  /**
    * Maps the entity {@link Address} to the dto {@link AddressDto}.
    * 
    * @param dto - The target dto
@@ -57,6 +71,8 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
+    context.register(entity, dto);
     
     
     dto.setStreetname(toDto_streetname(entity, context));
@@ -75,6 +91,8 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
+    
+    context.register(entity, dto);
     
     
     entity.setStreetname(toEntity_streetname(dto, context));
