@@ -11,21 +11,28 @@
 package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
+import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.lunifera.dsl.dto.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
+import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint
+import org.lunifera.dsl.semantic.common.types.LConstraints
 import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAttribute
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
 import org.lunifera.dsl.semantic.dto.LDtoInheritedReference
 import org.lunifera.dsl.semantic.dto.LDtoReference
+import org.lunifera.dsl.semantic.entity.LBeanReference
+import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.runtime.common.annotations.DomainDescription
-import org.lunifera.runtime.common.annotations.DomainEmbedded
 import org.lunifera.runtime.common.annotations.DomainKey
 import org.lunifera.runtime.common.annotations.DomainReference
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.xtext.common.types.JvmTypeReference
+import org.lunifera.runtime.common.annotations.TargetEnumConstraint
+import org.lunifera.runtime.common.annotations.TargetEnumConstraints
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -35,6 +42,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	@Inject extension JvmTypesBuilder
 	@Inject extension TypeHelper
 	@Inject extension DtoModelExtensions
+	@Inject extension AnnotationExtension
 
 	def protected dispatch void internalProcessAnnotation(LDto dto, JvmGenericType jvmType) {
 		dto.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
@@ -78,5 +86,61 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
 
 		field.annotations += prop.toAnnotation(typeof(DomainReference))
+
+		val inheritedRef = prop.inheritedFeature
+		if (inheritedRef instanceof LEntityReference) {
+			if (inheritedRef.constraints != null) {
+				inheritedRef.constraints.addConstraintsAnno(field, prop.type)
+			}
+		} else if (inheritedRef instanceof LBeanReference) {
+			if (inheritedRef.constraints != null) {
+				inheritedRef.constraints.addConstraintsAnno(field, prop.type)
+			}
+		}
+	}
+
+	def void addConstraintsAnno(LConstraints constraints, JvmField jvmField, LDto mapsTo) {
+
+		// process the LAttributeMatchingConstraint
+		if (!constraints.constraints.filter[it instanceof LAttributeMatchingConstraint].empty) {
+
+			// collect all inner annotations
+			val innerAnnotations = newArrayList()
+			constraints.constraints.filter[it instanceof LAttributeMatchingConstraint].map[
+				it as LAttributeMatchingConstraint].forEach [
+				val enumClassTypeRef = attribute.name.findReplacementEnum(mapsTo)
+				if (enumClassTypeRef != null) {
+					val innerAnno = constraints.toAnnotation(typeof(TargetEnumConstraint))
+					innerAnno.addAnnAttr(it, "targetProperty", attribute.name)
+					innerAnno.addAnnAttr(it, "enumClass", enumClassTypeRef)
+					innerAnno.addAnnAttr(it, "enumLiteral", matchingLiteral.name)
+					innerAnnotations += innerAnno
+				}
+			]
+
+			// now create the outer annotation and add the array of inner annotations
+			val mainAnno = constraints.toAnnotation(typeof(TargetEnumConstraints))
+			mainAnno.addAnnAttr(constraints, "constraints",
+				innerAnnotations.toArray(<JvmAnnotationReference>newArrayOfSize(innerAnnotations.length)))
+			jvmField.annotations += mainAnno
+		}
+	}
+
+	/** 
+	 * Iterates all attributes of the target dto. If a matching att name was found, the jvmType proxy will be returned.
+	 */
+	def JvmTypeReference findReplacementEnum(String property, LDto mapsTo) {
+		for (att : mapsTo.allFeatures.filter[it instanceof LDtoAbstractAttribute].map[it as LDtoAbstractAttribute]) {
+			if (att instanceof LDtoInheritedAttribute) {
+				if (att.inheritedFeature.name.equals(property)) {
+					return att.inheritedFeatureTypeJvm.cloneWithProxies
+				}
+			} else {
+				if (att.name.equals(property)) {
+					return att.typeJvm.cloneWithProxies
+				}
+			}
+		}
+		return null
 	}
 }

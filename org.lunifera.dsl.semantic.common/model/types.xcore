@@ -260,7 +260,6 @@ class LMultiplicity {
 		}
 		return result.toString
 	}
-	
 }
 
 enum LLowerBound {
@@ -276,6 +275,30 @@ enum LUpperBound {
 	NULL = 0
 	MANY = 1
 	ONE = 2
+}
+
+class LConstraints extends LLazyResolver {
+	contains LConstraint[*] constraints
+}
+
+interface LConstraint extends LLazyResolver{
+	 
+}
+
+class LAttributeMatchingConstraint extends LConstraint {
+	refers LAttribute attribute
+	LComparatorType comparatorType
+	String matchingValue
+	refers LEnumLiteral matchingLiteral
+}
+
+enum LComparatorType {
+	EQUALS as '=='
+	GREATER as '>'
+	LOWER as '<'
+	GREATER_EQ as '>='
+	LOWER_EQ as '<='
+	NOT_EQ as '<>'
 }
 
 type OperationsList wraps java.util.List<LOperation>

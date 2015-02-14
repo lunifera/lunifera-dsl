@@ -177,6 +177,24 @@ public interface LunTypesFactory extends EFactory {
 	LMultiplicity createLMultiplicity();
 
 	/**
+	 * Returns a new object of class '<em>LConstraints</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LConstraints</em>'.
+	 * @generated
+	 */
+	LConstraints createLConstraints();
+
+	/**
+	 * Returns a new object of class '<em>LAttribute Matching Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LAttribute Matching Constraint</em>'.
+	 * @generated
+	 */
+	LAttributeMatchingConstraint createLAttributeMatchingConstraint();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

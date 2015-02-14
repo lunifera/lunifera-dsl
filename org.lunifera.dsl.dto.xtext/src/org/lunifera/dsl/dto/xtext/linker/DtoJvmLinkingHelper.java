@@ -21,6 +21,7 @@ import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
 import org.lunifera.dsl.semantic.entity.LBean;
+import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityReference;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
@@ -84,14 +85,27 @@ public class DtoJvmLinkingHelper extends LazyJvmTypeLinkingHelper {
 						if(lInhRef.eIsProxy()){
 							return crossRefString;
 						}
-						LEntityReference lEntityRef = (LEntityReference) lInhRef;
-						if (lEntityRef.getType() instanceof LEntity) {
-							return namingExtension
-									.toDTOBeanSimpleName(lEntityRef.getType()
-											.getName());
-						} else {
-							return lEntityRef.getType().getName();
+						if(lInhRef instanceof LEntityReference){
+							LEntityReference lEntityRef = (LEntityReference) lInhRef;
+							if (lEntityRef.getType() instanceof LEntity) {
+								return namingExtension
+										.toDTOBeanSimpleName(lEntityRef.getType()
+												.getName());
+							} else {
+								return lEntityRef.getType().getName();
+							}
+						}else if(lInhRef instanceof LBeanReference){
+							LBeanReference lBeanRef = (LBeanReference) lInhRef;
+							if (lBeanRef.getType() instanceof LBean) {
+								return namingExtension
+										.toDTOBeanSimpleName(lBeanRef.getType()
+												.getName());
+							} else {
+								return lBeanRef.getType().getName();
+							}
 						}
+						
+						throw new IllegalArgumentException(feature + " ----- " + context);
 					}
 				}, null);
 

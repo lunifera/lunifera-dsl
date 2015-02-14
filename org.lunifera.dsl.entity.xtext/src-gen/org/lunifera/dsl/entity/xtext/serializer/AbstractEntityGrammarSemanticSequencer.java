@@ -63,7 +63,9 @@ import org.eclipse.xtext.xtype.XtypePackage;
 import org.lunifera.dsl.common.xtext.serializer.CommonGrammarSemanticSequencer;
 import org.lunifera.dsl.entity.xtext.services.EntityGrammarGrammarAccess;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
+import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
@@ -207,11 +209,24 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 					return; 
 				}
 				else break;
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT:
+				if(context == grammarAccess.getAttributeMatchingConstraintRule() ||
+				   context == grammarAccess.getConstraintRule()) {
+					sequence_AttributeMatchingConstraint(context, (LAttributeMatchingConstraint) semanticObject); 
+					return; 
+				}
+				else break;
 			case LunTypesPackage.LCLASS:
 				if(context == grammarAccess.getClassAccess().getLBeanAnnotationInfoAction_2_2_0() ||
 				   context == grammarAccess.getClassAccess().getLEntityAnnotationInfoAction_2_0_0() ||
 				   context == grammarAccess.getClassAccess().getLEntityAnnotationInfoAction_2_1_0()) {
 					sequence_Class_LBean_2_2_0_LEntity_2_0_0_LEntity_2_1_0(context, (LClass) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LCONSTRAINTS:
+				if(context == grammarAccess.getConstraintsRule()) {
+					sequence_Constraints(context, (LConstraints) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1536,7 +1551,14 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanReference_2_0_0 
-	 *         (cascading?='cascade'? type=[LType|ID] multiplicity=Multiplicity? name=TRANSLATABLEID opposite=[LReference|LFQN]?)
+	 *         (
+	 *             cascading?='cascade'? 
+	 *             type=[LType|ID] 
+	 *             multiplicity=Multiplicity? 
+	 *             name=TRANSLATABLEID 
+	 *             opposite=[LReference|LFQN]? 
+	 *             constraints=Constraints?
+	 *         )
 	 *     )
 	 */
 	protected void sequence_BeanFeature(EObject context, LBeanReference semanticObject) {
@@ -1663,7 +1685,8 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *             multiplicity=Multiplicity? 
 	 *             name=TRANSLATABLEID 
 	 *             persistenceInfo=ColumnPersistenceInfo? 
-	 *             opposite=[LEntityReference|LFQN]?
+	 *             opposite=[LEntityReference|LFQN]? 
+	 *             constraints=Constraints?
 	 *         )
 	 *     )
 	 */

@@ -70,7 +70,7 @@ EntityFeature returns entity::LEntityFeature:
 	(({entity::LEntityReference.annotationInfo=current}
 	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
 	(persistenceInfo=ColumnPersistenceInfo)?
-	('opposite' opposite=[entity::LEntityReference|LFQN])?)
+	('opposite' opposite=[entity::LEntityReference|LFQN])?  (constraints=Constraints)?)
 	';')
 	|
 	({entity::LEntityAttribute.annotationInfo=current}
@@ -94,7 +94,7 @@ BeanFeature returns entity::LBeanFeature:
 	annotations+=AnnotationDef*
 	(({entity::LBeanReference.annotationInfo=current}
 	('ref' (cascading?='cascade')? type=[LType] multiplicity=Multiplicity? name=TRANSLATABLEID
-	('opposite' opposite=[LReference|LFQN])?)
+	('opposite' opposite=[LReference|LFQN])? (constraints=Constraints)?)
 	';')
 	|
 	({entity::LBeanAttribute.annotationInfo=current}

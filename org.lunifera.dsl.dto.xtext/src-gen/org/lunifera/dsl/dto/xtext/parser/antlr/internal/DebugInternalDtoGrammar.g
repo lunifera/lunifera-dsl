@@ -133,6 +133,21 @@ ruleAnnotationDef :
 	) => ruleXAnnotation )
 ;
 
+// Rule Constraint
+ruleConstraint :
+	ruleAttributeMatchingConstraint
+;
+
+// Rule AttributeMatchingConstraint
+ruleAttributeMatchingConstraint :
+	RULE_ID ruleLComparatorType (
+		RULE_STRING |
+		( (
+		RULE_ID
+		) => RULE_ID )
+	) ';'
+;
+
 // Rule LQualifiedNameWithWildCard
 ruleLQualifiedNameWithWildCard :
 	ruleQualifiedName (
@@ -1023,6 +1038,16 @@ ruleLVisibility :
 	'private' |
 	'protected' |
 	'public'
+;
+
+// Rule LComparatorType
+ruleLComparatorType :
+	'==' |
+	'>' |
+	'<' |
+	'>=' |
+	'<=' |
+	'<>'
 ;
 
 // Rule LowerBound

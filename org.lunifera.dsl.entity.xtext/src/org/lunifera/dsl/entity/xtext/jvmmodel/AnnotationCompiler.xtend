@@ -51,6 +51,8 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions
+import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint
+import org.lunifera.dsl.semantic.common.types.LConstraints
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.entity.LBean
@@ -67,6 +69,8 @@ import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 import org.lunifera.runtime.common.annotations.DomainDescription
 import org.lunifera.runtime.common.annotations.DomainKey
+import org.lunifera.runtime.common.annotations.TargetEnumConstraint
+import org.lunifera.runtime.common.annotations.TargetEnumConstraints
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -246,6 +250,10 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 				// @ManyToOne
 				addManyToOneAnno(prop, jvmField)
 			}
+		}
+
+		if (prop.constraints != null) {
+			prop.constraints.addConstraintsAnno(jvmField)
 		}
 	}
 
@@ -456,31 +464,45 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
 		if (prop.type instanceof LEntity) {
+
 			// its a reference to an entity and so we need to express the relation
 			if (prop.toMany) {
+
 				// *toMany
 				if (prop.opposite.toMany) {
+
 					// @ManyToMany
 					addManyToManyAnno(prop, jvmField)
 				} else {
+
 					// @OneToMany
 					addOneToManyAnno(prop, jvmField)
 				}
 			} else {
+
 				// *toOne
 				val opposite = prop.resolvedOpposite
+
 				// When we have no opposite, then the master-side has no collection
 				// and we assume a many-to-one relation.
 				// A one-to-one relation needs an "opposite" on both sides.
 				if (opposite != null && !opposite.toMany) {
+
 					// @OneToOne
 					addOneToOneAnno(prop, jvmField)
 				} else {
+
 					// @ManyToOne
 					addManyToOneAnno(prop, jvmField)
 				}
 			}
+
+			if (prop.constraints != null) {
+				prop.constraints.addConstraintsAnno(jvmField)
+			}
+
 		} else {
+
 			// it is a bean and needs @embedded annotations
 			jvmField.annotations += prop.toAnnotation(typeof(Basic))
 			addAnno(prop, jvmField, prop.toAnnotation(typeof(Embedded)))
@@ -566,6 +588,29 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 				joinColumn.addAnnAttr(prop, "nullable", false)
 			}
 			addAnno(prop, jvmAnnTarget, joinColumn)
+		}
+	}
+
+	def void addConstraintsAnno(LConstraints constraints, JvmField jvmField) {
+
+		// process the LAttributeMatchingConstraint
+		if (!constraints.constraints.filter[it instanceof LAttributeMatchingConstraint].empty) {
+
+			// collect all inner annotations
+			val innerAnnotations = newArrayList()
+			constraints.constraints.filter[it instanceof LAttributeMatchingConstraint].map[
+				it as LAttributeMatchingConstraint].forEach [
+				val innerAnno = constraints.toAnnotation(typeof(TargetEnumConstraint))
+				innerAnno.addAnnAttr(it, "targetProperty", attribute.name)
+				innerAnno.addAnnAttr(it, "enumClass", attribute.typeJvm.cloneWithProxies)
+				innerAnno.addAnnAttr(it, "enumLiteral", matchingLiteral.name)
+				innerAnnotations += innerAnno
+			]
+
+			// now create the outer annotation and add the array of inner annotations
+			val mainAnno = constraints.toAnnotation(typeof(TargetEnumConstraints))
+			mainAnno.addAnnAttr(constraints, "constraints", innerAnnotations.toArray(<JvmAnnotationReference>newArrayOfSize(innerAnnotations.length)))
+			jvmField.annotations += mainAnno
 		}
 	}
 

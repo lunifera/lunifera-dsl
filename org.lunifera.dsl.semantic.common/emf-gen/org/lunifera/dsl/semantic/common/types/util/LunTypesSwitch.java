@@ -231,6 +231,28 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LunTypesPackage.LCONSTRAINTS: {
+				LConstraints lConstraints = (LConstraints)theEObject;
+				T result = caseLConstraints(lConstraints);
+				if (result == null) result = caseLLazyResolver(lConstraints);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LCONSTRAINT: {
+				LConstraint lConstraint = (LConstraint)theEObject;
+				T result = caseLConstraint(lConstraint);
+				if (result == null) result = caseLLazyResolver(lConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT: {
+				LAttributeMatchingConstraint lAttributeMatchingConstraint = (LAttributeMatchingConstraint)theEObject;
+				T result = caseLAttributeMatchingConstraint(lAttributeMatchingConstraint);
+				if (result == null) result = caseLConstraint(lAttributeMatchingConstraint);
+				if (result == null) result = caseLLazyResolver(lAttributeMatchingConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -532,6 +554,51 @@ public class LunTypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLMultiplicity(LMultiplicity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LConstraints</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LConstraints</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLConstraints(LConstraints object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LConstraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LConstraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLConstraint(LConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LAttribute Matching Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LAttribute Matching Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLAttributeMatchingConstraint(LAttributeMatchingConstraint object) {
 		return null;
 	}
 

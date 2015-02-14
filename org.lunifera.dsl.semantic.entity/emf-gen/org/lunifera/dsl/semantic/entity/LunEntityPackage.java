@@ -1292,13 +1292,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_REFERENCE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_REFERENCE__CONSTRAINTS = LENTITY_FEATURE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>LEntity Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 5;
+	int LENTITY_REFERENCE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1727,13 +1736,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_REFERENCE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_REFERENCE__CONSTRAINTS = LBEAN_FEATURE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>LBean Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 5;
+	int LBEAN_REFERENCE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -2675,6 +2693,17 @@ public interface LunEntityPackage extends EPackage {
 	EReference getLEntityReference_Opposite();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Constraints</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LEntityReference#getConstraints()
+	 * @see #getLEntityReference()
+	 * @generated
+	 */
+	EReference getLEntityReference_Constraints();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LBeanFeature <em>LBean Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2757,6 +2786,17 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLBeanReference_TypeJvm();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Constraints</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanReference#getConstraints()
+	 * @see #getLBeanReference()
+	 * @generated
+	 */
+	EReference getLBeanReference_Constraints();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LIndex <em>LIndex</em>}'.
@@ -3419,6 +3459,14 @@ public interface LunEntityPackage extends EPackage {
 		EReference LENTITY_REFERENCE__OPPOSITE = eINSTANCE.getLEntityReference_Opposite();
 
 		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LENTITY_REFERENCE__CONSTRAINTS = eINSTANCE.getLEntityReference_Constraints();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanFeatureImpl <em>LBean Feature</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3487,6 +3535,14 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LBEAN_REFERENCE__TYPE_JVM = eINSTANCE.getLBeanReference_TypeJvm();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LBEAN_REFERENCE__CONSTRAINTS = eINSTANCE.getLBeanReference_Constraints();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LIndexImpl <em>LIndex</em>}' class.

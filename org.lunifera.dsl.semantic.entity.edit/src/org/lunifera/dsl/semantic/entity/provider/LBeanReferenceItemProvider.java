@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.xtext.common.types.TypesFactory;
+import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
@@ -165,6 +166,7 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(LunEntityPackage.Literals.LBEAN_REFERENCE__TYPE_JVM);
+			childrenFeatures.add(LunEntityPackage.Literals.LBEAN_REFERENCE__CONSTRAINTS);
 		}
 		return childrenFeatures;
 	}
@@ -225,6 +227,7 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -286,6 +289,11 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 			(createChildParameter
 				(LunEntityPackage.Literals.LBEAN_REFERENCE__TYPE_JVM,
 				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunEntityPackage.Literals.LBEAN_REFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLConstraints()));
 	}
 
 }

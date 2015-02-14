@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LType;
@@ -43,6 +44,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,6 +120,16 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * @ordered
 	 */
 	protected JvmTypeReference typeJvm;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected LConstraints constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -304,11 +316,56 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LConstraints getConstraints() {
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConstraints(LConstraints newConstraints, NotificationChain msgs) {
+		LConstraints oldConstraints = constraints;
+		constraints = newConstraints;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS, oldConstraints, newConstraints);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConstraints(LConstraints newConstraints) {
+		if (newConstraints != constraints) {
+			NotificationChain msgs = null;
+			if (constraints != null)
+				msgs = ((InternalEObject)constraints).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS, null, msgs);
+			if (newConstraints != null)
+				msgs = ((InternalEObject)newConstraints).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS, null, msgs);
+			msgs = basicSetConstraints(newConstraints, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS, newConstraints, newConstraints));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				return basicSetConstraints(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -333,6 +390,8 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				return basicGetOpposite();
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				return getTypeJvm();
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				return getConstraints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -359,6 +418,9 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)newValue);
+				return;
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				setConstraints((LConstraints)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -387,6 +449,9 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)null);
 				return;
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				setConstraints((LConstraints)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -409,6 +474,8 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				return opposite != null;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				return typeJvm != null;
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				return constraints != null;
 		}
 		return super.eIsSet(featureID);
 	}

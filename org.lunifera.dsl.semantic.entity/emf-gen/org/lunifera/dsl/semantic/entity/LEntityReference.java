@@ -15,6 +15,7 @@ package org.lunifera.dsl.semantic.entity;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LReference;
 
 /**
@@ -28,6 +29,7 @@ import org.lunifera.dsl.semantic.common.types.LReference;
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,5 +115,31 @@ public interface LEntityReference extends LEntityFeature, LReference {
 	 * @generated
 	 */
 	void setOpposite(LEntityReference value);
+
+	/**
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraints</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraints</em>' containment reference.
+	 * @see #setConstraints(LConstraints)
+	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntityReference_Constraints()
+	 * @model containment="true"
+	 * @generated
+	 */
+	LConstraints getConstraints();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getConstraints <em>Constraints</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Constraints</em>' containment reference.
+	 * @see #getConstraints()
+	 * @generated
+	 */
+	void setConstraints(LConstraints value);
 
 } // LEntityReference

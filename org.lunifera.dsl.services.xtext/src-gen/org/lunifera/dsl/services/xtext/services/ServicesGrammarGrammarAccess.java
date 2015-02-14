@@ -728,6 +728,47 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getLVisibilityAccess().getRule();
 	}
 
+	//Constraints returns types::LConstraints:
+	//	{types::LConstraints} "constraints" "{" constraints+=Constraint "}";
+	public CommonGrammarGrammarAccess.ConstraintsElements getConstraintsAccess() {
+		return gaCommonGrammar.getConstraintsAccess();
+	}
+	
+	public ParserRule getConstraintsRule() {
+		return getConstraintsAccess().getRule();
+	}
+
+	//Constraint returns types::LConstraint:
+	//	AttributeMatchingConstraint;
+	public CommonGrammarGrammarAccess.ConstraintElements getConstraintAccess() {
+		return gaCommonGrammar.getConstraintAccess();
+	}
+	
+	public ParserRule getConstraintRule() {
+		return getConstraintAccess().getRule();
+	}
+
+	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
+	//	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
+	//	matchingLiteral=[types::LEnumLiteral]) ";";
+	public CommonGrammarGrammarAccess.AttributeMatchingConstraintElements getAttributeMatchingConstraintAccess() {
+		return gaCommonGrammar.getAttributeMatchingConstraintAccess();
+	}
+	
+	public ParserRule getAttributeMatchingConstraintRule() {
+		return getAttributeMatchingConstraintAccess().getRule();
+	}
+
+	//enum LComparatorType returns types::LComparatorType:
+	//	EQUALS="==" | GREATER=">" | LOWER="<" | GREATER_EQ=">=" | LOWER_EQ="<=" | NOT_EQ="<>";
+	public CommonGrammarGrammarAccess.LComparatorTypeElements getLComparatorTypeAccess() {
+		return gaCommonGrammar.getLComparatorTypeAccess();
+	}
+	
+	public EnumRule getLComparatorTypeRule() {
+		return getLComparatorTypeAccess().getRule();
+	}
+
 	//LQualifiedNameWithWildCard:
 	//	QualifiedName ("." "*")?;
 	public CommonGrammarGrammarAccess.LQualifiedNameWithWildCardElements getLQualifiedNameWithWildCardAccess() {

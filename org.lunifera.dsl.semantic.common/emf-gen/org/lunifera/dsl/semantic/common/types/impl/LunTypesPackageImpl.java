@@ -38,8 +38,12 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LCommonModel;
+import org.lunifera.dsl.semantic.common.types.LComparatorType;
+import org.lunifera.dsl.semantic.common.types.LConstraint;
+import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LDateType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
@@ -214,6 +218,27 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass lConstraintsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lAttributeMatchingConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum lDateTypeEEnum = null;
 
 	/**
@@ -236,6 +261,13 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * @generated
 	 */
 	private EEnum lUpperBoundEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum lComparatorTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -312,8 +344,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		XbasePackage.eINSTANCE.eClass();
 		XAnnotationsPackage.eINSTANCE.eClass();
+		XbasePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -1047,6 +1079,78 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLConstraints() {
+		return lConstraintsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLConstraints_Constraints() {
+		return (EReference)lConstraintsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLConstraint() {
+		return lConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLAttributeMatchingConstraint() {
+		return lAttributeMatchingConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLAttributeMatchingConstraint_Attribute() {
+		return (EReference)lAttributeMatchingConstraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLAttributeMatchingConstraint_ComparatorType() {
+		return (EAttribute)lAttributeMatchingConstraintEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLAttributeMatchingConstraint_MatchingValue() {
+		return (EAttribute)lAttributeMatchingConstraintEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLAttributeMatchingConstraint_MatchingLiteral() {
+		return (EReference)lAttributeMatchingConstraintEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLDateType() {
 		return lDateTypeEEnum;
 	}
@@ -1076,6 +1180,15 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 */
 	public EEnum getLUpperBound() {
 		return lUpperBoundEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getLComparatorType() {
+		return lComparatorTypeEEnum;
 	}
 
 	/**
@@ -1241,11 +1354,23 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		createEAttribute(lMultiplicityEClass, LMULTIPLICITY__UPPER);
 		createEAttribute(lMultiplicityEClass, LMULTIPLICITY__TO_MULTIPLICITY_STRING);
 
+		lConstraintsEClass = createEClass(LCONSTRAINTS);
+		createEReference(lConstraintsEClass, LCONSTRAINTS__CONSTRAINTS);
+
+		lConstraintEClass = createEClass(LCONSTRAINT);
+
+		lAttributeMatchingConstraintEClass = createEClass(LATTRIBUTE_MATCHING_CONSTRAINT);
+		createEReference(lAttributeMatchingConstraintEClass, LATTRIBUTE_MATCHING_CONSTRAINT__ATTRIBUTE);
+		createEAttribute(lAttributeMatchingConstraintEClass, LATTRIBUTE_MATCHING_CONSTRAINT__COMPARATOR_TYPE);
+		createEAttribute(lAttributeMatchingConstraintEClass, LATTRIBUTE_MATCHING_CONSTRAINT__MATCHING_VALUE);
+		createEReference(lAttributeMatchingConstraintEClass, LATTRIBUTE_MATCHING_CONSTRAINT__MATCHING_LITERAL);
+
 		// Create enums
 		lDateTypeEEnum = createEEnum(LDATE_TYPE);
 		lVisibilityEEnum = createEEnum(LVISIBILITY);
 		lLowerBoundEEnum = createEEnum(LLOWER_BOUND);
 		lUpperBoundEEnum = createEEnum(LUPPER_BOUND);
+		lComparatorTypeEEnum = createEEnum(LCOMPARATOR_TYPE);
 
 		// Create data types
 		operationsListEDataType = createEDataType(OPERATIONS_LIST);
@@ -1304,6 +1429,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		lAttributeEClass.getESuperTypes().add(this.getLFeature());
 		lOperationEClass.getESuperTypes().add(this.getLAnnotationTarget());
 		lModifierEClass.getESuperTypes().add(this.getLLazyResolver());
+		lConstraintsEClass.getESuperTypes().add(this.getLLazyResolver());
+		lConstraintEClass.getESuperTypes().add(this.getLLazyResolver());
+		lAttributeMatchingConstraintEClass.getESuperTypes().add(this.getLConstraint());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(lCommonModelEClass, LCommonModel.class, "LCommonModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1413,6 +1541,17 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEAttribute(getLMultiplicity_Upper(), this.getLUpperBound(), "upper", null, 0, 1, LMultiplicity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLMultiplicity_ToMultiplicityString(), theEcorePackage.getEString(), "toMultiplicityString", null, 0, 1, LMultiplicity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
+		initEClass(lConstraintsEClass, LConstraints.class, "LConstraints", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLConstraints_Constraints(), this.getLConstraint(), null, "constraints", null, 0, -1, LConstraints.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lConstraintEClass, LConstraint.class, "LConstraint", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lAttributeMatchingConstraintEClass, LAttributeMatchingConstraint.class, "LAttributeMatchingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLAttributeMatchingConstraint_Attribute(), this.getLAttribute(), null, "attribute", null, 0, 1, LAttributeMatchingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLAttributeMatchingConstraint_ComparatorType(), this.getLComparatorType(), "comparatorType", null, 0, 1, LAttributeMatchingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLAttributeMatchingConstraint_MatchingValue(), theEcorePackage.getEString(), "matchingValue", null, 0, 1, LAttributeMatchingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLAttributeMatchingConstraint_MatchingLiteral(), this.getLEnumLiteral(), null, "matchingLiteral", null, 0, 1, LAttributeMatchingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(lDateTypeEEnum, LDateType.class, "LDateType");
 		addEEnumLiteral(lDateTypeEEnum, LDateType.DATE);
@@ -1437,6 +1576,14 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		addEEnumLiteral(lUpperBoundEEnum, LUpperBound.NULL);
 		addEEnumLiteral(lUpperBoundEEnum, LUpperBound.MANY);
 		addEEnumLiteral(lUpperBoundEEnum, LUpperBound.ONE);
+
+		initEEnum(lComparatorTypeEEnum, LComparatorType.class, "LComparatorType");
+		addEEnumLiteral(lComparatorTypeEEnum, LComparatorType.EQUALS);
+		addEEnumLiteral(lComparatorTypeEEnum, LComparatorType.GREATER);
+		addEEnumLiteral(lComparatorTypeEEnum, LComparatorType.LOWER);
+		addEEnumLiteral(lComparatorTypeEEnum, LComparatorType.GREATER_EQ);
+		addEEnumLiteral(lComparatorTypeEEnum, LComparatorType.LOWER_EQ);
+		addEEnumLiteral(lComparatorTypeEEnum, LComparatorType.NOT_EQ);
 
 		// Initialize data types
 		initEDataType(operationsListEDataType, List.class, "OperationsList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<org.lunifera.dsl.semantic.common.types.LOperation>");

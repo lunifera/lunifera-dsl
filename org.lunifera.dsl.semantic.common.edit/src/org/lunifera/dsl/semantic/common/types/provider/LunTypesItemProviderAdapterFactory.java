@@ -465,6 +465,52 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LConstraints} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LConstraintsItemProvider lConstraintsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LConstraints}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLConstraintsAdapter() {
+		if (lConstraintsItemProvider == null) {
+			lConstraintsItemProvider = new LConstraintsItemProvider(this);
+		}
+
+		return lConstraintsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LAttributeMatchingConstraintItemProvider lAttributeMatchingConstraintItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLAttributeMatchingConstraintAdapter() {
+		if (lAttributeMatchingConstraintItemProvider == null) {
+			lAttributeMatchingConstraintItemProvider = new LAttributeMatchingConstraintItemProvider(this);
+		}
+
+		return lAttributeMatchingConstraintItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -606,6 +652,8 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 		if (lOperationItemProvider != null) lOperationItemProvider.dispose();
 		if (lModifierItemProvider != null) lModifierItemProvider.dispose();
 		if (lMultiplicityItemProvider != null) lMultiplicityItemProvider.dispose();
+		if (lConstraintsItemProvider != null) lConstraintsItemProvider.dispose();
+		if (lAttributeMatchingConstraintItemProvider != null) lAttributeMatchingConstraintItemProvider.dispose();
 	}
 
 }
