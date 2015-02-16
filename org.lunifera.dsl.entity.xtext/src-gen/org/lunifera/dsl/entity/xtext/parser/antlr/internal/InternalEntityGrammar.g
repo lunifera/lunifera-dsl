@@ -984,10 +984,10 @@ ruleEntityFeature returns [EObject current=null]
 	    }
 
 )
-))?(
+))?((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getConstraintsConstraintsParserRuleCall_2_0_1_7_0()); 
+	        newCompositeNode(grammarAccess.getEntityFeatureAccess().getConstraintsConstraintsParserRuleCall_2_0_1_7_0_0()); 
 	    }
 		lv_constraints_11_0=ruleConstraints		{
 	        if ($current==null) {
@@ -1002,11 +1002,12 @@ ruleEntityFeature returns [EObject current=null]
 	    }
 
 )
-)?)	otherlv_12=';' 
-    {
-    	newLeafNode(otherlv_12, grammarAccess.getEntityFeatureAccess().getSemicolonKeyword_2_0_2());
-    }
 )
+    |	otherlv_12=';' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getEntityFeatureAccess().getSemicolonKeyword_2_0_1_7_1());
+    }
+)))
     |((
     {
         $current = forceCreateModelElementAndSet(
@@ -1569,10 +1570,10 @@ ruleBeanFeature returns [EObject current=null]
 	    }
 
 )
-))?(
+))?((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getConstraintsConstraintsParserRuleCall_2_0_1_6_0()); 
+	        newCompositeNode(grammarAccess.getBeanFeatureAccess().getConstraintsConstraintsParserRuleCall_2_0_1_6_0_0()); 
 	    }
 		lv_constraints_10_0=ruleConstraints		{
 	        if ($current==null) {
@@ -1587,11 +1588,12 @@ ruleBeanFeature returns [EObject current=null]
 	    }
 
 )
-)?)	otherlv_11=';' 
-    {
-    	newLeafNode(otherlv_11, grammarAccess.getBeanFeatureAccess().getSemicolonKeyword_2_0_2());
-    }
 )
+    |	otherlv_11=';' 
+    {
+    	newLeafNode(otherlv_11, grammarAccess.getBeanFeatureAccess().getSemicolonKeyword_2_0_1_6_1());
+    }
+)))
     |((
     {
         $current = forceCreateModelElementAndSet(

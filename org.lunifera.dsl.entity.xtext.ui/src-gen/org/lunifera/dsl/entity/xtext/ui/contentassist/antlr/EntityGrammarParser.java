@@ -40,9 +40,11 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassAccess().getAlternatives_2(), "rule__Class__Alternatives_2");
 					put(grammarAccess.getClassAccess().getAlternatives_2_0_1_1(), "rule__Class__Alternatives_2_0_1_1");
 					put(grammarAccess.getEntityFeatureAccess().getAlternatives_2(), "rule__EntityFeature__Alternatives_2");
+					put(grammarAccess.getEntityFeatureAccess().getAlternatives_2_0_1_7(), "rule__EntityFeature__Alternatives_2_0_1_7");
 					put(grammarAccess.getEntityFeatureAccess().getAlternatives_2_1_1(), "rule__EntityFeature__Alternatives_2_1_1");
 					put(grammarAccess.getEntityFeatureAccess().getAlternatives_2_1_1_2_0(), "rule__EntityFeature__Alternatives_2_1_1_2_0");
 					put(grammarAccess.getBeanFeatureAccess().getAlternatives_2(), "rule__BeanFeature__Alternatives_2");
+					put(grammarAccess.getBeanFeatureAccess().getAlternatives_2_0_1_6(), "rule__BeanFeature__Alternatives_2_0_1_6");
 					put(grammarAccess.getBeanFeatureAccess().getAlternatives_2_1_1(), "rule__BeanFeature__Alternatives_2_1_1");
 					put(grammarAccess.getBeanFeatureAccess().getAlternatives_2_1_1_1_0(), "rule__BeanFeature__Alternatives_2_1_1_1_0");
 					put(grammarAccess.getEntityInheritanceStrategyAccess().getAlternatives(), "rule__EntityInheritanceStrategy__Alternatives");
@@ -401,7 +403,7 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityFeatureAccess().getNameAssignment_2_0_1_4(), "rule__EntityFeature__NameAssignment_2_0_1_4");
 					put(grammarAccess.getEntityFeatureAccess().getPersistenceInfoAssignment_2_0_1_5(), "rule__EntityFeature__PersistenceInfoAssignment_2_0_1_5");
 					put(grammarAccess.getEntityFeatureAccess().getOppositeAssignment_2_0_1_6_1(), "rule__EntityFeature__OppositeAssignment_2_0_1_6_1");
-					put(grammarAccess.getEntityFeatureAccess().getConstraintsAssignment_2_0_1_7(), "rule__EntityFeature__ConstraintsAssignment_2_0_1_7");
+					put(grammarAccess.getEntityFeatureAccess().getConstraintsAssignment_2_0_1_7_0(), "rule__EntityFeature__ConstraintsAssignment_2_0_1_7_0");
 					put(grammarAccess.getEntityFeatureAccess().getTransientAssignment_2_1_1_0_0(), "rule__EntityFeature__TransientAssignment_2_1_1_0_0");
 					put(grammarAccess.getEntityFeatureAccess().getTypeAssignment_2_1_1_0_1(), "rule__EntityFeature__TypeAssignment_2_1_1_0_1");
 					put(grammarAccess.getEntityFeatureAccess().getNameAssignment_2_1_1_0_2(), "rule__EntityFeature__NameAssignment_2_1_1_0_2");
@@ -431,7 +433,7 @@ public class EntityGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBeanFeatureAccess().getMultiplicityAssignment_2_0_1_3(), "rule__BeanFeature__MultiplicityAssignment_2_0_1_3");
 					put(grammarAccess.getBeanFeatureAccess().getNameAssignment_2_0_1_4(), "rule__BeanFeature__NameAssignment_2_0_1_4");
 					put(grammarAccess.getBeanFeatureAccess().getOppositeAssignment_2_0_1_5_1(), "rule__BeanFeature__OppositeAssignment_2_0_1_5_1");
-					put(grammarAccess.getBeanFeatureAccess().getConstraintsAssignment_2_0_1_6(), "rule__BeanFeature__ConstraintsAssignment_2_0_1_6");
+					put(grammarAccess.getBeanFeatureAccess().getConstraintsAssignment_2_0_1_6_0(), "rule__BeanFeature__ConstraintsAssignment_2_0_1_6_0");
 					put(grammarAccess.getBeanFeatureAccess().getTransientAssignment_2_1_1_0_0(), "rule__BeanFeature__TransientAssignment_2_1_1_0_0");
 					put(grammarAccess.getBeanFeatureAccess().getTypeAssignment_2_1_1_0_1(), "rule__BeanFeature__TypeAssignment_2_1_1_0_1");
 					put(grammarAccess.getBeanFeatureAccess().getNameAssignment_2_1_1_0_2(), "rule__BeanFeature__NameAssignment_2_1_1_0_2");

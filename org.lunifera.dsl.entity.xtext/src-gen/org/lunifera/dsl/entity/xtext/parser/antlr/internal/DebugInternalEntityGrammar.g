@@ -60,12 +60,13 @@ ruleColumnPersistenceInfo :
 // Rule EntityFeature
 ruleEntityFeature :
 	ruleAnnotationDef* (
-		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID
-			ruleColumnPersistenceInfo? (
-				'opposite' ruleLFQN
-			)? ruleConstraints?
-		) ';' |
+		'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID
+		ruleColumnPersistenceInfo? (
+			'opposite' ruleLFQN
+		)? (
+			ruleConstraints |
+			';'
+		) |
 		(
 			'transient' RULE_ID ruleTRANSLATABLEID ';' |
 			'derived' 'domainDescription'? RULE_ID ruleTRANSLATABLEID
@@ -92,11 +93,12 @@ ruleEntityFeature :
 // Rule BeanFeature
 ruleBeanFeature :
 	ruleAnnotationDef* (
-		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
-				'opposite' ruleLFQN
-			)? ruleConstraints?
-		) ';' |
+		'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
+			'opposite' ruleLFQN
+		)? (
+			ruleConstraints |
+			';'
+		) |
 		(
 			'transient' RULE_ID ruleTRANSLATABLEID |
 			(
