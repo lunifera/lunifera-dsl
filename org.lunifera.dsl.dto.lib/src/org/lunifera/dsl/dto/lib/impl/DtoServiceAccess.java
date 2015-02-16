@@ -28,16 +28,26 @@ public class DtoServiceAccess {
 			.getLogger(DtoServiceAccess.class);
 
 	/**
-	 * Returns a proper mapper for the dto and entity.
+	 * Returns a proper mapper for the dto.
 	 * 
 	 * @param dto
 	 * @param entity
 	 */
 	public static <D> IDTOService<D> getService(Class<D> dto) {
+		return getService(dto.getCanonicalName());
+	}
+	
+	/**
+	 * Returns a proper mapper for the dto.
+	 * 
+	 * @param dto
+	 * @param entity
+	 */
+	public static <D> IDTOService<D> getService(String dtoName) {
 		Bundle bundle = FrameworkUtil.getBundle(DtoServiceAccess.class);
 
 		String filterString = String.format("(&(objectClass=%s)(dto=%s))",
-				IDTOService.class.getCanonicalName(), dto.getCanonicalName());
+				IDTOService.class.getCanonicalName(), dtoName);
 		try {
 			Filter filter = FrameworkUtil.createFilter(filterString);
 			ServiceTracker<IDTOService<D>, IDTOService<D>> tracker = new ServiceTracker<IDTOService<D>, IDTOService<D>>(
@@ -51,7 +61,7 @@ public class DtoServiceAccess {
 			LOGGER.error("{}", e);
 		}
 
-		LOGGER.error("No dtoService available for dto: {}", dto);
+		LOGGER.error("No dtoService available for dto: {}", dtoName);
 
 		return null;
 	}
