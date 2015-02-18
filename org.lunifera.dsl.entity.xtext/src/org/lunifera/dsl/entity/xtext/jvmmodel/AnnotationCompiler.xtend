@@ -71,6 +71,8 @@ import org.lunifera.runtime.common.annotations.DomainDescription
 import org.lunifera.runtime.common.annotations.DomainKey
 import org.lunifera.runtime.common.annotations.TargetEnumConstraint
 import org.lunifera.runtime.common.annotations.TargetEnumConstraints
+import javax.persistence.AssociationOverrides
+import javax.persistence.AssociationOverride
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -292,7 +294,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 					addAnno(prop, jvmField, prop.toAnnotation(typeof(DomainDescription)))
 				}
 			}
-
+ 
 			val ann = prop.toAnnotation(typeof(Column))
 			ann.addAnnAttr(prop, "name", prop.toColumnName)
 			if (prop.bounds.required) {
@@ -333,8 +335,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	//	)
 	def protected void toAttributesOverride(JvmField jvmField, LEntityAttribute prop) {
 
-		val overrideAttributesAnno = prop.toAnnotation(typeof(AttributeOverrides))
-		val List<JvmAnnotationReference> collectedReferences = newArrayList();
+		val List<JvmAnnotationReference> collectedAttributes = newArrayList();
+		val List<JvmAnnotationReference> collectedAssocations = newArrayList();
 
 		for (LBeanFeature f : (prop.type as LBean).allFeatures.filter[!it.toMany]) {
 			if (f instanceof LBeanAttribute) {
@@ -348,24 +350,42 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 					overrideAttributeAnno.addAnnAttr(f, "column", colAnno)
 				}
 
-				collectedReferences += overrideAttributeAnno;
+				collectedAttributes += overrideAttributeAnno;
 			} else if (f instanceof LBeanReference) {
 				val type = f.type
 				switch (type) {
 					LEntity: {
-						// TODO implement
+						val overrideAssociationAnno = prop.toAnnotation(typeof(AssociationOverride))
+						overrideAssociationAnno.addAnnAttr(f, "name", f.toName)
+						{
+							val colAnno = prop.toAnnotation(typeof(JoinColumn))
+							colAnno.addAnnAttr(f, "name", (prop.toName + "_" + f.toName).toUpperCase)
+							overrideAssociationAnno.addAnnAttr(f, "joinColumns", colAnno)
+						}
+						
+						collectedAssocations += overrideAssociationAnno;
 					}
 					LBean: {
-						type.collectNestedAttributeOverride(collectedReferences, f.toName,
+						type.collectNestedAttributeOverride(collectedAttributes, f.toName,
 							(prop.toName + "_" + f.toName).toUpperCase)
 					}
 				}
 			}
 		}
 
-		val JvmAnnotationReference[] result = collectedReferences.toArray(newArrayOfSize(collectedReferences.size));
-		overrideAttributesAnno.addAnnAttr(prop, "value", result)
-		addAnno(prop, jvmField, overrideAttributesAnno)
+		if(!collectedAttributes.empty) {
+			val overrideAttributesAnno = prop.toAnnotation(typeof(AttributeOverrides))
+			val JvmAnnotationReference[] result = collectedAttributes.toArray(newArrayOfSize(collectedAttributes.size));
+			overrideAttributesAnno.addAnnAttr(prop, "value", result)
+			addAnno(prop, jvmField, overrideAttributesAnno)
+		}
+		
+		if(!collectedAssocations.empty) {
+			val overrideAssociationsAnno = prop.toAnnotation(typeof(AssociationOverrides))
+			val JvmAnnotationReference[] result = collectedAssocations.toArray(newArrayOfSize(collectedAssocations.size));
+			overrideAssociationsAnno.addAnnAttr(prop, "value", result)
+			addAnno(prop, jvmField, overrideAssociationsAnno)
+		}
 	}
 
 	/**
