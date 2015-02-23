@@ -23,6 +23,6 @@ public interface ICopyable<A> {
 	 * @param context
 	 * @return
 	 */
-	A copy(Context context);
+	A copy(MappingContext context);
 
 }

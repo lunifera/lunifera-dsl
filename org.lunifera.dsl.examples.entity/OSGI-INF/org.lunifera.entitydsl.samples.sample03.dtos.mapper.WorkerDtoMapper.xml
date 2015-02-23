@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.entitydsl.samples.sample03.dtos.mapper.workerdtomapper">
+       <implementation class="org.lunifera.entitydsl.samples.sample03.dtos.mapper.WorkerDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+	   </service>
+		<property name="dto" type="String" value="org.lunifera.entitydsl.samples.sample03.dtos.WorkerDto"/>
+       <property name="entity" type="String" value="org.lunifera.entitydsl.samples.sample03.Worker"/>
+       <property name="service.pid" type="String" value="org.lunifera.entitydsl.samples.sample03.dtos.mapper.workerdtomapper"/>
+       <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+       		cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

@@ -27,10 +27,10 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 import org.lunifera.dsl.common.xtext.extensions.TreeAppendableExtensions
 import org.lunifera.dsl.common.xtext.jvmmodel.CommonTypesBuilder
-import org.lunifera.dsl.dto.lib.Context
 import org.lunifera.dsl.dto.lib.ICrossReference
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.lib.IMapperAccess
+import org.lunifera.dsl.dto.lib.MappingContext
 import org.lunifera.dsl.dto.xtext.jvmmodel.AnnotationCompiler
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LFeature
@@ -39,10 +39,8 @@ import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAbstractReference
-import org.lunifera.dsl.semantic.dto.LDtoAttribute
 import org.lunifera.dsl.semantic.dto.LDtoFeature
 import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute
-import org.lunifera.dsl.semantic.dto.LDtoReference
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.runtime.common.annotations.DomainDescription
@@ -63,6 +61,13 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 	def htmlCode(CharSequence s) {
 		"<code>".concat(String::valueOf(s)).concat("</code>")
+	}
+	 
+	def JvmField toDiposeField(LDto sourceElement) {
+		val JvmField field = sourceElement.toPrimitiveTypeField("disposed", Boolean::TYPE)
+		associate(sourceElement, field)
+		annotationCompiler.addDisposeFieldAnnotation(sourceElement, field)
+		return field
 	}
 
 	def JvmOperation toDispose(LDto lClass) {
@@ -120,7 +125,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				if (lClass.superType != null) {
 					p >> "super.dispose();"
 				} else {
-					p >> "disposed = true;"
+					p >> "firePropertyChange(\"disposed\", this.disposed, this.disposed = true);"
 				}
 				if (!compositionContainmentProps.empty) {
 					p <<< "}"
@@ -161,7 +166,24 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		'''
 
 		if (!prop.toMany) {
-			setBody(op, '''firePropertyChange("«paramName»", this.«paramName», this.«paramName» = «paramName» );''')
+			if(prop.toRawType.isBean) {
+				setBody(op, '''
+				// ensure that embedded beans will notify their parent about changes
+				// so their dirty state can be handled properly
+				if (this.«paramName» != null) {
+					this.«paramName».removePropertyChangeListener(this);
+				}
+				
+				firePropertyChange("«paramName»", this.«paramName», this.«paramName» = «paramName» );
+				
+				if (this.«paramName» != null) {
+					this.«paramName».addPropertyChangeListener(this);
+				}
+				''')
+			}else{
+				setBody(op, '''firePropertyChange("«paramName»", this.«paramName», this.«paramName» = «paramName» );''')
+			}
+			
 		} else {
 			setBody(op,
 			[ // ITreeAppendable
@@ -215,9 +237,22 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		
 		op.body = '''
 		checkDisposed();
-		
 		«IF opposite == null»
-			firePropertyChange("«paramName»", this.«paramName», this.«paramName» = «paramName»);
+			«IF !prop.toMany»
+				firePropertyChange("«paramName»", this.«paramName», this.«paramName» = «paramName»);
+			«ELSE»
+				for («prop.toDtoTypeReference.simpleName» dto : «prop.toCollectionInternalGetterName»().toArray(new «prop.toDtoTypeReference.simpleName»[this.«prop.toName».size()])) {
+					«prop.toCollectionRemoverName»(dto);
+				}
+
+				if(«paramName» == null) {
+					return;
+				}
+				
+				for («prop.toDtoTypeReference.simpleName» dto : «paramName») {
+					«prop.toCollectionAdderName»(dto);
+				}
+			«ENDIF»
 		«ELSE»
 			«IF !prop.toMany»
 				if (this.«prop.toName» != null) {
@@ -421,7 +456,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			«paramName».«prop.opposite.toSetterName»(this);
 		«ELSE»
 			if(!«prop.toCollectionInternalGetterName»().contains(«paramName»)){
-				«prop.toCollectionInternalGetterName»().add(«paramName»);
+				«prop.toCollectionInternalAdderName»(«paramName»);
 			}
 		«ENDIF»
 		'''
@@ -564,12 +599,13 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		op.documentation = '''For internal use only!'''
 
-		setBody(op,
-			[ // ITreeAppendable
-				if(it == null) return
-				val p = it.trace(prop);
-				p >> prop.toCollectionInternalGetterName + "()" + ".add(" + paramName + ");"
-			])
+		op.body = '''
+			«IF prop.toRawType.isBean»
+			// add this as property change listener for embeddable beans
+			«paramName».addPropertyChangeListener(this);
+			«ENDIF»
+			«prop.toCollectionInternalGetterName»().add(«paramName»);
+		'''
 		return associate(prop, op);
 	}
 
@@ -588,12 +624,14 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		op.documentation = '''For internal use only!'''
 
-		setBody(op,
-			[ // ITreeAppendable
-				if(it == null) return
-				val p = it.trace(prop);
-				p >> prop.toCollectionInternalGetterName + "()" + ".add(" + paramName + ");"
-			])
+		op.body = '''
+			«IF prop.toRawType.isBean»
+			// add this as property change listener for embeddable beans
+			«paramName».addPropertyChangeListener(this);
+			«ENDIF»
+			«prop.toCollectionInternalGetterName»().add(«paramName»);
+		'''
+		
 		return associate(prop, op);
 	}
 
@@ -612,12 +650,14 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		op.documentation = '''For internal use only!'''
 
-		setBody(op,
-			[ //ITreeAppendable
-				if(it == null) return
-				val p = it.trace(prop)
-				p >> prop.toCollectionInternalGetterName + "()" + ".remove(" + paramName + ");"
-			])
+		op.body = '''
+			«IF prop.toRawType.isBean»
+			// remove this as property change listener from the embeddable bean
+			«paramName».removePropertyChangeListener(this);
+			«ENDIF»
+			«prop.toCollectionInternalGetterName»().remove(«paramName»);
+		'''
+		
 		return associate(prop, op)
 	}
 
@@ -636,12 +676,13 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		op.documentation = '''For internal use only!'''
 
-		setBody(op,
-			[ //ITreeAppendable
-				if(it == null) return
-				val p = it.trace(prop)
-				p >> prop.toCollectionInternalGetterName + "()" + ".remove(" + paramName + ");"
-			])
+		op.body = '''
+			«IF prop.toRawType.isBean»
+			// remove this as property change listener from the embeddable bean
+			«paramName».removePropertyChangeListener(this);
+			«ENDIF»
+			«prop.toCollectionInternalGetterName»().remove(«paramName»);
+		'''
 		return associate(prop, op)
 	}
 
@@ -733,7 +774,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		«IF opposite != null»
 			«paramName».«prop.opposite.toSetterName»(null);
 		«ELSE»
-			«prop.toCollectionInternalGetterName»().remove(«paramName»);
+			«prop.toCollectionInternalRemoverName»(«paramName»);
 		«ENDIF»
 		'''
 		
@@ -811,7 +852,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		«IF opposite != null»
 			«paramName».«prop.opposite.toSetterName»(null);
 		«ELSE»
-			«prop.toCollectionInternalGetterName»().remove(«paramName»);
+			«prop.toCollectionInternalRemoverName»(«paramName»);
 		«ENDIF»
 		'''
 		return associate(prop, op);
@@ -914,7 +955,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.simpleName = "mapToDTO"
 		op.parameters += dto.toParameter("dto", dto.findDtoTypeReference)
 		op.parameters += dto.toParameter("entity", dto.wrappedTypeJvm?.cloneWithProxies)
-		op.parameters += dto.toParameter("context", references.getTypeForName(typeof(Context), dto))
+		op.parameters += dto.toParameter("context", references.getTypeForName(typeof(MappingContext), dto))
 		op.documentation = '''
 			Maps the entity {@link «dto.wrappedType.toName»} to the dto {@link «dto.toName»}.
 			
@@ -927,9 +968,10 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			if(context == null){
 				throw new IllegalArgumentException("Please pass a context!");
 			}
-			
-			context.register(entity, dto);
-			
+			«IF !dto.wrappedType.isBean»
+				context.register(createDtoHash(entity), dto);
+				
+			«ENDIF»
 			«IF dto.superType != null»
 				super.mapToDTO(dto, entity, context);
 			«ENDIF»
@@ -957,7 +999,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		op.simpleName = "mapToEntity"
 		op.parameters += dto.toParameter("dto", dto.findDtoTypeReference)
 		op.parameters += dto.toParameter("entity", dto.wrappedTypeJvm?.cloneWithProxies)
-		op.parameters += dto.toParameter("context", references.getTypeForName(typeof(Context), dto))
+		op.parameters += dto.toParameter("context", references.getTypeForName(typeof(MappingContext), dto))
 		op.documentation = '''
 			Maps the dto {@link «dto.toName»} to the entity {@link «dto.wrappedType.toName»}.
 			
@@ -971,8 +1013,10 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 				throw new IllegalArgumentException("Please pass a context!");
 			}
 			
-			context.register(entity, dto);
-			
+			«IF !dto.wrappedType.isBean»
+				context.register(createEntityHash(dto), entity);
+				context.registerMappingRoot(createEntityHash(dto), dto);
+			«ENDIF»
 			«IF dto.superType != null»
 				super.mapToEntity(dto, entity, context);
 				
@@ -1073,7 +1117,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		initializeSafely(op) [
 			parameters += prop.toParameter("in", dto.wrappedTypeJvm?.cloneWithProxies)
-			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
+			parameters += prop.toParameter("context", references.getTypeForName(typeof(MappingContext), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to dto property.
 				
@@ -1095,10 +1139,9 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						
 						List<«prop.toRawType.toDTOBeanSimpleName»> results = new java.util.ArrayList<«prop.toRawType.toDTOBeanSimpleName»>();
 						for («prop.toRawType.toName» _entity : in.«prop.toGetterName»()) {
-							«prop.toDtoTypeReference.qualifiedName» _dto = context.getTarget(_entity);
+							«prop.toDtoTypeReference.qualifiedName» _dto = context.get(mapper.createDtoHash(_entity));
 							if (_dto == null) {
 								_dto = mapper.createDto();
-								context.register(_entity, _dto);
 								mapper.mapToDTO(_dto, _entity, context);
 							}
 							results.add(_dto);
@@ -1106,11 +1149,6 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						return results;'''
 					} else {
 						body = '''
-						«prop.toRawType.toDTOBeanSimpleName» dto = context.getTarget(in.«prop.toGetterName»());
-						if(dto != null) {
-							return dto;
-						}
-
 						if(in.get«prop.toName.toFirstUpper»() != null) {
 							// find a mapper that knows how to map the concrete input type.
 							org.lunifera.dsl.dto.lib.IMapper<«prop.toRawType.toDTOBeanSimpleName», «prop.toRawType.toName»> mapper = (org.lunifera.dsl.dto.lib.IMapper<«prop.toRawType.toDTOBeanSimpleName», «prop.toRawType.toName»>) getMapper(«prop.toRawType.toDTOBeanSimpleName».class, in.get«prop.toName.toFirstUpper»().getClass());
@@ -1118,6 +1156,14 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 								throw new IllegalStateException("Mapper must not be null!");
 							}
 						
+							«prop.toRawType.toDTOBeanSimpleName» dto = null;
+						«IF !prop.toRawType.isBean»
+							dto = context.get(mapper.createDtoHash(in.«prop.toGetterName»()));
+							if(dto != null) {
+								return dto;
+							}
+							
+						«ENDIF»
 							dto = mapper.createDto();
 							mapper.mapToDTO(dto, in.«prop.toGetterName»(), context);
 							return dto;
@@ -1157,7 +1203,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		initializeSafely(op) [
 			parameters += prop.toParameter("in", dto.wrappedTypeJvm?.cloneWithProxies)
-			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
+			parameters += prop.toParameter("context", references.getTypeForName(typeof(MappingContext), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to the dto.
 				
@@ -1178,10 +1224,9 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					
 					List<«prop.toTypeName»> results = new java.util.ArrayList<«prop.toTypeName»>();
 					for («prop.toRawType.toName» _entity : in.get«prop.toName.toFirstUpper»()) {
-						«prop.toTypeName» _dto = context.getTarget(_entity);
+						«prop.toTypeName» _dto = context.get(mapper.createDtoHash(_entity));
 						if (_dto == null) {
 							_dto = mapper.createDto();
-							context.register(_entity, _dto);
 							mapper.mapToDTO(_dto, _entity, context);
 						}
 						results.add(_dto);
@@ -1189,18 +1234,20 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					return results;'''
 				} else {
 					body = '''
-					«prop.toTypeName» dto = context.getTarget(in.get«prop.toName.toFirstUpper»());
-					if(dto != null) {
-						return dto;
-					}
-					
 					if(in.get«prop.toName.toFirstUpper»() != null) {
 						// find a mapper that knows how to map the concrete input type.
 						org.lunifera.dsl.dto.lib.IMapper<«prop.toTypeName», «prop.toRawType.toName»> mapper = (org.lunifera.dsl.dto.lib.IMapper<«prop.toTypeName», «prop.toRawType.toName»>) getMapper(«prop.toTypeName».class, in.get«prop.toName.toFirstUpper»().getClass());
 						if(mapper == null) {
 							throw new IllegalStateException("Mapper must not be null!");
 						}
-					
+						«prop.toTypeName» dto = null;
+						«IF !prop.toRawType.isBean»
+							dto = context.get(mapper.createDtoHash(in.get«prop.toName.toFirstUpper»()));
+							if(dto != null) {
+								return dto;
+							}
+							
+						«ENDIF»
 						dto = mapper.createDto();
 						mapper.mapToDTO(dto, in.get«prop.toName.toFirstUpper»(), context);
 						return dto;
@@ -1233,7 +1280,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		initializeSafely(op) [
 			// TODO find typeref in sames resource!
 			parameters += prop.toParameter("in", dtoJvmType.newTypeRef(null))
-			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
+			parameters += prop.toParameter("context", references.getTypeForName(typeof(MappingContext), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given entity to dto property.
 				
@@ -1262,19 +1309,14 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						return results;'''
 					} else {
 						body = '''
-						«prop.toRawType.toName» entity = context.getTarget(in.«prop.toGetterName»());
-						if(entity != null) {
-							return entity;
-						}
-						
 						if(in.get«prop.toName.toFirstUpper»() != null) {
 							// find a mapper that knows how to map the concrete input type.
 							org.lunifera.dsl.dto.lib.IMapper<«prop.toRawType.toDTOBeanSimpleName», «prop.toRawType.toName»> mapper = (org.lunifera.dsl.dto.lib.IMapper<«prop.toRawType.toDTOBeanSimpleName», «prop.toRawType.toName»>) getMapper(in.get«prop.toName.toFirstUpper»().getClass(), «prop.toRawType.toName».class);
 							if(mapper == null) {
 								throw new IllegalStateException("Mapper must not be null!");
 							}
-						 
-							entity = mapper.createEntity();
+						
+							«prop.toRawType.toName» entity = mapper.createEntity();
 							mapper.mapToEntity(in.«prop.toGetterName»(), entity, context);
 							return entity;							
 						} else {
@@ -1311,7 +1353,7 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 
 		initializeSafely(op) [
 			parameters += prop.toParameter("in", dto.findDtoTypeReference)
-			parameters += prop.toParameter("context", references.getTypeForName(typeof(Context), prop))
+			parameters += prop.toParameter("context", references.getTypeForName(typeof(MappingContext), prop))
 			documentation = '''
 				Maps the property «prop.toName» from the given dto to the entity.
 				
@@ -1332,18 +1374,22 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 					
 					List<«prop.toRawType.toName»> results = new java.util.ArrayList<«prop.toRawType.toName»>();
 					for («prop.toTypeName» _dto : in.get«prop.toName.toFirstUpper»()) {
-						«prop.toRawType.toName» _entity = mapper.createEntity();
-						mapper.mapToEntity(_dto, _entity, context);
-						results.add(_entity);
+						«IF !prop.toRawType.isBean»
+							«prop.toRawType.toName» _entity = context.get(mapper.createEntityHash(_dto));
+							if(_entity == null) {
+								_entity = mapper.createEntity();
+								mapper.mapToEntity(_dto, _entity, context);
+							}
+							results.add(_entity);
+						«ELSE»
+							«prop.toRawType.toName» _entity = mapper.createEntity();
+							mapper.mapToEntity(_dto, _entity, context);
+							results.add(_entity);
+						«ENDIF»
 					}
 					return results;'''
 				} else {
 					body = '''
-					«prop.toRawType.toName» entity = context.getTarget(in.get«prop.toName.toFirstUpper»());
-					if(entity != null) {
-						return entity;
-					}
-					
 					if(in.get«prop.toName.toFirstUpper»() != null) {
 						// find a mapper that knows how to map the concrete input type.
 						org.lunifera.dsl.dto.lib.IMapper<«prop.toTypeName», «prop.toRawType.toName»> mapper = (org.lunifera.dsl.dto.lib.IMapper<«prop.toTypeName», «prop.toRawType.toName»>) getMapper(in.get«prop.toName.toFirstUpper»().getClass(), «prop.toRawType.toName».class);
@@ -1351,6 +1397,14 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 							throw new IllegalStateException("Mapper must not be null!");
 						}
 					
+						«prop.toRawType.toName» entity = null;
+						«IF !prop.toRawType.isBean»
+							entity = context.get(mapper.createEntityHash(in.get«prop.toName.toFirstUpper»()));
+							if(entity != null) {
+								return entity;
+							}
+
+						«ENDIF»
 						entity = mapper.createEntity();
 						mapper.mapToEntity(in.get«prop.toName.toFirstUpper»(), entity, context);	
 						return entity;

@@ -454,7 +454,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				} else {
 					p >> "if (!" + prop.toCollectionInternalGetterName + "().contains(" + paramName + "))" >>> "{"
 					{
-						p >> prop.toCollectionInternalGetterName + "().add(" + paramName + ");"
+						p >> prop.toCollectionInternalAdderName + "(" + paramName + ");"
 					}
 					p <<< "}"
 				}
@@ -483,7 +483,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 			toFirstLower»)
 			of the «paramName» will be handled automatically and no further coding is required to keep them in sync. 
 			See {@link «prop.typeName»#«prop.opposite.toSetterName»(«prop.typeName»)}.
-		«ELSE»
+		«ELSEIF !(prop.type instanceof LBean)»
 			ATTENTION:<br>
 			The reference is a composition reference, but no opposite is available.
 			So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
@@ -500,7 +500,7 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 				} else {
 					p >> "if (!" + prop.toGetterName + "().contains(" + paramName + "))" >>> "{"
 					{
-						p >> prop.toGetterName + "().add(" + paramName + ");"
+						p >> prop.toCollectionInternalAdderName + "(" + paramName + ");"
 					}
 					p <<< "}"
 				}
@@ -593,6 +593,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 			op.parameters += param
 		}
 
+		op.documentation = '''For internal use only!'''
+
 		setBody(op,
 			[ // ITreeAppendable
 				if(it == null) return
@@ -614,6 +616,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		if (param != null) {
 			op.parameters += param
 		}
+		
+		op.documentation = '''For internal use only!'''
 
 		setBody(op,
 			[ //ITreeAppendable

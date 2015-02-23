@@ -17,10 +17,12 @@ public class Query implements IQuery {
 	private final ILFilter filter;
 	private final SortOrder sortOrder;
 
+	public Query() {
+		this(null);
+	}
+
 	public Query(ILFilter filter) {
-		super();
-		this.filter = filter;
-		this.sortOrder = new SortOrder();
+		this(filter, null);
 	}
 
 	public Query(ILFilter filter, SortOrder sortOrder) {

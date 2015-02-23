@@ -10,14 +10,16 @@
  */
 package org.lunifera.dsl.dto.lib.impl;
 
+import java.util.Collection;
+
 import org.lunifera.dsl.dto.lib.IMapper;
 import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.Filter;
+import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.util.tracker.ServiceTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,37 +29,42 @@ import org.slf4j.LoggerFactory;
 @Component(immediate = true)
 public class MapperAccess implements IMapperAccess {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MapperAccess.class);
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(MapperAccess.class);
 
 	/**
 	 * Returns a proper mapper for the dto and entity.
+	 * 
 	 * @param dto
 	 * @param entity
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public <D, E> IMapper<D, E> getMapper(Class<D> dto, Class<E> entity) {
 		Bundle bundle = FrameworkUtil.getBundle(getClass());
 
-		String filterString = String.format("(&(&(objectClass=%s)(dto=%s))(entity=%s))",
+		String filterString = String.format(
+				"(&(&(objectClass=%s)(dto=%s))(entity=%s))",
 				IMapper.class.getCanonicalName(), dto.getCanonicalName(),
 				entity.getCanonicalName());
 		try {
-			Filter filter = FrameworkUtil.createFilter(filterString);
-			ServiceTracker<IMapper<D, E>, IMapper<D, E>> tracker = new ServiceTracker<IMapper<D, E>, IMapper<D, E>>(
-					bundle.getBundleContext(), filter, null);
-			tracker.open();
-			
-			IMapper<D, E> mapper = tracker.waitForService(1000);
-			tracker.close();
-			return mapper;
+			BundleContext context = bundle.getBundleContext();
+			Collection<ServiceReference<IMapper>> references = context
+					.getServiceReferences(IMapper.class, filterString);
+			if (!references.isEmpty()) {
+				ServiceReference<IMapper> reference = references.iterator()
+						.next();
+				IMapper<D, E> mapper = context.getService(reference);
+				return mapper;
+			}
+
 		} catch (InvalidSyntaxException e) {
-			LOGGER.error("{}", e);
-		} catch (InterruptedException e) {
 			LOGGER.error("{}", e);
 		}
 
-		LOGGER.error("No mapper available for dto: {} and entity: {}", dto, entity);
-		
+		LOGGER.error("No mapper available for dto: {} and entity: {}", dto,
+				entity);
+
 		return null;
 	}
 }

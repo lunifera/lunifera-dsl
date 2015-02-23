@@ -73,6 +73,7 @@ import org.lunifera.runtime.common.annotations.TargetEnumConstraint
 import org.lunifera.runtime.common.annotations.TargetEnumConstraints
 import javax.persistence.AssociationOverrides
 import javax.persistence.AssociationOverride
+import org.lunifera.runtime.common.annotations.Dispose
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -637,17 +638,21 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	def dispatch addDisposeFieldAnnotation(LEntity entity, JvmField field) {
 		val anno = entity.toAnnotation(typeof(Transient))
 		addAnno(entity, field, anno)
+		
+		addAnno(entity, field, entity.toAnnotation(typeof(Dispose)))
 	}
 
 	def dispatch addDisposeFieldAnnotation(LBean entity, JvmField field) {
+		val anno = entity.toAnnotation(typeof(Transient))
+		addAnno(entity, field, anno)
+		
+		addAnno(entity, field, entity.toAnnotation(typeof(Dispose)))
 	}
 
 	def dispatch addDisposeFieldAnnotation(LEntity entity, JvmOperation op) {
 	}
 
 	def dispatch addDisposeFieldAnnotation(LBean entity, JvmOperation op) {
-		val anno = entity.toAnnotation(typeof(Transient))
-		addAnno(entity, op, anno)
 	}
 
 }

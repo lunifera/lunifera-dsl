@@ -592,5 +592,12 @@ class DtoModelExtensions extends ModelExtensions {
 			return !it.containerReference && it.isCrossReference
 		]
 	}
+	
+	def boolean isBean(LType type){
+		if(type instanceof LDto){
+			return type.wrappedType instanceof LBean
+		}
+		return type instanceof LBean
+	}
 
 }

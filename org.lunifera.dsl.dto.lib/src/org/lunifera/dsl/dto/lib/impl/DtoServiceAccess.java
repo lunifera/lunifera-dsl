@@ -10,12 +10,14 @@
  */
 package org.lunifera.dsl.dto.lib.impl;
 
+import java.util.Collection;
+
 import org.lunifera.dsl.dto.lib.services.IDTOService;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.Filter;
+import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.util.tracker.ServiceTracker;
+import org.osgi.framework.ServiceReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,27 +38,29 @@ public class DtoServiceAccess {
 	public static <D> IDTOService<D> getService(Class<D> dto) {
 		return getService(dto.getCanonicalName());
 	}
-	
+
 	/**
 	 * Returns a proper mapper for the dto.
 	 * 
 	 * @param dto
 	 * @param entity
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <D> IDTOService<D> getService(String dtoName) {
 		Bundle bundle = FrameworkUtil.getBundle(DtoServiceAccess.class);
 
 		String filterString = String.format("(&(objectClass=%s)(dto=%s))",
 				IDTOService.class.getCanonicalName(), dtoName);
 		try {
-			Filter filter = FrameworkUtil.createFilter(filterString);
-			ServiceTracker<IDTOService<D>, IDTOService<D>> tracker = new ServiceTracker<IDTOService<D>, IDTOService<D>>(
-					bundle.getBundleContext(), filter, null);
-			tracker.open();
-
-			IDTOService<D> service = tracker.getService();
-			tracker.close();
-			return service;
+			BundleContext context = bundle.getBundleContext();
+			Collection<ServiceReference<IDTOService>> references = context
+					.getServiceReferences(IDTOService.class, filterString);
+			if (!references.isEmpty()) {
+				ServiceReference<IDTOService> reference = references.iterator()
+						.next();
+				IDTOService<D> service = context.getService(reference);
+				return service;
+			}
 		} catch (InvalidSyntaxException e) {
 			LOGGER.error("{}", e);
 		}

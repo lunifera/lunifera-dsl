@@ -117,14 +117,15 @@ public class EntityGrammarJavaValidator extends
 
 	@Check
 	public void checkBean_MultiHasOppositeReference(LBeanReference prop) {
-		if (prop.getType() instanceof LBean) {
-			if (extensions.isToMany(prop) && prop.getOpposite() == null) {
-				error("A bidirectional association needs an opposite reference.",
-						LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
-						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-						CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
-			}
-		} else if (prop.getType() instanceof LEntity) {
+		// if (prop.getType() instanceof LBean) {
+		// if (extensions.isToMany(prop) && prop.getOpposite() == null) {
+		// error("A bidirectional association needs an opposite reference.",
+		// LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
+		// ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+		// CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
+		// }
+		// } else 
+			if (prop.getType() instanceof LEntity) {
 			if (extensions.isToMany(prop)) {
 				error("To-Many-Relations are not supported for bean->entity references.",
 						LunTypesPackage.Literals.LFEATURE__MULTIPLICITY,

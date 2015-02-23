@@ -14,19 +14,28 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 
-import org.lunifera.dsl.dto.lib.Context;
+import org.eclipse.persistence.internal.jpa.EntityManagerImpl;
+import org.eclipse.persistence.internal.sessions.RepeatableWriteUnitOfWork;
+import org.eclipse.persistence.sessions.SessionEvent;
+import org.eclipse.persistence.sessions.SessionEventAdapter;
 import org.lunifera.dsl.dto.lib.IMapper;
+import org.lunifera.dsl.dto.lib.IMapperAccess;
+import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.dsl.dto.lib.services.IQuery;
 import org.lunifera.dsl.dto.lib.services.jpa.metadata.EntityDelegate;
+import org.lunifera.runtime.common.hash.HashUtil;
+import org.lunifera.runtime.common.state.ISharedStateContext;
 
 @SuppressWarnings("all")
 public abstract class AbstractDTOService<DTO, ENTITY> implements
 		org.lunifera.dsl.dto.lib.services.IDTOService<DTO> {
 
 	private EntityManagerFactory emf;
-	protected IMapper<DTO, ENTITY> mapper;
+	protected IMapperAccess mapperAccess;
 
 	protected abstract Class<DTO> getDtoClass();
 
@@ -52,14 +61,51 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			ENTITY entity = delegate.getEntity(id);
 			if (entity != null) {
-				result = createDto();
-				mapper.mapToDTO(result, entity, new Context());
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				MappingContext mappingContext = new MappingContext(true);
+				mappingContext.increaseLevel();
+				result = mapSingle(entity, mapper, mappingContext);
+				mappingContext.decreaseLevel();
+				mappingContext.flush();
 			}
 		} finally {
 			em.close();
 		}
 
 		return result;
+	}
+
+	protected DTO mapSingle(ENTITY entity, IMapper<DTO, ENTITY> mapper,
+			MappingContext context) {
+		DTO result;
+		try {
+			context.increaseLevel();
+			DTO cached = context.get(mapper.createDtoHash(entity));
+			if (cached != null) {
+				result = cached;
+			} else {
+				DTO dto = mapper.createDto();
+				mapper.mapToDTO(dto, entity, context);
+				result = dto;
+			}
+		} finally {
+			context.decreaseLevel();
+		}
+		return result;
+	}
+
+	/**
+	 * Get the mapper for the given dto and entity class.
+	 * 
+	 * @param dtoClass
+	 * @param entityClass
+	 * @return
+	 */
+	protected IMapper<DTO, ENTITY> findMapper(Class<DTO> dtoClass,
+			Class<ENTITY> entityClass) {
+		return (IMapper<DTO, ENTITY>) mapperAccess.getMapper(dtoClass,
+				entityClass);
 	}
 
 	/**
@@ -73,11 +119,15 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 		List<DTO> result = new ArrayList<DTO>();
 		try {
+			MappingContext mappingContext = new MappingContext(true);
+			mappingContext.increaseLevel();
 			for (ENTITY entity : delegate.getAllEntities(query)) {
-				DTO dto = createDto();
-				mapper.mapToDTO(dto, entity, new Context());
-				result.add(dto);
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				result.add(mapSingle(entity, mapper, mappingContext));
 			}
+			mappingContext.decreaseLevel();
+			mappingContext.flush();
 		} finally {
 			em.close();
 		}
@@ -96,11 +146,15 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 		List<DTO> result = new ArrayList<DTO>();
 		try {
+			MappingContext mappingContext = new MappingContext(true);
+			mappingContext.increaseLevel();
 			for (ENTITY entity : delegate.getAllEntities(query, startindex)) {
-				DTO dto = createDto();
-				mapper.mapToDTO(dto, entity, new Context());
-				result.add(dto);
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				result.add(mapSingle(entity, mapper, mappingContext));
 			}
+			mappingContext.decreaseLevel();
+			mappingContext.flush();
 		} finally {
 			em.close();
 		}
@@ -112,48 +166,78 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	 * {@inherit doc}
 	 * 
 	 */
-	public DTO update(final DTO dto) {
-		javax.persistence.EntityManager em = emf.createEntityManager();
-		javax.persistence.EntityTransaction txn = em.getTransaction();
+	public void update(final DTO dto) {
+		EntityManager em = emf.createEntityManager();
 
-		DTO result = createDto();
+		EntityTransaction txn = em.getTransaction();
+
+		MappingContext entityMappingContext = new MappingContext(false);
+		TransactionObserver entityTxnObserver = new TransactionObserver(em,
+				entityMappingContext);
+
+		MappingContext dtoMappingContext = new MappingContext(true);
+		dtoMappingContext.increaseLevel();
+
 		try {
 			txn.begin();
-
 			ENTITY entity = null;
-
 			Object id = getId(dto);
 			if (id != null) {
-				entity = em.find(getEntityClass(), getId(dto));
-				if (entity != null) {
-					mapper.mapToEntity(dto, entity, new Context());
-					em.persist(entity);
-					// map the entity back to the dto since values may be
-					// changed in dto
-					mapper.mapToDTO(result, entity, new Context());
-				} else {
+				entity = em.find(getEntityClass(), id);
+				if (entity == null) {
 					entity = createEntity();
-					mapper.mapToEntity(dto, entity, new Context());
-					em.persist(entity);
-					// map the entity back to the dto since values may be
-					// changed in dto
-					mapper.mapToDTO(result, entity, new Context());
 				}
 			} else {
 				entity = createEntity();
-				mapper.mapToEntity(dto, entity, new Context());
-				em.persist(entity);
-				// map the entity back to the dto since values may be changed in
-				// dto
-				mapper.mapToDTO(result, entity, new Context());
 			}
 
+			IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+					(Class<ENTITY>) entity.getClass());
+			// map dto to entity and persist
+			mapper.mapToEntity(dto, entity, entityMappingContext);
+			em.merge(entity);
+
+			// map the entity back to the dto since values may have
+			// changed in dto
+			mapper.mapToDTO(dto, entity, dtoMappingContext);
+
 			txn.commit();
+			txn = null;
 		} finally {
+			ISharedStateContext sharedState = dtoMappingContext
+					.getSharedState();
+			if (sharedState != null) {
+				if (txn == null) {
+					// put dtos in ISharedStateContext
+					dtoMappingContext.decreaseLevel();
+					dtoMappingContext.flush();
+				}
+				for (Object obj : entityTxnObserver.affected) {
+					// access with entity hash
+					Object affectedDto = entityMappingContext
+							.getMappingRoot(HashUtil.createObjectWithIdHash(
+									obj.getClass(), obj));
+					// access with dto hash
+					removeFromDirtyState(
+							HashUtil.createObjectWithIdHash(
+									affectedDto.getClass(), affectedDto),
+							sharedState);
+				}
+			}
+			entityTxnObserver.dispose();
 			em.close();
 		}
+	}
 
-		return result;
+	/**
+	 * Removes the dto with the given key from the dirty state cache.
+	 * 
+	 * @param dtoKey
+	 * @param sharedState
+	 */
+	private void removeFromDirtyState(Object dtoKey,
+			ISharedStateContext sharedState) {
+		sharedState.getDirtyState().invalidate(dtoKey);
 	}
 
 	/**
@@ -178,16 +262,14 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	}
 
 	/**
-	 * Binds the service
-	 * {@link org.lunifera.examples.ecview.dtos.mapper.TMapper} to this
-	 * component. <br>
+	 * Binds the service {@link IMapperAccess} to this component. <br>
 	 * The cardinality is ONE_TO_ONE
 	 * 
 	 * @param mapper
 	 *            the service
 	 */
-	protected void bindMapper(final IMapper<DTO, ENTITY> mapper) {
-		this.mapper = mapper;
+	protected void bindMapperAccess(final IMapperAccess mapperAccess) {
+		this.mapperAccess = mapperAccess;
 	}
 
 	/**
@@ -197,8 +279,8 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	 * @param mapper
 	 *            the service
 	 */
-	protected void unbindMapper(final IMapper<DTO, ENTITY> mapper) {
-		this.mapper = null;
+	protected void unbindMapperAccess(final IMapperAccess mapperAccess) {
+		this.mapperAccess = null;
 	}
 
 	/**
@@ -273,8 +355,13 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			ENTITY entity = delegate.getNextEntity(getId(dto), query);
 			if (entity != null) {
-				result = createDto();
-				mapper.mapToEntity(result, entity, new Context());
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				MappingContext mappingContext = new MappingContext(true);
+				mappingContext.increaseLevel();
+				result = mapSingle(entity, mapper, mappingContext);
+				mappingContext.decreaseLevel();
+				mappingContext.flush();
 			}
 		} finally {
 			em.close();
@@ -293,8 +380,13 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			ENTITY entity = delegate.getPreviousEntity(getId(dto), query);
 			if (entity != null) {
-				result = createDto();
-				mapper.mapToEntity(result, entity, new Context());
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				MappingContext mappingContext = new MappingContext(true);
+				mappingContext.increaseLevel();
+				result = mapSingle(entity, mapper, mappingContext);
+				mappingContext.decreaseLevel();
+				mappingContext.flush();
 			}
 		} finally {
 			em.close();
@@ -313,8 +405,13 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			ENTITY entity = delegate.getFirstEntity(query);
 			if (entity != null) {
-				result = createDto();
-				mapper.mapToEntity(result, entity, new Context());
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				MappingContext mappingContext = new MappingContext(true);
+				mappingContext.increaseLevel();
+				result = mapSingle(entity, mapper, mappingContext);
+				mappingContext.decreaseLevel();
+				mappingContext.flush();
 			}
 		} finally {
 			em.close();
@@ -333,8 +430,13 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		try {
 			ENTITY entity = delegate.getLastEntity(query);
 			if (entity != null) {
-				result = createDto();
-				mapper.mapToEntity(result, entity, new Context());
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				MappingContext mappingContext = new MappingContext(true);
+				mappingContext.increaseLevel();
+				result = mapSingle(entity, mapper, mappingContext);
+				mappingContext.decreaseLevel();
+				mappingContext.flush();
 			}
 		} finally {
 			em.close();
@@ -394,11 +496,16 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 		DTO result = null;
 		try {
+			MappingContext mappingContext = new MappingContext(true);
+			mappingContext.increaseLevel();
 			for (ENTITY entity : delegate.getAllEntities(query, index)) {
-				result = createDto();
-				mapper.mapToDTO(result, entity, new Context());
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				result = mapSingle(entity, mapper, mappingContext);
 				break;
 			}
+			mappingContext.decreaseLevel();
+			mappingContext.flush();
 		} finally {
 			em.close();
 		}
@@ -414,15 +521,47 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 		List<DTO> result = new ArrayList<DTO>();
 		try {
+			MappingContext mappingContext = new MappingContext(true);
+			mappingContext.increaseLevel();
 			for (ENTITY entity : delegate.getAllEntities(query, startIndex)) {
-				DTO dto = createDto();
-				mapper.mapToDTO(dto, entity, new Context());
-				result.add(dto);
+				IMapper<DTO, ENTITY> mapper = findMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				result.add(mapSingle(entity, mapper, mappingContext));
 			}
+			mappingContext.decreaseLevel();
+			mappingContext.flush();
 		} finally {
 			em.close();
 		}
 
 		return result;
+	}
+
+	private static class TransactionObserver extends SessionEventAdapter {
+
+		private List<Object> affected = new ArrayList<Object>();
+		private EntityManager em;
+		private MappingContext context;
+
+		public TransactionObserver(EntityManager em, MappingContext context) {
+			this.em = em;
+			this.context = context;
+			((EntityManagerImpl) em).getActiveSession().getEventManager()
+					.addListener(this);
+		}
+
+		@Override
+		public void postCommitUnitOfWork(SessionEvent event) {
+			RepeatableWriteUnitOfWork uow = (RepeatableWriteUnitOfWork) event
+					.getSource();
+			for (Object object : uow.getCloneMapping().values()) {
+				affected.add(object);
+			}
+		}
+
+		public void dispose() {
+			((EntityManagerImpl) em).getActiveSession().getEventManager()
+					.removeListener(this);
+		}
 	}
 }

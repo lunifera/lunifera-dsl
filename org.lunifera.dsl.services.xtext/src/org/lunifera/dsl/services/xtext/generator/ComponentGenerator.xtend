@@ -33,9 +33,8 @@ class ComponentGenerator {
 		       			policy="dynamic" bind="bindEmf" unbind="unbindEmf" «IF (service.persistenceId != null &&
 					!service.persistenceId.equals(""))»target="(osgi.unit.name=«service.persistenceId»)"«ENDIF»/>
 				«ENDIF»
-		       	<reference name="mapper" interface="org.lunifera.dsl.dto.lib.IMapper" cardinality="1..1" 
-		       			policy="dynamic" bind="bindMapper" unbind="unbindMapper" 
-		       			target="(dto=«service.dto.fullyQualifiedName»)"/>
+		       	<reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" cardinality="1..1" 
+		       			policy="dynamic" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
 		       «ENDIF»
 		</scr:component>
 	'''

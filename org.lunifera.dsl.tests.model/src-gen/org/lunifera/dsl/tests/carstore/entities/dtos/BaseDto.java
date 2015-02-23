@@ -3,7 +3,6 @@ package org.lunifera.dsl.tests.carstore.entities.dtos;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
-import org.lunifera.dsl.dto.lib.Context;
 
 @SuppressWarnings("all")
 public class BaseDto implements Serializable {
@@ -129,7 +128,7 @@ public class BaseDto implements Serializable {
     return new BaseDto();
   }
   
-  public BaseDto copy(final Context context) {
+  public BaseDto copy(final org.lunifera.dsl.dto.lib.Context context) {
     checkDisposed();
     
     if (context == null) {
@@ -166,7 +165,7 @@ public class BaseDto implements Serializable {
     return newDto;
   }
   
-  public void copyContainments(final BaseDto dto, final BaseDto newDto, final Context context) {
+  public void copyContainments(final BaseDto dto, final BaseDto newDto, final org.lunifera.dsl.dto.lib.Context context) {
     checkDisposed();
     
     if (context == null) {

@@ -1,7 +1,6 @@
 package org.lunifera.dsl.tests.carstore.entities.dtos.mapper;
 
 import java.util.List;
-import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.tests.carstore.entities.Address;
 import org.lunifera.dsl.tests.carstore.entities.Car;
 import org.lunifera.dsl.tests.carstore.entities.Person;
@@ -37,7 +36,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToDTO(final PersonDto dto, final Person entity, final Context context) {
+  public void mapToDTO(final PersonDto dto, final Person entity, final org.lunifera.dsl.dto.lib.Context context) {
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
@@ -63,7 +62,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToEntity(final PersonDto dto, final Person entity, final Context context) {
+  public void mapToEntity(final PersonDto dto, final Person entity, final org.lunifera.dsl.dto.lib.Context context) {
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
@@ -97,7 +96,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected Object toDto_firstname(final Person in, final Context context) {
+  protected Object toDto_firstname(final Person in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getFirstname();
   }
   
@@ -109,7 +108,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected Object toEntity_firstname(final PersonDto in, final Context context) {
+  protected Object toEntity_firstname(final PersonDto in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getFirstname();
   }
   
@@ -121,7 +120,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected Object toDto_lastname(final Person in, final Context context) {
+  protected Object toDto_lastname(final Person in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getLastname();
   }
   
@@ -133,7 +132,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected Object toEntity_lastname(final PersonDto in, final Context context) {
+  protected Object toEntity_lastname(final PersonDto in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getLastname();
   }
   
@@ -145,7 +144,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return A list of mapped dtos
    * 
    */
-  protected List<CarDto> toDto_ownsCars(final Person in, final Context context) {
+  protected List<CarDto> toDto_ownsCars(final Person in, final org.lunifera.dsl.dto.lib.Context context) {
     org.lunifera.dsl.dto.lib.IMapper<CarDto, Car> mapper = getMapper(CarDto.class, Car.class);
     if(mapper == null) {
     	throw new IllegalStateException("Mapper must not be null!");
@@ -172,7 +171,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return A list of mapped entities
    * 
    */
-  protected List<Car> toEntity_ownsCars(final PersonDto in, final Context context) {
+  protected List<Car> toEntity_ownsCars(final PersonDto in, final org.lunifera.dsl.dto.lib.Context context) {
     org.lunifera.dsl.dto.lib.IMapper<CarDto, Car> mapper = getMapper(CarDto.class, Car.class);
     if(mapper == null) {
     	throw new IllegalStateException("Mapper must not be null!");
@@ -195,7 +194,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected org.lunifera.dsl.tests.carstore.dtos.AddressDto toDto_homeAddress(final Person in, final Context context) {
+  protected org.lunifera.dsl.tests.carstore.dtos.AddressDto toDto_homeAddress(final Person in, final org.lunifera.dsl.dto.lib.Context context) {
     AddressDto dto = context.getTarget(in.getHomeAddress());
     if(dto != null) {
     	return dto;
@@ -224,7 +223,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected Address toEntity_homeAddress(final PersonDto in, final Context context) {
+  protected Address toEntity_homeAddress(final PersonDto in, final org.lunifera.dsl.dto.lib.Context context) {
     Address entity = context.getTarget(in.getHomeAddress());
     if(entity != null) {
     	return entity;
@@ -253,7 +252,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected org.lunifera.dsl.tests.carstore.dtos.AddressDto toDto_workAddress(final Person in, final Context context) {
+  protected org.lunifera.dsl.tests.carstore.dtos.AddressDto toDto_workAddress(final Person in, final org.lunifera.dsl.dto.lib.Context context) {
     AddressDto dto = context.getTarget(in.getWorkAddress());
     if(dto != null) {
     	return dto;
@@ -282,7 +281,7 @@ public class PersonDtoMapper<DTO extends PersonDto, ENTITY extends Person> exten
    * @return the mapped value
    * 
    */
-  protected Address toEntity_workAddress(final PersonDto in, final Context context) {
+  protected Address toEntity_workAddress(final PersonDto in, final org.lunifera.dsl.dto.lib.Context context) {
     Address entity = context.getTarget(in.getWorkAddress());
     if(entity != null) {
     	return entity;

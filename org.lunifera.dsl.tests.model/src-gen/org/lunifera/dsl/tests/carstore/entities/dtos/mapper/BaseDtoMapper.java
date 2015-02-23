@@ -1,6 +1,5 @@
 package org.lunifera.dsl.tests.carstore.entities.dtos.mapper;
 
-import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.dto.lib.IMapper;
 import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.tests.carstore.entities.Base;
@@ -67,7 +66,7 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
    * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToDTO(final BaseDto dto, final Base entity, final Context context) {
+  public void mapToDTO(final BaseDto dto, final Base entity, final org.lunifera.dsl.dto.lib.Context context) {
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
@@ -86,7 +85,7 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
    * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToEntity(final BaseDto dto, final Base entity, final Context context) {
+  public void mapToEntity(final BaseDto dto, final Base entity, final org.lunifera.dsl.dto.lib.Context context) {
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
@@ -106,7 +105,7 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
    * @return the mapped value
    * 
    */
-  protected Object toDto_uuid(final Base in, final Context context) {
+  protected Object toDto_uuid(final Base in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getUuid();
   }
   
@@ -118,7 +117,7 @@ public class BaseDtoMapper<DTO extends BaseDto, ENTITY extends Base> implements 
    * @return the mapped value
    * 
    */
-  protected Object toEntity_uuid(final BaseDto in, final Context context) {
+  protected Object toEntity_uuid(final BaseDto in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getUuid();
   }
 }

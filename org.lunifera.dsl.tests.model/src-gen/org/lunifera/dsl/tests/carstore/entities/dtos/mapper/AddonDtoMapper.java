@@ -1,6 +1,5 @@
 package org.lunifera.dsl.tests.carstore.entities.dtos.mapper;
 
-import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.tests.carstore.entities.Addon;
 import org.lunifera.dsl.tests.carstore.entities.Car;
 import org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto;
@@ -35,7 +34,7 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToDTO(final AddonDto dto, final Addon entity, final Context context) {
+  public void mapToDTO(final AddonDto dto, final Addon entity, final org.lunifera.dsl.dto.lib.Context context) {
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
@@ -55,7 +54,7 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToEntity(final AddonDto dto, final Addon entity, final Context context) {
+  public void mapToEntity(final AddonDto dto, final Addon entity, final org.lunifera.dsl.dto.lib.Context context) {
     if(context == null){
     	throw new IllegalArgumentException("Please pass a context!");
     }
@@ -78,7 +77,7 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * @return the mapped value
    * 
    */
-  protected Object toDto_description(final Addon in, final Context context) {
+  protected Object toDto_description(final Addon in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getDescription();
   }
   
@@ -90,7 +89,7 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * @return the mapped value
    * 
    */
-  protected Object toEntity_description(final AddonDto in, final Context context) {
+  protected Object toEntity_description(final AddonDto in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getDescription();
   }
   
@@ -102,7 +101,7 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * @return the mapped dto
    * 
    */
-  protected CarDto toDto_car(final Addon in, final Context context) {
+  protected CarDto toDto_car(final Addon in, final org.lunifera.dsl.dto.lib.Context context) {
     CarDto dto = context.getTarget(in.getCar());
     if(dto != null) {
     	return dto;
@@ -131,7 +130,7 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * @return the mapped entity
    * 
    */
-  protected Car toEntity_car(final AddonDto in, final Context context) {
+  protected Car toEntity_car(final AddonDto in, final org.lunifera.dsl.dto.lib.Context context) {
     Car entity = context.getTarget(in.getCar());
     if(entity != null) {
     	return entity;

@@ -11,6 +11,8 @@
 package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
+import java.beans.PropertyChangeEvent
+import java.beans.PropertyChangeListener
 import java.io.Serializable
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
@@ -22,9 +24,9 @@ import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.lunifera.dsl.dto.lib.Context
 import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.lib.IMapperAccess
+import org.lunifera.dsl.dto.lib.MappingContext
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
 import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
@@ -62,7 +64,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 	def dispatch void inferFullState(JvmType type, EObject element, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase, String selector) {
 	}
-	
+
 	// used for test cases with old derived state computer
 	def dispatch void infer(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
@@ -78,7 +80,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 			mapperType.inferMapperFullState(dto, acceptor, isPrelinkingPhase)
 		}
 	}
-	
+
 	def dispatch void inferTypesOnly(LDto dto, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
 		// create dto type
@@ -86,7 +88,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 		associateBySelector(dto, type, "dto")
 		type.markAsToBeDerivedLater(dto, isPrelinkingPhase)
 		acceptor.accept(type);
-	
+
 		// create mapper type
 		if (dto.wrappedType != null) {
 			val mapperType = dto.toMapperJvmType;
@@ -94,7 +96,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 			mapperType.markAsToBeDerivedLater(dto, isPrelinkingPhase, "mapper")
 			acceptor.accept(mapperType)
 		}
-		
+
 		// pass inferring to delegates
 		inferTypesOnlyByDelegates(dto, acceptor, isPrelinkingPhase);
 	}
@@ -113,9 +115,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 
 		acceptor.accept(type).initializeLater [
 			type.markAsDerived
-			
 			val TimeLogger doInferLog = TimeLogger.start(getClass());
-			
 			abstract = dto.abstract
 			annotationCompiler.processAnnotation(dto, it);
 			var LAttribute idAttribute = null
@@ -126,9 +126,10 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 				superTypes += dto.superTypeJvm.cloneWithProxies
 			}
 			superTypes += references.getTypeForName(typeof(Serializable), dto, null)
+			superTypes += references.getTypeForName(typeof(PropertyChangeListener), dto, null)
 			if (dto.getSuperType == null) {
 				members += dto.toPropertyChangeSupportField()
-				members += dto.toPrimitiveTypeField("disposed", Boolean::TYPE)
+				members += dto.toDiposeField
 			}
 			//
 			// Fields
@@ -222,7 +223,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 			}
 			val JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference
 			typeRef.type = it
-			val contextTypeRef = newTypeRef(typeof(Context).name, null)
+			val contextTypeRef = newTypeRef(typeof(MappingContext).name, null)
 			if (!dto.abstract) {
 				members += dto.toMethod("createDto", typeRef) [
 					body = '''return new «dto.name»();'''
@@ -243,7 +244,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 						
 						// if context contains a copied instance of this object
 						// then return it
-						«dto.name» newDto = context.getTarget(this);
+						«dto.name» newDto = context.get(this);
 						if(newDto != null){
 							return newDto;
 						}
@@ -334,7 +335,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 			members += dto.toMethod("copyCrossReferences", references.getTypeForName(Void::TYPE, dto)) [
 				parameters += dto.toParameter("dto", typeRef.cloneWithProxies)
 				parameters += dto.toParameter("newDto", typeRef.cloneWithProxies)
-				parameters += dto.toParameter("context", newTypeRef(typeof(Context).name, null))
+				parameters += dto.toParameter("context", newTypeRef(typeof(MappingContext).name, null))
 				body = '''
 					checkDisposed();
 					
@@ -362,19 +363,36 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 					«ENDFOR»
 				'''
 			]
-			 
+			members += dto.toMethod("propertyChange", references.getTypeForName(Void::TYPE, dto)) [
+				parameters += dto.toParameter("event", newTypeRef(typeof(PropertyChangeEvent).name, null))
+				body = '''
+					Object source = event.getSource();
+					
+					// forward the event from embeddable beans to all listeners. So the parent of the embeddable
+					// bean will become notified and its dirty state can be handled properly
+					«FOR ref : dto.features.filter[it.toRawType.isBean]»
+						if(source == «ref.toName»){
+							firePropertyChange("«ref.toName»" + "_" + event.getPropertyName(), event.getOldValue(), event.getNewValue());
+						} else 
+					«ENDFOR»
+					{ 
+						«IF dto.superType != null»
+						super.propertyChange(event);
+						«ELSE»
+						// no super class available to forward event
+						«ENDIF»
+					}
+				'''
+			]
 			doInferLog.stop(log, "Inferring dto " + dto.name)
 		]
-
 	}
 
 	def void inferMapperFullState(JvmGenericType type, LDto dto, IJvmDeclaredTypeAcceptor acceptor,
 		boolean isPrelinkingPhase) {
 
 		acceptor.accept(type).initializeLater [
-			
 			val TimeLogger doInferLog = TimeLogger.start(getClass());
-			
 			type.markAsDerived
 			fileHeader = (dto.eContainer as LTypedPackage).documentation
 			documentation = '''
@@ -388,7 +406,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 				val dtoParam = TypesFactory.eINSTANCE.createJvmTypeParameter
 				dtoParam.name = "DTO"
 				val dtoUpper = TypesFactory.eINSTANCE.createJvmUpperBound
-				
+
 				dtoUpper.typeReference = dto.findDtoTypeReference
 				dtoParam.constraints += dtoUpper
 				typeParameters += dtoParam
@@ -407,8 +425,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 				dtoType.type = dtoParam
 				if (dto.getSuperType != null) {
 					if (dto.getSuperType != null) {
-						superTypes += dto.findSuperDtoMapperType(dtoType,
-							entityType)
+						superTypes += dto.findSuperDtoMapperType(dtoType, entityType)
 					}
 				} else {
 					superTypes += references.getTypeForName(typeof(IMapper), dto, dtoType, entityType)
@@ -418,18 +435,20 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 					members += dto.toMapperBindMethod
 					members += dto.toMapperUnbindMethod
 				}
-				
+
 				members += dto.toMethod("createEntity", dto.wrappedTypeJvm) [
 					documentation = '''Creates a new instance of the entity'''
 					body = '''
-					«IF dto.wrappedType.abstract»throw new UnsupportedOperationException("Subclass needs to provide dto.");«ELSE»return new «dto.wrappedType.toName»();«ENDIF»
+						«IF dto.wrappedType.abstract»throw new UnsupportedOperationException("Subclass needs to provide dto.");«ELSE»return new «dto.
+							wrappedType.toName»();«ENDIF»
 					'''
 				]
-				
+
 				members += dto.toMethod("createDto", dto.findDtoTypeReference) [
 					documentation = '''Creates a new instance of the dto'''
 					body = '''
-					«IF dto.abstract»throw new UnsupportedOperationException("Subclass needs to provide dto.");«ELSE»return new «dto.toName»();«ENDIF»
+						«IF dto.abstract»throw new UnsupportedOperationException("Subclass needs to provide dto.");«ELSE»return new «dto.
+							toName»();«ENDIF»
 					'''
 				]
 
@@ -458,12 +477,48 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 						}
 					}
 				}
+
+				val idAtt = dto.findIdProperty
+				members += dto.toMethod("createDtoHash", references.getTypeForName(typeof(String), dto, null)) [
+					parameters += dto.toParameter("in", references.getTypeForName(typeof(Object), dto, null))
+					if (idAtt != null) {
+						body = '''
+							return org.lunifera.runtime.common.hash.HashUtil.createObjectWithIdHash(«dto.toName».class, in);
+						'''
+					} else {
+						body = '''
+							throw new UnsupportedOperationException("No id attribute available");
+						'''
+					}
+				]
+
+				members += dto.toMethod("createEntityHash", references.getTypeForName(typeof(String), dto, null)) [
+					parameters += dto.toParameter("in", references.getTypeForName(typeof(Object), dto, null))
+					if (idAtt != null) {
+						body = '''
+							return org.lunifera.runtime.common.hash.HashUtil.createObjectWithIdHash(«dto.wrappedType.toName».class, in);
+						'''
+					} else {
+						body = '''
+							throw new UnsupportedOperationException("No id attribute available");
+						'''
+					}
+				]
+
 			}
-			
 			doInferLog.stop(log, "Inferring mapper " + dto.name)
 		]
 	}
-	
+
+	def LAttribute findIdProperty(LDto dto) {
+		for (att : dto.allFeatures.filter(typeof(LAttribute)).map[it as LAttribute]) {
+			if (att.isIDorUUID) {
+				return att
+			}
+		}
+		return null
+	}
+
 	// used for test cases with old derived state computer
 	def dispatch void infer(LEnum enumX, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 
@@ -478,7 +533,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 		val type = enumX.toEnumerationType(enumX.fullyQualifiedName.toString, null)
 		type.markAsToBeDerivedLater(enumX, isPrelinkingPhase)
 		acceptor.accept(type);
-		
+
 		// pass inferring to delegates
 		inferTypesOnlyByDelegates(enumX, acceptor, isPrelinkingPhase);
 	}
@@ -487,7 +542,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 		boolean isPrelinkingPhase, String selector) {
 
 		acceptor.accept(type).initializeLater [
-			type.markAsDerived			
+			type.markAsDerived
 			val TimeLogger doInferLog = TimeLogger.start(getClass());
 			fileHeader = (enumX.eContainer as LTypedPackage).documentation
 			documentation = enumX.documentation
@@ -495,7 +550,6 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 				documentation = f.documentation
 				members += f.toEnumerationLiteral(f.name)
 			}
-			
 			doInferLog.stop(log, "Inferring enum " + enumX.name)
 		]
 	}
