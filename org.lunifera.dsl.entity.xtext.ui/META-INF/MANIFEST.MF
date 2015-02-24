@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.entity.xtext.ui
 Bundle-Vendor: Lunifera.org
-Bundle-Version: 0.8.1.qualifier
+Bundle-Version: 0.9.1.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.entity.xtext.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.7.3,2.8.0)",
@@ -10,8 +10,6 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.7.3,2.8.0)",
  org.eclipse.ui,
  org.eclipse.ui.ide,
  org.eclipse.xtext.builder;bundle-version="[2.7.3,2.8.0)",
- org.eclipse.xpand;bundle-version="1.1.0",
- org.eclipse.xtend;bundle-version="1.1.0",
  org.eclipse.xtext.ui.shared;bundle-version="[2.7.3,2.8.0)",
  org.eclipse.text,
  org.eclipse.xtext.common.types.ui;bundle-version="[2.7.3,2.8.0)",
@@ -20,12 +18,12 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.7.3,2.8.0)",
  org.eclipse.compare,
  org.eclipse.debug.ui;bundle-version="3.5.0",
  org.eclipse.jdt.core;bundle-version="3.8.1",
- org.lunifera.dsl.entity.xtext;bundle-version="[0.8.0,0.9.0)";visibility:=reexport,
+ org.lunifera.dsl.entity.xtext;bundle-version="[0.9.0,0.10.0)";visibility:=reexport,
  org.eclipse.xtext.xbase.ui;bundle-version="[2.7.3,2.8.0)",
  org.eclipse.xtext.purexbase.ui;bundle-version="[2.7.3,2.8.0)",
- org.lunifera.dsl.semantic.common;bundle-version="[0.8.0,0.9.0)",
- org.lunifera.dsl.common.xtext;bundle-version="[0.8.0,0.9.0)",
- org.lunifera.dsl.common.xtext.ui;bundle-version="[0.8.0,0.9.0)",
+ org.lunifera.dsl.semantic.common;bundle-version="[0.9.0,0.10.0)",
+ org.lunifera.dsl.common.xtext;bundle-version="[0.9.0,0.10.0)",
+ org.lunifera.dsl.common.xtext.ui;bundle-version="[0.9.0,0.10.0)",
  org.eclipse.jdt.debug.ui,
  org.lunifera.dsl.xtext.lazyresolver.api,
  org.lunifera.dsl.xtext.lazyresolver,
@@ -37,13 +35,13 @@ Import-Package: org.apache.commons.logging,
  org.eclipse.jdt.ui,
  org.slf4j;version="1.7.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.lunifera.dsl.entity.xtext.ui;version="0.8.1";x-internal:="true",
- org.lunifera.dsl.entity.xtext.ui.contentassist;version="0.8.1";x-internal:="true",
- org.lunifera.dsl.entity.xtext.ui.contentassist.antlr;version="0.8.1";x-internal:="true",
- org.lunifera.dsl.entity.xtext.ui.contentassist.antlr.internal;version="0.8.1";x-internal:="true",
- org.lunifera.dsl.entity.xtext.ui.internal;version="0.8.1";x-internal:="true",
- org.lunifera.dsl.entity.xtext.ui.labeling;version="0.8.1";x-internal:="true",
- org.lunifera.dsl.entity.xtext.ui.outline;version="0.8.1";x-internal:="true",
- org.lunifera.dsl.entity.xtext.ui.quickfix;version="0.8.1";x-internal:="true",
- org.lunifera.dsl.entity.xtext.ui.wizards;version="0.8.1";x-internal:="true"
+Export-Package: org.lunifera.dsl.entity.xtext.ui;version="0.9.1";x-internal:="true",
+ org.lunifera.dsl.entity.xtext.ui.contentassist;version="0.9.1";x-internal:="true",
+ org.lunifera.dsl.entity.xtext.ui.contentassist.antlr;version="0.9.1";x-internal:="true",
+ org.lunifera.dsl.entity.xtext.ui.contentassist.antlr.internal;version="0.9.1";x-internal:="true",
+ org.lunifera.dsl.entity.xtext.ui.internal;version="0.9.1";x-internal:="true",
+ org.lunifera.dsl.entity.xtext.ui.labeling;version="0.9.1";x-internal:="true",
+ org.lunifera.dsl.entity.xtext.ui.outline;version="0.9.1";x-internal:="true",
+ org.lunifera.dsl.entity.xtext.ui.quickfix;version="0.9.1";x-internal:="true",
+ org.lunifera.dsl.entity.xtext.ui.wizards;version="0.9.1";x-internal:="true"
 Bundle-Activator: org.lunifera.dsl.entity.xtext.ui.internal.EntityGrammarActivator

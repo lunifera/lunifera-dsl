@@ -2,7 +2,7 @@
 <feature
       id="org.lunifera.dsl.feature.common"
       label="%featureName"
-      version="0.8.1.qualifier"
+      version="0.9.1.qualifier"
       provider-name="%providerName"
       plugin="org.lunifera.dsl.common.xtext.ui">
 
