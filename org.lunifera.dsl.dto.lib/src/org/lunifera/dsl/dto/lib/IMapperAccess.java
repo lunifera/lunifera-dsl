@@ -13,12 +13,23 @@ package org.lunifera.dsl.dto.lib;
 public interface IMapperAccess {
 
 	/**
-	 * Returns the mapper for the given DTO.
+	 * Returns the best mapper available to map from the given entity to the
+	 * given DTO.
 	 * 
 	 * @param dto
 	 * @param entity
 	 * @return
 	 */
-	<D, E> IMapper<D, E> getMapper(Class<D> dto, Class<E> entity);
+	<D, E> IMapper<D, E> getToDtoMapper(Class<D> dto, Class<E> entity);
+
+	/**
+	 * Returns the best mapper available to map from the given DTO to the given
+	 * entity.
+	 * 
+	 * @param dto
+	 * @param entity
+	 * @return
+	 */
+	<D, E> IMapper<D, E> getToEntityMapper(Class<D> dto, Class<E> entity);
 
 }

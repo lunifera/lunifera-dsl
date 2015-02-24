@@ -430,7 +430,8 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 				} else {
 					superTypes += references.getTypeForName(typeof(IMapper), dto, dtoType, entityType)
 					members += dto.toField("mapperAccess", references.getTypeForName(typeof(IMapperAccess), dto, null))
-					members += dto.toGetMapperAccess
+					members += dto.toGetToDtoMapperAccess
+					members += dto.toGetToEntityMapperAccess
 
 					members += dto.toMapperBindMethod
 					members += dto.toMapperUnbindMethod

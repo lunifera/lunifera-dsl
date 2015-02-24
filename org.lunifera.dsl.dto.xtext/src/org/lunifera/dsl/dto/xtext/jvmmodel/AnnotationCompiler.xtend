@@ -152,6 +152,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def dispatch addDisposeFieldAnnotation(LDto dto, JvmOperation op) {
+		addAnno(dto, op, dto.toAnnotation(typeof(Dispose)))
 	}
 
 }

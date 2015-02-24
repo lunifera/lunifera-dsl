@@ -66,6 +66,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, lClass)
 		op.simpleName = "dispose"
+		
+		annotationCompiler.addDisposeFieldAnnotation(lClass, op)
 
 		op.documentation = '''
 		Calling dispose will destroy that instance. The internal state will be 
@@ -132,6 +134,8 @@ class EntityTypesBuilder extends CommonTypesBuilder {
 		op.visibility = JvmVisibility::PUBLIC
 		op.returnType = references.getTypeForName(Void::TYPE, lClass)
 		op.simpleName = "dispose"
+
+		annotationCompiler.addDisposeFieldAnnotation(lClass, op)
 
 		op.documentation = '''
 		Calling dispose will destroy that instance. The internal state will be 
