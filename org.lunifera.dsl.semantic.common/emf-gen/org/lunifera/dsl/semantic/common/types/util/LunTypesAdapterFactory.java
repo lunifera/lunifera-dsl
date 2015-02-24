@@ -159,6 +159,18 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 				return createLMultiplicityAdapter();
 			}
 			@Override
+			public Adapter caseLConstraints(LConstraints object) {
+				return createLConstraintsAdapter();
+			}
+			@Override
+			public Adapter caseLConstraint(LConstraint object) {
+				return createLConstraintAdapter();
+			}
+			@Override
+			public Adapter caseLAttributeMatchingConstraint(LAttributeMatchingConstraint object) {
+				return createLAttributeMatchingConstraintAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -455,6 +467,48 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLMultiplicityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LConstraints <em>LConstraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LConstraints
+	 * @generated
+	 */
+	public Adapter createLConstraintsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LConstraint <em>LConstraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LConstraint
+	 * @generated
+	 */
+	public Adapter createLConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint <em>LAttribute Matching Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint
+	 * @generated
+	 */
+	public Adapter createLAttributeMatchingConstraintAdapter() {
 		return null;
 	}
 

@@ -22,8 +22,10 @@ import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
+import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
+import org.lunifera.dsl.semantic.entity.LEntityModel;
 import org.lunifera.dsl.semantic.entity.LunEntityFactory;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
 
@@ -56,6 +58,26 @@ public class EntityLinker extends LazyJvmTypeLinker {
 						}
 					}
 				});
+	}
+
+	protected void afterModelLinked(EObject model,
+			IDiagnosticConsumer diagnosticsConsumer) {
+
+		super.afterModelLinked(model, diagnosticsConsumer);
+
+		// load the super types eager to ensure sub types resolving
+		LEntityModel lModel = (LEntityModel) model;
+		for (LTypedPackage lPkg : lModel.getPackages()) {
+			for (LType lType : lPkg.getTypes()) {
+				if (lType instanceof LEntity) {
+					LEntity lEntity = (LEntity) lType;
+					lEntity.getSuperType();
+				} else if (lType instanceof LBean) {
+					LBean lBean = (LBean) lType;
+					lBean.getSuperType();
+				}
+			}
+		}
 	}
 
 	/**

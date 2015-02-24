@@ -89,6 +89,8 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 			case LunTypesPackage.LOPERATION: return createLOperation();
 			case LunTypesPackage.LMODIFIER: return createLModifier();
 			case LunTypesPackage.LMULTIPLICITY: return createLMultiplicity();
+			case LunTypesPackage.LCONSTRAINTS: return createLConstraints();
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT: return createLAttributeMatchingConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -110,6 +112,8 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 				return createLLowerBoundFromString(eDataType, initialValue);
 			case LunTypesPackage.LUPPER_BOUND:
 				return createLUpperBoundFromString(eDataType, initialValue);
+			case LunTypesPackage.LCOMPARATOR_TYPE:
+				return createLComparatorTypeFromString(eDataType, initialValue);
 			case LunTypesPackage.OPERATIONS_LIST:
 				return createOperationsListFromString(eDataType, initialValue);
 			case LunTypesPackage.FEATURES_LIST:
@@ -139,6 +143,8 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 				return convertLLowerBoundToString(eDataType, instanceValue);
 			case LunTypesPackage.LUPPER_BOUND:
 				return convertLUpperBoundToString(eDataType, instanceValue);
+			case LunTypesPackage.LCOMPARATOR_TYPE:
+				return convertLComparatorTypeToString(eDataType, instanceValue);
 			case LunTypesPackage.OPERATIONS_LIST:
 				return convertOperationsListToString(eDataType, instanceValue);
 			case LunTypesPackage.FEATURES_LIST:
@@ -317,6 +323,26 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LConstraints createLConstraints() {
+		LConstraintsImpl lConstraints = new LConstraintsImpl();
+		return lConstraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LAttributeMatchingConstraint createLAttributeMatchingConstraint() {
+		LAttributeMatchingConstraintImpl lAttributeMatchingConstraint = new LAttributeMatchingConstraintImpl();
+		return lAttributeMatchingConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LDateType createLDateTypeFromString(EDataType eDataType, String initialValue) {
 		LDateType result = LDateType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -389,6 +415,26 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	 * @generated
 	 */
 	public String convertLUpperBoundToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LComparatorType createLComparatorTypeFromString(EDataType eDataType, String initialValue) {
+		LComparatorType result = LComparatorType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLComparatorTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

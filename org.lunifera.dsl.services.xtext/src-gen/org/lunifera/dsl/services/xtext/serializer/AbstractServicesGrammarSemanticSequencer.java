@@ -59,6 +59,8 @@ import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.lunifera.dsl.common.xtext.serializer.CommonGrammarSemanticSequencer;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
+import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
+import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
@@ -137,6 +139,19 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 			case LunTypesPackage.LANNOTATION_DEF:
 				if(context == grammarAccess.getAnnotationDefRule()) {
 					sequence_AnnotationDef(context, (LAnnotationDef) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT:
+				if(context == grammarAccess.getAttributeMatchingConstraintRule() ||
+				   context == grammarAccess.getConstraintRule()) {
+					sequence_AttributeMatchingConstraint(context, (LAttributeMatchingConstraint) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LCONSTRAINTS:
+				if(context == grammarAccess.getConstraintsRule()) {
+					sequence_Constraints(context, (LConstraints) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1439,7 +1454,7 @@ public abstract class AbstractServicesGrammarSemanticSequencer extends CommonGra
 	 *         annotationInfo=Class_LDTOService_2 
 	 *         name=ValidIDWithKeywords 
 	 *         dto=[LDto|ID] 
-	 *         persistenceId=QualifiedName? 
+	 *         (mutablePersistenceId?='mutable'? persistenceId=QualifiedName)? 
 	 *         injectedServices=InjectedServices 
 	 *         operations+=Operation*
 	 *     )

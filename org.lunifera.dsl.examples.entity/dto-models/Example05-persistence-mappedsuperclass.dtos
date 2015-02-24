@@ -1,0 +1,32 @@
+/**
+ * Example for persistence with the "mapped superclass" strategy
+ * 
+ * The "mapped superclass" strategy means that no database table is created for the
+ * parent in an inheritance situation between entities.
+ * 
+ * The parent's fields are inherited by the children and included as columns
+ * in their tables as if they had been declared in the child entity.
+ */
+package org.lunifera.entitydsl.samples.sample05.dtos {
+	
+	/* Imports the required artifacts */
+	import org.lunifera.entitydsl.samples.sample05.Item;
+	import org.lunifera.entitydsl.samples.sample05.dtos.ItemDto;
+	import org.lunifera.entitydsl.samples.sample05.Article;
+	import org.lunifera.entitydsl.samples.sample05.dtos.ArticleDto;
+	import org.lunifera.entitydsl.samples.sample05.dtos.ItemDto;
+
+
+
+	autoDto ItemDto wraps Item {
+		inherit var id;
+		inherit var name;
+		inherit var count;
+	}
+	
+	autoDto ArticleDto extends ItemDto wraps Article {
+		inherit var description;
+		inherit var price;
+	}
+	
+}

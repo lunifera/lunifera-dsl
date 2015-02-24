@@ -15,7 +15,10 @@ package org.lunifera.dsl.semantic.entity;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.lunifera.dsl.semantic.common.types.LConstraints;
+import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LReference;
+import org.lunifera.dsl.semantic.common.types.LType;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,8 +29,9 @@ import org.lunifera.dsl.semantic.common.types.LReference;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LBeanReference#getType <em>Type</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.entity.LBeanReference#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LBeanReference#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LBeanReference#getTypeJvm <em>Type Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LBeanReference#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,12 +49,12 @@ public interface LBeanReference extends LBeanFeature, LReference {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(LBean)
+	 * @see #setType(LType)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBeanReference_Type()
 	 * @model
 	 * @generated
 	 */
-	LBean getType();
+	LType getType();
 
 	/**
 	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getType <em>Type</em>}' reference.
@@ -60,7 +64,33 @@ public interface LBeanReference extends LBeanFeature, LReference {
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(LBean value);
+	void setType(LType value);
+
+	/**
+	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Opposite</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Opposite</em>' reference.
+	 * @see #setOpposite(LFeature)
+	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBeanReference_Opposite()
+	 * @model
+	 * @generated
+	 */
+	LFeature getOpposite();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getOpposite <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Opposite</em>' reference.
+	 * @see #getOpposite()
+	 * @generated
+	 */
+	void setOpposite(LFeature value);
 
 	/**
 	 * Returns the value of the '<em><b>Type Jvm</b></em>' containment reference.
@@ -73,7 +103,7 @@ public interface LBeanReference extends LBeanFeature, LReference {
 	 * @return the value of the '<em>Type Jvm</em>' containment reference.
 	 * @see #setTypeJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBeanReference_TypeJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getTypeJvm();
@@ -89,29 +119,29 @@ public interface LBeanReference extends LBeanFeature, LReference {
 	void setTypeJvm(JvmTypeReference value);
 
 	/**
-	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Opposite</em>' reference isn't clear,
+	 * If the meaning of the '<em>Constraints</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Opposite</em>' reference.
-	 * @see #setOpposite(LBeanReference)
-	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBeanReference_Opposite()
-	 * @model
+	 * @return the value of the '<em>Constraints</em>' containment reference.
+	 * @see #setConstraints(LConstraints)
+	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLBeanReference_Constraints()
+	 * @model containment="true"
 	 * @generated
 	 */
-	LBeanReference getOpposite();
+	LConstraints getConstraints();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getOpposite <em>Opposite</em>}' reference.
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getConstraints <em>Constraints</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Opposite</em>' reference.
-	 * @see #getOpposite()
+	 * @param value the new value of the '<em>Constraints</em>' containment reference.
+	 * @see #getConstraints()
 	 * @generated
 	 */
-	void setOpposite(LBeanReference value);
+	void setConstraints(LConstraints value);
 
 } // LBeanReference

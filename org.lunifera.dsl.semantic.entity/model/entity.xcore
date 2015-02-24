@@ -17,19 +17,21 @@
 @Ecore(rootPackage="entity")
 package org.lunifera.dsl.semantic.entity
 
-import xcore.lang.GenModel
 import java.util.List
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LClass
+import org.lunifera.dsl.semantic.common.types.LConstraint
 import org.lunifera.dsl.semantic.common.types.LDateType
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder
 import org.lunifera.dsl.semantic.common.types.LLazyResolver
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LScalarType
+import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
+import org.lunifera.dsl.semantic.common.types.LConstraints
 
 class LEntityModel {
 	contains LTypedPackage[] packages
@@ -41,7 +43,7 @@ class LEntityModel {
 class LBean extends LClass, LScalarType, LFeaturesHolder {
 	contains LBeanFeature[] features
 	refers LBean superType opposite subTypes
-	contains JvmTypeReference superTypeJvm
+	contains transient JvmTypeReference superTypeJvm
 	refers LBean[] subTypes opposite superType
 	/**
  	 * Returns all features of type LOperation
@@ -113,7 +115,7 @@ class LEntity extends LClass, LFeaturesHolder {
 	contains LEntityFeature[] features
 	contains LIndex[] indexes
 	refers LEntity superType opposite subTypes
-	contains JvmTypeReference superTypeJvm
+	contains transient JvmTypeReference superTypeJvm
 	refers LEntity[] subTypes opposite superType
 	
 	/**
@@ -220,6 +222,9 @@ class LEntityFeature extends LFeature {
 
 class LEntityAttribute extends LEntityFeature, LAttribute {
 	
+	// in case that a bean has a reference to entity
+	refers LBeanReference ^opposite
+	
 	derived String typedName get 
 	{
 		var result = new StringBuilder
@@ -244,9 +249,9 @@ class LEntityAttribute extends LEntityFeature, LAttribute {
 
 class LEntityReference extends LEntityFeature, LReference {
 	refers LEntity ^type
-	contains JvmTypeReference typeJvm
+	contains transient JvmTypeReference typeJvm
 	refers LEntityReference ^opposite
-	
+	contains LConstraints constraints
 }
 
 class LBeanFeature  extends LFeature {
@@ -277,21 +282,20 @@ class LBeanAttribute extends LBeanFeature, LAttribute {
 		
 		return result.toString		
 	}
-	
 }
 
 class LBeanReference extends LBeanFeature, LReference {
-	refers LBean ^type
-	contains JvmTypeReference typeJvm
-	refers LBeanReference ^opposite
-	
+	// can be entity or bean
+	refers LType ^type
+	refers LFeature ^opposite
+	contains transient JvmTypeReference typeJvm
+	contains LConstraints constraints
 }
 
 class LIndex {
 	boolean ^unique
 	String name
 	refers LEntityFeature[] features
-	
 }
 
 /**

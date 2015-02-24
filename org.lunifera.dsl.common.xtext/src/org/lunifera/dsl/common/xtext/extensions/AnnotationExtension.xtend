@@ -22,6 +22,7 @@ import org.eclipse.xtext.common.types.JvmAnnotationType
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmEnumerationLiteral
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
@@ -29,6 +30,7 @@ import org.lunifera.dsl.semantic.common.types.LAnnotationDef
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 import org.lunifera.dsl.semantic.common.types.LFeature
 
+@SuppressWarnings("restriction")
 class AnnotationExtension {
 
 	@Inject extension JvmTypesBuilder
@@ -62,6 +64,29 @@ class AnnotationExtension {
 			literal.setSimpleName(enumxx.name)
 			value.values += literal
 		}
+
+		return value
+	}
+
+	/**
+	 * Creates an enum annotation value and adds it the the given type reference
+	 */
+	def dispatch addAnnAttr(JvmAnnotationReference annRef, EObject context, String name, JvmTypeReference typeReference) {
+
+		// create the parameter
+		val value = typesFactory.createJvmTypeAnnotationValue
+		annRef.explicitValues += value
+
+		// create the enum type
+		val declaredType = references.findDeclaredType(typeof(JvmTypeReference), context) as JvmDeclaredType
+
+		// create the operation
+		val JvmOperation op = typesFactory.createJvmOperation
+		op.setSimpleName(name)
+		op.setDeclaringType(declaredType)
+		value.setOperation(op)
+		
+		value.values += typeReference
 
 		return value
 	}

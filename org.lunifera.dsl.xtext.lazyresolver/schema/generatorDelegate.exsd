@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.lunifera.dsl.xtext.lazyresolver" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.lunifera.dsl.xtext.lazyresolver" id="generatorDelegate" name="Generator Delegate"/>
+      </appinfo>
+      <documentation>
+         This extension point allows clients to contribute their own implementations for DSL generators
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="generatorDelegate"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="generatorDelegate">
+      <complexType>
+         <attribute name="grammarName" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A string identifier defining the name of the grammar the hook should be used for.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="generatorDelegateClass" type="string">
+            <annotation>
+               <documentation>
+                  Class implementing &lt;code&gt;IGeneratorDelegate&lt;/code&gt;.  Used to create new instances of this delegate
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.lunifera.dsl.xtext.lazyresolver.api.hook.IGeneratorDelegate"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         0.8.1
+      </documentation>
+   </annotation>
+
+
+
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)&lt;br&gt;
+All rights reserved. This program and the accompanying materials&lt;br&gt;
+are made available under the terms of the Eclipse Public License v1.0&lt;br&gt;
+which accompanies this distribution, and is available at&lt;br&gt;
+http://www.eclipse.org/legal/epl-v10.html&lt;br&gt;
+&lt;p&gt;
+Contributors: 
+ Florian Pirchner - Initial implementation
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+</schema>

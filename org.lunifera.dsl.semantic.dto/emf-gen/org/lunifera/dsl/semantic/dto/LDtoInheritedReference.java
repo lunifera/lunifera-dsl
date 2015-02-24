@@ -13,6 +13,8 @@
  */
 package org.lunifera.dsl.semantic.dto;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LReference;
 
@@ -25,6 +27,7 @@ import org.lunifera.dsl.semantic.common.types.LReference;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.dto.LDtoInheritedReference#getInheritedFeature <em>Inherited Feature</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.LDtoInheritedReference#getInheritedFeatureTypeJvm <em>Inherited Feature Type Jvm</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,6 +61,32 @@ public interface LDtoInheritedReference extends LDtoAbstractReference {
 	 * @generated
 	 */
 	void setInheritedFeature(LReference value);
+
+	/**
+	 * Returns the value of the '<em><b>Inherited Feature Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inherited Feature Type Jvm</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inherited Feature Type Jvm</em>' containment reference.
+	 * @see #setInheritedFeatureTypeJvm(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.dto.LunDtoPackage#getLDtoInheritedReference_InheritedFeatureTypeJvm()
+	 * @model containment="true" transient="true"
+	 * @generated
+	 */
+	JvmTypeReference getInheritedFeatureTypeJvm();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.dto.LDtoInheritedReference#getInheritedFeatureTypeJvm <em>Inherited Feature Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inherited Feature Type Jvm</em>' containment reference.
+	 * @see #getInheritedFeatureTypeJvm()
+	 * @generated
+	 */
+	void setInheritedFeatureTypeJvm(JvmTypeReference value);
 
 	/**
 	 * <!-- begin-user-doc -->

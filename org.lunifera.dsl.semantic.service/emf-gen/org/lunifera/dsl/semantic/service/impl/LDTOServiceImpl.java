@@ -39,6 +39,7 @@ import org.lunifera.dsl.semantic.service.LunServicePackage;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getDto <em>Dto</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getDtoJvm <em>Dto Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#isMutablePersistenceId <em>Mutable Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getPersistenceId <em>Persistence Id</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getFilterable <em>Filterable</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.service.impl.LDTOServiceImpl#getSortable <em>Sortable</em>}</li>
@@ -67,6 +68,26 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 	 * @ordered
 	 */
 	protected JvmTypeReference dtoJvm;
+
+	/**
+	 * The default value of the '{@link #isMutablePersistenceId() <em>Mutable Persistence Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMutablePersistenceId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MUTABLE_PERSISTENCE_ID_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMutablePersistenceId() <em>Mutable Persistence Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMutablePersistenceId()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean mutablePersistenceId = MUTABLE_PERSISTENCE_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPersistenceId() <em>Persistence Id</em>}' attribute.
@@ -206,6 +227,27 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__DTO_JVM, newDtoJvm, newDtoJvm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isMutablePersistenceId() {
+		return mutablePersistenceId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMutablePersistenceId(boolean newMutablePersistenceId) {
+		boolean oldMutablePersistenceId = mutablePersistenceId;
+		mutablePersistenceId = newMutablePersistenceId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunServicePackage.LDTO_SERVICE__MUTABLE_PERSISTENCE_ID, oldMutablePersistenceId, mutablePersistenceId));
 	}
 
 	/**
@@ -366,6 +408,8 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 				return basicGetDto();
 			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
 				return getDtoJvm();
+			case LunServicePackage.LDTO_SERVICE__MUTABLE_PERSISTENCE_ID:
+				return isMutablePersistenceId();
 			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
 				return getPersistenceId();
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:
@@ -389,6 +433,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 				return;
 			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
 				setDtoJvm((JvmTypeReference)newValue);
+				return;
+			case LunServicePackage.LDTO_SERVICE__MUTABLE_PERSISTENCE_ID:
+				setMutablePersistenceId((Boolean)newValue);
 				return;
 			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
 				setPersistenceId((String)newValue);
@@ -417,6 +464,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
 				setDtoJvm((JvmTypeReference)null);
 				return;
+			case LunServicePackage.LDTO_SERVICE__MUTABLE_PERSISTENCE_ID:
+				setMutablePersistenceId(MUTABLE_PERSISTENCE_ID_EDEFAULT);
+				return;
 			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
 				setPersistenceId(PERSISTENCE_ID_EDEFAULT);
 				return;
@@ -442,6 +492,8 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 				return dto != null;
 			case LunServicePackage.LDTO_SERVICE__DTO_JVM:
 				return dtoJvm != null;
+			case LunServicePackage.LDTO_SERVICE__MUTABLE_PERSISTENCE_ID:
+				return mutablePersistenceId != MUTABLE_PERSISTENCE_ID_EDEFAULT;
 			case LunServicePackage.LDTO_SERVICE__PERSISTENCE_ID:
 				return PERSISTENCE_ID_EDEFAULT == null ? persistenceId != null : !PERSISTENCE_ID_EDEFAULT.equals(persistenceId);
 			case LunServicePackage.LDTO_SERVICE__FILTERABLE:
@@ -462,7 +514,9 @@ public class LDTOServiceImpl extends LServiceImpl implements LDTOService {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (persistenceId: ");
+		result.append(" (mutablePersistenceId: ");
+		result.append(mutablePersistenceId);
+		result.append(", persistenceId: ");
 		result.append(persistenceId);
 		result.append(')');
 		return result.toString();

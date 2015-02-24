@@ -60,12 +60,13 @@ ruleColumnPersistenceInfo :
 // Rule EntityFeature
 ruleEntityFeature :
 	ruleAnnotationDef* (
-		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID
-			ruleColumnPersistenceInfo? (
-				'opposite' ruleLFQN
-			)?
-		) ';' |
+		'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID
+		ruleColumnPersistenceInfo? (
+			'opposite' ruleLFQN
+		)? (
+			ruleConstraints |
+			';'
+		) |
 		(
 			'transient' RULE_ID ruleTRANSLATABLEID ';' |
 			'derived' 'domainDescription'? RULE_ID ruleTRANSLATABLEID
@@ -77,8 +78,9 @@ ruleEntityFeature :
 				'version' |
 				'domainDescription' |
 				'domainKey'
-			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ruleColumnPersistenceInfo?
-			';'
+			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ruleColumnPersistenceInfo? (
+				'opposite' ruleLFQN
+			)? ';'
 		) |
 		'def' ruleJvmTypeReference ruleTRANSLATABLEID '(' (
 			ruleFullJvmFormalParameter (
@@ -91,11 +93,12 @@ ruleEntityFeature :
 // Rule BeanFeature
 ruleBeanFeature :
 	ruleAnnotationDef* (
-		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
-				'opposite' ruleLFQN
-			)?
-		) ';' |
+		'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
+			'opposite' ruleLFQN
+		)? (
+			ruleConstraints |
+			';'
+		) |
 		(
 			'transient' RULE_ID ruleTRANSLATABLEID |
 			(
@@ -203,6 +206,26 @@ ruleAnnotationDef :
 	( (
 	ruleXAnnotation
 	) => ruleXAnnotation )
+;
+
+// Rule Constraints
+ruleConstraints :
+	'constraints' '{' ruleConstraint* '}'
+;
+
+// Rule Constraint
+ruleConstraint :
+	ruleAttributeMatchingConstraint
+;
+
+// Rule AttributeMatchingConstraint
+ruleAttributeMatchingConstraint :
+	RULE_ID ruleLComparatorType (
+		RULE_STRING |
+		( (
+		RULE_ID
+		) => RULE_ID )
+	) ';'
 ;
 
 // Rule LQualifiedNameWithWildCard
@@ -1102,6 +1125,16 @@ ruleLVisibility :
 	'private' |
 	'protected' |
 	'public'
+;
+
+// Rule LComparatorType
+ruleLComparatorType :
+	'==' |
+	'>' |
+	'<' |
+	'>=' |
+	'<=' |
+	'<>'
 ;
 
 // Rule LowerBound

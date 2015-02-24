@@ -23,6 +23,7 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityAttribute#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityAttribute#getTypedName <em>Typed Name</em>}</li>
  * </ul>
  * </p>
@@ -32,6 +33,32 @@ import org.lunifera.dsl.semantic.common.types.LAttribute;
  * @generated
  */
 public interface LEntityAttribute extends LEntityFeature, LAttribute {
+	/**
+	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Opposite</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Opposite</em>' reference.
+	 * @see #setOpposite(LBeanReference)
+	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntityAttribute_Opposite()
+	 * @model
+	 * @generated
+	 */
+	LBeanReference getOpposite();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntityAttribute#getOpposite <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Opposite</em>' reference.
+	 * @see #getOpposite()
+	 * @generated
+	 */
+	void setOpposite(LBeanReference value);
+
 	/**
 	 * Returns the value of the '<em><b>Typed Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

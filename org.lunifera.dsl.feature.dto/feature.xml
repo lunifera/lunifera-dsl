@@ -2,7 +2,7 @@
 <feature
       id="org.lunifera.dsl.feature.dto"
       label="%featureName"
-      version="0.8.0"
+      version="0.9.0"
       provider-name="%providerName"
       plugin="org.lunifera.dsl.entity.xtext.ui">
 
@@ -19,9 +19,9 @@
    </license>
 
    <requires>
-      <import feature="org.lunifera.dsl.feature.common" version="0.0.0"/>
-      <import feature="org.lunifera.dsl.feature.entities" version="0.0.0"/>
-      <import feature="org.lunifera.dsl.feature.dto.headless" version="0.0.0"/>
+      <import feature="org.lunifera.dsl.feature.common" version="0.9.0"/>
+      <import feature="org.lunifera.dsl.feature.entities" version="0.9.0"/>
+      <import feature="org.lunifera.dsl.feature.dto.headless" version="0.9.0"/>
    </requires>
 
    <plugin

@@ -69,6 +69,30 @@ AnnotationDef returns types::LAnnotationDef:
 enum LVisibility returns types::LVisibility:
 	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
 
+Constraints returns types::LConstraints:
+	{types::LConstraints}
+	'constraints' '{'
+		constraints+=Constraint*
+	'}'
+;
+
+Constraint returns types::LConstraint:
+	AttributeMatchingConstraint
+;
+
+AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
+	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | => matchingLiteral=[types::LEnumLiteral])';'
+;
+
+enum LComparatorType returns types::LComparatorType:
+	EQUALS = '==' |
+	GREATER = '>' |
+	LOWER = '<' |
+	GREATER_EQ = '>=' |
+	LOWER_EQ = '<=' |
+	NOT_EQ = '<>'
+	;
+
 LQualifiedNameWithWildCard:
 	QualifiedName ('.' '*')?;
 

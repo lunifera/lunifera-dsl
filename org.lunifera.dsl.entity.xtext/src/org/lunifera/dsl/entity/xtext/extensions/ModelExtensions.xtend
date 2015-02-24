@@ -20,7 +20,6 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LFeature
-import org.lunifera.dsl.semantic.entity.LunEntityFactory
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanReference
@@ -32,6 +31,8 @@ import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
+import org.lunifera.dsl.semantic.entity.LunEntityFactory
+import org.lunifera.dsl.semantic.common.types.LEnum
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
@@ -43,6 +44,14 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
 		return prop.typeJvm?.cloneWithProxies
+	}
+	
+	def dispatch JvmTypeReference toTypeReference(LEntityAttribute prop) {
+		val lType = prop.type
+		if(lType instanceof LEntity || lType instanceof LBean || lType instanceof LEnum){
+			return prop.typeJvm?.cloneWithProxies
+		}
+		return prop.type?.toTypeReference
 	}
 
 	def dispatch JvmTypeReference toTypeReference(LBeanReference prop) {

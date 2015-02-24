@@ -52,10 +52,12 @@ class LDtoModel {
 class LDto extends LClass, LFeaturesHolder, LScalarType {
 	contains LDtoFeature[] features
 	refers LDto superType opposite subTypes
-	contains JvmTypeReference superTypeJvm
+	contains transient JvmTypeReference superTypeJvm
+	// helper proxy for lazy loading the mapper from super type
+	contains transient JvmTypeReference superTypeMapperJvm
 	refers LDto[] subTypes opposite superType
 	refers LType wrappedType
-	contains JvmTypeReference wrappedTypeJvm
+	contains transient JvmTypeReference wrappedTypeJvm
 	
 	/** 
  	 * Returns all features of type LOperation
@@ -124,6 +126,8 @@ abstract class LDtoAbstractAttribute extends LDtoFeature, LAttribute {
 
 class LDtoInheritedAttribute extends LDtoAbstractAttribute{
 	refers LAttribute inheritedFeature
+	contains transient JvmTypeReference inheritedFeatureTypeJvm
+	
 	op LScalarType getInheritedType() {
 		return inheritedFeature.^type
 	}
@@ -139,12 +143,14 @@ class LDtoAttribute  extends LDtoAbstractAttribute {
 
 abstract class LDtoAbstractReference extends LDtoFeature, LReference {
 	refers LDto ^type
-	contains JvmTypeReference typeJvm
+	contains transient JvmTypeReference typeJvm
 	
 }
 
 class LDtoInheritedReference extends LDtoAbstractReference{
 	refers LReference inheritedFeature
+	contains transient JvmTypeReference inheritedFeatureTypeJvm
+	
 	op LMultiplicity getInheritedMultiplicity() {
 		return inheritedFeature.multiplicity
 	}

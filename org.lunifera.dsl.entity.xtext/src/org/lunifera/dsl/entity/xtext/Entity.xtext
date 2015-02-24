@@ -24,18 +24,16 @@ EntityModel returns entity::LEntityModel:
 Class returns LClass:
 	{LClass} annotations+=AnnotationDef*
 	({entity::LEntity.annotationInfo=current}
-	((abstract?='abstract')? & 
+	((abstract?='abstract')? &
 	((historized?='historized')
-		| 
-	(timedependent?='timedependent' ('(' timedependentDateType=LHistorizedDateType ')')?)
-	)? &
+	|
+	(timedependent?='timedependent' ('(' timedependentDateType=LHistorizedDateType ')')?))? &
 	(cacheable?="cacheable")?)
 	'entity' name=TRANSLATABLEID ('extends' superType=[entity::LEntity])?
 	'{'
 	(persistenceInfo=EntityPersistenceInfo)
 	(inheritanceStrategy=EntityInheritanceStrategy)?
 	features+=EntityFeature*
-	
 	(indexes+=Index)*
 	'}'
 	|
@@ -54,9 +52,8 @@ Class returns LClass:
 
 Index returns entity::LIndex:
 	(unique?='unique')? 'index' name=ID '{'
-		features+=[entity::LEntityFeature] (', ' features+=[entity::LEntityFeature])*
-	'}'
-;
+	features+=[entity::LEntityFeature] (', ' features+=[entity::LEntityFeature])*
+	'}';
 
 EntityPersistenceInfo returns entity::LEntityPersistenceInfo:
 	{entity::LEntityPersistenceInfo}
@@ -73,16 +70,18 @@ EntityFeature returns entity::LEntityFeature:
 	(({entity::LEntityReference.annotationInfo=current}
 	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
 	(persistenceInfo=ColumnPersistenceInfo)?
-	('opposite' opposite=[entity::LEntityReference|LFQN])?)
-	';')
+	('opposite' opposite=[entity::LEntityReference|LFQN])?  (constraints=Constraints | ';'))
+	)
 	|
 	({entity::LEntityAttribute.annotationInfo=current}
 	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID ';')
 	|
-	(derived?='derived' (domainDescription?='domainDescription')? type=[LScalarType] name=TRANSLATABLEID derivedGetterExpression=XBlockExpression)
+	(derived?='derived' (domainDescription?='domainDescription')? type=[LScalarType] name=TRANSLATABLEID
+	derivedGetterExpression=XBlockExpression)
 	|
-	(('var' | id?='id' | uuid?='uuid' | version?="version" | domainDescription?='domainDescription' | domainKey?='domainKey') type=[LScalarType] multiplicity=Multiplicity?
-	name=TRANSLATABLEID (persistenceInfo=ColumnPersistenceInfo)?
+	(('var' | id?='id' | uuid?='uuid' | version?="version" | domainDescription?='domainDescription' |
+	domainKey?='domainKey') type=[LScalarType] multiplicity=Multiplicity?
+	name=TRANSLATABLEID (persistenceInfo=ColumnPersistenceInfo)? ('opposite' opposite=[entity::LBeanReference|LFQN])?
 	';')))
 	|
 	({entity::LOperation.annotationInfo=current}
@@ -94,9 +93,9 @@ BeanFeature returns entity::LBeanFeature:
 	{entity::LBeanFeature}
 	annotations+=AnnotationDef*
 	(({entity::LBeanReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[entity::LBean] multiplicity=Multiplicity? name=TRANSLATABLEID
-	('opposite' opposite=[entity::LBeanReference|LFQN])?)
-	';')
+	('ref' (cascading?='cascade')? type=[LType] multiplicity=Multiplicity? name=TRANSLATABLEID
+	('opposite' opposite=[LReference|LFQN])? (constraints=Constraints | ';'))
+	)
 	|
 	({entity::LBeanAttribute.annotationInfo=current}
 	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID)
@@ -133,10 +132,8 @@ enum LHistorizedDateType returns LDateType:
 	DATE="DATE" | TIMESTAMP="TIMESTAMP";
 
 TRANSLATABLEID:
-	ValidIDWithKeywords
-;
+	ValidIDWithKeywords;
 
 TRANSLATABLESTRING:
-	STRING
-;
+	STRING;
 	

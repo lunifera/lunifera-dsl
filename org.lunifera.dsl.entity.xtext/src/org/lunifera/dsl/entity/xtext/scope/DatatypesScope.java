@@ -13,50 +13,54 @@ package org.lunifera.dsl.entity.xtext.scope;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LDataType;
+import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 
 public class DatatypesScope extends AbstractScope {
 
-	private final IScope parent;
+	// private final IScope parent;
 	private final LAttribute context;
 	@SuppressWarnings("unused")
 	private final EReference reference;
 
 	public DatatypesScope(IScope parent, final LAttribute context,
 			EReference reference) {
-		super(IScope.NULLSCOPE, false);
-		this.parent = parent;
+		super(parent, false);
+		// this.parent = parent;
 		this.context = context;
 		this.reference = reference;
 	}
 
 	@Override
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
-		Resource resource = context.eResource();
+		// Resource resource = context.eResource();
 		List<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-		for (IEObjectDescription desc : parent.getAllElements()) {
-			InternalEObject descEObject = (InternalEObject) desc
-					.getEObjectOrProxy();
 
-			if (descEObject.eResource() == resource) {
-				// include local datatypes
-				result.add(desc);
-			} else {
-				// only support datatypes provided by the datatypes grammar
-				URI uri = desc.getEObjectURI();
-				if (uri.fileExtension().equals("datatypes")) {
-					result.add(desc);
-				}
+		LTypedPackage lPkg = getPackage(context);
+
+		for (LType lType : lPkg.getTypes()) {
+			if (lType instanceof LDataType) {
+				result.add(EObjectDescription.create(lType.getName(), lType));
 			}
 		}
 
 		return result;
 	}
+
+	private LTypedPackage getPackage(EObject context) {
+		if (context instanceof LTypedPackage) {
+			return (LTypedPackage) context;
+		}
+
+		return getPackage(context.eContainer());
+	}
+
 }

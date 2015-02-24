@@ -1,0 +1,18 @@
+package org.lunifera.dsl.xtext.builder.participant.tests.other.dtos {
+	
+	/* Imports the required artifacts */
+	import org.lunifera.dsl.xtext.builder.participant.tests.*;
+	import org.lunifera.dsl.xtext.builder.participant.tests.other.OtherEntity;
+	import org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.OtherEntityDto;
+	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.SuperClassDto;
+	import org.lunifera.dsl.xtext.builder.participant.tests.MyEntity;
+	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.MyEntityDto;
+
+
+
+	autoDto OtherEntityDto extends SuperClassDto wraps OtherEntity {
+		inherit var someValue;
+		inherit ref myEntity mapto MyEntityDto;
+	}
+	
+}

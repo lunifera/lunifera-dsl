@@ -11,17 +11,24 @@
 package org.lunifera.dsl.xtext.lazyresolver;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * A helper class to register jvmLinkingReferences.
  */
 public class LazyJvmTypeLinkingHelper {
 
-	private Map<EReference, EReference> linkMappings = new HashMap<EReference, EReference>();
+	private Map<EReference, Set<EReference>> linkMappings = new HashMap<EReference, Set<EReference>>();
+	private Map<EReference, IJvmLinkCrossRefStringEnhancer> jvmLinkToEnhancers = new HashMap<EReference, IJvmLinkCrossRefStringEnhancer>();
+	private Map<EReference, IJvmTypeRefFinisher> jvmLinkToFinisher = new HashMap<EReference, IJvmTypeRefFinisher>();
+	private Set<EReference> jvmLinks = new HashSet<EReference>();
 
 	public LazyJvmTypeLinkingHelper() {
 	}
@@ -35,7 +42,39 @@ public class LazyJvmTypeLinkingHelper {
 	 */
 	public EReference register(EReference semanticReference,
 			EReference jvmTypeReference) {
-		return linkMappings.put(semanticReference, jvmTypeReference);
+		return register(semanticReference, jvmTypeReference, null, null);
+	}
+
+	/**
+	 * Registers a jvmTypeReference for a given semanticReference.
+	 * 
+	 * @param semanticReference
+	 * @param jvmTypeReference
+	 * @param enhancer
+	 * @return
+	 */
+	public EReference register(EReference semanticReference,
+			EReference jvmTypeReference,
+			IJvmLinkCrossRefStringEnhancer enhancer,
+			IJvmTypeRefFinisher finisher) {
+
+		Set<EReference> links = linkMappings.get(semanticReference);
+		if (links == null) {
+			links = new HashSet<EReference>();
+			linkMappings.put(semanticReference, links);
+		}
+		links.add(jvmTypeReference);
+		jvmLinks.add(jvmTypeReference);
+
+		if (enhancer != null) {
+			jvmLinkToEnhancers.put(jvmTypeReference, enhancer);
+		}
+
+		if (finisher != null) {
+			jvmLinkToFinisher.put(jvmTypeReference, finisher);
+		}
+
+		return jvmTypeReference;
 	}
 
 	/**
@@ -56,10 +95,30 @@ public class LazyJvmTypeLinkingHelper {
 	 */
 	public boolean isJvmLink(EStructuralFeature feature) {
 		if (feature instanceof EReference) {
-			return linkMappings.containsValue(feature);
+			return jvmLinks.contains(feature);
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Returns the enhancer for the given feature.
+	 * 
+	 * @param feature
+	 * @return
+	 */
+	public IJvmLinkCrossRefStringEnhancer getEnhancer(EStructuralFeature feature) {
+		return jvmLinkToEnhancers.get(feature);
+	}
+
+	/**
+	 * Returns the finisher for the given feature.
+	 * 
+	 * @param feature
+	 * @return
+	 */
+	public IJvmTypeRefFinisher getFinisher(EStructuralFeature feature) {
+		return jvmLinkToFinisher.get(feature);
 	}
 
 	/**
@@ -68,8 +127,50 @@ public class LazyJvmTypeLinkingHelper {
 	 * @param semanticReference
 	 * @return
 	 */
-	public EReference getJvmLinkingReference(EReference semanticReference) {
+	public Set<EReference> getJvmLinkingReferences(EReference semanticReference) {
 		return linkMappings.get(semanticReference);
+	}
+
+	/**
+	 * The JvmLinks are a helper construct to provide proper proxies. But in
+	 * some cases the cross reference String that is used for scoping needs to
+	 * be enhanced. For instance if a DTO mapper is queried. The naming
+	 * convention defines, that a mapper is called "{DTO-FQN}Mapper". So the
+	 * jvmLink-proxy from LDto#mapperJvmType needs to become resolved with the
+	 * name of the mapper.
+	 */
+	public interface IJvmLinkCrossRefStringEnhancer {
+
+		/**
+		 * Returns the crossRefString to be used.
+		 * <p>
+		 * Example: given "ItemDTO" and returned "ItemDTOMapper".
+		 * 
+		 * @param context
+		 * @param feature
+		 * @param crossRefString
+		 * @return
+		 */
+		String enhance(EObject context, EStructuralFeature feature,
+				String crossRefString);
+
+	}
+
+	/**
+	 * The JvmHelperProxies will be validated by Xbase. So it is necessary to
+	 * add type arguments to raw types. This finisher gives access to the
+	 * created {@link JvmTypeReference}.
+	 */
+	public interface IJvmTypeRefFinisher {
+
+		/**
+		 * Allows to manipulate the created type reference.
+		 * 
+		 * @param jvmLinkFeature
+		 * @param typeRef
+		 */
+		void finish(EStructuralFeature jvmLinkFeature, JvmTypeReference typeRef);
+
 	}
 
 }

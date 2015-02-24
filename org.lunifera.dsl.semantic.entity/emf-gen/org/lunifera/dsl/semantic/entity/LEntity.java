@@ -312,7 +312,7 @@ public interface LEntity extends LClass, LFeaturesHolder {
 	 * @return the value of the '<em>Super Type Jvm</em>' containment reference.
 	 * @see #setSuperTypeJvm(JvmTypeReference)
 	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntity_SuperTypeJvm()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	JvmTypeReference getSuperTypeJvm();

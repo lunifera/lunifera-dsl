@@ -14,7 +14,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.lunifera.dsl</groupId>
 	<artifactId>org.lunifera.dsl.examples.entity</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.9.0</version>
 	<name>Entity DSL Examples</name>
 	<build>
 		<sourceDirectory>src</sourceDirectory>

@@ -27,10 +27,9 @@ import org.eclipse.emf.ecore.EObject
 import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.xtype.XImportSection
-
+ 
 class LCommonModel extends LLazyResolver {
 	contains LTypedPackage[] packages
-	
 }
 
 class LLazyResolver {
@@ -46,6 +45,15 @@ class LPackage extends LLazyResolver {
 
 class LTypedPackage extends LPackage {
 	contains LType[] types
+	
+	op String getResourceSimpleName() {
+		val resource = eResource
+		if(resource == null){
+			return ""
+		}
+		
+		return resource.URI.lastSegment + " - " + name
+	}
 	
 }
 
@@ -175,6 +183,7 @@ interface LAttribute extends LFeature {
 	boolean domainDescription
 	contains XExpression derivedGetterExpression
 	refers LScalarType ^type
+	contains transient JvmTypeReference typeJvm
 }
 
 class LOperation extends LAnnotationTarget {
@@ -250,7 +259,6 @@ class LMultiplicity {
 		}
 		return result.toString
 	}
-	
 }
 
 enum LLowerBound {
@@ -266,6 +274,30 @@ enum LUpperBound {
 	NULL = 0
 	MANY = 1
 	ONE = 2
+}
+
+class LConstraints extends LLazyResolver {
+	contains LConstraint[*] constraints
+}
+
+interface LConstraint extends LLazyResolver{
+	 
+}
+
+class LAttributeMatchingConstraint extends LConstraint {
+	refers LAttribute attribute
+	LComparatorType comparatorType
+	String matchingValue
+	refers LEnumLiteral matchingLiteral
+}
+
+enum LComparatorType {
+	EQUALS as '=='
+	GREATER as '>'
+	LOWER as '<'
+	GREATER_EQ as '>='
+	LOWER_EQ as '<='
+	NOT_EQ as '<>'
 }
 
 type OperationsList wraps java.util.List<LOperation>

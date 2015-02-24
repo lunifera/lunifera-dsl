@@ -10,32 +10,27 @@
  */
 package org.lunifera.dsl.dto.xtext.scope;
 
-import java.util.ArrayList;
-
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.AbstractScope;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.lunifera.dsl.semantic.common.types.LDataType;
-import org.lunifera.dsl.semantic.common.types.LType;
 
-public class DatatypesFilterScope extends AbstractScope {
-	private final IScope scope;
+import com.google.common.base.Predicate;
+
+public class DatatypesFilterScope extends FilteringScope {
 
 	public DatatypesFilterScope(IScope scope) {
-		super(IScope.NULLSCOPE, true);
-		this.scope = scope;
+		super(scope, createPredicate());
 	}
 
-	@Override
-	protected Iterable<IEObjectDescription> getAllLocalElements() {
-		ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-		for (IEObjectDescription desc : scope.getAllElements()) {
-			LType type = (LType) desc.getEObjectOrProxy();
-			if (type instanceof LDataType) {
-				result.add(desc);
+	private static Predicate<IEObjectDescription> createPredicate() {
+		return new Predicate<IEObjectDescription>() {
+			public boolean apply(IEObjectDescription input) {
+				if (input.getEObjectOrProxy() instanceof LDataType) {
+					return true;
+				}
+				return false;
 			}
-		}
-
-		return result;
+		};
 	}
 }

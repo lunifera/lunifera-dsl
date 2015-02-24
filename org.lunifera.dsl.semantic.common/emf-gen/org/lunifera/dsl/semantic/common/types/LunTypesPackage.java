@@ -266,13 +266,22 @@ public interface LunTypesPackage extends EPackage {
 	int LTYPED_PACKAGE___ERESOLVE_PROXY__INTERNALEOBJECT = LPACKAGE___ERESOLVE_PROXY__INTERNALEOBJECT;
 
 	/**
+	 * The operation id for the '<em>Get Resource Simple Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LTYPED_PACKAGE___GET_RESOURCE_SIMPLE_NAME = LPACKAGE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>LTyped Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LTYPED_PACKAGE_OPERATION_COUNT = LPACKAGE_OPERATION_COUNT + 0;
+	int LTYPED_PACKAGE_OPERATION_COUNT = LPACKAGE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LImportImpl <em>LImport</em>}' class.
@@ -1323,13 +1332,22 @@ public interface LunTypesPackage extends EPackage {
 	int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE__TYPE_JVM = LFEATURE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>LAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 11;
+	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 12;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1569,6 +1587,162 @@ public interface LunTypesPackage extends EPackage {
 	int LMULTIPLICITY_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LConstraintsImpl <em>LConstraints</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LConstraintsImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLConstraints()
+	 * @generated
+	 */
+	int LCONSTRAINTS = 20;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCONSTRAINTS__CONSTRAINTS = LLAZY_RESOLVER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>LConstraints</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCONSTRAINTS_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCONSTRAINTS___ERESOLVE_PROXY__INTERNALEOBJECT = LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LConstraints</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCONSTRAINTS_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LConstraint <em>LConstraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.LConstraint
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLConstraint()
+	 * @generated
+	 */
+	int LCONSTRAINT = 21;
+
+	/**
+	 * The number of structural features of the '<em>LConstraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCONSTRAINT_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT = LLAZY_RESOLVER___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LConstraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCONSTRAINT_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LAttributeMatchingConstraintImpl <em>LAttribute Matching Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LAttributeMatchingConstraintImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAttributeMatchingConstraint()
+	 * @generated
+	 */
+	int LATTRIBUTE_MATCHING_CONSTRAINT = 22;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE_MATCHING_CONSTRAINT__ATTRIBUTE = LCONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Comparator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE_MATCHING_CONSTRAINT__COMPARATOR_TYPE = LCONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Matching Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE_MATCHING_CONSTRAINT__MATCHING_VALUE = LCONSTRAINT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Matching Literal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE_MATCHING_CONSTRAINT__MATCHING_LITERAL = LCONSTRAINT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>LAttribute Matching Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE_MATCHING_CONSTRAINT_FEATURE_COUNT = LCONSTRAINT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE_MATCHING_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT = LCONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LAttribute Matching Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE_MATCHING_CONSTRAINT_OPERATION_COUNT = LCONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LDateType <em>LDate Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1576,7 +1750,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDateType()
 	 * @generated
 	 */
-	int LDATE_TYPE = 20;
+	int LDATE_TYPE = 23;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LVisibility <em>LVisibility</em>}' enum.
@@ -1586,7 +1760,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLVisibility()
 	 * @generated
 	 */
-	int LVISIBILITY = 21;
+	int LVISIBILITY = 24;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LLowerBound <em>LLower Bound</em>}' enum.
@@ -1596,7 +1770,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLLowerBound()
 	 * @generated
 	 */
-	int LLOWER_BOUND = 22;
+	int LLOWER_BOUND = 25;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LUpperBound <em>LUpper Bound</em>}' enum.
@@ -1606,7 +1780,17 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLUpperBound()
 	 * @generated
 	 */
-	int LUPPER_BOUND = 23;
+	int LUPPER_BOUND = 26;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LComparatorType <em>LComparator Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.LComparatorType
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLComparatorType()
+	 * @generated
+	 */
+	int LCOMPARATOR_TYPE = 27;
 
 	/**
 	 * The meta object id for the '<em>Operations List</em>' data type.
@@ -1616,7 +1800,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getOperationsList()
 	 * @generated
 	 */
-	int OPERATIONS_LIST = 24;
+	int OPERATIONS_LIST = 28;
 
 	/**
 	 * The meta object id for the '<em>Features List</em>' data type.
@@ -1626,7 +1810,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getFeaturesList()
 	 * @generated
 	 */
-	int FEATURES_LIST = 25;
+	int FEATURES_LIST = 29;
 
 	/**
 	 * The meta object id for the '<em>Annotation List</em>' data type.
@@ -1636,7 +1820,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getAnnotationList()
 	 * @generated
 	 */
-	int ANNOTATION_LIST = 26;
+	int ANNOTATION_LIST = 30;
 
 	/**
 	 * The meta object id for the '<em>Internal EObject</em>' data type.
@@ -1646,7 +1830,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getInternalEObject()
 	 * @generated
 	 */
-	int INTERNAL_EOBJECT = 27;
+	int INTERNAL_EOBJECT = 31;
 
 
 	/**
@@ -1742,6 +1926,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLTypedPackage_Types();
+
+	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LTypedPackage#getResourceSimpleName() <em>Get Resource Simple Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Resource Simple Name</em>' operation.
+	 * @see org.lunifera.dsl.semantic.common.types.LTypedPackage#getResourceSimpleName()
+	 * @generated
+	 */
+	EOperation getLTypedPackage__GetResourceSimpleName();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LImport <em>LImport</em>}'.
@@ -2321,6 +2515,17 @@ public interface LunTypesPackage extends EPackage {
 	EReference getLAttribute_Type();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getTypeJvm <em>Type Jvm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type Jvm</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#getTypeJvm()
+	 * @see #getLAttribute()
+	 * @generated
+	 */
+	EReference getLAttribute_TypeJvm();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LOperation <em>LOperation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2471,6 +2676,91 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLMultiplicity_ToMultiplicityString();
 
 	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LConstraints <em>LConstraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LConstraints</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LConstraints
+	 * @generated
+	 */
+	EClass getLConstraints();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.semantic.common.types.LConstraints#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LConstraints#getConstraints()
+	 * @see #getLConstraints()
+	 * @generated
+	 */
+	EReference getLConstraints_Constraints();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LConstraint <em>LConstraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LConstraint</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LConstraint
+	 * @generated
+	 */
+	EClass getLConstraint();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint <em>LAttribute Matching Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LAttribute Matching Constraint</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint
+	 * @generated
+	 */
+	EClass getLAttributeMatchingConstraint();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint#getAttribute <em>Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Attribute</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint#getAttribute()
+	 * @see #getLAttributeMatchingConstraint()
+	 * @generated
+	 */
+	EReference getLAttributeMatchingConstraint_Attribute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint#getComparatorType <em>Comparator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Comparator Type</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint#getComparatorType()
+	 * @see #getLAttributeMatchingConstraint()
+	 * @generated
+	 */
+	EAttribute getLAttributeMatchingConstraint_ComparatorType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint#getMatchingValue <em>Matching Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Matching Value</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint#getMatchingValue()
+	 * @see #getLAttributeMatchingConstraint()
+	 * @generated
+	 */
+	EAttribute getLAttributeMatchingConstraint_MatchingValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint#getMatchingLiteral <em>Matching Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Matching Literal</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint#getMatchingLiteral()
+	 * @see #getLAttributeMatchingConstraint()
+	 * @generated
+	 */
+	EReference getLAttributeMatchingConstraint_MatchingLiteral();
+
+	/**
 	 * Returns the meta object for enum '{@link org.lunifera.dsl.semantic.common.types.LDateType <em>LDate Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2509,6 +2799,16 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getLUpperBound();
+
+	/**
+	 * Returns the meta object for enum '{@link org.lunifera.dsl.semantic.common.types.LComparatorType <em>LComparator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>LComparator Type</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LComparatorType
+	 * @generated
+	 */
+	EEnum getLComparatorType();
 
 	/**
 	 * Returns the meta object for data type '{@link java.util.List <em>Operations List</em>}'.
@@ -2656,6 +2956,14 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LTYPED_PACKAGE__TYPES = eINSTANCE.getLTypedPackage_Types();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Resource Simple Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LTYPED_PACKAGE___GET_RESOURCE_SIMPLE_NAME = eINSTANCE.getLTypedPackage__GetResourceSimpleName();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LImportImpl <em>LImport</em>}' class.
@@ -3116,6 +3424,14 @@ public interface LunTypesPackage extends EPackage {
 		EReference LATTRIBUTE__TYPE = eINSTANCE.getLAttribute_Type();
 
 		/**
+		 * The meta object literal for the '<em><b>Type Jvm</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LATTRIBUTE__TYPE_JVM = eINSTANCE.getLAttribute_TypeJvm();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LOperationImpl <em>LOperation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3234,6 +3550,76 @@ public interface LunTypesPackage extends EPackage {
 		EAttribute LMULTIPLICITY__TO_MULTIPLICITY_STRING = eINSTANCE.getLMultiplicity_ToMultiplicityString();
 
 		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LConstraintsImpl <em>LConstraints</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LConstraintsImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLConstraints()
+		 * @generated
+		 */
+		EClass LCONSTRAINTS = eINSTANCE.getLConstraints();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LCONSTRAINTS__CONSTRAINTS = eINSTANCE.getLConstraints_Constraints();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.LConstraint <em>LConstraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.LConstraint
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLConstraint()
+		 * @generated
+		 */
+		EClass LCONSTRAINT = eINSTANCE.getLConstraint();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LAttributeMatchingConstraintImpl <em>LAttribute Matching Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LAttributeMatchingConstraintImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAttributeMatchingConstraint()
+		 * @generated
+		 */
+		EClass LATTRIBUTE_MATCHING_CONSTRAINT = eINSTANCE.getLAttributeMatchingConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Attribute</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LATTRIBUTE_MATCHING_CONSTRAINT__ATTRIBUTE = eINSTANCE.getLAttributeMatchingConstraint_Attribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Comparator Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LATTRIBUTE_MATCHING_CONSTRAINT__COMPARATOR_TYPE = eINSTANCE.getLAttributeMatchingConstraint_ComparatorType();
+
+		/**
+		 * The meta object literal for the '<em><b>Matching Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LATTRIBUTE_MATCHING_CONSTRAINT__MATCHING_VALUE = eINSTANCE.getLAttributeMatchingConstraint_MatchingValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Matching Literal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LATTRIBUTE_MATCHING_CONSTRAINT__MATCHING_LITERAL = eINSTANCE.getLAttributeMatchingConstraint_MatchingLiteral();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.LDateType <em>LDate Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3272,6 +3658,16 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum LUPPER_BOUND = eINSTANCE.getLUpperBound();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.LComparatorType <em>LComparator Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.LComparatorType
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLComparatorType()
+		 * @generated
+		 */
+		EEnum LCOMPARATOR_TYPE = eINSTANCE.getLComparatorType();
 
 		/**
 		 * The meta object literal for the '<em>Operations List</em>' data type.

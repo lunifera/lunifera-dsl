@@ -5,8 +5,6 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.service.LCardinality
 import org.lunifera.dsl.semantic.service.LDTOService
-
-import static org.lunifera.dsl.semantic.service.LCardinality.*
 import org.lunifera.dsl.semantic.service.LService
 
 class ComponentGenerator {
@@ -24,17 +22,19 @@ class ComponentGenerator {
 		       <property name="dto" type="String" value="«service.dto.fullyQualifiedName.toString»"/>
 		       <property name="service.pid" type="String" value="«service.fullyQualifiedName.toLowerCase»"/>
 		       «IF service.injectedServices != null && !service.injectedServices.services.empty»
-		       «FOR ref : service.injectedServices.services»
-		       	<reference name="«ref.attributeName.toFirstLower»" interface="«ref.service.type?.qualifiedName.toString»" 
-		       			cardinality="«ref.cardinality.cardinalityString»" policy="dynamic" bind="bind«ref.attributeName.
-						toFirstUpper»" unbind="unbind«ref.attributeName.toFirstUpper»/>
-		       «ENDFOR»
+		       	«FOR ref : service.injectedServices.services»
+		       		<reference name="«ref.attributeName.toFirstLower»" interface="«ref.service.type?.qualifiedName.toString»" 
+		       				cardinality="«ref.cardinality.cardinalityString»" policy="dynamic" bind="bind«ref.attributeName.
+			toFirstUpper»" unbind="unbind«ref.attributeName.toFirstUpper»/>
+		       	«ENDFOR»
 		       «ELSE»
+		       	«IF !service.mutablePersistenceId»
 		       	<reference name="emf" interface="javax.persistence.EntityManagerFactory" cardinality="1..1" 
-		       			policy="dynamic" bind="bindEmf" unbind="unbindEmf" «IF (service.persistenceId != null && !service.persistenceId.equals(""))»target="(osgi.unit.name=«service.persistenceId»)"«ENDIF»/>
-		       	<reference name="mapper" interface="org.lunifera.dsl.dto.lib.IMapper" cardinality="1..1" 
-		       			policy="dynamic" bind="bindMapper" unbind="unbindMapper" 
-		       			target="(dto=«service.dto.fullyQualifiedName»)"/>
+		       			policy="dynamic" bind="bindEmf" unbind="unbindEmf" «IF (service.persistenceId != null &&
+					!service.persistenceId.equals(""))»target="(osgi.unit.name=«service.persistenceId»)"«ENDIF»/>
+				«ENDIF»
+		       	<reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" cardinality="1..1" 
+		       			policy="dynamic" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
 		       «ENDIF»
 		</scr:component>
 	'''

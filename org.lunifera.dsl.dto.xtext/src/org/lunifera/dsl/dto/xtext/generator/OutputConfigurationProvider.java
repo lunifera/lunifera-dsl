@@ -14,9 +14,10 @@ package org.lunifera.dsl.dto.xtext.generator;
 import java.util.Set;
 
 import org.eclipse.xtext.generator.OutputConfiguration;
+import org.lunifera.dsl.xtext.lazyresolver.generator.DelegatingOutputConfigurationProvider;
 
 public class OutputConfigurationProvider extends
-		org.eclipse.xtext.generator.OutputConfigurationProvider {
+		DelegatingOutputConfigurationProvider {
 
 	/**
 	 * @return a set of {@link OutputConfiguration} available for the generator
@@ -24,7 +25,8 @@ public class OutputConfigurationProvider extends
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		Set<OutputConfiguration> configs = super.getOutputConfigurations();
 
-		OutputConfiguration componentOutput = new OutputConfiguration("OSGI-INF");
+		OutputConfiguration componentOutput = new OutputConfiguration(
+				"OSGI-INF");
 		componentOutput.setDescription("OSGi-Services");
 		componentOutput.setOutputDirectory("./OSGI-INF");
 		componentOutput.setOverrideExistingResources(true);
@@ -33,8 +35,9 @@ public class OutputConfigurationProvider extends
 		componentOutput.setSetDerivedProperty(true);
 		componentOutput.setKeepLocalHistory(true);
 		configs.add(componentOutput);
-		
-		OutputConfiguration dtoMapperOutput = new OutputConfiguration("Dto-Mappers");
+
+		OutputConfiguration dtoMapperOutput = new OutputConfiguration(
+				"Dto-Mappers");
 		dtoMapperOutput.setDescription("Dto Mappers");
 		dtoMapperOutput.setOutputDirectory("./src-gen");
 		dtoMapperOutput.setOverrideExistingResources(true);
@@ -43,8 +46,9 @@ public class OutputConfigurationProvider extends
 		dtoMapperOutput.setSetDerivedProperty(true);
 		dtoMapperOutput.setKeepLocalHistory(true);
 		configs.add(dtoMapperOutput);
-		
-		OutputConfiguration servicesOutput = new OutputConfiguration("Services-DSL");
+
+		OutputConfiguration servicesOutput = new OutputConfiguration(
+				"Services-DSL");
 		servicesOutput.setDescription("Services-DSL");
 		servicesOutput.setOutputDirectory("./service-models");
 		servicesOutput.setOverrideExistingResources(false);

@@ -190,23 +190,38 @@ ruleClass returns [EObject current=null]
     {
     	newLeafNode(otherlv_7, grammarAccess.getClassAccess().getLeftCurlyBracketKeyword_7());
     }
-(	otherlv_8='persistenceID' 
+((
+(
+		lv_mutablePersistenceId_8_0=	'mutable' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getClassAccess().getPersistenceIDKeyword_8_0());
+        newLeafNode(lv_mutablePersistenceId_8_0, grammarAccess.getClassAccess().getMutablePersistenceIdMutableKeyword_8_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getClassRule());
+	        }
+       		setWithLastConsumed($current, "mutablePersistenceId", true, "mutable");
+	    }
+
+)
+)?	otherlv_9='persistenceID' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getClassAccess().getPersistenceIDKeyword_8_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClassAccess().getPersistenceIdQualifiedNameParserRuleCall_8_1_0()); 
+	        newCompositeNode(grammarAccess.getClassAccess().getPersistenceIdQualifiedNameParserRuleCall_8_2_0()); 
 	    }
-		lv_persistenceId_9_0=ruleQualifiedName		{
+		lv_persistenceId_10_0=ruleQualifiedName		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		set(
        			$current, 
        			"persistenceId",
-        		lv_persistenceId_9_0, 
+        		lv_persistenceId_10_0, 
         		"QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -217,14 +232,14 @@ ruleClass returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getClassAccess().getInjectedServicesInjectedServicesParserRuleCall_9_0()); 
 	    }
-		lv_injectedServices_10_0=ruleInjectedServices		{
+		lv_injectedServices_11_0=ruleInjectedServices		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		set(
        			$current, 
        			"injectedServices",
-        		lv_injectedServices_10_0, 
+        		lv_injectedServices_11_0, 
         		"InjectedServices");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -235,22 +250,22 @@ ruleClass returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getClassAccess().getOperationsOperationParserRuleCall_10_0()); 
 	    }
-		lv_operations_11_0=ruleOperation		{
+		lv_operations_12_0=ruleOperation		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClassRule());
 	        }
        		add(
        			$current, 
        			"operations",
-        		lv_operations_11_0, 
+        		lv_operations_12_0, 
         		"Operation");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_12='}' 
+)*	otherlv_13='}' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_11());
+    	newLeafNode(otherlv_13, grammarAccess.getClassAccess().getRightCurlyBracketKeyword_11());
     }
 )
 ;
@@ -1071,6 +1086,131 @@ ruleXAnnotation
 
 )
 ))
+;
+
+
+
+
+
+
+
+// Entry rule entryRuleConstraint
+entryRuleConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getConstraintRule()); }
+	 iv_ruleConstraint=ruleConstraint 
+	 { $current=$iv_ruleConstraint.current; } 
+	 EOF 
+;
+
+// Rule Constraint
+ruleConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+
+    { 
+        newCompositeNode(grammarAccess.getConstraintAccess().getAttributeMatchingConstraintParserRuleCall()); 
+    }
+    this_AttributeMatchingConstraint_0=ruleAttributeMatchingConstraint
+    { 
+        $current = $this_AttributeMatchingConstraint_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+;
+
+
+
+
+
+// Entry rule entryRuleAttributeMatchingConstraint
+entryRuleAttributeMatchingConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAttributeMatchingConstraintRule()); }
+	 iv_ruleAttributeMatchingConstraint=ruleAttributeMatchingConstraint 
+	 { $current=$iv_ruleAttributeMatchingConstraint.current; } 
+	 EOF 
+;
+
+// Rule AttributeMatchingConstraint
+ruleAttributeMatchingConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAttributeMatchingConstraintRule());
+	        }
+        }
+	otherlv_0=RULE_ID
+	{
+		newLeafNode(otherlv_0, grammarAccess.getAttributeMatchingConstraintAccess().getAttributeLAttributeCrossReference_0_0()); 
+	}
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAttributeMatchingConstraintAccess().getComparatorTypeLComparatorTypeEnumRuleCall_1_0()); 
+	    }
+		lv_comparatorType_1_0=ruleLComparatorType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAttributeMatchingConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"comparatorType",
+        		lv_comparatorType_1_0, 
+        		"LComparatorType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)((
+(
+		lv_matchingValue_2_0=RULE_STRING
+		{
+			newLeafNode(lv_matchingValue_2_0, grammarAccess.getAttributeMatchingConstraintAccess().getMatchingValueSTRINGTerminalRuleCall_2_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAttributeMatchingConstraintRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"matchingValue",
+        		lv_matchingValue_2_0, 
+        		"STRING");
+	    }
+
+)
+)
+    |((
+(
+	RULE_ID
+
+)
+)=>
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAttributeMatchingConstraintRule());
+	        }
+        }
+	otherlv_3=RULE_ID
+	{
+		newLeafNode(otherlv_3, grammarAccess.getAttributeMatchingConstraintAccess().getMatchingLiteralLEnumLiteralCrossReference_2_1_0()); 
+	}
+
+)
+))	otherlv_4=';' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getAttributeMatchingConstraintAccess().getSemicolonKeyword_3());
+    }
+)
 ;
 
 
@@ -7791,6 +7931,49 @@ ruleLVisibility returns [Enumerator current=null]
 	{
         $current = grammarAccess.getLVisibilityAccess().getPUBLICEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_3, grammarAccess.getLVisibilityAccess().getPUBLICEnumLiteralDeclaration_3()); 
+    }
+));
+
+
+
+// Rule LComparatorType
+ruleLComparatorType returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+((	enumLiteral_0='==' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getEQUALSEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getLComparatorTypeAccess().getEQUALSEnumLiteralDeclaration_0()); 
+    }
+)
+    |(	enumLiteral_1='>' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getGREATEREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getLComparatorTypeAccess().getGREATEREnumLiteralDeclaration_1()); 
+    }
+)
+    |(	enumLiteral_2='<' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getLOWEREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getLComparatorTypeAccess().getLOWEREnumLiteralDeclaration_2()); 
+    }
+)
+    |(	enumLiteral_3='>=' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getGREATER_EQEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_3, grammarAccess.getLComparatorTypeAccess().getGREATER_EQEnumLiteralDeclaration_3()); 
+    }
+)
+    |(	enumLiteral_4='<=' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getLOWER_EQEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_4, grammarAccess.getLComparatorTypeAccess().getLOWER_EQEnumLiteralDeclaration_4()); 
+    }
+)
+    |(	enumLiteral_5='<>' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getNOT_EQEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_5, grammarAccess.getLComparatorTypeAccess().getNOT_EQEnumLiteralDeclaration_5()); 
     }
 ));
 

@@ -10,6 +10,7 @@
  */
 package org.lunifera.dsl.xtext.lazyresolver;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -19,18 +20,24 @@ import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.linking.XbaseLazyLinker;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper.IJvmTypeRefFinisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
 public class LazyJvmTypeLinker extends XbaseLazyLinker {
 
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(LazyJvmTypeLinker.class);
+
 	@Inject
-	private LazyJvmTypeLinkingHelper linkingHelper;
+	private LazyJvmTypeLinkingHelper jvmLinkingHelper;
 
 	@Override
 	protected void clearReference(EObject obj, EReference ref) {
-		if (linkingHelper.isJvmLink((EReference) obj.eContainingFeature())) {
+		if (jvmLinkingHelper.isJvmLink((EReference) obj.eContainingFeature())) {
 			// do not clear this reference
 			return;
 		}
@@ -40,33 +47,55 @@ public class LazyJvmTypeLinker extends XbaseLazyLinker {
 
 	@SuppressWarnings("unchecked")
 	protected void createAndSetProxy(EObject obj, INode node, EReference eRef) {
-		if (linkingHelper.isJvmLink(eRef)) {
+		if (jvmLinkingHelper.isJvmLink(eRef)) {
 			return;
 		}
 
-		final EObject proxy = createProxy(obj, node, eRef);
+		EObject proxy = createProxy(obj, node, eRef);
 		if (eRef.isMany()) {
 			((InternalEList<EObject>) obj.eGet(eRef, false)).addUnique(proxy);
 		} else {
 			obj.eSet(eRef, proxy);
 		}
 
-		if (linkingHelper.needsJvmLinking(eRef)) {
-			EReference jvmLinkReference = linkingHelper.getJvmLinkingReference(eRef);
-			final JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE
-					.createJvmParameterizedTypeReference();
-			if (eRef.isMany()) {
-				((InternalEList<EObject>) obj.eGet(jvmLinkReference, false))
-						.addUnique(typeRef);
-			} else {
-				obj.eSet(jvmLinkReference, typeRef);
+		if (jvmLinkingHelper.needsJvmLinking(eRef)) {
+			for (EReference jvmLinkReference : jvmLinkingHelper
+					.getJvmLinkingReferences(eRef)) {
+				final JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE
+						.createJvmParameterizedTypeReference();
+				if (eRef.isMany()) {
+					((InternalEList<EObject>) obj.eGet(jvmLinkReference, false))
+							.addUnique(typeRef);
+				} else {
+					obj.eSet(jvmLinkReference, typeRef);
+				}
+
+				final JvmType jvmProxy = (JvmType) createProxy(
+						typeRef,
+						node,
+						TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE);
+				typeRef.setType(jvmProxy);
+
+				IJvmTypeRefFinisher finisher = jvmLinkingHelper
+						.getFinisher(jvmLinkReference);
+				if (finisher != null) {
+					finisher.finish(jvmLinkReference, typeRef);
+				}
 			}
-			
-			final JvmType jvmProxy = (JvmType) createProxy(
-					typeRef,
-					node,
-					TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE);
-			typeRef.setType(jvmProxy);
 		}
+	}
+
+	/**
+	 * Unique name of representation.
+	 * 
+	 * @param referenceType
+	 * @param crossReferenceString
+	 * @return
+	 */
+	private String createProxyAccess(EClass referenceType,
+			String crossReferenceString) {
+		return String.format("%s.%s.%s",
+				referenceType.getEPackage().getNsURI(),
+				referenceType.getName(), crossReferenceString);
 	}
 }

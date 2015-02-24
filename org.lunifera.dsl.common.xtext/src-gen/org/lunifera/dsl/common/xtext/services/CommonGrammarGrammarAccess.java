@@ -393,6 +393,116 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAnnotationXAnnotationParserRuleCall_0_0() { return cAnnotationXAnnotationParserRuleCall_0_0; }
 	}
 
+	public class ConstraintsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Constraints");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLConstraintsAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cConstraintsKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cConstraintsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cConstraintsConstraintParserRuleCall_3_0 = (RuleCall)cConstraintsAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//Constraints returns types::LConstraints:
+		//	{types::LConstraints} "constraints" "{" constraints+=Constraint* "}";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LConstraints} "constraints" "{" constraints+=Constraint* "}"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LConstraints}
+		public Action getLConstraintsAction_0() { return cLConstraintsAction_0; }
+
+		//"constraints"
+		public Keyword getConstraintsKeyword_1() { return cConstraintsKeyword_1; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//constraints+=Constraint*
+		public Assignment getConstraintsAssignment_3() { return cConstraintsAssignment_3; }
+
+		//Constraint
+		public RuleCall getConstraintsConstraintParserRuleCall_3_0() { return cConstraintsConstraintParserRuleCall_3_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class ConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Constraint");
+		private final RuleCall cAttributeMatchingConstraintParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//Constraint returns types::LConstraint:
+		//	AttributeMatchingConstraint;
+		public ParserRule getRule() { return rule; }
+
+		//AttributeMatchingConstraint
+		public RuleCall getAttributeMatchingConstraintParserRuleCall() { return cAttributeMatchingConstraintParserRuleCall; }
+	}
+
+	public class AttributeMatchingConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AttributeMatchingConstraint");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAttributeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cAttributeLAttributeCrossReference_0_0 = (CrossReference)cAttributeAssignment_0.eContents().get(0);
+		private final RuleCall cAttributeLAttributeIDTerminalRuleCall_0_0_1 = (RuleCall)cAttributeLAttributeCrossReference_0_0.eContents().get(1);
+		private final Assignment cComparatorTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cComparatorTypeLComparatorTypeEnumRuleCall_1_0 = (RuleCall)cComparatorTypeAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cMatchingValueAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cMatchingValueSTRINGTerminalRuleCall_2_0_0 = (RuleCall)cMatchingValueAssignment_2_0.eContents().get(0);
+		private final Assignment cMatchingLiteralAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final CrossReference cMatchingLiteralLEnumLiteralCrossReference_2_1_0 = (CrossReference)cMatchingLiteralAssignment_2_1.eContents().get(0);
+		private final RuleCall cMatchingLiteralLEnumLiteralIDTerminalRuleCall_2_1_0_1 = (RuleCall)cMatchingLiteralLEnumLiteralCrossReference_2_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
+		//	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
+		//	matchingLiteral=[types::LEnumLiteral]) ";";
+		public ParserRule getRule() { return rule; }
+
+		//attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
+		//matchingLiteral=[types::LEnumLiteral]) ";"
+		public Group getGroup() { return cGroup; }
+
+		//attribute=[types::LAttribute]
+		public Assignment getAttributeAssignment_0() { return cAttributeAssignment_0; }
+
+		//[types::LAttribute]
+		public CrossReference getAttributeLAttributeCrossReference_0_0() { return cAttributeLAttributeCrossReference_0_0; }
+
+		//ID
+		public RuleCall getAttributeLAttributeIDTerminalRuleCall_0_0_1() { return cAttributeLAttributeIDTerminalRuleCall_0_0_1; }
+
+		//comparatorType=LComparatorType
+		public Assignment getComparatorTypeAssignment_1() { return cComparatorTypeAssignment_1; }
+
+		//LComparatorType
+		public RuleCall getComparatorTypeLComparatorTypeEnumRuleCall_1_0() { return cComparatorTypeLComparatorTypeEnumRuleCall_1_0; }
+
+		//matchingValue=STRING | => matchingLiteral=[types::LEnumLiteral]
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+
+		//matchingValue=STRING
+		public Assignment getMatchingValueAssignment_2_0() { return cMatchingValueAssignment_2_0; }
+
+		//STRING
+		public RuleCall getMatchingValueSTRINGTerminalRuleCall_2_0_0() { return cMatchingValueSTRINGTerminalRuleCall_2_0_0; }
+
+		//=> matchingLiteral=[types::LEnumLiteral]
+		public Assignment getMatchingLiteralAssignment_2_1() { return cMatchingLiteralAssignment_2_1; }
+
+		//[types::LEnumLiteral]
+		public CrossReference getMatchingLiteralLEnumLiteralCrossReference_2_1_0() { return cMatchingLiteralLEnumLiteralCrossReference_2_1_0; }
+
+		//ID
+		public RuleCall getMatchingLiteralLEnumLiteralIDTerminalRuleCall_2_1_0_1() { return cMatchingLiteralLEnumLiteralIDTerminalRuleCall_2_1_0_1; }
+
+		//";"
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+
 	public class LQualifiedNameWithWildCardElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LQualifiedNameWithWildCard");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -704,6 +814,66 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getPUBLICPublicKeyword_3_0() { return cPUBLICPublicKeyword_3_0; }
 	}
 
+	public class LComparatorTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "LComparatorType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cEQUALSEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cEQUALSEqualsSignEqualsSignKeyword_0_0 = (Keyword)cEQUALSEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cGREATEREnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cGREATERGreaterThanSignKeyword_1_0 = (Keyword)cGREATEREnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cLOWEREnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cLOWERLessThanSignKeyword_2_0 = (Keyword)cLOWEREnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cGREATER_EQEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cGREATER_EQGreaterThanSignEqualsSignKeyword_3_0 = (Keyword)cGREATER_EQEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cLOWER_EQEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cLOWER_EQLessThanSignEqualsSignKeyword_4_0 = (Keyword)cLOWER_EQEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cNOT_EQEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cNOT_EQLessThanSignGreaterThanSignKeyword_5_0 = (Keyword)cNOT_EQEnumLiteralDeclaration_5.eContents().get(0);
+		
+		//enum LComparatorType returns types::LComparatorType:
+		//	EQUALS="==" | GREATER=">" | LOWER="<" | GREATER_EQ=">=" | LOWER_EQ="<=" | NOT_EQ="<>";
+		public EnumRule getRule() { return rule; }
+
+		//EQUALS="==" | GREATER=">" | LOWER="<" | GREATER_EQ=">=" | LOWER_EQ="<=" | NOT_EQ="<>"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//EQUALS="=="
+		public EnumLiteralDeclaration getEQUALSEnumLiteralDeclaration_0() { return cEQUALSEnumLiteralDeclaration_0; }
+
+		//"=="
+		public Keyword getEQUALSEqualsSignEqualsSignKeyword_0_0() { return cEQUALSEqualsSignEqualsSignKeyword_0_0; }
+
+		//GREATER=">"
+		public EnumLiteralDeclaration getGREATEREnumLiteralDeclaration_1() { return cGREATEREnumLiteralDeclaration_1; }
+
+		//">"
+		public Keyword getGREATERGreaterThanSignKeyword_1_0() { return cGREATERGreaterThanSignKeyword_1_0; }
+
+		//LOWER="<"
+		public EnumLiteralDeclaration getLOWEREnumLiteralDeclaration_2() { return cLOWEREnumLiteralDeclaration_2; }
+
+		//"<"
+		public Keyword getLOWERLessThanSignKeyword_2_0() { return cLOWERLessThanSignKeyword_2_0; }
+
+		//GREATER_EQ=">="
+		public EnumLiteralDeclaration getGREATER_EQEnumLiteralDeclaration_3() { return cGREATER_EQEnumLiteralDeclaration_3; }
+
+		//">="
+		public Keyword getGREATER_EQGreaterThanSignEqualsSignKeyword_3_0() { return cGREATER_EQGreaterThanSignEqualsSignKeyword_3_0; }
+
+		//LOWER_EQ="<="
+		public EnumLiteralDeclaration getLOWER_EQEnumLiteralDeclaration_4() { return cLOWER_EQEnumLiteralDeclaration_4; }
+
+		//"<="
+		public Keyword getLOWER_EQLessThanSignEqualsSignKeyword_4_0() { return cLOWER_EQLessThanSignEqualsSignKeyword_4_0; }
+
+		//NOT_EQ="<>"
+		public EnumLiteralDeclaration getNOT_EQEnumLiteralDeclaration_5() { return cNOT_EQEnumLiteralDeclaration_5; }
+
+		//"<>"
+		public Keyword getNOT_EQLessThanSignGreaterThanSignKeyword_5_0() { return cNOT_EQLessThanSignGreaterThanSignKeyword_5_0; }
+	}
+
 	public class LowerBoundElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "LowerBound");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -796,6 +966,10 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	private final EnumLiteralElements pEnumLiteral;
 	private final AnnotationDefElements pAnnotationDef;
 	private final LVisibilityElements unknownRuleLVisibility;
+	private final ConstraintsElements pConstraints;
+	private final ConstraintElements pConstraint;
+	private final AttributeMatchingConstraintElements pAttributeMatchingConstraint;
+	private final LComparatorTypeElements unknownRuleLComparatorType;
 	private final LQualifiedNameWithWildCardElements pLQualifiedNameWithWildCard;
 	private final LFQNElements pLFQN;
 	private final ValidIDWithKeywordsElements pValidIDWithKeywords;
@@ -826,6 +1000,10 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEnumLiteral = new EnumLiteralElements();
 		this.pAnnotationDef = new AnnotationDefElements();
 		this.unknownRuleLVisibility = new LVisibilityElements();
+		this.pConstraints = new ConstraintsElements();
+		this.pConstraint = new ConstraintElements();
+		this.pAttributeMatchingConstraint = new AttributeMatchingConstraintElements();
+		this.unknownRuleLComparatorType = new LComparatorTypeElements();
 		this.pLQualifiedNameWithWildCard = new LQualifiedNameWithWildCardElements();
 		this.pLFQN = new LFQNElements();
 		this.pValidIDWithKeywords = new ValidIDWithKeywordsElements();
@@ -984,6 +1162,47 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public EnumRule getLVisibilityRule() {
 		return getLVisibilityAccess().getRule();
+	}
+
+	//Constraints returns types::LConstraints:
+	//	{types::LConstraints} "constraints" "{" constraints+=Constraint* "}";
+	public ConstraintsElements getConstraintsAccess() {
+		return pConstraints;
+	}
+	
+	public ParserRule getConstraintsRule() {
+		return getConstraintsAccess().getRule();
+	}
+
+	//Constraint returns types::LConstraint:
+	//	AttributeMatchingConstraint;
+	public ConstraintElements getConstraintAccess() {
+		return pConstraint;
+	}
+	
+	public ParserRule getConstraintRule() {
+		return getConstraintAccess().getRule();
+	}
+
+	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
+	//	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
+	//	matchingLiteral=[types::LEnumLiteral]) ";";
+	public AttributeMatchingConstraintElements getAttributeMatchingConstraintAccess() {
+		return pAttributeMatchingConstraint;
+	}
+	
+	public ParserRule getAttributeMatchingConstraintRule() {
+		return getAttributeMatchingConstraintAccess().getRule();
+	}
+
+	//enum LComparatorType returns types::LComparatorType:
+	//	EQUALS="==" | GREATER=">" | LOWER="<" | GREATER_EQ=">=" | LOWER_EQ="<=" | NOT_EQ="<>";
+	public LComparatorTypeElements getLComparatorTypeAccess() {
+		return unknownRuleLComparatorType;
+	}
+	
+	public EnumRule getLComparatorTypeRule() {
+		return getLComparatorTypeAccess().getRule();
 	}
 
 	//LQualifiedNameWithWildCard:

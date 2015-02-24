@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsFactory;
 import org.lunifera.dsl.semantic.common.types.LImport;
@@ -76,6 +77,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			addDomainKeyPropertyDescriptor(object);
 			addDomainDescriptionPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
+			addOppositePropertyDescriptor(object);
 			addTypedNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -302,6 +304,28 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Opposite feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOppositePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LEntityAttribute_opposite_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LEntityAttribute_opposite_feature", "_UI_LEntityAttribute_type"),
+				 LunEntityPackage.Literals.LENTITY_ATTRIBUTE__OPPOSITE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Typed Name feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -336,6 +360,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION);
+			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM);
 		}
 		return childrenFeatures;
 	}
@@ -416,6 +441,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
+			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -583,6 +609,51 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
 				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmParameterizedTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmGenericArrayTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmWildcardTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmAnyTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmMultiTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmDelegateTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmSynonymTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmUnknownTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
+				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
 	}
 
 	@Override

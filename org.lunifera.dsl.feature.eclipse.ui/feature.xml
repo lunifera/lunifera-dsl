@@ -2,7 +2,7 @@
 <feature
       id="org.lunifera.dsl.feature.eclipse.ui"
       label="%featureName"
-      version="0.8.0"
+      version="0.9.0"
       provider-name="%providerName"
       plugin="org.lunifera.dsl.eclipse.ui">
 
@@ -27,7 +27,7 @@
          id="org.lunifera.dsl.eclipse.ui"
          download-size="0"
          install-size="0"
-         version="0.8.0"
+         version="0.9.0"
          unpack="false"/>
 
    <plugin

@@ -63,6 +63,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoImpl#getSuperTypeJvm <em>Super Type Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoImpl#getSuperTypeMapperJvm <em>Super Type Mapper Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoImpl#getSubTypes <em>Sub Types</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoImpl#getWrappedType <em>Wrapped Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoImpl#getWrappedTypeJvm <em>Wrapped Type Jvm</em>}</li>
@@ -101,6 +102,16 @@ public class LDtoImpl extends LClassImpl implements LDto {
 	 * @ordered
 	 */
 	protected JvmTypeReference superTypeJvm;
+
+	/**
+	 * The cached value of the '{@link #getSuperTypeMapperJvm() <em>Super Type Mapper Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuperTypeMapperJvm()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference superTypeMapperJvm;
 
 	/**
 	 * The cached value of the '{@link #getSubTypes() <em>Sub Types</em>}' reference list.
@@ -264,6 +275,49 @@ public class LDtoImpl extends LClassImpl implements LDto {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO__SUPER_TYPE_JVM, newSuperTypeJvm, newSuperTypeJvm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JvmTypeReference getSuperTypeMapperJvm() {
+		return superTypeMapperJvm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSuperTypeMapperJvm(JvmTypeReference newSuperTypeMapperJvm, NotificationChain msgs) {
+		JvmTypeReference oldSuperTypeMapperJvm = superTypeMapperJvm;
+		superTypeMapperJvm = newSuperTypeMapperJvm;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM, oldSuperTypeMapperJvm, newSuperTypeMapperJvm);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSuperTypeMapperJvm(JvmTypeReference newSuperTypeMapperJvm) {
+		if (newSuperTypeMapperJvm != superTypeMapperJvm) {
+			NotificationChain msgs = null;
+			if (superTypeMapperJvm != null)
+				msgs = ((InternalEObject)superTypeMapperJvm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM, null, msgs);
+			if (newSuperTypeMapperJvm != null)
+				msgs = ((InternalEObject)newSuperTypeMapperJvm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM, null, msgs);
+			msgs = basicSetSuperTypeMapperJvm(newSuperTypeMapperJvm, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM, newSuperTypeMapperJvm, newSuperTypeMapperJvm));
 	}
 
 	/**
@@ -452,6 +506,8 @@ public class LDtoImpl extends LClassImpl implements LDto {
 				return basicSetSuperType(null, msgs);
 			case LunDtoPackage.LDTO__SUPER_TYPE_JVM:
 				return basicSetSuperTypeJvm(null, msgs);
+			case LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM:
+				return basicSetSuperTypeMapperJvm(null, msgs);
 			case LunDtoPackage.LDTO__SUB_TYPES:
 				return ((InternalEList<?>)getSubTypes()).basicRemove(otherEnd, msgs);
 			case LunDtoPackage.LDTO__WRAPPED_TYPE_JVM:
@@ -475,6 +531,8 @@ public class LDtoImpl extends LClassImpl implements LDto {
 				return basicGetSuperType();
 			case LunDtoPackage.LDTO__SUPER_TYPE_JVM:
 				return getSuperTypeJvm();
+			case LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM:
+				return getSuperTypeMapperJvm();
 			case LunDtoPackage.LDTO__SUB_TYPES:
 				return getSubTypes();
 			case LunDtoPackage.LDTO__WRAPPED_TYPE:
@@ -504,6 +562,9 @@ public class LDtoImpl extends LClassImpl implements LDto {
 				return;
 			case LunDtoPackage.LDTO__SUPER_TYPE_JVM:
 				setSuperTypeJvm((JvmTypeReference)newValue);
+				return;
+			case LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM:
+				setSuperTypeMapperJvm((JvmTypeReference)newValue);
 				return;
 			case LunDtoPackage.LDTO__SUB_TYPES:
 				getSubTypes().clear();
@@ -536,6 +597,9 @@ public class LDtoImpl extends LClassImpl implements LDto {
 			case LunDtoPackage.LDTO__SUPER_TYPE_JVM:
 				setSuperTypeJvm((JvmTypeReference)null);
 				return;
+			case LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM:
+				setSuperTypeMapperJvm((JvmTypeReference)null);
+				return;
 			case LunDtoPackage.LDTO__SUB_TYPES:
 				getSubTypes().clear();
 				return;
@@ -563,6 +627,8 @@ public class LDtoImpl extends LClassImpl implements LDto {
 				return superType != null;
 			case LunDtoPackage.LDTO__SUPER_TYPE_JVM:
 				return superTypeJvm != null;
+			case LunDtoPackage.LDTO__SUPER_TYPE_MAPPER_JVM:
+				return superTypeMapperJvm != null;
 			case LunDtoPackage.LDTO__SUB_TYPES:
 				return subTypes != null && !subTypes.isEmpty();
 			case LunDtoPackage.LDTO__WRAPPED_TYPE:

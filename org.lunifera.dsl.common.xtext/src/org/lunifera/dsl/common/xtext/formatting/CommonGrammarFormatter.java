@@ -28,7 +28,7 @@ import com.google.inject.Inject;
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an
  * example
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({ "deprecation", "restriction" })
 public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 
 	@Inject
@@ -39,7 +39,6 @@ public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 		configure(c, (CommonGrammarGrammarAccess) getGrammarAccess());
 	}
 
-	@SuppressWarnings("restriction")
 	public void configure(FormattingConfig c, CommonGrammarGrammarAccess ga) {
 		xbaseFormatter.configure(c, ga.getXbaseWithAnnotationsGrammarAccess()
 				.getXbaseGrammarAccess());
@@ -51,6 +50,9 @@ public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 		configureImportDef(c, f.getImportAccess());
 		configureDataTypeDef(c, f.getDataTypeAccess());
 		configureAnnotationDef(c, f.getAnnotationDefAccess());
+		configureConstraints(c, f.getConstraintsAccess());
+		configureAttributeMatchingConstraint(c,
+				f.getAttributeMatchingConstraintAccess());
 
 		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).after(f.getSL_COMMENTRule());
@@ -92,10 +94,10 @@ public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 				ele.getRightCurlyBracketKeyword_3_3());
 	}
 
-	protected void configureImportDef(FormattingConfig c, 
+	protected void configureImportDef(FormattingConfig c,
 			CommonGrammarGrammarAccess.ImportElements ele) {
 		c.setLinewrap().before(ele.getRule());
-		
+
 	}
 
 	protected void configureDataTypeDef(FormattingConfig c,
@@ -108,4 +110,17 @@ public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap().around(ele.getRule());
 	}
 
+	protected void configureConstraints(FormattingConfig c,
+			CommonGrammarGrammarAccess.ConstraintsElements ele) {
+
+		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_2());
+		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_4());
+		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_2());
+		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_4());
+	}
+
+	protected void configureAttributeMatchingConstraint(FormattingConfig c,
+			CommonGrammarGrammarAccess.AttributeMatchingConstraintElements ele) {
+		c.setLinewrap().after(ele.getSemicolonKeyword_3());
+	}
 }

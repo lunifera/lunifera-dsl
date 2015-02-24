@@ -60,6 +60,8 @@ import org.eclipse.xtext.xtype.XtypePackage;
 import org.lunifera.dsl.common.xtext.serializer.CommonGrammarSemanticSequencer;
 import org.lunifera.dsl.dto.xtext.services.DtoGrammarGrammarAccess;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
+import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
+import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
@@ -171,6 +173,19 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 			case LunTypesPackage.LANNOTATION_DEF:
 				if(context == grammarAccess.getAnnotationDefRule()) {
 					sequence_AnnotationDef(context, (LAnnotationDef) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT:
+				if(context == grammarAccess.getAttributeMatchingConstraintRule() ||
+				   context == grammarAccess.getConstraintRule()) {
+					sequence_AttributeMatchingConstraint(context, (LAttributeMatchingConstraint) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LCONSTRAINTS:
+				if(context == grammarAccess.getConstraintsRule()) {
+					sequence_Constraints(context, (LConstraints) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1469,7 +1484,15 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Class_LAutoInheritDto_2_1_0 name=ValidIDWithKeywords superType=[LDto|ID]? wrappedType=[LEntity|ID] features+=DtoFeature*)
+	 *     (
+	 *         (
+	 *             (annotationInfo=Class_LAutoInheritDto_2_1_0 abstract?='abstract'? name=ValidIDWithKeywords) | 
+	 *             (annotationInfo=Class_LAutoInheritDto_2_1_0 name=ValidIDWithKeywords)
+	 *         ) 
+	 *         superType=[LDto|ID]? 
+	 *         wrappedType=[LEntity|ID] 
+	 *         features+=DtoFeature*
+	 *     )
 	 */
 	protected void sequence_Class(EObject context, LAutoInheritDto semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1487,7 +1510,12 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Class_LDto_2_0_0 name=ValidIDWithKeywords superType=[LDto|ID]? wrappedType=[LEntity|ID]? features+=DtoFeature*)
+	 *     (
+	 *         ((annotationInfo=Class_LDto_2_0_0 abstract?='abstract'? name=ValidIDWithKeywords) | (annotationInfo=Class_LDto_2_0_0 name=ValidIDWithKeywords)) 
+	 *         superType=[LDto|ID]? 
+	 *         wrappedType=[LEntity|ID]? 
+	 *         features+=DtoFeature*
+	 *     )
 	 */
 	protected void sequence_Class(EObject context, LDto semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

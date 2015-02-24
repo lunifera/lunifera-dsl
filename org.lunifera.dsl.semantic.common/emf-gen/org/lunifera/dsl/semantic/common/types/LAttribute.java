@@ -13,6 +13,8 @@
  */
 package org.lunifera.dsl.semantic.common.types;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
@@ -34,6 +36,7 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getTypeJvm <em>Type Jvm</em>}</li>
  * </ul>
  * </p>
  *
@@ -327,5 +330,31 @@ public interface LAttribute extends LFeature {
 	 * @generated
 	 */
 	void setType(LScalarType value);
+
+	/**
+	 * Returns the value of the '<em><b>Type Jvm</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type Jvm</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type Jvm</em>' containment reference.
+	 * @see #setTypeJvm(JvmTypeReference)
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAttribute_TypeJvm()
+	 * @model containment="true" transient="true"
+	 * @generated
+	 */
+	JvmTypeReference getTypeJvm();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getTypeJvm <em>Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type Jvm</em>' containment reference.
+	 * @see #getTypeJvm()
+	 * @generated
+	 */
+	void setTypeJvm(JvmTypeReference value);
 
 } // LAttribute

@@ -14,11 +14,14 @@
 package org.lunifera.dsl.semantic.dto.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LReference;
@@ -34,6 +37,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedReferenceImpl#getInheritedFeature <em>Inherited Feature</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedReferenceImpl#getInheritedFeatureTypeJvm <em>Inherited Feature Type Jvm</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,6 +53,16 @@ public class LDtoInheritedReferenceImpl extends LDtoAbstractReferenceImpl implem
 	 * @ordered
 	 */
 	protected LReference inheritedFeature;
+
+	/**
+	 * The cached value of the '{@link #getInheritedFeatureTypeJvm() <em>Inherited Feature Type Jvm</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInheritedFeatureTypeJvm()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference inheritedFeatureTypeJvm;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,9 +126,66 @@ public class LDtoInheritedReferenceImpl extends LDtoAbstractReferenceImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public JvmTypeReference getInheritedFeatureTypeJvm() {
+		return inheritedFeatureTypeJvm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInheritedFeatureTypeJvm(JvmTypeReference newInheritedFeatureTypeJvm, NotificationChain msgs) {
+		JvmTypeReference oldInheritedFeatureTypeJvm = inheritedFeatureTypeJvm;
+		inheritedFeatureTypeJvm = newInheritedFeatureTypeJvm;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM, oldInheritedFeatureTypeJvm, newInheritedFeatureTypeJvm);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInheritedFeatureTypeJvm(JvmTypeReference newInheritedFeatureTypeJvm) {
+		if (newInheritedFeatureTypeJvm != inheritedFeatureTypeJvm) {
+			NotificationChain msgs = null;
+			if (inheritedFeatureTypeJvm != null)
+				msgs = ((InternalEObject)inheritedFeatureTypeJvm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM, null, msgs);
+			if (newInheritedFeatureTypeJvm != null)
+				msgs = ((InternalEObject)newInheritedFeatureTypeJvm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM, null, msgs);
+			msgs = basicSetInheritedFeatureTypeJvm(newInheritedFeatureTypeJvm, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM, newInheritedFeatureTypeJvm, newInheritedFeatureTypeJvm));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LMultiplicity getInheritedMultiplicity() {
 		LReference _inheritedFeature = this.getInheritedFeature();
 		return _inheritedFeature.getMultiplicity();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM:
+				return basicSetInheritedFeatureTypeJvm(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -128,6 +199,8 @@ public class LDtoInheritedReferenceImpl extends LDtoAbstractReferenceImpl implem
 			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE:
 				if (resolve) return getInheritedFeature();
 				return basicGetInheritedFeature();
+			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM:
+				return getInheritedFeatureTypeJvm();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -142,6 +215,9 @@ public class LDtoInheritedReferenceImpl extends LDtoAbstractReferenceImpl implem
 		switch (featureID) {
 			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE:
 				setInheritedFeature((LReference)newValue);
+				return;
+			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM:
+				setInheritedFeatureTypeJvm((JvmTypeReference)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -158,6 +234,9 @@ public class LDtoInheritedReferenceImpl extends LDtoAbstractReferenceImpl implem
 			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE:
 				setInheritedFeature((LReference)null);
 				return;
+			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM:
+				setInheritedFeatureTypeJvm((JvmTypeReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -172,6 +251,8 @@ public class LDtoInheritedReferenceImpl extends LDtoAbstractReferenceImpl implem
 		switch (featureID) {
 			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE:
 				return inheritedFeature != null;
+			case LunDtoPackage.LDTO_INHERITED_REFERENCE__INHERITED_FEATURE_TYPE_JVM:
+				return inheritedFeatureTypeJvm != null;
 		}
 		return super.eIsSet(featureID);
 	}

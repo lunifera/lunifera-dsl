@@ -33,9 +33,11 @@ import org.lunifera.dsl.semantic.common.helper.Bounds;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
+import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
+import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LDiscriminatorType;
 import org.lunifera.dsl.semantic.entity.LEntity;
@@ -57,6 +59,7 @@ import com.google.inject.Inject;
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
+@SuppressWarnings("restriction")
 public class EntityGrammarJavaValidator extends
 		AbstractEntityGrammarJavaValidator {
 
@@ -82,6 +85,9 @@ public class EntityGrammarJavaValidator extends
 	private static final String CODE__DOMAIN_DESCRIPTION__NO_MANY = "122";
 	private static final String CODE__DOMAIN_KEY__TYPE = "123";
 	private static final String CODE__DOMAIN_DESCRIPTION__TYPE = "124";
+	private static final String CODE__BEAN_TO_ENTITY__NO_MANY_RELATION_SUPPORTED = "125";
+	private static final String CODE__BEAN_TO_ENTITY__NO_OPPOSITE_RELATION_SUPPORTED = "126";
+	private static final String CODE__ENTITY_TO_BEAN__NO_OPPOSITE_RELATION_SUPPORTED = "127";
 
 	@Inject
 	private IQualifiedNameProvider qnp;
@@ -111,11 +117,42 @@ public class EntityGrammarJavaValidator extends
 
 	@Check
 	public void checkBean_MultiHasOppositeReference(LBeanReference prop) {
-		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
-			error("A bidirectional association needs an opposite reference.",
-					LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
-					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-					CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
+		// if (prop.getType() instanceof LBean) {
+		// if (extensions.isToMany(prop) && prop.getOpposite() == null) {
+		// error("A bidirectional association needs an opposite reference.",
+		// LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
+		// ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+		// CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
+		// }
+		// } else 
+			if (prop.getType() instanceof LEntity) {
+			if (extensions.isToMany(prop)) {
+				error("To-Many-Relations are not supported for bean->entity references.",
+						LunTypesPackage.Literals.LFEATURE__MULTIPLICITY,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__BEAN_TO_ENTITY__NO_MANY_RELATION_SUPPORTED,
+						(String[]) null);
+			}
+			if (prop.getOpposite() != null) {
+				error("Opposite-Relations are not supported for bean->entity references.",
+						LunEntityPackage.Literals.LBEAN_REFERENCE__OPPOSITE,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__BEAN_TO_ENTITY__NO_OPPOSITE_RELATION_SUPPORTED,
+						(String[]) null);
+			}
+		}
+	}
+
+	@Check
+	public void checkEntity_MultiHasOppositeReference(LEntityAttribute prop) {
+		if (prop.getType() instanceof LBean) {
+			if (prop.getOpposite() != null) {
+				error("Opposite-Relations are not supported for embeddables.",
+						LunEntityPackage.Literals.LENTITY_ATTRIBUTE__OPPOSITE,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__ENTITY_TO_BEAN__NO_OPPOSITE_RELATION_SUPPORTED,
+						(String[]) null);
+			}
 		}
 	}
 
@@ -160,21 +197,33 @@ public class EntityGrammarJavaValidator extends
 
 	@Check
 	public void checkBean_OppositeNotAlsoCascading(LBeanReference prop) {
-		if (prop.getOpposite() != null) {
-			if (prop.isCascading() && prop.getOpposite().isCascading()) {
-				error("Only one opposite may be specified as cascade",
-						LunTypesPackage.Literals.LREFERENCE__CASCADING,
-						CODE__BIDIRECTIONAL_CASCADE_INVALID, (String[]) null);
-			}
-
-			if (extensions.isToMany(prop.getOpposite())) {
-				if (prop.isCascading()) {
-					error("Cascade must not affect the common parent in a many-to-one relation",
-							prop,
+		if (prop.getType() instanceof LBean) {
+			if (prop.getOpposite() != null) {
+				if (prop.isCascading() && isCascading(prop)) {
+					error("Only one opposite may be specified as cascade",
 							LunTypesPackage.Literals.LREFERENCE__CASCADING,
-							CODE__CASCADE_DIRECTION_INVALID, new String[0]);
+							CODE__BIDIRECTIONAL_CASCADE_INVALID,
+							(String[]) null);
+				}
+
+				if (extensions.isToMany(prop.getOpposite())) {
+					if (prop.isCascading()) {
+						error("Cascade must not affect the common parent in a many-to-one relation",
+								prop,
+								LunTypesPackage.Literals.LREFERENCE__CASCADING,
+								CODE__CASCADE_DIRECTION_INVALID, new String[0]);
+					}
 				}
 			}
+		}
+	}
+
+	protected boolean isCascading(LBeanReference prop) {
+		LFeature opposite = prop.getOpposite();
+		if (opposite instanceof LReference) {
+			return ((LReference) opposite).isCascading();
+		} else {
+			return false;
 		}
 	}
 
@@ -291,7 +340,7 @@ public class EntityGrammarJavaValidator extends
 						LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
 						CODE__DOMAIN_KEY__NO_MANY, new String[0]);
 			}
-			
+
 			if (prop.getType() instanceof LDataType) {
 				LDataType type = (LDataType) prop.getType();
 				String typename = type.getJvmTypeReference().getQualifiedName();
@@ -309,7 +358,7 @@ public class EntityGrammarJavaValidator extends
 						LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_DESCRIPTION,
 						CODE__DOMAIN_DESCRIPTION__NO_MANY, new String[0]);
 			}
-			
+
 			if (prop.getType() instanceof LDataType) {
 				LDataType type = (LDataType) prop.getType();
 				String typename = type.getJvmTypeReference().getQualifiedName();

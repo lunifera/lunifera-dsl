@@ -14,8 +14,11 @@ package org.lunifera.dsl.dto.xtext;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.formatting.IFormatter;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
@@ -31,9 +34,13 @@ import org.lunifera.dsl.dto.xtext.scope.DtoScopeProvider;
 import org.lunifera.dsl.dto.xtext.serializer.DtoGrammarTransientValueService;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoQualifiedNameProvider;
 import org.lunifera.dsl.dto.xtext.valueconverter.DtoValueConverterService;
-import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
+import org.lunifera.dsl.xtext.lazyresolver.IndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinker;
+import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
+import org.lunifera.dsl.xtext.lazyresolver.api.IIndexModelAssociator;
+import org.lunifera.dsl.xtext.lazyresolver.linker.FastLinkingService;
+import org.lunifera.dsl.xtext.lazyresolver.validation.WarningAwareJvmTypeReferencesValidator;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -134,9 +141,33 @@ public class DtoGrammarRuntimeModule extends
 						org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class)
 				.to(DtoScopeProvider.class);
 	}
-	
+
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ITransientValueService> bindSerializerITransientValueService() {
 		return DtoGrammarTransientValueService.class;
 	}
 
+	public Class<? extends org.eclipse.xtext.resource.IDerivedStateComputer> bindIDerivedStateComputer() {
+		return IndexDerivedStateComputer.class;
+	}
+
+	public Class<? extends ILinkingService> bindILinkingService() {
+		return FastLinkingService.class;
+	}
+
+	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
+		return IndexDerivedStateComputer.class;
+	}
+
+	public Class<? extends IIndexModelAssociator> bindIIndexModelAssociator() {
+		return IndexDerivedStateComputer.class;
+	}
+
+	public Class<? extends IJvmModelAssociations> bindIJvmModelAssociations() {
+		return IndexDerivedStateComputer.class;
+	}
+
+	@org.eclipse.xtext.service.SingletonBinding(eager = true)
+	public Class<? extends org.eclipse.xtext.xbase.validation.JvmTypeReferencesValidator> bindJvmTypeReferencesValidator() {
+		return WarningAwareJvmTypeReferencesValidator.class;
+	}
 }

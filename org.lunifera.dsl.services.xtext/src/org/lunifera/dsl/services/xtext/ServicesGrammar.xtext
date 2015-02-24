@@ -17,13 +17,13 @@ Class returns service::LDTOService:
 	{service::LDTOService.annotationInfo=current}
 	'dtoservice' name=ValidIDWithKeywords 'provides' dto=[dto::LDto]
 	'{'
-	('persistenceID' persistenceId=QualifiedName)?
+	((mutablePersistenceId?='mutable')? 'persistenceID' persistenceId=QualifiedName)?
 	injectedServices=InjectedServices
 	
 	operations+=Operation*
 	
 	'}';
-	
+
 InjectedServices returns service::LInjectedServices:
 	{service::LInjectedServices}
 	(services+=InjectedService)*;

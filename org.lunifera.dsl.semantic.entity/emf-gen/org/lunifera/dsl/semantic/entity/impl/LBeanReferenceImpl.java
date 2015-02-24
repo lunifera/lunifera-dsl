@@ -23,10 +23,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.lunifera.dsl.semantic.common.types.LConstraints;
+import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LReference;
+import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
-import org.lunifera.dsl.semantic.entity.LBean;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 
@@ -40,8 +42,9 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,7 +99,17 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * @generated
 	 * @ordered
 	 */
-	protected LBean type;
+	protected LType type;
+
+	/**
+	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOpposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected LFeature opposite;
 
 	/**
 	 * The cached value of the '{@link #getTypeJvm() <em>Type Jvm</em>}' containment reference.
@@ -109,14 +122,14 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	protected JvmTypeReference typeJvm;
 
 	/**
-	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOpposite()
+	 * @see #getConstraints()
 	 * @generated
 	 * @ordered
 	 */
-	protected LBeanReference opposite;
+	protected LConstraints constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,10 +197,10 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBean getType() {
+	public LType getType() {
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
-			type = (LBean)eResolveProxy(oldType);
+			type = (LType)eResolveProxy(oldType);
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LBEAN_REFERENCE__TYPE, oldType, type));
@@ -201,7 +214,7 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBean basicGetType() {
+	public LType basicGetType() {
 		return type;
 	}
 
@@ -210,11 +223,49 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(LBean newType) {
-		LBean oldType = type;
+	public void setType(LType newType) {
+		LType oldType = type;
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LFeature getOpposite() {
+		if (opposite != null && opposite.eIsProxy()) {
+			InternalEObject oldOpposite = (InternalEObject)opposite;
+			opposite = (LFeature)eResolveProxy(oldOpposite);
+			if (opposite != oldOpposite) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LBEAN_REFERENCE__OPPOSITE, oldOpposite, opposite));
+			}
+		}
+		return opposite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LFeature basicGetOpposite() {
+		return opposite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOpposite(LFeature newOpposite) {
+		LFeature oldOpposite = opposite;
+		opposite = newOpposite;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__OPPOSITE, oldOpposite, opposite));
 	}
 
 	/**
@@ -265,16 +316,23 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBeanReference getOpposite() {
-		if (opposite != null && opposite.eIsProxy()) {
-			InternalEObject oldOpposite = (InternalEObject)opposite;
-			opposite = (LBeanReference)eResolveProxy(oldOpposite);
-			if (opposite != oldOpposite) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LunEntityPackage.LBEAN_REFERENCE__OPPOSITE, oldOpposite, opposite));
-			}
+	public LConstraints getConstraints() {
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConstraints(LConstraints newConstraints, NotificationChain msgs) {
+		LConstraints oldConstraints = constraints;
+		constraints = newConstraints;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS, oldConstraints, newConstraints);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return opposite;
+		return msgs;
 	}
 
 	/**
@@ -282,20 +340,18 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBeanReference basicGetOpposite() {
-		return opposite;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOpposite(LBeanReference newOpposite) {
-		LBeanReference oldOpposite = opposite;
-		opposite = newOpposite;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__OPPOSITE, oldOpposite, opposite));
+	public void setConstraints(LConstraints newConstraints) {
+		if (newConstraints != constraints) {
+			NotificationChain msgs = null;
+			if (constraints != null)
+				msgs = ((InternalEObject)constraints).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS, null, msgs);
+			if (newConstraints != null)
+				msgs = ((InternalEObject)newConstraints).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS, null, msgs);
+			msgs = basicSetConstraints(newConstraints, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS, newConstraints, newConstraints));
 	}
 
 	/**
@@ -308,6 +364,8 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 		switch (featureID) {
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				return basicSetConstraints(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -327,11 +385,13 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
-			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
-				return getTypeJvm();
 			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
+			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
+				return getTypeJvm();
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				return getConstraints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -351,13 +411,16 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				setCascading((Boolean)newValue);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
-				setType((LBean)newValue);
+				setType((LType)newValue);
+				return;
+			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
+				setOpposite((LFeature)newValue);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)newValue);
 				return;
-			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
-				setOpposite((LBeanReference)newValue);
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				setConstraints((LConstraints)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -378,13 +441,16 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				setCascading(CASCADING_EDEFAULT);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
-				setType((LBean)null);
+				setType((LType)null);
+				return;
+			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
+				setOpposite((LFeature)null);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)null);
 				return;
-			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
-				setOpposite((LBeanReference)null);
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				setConstraints((LConstraints)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -404,10 +470,12 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				return cascading != CASCADING_EDEFAULT;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
 				return type != null;
-			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
-				return typeJvm != null;
 			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
 				return opposite != null;
+			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
+				return typeJvm != null;
+			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+				return constraints != null;
 		}
 		return super.eIsSet(featureID);
 	}

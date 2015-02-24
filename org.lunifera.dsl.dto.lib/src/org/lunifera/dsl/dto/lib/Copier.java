@@ -12,7 +12,7 @@ package org.lunifera.dsl.dto.lib;
 
 public abstract class Copier<A> {
 
-	protected Context context;
+	protected MappingContext context;
 
 	/**
 	 * Copies the given DTO including it's attributes and containment-reference
@@ -34,7 +34,7 @@ public abstract class Copier<A> {
 	 * @throws IllegalArgumentException
 	 *             if the context is null.
 	 */
-	public A copy(A dto, Context context) throws IllegalArgumentException {
+	public A copy(A dto, MappingContext context) throws IllegalArgumentException {
 		this.context = context;
 		if (context == null) {
 			throw new IllegalArgumentException("Context must not be null!");
@@ -67,7 +67,7 @@ public abstract class Copier<A> {
 
 	/**
 	 * Copies the pending references of the DTO. For details about
-	 * "reference-copy" see {@link #copy(Object, Context)}.
+	 * "reference-copy" see {@link #copy(Object, MappingContext)}.
 	 * 
 	 * @param dto
 	 *            - the DTO providing the references

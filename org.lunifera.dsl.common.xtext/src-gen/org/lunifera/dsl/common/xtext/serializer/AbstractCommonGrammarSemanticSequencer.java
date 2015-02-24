@@ -63,7 +63,9 @@ import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.lunifera.dsl.common.xtext.services.CommonGrammarGrammarAccess;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
+import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
 import org.lunifera.dsl.semantic.common.types.LClass;
+import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
@@ -87,6 +89,13 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 					return; 
 				}
 				else break;
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT:
+				if(context == grammarAccess.getAttributeMatchingConstraintRule() ||
+				   context == grammarAccess.getConstraintRule()) {
+					sequence_AttributeMatchingConstraint(context, (LAttributeMatchingConstraint) semanticObject); 
+					return; 
+				}
+				else break;
 			case LunTypesPackage.LCLASS:
 				if(context == grammarAccess.getClassRule() ||
 				   context == grammarAccess.getTypeRule()) {
@@ -95,6 +104,12 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 				}
 				else if(context == grammarAccess.getClassAccess().getLClassAnnotationInfoAction_2()) {
 					sequence_Class_LClass_2(context, (LClass) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LCONSTRAINTS:
+				if(context == grammarAccess.getConstraintsRule()) {
+					sequence_Constraints(context, (LConstraints) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1402,6 +1417,15 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 	
 	/**
 	 * Constraint:
+	 *     (attribute=[LAttribute|ID] comparatorType=LComparatorType (matchingValue=STRING | matchingLiteral=[LEnumLiteral|ID]))
+	 */
+	protected void sequence_AttributeMatchingConstraint(EObject context, LAttributeMatchingConstraint semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     annotationInfo=Class_LClass_2
 	 */
 	protected void sequence_Class(EObject context, LClass semanticObject) {
@@ -1414,6 +1438,15 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 	 *     annotations+=AnnotationDef+
 	 */
 	protected void sequence_Class_LClass_2(EObject context, LClass semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (constraints+=Constraint*)
+	 */
+	protected void sequence_Constraints(EObject context, LConstraints semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -10,7 +10,7 @@ public class BaseDto implements Serializable {
   
   private boolean disposed;
   
-  private String uuid = java.util.UUID.randomUUID().toString();
+  private Object uuid = java.util.UUID.randomUUID().toString();
   
   /**
    * Returns true, if the object is disposed. 
@@ -19,15 +19,6 @@ public class BaseDto implements Serializable {
    */
   public boolean isDisposed() {
     return this.disposed;
-  }
-  
-  /**
-   * Returns true, if the object is a copy for a different object. 
-   * In that special case of "copy" opposite references are treated differently
-   * to ensure the crossreferences untouched about changes.
-   */
-  public boolean isCopy() {
-    return this.isCopy;
   }
   
   /**
@@ -92,7 +83,7 @@ public class BaseDto implements Serializable {
   /**
    * Returns the uuid property or <code>null</code> if not present.
    */
-  public String getUuid() {
+  public Object getUuid() {
     checkDisposed();
     return this.uuid;
   }
@@ -104,7 +95,99 @@ public class BaseDto implements Serializable {
    * @throws RuntimeException if instance is <code>disposed</code>
    * 
    */
-  public void setUuid(final String uuid) {
+  public void setUuid(final  uuid) {
     firePropertyChange("uuid", this.uuid, this.uuid = uuid );
+  }
+  
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    BaseDto other = (BaseDto) obj;
+    if (this.uuid == null) {
+      if (other.uuid != null)
+        return false;
+    } else if (!this.uuid.equals(other.uuid))
+      return false;
+    return true;
+  }
+  
+  @Override
+  public int hashCode() {
+     int prime = 31;
+    int result = 1;
+    result = prime * result + ((this.uuid== null) ? 0 : this.uuid.hashCode());
+    return result;
+  }
+  
+  public BaseDto createDto() {
+    return new BaseDto();
+  }
+  
+  public BaseDto copy(final org.lunifera.dsl.dto.lib.Context context) {
+    checkDisposed();
+    
+    if (context == null) {
+    	throw new IllegalArgumentException("Context must not be null!");
+    }
+    
+    if(context.isMaxLevel()){
+    	return null;
+    }
+    
+    // if context contains a copied instance of this object
+    // then return it
+    BaseDto newDto = context.getTarget(this);
+    if(newDto != null){
+    	return newDto;
+    }
+    
+    try{
+    	context.increaseLevel();
+    	
+    	newDto = createDto();
+    	context.register(this, newDto);
+    	
+    	// first copy the containments and attributes
+    	copyContainments(this, newDto, context);
+    	
+    	// then copy cross references to ensure proper
+    	// opposite references are copied too.
+    	copyCrossReferences(this, newDto, context);
+    } finally {
+    	context.decreaseLevel();
+    }
+    
+    return newDto;
+  }
+  
+  public void copyContainments(final BaseDto dto, final BaseDto newDto, final org.lunifera.dsl.dto.lib.Context context) {
+    checkDisposed();
+    
+    if (context == null) {
+    	throw new IllegalArgumentException("Context must not be null!");
+    }
+    
+    
+    // copy attributes and beans (beans if derived from entity model)
+    // copy uuid
+    newDto.setUuid(getUuid());
+    
+    // copy containment references (cascading is true)
+  }
+  
+  public void copyCrossReferences(final BaseDto dto, final BaseDto newDto, final org.lunifera.dsl.dto.lib.Context context) {
+    checkDisposed();
+    
+    if (context == null) {
+    	throw new IllegalArgumentException("Context must not be null!");
+    }
+    
+    
+    // copy cross references (cascading is false)
   }
 }

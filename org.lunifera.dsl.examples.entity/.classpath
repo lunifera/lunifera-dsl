@@ -7,7 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.lunifera.dsl.entity.ENTITY_CONTAINER"/>
-	<classpathentry kind="src" output="target/classes" path="src-gen">
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src-gen">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>

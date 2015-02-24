@@ -1,6 +1,5 @@
 package org.lunifera.dsl.tests.carstore.entities.dtos.mapper;
 
-import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.tests.carstore.entities.Addon;
 import org.lunifera.dsl.tests.carstore.entities.Car;
 import org.lunifera.dsl.tests.carstore.entities.dtos.AddonDto;
@@ -14,18 +13,37 @@ import org.lunifera.dsl.tests.carstore.entities.dtos.mapper.BaseDtoMapper;
 @SuppressWarnings("all")
 public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends BaseDtoMapper<DTO, ENTITY> {
   /**
+   * Creates a new instance of the entity
+   */
+  public Addon createEntity() {
+    return new Addon();
+  }
+  
+  /**
+   * Creates a new instance of the dto
+   */
+  public AddonDto createDto() {
+    return new AddonDto();
+  }
+  
+  /**
    * Maps the entity {@link Addon} to the dto {@link AddonDto}.
    * 
    * @param dto - The target dto
    * @param entity - The source entity
+   * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToDTO(final AddonDto dto, final Addon entity) {
-    super.mapToDTO(dto, entity);
+  public void mapToDTO(final AddonDto dto, final Addon entity, final org.lunifera.dsl.dto.lib.Context context) {
+    if(context == null){
+    	throw new IllegalArgumentException("Please pass a context!");
+    }
     
+    context.register(entity, dto);
     
-    dto.setDescription(toDto_description(entity));
-    dto.setCar(toDto_car(entity));
+    super.mapToDTO(dto, entity, context);
+    
+    dto.setDescription(toDto_description(entity, context));
   }
   
   /**
@@ -33,15 +51,21 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * 
    * @param dto - The source dto
    * @param entity - The target entity
+   * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToEntity(final AddonDto dto, final Addon entity) {
-    super.mapToEntity(dto, entity);
+  public void mapToEntity(final AddonDto dto, final Addon entity, final org.lunifera.dsl.dto.lib.Context context) {
+    if(context == null){
+    	throw new IllegalArgumentException("Please pass a context!");
+    }
+    
+    context.register(entity, dto);
+    
+    super.mapToEntity(dto, entity, context);
     
     
-    entity.setDescription(toEntity_description(dto));
+    entity.setDescription(toEntity_description(dto, context));
     
-    entity.setCar(toEntity_car(dto));
     
   }
   
@@ -49,10 +73,11 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * Maps the property description from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toDto_description(final Addon in) {
+  protected Object toDto_description(final Addon in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getDescription();
   }
   
@@ -60,10 +85,11 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * Maps the property description from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toEntity_description(final AddonDto in) {
+  protected Object toEntity_description(final AddonDto in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getDescription();
   }
   
@@ -71,18 +97,25 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * Maps the property car from the given entity to the dto.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped dto
    * 
    */
-  protected CarDto toDto_car(final Addon in) {
-    org.lunifera.dsl.dto.lib.IMapper<CarDto, Car> mapper = getMapper(CarDto.class, Car.class);
-    if(mapper == null) {
-    	throw new IllegalStateException("Mapper must not be null!");
+  protected CarDto toDto_car(final Addon in, final org.lunifera.dsl.dto.lib.Context context) {
+    CarDto dto = context.getTarget(in.getCar());
+    if(dto != null) {
+    	return dto;
     }
     
     if(in.getCar() != null) {
-    	CarDto dto = new CarDto();
-    	mapper.mapToDTO(dto, in.getCar());
+    	// find a mapper that knows how to map the concrete input type.
+    	org.lunifera.dsl.dto.lib.IMapper<CarDto, Car> mapper = (org.lunifera.dsl.dto.lib.IMapper<CarDto, Car>) getMapper(CarDto.class, in.getCar().getClass());
+    	if(mapper == null) {
+    		throw new IllegalStateException("Mapper must not be null!");
+    	}
+    
+    	dto = mapper.createDto();
+    	mapper.mapToDTO(dto, in.getCar(), context);
     	return dto;
     } else {
     	return null;
@@ -93,57 +126,28 @@ public class AddonDtoMapper<DTO extends AddonDto, ENTITY extends Addon> extends 
    * Maps the property car from the given dto to the entity.
    * 
    * @param in - The source dto
+   * @param context - The context to get information about depth,...
    * @return the mapped entity
    * 
    */
-  protected Car toEntity_car(final AddonDto in) {
-    org.lunifera.dsl.dto.lib.IMapper<CarDto, Car> mapper = getMapper(CarDto.class, Car.class);
-    if(mapper == null) {
-    	throw new IllegalStateException("Mapper must not be null!");
+  protected Car toEntity_car(final AddonDto in, final org.lunifera.dsl.dto.lib.Context context) {
+    Car entity = context.getTarget(in.getCar());
+    if(entity != null) {
+    	return entity;
     }
     
     if(in.getCar() != null) {
-    	Car entity = new Car();
-    	mapper.mapToEntity(in.getCar(), entity);	
+    	// find a mapper that knows how to map the concrete input type.
+    	org.lunifera.dsl.dto.lib.IMapper<CarDto, Car> mapper = (org.lunifera.dsl.dto.lib.IMapper<CarDto, Car>) getMapper(in.getCar().getClass(), Car.class);
+    	if(mapper == null) {
+    		throw new IllegalStateException("Mapper must not be null!");
+    	}
+    
+    	entity = mapper.createEntity();
+    	mapper.mapToEntity(in.getCar(), entity, context);	
     	return entity;
     } else {
     	return null;
     }	
-  }
-  
-  public AddonDtoMapper createDto() {
-    return new AddonDto();
-  }
-  
-  public AddonDtoMapper copy(final AddonDtoMapper dto, final Context context) {
-    this.context = context;
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    AddonDto newDto = createDto();
-    context.register(dto, newDto);
-    
-    copyContainments(dto, newDto);
-    copyCrossReferences(dto, newDto);
-    
-    return newDto;
-  }
-  
-  public void copyContainments(final AddonDtoMapper dto, final AddonDtoMapper newDto, final Context context) {
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    super.copyContainments(dto, newDto, context);
-    
-  }
-  
-  public void copyCrossReferences(final AddonDtoMapper dto, final AddonDtoMapper newDto, final org.lunifera.dsl.dto.lib.Context context) {
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    super.copyCrossReferences(dto, newDto, context);
   }
 }

@@ -10,6 +10,7 @@
  */
 package org.lunifera.dsl.entity.xtext.linker;
 
+import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LunEntityPackage;
 import org.lunifera.dsl.xtext.lazyresolver.LazyJvmTypeLinkingHelper;
 
@@ -19,11 +20,13 @@ public class EntityJvmLinkingHelper extends LazyJvmTypeLinkingHelper {
 		register(LunEntityPackage.Literals.LENTITY__SUPER_TYPE,
 				LunEntityPackage.Literals.LENTITY__SUPER_TYPE_JVM);
 		register(LunEntityPackage.Literals.LENTITY_REFERENCE__TYPE,
-				LunEntityPackage.Literals.LENTITY_REFERENCE__TYPE_JVM);
+				LunEntityPackage.Literals.LENTITY_REFERENCE__TYPE_JVM); 
+		register(LunTypesPackage.Literals.LATTRIBUTE__TYPE,
+				LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM);
 		register(LunEntityPackage.Literals.LBEAN__SUPER_TYPE,
 				LunEntityPackage.Literals.LBEAN__SUPER_TYPE_JVM);
 		register(LunEntityPackage.Literals.LBEAN_REFERENCE__TYPE,
 				LunEntityPackage.Literals.LBEAN_REFERENCE__TYPE_JVM);
-	} 
+	}
 
 }

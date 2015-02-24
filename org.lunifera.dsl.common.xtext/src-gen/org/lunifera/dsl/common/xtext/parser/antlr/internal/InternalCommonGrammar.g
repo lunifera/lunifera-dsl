@@ -648,6 +648,131 @@ ruleXAnnotation
 
 
 
+
+
+// Entry rule entryRuleConstraint
+entryRuleConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getConstraintRule()); }
+	 iv_ruleConstraint=ruleConstraint 
+	 { $current=$iv_ruleConstraint.current; } 
+	 EOF 
+;
+
+// Rule Constraint
+ruleConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+
+    { 
+        newCompositeNode(grammarAccess.getConstraintAccess().getAttributeMatchingConstraintParserRuleCall()); 
+    }
+    this_AttributeMatchingConstraint_0=ruleAttributeMatchingConstraint
+    { 
+        $current = $this_AttributeMatchingConstraint_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+;
+
+
+
+
+
+// Entry rule entryRuleAttributeMatchingConstraint
+entryRuleAttributeMatchingConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAttributeMatchingConstraintRule()); }
+	 iv_ruleAttributeMatchingConstraint=ruleAttributeMatchingConstraint 
+	 { $current=$iv_ruleAttributeMatchingConstraint.current; } 
+	 EOF 
+;
+
+// Rule AttributeMatchingConstraint
+ruleAttributeMatchingConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAttributeMatchingConstraintRule());
+	        }
+        }
+	otherlv_0=RULE_ID
+	{
+		newLeafNode(otherlv_0, grammarAccess.getAttributeMatchingConstraintAccess().getAttributeLAttributeCrossReference_0_0()); 
+	}
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAttributeMatchingConstraintAccess().getComparatorTypeLComparatorTypeEnumRuleCall_1_0()); 
+	    }
+		lv_comparatorType_1_0=ruleLComparatorType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAttributeMatchingConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"comparatorType",
+        		lv_comparatorType_1_0, 
+        		"LComparatorType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)((
+(
+		lv_matchingValue_2_0=RULE_STRING
+		{
+			newLeafNode(lv_matchingValue_2_0, grammarAccess.getAttributeMatchingConstraintAccess().getMatchingValueSTRINGTerminalRuleCall_2_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAttributeMatchingConstraintRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"matchingValue",
+        		lv_matchingValue_2_0, 
+        		"STRING");
+	    }
+
+)
+)
+    |((
+(
+	RULE_ID
+
+)
+)=>
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAttributeMatchingConstraintRule());
+	        }
+        }
+	otherlv_3=RULE_ID
+	{
+		newLeafNode(otherlv_3, grammarAccess.getAttributeMatchingConstraintAccess().getMatchingLiteralLEnumLiteralCrossReference_2_1_0()); 
+	}
+
+)
+))	otherlv_4=';' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getAttributeMatchingConstraintAccess().getSemicolonKeyword_3());
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRuleLQualifiedNameWithWildCard
 entryRuleLQualifiedNameWithWildCard returns [String current=null] 
 	:
@@ -7292,6 +7417,49 @@ ruleLVisibility returns [Enumerator current=null]
 	{
         $current = grammarAccess.getLVisibilityAccess().getPUBLICEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_3, grammarAccess.getLVisibilityAccess().getPUBLICEnumLiteralDeclaration_3()); 
+    }
+));
+
+
+
+// Rule LComparatorType
+ruleLComparatorType returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+((	enumLiteral_0='==' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getEQUALSEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getLComparatorTypeAccess().getEQUALSEnumLiteralDeclaration_0()); 
+    }
+)
+    |(	enumLiteral_1='>' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getGREATEREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getLComparatorTypeAccess().getGREATEREnumLiteralDeclaration_1()); 
+    }
+)
+    |(	enumLiteral_2='<' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getLOWEREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getLComparatorTypeAccess().getLOWEREnumLiteralDeclaration_2()); 
+    }
+)
+    |(	enumLiteral_3='>=' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getGREATER_EQEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_3, grammarAccess.getLComparatorTypeAccess().getGREATER_EQEnumLiteralDeclaration_3()); 
+    }
+)
+    |(	enumLiteral_4='<=' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getLOWER_EQEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_4, grammarAccess.getLComparatorTypeAccess().getLOWER_EQEnumLiteralDeclaration_4()); 
+    }
+)
+    |(	enumLiteral_5='<>' 
+	{
+        $current = grammarAccess.getLComparatorTypeAccess().getNOT_EQEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_5, grammarAccess.getLComparatorTypeAccess().getNOT_EQEnumLiteralDeclaration_5()); 
     }
 ));
 

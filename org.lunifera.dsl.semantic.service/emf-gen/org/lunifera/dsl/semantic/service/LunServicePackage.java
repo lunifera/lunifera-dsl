@@ -365,13 +365,22 @@ public interface LunServicePackage extends EPackage {
 	int LDTO_SERVICE__DTO_JVM = LSERVICE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Mutable Persistence Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_SERVICE__MUTABLE_PERSISTENCE_ID = LSERVICE_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Persistence Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_SERVICE__PERSISTENCE_ID = LSERVICE_FEATURE_COUNT + 2;
+	int LDTO_SERVICE__PERSISTENCE_ID = LSERVICE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Filterable</b></em>' containment reference.
@@ -380,7 +389,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_SERVICE__FILTERABLE = LSERVICE_FEATURE_COUNT + 3;
+	int LDTO_SERVICE__FILTERABLE = LSERVICE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Sortable</b></em>' containment reference.
@@ -389,7 +398,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_SERVICE__SORTABLE = LSERVICE_FEATURE_COUNT + 4;
+	int LDTO_SERVICE__SORTABLE = LSERVICE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>LDTO Service</em>' class.
@@ -398,7 +407,7 @@ public interface LunServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_SERVICE_FEATURE_COUNT = LSERVICE_FEATURE_COUNT + 5;
+	int LDTO_SERVICE_FEATURE_COUNT = LSERVICE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.service.impl.LFilterableAttributesImpl <em>LFilterable Attributes</em>}' class.
@@ -917,6 +926,17 @@ public interface LunServicePackage extends EPackage {
 	EReference getLDTOService_DtoJvm();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.service.LDTOService#isMutablePersistenceId <em>Mutable Persistence Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mutable Persistence Id</em>'.
+	 * @see org.lunifera.dsl.semantic.service.LDTOService#isMutablePersistenceId()
+	 * @see #getLDTOService()
+	 * @generated
+	 */
+	EAttribute getLDTOService_MutablePersistenceId();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.service.LDTOService#getPersistenceId <em>Persistence Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1196,6 +1216,14 @@ public interface LunServicePackage extends EPackage {
 		 * @generated
 		 */
 		EReference LDTO_SERVICE__DTO_JVM = eINSTANCE.getLDTOService_DtoJvm();
+
+		/**
+		 * The meta object literal for the '<em><b>Mutable Persistence Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDTO_SERVICE__MUTABLE_PERSISTENCE_ID = eINSTANCE.getLDTOService_MutablePersistenceId();
 
 		/**
 		 * The meta object literal for the '<em><b>Persistence Id</b></em>' attribute feature.

@@ -53,9 +53,11 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDtoLDtoIDTerminalRuleCall_6_0_1 = (RuleCall)cDtoLDtoCrossReference_6_0.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cPersistenceIDKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cPersistenceIdAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cPersistenceIdQualifiedNameParserRuleCall_8_1_0 = (RuleCall)cPersistenceIdAssignment_8_1.eContents().get(0);
+		private final Assignment cMutablePersistenceIdAssignment_8_0 = (Assignment)cGroup_8.eContents().get(0);
+		private final Keyword cMutablePersistenceIdMutableKeyword_8_0_0 = (Keyword)cMutablePersistenceIdAssignment_8_0.eContents().get(0);
+		private final Keyword cPersistenceIDKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Assignment cPersistenceIdAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cPersistenceIdQualifiedNameParserRuleCall_8_2_0 = (RuleCall)cPersistenceIdAssignment_8_2.eContents().get(0);
 		private final Assignment cInjectedServicesAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cInjectedServicesInjectedServicesParserRuleCall_9_0 = (RuleCall)cInjectedServicesAssignment_9.eContents().get(0);
 		private final Assignment cOperationsAssignment_10 = (Assignment)cGroup.eContents().get(10);
@@ -64,13 +66,13 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Class returns service::LDTOService:
 		//	{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-		//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" ("persistenceID" persistenceId=QualifiedName)?
-		//	injectedServices=InjectedServices operations+=Operation* "}";
+		//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" (mutablePersistenceId?="mutable"? "persistenceID"
+		//	persistenceId=QualifiedName)? injectedServices=InjectedServices operations+=Operation* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-		//name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" ("persistenceID" persistenceId=QualifiedName)?
-		//injectedServices=InjectedServices operations+=Operation* "}"
+		//name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" (mutablePersistenceId?="mutable"? "persistenceID"
+		//persistenceId=QualifiedName)? injectedServices=InjectedServices operations+=Operation* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{service::LDTOService}
@@ -109,17 +111,23 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
 
-		//("persistenceID" persistenceId=QualifiedName)?
+		//(mutablePersistenceId?="mutable"? "persistenceID" persistenceId=QualifiedName)?
 		public Group getGroup_8() { return cGroup_8; }
 
+		//mutablePersistenceId?="mutable"?
+		public Assignment getMutablePersistenceIdAssignment_8_0() { return cMutablePersistenceIdAssignment_8_0; }
+
+		//"mutable"
+		public Keyword getMutablePersistenceIdMutableKeyword_8_0_0() { return cMutablePersistenceIdMutableKeyword_8_0_0; }
+
 		//"persistenceID"
-		public Keyword getPersistenceIDKeyword_8_0() { return cPersistenceIDKeyword_8_0; }
+		public Keyword getPersistenceIDKeyword_8_1() { return cPersistenceIDKeyword_8_1; }
 
 		//persistenceId=QualifiedName
-		public Assignment getPersistenceIdAssignment_8_1() { return cPersistenceIdAssignment_8_1; }
+		public Assignment getPersistenceIdAssignment_8_2() { return cPersistenceIdAssignment_8_2; }
 
 		//QualifiedName
-		public RuleCall getPersistenceIdQualifiedNameParserRuleCall_8_1_0() { return cPersistenceIdQualifiedNameParserRuleCall_8_1_0; }
+		public RuleCall getPersistenceIdQualifiedNameParserRuleCall_8_2_0() { return cPersistenceIdQualifiedNameParserRuleCall_8_2_0; }
 
 		//injectedServices=InjectedServices
 		public Assignment getInjectedServicesAssignment_9() { return cInjectedServicesAssignment_9; }
@@ -537,8 +545,8 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Class returns service::LDTOService:
 	//	{service::LDTOService} annotations+=AnnotationDef* {service::LDTOService.annotationInfo=current} "dtoservice"
-	//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" ("persistenceID" persistenceId=QualifiedName)?
-	//	injectedServices=InjectedServices operations+=Operation* "}";
+	//	name=ValidIDWithKeywords "provides" dto=[dto::LDto] "{" (mutablePersistenceId?="mutable"? "persistenceID"
+	//	persistenceId=QualifiedName)? injectedServices=InjectedServices operations+=Operation* "}";
 	public ClassElements getClassAccess() {
 		return pClass;
 	}
@@ -718,6 +726,47 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public EnumRule getLVisibilityRule() {
 		return getLVisibilityAccess().getRule();
+	}
+
+	//Constraints returns types::LConstraints:
+	//	{types::LConstraints} "constraints" "{" constraints+=Constraint "}";
+	public CommonGrammarGrammarAccess.ConstraintsElements getConstraintsAccess() {
+		return gaCommonGrammar.getConstraintsAccess();
+	}
+	
+	public ParserRule getConstraintsRule() {
+		return getConstraintsAccess().getRule();
+	}
+
+	//Constraint returns types::LConstraint:
+	//	AttributeMatchingConstraint;
+	public CommonGrammarGrammarAccess.ConstraintElements getConstraintAccess() {
+		return gaCommonGrammar.getConstraintAccess();
+	}
+	
+	public ParserRule getConstraintRule() {
+		return getConstraintAccess().getRule();
+	}
+
+	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
+	//	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
+	//	matchingLiteral=[types::LEnumLiteral]) ";";
+	public CommonGrammarGrammarAccess.AttributeMatchingConstraintElements getAttributeMatchingConstraintAccess() {
+		return gaCommonGrammar.getAttributeMatchingConstraintAccess();
+	}
+	
+	public ParserRule getAttributeMatchingConstraintRule() {
+		return getAttributeMatchingConstraintAccess().getRule();
+	}
+
+	//enum LComparatorType returns types::LComparatorType:
+	//	EQUALS="==" | GREATER=">" | LOWER="<" | GREATER_EQ=">=" | LOWER_EQ="<=" | NOT_EQ="<>";
+	public CommonGrammarGrammarAccess.LComparatorTypeElements getLComparatorTypeAccess() {
+		return gaCommonGrammar.getLComparatorTypeAccess();
+	}
+	
+	public EnumRule getLComparatorTypeRule() {
+		return getLComparatorTypeAccess().getRule();
 	}
 
 	//LQualifiedNameWithWildCard:

@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ * 		Florian Pirchner - Initial implementation
+ */
 package org.lunifera.dsl.xtext.lazyresolver.scoping;
 
 import static java.util.Collections.singletonList;
@@ -5,7 +15,9 @@ import static java.util.Collections.singletonList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -29,6 +41,8 @@ import com.google.inject.Provider;
 
 public class FastImportedNamespaceAwareLocalScopeProvider extends
 		ImportedNamespaceAwareLocalScopeProvider {
+
+	private boolean collectingParents;
 
 	@Inject
 	private IResourceScopeCache cache = IResourceScopeCache.NullImpl.INSTANCE;
@@ -131,6 +145,49 @@ public class FastImportedNamespaceAwareLocalScopeProvider extends
 					isIgnoreCase(reference));
 		}
 		return result;
+	}
+
+	@Override
+	public IScope getScope(final EObject context, final EReference reference) {
+		if (!collectingParents) {
+			try {
+				collectingParents = true;
+				return getCachingScope(context, reference);
+			} finally {
+				collectingParents = false;
+			}
+		} else {
+			return super.getScope(context, reference);
+		}
+	}
+
+	public IScope getCachingScope(final EObject context,
+			final EReference reference) {
+		final String cacheId = getCacheID(reference);
+		return cache.get(cacheId, context.eResource(), new Provider<IScope>() {
+			public IScope get() {
+				try {
+					collectingParents = true;
+					final IScope parent = getScope(context, reference);
+					return new CachingTypeScope(cacheId, parent);
+				} finally {
+					collectingParents = false;
+				}
+			}
+		});
+	}
+
+	private String getCacheID(final EReference reference) {
+		EClass eClass = reference.getEReferenceType();
+		EPackage ePkg = eClass.getEPackage();
+
+		return ePkg.getNsURI() + "-" + eClass.getName();
+	}
+
+	@Override
+	protected boolean isRelativeImport() {
+		// do not so to improve performance
+		return false;
 	}
 
 }

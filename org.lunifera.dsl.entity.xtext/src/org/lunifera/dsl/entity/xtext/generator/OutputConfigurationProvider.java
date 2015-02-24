@@ -14,9 +14,10 @@ package org.lunifera.dsl.entity.xtext.generator;
 import java.util.Set;
 
 import org.eclipse.xtext.generator.OutputConfiguration;
+import org.lunifera.dsl.xtext.lazyresolver.generator.DelegatingOutputConfigurationProvider;
 
 public class OutputConfigurationProvider extends
-		org.eclipse.xtext.generator.OutputConfigurationProvider {
+		DelegatingOutputConfigurationProvider {
 
 	/**
 	 * @return a set of {@link OutputConfiguration} available for the generator

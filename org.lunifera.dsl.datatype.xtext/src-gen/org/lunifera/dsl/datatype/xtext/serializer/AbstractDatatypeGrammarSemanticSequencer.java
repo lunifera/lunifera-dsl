@@ -60,8 +60,10 @@ import org.eclipse.xtext.xtype.XtypePackage;
 import org.lunifera.dsl.common.xtext.serializer.CommonGrammarSemanticSequencer;
 import org.lunifera.dsl.datatype.xtext.services.DatatypeGrammarGrammarAccess;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
+import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LCommonModel;
+import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
@@ -85,6 +87,13 @@ public abstract class AbstractDatatypeGrammarSemanticSequencer extends CommonGra
 					return; 
 				}
 				else break;
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT:
+				if(context == grammarAccess.getAttributeMatchingConstraintRule() ||
+				   context == grammarAccess.getConstraintRule()) {
+					sequence_AttributeMatchingConstraint(context, (LAttributeMatchingConstraint) semanticObject); 
+					return; 
+				}
+				else break;
 			case LunTypesPackage.LCLASS:
 				if(context == grammarAccess.getClassRule() ||
 				   context == grammarAccess.getTypeRule()) {
@@ -99,6 +108,12 @@ public abstract class AbstractDatatypeGrammarSemanticSequencer extends CommonGra
 			case LunTypesPackage.LCOMMON_MODEL:
 				if(context == grammarAccess.getLCommonModelRule()) {
 					sequence_LCommonModel(context, (LCommonModel) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LCONSTRAINTS:
+				if(context == grammarAccess.getConstraintsRule()) {
+					sequence_Constraints(context, (LConstraints) semanticObject); 
 					return; 
 				}
 				else break;

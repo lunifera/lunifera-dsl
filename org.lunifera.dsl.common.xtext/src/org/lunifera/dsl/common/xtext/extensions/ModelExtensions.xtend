@@ -19,14 +19,16 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.helper.Bounds
+import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LDataType
+import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.common.types.LPackage
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LType
-import org.lunifera.dsl.semantic.common.types.LAnnotationTarget
+import org.lunifera.dsl.semantic.common.types.LTypedPackage
 
 class ModelExtensions {
 
@@ -68,7 +70,7 @@ class ModelExtensions {
 			return type.jvmTypeReference.cloneWithProxies
 		}
 	}
-	
+
 	def boolean isBool(LDataType type) {
 		if (type.asPrimitive) {
 			val fqn = type?.jvmTypeReference?.type?.fullyQualifiedName
@@ -79,46 +81,85 @@ class ModelExtensions {
 		}
 		return false
 	}
-	
-	
+
 	def boolean isPrimitive(LDataType type) {
 		return type.asPrimitive;
 	}
 	
+	def boolean isBasedOnDatatype(LFeature feature){
+		if(feature instanceof LAttribute){
+			return feature.type instanceof LDataType
+		}
+		return false
+	}
+	
+	def LDataType getDatatype(LFeature feature){
+		if(feature instanceof LAttribute){
+			if(feature.type instanceof LDataType) {
+				return feature.type as LDataType
+			}
+		}
+		return null
+	}
+
 	def JvmTypeReference toSyntheticTypeReference(LDataType type) {
 	}
 
-	def dispatch JvmTypeReference toTypeReference(LAttribute prop) {
-		return prop.type?.toTypeReference
+	/**
+	 * Returns true if jvm type proxies should be avoided for special datatypes like date or blob
+	 */
+	def boolean isAvoidJvmTypeProxiesForDatatype(LAttribute prop) {
+		if (prop.type instanceof LDataType) {
+//			val LDataType lDt = prop.type as LDataType
+//			return lDt.asBlob || lDt.date
+			return true
+		}
+		return false
 	}
-	
+
+	/**
+	 * Creates a jvmTypeReference based on the datatype.
+	 */
+	def JvmTypeReference toDataTypeTypeReference(LAttribute prop) {
+		val LDataType lDt = prop.type as LDataType
+		return lDt.toTypeReference
+	}
+
+	def dispatch JvmTypeReference toTypeReference(LAttribute prop) {
+		if (isAvoidJvmTypeProxiesForDatatype(prop)) {
+			return prop.toDataTypeTypeReference
+		}
+		// use the jvm type proxy
+		return prop.typeJvm.cloneWithProxies
+	}
+
 	/**
 	 * Create a type reference with respect to many multiplicity
 	 */
-	def dispatch JvmTypeReference toTypeReferenceWithMultiplicity(LAnnotationTarget context){
+	def dispatch JvmTypeReference toTypeReferenceWithMultiplicity(LAnnotationTarget context) {
 		var typeRef = context.toTypeReference
-		if(typeRef != null && context.bounds.toMany){
+		if (typeRef != null && context.bounds.toMany) {
 			typeRef = context.toListTypeReference(typeRef)
 		}
 		return typeRef
 	}
-	
-	def toListTypeReference(EObject context, JvmTypeReference jvmTypeRef){
+
+	def toListTypeReference(EObject context, JvmTypeReference jvmTypeRef) {
 		newTypeRef(context, typeof(List), jvmTypeRef);
 	}
-	
+
 	def dispatch Bounds getBounds(LFeature prop) {
 		Bounds::createFor(prop)
 	}
-	
+
 	def dispatch Bounds getBounds(LAnnotationTarget context) {
 		Bounds::createZeroToOne
 	}
-	
+
 	def dispatch Bounds getBounds(Void context) {
 		Bounds::createZeroToOne
 	}
-	
+
 	def isToMany(LFeature prop) {
 		prop.bounds.toMany
 	}
@@ -132,9 +173,17 @@ class ModelExtensions {
 	}
 
 	def typeIsBoolean(LFeature prop) {
-		val typeRef = prop.toTypeReference
+		val LDataType dt = prop.datatype
+		if(dt==null){
+			return false
+		}
+		val typeRef = dt.jvmTypeReference
 		return typeRef != null && !typeRef.eIsProxy() && typeRef.getType() != null && !typeRef.getType().eIsProxy() &&
 			"boolean".equals(typeRef.getType().getIdentifier())
+	}
+	
+	def typeIsEnum(LAttribute prop) {
+		return prop.type instanceof LEnum
 	}
 
 	/**
@@ -171,15 +220,15 @@ class ModelExtensions {
 		}
 		return clazz.name.replace("^", "")
 	}
-	 
+
 	def dispatch String toName(LType clazz) {
 		if (clazz == null || clazz.name == null) {
 			return ""
 		}
 		return clazz.name.replace("^", "")
 	}
-	
-	def toQualifiedName(LType type){
+
+	def toQualifiedName(LType type) {
 		val LPackage pkg = type.getPackage
 		return pkg.name + "." + type.name
 	}
@@ -195,5 +244,13 @@ class ModelExtensions {
 	 */
 	def static String operator_plus(String a, String b) {
 		return a.concat(b);
+	}
+
+	def String toDtoPackageName(LTypedPackage pkg) {
+		if (pkg.name.contains("entities")) {
+			return pkg.name.replace("entities", "dtos")
+		} else {
+			return pkg.name + ".dtos"
+		}
 	}
 }

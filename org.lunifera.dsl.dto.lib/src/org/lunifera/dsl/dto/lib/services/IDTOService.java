@@ -53,9 +53,8 @@ public interface IDTOService<A> extends IService {
 	 * Updates the given DTO.
 	 * 
 	 * @param dto
-	 * @return a new instance of dto for the persisted entity.
 	 */
-	A update(A dto);
+	void update(A dto);
 
 	/**
 	 * Deletes the given DTO.

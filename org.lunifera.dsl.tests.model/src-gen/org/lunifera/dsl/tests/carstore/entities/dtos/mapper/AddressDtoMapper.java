@@ -1,6 +1,5 @@
 package org.lunifera.dsl.tests.carstore.entities.dtos.mapper;
 
-import org.lunifera.dsl.dto.lib.Context;
 import org.lunifera.dsl.dto.lib.IMapper;
 import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.tests.carstore.entities.Address;
@@ -46,16 +45,37 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
   }
   
   /**
+   * Creates a new instance of the entity
+   */
+  public Address createEntity() {
+    return new Address();
+  }
+  
+  /**
+   * Creates a new instance of the dto
+   */
+  public AddressDto createDto() {
+    return new AddressDto();
+  }
+  
+  /**
    * Maps the entity {@link Address} to the dto {@link AddressDto}.
    * 
    * @param dto - The target dto
    * @param entity - The source entity
+   * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToDTO(final AddressDto dto, final Address entity) {
+  public void mapToDTO(final AddressDto dto, final Address entity, final org.lunifera.dsl.dto.lib.Context context) {
+    if(context == null){
+    	throw new IllegalArgumentException("Please pass a context!");
+    }
     
-    dto.setStreetname(toDto_streetname(entity));
-    dto.setPostalcode(toDto_postalcode(entity));
+    context.register(entity, dto);
+    
+    
+    dto.setStreetname(toDto_streetname(entity, context));
+    dto.setPostalcode(toDto_postalcode(entity, context));
   }
   
   /**
@@ -63,13 +83,20 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
    * 
    * @param dto - The source dto
    * @param entity - The target entity
+   * @param context - The context to get information about depth,...
    * 
    */
-  public void mapToEntity(final AddressDto dto, final Address entity) {
+  public void mapToEntity(final AddressDto dto, final Address entity, final org.lunifera.dsl.dto.lib.Context context) {
+    if(context == null){
+    	throw new IllegalArgumentException("Please pass a context!");
+    }
     
-    entity.setStreetname(toEntity_streetname(dto));
+    context.register(entity, dto);
     
-    entity.setPostalcode(toEntity_postalcode(dto));
+    
+    entity.setStreetname(toEntity_streetname(dto, context));
+    
+    entity.setPostalcode(toEntity_postalcode(dto, context));
     
   }
   
@@ -77,10 +104,11 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
    * Maps the property streetname from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toDto_streetname(final Address in) {
+  protected Object toDto_streetname(final Address in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getStreetname();
   }
   
@@ -88,10 +116,11 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
    * Maps the property streetname from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toEntity_streetname(final AddressDto in) {
+  protected Object toEntity_streetname(final AddressDto in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getStreetname();
   }
   
@@ -99,10 +128,11 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
    * Maps the property postalcode from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toDto_postalcode(final Address in) {
+  protected Object toDto_postalcode(final Address in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getPostalcode();
   }
   
@@ -110,46 +140,11 @@ public class AddressDtoMapper<DTO extends AddressDto, ENTITY extends Address> im
    * Maps the property postalcode from the given entity to dto property.
    * 
    * @param in - The source entity
+   * @param context - The context to get information about depth,...
    * @return the mapped value
    * 
    */
-  protected String toEntity_postalcode(final AddressDto in) {
+  protected Object toEntity_postalcode(final AddressDto in, final org.lunifera.dsl.dto.lib.Context context) {
     return in.getPostalcode();
-  }
-  
-  public AddressDtoMapper createDto() {
-    return new AddressDto();
-  }
-  
-  public AddressDtoMapper copy(final AddressDtoMapper dto, final Context context) {
-    this.context = context;
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    AddressDto newDto = createDto();
-    context.register(dto, newDto);
-    
-    copyContainments(dto, newDto);
-    copyCrossReferences(dto, newDto);
-    
-    return newDto;
-  }
-  
-  public void copyContainments(final AddressDtoMapper dto, final AddressDtoMapper newDto, final Context context) {
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    super.copyContainments(dto, newDto, context);
-    
-  }
-  
-  public void copyCrossReferences(final AddressDtoMapper dto, final AddressDtoMapper newDto, final org.lunifera.dsl.dto.lib.Context context) {
-    if (context == null) {
-    	throw new IllegalArgumentException("Context must not be null!");
-    }
-    
-    super.copyCrossReferences(dto, newDto, context);
   }
 }
