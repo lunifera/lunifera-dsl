@@ -48,21 +48,21 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	@Inject extension AnnotationExtension
 
 	def protected dispatch void internalProcessAnnotation(LDto dto, JvmGenericType jvmType) {
-		dto.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+		dto.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoReference prop, JvmGenericType jvmType) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoReference prop, JvmField field) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
 
 		field.annotations += prop.toAnnotation(typeof(DomainReference))
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoAttribute prop, JvmField field) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
 
 		if (prop.domainKey) {
 			field.annotations += prop.toAnnotation(typeof(DomainKey))
@@ -74,7 +74,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoInheritedAttribute prop, JvmField field) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
 
 		if (prop.inheritedFeature.domainKey) {
 			field.annotations += prop.toAnnotation(typeof(DomainKey))
@@ -86,7 +86,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoInheritedReference prop, JvmField field) {
-		prop.annotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
+		prop.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(field);
 
 		field.annotations += prop.toAnnotation(typeof(DomainReference))
 
