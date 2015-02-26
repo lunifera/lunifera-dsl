@@ -1,0 +1,9 @@
+package org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.*;
+	import org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.dtos.*; 
+	
+	dtoservice OtherEntityService provides OtherDto {
+	}
+}

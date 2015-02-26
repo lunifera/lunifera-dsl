@@ -27,10 +27,9 @@ import org.eclipse.emf.ecore.EObject
 import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.xtype.XImportSection
-
+ 
 class LCommonModel extends LLazyResolver {
 	contains LTypedPackage[] packages
-	
 }
 
 class LLazyResolver {

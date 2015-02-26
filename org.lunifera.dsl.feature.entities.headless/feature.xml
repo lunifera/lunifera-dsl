@@ -2,7 +2,7 @@
 <feature
       id="org.lunifera.dsl.feature.entities.headless"
       label="%featureName"
-      version="0.8.1.qualifier"
+      version="0.9.1.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -18,7 +18,7 @@
    </license>
 
    <requires>
-      <import feature="org.lunifera.dsl.feature.common.headless" version="0.0.0"/>
+      <import feature="org.lunifera.dsl.feature.common.headless" version="0.9.0"/>
    </requires>
 
    <plugin

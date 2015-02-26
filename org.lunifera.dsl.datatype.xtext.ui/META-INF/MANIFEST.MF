@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.dsl.datatype.xtext.ui
 Bundle-Vendor: My Company
-Bundle-Version: 0.8.1.qualifier
+Bundle-Version: 0.9.1.qualifier
 Bundle-SymbolicName: org.lunifera.dsl.datatype.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.7.3,2.8.0)",
@@ -16,24 +16,24 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.7.3,2.8.0)",
  org.antlr.runtime,
  org.eclipse.xtext.common.types.ui;bundle-version="[2.7.3,2.8.0)",
  org.eclipse.xtext.ui.codetemplates.ui;bundle-version="[2.7.3,2.8.0)",
- org.lunifera.dsl.semantic.common;bundle-version="[0.8.0,0.9.0)",
- org.lunifera.dsl.datatype.xtext;bundle-version="[0.8.0,0.9.0)";visibility:=reexport,
- org.lunifera.dsl.common.xtext;bundle-version="[0.8.0,0.9.0)",
- org.lunifera.dsl.common.xtext.ui;bundle-version="[0.8.0,0.9.0)",
+ org.lunifera.dsl.semantic.common;bundle-version="[0.9.0,0.10.0)",
+ org.lunifera.dsl.datatype.xtext;bundle-version="[0.9.0,0.10.0)";visibility:=reexport,
+ org.lunifera.dsl.common.xtext;bundle-version="[0.9.0,0.10.0)",
+ org.lunifera.dsl.common.xtext.ui;bundle-version="[0.9.0,0.10.0)",
  org.eclipse.jdt.debug.ui
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.lunifera.dsl.datatype.xtext.ui.contentassist;version="0.8.1";
+Export-Package: org.lunifera.dsl.datatype.xtext.ui.contentassist;version="0.9.1";
   uses:="org.eclipse.xtext,
    org.lunifera.dsl.common.xtext.ui.contentassist,
    org.eclipse.emf.ecore,
    org.eclipse.xtext.ui.editor.contentassist",
- org.lunifera.dsl.datatype.xtext.ui.contentassist.antlr;version="0.8.1";
+ org.lunifera.dsl.datatype.xtext.ui.contentassist.antlr;version="0.9.1";
   uses:="org.eclipse.xtext,
    org.lunifera.dsl.datatype.xtext.services,
    org.eclipse.xtext.ui.editor.contentassist.antlr.internal,
    org.eclipse.xtext.ui.codetemplates.ui.partialEditing,
    org.eclipse.xtext.ui.editor.contentassist.antlr,
    org.lunifera.dsl.datatype.xtext.ui.contentassist.antlr.internal",
- org.lunifera.dsl.datatype.xtext.ui.quickfix;version="0.8.1";uses:="org.lunifera.dsl.common.xtext.ui.quickfix"
+ org.lunifera.dsl.datatype.xtext.ui.quickfix;version="0.9.1";uses:="org.lunifera.dsl.common.xtext.ui.quickfix"
 Bundle-Activator: org.lunifera.dsl.datatype.xtext.ui.internal.DatatypeGrammarActivator

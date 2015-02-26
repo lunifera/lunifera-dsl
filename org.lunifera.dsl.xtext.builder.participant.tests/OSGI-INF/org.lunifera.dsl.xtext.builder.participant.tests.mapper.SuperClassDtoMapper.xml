@@ -4,7 +4,7 @@
        <service>
 		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
 	   </service>
-       <property name="dto" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.SuperClassDto"/>
+		<property name="dto" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.SuperClassDto"/>
        <property name="entity" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.SuperClass"/>
        <property name="service.pid" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.mapper.superclassdtomapper"/>
        <reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
