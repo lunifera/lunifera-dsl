@@ -15,9 +15,9 @@
 package org.lunifera.entitydsl.samples.sample03.dtos {
 	
 	/* Imports the required artifacts */
-	import org.lunifera.entitydsl.samples.sample03.Worker;
-	import org.lunifera.entitydsl.samples.sample03.dtos.WorkerDto;
-
+	import org.lunifera.entitydsl.samples.sample03.*;
+	import org.lunifera.entitydsl.samples.sample03.dtos.*;
+	import org.lunifera.entitydsl.samples.sample03.dtos.mapper.*;
 
 	datatype wrapped_int jvmType java.lang.Integer;
 	datatype dat dateType date;

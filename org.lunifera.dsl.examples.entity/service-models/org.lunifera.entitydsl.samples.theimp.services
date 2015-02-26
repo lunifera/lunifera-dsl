@@ -1,9 +1,0 @@
-package org.lunifera.entitydsl.samples.theimp.dtos.services {
-	
-	/* Imports the original entity and dto package */
-	import org.lunifera.entitydsl.samples.theimp.dtos.*;
-	import org.lunifera.entitydsl.samples.theimp.dtos.dtos.*; 
-	
-	dtoservice BaseEntityService provides BaseEntityDto {
-	}
-}

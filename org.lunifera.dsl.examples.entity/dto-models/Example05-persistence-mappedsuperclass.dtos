@@ -10,12 +10,9 @@
 package org.lunifera.entitydsl.samples.sample05.dtos {
 	
 	/* Imports the required artifacts */
-	import org.lunifera.entitydsl.samples.sample05.Item;
-	import org.lunifera.entitydsl.samples.sample05.dtos.ItemDto;
-	import org.lunifera.entitydsl.samples.sample05.Article;
-	import org.lunifera.entitydsl.samples.sample05.dtos.ArticleDto;
-	import org.lunifera.entitydsl.samples.sample05.dtos.ItemDto;
-
+	import org.lunifera.entitydsl.samples.sample05.*;
+	import org.lunifera.entitydsl.samples.sample05.dtos.*;
+	import org.lunifera.entitydsl.samples.sample05.dtos.mapper.*;
 
 
 	autoDto ItemDto wraps Item {

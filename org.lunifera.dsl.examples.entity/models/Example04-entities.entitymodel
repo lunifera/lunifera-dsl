@@ -17,29 +17,26 @@
  * - extends: Entities can extend other entities, inheriting their properties and
  *   persistence settings.
  */
- 
+
 package org.lunifera.entitydsl.samples.example04 {
 
 	entity NormalEntity { 
 		uuid String id ;
 	}
-	
+
 	entity ExtendedEntity extends NormalEntity {
 		
 	}
-	
+
 	abstract entity AbstractEntity {
 		uuid String id;
 	}
-	
+
 	cacheable entity CacheableEntity {
 		uuid String id ;
 	}
-	
+
 	historized entity HistorizedEntity {
 		uuid String id ;
 	}
-	
-
-
 }

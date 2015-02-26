@@ -20,6 +20,6 @@ package org.lunifera.entitydsl.samples.sample01 {
 	}
 
 	enum MyEnum {
+		FOO, BAR
 	}
-	
 }

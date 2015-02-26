@@ -11,10 +11,10 @@ package org.lunifera.entitydsl.samples.theimporter.dtos {
 	
 	/* Imports the required artifacts */
 	import org.lunifera.entitydsl.samples.theimp.*;
-	import org.lunifera.entitydsl.samples.theimporter.Machine;
-	import org.lunifera.entitydsl.samples.theimporter.dtos.MachineDto;
-	import org.lunifera.entitydsl.samples.theimp.dtos.BaseEntityDto;
-
+	import org.lunifera.entitydsl.samples.theimp.dtos.*;
+	import org.lunifera.entitydsl.samples.theimporter.*;
+	import org.lunifera.entitydsl.samples.theimporter.dtos.*;
+	import org.lunifera.entitydsl.samples.theimporter.dtos.mapper.*;
 
 
 	autoDto MachineDto extends BaseEntityDto wraps Machine {

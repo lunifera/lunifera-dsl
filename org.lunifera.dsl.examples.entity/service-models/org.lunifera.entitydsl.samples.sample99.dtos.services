@@ -1,7 +1,0 @@
-package org.lunifera.entitydsl.samples.sample99.dtos.services {
-	
-	/* Imports the original entity and dto package */
-	import org.lunifera.entitydsl.samples.sample99.dtos.*;
-	import org.lunifera.entitydsl.samples.sample99.dtos.dtos.*; 
-	
-}

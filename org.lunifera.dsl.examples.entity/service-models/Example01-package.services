@@ -1,0 +1,9 @@
+package org.lunifera.entitydsl.samples.sample01.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.entitydsl.samples.sample01.dtos.*;
+	import org.lunifera.entitydsl.samples.sample01.dtos.dtos.*; 
+	
+	dtoservice FooService provides FooDto {
+	}
+}

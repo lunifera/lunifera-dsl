@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.entitydsl.samples.sample03.dtos.services.workerservice">
-       <implementation class="org.lunifera.entitydsl.samples.sample03.dtos.services.WorkerService"/>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.entitydsl.samples.sample01.dtos.services.fooservice">
+       <implementation class="org.lunifera.entitydsl.samples.sample01.dtos.services.FooService"/>
        <service>
        	<provide interface="org.lunifera.dsl.dto.lib.services.IDTOService"/>
        </service>
-       <property name="dto" type="String" value="org.lunifera.entitydsl.samples.sample03.dtos.WorkerDto"/>
-       <property name="service.pid" type="String" value="org.lunifera.entitydsl.samples.sample03.dtos.services.workerservice"/>
+       <property name="dto" type="String" value="org.lunifera.entitydsl.samples.sample01.dtos.FooDto"/>
+       <property name="service.pid" type="String" value="org.lunifera.entitydsl.samples.sample01.dtos.services.fooservice"/>
        <reference name="emf" interface="javax.persistence.EntityManagerFactory" cardinality="1..1" 
        		policy="dynamic" bind="bindEmf" unbind="unbindEmf" />
        <reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" cardinality="1..1" 

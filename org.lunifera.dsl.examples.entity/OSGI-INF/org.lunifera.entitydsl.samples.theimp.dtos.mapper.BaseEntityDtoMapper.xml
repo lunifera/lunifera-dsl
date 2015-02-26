@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.entitydsl.samples.theimp.dtos.mapper.baseentitydtomapper">
+       <implementation class="org.lunifera.entitydsl.samples.theimp.dtos.mapper.BaseEntityDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+		  </service>
+		  
+		<property name="fordto.from.entity" type="String" value="org.lunifera.entitydsl.samples.theimp.BaseEntity"/>
+		<property name="fordto.to.dto" type="String" value="org.lunifera.entitydsl.samples.theimp.dtos.BaseEntityDto"/>
+
+		<property name="forentity.from.dto" type="String" value="org.lunifera.entitydsl.samples.theimp.dtos.BaseEntityDto"/>
+		<property name="forentity.to.entity" type="String" value="org.lunifera.entitydsl.samples.theimp.BaseEntity"/>
+		
+		<property name="service.pid" type="String" value="org.lunifera.entitydsl.samples.theimp.dtos.mapper.baseentitydtomapper"/>
+		<reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+				cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

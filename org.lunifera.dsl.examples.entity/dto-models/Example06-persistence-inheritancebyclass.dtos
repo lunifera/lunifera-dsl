@@ -18,15 +18,9 @@
 package org.lunifera.entitydsl.samples.sample06.dtos {
 	
 	/* Imports the required artifacts */
-	import org.lunifera.entitydsl.samples.sample06.Vehicle;
-	import org.lunifera.entitydsl.samples.sample06.dtos.VehicleDto;
-	import org.lunifera.entitydsl.samples.sample06.Bike;
-	import org.lunifera.entitydsl.samples.sample06.dtos.BikeDto;
-	import org.lunifera.entitydsl.samples.sample06.dtos.VehicleDto;
-	import org.lunifera.entitydsl.samples.sample06.Boat;
-	import org.lunifera.entitydsl.samples.sample06.dtos.BoatDto;
-	import org.lunifera.entitydsl.samples.sample06.dtos.VehicleDto;
-
+	import org.lunifera.entitydsl.samples.sample06.*;
+	import org.lunifera.entitydsl.samples.sample06.dtos.*;
+	import org.lunifera.entitydsl.samples.sample06.dtos.mapper.*;
 
 
 	autoDto VehicleDto wraps Vehicle {

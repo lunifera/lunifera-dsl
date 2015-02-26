@@ -8,9 +8,9 @@
 package org.lunifera.entitydsl.samples.theimp.dtos {
 	
 	/* Imports the required artifacts */
-	import org.lunifera.entitydsl.samples.theimp.BaseEntity;
-	import org.lunifera.entitydsl.samples.theimp.dtos.BaseEntityDto;
-
+	import org.lunifera.entitydsl.samples.theimp.*;
+	import org.lunifera.entitydsl.samples.theimp.dtos.*;
+	import org.lunifera.entitydsl.samples.theimp.dtos.mapper.*;
 
 	datatype String jvmType java.lang.String;
 

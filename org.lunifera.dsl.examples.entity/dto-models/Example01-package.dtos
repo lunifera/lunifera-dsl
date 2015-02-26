@@ -1,0 +1,29 @@
+/**
+ * A minimal example for the Lunifera Entity DSL:
+ * 
+ * The package is the topmost element that contains the other elements such as entities,
+ * beans and enums. Inside a package, import statements an datatype declarations can be placed.
+ * 
+ * Here, the datatype String is declared since it is needed for the UUID property of entity Foo
+ * (Entities are supposed to have an ID property; the preferable implementation is UUID).
+ */
+package org.lunifera.entitydsl.samples.sample01.dtos {
+	
+	/* Imports the required artifacts */
+	import org.lunifera.entitydsl.samples.sample01.*;
+	import org.lunifera.entitydsl.samples.sample01.dtos.*;
+	import org.lunifera.entitydsl.samples.sample01.dtos.mapper.*;
+
+
+	autoDto FooDto wraps Foo {
+		inherit var id;
+	}
+	
+	autoDto BarDto wraps Bar {
+	}
+	
+	enum MyEnum {
+		FOO, BAR
+	}
+	
+}
