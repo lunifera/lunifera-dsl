@@ -235,11 +235,13 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 					Object affectedDto = entityMappingContext
 							.getMappingRoot(HashUtil.createObjectWithIdHash(
 									obj.getClass(), obj));
-					// access with dto hash
-					removeFromDirtyState(
-							HashUtil.createObjectWithIdHash(
-									affectedDto.getClass(), affectedDto),
-							sharedState);
+					if (affectedDto != null) { // null for embeddable beans
+						// access with dto hash
+						removeFromDirtyState(
+								HashUtil.createObjectWithIdHash(
+										affectedDto.getClass(), affectedDto),
+								affectedDto, sharedState);
+					}
 				}
 			}
 			entityTxnObserver.dispose();
@@ -251,11 +253,12 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	 * Removes the dto with the given key from the dirty state cache.
 	 * 
 	 * @param dtoKey
+	 * @param affectedDto
 	 * @param sharedState
 	 */
-	private void removeFromDirtyState(Object dtoKey,
+	private void removeFromDirtyState(Object dtoKey, Object affectedDto,
 			ISharedStateContext sharedState) {
-		sharedState.getDirtyState().invalidate(dtoKey);
+		sharedState.makeUndirty(dtoKey, affectedDto);
 	}
 
 	/**

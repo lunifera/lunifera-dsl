@@ -324,18 +324,22 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			} else if (propertyName != null) {
 				"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
 					concat(" property").concat(
-						(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
+						(if(!prop.toRawType.isBean && !prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
 			}
 
 			setBody(op,
 				[ // ITreeAppendable it |
 					if(it == null) return
 					val p = it.trace(prop);
-					p >> prop.toCheckDisposedCall()
 					if (prop.toMany) {
 						p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
 							"(" + prop.toCollectionInternalGetterName + "());"
 					} else {
+						if(prop.toRawType.isBean) {
+							p >> "if(this." + propertyName + "== null)" >>> "{"
+							p >> "this." + propertyName + " = new " + prop.toRawType.toDTOBeanSimpleName + "();"
+							p <<< "}"
+						}
 						p >> "return this." + propertyName + ";"
 					}
 				])
@@ -355,18 +359,22 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 		} else if (propertyName != null) {
 			"Returns the ".concat((if(prop.bounds.required) "<em>required</em> " else "")).concat(propertyName).
 				concat(" property").concat(
-					(if(!prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
+					(if(!prop.toRawType.isBean && !prop.bounds.required) " or <code>null</code> if not present" else "")).concat(".")
 		}
 
 		setBody(op,
 			[ // ITreeAppendable it |
 				if(it == null) return
 				val p = it.trace(prop);
-				p >> prop.toCheckDisposedCall()
 				if (prop.toMany) {
 					p >> "return " >> newTypeRef(prop, typeof(Collections)) >> ".unmodifiableList" >>
 						"(" + prop.toCollectionInternalGetterName + "());"
 				} else {
+					if(prop.toRawType.isBean) {
+						p >> "if(this." + propertyName + "== null)" >>> "{"
+						p >> "this." + propertyName + " = new " + prop.toRawType.toDTOBeanSimpleName + "();"
+						p <<< "}"
+					}
 					p >> "return this." + propertyName + ";"
 				}
 			])
