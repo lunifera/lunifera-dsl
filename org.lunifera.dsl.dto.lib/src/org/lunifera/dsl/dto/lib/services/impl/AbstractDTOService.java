@@ -250,6 +250,41 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	}
 
 	/**
+	 * {@inherit doc}
+	 */
+	public DTO reload(final DTO dto) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction txn = em.getTransaction();
+
+		// find the entity
+		boolean reloaded = false;
+		try {
+			ENTITY entity = em.find(getEntityClass(), getId(dto));
+			if (entity != null) {
+				MappingContext dtoMappingContext = new MappingContext(true);
+				dtoMappingContext.setRefresh(true);
+				dtoMappingContext.increaseLevel();
+				
+				// entity available -> Map to the given DTO
+				IMapper<DTO, ENTITY> mapper = findToDtoMapper(getDtoClass(),
+						(Class<ENTITY>) entity.getClass());
+				dtoMappingContext.registerRefreshed(mapper.createDtoHash(dto), dto);
+				mapper.mapToDTO(dto, entity, dtoMappingContext);
+				
+				// flush the changes to the shared state
+				dtoMappingContext.decreaseLevel();
+				dtoMappingContext.flush();
+				
+				reloaded = true;
+			}
+		} finally {
+			em.close();
+		}
+
+		return reloaded ? null : createDto();
+	}
+
+	/**
 	 * Removes the dto with the given key from the dirty state cache.
 	 * 
 	 * @param dtoKey

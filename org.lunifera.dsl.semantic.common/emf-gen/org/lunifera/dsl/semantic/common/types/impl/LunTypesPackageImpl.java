@@ -345,8 +345,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 
 		// Initialize simple dependencies
 		XbasePackage.eINSTANCE.eClass();
-		XAnnotationsPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
+		XAnnotationsPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theLunTypesPackage.createPackageContents();
@@ -908,7 +908,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLAttribute_DomainKey() {
+	public EAttribute getLAttribute_Dirty() {
 		return (EAttribute)lAttributeEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -917,7 +917,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLAttribute_DomainDescription() {
+	public EAttribute getLAttribute_DomainKey() {
 		return (EAttribute)lAttributeEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -926,8 +926,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLAttribute_DerivedGetterExpression() {
-		return (EReference)lAttributeEClass.getEStructuralFeatures().get(9);
+	public EAttribute getLAttribute_DomainDescription() {
+		return (EAttribute)lAttributeEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -935,7 +935,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLAttribute_Type() {
+	public EReference getLAttribute_DerivedGetterExpression() {
 		return (EReference)lAttributeEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -944,8 +944,17 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLAttribute_TypeJvm() {
+	public EReference getLAttribute_Type() {
 		return (EReference)lAttributeEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLAttribute_TypeJvm() {
+		return (EReference)lAttributeEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1331,6 +1340,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		createEAttribute(lAttributeEClass, LATTRIBUTE__CASCADING);
 		createEAttribute(lAttributeEClass, LATTRIBUTE__TRANSIENT);
 		createEAttribute(lAttributeEClass, LATTRIBUTE__DERIVED);
+		createEAttribute(lAttributeEClass, LATTRIBUTE__DIRTY);
 		createEAttribute(lAttributeEClass, LATTRIBUTE__DOMAIN_KEY);
 		createEAttribute(lAttributeEClass, LATTRIBUTE__DOMAIN_DESCRIPTION);
 		createEReference(lAttributeEClass, LATTRIBUTE__DERIVED_GETTER_EXPRESSION);
@@ -1517,6 +1527,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEAttribute(getLAttribute_Cascading(), theEcorePackage.getEBoolean(), "cascading", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLAttribute_Transient(), theEcorePackage.getEBoolean(), "transient", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLAttribute_Derived(), theEcorePackage.getEBoolean(), "derived", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLAttribute_Dirty(), theEcorePackage.getEBoolean(), "dirty", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLAttribute_DomainKey(), theEcorePackage.getEBoolean(), "domainKey", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLAttribute_DomainDescription(), theEcorePackage.getEBoolean(), "domainDescription", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLAttribute_DerivedGetterExpression(), theXbasePackage.getXExpression(), null, "derivedGetterExpression", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

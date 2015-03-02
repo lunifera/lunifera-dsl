@@ -26,6 +26,18 @@ public interface IDTOService<A> extends IService {
 	A get(Object id);
 
 	/**
+	 * Reloads the given dto and sets the refreshed values to the given
+	 * instance.<br>
+	 * If the data basis for the dto is not available anymore. For instance the
+	 * entity was deleted, then a new DTO will be returned. Otherwise
+	 * <code>null</code> will be returned.
+	 * 
+	 * @param dto
+	 * @return A
+	 */
+	A reload(A dto);
+
+	/**
 	 * Returns a collection of dtos matching the filter in the query. <br>
 	 * The maximum amount of contained elements is limited by
 	 * {@link #PROP_MAX_COLLECTION_CONTENT}.

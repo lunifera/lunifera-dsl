@@ -1296,13 +1296,22 @@ public interface LunTypesPackage extends EPackage {
 	int LATTRIBUTE__DERIVED = LFEATURE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Dirty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE__DIRTY = LFEATURE_FEATURE_COUNT + 7;
+
+	/**
 	 * The feature id for the '<em><b>Domain Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__DOMAIN_KEY = LFEATURE_FEATURE_COUNT + 7;
+	int LATTRIBUTE__DOMAIN_KEY = LFEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Domain Description</b></em>' attribute.
@@ -1311,7 +1320,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__DOMAIN_DESCRIPTION = LFEATURE_FEATURE_COUNT + 8;
+	int LATTRIBUTE__DOMAIN_DESCRIPTION = LFEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
@@ -1320,7 +1329,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__DERIVED_GETTER_EXPRESSION = LFEATURE_FEATURE_COUNT + 9;
+	int LATTRIBUTE__DERIVED_GETTER_EXPRESSION = LFEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1329,7 +1338,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 10;
+	int LATTRIBUTE__TYPE = LFEATURE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
@@ -1338,7 +1347,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE__TYPE_JVM = LFEATURE_FEATURE_COUNT + 11;
+	int LATTRIBUTE__TYPE_JVM = LFEATURE_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>LAttribute</em>' class.
@@ -1347,7 +1356,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 12;
+	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -2471,6 +2480,17 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLAttribute_Derived();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDirty <em>Dirty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Dirty</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#isDirty()
+	 * @see #getLAttribute()
+	 * @generated
+	 */
+	EAttribute getLAttribute_Dirty();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainKey <em>Domain Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3390,6 +3410,14 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LATTRIBUTE__DERIVED = eINSTANCE.getLAttribute_Derived();
+
+		/**
+		 * The meta object literal for the '<em><b>Dirty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LATTRIBUTE__DIRTY = eINSTANCE.getLAttribute_Dirty();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Key</b></em>' attribute feature.

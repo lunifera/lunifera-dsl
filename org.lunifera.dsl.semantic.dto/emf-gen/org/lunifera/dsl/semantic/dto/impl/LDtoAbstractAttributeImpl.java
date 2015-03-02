@@ -46,6 +46,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isDirty <em>Dirty</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isDomainKey <em>Domain Key</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
@@ -196,6 +197,26 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * @ordered
 	 */
 	protected boolean derived = DERIVED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDirty() <em>Dirty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDirty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DIRTY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDirty() <em>Dirty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDirty()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean dirty = DIRTY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isDomainKey() <em>Domain Key</em>}' attribute.
@@ -438,6 +459,27 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDirty() {
+		return dirty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDirty(boolean newDirty) {
+		boolean oldDirty = dirty;
+		dirty = newDirty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DIRTY, oldDirty, dirty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isDomainKey() {
 		return domainKey;
 	}
@@ -637,6 +679,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return isTransient();
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED:
 				return isDerived();
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DIRTY:
+				return isDirty();
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY:
 				return isDomainKey();
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION:
@@ -680,6 +724,9 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED:
 				setDerived((Boolean)newValue);
+				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DIRTY:
+				setDirty((Boolean)newValue);
 				return;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY:
 				setDomainKey((Boolean)newValue);
@@ -729,6 +776,9 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED:
 				setDerived(DERIVED_EDEFAULT);
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DIRTY:
+				setDirty(DIRTY_EDEFAULT);
+				return;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY:
 				setDomainKey(DOMAIN_KEY_EDEFAULT);
 				return;
@@ -770,6 +820,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return transient_ != TRANSIENT_EDEFAULT;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED:
 				return derived != DERIVED_EDEFAULT;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DIRTY:
+				return dirty != DIRTY_EDEFAULT;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY:
 				return domainKey != DOMAIN_KEY_EDEFAULT;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION:
@@ -800,6 +852,7 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CASCADING: return LunTypesPackage.LATTRIBUTE__CASCADING;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TRANSIENT: return LunTypesPackage.LATTRIBUTE__TRANSIENT;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED: return LunTypesPackage.LATTRIBUTE__DERIVED;
+				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DIRTY: return LunTypesPackage.LATTRIBUTE__DIRTY;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY: return LunTypesPackage.LATTRIBUTE__DOMAIN_KEY;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION: return LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
@@ -827,6 +880,7 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				case LunTypesPackage.LATTRIBUTE__CASCADING: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CASCADING;
 				case LunTypesPackage.LATTRIBUTE__TRANSIENT: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TRANSIENT;
 				case LunTypesPackage.LATTRIBUTE__DERIVED: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED;
+				case LunTypesPackage.LATTRIBUTE__DIRTY: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DIRTY;
 				case LunTypesPackage.LATTRIBUTE__DOMAIN_KEY: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_KEY;
 				case LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
@@ -862,6 +916,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 		result.append(transient_);
 		result.append(", derived: ");
 		result.append(derived);
+		result.append(", dirty: ");
+		result.append(dirty);
 		result.append(", domainKey: ");
 		result.append(domainKey);
 		result.append(", domainDescription: ");

@@ -11,7 +11,6 @@
 package org.lunifera.dsl.dto.xtext.jvmmodel
 
 import com.google.inject.Inject
-import java.beans.Transient
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
@@ -36,6 +35,7 @@ import org.lunifera.runtime.common.annotations.DomainReference
 import org.lunifera.runtime.common.annotations.TargetEnumConstraint
 import org.lunifera.runtime.common.annotations.TargetEnumConstraints
 import org.lunifera.runtime.common.annotations.Dispose
+import org.lunifera.runtime.common.annotations.Dirty
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -71,6 +71,11 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if (prop.domainDescription) {
 			field.annotations += prop.toAnnotation(typeof(DomainDescription))
 		}
+		
+		if(prop.dirty){
+			field.annotations += prop.toAnnotation(typeof(Dirty))
+		}
+	
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoInheritedAttribute prop, JvmField field) {

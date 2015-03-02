@@ -63,6 +63,9 @@ public class DtoGrammarJavaValidator extends
 	private static final String CODE__DOMAIN_DESCRIPTION__NO_MANY = "116";
 	private static final String CODE__DOMAIN_KEY__TYPE = "117";
 	private static final String CODE__DOMAIN_DESCRIPTION__TYPE = "118";
+	private static final String CODE__DUPLICATE_DIRTY = "119";
+	private static final String CODE__DIRT__NO_MANY = "120";
+	private static final String CODE__DIRT__TYPE = "121";
 
 	@Inject
 	private IQualifiedNameProvider qnp;
@@ -231,6 +234,25 @@ public class DtoGrammarJavaValidator extends
 				}
 			}
 		}
+
+		if (prop.isDirty()) {
+			if (extensions.isToMany(prop)) {
+				error("Dirty is not valid for one to many relations.",
+						LunTypesPackage.Literals.LATTRIBUTE__DIRTY,
+						CODE__DIRT__NO_MANY, new String[0]);
+
+			}
+			if (prop.getType() instanceof LDataType) {
+				LDataType type = (LDataType) prop.getType();
+				String typename = type.getJvmTypeReference().getQualifiedName();
+				if (!typename.equals("java.lang.Boolean")
+						&& !typename.equals(Boolean.TYPE.getName())) {
+					error("Dirty is not for the datatype. Only boolean valid.",
+							LunTypesPackage.Literals.LATTRIBUTE__DIRTY,
+							CODE__DIRT__TYPE, new String[0]);
+				}
+			}
+		}
 	}
 
 	@Check(CheckType.NORMAL)
@@ -240,6 +262,7 @@ public class DtoGrammarJavaValidator extends
 		int versionCounter = 0;
 		int domainKeyCounter = 0;
 		int domainDescriptionCounter = 0;
+		int dirtyCounter = 0;
 		Map<String, Integer> attNames = new HashMap<String, Integer>();
 		for (LFeature feature : dto.getAllFeatures()) {
 			if (feature instanceof LDtoAttribute) {
@@ -255,6 +278,9 @@ public class DtoGrammarJavaValidator extends
 				}
 				if (att.isDomainDescription()) {
 					domainDescriptionCounter++;
+				}
+				if (att.isDirty()) {
+					dirtyCounter++;
 				}
 			}
 
@@ -324,6 +350,23 @@ public class DtoGrammarJavaValidator extends
 						break;
 					}
 				}
+				i++;
+			}
+		}
+
+		if (dirtyCounter > 1) {
+			int i = 0;
+			for (LDtoFeature feature : dto.getFeatures()) {
+				if (feature instanceof LDtoAttribute) {
+					if (((LDtoAttribute) feature).isId()
+							|| ((LDtoAttribute) feature).isUuid()) {
+						error("A DTO must only have one dirty property.",
+								LunDtoPackage.Literals.LDTO__FEATURES, i,
+								CODE__DUPLICATE_DIRTY, new String[0]);
+						break;
+					}
+				}
+
 				i++;
 			}
 		}

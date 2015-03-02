@@ -49,6 +49,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDirty <em>Dirty</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDomainKey <em>Domain Key</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
@@ -201,6 +202,26 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * @ordered
 	 */
 	protected boolean derived = DERIVED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDirty() <em>Dirty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDirty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DIRTY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDirty() <em>Dirty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDirty()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean dirty = DIRTY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isDomainKey() <em>Domain Key</em>}' attribute.
@@ -456,6 +477,27 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 		derived = newDerived;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED, oldDerived, derived));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isDirty() {
+		return dirty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDirty(boolean newDirty) {
+		boolean oldDirty = dirty;
+		dirty = newDirty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_ATTRIBUTE__DIRTY, oldDirty, dirty));
 	}
 
 	/**
@@ -730,6 +772,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return isTransient();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
 				return isDerived();
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DIRTY:
+				return isDirty();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
 				return isDomainKey();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION:
@@ -778,6 +822,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
 				setDerived((Boolean)newValue);
+				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DIRTY:
+				setDirty((Boolean)newValue);
 				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
 				setDomainKey((Boolean)newValue);
@@ -830,6 +877,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
 				setDerived(DERIVED_EDEFAULT);
 				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DIRTY:
+				setDirty(DIRTY_EDEFAULT);
+				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
 				setDomainKey(DOMAIN_KEY_EDEFAULT);
 				return;
@@ -874,6 +924,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return transient_ != TRANSIENT_EDEFAULT;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
 				return derived != DERIVED_EDEFAULT;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DIRTY:
+				return dirty != DIRTY_EDEFAULT;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
 				return domainKey != DOMAIN_KEY_EDEFAULT;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION:
@@ -908,6 +960,7 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				case LunEntityPackage.LENTITY_ATTRIBUTE__CASCADING: return LunTypesPackage.LATTRIBUTE__CASCADING;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT: return LunTypesPackage.LATTRIBUTE__TRANSIENT;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED: return LunTypesPackage.LATTRIBUTE__DERIVED;
+				case LunEntityPackage.LENTITY_ATTRIBUTE__DIRTY: return LunTypesPackage.LATTRIBUTE__DIRTY;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY: return LunTypesPackage.LATTRIBUTE__DOMAIN_KEY;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION: return LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
@@ -935,6 +988,7 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				case LunTypesPackage.LATTRIBUTE__CASCADING: return LunEntityPackage.LENTITY_ATTRIBUTE__CASCADING;
 				case LunTypesPackage.LATTRIBUTE__TRANSIENT: return LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT;
 				case LunTypesPackage.LATTRIBUTE__DERIVED: return LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED;
+				case LunTypesPackage.LATTRIBUTE__DIRTY: return LunEntityPackage.LENTITY_ATTRIBUTE__DIRTY;
 				case LunTypesPackage.LATTRIBUTE__DOMAIN_KEY: return LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY;
 				case LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION: return LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
@@ -970,6 +1024,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 		result.append(transient_);
 		result.append(", derived: ");
 		result.append(derived);
+		result.append(", dirty: ");
+		result.append(dirty);
 		result.append(", domainKey: ");
 		result.append(domainKey);
 		result.append(", domainDescription: ");

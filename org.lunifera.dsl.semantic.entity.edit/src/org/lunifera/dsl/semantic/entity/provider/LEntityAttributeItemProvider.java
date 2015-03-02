@@ -74,6 +74,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			addCascadingPropertyDescriptor(object);
 			addTransientPropertyDescriptor(object);
 			addDerivedPropertyDescriptor(object);
+			addDirtyPropertyDescriptor(object);
 			addDomainKeyPropertyDescriptor(object);
 			addDomainDescriptionPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
@@ -229,6 +230,28 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 				 getString("_UI_LAttribute_derived_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_LAttribute_derived_feature", "_UI_LAttribute_type"),
 				 LunTypesPackage.Literals.LATTRIBUTE__DERIVED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Dirty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDirtyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LAttribute_dirty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LAttribute_dirty_feature", "_UI_LAttribute_type"),
+				 LunTypesPackage.Literals.LATTRIBUTE__DIRTY,
 				 true,
 				 false,
 				 false,
@@ -435,6 +458,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			case LunEntityPackage.LENTITY_ATTRIBUTE__CASCADING:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TRANSIENT:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED:
+			case LunEntityPackage.LENTITY_ATTRIBUTE__DIRTY:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_KEY:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPED_NAME:

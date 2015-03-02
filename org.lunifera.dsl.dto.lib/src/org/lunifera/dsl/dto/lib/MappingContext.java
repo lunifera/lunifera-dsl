@@ -26,13 +26,18 @@ import org.lunifera.runtime.common.state.ISharedStateContext;
  * the {@link ISharedStateContext}. The user needs to call {@link #flush()}.
  * Calls to {@link #flush()} during the mapping process has no effect, if the
  * current level is greater zero.
+ * <p>
+ * The option {@link #isRefresh} indicates, that existing objects should be
+ * remapped and their value beeing refreshed.
  */
 public class MappingContext {
 
 	private int level = 0;
 
+	private boolean isRefresh;
 	private Map<Object, Object> cache;
 	private Map<Object, Object> mappingRootCache;
+	private Map<Object, Object> refreshingCache;
 	private ISharedStateContext sharedState;
 	private IDataState dirtyAwareGlobalDataState;
 
@@ -59,6 +64,24 @@ public class MappingContext {
 
 	protected boolean isUseSharedState() {
 		return sharedState != null;
+	}
+
+	/**
+	 * @return the isRefresh
+	 */
+	public boolean isRefresh() {
+		return isRefresh;
+	}
+
+	/**
+	 * @param isRefresh
+	 *            the isRefresh to set
+	 */
+	public void setRefresh(boolean isRefresh) {
+		this.isRefresh = isRefresh;
+		if (isRefresh) {
+			refreshingCache = new HashMap<Object, Object>();
+		}
 	}
 
 	/**
@@ -97,6 +120,23 @@ public class MappingContext {
 	}
 
 	/**
+	 * Registers the object in the a internal cache. If {@link #flush()} is
+	 * called, the internal cache will be cleared and objects are forwarded to
+	 * the {@link ISharedStateContext#makeUndirty(Object, Object)} method. So
+	 * objects registered by this method will become undirty soon.<p>
+	 * Throws {@link IllegalArgumentException} if this method is called, but {@link #isRefresh() refresh mode} not active.
+	 * 
+	 * @param key
+	 * @param target
+	 */
+	public void registerRefreshed(Object key, Object target) throws IllegalArgumentException {
+		if (!isRefresh()) {
+			throw new IllegalArgumentException("Only allowed in refresh mode!");
+		}
+		refreshingCache.put(key, target);
+	}
+
+	/**
 	 * Registers the object that was used as a template to map the cached
 	 * object.
 	 * 
@@ -118,6 +158,11 @@ public class MappingContext {
 				result = (A) dirtyAwareGlobalDataState.get(key);
 			}
 		}
+
+		if (isRefresh() && result != null) {
+			refreshingCache.put(key, result);
+		}
+
 		return result;
 	}
 
@@ -139,6 +184,13 @@ public class MappingContext {
 			IDataState globalState = sharedState.getGlobalDataState();
 			for (Entry<Object, Object> entry : cache.entrySet()) {
 				globalState.register(entry.getKey(), entry.getValue());
+			}
+
+			if (isRefresh()) {
+				for (Entry<Object, Object> entry : refreshingCache.entrySet()) {
+					sharedState.makeUndirty(entry.getKey(), entry.getValue());
+				}
+				refreshingCache.clear();
 			}
 		}
 		cache.clear();

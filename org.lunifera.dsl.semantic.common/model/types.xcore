@@ -173,6 +173,7 @@ interface LAttribute extends LFeature {
 	boolean cascading
 	boolean ^transient
 	boolean ^derived
+	boolean dirty
 	/**
 	 * The domainKey is a human readable value for a dto or entity
 	 */

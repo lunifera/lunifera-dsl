@@ -1084,13 +1084,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_ATTRIBUTE__DERIVED = LENTITY_FEATURE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Dirty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE__DIRTY = LENTITY_FEATURE_FEATURE_COUNT + 7;
+
+	/**
 	 * The feature id for the '<em><b>Domain Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__DOMAIN_KEY = LENTITY_FEATURE_FEATURE_COUNT + 7;
+	int LENTITY_ATTRIBUTE__DOMAIN_KEY = LENTITY_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Domain Description</b></em>' attribute.
@@ -1099,7 +1108,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION = LENTITY_FEATURE_FEATURE_COUNT + 8;
+	int LENTITY_ATTRIBUTE__DOMAIN_DESCRIPTION = LENTITY_FEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
@@ -1108,7 +1117,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION = LENTITY_FEATURE_FEATURE_COUNT + 9;
+	int LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION = LENTITY_FEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1117,7 +1126,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 10;
+	int LENTITY_ATTRIBUTE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
@@ -1126,7 +1135,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__TYPE_JVM = LENTITY_FEATURE_FEATURE_COUNT + 11;
+	int LENTITY_ATTRIBUTE__TYPE_JVM = LENTITY_FEATURE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
@@ -1135,7 +1144,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 12;
+	int LENTITY_ATTRIBUTE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
@@ -1144,7 +1153,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 13;
+	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Attribute</em>' class.
@@ -1153,7 +1162,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 14;
+	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 15;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1546,13 +1555,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_ATTRIBUTE__DERIVED = LBEAN_FEATURE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Dirty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_ATTRIBUTE__DIRTY = LBEAN_FEATURE_FEATURE_COUNT + 7;
+
+	/**
 	 * The feature id for the '<em><b>Domain Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE__DOMAIN_KEY = LBEAN_FEATURE_FEATURE_COUNT + 7;
+	int LBEAN_ATTRIBUTE__DOMAIN_KEY = LBEAN_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Domain Description</b></em>' attribute.
@@ -1561,7 +1579,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION = LBEAN_FEATURE_FEATURE_COUNT + 8;
+	int LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION = LBEAN_FEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Derived Getter Expression</b></em>' containment reference.
@@ -1570,7 +1588,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION = LBEAN_FEATURE_FEATURE_COUNT + 9;
+	int LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION = LBEAN_FEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1579,7 +1597,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 10;
+	int LBEAN_ATTRIBUTE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
@@ -1588,7 +1606,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 11;
+	int LBEAN_ATTRIBUTE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
@@ -1597,7 +1615,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE__TYPED_NAME = LBEAN_FEATURE_FEATURE_COUNT + 12;
+	int LBEAN_ATTRIBUTE__TYPED_NAME = LBEAN_FEATURE_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of structural features of the '<em>LBean Attribute</em>' class.
@@ -1606,7 +1624,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 13;
+	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 14;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.

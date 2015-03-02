@@ -48,6 +48,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#isDirty <em>Dirty</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#isDomainKey <em>Domain Key</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
@@ -199,6 +200,26 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 	 * @ordered
 	 */
 	protected boolean derived = DERIVED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDirty() <em>Dirty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDirty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DIRTY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDirty() <em>Dirty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDirty()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean dirty = DIRTY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isDomainKey() <em>Domain Key</em>}' attribute.
@@ -451,6 +472,27 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDirty() {
+		return dirty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDirty(boolean newDirty) {
+		boolean oldDirty = dirty;
+		dirty = newDirty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_ATTRIBUTE__DIRTY, oldDirty, dirty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isDomainKey() {
 		return domainKey;
 	}
@@ -680,6 +722,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				return isTransient();
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED:
 				return isDerived();
+			case LunEntityPackage.LBEAN_ATTRIBUTE__DIRTY:
+				return isDirty();
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_KEY:
 				return isDomainKey();
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION:
@@ -725,6 +769,9 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				return;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED:
 				setDerived((Boolean)newValue);
+				return;
+			case LunEntityPackage.LBEAN_ATTRIBUTE__DIRTY:
+				setDirty((Boolean)newValue);
 				return;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_KEY:
 				setDomainKey((Boolean)newValue);
@@ -774,6 +821,9 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED:
 				setDerived(DERIVED_EDEFAULT);
 				return;
+			case LunEntityPackage.LBEAN_ATTRIBUTE__DIRTY:
+				setDirty(DIRTY_EDEFAULT);
+				return;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_KEY:
 				setDomainKey(DOMAIN_KEY_EDEFAULT);
 				return;
@@ -815,6 +865,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				return transient_ != TRANSIENT_EDEFAULT;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED:
 				return derived != DERIVED_EDEFAULT;
+			case LunEntityPackage.LBEAN_ATTRIBUTE__DIRTY:
+				return dirty != DIRTY_EDEFAULT;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_KEY:
 				return domainKey != DOMAIN_KEY_EDEFAULT;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION:
@@ -847,6 +899,7 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				case LunEntityPackage.LBEAN_ATTRIBUTE__CASCADING: return LunTypesPackage.LATTRIBUTE__CASCADING;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__TRANSIENT: return LunTypesPackage.LATTRIBUTE__TRANSIENT;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED: return LunTypesPackage.LATTRIBUTE__DERIVED;
+				case LunEntityPackage.LBEAN_ATTRIBUTE__DIRTY: return LunTypesPackage.LATTRIBUTE__DIRTY;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_KEY: return LunTypesPackage.LATTRIBUTE__DOMAIN_KEY;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION: return LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
@@ -874,6 +927,7 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				case LunTypesPackage.LATTRIBUTE__CASCADING: return LunEntityPackage.LBEAN_ATTRIBUTE__CASCADING;
 				case LunTypesPackage.LATTRIBUTE__TRANSIENT: return LunEntityPackage.LBEAN_ATTRIBUTE__TRANSIENT;
 				case LunTypesPackage.LATTRIBUTE__DERIVED: return LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED;
+				case LunTypesPackage.LATTRIBUTE__DIRTY: return LunEntityPackage.LBEAN_ATTRIBUTE__DIRTY;
 				case LunTypesPackage.LATTRIBUTE__DOMAIN_KEY: return LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_KEY;
 				case LunTypesPackage.LATTRIBUTE__DOMAIN_DESCRIPTION: return LunEntityPackage.LBEAN_ATTRIBUTE__DOMAIN_DESCRIPTION;
 				case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
@@ -909,6 +963,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 		result.append(transient_);
 		result.append(", derived: ");
 		result.append(derived);
+		result.append(", dirty: ");
+		result.append(dirty);
 		result.append(", domainKey: ");
 		result.append(domainKey);
 		result.append(", domainDescription: ");

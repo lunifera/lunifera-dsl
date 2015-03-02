@@ -119,12 +119,13 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 				if(context == grammarAccess.getDtoFeatureAccess().getLDtoAttributeAnnotationInfoAction_2_2_0() ||
 				   context == grammarAccess.getDtoFeatureAccess().getLDtoAttributeAnnotationInfoAction_2_3_0() ||
 				   context == grammarAccess.getDtoFeatureAccess().getLDtoAttributeAnnotationInfoAction_2_4_0() ||
-				   context == grammarAccess.getDtoFeatureAccess().getLDtoAttributeAnnotationInfoAction_2_6_0() ||
+				   context == grammarAccess.getDtoFeatureAccess().getLDtoAttributeAnnotationInfoAction_2_5_0() ||
+				   context == grammarAccess.getDtoFeatureAccess().getLDtoAttributeAnnotationInfoAction_2_7_0() ||
 				   context == grammarAccess.getDtoFeatureAccess().getLDtoInheritedAttributeAnnotationInfoAction_2_0_0_0() ||
 				   context == grammarAccess.getDtoFeatureAccess().getLDtoInheritedReferenceAnnotationInfoAction_2_1_0() ||
-				   context == grammarAccess.getDtoFeatureAccess().getLDtoOperationAnnotationInfoAction_2_7_0() ||
-				   context == grammarAccess.getDtoFeatureAccess().getLDtoReferenceAnnotationInfoAction_2_5_0()) {
-					sequence_DtoFeature_LDtoAttribute_2_2_0_LDtoAttribute_2_3_0_LDtoAttribute_2_4_0_LDtoAttribute_2_6_0_LDtoInheritedAttribute_2_0_0_0_LDtoInheritedReference_2_1_0_LDtoOperation_2_7_0_LDtoReference_2_5_0(context, (LDtoFeature) semanticObject); 
+				   context == grammarAccess.getDtoFeatureAccess().getLDtoOperationAnnotationInfoAction_2_8_0() ||
+				   context == grammarAccess.getDtoFeatureAccess().getLDtoReferenceAnnotationInfoAction_2_6_0()) {
+					sequence_DtoFeature_LDtoAttribute_2_2_0_LDtoAttribute_2_3_0_LDtoAttribute_2_4_0_LDtoAttribute_2_5_0_LDtoAttribute_2_7_0_LDtoInheritedAttribute_2_0_0_0_LDtoInheritedReference_2_1_0_LDtoOperation_2_8_0_LDtoReference_2_6_0(context, (LDtoFeature) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1526,8 +1527,9 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 * Constraint:
 	 *     (
 	 *         (annotationInfo=DtoFeature_LDtoAttribute_2_2_0 (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords)) | 
+	 *         (annotationInfo=DtoFeature_LDtoAttribute_2_3_0 (dirty?='dirty' type=[LScalarType|ID] name=ValidIDWithKeywords)) | 
 	 *         (
-	 *             annotationInfo=DtoFeature_LDtoAttribute_2_3_0 
+	 *             annotationInfo=DtoFeature_LDtoAttribute_2_4_0 
 	 *             (
 	 *                 derived?='derived' 
 	 *                 domainDescription?='domainDescription'? 
@@ -1537,14 +1539,14 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 *             )
 	 *         ) | 
 	 *         (
-	 *             annotationInfo=DtoFeature_LDtoAttribute_2_4_0 
+	 *             annotationInfo=DtoFeature_LDtoAttribute_2_5_0 
 	 *             (id?='id' | version?='version' | uuid?='uuid' | domainDescription?='domainDescription' | domainKey?='domainKey') 
 	 *             type=[LScalarType|ID] 
 	 *             multiplicity=Multiplicity? 
 	 *             name=ValidIDWithKeywords
 	 *         ) | 
 	 *         (
-	 *             annotationInfo=DtoFeature_LDtoAttribute_2_6_0 
+	 *             annotationInfo=DtoFeature_LDtoAttribute_2_7_0 
 	 *             type=[LScalarType|ID] 
 	 *             multiplicity=Multiplicity? 
 	 *             name=ValidIDWithKeywords 
@@ -1561,7 +1563,7 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 * Constraint:
 	 *     annotations+=AnnotationDef+
 	 */
-	protected void sequence_DtoFeature_LDtoAttribute_2_2_0_LDtoAttribute_2_3_0_LDtoAttribute_2_4_0_LDtoAttribute_2_6_0_LDtoInheritedAttribute_2_0_0_0_LDtoInheritedReference_2_1_0_LDtoOperation_2_7_0_LDtoReference_2_5_0(EObject context, LDtoFeature semanticObject) {
+	protected void sequence_DtoFeature_LDtoAttribute_2_2_0_LDtoAttribute_2_3_0_LDtoAttribute_2_4_0_LDtoAttribute_2_5_0_LDtoAttribute_2_7_0_LDtoInheritedAttribute_2_0_0_0_LDtoInheritedReference_2_1_0_LDtoOperation_2_8_0_LDtoReference_2_6_0(EObject context, LDtoFeature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1597,7 +1599,7 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=DtoFeature_LDtoOperation_2_7_0 
+	 *         annotationInfo=DtoFeature_LDtoOperation_2_8_0 
 	 *         (type=JvmTypeReference name=ValidIDWithKeywords (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? body=XExpression)
 	 *     )
 	 */
@@ -1609,7 +1611,7 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	/**
 	 * Constraint:
 	 *     (
-	 *         annotationInfo=DtoFeature_LDtoReference_2_5_0 
+	 *         annotationInfo=DtoFeature_LDtoReference_2_6_0 
 	 *         (cascading?='cascade'? type=[LDto|ID] multiplicity=Multiplicity? name=ValidIDWithKeywords opposite=[LDtoReference|LFQN]?) 
 	 *         mapper=LimitedMapperDtoMapper?
 	 *     )

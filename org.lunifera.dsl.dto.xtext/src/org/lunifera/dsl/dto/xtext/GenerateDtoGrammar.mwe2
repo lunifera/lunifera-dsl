@@ -8,7 +8,6 @@
  * Contributors: 
  * 		Florian Pirchner - Initial implementation
  */
-
 module org.lunifera.dsl.dto.xtext.GenerateDtoGrammar
 
 import org.eclipse.emf.mwe.utils.*

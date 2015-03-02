@@ -32,6 +32,7 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDerived <em>Derived</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDirty <em>Dirty</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainKey <em>Domain Key</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDomainDescription <em>Domain Description</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
@@ -226,6 +227,32 @@ public interface LAttribute extends LFeature {
 	 * @generated
 	 */
 	void setDerived(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Dirty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Dirty</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Dirty</em>' attribute.
+	 * @see #setDirty(boolean)
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAttribute_Dirty()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isDirty();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isDirty <em>Dirty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dirty</em>' attribute.
+	 * @see #isDirty()
+	 * @generated
+	 */
+	void setDirty(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Domain Key</b></em>' attribute.

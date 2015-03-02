@@ -1189,6 +1189,10 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 							if (_dto == null) {
 								_dto = mapper.createDto();
 								mapper.mapToDTO(_dto, _entity, context);
+							} else {
+								if(context.isRefresh()){
+									mapper.mapToDTO(_dto, _entity, context);
+								}
 							}
 							results.add(_dto);
 						}
@@ -1206,6 +1210,9 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						«IF !prop.toRawType.isBean»
 							dto = context.get(mapper.createDtoHash(in.«prop.toGetterName»()));
 							if(dto != null) {
+								if(context.isRefresh()){
+									mapper.mapToDTO(dto, in.«prop.toGetterName»(), context);
+								}
 								return dto;
 							}
 							
@@ -1274,6 +1281,10 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						if (_dto == null) {
 							_dto = mapper.createDto();
 							mapper.mapToDTO(_dto, _entity, context);
+						} else {
+							if(context.isRefresh()){
+								mapper.mapToDTO(_dto, _entity, context);
+							}
 						}
 						results.add(_dto);
 					}
@@ -1290,6 +1301,9 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 						«IF !prop.toRawType.isBean»
 							dto = context.get(mapper.createDtoHash(in.get«prop.toName.toFirstUpper»()));
 							if(dto != null) {
+								if(context.isRefresh()){
+									mapper.mapToDTO(dto, in.«prop.toGetterName»(), context);
+								}
 								return dto;
 							}
 							

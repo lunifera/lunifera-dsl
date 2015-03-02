@@ -28,7 +28,7 @@
 '0'=74
 '1'=76
 ':'=105
-'::'=127
+'::'=128
 ';'=16
 '<'=43
 '<='=73
@@ -40,14 +40,14 @@
 '>'=42
 '>='=41
 '?'=75
-'?.'=128
+'?.'=129
 '?:'=49
 '@'=97
 '['=95
 ']'=96
 'abstract'=121
-'as blob'=126
-'as primitive'=124
+'as blob'=127
+'as primitive'=125
 'as'=101
 'autoDto'=80
 'cachable'=17
@@ -57,13 +57,14 @@
 'collection'=94
 'datatype'=90
 'date'=27
-'dateType'=125
+'dateType'=126
 'def'=84
 'default'=106
 'derived'=93
+'dirty'=122
 'do'=110
-'domainDescription'=122
-'domainKey'=123
+'domainDescription'=123
+'domainKey'=124
 'dto'=26
 'else'=103
 'enum'=92
@@ -103,7 +104,7 @@
 'timestamp'=68
 'toDTO'=88
 'transient'=20
-'true'=130
+'true'=131
 'try'=116
 'typeof'=113
 'uuid'=19
@@ -113,7 +114,7 @@
 'while'=109
 'wraps'=79
 '{'=77
-'|'=129
+'|'=130
 '||'=14
 '}'=78
 RULE_ANY_OTHER=12
@@ -156,6 +157,7 @@ T__127=127
 T__128=128
 T__129=129
 T__130=130
+T__131=131
 T__13=13
 T__14=14
 T__15=15

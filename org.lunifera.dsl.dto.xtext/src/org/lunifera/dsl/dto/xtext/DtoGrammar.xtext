@@ -53,6 +53,9 @@ DtoFeature returns dto::LDtoFeature:
 	(transient?='transient' type=[common::LScalarType] name=ValidIDWithKeywords ';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
+	(dirty?='dirty' type=[common::LScalarType] name=ValidIDWithKeywords ';'))
+	|
+	({dto::LDtoAttribute.annotationInfo=current}
 	(derived?='derived' (domainDescription?='domainDescription')? type=[common::LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}

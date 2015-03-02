@@ -89,9 +89,9 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_0_2_1());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_4_1());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_2_1_3());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_4_5());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_2_1());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_6_5_1());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_4_1());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_5());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_6_2_1());
 
 		c.setLinewrap(1, 1, 2).around(ele.getRule());
 		c.setIndentationIncrement().before(ele.getRule());

@@ -40,6 +40,7 @@ ruleDtoFeature :
 			';'
 		) |
 		'transient' RULE_ID ruleValidIDWithKeywords ';' |
+		'dirty' RULE_ID ruleValidIDWithKeywords ';' |
 		'derived' 'domainDescription'? RULE_ID ruleValidIDWithKeywords
 		ruleXBlockExpression |
 		(
