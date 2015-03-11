@@ -18,7 +18,6 @@
    </license>
 
    <requires>
-      <import feature="org.lunifera.dsl.feature.common.headless" version="0.9.0"/>
       <import feature="org.lunifera.dsl.feature.entities.headless" version="0.9.0"/>
    </requires>
 

@@ -19,8 +19,8 @@
    </license>
 
    <url>
-      <discovery label="Xtext 2.6.0" url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
-      <discovery label="Kepler" url="http://download.eclipse.org/releases/kepler"/>
+      <discovery label="Xtext 2.7.3" url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+      <discovery label="Kepler" url="http://download.eclipse.org/releases/luna"/>
    </url>
 
    <plugin
