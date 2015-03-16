@@ -224,15 +224,15 @@ public class DtoGrammarJavaValidator extends
 						CODE__DOMAIN_DESCRIPTION__NO_MANY, new String[0]);
 
 			}
-			if (prop.getType() instanceof LDataType) {
-				LDataType type = (LDataType) prop.getType();
-				String typename = type.getJvmTypeReference().getQualifiedName();
-				if (!typename.equals("java.lang.String")) {
-					error("DomainDescription must be of type String.",
-							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
-							CODE__DOMAIN_DESCRIPTION__TYPE, new String[0]);
-				}
-			}
+//			if (prop.getType() instanceof LDataType) {
+//				LDataType type = (LDataType) prop.getType();
+//				String typename = type.getJvmTypeReference().getQualifiedName();
+//				if (!typename.equals("java.lang.String")) {
+//					error("DomainDescription must be of type String.",
+//							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+//							CODE__DOMAIN_DESCRIPTION__TYPE, new String[0]);
+//				}
+//			}
 		}
 
 		if (prop.isDirty()) {
