@@ -201,25 +201,25 @@ public class DtoGrammarJavaValidator extends
 		}
 		if (prop.isDomainKey()) {
 			if (extensions.isToMany(prop)) {
-				error("DomainDescription is not valid for one to many relations.",
+				error("DomainKey is not valid for one to many relations.",
 						LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
 						CODE__DOMAIN_KEY__NO_MANY, new String[0]);
 
 			}
-			if (prop.getType() instanceof LDataType) {
-				LDataType type = (LDataType) prop.getType();
-				String typename = type.getJvmTypeReference().getQualifiedName();
-				if (!typename.equals("java.lang.String")) {
-					error("DomainDescription is not valid for one to many relations.",
-							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
-							CODE__DOMAIN_KEY__TYPE, new String[0]);
-				}
-			}
+//			if (prop.getType() instanceof LDataType) {
+//				LDataType type = (LDataType) prop.getType();
+//				String typename = type.getJvmTypeReference().getQualifiedName();
+//				if (!typename.equals("java.lang.String")) {
+//					error("DomainKey must be datatype String.",
+//							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+//							CODE__DOMAIN_KEY__TYPE, new String[0]);
+//				}
+//			}
 		}
 
 		if (prop.isDomainDescription()) {
 			if (extensions.isToMany(prop)) {
-				error("DomainKey is not valid for one to many relations.",
+				error("DomainDescription is not valid for one to many relations.",
 						LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_DESCRIPTION,
 						CODE__DOMAIN_DESCRIPTION__NO_MANY, new String[0]);
 
