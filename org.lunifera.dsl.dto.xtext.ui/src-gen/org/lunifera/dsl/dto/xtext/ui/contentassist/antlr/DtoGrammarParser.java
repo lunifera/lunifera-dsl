@@ -386,7 +386,8 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDtoFeatureAccess().getTypeAssignment_2_5_2(), "rule__DtoFeature__TypeAssignment_2_5_2");
 					put(grammarAccess.getDtoFeatureAccess().getMultiplicityAssignment_2_5_3(), "rule__DtoFeature__MultiplicityAssignment_2_5_3");
 					put(grammarAccess.getDtoFeatureAccess().getNameAssignment_2_5_4(), "rule__DtoFeature__NameAssignment_2_5_4");
-					put(grammarAccess.getDtoFeatureAccess().getCascadingAssignment_2_6_1_1(), "rule__DtoFeature__CascadingAssignment_2_6_1_1");
+					put(grammarAccess.getDtoFeatureAccess().getCascadingAssignment_2_6_1_1_0(), "rule__DtoFeature__CascadingAssignment_2_6_1_1_0");
+					put(grammarAccess.getDtoFeatureAccess().getLazyAssignment_2_6_1_1_1(), "rule__DtoFeature__LazyAssignment_2_6_1_1_1");
 					put(grammarAccess.getDtoFeatureAccess().getTypeAssignment_2_6_1_2(), "rule__DtoFeature__TypeAssignment_2_6_1_2");
 					put(grammarAccess.getDtoFeatureAccess().getMultiplicityAssignment_2_6_1_3(), "rule__DtoFeature__MultiplicityAssignment_2_6_1_3");
 					put(grammarAccess.getDtoFeatureAccess().getNameAssignment_2_6_1_4(), "rule__DtoFeature__NameAssignment_2_6_1_4");
@@ -584,6 +585,7 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getMemberNameAssignment_1_0_3_1(), "rule__XImportDeclaration__MemberNameAssignment_1_0_3_1");
 					put(grammarAccess.getXImportDeclarationAccess().getImportedTypeAssignment_1_1(), "rule__XImportDeclaration__ImportedTypeAssignment_1_1");
 					put(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceAssignment_1_2(), "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2");
+					put(grammarAccess.getDtoFeatureAccess().getUnorderedGroup_2_6_1_1(), "rule__DtoFeature__UnorderedGroup_2_6_1_1");
 					put(grammarAccess.getModifierAccess().getUnorderedGroup(), "rule__Modifier__UnorderedGroup");
 				}
 			};

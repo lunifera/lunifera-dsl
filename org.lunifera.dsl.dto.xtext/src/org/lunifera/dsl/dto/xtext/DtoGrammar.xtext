@@ -64,7 +64,7 @@ DtoFeature returns dto::LDtoFeature:
 	';')
 	|
 	({dto::LDtoReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	('ref' ((cascading?='cascade')? & (lazy?='lazy')?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
 	('opposite' opposite=[dto::LDtoReference|LFQN])?)
 	(mapper=LimitedMapperDtoMapper |
 	';'))

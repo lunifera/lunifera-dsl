@@ -1612,7 +1612,14 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 * Constraint:
 	 *     (
 	 *         annotationInfo=DtoFeature_LDtoReference_2_6_0 
-	 *         (cascading?='cascade'? type=[LDto|ID] multiplicity=Multiplicity? name=ValidIDWithKeywords opposite=[LDtoReference|LFQN]?) 
+	 *         (
+	 *             cascading?='cascade'? 
+	 *             lazy?='lazy'? 
+	 *             type=[LDto|ID] 
+	 *             multiplicity=Multiplicity? 
+	 *             name=ValidIDWithKeywords 
+	 *             opposite=[LDtoReference|LFQN]?
+	 *         ) 
 	 *         mapper=LimitedMapperDtoMapper?
 	 *     )
 	 */

@@ -51,7 +51,10 @@ ruleDtoFeature :
 			'domainKey'
 		) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords ';' |
 		(
-			'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+			'ref' (
+				'cascade'? |
+				'lazy'?
+			)* RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
 				'opposite' ruleLFQN
 			)?
 		) (

@@ -341,8 +341,11 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cLDtoReferenceAnnotationInfoAction_2_6_0 = (Action)cGroup_2_6.eContents().get(0);
 		private final Group cGroup_2_6_1 = (Group)cGroup_2_6.eContents().get(1);
 		private final Keyword cRefKeyword_2_6_1_0 = (Keyword)cGroup_2_6_1.eContents().get(0);
-		private final Assignment cCascadingAssignment_2_6_1_1 = (Assignment)cGroup_2_6_1.eContents().get(1);
-		private final Keyword cCascadingCascadeKeyword_2_6_1_1_0 = (Keyword)cCascadingAssignment_2_6_1_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2_6_1_1 = (UnorderedGroup)cGroup_2_6_1.eContents().get(1);
+		private final Assignment cCascadingAssignment_2_6_1_1_0 = (Assignment)cUnorderedGroup_2_6_1_1.eContents().get(0);
+		private final Keyword cCascadingCascadeKeyword_2_6_1_1_0_0 = (Keyword)cCascadingAssignment_2_6_1_1_0.eContents().get(0);
+		private final Assignment cLazyAssignment_2_6_1_1_1 = (Assignment)cUnorderedGroup_2_6_1_1.eContents().get(1);
+		private final Keyword cLazyLazyKeyword_2_6_1_1_1_0 = (Keyword)cLazyAssignment_2_6_1_1_1.eContents().get(0);
 		private final Assignment cTypeAssignment_2_6_1_2 = (Assignment)cGroup_2_6_1.eContents().get(2);
 		private final CrossReference cTypeLDtoCrossReference_2_6_1_2_0 = (CrossReference)cTypeAssignment_2_6_1_2.eContents().get(0);
 		private final RuleCall cTypeLDtoIDTerminalRuleCall_2_6_1_2_0_1 = (RuleCall)cTypeLDtoCrossReference_2_6_1_2_0.eContents().get(1);
@@ -405,8 +408,8 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//	derivedGetterExpression=XBlockExpression) | {dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version"
 		//	| uuid?="uuid" | domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType]
 		//	multiplicity=Multiplicity? name=ValidIDWithKeywords ";" | {dto::LDtoReference.annotationInfo=current} ("ref"
-		//	cascading?="cascade"? type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
-		//	opposite=[dto::LDtoReference|LFQN])?) (mapper=LimitedMapperDtoMapper | ";") |
+		//	(cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
+		//	("opposite" opposite=[dto::LDtoReference|LFQN])?) (mapper=LimitedMapperDtoMapper | ";") |
 		//	{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity?
 		//	name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current} ("def"
 		//	type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
@@ -423,12 +426,13 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//type=[common::LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression) |
 		//{dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version" | uuid?="uuid" |
 		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType] multiplicity=Multiplicity?
-		//name=ValidIDWithKeywords ";" | {dto::LDtoReference.annotationInfo=current} ("ref" cascading?="cascade"?
-		//type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])?)
-		//(mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType]
-		//multiplicity=Multiplicity? name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper | ";") |
-		//{dto::LDtoOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
-		//(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression))
+		//name=ValidIDWithKeywords ";" | {dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? &
+		//lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
+		//opposite=[dto::LDtoReference|LFQN])?) (mapper=LimitedMapperDtoMapper | ";") |
+		//{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity?
+		//name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current} ("def"
+		//type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
+		//params+=FullJvmFormalParameter)*)? ")" body=XExpression))
 		public Group getGroup() { return cGroup; }
 
 		//{dto::LDtoFeature}
@@ -450,12 +454,13 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//type=[common::LScalarType] name=ValidIDWithKeywords derivedGetterExpression=XBlockExpression) |
 		//{dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version" | uuid?="uuid" |
 		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType] multiplicity=Multiplicity?
-		//name=ValidIDWithKeywords ";" | {dto::LDtoReference.annotationInfo=current} ("ref" cascading?="cascade"?
-		//type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])?)
-		//(mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType]
-		//multiplicity=Multiplicity? name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper | ";") |
-		//{dto::LDtoOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
-		//(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression)
+		//name=ValidIDWithKeywords ";" | {dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? &
+		//lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
+		//opposite=[dto::LDtoReference|LFQN])?) (mapper=LimitedMapperDtoMapper | ";") |
+		//{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity?
+		//name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current} ("def"
+		//type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
+		//params+=FullJvmFormalParameter)*)? ")" body=XExpression)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//({dto::LDtoInheritedAttribute.annotationInfo=current} "inherit var"
@@ -730,25 +735,35 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//";"
 		public Keyword getSemicolonKeyword_2_5_5() { return cSemicolonKeyword_2_5_5; }
 
-		//{dto::LDtoReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[dto::LDto] multiplicity=Multiplicity?
-		//name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])?) (mapper=LimitedMapperDtoMapper | ";")
+		//{dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto]
+		//multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])?)
+		//(mapper=LimitedMapperDtoMapper | ";")
 		public Group getGroup_2_6() { return cGroup_2_6; }
 
 		//{dto::LDtoReference.annotationInfo=current}
 		public Action getLDtoReferenceAnnotationInfoAction_2_6_0() { return cLDtoReferenceAnnotationInfoAction_2_6_0; }
 
-		//"ref" cascading?="cascade"? type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
-		//opposite=[dto::LDtoReference|LFQN])?
+		//"ref" (cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
+		//("opposite" opposite=[dto::LDtoReference|LFQN])?
 		public Group getGroup_2_6_1() { return cGroup_2_6_1; }
 
 		//"ref"
 		public Keyword getRefKeyword_2_6_1_0() { return cRefKeyword_2_6_1_0; }
 
+		//cascading?="cascade"? & lazy?="lazy"?
+		public UnorderedGroup getUnorderedGroup_2_6_1_1() { return cUnorderedGroup_2_6_1_1; }
+
 		//cascading?="cascade"?
-		public Assignment getCascadingAssignment_2_6_1_1() { return cCascadingAssignment_2_6_1_1; }
+		public Assignment getCascadingAssignment_2_6_1_1_0() { return cCascadingAssignment_2_6_1_1_0; }
 
 		//"cascade"
-		public Keyword getCascadingCascadeKeyword_2_6_1_1_0() { return cCascadingCascadeKeyword_2_6_1_1_0; }
+		public Keyword getCascadingCascadeKeyword_2_6_1_1_0_0() { return cCascadingCascadeKeyword_2_6_1_1_0_0; }
+
+		//lazy?="lazy"?
+		public Assignment getLazyAssignment_2_6_1_1_1() { return cLazyAssignment_2_6_1_1_1; }
+
+		//"lazy"
+		public Keyword getLazyLazyKeyword_2_6_1_1_1_0() { return cLazyLazyKeyword_2_6_1_1_1_0; }
 
 		//type=[dto::LDto]
 		public Assignment getTypeAssignment_2_6_1_2() { return cTypeAssignment_2_6_1_2; }
@@ -1098,8 +1113,8 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	derivedGetterExpression=XBlockExpression) | {dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version"
 	//	| uuid?="uuid" | domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType]
 	//	multiplicity=Multiplicity? name=ValidIDWithKeywords ";" | {dto::LDtoReference.annotationInfo=current} ("ref"
-	//	cascading?="cascade"? type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite"
-	//	opposite=[dto::LDtoReference|LFQN])?) (mapper=LimitedMapperDtoMapper | ";") |
+	//	(cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
+	//	("opposite" opposite=[dto::LDtoReference|LFQN])?) (mapper=LimitedMapperDtoMapper | ";") |
 	//	{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity?
 	//	name=ValidIDWithKeywords (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current} ("def"
 	//	type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
