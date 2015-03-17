@@ -19,6 +19,27 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: model;version="0.8.1",
- org.lunifera.dsl.semantic.service;version="0.9.1";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.semantic.common.types,  org.eclipse.emf.common.util,  org.lunifera.dsl.semantic.dto,  org.eclipse.xtext.common.types",
- org.lunifera.dsl.semantic.service.impl;version="0.9.1";uses:="org.eclipse.emf.ecore,  org.lunifera.dsl.semantic.common.types,  org.lunifera.dsl.semantic.common.types.impl,  org.eclipse.emf.common.util,  org.lunifera.dsl.semantic.service,  org.lunifera.dsl.semantic.dto,  org.eclipse.xtext.common.types,  org.eclipse.emf.common.notify,  org.eclipse.emf.ecore.impl",
- org.lunifera.dsl.semantic.service.util;version="0.9.1";uses:="org.eclipse.emf.ecore.util,  org.eclipse.emf.ecore,  org.lunifera.dsl.semantic.common.types,  org.eclipse.emf.common.notify.impl,  org.lunifera.dsl.semantic.service,  org.lunifera.dsl.semantic.dto,  org.eclipse.emf.common.notify"
+ org.lunifera.dsl.semantic.service;version="0.9.1";
+  uses:="org.eclipse.emf.ecore,
+   org.lunifera.dsl.semantic.common.types,
+   org.eclipse.emf.common.util,
+   org.lunifera.dsl.semantic.dto,
+   org.eclipse.xtext.common.types",
+ org.lunifera.dsl.semantic.service.impl;version="0.9.1";
+  uses:="org.eclipse.emf.ecore,
+   org.lunifera.dsl.semantic.common.types,
+   org.lunifera.dsl.semantic.common.types.impl,
+   org.eclipse.emf.common.util,
+   org.lunifera.dsl.semantic.service,
+   org.lunifera.dsl.semantic.dto,
+   org.eclipse.xtext.common.types,
+   org.eclipse.emf.common.notify,
+   org.eclipse.emf.ecore.impl",
+ org.lunifera.dsl.semantic.service.util;version="0.9.1";
+  uses:="org.eclipse.emf.ecore.util,
+   org.eclipse.emf.ecore,
+   org.lunifera.dsl.semantic.common.types,
+   org.eclipse.emf.common.notify.impl,
+   org.lunifera.dsl.semantic.service,
+   org.lunifera.dsl.semantic.dto,
+   org.eclipse.emf.common.notify"

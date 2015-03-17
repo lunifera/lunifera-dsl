@@ -1,0 +1,15 @@
+package org.lunifera.dsl.examples.dtos.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.dsl.examples.dtos.dtos.*;
+	import org.lunifera.dsl.examples.dtos.dtos.dtos.*; 
+	
+	dtoservice BaseService provides BaseDto {
+	}
+	dtoservice HouseService provides HouseDto {
+	}
+	dtoservice WindowService provides WindowDto {
+	}
+	dtoservice DoorService provides DoorDto {
+	}
+}

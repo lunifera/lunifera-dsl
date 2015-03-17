@@ -1,0 +1,34 @@
+package org.lunifera.dsl.examples.dtos.dtos {
+	
+	/* Imports the required artifacts */
+	import org.lunifera.dsl.examples.dtos.dtos.*;
+	import org.lunifera.dsl.examples.dtos.dtos.mapper.*;
+	import org.lunifera.dsl.examples.dtos.entities.*;
+
+
+	autoDto BaseDto wraps Base {
+		inherit var id;
+		inherit var number;
+	}
+	
+	autoDto HouseDto extends BaseDto wraps House {
+		inherit ref windows mapto WindowDto;
+		inherit ref openWindows mapto WindowDto;
+		inherit ref doors mapto DoorDto;
+		inherit var address;
+	}
+	
+	autoDto WindowDto extends BaseDto wraps Window {
+		inherit ref parent mapto HouseDto;
+	}
+	
+	autoDto DoorDto extends BaseDto wraps Door {
+		inherit ref parent mapto HouseDto;
+	}
+	
+	autoDto AddressDto wraps Address {
+		inherit var street;
+		inherit var city;
+	}
+	
+}

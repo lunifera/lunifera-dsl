@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.dsl.examples.dtos.dtos.mapper.doordtomapper">
+       <implementation class="org.lunifera.dsl.examples.dtos.dtos.mapper.DoorDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+		  </service>
+		  
+		<property name="fordto.from.entity" type="String" value="org.lunifera.dsl.examples.dtos.entities.Door"/>
+		<property name="fordto.to.dto" type="String">org.lunifera.dsl.examples.dtos.dtos.DoorDto
+		org.lunifera.dsl.examples.dtos.dtos.BaseDto
+		</property>
+
+		<property name="forentity.from.dto" type="String" value="org.lunifera.dsl.examples.dtos.dtos.DoorDto"/>
+		<property name="forentity.to.entity" type="String">org.lunifera.dsl.examples.dtos.entities.Door
+		org.lunifera.dsl.examples.dtos.entities.Base
+		</property>
+		
+		<property name="service.pid" type="String" value="org.lunifera.dsl.examples.dtos.dtos.mapper.doordtomapper"/>
+		<reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+				cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>
