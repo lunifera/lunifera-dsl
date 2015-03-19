@@ -35,6 +35,7 @@ public class IndexScope extends AbstractScope {
 		this.lEntity = (LEntity) lIndex.eContainer();
 	}
 
+	@SuppressWarnings("restriction")
 	@Override
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
 		ModelExtensions ext = new ModelExtensions();
@@ -47,6 +48,9 @@ public class IndexScope extends AbstractScope {
 				LEntityAttribute attribute = (LEntityAttribute) feature;
 				if (attribute.getType() instanceof LDataType) {
 					if (ext.isPrimitive((LDataType) attribute.getType())) {
+						result.add(new EObjectDescription(QualifiedName
+								.create(feature.getName()), feature, null));
+					} else if(ext.isString((LDataType) attribute.getType())){
 						result.add(new EObjectDescription(QualifiedName
 								.create(feature.getName()), feature, null));
 					}

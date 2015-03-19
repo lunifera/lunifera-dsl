@@ -82,20 +82,25 @@ class ModelExtensions {
 		return false
 	}
 
+	def boolean isString(LDataType type) {
+		val fqn = type?.jvmTypeReference?.type?.fullyQualifiedName
+		return "java.lang.String".equals(fqn)
+	}
+
 	def boolean isPrimitive(LDataType type) {
 		return type.asPrimitive;
 	}
-	
-	def boolean isBasedOnDatatype(LFeature feature){
-		if(feature instanceof LAttribute){
+
+	def boolean isBasedOnDatatype(LFeature feature) {
+		if (feature instanceof LAttribute) {
 			return feature.type instanceof LDataType
 		}
 		return false
 	}
-	
-	def LDataType getDatatype(LFeature feature){
-		if(feature instanceof LAttribute){
-			if(feature.type instanceof LDataType) {
+
+	def LDataType getDatatype(LFeature feature) {
+		if (feature instanceof LAttribute) {
+			if (feature.type instanceof LDataType) {
 				return feature.type as LDataType
 			}
 		}
@@ -110,8 +115,9 @@ class ModelExtensions {
 	 */
 	def boolean isAvoidJvmTypeProxiesForDatatype(LAttribute prop) {
 		if (prop.type instanceof LDataType) {
-//			val LDataType lDt = prop.type as LDataType
-//			return lDt.asBlob || lDt.date
+
+			//			val LDataType lDt = prop.type as LDataType
+			//			return lDt.asBlob || lDt.date
 			return true
 		}
 		return false
@@ -129,6 +135,7 @@ class ModelExtensions {
 		if (isAvoidJvmTypeProxiesForDatatype(prop)) {
 			return prop.toDataTypeTypeReference
 		}
+
 		// use the jvm type proxy
 		return prop.typeJvm.cloneWithProxies
 	}
@@ -174,14 +181,14 @@ class ModelExtensions {
 
 	def typeIsBoolean(LFeature prop) {
 		val LDataType dt = prop.datatype
-		if(dt==null){
+		if (dt == null) {
 			return false
 		}
 		val typeRef = dt.jvmTypeReference
 		return typeRef != null && !typeRef.eIsProxy() && typeRef.getType() != null && !typeRef.getType().eIsProxy() &&
 			"boolean".equals(typeRef.getType().getIdentifier())
 	}
-	
+
 	def typeIsEnum(LAttribute prop) {
 		return prop.type instanceof LEnum
 	}

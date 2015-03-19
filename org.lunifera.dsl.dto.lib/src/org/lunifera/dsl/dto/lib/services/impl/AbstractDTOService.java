@@ -194,20 +194,22 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 		try {
 			txn.begin();
+			
+			IMapper<DTO, ENTITY> toEntityMapper = findToEntityMapper(
+					(Class<DTO>) dto.getClass(),
+					(Class<ENTITY>) getEntityClass());
+			
 			ENTITY entity = null;
 			Object id = getId(dto);
 			if (id != null) {
 				entity = em.find(getEntityClass(), id);
 				if (entity == null) {
-					entity = createEntity();
+					entity = toEntityMapper.createEntity();
 				}
 			} else {
-				entity = createEntity();
+				entity = toEntityMapper.createEntity();
 			}
 
-			IMapper<DTO, ENTITY> toEntityMapper = findToEntityMapper(
-					(Class<DTO>) dto.getClass(),
-					(Class<ENTITY>) entity.getClass());
 			// map dto to entity and persist
 			toEntityMapper.mapToEntity(dto, entity, entityMappingContext);
 			em.merge(entity);
