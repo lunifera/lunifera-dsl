@@ -83,7 +83,7 @@ class ModelExtensions {
 	}
 
 	def boolean isString(LDataType type) {
-		val fqn = type?.jvmTypeReference?.type?.fullyQualifiedName
+		val fqn = type?.jvmTypeReference?.type?.qualifiedName
 		return "java.lang.String".equals(fqn)
 	}
 
