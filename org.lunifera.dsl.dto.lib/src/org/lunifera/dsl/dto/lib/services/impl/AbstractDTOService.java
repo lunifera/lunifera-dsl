@@ -25,6 +25,7 @@ import org.eclipse.persistence.sessions.SessionEventAdapter;
 import org.lunifera.dsl.dto.lib.IMapper;
 import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.dto.lib.MappingContext;
+import org.lunifera.dsl.dto.lib.services.DtoServiceException;
 import org.lunifera.dsl.dto.lib.services.IQuery;
 import org.lunifera.dsl.dto.lib.services.jpa.metadata.EntityDelegate;
 import org.lunifera.runtime.common.annotations.DtoUtils;
@@ -194,11 +195,11 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 		try {
 			txn.begin();
-			
+
 			IMapper<DTO, ENTITY> toEntityMapper = findToEntityMapper(
 					(Class<DTO>) dto.getClass(),
 					(Class<ENTITY>) getEntityClass());
-			
+
 			ENTITY entity = null;
 			Object id = getId(dto);
 			if (id != null) {
@@ -266,17 +267,18 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 				MappingContext dtoMappingContext = new MappingContext(true);
 				dtoMappingContext.setRefresh(true);
 				dtoMappingContext.increaseLevel();
-				
+
 				// entity available -> Map to the given DTO
 				IMapper<DTO, ENTITY> mapper = findToDtoMapper(getDtoClass(),
 						(Class<ENTITY>) entity.getClass());
-				dtoMappingContext.registerRefreshed(mapper.createDtoHash(dto), dto);
+				dtoMappingContext.registerRefreshed(mapper.createDtoHash(dto),
+						dto);
 				mapper.mapToDTO(dto, entity, dtoMappingContext);
-				
+
 				// flush the changes to the shared state
 				dtoMappingContext.decreaseLevel();
 				dtoMappingContext.flush();
-				
+
 				reloaded = true;
 			}
 		} finally {
@@ -318,7 +320,7 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	 * {@inherit doc}
 	 * 
 	 */
-	public void delete(final DTO dto) {
+	public void delete(final DTO dto) throws DtoServiceException {
 		javax.persistence.EntityManager em = emf.createEntityManager();
 		javax.persistence.EntityTransaction txn = em.getTransaction();
 
@@ -346,8 +348,12 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 				em.remove(entity);
 			}
 
-			txn.commit();
-			txn = null;
+			try {
+				txn.commit();
+				txn = null;
+			} catch (Exception e) {
+				throw new ExceptionConverter().convertException(e);
+			}
 		} finally {
 			if (txn == null) {
 				// if using shared state, map the deleted entities to their dtos

@@ -73,8 +73,11 @@ public interface IDTOService<A> extends IService {
 	 * 
 	 * @param dto
 	 * @return
+	 * 
+	 * @throws DtoServiceException
+	 *             if the record can not be deleted
 	 */
-	void delete(A dto);
+	void delete(A dto) throws DtoServiceException;
 
 	/**
 	 * Returns the count of all dto matching the filter.
