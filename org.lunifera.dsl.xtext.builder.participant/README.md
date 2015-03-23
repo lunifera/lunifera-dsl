@@ -13,7 +13,7 @@ Get information about a datatype:
 	/**
 	 * Returns the datatypes model for the given datatype name.
 	 * 
-	 * @param c
+	 * @param datatypeName
 	 * @return
 	 */
 	LDataType getMetadata(String datatypeName);
@@ -28,17 +28,17 @@ Get information about a entities:
 
 	/**
 	 * Returns the entity model for the given class. 
-	 * @param c
+	 * @param entityClass
 	 * @return
 	 */
 	LEntity getMetadata(Class<?> entityClass);
 	
 	/**
 	 * Returns the entity model for the given class name. 
-	 * @param c
+	 * @param entityName
 	 * @return
 	 */
-	LEntity getMetadata(String className);
+	LEntity getMetadata(String entityName);
 
 The service will use the given qualified name of the entity to return the proper LEntity eObject for it.  
 Qualified follows the pattern "{package}.{name}" like `org.lunifera.carstore.entities.general.Customer`
@@ -51,7 +51,7 @@ Get information about a entities:
 	/**
 	 * Returns the dto model for the given class.
 	 * 
-	 * @param c
+	 * @param dtoClass
 	 * @return
 	 */
 	LDto getMetadata(Class<?> dtoClass);
@@ -59,10 +59,10 @@ Get information about a entities:
 	/**
 	 * Returns the dto model for the given class name.
 	 * 
-	 * @param c
+	 * @param dtoName
 	 * @return
 	 */
-	LDto getMetadata(String className);
+	LDto getMetadata(String dtoName);
 
 The service will use the given qualified name of the entity to return the proper LDto eObject for it.  
 Qualified follows the pattern "{package}.{name}" like `org.lunifera.carstore.general.CustomerDto`
