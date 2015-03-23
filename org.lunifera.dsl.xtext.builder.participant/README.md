@@ -87,9 +87,6 @@ The services also allow you to navigate along cross references.
 	}
 
 
-
-
- 
-
-
+## Attention
+Never ever change values in the given metadata objects. It is not constrainted and may lead to major problems.
 
