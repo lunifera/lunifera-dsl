@@ -1,0 +1,9 @@
+/org.lunifera.dsl.xtext.builder.participant.tests.mapper.MyEntityDtoMapper.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.mapper.SuperClassDtoMapper.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.mapper.OtherDtoMapper.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.MyEntityDtoxMapper.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.SuperDtoMapper.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.dtos.services.MyEntityService.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.dtos.services.SuperClassService.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.services.OtherEntityService.xml
+/org.lunifera.dsl.xtext.builder.participant.tests.other.mapper.OtherEntityDtoMapper.xml

@@ -4,11 +4,10 @@
        <service>
        	<provide interface="org.lunifera.dsl.dto.lib.services.IDTOService"/>
        </service>
-       <property name="dto" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.dtos.SuperDto"/>
+       <property name="dto" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.dtos.SuperClassDto"/>
        <property name="service.pid" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.dtos.services.superclassservice"/>
        <reference name="emf" interface="javax.persistence.EntityManagerFactory" cardinality="1..1" 
        		policy="dynamic" bind="bindEmf" unbind="unbindEmf" />
-       <reference name="mapper" interface="org.lunifera.dsl.dto.lib.IMapper" cardinality="1..1" 
-       		policy="dynamic" bind="bindMapper" unbind="unbindMapper" 
-       		target="(dto=org.lunifera.dsl.xtext.builder.participant.tests.dtos.SuperDto)"/>
+       <reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" cardinality="1..1" 
+       		policy="dynamic" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
 </scr:component>

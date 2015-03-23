@@ -57,6 +57,17 @@ public class OutputConfigurationProvider extends
 		servicesOutput.setSetDerivedProperty(false);
 		servicesOutput.setKeepLocalHistory(true);
 		configs.add(servicesOutput);
+		
+		OutputConfiguration binOutput = new OutputConfiguration(
+				"ModelBin");
+		binOutput.setDescription("ModelBin");
+		binOutput.setOutputDirectory("./modelsbin");
+		binOutput.setOverrideExistingResources(true);
+		binOutput.setCreateOutputDirectory(true);
+		binOutput.setCleanUpDerivedResources(true);
+		binOutput.setSetDerivedProperty(true);
+		binOutput.setKeepLocalHistory(true);
+		configs.add(binOutput);
 
 		return configs;
 	}

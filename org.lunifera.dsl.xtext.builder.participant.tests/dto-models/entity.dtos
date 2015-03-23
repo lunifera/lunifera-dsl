@@ -2,12 +2,11 @@ package org.lunifera.dsl.xtext.builder.participant.tests.other.dtos {
 	
 	/* Imports the required artifacts */
 	import org.lunifera.dsl.xtext.builder.participant.tests.*;
-	import org.lunifera.dsl.xtext.builder.participant.tests.other.OtherEntity;
-	import org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.OtherEntityDto;
-	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.SuperClassDto;
-	import org.lunifera.dsl.xtext.builder.participant.tests.MyEntity;
-	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.MyEntityDto;
-
+	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.*;
+	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.*;
+	import org.lunifera.dsl.xtext.builder.participant.tests.other.*;
+	import org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.*;
+	import org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.mapper.*;
 
 
 	autoDto OtherEntityDto extends SuperClassDto wraps OtherEntity {

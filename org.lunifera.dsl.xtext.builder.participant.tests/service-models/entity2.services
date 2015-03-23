@@ -4,7 +4,7 @@ package org.lunifera.dsl.xtext.builder.participant.tests.dtos.services {
 	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.*;
 	import org.lunifera.dsl.xtext.builder.participant.tests.dtos.dtos.*; 
 	
-	dtoservice SuperClassService provides SuperDto {
+	dtoservice SuperClassService provides SuperClassDto {
 	}
 	dtoservice MyEntityService provides MyEntityDto {
 	}

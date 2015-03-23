@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<entity:LEntityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1">
+  <packages name="org.lunifera.dsl.xtext.builder.participant.tests.other">
+    <imports importedNamespace="org.lunifera.dsl.xtext.builder.participant.tests.*"/>
+    <types xsi:type="entity:LEntity" name="OtherEntity">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="someValue">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.datatype.lib/src/org/lunifera/dsl/common/datatypes/baseElements.datatypes#/0/@packages.0/@types.11"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="myEntity">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.xtext.builder.participant.tests/model/entity2.entitymodel#/0/@packages.0/@types.1"/>
+      </features>
+    </types>
+  </packages>
+</entity:LEntityModel>

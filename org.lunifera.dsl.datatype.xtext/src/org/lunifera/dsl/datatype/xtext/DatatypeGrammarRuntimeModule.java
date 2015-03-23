@@ -10,13 +10,12 @@
  */
 package org.lunifera.dsl.datatype.xtext;
 
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinkingService;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
+import org.lunifera.dsl.datatype.xtext.generator.Generator;
+import org.lunifera.dsl.datatype.xtext.generator.OutputConfigurationProvider;
 import org.lunifera.dsl.datatype.xtext.valueconverter.DatatypesQualifiedNameProvider;
-import org.lunifera.dsl.xtext.lazyresolver.IndexDerivedStateComputer;
 import org.lunifera.dsl.xtext.lazyresolver.SemanticLoadingResource;
-import org.lunifera.dsl.xtext.lazyresolver.api.IIndexModelAssociator;
 import org.lunifera.dsl.xtext.lazyresolver.linker.FastLinkingService;
 
 /**
@@ -38,20 +37,12 @@ public class DatatypeGrammarRuntimeModule extends
 		return FastLinkingService.class;
 	}
 
-	// public void configureIJvmModelAssociations(Binder binder) {
-	// binder.bind(IJvmModelAssociations.class)
-	// .to(IIndexModelAssociator.class);
-	// }
-
-//	public Class<? extends IJvmModelAssociator> bindIJvmModelAssociator() {
-//		return IndexDerivedStateComputer.class;
-//	}
-//
-//	public Class<? extends IIndexModelAssociator> bindIIndexModelAssociator() {
-//		return IndexDerivedStateComputer.class;
-//	}
-//
-//	public Class<? extends IJvmModelAssociations> bindIJvmModelAssociations() {
-//		return IndexDerivedStateComputer.class;
-//	}
+	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
+		return Generator.class;
+	}
+	
+	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
+		return OutputConfigurationProvider.class;
+	}
+	
 }

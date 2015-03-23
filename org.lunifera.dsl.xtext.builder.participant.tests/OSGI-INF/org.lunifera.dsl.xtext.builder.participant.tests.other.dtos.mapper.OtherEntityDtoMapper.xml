@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.mapper.otherentitydtomapper">
+       <implementation class="org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.mapper.OtherEntityDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+		  </service>
+		  
+		<property name="fordto.from.entity" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.other.OtherEntity"/>
+		<property name="fordto.to.dto" type="String">org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.OtherEntityDto
+		org.lunifera.dsl.xtext.builder.participant.tests.dtos.SuperClassDto
+		</property>
+
+		<property name="forentity.from.dto" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.OtherEntityDto"/>
+		<property name="forentity.to.entity" type="String">org.lunifera.dsl.xtext.builder.participant.tests.other.OtherEntity
+		org.lunifera.dsl.xtext.builder.participant.tests.SuperClass
+		</property>
+		
+		<property name="service.pid" type="String" value="org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.mapper.otherentitydtomapper"/>
+		<reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+				cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

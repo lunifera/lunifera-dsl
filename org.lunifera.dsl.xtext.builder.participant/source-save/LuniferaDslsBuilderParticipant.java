@@ -40,7 +40,7 @@ import org.osgi.service.component.annotations.Deactivate;
 
 import com.google.inject.Inject;
 
-@Component(service = { IBuilderParticipant.class })
+//@Component(service = { IBuilderParticipant.class })
 public class LuniferaDslsBuilderParticipant extends AbstractBuilderParticipant {
 
 	@Inject

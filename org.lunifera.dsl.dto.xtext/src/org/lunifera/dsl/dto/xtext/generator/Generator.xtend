@@ -11,7 +11,12 @@
 package org.lunifera.dsl.dto.xtext.generator
 
 import com.google.inject.Inject
+import java.io.StringWriter
+import java.io.Writer
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.xmi.XMLResource
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.util.TypeReferences
@@ -22,6 +27,7 @@ import org.lunifera.dsl.dto.lib.IMapper
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
+import org.lunifera.dsl.semantic.dto.LDtoModel
 import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
 import org.lunifera.dsl.xtext.lazyresolver.generator.DelegatingGenerator
 import org.slf4j.Logger
@@ -76,6 +82,22 @@ class Generator extends DelegatingGenerator {
 			fsa.generateFile(input.toServiceName, "Services-DSL", it.content);
 			log.stop(LOGGER, "generated " + input.toServiceName)
 		]
+
+		// persist the dto model
+		toBinary(input, fsa)
+	}
+
+	def toBinary(Resource input, IFileSystemAccess fsa) {
+		super.doGenerate(input, fsa)
+
+		val XMLResource outputRes = new XMLResourceImpl
+		val LDtoModel lModel = input.contents.get(0) as LDtoModel
+		outputRes.contents += EcoreUtil.copy(lModel)
+
+		val Writer writer = new StringWriter
+		outputRes.save(writer, null)
+
+		fsa.generateFile(input.URI.lastSegment + ".dtos_bin", "ModelBin", writer.toString)
 	}
 
 	def toServiceComponentName(LDto dto) {

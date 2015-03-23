@@ -19,6 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.knowhowlab.osgi.testing.utils.BundleUtils;
 import org.lunifera.dsl.semantic.dto.LDto;
+import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.xtext.builder.participant.IDtoMetadataService;
 import org.lunifera.xtext.builder.metadata.services.IMetadataBuilderService;
 import org.osgi.framework.BundleException;
@@ -26,7 +27,7 @@ import org.osgi.framework.BundleException;
 public class DtoDSLBuilderParticipantTests {
 
 	private static final String DTO_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.dtos.MyEntityDto";
-	private static final String DTO2_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.OtherDto";
+	private static final String DTO2_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.OtherEntityDto";
 	private static final int TIME_15000 = 15000;
 	private static final int TIME_1000 = 1000;
 
@@ -52,8 +53,9 @@ public class DtoDSLBuilderParticipantTests {
 		assertEquals("MyEntityDto", dto.getName());
 
 		LDto dto2 = service.getMetadata(DTO2_FQN);
-		assertEquals("OtherDto", dto2.getName());
-
+		assertEquals("OtherEntityDto", dto2.getName());
+		LEntity lEntity = (LEntity) dto2.getWrappedType();
+		assertEquals("OtherEntity", lEntity.getName());
 	}
 
 }

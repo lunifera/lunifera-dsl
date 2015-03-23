@@ -9,7 +9,7 @@
  * 		Florian Pirchner - Initial implementation
  */
 package org.lunifera.dsl.common.datatypes {
-	  
+	   
 	datatype boolean jvmType java.lang.Boolean as primitive;
 	datatype short jvmType java.lang.Short as primitive;
 	datatype int jvmType java.lang.Integer as primitive;

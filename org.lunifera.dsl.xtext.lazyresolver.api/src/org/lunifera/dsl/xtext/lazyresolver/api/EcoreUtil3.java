@@ -38,7 +38,7 @@ public class EcoreUtil3 {
 							resolvedObject = castedResource
 									.getSemanticElement(proxyURI.fragment());
 						} else {
-							EcoreUtil.resolve(proxy, resourceSet);
+							return EcoreUtil.resolve(proxy, resourceSet);
 						}
 					} catch (RuntimeException exception) {
 						resolvedObject = resourceSet

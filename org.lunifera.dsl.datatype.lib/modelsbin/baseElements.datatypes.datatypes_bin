@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ASCII"?>
+<types:LCommonModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:types="http://www.lunifera.org/dsl/common/types/v1" xmlns:types_1="http://www.eclipse.org/xtext/common/JavaVMTypes">
+  <packages name="org.lunifera.dsl.common.datatypes">
+    <types xsi:type="types:LDataType" name="boolean" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Boolean#java.lang.Boolean"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="short" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Short#java.lang.Short"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="int" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Integer#java.lang.Integer"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="long" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="double" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Double#java.lang.Double"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="float" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Float#java.lang.Float"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="character" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Character#java.lang.Character"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="byte" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Byte#java.lang.Byte"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Boolean">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Boolean#java.lang.Boolean"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Short">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Short#java.lang.Short"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Int">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Integer#java.lang.Integer"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Long">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Double">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Double#java.lang.Double"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Float">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Float#java.lang.Float"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Character">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Character#java.lang.Character"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Byte">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Byte#java.lang.Byte"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="String">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="Date" date="true"/>
+  </packages>
+</types:LCommonModel>
