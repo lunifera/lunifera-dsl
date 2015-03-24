@@ -200,7 +200,7 @@ public class LuniferaModelsBinBuilderParticipant extends
 			DtoService dtoService = new DtoService();
 			dtoServiceRegister = context.getBundleContext().registerService(
 					IDtoMetadataService.class, dtoService, null);
-		} else {
+		} else if (event.getState() == IBuilderParticipant.LifecycleEvent.DEACTIVATED) {
 			if (datatypesServiceRegister != null) {
 				datatypesServiceRegister.unregister();
 				datatypesServiceRegister = null;
