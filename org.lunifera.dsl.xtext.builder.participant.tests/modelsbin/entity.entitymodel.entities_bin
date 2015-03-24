@@ -14,5 +14,9 @@
         <type href="platform:/resource/org.lunifera.dsl.xtext.builder.participant.tests/model/entity2.entitymodel#/0/@packages.0/@types.1"/>
       </features>
     </types>
+    <types xsi:type="types:LEnum" name="Foo">
+      <literals name="FOO"/>
+      <literals name="BAR"/>
+    </types>
   </packages>
 </entity:LEntityModel>

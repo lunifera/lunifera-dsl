@@ -256,9 +256,9 @@ public class LuniferaModelsBinBuilderParticipant extends
 	private void registerDtos(LDtoModel eObject) {
 		for (LTypedPackage lPkg : eObject.getPackages()) {
 			for (LType lType : lPkg.getTypes()) {
-				dtosMap
-						.put(String.format("%s.%s", lPkg.getName(),
-								lType.getName()), EcoreUtil.getURI(lType));
+				dtosMap.put(
+						String.format("%s.%s", lPkg.getName(), lType.getName()),
+						EcoreUtil.getURI(lType));
 			}
 		}
 	}
@@ -315,8 +315,13 @@ public class LuniferaModelsBinBuilderParticipant extends
 
 		@Override
 		public LEntity getMetadata(String className) {
-			return (LEntity) resourceSet.getEObject(entitiesMap.get(className),
-					true);
+			URI uri = entitiesMap.get(className);
+			if (uri == null) {
+				return null;
+			}
+
+			EObject result = resourceSet.getEObject(uri, true);
+			return (result instanceof LEntity) ? (LEntity) result : null;
 		}
 	}
 
@@ -333,7 +338,13 @@ public class LuniferaModelsBinBuilderParticipant extends
 
 		@Override
 		public LDto getMetadata(String className) {
-			return (LDto) resourceSet.getEObject(dtosMap.get(className), true);
+			URI uri = dtosMap.get(className);
+			if (uri == null) {
+				return null;
+			}
+
+			EObject result = resourceSet.getEObject(uri, true);
+			return (result instanceof LDto) ? (LDto) result : null;
 		}
 
 	}

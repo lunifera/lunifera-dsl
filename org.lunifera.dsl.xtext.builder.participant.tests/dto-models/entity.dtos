@@ -14,4 +14,8 @@ package org.lunifera.dsl.xtext.builder.participant.tests.other.dtos {
 		inherit ref myEntity mapto MyEntityDto;
 	}
 	
+	enum Foo {
+		FOO, BAR
+	}
+	
 }

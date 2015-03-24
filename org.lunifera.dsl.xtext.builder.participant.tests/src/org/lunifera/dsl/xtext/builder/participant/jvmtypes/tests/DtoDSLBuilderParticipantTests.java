@@ -12,6 +12,7 @@ package org.lunifera.dsl.xtext.builder.participant.jvmtypes.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.knowhowlab.osgi.testing.assertions.OSGiAssert.setDefaultBundleContext;
 import static org.knowhowlab.osgi.testing.utils.ServiceUtils.getService;
 
@@ -21,6 +22,7 @@ import org.knowhowlab.osgi.testing.utils.BundleUtils;
 import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.entity.LEntity;
 import org.lunifera.dsl.xtext.builder.participant.IDtoMetadataService;
+import org.lunifera.dsl.xtext.builder.participant.IEntityMetadataService;
 import org.lunifera.xtext.builder.metadata.services.IMetadataBuilderService;
 import org.osgi.framework.BundleException;
 
@@ -28,6 +30,7 @@ public class DtoDSLBuilderParticipantTests {
 
 	private static final String DTO_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.dtos.MyEntityDto";
 	private static final String DTO2_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.OtherEntityDto";
+	private static final String ENUM_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.Foo";
 	private static final int TIME_15000 = 15000;
 	private static final int TIME_1000 = 1000;
 
@@ -56,6 +59,17 @@ public class DtoDSLBuilderParticipantTests {
 		assertEquals("OtherEntityDto", dto2.getName());
 		LEntity lEntity = (LEntity) dto2.getWrappedType();
 		assertEquals("OtherEntity", lEntity.getName());
+	}
+	
+	@Test
+	public void testAccessEnum() throws Exception {
+
+		IDtoMetadataService service = getService(Activator.context,
+				IDtoMetadataService.class, TIME_1000);
+		assertNotNull(service);
+
+		LDto dto = service.getMetadata(ENUM_FQN);
+		assertNull(dto);
 	}
 
 }

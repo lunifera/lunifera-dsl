@@ -12,6 +12,7 @@ package org.lunifera.dsl.xtext.builder.participant.jvmtypes.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.knowhowlab.osgi.testing.assertions.OSGiAssert.setDefaultBundleContext;
 import static org.knowhowlab.osgi.testing.utils.ServiceUtils.getService;
 
@@ -27,6 +28,7 @@ public class EntityDSLBuilderParticipantTests {
 
 	private static final String ENTITY_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.other.OtherEntity";
 	private static final String ENTITY2_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.MyEntity";
+	private static final String ENUM_FQN = "org.lunifera.dsl.xtext.builder.participant.tests.other.Foo";
 	private static final int TIME_15000 = 15000;
 	private static final int TIME_1000 = 1000;
 
@@ -54,6 +56,17 @@ public class EntityDSLBuilderParticipantTests {
 		LEntity entity2 = service.getMetadata(ENTITY2_FQN);
 		assertEquals("MyEntity", entity2.getName());
 
+	}
+	
+	@Test
+	public void testAccessEnum() throws Exception {
+
+		IEntityMetadataService service = getService(Activator.context,
+				IEntityMetadataService.class, TIME_1000);
+		assertNotNull(service);
+
+		LEntity entity = service.getMetadata(ENUM_FQN);
+		assertNull(entity);
 	}
 
 }

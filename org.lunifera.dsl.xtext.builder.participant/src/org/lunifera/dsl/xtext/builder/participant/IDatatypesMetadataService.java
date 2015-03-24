@@ -12,6 +12,9 @@ package org.lunifera.dsl.xtext.builder.participant;
 
 import org.lunifera.dsl.semantic.common.types.LDataType;
 
+/**
+ * Should not implemented by clients. 
+ */
 public interface IDatatypesMetadataService {
 
 	/**

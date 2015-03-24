@@ -12,6 +12,9 @@ package org.lunifera.dsl.xtext.builder.participant;
 
 import org.lunifera.dsl.semantic.dto.LDto;
 
+/**
+ * Should not implemented by clients. 
+ */
 public interface IDtoMetadataService {
 
 	/**

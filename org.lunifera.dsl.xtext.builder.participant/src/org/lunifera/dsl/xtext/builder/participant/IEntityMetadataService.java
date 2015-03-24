@@ -12,6 +12,9 @@ package org.lunifera.dsl.xtext.builder.participant;
 
 import org.lunifera.dsl.semantic.entity.LEntity;
 
+/**
+ * Should not implemented by clients. 
+ */
 public interface IEntityMetadataService {
 
 	/**
