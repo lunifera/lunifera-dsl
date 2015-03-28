@@ -17,7 +17,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.Persistence;
+
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -28,6 +32,7 @@ import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions;
 import org.lunifera.dsl.semantic.common.helper.Bounds;
 import org.lunifera.dsl.semantic.common.types.LDataType;
@@ -124,8 +129,8 @@ public class EntityGrammarJavaValidator extends
 		// ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
 		// CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
 		// }
-		// } else 
-			if (prop.getType() instanceof LEntity) {
+		// } else
+		if (prop.getType() instanceof LEntity) {
 			if (extensions.isToMany(prop)) {
 				error("To-Many-Relations are not supported for bean->entity references.",
 						LunTypesPackage.Literals.LFEATURE__MULTIPLICITY,
@@ -666,5 +671,40 @@ public class EntityGrammarJavaValidator extends
 			}
 		}
 		return allEntities;
+	}
+
+	@Check
+	public void checkClassPath(LTypedPackage entityModel) {
+		TypeReferences typeReferences = getServices().getTypeReferences();
+		final JvmGenericType listType = (JvmGenericType) typeReferences
+				.findDeclaredType(List.class, entityModel);
+		if (listType == null || listType.getTypeParameters().isEmpty()) {
+			error("Couldn't find a JDK 1.5 or higher on the project's classpath.",
+					entityModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__JDK_1_5);
+		}
+		if (typeReferences.findDeclaredType(Persistence.class, entityModel) == null) {
+			error("Couldn't find the mandatory library 'javax.persistence' 2.1.0 or higher on the project's classpath.",
+					entityModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__JAVAX_PERSISTENCE);
+		}
+		if (typeReferences.findDeclaredType(
+				"org.lunifera.runtime.common.annotations.Dispose", entityModel) == null) {
+			error("Couldn't find the mandatory library 'org.lunifera.runtime.common' on the project's classpath.",
+					entityModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__L_RUNTIME_COMMON);
+		}
+		if (typeReferences.findDeclaredType(Extension.class, entityModel) == null) {
+			error("Couldn't find the mandatory library 'org.eclipse.xtext.xbase.lib' 2.7.3 or higher on the project's classpath.",
+					entityModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__XBASE_LIB);
+		}
+		if (typeReferences.findDeclaredType(
+				"org.lunifera.dsl.common.datatypes.IDatatypeConstants",
+				entityModel) == null) {
+			warning("Couldn't find the optional library 'org.lunifera.dsl.datatype.lib' on the project's classpath. This may cause resolving problems.",
+					entityModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__DATATYPE_LIB);
+		}
 	}
 }

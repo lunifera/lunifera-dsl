@@ -53,6 +53,13 @@ public class CommonGrammarJavaValidator
 	public static final String CODE__FORBIDDEN_JAVA_KEYWORD = "0_105";
 	public static final String CODE__DUPLICATE_LDATATYPE_IN_PACKAGE = "0_106";
 
+	public static final String CODE__MISSING__JAVAX_PERSISTENCE = "0_107";
+	public static final String CODE__MISSING__L_RUNTIME_COMMON = "0_108";
+	public static final String CODE__MISSING__DATATYPE_LIB = "0_109";
+	public static final String CODE__MISSING__DTO_LIB = "0_110";
+	public static final String CODE__MISSING__XBASE_LIB = "0_111";
+	public static final String CODE__MISSING__JDK_1_5 = "0_112";
+
 	@Inject
 	private IQualifiedNameProvider qnp;
 	@Inject

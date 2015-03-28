@@ -16,13 +16,17 @@ package org.lunifera.dsl.dto.xtext.validation;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions;
 import org.lunifera.dsl.semantic.common.helper.Bounds;
 import org.lunifera.dsl.semantic.common.types.LDataType;
@@ -45,6 +49,7 @@ import com.google.inject.Inject;
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
+@SuppressWarnings("restriction")
 public class DtoGrammarJavaValidator extends
 		org.lunifera.dsl.dto.xtext.validation.AbstractDtoGrammarJavaValidator {
 
@@ -206,15 +211,15 @@ public class DtoGrammarJavaValidator extends
 						CODE__DOMAIN_KEY__NO_MANY, new String[0]);
 
 			}
-//			if (prop.getType() instanceof LDataType) {
-//				LDataType type = (LDataType) prop.getType();
-//				String typename = type.getJvmTypeReference().getQualifiedName();
-//				if (!typename.equals("java.lang.String")) {
-//					error("DomainKey must be datatype String.",
-//							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
-//							CODE__DOMAIN_KEY__TYPE, new String[0]);
-//				}
-//			}
+			// if (prop.getType() instanceof LDataType) {
+			// LDataType type = (LDataType) prop.getType();
+			// String typename = type.getJvmTypeReference().getQualifiedName();
+			// if (!typename.equals("java.lang.String")) {
+			// error("DomainKey must be datatype String.",
+			// LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+			// CODE__DOMAIN_KEY__TYPE, new String[0]);
+			// }
+			// }
 		}
 
 		if (prop.isDomainDescription()) {
@@ -224,15 +229,15 @@ public class DtoGrammarJavaValidator extends
 						CODE__DOMAIN_DESCRIPTION__NO_MANY, new String[0]);
 
 			}
-//			if (prop.getType() instanceof LDataType) {
-//				LDataType type = (LDataType) prop.getType();
-//				String typename = type.getJvmTypeReference().getQualifiedName();
-//				if (!typename.equals("java.lang.String")) {
-//					error("DomainDescription must be of type String.",
-//							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
-//							CODE__DOMAIN_DESCRIPTION__TYPE, new String[0]);
-//				}
-//			}
+			// if (prop.getType() instanceof LDataType) {
+			// LDataType type = (LDataType) prop.getType();
+			// String typename = type.getJvmTypeReference().getQualifiedName();
+			// if (!typename.equals("java.lang.String")) {
+			// error("DomainDescription must be of type String.",
+			// LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+			// CODE__DOMAIN_DESCRIPTION__TYPE, new String[0]);
+			// }
+			// }
 		}
 
 		if (prop.isDirty()) {
@@ -389,4 +394,45 @@ public class DtoGrammarJavaValidator extends
 		}
 	}
 
+	@Check
+	public void checkClassPath(LTypedPackage dtoModel) {
+		TypeReferences typeReferences = getServices().getTypeReferences();
+		final JvmGenericType listType = (JvmGenericType) typeReferences
+				.findDeclaredType(List.class, dtoModel);
+		if (listType == null || listType.getTypeParameters().isEmpty()) {
+			error("Couldn't find a JDK 1.5 or higher on the project's classpath.",
+					dtoModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__JDK_1_5);
+		}
+		if (typeReferences.findDeclaredType(
+				"org.lunifera.dsl.dto.lib.services.IDTOService", dtoModel) == null) {
+			error("Couldn't find the mandatory library 'org.lunifera.dsl.dto.lib' on the project's classpath.",
+					dtoModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__DTO_LIB);
+		}
+		if (typeReferences.findDeclaredType(
+				"org.lunifera.runtime.common.annotations.Dispose", dtoModel) == null) {
+			error("Couldn't find the mandatory library 'org.lunifera.runtime.common' on the project's classpath.",
+					dtoModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__L_RUNTIME_COMMON);
+		}
+		if (typeReferences.findDeclaredType(Extension.class, dtoModel) == null) {
+			error("Couldn't find the mandatory library 'org.eclipse.xtext.xbase.lib' 2.7.3 or higher on the project's classpath.",
+					dtoModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__XBASE_LIB);
+		}
+		if (typeReferences.findDeclaredType("javax.persistence.Persistence",
+				dtoModel) == null) {
+			warning("Couldn't find the optional library 'javax.persistence' 2.1.0 or higher on the project's classpath. If you are using JPA-Dto-Services, the library is mandatory.",
+					dtoModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__JAVAX_PERSISTENCE);
+		}
+		if (typeReferences.findDeclaredType(
+				"org.lunifera.dsl.common.datatypes.IDatatypeConstants",
+				dtoModel) == null) {
+			warning("Couldn't find the optional library 'org.lunifera.dsl.datatype.lib' on the project's classpath. This may cause resolving problems.",
+					dtoModel, LunTypesPackage.Literals.LPACKAGE__NAME,
+					CODE__MISSING__DATATYPE_LIB);
+		}
+	}
 }

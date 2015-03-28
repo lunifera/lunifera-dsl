@@ -75,7 +75,6 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if(prop.dirty){
 			field.annotations += prop.toAnnotation(typeof(Dirty))
 		}
-	
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoInheritedAttribute prop, JvmField field) {
