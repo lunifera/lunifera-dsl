@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dto:LDtoModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dto="http://www.lunifera.org/dsl/dto/v1" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1">
+  <packages name="org.lunifera.dsl.xtext.builder.participant.tests.other.dtos">
+    <imports importedNamespace="org.lunifera.dsl.xtext.builder.participant.tests.*"/>
+    <imports importedNamespace="org.lunifera.dsl.xtext.builder.participant.tests.dtos.*"/>
+    <imports importedNamespace="org.lunifera.dsl.xtext.builder.participant.tests.dtos.mapper.*"/>
+    <imports importedNamespace="org.lunifera.dsl.xtext.builder.participant.tests.other.*"/>
+    <imports importedNamespace="org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.*"/>
+    <imports importedNamespace="org.lunifera.dsl.xtext.builder.participant.tests.other.dtos.mapper.*"/>
+    <types xsi:type="dto:LAutoInheritDto" name="OtherEntityDto">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.xtext.builder.participant.tests/model/entity.entitymodel#/0/@packages.0/@types.0/@features.0"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedReference">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <type href="platform:/resource/org.lunifera.dsl.xtext.builder.participant.tests/dto-models/entity2.dtos#/0/@packages.0/@types.1"/>
+        <inheritedFeature xsi:type="entity:LEntityReference" href="platform:/resource/org.lunifera.dsl.xtext.builder.participant.tests/model/entity.entitymodel#/0/@packages.0/@types.0/@features.1"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.dsl.xtext.builder.participant.tests/model/entity.entitymodel#/0/@packages.0/@types.0"/>
+    </types>
+    <types xsi:type="types:LEnum" name="Foo">
+      <literals name="FOO"/>
+      <literals name="BAR"/>
+    </types>
+  </packages>
+</dto:LDtoModel>
