@@ -28,7 +28,6 @@ import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions;
-import org.lunifera.dsl.semantic.common.helper.Bounds;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LPackage;
@@ -58,6 +57,7 @@ public class DtoGrammarJavaValidator extends
 	private static final String CODE__CASCADE_DIRECTION_INVALID = "106";
 	private static final String CODE__OPPOSITE_WITHOUT_CASCADE = "107";
 	private static final String CODE__UUID_WRONG_TYPE = "108";
+	private static final String CODE__TWO_OPPOSITES_REQUIRED = "109";
 
 	private static final String CODE__DUPLICATE_ID = "110";
 	private static final String CODE__DUPLICATE_VERSION = "111";
@@ -84,11 +84,13 @@ public class DtoGrammarJavaValidator extends
 
 	@Check
 	public void checkMulti_HasOppositeReference(LDtoReference prop) {
-		if (extensions.isToMany(prop) && prop.getOpposite() == null) {
-			error("A 'to-many' association needs an opposite reference.",
-					LunDtoPackage.Literals.LDTO_REFERENCE__OPPOSITE,
-					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-					CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
+		if (prop.isCascading()) {
+			if (extensions.isToMany(prop) && prop.getOpposite() == null) {
+				error("A cascading 'to-many' association needs an opposite reference.",
+						LunDtoPackage.Literals.LDTO_REFERENCE__OPPOSITE,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__MISSING_OPPOSITE_REFERENCE, (String[]) null);
+			}
 		}
 	}
 
@@ -113,17 +115,27 @@ public class DtoGrammarJavaValidator extends
 	}
 
 	@Check
-	public void checkOpposite_OneIsCascading(LDtoReference prop) {
-		Bounds propBound = extensions.getBounds(prop);
-
-		if (prop.getOpposite() != null) {
-			Bounds oppositeBound = extensions.getBounds(prop.getOpposite());
-
-			if (propBound.isToMany() || oppositeBound.isToMany()) {
-				// no check required!
-				return;
-			}
+	public void checkOpposite_TwoOpposites(LDtoReference prop) {
+		if (prop.getOpposite() != null
+				&& prop.getOpposite().getOpposite() == null) {
+			error("Both references need to have an opposite.",
+					LunDtoPackage.Literals.LDTO_REFERENCE__OPPOSITE,
+					CODE__TWO_OPPOSITES_REQUIRED, (String[]) null);
 		}
+	}
+
+	@Check
+	public void checkOpposite_OneIsCascading(LDtoReference prop) {
+		// Bounds propBound = extensions.getBounds(prop);
+		//
+		// if (prop.getOpposite() != null) {
+		// Bounds oppositeBound = extensions.getBounds(prop.getOpposite());
+		//
+		// if (propBound.isToMany() || oppositeBound.isToMany()) {
+		// // no check required!
+		// // return;
+		// }
+		// }
 
 		if (prop.getOpposite() != null) {
 			if (!prop.isCascading() && !prop.getOpposite().isCascading()) {
