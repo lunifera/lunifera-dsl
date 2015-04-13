@@ -125,6 +125,7 @@ class LEnumLiteral extends LLazyResolver {
 	String name
 	boolean ^default
 	boolean ^null
+	int value
 }
 
 class LClass extends LType {

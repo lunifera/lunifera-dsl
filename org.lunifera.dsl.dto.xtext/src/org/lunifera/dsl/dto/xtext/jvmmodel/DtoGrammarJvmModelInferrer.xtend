@@ -32,6 +32,7 @@ import org.lunifera.dsl.dto.xtext.extensions.DtoTypesBuilder
 import org.lunifera.dsl.dto.xtext.extensions.MethodNamingExtensions
 import org.lunifera.dsl.semantic.common.types.LAttribute
 import org.lunifera.dsl.semantic.common.types.LEnum
+import org.lunifera.dsl.semantic.common.types.LOperation
 import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
 import org.lunifera.dsl.semantic.dto.LDto
@@ -370,7 +371,7 @@ class DtoGrammarJvmModelInferrer extends IndexModelInferrer {
 					
 					// forward the event from embeddable beans to all listeners. So the parent of the embeddable
 					// bean will become notified and its dirty state can be handled properly
-					«FOR ref : dto.features.filter[it.toRawType.isBean]»
+					«FOR ref : dto.features.filter[!(it instanceof LOperation)].filter[it.toRawType.isBean]»
 						if(source == «ref.toName»){
 							firePropertyChange("«ref.toName»" + "_" + event.getPropertyName(), event.getOldValue(), event.getNewValue());
 						} else 

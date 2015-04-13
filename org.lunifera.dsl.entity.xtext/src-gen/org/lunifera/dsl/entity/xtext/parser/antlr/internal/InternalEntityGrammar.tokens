@@ -8,7 +8,7 @@
 '&'=134
 '('=16
 ')'=17
-'*'=61
+'*'=62
 '**'=99
 '*='=79
 '+'=97
@@ -20,8 +20,8 @@
 '--'=105
 '-='=78
 '->'=92
-'.'=60
-'..'=72
+'.'=61
+'..'=73
 '..<'=93
 '/'=100
 '/='=80
@@ -33,7 +33,7 @@
 '<'=82
 '<='=146
 '<>'=95
-'='=75
+'='=59
 '=='=87
 '==='=89
 '=>'=94
@@ -42,30 +42,30 @@
 '?'=133
 '?.'=107
 '?:'=96
-'@'=74
+'@'=75
 'CHAR'=137
 'DATE'=139
 'INHERIT'=135
 'INT'=138
 'STRING'=136
 'TIMESTAMP'=140
-'['=71
-']'=73
+'['=72
+']'=74
 'abstract'=13
 'as blob'=55
 'as primitive'=53
 'as'=103
 'asDefault'=57
 'bean'=24
-'cachable'=62
+'cachable'=63
 'cacheable'=18
 'cascade'=32
 'case'=114
 'catch'=132
-'collection'=63
-'constraints'=59
+'collection'=64
+'constraints'=60
 'datatype'=51
-'date'=69
+'date'=70
 'dateType'=54
 'def'=42
 'default'=113
@@ -76,7 +76,7 @@
 'do'=117
 'domainDescription'=36
 'domainKey'=41
-'dto'=68
+'dto'=69
 'else'=110
 'entity'=19
 'enum'=56
@@ -95,11 +95,11 @@
 'inheritance per subclass'=48
 'instanceof'=91
 'jvmType'=52
-'lazy'=66
+'lazy'=67
 'mapped superclass'=23
-'mapto'=70
+'mapto'=71
 'new'=122
-'notnull'=67
+'notnull'=68
 'null'=125
 'opposite'=33
 'package'=49
@@ -107,10 +107,10 @@
 'protected'=144
 'public'=145
 'ref'=31
-'refers'=64
+'refers'=65
 'return'=128
 'schemaName'=28
-'settings'=65
+'settings'=66
 'static'=119
 'super'=121
 'switch'=111
@@ -136,12 +136,12 @@
 '}'=22
 RULE_ANY_OTHER=12
 RULE_DECIMAL=8
-RULE_HEX=6
+RULE_HEX=7
 RULE_ID=4
-RULE_INT=7
+RULE_INT=5
 RULE_ML_COMMENT=9
 RULE_SL_COMMENT=10
-RULE_STRING=5
+RULE_STRING=6
 RULE_WS=11
 T__100=100
 T__101=101

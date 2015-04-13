@@ -850,13 +850,22 @@ public interface LunTypesPackage extends EPackage {
 	int LENUM_LITERAL__NULL = LLAZY_RESOLVER_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM_LITERAL__VALUE = LLAZY_RESOLVER_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>LEnum Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENUM_LITERAL_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 3;
+	int LENUM_LITERAL_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -2275,6 +2284,17 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLEnumLiteral_Null();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LEnumLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LEnumLiteral#getValue()
+	 * @see #getLEnumLiteral()
+	 * @generated
+	 */
+	EAttribute getLEnumLiteral_Value();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LClass <em>LClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3272,6 +3292,14 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LENUM_LITERAL__NULL = eINSTANCE.getLEnumLiteral_Null();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LENUM_LITERAL__VALUE = eINSTANCE.getLEnumLiteral_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LClassImpl <em>LClass</em>}' class.

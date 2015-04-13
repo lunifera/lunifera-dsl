@@ -47,7 +47,7 @@ class DtoModelExtensions extends ModelExtensions {
 	@Inject extension IQualifiedNameProvider
 	@Inject extension JvmTypesBuilder
 	@Inject extension MethodNamingExtensions
-	
+
 	@Inject TypeReferences references;
 
 	/**
@@ -287,14 +287,14 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch LType toRawType(LDtoInheritedAttribute prop) {
 		prop.inheritedFeature?.type
 	}
-	
+
 	/**
 	 * Returns the type of the property or reference without any mappings
 	 */
 	def dispatch LType toRawType(LDtoReference prop) {
 		prop.type
 	}
-	
+
 	/**
 	 * Returns the type of the property or reference without any mappings
 	 */
@@ -308,14 +308,14 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch LType toRawType(LEntityReference prop) {
 		prop.type
 	}
-	
+
 	/**
 	 * Returns the type of the property or reference without any mappings
 	 */
 	def dispatch LType toRawType(LEntityAttribute prop) {
 		prop.type
 	}
-	
+
 	/**
 	 * Returns the type of the property or reference without any mappings
 	 */
@@ -329,7 +329,7 @@ class DtoModelExtensions extends ModelExtensions {
 	def dispatch LType toRawType(LBeanAttribute prop) {
 		prop.type
 	}
-	
+
 	/**
 	 * Returns the type reference of the property or reference without any mappings
 	 */
@@ -349,21 +349,21 @@ class DtoModelExtensions extends ModelExtensions {
 		}
 		return TypesFactory.eINSTANCE.createJvmUnknownTypeReference
 	}
-	
+
 	/**
 	 * Returns the type reference of the property or reference without any mappings
 	 */
 	def dispatch toRawTypeRefernce(LDtoAbstractReference prop) {
 		prop.toRawType?.toTypeReference
 	}
-	
+
 	/**
 	 * Returns the type reference of the property or reference without any mappings
 	 */
 	def String toRawTypeName(LDtoFeature prop) {
 		prop.toRawType?.name
 	}
-	
+
 	def dispatch LFeature opposite(LDtoFeature prop) {
 		null
 	}
@@ -379,7 +379,7 @@ class DtoModelExtensions extends ModelExtensions {
 			return null
 		}
 	}
- 
+
 	def dispatch LFeature opposite(LEntityReference prop) {
 		prop.opposite
 	}
@@ -509,6 +509,10 @@ class DtoModelExtensions extends ModelExtensions {
 		return false
 	}
 
+	def dispatch isContainerReference(LDtoOperation prop) {
+		return false
+	}
+
 	def dispatch isContainerReference(LDtoReference prop) {
 		val opposite = prop.opposite
 		if (opposite != null && opposite.cascading) {
@@ -553,23 +557,23 @@ class DtoModelExtensions extends ModelExtensions {
 			it.containmentReference
 		]
 	}
-	
-	override boolean isBasedOnDatatype(LFeature feature){
-		if(feature instanceof LDtoInheritedAttribute){
+
+	override boolean isBasedOnDatatype(LFeature feature) {
+		if (feature instanceof LDtoInheritedAttribute) {
 			return if(feature.inheritedFeature != null) feature.inheritedFeature.isBasedOnDatatype else false
 		}
 		return super.isBasedOnDatatype(feature)
 	}
-	
-	override LDataType getDatatype(LFeature feature){
-		if(feature instanceof LDtoInheritedAttribute){
+
+	override LDataType getDatatype(LFeature feature) {
+		if (feature instanceof LDtoInheritedAttribute) {
 			return if(feature.inheritedFeature != null) feature.inheritedFeature.getDatatype else null
 		}
 		return super.getDatatype(feature)
 	}
-	
+
 	override typeIsEnum(LAttribute prop) {
-		if(prop instanceof LDtoInheritedAttribute){
+		if (prop instanceof LDtoInheritedAttribute) {
 			return if(prop.inheritedFeature != null) prop.inheritedFeature.typeIsEnum else false
 		}
 		return super.typeIsEnum(prop)
@@ -592,9 +596,9 @@ class DtoModelExtensions extends ModelExtensions {
 			return !it.containerReference && it.isCrossReference
 		]
 	}
-	
-	def boolean isBean(LType type){
-		if(type instanceof LDto){
+
+	def boolean isBean(LType type) {
+		if (type instanceof LDto) {
 			return type.wrappedType instanceof LBean
 		}
 		return type instanceof LBean

@@ -371,12 +371,16 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNullAssignment_1_1_0 = (Assignment)cGroup_1_1.eContents().get(0);
 		private final Keyword cNullForNullKeyword_1_1_0_0 = (Keyword)cNullAssignment_1_1_0.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Group cGroup_1_1_2 = (Group)cGroup_1_1.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_1_1_2_0 = (Keyword)cGroup_1_1_2.eContents().get(0);
+		private final Assignment cValueAssignment_1_1_2_1 = (Assignment)cGroup_1_1_2.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_1_1_2_1_0 = (RuleCall)cValueAssignment_1_1_2_1.eContents().get(0);
 		
 		//EnumLiteral returns types::LEnumLiteral:
-		//	name=ID ("(" default?="asDefault"? & null?="forNull"? ")")?;
+		//	name=ID ("(" default?="asDefault"? & null?="forNull"? ")" ("=" value=INT)?)?;
 		public ParserRule getRule() { return rule; }
 
-		//name=ID ("(" default?="asDefault"? & null?="forNull"? ")")?
+		//name=ID ("(" default?="asDefault"? & null?="forNull"? ")" ("=" value=INT)?)?
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -385,7 +389,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
 
-		//("(" default?="asDefault"? & null?="forNull"? ")")?
+		//("(" default?="asDefault"? & null?="forNull"? ")" ("=" value=INT)?)?
 		public UnorderedGroup getUnorderedGroup_1() { return cUnorderedGroup_1; }
 
 		//"(" default?="asDefault"?
@@ -400,7 +404,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"asDefault"
 		public Keyword getDefaultAsDefaultKeyword_1_0_1_0() { return cDefaultAsDefaultKeyword_1_0_1_0; }
 
-		//null?="forNull"? ")"
+		//null?="forNull"? ")" ("=" value=INT)?
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
 		//null?="forNull"?
@@ -411,6 +415,18 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//")"
 		public Keyword getRightParenthesisKeyword_1_1_1() { return cRightParenthesisKeyword_1_1_1; }
+
+		//("=" value=INT)?
+		public Group getGroup_1_1_2() { return cGroup_1_1_2; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_1_2_0() { return cEqualsSignKeyword_1_1_2_0; }
+
+		//value=INT
+		public Assignment getValueAssignment_1_1_2_1() { return cValueAssignment_1_1_2_1; }
+
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_1_1_2_1_0() { return cValueINTTerminalRuleCall_1_1_2_1_0; }
 	}
 
 	public class AnnotationDefElements extends AbstractParserRuleElementFinder {
@@ -1175,7 +1191,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumLiteral returns types::LEnumLiteral:
-	//	name=ID ("(" default?="asDefault"? & null?="forNull"? ")")?;
+	//	name=ID ("(" default?="asDefault"? & null?="forNull"? ")" ("=" value=INT)?)?;
 	public EnumLiteralElements getEnumLiteralAccess() {
 		return pEnumLiteral;
 	}

@@ -699,7 +699,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumLiteral returns types::LEnumLiteral:
-	//	name=ID ("(" default?="asDefault"? & null?="forNull"? ")")?;
+	//	name=ID ("(" default?="asDefault"? & null?="forNull"? ")" ("=" value=INT)?)?;
 	public CommonGrammarGrammarAccess.EnumLiteralElements getEnumLiteralAccess() {
 		return gaCommonGrammar.getEnumLiteralAccess();
 	}

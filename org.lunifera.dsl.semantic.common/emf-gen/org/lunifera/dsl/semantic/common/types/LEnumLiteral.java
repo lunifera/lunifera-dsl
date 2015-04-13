@@ -25,6 +25,7 @@ package org.lunifera.dsl.semantic.common.types;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LEnumLiteral#getName <em>Name</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LEnumLiteral#isDefault <em>Default</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LEnumLiteral#isNull <em>Null</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LEnumLiteral#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -110,5 +111,31 @@ public interface LEnumLiteral extends LLazyResolver {
 	 * @generated
 	 */
 	void setNull(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #setValue(int)
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLEnumLiteral_Value()
+	 * @model unique="false"
+	 * @generated
+	 */
+	int getValue();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.common.types.LEnumLiteral#getValue <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @see #getValue()
+	 * @generated
+	 */
+	void setValue(int value);
 
 } // LEnumLiteral

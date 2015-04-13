@@ -344,8 +344,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
 		XbasePackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 		XAnnotationsPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -712,6 +712,15 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 */
 	public EAttribute getLEnumLiteral_Null() {
 		return (EAttribute)lEnumLiteralEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLEnumLiteral_Value() {
+		return (EAttribute)lEnumLiteralEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1332,6 +1341,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		createEAttribute(lEnumLiteralEClass, LENUM_LITERAL__NAME);
 		createEAttribute(lEnumLiteralEClass, LENUM_LITERAL__DEFAULT);
 		createEAttribute(lEnumLiteralEClass, LENUM_LITERAL__NULL);
+		createEAttribute(lEnumLiteralEClass, LENUM_LITERAL__VALUE);
 
 		lClassEClass = createEClass(LCLASS);
 		createEAttribute(lClassEClass, LCLASS__ABSTRACT);
@@ -1518,6 +1528,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEAttribute(getLEnumLiteral_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLEnumLiteral_Default(), theEcorePackage.getEBoolean(), "default", null, 0, 1, LEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLEnumLiteral_Null(), theEcorePackage.getEBoolean(), "null", null, 0, 1, LEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLEnumLiteral_Value(), theEcorePackage.getEInt(), "value", null, 0, 1, LEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lClassEClass, LClass.class, "LClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLClass_Abstract(), theEcorePackage.getEBoolean(), "abstract", null, 0, 1, LClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

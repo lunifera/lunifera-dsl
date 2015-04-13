@@ -19,6 +19,8 @@ import org.lunifera.dsl.entity.xtext.services.EntityGrammarGrammarAccess;
 public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected EntityGrammarGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a;
+	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p;
 	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a;
 	protected AbstractElementAlias match_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p;
 	protected AbstractElementAlias match_EnumLiteral___RightParenthesisKeyword_1_1_1_a_LeftParenthesisKeyword_1_0_0__p;
@@ -35,6 +37,8 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (EntityGrammarGrammarAccess) access;
+		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a = new GroupAlias(true, true, new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
+		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p = new GroupAlias(true, false, new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
 		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
 		match_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p = new GroupAlias(true, false, new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()), new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()));
 		match_EnumLiteral___RightParenthesisKeyword_1_1_1_a_LeftParenthesisKeyword_1_0_0__p = new GroupAlias(true, false, new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()));
@@ -86,7 +90,11 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a.equals(syntax))
+			if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a.equals(syntax))
+				emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p.equals(syntax))
+				emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a.equals(syntax))
 				emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p.equals(syntax))
 				emit_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -114,6 +122,22 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 		}
 	}
 
+	/**
+	 * Syntax:
+	 *     ('('* ')')*
+	 */
+	protected void emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('('* ')')+
+	 */
+	protected void emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Syntax:
 	 *     ('(' | ')')*

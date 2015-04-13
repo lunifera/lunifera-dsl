@@ -57,11 +57,11 @@ Modifier returns types::LModifier:
 Enum returns types::LEnum:
 	'enum' name=ID
 	'{'
-		literals+=EnumLiteral (', ' literals+=EnumLiteral)*
+	literals+=EnumLiteral (', ' literals+=EnumLiteral)*
 	'}';
 
 EnumLiteral returns types::LEnumLiteral:
-	name=ID ('('default?='asDefault'? & null?='forNull'? ')')?;
+	name=ID ('(' default?='asDefault'? & null?='forNull'? ')' ('=' value=INT)?)?;
 
 AnnotationDef returns types::LAnnotationDef:
 	=> (annotation=XAnnotation);
@@ -72,26 +72,23 @@ enum LVisibility returns types::LVisibility:
 Constraints returns types::LConstraints:
 	{types::LConstraints}
 	'constraints' '{'
-		constraints+=Constraint*
-	'}'
-;
+	constraints+=Constraint*
+	'}';
 
 Constraint returns types::LConstraint:
-	AttributeMatchingConstraint
-;
+	AttributeMatchingConstraint;
 
 AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
-	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | => matchingLiteral=[types::LEnumLiteral])';'
-;
+	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
+	matchingLiteral=[types::LEnumLiteral]) ';';
 
 enum LComparatorType returns types::LComparatorType:
-	EQUALS = '==' |
-	GREATER = '>' |
-	LOWER = '<' |
-	GREATER_EQ = '>=' |
-	LOWER_EQ = '<=' |
-	NOT_EQ = '<>'
-	;
+	EQUALS='==' |
+	GREATER='>' |
+	LOWER='<' |
+	GREATER_EQ='>=' |
+	LOWER_EQ='<=' |
+	NOT_EQ='<>';
 
 LQualifiedNameWithWildCard:
 	QualifiedName ('.' '*')?;
@@ -102,9 +99,9 @@ LFQN:
 ValidIDWithKeywords:
 	'cachable' | 'id' | 'uuid' | 'transient' | 'version' | 'derived'
 	'collection' | 'refers' | 'settings' | 'lazy' |
-	'notnull' | 'dto' |  'date' | 'mapto' | 'ref' | 'cascade' | 'var' |
+	'notnull' | 'dto' | 'date' | 'mapto' | 'ref' | 'cascade' | 'var' |
 	ID;
-	
+
 ValidLFQNWithKeywords:
 	ValidIDWithKeywords ('.' ValidIDWithKeywords)*;
 
@@ -116,7 +113,7 @@ enum LowerBound returns types::LLowerBound:
 
 enum UpperBound returns types::LUpperBound:
 	MANY='*' | ONE='1';
-	 
+
 LInt returns ecore::EInt:
 	INT;
 	

@@ -1465,7 +1465,7 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (default?='asDefault'? null?='forNull'?)?)
+	 *     (name=ID (default?='asDefault'? null?='forNull'? value=INT?)?)
 	 */
 	protected void sequence_EnumLiteral(EObject context, LEnumLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

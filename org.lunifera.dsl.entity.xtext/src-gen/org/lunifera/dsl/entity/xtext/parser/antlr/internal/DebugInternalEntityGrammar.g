@@ -201,7 +201,9 @@ ruleEnumLiteral :
 	RULE_ID (
 		(
 			'(' 'asDefault'? |
-			'forNull'? ')'
+			'forNull'? ')' (
+				'=' RULE_INT
+			)?
 		)*
 	)?
 ;

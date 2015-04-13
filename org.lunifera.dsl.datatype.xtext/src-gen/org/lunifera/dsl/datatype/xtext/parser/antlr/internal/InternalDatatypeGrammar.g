@@ -663,7 +663,29 @@ ruleEnumLiteral returns [EObject current=null]
     {
     	newLeafNode(otherlv_5, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1());
     }
-))
+(	otherlv_6='=' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getEnumLiteralAccess().getEqualsSignKeyword_1_1_2_0());
+    }
+(
+(
+		lv_value_7_0=RULE_INT
+		{
+			newLeafNode(lv_value_7_0, grammarAccess.getEnumLiteralAccess().getValueINTTerminalRuleCall_1_1_2_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEnumLiteralRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_7_0, 
+        		"INT");
+	    }
+
+)
+))?))
 					{ 
 	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1());
 	 				}
