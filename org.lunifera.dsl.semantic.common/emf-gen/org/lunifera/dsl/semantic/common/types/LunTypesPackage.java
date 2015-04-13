@@ -832,13 +832,31 @@ public interface LunTypesPackage extends EPackage {
 	int LENUM_LITERAL__NAME = LLAZY_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM_LITERAL__DEFAULT = LLAZY_RESOLVER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Null</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM_LITERAL__NULL = LLAZY_RESOLVER_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>LEnum Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENUM_LITERAL_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 1;
+	int LENUM_LITERAL_FEATURE_COUNT = LLAZY_RESOLVER_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -2235,6 +2253,28 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLEnumLiteral_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LEnumLiteral#isDefault <em>Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Default</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LEnumLiteral#isDefault()
+	 * @see #getLEnumLiteral()
+	 * @generated
+	 */
+	EAttribute getLEnumLiteral_Default();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LEnumLiteral#isNull <em>Null</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Null</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LEnumLiteral#isNull()
+	 * @see #getLEnumLiteral()
+	 * @generated
+	 */
+	EAttribute getLEnumLiteral_Null();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LClass <em>LClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3216,6 +3256,22 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LENUM_LITERAL__NAME = eINSTANCE.getLEnumLiteral_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LENUM_LITERAL__DEFAULT = eINSTANCE.getLEnumLiteral_Default();
+
+		/**
+		 * The meta object literal for the '<em><b>Null</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LENUM_LITERAL__NULL = eINSTANCE.getLEnumLiteral_Null();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LClassImpl <em>LClass</em>}' class.

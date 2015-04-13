@@ -297,12 +297,29 @@ ruleEnumLiteral
 
 // Rule EnumLiteral
 ruleEnumLiteral :
-(
+((
 (
 RULE_ID
 
 )
+)(
+((	'(' 
+(
+(
+	'asDefault' 
+ 
+
 )
+)?)
+    |((
+(
+	'forNull' 
+ 
+
+)
+)?	')' 
+))*
+)?)
 ;
 
 

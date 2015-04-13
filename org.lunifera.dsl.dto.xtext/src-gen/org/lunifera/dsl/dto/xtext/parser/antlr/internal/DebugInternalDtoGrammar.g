@@ -127,7 +127,12 @@ ruleEnum :
 
 // Rule EnumLiteral
 ruleEnumLiteral :
-	RULE_ID
+	RULE_ID (
+		(
+			'(' 'asDefault'? |
+			'forNull'? ')'
+		)*
+	)?
 ;
 
 // Rule AnnotationDef

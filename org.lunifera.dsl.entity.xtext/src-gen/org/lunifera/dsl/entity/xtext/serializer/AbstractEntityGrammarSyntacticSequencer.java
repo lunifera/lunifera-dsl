@@ -7,6 +7,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
@@ -18,6 +19,10 @@ import org.lunifera.dsl.entity.xtext.services.EntityGrammarGrammarAccess;
 public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected EntityGrammarGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a;
+	protected AbstractElementAlias match_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p;
+	protected AbstractElementAlias match_EnumLiteral___RightParenthesisKeyword_1_1_1_a_LeftParenthesisKeyword_1_0_0__p;
+	protected AbstractElementAlias match_EnumLiteral___RightParenthesisKeyword_1_1_1_p_LeftParenthesisKeyword_1_0_0_p__p;
 	protected AbstractElementAlias match_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
@@ -30,6 +35,10 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (EntityGrammarGrammarAccess) access;
+		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
+		match_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p = new GroupAlias(true, false, new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()), new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()));
+		match_EnumLiteral___RightParenthesisKeyword_1_1_1_a_LeftParenthesisKeyword_1_0_0__p = new GroupAlias(true, false, new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()));
+		match_EnumLiteral___RightParenthesisKeyword_1_1_1_p_LeftParenthesisKeyword_1_0_0_p__p = new GroupAlias(true, false, new TokenAlias(true, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()), new TokenAlias(true, false, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()));
 		match_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTypedPackageAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getTypedPackageAccess().getRightCurlyBracketKeyword_3_3()));
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
@@ -77,7 +86,15 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q.equals(syntax))
+			if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a.equals(syntax))
+				emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p.equals(syntax))
+				emit_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EnumLiteral___RightParenthesisKeyword_1_1_1_a_LeftParenthesisKeyword_1_0_0__p.equals(syntax))
+				emit_EnumLiteral___RightParenthesisKeyword_1_1_1_a_LeftParenthesisKeyword_1_0_0__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EnumLiteral___RightParenthesisKeyword_1_1_1_p_LeftParenthesisKeyword_1_0_0_p__p.equals(syntax))
+				emit_EnumLiteral___RightParenthesisKeyword_1_1_1_p_LeftParenthesisKeyword_1_0_0_p__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q.equals(syntax))
 				emit_TypedPackage___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -97,6 +114,38 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 		}
 	}
 
+	/**
+	 * Syntax:
+	 *     ('(' | ')')*
+	 */
+	protected void emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     (')' '('*)+
+	 */
+	protected void emit_EnumLiteral___RightParenthesisKeyword_1_1_1_LeftParenthesisKeyword_1_0_0_a__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     (')'* '(')+
+	 */
+	protected void emit_EnumLiteral___RightParenthesisKeyword_1_1_1_a_LeftParenthesisKeyword_1_0_0__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     (')'+ '('+)+
+	 */
+	protected void emit_EnumLiteral___RightParenthesisKeyword_1_1_1_p_LeftParenthesisKeyword_1_0_0_p__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Syntax:
 	 *     ('{' '}')?

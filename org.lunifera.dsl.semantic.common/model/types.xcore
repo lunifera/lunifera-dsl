@@ -123,7 +123,8 @@ class LEnum extends LScalarType {
 
 class LEnumLiteral extends LLazyResolver {
 	String name
-	
+	boolean ^default
+	boolean ^null
 }
 
 class LClass extends LType {

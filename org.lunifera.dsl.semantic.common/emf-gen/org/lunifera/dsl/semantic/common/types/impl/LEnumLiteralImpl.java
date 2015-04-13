@@ -30,6 +30,8 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LEnumLiteralImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LEnumLiteralImpl#isDefault <em>Default</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LEnumLiteralImpl#isNull <em>Null</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,6 +57,46 @@ public class LEnumLiteralImpl extends LLazyResolverImpl implements LEnumLiteral 
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDefault() <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DEFAULT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDefault() <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean default_ = DEFAULT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isNull() <em>Null</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNull()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean NULL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isNull() <em>Null</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNull()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean null_ = NULL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,11 +143,57 @@ public class LEnumLiteralImpl extends LLazyResolverImpl implements LEnumLiteral 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDefault() {
+		return default_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefault(boolean newDefault) {
+		boolean oldDefault = default_;
+		default_ = newDefault;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LENUM_LITERAL__DEFAULT, oldDefault, default_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isNull() {
+		return null_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNull(boolean newNull) {
+		boolean oldNull = null_;
+		null_ = newNull;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunTypesPackage.LENUM_LITERAL__NULL, oldNull, null_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LunTypesPackage.LENUM_LITERAL__NAME:
 				return getName();
+			case LunTypesPackage.LENUM_LITERAL__DEFAULT:
+				return isDefault();
+			case LunTypesPackage.LENUM_LITERAL__NULL:
+				return isNull();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,6 +208,12 @@ public class LEnumLiteralImpl extends LLazyResolverImpl implements LEnumLiteral 
 		switch (featureID) {
 			case LunTypesPackage.LENUM_LITERAL__NAME:
 				setName((String)newValue);
+				return;
+			case LunTypesPackage.LENUM_LITERAL__DEFAULT:
+				setDefault((Boolean)newValue);
+				return;
+			case LunTypesPackage.LENUM_LITERAL__NULL:
+				setNull((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,6 +230,12 @@ public class LEnumLiteralImpl extends LLazyResolverImpl implements LEnumLiteral 
 			case LunTypesPackage.LENUM_LITERAL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case LunTypesPackage.LENUM_LITERAL__DEFAULT:
+				setDefault(DEFAULT_EDEFAULT);
+				return;
+			case LunTypesPackage.LENUM_LITERAL__NULL:
+				setNull(NULL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -150,6 +250,10 @@ public class LEnumLiteralImpl extends LLazyResolverImpl implements LEnumLiteral 
 		switch (featureID) {
 			case LunTypesPackage.LENUM_LITERAL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case LunTypesPackage.LENUM_LITERAL__DEFAULT:
+				return default_ != DEFAULT_EDEFAULT;
+			case LunTypesPackage.LENUM_LITERAL__NULL:
+				return null_ != NULL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -166,6 +270,10 @@ public class LEnumLiteralImpl extends LLazyResolverImpl implements LEnumLiteral 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", default: ");
+		result.append(default_);
+		result.append(", null: ");
+		result.append(null_);
 		result.append(')');
 		return result.toString();
 	}

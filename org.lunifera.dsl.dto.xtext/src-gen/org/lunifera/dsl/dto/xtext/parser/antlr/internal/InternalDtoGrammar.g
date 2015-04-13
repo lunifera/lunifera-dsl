@@ -1825,11 +1825,11 @@ ruleEnumLiteral returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(
+((
 (
 		lv_name_0_0=RULE_ID
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0()); 
+			newLeafNode(lv_name_0_0, grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1843,7 +1843,86 @@ ruleEnumLiteral returns [EObject current=null]
 	    }
 
 )
+)(
+
+(
+	{ 
+	  getUnorderedGroupHelper().enter(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1());
+	}
+	(
+		(
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1(), 0)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1(), 0);
+	 				}
+					({true}?=>(	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0());
+    }
+(
+(
+		lv_default_3_0=	'asDefault' 
+    {
+        newLeafNode(lv_default_3_0, grammarAccess.getEnumLiteralAccess().getDefaultAsDefaultKeyword_1_0_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEnumLiteralRule());
+	        }
+       		setWithLastConsumed($current, "default", true, "asDefault");
+	    }
+
 )
+)?))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1(), 1)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1(), 1);
+	 				}
+					({true}?=>((
+(
+		lv_null_4_0=	'forNull' 
+    {
+        newLeafNode(lv_null_4_0, grammarAccess.getEnumLiteralAccess().getNullForNullKeyword_1_1_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEnumLiteralRule());
+	        }
+       		setWithLastConsumed($current, "null", true, "forNull");
+	    }
+
+)
+)?	otherlv_5=')' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1());
+    }
+))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1());
+	 				}
+ 				)
+			)  
+
+		)+
+	  	{getUnorderedGroupHelper().canLeave(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1())}?	
+	)
+)
+	{ 
+	  getUnorderedGroupHelper().leave(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1());
+	}
+
+)?)
 ;
 
 

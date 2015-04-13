@@ -699,7 +699,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumLiteral returns types::LEnumLiteral:
-	//	name=ID;
+	//	name=ID ("(" default?="asDefault"? & null?="forNull"? ")")?;
 	public CommonGrammarGrammarAccess.EnumLiteralElements getEnumLiteralAccess() {
 		return gaCommonGrammar.getEnumLiteralAccess();
 	}
@@ -729,7 +729,7 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Constraints returns types::LConstraints:
-	//	{types::LConstraints} "constraints" "{" constraints+=Constraint "}";
+	//	{types::LConstraints} "constraints" "{" constraints+=Constraint* "}";
 	public CommonGrammarGrammarAccess.ConstraintsElements getConstraintsAccess() {
 		return gaCommonGrammar.getConstraintsAccess();
 	}

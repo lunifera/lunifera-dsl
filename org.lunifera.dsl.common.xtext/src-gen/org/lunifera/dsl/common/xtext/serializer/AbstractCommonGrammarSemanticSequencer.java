@@ -1465,17 +1465,10 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 	
 	/**
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ID (default?='asDefault'? null?='forNull'?)?)
 	 */
 	protected void sequence_EnumLiteral(EObject context, LEnumLiteral semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LENUM_LITERAL__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LENUM_LITERAL__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

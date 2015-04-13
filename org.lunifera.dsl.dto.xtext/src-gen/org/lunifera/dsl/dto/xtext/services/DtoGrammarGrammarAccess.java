@@ -1240,7 +1240,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumLiteral returns types::LEnumLiteral:
-	//	name=ID;
+	//	name=ID ("(" default?="asDefault"? & null?="forNull"? ")")?;
 	public CommonGrammarGrammarAccess.EnumLiteralElements getEnumLiteralAccess() {
 		return gaCommonGrammar.getEnumLiteralAccess();
 	}

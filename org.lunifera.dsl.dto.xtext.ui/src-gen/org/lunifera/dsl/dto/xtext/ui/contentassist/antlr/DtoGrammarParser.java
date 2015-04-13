@@ -137,6 +137,9 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDataTypeAccess().getGroup_2_1(), "rule__DataType__Group_2_1__0");
 					put(grammarAccess.getEnumAccess().getGroup(), "rule__Enum__Group__0");
 					put(grammarAccess.getEnumAccess().getGroup_4(), "rule__Enum__Group_4__0");
+					put(grammarAccess.getEnumLiteralAccess().getGroup(), "rule__EnumLiteral__Group__0");
+					put(grammarAccess.getEnumLiteralAccess().getGroup_1_0(), "rule__EnumLiteral__Group_1_0__0");
+					put(grammarAccess.getEnumLiteralAccess().getGroup_1_1(), "rule__EnumLiteral__Group_1_1__0");
 					put(grammarAccess.getAnnotationDefAccess().getGroup(), "rule__AnnotationDef__Group__0");
 					put(grammarAccess.getConstraintsAccess().getGroup(), "rule__Constraints__Group__0");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getGroup(), "rule__AttributeMatchingConstraint__Group__0");
@@ -421,7 +424,9 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumAccess().getNameAssignment_1(), "rule__Enum__NameAssignment_1");
 					put(grammarAccess.getEnumAccess().getLiteralsAssignment_3(), "rule__Enum__LiteralsAssignment_3");
 					put(grammarAccess.getEnumAccess().getLiteralsAssignment_4_1(), "rule__Enum__LiteralsAssignment_4_1");
-					put(grammarAccess.getEnumLiteralAccess().getNameAssignment(), "rule__EnumLiteral__NameAssignment");
+					put(grammarAccess.getEnumLiteralAccess().getNameAssignment_0(), "rule__EnumLiteral__NameAssignment_0");
+					put(grammarAccess.getEnumLiteralAccess().getDefaultAssignment_1_0_1(), "rule__EnumLiteral__DefaultAssignment_1_0_1");
+					put(grammarAccess.getEnumLiteralAccess().getNullAssignment_1_1_0(), "rule__EnumLiteral__NullAssignment_1_1_0");
 					put(grammarAccess.getAnnotationDefAccess().getAnnotationAssignment_0(), "rule__AnnotationDef__AnnotationAssignment_0");
 					put(grammarAccess.getConstraintsAccess().getConstraintsAssignment_3(), "rule__Constraints__ConstraintsAssignment_3");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getAttributeAssignment_0(), "rule__AttributeMatchingConstraint__AttributeAssignment_0");
@@ -587,6 +592,7 @@ public class DtoGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceAssignment_1_2(), "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getDtoFeatureAccess().getUnorderedGroup_2_6_1_1(), "rule__DtoFeature__UnorderedGroup_2_6_1_1");
 					put(grammarAccess.getModifierAccess().getUnorderedGroup(), "rule__Modifier__UnorderedGroup");
+					put(grammarAccess.getEnumLiteralAccess().getUnorderedGroup_1(), "rule__EnumLiteral__UnorderedGroup_1");
 				}
 			};
 		}

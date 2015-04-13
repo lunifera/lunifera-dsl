@@ -55,6 +55,8 @@ public class LEnumLiteralItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addDefaultPropertyDescriptor(object);
+			addNullPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -77,6 +79,50 @@ public class LEnumLiteralItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Default feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefaultPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LEnumLiteral_default_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LEnumLiteral_default_feature", "_UI_LEnumLiteral_type"),
+				 LunTypesPackage.Literals.LENUM_LITERAL__DEFAULT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Null feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNullPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LEnumLiteral_null_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LEnumLiteral_null_feature", "_UI_LEnumLiteral_type"),
+				 LunTypesPackage.Literals.LENUM_LITERAL__NULL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -120,6 +166,8 @@ public class LEnumLiteralItemProvider
 
 		switch (notification.getFeatureID(LEnumLiteral.class)) {
 			case LunTypesPackage.LENUM_LITERAL__NAME:
+			case LunTypesPackage.LENUM_LITERAL__DEFAULT:
+			case LunTypesPackage.LENUM_LITERAL__NULL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
