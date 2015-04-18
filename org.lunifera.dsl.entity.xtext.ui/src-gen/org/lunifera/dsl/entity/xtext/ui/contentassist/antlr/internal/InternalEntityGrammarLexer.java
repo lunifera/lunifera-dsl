@@ -5516,7 +5516,7 @@ public class InternalEntityGrammarLexer extends Lexer {
         }
     }
 
-    class DFA21 extends DFA {
+    static class DFA21 extends DFA {
 
         public DFA21(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
