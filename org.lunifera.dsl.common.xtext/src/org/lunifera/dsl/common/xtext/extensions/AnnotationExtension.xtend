@@ -7,7 +7,7 @@
  *
  * Contributors:
  *         Florian Pirchner - Initial implementation
- *
+ */
  
 package org.lunifera.dsl.common.xtext.extensions
 
