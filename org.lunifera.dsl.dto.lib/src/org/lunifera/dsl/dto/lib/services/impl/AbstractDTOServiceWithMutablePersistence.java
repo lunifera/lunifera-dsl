@@ -66,9 +66,11 @@ public abstract class AbstractDTOServiceWithMutablePersistence<DTO, ENTITY>
 	}
 
 	protected void internalActivate() throws InvalidSyntaxException {
-		emfTracker = new ServiceTracker<EntityManagerFactory, EntityManagerFactory>(
-				context.getBundleContext(), createEMFFilter(), this);
-		emfTracker.open();
+		if (emfTracker == null) {
+			emfTracker = new ServiceTracker<EntityManagerFactory, EntityManagerFactory>(
+					context.getBundleContext(), createEMFFilter(), this);
+			emfTracker.open();
+		}
 	}
 
 	/**
@@ -98,11 +100,11 @@ public abstract class AbstractDTOServiceWithMutablePersistence<DTO, ENTITY>
 	}
 
 	/**
-	 * Restarts the internal state.
+	 * Resets the internal state.
 	 */
 	protected void internalReset() {
 		internalDeactivate();
-		if (context != null && getEmf() != null) {
+		if (context != null) {
 			try {
 				internalActivate();
 			} catch (InvalidSyntaxException e) {
@@ -125,7 +127,6 @@ public abstract class AbstractDTOServiceWithMutablePersistence<DTO, ENTITY>
 				reference);
 		if (getEmf() == null) {
 			bindEmf(emf);
-			internalReset();
 		}
 		return emf;
 	}
@@ -143,7 +144,6 @@ public abstract class AbstractDTOServiceWithMutablePersistence<DTO, ENTITY>
 			EntityManagerFactory service) {
 		if (getEmf() == service) {
 			unbindEmf(getEmf());
-			internalReset();
 		}
 	}
 }
