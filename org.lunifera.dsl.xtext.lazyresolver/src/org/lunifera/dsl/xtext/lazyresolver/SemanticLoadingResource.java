@@ -119,6 +119,11 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 	public void doSave(OutputStream outputStream, Map<?, ?> options)
 			throws IOException {
 
+		if (getContents().isEmpty()) {
+			// TODO check me
+			return;
+		}
+
 		EObject semanticElement = getSemanticElement();
 		if (semanticElement == null)
 			throw new IllegalStateException(
@@ -324,7 +329,7 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 
 			return result;
 		}
-		
+
 		public EObject getContext() {
 			return triple.getFirst();
 		}

@@ -69,6 +69,9 @@ public class FastLinkingService extends DefaultLinkingService {
 						crossRefString = enhancer.enhance(context,
 								containingFeature, crossRefString);
 					}
+					if(crossRefString == null || crossRefString.equals("")){
+						crossRefString = "LUN__UNDEFINED";
+					}
 				}
 			} catch (Exception e) {
 				LOGGER.error("{}", e);

@@ -19,6 +19,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.semantic.common.types.LClass
 import org.lunifera.dsl.semantic.common.types.LDataType
+import org.lunifera.dsl.semantic.common.types.LEnum
 import org.lunifera.dsl.semantic.common.types.LFeature
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
@@ -32,7 +33,6 @@ import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
 import org.lunifera.dsl.semantic.entity.LunEntityFactory
-import org.lunifera.dsl.semantic.common.types.LEnum
 
 class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExtensions {
 
@@ -45,10 +45,10 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch JvmTypeReference toTypeReference(LEntityReference prop) {
 		return prop.typeJvm?.cloneWithProxies
 	}
-	
+
 	def dispatch JvmTypeReference toTypeReference(LEntityAttribute prop) {
 		val lType = prop.type
-		if(lType instanceof LEntity || lType instanceof LBean || lType instanceof LEnum){
+		if (lType instanceof LEntity || lType instanceof LBean || lType instanceof LEnum) {
 			return prop.typeJvm?.cloneWithProxies
 		}
 		return prop.type?.toTypeReference
@@ -84,7 +84,19 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	}
 
 	def dispatch boolean isCascading(LBeanReference prop) {
-		prop.cascading || if(prop.opposite != null) prop.opposite.cascading else false
+		prop.cascading || if(prop.opposite != null) prop.opposite.cascadingSimple else false
+	}
+
+	def dispatch boolean isCascadingSimple(LBeanReference prop) {
+		prop.cascading
+	}
+
+	def dispatch boolean isCascadingSimple(LEntityReference prop) {
+		isCascading(prop)
+	}
+
+	def dispatch boolean isCascadingSimple(LEntityAttribute prop) {
+		isCascading(prop)
 	}
 
 	def dispatch boolean isCascading(LOperation prop) {
@@ -98,7 +110,7 @@ class ModelExtensions extends org.lunifera.dsl.common.xtext.extensions.ModelExte
 	def dispatch boolean isUUID(LEntityAttribute prop) {
 		prop.uuid
 	}
- 
+
 	def dispatch getResolvedOpposite(LEntityReference prop) {
 
 		// For a toMany that has already an opposite, return it.
