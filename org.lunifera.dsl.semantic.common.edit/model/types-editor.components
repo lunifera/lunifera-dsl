@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-ext-edt="http://www.eclipse.org/emf/eef/extended/editor/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+  <eef-components:PropertiesEditionContext xmi:id="_6gqh8PiyEeSgcvKd9xGhZw" documentation="Editor contribution for types GenPackage">
+    <categories xsi:type="eef-ext-edt:EEFEditorContributions" xmi:id="_6gqh8fiyEeSgcvKd9xGhZw" name="types contributions">
+      <bindings xsi:type="eef-ext-edt:StaticEEFEditorContribution" xmi:id="_6gqh8viyEeSgcvKd9xGhZw" name="Main contribution" views="_6grJAfiyEeSgcvKd9xGhZw">
+        <input xsi:type="eef-ext-edt:AllResourcesRootsRelativeInput" xmi:id="_6gqh8_iyEeSgcvKd9xGhZw"/>
+      </bindings>
+    </categories>
+    <model href="platform:/resource/org.lunifera.dsl.semantic.common/model/types.genmodel#//types"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-views:ViewsRepository xmi:id="_6gqh9PiyEeSgcvKd9xGhZw" documentation="Editor pages for types GenPackage" name="types editor">
+    <RepositoryKind>Editor</RepositoryKind>
+    <categories xsi:type="eef-ext-edt:EEFEditorPages" xmi:id="_6grJAPiyEeSgcvKd9xGhZw" name="types editor pages">
+      <views xsi:type="eef-ext-edt:TreeMasterPage" xmi:id="_6grJAfiyEeSgcvKd9xGhZw" name="main" title="types"/>
+    </categories>
+  </eef-views:ViewsRepository>
+</xmi:XMI>

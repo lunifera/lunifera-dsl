@@ -1192,13 +1192,40 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_ATTRIBUTE___GET_ENTITY = LENTITY_FEATURE___GET_ENTITY;
 
 	/**
+	 * The operation id for the '<em>Is Type Valid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE___IS_TYPE_VALID = LENTITY_FEATURE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Type Imported</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE___IS_TYPE_IMPORTED = LENTITY_FEATURE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>To Fqn</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE___TO_FQN__LTYPE = LENTITY_FEATURE_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>LEntity Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE_OPERATION_COUNT = LENTITY_FEATURE_OPERATION_COUNT + 0;
+	int LENTITY_ATTRIBUTE_OPERATION_COUNT = LENTITY_FEATURE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl <em>LEntity Reference</em>}' class.
@@ -1654,13 +1681,40 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_ATTRIBUTE___GET_BEAN = LBEAN_FEATURE___GET_BEAN;
 
 	/**
+	 * The operation id for the '<em>Is Type Valid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_ATTRIBUTE___IS_TYPE_VALID = LBEAN_FEATURE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Type Imported</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_ATTRIBUTE___IS_TYPE_IMPORTED = LBEAN_FEATURE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>To Fqn</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_ATTRIBUTE___TO_FQN__LTYPE = LBEAN_FEATURE_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>LBean Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE_OPERATION_COUNT = LBEAN_FEATURE_OPERATION_COUNT + 0;
+	int LBEAN_ATTRIBUTE_OPERATION_COUNT = LBEAN_FEATURE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl <em>LBean Reference</em>}' class.

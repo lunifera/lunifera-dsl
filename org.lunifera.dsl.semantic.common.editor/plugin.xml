@@ -44,5 +44,43 @@
             contributorClass="org.lunifera.dsl.semantic.common.types.presentation.LunTypesActionBarContributor">
       </editor>
    </extension>
+	
+	  <!-- EEF extensions -->
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.lunifera.org/dsl/common/types/v1"
+            class="org.lunifera.dsl.semantic.common.types.providers.TypesEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.lunifera.dsl.semantic.common.types.providers.TypesEditorPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
 
+  <!-- Tabbed properties views extension -->
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.lunifera.dsl.semantic.common.types.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.lunifera.dsl.semantic.common.types.properties">
+      </propertyTabs>
+   </extension>
+	
 </plugin>

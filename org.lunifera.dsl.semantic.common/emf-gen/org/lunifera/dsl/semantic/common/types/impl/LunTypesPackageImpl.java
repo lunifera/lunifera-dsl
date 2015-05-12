@@ -989,6 +989,33 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getLAttribute__IsTypeValid() {
+		return lAttributeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getLAttribute__IsTypeImported() {
+		return lAttributeEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getLAttribute__ToFqn__LType() {
+		return lAttributeEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLOperation() {
 		return lOperationEClass;
 	}
@@ -1376,6 +1403,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		createEReference(lAttributeEClass, LATTRIBUTE__DERIVED_GETTER_EXPRESSION);
 		createEReference(lAttributeEClass, LATTRIBUTE__TYPE);
 		createEReference(lAttributeEClass, LATTRIBUTE__TYPE_JVM);
+		createEOperation(lAttributeEClass, LATTRIBUTE___IS_TYPE_VALID);
+		createEOperation(lAttributeEClass, LATTRIBUTE___IS_TYPE_IMPORTED);
+		createEOperation(lAttributeEClass, LATTRIBUTE___TO_FQN__LTYPE);
 
 		lOperationEClass = createEClass(LOPERATION);
 		createEReference(lOperationEClass, LOPERATION__MODIFIER);
@@ -1566,6 +1596,13 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEReference(getLAttribute_DerivedGetterExpression(), theXbasePackage.getXExpression(), null, "derivedGetterExpression", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLAttribute_Type(), this.getLScalarType(), null, "type", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLAttribute_TypeJvm(), theTypesPackage.getJvmTypeReference(), null, "typeJvm", null, 0, 1, LAttribute.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getLAttribute__IsTypeValid(), theEcorePackage.getEBoolean(), "isTypeValid", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getLAttribute__IsTypeImported(), theEcorePackage.getEBoolean(), "isTypeImported", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getLAttribute__ToFqn__LType(), theEcorePackage.getEString(), "toFqn", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getLType(), "lType", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(lOperationEClass, LOperation.class, "LOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLOperation_Modifier(), this.getLModifier(), null, "modifier", null, 0, 1, LOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

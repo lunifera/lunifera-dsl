@@ -384,4 +384,31 @@ public interface LAttribute extends LFeature {
 	 */
 	void setTypeJvm(JvmTypeReference value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.lunifera.dsl.semantic.common.types.LScalarType%> _type = this.getType();\nreturn (!<%com.google.common.base.Objects%>.equal(_type, null));'"
+	 * @generated
+	 */
+	boolean isTypeValid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();\nfinal <%org.lunifera.dsl.semantic.common.types.LType%> lType = ((<%org.lunifera.dsl.semantic.common.types.LType%>) _eContainer);\n<%org.eclipse.emf.ecore.EObject%> _eContainer_1 = lType.eContainer();\nfinal <%org.lunifera.dsl.semantic.common.types.LTypedPackage%> lPkg = ((<%org.lunifera.dsl.semantic.common.types.LTypedPackage%>) _eContainer_1);\n<%org.eclipse.emf.common.util.EList%><<%org.lunifera.dsl.semantic.common.types.LImport%>> _imports = lPkg.getImports();\nfinal <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%org.lunifera.dsl.semantic.common.types.LImport%>, <%java.lang.Boolean%>> _function = new <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%org.lunifera.dsl.semantic.common.types.LImport%>, <%java.lang.Boolean%>>()\n{\n\tpublic <%java.lang.Boolean%> apply(final <%org.lunifera.dsl.semantic.common.types.LImport%> it)\n\t{\n\t\tboolean _xblockexpression = false;\n\t\t{\n\t\t\t<%java.lang.String%> _importedNamespace = it.getImportedNamespace();\n\t\t\t<%org.lunifera.dsl.semantic.common.types.LScalarType%> _type = <%this%>.getType();\n\t\t\t<%java.lang.String%> _fqn = <%this%>.toFqn(_type);\n\t\t\tboolean _equals = _importedNamespace.equals(_fqn);\n\t\t\tif (_equals)\n\t\t\t{\n\t\t\t\treturn <%java.lang.Boolean%>.valueOf(true);\n\t\t\t}\n\t\t\t_xblockexpression = false;\n\t\t}\n\t\treturn <%java.lang.Boolean%>.valueOf(_xblockexpression);\n\t}\n};\nfinal <%org.lunifera.dsl.semantic.common.types.LImport%> lImport = <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.lunifera.dsl.semantic.common.types.LImport%>>findFirst(_imports, _function);\nreturn (!<%com.google.common.base.Objects%>.equal(lImport, null));'"
+	 * @generated
+	 */
+	boolean isTypeImported();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" lTypeUnique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.ecore.EObject%> _eContainer = lType.eContainer();\nfinal <%org.lunifera.dsl.semantic.common.types.LTypedPackage%> lPkg = ((<%org.lunifera.dsl.semantic.common.types.LTypedPackage%>) _eContainer);\n<%java.lang.String%> _name = lPkg.getName();\n<%java.lang.String%> _plus = (_name + \".\");\n<%java.lang.String%> _name_1 = lType.getName();\nreturn (_plus + _name_1);'"
+	 * @generated
+	 */
+	String toFqn(LType lType);
+
 } // LAttribute

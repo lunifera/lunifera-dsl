@@ -15,10 +15,15 @@ package org.lunifera.dsl.semantic.entity.impl;
 
 import com.google.common.base.Objects;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -27,8 +32,15 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LImport;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
+import org.lunifera.dsl.semantic.common.types.LType;
+import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
 import org.lunifera.dsl.semantic.entity.LBeanAttribute;
@@ -689,6 +701,61 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isTypeValid() {
+		LScalarType _type = this.getType();
+		return (!Objects.equal(_type, null));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTypeImported() {
+		EObject _eContainer = this.eContainer();
+		final LType lType = ((LType) _eContainer);
+		EObject _eContainer_1 = lType.eContainer();
+		final LTypedPackage lPkg = ((LTypedPackage) _eContainer_1);
+		EList<LImport> _imports = lPkg.getImports();
+		final Function1<LImport, Boolean> _function = new Function1<LImport, Boolean>() {
+			public Boolean apply(final LImport it) {
+				boolean _xblockexpression = false;
+				{
+					String _importedNamespace = it.getImportedNamespace();
+					LScalarType _type = LBeanAttributeImpl.this.getType();
+					String _fqn = LBeanAttributeImpl.this.toFqn(_type);
+					boolean _equals = _importedNamespace.equals(_fqn);
+					if (_equals) {
+						return Boolean.valueOf(true);
+					}
+					_xblockexpression = false;
+				}
+				return Boolean.valueOf(_xblockexpression);
+			}
+		};
+		final LImport lImport = IterableExtensions.<LImport>findFirst(_imports, _function);
+		return (!Objects.equal(lImport, null));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toFqn(final LType lType) {
+		EObject _eContainer = lType.eContainer();
+		final LTypedPackage lPkg = ((LTypedPackage) _eContainer);
+		String _name = lPkg.getName();
+		String _plus = (_name + ".");
+		String _name_1 = lType.getName();
+		return (_plus + _name_1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -937,6 +1004,42 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == LAttribute.class) {
+			switch (baseOperationID) {
+				case LunTypesPackage.LATTRIBUTE___IS_TYPE_VALID: return LunEntityPackage.LBEAN_ATTRIBUTE___IS_TYPE_VALID;
+				case LunTypesPackage.LATTRIBUTE___IS_TYPE_IMPORTED: return LunEntityPackage.LBEAN_ATTRIBUTE___IS_TYPE_IMPORTED;
+				case LunTypesPackage.LATTRIBUTE___TO_FQN__LTYPE: return LunEntityPackage.LBEAN_ATTRIBUTE___TO_FQN__LTYPE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case LunEntityPackage.LBEAN_ATTRIBUTE___IS_TYPE_VALID:
+				return isTypeValid();
+			case LunEntityPackage.LBEAN_ATTRIBUTE___IS_TYPE_IMPORTED:
+				return isTypeImported();
+			case LunEntityPackage.LBEAN_ATTRIBUTE___TO_FQN__LTYPE:
+				return toFqn((LType)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

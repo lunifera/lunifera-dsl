@@ -86,6 +86,10 @@
         <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
       </jvmTypeReference>
     </types>
-    <types xsi:type="types:LDataType" name="Date" date="true"/>
+    <types xsi:type="types:LDataType" name="Date">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.util.Date#java.util.Date"/>
+      </jvmTypeReference>
+    </types>
   </packages>
 </types:LCommonModel>

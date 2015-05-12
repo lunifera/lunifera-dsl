@@ -187,6 +187,29 @@ interface LAttribute extends LFeature {
 	contains XExpression derivedGetterExpression
 	refers LScalarType ^type
 	contains transient JvmTypeReference typeJvm
+	
+	op boolean isTypeValid() {
+		return ^type != null;
+	}
+	
+	op boolean isTypeImported() {
+		val LType lType = eContainer as LType
+		val LTypedPackage lPkg = lType.eContainer as LTypedPackage
+		
+		val lImport = lPkg.imports.findFirst[
+			if(importedNamespace.equals(^type.toFqn)){
+				return true;
+			}
+			false
+		] 
+		
+		return lImport != null;
+	}
+	
+	op String toFqn(LType lType) {
+		val LTypedPackage lPkg = lType.eContainer as LTypedPackage
+		return lPkg.name + "." + lType.name
+	}
 }
 
 class LOperation extends LAnnotationTarget {

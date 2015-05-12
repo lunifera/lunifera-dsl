@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)&#xA; All rights reserved. This program and the accompanying materials &#xA; are made available under the terms of the Eclipse Public License v1.0 &#xA; which accompanies this distribution, and is available at &#xA; http://www.eclipse.org/legal/epl-v10.html &#xA;&#xA; Based on ideas from Xtext, Xtend, Xcore&#xA;  &#xA; Contributors:  &#xA; &#x9;&#x9;Florian Pirchner - Initial implementation &#xA; "
+    modelDirectory="/org.lunifera.dsl.semantic.common/src" editDirectory="/org.lunifera.dsl.semantic.common.edit/src"
+    editorDirectory="/org.lunifera.dsl.semantic.common.editor/src" modelPluginID="org.lunifera.dsl.semantic.common"
+    forceOverwrite="true" modelName="Types" modelPluginClass="" updateClasspath="false"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" rootImplementsInterface=""
+    importerID="org.eclipse.emf.ecore.xcore.importer" complianceLevel="7.0" suppressGenModelAnnotations="false"
+    copyrightFields="false" editPluginID="org.eclipse.xtext.common.types.edit" editorPluginID="org.eclipse.xtext.types.editor"
+    runtimeVersion="2.9" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types"
+    interfaceNamePattern="" classNamePattern="" operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+    <genAnnotations source="selectedPackages">
+      <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="."/>
+  </genAnnotations>
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter.xmi">
+    <genAnnotations source="selectedPackages">
+      <details key="http://www.eclipse.org/emf/2002/Ecore" value="EcoreXMI.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="."/>
+  </genAnnotations>
+  <foreignModel>types.xcore</foreignModel>
+  <modelPluginVariables>org.eclipse.xtext.xbase.lib</modelPluginVariables>
+  <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
+  <genPackages prefix="LunTypes" basePackage="org.lunifera.dsl.semantic.common" disposableProviderFactory="true"
+      extensibleProviderFactory="true" fileExtensions="typesmodel" ecorePackage="types.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//LDateType">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LDateType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LDateType/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LDateType/TIMESTAMP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//LVisibility">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LVisibility/PACKAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LVisibility/PRIVATE"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LVisibility/PROTECTED"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LVisibility/PUBLIC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//LLowerBound">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LLowerBound/NULL"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LLowerBound/MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LLowerBound/OPTIONAL"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LLowerBound/ATLEASTONE"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LLowerBound/ZERO"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LLowerBound/ONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//LUpperBound">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LUpperBound/NULL"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LUpperBound/MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LUpperBound/ONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//LComparatorType">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LComparatorType/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LComparatorType/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LComparatorType/LOWER"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LComparatorType/GREATER_EQ"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LComparatorType/LOWER_EQ"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//LComparatorType/NOT_EQ"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="types.ecore#//OperationsList"/>
+    <genDataTypes ecoreDataType="types.ecore#//FeaturesList"/>
+    <genDataTypes ecoreDataType="types.ecore#//AnnotationList"/>
+    <genDataTypes ecoreDataType="types.ecore#//InternalEObject"/>
+    <genClasses ecoreClass="types.ecore#//LCommonModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LCommonModel/packages"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LLazyResolver">
+      <genOperations ecoreOperation="types.ecore#//LLazyResolver/eResolveProxy">
+        <genParameters ecoreParameter="types.ecore#//LLazyResolver/eResolveProxy/proxy"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LPackage/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LPackage/imports"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LTypedPackage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LTypedPackage/types"/>
+      <genOperations ecoreOperation="types.ecore#//LTypedPackage/getResourceSimpleName"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LImport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LImport/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LType/annotationInfo"/>
+      <genOperations ecoreOperation="types.ecore#//LType/getResolvedAnnotations"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LAnnotationDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAnnotationDef/exclude"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LAnnotationDef/annotation"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LAnnotationTarget">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LAnnotationTarget/annotations"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LScalarType"/>
+    <genClasses ecoreClass="types.ecore#//LDataType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LDataType/jvmTypeReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/asPrimitive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/asBlob"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/dateType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/syntheticFlag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LDataType/syntheticSelector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference types.ecore#//LDataType/syntheticTypeReference"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference types.ecore#//LDataType/syntheticType"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LEnum">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LEnum/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LEnumLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LEnumLiteral/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LEnumLiteral/default"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LEnumLiteral/null"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LEnumLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LClass/abstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LClass/serializable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LClass/shortName"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="types.ecore#//LFeaturesHolder">
+      <genOperations ecoreOperation="types.ecore#//LFeaturesHolder/getFeatures"/>
+      <genOperations ecoreOperation="types.ecore#//LFeaturesHolder/getAllFeatures"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="types.ecore#//LFeature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LFeature/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LFeature/multiplicity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LFeature/annotationInfo"/>
+      <genOperations ecoreOperation="types.ecore#//LFeature/getResolvedAnnotations"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="types.ecore#//LReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LReference/lazy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LReference/cascading"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="types.ecore#//LAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/uuid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/lazy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/cascading"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/transient"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/derived"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/dirty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/domainKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttribute/domainDescription"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LAttribute/derivedGetterExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference types.ecore#//LAttribute/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LAttribute/typeJvm"/>
+      <genOperations ecoreOperation="types.ecore#//LAttribute/isTypeValid"/>
+      <genOperations ecoreOperation="types.ecore#//LAttribute/isTypeImported"/>
+      <genOperations ecoreOperation="types.ecore#//LAttribute/toFqn">
+        <genParameters ecoreParameter="types.ecore#//LAttribute/toFqn/lType"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LOperation/modifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LOperation/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LOperation/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LOperation/body"/>
+      <genOperations ecoreOperation="types.ecore#//LOperation/getResolvedAnnotations"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LModifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LModifier/final"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LModifier/static"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LModifier/visibility"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LMultiplicity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LMultiplicity/lower"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LMultiplicity/upper"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LMultiplicity/toMultiplicityString"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//LConstraints">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//LConstraints/constraints"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="types.ecore#//LConstraint"/>
+    <genClasses ecoreClass="types.ecore#//LAttributeMatchingConstraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference types.ecore#//LAttributeMatchingConstraint/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttributeMatchingConstraint/comparatorType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//LAttributeMatchingConstraint/matchingValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference types.ecore#//LAttributeMatchingConstraint/matchingLiteral"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

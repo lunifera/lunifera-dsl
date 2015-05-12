@@ -1404,13 +1404,40 @@ public interface LunTypesPackage extends EPackage {
 	int LATTRIBUTE___GET_RESOLVED_ANNOTATIONS = LFEATURE___GET_RESOLVED_ANNOTATIONS;
 
 	/**
+	 * The operation id for the '<em>Is Type Valid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE___IS_TYPE_VALID = LFEATURE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Type Imported</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE___IS_TYPE_IMPORTED = LFEATURE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>To Fqn</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE___TO_FQN__LTYPE = LFEATURE_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>LAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE_OPERATION_COUNT = LFEATURE_OPERATION_COUNT + 0;
+	int LATTRIBUTE_OPERATION_COUNT = LFEATURE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LOperationImpl <em>LOperation</em>}' class.
@@ -2606,6 +2633,36 @@ public interface LunTypesPackage extends EPackage {
 	EReference getLAttribute_TypeJvm();
 
 	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isTypeValid() <em>Is Type Valid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Type Valid</em>' operation.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#isTypeValid()
+	 * @generated
+	 */
+	EOperation getLAttribute__IsTypeValid();
+
+	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#isTypeImported() <em>Is Type Imported</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Type Imported</em>' operation.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#isTypeImported()
+	 * @generated
+	 */
+	EOperation getLAttribute__IsTypeImported();
+
+	/**
+	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.common.types.LAttribute#toFqn(org.lunifera.dsl.semantic.common.types.LType) <em>To Fqn</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>To Fqn</em>' operation.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#toFqn(org.lunifera.dsl.semantic.common.types.LType)
+	 * @generated
+	 */
+	EOperation getLAttribute__ToFqn__LType();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LOperation <em>LOperation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3542,6 +3599,30 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LATTRIBUTE__TYPE_JVM = eINSTANCE.getLAttribute_TypeJvm();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Type Valid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LATTRIBUTE___IS_TYPE_VALID = eINSTANCE.getLAttribute__IsTypeValid();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Type Imported</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LATTRIBUTE___IS_TYPE_IMPORTED = eINSTANCE.getLAttribute__IsTypeImported();
+
+		/**
+		 * The meta object literal for the '<em><b>To Fqn</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LATTRIBUTE___TO_FQN__LTYPE = eINSTANCE.getLAttribute__ToFqn__LType();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LOperationImpl <em>LOperation</em>}' class.
