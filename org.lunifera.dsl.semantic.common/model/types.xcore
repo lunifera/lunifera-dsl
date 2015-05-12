@@ -16,7 +16,7 @@
 @Ecore(nsPrefix="types")
 @Ecore(rootPackage="types")
 package org.lunifera.dsl.semantic.common.types
-
+ 
 import xcore.lang.GenModel
 import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.common.types.JvmFormalParameter

@@ -2,6 +2,6 @@
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" name="org.lunifera.dsl.xtext.builder.participant.impl.LuniferaModelsBinBuilderParticipant">
    <implementation class="org.lunifera.dsl.xtext.builder.participant.impl.LuniferaModelsBinBuilderParticipant"/>
    <service>
-      <provide interface="org.lunifera.xtext.builder.metadata.services.IBuilderParticipant"/>
+      <provide interface="IBuilderParticipant"/>
    </service>
 </scr:component>
