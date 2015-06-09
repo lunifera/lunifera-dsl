@@ -384,6 +384,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION);
 			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM);
+			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__PROPERTIES);
 		}
 		return childrenFeatures;
 	}
@@ -466,6 +467,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
+			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -678,6 +680,11 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
 				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__PROPERTIES,
+				 LunTypesFactory.eINSTANCE.createLKeyAndValue()));
 	}
 
 	@Override

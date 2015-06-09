@@ -245,7 +245,7 @@ class LEntityAttribute extends LEntityFeature, LAttribute {
 		return result.toString		
 	}
 	
-}
+} 
 
 class LEntityReference extends LEntityFeature, LReference {
 	refers LEntity ^type

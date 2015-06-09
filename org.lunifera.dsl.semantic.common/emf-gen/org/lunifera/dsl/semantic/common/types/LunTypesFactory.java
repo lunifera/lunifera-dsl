@@ -150,6 +150,15 @@ public interface LunTypesFactory extends EFactory {
 	LClass createLClass();
 
 	/**
+	 * Returns a new object of class '<em>LKey And Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LKey And Value</em>'.
+	 * @generated
+	 */
+	LKeyAndValue createLKeyAndValue();
+
+	/**
 	 * Returns a new object of class '<em>LOperation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -30,38 +30,69 @@ ruleDtoFeature :
 		) (
 			'mapto' RULE_ID
 		)? (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? (
 			ruleDtoMapper |
 			';'
 		) |
 		(
 			'inherit ref' ruleValidLFQNWithKeywords
 		) 'mapto' RULE_ID (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? (
 			ruleDtoMapper |
 			';'
 		) |
-		'transient' RULE_ID ruleValidIDWithKeywords ';' |
-		'dirty' RULE_ID ruleValidIDWithKeywords ';' |
-		'derived' 'domainDescription'? RULE_ID ruleValidIDWithKeywords
-		ruleXBlockExpression |
+		'transient' RULE_ID ruleValidIDWithKeywords (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? ';' |
+		'dirty' RULE_ID ruleValidIDWithKeywords (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? ';' |
+		'derived' 'domainDescription'? RULE_ID ruleValidIDWithKeywords (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? ruleXBlockExpression |
 		(
 			'id' |
 			'version' |
 			'uuid' |
 			'domainDescription' |
 			'domainKey'
-		) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords ';' |
+		) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? ';' |
 		(
 			'ref' (
 				'cascade'? |
 				'lazy'?
 			)* RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
 				'opposite' ruleLFQN
+			)? (
+				'properties' '(' ruleKeyAndValue (
+					',' ruleKeyAndValue
+				)* ')'
 			)?
 		) (
 			ruleLimitedMapperDtoMapper |
 			';'
 		) |
 		'var' RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? (
 			ruleLimitedMapperDtoMapper |
 			';'
 		) |
@@ -147,6 +178,11 @@ ruleAnnotationDef :
 // Rule Constraint
 ruleConstraint :
 	ruleAttributeMatchingConstraint
+;
+
+// Rule KeyAndValue
+ruleKeyAndValue :
+	'key' '=' RULE_STRING 'value' '=' RULE_STRING
 ;
 
 // Rule AttributeMatchingConstraint

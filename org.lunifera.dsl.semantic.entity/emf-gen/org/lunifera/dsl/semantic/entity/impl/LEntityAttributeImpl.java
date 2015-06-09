@@ -15,19 +15,27 @@ package org.lunifera.dsl.semantic.entity.impl;
 
 import com.google.common.base.Objects;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
@@ -55,6 +63,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getTypeJvm <em>Type Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getTypedName <em>Typed Name</em>}</li>
  * </ul>
@@ -292,6 +301,16 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * @ordered
 	 */
 	protected JvmTypeReference typeJvm;
+
+	/**
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LKeyAndValue> properties;
 
 	/**
 	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
@@ -671,6 +690,18 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LKeyAndValue> getProperties() {
+		if (properties == null) {
+			properties = new EObjectContainmentEList<LKeyAndValue>(LKeyAndValue.class, this, LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES);
+		}
+		return properties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LBeanReference getOpposite() {
 		if (opposite != null && opposite.eIsProxy()) {
 			InternalEObject oldOpposite = (InternalEObject)opposite;
@@ -746,6 +777,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return basicSetDerivedGetterExpression(null, msgs);
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
+			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -785,6 +818,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return basicGetType();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				return getTypeJvm();
+			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
+				return getProperties();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
@@ -799,6 +834,7 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -840,6 +876,10 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)newValue);
+				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
 				setOpposite((LBeanReference)newValue);
@@ -895,6 +935,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)null);
 				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
+				getProperties().clear();
+				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
 				setOpposite((LBeanReference)null);
 				return;
@@ -936,6 +979,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return type != null;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 				return typeJvm != null;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
 				return opposite != null;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPED_NAME:
@@ -966,6 +1011,7 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM: return LunTypesPackage.LATTRIBUTE__TYPE_JVM;
+				case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES: return LunTypesPackage.LATTRIBUTE__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -994,6 +1040,7 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunTypesPackage.LATTRIBUTE__TYPE: return LunEntityPackage.LENTITY_ATTRIBUTE__TYPE;
 				case LunTypesPackage.LATTRIBUTE__TYPE_JVM: return LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM;
+				case LunTypesPackage.LATTRIBUTE__PROPERTIES: return LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES;
 				default: return -1;
 			}
 		}

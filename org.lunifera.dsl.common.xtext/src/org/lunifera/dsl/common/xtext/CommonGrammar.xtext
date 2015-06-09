@@ -76,6 +76,9 @@ Constraints returns types::LConstraints:
 Constraint returns types::LConstraint:
 	AttributeMatchingConstraint;
 
+KeyAndValue returns types::LKeyAndValue:
+	'key' '=' key=STRING 'value' '=' value=STRING;
+
 AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
 	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
 	matchingLiteral=[types::LEnumLiteral]) ';';

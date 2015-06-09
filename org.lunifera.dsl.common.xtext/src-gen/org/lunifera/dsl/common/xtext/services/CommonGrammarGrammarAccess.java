@@ -497,6 +497,50 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAttributeMatchingConstraintParserRuleCall() { return cAttributeMatchingConstraintParserRuleCall; }
 	}
 
+	public class KeyAndValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "KeyAndValue");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cKeyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cKeySTRINGTerminalRuleCall_2_0 = (RuleCall)cKeyAssignment_2.eContents().get(0);
+		private final Keyword cValueKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValueSTRINGTerminalRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
+		
+		//KeyAndValue returns types::LKeyAndValue:
+		//	"key" "=" key=STRING "value" "=" value=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//"key" "=" key=STRING "value" "=" value=STRING
+		public Group getGroup() { return cGroup; }
+
+		//"key"
+		public Keyword getKeyKeyword_0() { return cKeyKeyword_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+
+		//key=STRING
+		public Assignment getKeyAssignment_2() { return cKeyAssignment_2; }
+
+		//STRING
+		public RuleCall getKeySTRINGTerminalRuleCall_2_0() { return cKeySTRINGTerminalRuleCall_2_0; }
+
+		//"value"
+		public Keyword getValueKeyword_3() { return cValueKeyword_3; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_4() { return cEqualsSignKeyword_4; }
+
+		//value=STRING
+		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
+
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_5_0() { return cValueSTRINGTerminalRuleCall_5_0; }
+	}
+
 	public class AttributeMatchingConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AttributeMatchingConstraint");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1024,6 +1068,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	private final LVisibilityElements unknownRuleLVisibility;
 	private final ConstraintsElements pConstraints;
 	private final ConstraintElements pConstraint;
+	private final KeyAndValueElements pKeyAndValue;
 	private final AttributeMatchingConstraintElements pAttributeMatchingConstraint;
 	private final LComparatorTypeElements unknownRuleLComparatorType;
 	private final LQualifiedNameWithWildCardElements pLQualifiedNameWithWildCard;
@@ -1058,6 +1103,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		this.unknownRuleLVisibility = new LVisibilityElements();
 		this.pConstraints = new ConstraintsElements();
 		this.pConstraint = new ConstraintElements();
+		this.pKeyAndValue = new KeyAndValueElements();
 		this.pAttributeMatchingConstraint = new AttributeMatchingConstraintElements();
 		this.unknownRuleLComparatorType = new LComparatorTypeElements();
 		this.pLQualifiedNameWithWildCard = new LQualifiedNameWithWildCardElements();
@@ -1238,6 +1284,16 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getConstraintRule() {
 		return getConstraintAccess().getRule();
+	}
+
+	//KeyAndValue returns types::LKeyAndValue:
+	//	"key" "=" key=STRING "value" "=" value=STRING;
+	public KeyAndValueElements getKeyAndValueAccess() {
+		return pKeyAndValue;
+	}
+	
+	public ParserRule getKeyAndValueRule() {
+		return getKeyAndValueAccess().getRule();
 	}
 
 	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:

@@ -68,6 +68,7 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LImport;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
@@ -142,6 +143,12 @@ public abstract class AbstractDatatypeGrammarSemanticSequencer extends CommonGra
 			case LunTypesPackage.LIMPORT:
 				if(context == grammarAccess.getImportRule()) {
 					sequence_Import(context, (LImport) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LKEY_AND_VALUE:
+				if(context == grammarAccess.getKeyAndValueRule()) {
+					sequence_KeyAndValue(context, (LKeyAndValue) semanticObject); 
 					return; 
 				}
 				else break;

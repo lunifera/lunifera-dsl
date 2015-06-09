@@ -66,6 +66,7 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LImport;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
@@ -215,6 +216,12 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 			case LunTypesPackage.LIMPORT:
 				if(context == grammarAccess.getImportRule()) {
 					sequence_Import(context, (LImport) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LKEY_AND_VALUE:
+				if(context == grammarAccess.getKeyAndValueRule()) {
+					sequence_KeyAndValue(context, (LKeyAndValue) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1526,8 +1533,14 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	/**
 	 * Constraint:
 	 *     (
-	 *         (annotationInfo=DtoFeature_LDtoAttribute_2_2_0 (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords)) | 
-	 *         (annotationInfo=DtoFeature_LDtoAttribute_2_3_0 (dirty?='dirty' type=[LScalarType|ID] name=ValidIDWithKeywords)) | 
+	 *         (
+	 *             annotationInfo=DtoFeature_LDtoAttribute_2_2_0 
+	 *             (transient?='transient' type=[LScalarType|ID] name=ValidIDWithKeywords (properties+=KeyAndValue properties+=KeyAndValue*)?)
+	 *         ) | 
+	 *         (
+	 *             annotationInfo=DtoFeature_LDtoAttribute_2_3_0 
+	 *             (dirty?='dirty' type=[LScalarType|ID] name=ValidIDWithKeywords (properties+=KeyAndValue properties+=KeyAndValue*)?)
+	 *         ) | 
 	 *         (
 	 *             annotationInfo=DtoFeature_LDtoAttribute_2_4_0 
 	 *             (
@@ -1535,6 +1548,7 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 *                 domainDescription?='domainDescription'? 
 	 *                 type=[LScalarType|ID] 
 	 *                 name=ValidIDWithKeywords 
+	 *                 (properties+=KeyAndValue properties+=KeyAndValue*)? 
 	 *                 derivedGetterExpression=XBlockExpression
 	 *             )
 	 *         ) | 
@@ -1543,13 +1557,15 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 *             (id?='id' | version?='version' | uuid?='uuid' | domainDescription?='domainDescription' | domainKey?='domainKey') 
 	 *             type=[LScalarType|ID] 
 	 *             multiplicity=Multiplicity? 
-	 *             name=ValidIDWithKeywords
+	 *             name=ValidIDWithKeywords 
+	 *             (properties+=KeyAndValue properties+=KeyAndValue*)?
 	 *         ) | 
 	 *         (
 	 *             annotationInfo=DtoFeature_LDtoAttribute_2_7_0 
 	 *             type=[LScalarType|ID] 
 	 *             multiplicity=Multiplicity? 
 	 *             name=ValidIDWithKeywords 
+	 *             (properties+=KeyAndValue properties+=KeyAndValue*)? 
 	 *             mapper=LimitedMapperDtoMapper?
 	 *         )
 	 *     )
@@ -1574,6 +1590,7 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 *         annotationInfo=DtoFeature_LDtoInheritedAttribute_2_0_0_0 
 	 *         inheritedFeature=[LEntityAttribute|ValidLFQNWithKeywords] 
 	 *         type=[LDto|ID]? 
+	 *         (properties+=KeyAndValue properties+=KeyAndValue*)? 
 	 *         mapper=DtoMapper?
 	 *     )
 	 */
@@ -1588,6 +1605,7 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 *         annotationInfo=DtoFeature_LDtoInheritedReference_2_1_0 
 	 *         inheritedFeature=[LEntityReference|ValidLFQNWithKeywords] 
 	 *         type=[LDto|ID] 
+	 *         (properties+=KeyAndValue properties+=KeyAndValue*)? 
 	 *         mapper=DtoMapper?
 	 *     )
 	 */
@@ -1618,7 +1636,8 @@ public abstract class AbstractDtoGrammarSemanticSequencer extends CommonGrammarS
 	 *             type=[LDto|ID] 
 	 *             multiplicity=Multiplicity? 
 	 *             name=ValidIDWithKeywords 
-	 *             opposite=[LDtoReference|LFQN]?
+	 *             opposite=[LDtoReference|LFQN]? 
+	 *             (properties+=KeyAndValue properties+=KeyAndValue*)?
 	 *         ) 
 	 *         mapper=LimitedMapperDtoMapper?
 	 *     )

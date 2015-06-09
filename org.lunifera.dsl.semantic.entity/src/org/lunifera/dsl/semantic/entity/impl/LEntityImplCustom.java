@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LAnnotationTarget;
 import org.lunifera.dsl.semantic.entity.LEntity;
@@ -64,6 +63,9 @@ public class LEntityImplCustom extends LEntityImpl {
 	}
 
 	public EObject eResolveProxy(InternalEObject proxy) {
+		if (this.eResource() == null) {
+			return proxy;
+		}
 		return EcoreUtil3.resolve(proxy, this.eResource().getResourceSet());
 	}
 

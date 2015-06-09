@@ -396,6 +396,29 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LKeyAndValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LKeyAndValueItemProvider lKeyAndValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LKeyAndValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLKeyAndValueAdapter() {
+		if (lKeyAndValueItemProvider == null) {
+			lKeyAndValueItemProvider = new LKeyAndValueItemProvider(this);
+		}
+
+		return lKeyAndValueItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LOperation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -649,6 +672,7 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 		if (lEnumItemProvider != null) lEnumItemProvider.dispose();
 		if (lEnumLiteralItemProvider != null) lEnumLiteralItemProvider.dispose();
 		if (lClassItemProvider != null) lClassItemProvider.dispose();
+		if (lKeyAndValueItemProvider != null) lKeyAndValueItemProvider.dispose();
 		if (lOperationItemProvider != null) lOperationItemProvider.dispose();
 		if (lModifierItemProvider != null) lModifierItemProvider.dispose();
 		if (lMultiplicityItemProvider != null) lMultiplicityItemProvider.dispose();

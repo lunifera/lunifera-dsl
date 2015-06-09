@@ -105,6 +105,7 @@ public class DatatypeGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumLiteralAccess().getGroup_1_1_2(), "rule__EnumLiteral__Group_1_1_2__0");
 					put(grammarAccess.getAnnotationDefAccess().getGroup(), "rule__AnnotationDef__Group__0");
 					put(grammarAccess.getConstraintsAccess().getGroup(), "rule__Constraints__Group__0");
+					put(grammarAccess.getKeyAndValueAccess().getGroup(), "rule__KeyAndValue__Group__0");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getGroup(), "rule__AttributeMatchingConstraint__Group__0");
 					put(grammarAccess.getLQualifiedNameWithWildCardAccess().getGroup(), "rule__LQualifiedNameWithWildCard__Group__0");
 					put(grammarAccess.getLQualifiedNameWithWildCardAccess().getGroup_1(), "rule__LQualifiedNameWithWildCard__Group_1__0");
@@ -338,6 +339,8 @@ public class DatatypeGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumLiteralAccess().getValueAssignment_1_1_2_1(), "rule__EnumLiteral__ValueAssignment_1_1_2_1");
 					put(grammarAccess.getAnnotationDefAccess().getAnnotationAssignment_0(), "rule__AnnotationDef__AnnotationAssignment_0");
 					put(grammarAccess.getConstraintsAccess().getConstraintsAssignment_3(), "rule__Constraints__ConstraintsAssignment_3");
+					put(grammarAccess.getKeyAndValueAccess().getKeyAssignment_2(), "rule__KeyAndValue__KeyAssignment_2");
+					put(grammarAccess.getKeyAndValueAccess().getValueAssignment_5(), "rule__KeyAndValue__ValueAssignment_5");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getAttributeAssignment_0(), "rule__AttributeMatchingConstraint__AttributeAssignment_0");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getComparatorTypeAssignment_1(), "rule__AttributeMatchingConstraint__ComparatorTypeAssignment_1");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getMatchingValueAssignment_2_0(), "rule__AttributeMatchingConstraint__MatchingValueAssignment_2_0");

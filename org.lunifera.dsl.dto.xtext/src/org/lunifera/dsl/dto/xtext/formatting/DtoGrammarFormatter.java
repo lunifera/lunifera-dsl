@@ -86,12 +86,13 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 			DtoGrammarGrammarAccess.DtoFeatureElements ele) {
 		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
 		// Setting for ";"
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_0_2_1());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_4_1());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_2_1_3());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_4_1());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_5());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_0_3_1());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_5_1());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_2_1_4());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_5_1());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_6());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_6_2_1());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_7_6_1());
 
 		c.setLinewrap(1, 1, 2).around(ele.getRule());
 		c.setIndentationIncrement().before(ele.getRule());

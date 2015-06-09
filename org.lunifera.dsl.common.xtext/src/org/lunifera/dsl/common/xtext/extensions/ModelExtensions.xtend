@@ -254,6 +254,9 @@ class ModelExtensions {
 	}
 
 	def String toDtoPackageName(LTypedPackage pkg) {
+		if(pkg == null) {
+			return "notDefined"
+		}
 		if (pkg.name.contains("entities")) {
 			return pkg.name.replace("entities", "dtos")
 		} else {

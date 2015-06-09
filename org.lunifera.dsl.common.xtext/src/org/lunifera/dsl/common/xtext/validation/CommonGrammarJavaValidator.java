@@ -24,6 +24,8 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.lunifera.dsl.common.xtext.extensions.ModelExtensions;
@@ -267,4 +269,15 @@ public class CommonGrammarJavaValidator
 		}
 	}
 
+	@Check(CheckType.FAST)
+	public void checkFeatureHasName(LFeature feature) {
+		if (feature.eContainingFeature() != LunTypesPackage.Literals.LFEATURE__ANNOTATION_INFO) {
+			if (feature.getName() == null
+					|| feature.getName().trim().equals("")) {
+				error("Feature needs a name!", feature,
+						LunTypesPackage.Literals.LFEATURE__NAME, "",
+						(String[]) null);
+			}
+		}
+	}
 }

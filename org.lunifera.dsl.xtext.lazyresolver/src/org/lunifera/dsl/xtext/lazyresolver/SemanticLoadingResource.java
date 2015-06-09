@@ -135,10 +135,10 @@ public class SemanticLoadingResource extends BatchLinkableResource implements
 
 		// look up the fragment cache
 		FragmentCache cache = getFragmentCache();
-		if (cache.containsKey(uriFragment)) {
-			LOGGER.debug("Firstlevel-Fragment-Cache-Hit for " + uriFragment);
-			return cache.get(uriFragment);
-		}
+//		if (cache.containsKey(uriFragment)) {
+//			LOGGER.debug("Firstlevel-Fragment-Cache-Hit for " + uriFragment);
+//			return cache.get(uriFragment);
+//		}
 
 		EObject result = null;
 		if (uriFragment.startsWith("/0")) {

@@ -359,6 +359,7 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION);
 			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM);
+			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__PROPERTIES);
 		}
 		return childrenFeatures;
 	}
@@ -459,6 +460,7 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 				return;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM:
+			case LunEntityPackage.LBEAN_ATTRIBUTE__PROPERTIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -671,6 +673,11 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
 				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__PROPERTIES,
+				 LunTypesFactory.eINSTANCE.createLKeyAndValue()));
 	}
 
 	private static final class AddImportForDatatypeCommand extends

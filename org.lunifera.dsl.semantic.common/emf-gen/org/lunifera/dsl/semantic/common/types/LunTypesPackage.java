@@ -1178,13 +1178,22 @@ public interface LunTypesPackage extends EPackage {
 	int LREFERENCE__CASCADING = LFEATURE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LREFERENCE__PROPERTIES = LFEATURE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>LReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LREFERENCE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 2;
+	int LREFERENCE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1377,13 +1386,22 @@ public interface LunTypesPackage extends EPackage {
 	int LATTRIBUTE__TYPE_JVM = LFEATURE_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATTRIBUTE__PROPERTIES = LFEATURE_FEATURE_COUNT + 13;
+
+	/**
 	 * The number of structural features of the '<em>LAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 13;
+	int LATTRIBUTE_FEATURE_COUNT = LFEATURE_FEATURE_COUNT + 14;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1413,6 +1431,52 @@ public interface LunTypesPackage extends EPackage {
 	int LATTRIBUTE_OPERATION_COUNT = LFEATURE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LKeyAndValueImpl <em>LKey And Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LKeyAndValueImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLKeyAndValue()
+	 * @generated
+	 */
+	int LKEY_AND_VALUE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LKEY_AND_VALUE__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LKEY_AND_VALUE__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>LKey And Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LKEY_AND_VALUE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>LKey And Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LKEY_AND_VALUE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LOperationImpl <em>LOperation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1420,7 +1484,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLOperation()
 	 * @generated
 	 */
-	int LOPERATION = 17;
+	int LOPERATION = 18;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1511,7 +1575,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLModifier()
 	 * @generated
 	 */
-	int LMODIFIER = 18;
+	int LMODIFIER = 19;
 
 	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -1575,7 +1639,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLMultiplicity()
 	 * @generated
 	 */
-	int LMULTIPLICITY = 19;
+	int LMULTIPLICITY = 20;
 
 	/**
 	 * The feature id for the '<em><b>Lower</b></em>' attribute.
@@ -1630,7 +1694,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLConstraints()
 	 * @generated
 	 */
-	int LCONSTRAINTS = 20;
+	int LCONSTRAINTS = 21;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -1676,7 +1740,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLConstraint()
 	 * @generated
 	 */
-	int LCONSTRAINT = 21;
+	int LCONSTRAINT = 22;
 
 	/**
 	 * The number of structural features of the '<em>LConstraint</em>' class.
@@ -1713,7 +1777,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAttributeMatchingConstraint()
 	 * @generated
 	 */
-	int LATTRIBUTE_MATCHING_CONSTRAINT = 22;
+	int LATTRIBUTE_MATCHING_CONSTRAINT = 23;
 
 	/**
 	 * The feature id for the '<em><b>Attribute</b></em>' reference.
@@ -1786,7 +1850,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDateType()
 	 * @generated
 	 */
-	int LDATE_TYPE = 23;
+	int LDATE_TYPE = 24;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LVisibility <em>LVisibility</em>}' enum.
@@ -1796,7 +1860,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLVisibility()
 	 * @generated
 	 */
-	int LVISIBILITY = 24;
+	int LVISIBILITY = 25;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LLowerBound <em>LLower Bound</em>}' enum.
@@ -1806,7 +1870,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLLowerBound()
 	 * @generated
 	 */
-	int LLOWER_BOUND = 25;
+	int LLOWER_BOUND = 26;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LUpperBound <em>LUpper Bound</em>}' enum.
@@ -1816,7 +1880,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLUpperBound()
 	 * @generated
 	 */
-	int LUPPER_BOUND = 26;
+	int LUPPER_BOUND = 27;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LComparatorType <em>LComparator Type</em>}' enum.
@@ -1826,7 +1890,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLComparatorType()
 	 * @generated
 	 */
-	int LCOMPARATOR_TYPE = 27;
+	int LCOMPARATOR_TYPE = 28;
 
 	/**
 	 * The meta object id for the '<em>Operations List</em>' data type.
@@ -1836,7 +1900,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getOperationsList()
 	 * @generated
 	 */
-	int OPERATIONS_LIST = 28;
+	int OPERATIONS_LIST = 29;
 
 	/**
 	 * The meta object id for the '<em>Features List</em>' data type.
@@ -1846,7 +1910,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getFeaturesList()
 	 * @generated
 	 */
-	int FEATURES_LIST = 29;
+	int FEATURES_LIST = 30;
 
 	/**
 	 * The meta object id for the '<em>Annotation List</em>' data type.
@@ -1856,7 +1920,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getAnnotationList()
 	 * @generated
 	 */
-	int ANNOTATION_LIST = 30;
+	int ANNOTATION_LIST = 31;
 
 	/**
 	 * The meta object id for the '<em>Internal EObject</em>' data type.
@@ -1866,7 +1930,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getInternalEObject()
 	 * @generated
 	 */
-	int INTERNAL_EOBJECT = 31;
+	int INTERNAL_EOBJECT = 32;
 
 
 	/**
@@ -2453,6 +2517,17 @@ public interface LunTypesPackage extends EPackage {
 	EAttribute getLReference_Cascading();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.semantic.common.types.LReference#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LReference#getProperties()
+	 * @see #getLReference()
+	 * @generated
+	 */
+	EReference getLReference_Properties();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LAttribute <em>LAttribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2604,6 +2679,49 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLAttribute_TypeJvm();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.semantic.common.types.LAttribute#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttribute#getProperties()
+	 * @see #getLAttribute()
+	 * @generated
+	 */
+	EReference getLAttribute_Properties();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LKeyAndValue <em>LKey And Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LKey And Value</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LKeyAndValue
+	 * @generated
+	 */
+	EClass getLKeyAndValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LKeyAndValue#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LKeyAndValue#getKey()
+	 * @see #getLKeyAndValue()
+	 * @generated
+	 */
+	EAttribute getLKeyAndValue_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LKeyAndValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LKeyAndValue#getValue()
+	 * @see #getLKeyAndValue()
+	 * @generated
+	 */
+	EAttribute getLKeyAndValue_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LOperation <em>LOperation</em>}'.
@@ -3430,6 +3548,14 @@ public interface LunTypesPackage extends EPackage {
 		EAttribute LREFERENCE__CASCADING = eINSTANCE.getLReference_Cascading();
 
 		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LREFERENCE__PROPERTIES = eINSTANCE.getLReference_Properties();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.LAttribute <em>LAttribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3542,6 +3668,40 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LATTRIBUTE__TYPE_JVM = eINSTANCE.getLAttribute_TypeJvm();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LATTRIBUTE__PROPERTIES = eINSTANCE.getLAttribute_Properties();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LKeyAndValueImpl <em>LKey And Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LKeyAndValueImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLKeyAndValue()
+		 * @generated
+		 */
+		EClass LKEY_AND_VALUE = eINSTANCE.getLKeyAndValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LKEY_AND_VALUE__KEY = eINSTANCE.getLKeyAndValue_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LKEY_AND_VALUE__VALUE = eINSTANCE.getLKeyAndValue_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LOperationImpl <em>LOperation</em>}' class.

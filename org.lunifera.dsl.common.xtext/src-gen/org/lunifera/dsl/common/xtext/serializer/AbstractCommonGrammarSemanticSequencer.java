@@ -70,6 +70,7 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LImport;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
@@ -138,6 +139,12 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 			case LunTypesPackage.LIMPORT:
 				if(context == grammarAccess.getImportRule()) {
 					sequence_Import(context, (LImport) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LKEY_AND_VALUE:
+				if(context == grammarAccess.getKeyAndValueRule()) {
+					sequence_KeyAndValue(context, (LKeyAndValue) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1493,6 +1500,25 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceLQualifiedNameWithWildCardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (key=STRING value=STRING)
+	 */
+	protected void sequence_KeyAndValue(EObject context, LKeyAndValue semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LKEY_AND_VALUE__KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LKEY_AND_VALUE__KEY));
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LKEY_AND_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LKEY_AND_VALUE__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getKeyAndValueAccess().getKeySTRINGTerminalRuleCall_2_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getKeyAndValueAccess().getValueSTRINGTerminalRuleCall_5_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

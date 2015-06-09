@@ -51,7 +51,7 @@ public class ServicesGrammarJavaValidator
 					model, LunTypesPackage.Literals.LPACKAGE__NAME,
 					CODE__MISSING__XBASE_LIB);
 		}
-		if (typeReferences.findDeclaredType("java.persistence.Persistence",
+		if (typeReferences.findDeclaredType("javax.persistence.Persistence",
 				model) == null) {
 			warning("Couldn't find the optional library 'javax.persistence' 2.1.0 or higher on the project's classpath. If you are using JPA-Dto-Services, the library is mandatory.",
 					model, LunTypesPackage.Literals.LPACKAGE__NAME,

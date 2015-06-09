@@ -165,6 +165,7 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(LunTypesPackage.Literals.LREFERENCE__PROPERTIES);
 			childrenFeatures.add(LunEntityPackage.Literals.LBEAN_REFERENCE__TYPE_JVM);
 			childrenFeatures.add(LunEntityPackage.Literals.LBEAN_REFERENCE__CONSTRAINTS);
 		}
@@ -226,6 +227,7 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 			case LunEntityPackage.LBEAN_REFERENCE__CASCADING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case LunEntityPackage.LBEAN_REFERENCE__PROPERTIES:
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -244,6 +246,11 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__PROPERTIES,
+				 LunTypesFactory.eINSTANCE.createLKeyAndValue()));
 
 		newChildDescriptors.add
 			(createChildParameter

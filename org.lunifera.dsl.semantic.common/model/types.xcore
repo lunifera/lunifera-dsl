@@ -165,6 +165,8 @@ interface LFeature extends LAnnotationTarget {
 interface LReference extends LFeature {
 	boolean lazy
 	boolean cascading
+	
+	contains LKeyAndValue[*] properties
 }
 
 interface LAttribute extends LFeature {
@@ -187,6 +189,13 @@ interface LAttribute extends LFeature {
 	contains XExpression derivedGetterExpression
 	refers LScalarType ^type
 	contains transient JvmTypeReference typeJvm
+	
+	contains LKeyAndValue[*] properties
+}
+
+class LKeyAndValue {
+	String key
+	String value
 }
 
 class LOperation extends LAnnotationTarget {

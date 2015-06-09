@@ -86,6 +86,7 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 			case LunTypesPackage.LENUM: return createLEnum();
 			case LunTypesPackage.LENUM_LITERAL: return createLEnumLiteral();
 			case LunTypesPackage.LCLASS: return createLClass();
+			case LunTypesPackage.LKEY_AND_VALUE: return createLKeyAndValue();
 			case LunTypesPackage.LOPERATION: return createLOperation();
 			case LunTypesPackage.LMODIFIER: return createLModifier();
 			case LunTypesPackage.LMULTIPLICITY: return createLMultiplicity();
@@ -286,6 +287,16 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	public LClass createLClass() {
 		LClassImpl lClass = new LClassImpl();
 		return lClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LKeyAndValue createLKeyAndValue() {
+		LKeyAndValueImpl lKeyAndValue = new LKeyAndValueImpl();
+		return lKeyAndValue;
 	}
 
 	/**

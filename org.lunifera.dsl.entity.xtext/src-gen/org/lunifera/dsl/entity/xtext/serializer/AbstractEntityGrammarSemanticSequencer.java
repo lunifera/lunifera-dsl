@@ -70,6 +70,7 @@ import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LImport;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
@@ -255,6 +256,12 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 			case LunTypesPackage.LIMPORT:
 				if(context == grammarAccess.getImportRule()) {
 					sequence_Import(context, (LImport) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LKEY_AND_VALUE:
+				if(context == grammarAccess.getKeyAndValueRule()) {
+					sequence_KeyAndValue(context, (LKeyAndValue) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1528,8 +1535,14 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanAttribute_2_1_0 
 	 *         (
-	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID) | 
-	 *             ((id?='id' | version?='version')? type=[LScalarType|ID] multiplicity=Multiplicity? name=TRANSLATABLEID)
+	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID (properties+=KeyAndValue properties+=KeyAndValue*)?) | 
+	 *             (
+	 *                 (id?='id' | version?='version')? 
+	 *                 type=[LScalarType|ID] 
+	 *                 multiplicity=Multiplicity? 
+	 *                 name=TRANSLATABLEID 
+	 *                 (properties+=KeyAndValue properties+=KeyAndValue*)?
+	 *             )
 	 *         )
 	 *     )
 	 */
@@ -1557,6 +1570,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *             multiplicity=Multiplicity? 
 	 *             name=TRANSLATABLEID 
 	 *             opposite=[LReference|LFQN]? 
+	 *             (properties+=KeyAndValue properties+=KeyAndValue*)? 
 	 *             constraints=Constraints?
 	 *         )
 	 *     )
@@ -1648,15 +1662,23 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (
 	 *         annotationInfo=EntityFeature_LEntityAttribute_2_1_0 
 	 *         (
-	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID) | 
-	 *             (derived?='derived' domainDescription?='domainDescription'? type=[LScalarType|ID] name=TRANSLATABLEID derivedGetterExpression=XBlockExpression) | 
+	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID (properties+=KeyAndValue properties+=KeyAndValue*)?) | 
+	 *             (
+	 *                 derived?='derived' 
+	 *                 domainDescription?='domainDescription'? 
+	 *                 type=[LScalarType|ID] 
+	 *                 name=TRANSLATABLEID 
+	 *                 (properties+=KeyAndValue properties+=KeyAndValue*)? 
+	 *                 derivedGetterExpression=XBlockExpression
+	 *             ) | 
 	 *             (
 	 *                 (id?='id' | uuid?='uuid' | version?='version' | domainDescription?='domainDescription' | domainKey?='domainKey')? 
 	 *                 type=[LScalarType|ID] 
 	 *                 multiplicity=Multiplicity? 
 	 *                 name=TRANSLATABLEID 
 	 *                 persistenceInfo=ColumnPersistenceInfo? 
-	 *                 opposite=[LBeanReference|LFQN]?
+	 *                 opposite=[LBeanReference|LFQN]? 
+	 *                 (properties+=KeyAndValue properties+=KeyAndValue*)?
 	 *             )
 	 *         )
 	 *     )
@@ -1686,6 +1708,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *             name=TRANSLATABLEID 
 	 *             persistenceInfo=ColumnPersistenceInfo? 
 	 *             opposite=[LEntityReference|LFQN]? 
+	 *             (properties+=KeyAndValue properties+=KeyAndValue*)? 
 	 *             constraints=Constraints?
 	 *         )
 	 *     )

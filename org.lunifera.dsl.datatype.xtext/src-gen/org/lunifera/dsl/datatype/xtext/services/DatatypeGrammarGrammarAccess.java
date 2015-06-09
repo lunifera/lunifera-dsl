@@ -290,6 +290,16 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getConstraintAccess().getRule();
 	}
 
+	//KeyAndValue returns types::LKeyAndValue:
+	//	"key" "=" key=STRING "value" "=" value=STRING;
+	public CommonGrammarGrammarAccess.KeyAndValueElements getKeyAndValueAccess() {
+		return gaCommonGrammar.getKeyAndValueAccess();
+	}
+	
+	public ParserRule getKeyAndValueRule() {
+		return getKeyAndValueAccess().getRule();
+	}
+
 	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
 	//	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
 	//	matchingLiteral=[types::LEnumLiteral]) ";";

@@ -64,13 +64,24 @@ ruleEntityFeature :
 		ruleColumnPersistenceInfo? (
 			'opposite' ruleLFQN
 		)? (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? (
 			ruleConstraints |
 			';'
 		) |
 		(
-			'transient' RULE_ID ruleTRANSLATABLEID ';' |
-			'derived' 'domainDescription'? RULE_ID ruleTRANSLATABLEID
-			ruleXBlockExpression |
+			'transient' RULE_ID ruleTRANSLATABLEID (
+				'properties' '(' ruleKeyAndValue (
+					',' ruleKeyAndValue
+				)* ')'
+			)? ';' |
+			'derived' 'domainDescription'? RULE_ID ruleTRANSLATABLEID (
+				'properties' '(' ruleKeyAndValue (
+					',' ruleKeyAndValue
+				)* ')'
+			)? ruleXBlockExpression |
 			(
 				'var' |
 				'id' |
@@ -80,6 +91,10 @@ ruleEntityFeature :
 				'domainKey'
 			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ruleColumnPersistenceInfo? (
 				'opposite' ruleLFQN
+			)? (
+				'properties' '(' ruleKeyAndValue (
+					',' ruleKeyAndValue
+				)* ')'
 			)? ';'
 		) |
 		'def' ruleJvmTypeReference ruleTRANSLATABLEID '(' (
@@ -96,16 +111,28 @@ ruleBeanFeature :
 		'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
 			'opposite' ruleLFQN
 		)? (
+			'properties' '(' ruleKeyAndValue (
+				',' ruleKeyAndValue
+			)* ')'
+		)? (
 			ruleConstraints |
 			';'
 		) |
 		(
-			'transient' RULE_ID ruleTRANSLATABLEID |
+			'transient' RULE_ID ruleTRANSLATABLEID (
+				'properties' '(' ruleKeyAndValue (
+					',' ruleKeyAndValue
+				)* ')'
+			)? |
 			(
 				'var' |
 				'id' |
 				'version'
-			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ';'
+			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
+				'properties' '(' ruleKeyAndValue (
+					',' ruleKeyAndValue
+				)* ')'
+			)? ';'
 		) |
 		'def' ruleJvmTypeReference ruleTRANSLATABLEID '(' (
 			ruleFullJvmFormalParameter (
@@ -223,6 +250,11 @@ ruleConstraints :
 // Rule Constraint
 ruleConstraint :
 	ruleAttributeMatchingConstraint
+;
+
+// Rule KeyAndValue
+ruleKeyAndValue :
+	'key' '=' RULE_STRING 'value' '=' RULE_STRING
 ;
 
 // Rule AttributeMatchingConstraint

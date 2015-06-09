@@ -147,6 +147,10 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 				return createLAttributeAdapter();
 			}
 			@Override
+			public Adapter caseLKeyAndValue(LKeyAndValue object) {
+				return createLKeyAndValueAdapter();
+			}
+			@Override
 			public Adapter caseLOperation(LOperation object) {
 				return createLOperationAdapter();
 			}
@@ -425,6 +429,20 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LKeyAndValue <em>LKey And Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LKeyAndValue
+	 * @generated
+	 */
+	public Adapter createLKeyAndValueAdapter() {
 		return null;
 	}
 

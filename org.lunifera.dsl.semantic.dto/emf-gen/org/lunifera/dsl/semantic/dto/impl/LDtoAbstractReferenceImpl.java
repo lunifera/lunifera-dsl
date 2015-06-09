@@ -13,16 +13,24 @@
  */
 package org.lunifera.dsl.semantic.dto.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
@@ -39,6 +47,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#isCascading <em>Cascading</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
  * </ul>
@@ -86,6 +95,16 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 	 * @ordered
 	 */
 	protected boolean cascading = CASCADING_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LKeyAndValue> properties;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -166,6 +185,18 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 		cascading = newCascading;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING, oldCascading, cascading));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LKeyAndValue> getProperties() {
+		if (properties == null) {
+			properties = new EObjectContainmentEList<LKeyAndValue>(LKeyAndValue.class, this, LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES);
+		}
+		return properties;
 	}
 
 	/**
@@ -257,6 +288,8 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
 		}
@@ -275,6 +308,8 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				return isLazy();
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING:
 				return isCascading();
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
+				return getProperties();
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
@@ -289,6 +324,7 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -297,6 +333,10 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				return;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING:
 				setCascading((Boolean)newValue);
+				return;
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				setType((LDto)newValue);
@@ -322,6 +362,9 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING:
 				setCascading(CASCADING_EDEFAULT);
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
+				getProperties().clear();
+				return;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				setType((LDto)null);
 				return;
@@ -344,6 +387,8 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				return lazy != LAZY_EDEFAULT;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING:
 				return cascading != CASCADING_EDEFAULT;
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				return type != null;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
@@ -363,6 +408,7 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 			switch (derivedFeatureID) {
 				case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__LAZY: return LunTypesPackage.LREFERENCE__LAZY;
 				case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING: return LunTypesPackage.LREFERENCE__CASCADING;
+				case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES: return LunTypesPackage.LREFERENCE__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -380,6 +426,7 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 			switch (baseFeatureID) {
 				case LunTypesPackage.LREFERENCE__LAZY: return LunDtoPackage.LDTO_ABSTRACT_REFERENCE__LAZY;
 				case LunTypesPackage.LREFERENCE__CASCADING: return LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING;
+				case LunTypesPackage.LREFERENCE__PROPERTIES: return LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES;
 				default: return -1;
 			}
 		}

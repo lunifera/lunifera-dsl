@@ -51,6 +51,7 @@ import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
 import org.lunifera.dsl.semantic.common.types.LImport;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LLazyResolver;
 import org.lunifera.dsl.semantic.common.types.LLowerBound;
 import org.lunifera.dsl.semantic.common.types.LModifier;
@@ -191,6 +192,13 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * @generated
 	 */
 	private EClass lAttributeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lKeyAndValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -344,9 +352,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		XAnnotationsPackage.eINSTANCE.eClass();
-		XbasePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
+		XbasePackage.eINSTANCE.eClass();
+		XAnnotationsPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theLunTypesPackage.createPackageContents();
@@ -863,6 +871,15 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getLReference_Properties() {
+		return (EReference)lReferenceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLAttribute() {
 		return lAttributeEClass;
 	}
@@ -982,6 +999,42 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 */
 	public EReference getLAttribute_TypeJvm() {
 		return (EReference)lAttributeEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLAttribute_Properties() {
+		return (EReference)lAttributeEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLKeyAndValue() {
+		return lKeyAndValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLKeyAndValue_Key() {
+		return (EAttribute)lKeyAndValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLKeyAndValue_Value() {
+		return (EAttribute)lKeyAndValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1361,6 +1414,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		lReferenceEClass = createEClass(LREFERENCE);
 		createEAttribute(lReferenceEClass, LREFERENCE__LAZY);
 		createEAttribute(lReferenceEClass, LREFERENCE__CASCADING);
+		createEReference(lReferenceEClass, LREFERENCE__PROPERTIES);
 
 		lAttributeEClass = createEClass(LATTRIBUTE);
 		createEAttribute(lAttributeEClass, LATTRIBUTE__ID);
@@ -1376,6 +1430,11 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		createEReference(lAttributeEClass, LATTRIBUTE__DERIVED_GETTER_EXPRESSION);
 		createEReference(lAttributeEClass, LATTRIBUTE__TYPE);
 		createEReference(lAttributeEClass, LATTRIBUTE__TYPE_JVM);
+		createEReference(lAttributeEClass, LATTRIBUTE__PROPERTIES);
+
+		lKeyAndValueEClass = createEClass(LKEY_AND_VALUE);
+		createEAttribute(lKeyAndValueEClass, LKEY_AND_VALUE__KEY);
+		createEAttribute(lKeyAndValueEClass, LKEY_AND_VALUE__VALUE);
 
 		lOperationEClass = createEClass(LOPERATION);
 		createEReference(lOperationEClass, LOPERATION__MODIFIER);
@@ -1551,6 +1610,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEClass(lReferenceEClass, LReference.class, "LReference", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLReference_Lazy(), theEcorePackage.getEBoolean(), "lazy", null, 0, 1, LReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLReference_Cascading(), theEcorePackage.getEBoolean(), "cascading", null, 0, 1, LReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLReference_Properties(), this.getLKeyAndValue(), null, "properties", null, 0, -1, LReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lAttributeEClass, LAttribute.class, "LAttribute", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLAttribute_Id(), theEcorePackage.getEBoolean(), "id", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1566,6 +1626,11 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEReference(getLAttribute_DerivedGetterExpression(), theXbasePackage.getXExpression(), null, "derivedGetterExpression", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLAttribute_Type(), this.getLScalarType(), null, "type", null, 0, 1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLAttribute_TypeJvm(), theTypesPackage.getJvmTypeReference(), null, "typeJvm", null, 0, 1, LAttribute.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLAttribute_Properties(), this.getLKeyAndValue(), null, "properties", null, 0, -1, LAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lKeyAndValueEClass, LKeyAndValue.class, "LKeyAndValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLKeyAndValue_Key(), theEcorePackage.getEString(), "key", null, 0, 1, LKeyAndValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLKeyAndValue_Value(), theEcorePackage.getEString(), "value", null, 0, 1, LKeyAndValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lOperationEClass, LOperation.class, "LOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLOperation_Modifier(), this.getLModifier(), null, "modifier", null, 0, 1, LOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

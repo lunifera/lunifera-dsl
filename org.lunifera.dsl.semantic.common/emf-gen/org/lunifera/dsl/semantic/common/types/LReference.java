@@ -13,6 +13,7 @@
  */
 package org.lunifera.dsl.semantic.common.types;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +25,7 @@ package org.lunifera.dsl.semantic.common.types;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LReference#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LReference#isCascading <em>Cascading</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LReference#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,5 +85,21 @@ public interface LReference extends LFeature {
 	 * @generated
 	 */
 	void setCascading(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LKeyAndValue}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLReference_Properties()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LKeyAndValue> getProperties();
 
 } // LReference

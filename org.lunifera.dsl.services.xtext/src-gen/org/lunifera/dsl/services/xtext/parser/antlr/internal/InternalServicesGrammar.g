@@ -1225,6 +1225,8 @@ ruleConstraint returns [EObject current=null]
 
 
 
+
+
 // Entry rule entryRuleAttributeMatchingConstraint
 entryRuleAttributeMatchingConstraint returns [EObject current=null] 
 	:
