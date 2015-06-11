@@ -352,9 +352,9 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
-		XbasePackage.eINSTANCE.eClass();
 		XAnnotationsPackage.eINSTANCE.eClass();
+		XbasePackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theLunTypesPackage.createPackageContents();

@@ -67,7 +67,10 @@ public class LLazyResolverImpl extends MinimalEObjectImpl.Container implements L
 	 */
 	public EObject eResolveProxy(final InternalEObject proxy) {
 		Resource _eResource = this.eResource();
-		ResourceSet _resourceSet = _eResource != null ? _eResource.getResourceSet() : null;
+		ResourceSet _resourceSet = null;
+		if (_eResource!=null) {
+			_resourceSet=_eResource.getResourceSet();
+		}
 		return EcoreUtil3.resolve(proxy, _resourceSet);
 	}
 

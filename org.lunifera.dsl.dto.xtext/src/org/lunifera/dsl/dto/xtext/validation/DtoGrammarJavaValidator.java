@@ -37,6 +37,8 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.dto.LDto;
 import org.lunifera.dsl.semantic.dto.LDtoAttribute;
 import org.lunifera.dsl.semantic.dto.LDtoFeature;
+import org.lunifera.dsl.semantic.dto.LDtoInheritedAttribute;
+import org.lunifera.dsl.semantic.dto.LDtoInheritedReference;
 import org.lunifera.dsl.semantic.dto.LDtoModel;
 import org.lunifera.dsl.semantic.dto.LDtoReference;
 import org.lunifera.dsl.semantic.dto.LunDtoPackage;
@@ -446,5 +448,14 @@ public class DtoGrammarJavaValidator extends
 					dtoModel, LunTypesPackage.Literals.LPACKAGE__NAME,
 					CODE__MISSING__DATATYPE_LIB);
 		}
+	}
+
+	@Check(CheckType.FAST)
+	public void checkFeatureHasName(LFeature feature) {
+		if (feature instanceof LDtoInheritedAttribute
+				|| feature instanceof LDtoInheritedReference) {
+			return;
+		}
+		super.checkFeatureHasName(feature);
 	}
 }

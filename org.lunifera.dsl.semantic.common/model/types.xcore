@@ -34,7 +34,7 @@ class LCommonModel extends LLazyResolver {
 
 class LLazyResolver {
 	op EObject eResolveProxy(InternalEObject proxy) {
-		return EcoreUtil3.resolve(proxy, this.eResource().resourceSet);
+		return EcoreUtil3.resolve(proxy, this.eResource()?.resourceSet);
 	}
 }
 
