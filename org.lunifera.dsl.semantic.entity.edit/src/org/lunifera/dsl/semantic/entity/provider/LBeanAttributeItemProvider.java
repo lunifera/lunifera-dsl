@@ -482,11 +482,6 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
-				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
 				 XbaseFactory.eINSTANCE.createXIfExpression()));
 
 		newChildDescriptors.add
@@ -628,6 +623,11 @@ public class LBeanAttributeItemProvider extends LBeanFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
 				 XbaseFactory.eINSTANCE.createXSynchronizedExpression()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
+				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 
 		newChildDescriptors.add
 			(createChildParameter
