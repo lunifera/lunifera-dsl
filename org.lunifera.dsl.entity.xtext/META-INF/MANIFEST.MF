@@ -30,7 +30,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.7.3,2.8.0)";visibility:=ree
  org.lunifera.runtime.common;bundle-version="[0.9.0,0.10.0)",
  org.lunifera.dsl.xtext.lazyresolver,
  org.lunifera.dsl.xtext.lazyresolver.api;bundle-version="[0.9.0,0.10.0)",
- org.apache.xerces;bundle-version="2.9.0"
+ org.apache.xerces;bundle-version="2.9.0",
+ org.lunifera.dsl.datatype.lib;bundle-version="0.9.1"
 Import-Package: javax.persistence;version="2.1.0",
  org.apache.commons.logging,
  org.apache.log4j,

@@ -34,6 +34,8 @@ import org.lunifera.dsl.xtext.lazyresolver.IndexModelInferrer
 import org.lunifera.dsl.xtext.lazyresolver.api.logger.TimeLogger
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.lunifera.dsl.common.datatypes.IBean
+import org.lunifera.dsl.common.datatypes.IEntity
 
 /**
  * This is the main model inferrer that is automatically registered in AbstractEntityRuntimeModule.
@@ -125,6 +127,9 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 			if (bean.getSuperType != null && !bean.getSuperType.fullyQualifiedName.toString.empty) {
 				superTypes += bean.superTypeJvm.cloneWithProxies
 			}
+			
+			superTypes += references.getTypeForName(typeof(IBean), bean, null)
+			
 			// 
 			// Constructor
 			//
@@ -251,6 +256,9 @@ class EntityGrammarJvmModelInferrer extends IndexModelInferrer {
 				//				superTypes += references.getTypeForName(entity.getSuperType.fullyQualifiedName.toString, entity, null)
 				superTypes += entity.superTypeJvm.cloneWithProxies
 			}
+			
+			superTypes += references.getTypeForName(typeof(IEntity), entity, null)
+			
 			//
 			// Constructor
 			//

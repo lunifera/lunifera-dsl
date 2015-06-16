@@ -33,6 +33,7 @@ class ServicesFileGenerator {
 			
 			«FOR LDto lDto : pkg.dtos.filter[basedOnEntity].filter[!abstract]»
 				dtoservice «lDto.wrappedType.name»Service provides «lDto.name» {
+					mutable persistenceID TBD
 				}
 			«ENDFOR»
 		}

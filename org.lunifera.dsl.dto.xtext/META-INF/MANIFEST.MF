@@ -29,7 +29,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.7.3,2.8.0)";visibility:=ree
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.lunifera.runtime.common;bundle-version="[0.9.0,0.10.0)",
  org.lunifera.dsl.xtext.lazyresolver;bundle-version="[0.9.0,0.10.0)",
- org.lunifera.dsl.xtext.lazyresolver.api;bundle-version="[0.9.0,0.10.0)"
+ org.lunifera.dsl.xtext.lazyresolver.api;bundle-version="[0.9.0,0.10.0)",
+ org.lunifera.dsl.datatype.lib;bundle-version="0.9.1"
 Import-Package: org.apache.log4j,
  org.osgi.service.component.annotations;version="1.2.0",
  org.slf4j;version="1.7.2"
