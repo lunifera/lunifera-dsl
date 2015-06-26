@@ -13,18 +13,26 @@
  */
 package org.lunifera.dsl.semantic.entity.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LFeature;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -41,6 +49,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#isCascading <em>Cascading</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
@@ -90,6 +99,16 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * @ordered
 	 */
 	protected boolean cascading = CASCADING_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LKeyAndValue> properties;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -190,6 +209,18 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 		cascading = newCascading;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LBEAN_REFERENCE__CASCADING, oldCascading, cascading));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LKeyAndValue> getProperties() {
+		if (properties == null) {
+			properties = new EObjectContainmentEList<LKeyAndValue>(LKeyAndValue.class, this, LunEntityPackage.LBEAN_REFERENCE__PROPERTIES);
+		}
+		return properties;
 	}
 
 	/**
@@ -362,6 +393,8 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case LunEntityPackage.LBEAN_REFERENCE__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
 			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
@@ -382,6 +415,8 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				return isLazy();
 			case LunEntityPackage.LBEAN_REFERENCE__CASCADING:
 				return isCascading();
+			case LunEntityPackage.LBEAN_REFERENCE__PROPERTIES:
+				return getProperties();
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
@@ -401,6 +436,7 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -409,6 +445,10 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__CASCADING:
 				setCascading((Boolean)newValue);
+				return;
+			case LunEntityPackage.LBEAN_REFERENCE__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
 				setType((LType)newValue);
@@ -440,6 +480,9 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 			case LunEntityPackage.LBEAN_REFERENCE__CASCADING:
 				setCascading(CASCADING_EDEFAULT);
 				return;
+			case LunEntityPackage.LBEAN_REFERENCE__PROPERTIES:
+				getProperties().clear();
+				return;
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
 				setType((LType)null);
 				return;
@@ -468,6 +511,8 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 				return lazy != LAZY_EDEFAULT;
 			case LunEntityPackage.LBEAN_REFERENCE__CASCADING:
 				return cascading != CASCADING_EDEFAULT;
+			case LunEntityPackage.LBEAN_REFERENCE__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 			case LunEntityPackage.LBEAN_REFERENCE__TYPE:
 				return type != null;
 			case LunEntityPackage.LBEAN_REFERENCE__OPPOSITE:
@@ -491,6 +536,7 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 			switch (derivedFeatureID) {
 				case LunEntityPackage.LBEAN_REFERENCE__LAZY: return LunTypesPackage.LREFERENCE__LAZY;
 				case LunEntityPackage.LBEAN_REFERENCE__CASCADING: return LunTypesPackage.LREFERENCE__CASCADING;
+				case LunEntityPackage.LBEAN_REFERENCE__PROPERTIES: return LunTypesPackage.LREFERENCE__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -508,6 +554,7 @@ public class LBeanReferenceImpl extends LBeanFeatureImpl implements LBeanReferen
 			switch (baseFeatureID) {
 				case LunTypesPackage.LREFERENCE__LAZY: return LunEntityPackage.LBEAN_REFERENCE__LAZY;
 				case LunTypesPackage.LREFERENCE__CASCADING: return LunEntityPackage.LBEAN_REFERENCE__CASCADING;
+				case LunTypesPackage.LREFERENCE__PROPERTIES: return LunEntityPackage.LBEAN_REFERENCE__PROPERTIES;
 				default: return -1;
 			}
 		}

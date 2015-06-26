@@ -13,19 +13,27 @@
  */
 package org.lunifera.dsl.semantic.dto.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
@@ -52,6 +60,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getDerivedGetterExpression <em>Derived Getter Expression</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getTypeJvm <em>Type Jvm</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -287,6 +296,16 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * @ordered
 	 */
 	protected JvmTypeReference typeJvm;
+
+	/**
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LKeyAndValue> properties;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -646,6 +665,18 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LKeyAndValue> getProperties() {
+		if (properties == null) {
+			properties = new EObjectContainmentEList<LKeyAndValue>(LKeyAndValue.class, this, LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES);
+		}
+		return properties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -653,6 +684,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return basicSetDerivedGetterExpression(null, msgs);
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -692,6 +725,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return basicGetType();
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM:
 				return getTypeJvm();
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
+				return getProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -701,6 +736,7 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -742,6 +778,10 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)newValue);
+				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -794,6 +834,9 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM:
 				setTypeJvm((JvmTypeReference)null);
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
+				getProperties().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -832,6 +875,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return type != null;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM:
 				return typeJvm != null;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -858,6 +903,7 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM: return LunTypesPackage.LATTRIBUTE__TYPE_JVM;
+				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES: return LunTypesPackage.LATTRIBUTE__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -886,6 +932,7 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				case LunTypesPackage.LATTRIBUTE__DERIVED_GETTER_EXPRESSION: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__DERIVED_GETTER_EXPRESSION;
 				case LunTypesPackage.LATTRIBUTE__TYPE: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE;
 				case LunTypesPackage.LATTRIBUTE__TYPE_JVM: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM;
+				case LunTypesPackage.LATTRIBUTE__PROPERTIES: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES;
 				default: return -1;
 			}
 		}

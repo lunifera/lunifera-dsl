@@ -644,13 +644,22 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM = LDTO_FEATURE_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES = LDTO_FEATURE_FEATURE_COUNT + 13;
+
+	/**
 	 * The number of structural features of the '<em>LDto Abstract Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_ATTRIBUTE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 13;
+	int LDTO_ABSTRACT_ATTRIBUTE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 14;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedAttributeImpl <em>LDto Inherited Attribute</em>}' class.
@@ -823,6 +832,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_INHERITED_ATTRIBUTE__TYPE_JVM = LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_INHERITED_ATTRIBUTE__PROPERTIES = LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Inherited Feature</b></em>' reference.
@@ -1024,6 +1042,15 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_ATTRIBUTE__TYPE_JVM = LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ATTRIBUTE__PROPERTIES = LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES;
+
+	/**
 	 * The number of structural features of the '<em>LDto Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1106,13 +1133,22 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_ABSTRACT_REFERENCE__CASCADING = LDTO_FEATURE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ABSTRACT_REFERENCE__PROPERTIES = LDTO_FEATURE_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_REFERENCE__TYPE = LDTO_FEATURE_FEATURE_COUNT + 2;
+	int LDTO_ABSTRACT_REFERENCE__TYPE = LDTO_FEATURE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
@@ -1121,7 +1157,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_REFERENCE__TYPE_JVM = LDTO_FEATURE_FEATURE_COUNT + 3;
+	int LDTO_ABSTRACT_REFERENCE__TYPE_JVM = LDTO_FEATURE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>LDto Abstract Reference</em>' class.
@@ -1130,7 +1166,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_REFERENCE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 4;
+	int LDTO_ABSTRACT_REFERENCE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedReferenceImpl <em>LDto Inherited Reference</em>}' class.
@@ -1204,6 +1240,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_INHERITED_REFERENCE__CASCADING = LDTO_ABSTRACT_REFERENCE__CASCADING;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_INHERITED_REFERENCE__PROPERTIES = LDTO_ABSTRACT_REFERENCE__PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1322,6 +1367,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_REFERENCE__CASCADING = LDTO_ABSTRACT_REFERENCE__CASCADING;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_REFERENCE__PROPERTIES = LDTO_ABSTRACT_REFERENCE__PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
