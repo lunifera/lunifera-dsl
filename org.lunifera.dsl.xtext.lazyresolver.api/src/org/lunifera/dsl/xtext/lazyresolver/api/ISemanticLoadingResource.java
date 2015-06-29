@@ -11,12 +11,13 @@
 package org.lunifera.dsl.xtext.lazyresolver.api;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * This kind of resource allows to load the semantic element without installing
  * derived state.
  */
-public interface ISemanticLoadingResource {
+public interface ISemanticLoadingResource extends Resource {
 
 	/**
 	 * Enables the feature, that installing the derived state in an inferrer may

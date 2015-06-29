@@ -141,13 +141,18 @@ public class LuniferaModelsBinBuilderParticipant extends
 		for (URL url : results) {
 			URI modelURI = URI.createURI(url.toString());
 			URI platformURL = toPlatformURI(findReplacedURI(modelURI, bundle));
-			resourceSet.getURIConverter().getURIMap()
-					.put(platformURL, modelURI);
-			resourceSet.createResource(URI.createURI(url.toString()));
+			if (platformURL != null) {
+				resourceSet.getURIConverter().getURIMap()
+						.put(platformURL, modelURI);
+				resourceSet.createResource(URI.createURI(url.toString()));
+			}
 		}
 	}
 
 	private URI toPlatformURI(URI replacedURI) {
+		if (replacedURI == null) {
+			return null;
+		}
 		String auth = replacedURI.authority();
 		String bundleId = auth.substring(0, auth.indexOf("."));
 		Bundle bundle = context.getBundleContext().getBundle(
