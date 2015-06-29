@@ -13,17 +13,25 @@
  */
 package org.lunifera.dsl.semantic.entity.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.dsl.semantic.common.types.LConstraints;
+import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
@@ -40,6 +48,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  * <ul>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#isCascading <em>Cascading</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getOpposite <em>Opposite</em>}</li>
@@ -89,6 +98,16 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * @ordered
 	 */
 	protected boolean cascading = CASCADING_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LKeyAndValue> properties;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -189,6 +208,18 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 		cascading = newCascading;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_REFERENCE__CASCADING, oldCascading, cascading));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LKeyAndValue> getProperties() {
+		if (properties == null) {
+			properties = new EObjectContainmentEList<LKeyAndValue>(LKeyAndValue.class, this, LunEntityPackage.LENTITY_REFERENCE__PROPERTIES);
+		}
+		return properties;
 	}
 
 	/**
@@ -361,6 +392,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
 			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
@@ -381,6 +414,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				return isLazy();
 			case LunEntityPackage.LENTITY_REFERENCE__CASCADING:
 				return isCascading();
+			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
+				return getProperties();
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
@@ -400,6 +435,7 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -408,6 +444,10 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				return;
 			case LunEntityPackage.LENTITY_REFERENCE__CASCADING:
 				setCascading((Boolean)newValue);
+				return;
+			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				setType((LEntity)newValue);
@@ -439,6 +479,9 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			case LunEntityPackage.LENTITY_REFERENCE__CASCADING:
 				setCascading(CASCADING_EDEFAULT);
 				return;
+			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
+				getProperties().clear();
+				return;
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				setType((LEntity)null);
 				return;
@@ -467,6 +510,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				return lazy != LAZY_EDEFAULT;
 			case LunEntityPackage.LENTITY_REFERENCE__CASCADING:
 				return cascading != CASCADING_EDEFAULT;
+			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				return type != null;
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
@@ -490,6 +535,7 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			switch (derivedFeatureID) {
 				case LunEntityPackage.LENTITY_REFERENCE__LAZY: return LunTypesPackage.LREFERENCE__LAZY;
 				case LunEntityPackage.LENTITY_REFERENCE__CASCADING: return LunTypesPackage.LREFERENCE__CASCADING;
+				case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES: return LunTypesPackage.LREFERENCE__PROPERTIES;
 				default: return -1;
 			}
 		}
@@ -507,6 +553,7 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			switch (baseFeatureID) {
 				case LunTypesPackage.LREFERENCE__LAZY: return LunEntityPackage.LENTITY_REFERENCE__LAZY;
 				case LunTypesPackage.LREFERENCE__CASCADING: return LunEntityPackage.LENTITY_REFERENCE__CASCADING;
+				case LunTypesPackage.LREFERENCE__PROPERTIES: return LunEntityPackage.LENTITY_REFERENCE__PROPERTIES;
 				default: return -1;
 			}
 		}
