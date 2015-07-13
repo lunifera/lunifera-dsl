@@ -1020,17 +1020,24 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			«ENDIF»
 			«IF dto.superType != null»
 				super.mapToDTO(dto, entity, context);
+				
 			«ENDIF»
-			
 			«FOR f : dto.features.filter[inherited || mapper?.toDTO != null]»
 				«IF (!f.bounds.toMany)»
-«««					// TODO PIF quickfix
-					«IF !f.isContainerReference»
+«««					Do not map containerreference by default -> Causes Loop!»
+					«IF f.isContainerReference»
+					if(dto.get«f.toName.toFirstUpper»() == null) {
+						// «f.toName» is container property. So check for null to avoid looping
+						dto.set«f.toName.toFirstUpper»(«f.toMapPropertyToDto»(entity, context));
+					}
+					«ELSE»
 					dto.set«f.toName.toFirstUpper»(«f.toMapPropertyToDto»(entity, context));
 					«ENDIF»
 				«ELSE»
-					for(«f.toDtoTypeReference.qualifiedName» _dtoValue : «f.toMapPropertyToDto»(entity, context)) {
-						dto.«f.toCollectionAdderName»(_dtoValue);
+					if(dto.«f.toGetterName»().isEmpty()) {
+						for(«f.toDtoTypeReference.qualifiedName» _dtoValue : «f.toMapPropertyToDto»(entity, context)) {
+							dto.«f.toCollectionAdderName»(_dtoValue);
+						}
 					}
 				«ENDIF»
 			«ENDFOR»
@@ -1065,23 +1072,28 @@ class DtoTypesBuilder extends CommonTypesBuilder {
 			«ENDIF»
 			«IF dto.superType != null»
 				super.mapToEntity(dto, entity, context);
-				
 			«ENDIF»
-			
+
 			«FOR f : dto.features.filter[inherited || mapper?.fromDTO != null]»
 				«IF (!f.bounds.toMany)»
-«««					// TODO PIF quickfix
-					«IF !f.isContainerReference»
+«««					Do not map containerreference by default -> Causes Loop!»
+					«IF f.isContainerReference»
+					if(entity.get«f.toName.toFirstUpper»() == null) {
+						// «f.toName» is container property. So check for null to avoid looping
+						entity.set«f.toName.toFirstUpper»(«f.toMapPropertyToEntity»(dto, context));
+					}
+					«ELSE»
 					entity.set«f.toName.toFirstUpper»(«f.toMapPropertyToEntity»(dto, context));
 					«ENDIF»
 				«ELSE»
-					List<«f.toRawTypeName»> «f.toName»_entities = new java.util.ArrayList<«f.toRawTypeName»>();
-					for(«f.toRawTypeName» _entityValue : «f.toMapPropertyToEntity»(dto, context)) {
-						«f.toName»_entities.add(_entityValue);
+					if(entity.«f.toGetterName»().isEmpty()) {
+						List<«f.toRawTypeName»> «f.toName»_entities = new java.util.ArrayList<«f.toRawTypeName»>();
+						for(«f.toRawTypeName» _entityValue : «f.toMapPropertyToEntity»(dto, context)) {
+							«f.toName»_entities.add(_entityValue);
+						}
+						entity.«f.toSetterName»(«f.toName»_entities);
 					}
-					entity.«f.toSetterName»(«f.toName»_entities);
 				«ENDIF»
-				
 			«ENDFOR»
 		'''
 

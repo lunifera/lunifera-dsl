@@ -14,9 +14,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 import org.eclipse.persistence.internal.jpa.EntityManagerImpl;
 import org.eclipse.persistence.internal.sessions.RepeatableWriteUnitOfWork;
@@ -35,7 +43,7 @@ import org.lunifera.runtime.common.state.ISharedStateContext;
 @SuppressWarnings("all")
 public abstract class AbstractDTOService<DTO, ENTITY> implements
 		org.lunifera.dsl.dto.lib.services.IDTOService<DTO> {
-
+	
 	private EntityManagerFactory emf;
 	protected IMapperAccess mapperAccess;
 
@@ -58,6 +66,11 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		EntityDelegate<ENTITY> delegate = new EntityDelegate<ENTITY>(
 				getEntityClass(), em, 1);
 
+		boolean isJTA = isJTA(em);
+
+		if (isJTA) {
+
+		}
 		// find the entity
 		DTO result = null;
 		try {
@@ -184,7 +197,8 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	public void update(final DTO dto) {
 		EntityManager em = emf.createEntityManager();
 
-		EntityTransaction txn = em.getTransaction();
+		// create a new transaction
+		Transaction txn = new Transaction(em);
 
 		MappingContext entityMappingContext = new MappingContext(false);
 		TransactionObserver entityTxnObserver = new TransactionObserver(
@@ -224,6 +238,22 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 
 			txn.commit();
 			txn = null;
+		} catch (NamingException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (NotSupportedException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (SystemException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (IllegalStateException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (SecurityException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (HeuristicMixedException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (HeuristicRollbackException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (RollbackException e) {
+			throw new ExceptionConverter().convertException(e);
 		} finally {
 			ISharedStateContext sharedState = dtoMappingContext
 					.getSharedState();
@@ -322,7 +352,9 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	 */
 	public void delete(final DTO dto) throws DtoServiceException {
 		javax.persistence.EntityManager em = emf.createEntityManager();
-		javax.persistence.EntityTransaction txn = em.getTransaction();
+
+		// create a new transaction
+		Transaction txn = new Transaction(em);
 
 		// create a txn observer to get all deleted elements
 		MappingContext entityMappingContext = new MappingContext(true);
@@ -354,6 +386,12 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 			} catch (Exception e) {
 				throw new ExceptionConverter().convertException(e);
 			}
+		} catch (NamingException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (NotSupportedException e) {
+			throw new ExceptionConverter().convertException(e);
+		} catch (SystemException e) {
+			throw new ExceptionConverter().convertException(e);
 		} finally {
 			if (txn == null) {
 				// if using shared state, map the deleted entities to their dtos
@@ -431,6 +469,21 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	 */
 	protected EntityManagerFactory getEmf() {
 		return emf;
+	}
+
+	/**
+	 * Returns true, if JTA is used.
+	 * 
+	 * @param em
+	 * @return
+	 */
+	public static boolean isJTA(EntityManager em) {
+		try {
+			em.getTransaction();
+		} catch (Exception e) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -695,5 +748,55 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 			((EntityManagerImpl) em).getActiveSession().getEventManager()
 					.removeListener(this);
 		}
+	}
+
+	protected static class Transaction {
+
+		private final EntityManager em;
+		private boolean isJTA;
+		private UserTransaction ut;
+		private EntityTransaction txn;
+
+		public Transaction(EntityManager em) {
+			super();
+			this.em = em;
+
+			isJTA = isJTA(em);
+		}
+
+		public void begin() throws NamingException, NotSupportedException,
+				SystemException {
+			if (isJTA) {
+				ut = (UserTransaction) new InitialContext()
+						.lookup("osgi:service/javax.transaction.UserTransaction");
+
+				// start the user transaction
+				ut.begin();
+				em.joinTransaction();
+			} else {
+				txn = em.getTransaction();
+				txn.begin();
+			}
+		}
+
+		public void commit() throws IllegalStateException, SecurityException,
+				HeuristicMixedException, HeuristicRollbackException,
+				RollbackException, SystemException {
+			if (isJTA) {
+				ut.commit();
+			} else {
+				txn.commit();
+			}
+		}
+
+		public void rollback() throws IllegalStateException, SecurityException,
+				SystemException {
+			if (isJTA) {
+				ut.rollback();
+			} else {
+				txn.rollback();
+			}
+		}
+
 	}
 }
