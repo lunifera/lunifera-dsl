@@ -218,6 +218,7 @@ public class DtoGrammarJavaValidator extends
 						CODE__UUID_WRONG_TYPE, new String[0]);
 			}
 		}
+		
 		if (prop.isDomainKey()) {
 			if (extensions.isToMany(prop)) {
 				error("DomainKey is not valid for one to many relations.",
@@ -225,15 +226,16 @@ public class DtoGrammarJavaValidator extends
 						CODE__DOMAIN_KEY__NO_MANY, new String[0]);
 
 			}
-			// if (prop.getType() instanceof LDataType) {
-			// LDataType type = (LDataType) prop.getType();
-			// String typename = type.getJvmTypeReference().getQualifiedName();
-			// if (!typename.equals("java.lang.String")) {
-			// error("DomainKey must be datatype String.",
-			// LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
-			// CODE__DOMAIN_KEY__TYPE, new String[0]);
-			// }
-			// }
+			
+			if (prop.getType() instanceof LDataType) {
+				LDataType type = (LDataType) prop.getType();
+				String typename = type.getJvmTypeReference().getQualifiedName();
+				if (!typename.equals("java.lang.String")) {
+					error("DomainKey must be of type String.",
+							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
+							CODE__DOMAIN_KEY__TYPE, new String[0]);
+				}
+			}
 		}
 
 		if (prop.isDomainDescription()) {
@@ -243,15 +245,16 @@ public class DtoGrammarJavaValidator extends
 						CODE__DOMAIN_DESCRIPTION__NO_MANY, new String[0]);
 
 			}
-			// if (prop.getType() instanceof LDataType) {
-			// LDataType type = (LDataType) prop.getType();
-			// String typename = type.getJvmTypeReference().getQualifiedName();
-			// if (!typename.equals("java.lang.String")) {
-			// error("DomainDescription must be of type String.",
-			// LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_KEY,
-			// CODE__DOMAIN_DESCRIPTION__TYPE, new String[0]);
-			// }
-			// }
+			
+			if (prop.getType() instanceof LDataType) {
+				LDataType type = (LDataType) prop.getType();
+				String typename = type.getJvmTypeReference().getQualifiedName();
+				if (!typename.equals("java.lang.String")) {
+					error("DomainDescription must be of type String.",
+							LunTypesPackage.Literals.LATTRIBUTE__DOMAIN_DESCRIPTION,
+							CODE__DOMAIN_DESCRIPTION__TYPE, new String[0]);
+				}
+			}
 		}
 
 		if (prop.isDirty()) {
