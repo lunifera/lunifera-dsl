@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.lunifera.dsl.semantic.common.types.LDataType;
+import org.lunifera.dsl.semantic.common.types.LunTypesFactory;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
 /**
@@ -279,6 +280,7 @@ public class LDataTypeItemProvider extends LScalarTypeItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(LunTypesPackage.Literals.LDATA_TYPE__JVM_TYPE_REFERENCE);
+			childrenFeatures.add(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS);
 		}
 		return childrenFeatures;
 	}
@@ -344,6 +346,7 @@ public class LDataTypeItemProvider extends LScalarTypeItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case LunTypesPackage.LDATA_TYPE__JVM_TYPE_REFERENCE:
+			case LunTypesPackage.LDATA_TYPE__CONSTRAINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -405,6 +408,71 @@ public class LDataTypeItemProvider extends LScalarTypeItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LDATA_TYPE__JVM_TYPE_REFERENCE,
 				 TypesFactory.eINSTANCE.createJvmInnerTypeReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCAssertFalse()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCAssertTrue()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDecimalMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDecimalMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDigits()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCFuture()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCPast()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNumericMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNumericMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNotNull()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNull()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCRegEx()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LDATA_TYPE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCSize()));
 	}
 
 }

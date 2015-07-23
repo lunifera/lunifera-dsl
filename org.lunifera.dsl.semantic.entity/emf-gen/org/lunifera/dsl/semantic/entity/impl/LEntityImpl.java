@@ -78,6 +78,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getSuperTypeJvm <em>Super Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getSubTypes <em>Sub Types</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityImpl#getPersistenceUnit <em>Persistence Unit</em>}</li>
  * </ul>
  * </p>
  *
@@ -253,6 +254,26 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * @ordered
 	 */
 	protected EList<LEntity> subTypes;
+
+	/**
+	 * The default value of the '{@link #getPersistenceUnit() <em>Persistence Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPersistenceUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PERSISTENCE_UNIT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPersistenceUnit() <em>Persistence Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPersistenceUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected String persistenceUnit = PERSISTENCE_UNIT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -608,6 +629,27 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getPersistenceUnit() {
+		return persistenceUnit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPersistenceUnit(String newPersistenceUnit) {
+		String oldPersistenceUnit = persistenceUnit;
+		persistenceUnit = newPersistenceUnit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY__PERSISTENCE_UNIT, oldPersistenceUnit, persistenceUnit));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public List<LOperation> getOperations() {
 		EList<LEntityFeature> _features = this.getFeatures();
 		Iterable<LOperation> _filter = Iterables.<LOperation>filter(_features, LOperation.class);
@@ -765,6 +807,8 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 				return getSuperTypeJvm();
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				return getSubTypes();
+			case LunEntityPackage.LENTITY__PERSISTENCE_UNIT:
+				return getPersistenceUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -817,6 +861,9 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 				getSubTypes().clear();
 				getSubTypes().addAll((Collection<? extends LEntity>)newValue);
 				return;
+			case LunEntityPackage.LENTITY__PERSISTENCE_UNIT:
+				setPersistenceUnit((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -865,6 +912,9 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				getSubTypes().clear();
 				return;
+			case LunEntityPackage.LENTITY__PERSISTENCE_UNIT:
+				setPersistenceUnit(PERSISTENCE_UNIT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -901,6 +951,8 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 				return superTypeJvm != null;
 			case LunEntityPackage.LENTITY__SUB_TYPES:
 				return subTypes != null && !subTypes.isEmpty();
+			case LunEntityPackage.LENTITY__PERSISTENCE_UNIT:
+				return PERSISTENCE_UNIT_EDEFAULT == null ? persistenceUnit != null : !PERSISTENCE_UNIT_EDEFAULT.equals(persistenceUnit);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -970,6 +1022,8 @@ public class LEntityImpl extends LClassImpl implements LEntity {
 		result.append(timedependentDateType);
 		result.append(", mappedSuperclass: ");
 		result.append(mappedSuperclass);
+		result.append(", persistenceUnit: ");
+		result.append(persistenceUnit);
 		result.append(')');
 		return result.toString();
 	}

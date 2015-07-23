@@ -22,11 +22,14 @@ ruleClass :
 			'cacheable'?
 		)* 'entity' ruleTRANSLATABLEID (
 			'extends' RULE_ID
-		)? '{' ruleEntityPersistenceInfo ruleEntityInheritanceStrategy?
-		ruleEntityFeature* ruleIndex* '}' |
+		)? '{' ruleEntityPersistenceInfo ruleEntityInheritanceStrategy? (
+			'persistenceUnit' RULE_STRING
+		)? ruleEntityFeature* ruleIndex* '}' |
 		'mapped superclass' (
 			'extends' RULE_ID
-		)? ruleValidIDWithKeywords '{' ruleEntityFeature* '}' |
+		)? ruleValidIDWithKeywords '{' (
+			'persistenceUnit' RULE_STRING
+		)? ruleEntityFeature* '}' |
 		'bean' ruleTRANSLATABLEID (
 			'extends' RULE_ID
 		)? '{' ruleBeanFeature* '}'
@@ -65,7 +68,7 @@ ruleEntityFeature :
 			'opposite' ruleLFQN
 		)? (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? (
 			ruleConstraints |
@@ -74,12 +77,12 @@ ruleEntityFeature :
 		(
 			'transient' RULE_ID ruleTRANSLATABLEID (
 				'properties' '(' ruleKeyAndValue (
-					',' ruleKeyAndValue
+					', ' ruleKeyAndValue
 				)* ')'
 			)? ';' |
 			'derived' 'domainDescription'? RULE_ID ruleTRANSLATABLEID (
 				'properties' '(' ruleKeyAndValue (
-					',' ruleKeyAndValue
+					', ' ruleKeyAndValue
 				)* ')'
 			)? ruleXBlockExpression |
 			(
@@ -93,7 +96,7 @@ ruleEntityFeature :
 				'opposite' ruleLFQN
 			)? (
 				'properties' '(' ruleKeyAndValue (
-					',' ruleKeyAndValue
+					', ' ruleKeyAndValue
 				)* ')'
 			)? ';'
 		) |
@@ -112,7 +115,7 @@ ruleBeanFeature :
 			'opposite' ruleLFQN
 		)? (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? (
 			ruleConstraints |
@@ -121,7 +124,7 @@ ruleBeanFeature :
 		(
 			'transient' RULE_ID ruleTRANSLATABLEID (
 				'properties' '(' ruleKeyAndValue (
-					',' ruleKeyAndValue
+					', ' ruleKeyAndValue
 				)* ')'
 			)? |
 			(
@@ -130,7 +133,7 @@ ruleBeanFeature :
 				'version'
 			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
 				'properties' '(' ruleKeyAndValue (
-					',' ruleKeyAndValue
+					', ' ruleKeyAndValue
 				)* ')'
 			)? ';'
 		) |
@@ -204,10 +207,102 @@ ruleImport :
 // Rule DataType
 ruleDataType :
 	'datatype' ruleValidIDWithKeywords (
-		'jvmType' ruleJvmTypeReference 'as primitive'? |
-		'dateType' ruleDateType |
-		'as blob'
+		'jvmType' ruleJvmTypeReference 'as primitive'? ruleDataTypeConstraint* |
+		'dateType' ruleDateType ruleDateConstraint* |
+		'as blob' ruleBlobTypeConstraint*
 	) ';'
+;
+
+// Rule DataTypeConstraint
+ruleDataTypeConstraint :
+	ruleDtCAssertFalse |
+	ruleDtCAssertTrue |
+	ruleDtCDecimalMax |
+	ruleDtCDecimalMin |
+	ruleDtCDigits |
+	ruleDtCNumericMax |
+	ruleDtCNumericMin |
+	ruleDtCNotNull |
+	ruleDtCNull |
+	ruleDtCRegEx |
+	ruleDtCSize
+;
+
+// Rule DateConstraint
+ruleDateConstraint :
+	ruleDtCFuture |
+	ruleDtCPast
+;
+
+// Rule BlobTypeConstraint
+ruleBlobTypeConstraint :
+	ruleDtCNotNull |
+	ruleDtCNull
+;
+
+// Rule DtCAssertFalse
+ruleDtCAssertFalse :
+	'isFalse'
+;
+
+// Rule DtCAssertTrue
+ruleDtCAssertTrue :
+	'isTrue'
+;
+
+// Rule DtCDecimalMax
+ruleDtCDecimalMax :
+	'maxDecimal' '(' ruleLDecimal ')'
+;
+
+// Rule DtCDecimalMin
+ruleDtCDecimalMin :
+	'minDecimal' '(' ruleLDecimal ')'
+;
+
+// Rule DtCDigits
+ruleDtCDigits :
+	'digits' '(' RULE_INT ',' RULE_INT ')'
+;
+
+// Rule DtCFuture
+ruleDtCFuture :
+	'isFuture'
+;
+
+// Rule DtCPast
+ruleDtCPast :
+	'isPast'
+;
+
+// Rule DtCNumericMax
+ruleDtCNumericMax :
+	'maxNumber' '(' RULE_INT ')'
+;
+
+// Rule DtCNumericMin
+ruleDtCNumericMin :
+	'minNumber' '(' RULE_INT ')'
+;
+
+// Rule DtCNotNull
+ruleDtCNotNull :
+	'isNotNull'
+;
+
+// Rule DtCNull
+ruleDtCNull :
+	'isNull'
+;
+
+// Rule DtCRegEx
+ruleDtCRegEx :
+	'regex' '(' RULE_STRING ')'
+;
+
+// Rule DtCSize
+ruleDtCSize :
+	'minSize' '(' RULE_INT ')' 'maxSize' '(' RULE_INT ')'
 ;
 
 // Rule ScalarType
@@ -307,6 +402,11 @@ ruleMultiplicity :
 	'[' ruleLowerBound (
 		'..' ruleUpperBound
 	)? ']'
+;
+
+// Rule LDecimal
+ruleLDecimal :
+	RULE_DECIMAL
 ;
 
 // Rule XAnnotation

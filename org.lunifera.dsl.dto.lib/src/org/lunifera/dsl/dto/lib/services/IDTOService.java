@@ -12,6 +12,9 @@ package org.lunifera.dsl.dto.lib.services;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
 
 public interface IDTOService<A> extends IService {
 
@@ -177,5 +180,18 @@ public interface IDTOService<A> extends IService {
 	 * @return
 	 */
 	List<A> getByIndex(int startIndex, int numberOfItems, IQuery query);
+
+	/**
+	 * Validates the given DTO.
+	 * 
+	 * @param object
+	 * @param groups
+	 * @return
+	 * 
+	 * @throws IllegalStateException
+	 *             if no Validator is available
+	 */
+	Set<ConstraintViolation<A>> validate(A object, Class<?>... groups)
+			throws IllegalStateException;
 
 }

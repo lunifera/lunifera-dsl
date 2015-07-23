@@ -75,6 +75,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if(prop.dirty){
 			field.annotations += prop.toAnnotation(typeof(Dirty))
 		}
+		
+		super.toConstraintAnnotations(prop, field)
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoInheritedAttribute prop, JvmField field) {
@@ -87,6 +89,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		if (prop.inheritedFeature.domainDescription) {
 			field.annotations += prop.toAnnotation(typeof(DomainDescription))
 		}
+		
+		super.toConstraintAnnotations(prop.inheritedFeature, field)
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoInheritedReference prop, JvmField field) {

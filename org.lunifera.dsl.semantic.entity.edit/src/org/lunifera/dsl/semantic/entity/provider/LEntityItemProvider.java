@@ -65,6 +65,7 @@ public class LEntityItemProvider extends LClassItemProvider {
 			addMappedSuperclassPropertyDescriptor(object);
 			addSuperTypePropertyDescriptor(object);
 			addSubTypesPropertyDescriptor(object);
+			addPersistenceUnitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -223,6 +224,28 @@ public class LEntityItemProvider extends LClassItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Persistence Unit feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPersistenceUnitPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LEntity_persistenceUnit_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LEntity_persistenceUnit_feature", "_UI_LEntity_type"),
+				 LunEntityPackage.Literals.LENTITY__PERSISTENCE_UNIT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -306,6 +329,7 @@ public class LEntityItemProvider extends LClassItemProvider {
 			case LunEntityPackage.LENTITY__TIMEDEPENDENT:
 			case LunEntityPackage.LENTITY__TIMEDEPENDENT_DATE_TYPE:
 			case LunEntityPackage.LENTITY__MAPPED_SUPERCLASS:
+			case LunEntityPackage.LENTITY__PERSISTENCE_UNIT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case LunEntityPackage.LENTITY__PERSISTENCE_INFO:

@@ -190,14 +190,176 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DataType returns types::LDataType:
-	//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? |
-	//	date?="dateType" dateType=DateType | asBlob?="as blob") ";";
+	//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"?
+	//	constraints+=DataTypeConstraint* | date?="dateType" dateType=DateType constraints+=DateConstraint* | asBlob?="as blob"
+	//	constraints+=BlobTypeConstraint*) ";";
 	public CommonGrammarGrammarAccess.DataTypeElements getDataTypeAccess() {
 		return gaCommonGrammar.getDataTypeAccess();
 	}
 	
 	public ParserRule getDataTypeRule() {
 		return getDataTypeAccess().getRule();
+	}
+
+	//DataTypeConstraint returns types::LDatatypeConstraint:
+	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
+	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize;
+	public CommonGrammarGrammarAccess.DataTypeConstraintElements getDataTypeConstraintAccess() {
+		return gaCommonGrammar.getDataTypeConstraintAccess();
+	}
+	
+	public ParserRule getDataTypeConstraintRule() {
+		return getDataTypeConstraintAccess().getRule();
+	}
+
+	//DateConstraint returns types::LDatatypeConstraint:
+	//	DtCFuture | DtCPast;
+	public CommonGrammarGrammarAccess.DateConstraintElements getDateConstraintAccess() {
+		return gaCommonGrammar.getDateConstraintAccess();
+	}
+	
+	public ParserRule getDateConstraintRule() {
+		return getDateConstraintAccess().getRule();
+	}
+
+	//BlobTypeConstraint returns types::LDatatypeConstraint:
+	//	DtCNotNull | DtCNull;
+	public CommonGrammarGrammarAccess.BlobTypeConstraintElements getBlobTypeConstraintAccess() {
+		return gaCommonGrammar.getBlobTypeConstraintAccess();
+	}
+	
+	public ParserRule getBlobTypeConstraintRule() {
+		return getBlobTypeConstraintAccess().getRule();
+	}
+
+	//DtCAssertFalse returns types::LDtCAssertFalse:
+	//	{types::LDtCAssertFalse} "isFalse";
+	public CommonGrammarGrammarAccess.DtCAssertFalseElements getDtCAssertFalseAccess() {
+		return gaCommonGrammar.getDtCAssertFalseAccess();
+	}
+	
+	public ParserRule getDtCAssertFalseRule() {
+		return getDtCAssertFalseAccess().getRule();
+	}
+
+	//DtCAssertTrue returns types::LDtCAssertTrue:
+	//	{types::LDtCAssertTrue} "isTrue";
+	public CommonGrammarGrammarAccess.DtCAssertTrueElements getDtCAssertTrueAccess() {
+		return gaCommonGrammar.getDtCAssertTrueAccess();
+	}
+	
+	public ParserRule getDtCAssertTrueRule() {
+		return getDtCAssertTrueAccess().getRule();
+	}
+
+	//DtCDecimalMax returns types::LDtCDecimalMax:
+	//	{types::LDtCDecimalMax} "maxDecimal" "(" max=LDecimal ")";
+	public CommonGrammarGrammarAccess.DtCDecimalMaxElements getDtCDecimalMaxAccess() {
+		return gaCommonGrammar.getDtCDecimalMaxAccess();
+	}
+	
+	public ParserRule getDtCDecimalMaxRule() {
+		return getDtCDecimalMaxAccess().getRule();
+	}
+
+	//DtCDecimalMin returns types::LDtCDecimalMin:
+	//	{types::LDtCDecimalMin} "minDecimal" "(" min=LDecimal ")";
+	public CommonGrammarGrammarAccess.DtCDecimalMinElements getDtCDecimalMinAccess() {
+		return gaCommonGrammar.getDtCDecimalMinAccess();
+	}
+	
+	public ParserRule getDtCDecimalMinRule() {
+		return getDtCDecimalMinAccess().getRule();
+	}
+
+	//DtCDigits returns types::LDtCDigits:
+	//	{types::LDtCDigits} "digits" "(" intDigits=INT "," fractionDigits=INT ")";
+	public CommonGrammarGrammarAccess.DtCDigitsElements getDtCDigitsAccess() {
+		return gaCommonGrammar.getDtCDigitsAccess();
+	}
+	
+	public ParserRule getDtCDigitsRule() {
+		return getDtCDigitsAccess().getRule();
+	}
+
+	//DtCFuture returns types::LDtCFuture:
+	//	{types::LDtCFuture} "isFuture";
+	public CommonGrammarGrammarAccess.DtCFutureElements getDtCFutureAccess() {
+		return gaCommonGrammar.getDtCFutureAccess();
+	}
+	
+	public ParserRule getDtCFutureRule() {
+		return getDtCFutureAccess().getRule();
+	}
+
+	//DtCPast returns types::LDtCPast:
+	//	{types::LDtCPast} "isPast";
+	public CommonGrammarGrammarAccess.DtCPastElements getDtCPastAccess() {
+		return gaCommonGrammar.getDtCPastAccess();
+	}
+	
+	public ParserRule getDtCPastRule() {
+		return getDtCPastAccess().getRule();
+	}
+
+	//DtCNumericMax returns types::LDtCNumericMax:
+	//	{types::LDtCNumericMax} "maxNumber" "(" max=INT ")";
+	public CommonGrammarGrammarAccess.DtCNumericMaxElements getDtCNumericMaxAccess() {
+		return gaCommonGrammar.getDtCNumericMaxAccess();
+	}
+	
+	public ParserRule getDtCNumericMaxRule() {
+		return getDtCNumericMaxAccess().getRule();
+	}
+
+	//DtCNumericMin returns types::LDtCNumericMin:
+	//	{types::LDtCNumericMin} "minNumber" "(" min=INT ")";
+	public CommonGrammarGrammarAccess.DtCNumericMinElements getDtCNumericMinAccess() {
+		return gaCommonGrammar.getDtCNumericMinAccess();
+	}
+	
+	public ParserRule getDtCNumericMinRule() {
+		return getDtCNumericMinAccess().getRule();
+	}
+
+	//DtCNotNull returns types::LDtCNotNull:
+	//	{types::LDtCNotNull} "isNotNull";
+	public CommonGrammarGrammarAccess.DtCNotNullElements getDtCNotNullAccess() {
+		return gaCommonGrammar.getDtCNotNullAccess();
+	}
+	
+	public ParserRule getDtCNotNullRule() {
+		return getDtCNotNullAccess().getRule();
+	}
+
+	//DtCNull returns types::LDtCNull:
+	//	{types::LDtCNull} "isNull";
+	public CommonGrammarGrammarAccess.DtCNullElements getDtCNullAccess() {
+		return gaCommonGrammar.getDtCNullAccess();
+	}
+	
+	public ParserRule getDtCNullRule() {
+		return getDtCNullAccess().getRule();
+	}
+
+	//DtCRegEx returns types::LDtCRegEx:
+	//	{types::LDtCRegEx} "regex" "(" pattern=STRING ")";
+	public CommonGrammarGrammarAccess.DtCRegExElements getDtCRegExAccess() {
+		return gaCommonGrammar.getDtCRegExAccess();
+	}
+	
+	public ParserRule getDtCRegExRule() {
+		return getDtCRegExAccess().getRule();
+	}
+
+	//DtCSize returns types::LDtCSize:
+	//	{types::LDtCSize} "minSize" "(" min=INT ")" "maxSize" "(" max=INT ")";
+	public CommonGrammarGrammarAccess.DtCSizeElements getDtCSizeAccess() {
+		return gaCommonGrammar.getDtCSizeAccess();
+	}
+	
+	public ParserRule getDtCSizeRule() {
+		return getDtCSizeAccess().getRule();
 	}
 
 	//enum DateType returns types::LDateType:
@@ -400,6 +562,16 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getLIntRule() {
 		return getLIntAccess().getRule();
+	}
+
+	//LDecimal returns ecore::EFloat:
+	//	DECIMAL;
+	public CommonGrammarGrammarAccess.LDecimalElements getLDecimalAccess() {
+		return gaCommonGrammar.getLDecimalAccess();
+	}
+	
+	public ParserRule getLDecimalRule() {
+		return getLDecimalAccess().getRule();
 	}
 
 	//XAnnotation:

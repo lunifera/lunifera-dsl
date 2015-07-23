@@ -82,5 +82,6 @@ Export-Package: org.lunifera.dsl.common.xtext;version="0.9.1";x-internal:=true;
    org.eclipse.xtext.xbase.scoping,
    org.eclipse.xtext.naming,
    org.eclipse.xtext.conversion"
-Import-Package: org.apache.log4j,
+Import-Package: javax.validation.constraints;version="1.0.0",
+ org.apache.log4j,
  org.slf4j;version="1.7.2"

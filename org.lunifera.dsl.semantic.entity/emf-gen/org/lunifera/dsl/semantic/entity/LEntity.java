@@ -48,6 +48,7 @@ import org.lunifera.dsl.semantic.common.types.LFeaturesHolder;
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getSuperTypeJvm <em>Super Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getSubTypes <em>Sub Types</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LEntity#getPersistenceUnit <em>Persistence Unit</em>}</li>
  * </ul>
  * </p>
  *
@@ -344,6 +345,32 @@ public interface LEntity extends LClass, LFeaturesHolder {
 	 * @generated
 	 */
 	EList<LEntity> getSubTypes();
+
+	/**
+	 * Returns the value of the '<em><b>Persistence Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Persistence Unit</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Persistence Unit</em>' attribute.
+	 * @see #setPersistenceUnit(String)
+	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntity_PersistenceUnit()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getPersistenceUnit();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntity#getPersistenceUnit <em>Persistence Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Persistence Unit</em>' attribute.
+	 * @see #getPersistenceUnit()
+	 * @generated
+	 */
+	void setPersistenceUnit(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

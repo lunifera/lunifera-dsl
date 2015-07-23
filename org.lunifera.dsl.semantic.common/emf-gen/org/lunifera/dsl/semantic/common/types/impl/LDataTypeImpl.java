@@ -13,17 +13,25 @@
  */
 package org.lunifera.dsl.semantic.common.types.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.dsl.semantic.common.types.LDataType;
+import org.lunifera.dsl.semantic.common.types.LDatatypeConstraint;
 import org.lunifera.dsl.semantic.common.types.LDateType;
 import org.lunifera.dsl.semantic.common.types.LFeature;
 import org.lunifera.dsl.semantic.common.types.LType;
@@ -46,6 +54,7 @@ import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticSelector <em>Synthetic Selector</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticTypeReference <em>Synthetic Type Reference</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getSyntheticType <em>Synthetic Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.impl.LDataTypeImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -221,6 +230,16 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType {
 	 * @ordered
 	 */
 	protected LType syntheticType;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LDatatypeConstraint> constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -512,11 +531,25 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LDatatypeConstraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentEList<LDatatypeConstraint>(LDatatypeConstraint.class, this, LunTypesPackage.LDATA_TYPE__CONSTRAINTS);
+		}
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LunTypesPackage.LDATA_TYPE__JVM_TYPE_REFERENCE:
 				return basicSetJvmTypeReference(null, msgs);
+			case LunTypesPackage.LDATA_TYPE__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -551,6 +584,8 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType {
 			case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
 				if (resolve) return getSyntheticType();
 				return basicGetSyntheticType();
+			case LunTypesPackage.LDATA_TYPE__CONSTRAINTS:
+				return getConstraints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -560,6 +595,7 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -592,6 +628,10 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType {
 				return;
 			case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
 				setSyntheticType((LType)newValue);
+				return;
+			case LunTypesPackage.LDATA_TYPE__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends LDatatypeConstraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -635,6 +675,9 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType {
 			case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
 				setSyntheticType((LType)null);
 				return;
+			case LunTypesPackage.LDATA_TYPE__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -667,6 +710,8 @@ public class LDataTypeImpl extends LScalarTypeImpl implements LDataType {
 				return syntheticTypeReference != null;
 			case LunTypesPackage.LDATA_TYPE__SYNTHETIC_TYPE:
 				return syntheticType != null;
+			case LunTypesPackage.LDATA_TYPE__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

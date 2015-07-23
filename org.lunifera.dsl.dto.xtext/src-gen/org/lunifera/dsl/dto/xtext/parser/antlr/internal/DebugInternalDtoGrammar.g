@@ -31,7 +31,7 @@ ruleDtoFeature :
 			'mapto' RULE_ID
 		)? (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? (
 			ruleDtoMapper |
@@ -41,7 +41,7 @@ ruleDtoFeature :
 			'inherit ref' ruleValidLFQNWithKeywords
 		) 'mapto' RULE_ID (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? (
 			ruleDtoMapper |
@@ -49,17 +49,17 @@ ruleDtoFeature :
 		) |
 		'transient' RULE_ID ruleValidIDWithKeywords (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? ';' |
 		'dirty' RULE_ID ruleValidIDWithKeywords (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? ';' |
 		'derived' 'domainDescription'? RULE_ID ruleValidIDWithKeywords (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? ruleXBlockExpression |
 		(
@@ -70,7 +70,7 @@ ruleDtoFeature :
 			'domainKey'
 		) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? ';' |
 		(
@@ -81,7 +81,7 @@ ruleDtoFeature :
 				'opposite' ruleLFQN
 			)? (
 				'properties' '(' ruleKeyAndValue (
-					',' ruleKeyAndValue
+					', ' ruleKeyAndValue
 				)* ')'
 			)?
 		) (
@@ -90,7 +90,7 @@ ruleDtoFeature :
 		) |
 		'var' RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
 			'properties' '(' ruleKeyAndValue (
-				',' ruleKeyAndValue
+				', ' ruleKeyAndValue
 			)* ')'
 		)? (
 			ruleLimitedMapperDtoMapper |
@@ -137,10 +137,102 @@ ruleImport :
 // Rule DataType
 ruleDataType :
 	'datatype' ruleValidIDWithKeywords (
-		'jvmType' ruleJvmTypeReference 'as primitive'? |
-		'dateType' ruleDateType |
-		'as blob'
+		'jvmType' ruleJvmTypeReference 'as primitive'? ruleDataTypeConstraint* |
+		'dateType' ruleDateType ruleDateConstraint* |
+		'as blob' ruleBlobTypeConstraint*
 	) ';'
+;
+
+// Rule DataTypeConstraint
+ruleDataTypeConstraint :
+	ruleDtCAssertFalse |
+	ruleDtCAssertTrue |
+	ruleDtCDecimalMax |
+	ruleDtCDecimalMin |
+	ruleDtCDigits |
+	ruleDtCNumericMax |
+	ruleDtCNumericMin |
+	ruleDtCNotNull |
+	ruleDtCNull |
+	ruleDtCRegEx |
+	ruleDtCSize
+;
+
+// Rule DateConstraint
+ruleDateConstraint :
+	ruleDtCFuture |
+	ruleDtCPast
+;
+
+// Rule BlobTypeConstraint
+ruleBlobTypeConstraint :
+	ruleDtCNotNull |
+	ruleDtCNull
+;
+
+// Rule DtCAssertFalse
+ruleDtCAssertFalse :
+	'isFalse'
+;
+
+// Rule DtCAssertTrue
+ruleDtCAssertTrue :
+	'isTrue'
+;
+
+// Rule DtCDecimalMax
+ruleDtCDecimalMax :
+	'maxDecimal' '(' ruleLDecimal ')'
+;
+
+// Rule DtCDecimalMin
+ruleDtCDecimalMin :
+	'minDecimal' '(' ruleLDecimal ')'
+;
+
+// Rule DtCDigits
+ruleDtCDigits :
+	'digits' '(' RULE_INT ',' RULE_INT ')'
+;
+
+// Rule DtCFuture
+ruleDtCFuture :
+	'isFuture'
+;
+
+// Rule DtCPast
+ruleDtCPast :
+	'isPast'
+;
+
+// Rule DtCNumericMax
+ruleDtCNumericMax :
+	'maxNumber' '(' RULE_INT ')'
+;
+
+// Rule DtCNumericMin
+ruleDtCNumericMin :
+	'minNumber' '(' RULE_INT ')'
+;
+
+// Rule DtCNotNull
+ruleDtCNotNull :
+	'isNotNull'
+;
+
+// Rule DtCNull
+ruleDtCNull :
+	'isNull'
+;
+
+// Rule DtCRegEx
+ruleDtCRegEx :
+	'regex' '(' RULE_STRING ')'
+;
+
+// Rule DtCSize
+ruleDtCSize :
+	'minSize' '(' RULE_INT ')' 'maxSize' '(' RULE_INT ')'
 ;
 
 // Rule ScalarType
@@ -242,6 +334,11 @@ ruleMultiplicity :
 	'[' ruleLowerBound (
 		'..' ruleUpperBound
 	)? ']'
+;
+
+// Rule LDecimal
+ruleLDecimal :
+	RULE_DECIMAL
 ;
 
 // Rule XAnnotation

@@ -13,6 +13,8 @@
  */
 package org.lunifera.dsl.semantic.common.types;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
@@ -33,6 +35,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticSelector <em>Synthetic Selector</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticTypeReference <em>Synthetic Type Reference</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getSyntheticType <em>Synthetic Type</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LDataType#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -303,5 +306,21 @@ public interface LDataType extends LScalarType {
 	 * @generated
 	 */
 	void setSyntheticType(LType value);
+
+	/**
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LDatatypeConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraints</em>' containment reference list.
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLDataType_Constraints()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LDatatypeConstraint> getConstraints();
 
 } // LDataType

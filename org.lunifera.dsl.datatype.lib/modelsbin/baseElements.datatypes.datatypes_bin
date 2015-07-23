@@ -85,7 +85,23 @@
       <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
         <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
       </jvmTypeReference>
+      <constraints xsi:type="types:LDtCNotNull"/>
+    </types>
+    <types xsi:type="types:LDataType" name="StringNotNull">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+      </jvmTypeReference>
     </types>
     <types xsi:type="types:LDataType" name="Date" date="true"/>
+    <types xsi:type="types:LDataType" name="String_SomeA">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+      </jvmTypeReference>
+      <constraints xsi:type="types:LDtCSize" max="6"/>
+      <constraints xsi:type="types:LDtCNotNull"/>
+    </types>
+    <types xsi:type="types:LDataType" name="Future" date="true">
+      <constraints xsi:type="types:LDtCFuture"/>
+    </types>
   </packages>
 </types:LCommonModel>

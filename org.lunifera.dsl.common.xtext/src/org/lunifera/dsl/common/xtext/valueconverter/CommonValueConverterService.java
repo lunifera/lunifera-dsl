@@ -12,17 +12,43 @@ package org.lunifera.dsl.common.xtext.valueconverter;
 
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
+import org.eclipse.xtext.conversion.ValueConverterException;
+import org.eclipse.xtext.conversion.impl.AbstractValueConverter;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.conversion.XbaseValueConverterService;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @SuppressWarnings("restriction")
 @Singleton
 public class CommonValueConverterService extends XbaseValueConverterService {
 
+	@Inject
+	private LDecimalValueConverter lDecimalConverter;
+
 	@ValueConverter(rule = "QualifiedNameWithWildCard")
 	public IValueConverter<String> getQualifiedNameWithWildCard() {
 		return getQualifiedNameValueConverter();
+	}
+
+	@ValueConverter(rule = "LDecimal")
+	public IValueConverter<Float> getLDecimalConverter() {
+		return lDecimalConverter;
+	}
+
+	public static class LDecimalValueConverter extends
+			AbstractValueConverter<Float> {
+
+		public Float toValue(String string, INode node)
+				throws ValueConverterException {
+			return Float.valueOf(string);
+		}
+
+		public String toString(Float value) throws ValueConverterException {
+			return value.toString();
+		}
+
 	}
 
 }

@@ -147,6 +147,71 @@ public class LConstraintsItemProvider extends LLazyResolverItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCAssertFalse()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCAssertTrue()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDecimalMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDecimalMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDigits()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCFuture()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCPast()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNumericMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNumericMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNotNull()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNull()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCRegEx()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCSize()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LCONSTRAINTS__CONSTRAINTS,
 				 LunTypesFactory.eINSTANCE.createLAttributeMatchingConstraint()));
 	}
 

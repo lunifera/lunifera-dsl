@@ -372,12 +372,30 @@ ruleDataType returns [EObject current=null]
 	    }
 
 )
-)?)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDataTypeAccess().getConstraintsDataTypeConstraintParserRuleCall_2_0_3_0()); 
+	    }
+		lv_constraints_5_0=ruleDataTypeConstraint		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDataTypeRule());
+	        }
+       		add(
+       			$current, 
+       			"constraints",
+        		lv_constraints_5_0, 
+        		"DataTypeConstraint");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*)
     |((
 (
-		lv_date_5_0=	'dateType' 
+		lv_date_6_0=	'dateType' 
     {
-        newLeafNode(lv_date_5_0, grammarAccess.getDataTypeAccess().getDateDateTypeKeyword_2_1_0_0());
+        newLeafNode(lv_date_6_0, grammarAccess.getDataTypeAccess().getDateDateTypeKeyword_2_1_0_0());
     }
  
 	    {
@@ -393,25 +411,43 @@ ruleDataType returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getDataTypeAccess().getDateTypeDateTypeEnumRuleCall_2_1_1_0()); 
 	    }
-		lv_dateType_6_0=ruleDateType		{
+		lv_dateType_7_0=ruleDateType		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getDataTypeRule());
 	        }
        		set(
        			$current, 
        			"dateType",
-        		lv_dateType_6_0, 
+        		lv_dateType_7_0, 
         		"DateType");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
-    |(
+)(
 (
-		lv_asBlob_7_0=	'as blob' 
+		{ 
+	        newCompositeNode(grammarAccess.getDataTypeAccess().getConstraintsDateConstraintParserRuleCall_2_1_2_0()); 
+	    }
+		lv_constraints_8_0=ruleDateConstraint		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDataTypeRule());
+	        }
+       		add(
+       			$current, 
+       			"constraints",
+        		lv_constraints_8_0, 
+        		"DateConstraint");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*)
+    |((
+(
+		lv_asBlob_9_0=	'as blob' 
     {
-        newLeafNode(lv_asBlob_7_0, grammarAccess.getDataTypeAccess().getAsBlobAsBlobKeyword_2_2_0());
+        newLeafNode(lv_asBlob_9_0, grammarAccess.getDataTypeAccess().getAsBlobAsBlobKeyword_2_2_0_0());
     }
  
 	    {
@@ -422,9 +458,874 @@ ruleDataType returns [EObject current=null]
 	    }
 
 )
-))	otherlv_8=';' 
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDataTypeAccess().getConstraintsBlobTypeConstraintParserRuleCall_2_2_1_0()); 
+	    }
+		lv_constraints_10_0=ruleBlobTypeConstraint		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDataTypeRule());
+	        }
+       		add(
+       			$current, 
+       			"constraints",
+        		lv_constraints_10_0, 
+        		"BlobTypeConstraint");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*))	otherlv_11=';' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getDataTypeAccess().getSemicolonKeyword_3());
+    	newLeafNode(otherlv_11, grammarAccess.getDataTypeAccess().getSemicolonKeyword_3());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDataTypeConstraint
+entryRuleDataTypeConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDataTypeConstraintRule()); }
+	 iv_ruleDataTypeConstraint=ruleDataTypeConstraint 
+	 { $current=$iv_ruleDataTypeConstraint.current; } 
+	 EOF 
+;
+
+// Rule DataTypeConstraint
+ruleDataTypeConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCAssertFalseParserRuleCall_0()); 
+    }
+    this_DtCAssertFalse_0=ruleDtCAssertFalse
+    { 
+        $current = $this_DtCAssertFalse_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCAssertTrueParserRuleCall_1()); 
+    }
+    this_DtCAssertTrue_1=ruleDtCAssertTrue
+    { 
+        $current = $this_DtCAssertTrue_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCDecimalMaxParserRuleCall_2()); 
+    }
+    this_DtCDecimalMax_2=ruleDtCDecimalMax
+    { 
+        $current = $this_DtCDecimalMax_2.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCDecimalMinParserRuleCall_3()); 
+    }
+    this_DtCDecimalMin_3=ruleDtCDecimalMin
+    { 
+        $current = $this_DtCDecimalMin_3.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCDigitsParserRuleCall_4()); 
+    }
+    this_DtCDigits_4=ruleDtCDigits
+    { 
+        $current = $this_DtCDigits_4.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCNumericMaxParserRuleCall_5()); 
+    }
+    this_DtCNumericMax_5=ruleDtCNumericMax
+    { 
+        $current = $this_DtCNumericMax_5.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCNumericMinParserRuleCall_6()); 
+    }
+    this_DtCNumericMin_6=ruleDtCNumericMin
+    { 
+        $current = $this_DtCNumericMin_6.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCNotNullParserRuleCall_7()); 
+    }
+    this_DtCNotNull_7=ruleDtCNotNull
+    { 
+        $current = $this_DtCNotNull_7.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCNullParserRuleCall_8()); 
+    }
+    this_DtCNull_8=ruleDtCNull
+    { 
+        $current = $this_DtCNull_8.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCRegExParserRuleCall_9()); 
+    }
+    this_DtCRegEx_9=ruleDtCRegEx
+    { 
+        $current = $this_DtCRegEx_9.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDataTypeConstraintAccess().getDtCSizeParserRuleCall_10()); 
+    }
+    this_DtCSize_10=ruleDtCSize
+    { 
+        $current = $this_DtCSize_10.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDateConstraint
+entryRuleDateConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDateConstraintRule()); }
+	 iv_ruleDateConstraint=ruleDateConstraint 
+	 { $current=$iv_ruleDateConstraint.current; } 
+	 EOF 
+;
+
+// Rule DateConstraint
+ruleDateConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getDateConstraintAccess().getDtCFutureParserRuleCall_0()); 
+    }
+    this_DtCFuture_0=ruleDtCFuture
+    { 
+        $current = $this_DtCFuture_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDateConstraintAccess().getDtCPastParserRuleCall_1()); 
+    }
+    this_DtCPast_1=ruleDtCPast
+    { 
+        $current = $this_DtCPast_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleBlobTypeConstraint
+entryRuleBlobTypeConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getBlobTypeConstraintRule()); }
+	 iv_ruleBlobTypeConstraint=ruleBlobTypeConstraint 
+	 { $current=$iv_ruleBlobTypeConstraint.current; } 
+	 EOF 
+;
+
+// Rule BlobTypeConstraint
+ruleBlobTypeConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getBlobTypeConstraintAccess().getDtCNotNullParserRuleCall_0()); 
+    }
+    this_DtCNotNull_0=ruleDtCNotNull
+    { 
+        $current = $this_DtCNotNull_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getBlobTypeConstraintAccess().getDtCNullParserRuleCall_1()); 
+    }
+    this_DtCNull_1=ruleDtCNull
+    { 
+        $current = $this_DtCNull_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCAssertFalse
+entryRuleDtCAssertFalse returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCAssertFalseRule()); }
+	 iv_ruleDtCAssertFalse=ruleDtCAssertFalse 
+	 { $current=$iv_ruleDtCAssertFalse.current; } 
+	 EOF 
+;
+
+// Rule DtCAssertFalse
+ruleDtCAssertFalse returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCAssertFalseAccess().getLDtCAssertFalseAction_0(),
+            $current);
+    }
+)	otherlv_1='isFalse' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCAssertFalseAccess().getIsFalseKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCAssertTrue
+entryRuleDtCAssertTrue returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCAssertTrueRule()); }
+	 iv_ruleDtCAssertTrue=ruleDtCAssertTrue 
+	 { $current=$iv_ruleDtCAssertTrue.current; } 
+	 EOF 
+;
+
+// Rule DtCAssertTrue
+ruleDtCAssertTrue returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCAssertTrueAccess().getLDtCAssertTrueAction_0(),
+            $current);
+    }
+)	otherlv_1='isTrue' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCAssertTrueAccess().getIsTrueKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCDecimalMax
+entryRuleDtCDecimalMax returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCDecimalMaxRule()); }
+	 iv_ruleDtCDecimalMax=ruleDtCDecimalMax 
+	 { $current=$iv_ruleDtCDecimalMax.current; } 
+	 EOF 
+;
+
+// Rule DtCDecimalMax
+ruleDtCDecimalMax returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCDecimalMaxAccess().getLDtCDecimalMaxAction_0(),
+            $current);
+    }
+)	otherlv_1='maxDecimal' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCDecimalMaxAccess().getMaxDecimalKeyword_1());
+    }
+	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDtCDecimalMaxAccess().getLeftParenthesisKeyword_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDtCDecimalMaxAccess().getMaxLDecimalParserRuleCall_3_0()); 
+	    }
+		lv_max_3_0=ruleLDecimal		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDtCDecimalMaxRule());
+	        }
+       		set(
+       			$current, 
+       			"max",
+        		lv_max_3_0, 
+        		"LDecimal");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_4=')' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDtCDecimalMaxAccess().getRightParenthesisKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCDecimalMin
+entryRuleDtCDecimalMin returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCDecimalMinRule()); }
+	 iv_ruleDtCDecimalMin=ruleDtCDecimalMin 
+	 { $current=$iv_ruleDtCDecimalMin.current; } 
+	 EOF 
+;
+
+// Rule DtCDecimalMin
+ruleDtCDecimalMin returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCDecimalMinAccess().getLDtCDecimalMinAction_0(),
+            $current);
+    }
+)	otherlv_1='minDecimal' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCDecimalMinAccess().getMinDecimalKeyword_1());
+    }
+	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDtCDecimalMinAccess().getLeftParenthesisKeyword_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDtCDecimalMinAccess().getMinLDecimalParserRuleCall_3_0()); 
+	    }
+		lv_min_3_0=ruleLDecimal		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDtCDecimalMinRule());
+	        }
+       		set(
+       			$current, 
+       			"min",
+        		lv_min_3_0, 
+        		"LDecimal");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_4=')' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDtCDecimalMinAccess().getRightParenthesisKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCDigits
+entryRuleDtCDigits returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCDigitsRule()); }
+	 iv_ruleDtCDigits=ruleDtCDigits 
+	 { $current=$iv_ruleDtCDigits.current; } 
+	 EOF 
+;
+
+// Rule DtCDigits
+ruleDtCDigits returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCDigitsAccess().getLDtCDigitsAction_0(),
+            $current);
+    }
+)	otherlv_1='digits' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCDigitsAccess().getDigitsKeyword_1());
+    }
+	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDtCDigitsAccess().getLeftParenthesisKeyword_2());
+    }
+(
+(
+		lv_intDigits_3_0=RULE_INT
+		{
+			newLeafNode(lv_intDigits_3_0, grammarAccess.getDtCDigitsAccess().getIntDigitsINTTerminalRuleCall_3_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDtCDigitsRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"intDigits",
+        		lv_intDigits_3_0, 
+        		"INT");
+	    }
+
+)
+)	otherlv_4=',' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDtCDigitsAccess().getCommaKeyword_4());
+    }
+(
+(
+		lv_fractionDigits_5_0=RULE_INT
+		{
+			newLeafNode(lv_fractionDigits_5_0, grammarAccess.getDtCDigitsAccess().getFractionDigitsINTTerminalRuleCall_5_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDtCDigitsRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"fractionDigits",
+        		lv_fractionDigits_5_0, 
+        		"INT");
+	    }
+
+)
+)	otherlv_6=')' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getDtCDigitsAccess().getRightParenthesisKeyword_6());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCFuture
+entryRuleDtCFuture returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCFutureRule()); }
+	 iv_ruleDtCFuture=ruleDtCFuture 
+	 { $current=$iv_ruleDtCFuture.current; } 
+	 EOF 
+;
+
+// Rule DtCFuture
+ruleDtCFuture returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCFutureAccess().getLDtCFutureAction_0(),
+            $current);
+    }
+)	otherlv_1='isFuture' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCFutureAccess().getIsFutureKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCPast
+entryRuleDtCPast returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCPastRule()); }
+	 iv_ruleDtCPast=ruleDtCPast 
+	 { $current=$iv_ruleDtCPast.current; } 
+	 EOF 
+;
+
+// Rule DtCPast
+ruleDtCPast returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCPastAccess().getLDtCPastAction_0(),
+            $current);
+    }
+)	otherlv_1='isPast' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCPastAccess().getIsPastKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCNumericMax
+entryRuleDtCNumericMax returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCNumericMaxRule()); }
+	 iv_ruleDtCNumericMax=ruleDtCNumericMax 
+	 { $current=$iv_ruleDtCNumericMax.current; } 
+	 EOF 
+;
+
+// Rule DtCNumericMax
+ruleDtCNumericMax returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCNumericMaxAccess().getLDtCNumericMaxAction_0(),
+            $current);
+    }
+)	otherlv_1='maxNumber' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCNumericMaxAccess().getMaxNumberKeyword_1());
+    }
+	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDtCNumericMaxAccess().getLeftParenthesisKeyword_2());
+    }
+(
+(
+		lv_max_3_0=RULE_INT
+		{
+			newLeafNode(lv_max_3_0, grammarAccess.getDtCNumericMaxAccess().getMaxINTTerminalRuleCall_3_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDtCNumericMaxRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"max",
+        		lv_max_3_0, 
+        		"INT");
+	    }
+
+)
+)	otherlv_4=')' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDtCNumericMaxAccess().getRightParenthesisKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCNumericMin
+entryRuleDtCNumericMin returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCNumericMinRule()); }
+	 iv_ruleDtCNumericMin=ruleDtCNumericMin 
+	 { $current=$iv_ruleDtCNumericMin.current; } 
+	 EOF 
+;
+
+// Rule DtCNumericMin
+ruleDtCNumericMin returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCNumericMinAccess().getLDtCNumericMinAction_0(),
+            $current);
+    }
+)	otherlv_1='minNumber' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCNumericMinAccess().getMinNumberKeyword_1());
+    }
+	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDtCNumericMinAccess().getLeftParenthesisKeyword_2());
+    }
+(
+(
+		lv_min_3_0=RULE_INT
+		{
+			newLeafNode(lv_min_3_0, grammarAccess.getDtCNumericMinAccess().getMinINTTerminalRuleCall_3_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDtCNumericMinRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"min",
+        		lv_min_3_0, 
+        		"INT");
+	    }
+
+)
+)	otherlv_4=')' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDtCNumericMinAccess().getRightParenthesisKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCNotNull
+entryRuleDtCNotNull returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCNotNullRule()); }
+	 iv_ruleDtCNotNull=ruleDtCNotNull 
+	 { $current=$iv_ruleDtCNotNull.current; } 
+	 EOF 
+;
+
+// Rule DtCNotNull
+ruleDtCNotNull returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCNotNullAccess().getLDtCNotNullAction_0(),
+            $current);
+    }
+)	otherlv_1='isNotNull' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCNotNullAccess().getIsNotNullKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCNull
+entryRuleDtCNull returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCNullRule()); }
+	 iv_ruleDtCNull=ruleDtCNull 
+	 { $current=$iv_ruleDtCNull.current; } 
+	 EOF 
+;
+
+// Rule DtCNull
+ruleDtCNull returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCNullAccess().getLDtCNullAction_0(),
+            $current);
+    }
+)	otherlv_1='isNull' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCNullAccess().getIsNullKeyword_1());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCRegEx
+entryRuleDtCRegEx returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCRegExRule()); }
+	 iv_ruleDtCRegEx=ruleDtCRegEx 
+	 { $current=$iv_ruleDtCRegEx.current; } 
+	 EOF 
+;
+
+// Rule DtCRegEx
+ruleDtCRegEx returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCRegExAccess().getLDtCRegExAction_0(),
+            $current);
+    }
+)	otherlv_1='regex' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCRegExAccess().getRegexKeyword_1());
+    }
+	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDtCRegExAccess().getLeftParenthesisKeyword_2());
+    }
+(
+(
+		lv_pattern_3_0=RULE_STRING
+		{
+			newLeafNode(lv_pattern_3_0, grammarAccess.getDtCRegExAccess().getPatternSTRINGTerminalRuleCall_3_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDtCRegExRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"pattern",
+        		lv_pattern_3_0, 
+        		"STRING");
+	    }
+
+)
+)	otherlv_4=')' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDtCRegExAccess().getRightParenthesisKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDtCSize
+entryRuleDtCSize returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDtCSizeRule()); }
+	 iv_ruleDtCSize=ruleDtCSize 
+	 { $current=$iv_ruleDtCSize.current; } 
+	 EOF 
+;
+
+// Rule DtCSize
+ruleDtCSize returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDtCSizeAccess().getLDtCSizeAction_0(),
+            $current);
+    }
+)	otherlv_1='minSize' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDtCSizeAccess().getMinSizeKeyword_1());
+    }
+	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDtCSizeAccess().getLeftParenthesisKeyword_2());
+    }
+(
+(
+		lv_min_3_0=RULE_INT
+		{
+			newLeafNode(lv_min_3_0, grammarAccess.getDtCSizeAccess().getMinINTTerminalRuleCall_3_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDtCSizeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"min",
+        		lv_min_3_0, 
+        		"INT");
+	    }
+
+)
+)	otherlv_4=')' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDtCSizeAccess().getRightParenthesisKeyword_4());
+    }
+	otherlv_5='maxSize' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getDtCSizeAccess().getMaxSizeKeyword_5());
+    }
+	otherlv_6='(' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getDtCSizeAccess().getLeftParenthesisKeyword_6());
+    }
+(
+(
+		lv_max_7_0=RULE_INT
+		{
+			newLeafNode(lv_max_7_0, grammarAccess.getDtCSizeAccess().getMaxINTTerminalRuleCall_7_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDtCSizeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"max",
+        		lv_max_7_0, 
+        		"INT");
+	    }
+
+)
+)	otherlv_8=')' 
+    {
+    	newLeafNode(otherlv_8, grammarAccess.getDtCSizeAccess().getRightParenthesisKeyword_8());
     }
 )
 ;
@@ -1069,6 +1970,34 @@ ruleValidIDWithKeywords returns [AntlrDatatypeRuleToken current=new AntlrDatatyp
 
 
 
+
+
+
+
+
+// Entry rule entryRuleLDecimal
+entryRuleLDecimal returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getLDecimalRule()); } 
+	 iv_ruleLDecimal=ruleLDecimal 
+	 { $current=$iv_ruleLDecimal.current.getText(); }  
+	 EOF 
+;
+
+// Rule LDecimal
+ruleLDecimal returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+    this_DECIMAL_0=RULE_DECIMAL    {
+		$current.merge(this_DECIMAL_0);
+    }
+
+    { 
+    newLeafNode(this_DECIMAL_0, grammarAccess.getLDecimalAccess().getDECIMALTerminalRuleCall()); 
+    }
+
+    ;
 
 
 

@@ -511,6 +511,305 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCAssertFalse} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCAssertFalseItemProvider lDtCAssertFalseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCAssertFalse}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCAssertFalseAdapter() {
+		if (lDtCAssertFalseItemProvider == null) {
+			lDtCAssertFalseItemProvider = new LDtCAssertFalseItemProvider(this);
+		}
+
+		return lDtCAssertFalseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCAssertTrue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCAssertTrueItemProvider lDtCAssertTrueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCAssertTrue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCAssertTrueAdapter() {
+		if (lDtCAssertTrueItemProvider == null) {
+			lDtCAssertTrueItemProvider = new LDtCAssertTrueItemProvider(this);
+		}
+
+		return lDtCAssertTrueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMax} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCDecimalMaxItemProvider lDtCDecimalMaxItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMax}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCDecimalMaxAdapter() {
+		if (lDtCDecimalMaxItemProvider == null) {
+			lDtCDecimalMaxItemProvider = new LDtCDecimalMaxItemProvider(this);
+		}
+
+		return lDtCDecimalMaxItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMin} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCDecimalMinItemProvider lDtCDecimalMinItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMin}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCDecimalMinAdapter() {
+		if (lDtCDecimalMinItemProvider == null) {
+			lDtCDecimalMinItemProvider = new LDtCDecimalMinItemProvider(this);
+		}
+
+		return lDtCDecimalMinItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCDigits} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCDigitsItemProvider lDtCDigitsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCDigits}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCDigitsAdapter() {
+		if (lDtCDigitsItemProvider == null) {
+			lDtCDigitsItemProvider = new LDtCDigitsItemProvider(this);
+		}
+
+		return lDtCDigitsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCFuture} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCFutureItemProvider lDtCFutureItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCFuture}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCFutureAdapter() {
+		if (lDtCFutureItemProvider == null) {
+			lDtCFutureItemProvider = new LDtCFutureItemProvider(this);
+		}
+
+		return lDtCFutureItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCPast} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCPastItemProvider lDtCPastItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCPast}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCPastAdapter() {
+		if (lDtCPastItemProvider == null) {
+			lDtCPastItemProvider = new LDtCPastItemProvider(this);
+		}
+
+		return lDtCPastItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCNumericMax} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCNumericMaxItemProvider lDtCNumericMaxItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCNumericMax}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCNumericMaxAdapter() {
+		if (lDtCNumericMaxItemProvider == null) {
+			lDtCNumericMaxItemProvider = new LDtCNumericMaxItemProvider(this);
+		}
+
+		return lDtCNumericMaxItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCNumericMin} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCNumericMinItemProvider lDtCNumericMinItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCNumericMin}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCNumericMinAdapter() {
+		if (lDtCNumericMinItemProvider == null) {
+			lDtCNumericMinItemProvider = new LDtCNumericMinItemProvider(this);
+		}
+
+		return lDtCNumericMinItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCNotNull} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCNotNullItemProvider lDtCNotNullItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCNotNull}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCNotNullAdapter() {
+		if (lDtCNotNullItemProvider == null) {
+			lDtCNotNullItemProvider = new LDtCNotNullItemProvider(this);
+		}
+
+		return lDtCNotNullItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCNull} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCNullItemProvider lDtCNullItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCNull}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCNullAdapter() {
+		if (lDtCNullItemProvider == null) {
+			lDtCNullItemProvider = new LDtCNullItemProvider(this);
+		}
+
+		return lDtCNullItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCRegEx} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCRegExItemProvider lDtCRegExItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCRegEx}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCRegExAdapter() {
+		if (lDtCRegExItemProvider == null) {
+			lDtCRegExItemProvider = new LDtCRegExItemProvider(this);
+		}
+
+		return lDtCRegExItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LDtCSize} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LDtCSizeItemProvider lDtCSizeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LDtCSize}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLDtCSizeAdapter() {
+		if (lDtCSizeItemProvider == null) {
+			lDtCSizeItemProvider = new LDtCSizeItemProvider(this);
+		}
+
+		return lDtCSizeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -677,6 +976,19 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 		if (lModifierItemProvider != null) lModifierItemProvider.dispose();
 		if (lMultiplicityItemProvider != null) lMultiplicityItemProvider.dispose();
 		if (lConstraintsItemProvider != null) lConstraintsItemProvider.dispose();
+		if (lDtCAssertFalseItemProvider != null) lDtCAssertFalseItemProvider.dispose();
+		if (lDtCAssertTrueItemProvider != null) lDtCAssertTrueItemProvider.dispose();
+		if (lDtCDecimalMaxItemProvider != null) lDtCDecimalMaxItemProvider.dispose();
+		if (lDtCDecimalMinItemProvider != null) lDtCDecimalMinItemProvider.dispose();
+		if (lDtCDigitsItemProvider != null) lDtCDigitsItemProvider.dispose();
+		if (lDtCFutureItemProvider != null) lDtCFutureItemProvider.dispose();
+		if (lDtCPastItemProvider != null) lDtCPastItemProvider.dispose();
+		if (lDtCNumericMaxItemProvider != null) lDtCNumericMaxItemProvider.dispose();
+		if (lDtCNumericMinItemProvider != null) lDtCNumericMinItemProvider.dispose();
+		if (lDtCNotNullItemProvider != null) lDtCNotNullItemProvider.dispose();
+		if (lDtCNullItemProvider != null) lDtCNullItemProvider.dispose();
+		if (lDtCRegExItemProvider != null) lDtCRegExItemProvider.dispose();
+		if (lDtCSizeItemProvider != null) lDtCSizeItemProvider.dispose();
 		if (lAttributeMatchingConstraintItemProvider != null) lAttributeMatchingConstraintItemProvider.dispose();
 	}
 

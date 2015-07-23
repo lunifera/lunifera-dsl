@@ -107,7 +107,8 @@ class LDataType extends LScalarType {
 	// used to target a feature in the current entity, but avoids resolving cross refernces too early.
 	// for instance if the feature is contained in a superclass
 	refers LType syntheticType
-	
+	// constraints for the datatype
+	contains LDatatypeConstraint[*] constraints
 }
 
 enum LDateType {
@@ -294,6 +295,60 @@ class LConstraints extends LLazyResolver {
 
 interface LConstraint extends LLazyResolver{
 	 
+}
+
+interface LDatatypeConstraint extends LConstraint {
+	
+}
+
+class LDtCAssertFalse extends LDatatypeConstraint {
+	
+}
+
+class LDtCAssertTrue extends LDatatypeConstraint {
+	
+}
+
+class LDtCDecimalMax extends LDatatypeConstraint {
+	float max	
+}
+
+class LDtCDecimalMin extends LDatatypeConstraint {
+	float min
+}
+
+class LDtCDigits extends LDatatypeConstraint {
+	int intDigits
+	int fractionDigits
+}
+
+class LDtCFuture extends LDatatypeConstraint {
+}
+
+class LDtCPast extends LDatatypeConstraint {
+}
+
+class LDtCNumericMax extends LDatatypeConstraint {
+	int max	
+}
+
+class LDtCNumericMin extends LDatatypeConstraint {
+	int min
+}
+
+class LDtCNotNull extends LDatatypeConstraint {
+}
+
+class LDtCNull extends LDatatypeConstraint {
+}
+
+class LDtCRegEx extends LDatatypeConstraint {
+	String pattern
+}
+
+class LDtCSize extends LDatatypeConstraint {
+	int min
+	int max
 }
 
 class LAttributeMatchingConstraint extends LConstraint {

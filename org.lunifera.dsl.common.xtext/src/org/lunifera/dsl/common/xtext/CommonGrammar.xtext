@@ -36,12 +36,77 @@ Import returns types::LImport:
 
 DataType returns types::LDataType:
 	'datatype' name=ValidIDWithKeywords
-	(('jvmType' jvmTypeReference=JvmTypeReference (asPrimitive?='as primitive')?)
+	(('jvmType' jvmTypeReference=JvmTypeReference (asPrimitive?='as primitive')? constraints+=DataTypeConstraint*)
 	|
-	(date?='dateType' dateType=DateType)
+	(date?='dateType' dateType=DateType constraints+=DateConstraint*)
 	|
-	(asBlob?='as blob'))
+	(asBlob?='as blob' constraints+=BlobTypeConstraint*))
 	';';
+
+DataTypeConstraint returns types::LDatatypeConstraint:
+	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits |
+	DtCNumericMax | DtCNumericMin | DtCNotNull | DtCNull | DtCRegEx | DtCSize
+;
+
+DateConstraint returns types::LDatatypeConstraint:
+	DtCFuture | DtCPast
+;
+
+BlobTypeConstraint returns types::LDatatypeConstraint:
+	DtCNotNull | DtCNull
+;
+
+DtCAssertFalse returns types::LDtCAssertFalse:
+	{types::LDtCAssertFalse}
+	'isFalse';
+
+DtCAssertTrue returns types::LDtCAssertTrue:
+	{types::LDtCAssertTrue}
+	'isTrue';
+
+DtCDecimalMax returns types::LDtCDecimalMax:
+	{types::LDtCDecimalMax}
+	'maxDecimal' '('max=LDecimal')';
+
+DtCDecimalMin returns types::LDtCDecimalMin:
+	{types::LDtCDecimalMin}
+	'minDecimal' '('min=LDecimal')';
+
+DtCDigits returns types::LDtCDigits:
+	{types::LDtCDigits}
+	'digits' '(' intDigits=INT ',' fractionDigits=INT ')';
+
+DtCFuture returns types::LDtCFuture:
+	{types::LDtCFuture}
+	'isFuture';
+
+DtCPast returns types::LDtCPast:
+	{types::LDtCPast}
+	'isPast';
+
+DtCNumericMax returns types::LDtCNumericMax:
+	{types::LDtCNumericMax}
+	'maxNumber' '(' max=INT ')';
+
+DtCNumericMin returns types::LDtCNumericMin:
+	{types::LDtCNumericMin}
+	'minNumber' '(' min=INT')';
+
+DtCNotNull returns types::LDtCNotNull:
+	{types::LDtCNotNull}
+	'isNotNull';
+
+DtCNull returns types::LDtCNull:
+	{types::LDtCNull}
+	'isNull';
+
+DtCRegEx returns types::LDtCRegEx:
+	{types::LDtCRegEx}
+	'regex' '(' pattern=STRING ')';
+
+DtCSize returns types::LDtCSize:
+	{types::LDtCSize}
+	'minSize' '('min=INT')' 'maxSize' '('max=INT')';
 
 enum DateType returns types::LDateType:
 	DATE='date' | TIME='time' | TIMESTAMP='timestamp';
@@ -117,4 +182,8 @@ enum UpperBound returns types::LUpperBound:
 
 LInt returns ecore::EInt:
 	INT;
+
+LDecimal returns ecore::EFloat:
+	DECIMAL
+;
 	

@@ -13,6 +13,7 @@ package org.lunifera.dsl.dto.lib.services.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -25,6 +26,9 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.eclipse.persistence.internal.jpa.EntityManagerImpl;
 import org.eclipse.persistence.internal.sessions.RepeatableWriteUnitOfWork;
@@ -43,9 +47,10 @@ import org.lunifera.runtime.common.state.ISharedStateContext;
 @SuppressWarnings("all")
 public abstract class AbstractDTOService<DTO, ENTITY> implements
 		org.lunifera.dsl.dto.lib.services.IDTOService<DTO> {
-	
+
 	private EntityManagerFactory emf;
 	protected IMapperAccess mapperAccess;
+	private ValidatorFactory valFactory;
 
 	protected abstract Class<DTO> getDtoClass();
 
@@ -465,6 +470,27 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	}
 
 	/**
+	 * Binds the validator factory to validate contraints placed on the dto
+	 * class.
+	 * 
+	 * @param valFactory
+	 *            the service
+	 */
+	protected void bindValidatorFactory(final ValidatorFactory valFactory) {
+		this.valFactory = valFactory;
+	}
+
+	/**
+	 * Unbinds the service from this component. <br>
+	 * 
+	 * @param valFactory
+	 *            the service
+	 */
+	protected void unbindValidatorFactory(final ValidatorFactory valFactory) {
+		this.valFactory = null;
+	}
+
+	/**
 	 * @return the emf
 	 */
 	protected EntityManagerFactory getEmf() {
@@ -708,6 +734,18 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 		}
 
 		return result;
+	}
+
+	@Override
+	public Set<ConstraintViolation<DTO>> validate(DTO object,
+			Class<?>... groups) {
+		if (valFactory == null) {
+			throw new IllegalArgumentException(
+					"No ValidatorFactory bound to service");
+		}
+
+		Validator validator = valFactory.getValidator();
+		return validator.validate(object, groups);
 	}
 
 	private static class TransactionObserver extends SessionEventAdapter {

@@ -12,6 +12,8 @@ package org.lunifera.dsl.entity.xtext.jvmmodel
 
 import com.google.inject.Inject
 import java.util.List
+import javax.persistence.AssociationOverride
+import javax.persistence.AssociationOverrides
 import javax.persistence.AttributeOverride
 import javax.persistence.AttributeOverrides
 import javax.persistence.Basic
@@ -67,13 +69,11 @@ import org.lunifera.dsl.semantic.entity.LEntityReference
 import org.lunifera.dsl.semantic.entity.LOperation
 import org.lunifera.dsl.semantic.entity.LTablePerClassStrategy
 import org.lunifera.dsl.semantic.entity.LTablePerSubclassStrategy
+import org.lunifera.runtime.common.annotations.Dispose
 import org.lunifera.runtime.common.annotations.DomainDescription
 import org.lunifera.runtime.common.annotations.DomainKey
 import org.lunifera.runtime.common.annotations.TargetEnumConstraint
 import org.lunifera.runtime.common.annotations.TargetEnumConstraints
-import javax.persistence.AssociationOverrides
-import javax.persistence.AssociationOverride
-import org.lunifera.runtime.common.annotations.Dispose
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -295,7 +295,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 					addAnno(prop, jvmField, prop.toAnnotation(typeof(DomainDescription)))
 				}
 			}
- 
+
 			val ann = prop.toAnnotation(typeof(Column))
 			ann.addAnnAttr(prop, "name", prop.toColumnName)
 			if (prop.bounds.required) {
@@ -327,6 +327,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 				}
 			}
 		}
+
+		super.toConstraintAnnotations(prop, jvmField)
 	}
 
 	// generate Attribute overrides
@@ -363,7 +365,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 							colAnno.addAnnAttr(f, "name", (prop.toName + "_" + f.toName).toUpperCase)
 							overrideAssociationAnno.addAnnAttr(f, "joinColumns", colAnno)
 						}
-						
+
 						collectedAssocations += overrideAssociationAnno;
 					}
 					LBean: {
@@ -374,14 +376,14 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			}
 		}
 
-		if(!collectedAttributes.empty) {
+		if (!collectedAttributes.empty) {
 			val overrideAttributesAnno = prop.toAnnotation(typeof(AttributeOverrides))
 			val JvmAnnotationReference[] result = collectedAttributes.toArray(newArrayOfSize(collectedAttributes.size));
 			overrideAttributesAnno.addAnnAttr(prop, "value", result)
 			addAnno(prop, jvmField, overrideAttributesAnno)
 		}
-		
-		if(!collectedAssocations.empty) {
+
+		if (!collectedAssocations.empty) {
 			val overrideAssociationsAnno = prop.toAnnotation(typeof(AssociationOverrides))
 			val JvmAnnotationReference[] result = collectedAssocations.toArray(newArrayOfSize(collectedAssocations.size));
 			overrideAssociationsAnno.addAnnAttr(prop, "value", result)
@@ -479,6 +481,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			val ann = prop.toAnnotation(typeof(ElementCollection))
 			addAnno(prop, jvmField, ann)
 		}
+		
+		super.toConstraintAnnotations(prop, jvmField)
 	}
 
 	def protected dispatch void internalProcessAnnotation(LBeanReference prop, JvmField jvmField) {
@@ -630,7 +634,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 			// now create the outer annotation and add the array of inner annotations
 			val mainAnno = constraints.toAnnotation(typeof(TargetEnumConstraints))
-			mainAnno.addAnnAttr(constraints, "constraints", innerAnnotations.toArray(<JvmAnnotationReference>newArrayOfSize(innerAnnotations.length)))
+			mainAnno.addAnnAttr(constraints, "constraints",
+				innerAnnotations.toArray(<JvmAnnotationReference>newArrayOfSize(innerAnnotations.length)))
 			jvmField.annotations += mainAnno
 		}
 	}
@@ -638,14 +643,14 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 	def dispatch addDisposeFieldAnnotation(LEntity entity, JvmField field) {
 		val anno = entity.toAnnotation(typeof(Transient))
 		addAnno(entity, field, anno)
-		
+
 		addAnno(entity, field, entity.toAnnotation(typeof(Dispose)))
 	}
 
 	def dispatch addDisposeFieldAnnotation(LBean entity, JvmField field) {
 		val anno = entity.toAnnotation(typeof(Transient))
 		addAnno(entity, field, anno)
-		
+
 		addAnno(entity, field, entity.toAnnotation(typeof(Dispose)))
 	}
 

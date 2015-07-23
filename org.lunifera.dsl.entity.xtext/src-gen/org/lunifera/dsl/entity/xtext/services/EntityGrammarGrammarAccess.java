@@ -75,11 +75,15 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPersistenceInfoEntityPersistenceInfoParserRuleCall_2_0_6_0 = (RuleCall)cPersistenceInfoAssignment_2_0_6.eContents().get(0);
 		private final Assignment cInheritanceStrategyAssignment_2_0_7 = (Assignment)cGroup_2_0.eContents().get(7);
 		private final RuleCall cInheritanceStrategyEntityInheritanceStrategyParserRuleCall_2_0_7_0 = (RuleCall)cInheritanceStrategyAssignment_2_0_7.eContents().get(0);
-		private final Assignment cFeaturesAssignment_2_0_8 = (Assignment)cGroup_2_0.eContents().get(8);
-		private final RuleCall cFeaturesEntityFeatureParserRuleCall_2_0_8_0 = (RuleCall)cFeaturesAssignment_2_0_8.eContents().get(0);
-		private final Assignment cIndexesAssignment_2_0_9 = (Assignment)cGroup_2_0.eContents().get(9);
-		private final RuleCall cIndexesIndexParserRuleCall_2_0_9_0 = (RuleCall)cIndexesAssignment_2_0_9.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2_0_10 = (Keyword)cGroup_2_0.eContents().get(10);
+		private final Group cGroup_2_0_8 = (Group)cGroup_2_0.eContents().get(8);
+		private final Keyword cPersistenceUnitKeyword_2_0_8_0 = (Keyword)cGroup_2_0_8.eContents().get(0);
+		private final Assignment cPersistenceUnitAssignment_2_0_8_1 = (Assignment)cGroup_2_0_8.eContents().get(1);
+		private final RuleCall cPersistenceUnitSTRINGTerminalRuleCall_2_0_8_1_0 = (RuleCall)cPersistenceUnitAssignment_2_0_8_1.eContents().get(0);
+		private final Assignment cFeaturesAssignment_2_0_9 = (Assignment)cGroup_2_0.eContents().get(9);
+		private final RuleCall cFeaturesEntityFeatureParserRuleCall_2_0_9_0 = (RuleCall)cFeaturesAssignment_2_0_9.eContents().get(0);
+		private final Assignment cIndexesAssignment_2_0_10 = (Assignment)cGroup_2_0.eContents().get(10);
+		private final RuleCall cIndexesIndexParserRuleCall_2_0_10_0 = (RuleCall)cIndexesAssignment_2_0_10.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2_0_11 = (Keyword)cGroup_2_0.eContents().get(11);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
 		private final Action cLEntityAnnotationInfoAction_2_1_0 = (Action)cGroup_2_1.eContents().get(0);
 		private final Assignment cMappedSuperclassAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
@@ -92,9 +96,13 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2_1_3 = (Assignment)cGroup_2_1.eContents().get(3);
 		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_1_3_0 = (RuleCall)cNameAssignment_2_1_3.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2_1_4 = (Keyword)cGroup_2_1.eContents().get(4);
-		private final Assignment cFeaturesAssignment_2_1_5 = (Assignment)cGroup_2_1.eContents().get(5);
-		private final RuleCall cFeaturesEntityFeatureParserRuleCall_2_1_5_0 = (RuleCall)cFeaturesAssignment_2_1_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2_1_6 = (Keyword)cGroup_2_1.eContents().get(6);
+		private final Group cGroup_2_1_5 = (Group)cGroup_2_1.eContents().get(5);
+		private final Keyword cPersistenceUnitKeyword_2_1_5_0 = (Keyword)cGroup_2_1_5.eContents().get(0);
+		private final Assignment cPersistenceUnitAssignment_2_1_5_1 = (Assignment)cGroup_2_1_5.eContents().get(1);
+		private final RuleCall cPersistenceUnitSTRINGTerminalRuleCall_2_1_5_1_0 = (RuleCall)cPersistenceUnitAssignment_2_1_5_1.eContents().get(0);
+		private final Assignment cFeaturesAssignment_2_1_6 = (Assignment)cGroup_2_1.eContents().get(6);
+		private final RuleCall cFeaturesEntityFeatureParserRuleCall_2_1_6_0 = (RuleCall)cFeaturesAssignment_2_1_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2_1_7 = (Keyword)cGroup_2_1.eContents().get(7);
 		private final Group cGroup_2_2 = (Group)cAlternatives_2.eContents().get(2);
 		private final Action cLBeanAnnotationInfoAction_2_2_0 = (Action)cGroup_2_2.eContents().get(0);
 		private final Keyword cBeanKeyword_2_2_1 = (Keyword)cGroup_2_2.eContents().get(1);
@@ -114,21 +122,21 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//	{LClass} annotations+=AnnotationDef* ({entity::LEntity.annotationInfo=current} (abstract?="abstract"? &
 		//	(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
 		//	cacheable?="cacheable"?) "entity" name=TRANSLATABLEID ("extends" superType=[entity::LEntity])? "{"
-		//	persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
-		//	indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
-		//	superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
-		//	{entity::LBean.annotationInfo=current} "bean" name=TRANSLATABLEID ("extends" superType=[entity::LBean])? "{"
-		//	features+=BeanFeature* "}");
+		//	persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? ("persistenceUnit"
+		//	persistenceUnit=STRING)? features+=EntityFeature* indexes+=Index* "}" | {entity::LEntity.annotationInfo=current}
+		//	mappedSuperclass?="mapped superclass" ("extends" superType=[entity::LEntity])? name=ValidIDWithKeywords "{"
+		//	("persistenceUnit" persistenceUnit=STRING)? features+=EntityFeature* "}" | {entity::LBean.annotationInfo=current}
+		//	"bean" name=TRANSLATABLEID ("extends" superType=[entity::LBean])? "{" features+=BeanFeature* "}");
 		public ParserRule getRule() { return rule; }
 
 		//{LClass} annotations+=AnnotationDef* ({entity::LEntity.annotationInfo=current} (abstract?="abstract"? &
 		//(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
 		//cacheable?="cacheable"?) "entity" name=TRANSLATABLEID ("extends" superType=[entity::LEntity])? "{"
-		//persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
-		//indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
-		//superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
-		//{entity::LBean.annotationInfo=current} "bean" name=TRANSLATABLEID ("extends" superType=[entity::LBean])? "{"
-		//features+=BeanFeature* "}")
+		//persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? ("persistenceUnit"
+		//persistenceUnit=STRING)? features+=EntityFeature* indexes+=Index* "}" | {entity::LEntity.annotationInfo=current}
+		//mappedSuperclass?="mapped superclass" ("extends" superType=[entity::LEntity])? name=ValidIDWithKeywords "{"
+		//("persistenceUnit" persistenceUnit=STRING)? features+=EntityFeature* "}" | {entity::LBean.annotationInfo=current}
+		//"bean" name=TRANSLATABLEID ("extends" superType=[entity::LBean])? "{" features+=BeanFeature* "}")
 		public Group getGroup() { return cGroup; }
 
 		//{LClass}
@@ -143,16 +151,18 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//{entity::LEntity.annotationInfo=current} (abstract?="abstract"? & (historized?="historized" |
 		//timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? & cacheable?="cacheable"?)
 		//"entity" name=TRANSLATABLEID ("extends" superType=[entity::LEntity])? "{" persistenceInfo=EntityPersistenceInfo
-		//inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature* indexes+=Index* "}" |
-		//{entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends" superType=[entity::LEntity])?
-		//name=ValidIDWithKeywords "{" features+=EntityFeature* "}" | {entity::LBean.annotationInfo=current} "bean"
-		//name=TRANSLATABLEID ("extends" superType=[entity::LBean])? "{" features+=BeanFeature* "}"
+		//inheritanceStrategy=EntityInheritanceStrategy? ("persistenceUnit" persistenceUnit=STRING)? features+=EntityFeature*
+		//indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
+		//superType=[entity::LEntity])? name=ValidIDWithKeywords "{" ("persistenceUnit" persistenceUnit=STRING)?
+		//features+=EntityFeature* "}" | {entity::LBean.annotationInfo=current} "bean" name=TRANSLATABLEID ("extends"
+		//superType=[entity::LBean])? "{" features+=BeanFeature* "}"
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//{entity::LEntity.annotationInfo=current} (abstract?="abstract"? & (historized?="historized" |
 		//timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? & cacheable?="cacheable"?)
 		//"entity" name=TRANSLATABLEID ("extends" superType=[entity::LEntity])? "{" persistenceInfo=EntityPersistenceInfo
-		//inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature* indexes+=Index* "}"
+		//inheritanceStrategy=EntityInheritanceStrategy? ("persistenceUnit" persistenceUnit=STRING)? features+=EntityFeature*
+		//indexes+=Index* "}"
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//{entity::LEntity.annotationInfo=current}
@@ -246,23 +256,35 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//EntityInheritanceStrategy
 		public RuleCall getInheritanceStrategyEntityInheritanceStrategyParserRuleCall_2_0_7_0() { return cInheritanceStrategyEntityInheritanceStrategyParserRuleCall_2_0_7_0; }
 
+		//("persistenceUnit" persistenceUnit=STRING)?
+		public Group getGroup_2_0_8() { return cGroup_2_0_8; }
+
+		//"persistenceUnit"
+		public Keyword getPersistenceUnitKeyword_2_0_8_0() { return cPersistenceUnitKeyword_2_0_8_0; }
+
+		//persistenceUnit=STRING
+		public Assignment getPersistenceUnitAssignment_2_0_8_1() { return cPersistenceUnitAssignment_2_0_8_1; }
+
+		//STRING
+		public RuleCall getPersistenceUnitSTRINGTerminalRuleCall_2_0_8_1_0() { return cPersistenceUnitSTRINGTerminalRuleCall_2_0_8_1_0; }
+
 		//features+=EntityFeature*
-		public Assignment getFeaturesAssignment_2_0_8() { return cFeaturesAssignment_2_0_8; }
+		public Assignment getFeaturesAssignment_2_0_9() { return cFeaturesAssignment_2_0_9; }
 
 		//EntityFeature
-		public RuleCall getFeaturesEntityFeatureParserRuleCall_2_0_8_0() { return cFeaturesEntityFeatureParserRuleCall_2_0_8_0; }
+		public RuleCall getFeaturesEntityFeatureParserRuleCall_2_0_9_0() { return cFeaturesEntityFeatureParserRuleCall_2_0_9_0; }
 
 		//indexes+=Index*
-		public Assignment getIndexesAssignment_2_0_9() { return cIndexesAssignment_2_0_9; }
+		public Assignment getIndexesAssignment_2_0_10() { return cIndexesAssignment_2_0_10; }
 
 		//Index
-		public RuleCall getIndexesIndexParserRuleCall_2_0_9_0() { return cIndexesIndexParserRuleCall_2_0_9_0; }
+		public RuleCall getIndexesIndexParserRuleCall_2_0_10_0() { return cIndexesIndexParserRuleCall_2_0_10_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_2_0_10() { return cRightCurlyBracketKeyword_2_0_10; }
+		public Keyword getRightCurlyBracketKeyword_2_0_11() { return cRightCurlyBracketKeyword_2_0_11; }
 
 		//{entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends" superType=[entity::LEntity])?
-		//name=ValidIDWithKeywords "{" features+=EntityFeature* "}"
+		//name=ValidIDWithKeywords "{" ("persistenceUnit" persistenceUnit=STRING)? features+=EntityFeature* "}"
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//{entity::LEntity.annotationInfo=current}
@@ -298,14 +320,26 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2_1_4() { return cLeftCurlyBracketKeyword_2_1_4; }
 
+		//("persistenceUnit" persistenceUnit=STRING)?
+		public Group getGroup_2_1_5() { return cGroup_2_1_5; }
+
+		//"persistenceUnit"
+		public Keyword getPersistenceUnitKeyword_2_1_5_0() { return cPersistenceUnitKeyword_2_1_5_0; }
+
+		//persistenceUnit=STRING
+		public Assignment getPersistenceUnitAssignment_2_1_5_1() { return cPersistenceUnitAssignment_2_1_5_1; }
+
+		//STRING
+		public RuleCall getPersistenceUnitSTRINGTerminalRuleCall_2_1_5_1_0() { return cPersistenceUnitSTRINGTerminalRuleCall_2_1_5_1_0; }
+
 		//features+=EntityFeature*
-		public Assignment getFeaturesAssignment_2_1_5() { return cFeaturesAssignment_2_1_5; }
+		public Assignment getFeaturesAssignment_2_1_6() { return cFeaturesAssignment_2_1_6; }
 
 		//EntityFeature
-		public RuleCall getFeaturesEntityFeatureParserRuleCall_2_1_5_0() { return cFeaturesEntityFeatureParserRuleCall_2_1_5_0; }
+		public RuleCall getFeaturesEntityFeatureParserRuleCall_2_1_6_0() { return cFeaturesEntityFeatureParserRuleCall_2_1_6_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_2_1_6() { return cRightCurlyBracketKeyword_2_1_6; }
+		public Keyword getRightCurlyBracketKeyword_2_1_7() { return cRightCurlyBracketKeyword_2_1_7; }
 
 		//{entity::LBean.annotationInfo=current} "bean" name=TRANSLATABLEID ("extends" superType=[entity::LBean])? "{"
 		//features+=BeanFeature* "}"
@@ -551,7 +585,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPropertiesAssignment_2_0_1_7_2 = (Assignment)cGroup_2_0_1_7.eContents().get(2);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_0_1_7_2_0 = (RuleCall)cPropertiesAssignment_2_0_1_7_2.eContents().get(0);
 		private final Group cGroup_2_0_1_7_3 = (Group)cGroup_2_0_1_7.eContents().get(3);
-		private final Keyword cCommaKeyword_2_0_1_7_3_0 = (Keyword)cGroup_2_0_1_7_3.eContents().get(0);
+		private final Keyword cCommaSpaceKeyword_2_0_1_7_3_0 = (Keyword)cGroup_2_0_1_7_3.eContents().get(0);
 		private final Assignment cPropertiesAssignment_2_0_1_7_3_1 = (Assignment)cGroup_2_0_1_7_3.eContents().get(1);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_0_1_7_3_1_0 = (RuleCall)cPropertiesAssignment_2_0_1_7_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_0_1_7_4 = (Keyword)cGroup_2_0_1_7.eContents().get(4);
@@ -576,7 +610,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPropertiesAssignment_2_1_1_0_3_2 = (Assignment)cGroup_2_1_1_0_3.eContents().get(2);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_0_3_2_0 = (RuleCall)cPropertiesAssignment_2_1_1_0_3_2.eContents().get(0);
 		private final Group cGroup_2_1_1_0_3_3 = (Group)cGroup_2_1_1_0_3.eContents().get(3);
-		private final Keyword cCommaKeyword_2_1_1_0_3_3_0 = (Keyword)cGroup_2_1_1_0_3_3.eContents().get(0);
+		private final Keyword cCommaSpaceKeyword_2_1_1_0_3_3_0 = (Keyword)cGroup_2_1_1_0_3_3.eContents().get(0);
 		private final Assignment cPropertiesAssignment_2_1_1_0_3_3_1 = (Assignment)cGroup_2_1_1_0_3_3.eContents().get(1);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_0_3_3_1_0 = (RuleCall)cPropertiesAssignment_2_1_1_0_3_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_1_1_0_3_4 = (Keyword)cGroup_2_1_1_0_3.eContents().get(4);
@@ -597,7 +631,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPropertiesAssignment_2_1_1_1_4_2 = (Assignment)cGroup_2_1_1_1_4.eContents().get(2);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_1_4_2_0 = (RuleCall)cPropertiesAssignment_2_1_1_1_4_2.eContents().get(0);
 		private final Group cGroup_2_1_1_1_4_3 = (Group)cGroup_2_1_1_1_4.eContents().get(3);
-		private final Keyword cCommaKeyword_2_1_1_1_4_3_0 = (Keyword)cGroup_2_1_1_1_4_3.eContents().get(0);
+		private final Keyword cCommaSpaceKeyword_2_1_1_1_4_3_0 = (Keyword)cGroup_2_1_1_1_4_3.eContents().get(0);
 		private final Assignment cPropertiesAssignment_2_1_1_1_4_3_1 = (Assignment)cGroup_2_1_1_1_4_3.eContents().get(1);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_1_4_3_1_0 = (RuleCall)cPropertiesAssignment_2_1_1_1_4_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_1_1_1_4_4 = (Keyword)cGroup_2_1_1_1_4.eContents().get(4);
@@ -636,7 +670,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPropertiesAssignment_2_1_1_2_6_2 = (Assignment)cGroup_2_1_1_2_6.eContents().get(2);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_2_6_2_0 = (RuleCall)cPropertiesAssignment_2_1_1_2_6_2.eContents().get(0);
 		private final Group cGroup_2_1_1_2_6_3 = (Group)cGroup_2_1_1_2_6.eContents().get(3);
-		private final Keyword cCommaKeyword_2_1_1_2_6_3_0 = (Keyword)cGroup_2_1_1_2_6_3.eContents().get(0);
+		private final Keyword cCommaSpaceKeyword_2_1_1_2_6_3_0 = (Keyword)cGroup_2_1_1_2_6_3.eContents().get(0);
 		private final Assignment cPropertiesAssignment_2_1_1_2_6_3_1 = (Assignment)cGroup_2_1_1_2_6_3.eContents().get(1);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_2_6_3_1_0 = (RuleCall)cPropertiesAssignment_2_1_1_2_6_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_1_1_2_6_4 = (Keyword)cGroup_2_1_1_2_6.eContents().get(4);
@@ -665,14 +699,14 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//	{entity::LEntityFeature} annotations+=AnnotationDef* ({entity::LEntityReference.annotationInfo=current} ("ref"
 		//	cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
 		//	persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])? ("properties" "("
-		//	properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")) |
+		//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")) |
 		//	{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=TRANSLATABLEID
-		//	("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";" | derived?="derived"
+		//	("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";" | derived?="derived"
 		//	domainDescription?="domainDescription"? type=[LScalarType] name=TRANSLATABLEID ("properties" "("
-		//	properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
+		//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
 		//	id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey")
 		//	type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite"
-		//	opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)*
+		//	opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)*
 		//	")")? ";") | {entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
 		//	(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 		public ParserRule getRule() { return rule; }
@@ -680,15 +714,15 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//{entity::LEntityFeature} annotations+=AnnotationDef* ({entity::LEntityReference.annotationInfo=current} ("ref"
 		//cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
 		//persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])? ("properties" "("
-		//properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")) |
+		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")) |
 		//{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=TRANSLATABLEID
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";" | derived?="derived"
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";" | derived?="derived"
 		//domainDescription?="domainDescription"? type=[LScalarType] name=TRANSLATABLEID ("properties" "("
-		//properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
+		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
 		//id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey")
 		//type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite"
-		//opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
-		//";") | {entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
+		//opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)*
+		//")")? ";") | {entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
 		//(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression))
 		public Group getGroup() { return cGroup; }
 
@@ -703,21 +737,21 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//{entity::LEntityReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LEntity]
 		//multiplicity=Multiplicity? name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite"
-		//opposite=[entity::LEntityReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)*
+		//opposite=[entity::LEntityReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)*
 		//")")? (constraints=Constraints | ";")) | {entity::LEntityAttribute.annotationInfo=current} (transient?="transient"
-		//type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		//";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=TRANSLATABLEID ("properties"
-		//"(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
+		//"(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
 		//id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey")
 		//type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite"
-		//opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
-		//";") | {entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
+		//opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)*
+		//")")? ";") | {entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
 		//(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//{entity::LEntityReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[entity::LEntity]
 		//multiplicity=Multiplicity? name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite"
-		//opposite=[entity::LEntityReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)*
+		//opposite=[entity::LEntityReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)*
 		//")")? (constraints=Constraints | ";"))
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
@@ -726,7 +760,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"ref" cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
 		//persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])? ("properties" "("
-		//properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")
+		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")
 		public Group getGroup_2_0_1() { return cGroup_2_0_1; }
 
 		//"ref"
@@ -780,7 +814,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//LFQN
 		public RuleCall getOppositeLEntityReferenceLFQNParserRuleCall_2_0_1_6_1_0_1() { return cOppositeLEntityReferenceLFQNParserRuleCall_2_0_1_6_1_0_1; }
 
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_0_1_7() { return cGroup_2_0_1_7; }
 
 		//"properties"
@@ -795,11 +829,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//KeyAndValue
 		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_0_1_7_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_0_1_7_2_0; }
 
-		//("," properties+=KeyAndValue)*
+		//(", " properties+=KeyAndValue)*
 		public Group getGroup_2_0_1_7_3() { return cGroup_2_0_1_7_3; }
 
-		//","
-		public Keyword getCommaKeyword_2_0_1_7_3_0() { return cCommaKeyword_2_0_1_7_3_0; }
+		//", "
+		public Keyword getCommaSpaceKeyword_2_0_1_7_3_0() { return cCommaSpaceKeyword_2_0_1_7_3_0; }
 
 		//properties+=KeyAndValue
 		public Assignment getPropertiesAssignment_2_0_1_7_3_1() { return cPropertiesAssignment_2_0_1_7_3_1; }
@@ -823,28 +857,28 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getSemicolonKeyword_2_0_1_8_1() { return cSemicolonKeyword_2_0_1_8_1; }
 
 		//{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=TRANSLATABLEID
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";" | derived?="derived"
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";" | derived?="derived"
 		//domainDescription?="domainDescription"? type=[LScalarType] name=TRANSLATABLEID ("properties" "("
-		//properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
+		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
 		//id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey")
 		//type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite"
-		//opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
-		//";")
+		//opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)*
+		//")")? ";")
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//{entity::LEntityAttribute.annotationInfo=current}
 		public Action getLEntityAttributeAnnotationInfoAction_2_1_0() { return cLEntityAttributeAnnotationInfoAction_2_1_0; }
 
-		//transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (","
+		//transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", "
 		//properties+=KeyAndValue)* ")")? ";" | derived?="derived" domainDescription?="domainDescription"? type=[LScalarType]
-		//name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		//derivedGetterExpression=XBlockExpression | ("var" | id?="id" | uuid?="uuid" | version?="version" |
 		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[LScalarType] multiplicity=Multiplicity?
 		//name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LBeanReference|LFQN])?
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";"
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";"
 		public Alternatives getAlternatives_2_1_1() { return cAlternatives_2_1_1; }
 
-		//transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (","
+		//transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", "
 		//properties+=KeyAndValue)* ")")? ";"
 		public Group getGroup_2_1_1_0() { return cGroup_2_1_1_0; }
 
@@ -869,7 +903,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//TRANSLATABLEID
 		public RuleCall getNameTRANSLATABLEIDParserRuleCall_2_1_1_0_2_0() { return cNameTRANSLATABLEIDParserRuleCall_2_1_1_0_2_0; }
 
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_1_1_0_3() { return cGroup_2_1_1_0_3; }
 
 		//"properties"
@@ -884,11 +918,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//KeyAndValue
 		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_1_1_0_3_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_1_1_0_3_2_0; }
 
-		//("," properties+=KeyAndValue)*
+		//(", " properties+=KeyAndValue)*
 		public Group getGroup_2_1_1_0_3_3() { return cGroup_2_1_1_0_3_3; }
 
-		//","
-		public Keyword getCommaKeyword_2_1_1_0_3_3_0() { return cCommaKeyword_2_1_1_0_3_3_0; }
+		//", "
+		public Keyword getCommaSpaceKeyword_2_1_1_0_3_3_0() { return cCommaSpaceKeyword_2_1_1_0_3_3_0; }
 
 		//properties+=KeyAndValue
 		public Assignment getPropertiesAssignment_2_1_1_0_3_3_1() { return cPropertiesAssignment_2_1_1_0_3_3_1; }
@@ -903,7 +937,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getSemicolonKeyword_2_1_1_0_4() { return cSemicolonKeyword_2_1_1_0_4; }
 
 		//derived?="derived" domainDescription?="domainDescription"? type=[LScalarType] name=TRANSLATABLEID ("properties" "("
-		//properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression
+		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression
 		public Group getGroup_2_1_1_1() { return cGroup_2_1_1_1; }
 
 		//derived?="derived"
@@ -933,7 +967,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//TRANSLATABLEID
 		public RuleCall getNameTRANSLATABLEIDParserRuleCall_2_1_1_1_3_0() { return cNameTRANSLATABLEIDParserRuleCall_2_1_1_1_3_0; }
 
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_1_1_1_4() { return cGroup_2_1_1_1_4; }
 
 		//"properties"
@@ -948,11 +982,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//KeyAndValue
 		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_1_1_1_4_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_1_1_1_4_2_0; }
 
-		//("," properties+=KeyAndValue)*
+		//(", " properties+=KeyAndValue)*
 		public Group getGroup_2_1_1_1_4_3() { return cGroup_2_1_1_1_4_3; }
 
-		//","
-		public Keyword getCommaKeyword_2_1_1_1_4_3_0() { return cCommaKeyword_2_1_1_1_4_3_0; }
+		//", "
+		public Keyword getCommaSpaceKeyword_2_1_1_1_4_3_0() { return cCommaSpaceKeyword_2_1_1_1_4_3_0; }
 
 		//properties+=KeyAndValue
 		public Assignment getPropertiesAssignment_2_1_1_1_4_3_1() { return cPropertiesAssignment_2_1_1_1_4_3_1; }
@@ -971,8 +1005,8 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//("var" | id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey")
 		//type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite"
-		//opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
-		//";"
+		//opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)*
+		//")")? ";"
 		public Group getGroup_2_1_1_2() { return cGroup_2_1_1_2; }
 
 		//"var" | id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey"
@@ -1053,7 +1087,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//LFQN
 		public RuleCall getOppositeLBeanReferenceLFQNParserRuleCall_2_1_1_2_5_1_0_1() { return cOppositeLBeanReferenceLFQNParserRuleCall_2_1_1_2_5_1_0_1; }
 
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_1_1_2_6() { return cGroup_2_1_1_2_6; }
 
 		//"properties"
@@ -1068,11 +1102,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//KeyAndValue
 		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_1_1_2_6_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_1_1_2_6_2_0; }
 
-		//("," properties+=KeyAndValue)*
+		//(", " properties+=KeyAndValue)*
 		public Group getGroup_2_1_1_2_6_3() { return cGroup_2_1_1_2_6_3; }
 
-		//","
-		public Keyword getCommaKeyword_2_1_1_2_6_3_0() { return cCommaKeyword_2_1_1_2_6_3_0; }
+		//", "
+		public Keyword getCommaSpaceKeyword_2_1_1_2_6_3_0() { return cCommaSpaceKeyword_2_1_1_2_6_3_0; }
 
 		//properties+=KeyAndValue
 		public Assignment getPropertiesAssignment_2_1_1_2_6_3_1() { return cPropertiesAssignment_2_1_1_2_6_3_1; }
@@ -1177,7 +1211,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPropertiesAssignment_2_0_1_6_2 = (Assignment)cGroup_2_0_1_6.eContents().get(2);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_0_1_6_2_0 = (RuleCall)cPropertiesAssignment_2_0_1_6_2.eContents().get(0);
 		private final Group cGroup_2_0_1_6_3 = (Group)cGroup_2_0_1_6.eContents().get(3);
-		private final Keyword cCommaKeyword_2_0_1_6_3_0 = (Keyword)cGroup_2_0_1_6_3.eContents().get(0);
+		private final Keyword cCommaSpaceKeyword_2_0_1_6_3_0 = (Keyword)cGroup_2_0_1_6_3.eContents().get(0);
 		private final Assignment cPropertiesAssignment_2_0_1_6_3_1 = (Assignment)cGroup_2_0_1_6_3.eContents().get(1);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_0_1_6_3_1_0 = (RuleCall)cPropertiesAssignment_2_0_1_6_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_0_1_6_4 = (Keyword)cGroup_2_0_1_6.eContents().get(4);
@@ -1202,7 +1236,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPropertiesAssignment_2_1_1_0_3_2 = (Assignment)cGroup_2_1_1_0_3.eContents().get(2);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_0_3_2_0 = (RuleCall)cPropertiesAssignment_2_1_1_0_3_2.eContents().get(0);
 		private final Group cGroup_2_1_1_0_3_3 = (Group)cGroup_2_1_1_0_3.eContents().get(3);
-		private final Keyword cCommaKeyword_2_1_1_0_3_3_0 = (Keyword)cGroup_2_1_1_0_3_3.eContents().get(0);
+		private final Keyword cCommaSpaceKeyword_2_1_1_0_3_3_0 = (Keyword)cGroup_2_1_1_0_3_3.eContents().get(0);
 		private final Assignment cPropertiesAssignment_2_1_1_0_3_3_1 = (Assignment)cGroup_2_1_1_0_3_3.eContents().get(1);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_0_3_3_1_0 = (RuleCall)cPropertiesAssignment_2_1_1_0_3_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_1_1_0_3_4 = (Keyword)cGroup_2_1_1_0_3.eContents().get(4);
@@ -1226,7 +1260,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPropertiesAssignment_2_1_1_1_4_2 = (Assignment)cGroup_2_1_1_1_4.eContents().get(2);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_1_4_2_0 = (RuleCall)cPropertiesAssignment_2_1_1_1_4_2.eContents().get(0);
 		private final Group cGroup_2_1_1_1_4_3 = (Group)cGroup_2_1_1_1_4.eContents().get(3);
-		private final Keyword cCommaKeyword_2_1_1_1_4_3_0 = (Keyword)cGroup_2_1_1_1_4_3.eContents().get(0);
+		private final Keyword cCommaSpaceKeyword_2_1_1_1_4_3_0 = (Keyword)cGroup_2_1_1_1_4_3.eContents().get(0);
 		private final Assignment cPropertiesAssignment_2_1_1_1_4_3_1 = (Assignment)cGroup_2_1_1_1_4_3.eContents().get(1);
 		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_1_1_1_4_3_1_0 = (RuleCall)cPropertiesAssignment_2_1_1_1_4_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_1_1_1_4_4 = (Keyword)cGroup_2_1_1_1_4.eContents().get(4);
@@ -1254,24 +1288,24 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//BeanFeature returns entity::LBeanFeature:
 		//	{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
 		//	cascading?="cascade"? type=[LType] multiplicity=Multiplicity? name=TRANSLATABLEID ("opposite"
-		//	opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//	opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		//	(constraints=Constraints | ";")) | {entity::LBeanAttribute.annotationInfo=current} (transient?="transient"
-		//	type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//	type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		//	| ("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID
-		//	("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";") |
+		//	("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
 		//	{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
 		//	(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 		public ParserRule getRule() { return rule; }
 
 		//{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
 		//cascading?="cascade"? type=[LType] multiplicity=Multiplicity? name=TRANSLATABLEID ("opposite"
-		//opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		//(constraints=Constraints | ";")) | {entity::LBeanAttribute.annotationInfo=current} (transient?="transient"
-		//type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? |
-		//("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID ("properties"
-		//"(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";") | {entity::LOperation.annotationInfo=current}
-		//("def" type=JvmTypeReference name=TRANSLATABLEID "(" (params+=FullJvmFormalParameter (","
-		//params+=FullJvmFormalParameter)*)? ")" body=XExpression))
+		//type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
+		//| ("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
+		//{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
+		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression))
 		public Group getGroup() { return cGroup; }
 
 		//{entity::LBeanFeature}
@@ -1284,17 +1318,17 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAnnotationsAnnotationDefParserRuleCall_1_0() { return cAnnotationsAnnotationDefParserRuleCall_1_0; }
 
 		//{entity::LBeanReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[LType] multiplicity=Multiplicity?
-		//name=TRANSLATABLEID ("opposite" opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue (","
+		//name=TRANSLATABLEID ("opposite" opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", "
 		//properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")) | {entity::LBeanAttribute.annotationInfo=current}
-		//(transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (","
+		//(transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", "
 		//properties+=KeyAndValue)* ")")? | ("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity?
-		//name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";") |
+		//name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
 		//{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
 		//(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//{entity::LBeanReference.annotationInfo=current} ("ref" cascading?="cascade"? type=[LType] multiplicity=Multiplicity?
-		//name=TRANSLATABLEID ("opposite" opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue (","
+		//name=TRANSLATABLEID ("opposite" opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", "
 		//properties+=KeyAndValue)* ")")? (constraints=Constraints | ";"))
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
@@ -1302,7 +1336,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Action getLBeanReferenceAnnotationInfoAction_2_0_0() { return cLBeanReferenceAnnotationInfoAction_2_0_0; }
 
 		//"ref" cascading?="cascade"? type=[LType] multiplicity=Multiplicity? name=TRANSLATABLEID ("opposite"
-		//opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		//(constraints=Constraints | ";")
 		public Group getGroup_2_0_1() { return cGroup_2_0_1; }
 
@@ -1351,7 +1385,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//LFQN
 		public RuleCall getOppositeLReferenceLFQNParserRuleCall_2_0_1_5_1_0_1() { return cOppositeLReferenceLFQNParserRuleCall_2_0_1_5_1_0_1; }
 
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_0_1_6() { return cGroup_2_0_1_6; }
 
 		//"properties"
@@ -1366,11 +1400,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//KeyAndValue
 		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_0_1_6_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_0_1_6_2_0; }
 
-		//("," properties+=KeyAndValue)*
+		//(", " properties+=KeyAndValue)*
 		public Group getGroup_2_0_1_6_3() { return cGroup_2_0_1_6_3; }
 
-		//","
-		public Keyword getCommaKeyword_2_0_1_6_3_0() { return cCommaKeyword_2_0_1_6_3_0; }
+		//", "
+		public Keyword getCommaSpaceKeyword_2_0_1_6_3_0() { return cCommaSpaceKeyword_2_0_1_6_3_0; }
 
 		//properties+=KeyAndValue
 		public Assignment getPropertiesAssignment_2_0_1_6_3_1() { return cPropertiesAssignment_2_0_1_6_3_1; }
@@ -1394,20 +1428,20 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getSemicolonKeyword_2_0_1_7_1() { return cSemicolonKeyword_2_0_1_7_1; }
 
 		//{entity::LBeanAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=TRANSLATABLEID
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? | ("var" | id?="id" |
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? | ("var" | id?="id" |
 		//version?="version") type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID ("properties" "("
-		//properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";")
+		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";")
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//{entity::LBeanAttribute.annotationInfo=current}
 		public Action getLBeanAttributeAnnotationInfoAction_2_1_0() { return cLBeanAttributeAnnotationInfoAction_2_1_0; }
 
-		//transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (","
+		//transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", "
 		//properties+=KeyAndValue)* ")")? | ("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity?
-		//name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";"
+		//name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";"
 		public Alternatives getAlternatives_2_1_1() { return cAlternatives_2_1_1; }
 
-		//transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (","
+		//transient?="transient" type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", "
 		//properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_1_1_0() { return cGroup_2_1_1_0; }
 
@@ -1432,7 +1466,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//TRANSLATABLEID
 		public RuleCall getNameTRANSLATABLEIDParserRuleCall_2_1_1_0_2_0() { return cNameTRANSLATABLEIDParserRuleCall_2_1_1_0_2_0; }
 
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_1_1_0_3() { return cGroup_2_1_1_0_3; }
 
 		//"properties"
@@ -1447,11 +1481,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//KeyAndValue
 		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_1_1_0_3_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_1_1_0_3_2_0; }
 
-		//("," properties+=KeyAndValue)*
+		//(", " properties+=KeyAndValue)*
 		public Group getGroup_2_1_1_0_3_3() { return cGroup_2_1_1_0_3_3; }
 
-		//","
-		public Keyword getCommaKeyword_2_1_1_0_3_3_0() { return cCommaKeyword_2_1_1_0_3_3_0; }
+		//", "
+		public Keyword getCommaSpaceKeyword_2_1_1_0_3_3_0() { return cCommaSpaceKeyword_2_1_1_0_3_3_0; }
 
 		//properties+=KeyAndValue
 		public Assignment getPropertiesAssignment_2_1_1_0_3_3_1() { return cPropertiesAssignment_2_1_1_0_3_3_1; }
@@ -1463,7 +1497,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightParenthesisKeyword_2_1_1_0_3_4() { return cRightParenthesisKeyword_2_1_1_0_3_4; }
 
 		//("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID ("properties"
-		//"(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";"
+		//"(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";"
 		public Group getGroup_2_1_1_1() { return cGroup_2_1_1_1; }
 
 		//"var" | id?="id" | version?="version"
@@ -1505,7 +1539,7 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//TRANSLATABLEID
 		public RuleCall getNameTRANSLATABLEIDParserRuleCall_2_1_1_1_3_0() { return cNameTRANSLATABLEIDParserRuleCall_2_1_1_1_3_0; }
 
-		//("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_1_1_1_4() { return cGroup_2_1_1_1_4; }
 
 		//"properties"
@@ -1520,11 +1554,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//KeyAndValue
 		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_1_1_1_4_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_1_1_1_4_2_0; }
 
-		//("," properties+=KeyAndValue)*
+		//(", " properties+=KeyAndValue)*
 		public Group getGroup_2_1_1_1_4_3() { return cGroup_2_1_1_1_4_3; }
 
-		//","
-		public Keyword getCommaKeyword_2_1_1_1_4_3_0() { return cCommaKeyword_2_1_1_1_4_3_0; }
+		//", "
+		public Keyword getCommaSpaceKeyword_2_1_1_1_4_3_0() { return cCommaSpaceKeyword_2_1_1_1_4_3_0; }
 
 		//properties+=KeyAndValue
 		public Assignment getPropertiesAssignment_2_1_1_1_4_3_1() { return cPropertiesAssignment_2_1_1_1_4_3_1; }
@@ -1990,11 +2024,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	{LClass} annotations+=AnnotationDef* ({entity::LEntity.annotationInfo=current} (abstract?="abstract"? &
 	//	(historized?="historized" | timedependent?="timedependent" ("(" timedependentDateType=LHistorizedDateType ")")?)? &
 	//	cacheable?="cacheable"?) "entity" name=TRANSLATABLEID ("extends" superType=[entity::LEntity])? "{"
-	//	persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? features+=EntityFeature*
-	//	indexes+=Index* "}" | {entity::LEntity.annotationInfo=current} mappedSuperclass?="mapped superclass" ("extends"
-	//	superType=[entity::LEntity])? name=ValidIDWithKeywords "{" features+=EntityFeature* "}" |
-	//	{entity::LBean.annotationInfo=current} "bean" name=TRANSLATABLEID ("extends" superType=[entity::LBean])? "{"
-	//	features+=BeanFeature* "}");
+	//	persistenceInfo=EntityPersistenceInfo inheritanceStrategy=EntityInheritanceStrategy? ("persistenceUnit"
+	//	persistenceUnit=STRING)? features+=EntityFeature* indexes+=Index* "}" | {entity::LEntity.annotationInfo=current}
+	//	mappedSuperclass?="mapped superclass" ("extends" superType=[entity::LEntity])? name=ValidIDWithKeywords "{"
+	//	("persistenceUnit" persistenceUnit=STRING)? features+=EntityFeature* "}" | {entity::LBean.annotationInfo=current}
+	//	"bean" name=TRANSLATABLEID ("extends" superType=[entity::LBean])? "{" features+=BeanFeature* "}");
 	public ClassElements getClassAccess() {
 		return pClass;
 	}
@@ -2039,14 +2073,14 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	{entity::LEntityFeature} annotations+=AnnotationDef* ({entity::LEntityReference.annotationInfo=current} ("ref"
 	//	cascading?="cascade"? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
 	//	persistenceInfo=ColumnPersistenceInfo? ("opposite" opposite=[entity::LEntityReference|LFQN])? ("properties" "("
-	//	properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")) |
+	//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (constraints=Constraints | ";")) |
 	//	{entity::LEntityAttribute.annotationInfo=current} (transient?="transient" type=[LScalarType] name=TRANSLATABLEID
-	//	("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";" | derived?="derived"
+	//	("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";" | derived?="derived"
 	//	domainDescription?="domainDescription"? type=[LScalarType] name=TRANSLATABLEID ("properties" "("
-	//	properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
+	//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression | ("var" |
 	//	id?="id" | uuid?="uuid" | version?="version" | domainDescription?="domainDescription" | domainKey?="domainKey")
 	//	type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID persistenceInfo=ColumnPersistenceInfo? ("opposite"
-	//	opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)*
+	//	opposite=[entity::LBeanReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)*
 	//	")")? ";") | {entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
 	//	(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 	public EntityFeatureElements getEntityFeatureAccess() {
@@ -2060,11 +2094,11 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//BeanFeature returns entity::LBeanFeature:
 	//	{entity::LBeanFeature} annotations+=AnnotationDef* ({entity::LBeanReference.annotationInfo=current} ("ref"
 	//	cascading?="cascade"? type=[LType] multiplicity=Multiplicity? name=TRANSLATABLEID ("opposite"
-	//	opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+	//	opposite=[LReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 	//	(constraints=Constraints | ";")) | {entity::LBeanAttribute.annotationInfo=current} (transient?="transient"
-	//	type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")?
+	//	type=[LScalarType] name=TRANSLATABLEID ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 	//	| ("var" | id?="id" | version?="version") type=[LScalarType] multiplicity=Multiplicity? name=TRANSLATABLEID
-	//	("properties" "(" properties+=KeyAndValue ("," properties+=KeyAndValue)* ")")? ";") |
+	//	("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
 	//	{entity::LOperation.annotationInfo=current} ("def" type=JvmTypeReference name=TRANSLATABLEID "("
 	//	(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 	public BeanFeatureElements getBeanFeatureAccess() {
@@ -2180,14 +2214,176 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DataType returns types::LDataType:
-	//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? |
-	//	date?="dateType" dateType=DateType | asBlob?="as blob") ";";
+	//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"?
+	//	constraints+=DataTypeConstraint* | date?="dateType" dateType=DateType constraints+=DateConstraint* | asBlob?="as blob"
+	//	constraints+=BlobTypeConstraint*) ";";
 	public CommonGrammarGrammarAccess.DataTypeElements getDataTypeAccess() {
 		return gaCommonGrammar.getDataTypeAccess();
 	}
 	
 	public ParserRule getDataTypeRule() {
 		return getDataTypeAccess().getRule();
+	}
+
+	//DataTypeConstraint returns types::LDatatypeConstraint:
+	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
+	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize;
+	public CommonGrammarGrammarAccess.DataTypeConstraintElements getDataTypeConstraintAccess() {
+		return gaCommonGrammar.getDataTypeConstraintAccess();
+	}
+	
+	public ParserRule getDataTypeConstraintRule() {
+		return getDataTypeConstraintAccess().getRule();
+	}
+
+	//DateConstraint returns types::LDatatypeConstraint:
+	//	DtCFuture | DtCPast;
+	public CommonGrammarGrammarAccess.DateConstraintElements getDateConstraintAccess() {
+		return gaCommonGrammar.getDateConstraintAccess();
+	}
+	
+	public ParserRule getDateConstraintRule() {
+		return getDateConstraintAccess().getRule();
+	}
+
+	//BlobTypeConstraint returns types::LDatatypeConstraint:
+	//	DtCNotNull | DtCNull;
+	public CommonGrammarGrammarAccess.BlobTypeConstraintElements getBlobTypeConstraintAccess() {
+		return gaCommonGrammar.getBlobTypeConstraintAccess();
+	}
+	
+	public ParserRule getBlobTypeConstraintRule() {
+		return getBlobTypeConstraintAccess().getRule();
+	}
+
+	//DtCAssertFalse returns types::LDtCAssertFalse:
+	//	{types::LDtCAssertFalse} "isFalse";
+	public CommonGrammarGrammarAccess.DtCAssertFalseElements getDtCAssertFalseAccess() {
+		return gaCommonGrammar.getDtCAssertFalseAccess();
+	}
+	
+	public ParserRule getDtCAssertFalseRule() {
+		return getDtCAssertFalseAccess().getRule();
+	}
+
+	//DtCAssertTrue returns types::LDtCAssertTrue:
+	//	{types::LDtCAssertTrue} "isTrue";
+	public CommonGrammarGrammarAccess.DtCAssertTrueElements getDtCAssertTrueAccess() {
+		return gaCommonGrammar.getDtCAssertTrueAccess();
+	}
+	
+	public ParserRule getDtCAssertTrueRule() {
+		return getDtCAssertTrueAccess().getRule();
+	}
+
+	//DtCDecimalMax returns types::LDtCDecimalMax:
+	//	{types::LDtCDecimalMax} "maxDecimal" "(" max=LDecimal ")";
+	public CommonGrammarGrammarAccess.DtCDecimalMaxElements getDtCDecimalMaxAccess() {
+		return gaCommonGrammar.getDtCDecimalMaxAccess();
+	}
+	
+	public ParserRule getDtCDecimalMaxRule() {
+		return getDtCDecimalMaxAccess().getRule();
+	}
+
+	//DtCDecimalMin returns types::LDtCDecimalMin:
+	//	{types::LDtCDecimalMin} "minDecimal" "(" min=LDecimal ")";
+	public CommonGrammarGrammarAccess.DtCDecimalMinElements getDtCDecimalMinAccess() {
+		return gaCommonGrammar.getDtCDecimalMinAccess();
+	}
+	
+	public ParserRule getDtCDecimalMinRule() {
+		return getDtCDecimalMinAccess().getRule();
+	}
+
+	//DtCDigits returns types::LDtCDigits:
+	//	{types::LDtCDigits} "digits" "(" intDigits=INT "," fractionDigits=INT ")";
+	public CommonGrammarGrammarAccess.DtCDigitsElements getDtCDigitsAccess() {
+		return gaCommonGrammar.getDtCDigitsAccess();
+	}
+	
+	public ParserRule getDtCDigitsRule() {
+		return getDtCDigitsAccess().getRule();
+	}
+
+	//DtCFuture returns types::LDtCFuture:
+	//	{types::LDtCFuture} "isFuture";
+	public CommonGrammarGrammarAccess.DtCFutureElements getDtCFutureAccess() {
+		return gaCommonGrammar.getDtCFutureAccess();
+	}
+	
+	public ParserRule getDtCFutureRule() {
+		return getDtCFutureAccess().getRule();
+	}
+
+	//DtCPast returns types::LDtCPast:
+	//	{types::LDtCPast} "isPast";
+	public CommonGrammarGrammarAccess.DtCPastElements getDtCPastAccess() {
+		return gaCommonGrammar.getDtCPastAccess();
+	}
+	
+	public ParserRule getDtCPastRule() {
+		return getDtCPastAccess().getRule();
+	}
+
+	//DtCNumericMax returns types::LDtCNumericMax:
+	//	{types::LDtCNumericMax} "maxNumber" "(" max=INT ")";
+	public CommonGrammarGrammarAccess.DtCNumericMaxElements getDtCNumericMaxAccess() {
+		return gaCommonGrammar.getDtCNumericMaxAccess();
+	}
+	
+	public ParserRule getDtCNumericMaxRule() {
+		return getDtCNumericMaxAccess().getRule();
+	}
+
+	//DtCNumericMin returns types::LDtCNumericMin:
+	//	{types::LDtCNumericMin} "minNumber" "(" min=INT ")";
+	public CommonGrammarGrammarAccess.DtCNumericMinElements getDtCNumericMinAccess() {
+		return gaCommonGrammar.getDtCNumericMinAccess();
+	}
+	
+	public ParserRule getDtCNumericMinRule() {
+		return getDtCNumericMinAccess().getRule();
+	}
+
+	//DtCNotNull returns types::LDtCNotNull:
+	//	{types::LDtCNotNull} "isNotNull";
+	public CommonGrammarGrammarAccess.DtCNotNullElements getDtCNotNullAccess() {
+		return gaCommonGrammar.getDtCNotNullAccess();
+	}
+	
+	public ParserRule getDtCNotNullRule() {
+		return getDtCNotNullAccess().getRule();
+	}
+
+	//DtCNull returns types::LDtCNull:
+	//	{types::LDtCNull} "isNull";
+	public CommonGrammarGrammarAccess.DtCNullElements getDtCNullAccess() {
+		return gaCommonGrammar.getDtCNullAccess();
+	}
+	
+	public ParserRule getDtCNullRule() {
+		return getDtCNullAccess().getRule();
+	}
+
+	//DtCRegEx returns types::LDtCRegEx:
+	//	{types::LDtCRegEx} "regex" "(" pattern=STRING ")";
+	public CommonGrammarGrammarAccess.DtCRegExElements getDtCRegExAccess() {
+		return gaCommonGrammar.getDtCRegExAccess();
+	}
+	
+	public ParserRule getDtCRegExRule() {
+		return getDtCRegExAccess().getRule();
+	}
+
+	//DtCSize returns types::LDtCSize:
+	//	{types::LDtCSize} "minSize" "(" min=INT ")" "maxSize" "(" max=INT ")";
+	public CommonGrammarGrammarAccess.DtCSizeElements getDtCSizeAccess() {
+		return gaCommonGrammar.getDtCSizeAccess();
+	}
+	
+	public ParserRule getDtCSizeRule() {
+		return getDtCSizeAccess().getRule();
 	}
 
 	//enum DateType returns types::LDateType:
@@ -2390,6 +2586,16 @@ public class EntityGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getLIntRule() {
 		return getLIntAccess().getRule();
+	}
+
+	//LDecimal returns ecore::EFloat:
+	//	DECIMAL;
+	public CommonGrammarGrammarAccess.LDecimalElements getLDecimalAccess() {
+		return gaCommonGrammar.getLDecimalAccess();
+	}
+	
+	public ParserRule getLDecimalRule() {
+		return getLDecimalAccess().getRule();
 	}
 
 	//XAnnotation:

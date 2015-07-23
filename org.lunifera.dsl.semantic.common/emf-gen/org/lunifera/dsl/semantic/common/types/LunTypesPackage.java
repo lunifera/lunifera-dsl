@@ -695,13 +695,22 @@ public interface LunTypesPackage extends EPackage {
 	int LDATA_TYPE__SYNTHETIC_TYPE = LSCALAR_TYPE_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDATA_TYPE__CONSTRAINTS = LSCALAR_TYPE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>LData Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 10;
+	int LDATA_TYPE_FEATURE_COUNT = LSCALAR_TYPE_FEATURE_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1770,6 +1779,605 @@ public interface LunTypesPackage extends EPackage {
 	int LCONSTRAINT_OPERATION_COUNT = LLAZY_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LDatatypeConstraint <em>LDatatype Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.LDatatypeConstraint
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDatatypeConstraint()
+	 * @generated
+	 */
+	int LDATATYPE_CONSTRAINT = 23;
+
+	/**
+	 * The number of structural features of the '<em>LDatatype Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDATATYPE_CONSTRAINT_FEATURE_COUNT = LCONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT = LCONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDatatype Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDATATYPE_CONSTRAINT_OPERATION_COUNT = LCONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCAssertFalseImpl <em>LDt CAssert False</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCAssertFalseImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCAssertFalse()
+	 * @generated
+	 */
+	int LDT_CASSERT_FALSE = 24;
+
+	/**
+	 * The number of structural features of the '<em>LDt CAssert False</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CASSERT_FALSE_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CASSERT_FALSE___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CAssert False</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CASSERT_FALSE_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCAssertTrueImpl <em>LDt CAssert True</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCAssertTrueImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCAssertTrue()
+	 * @generated
+	 */
+	int LDT_CASSERT_TRUE = 25;
+
+	/**
+	 * The number of structural features of the '<em>LDt CAssert True</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CASSERT_TRUE_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CASSERT_TRUE___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CAssert True</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CASSERT_TRUE_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCDecimalMaxImpl <em>LDt CDecimal Max</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCDecimalMaxImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCDecimalMax()
+	 * @generated
+	 */
+	int LDT_CDECIMAL_MAX = 26;
+
+	/**
+	 * The feature id for the '<em><b>Max</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDECIMAL_MAX__MAX = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>LDt CDecimal Max</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDECIMAL_MAX_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDECIMAL_MAX___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CDecimal Max</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDECIMAL_MAX_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCDecimalMinImpl <em>LDt CDecimal Min</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCDecimalMinImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCDecimalMin()
+	 * @generated
+	 */
+	int LDT_CDECIMAL_MIN = 27;
+
+	/**
+	 * The feature id for the '<em><b>Min</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDECIMAL_MIN__MIN = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>LDt CDecimal Min</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDECIMAL_MIN_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDECIMAL_MIN___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CDecimal Min</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDECIMAL_MIN_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCDigitsImpl <em>LDt CDigits</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCDigitsImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCDigits()
+	 * @generated
+	 */
+	int LDT_CDIGITS = 28;
+
+	/**
+	 * The feature id for the '<em><b>Int Digits</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDIGITS__INT_DIGITS = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Fraction Digits</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDIGITS__FRACTION_DIGITS = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>LDt CDigits</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDIGITS_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDIGITS___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CDigits</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CDIGITS_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCFutureImpl <em>LDt CFuture</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCFutureImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCFuture()
+	 * @generated
+	 */
+	int LDT_CFUTURE = 29;
+
+	/**
+	 * The number of structural features of the '<em>LDt CFuture</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CFUTURE_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CFUTURE___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CFuture</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CFUTURE_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCPastImpl <em>LDt CPast</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCPastImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCPast()
+	 * @generated
+	 */
+	int LDT_CPAST = 30;
+
+	/**
+	 * The number of structural features of the '<em>LDt CPast</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CPAST_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CPAST___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CPast</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CPAST_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCNumericMaxImpl <em>LDt CNumeric Max</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCNumericMaxImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCNumericMax()
+	 * @generated
+	 */
+	int LDT_CNUMERIC_MAX = 31;
+
+	/**
+	 * The feature id for the '<em><b>Max</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNUMERIC_MAX__MAX = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>LDt CNumeric Max</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNUMERIC_MAX_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNUMERIC_MAX___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CNumeric Max</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNUMERIC_MAX_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCNumericMinImpl <em>LDt CNumeric Min</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCNumericMinImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCNumericMin()
+	 * @generated
+	 */
+	int LDT_CNUMERIC_MIN = 32;
+
+	/**
+	 * The feature id for the '<em><b>Min</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNUMERIC_MIN__MIN = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>LDt CNumeric Min</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNUMERIC_MIN_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNUMERIC_MIN___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CNumeric Min</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNUMERIC_MIN_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCNotNullImpl <em>LDt CNot Null</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCNotNullImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCNotNull()
+	 * @generated
+	 */
+	int LDT_CNOT_NULL = 33;
+
+	/**
+	 * The number of structural features of the '<em>LDt CNot Null</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNOT_NULL_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNOT_NULL___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CNot Null</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNOT_NULL_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCNullImpl <em>LDt CNull</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCNullImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCNull()
+	 * @generated
+	 */
+	int LDT_CNULL = 34;
+
+	/**
+	 * The number of structural features of the '<em>LDt CNull</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNULL_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNULL___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CNull</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CNULL_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCRegExImpl <em>LDt CReg Ex</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCRegExImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCRegEx()
+	 * @generated
+	 */
+	int LDT_CREG_EX = 35;
+
+	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CREG_EX__PATTERN = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>LDt CReg Ex</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CREG_EX_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CREG_EX___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CReg Ex</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CREG_EX_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCSizeImpl <em>LDt CSize</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCSizeImpl
+	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCSize()
+	 * @generated
+	 */
+	int LDT_CSIZE = 36;
+
+	/**
+	 * The feature id for the '<em><b>Min</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CSIZE__MIN = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Max</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CSIZE__MAX = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>LDt CSize</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CSIZE_FEATURE_COUNT = LDATATYPE_CONSTRAINT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>EResolve Proxy</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CSIZE___ERESOLVE_PROXY__INTERNALEOBJECT = LDATATYPE_CONSTRAINT___ERESOLVE_PROXY__INTERNALEOBJECT;
+
+	/**
+	 * The number of operations of the '<em>LDt CSize</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDT_CSIZE_OPERATION_COUNT = LDATATYPE_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.impl.LAttributeMatchingConstraintImpl <em>LAttribute Matching Constraint</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1777,7 +2385,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLAttributeMatchingConstraint()
 	 * @generated
 	 */
-	int LATTRIBUTE_MATCHING_CONSTRAINT = 23;
+	int LATTRIBUTE_MATCHING_CONSTRAINT = 37;
 
 	/**
 	 * The feature id for the '<em><b>Attribute</b></em>' reference.
@@ -1850,7 +2458,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDateType()
 	 * @generated
 	 */
-	int LDATE_TYPE = 24;
+	int LDATE_TYPE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LVisibility <em>LVisibility</em>}' enum.
@@ -1860,7 +2468,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLVisibility()
 	 * @generated
 	 */
-	int LVISIBILITY = 25;
+	int LVISIBILITY = 39;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LLowerBound <em>LLower Bound</em>}' enum.
@@ -1870,7 +2478,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLLowerBound()
 	 * @generated
 	 */
-	int LLOWER_BOUND = 26;
+	int LLOWER_BOUND = 40;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LUpperBound <em>LUpper Bound</em>}' enum.
@@ -1880,7 +2488,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLUpperBound()
 	 * @generated
 	 */
-	int LUPPER_BOUND = 27;
+	int LUPPER_BOUND = 41;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.common.types.LComparatorType <em>LComparator Type</em>}' enum.
@@ -1890,7 +2498,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLComparatorType()
 	 * @generated
 	 */
-	int LCOMPARATOR_TYPE = 28;
+	int LCOMPARATOR_TYPE = 42;
 
 	/**
 	 * The meta object id for the '<em>Operations List</em>' data type.
@@ -1900,7 +2508,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getOperationsList()
 	 * @generated
 	 */
-	int OPERATIONS_LIST = 29;
+	int OPERATIONS_LIST = 43;
 
 	/**
 	 * The meta object id for the '<em>Features List</em>' data type.
@@ -1910,7 +2518,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getFeaturesList()
 	 * @generated
 	 */
-	int FEATURES_LIST = 30;
+	int FEATURES_LIST = 44;
 
 	/**
 	 * The meta object id for the '<em>Annotation List</em>' data type.
@@ -1920,7 +2528,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getAnnotationList()
 	 * @generated
 	 */
-	int ANNOTATION_LIST = 31;
+	int ANNOTATION_LIST = 45;
 
 	/**
 	 * The meta object id for the '<em>Internal EObject</em>' data type.
@@ -1930,7 +2538,7 @@ public interface LunTypesPackage extends EPackage {
 	 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getInternalEObject()
 	 * @generated
 	 */
-	int INTERNAL_EOBJECT = 32;
+	int INTERNAL_EOBJECT = 46;
 
 
 	/**
@@ -2282,6 +2890,17 @@ public interface LunTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLDataType_SyntheticType();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.dsl.semantic.common.types.LDataType#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDataType#getConstraints()
+	 * @see #getLDataType()
+	 * @generated
+	 */
+	EReference getLDataType_Constraints();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LEnum <em>LEnum</em>}'.
@@ -2905,6 +3524,245 @@ public interface LunTypesPackage extends EPackage {
 	EClass getLConstraint();
 
 	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDatatypeConstraint <em>LDatatype Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDatatype Constraint</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDatatypeConstraint
+	 * @generated
+	 */
+	EClass getLDatatypeConstraint();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCAssertFalse <em>LDt CAssert False</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CAssert False</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCAssertFalse
+	 * @generated
+	 */
+	EClass getLDtCAssertFalse();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCAssertTrue <em>LDt CAssert True</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CAssert True</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCAssertTrue
+	 * @generated
+	 */
+	EClass getLDtCAssertTrue();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMax <em>LDt CDecimal Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CDecimal Max</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDecimalMax
+	 * @generated
+	 */
+	EClass getLDtCDecimalMax();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMax#getMax <em>Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDecimalMax#getMax()
+	 * @see #getLDtCDecimalMax()
+	 * @generated
+	 */
+	EAttribute getLDtCDecimalMax_Max();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMin <em>LDt CDecimal Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CDecimal Min</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDecimalMin
+	 * @generated
+	 */
+	EClass getLDtCDecimalMin();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMin#getMin <em>Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDecimalMin#getMin()
+	 * @see #getLDtCDecimalMin()
+	 * @generated
+	 */
+	EAttribute getLDtCDecimalMin_Min();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCDigits <em>LDt CDigits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CDigits</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDigits
+	 * @generated
+	 */
+	EClass getLDtCDigits();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCDigits#getIntDigits <em>Int Digits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Int Digits</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDigits#getIntDigits()
+	 * @see #getLDtCDigits()
+	 * @generated
+	 */
+	EAttribute getLDtCDigits_IntDigits();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCDigits#getFractionDigits <em>Fraction Digits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fraction Digits</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDigits#getFractionDigits()
+	 * @see #getLDtCDigits()
+	 * @generated
+	 */
+	EAttribute getLDtCDigits_FractionDigits();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCFuture <em>LDt CFuture</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CFuture</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCFuture
+	 * @generated
+	 */
+	EClass getLDtCFuture();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCPast <em>LDt CPast</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CPast</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCPast
+	 * @generated
+	 */
+	EClass getLDtCPast();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCNumericMax <em>LDt CNumeric Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CNumeric Max</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNumericMax
+	 * @generated
+	 */
+	EClass getLDtCNumericMax();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCNumericMax#getMax <em>Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNumericMax#getMax()
+	 * @see #getLDtCNumericMax()
+	 * @generated
+	 */
+	EAttribute getLDtCNumericMax_Max();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCNumericMin <em>LDt CNumeric Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CNumeric Min</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNumericMin
+	 * @generated
+	 */
+	EClass getLDtCNumericMin();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCNumericMin#getMin <em>Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNumericMin#getMin()
+	 * @see #getLDtCNumericMin()
+	 * @generated
+	 */
+	EAttribute getLDtCNumericMin_Min();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCNotNull <em>LDt CNot Null</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CNot Null</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNotNull
+	 * @generated
+	 */
+	EClass getLDtCNotNull();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCNull <em>LDt CNull</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CNull</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNull
+	 * @generated
+	 */
+	EClass getLDtCNull();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCRegEx <em>LDt CReg Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CReg Ex</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCRegEx
+	 * @generated
+	 */
+	EClass getLDtCRegEx();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCRegEx#getPattern <em>Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCRegEx#getPattern()
+	 * @see #getLDtCRegEx()
+	 * @generated
+	 */
+	EAttribute getLDtCRegEx_Pattern();
+
+	/**
+	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LDtCSize <em>LDt CSize</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LDt CSize</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCSize
+	 * @generated
+	 */
+	EClass getLDtCSize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCSize#getMin <em>Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCSize#getMin()
+	 * @see #getLDtCSize()
+	 * @generated
+	 */
+	EAttribute getLDtCSize_Min();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.common.types.LDtCSize#getMax <em>Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max</em>'.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCSize#getMax()
+	 * @see #getLDtCSize()
+	 * @generated
+	 */
+	EAttribute getLDtCSize_Max();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint <em>LAttribute Matching Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3358,6 +4216,14 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LDATA_TYPE__SYNTHETIC_TYPE = eINSTANCE.getLDataType_SyntheticType();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LDATA_TYPE__CONSTRAINTS = eINSTANCE.getLDataType_Constraints();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LEnumImpl <em>LEnum</em>}' class.
@@ -3848,6 +4714,218 @@ public interface LunTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LCONSTRAINT = eINSTANCE.getLConstraint();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.LDatatypeConstraint <em>LDatatype Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.LDatatypeConstraint
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDatatypeConstraint()
+		 * @generated
+		 */
+		EClass LDATATYPE_CONSTRAINT = eINSTANCE.getLDatatypeConstraint();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCAssertFalseImpl <em>LDt CAssert False</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCAssertFalseImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCAssertFalse()
+		 * @generated
+		 */
+		EClass LDT_CASSERT_FALSE = eINSTANCE.getLDtCAssertFalse();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCAssertTrueImpl <em>LDt CAssert True</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCAssertTrueImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCAssertTrue()
+		 * @generated
+		 */
+		EClass LDT_CASSERT_TRUE = eINSTANCE.getLDtCAssertTrue();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCDecimalMaxImpl <em>LDt CDecimal Max</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCDecimalMaxImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCDecimalMax()
+		 * @generated
+		 */
+		EClass LDT_CDECIMAL_MAX = eINSTANCE.getLDtCDecimalMax();
+
+		/**
+		 * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CDECIMAL_MAX__MAX = eINSTANCE.getLDtCDecimalMax_Max();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCDecimalMinImpl <em>LDt CDecimal Min</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCDecimalMinImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCDecimalMin()
+		 * @generated
+		 */
+		EClass LDT_CDECIMAL_MIN = eINSTANCE.getLDtCDecimalMin();
+
+		/**
+		 * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CDECIMAL_MIN__MIN = eINSTANCE.getLDtCDecimalMin_Min();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCDigitsImpl <em>LDt CDigits</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCDigitsImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCDigits()
+		 * @generated
+		 */
+		EClass LDT_CDIGITS = eINSTANCE.getLDtCDigits();
+
+		/**
+		 * The meta object literal for the '<em><b>Int Digits</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CDIGITS__INT_DIGITS = eINSTANCE.getLDtCDigits_IntDigits();
+
+		/**
+		 * The meta object literal for the '<em><b>Fraction Digits</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CDIGITS__FRACTION_DIGITS = eINSTANCE.getLDtCDigits_FractionDigits();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCFutureImpl <em>LDt CFuture</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCFutureImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCFuture()
+		 * @generated
+		 */
+		EClass LDT_CFUTURE = eINSTANCE.getLDtCFuture();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCPastImpl <em>LDt CPast</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCPastImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCPast()
+		 * @generated
+		 */
+		EClass LDT_CPAST = eINSTANCE.getLDtCPast();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCNumericMaxImpl <em>LDt CNumeric Max</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCNumericMaxImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCNumericMax()
+		 * @generated
+		 */
+		EClass LDT_CNUMERIC_MAX = eINSTANCE.getLDtCNumericMax();
+
+		/**
+		 * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CNUMERIC_MAX__MAX = eINSTANCE.getLDtCNumericMax_Max();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCNumericMinImpl <em>LDt CNumeric Min</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCNumericMinImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCNumericMin()
+		 * @generated
+		 */
+		EClass LDT_CNUMERIC_MIN = eINSTANCE.getLDtCNumericMin();
+
+		/**
+		 * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CNUMERIC_MIN__MIN = eINSTANCE.getLDtCNumericMin_Min();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCNotNullImpl <em>LDt CNot Null</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCNotNullImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCNotNull()
+		 * @generated
+		 */
+		EClass LDT_CNOT_NULL = eINSTANCE.getLDtCNotNull();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCNullImpl <em>LDt CNull</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCNullImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCNull()
+		 * @generated
+		 */
+		EClass LDT_CNULL = eINSTANCE.getLDtCNull();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCRegExImpl <em>LDt CReg Ex</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCRegExImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCRegEx()
+		 * @generated
+		 */
+		EClass LDT_CREG_EX = eINSTANCE.getLDtCRegEx();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CREG_EX__PATTERN = eINSTANCE.getLDtCRegEx_Pattern();
+
+		/**
+		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LDtCSizeImpl <em>LDt CSize</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LDtCSizeImpl
+		 * @see org.lunifera.dsl.semantic.common.types.impl.LunTypesPackageImpl#getLDtCSize()
+		 * @generated
+		 */
+		EClass LDT_CSIZE = eINSTANCE.getLDtCSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CSIZE__MIN = eINSTANCE.getLDtCSize_Min();
+
+		/**
+		 * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LDT_CSIZE__MAX = eINSTANCE.getLDtCSize_Max();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.common.types.impl.LAttributeMatchingConstraintImpl <em>LAttribute Matching Constraint</em>}' class.

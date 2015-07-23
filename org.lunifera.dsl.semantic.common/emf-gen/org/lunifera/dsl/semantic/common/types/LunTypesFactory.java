@@ -195,6 +195,123 @@ public interface LunTypesFactory extends EFactory {
 	LConstraints createLConstraints();
 
 	/**
+	 * Returns a new object of class '<em>LDt CAssert False</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CAssert False</em>'.
+	 * @generated
+	 */
+	LDtCAssertFalse createLDtCAssertFalse();
+
+	/**
+	 * Returns a new object of class '<em>LDt CAssert True</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CAssert True</em>'.
+	 * @generated
+	 */
+	LDtCAssertTrue createLDtCAssertTrue();
+
+	/**
+	 * Returns a new object of class '<em>LDt CDecimal Max</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CDecimal Max</em>'.
+	 * @generated
+	 */
+	LDtCDecimalMax createLDtCDecimalMax();
+
+	/**
+	 * Returns a new object of class '<em>LDt CDecimal Min</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CDecimal Min</em>'.
+	 * @generated
+	 */
+	LDtCDecimalMin createLDtCDecimalMin();
+
+	/**
+	 * Returns a new object of class '<em>LDt CDigits</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CDigits</em>'.
+	 * @generated
+	 */
+	LDtCDigits createLDtCDigits();
+
+	/**
+	 * Returns a new object of class '<em>LDt CFuture</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CFuture</em>'.
+	 * @generated
+	 */
+	LDtCFuture createLDtCFuture();
+
+	/**
+	 * Returns a new object of class '<em>LDt CPast</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CPast</em>'.
+	 * @generated
+	 */
+	LDtCPast createLDtCPast();
+
+	/**
+	 * Returns a new object of class '<em>LDt CNumeric Max</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CNumeric Max</em>'.
+	 * @generated
+	 */
+	LDtCNumericMax createLDtCNumericMax();
+
+	/**
+	 * Returns a new object of class '<em>LDt CNumeric Min</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CNumeric Min</em>'.
+	 * @generated
+	 */
+	LDtCNumericMin createLDtCNumericMin();
+
+	/**
+	 * Returns a new object of class '<em>LDt CNot Null</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CNot Null</em>'.
+	 * @generated
+	 */
+	LDtCNotNull createLDtCNotNull();
+
+	/**
+	 * Returns a new object of class '<em>LDt CNull</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CNull</em>'.
+	 * @generated
+	 */
+	LDtCNull createLDtCNull();
+
+	/**
+	 * Returns a new object of class '<em>LDt CReg Ex</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CReg Ex</em>'.
+	 * @generated
+	 */
+	LDtCRegEx createLDtCRegEx();
+
+	/**
+	 * Returns a new object of class '<em>LDt CSize</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LDt CSize</em>'.
+	 * @generated
+	 */
+	LDtCSize createLDtCSize();
+
+	/**
 	 * Returns a new object of class '<em>LAttribute Matching Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

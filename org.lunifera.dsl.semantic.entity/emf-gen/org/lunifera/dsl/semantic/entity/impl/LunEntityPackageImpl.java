@@ -545,6 +545,15 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLEntity_PersistenceUnit() {
+		return (EAttribute)lEntityEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getLEntity__GetOperations() {
 		return lEntityEClass.getEOperations().get(0);
 	}
@@ -1092,6 +1101,7 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		createEReference(lEntityEClass, LENTITY__SUPER_TYPE);
 		createEReference(lEntityEClass, LENTITY__SUPER_TYPE_JVM);
 		createEReference(lEntityEClass, LENTITY__SUB_TYPES);
+		createEAttribute(lEntityEClass, LENTITY__PERSISTENCE_UNIT);
 		createEOperation(lEntityEClass, LENTITY___GET_OPERATIONS);
 		createEOperation(lEntityEClass, LENTITY___GET_REFERENCES);
 		createEOperation(lEntityEClass, LENTITY___GET_ATTRIBUTES);
@@ -1262,6 +1272,7 @@ public class LunEntityPackageImpl extends EPackageImpl implements LunEntityPacka
 		initEReference(getLEntity_SuperType(), this.getLEntity(), this.getLEntity_SubTypes(), "superType", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLEntity_SuperTypeJvm(), theTypesPackage.getJvmTypeReference(), null, "superTypeJvm", null, 0, 1, LEntity.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLEntity_SubTypes(), this.getLEntity(), this.getLEntity_SuperType(), "subTypes", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLEntity_PersistenceUnit(), theEcorePackage.getEString(), "persistenceUnit", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getLEntity__GetOperations(), this.getOperationsList(), "getOperations", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

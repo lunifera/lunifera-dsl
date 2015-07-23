@@ -20,15 +20,19 @@ package org.lunifera.dsl.common.datatypes {
 	datatype byte jvmType java.lang.Byte as primitive;
 
 	datatype Boolean jvmType java.lang.Boolean;
-	datatype Short jvmType java.lang.Short;
+	datatype Short jvmType java.lang.Short ;
 	datatype Int jvmType java.lang.Integer;
-	datatype Long jvmType java.lang.Long;
-	datatype Double jvmType java.lang.Double;
-	datatype Float jvmType java.lang.Float;
+	datatype Long jvmType java.lang.Long ;
+	datatype Double jvmType java.lang.Double ;
+	datatype Float jvmType java.lang.Float ;
 	datatype Character jvmType java.lang.Character;
 	datatype Byte jvmType java.lang.Byte;
 
-	datatype String jvmType java.lang.String;
+	datatype String jvmType java.lang.String isNotNull;
+	datatype StringNotNull jvmType java.lang.String;
 	datatype Date dateType date;
-	 
+
+	datatype String_SomeA jvmType String minSize(00) maxSize(6) isNotNull;
+	datatype Future dateType date isFuture;
+
 }

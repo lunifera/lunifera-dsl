@@ -33,6 +33,7 @@ Class returns LClass:
 	'{'
 	(persistenceInfo=EntityPersistenceInfo)
 	(inheritanceStrategy=EntityInheritanceStrategy)?
+	('persistenceUnit' persistenceUnit=STRING)?
 	features+=EntityFeature*
 	(indexes+=Index)*
 	'}'
@@ -41,6 +42,7 @@ Class returns LClass:
 	mappedSuperclass?='mapped superclass' ('extends' superType=[entity::LEntity])?
 	name=ValidIDWithKeywords
 	'{'
+	('persistenceUnit' persistenceUnit=STRING)?
 	features+=EntityFeature*
 	'}'
 	|
@@ -70,21 +72,21 @@ EntityFeature returns entity::LEntityFeature:
 	(({entity::LEntityReference.annotationInfo=current}
 	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
 	(persistenceInfo=ColumnPersistenceInfo)?
-	('opposite' opposite=[entity::LEntityReference|LFQN])? ('properties' '(' properties+=KeyAndValue (','
+	('opposite' opposite=[entity::LEntityReference|LFQN])? ('properties' '(' properties+=KeyAndValue (', '
 	properties+=KeyAndValue)* ')')? (constraints=Constraints | ';')))
 	|
 	({entity::LEntityAttribute.annotationInfo=current}
-	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (','
+	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (', '
 	properties+=KeyAndValue)* ')')? ';')
 	|
 	(derived?='derived' (domainDescription?='domainDescription')? type=[LScalarType] name=TRANSLATABLEID ('properties' '('
-	properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')?
+	properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?
 	derivedGetterExpression=XBlockExpression)
 	|
 	(('var' | id?='id' | uuid?='uuid' | version?="version" | domainDescription?='domainDescription' |
 	domainKey?='domainKey') type=[LScalarType] multiplicity=Multiplicity?
 	name=TRANSLATABLEID (persistenceInfo=ColumnPersistenceInfo)? ('opposite' opposite=[entity::LBeanReference|LFQN])?
-	('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')?
+	('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?
 	';')))
 	|
 	({entity::LOperation.annotationInfo=current}
@@ -97,15 +99,15 @@ BeanFeature returns entity::LBeanFeature:
 	annotations+=AnnotationDef*
 	(({entity::LBeanReference.annotationInfo=current}
 	('ref' (cascading?='cascade')? type=[LType] multiplicity=Multiplicity? name=TRANSLATABLEID
-	('opposite' opposite=[LReference|LFQN])? ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)*
+	('opposite' opposite=[LReference|LFQN])? ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)*
 	')')? (constraints=Constraints | ';')))
 	|
 	({entity::LBeanAttribute.annotationInfo=current}
-	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (','
+	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (', '
 	properties+=KeyAndValue)* ')')?)
 	|
 	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
-	name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')?
+	name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?
 	';')))
 	|
 	({entity::LOperation.annotationInfo=current}

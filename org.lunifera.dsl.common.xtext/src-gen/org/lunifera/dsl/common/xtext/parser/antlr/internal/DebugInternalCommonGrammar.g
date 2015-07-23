@@ -98,7 +98,11 @@ ruleJvmTypeReference
  
 
 )
-)?)
+)?(
+(
+ruleDataTypeConstraint
+)
+)*)
     |((
 (
 	'dateType' 
@@ -109,14 +113,281 @@ ruleJvmTypeReference
 (
 ruleDateType
 )
-))
-    |(
+)(
+(
+ruleDateConstraint
+)
+)*)
+    |((
 (
 	'as blob' 
  
 
 )
-))	';' 
+)(
+(
+ruleBlobTypeConstraint
+)
+)*))	';' 
+)
+;
+
+
+
+
+
+
+// Rule DataTypeConstraint
+ruleDataTypeConstraint :
+(	ruleDtCAssertFalse
+    |	ruleDtCAssertTrue
+    |	ruleDtCDecimalMax
+    |	ruleDtCDecimalMin
+    |	ruleDtCDigits
+    |	ruleDtCNumericMax
+    |	ruleDtCNumericMin
+    |	ruleDtCNotNull
+    |	ruleDtCNull
+    |	ruleDtCRegEx
+    |	ruleDtCSize)
+;
+
+
+
+
+
+
+// Rule DateConstraint
+ruleDateConstraint :
+(	ruleDtCFuture
+    |	ruleDtCPast)
+;
+
+
+
+
+
+
+// Rule BlobTypeConstraint
+ruleBlobTypeConstraint :
+(	ruleDtCNotNull
+    |	ruleDtCNull)
+;
+
+
+
+
+
+
+// Rule DtCAssertFalse
+ruleDtCAssertFalse :
+((
+)	'isFalse' 
+)
+;
+
+
+
+
+
+
+// Rule DtCAssertTrue
+ruleDtCAssertTrue :
+((
+)	'isTrue' 
+)
+;
+
+
+
+
+
+
+// Rule DtCDecimalMax
+ruleDtCDecimalMax :
+((
+)	'maxDecimal' 
+	'(' 
+(
+(
+ruleLDecimal
+)
+)	')' 
+)
+;
+
+
+
+
+
+
+// Rule DtCDecimalMin
+ruleDtCDecimalMin :
+((
+)	'minDecimal' 
+	'(' 
+(
+(
+ruleLDecimal
+)
+)	')' 
+)
+;
+
+
+
+
+
+
+// Rule DtCDigits
+ruleDtCDigits :
+((
+)	'digits' 
+	'(' 
+(
+(
+RULE_INT
+
+)
+)	',' 
+(
+(
+RULE_INT
+
+)
+)	')' 
+)
+;
+
+
+
+
+
+
+// Rule DtCFuture
+ruleDtCFuture :
+((
+)	'isFuture' 
+)
+;
+
+
+
+
+
+
+// Rule DtCPast
+ruleDtCPast :
+((
+)	'isPast' 
+)
+;
+
+
+
+
+
+
+// Rule DtCNumericMax
+ruleDtCNumericMax :
+((
+)	'maxNumber' 
+	'(' 
+(
+(
+RULE_INT
+
+)
+)	')' 
+)
+;
+
+
+
+
+
+
+// Rule DtCNumericMin
+ruleDtCNumericMin :
+((
+)	'minNumber' 
+	'(' 
+(
+(
+RULE_INT
+
+)
+)	')' 
+)
+;
+
+
+
+
+
+
+// Rule DtCNotNull
+ruleDtCNotNull :
+((
+)	'isNotNull' 
+)
+;
+
+
+
+
+
+
+// Rule DtCNull
+ruleDtCNull :
+((
+)	'isNull' 
+)
+;
+
+
+
+
+
+
+// Rule DtCRegEx
+ruleDtCRegEx :
+((
+)	'regex' 
+	'(' 
+(
+(
+RULE_STRING
+
+)
+)	')' 
+)
+;
+
+
+
+
+
+
+// Rule DtCSize
+ruleDtCSize :
+((
+)	'minSize' 
+	'(' 
+(
+(
+RULE_INT
+
+)
+)	')' 
+	'maxSize' 
+	'(' 
+(
+(
+RULE_INT
+
+)
+)	')' 
 )
 ;
 
@@ -347,6 +618,16 @@ ruleValidIDWithKeywords :
 
 
 
+
+
+
+
+
+
+// Rule LDecimal
+ruleLDecimal :
+RULE_DECIMAL
+    ;
 
 
 

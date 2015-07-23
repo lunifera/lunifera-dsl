@@ -93,7 +93,11 @@ Workflow {
 				fileExtensions = fileExtensions
 			}
 			fragment = XtextAntlrGeneratorFragment {
-				options = auto-inject {}
+				options = {
+					classSplitting = true
+					fieldsPerClass = "150"
+					methodsPerClass = "300"
+				}
 			}
 			fragment = DebugAntlrGeneratorFragment {
 				options = auto-inject {}
@@ -113,7 +117,11 @@ Workflow {
 			}
 			fragment = contentAssist.JavaBasedContentAssistFragment {}
 			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
-				options = auto-inject {}
+				options = {
+					classSplitting = true
+					fieldsPerClass = "100"
+					methodsPerClass = "200"
+				}
 			}
 			fragment = refactoring.RefactorElementNameFragment {
 				useJdtRefactoring = true

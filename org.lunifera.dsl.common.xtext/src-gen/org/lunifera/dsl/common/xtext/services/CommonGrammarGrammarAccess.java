@@ -171,22 +171,31 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cJvmTypeReferenceJvmTypeReferenceParserRuleCall_2_0_1_0 = (RuleCall)cJvmTypeReferenceAssignment_2_0_1.eContents().get(0);
 		private final Assignment cAsPrimitiveAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
 		private final Keyword cAsPrimitiveAsPrimitiveKeyword_2_0_2_0 = (Keyword)cAsPrimitiveAssignment_2_0_2.eContents().get(0);
+		private final Assignment cConstraintsAssignment_2_0_3 = (Assignment)cGroup_2_0.eContents().get(3);
+		private final RuleCall cConstraintsDataTypeConstraintParserRuleCall_2_0_3_0 = (RuleCall)cConstraintsAssignment_2_0_3.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
 		private final Assignment cDateAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
 		private final Keyword cDateDateTypeKeyword_2_1_0_0 = (Keyword)cDateAssignment_2_1_0.eContents().get(0);
 		private final Assignment cDateTypeAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
 		private final RuleCall cDateTypeDateTypeEnumRuleCall_2_1_1_0 = (RuleCall)cDateTypeAssignment_2_1_1.eContents().get(0);
-		private final Assignment cAsBlobAssignment_2_2 = (Assignment)cAlternatives_2.eContents().get(2);
-		private final Keyword cAsBlobAsBlobKeyword_2_2_0 = (Keyword)cAsBlobAssignment_2_2.eContents().get(0);
+		private final Assignment cConstraintsAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cConstraintsDateConstraintParserRuleCall_2_1_2_0 = (RuleCall)cConstraintsAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cAlternatives_2.eContents().get(2);
+		private final Assignment cAsBlobAssignment_2_2_0 = (Assignment)cGroup_2_2.eContents().get(0);
+		private final Keyword cAsBlobAsBlobKeyword_2_2_0_0 = (Keyword)cAsBlobAssignment_2_2_0.eContents().get(0);
+		private final Assignment cConstraintsAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final RuleCall cConstraintsBlobTypeConstraintParserRuleCall_2_2_1_0 = (RuleCall)cConstraintsAssignment_2_2_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//DataType returns types::LDataType:
-		//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? |
-		//	date?="dateType" dateType=DateType | asBlob?="as blob") ";";
+		//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"?
+		//	constraints+=DataTypeConstraint* | date?="dateType" dateType=DateType constraints+=DateConstraint* | asBlob?="as blob"
+		//	constraints+=BlobTypeConstraint*) ";";
 		public ParserRule getRule() { return rule; }
 
-		//"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? |
-		//date?="dateType" dateType=DateType | asBlob?="as blob") ";"
+		//"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"?
+		//constraints+=DataTypeConstraint* | date?="dateType" dateType=DateType constraints+=DateConstraint* | asBlob?="as blob"
+		//constraints+=BlobTypeConstraint*) ";"
 		public Group getGroup() { return cGroup; }
 
 		//"datatype"
@@ -198,11 +207,11 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidIDWithKeywords
 		public RuleCall getNameValidIDWithKeywordsParserRuleCall_1_0() { return cNameValidIDWithKeywordsParserRuleCall_1_0; }
 
-		//"jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? | date?="dateType" dateType=DateType |
-		//asBlob?="as blob"
+		//"jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? constraints+=DataTypeConstraint* |
+		//date?="dateType" dateType=DateType constraints+=DateConstraint* | asBlob?="as blob" constraints+=BlobTypeConstraint*
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//"jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"?
+		//"jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? constraints+=DataTypeConstraint*
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//"jvmType"
@@ -220,7 +229,13 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"as primitive"
 		public Keyword getAsPrimitiveAsPrimitiveKeyword_2_0_2_0() { return cAsPrimitiveAsPrimitiveKeyword_2_0_2_0; }
 
-		//date?="dateType" dateType=DateType
+		//constraints+=DataTypeConstraint*
+		public Assignment getConstraintsAssignment_2_0_3() { return cConstraintsAssignment_2_0_3; }
+
+		//DataTypeConstraint
+		public RuleCall getConstraintsDataTypeConstraintParserRuleCall_2_0_3_0() { return cConstraintsDataTypeConstraintParserRuleCall_2_0_3_0; }
+
+		//date?="dateType" dateType=DateType constraints+=DateConstraint*
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//date?="dateType"
@@ -235,14 +250,531 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//DateType
 		public RuleCall getDateTypeDateTypeEnumRuleCall_2_1_1_0() { return cDateTypeDateTypeEnumRuleCall_2_1_1_0; }
 
+		//constraints+=DateConstraint*
+		public Assignment getConstraintsAssignment_2_1_2() { return cConstraintsAssignment_2_1_2; }
+
+		//DateConstraint
+		public RuleCall getConstraintsDateConstraintParserRuleCall_2_1_2_0() { return cConstraintsDateConstraintParserRuleCall_2_1_2_0; }
+
+		//asBlob?="as blob" constraints+=BlobTypeConstraint*
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
 		//asBlob?="as blob"
-		public Assignment getAsBlobAssignment_2_2() { return cAsBlobAssignment_2_2; }
+		public Assignment getAsBlobAssignment_2_2_0() { return cAsBlobAssignment_2_2_0; }
 
 		//"as blob"
-		public Keyword getAsBlobAsBlobKeyword_2_2_0() { return cAsBlobAsBlobKeyword_2_2_0; }
+		public Keyword getAsBlobAsBlobKeyword_2_2_0_0() { return cAsBlobAsBlobKeyword_2_2_0_0; }
+
+		//constraints+=BlobTypeConstraint*
+		public Assignment getConstraintsAssignment_2_2_1() { return cConstraintsAssignment_2_2_1; }
+
+		//BlobTypeConstraint
+		public RuleCall getConstraintsBlobTypeConstraintParserRuleCall_2_2_1_0() { return cConstraintsBlobTypeConstraintParserRuleCall_2_2_1_0; }
 
 		//";"
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+
+	public class DataTypeConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DataTypeConstraint");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cDtCAssertFalseParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDtCAssertTrueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cDtCDecimalMaxParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cDtCDecimalMinParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cDtCDigitsParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cDtCNumericMaxParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cDtCNumericMinParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cDtCNotNullParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cDtCNullParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cDtCRegExParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
+		private final RuleCall cDtCSizeParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		
+		//DataTypeConstraint returns types::LDatatypeConstraint:
+		//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
+		//	DtCNotNull | DtCNull | DtCRegEx | DtCSize;
+		public ParserRule getRule() { return rule; }
+
+		//DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin | DtCNotNull
+		//| DtCNull | DtCRegEx | DtCSize
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//DtCAssertFalse
+		public RuleCall getDtCAssertFalseParserRuleCall_0() { return cDtCAssertFalseParserRuleCall_0; }
+
+		//DtCAssertTrue
+		public RuleCall getDtCAssertTrueParserRuleCall_1() { return cDtCAssertTrueParserRuleCall_1; }
+
+		//DtCDecimalMax
+		public RuleCall getDtCDecimalMaxParserRuleCall_2() { return cDtCDecimalMaxParserRuleCall_2; }
+
+		//DtCDecimalMin
+		public RuleCall getDtCDecimalMinParserRuleCall_3() { return cDtCDecimalMinParserRuleCall_3; }
+
+		//DtCDigits
+		public RuleCall getDtCDigitsParserRuleCall_4() { return cDtCDigitsParserRuleCall_4; }
+
+		//DtCNumericMax
+		public RuleCall getDtCNumericMaxParserRuleCall_5() { return cDtCNumericMaxParserRuleCall_5; }
+
+		//DtCNumericMin
+		public RuleCall getDtCNumericMinParserRuleCall_6() { return cDtCNumericMinParserRuleCall_6; }
+
+		//DtCNotNull
+		public RuleCall getDtCNotNullParserRuleCall_7() { return cDtCNotNullParserRuleCall_7; }
+
+		//DtCNull
+		public RuleCall getDtCNullParserRuleCall_8() { return cDtCNullParserRuleCall_8; }
+
+		//DtCRegEx
+		public RuleCall getDtCRegExParserRuleCall_9() { return cDtCRegExParserRuleCall_9; }
+
+		//DtCSize
+		public RuleCall getDtCSizeParserRuleCall_10() { return cDtCSizeParserRuleCall_10; }
+	}
+
+	public class DateConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DateConstraint");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cDtCFutureParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDtCPastParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//DateConstraint returns types::LDatatypeConstraint:
+		//	DtCFuture | DtCPast;
+		public ParserRule getRule() { return rule; }
+
+		//DtCFuture | DtCPast
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//DtCFuture
+		public RuleCall getDtCFutureParserRuleCall_0() { return cDtCFutureParserRuleCall_0; }
+
+		//DtCPast
+		public RuleCall getDtCPastParserRuleCall_1() { return cDtCPastParserRuleCall_1; }
+	}
+
+	public class BlobTypeConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BlobTypeConstraint");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cDtCNotNullParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDtCNullParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//BlobTypeConstraint returns types::LDatatypeConstraint:
+		//	DtCNotNull | DtCNull;
+		public ParserRule getRule() { return rule; }
+
+		//DtCNotNull | DtCNull
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//DtCNotNull
+		public RuleCall getDtCNotNullParserRuleCall_0() { return cDtCNotNullParserRuleCall_0; }
+
+		//DtCNull
+		public RuleCall getDtCNullParserRuleCall_1() { return cDtCNullParserRuleCall_1; }
+	}
+
+	public class DtCAssertFalseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCAssertFalse");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCAssertFalseAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIsFalseKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//DtCAssertFalse returns types::LDtCAssertFalse:
+		//	{types::LDtCAssertFalse} "isFalse";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCAssertFalse} "isFalse"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCAssertFalse}
+		public Action getLDtCAssertFalseAction_0() { return cLDtCAssertFalseAction_0; }
+
+		//"isFalse"
+		public Keyword getIsFalseKeyword_1() { return cIsFalseKeyword_1; }
+	}
+
+	public class DtCAssertTrueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCAssertTrue");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCAssertTrueAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIsTrueKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//DtCAssertTrue returns types::LDtCAssertTrue:
+		//	{types::LDtCAssertTrue} "isTrue";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCAssertTrue} "isTrue"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCAssertTrue}
+		public Action getLDtCAssertTrueAction_0() { return cLDtCAssertTrueAction_0; }
+
+		//"isTrue"
+		public Keyword getIsTrueKeyword_1() { return cIsTrueKeyword_1; }
+	}
+
+	public class DtCDecimalMaxElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCDecimalMax");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCDecimalMaxAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cMaxDecimalKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMaxAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMaxLDecimalParserRuleCall_3_0 = (RuleCall)cMaxAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//DtCDecimalMax returns types::LDtCDecimalMax:
+		//	{types::LDtCDecimalMax} "maxDecimal" "(" max=LDecimal ")";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCDecimalMax} "maxDecimal" "(" max=LDecimal ")"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCDecimalMax}
+		public Action getLDtCDecimalMaxAction_0() { return cLDtCDecimalMaxAction_0; }
+
+		//"maxDecimal"
+		public Keyword getMaxDecimalKeyword_1() { return cMaxDecimalKeyword_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//max=LDecimal
+		public Assignment getMaxAssignment_3() { return cMaxAssignment_3; }
+
+		//LDecimal
+		public RuleCall getMaxLDecimalParserRuleCall_3_0() { return cMaxLDecimalParserRuleCall_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
+
+	public class DtCDecimalMinElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCDecimalMin");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCDecimalMinAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cMinDecimalKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMinAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMinLDecimalParserRuleCall_3_0 = (RuleCall)cMinAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//DtCDecimalMin returns types::LDtCDecimalMin:
+		//	{types::LDtCDecimalMin} "minDecimal" "(" min=LDecimal ")";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCDecimalMin} "minDecimal" "(" min=LDecimal ")"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCDecimalMin}
+		public Action getLDtCDecimalMinAction_0() { return cLDtCDecimalMinAction_0; }
+
+		//"minDecimal"
+		public Keyword getMinDecimalKeyword_1() { return cMinDecimalKeyword_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//min=LDecimal
+		public Assignment getMinAssignment_3() { return cMinAssignment_3; }
+
+		//LDecimal
+		public RuleCall getMinLDecimalParserRuleCall_3_0() { return cMinLDecimalParserRuleCall_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
+
+	public class DtCDigitsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCDigits");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCDigitsAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDigitsKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cIntDigitsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cIntDigitsINTTerminalRuleCall_3_0 = (RuleCall)cIntDigitsAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cFractionDigitsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cFractionDigitsINTTerminalRuleCall_5_0 = (RuleCall)cFractionDigitsAssignment_5.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//DtCDigits returns types::LDtCDigits:
+		//	{types::LDtCDigits} "digits" "(" intDigits=INT "," fractionDigits=INT ")";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCDigits} "digits" "(" intDigits=INT "," fractionDigits=INT ")"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCDigits}
+		public Action getLDtCDigitsAction_0() { return cLDtCDigitsAction_0; }
+
+		//"digits"
+		public Keyword getDigitsKeyword_1() { return cDigitsKeyword_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//intDigits=INT
+		public Assignment getIntDigitsAssignment_3() { return cIntDigitsAssignment_3; }
+
+		//INT
+		public RuleCall getIntDigitsINTTerminalRuleCall_3_0() { return cIntDigitsINTTerminalRuleCall_3_0; }
+
+		//","
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+
+		//fractionDigits=INT
+		public Assignment getFractionDigitsAssignment_5() { return cFractionDigitsAssignment_5; }
+
+		//INT
+		public RuleCall getFractionDigitsINTTerminalRuleCall_5_0() { return cFractionDigitsINTTerminalRuleCall_5_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+	}
+
+	public class DtCFutureElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCFuture");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCFutureAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIsFutureKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//DtCFuture returns types::LDtCFuture:
+		//	{types::LDtCFuture} "isFuture";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCFuture} "isFuture"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCFuture}
+		public Action getLDtCFutureAction_0() { return cLDtCFutureAction_0; }
+
+		//"isFuture"
+		public Keyword getIsFutureKeyword_1() { return cIsFutureKeyword_1; }
+	}
+
+	public class DtCPastElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCPast");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCPastAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIsPastKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//DtCPast returns types::LDtCPast:
+		//	{types::LDtCPast} "isPast";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCPast} "isPast"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCPast}
+		public Action getLDtCPastAction_0() { return cLDtCPastAction_0; }
+
+		//"isPast"
+		public Keyword getIsPastKeyword_1() { return cIsPastKeyword_1; }
+	}
+
+	public class DtCNumericMaxElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCNumericMax");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCNumericMaxAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cMaxNumberKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMaxAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMaxINTTerminalRuleCall_3_0 = (RuleCall)cMaxAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//DtCNumericMax returns types::LDtCNumericMax:
+		//	{types::LDtCNumericMax} "maxNumber" "(" max=INT ")";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCNumericMax} "maxNumber" "(" max=INT ")"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCNumericMax}
+		public Action getLDtCNumericMaxAction_0() { return cLDtCNumericMaxAction_0; }
+
+		//"maxNumber"
+		public Keyword getMaxNumberKeyword_1() { return cMaxNumberKeyword_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//max=INT
+		public Assignment getMaxAssignment_3() { return cMaxAssignment_3; }
+
+		//INT
+		public RuleCall getMaxINTTerminalRuleCall_3_0() { return cMaxINTTerminalRuleCall_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
+
+	public class DtCNumericMinElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCNumericMin");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCNumericMinAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cMinNumberKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMinAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMinINTTerminalRuleCall_3_0 = (RuleCall)cMinAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//DtCNumericMin returns types::LDtCNumericMin:
+		//	{types::LDtCNumericMin} "minNumber" "(" min=INT ")";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCNumericMin} "minNumber" "(" min=INT ")"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCNumericMin}
+		public Action getLDtCNumericMinAction_0() { return cLDtCNumericMinAction_0; }
+
+		//"minNumber"
+		public Keyword getMinNumberKeyword_1() { return cMinNumberKeyword_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//min=INT
+		public Assignment getMinAssignment_3() { return cMinAssignment_3; }
+
+		//INT
+		public RuleCall getMinINTTerminalRuleCall_3_0() { return cMinINTTerminalRuleCall_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
+
+	public class DtCNotNullElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCNotNull");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCNotNullAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIsNotNullKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//DtCNotNull returns types::LDtCNotNull:
+		//	{types::LDtCNotNull} "isNotNull";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCNotNull} "isNotNull"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCNotNull}
+		public Action getLDtCNotNullAction_0() { return cLDtCNotNullAction_0; }
+
+		//"isNotNull"
+		public Keyword getIsNotNullKeyword_1() { return cIsNotNullKeyword_1; }
+	}
+
+	public class DtCNullElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCNull");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCNullAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIsNullKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//DtCNull returns types::LDtCNull:
+		//	{types::LDtCNull} "isNull";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCNull} "isNull"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCNull}
+		public Action getLDtCNullAction_0() { return cLDtCNullAction_0; }
+
+		//"isNull"
+		public Keyword getIsNullKeyword_1() { return cIsNullKeyword_1; }
+	}
+
+	public class DtCRegExElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCRegEx");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCRegExAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cRegexKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cPatternAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cPatternSTRINGTerminalRuleCall_3_0 = (RuleCall)cPatternAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//DtCRegEx returns types::LDtCRegEx:
+		//	{types::LDtCRegEx} "regex" "(" pattern=STRING ")";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCRegEx} "regex" "(" pattern=STRING ")"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCRegEx}
+		public Action getLDtCRegExAction_0() { return cLDtCRegExAction_0; }
+
+		//"regex"
+		public Keyword getRegexKeyword_1() { return cRegexKeyword_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//pattern=STRING
+		public Assignment getPatternAssignment_3() { return cPatternAssignment_3; }
+
+		//STRING
+		public RuleCall getPatternSTRINGTerminalRuleCall_3_0() { return cPatternSTRINGTerminalRuleCall_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
+
+	public class DtCSizeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DtCSize");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLDtCSizeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cMinSizeKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMinAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMinINTTerminalRuleCall_3_0 = (RuleCall)cMinAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cMaxSizeKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cMaxAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cMaxINTTerminalRuleCall_7_0 = (RuleCall)cMaxAssignment_7.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		
+		//DtCSize returns types::LDtCSize:
+		//	{types::LDtCSize} "minSize" "(" min=INT ")" "maxSize" "(" max=INT ")";
+		public ParserRule getRule() { return rule; }
+
+		//{types::LDtCSize} "minSize" "(" min=INT ")" "maxSize" "(" max=INT ")"
+		public Group getGroup() { return cGroup; }
+
+		//{types::LDtCSize}
+		public Action getLDtCSizeAction_0() { return cLDtCSizeAction_0; }
+
+		//"minSize"
+		public Keyword getMinSizeKeyword_1() { return cMinSizeKeyword_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//min=INT
+		public Assignment getMinAssignment_3() { return cMinAssignment_3; }
+
+		//INT
+		public RuleCall getMinINTTerminalRuleCall_3_0() { return cMinINTTerminalRuleCall_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+
+		//"maxSize"
+		public Keyword getMaxSizeKeyword_5() { return cMaxSizeKeyword_5; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
+
+		//max=INT
+		public Assignment getMaxAssignment_7() { return cMaxAssignment_7; }
+
+		//INT
+		public RuleCall getMaxINTTerminalRuleCall_7_0() { return cMaxINTTerminalRuleCall_7_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
 	}
 
 	public class ScalarTypeElements extends AbstractParserRuleElementFinder {
@@ -832,6 +1364,18 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getINTTerminalRuleCall() { return cINTTerminalRuleCall; }
 	}
+
+	public class LDecimalElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LDecimal");
+		private final RuleCall cDECIMALTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//LDecimal returns ecore::EFloat:
+		//	DECIMAL;
+		public ParserRule getRule() { return rule; }
+
+		//DECIMAL
+		public RuleCall getDECIMALTerminalRuleCall() { return cDECIMALTerminalRuleCall; }
+	}
 	
 	
 	public class DateTypeElements extends AbstractEnumRuleElementFinder {
@@ -1059,6 +1603,22 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	private final ClassElements pClass;
 	private final ImportElements pImport;
 	private final DataTypeElements pDataType;
+	private final DataTypeConstraintElements pDataTypeConstraint;
+	private final DateConstraintElements pDateConstraint;
+	private final BlobTypeConstraintElements pBlobTypeConstraint;
+	private final DtCAssertFalseElements pDtCAssertFalse;
+	private final DtCAssertTrueElements pDtCAssertTrue;
+	private final DtCDecimalMaxElements pDtCDecimalMax;
+	private final DtCDecimalMinElements pDtCDecimalMin;
+	private final DtCDigitsElements pDtCDigits;
+	private final DtCFutureElements pDtCFuture;
+	private final DtCPastElements pDtCPast;
+	private final DtCNumericMaxElements pDtCNumericMax;
+	private final DtCNumericMinElements pDtCNumericMin;
+	private final DtCNotNullElements pDtCNotNull;
+	private final DtCNullElements pDtCNull;
+	private final DtCRegExElements pDtCRegEx;
+	private final DtCSizeElements pDtCSize;
 	private final DateTypeElements unknownRuleDateType;
 	private final ScalarTypeElements pScalarType;
 	private final ModifierElements pModifier;
@@ -1079,6 +1639,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	private final LowerBoundElements unknownRuleLowerBound;
 	private final UpperBoundElements unknownRuleUpperBound;
 	private final LIntElements pLInt;
+	private final LDecimalElements pLDecimal;
 	
 	private final Grammar grammar;
 
@@ -1094,6 +1655,22 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		this.pClass = new ClassElements();
 		this.pImport = new ImportElements();
 		this.pDataType = new DataTypeElements();
+		this.pDataTypeConstraint = new DataTypeConstraintElements();
+		this.pDateConstraint = new DateConstraintElements();
+		this.pBlobTypeConstraint = new BlobTypeConstraintElements();
+		this.pDtCAssertFalse = new DtCAssertFalseElements();
+		this.pDtCAssertTrue = new DtCAssertTrueElements();
+		this.pDtCDecimalMax = new DtCDecimalMaxElements();
+		this.pDtCDecimalMin = new DtCDecimalMinElements();
+		this.pDtCDigits = new DtCDigitsElements();
+		this.pDtCFuture = new DtCFutureElements();
+		this.pDtCPast = new DtCPastElements();
+		this.pDtCNumericMax = new DtCNumericMaxElements();
+		this.pDtCNumericMin = new DtCNumericMinElements();
+		this.pDtCNotNull = new DtCNotNullElements();
+		this.pDtCNull = new DtCNullElements();
+		this.pDtCRegEx = new DtCRegExElements();
+		this.pDtCSize = new DtCSizeElements();
 		this.unknownRuleDateType = new DateTypeElements();
 		this.pScalarType = new ScalarTypeElements();
 		this.pModifier = new ModifierElements();
@@ -1114,6 +1691,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		this.unknownRuleLowerBound = new LowerBoundElements();
 		this.unknownRuleUpperBound = new UpperBoundElements();
 		this.pLInt = new LIntElements();
+		this.pLDecimal = new LDecimalElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1186,14 +1764,176 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DataType returns types::LDataType:
-	//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"? |
-	//	date?="dateType" dateType=DateType | asBlob?="as blob") ";";
+	//	"datatype" name=ValidIDWithKeywords ("jvmType" jvmTypeReference=JvmTypeReference asPrimitive?="as primitive"?
+	//	constraints+=DataTypeConstraint* | date?="dateType" dateType=DateType constraints+=DateConstraint* | asBlob?="as blob"
+	//	constraints+=BlobTypeConstraint*) ";";
 	public DataTypeElements getDataTypeAccess() {
 		return pDataType;
 	}
 	
 	public ParserRule getDataTypeRule() {
 		return getDataTypeAccess().getRule();
+	}
+
+	//DataTypeConstraint returns types::LDatatypeConstraint:
+	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
+	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize;
+	public DataTypeConstraintElements getDataTypeConstraintAccess() {
+		return pDataTypeConstraint;
+	}
+	
+	public ParserRule getDataTypeConstraintRule() {
+		return getDataTypeConstraintAccess().getRule();
+	}
+
+	//DateConstraint returns types::LDatatypeConstraint:
+	//	DtCFuture | DtCPast;
+	public DateConstraintElements getDateConstraintAccess() {
+		return pDateConstraint;
+	}
+	
+	public ParserRule getDateConstraintRule() {
+		return getDateConstraintAccess().getRule();
+	}
+
+	//BlobTypeConstraint returns types::LDatatypeConstraint:
+	//	DtCNotNull | DtCNull;
+	public BlobTypeConstraintElements getBlobTypeConstraintAccess() {
+		return pBlobTypeConstraint;
+	}
+	
+	public ParserRule getBlobTypeConstraintRule() {
+		return getBlobTypeConstraintAccess().getRule();
+	}
+
+	//DtCAssertFalse returns types::LDtCAssertFalse:
+	//	{types::LDtCAssertFalse} "isFalse";
+	public DtCAssertFalseElements getDtCAssertFalseAccess() {
+		return pDtCAssertFalse;
+	}
+	
+	public ParserRule getDtCAssertFalseRule() {
+		return getDtCAssertFalseAccess().getRule();
+	}
+
+	//DtCAssertTrue returns types::LDtCAssertTrue:
+	//	{types::LDtCAssertTrue} "isTrue";
+	public DtCAssertTrueElements getDtCAssertTrueAccess() {
+		return pDtCAssertTrue;
+	}
+	
+	public ParserRule getDtCAssertTrueRule() {
+		return getDtCAssertTrueAccess().getRule();
+	}
+
+	//DtCDecimalMax returns types::LDtCDecimalMax:
+	//	{types::LDtCDecimalMax} "maxDecimal" "(" max=LDecimal ")";
+	public DtCDecimalMaxElements getDtCDecimalMaxAccess() {
+		return pDtCDecimalMax;
+	}
+	
+	public ParserRule getDtCDecimalMaxRule() {
+		return getDtCDecimalMaxAccess().getRule();
+	}
+
+	//DtCDecimalMin returns types::LDtCDecimalMin:
+	//	{types::LDtCDecimalMin} "minDecimal" "(" min=LDecimal ")";
+	public DtCDecimalMinElements getDtCDecimalMinAccess() {
+		return pDtCDecimalMin;
+	}
+	
+	public ParserRule getDtCDecimalMinRule() {
+		return getDtCDecimalMinAccess().getRule();
+	}
+
+	//DtCDigits returns types::LDtCDigits:
+	//	{types::LDtCDigits} "digits" "(" intDigits=INT "," fractionDigits=INT ")";
+	public DtCDigitsElements getDtCDigitsAccess() {
+		return pDtCDigits;
+	}
+	
+	public ParserRule getDtCDigitsRule() {
+		return getDtCDigitsAccess().getRule();
+	}
+
+	//DtCFuture returns types::LDtCFuture:
+	//	{types::LDtCFuture} "isFuture";
+	public DtCFutureElements getDtCFutureAccess() {
+		return pDtCFuture;
+	}
+	
+	public ParserRule getDtCFutureRule() {
+		return getDtCFutureAccess().getRule();
+	}
+
+	//DtCPast returns types::LDtCPast:
+	//	{types::LDtCPast} "isPast";
+	public DtCPastElements getDtCPastAccess() {
+		return pDtCPast;
+	}
+	
+	public ParserRule getDtCPastRule() {
+		return getDtCPastAccess().getRule();
+	}
+
+	//DtCNumericMax returns types::LDtCNumericMax:
+	//	{types::LDtCNumericMax} "maxNumber" "(" max=INT ")";
+	public DtCNumericMaxElements getDtCNumericMaxAccess() {
+		return pDtCNumericMax;
+	}
+	
+	public ParserRule getDtCNumericMaxRule() {
+		return getDtCNumericMaxAccess().getRule();
+	}
+
+	//DtCNumericMin returns types::LDtCNumericMin:
+	//	{types::LDtCNumericMin} "minNumber" "(" min=INT ")";
+	public DtCNumericMinElements getDtCNumericMinAccess() {
+		return pDtCNumericMin;
+	}
+	
+	public ParserRule getDtCNumericMinRule() {
+		return getDtCNumericMinAccess().getRule();
+	}
+
+	//DtCNotNull returns types::LDtCNotNull:
+	//	{types::LDtCNotNull} "isNotNull";
+	public DtCNotNullElements getDtCNotNullAccess() {
+		return pDtCNotNull;
+	}
+	
+	public ParserRule getDtCNotNullRule() {
+		return getDtCNotNullAccess().getRule();
+	}
+
+	//DtCNull returns types::LDtCNull:
+	//	{types::LDtCNull} "isNull";
+	public DtCNullElements getDtCNullAccess() {
+		return pDtCNull;
+	}
+	
+	public ParserRule getDtCNullRule() {
+		return getDtCNullAccess().getRule();
+	}
+
+	//DtCRegEx returns types::LDtCRegEx:
+	//	{types::LDtCRegEx} "regex" "(" pattern=STRING ")";
+	public DtCRegExElements getDtCRegExAccess() {
+		return pDtCRegEx;
+	}
+	
+	public ParserRule getDtCRegExRule() {
+		return getDtCRegExAccess().getRule();
+	}
+
+	//DtCSize returns types::LDtCSize:
+	//	{types::LDtCSize} "minSize" "(" min=INT ")" "maxSize" "(" max=INT ")";
+	public DtCSizeElements getDtCSizeAccess() {
+		return pDtCSize;
+	}
+	
+	public ParserRule getDtCSizeRule() {
+		return getDtCSizeAccess().getRule();
 	}
 
 	//enum DateType returns types::LDateType:
@@ -1396,6 +2136,16 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getLIntRule() {
 		return getLIntAccess().getRule();
+	}
+
+	//LDecimal returns ecore::EFloat:
+	//	DECIMAL;
+	public LDecimalElements getLDecimalAccess() {
+		return pLDecimal;
+	}
+	
+	public ParserRule getLDecimalRule() {
+		return getLDecimalAccess().getRule();
 	}
 
 	//XAnnotation:

@@ -492,13 +492,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY__SUB_TYPES = LunTypesPackage.LCLASS_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Persistence Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__PERSISTENCE_UNIT = LunTypesPackage.LCLASS_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>LEntity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 12;
+	int LENTITY_FEATURE_COUNT = LunTypesPackage.LCLASS_FEATURE_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -2422,6 +2431,17 @@ public interface LunEntityPackage extends EPackage {
 	EReference getLEntity_SubTypes();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.dsl.semantic.entity.LEntity#getPersistenceUnit <em>Persistence Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Persistence Unit</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LEntity#getPersistenceUnit()
+	 * @see #getLEntity()
+	 * @generated
+	 */
+	EAttribute getLEntity_PersistenceUnit();
+
+	/**
 	 * Returns the meta object for the '{@link org.lunifera.dsl.semantic.entity.LEntity#getOperations() <em>Get Operations</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3247,6 +3267,14 @@ public interface LunEntityPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LENTITY__SUB_TYPES = eINSTANCE.getLEntity_SubTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistence Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LENTITY__PERSISTENCE_UNIT = eINSTANCE.getLEntity_PersistenceUnit();
 
 		/**
 		 * The meta object literal for the '<em><b>Get Operations</b></em>' operation.

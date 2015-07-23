@@ -45,6 +45,7 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 	refers LBean superType opposite subTypes
 	contains transient JvmTypeReference superTypeJvm
 	refers LBean[] subTypes opposite superType
+	 
 	/**
  	 * Returns all features of type LOperation
  	 */
@@ -117,6 +118,7 @@ class LEntity extends LClass, LFeaturesHolder {
 	refers LEntity superType opposite subTypes
 	contains transient JvmTypeReference superTypeJvm
 	refers LEntity[] subTypes opposite superType
+	String persistenceUnit
 	
 	/**
  	 * Returns all features of type LOperation

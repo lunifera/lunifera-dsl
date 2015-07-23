@@ -45,7 +45,21 @@ import org.lunifera.dsl.semantic.common.types.LComparatorType;
 import org.lunifera.dsl.semantic.common.types.LConstraint;
 import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
+import org.lunifera.dsl.semantic.common.types.LDatatypeConstraint;
 import org.lunifera.dsl.semantic.common.types.LDateType;
+import org.lunifera.dsl.semantic.common.types.LDtCAssertFalse;
+import org.lunifera.dsl.semantic.common.types.LDtCAssertTrue;
+import org.lunifera.dsl.semantic.common.types.LDtCDecimalMax;
+import org.lunifera.dsl.semantic.common.types.LDtCDecimalMin;
+import org.lunifera.dsl.semantic.common.types.LDtCDigits;
+import org.lunifera.dsl.semantic.common.types.LDtCFuture;
+import org.lunifera.dsl.semantic.common.types.LDtCNotNull;
+import org.lunifera.dsl.semantic.common.types.LDtCNull;
+import org.lunifera.dsl.semantic.common.types.LDtCNumericMax;
+import org.lunifera.dsl.semantic.common.types.LDtCNumericMin;
+import org.lunifera.dsl.semantic.common.types.LDtCPast;
+import org.lunifera.dsl.semantic.common.types.LDtCRegEx;
+import org.lunifera.dsl.semantic.common.types.LDtCSize;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LFeature;
@@ -240,6 +254,104 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass lDatatypeConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCAssertFalseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCAssertTrueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCDecimalMaxEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCDecimalMinEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCDigitsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCFutureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCPastEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCNumericMaxEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCNumericMinEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCNotNullEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCNullEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCRegExEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lDtCSizeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass lAttributeMatchingConstraintEClass = null;
 
 	/**
@@ -352,8 +464,8 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
 		XbasePackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 		XAnnotationsPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -666,6 +778,15 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 */
 	public EReference getLDataType_SyntheticType() {
 		return (EReference)lDataTypeEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLDataType_Constraints() {
+		return (EReference)lDataTypeEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -1195,6 +1316,213 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLDatatypeConstraint() {
+		return lDatatypeConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCAssertFalse() {
+		return lDtCAssertFalseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCAssertTrue() {
+		return lDtCAssertTrueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCDecimalMax() {
+		return lDtCDecimalMaxEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCDecimalMax_Max() {
+		return (EAttribute)lDtCDecimalMaxEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCDecimalMin() {
+		return lDtCDecimalMinEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCDecimalMin_Min() {
+		return (EAttribute)lDtCDecimalMinEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCDigits() {
+		return lDtCDigitsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCDigits_IntDigits() {
+		return (EAttribute)lDtCDigitsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCDigits_FractionDigits() {
+		return (EAttribute)lDtCDigitsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCFuture() {
+		return lDtCFutureEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCPast() {
+		return lDtCPastEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCNumericMax() {
+		return lDtCNumericMaxEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCNumericMax_Max() {
+		return (EAttribute)lDtCNumericMaxEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCNumericMin() {
+		return lDtCNumericMinEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCNumericMin_Min() {
+		return (EAttribute)lDtCNumericMinEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCNotNull() {
+		return lDtCNotNullEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCNull() {
+		return lDtCNullEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCRegEx() {
+		return lDtCRegExEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCRegEx_Pattern() {
+		return (EAttribute)lDtCRegExEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLDtCSize() {
+		return lDtCSizeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCSize_Min() {
+		return (EAttribute)lDtCSizeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLDtCSize_Max() {
+		return (EAttribute)lDtCSizeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLAttributeMatchingConstraint() {
 		return lAttributeMatchingConstraintEClass;
 	}
@@ -1386,6 +1714,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		createEAttribute(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_SELECTOR);
 		createEReference(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_TYPE_REFERENCE);
 		createEReference(lDataTypeEClass, LDATA_TYPE__SYNTHETIC_TYPE);
+		createEReference(lDataTypeEClass, LDATA_TYPE__CONSTRAINTS);
 
 		lEnumEClass = createEClass(LENUM);
 		createEReference(lEnumEClass, LENUM__LITERALS);
@@ -1457,6 +1786,43 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		createEReference(lConstraintsEClass, LCONSTRAINTS__CONSTRAINTS);
 
 		lConstraintEClass = createEClass(LCONSTRAINT);
+
+		lDatatypeConstraintEClass = createEClass(LDATATYPE_CONSTRAINT);
+
+		lDtCAssertFalseEClass = createEClass(LDT_CASSERT_FALSE);
+
+		lDtCAssertTrueEClass = createEClass(LDT_CASSERT_TRUE);
+
+		lDtCDecimalMaxEClass = createEClass(LDT_CDECIMAL_MAX);
+		createEAttribute(lDtCDecimalMaxEClass, LDT_CDECIMAL_MAX__MAX);
+
+		lDtCDecimalMinEClass = createEClass(LDT_CDECIMAL_MIN);
+		createEAttribute(lDtCDecimalMinEClass, LDT_CDECIMAL_MIN__MIN);
+
+		lDtCDigitsEClass = createEClass(LDT_CDIGITS);
+		createEAttribute(lDtCDigitsEClass, LDT_CDIGITS__INT_DIGITS);
+		createEAttribute(lDtCDigitsEClass, LDT_CDIGITS__FRACTION_DIGITS);
+
+		lDtCFutureEClass = createEClass(LDT_CFUTURE);
+
+		lDtCPastEClass = createEClass(LDT_CPAST);
+
+		lDtCNumericMaxEClass = createEClass(LDT_CNUMERIC_MAX);
+		createEAttribute(lDtCNumericMaxEClass, LDT_CNUMERIC_MAX__MAX);
+
+		lDtCNumericMinEClass = createEClass(LDT_CNUMERIC_MIN);
+		createEAttribute(lDtCNumericMinEClass, LDT_CNUMERIC_MIN__MIN);
+
+		lDtCNotNullEClass = createEClass(LDT_CNOT_NULL);
+
+		lDtCNullEClass = createEClass(LDT_CNULL);
+
+		lDtCRegExEClass = createEClass(LDT_CREG_EX);
+		createEAttribute(lDtCRegExEClass, LDT_CREG_EX__PATTERN);
+
+		lDtCSizeEClass = createEClass(LDT_CSIZE);
+		createEAttribute(lDtCSizeEClass, LDT_CSIZE__MIN);
+		createEAttribute(lDtCSizeEClass, LDT_CSIZE__MAX);
 
 		lAttributeMatchingConstraintEClass = createEClass(LATTRIBUTE_MATCHING_CONSTRAINT);
 		createEReference(lAttributeMatchingConstraintEClass, LATTRIBUTE_MATCHING_CONSTRAINT__ATTRIBUTE);
@@ -1530,6 +1896,20 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		lModifierEClass.getESuperTypes().add(this.getLLazyResolver());
 		lConstraintsEClass.getESuperTypes().add(this.getLLazyResolver());
 		lConstraintEClass.getESuperTypes().add(this.getLLazyResolver());
+		lDatatypeConstraintEClass.getESuperTypes().add(this.getLConstraint());
+		lDtCAssertFalseEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCAssertTrueEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCDecimalMaxEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCDecimalMinEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCDigitsEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCFutureEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCPastEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCNumericMaxEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCNumericMinEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCNotNullEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCNullEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCRegExEClass.getESuperTypes().add(this.getLDatatypeConstraint());
+		lDtCSizeEClass.getESuperTypes().add(this.getLDatatypeConstraint());
 		lAttributeMatchingConstraintEClass.getESuperTypes().add(this.getLConstraint());
 
 		// Initialize classes, features, and operations; add parameters
@@ -1579,6 +1959,7 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEAttribute(getLDataType_SyntheticSelector(), theEcorePackage.getEString(), "syntheticSelector", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDataType_SyntheticTypeReference(), this.getLFeature(), null, "syntheticTypeReference", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLDataType_SyntheticType(), this.getLType(), null, "syntheticType", null, 0, 1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLDataType_Constraints(), this.getLDatatypeConstraint(), null, "constraints", null, 0, -1, LDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lEnumEClass, LEnum.class, "LEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLEnum_Literals(), this.getLEnumLiteral(), null, "literals", null, 0, -1, LEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1654,6 +2035,43 @@ public class LunTypesPackageImpl extends EPackageImpl implements LunTypesPackage
 		initEReference(getLConstraints_Constraints(), this.getLConstraint(), null, "constraints", null, 0, -1, LConstraints.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lConstraintEClass, LConstraint.class, "LConstraint", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lDatatypeConstraintEClass, LDatatypeConstraint.class, "LDatatypeConstraint", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lDtCAssertFalseEClass, LDtCAssertFalse.class, "LDtCAssertFalse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lDtCAssertTrueEClass, LDtCAssertTrue.class, "LDtCAssertTrue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lDtCDecimalMaxEClass, LDtCDecimalMax.class, "LDtCDecimalMax", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLDtCDecimalMax_Max(), theEcorePackage.getEFloat(), "max", null, 0, 1, LDtCDecimalMax.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lDtCDecimalMinEClass, LDtCDecimalMin.class, "LDtCDecimalMin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLDtCDecimalMin_Min(), theEcorePackage.getEFloat(), "min", null, 0, 1, LDtCDecimalMin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lDtCDigitsEClass, LDtCDigits.class, "LDtCDigits", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLDtCDigits_IntDigits(), theEcorePackage.getEInt(), "intDigits", null, 0, 1, LDtCDigits.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLDtCDigits_FractionDigits(), theEcorePackage.getEInt(), "fractionDigits", null, 0, 1, LDtCDigits.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lDtCFutureEClass, LDtCFuture.class, "LDtCFuture", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lDtCPastEClass, LDtCPast.class, "LDtCPast", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lDtCNumericMaxEClass, LDtCNumericMax.class, "LDtCNumericMax", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLDtCNumericMax_Max(), theEcorePackage.getEInt(), "max", null, 0, 1, LDtCNumericMax.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lDtCNumericMinEClass, LDtCNumericMin.class, "LDtCNumericMin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLDtCNumericMin_Min(), theEcorePackage.getEInt(), "min", null, 0, 1, LDtCNumericMin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lDtCNotNullEClass, LDtCNotNull.class, "LDtCNotNull", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lDtCNullEClass, LDtCNull.class, "LDtCNull", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lDtCRegExEClass, LDtCRegEx.class, "LDtCRegEx", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLDtCRegEx_Pattern(), theEcorePackage.getEString(), "pattern", null, 0, 1, LDtCRegEx.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lDtCSizeEClass, LDtCSize.class, "LDtCSize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLDtCSize_Min(), theEcorePackage.getEInt(), "min", null, 0, 1, LDtCSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLDtCSize_Max(), theEcorePackage.getEInt(), "max", null, 0, 1, LDtCSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lAttributeMatchingConstraintEClass, LAttributeMatchingConstraint.class, "LAttributeMatchingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLAttributeMatchingConstraint_Attribute(), this.getLAttribute(), null, "attribute", null, 0, 1, LAttributeMatchingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

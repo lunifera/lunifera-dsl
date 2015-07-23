@@ -171,6 +171,62 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 				return createLConstraintAdapter();
 			}
 			@Override
+			public Adapter caseLDatatypeConstraint(LDatatypeConstraint object) {
+				return createLDatatypeConstraintAdapter();
+			}
+			@Override
+			public Adapter caseLDtCAssertFalse(LDtCAssertFalse object) {
+				return createLDtCAssertFalseAdapter();
+			}
+			@Override
+			public Adapter caseLDtCAssertTrue(LDtCAssertTrue object) {
+				return createLDtCAssertTrueAdapter();
+			}
+			@Override
+			public Adapter caseLDtCDecimalMax(LDtCDecimalMax object) {
+				return createLDtCDecimalMaxAdapter();
+			}
+			@Override
+			public Adapter caseLDtCDecimalMin(LDtCDecimalMin object) {
+				return createLDtCDecimalMinAdapter();
+			}
+			@Override
+			public Adapter caseLDtCDigits(LDtCDigits object) {
+				return createLDtCDigitsAdapter();
+			}
+			@Override
+			public Adapter caseLDtCFuture(LDtCFuture object) {
+				return createLDtCFutureAdapter();
+			}
+			@Override
+			public Adapter caseLDtCPast(LDtCPast object) {
+				return createLDtCPastAdapter();
+			}
+			@Override
+			public Adapter caseLDtCNumericMax(LDtCNumericMax object) {
+				return createLDtCNumericMaxAdapter();
+			}
+			@Override
+			public Adapter caseLDtCNumericMin(LDtCNumericMin object) {
+				return createLDtCNumericMinAdapter();
+			}
+			@Override
+			public Adapter caseLDtCNotNull(LDtCNotNull object) {
+				return createLDtCNotNullAdapter();
+			}
+			@Override
+			public Adapter caseLDtCNull(LDtCNull object) {
+				return createLDtCNullAdapter();
+			}
+			@Override
+			public Adapter caseLDtCRegEx(LDtCRegEx object) {
+				return createLDtCRegExAdapter();
+			}
+			@Override
+			public Adapter caseLDtCSize(LDtCSize object) {
+				return createLDtCSizeAdapter();
+			}
+			@Override
 			public Adapter caseLAttributeMatchingConstraint(LAttributeMatchingConstraint object) {
 				return createLAttributeMatchingConstraintAdapter();
 			}
@@ -513,6 +569,202 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDatatypeConstraint <em>LDatatype Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDatatypeConstraint
+	 * @generated
+	 */
+	public Adapter createLDatatypeConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCAssertFalse <em>LDt CAssert False</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCAssertFalse
+	 * @generated
+	 */
+	public Adapter createLDtCAssertFalseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCAssertTrue <em>LDt CAssert True</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCAssertTrue
+	 * @generated
+	 */
+	public Adapter createLDtCAssertTrueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMax <em>LDt CDecimal Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDecimalMax
+	 * @generated
+	 */
+	public Adapter createLDtCDecimalMaxAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCDecimalMin <em>LDt CDecimal Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDecimalMin
+	 * @generated
+	 */
+	public Adapter createLDtCDecimalMinAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCDigits <em>LDt CDigits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCDigits
+	 * @generated
+	 */
+	public Adapter createLDtCDigitsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCFuture <em>LDt CFuture</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCFuture
+	 * @generated
+	 */
+	public Adapter createLDtCFutureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCPast <em>LDt CPast</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCPast
+	 * @generated
+	 */
+	public Adapter createLDtCPastAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCNumericMax <em>LDt CNumeric Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNumericMax
+	 * @generated
+	 */
+	public Adapter createLDtCNumericMaxAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCNumericMin <em>LDt CNumeric Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNumericMin
+	 * @generated
+	 */
+	public Adapter createLDtCNumericMinAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCNotNull <em>LDt CNot Null</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNotNull
+	 * @generated
+	 */
+	public Adapter createLDtCNotNullAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCNull <em>LDt CNull</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCNull
+	 * @generated
+	 */
+	public Adapter createLDtCNullAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCRegEx <em>LDt CReg Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCRegEx
+	 * @generated
+	 */
+	public Adapter createLDtCRegExAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDtCSize <em>LDt CSize</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDtCSize
+	 * @generated
+	 */
+	public Adapter createLDtCSizeAdapter() {
 		return null;
 	}
 

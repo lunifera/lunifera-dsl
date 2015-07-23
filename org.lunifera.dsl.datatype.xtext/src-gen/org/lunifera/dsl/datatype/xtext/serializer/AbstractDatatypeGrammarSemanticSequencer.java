@@ -65,6 +65,19 @@ import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LCommonModel;
 import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
+import org.lunifera.dsl.semantic.common.types.LDtCAssertFalse;
+import org.lunifera.dsl.semantic.common.types.LDtCAssertTrue;
+import org.lunifera.dsl.semantic.common.types.LDtCDecimalMax;
+import org.lunifera.dsl.semantic.common.types.LDtCDecimalMin;
+import org.lunifera.dsl.semantic.common.types.LDtCDigits;
+import org.lunifera.dsl.semantic.common.types.LDtCFuture;
+import org.lunifera.dsl.semantic.common.types.LDtCNotNull;
+import org.lunifera.dsl.semantic.common.types.LDtCNull;
+import org.lunifera.dsl.semantic.common.types.LDtCNumericMax;
+import org.lunifera.dsl.semantic.common.types.LDtCNumericMin;
+import org.lunifera.dsl.semantic.common.types.LDtCPast;
+import org.lunifera.dsl.semantic.common.types.LDtCRegEx;
+import org.lunifera.dsl.semantic.common.types.LDtCSize;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LImport;
@@ -123,6 +136,99 @@ public abstract class AbstractDatatypeGrammarSemanticSequencer extends CommonGra
 				   context == grammarAccess.getScalarTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_DataType(context, (LDataType) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CASSERT_FALSE:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCAssertFalseRule()) {
+					sequence_DtCAssertFalse(context, (LDtCAssertFalse) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CASSERT_TRUE:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCAssertTrueRule()) {
+					sequence_DtCAssertTrue(context, (LDtCAssertTrue) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CDECIMAL_MAX:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCDecimalMaxRule()) {
+					sequence_DtCDecimalMax(context, (LDtCDecimalMax) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CDECIMAL_MIN:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCDecimalMinRule()) {
+					sequence_DtCDecimalMin(context, (LDtCDecimalMin) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CDIGITS:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCDigitsRule()) {
+					sequence_DtCDigits(context, (LDtCDigits) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CFUTURE:
+				if(context == grammarAccess.getDateConstraintRule() ||
+				   context == grammarAccess.getDtCFutureRule()) {
+					sequence_DtCFuture(context, (LDtCFuture) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CNOT_NULL:
+				if(context == grammarAccess.getBlobTypeConstraintRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCNotNullRule()) {
+					sequence_DtCNotNull(context, (LDtCNotNull) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CNULL:
+				if(context == grammarAccess.getBlobTypeConstraintRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCNullRule()) {
+					sequence_DtCNull(context, (LDtCNull) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CNUMERIC_MAX:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCNumericMaxRule()) {
+					sequence_DtCNumericMax(context, (LDtCNumericMax) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CNUMERIC_MIN:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCNumericMinRule()) {
+					sequence_DtCNumericMin(context, (LDtCNumericMin) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CPAST:
+				if(context == grammarAccess.getDateConstraintRule() ||
+				   context == grammarAccess.getDtCPastRule()) {
+					sequence_DtCPast(context, (LDtCPast) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CREG_EX:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCRegExRule()) {
+					sequence_DtCRegEx(context, (LDtCRegEx) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CSIZE:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCSizeRule()) {
+					sequence_DtCSize(context, (LDtCSize) semanticObject); 
 					return; 
 				}
 				else break;

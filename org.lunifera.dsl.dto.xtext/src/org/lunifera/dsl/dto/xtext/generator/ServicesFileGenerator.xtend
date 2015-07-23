@@ -33,13 +33,18 @@ class ServicesFileGenerator {
 			
 			«FOR LDto lDto : pkg.dtos.filter[basedOnEntity].filter[!abstract]»
 				dtoservice «lDto.wrappedType.name»Service provides «lDto.name» {
-					mutable persistenceID TBD
+					mutable persistenceID «toPU(lDto)»
 				}
 			«ENDFOR»
 		}
 	'''
-	
-	def basedOnEntity(LDto lDto){
+
+	def toPU(LDto dto) {
+		val LEntity entity = dto.wrappedType as LEntity
+		return if(entity.persistenceUnit != null) entity.persistenceUnit else "TBD"
+	}
+
+	def basedOnEntity(LDto lDto) {
 		lDto.wrappedType instanceof LEntity
 	}
 

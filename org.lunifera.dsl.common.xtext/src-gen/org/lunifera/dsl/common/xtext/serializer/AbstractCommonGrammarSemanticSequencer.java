@@ -67,6 +67,19 @@ import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
 import org.lunifera.dsl.semantic.common.types.LClass;
 import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
+import org.lunifera.dsl.semantic.common.types.LDtCAssertFalse;
+import org.lunifera.dsl.semantic.common.types.LDtCAssertTrue;
+import org.lunifera.dsl.semantic.common.types.LDtCDecimalMax;
+import org.lunifera.dsl.semantic.common.types.LDtCDecimalMin;
+import org.lunifera.dsl.semantic.common.types.LDtCDigits;
+import org.lunifera.dsl.semantic.common.types.LDtCFuture;
+import org.lunifera.dsl.semantic.common.types.LDtCNotNull;
+import org.lunifera.dsl.semantic.common.types.LDtCNull;
+import org.lunifera.dsl.semantic.common.types.LDtCNumericMax;
+import org.lunifera.dsl.semantic.common.types.LDtCNumericMin;
+import org.lunifera.dsl.semantic.common.types.LDtCPast;
+import org.lunifera.dsl.semantic.common.types.LDtCRegEx;
+import org.lunifera.dsl.semantic.common.types.LDtCSize;
 import org.lunifera.dsl.semantic.common.types.LEnum;
 import org.lunifera.dsl.semantic.common.types.LEnumLiteral;
 import org.lunifera.dsl.semantic.common.types.LImport;
@@ -119,6 +132,99 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 				   context == grammarAccess.getScalarTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_DataType(context, (LDataType) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CASSERT_FALSE:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCAssertFalseRule()) {
+					sequence_DtCAssertFalse(context, (LDtCAssertFalse) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CASSERT_TRUE:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCAssertTrueRule()) {
+					sequence_DtCAssertTrue(context, (LDtCAssertTrue) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CDECIMAL_MAX:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCDecimalMaxRule()) {
+					sequence_DtCDecimalMax(context, (LDtCDecimalMax) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CDECIMAL_MIN:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCDecimalMinRule()) {
+					sequence_DtCDecimalMin(context, (LDtCDecimalMin) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CDIGITS:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCDigitsRule()) {
+					sequence_DtCDigits(context, (LDtCDigits) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CFUTURE:
+				if(context == grammarAccess.getDateConstraintRule() ||
+				   context == grammarAccess.getDtCFutureRule()) {
+					sequence_DtCFuture(context, (LDtCFuture) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CNOT_NULL:
+				if(context == grammarAccess.getBlobTypeConstraintRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCNotNullRule()) {
+					sequence_DtCNotNull(context, (LDtCNotNull) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CNULL:
+				if(context == grammarAccess.getBlobTypeConstraintRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCNullRule()) {
+					sequence_DtCNull(context, (LDtCNull) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CNUMERIC_MAX:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCNumericMaxRule()) {
+					sequence_DtCNumericMax(context, (LDtCNumericMax) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CNUMERIC_MIN:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCNumericMinRule()) {
+					sequence_DtCNumericMin(context, (LDtCNumericMin) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CPAST:
+				if(context == grammarAccess.getDateConstraintRule() ||
+				   context == grammarAccess.getDtCPastRule()) {
+					sequence_DtCPast(context, (LDtCPast) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CREG_EX:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCRegExRule()) {
+					sequence_DtCRegEx(context, (LDtCRegEx) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LDT_CSIZE:
+				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDtCSizeRule()) {
+					sequence_DtCSize(context, (LDtCSize) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1462,11 +1568,187 @@ public abstract class AbstractCommonGrammarSemanticSequencer extends XbaseWithAn
 	 * Constraint:
 	 *     (
 	 *         name=ValidIDWithKeywords 
-	 *         ((jvmTypeReference=JvmTypeReference asPrimitive?='as primitive'?) | (date?='dateType' dateType=DateType) | asBlob?='as blob')
+	 *         (
+	 *             (jvmTypeReference=JvmTypeReference asPrimitive?='as primitive'? constraints+=DataTypeConstraint*) | 
+	 *             (date?='dateType' dateType=DateType constraints+=DateConstraint*) | 
+	 *             (asBlob?='as blob' constraints+=BlobTypeConstraint*)
+	 *         )
 	 *     )
 	 */
 	protected void sequence_DataType(EObject context, LDataType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LDtCAssertFalse}
+	 */
+	protected void sequence_DtCAssertFalse(EObject context, LDtCAssertFalse semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LDtCAssertTrue}
+	 */
+	protected void sequence_DtCAssertTrue(EObject context, LDtCAssertTrue semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     max=LDecimal
+	 */
+	protected void sequence_DtCDecimalMax(EObject context, LDtCDecimalMax semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CDECIMAL_MAX__MAX) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CDECIMAL_MAX__MAX));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDtCDecimalMaxAccess().getMaxLDecimalParserRuleCall_3_0(), semanticObject.getMax());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     min=LDecimal
+	 */
+	protected void sequence_DtCDecimalMin(EObject context, LDtCDecimalMin semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CDECIMAL_MIN__MIN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CDECIMAL_MIN__MIN));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDtCDecimalMinAccess().getMinLDecimalParserRuleCall_3_0(), semanticObject.getMin());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (intDigits=INT fractionDigits=INT)
+	 */
+	protected void sequence_DtCDigits(EObject context, LDtCDigits semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CDIGITS__INT_DIGITS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CDIGITS__INT_DIGITS));
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CDIGITS__FRACTION_DIGITS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CDIGITS__FRACTION_DIGITS));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDtCDigitsAccess().getIntDigitsINTTerminalRuleCall_3_0(), semanticObject.getIntDigits());
+		feeder.accept(grammarAccess.getDtCDigitsAccess().getFractionDigitsINTTerminalRuleCall_5_0(), semanticObject.getFractionDigits());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LDtCFuture}
+	 */
+	protected void sequence_DtCFuture(EObject context, LDtCFuture semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LDtCNotNull}
+	 */
+	protected void sequence_DtCNotNull(EObject context, LDtCNotNull semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LDtCNull}
+	 */
+	protected void sequence_DtCNull(EObject context, LDtCNull semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     max=INT
+	 */
+	protected void sequence_DtCNumericMax(EObject context, LDtCNumericMax semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CNUMERIC_MAX__MAX) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CNUMERIC_MAX__MAX));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDtCNumericMaxAccess().getMaxINTTerminalRuleCall_3_0(), semanticObject.getMax());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     min=INT
+	 */
+	protected void sequence_DtCNumericMin(EObject context, LDtCNumericMin semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CNUMERIC_MIN__MIN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CNUMERIC_MIN__MIN));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDtCNumericMinAccess().getMinINTTerminalRuleCall_3_0(), semanticObject.getMin());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LDtCPast}
+	 */
+	protected void sequence_DtCPast(EObject context, LDtCPast semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     pattern=STRING
+	 */
+	protected void sequence_DtCRegEx(EObject context, LDtCRegEx semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CREG_EX__PATTERN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CREG_EX__PATTERN));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDtCRegExAccess().getPatternSTRINGTerminalRuleCall_3_0(), semanticObject.getPattern());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (min=INT max=INT)
+	 */
+	protected void sequence_DtCSize(EObject context, LDtCSize semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CSIZE__MIN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CSIZE__MIN));
+			if(transientValues.isValueTransient(semanticObject, LunTypesPackage.Literals.LDT_CSIZE__MAX) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LunTypesPackage.Literals.LDT_CSIZE__MAX));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDtCSizeAccess().getMinINTTerminalRuleCall_3_0(), semanticObject.getMin());
+		feeder.accept(grammarAccess.getDtCSizeAccess().getMaxINTTerminalRuleCall_7_0(), semanticObject.getMax());
+		feeder.finish();
 	}
 	
 	

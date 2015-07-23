@@ -42,36 +42,36 @@ DtoFeature returns dto::LDtoFeature:
 	{dto::LDtoFeature}
 	annotations+=AnnotationDef*
 	((({dto::LDtoInheritedAttribute.annotationInfo=current}
-	'inherit var' inheritedFeature=[entity::LEntityAttribute|ValidLFQNWithKeywords]) ('mapto' type=[dto::LDto])? ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')? (mapper=DtoMapper
+	'inherit var' inheritedFeature=[entity::LEntityAttribute|ValidLFQNWithKeywords]) ('mapto' type=[dto::LDto])? ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')? (mapper=DtoMapper
 	| ';'))
 	|
 	({dto::LDtoInheritedReference.annotationInfo=current}
-	('inherit ref' inheritedFeature=[entity::LEntityReference|ValidLFQNWithKeywords]) 'mapto' type=[dto::LDto] ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')? (mapper=DtoMapper |
+	('inherit ref' inheritedFeature=[entity::LEntityReference|ValidLFQNWithKeywords]) 'mapto' type=[dto::LDto] ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')? (mapper=DtoMapper |
 	';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(transient?='transient' type=[common::LScalarType] name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')?';'))
+	(transient?='transient' type=[common::LScalarType] name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(dirty?='dirty' type=[common::LScalarType] name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')?';'))
+	(dirty?='dirty' type=[common::LScalarType] name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
-	(derived?='derived' (domainDescription?='domainDescription')? type=[common::LScalarType] name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')? derivedGetterExpression=XBlockExpression))
+	(derived?='derived' (domainDescription?='domainDescription')? type=[common::LScalarType] name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')? derivedGetterExpression=XBlockExpression))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
 	(id?='id' | version?="version" | uuid?="uuid" | domainDescription?='domainDescription' | domainKey?='domainKey') type=[common::LScalarType] multiplicity=Multiplicity?
-	name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')?
+	name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?
 	';')
 	|
 	({dto::LDtoReference.annotationInfo=current}
 	('ref' ((cascading?='cascade')? & (lazy?='lazy')?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords 
-	('opposite' opposite=[dto::LDtoReference|LFQN])? ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')?) 
+	('opposite' opposite=[dto::LDtoReference|LFQN])? ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?) 
 	(mapper=LimitedMapperDtoMapper |
 	';'))
 	|
 	({dto::LDtoAttribute.annotationInfo=current}
 	'var' type=[common::LScalarType] multiplicity=Multiplicity?
-	name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (',' properties+=KeyAndValue)* ')')? (mapper=LimitedMapperDtoMapper |
+	name=ValidIDWithKeywords ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')? (mapper=LimitedMapperDtoMapper |
 	';'))
 	|
 	({dto::LDtoOperation.annotationInfo=current}

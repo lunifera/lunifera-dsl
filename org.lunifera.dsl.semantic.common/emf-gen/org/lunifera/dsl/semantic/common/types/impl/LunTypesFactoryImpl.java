@@ -91,6 +91,19 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 			case LunTypesPackage.LMODIFIER: return createLModifier();
 			case LunTypesPackage.LMULTIPLICITY: return createLMultiplicity();
 			case LunTypesPackage.LCONSTRAINTS: return createLConstraints();
+			case LunTypesPackage.LDT_CASSERT_FALSE: return createLDtCAssertFalse();
+			case LunTypesPackage.LDT_CASSERT_TRUE: return createLDtCAssertTrue();
+			case LunTypesPackage.LDT_CDECIMAL_MAX: return createLDtCDecimalMax();
+			case LunTypesPackage.LDT_CDECIMAL_MIN: return createLDtCDecimalMin();
+			case LunTypesPackage.LDT_CDIGITS: return createLDtCDigits();
+			case LunTypesPackage.LDT_CFUTURE: return createLDtCFuture();
+			case LunTypesPackage.LDT_CPAST: return createLDtCPast();
+			case LunTypesPackage.LDT_CNUMERIC_MAX: return createLDtCNumericMax();
+			case LunTypesPackage.LDT_CNUMERIC_MIN: return createLDtCNumericMin();
+			case LunTypesPackage.LDT_CNOT_NULL: return createLDtCNotNull();
+			case LunTypesPackage.LDT_CNULL: return createLDtCNull();
+			case LunTypesPackage.LDT_CREG_EX: return createLDtCRegEx();
+			case LunTypesPackage.LDT_CSIZE: return createLDtCSize();
 			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT: return createLAttributeMatchingConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -337,6 +350,136 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	public LConstraints createLConstraints() {
 		LConstraintsImpl lConstraints = new LConstraintsImpl();
 		return lConstraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCAssertFalse createLDtCAssertFalse() {
+		LDtCAssertFalseImpl lDtCAssertFalse = new LDtCAssertFalseImpl();
+		return lDtCAssertFalse;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCAssertTrue createLDtCAssertTrue() {
+		LDtCAssertTrueImpl lDtCAssertTrue = new LDtCAssertTrueImpl();
+		return lDtCAssertTrue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCDecimalMax createLDtCDecimalMax() {
+		LDtCDecimalMaxImpl lDtCDecimalMax = new LDtCDecimalMaxImpl();
+		return lDtCDecimalMax;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCDecimalMin createLDtCDecimalMin() {
+		LDtCDecimalMinImpl lDtCDecimalMin = new LDtCDecimalMinImpl();
+		return lDtCDecimalMin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCDigits createLDtCDigits() {
+		LDtCDigitsImpl lDtCDigits = new LDtCDigitsImpl();
+		return lDtCDigits;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCFuture createLDtCFuture() {
+		LDtCFutureImpl lDtCFuture = new LDtCFutureImpl();
+		return lDtCFuture;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCPast createLDtCPast() {
+		LDtCPastImpl lDtCPast = new LDtCPastImpl();
+		return lDtCPast;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCNumericMax createLDtCNumericMax() {
+		LDtCNumericMaxImpl lDtCNumericMax = new LDtCNumericMaxImpl();
+		return lDtCNumericMax;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCNumericMin createLDtCNumericMin() {
+		LDtCNumericMinImpl lDtCNumericMin = new LDtCNumericMinImpl();
+		return lDtCNumericMin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCNotNull createLDtCNotNull() {
+		LDtCNotNullImpl lDtCNotNull = new LDtCNotNullImpl();
+		return lDtCNotNull;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCNull createLDtCNull() {
+		LDtCNullImpl lDtCNull = new LDtCNullImpl();
+		return lDtCNull;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCRegEx createLDtCRegEx() {
+		LDtCRegExImpl lDtCRegEx = new LDtCRegExImpl();
+		return lDtCRegEx;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LDtCSize createLDtCSize() {
+		LDtCSizeImpl lDtCSize = new LDtCSizeImpl();
+		return lDtCSize;
 	}
 
 	/**
