@@ -28,11 +28,8 @@ package org.lunifera.dsl.common.datatypes {
 	datatype Character jvmType java.lang.Character;
 	datatype Byte jvmType java.lang.Byte;
 
-	datatype String jvmType java.lang.String isNotNull;
-	datatype StringNotNull jvmType java.lang.String;
+	datatype String jvmType java.lang.String;
 	datatype Date dateType date;
 
-	datatype String_SomeA jvmType String minSize(00) maxSize(6) isNotNull;
-	datatype Future dateType date isFuture;
 
 }
