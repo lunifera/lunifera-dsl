@@ -182,7 +182,7 @@ public class MavenStandaloneSetup {
 				registerBundle(f);
 			} else if (!scanFolder(f)) {
 				// eclipse bin folder?
-				String folderName = f.getCanonicalPath();
+				String folderName = f.getCanonicalPath().replace("\\", "/");
 				if (folderName.endsWith("/target/classes")) {
 					File dotProject = new File(f.getParentFile()
 							.getParentFile(), ".project");
@@ -193,8 +193,7 @@ public class MavenStandaloneSetup {
 					if (dotProject.exists())
 						registerProject(dotProject);
 				} else {
-					throw new IllegalArgumentException(folderName
-							+ " is not a valid path!");
+					log.error(folderName + " is not a valid path! Needs /bin or /target/classes");
 				}
 			}
 		} catch (IOException e) {
