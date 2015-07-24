@@ -37,7 +37,7 @@ Workflow {
 		}
 	}
 
-	bean = StandaloneSetup {
+	bean = org.lunifera.dsl.mwe.MavenStandaloneSetup {
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
 		registerGenModelFile = "platform:/resource/org.lunifera.dsl.semantic.common/model/types.xcore"
