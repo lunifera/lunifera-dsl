@@ -308,19 +308,24 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTypeAssignment_2_2_1_1 = (Assignment)cGroup_2_2_1.eContents().get(1);
 		private final CrossReference cTypeLScalarTypeCrossReference_2_2_1_1_0 = (CrossReference)cTypeAssignment_2_2_1_1.eContents().get(0);
 		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_2_1_1_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_2_1_1_0.eContents().get(1);
-		private final Assignment cNameAssignment_2_2_1_2 = (Assignment)cGroup_2_2_1.eContents().get(2);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_2_1_2_0 = (RuleCall)cNameAssignment_2_2_1_2.eContents().get(0);
-		private final Group cGroup_2_2_1_3 = (Group)cGroup_2_2_1.eContents().get(3);
-		private final Keyword cPropertiesKeyword_2_2_1_3_0 = (Keyword)cGroup_2_2_1_3.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2_2_1_3_1 = (Keyword)cGroup_2_2_1_3.eContents().get(1);
-		private final Assignment cPropertiesAssignment_2_2_1_3_2 = (Assignment)cGroup_2_2_1_3.eContents().get(2);
-		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_2_1_3_2_0 = (RuleCall)cPropertiesAssignment_2_2_1_3_2.eContents().get(0);
-		private final Group cGroup_2_2_1_3_3 = (Group)cGroup_2_2_1_3.eContents().get(3);
-		private final Keyword cCommaSpaceKeyword_2_2_1_3_3_0 = (Keyword)cGroup_2_2_1_3_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_2_2_1_3_3_1 = (Assignment)cGroup_2_2_1_3_3.eContents().get(1);
-		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_2_1_3_3_1_0 = (RuleCall)cPropertiesAssignment_2_2_1_3_3_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2_2_1_3_4 = (Keyword)cGroup_2_2_1_3.eContents().get(4);
-		private final Keyword cSemicolonKeyword_2_2_1_4 = (Keyword)cGroup_2_2_1.eContents().get(4);
+		private final Group cGroup_2_2_1_2 = (Group)cGroup_2_2_1.eContents().get(2);
+		private final Keyword cLeftSquareBracketKeyword_2_2_1_2_0 = (Keyword)cGroup_2_2_1_2.eContents().get(0);
+		private final Assignment cConstraintsAssignment_2_2_1_2_1 = (Assignment)cGroup_2_2_1_2.eContents().get(1);
+		private final RuleCall cConstraintsAllConstraintsParserRuleCall_2_2_1_2_1_0 = (RuleCall)cConstraintsAssignment_2_2_1_2_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2_2_1_2_2 = (Keyword)cGroup_2_2_1_2.eContents().get(2);
+		private final Assignment cNameAssignment_2_2_1_3 = (Assignment)cGroup_2_2_1.eContents().get(3);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_2_1_3_0 = (RuleCall)cNameAssignment_2_2_1_3.eContents().get(0);
+		private final Group cGroup_2_2_1_4 = (Group)cGroup_2_2_1.eContents().get(4);
+		private final Keyword cPropertiesKeyword_2_2_1_4_0 = (Keyword)cGroup_2_2_1_4.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_2_1_4_1 = (Keyword)cGroup_2_2_1_4.eContents().get(1);
+		private final Assignment cPropertiesAssignment_2_2_1_4_2 = (Assignment)cGroup_2_2_1_4.eContents().get(2);
+		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_2_1_4_2_0 = (RuleCall)cPropertiesAssignment_2_2_1_4_2.eContents().get(0);
+		private final Group cGroup_2_2_1_4_3 = (Group)cGroup_2_2_1_4.eContents().get(3);
+		private final Keyword cCommaSpaceKeyword_2_2_1_4_3_0 = (Keyword)cGroup_2_2_1_4_3.eContents().get(0);
+		private final Assignment cPropertiesAssignment_2_2_1_4_3_1 = (Assignment)cGroup_2_2_1_4_3.eContents().get(1);
+		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_2_1_4_3_1_0 = (RuleCall)cPropertiesAssignment_2_2_1_4_3_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_2_1_4_4 = (Keyword)cGroup_2_2_1_4.eContents().get(4);
+		private final Keyword cSemicolonKeyword_2_2_1_5 = (Keyword)cGroup_2_2_1.eContents().get(5);
 		private final Group cGroup_2_3 = (Group)cAlternatives_2.eContents().get(3);
 		private final Action cLDtoAttributeAnnotationInfoAction_2_3_0 = (Action)cGroup_2_3.eContents().get(0);
 		private final Group cGroup_2_3_1 = (Group)cGroup_2_3.eContents().get(1);
@@ -384,19 +389,24 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_5_2_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_5_2_0.eContents().get(1);
 		private final Assignment cMultiplicityAssignment_2_5_3 = (Assignment)cGroup_2_5.eContents().get(3);
 		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_5_3_0 = (RuleCall)cMultiplicityAssignment_2_5_3.eContents().get(0);
-		private final Assignment cNameAssignment_2_5_4 = (Assignment)cGroup_2_5.eContents().get(4);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_5_4_0 = (RuleCall)cNameAssignment_2_5_4.eContents().get(0);
-		private final Group cGroup_2_5_5 = (Group)cGroup_2_5.eContents().get(5);
-		private final Keyword cPropertiesKeyword_2_5_5_0 = (Keyword)cGroup_2_5_5.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2_5_5_1 = (Keyword)cGroup_2_5_5.eContents().get(1);
-		private final Assignment cPropertiesAssignment_2_5_5_2 = (Assignment)cGroup_2_5_5.eContents().get(2);
-		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_5_5_2_0 = (RuleCall)cPropertiesAssignment_2_5_5_2.eContents().get(0);
-		private final Group cGroup_2_5_5_3 = (Group)cGroup_2_5_5.eContents().get(3);
-		private final Keyword cCommaSpaceKeyword_2_5_5_3_0 = (Keyword)cGroup_2_5_5_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_2_5_5_3_1 = (Assignment)cGroup_2_5_5_3.eContents().get(1);
-		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_5_5_3_1_0 = (RuleCall)cPropertiesAssignment_2_5_5_3_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2_5_5_4 = (Keyword)cGroup_2_5_5.eContents().get(4);
-		private final Keyword cSemicolonKeyword_2_5_6 = (Keyword)cGroup_2_5.eContents().get(6);
+		private final Group cGroup_2_5_4 = (Group)cGroup_2_5.eContents().get(4);
+		private final Keyword cLeftSquareBracketKeyword_2_5_4_0 = (Keyword)cGroup_2_5_4.eContents().get(0);
+		private final Assignment cConstraintsAssignment_2_5_4_1 = (Assignment)cGroup_2_5_4.eContents().get(1);
+		private final RuleCall cConstraintsAllConstraintsParserRuleCall_2_5_4_1_0 = (RuleCall)cConstraintsAssignment_2_5_4_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2_5_4_2 = (Keyword)cGroup_2_5_4.eContents().get(2);
+		private final Assignment cNameAssignment_2_5_5 = (Assignment)cGroup_2_5.eContents().get(5);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_5_5_0 = (RuleCall)cNameAssignment_2_5_5.eContents().get(0);
+		private final Group cGroup_2_5_6 = (Group)cGroup_2_5.eContents().get(6);
+		private final Keyword cPropertiesKeyword_2_5_6_0 = (Keyword)cGroup_2_5_6.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_5_6_1 = (Keyword)cGroup_2_5_6.eContents().get(1);
+		private final Assignment cPropertiesAssignment_2_5_6_2 = (Assignment)cGroup_2_5_6.eContents().get(2);
+		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_5_6_2_0 = (RuleCall)cPropertiesAssignment_2_5_6_2.eContents().get(0);
+		private final Group cGroup_2_5_6_3 = (Group)cGroup_2_5_6.eContents().get(3);
+		private final Keyword cCommaSpaceKeyword_2_5_6_3_0 = (Keyword)cGroup_2_5_6_3.eContents().get(0);
+		private final Assignment cPropertiesAssignment_2_5_6_3_1 = (Assignment)cGroup_2_5_6_3.eContents().get(1);
+		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_5_6_3_1_0 = (RuleCall)cPropertiesAssignment_2_5_6_3_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_5_6_4 = (Keyword)cGroup_2_5_6.eContents().get(4);
+		private final Keyword cSemicolonKeyword_2_5_7 = (Keyword)cGroup_2_5.eContents().get(7);
 		private final Group cGroup_2_6 = (Group)cAlternatives_2.eContents().get(6);
 		private final Action cLDtoReferenceAnnotationInfoAction_2_6_0 = (Action)cGroup_2_6.eContents().get(0);
 		private final Group cGroup_2_6_1 = (Group)cGroup_2_6.eContents().get(1);
@@ -411,23 +421,28 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeLDtoIDTerminalRuleCall_2_6_1_2_0_1 = (RuleCall)cTypeLDtoCrossReference_2_6_1_2_0.eContents().get(1);
 		private final Assignment cMultiplicityAssignment_2_6_1_3 = (Assignment)cGroup_2_6_1.eContents().get(3);
 		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_6_1_3_0 = (RuleCall)cMultiplicityAssignment_2_6_1_3.eContents().get(0);
-		private final Assignment cNameAssignment_2_6_1_4 = (Assignment)cGroup_2_6_1.eContents().get(4);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_6_1_4_0 = (RuleCall)cNameAssignment_2_6_1_4.eContents().get(0);
-		private final Group cGroup_2_6_1_5 = (Group)cGroup_2_6_1.eContents().get(5);
-		private final Keyword cOppositeKeyword_2_6_1_5_0 = (Keyword)cGroup_2_6_1_5.eContents().get(0);
-		private final Assignment cOppositeAssignment_2_6_1_5_1 = (Assignment)cGroup_2_6_1_5.eContents().get(1);
-		private final CrossReference cOppositeLDtoReferenceCrossReference_2_6_1_5_1_0 = (CrossReference)cOppositeAssignment_2_6_1_5_1.eContents().get(0);
-		private final RuleCall cOppositeLDtoReferenceLFQNParserRuleCall_2_6_1_5_1_0_1 = (RuleCall)cOppositeLDtoReferenceCrossReference_2_6_1_5_1_0.eContents().get(1);
+		private final Group cGroup_2_6_1_4 = (Group)cGroup_2_6_1.eContents().get(4);
+		private final Keyword cLeftSquareBracketKeyword_2_6_1_4_0 = (Keyword)cGroup_2_6_1_4.eContents().get(0);
+		private final Assignment cConstraintsAssignment_2_6_1_4_1 = (Assignment)cGroup_2_6_1_4.eContents().get(1);
+		private final RuleCall cConstraintsAllConstraintsParserRuleCall_2_6_1_4_1_0 = (RuleCall)cConstraintsAssignment_2_6_1_4_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2_6_1_4_2 = (Keyword)cGroup_2_6_1_4.eContents().get(2);
+		private final Assignment cNameAssignment_2_6_1_5 = (Assignment)cGroup_2_6_1.eContents().get(5);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_6_1_5_0 = (RuleCall)cNameAssignment_2_6_1_5.eContents().get(0);
 		private final Group cGroup_2_6_1_6 = (Group)cGroup_2_6_1.eContents().get(6);
-		private final Keyword cPropertiesKeyword_2_6_1_6_0 = (Keyword)cGroup_2_6_1_6.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2_6_1_6_1 = (Keyword)cGroup_2_6_1_6.eContents().get(1);
-		private final Assignment cPropertiesAssignment_2_6_1_6_2 = (Assignment)cGroup_2_6_1_6.eContents().get(2);
-		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_6_1_6_2_0 = (RuleCall)cPropertiesAssignment_2_6_1_6_2.eContents().get(0);
-		private final Group cGroup_2_6_1_6_3 = (Group)cGroup_2_6_1_6.eContents().get(3);
-		private final Keyword cCommaSpaceKeyword_2_6_1_6_3_0 = (Keyword)cGroup_2_6_1_6_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_2_6_1_6_3_1 = (Assignment)cGroup_2_6_1_6_3.eContents().get(1);
-		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_6_1_6_3_1_0 = (RuleCall)cPropertiesAssignment_2_6_1_6_3_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2_6_1_6_4 = (Keyword)cGroup_2_6_1_6.eContents().get(4);
+		private final Keyword cOppositeKeyword_2_6_1_6_0 = (Keyword)cGroup_2_6_1_6.eContents().get(0);
+		private final Assignment cOppositeAssignment_2_6_1_6_1 = (Assignment)cGroup_2_6_1_6.eContents().get(1);
+		private final CrossReference cOppositeLDtoReferenceCrossReference_2_6_1_6_1_0 = (CrossReference)cOppositeAssignment_2_6_1_6_1.eContents().get(0);
+		private final RuleCall cOppositeLDtoReferenceLFQNParserRuleCall_2_6_1_6_1_0_1 = (RuleCall)cOppositeLDtoReferenceCrossReference_2_6_1_6_1_0.eContents().get(1);
+		private final Group cGroup_2_6_1_7 = (Group)cGroup_2_6_1.eContents().get(7);
+		private final Keyword cPropertiesKeyword_2_6_1_7_0 = (Keyword)cGroup_2_6_1_7.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_6_1_7_1 = (Keyword)cGroup_2_6_1_7.eContents().get(1);
+		private final Assignment cPropertiesAssignment_2_6_1_7_2 = (Assignment)cGroup_2_6_1_7.eContents().get(2);
+		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_6_1_7_2_0 = (RuleCall)cPropertiesAssignment_2_6_1_7_2.eContents().get(0);
+		private final Group cGroup_2_6_1_7_3 = (Group)cGroup_2_6_1_7.eContents().get(3);
+		private final Keyword cCommaSpaceKeyword_2_6_1_7_3_0 = (Keyword)cGroup_2_6_1_7_3.eContents().get(0);
+		private final Assignment cPropertiesAssignment_2_6_1_7_3_1 = (Assignment)cGroup_2_6_1_7_3.eContents().get(1);
+		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_6_1_7_3_1_0 = (RuleCall)cPropertiesAssignment_2_6_1_7_3_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_6_1_7_4 = (Keyword)cGroup_2_6_1_7.eContents().get(4);
 		private final Alternatives cAlternatives_2_6_2 = (Alternatives)cGroup_2_6.eContents().get(2);
 		private final Assignment cMapperAssignment_2_6_2_0 = (Assignment)cAlternatives_2_6_2.eContents().get(0);
 		private final RuleCall cMapperLimitedMapperDtoMapperParserRuleCall_2_6_2_0_0 = (RuleCall)cMapperAssignment_2_6_2_0.eContents().get(0);
@@ -440,22 +455,27 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeLScalarTypeIDTerminalRuleCall_2_7_2_0_1 = (RuleCall)cTypeLScalarTypeCrossReference_2_7_2_0.eContents().get(1);
 		private final Assignment cMultiplicityAssignment_2_7_3 = (Assignment)cGroup_2_7.eContents().get(3);
 		private final RuleCall cMultiplicityMultiplicityParserRuleCall_2_7_3_0 = (RuleCall)cMultiplicityAssignment_2_7_3.eContents().get(0);
-		private final Assignment cNameAssignment_2_7_4 = (Assignment)cGroup_2_7.eContents().get(4);
-		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_7_4_0 = (RuleCall)cNameAssignment_2_7_4.eContents().get(0);
-		private final Group cGroup_2_7_5 = (Group)cGroup_2_7.eContents().get(5);
-		private final Keyword cPropertiesKeyword_2_7_5_0 = (Keyword)cGroup_2_7_5.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2_7_5_1 = (Keyword)cGroup_2_7_5.eContents().get(1);
-		private final Assignment cPropertiesAssignment_2_7_5_2 = (Assignment)cGroup_2_7_5.eContents().get(2);
-		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_7_5_2_0 = (RuleCall)cPropertiesAssignment_2_7_5_2.eContents().get(0);
-		private final Group cGroup_2_7_5_3 = (Group)cGroup_2_7_5.eContents().get(3);
-		private final Keyword cCommaSpaceKeyword_2_7_5_3_0 = (Keyword)cGroup_2_7_5_3.eContents().get(0);
-		private final Assignment cPropertiesAssignment_2_7_5_3_1 = (Assignment)cGroup_2_7_5_3.eContents().get(1);
-		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_7_5_3_1_0 = (RuleCall)cPropertiesAssignment_2_7_5_3_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2_7_5_4 = (Keyword)cGroup_2_7_5.eContents().get(4);
-		private final Alternatives cAlternatives_2_7_6 = (Alternatives)cGroup_2_7.eContents().get(6);
-		private final Assignment cMapperAssignment_2_7_6_0 = (Assignment)cAlternatives_2_7_6.eContents().get(0);
-		private final RuleCall cMapperLimitedMapperDtoMapperParserRuleCall_2_7_6_0_0 = (RuleCall)cMapperAssignment_2_7_6_0.eContents().get(0);
-		private final Keyword cSemicolonKeyword_2_7_6_1 = (Keyword)cAlternatives_2_7_6.eContents().get(1);
+		private final Group cGroup_2_7_4 = (Group)cGroup_2_7.eContents().get(4);
+		private final Keyword cLeftSquareBracketKeyword_2_7_4_0 = (Keyword)cGroup_2_7_4.eContents().get(0);
+		private final Assignment cConstraintsAssignment_2_7_4_1 = (Assignment)cGroup_2_7_4.eContents().get(1);
+		private final RuleCall cConstraintsAllConstraintsParserRuleCall_2_7_4_1_0 = (RuleCall)cConstraintsAssignment_2_7_4_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2_7_4_2 = (Keyword)cGroup_2_7_4.eContents().get(2);
+		private final Assignment cNameAssignment_2_7_5 = (Assignment)cGroup_2_7.eContents().get(5);
+		private final RuleCall cNameValidIDWithKeywordsParserRuleCall_2_7_5_0 = (RuleCall)cNameAssignment_2_7_5.eContents().get(0);
+		private final Group cGroup_2_7_6 = (Group)cGroup_2_7.eContents().get(6);
+		private final Keyword cPropertiesKeyword_2_7_6_0 = (Keyword)cGroup_2_7_6.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_7_6_1 = (Keyword)cGroup_2_7_6.eContents().get(1);
+		private final Assignment cPropertiesAssignment_2_7_6_2 = (Assignment)cGroup_2_7_6.eContents().get(2);
+		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_7_6_2_0 = (RuleCall)cPropertiesAssignment_2_7_6_2.eContents().get(0);
+		private final Group cGroup_2_7_6_3 = (Group)cGroup_2_7_6.eContents().get(3);
+		private final Keyword cCommaSpaceKeyword_2_7_6_3_0 = (Keyword)cGroup_2_7_6_3.eContents().get(0);
+		private final Assignment cPropertiesAssignment_2_7_6_3_1 = (Assignment)cGroup_2_7_6_3.eContents().get(1);
+		private final RuleCall cPropertiesKeyAndValueParserRuleCall_2_7_6_3_1_0 = (RuleCall)cPropertiesAssignment_2_7_6_3_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_7_6_4 = (Keyword)cGroup_2_7_6.eContents().get(4);
+		private final Alternatives cAlternatives_2_7_7 = (Alternatives)cGroup_2_7.eContents().get(7);
+		private final Assignment cMapperAssignment_2_7_7_0 = (Assignment)cAlternatives_2_7_7.eContents().get(0);
+		private final RuleCall cMapperLimitedMapperDtoMapperParserRuleCall_2_7_7_0_0 = (RuleCall)cMapperAssignment_2_7_7_0.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2_7_7_1 = (Keyword)cAlternatives_2_7_7.eContents().get(1);
 		private final Group cGroup_2_8 = (Group)cAlternatives_2.eContents().get(8);
 		private final Action cLDtoOperationAnnotationInfoAction_2_8_0 = (Action)cGroup_2_8.eContents().get(0);
 		private final Group cGroup_2_8_1 = (Group)cGroup_2_8.eContents().get(1);
@@ -483,24 +503,25 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//	{dto::LDtoInheritedReference.annotationInfo=current} ("inherit ref"
 		//	inheritedFeature=[entity::LEntityReference|ValidLFQNWithKeywords]) "mapto" type=[dto::LDto] ("properties" "("
 		//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (mapper=DtoMapper | ";") |
-		//	{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType]
-		//	name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
-		//	{dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty" type=[common::LScalarType] name=ValidIDWithKeywords
-		//	("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
-		//	{dto::LDtoAttribute.annotationInfo=current} (derived?="derived" domainDescription?="domainDescription"?
+		//	{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType] ("["
+		//	constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//	properties+=KeyAndValue)* ")")? ";") | {dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty"
 		//	type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
-		//	properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression) |
+		//	properties+=KeyAndValue)* ")")? ";") | {dto::LDtoAttribute.annotationInfo=current} (derived?="derived"
+		//	domainDescription?="domainDescription"? type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "("
+		//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression) |
 		//	{dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version" | uuid?="uuid" |
 		//	domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType] multiplicity=Multiplicity?
-		//	name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";" |
-		//	{dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto]
-		//	multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "("
-		//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";") |
-		//	{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity?
-		//	name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
-		//	(mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current} ("def" type=JvmTypeReference
-		//	name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")"
-		//	body=XExpression));
+		//	("[" constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//	properties+=KeyAndValue)* ")")? ";" | {dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? &
+		//	lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? ("[" constraints+=AllConstraints* "]")?
+		//	name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "(" properties+=KeyAndValue
+		//	(", " properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";") |
+		//	{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity? ("["
+		//	constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//	properties+=KeyAndValue)* ")")? (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current}
+		//	("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
+		//	params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 		public ParserRule getRule() { return rule; }
 
 		//{dto::LDtoFeature} annotations+=AnnotationDef* (({dto::LDtoInheritedAttribute.annotationInfo=current} "inherit var"
@@ -509,23 +530,25 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//{dto::LDtoInheritedReference.annotationInfo=current} ("inherit ref"
 		//inheritedFeature=[entity::LEntityReference|ValidLFQNWithKeywords]) "mapto" type=[dto::LDto] ("properties" "("
 		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (mapper=DtoMapper | ";") |
-		//{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType] name=ValidIDWithKeywords
-		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
-		//{dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty" type=[common::LScalarType] name=ValidIDWithKeywords
-		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
-		//{dto::LDtoAttribute.annotationInfo=current} (derived?="derived" domainDescription?="domainDescription"?
+		//{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType] ("["
+		//constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? ";") | {dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty"
 		//type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
-		//properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression) | {dto::LDtoAttribute.annotationInfo=current}
-		//(id?="id" | version?="version" | uuid?="uuid" | domainDescription?="domainDescription" | domainKey?="domainKey")
-		//type=[common::LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ("properties" "("
-		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";" | {dto::LDtoReference.annotationInfo=current} ("ref"
-		//(cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
-		//("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", "
-		//properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoAttribute.annotationInfo=current}
-		//"var" type=[common::LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ("properties" "("
-		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (mapper=LimitedMapperDtoMapper | ";") |
-		//{dto::LDtoOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
-		//(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression))
+		//properties+=KeyAndValue)* ")")? ";") | {dto::LDtoAttribute.annotationInfo=current} (derived?="derived"
+		//domainDescription?="domainDescription"? type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "("
+		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression) |
+		//{dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version" | uuid?="uuid" |
+		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType] multiplicity=Multiplicity?
+		//("[" constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? ";" | {dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? &
+		//lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? ("[" constraints+=AllConstraints* "]")?
+		//name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "(" properties+=KeyAndValue
+		//(", " properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";") |
+		//{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity? ("["
+		//constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current}
+		//("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
+		//params+=FullJvmFormalParameter)*)? ")" body=XExpression))
 		public Group getGroup() { return cGroup; }
 
 		//{dto::LDtoFeature}
@@ -543,23 +566,25 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//{dto::LDtoInheritedReference.annotationInfo=current} ("inherit ref"
 		//inheritedFeature=[entity::LEntityReference|ValidLFQNWithKeywords]) "mapto" type=[dto::LDto] ("properties" "("
 		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (mapper=DtoMapper | ";") |
-		//{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType] name=ValidIDWithKeywords
-		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
-		//{dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty" type=[common::LScalarType] name=ValidIDWithKeywords
-		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
-		//{dto::LDtoAttribute.annotationInfo=current} (derived?="derived" domainDescription?="domainDescription"?
+		//{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType] ("["
+		//constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? ";") | {dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty"
 		//type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
-		//properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression) | {dto::LDtoAttribute.annotationInfo=current}
-		//(id?="id" | version?="version" | uuid?="uuid" | domainDescription?="domainDescription" | domainKey?="domainKey")
-		//type=[common::LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ("properties" "("
-		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";" | {dto::LDtoReference.annotationInfo=current} ("ref"
-		//(cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
-		//("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", "
-		//properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoAttribute.annotationInfo=current}
-		//"var" type=[common::LScalarType] multiplicity=Multiplicity? name=ValidIDWithKeywords ("properties" "("
-		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (mapper=LimitedMapperDtoMapper | ";") |
-		//{dto::LDtoOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
-		//(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression)
+		//properties+=KeyAndValue)* ")")? ";") | {dto::LDtoAttribute.annotationInfo=current} (derived?="derived"
+		//domainDescription?="domainDescription"? type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "("
+		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression) |
+		//{dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version" | uuid?="uuid" |
+		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType] multiplicity=Multiplicity?
+		//("[" constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? ";" | {dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? &
+		//lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? ("[" constraints+=AllConstraints* "]")?
+		//name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "(" properties+=KeyAndValue
+		//(", " properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";") |
+		//{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity? ("["
+		//constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current}
+		//("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
+		//params+=FullJvmFormalParameter)*)? ")" body=XExpression)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//({dto::LDtoInheritedAttribute.annotationInfo=current} "inherit var"
@@ -720,15 +745,16 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//";"
 		public Keyword getSemicolonKeyword_2_1_5_1() { return cSemicolonKeyword_2_1_5_1; }
 
-		//{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType] name=ValidIDWithKeywords
-		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";")
+		//{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType] ("["
+		//constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? ";")
 		public Group getGroup_2_2() { return cGroup_2_2; }
 
 		//{dto::LDtoAttribute.annotationInfo=current}
 		public Action getLDtoAttributeAnnotationInfoAction_2_2_0() { return cLDtoAttributeAnnotationInfoAction_2_2_0; }
 
-		//transient?="transient" type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue
-		//(", " properties+=KeyAndValue)* ")")? ";"
+		//transient?="transient" type=[common::LScalarType] ("[" constraints+=AllConstraints* "]")? name=ValidIDWithKeywords
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";"
 		public Group getGroup_2_2_1() { return cGroup_2_2_1; }
 
 		//transient?="transient"
@@ -746,44 +772,59 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getTypeLScalarTypeIDTerminalRuleCall_2_2_1_1_0_1() { return cTypeLScalarTypeIDTerminalRuleCall_2_2_1_1_0_1; }
 
+		//("[" constraints+=AllConstraints* "]")?
+		public Group getGroup_2_2_1_2() { return cGroup_2_2_1_2; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_2_2_1_2_0() { return cLeftSquareBracketKeyword_2_2_1_2_0; }
+
+		//constraints+=AllConstraints*
+		public Assignment getConstraintsAssignment_2_2_1_2_1() { return cConstraintsAssignment_2_2_1_2_1; }
+
+		//AllConstraints
+		public RuleCall getConstraintsAllConstraintsParserRuleCall_2_2_1_2_1_0() { return cConstraintsAllConstraintsParserRuleCall_2_2_1_2_1_0; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_2_2_1_2_2() { return cRightSquareBracketKeyword_2_2_1_2_2; }
+
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_2_1_2() { return cNameAssignment_2_2_1_2; }
+		public Assignment getNameAssignment_2_2_1_3() { return cNameAssignment_2_2_1_3; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_2_1_2_0() { return cNameValidIDWithKeywordsParserRuleCall_2_2_1_2_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_2_1_3_0() { return cNameValidIDWithKeywordsParserRuleCall_2_2_1_3_0; }
 
 		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
-		public Group getGroup_2_2_1_3() { return cGroup_2_2_1_3; }
+		public Group getGroup_2_2_1_4() { return cGroup_2_2_1_4; }
 
 		//"properties"
-		public Keyword getPropertiesKeyword_2_2_1_3_0() { return cPropertiesKeyword_2_2_1_3_0; }
+		public Keyword getPropertiesKeyword_2_2_1_4_0() { return cPropertiesKeyword_2_2_1_4_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_2_2_1_3_1() { return cLeftParenthesisKeyword_2_2_1_3_1; }
+		public Keyword getLeftParenthesisKeyword_2_2_1_4_1() { return cLeftParenthesisKeyword_2_2_1_4_1; }
 
 		//properties+=KeyAndValue
-		public Assignment getPropertiesAssignment_2_2_1_3_2() { return cPropertiesAssignment_2_2_1_3_2; }
+		public Assignment getPropertiesAssignment_2_2_1_4_2() { return cPropertiesAssignment_2_2_1_4_2; }
 
 		//KeyAndValue
-		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_2_1_3_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_2_1_3_2_0; }
+		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_2_1_4_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_2_1_4_2_0; }
 
 		//(", " properties+=KeyAndValue)*
-		public Group getGroup_2_2_1_3_3() { return cGroup_2_2_1_3_3; }
+		public Group getGroup_2_2_1_4_3() { return cGroup_2_2_1_4_3; }
 
 		//", "
-		public Keyword getCommaSpaceKeyword_2_2_1_3_3_0() { return cCommaSpaceKeyword_2_2_1_3_3_0; }
+		public Keyword getCommaSpaceKeyword_2_2_1_4_3_0() { return cCommaSpaceKeyword_2_2_1_4_3_0; }
 
 		//properties+=KeyAndValue
-		public Assignment getPropertiesAssignment_2_2_1_3_3_1() { return cPropertiesAssignment_2_2_1_3_3_1; }
+		public Assignment getPropertiesAssignment_2_2_1_4_3_1() { return cPropertiesAssignment_2_2_1_4_3_1; }
 
 		//KeyAndValue
-		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_2_1_3_3_1_0() { return cPropertiesKeyAndValueParserRuleCall_2_2_1_3_3_1_0; }
+		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_2_1_4_3_1_0() { return cPropertiesKeyAndValueParserRuleCall_2_2_1_4_3_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_2_2_1_3_4() { return cRightParenthesisKeyword_2_2_1_3_4; }
+		public Keyword getRightParenthesisKeyword_2_2_1_4_4() { return cRightParenthesisKeyword_2_2_1_4_4; }
 
 		//";"
-		public Keyword getSemicolonKeyword_2_2_1_4() { return cSemicolonKeyword_2_2_1_4; }
+		public Keyword getSemicolonKeyword_2_2_1_5() { return cSemicolonKeyword_2_2_1_5; }
 
 		//{dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty" type=[common::LScalarType] name=ValidIDWithKeywords
 		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";")
@@ -928,7 +969,8 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//{dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version" | uuid?="uuid" |
 		//domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType] multiplicity=Multiplicity?
-		//name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";"
+		//("[" constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? ";"
 		public Group getGroup_2_5() { return cGroup_2_5; }
 
 		//{dto::LDtoAttribute.annotationInfo=current}
@@ -982,56 +1024,72 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//Multiplicity
 		public RuleCall getMultiplicityMultiplicityParserRuleCall_2_5_3_0() { return cMultiplicityMultiplicityParserRuleCall_2_5_3_0; }
 
+		//("[" constraints+=AllConstraints* "]")?
+		public Group getGroup_2_5_4() { return cGroup_2_5_4; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_2_5_4_0() { return cLeftSquareBracketKeyword_2_5_4_0; }
+
+		//constraints+=AllConstraints*
+		public Assignment getConstraintsAssignment_2_5_4_1() { return cConstraintsAssignment_2_5_4_1; }
+
+		//AllConstraints
+		public RuleCall getConstraintsAllConstraintsParserRuleCall_2_5_4_1_0() { return cConstraintsAllConstraintsParserRuleCall_2_5_4_1_0; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_2_5_4_2() { return cRightSquareBracketKeyword_2_5_4_2; }
+
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_5_4() { return cNameAssignment_2_5_4; }
+		public Assignment getNameAssignment_2_5_5() { return cNameAssignment_2_5_5; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_5_4_0() { return cNameValidIDWithKeywordsParserRuleCall_2_5_4_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_5_5_0() { return cNameValidIDWithKeywordsParserRuleCall_2_5_5_0; }
 
 		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
-		public Group getGroup_2_5_5() { return cGroup_2_5_5; }
+		public Group getGroup_2_5_6() { return cGroup_2_5_6; }
 
 		//"properties"
-		public Keyword getPropertiesKeyword_2_5_5_0() { return cPropertiesKeyword_2_5_5_0; }
+		public Keyword getPropertiesKeyword_2_5_6_0() { return cPropertiesKeyword_2_5_6_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_2_5_5_1() { return cLeftParenthesisKeyword_2_5_5_1; }
+		public Keyword getLeftParenthesisKeyword_2_5_6_1() { return cLeftParenthesisKeyword_2_5_6_1; }
 
 		//properties+=KeyAndValue
-		public Assignment getPropertiesAssignment_2_5_5_2() { return cPropertiesAssignment_2_5_5_2; }
+		public Assignment getPropertiesAssignment_2_5_6_2() { return cPropertiesAssignment_2_5_6_2; }
 
 		//KeyAndValue
-		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_5_5_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_5_5_2_0; }
+		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_5_6_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_5_6_2_0; }
 
 		//(", " properties+=KeyAndValue)*
-		public Group getGroup_2_5_5_3() { return cGroup_2_5_5_3; }
+		public Group getGroup_2_5_6_3() { return cGroup_2_5_6_3; }
 
 		//", "
-		public Keyword getCommaSpaceKeyword_2_5_5_3_0() { return cCommaSpaceKeyword_2_5_5_3_0; }
+		public Keyword getCommaSpaceKeyword_2_5_6_3_0() { return cCommaSpaceKeyword_2_5_6_3_0; }
 
 		//properties+=KeyAndValue
-		public Assignment getPropertiesAssignment_2_5_5_3_1() { return cPropertiesAssignment_2_5_5_3_1; }
+		public Assignment getPropertiesAssignment_2_5_6_3_1() { return cPropertiesAssignment_2_5_6_3_1; }
 
 		//KeyAndValue
-		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_5_5_3_1_0() { return cPropertiesKeyAndValueParserRuleCall_2_5_5_3_1_0; }
+		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_5_6_3_1_0() { return cPropertiesKeyAndValueParserRuleCall_2_5_6_3_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_2_5_5_4() { return cRightParenthesisKeyword_2_5_5_4; }
+		public Keyword getRightParenthesisKeyword_2_5_6_4() { return cRightParenthesisKeyword_2_5_6_4; }
 
 		//";"
-		public Keyword getSemicolonKeyword_2_5_6() { return cSemicolonKeyword_2_5_6; }
+		public Keyword getSemicolonKeyword_2_5_7() { return cSemicolonKeyword_2_5_7; }
 
 		//{dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto]
-		//multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "("
-		//properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";")
+		//multiplicity=Multiplicity? ("[" constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("opposite"
+		//opposite=[dto::LDtoReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?)
+		//(mapper=LimitedMapperDtoMapper | ";")
 		public Group getGroup_2_6() { return cGroup_2_6; }
 
 		//{dto::LDtoReference.annotationInfo=current}
 		public Action getLDtoReferenceAnnotationInfoAction_2_6_0() { return cLDtoReferenceAnnotationInfoAction_2_6_0; }
 
-		//"ref" (cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? name=ValidIDWithKeywords
-		//("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "(" properties+=KeyAndValue (", "
-		//properties+=KeyAndValue)* ")")?
+		//"ref" (cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? ("["
+		//constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])?
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_6_1() { return cGroup_2_6_1; }
 
 		//"ref"
@@ -1067,56 +1125,71 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//Multiplicity
 		public RuleCall getMultiplicityMultiplicityParserRuleCall_2_6_1_3_0() { return cMultiplicityMultiplicityParserRuleCall_2_6_1_3_0; }
 
+		//("[" constraints+=AllConstraints* "]")?
+		public Group getGroup_2_6_1_4() { return cGroup_2_6_1_4; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_2_6_1_4_0() { return cLeftSquareBracketKeyword_2_6_1_4_0; }
+
+		//constraints+=AllConstraints*
+		public Assignment getConstraintsAssignment_2_6_1_4_1() { return cConstraintsAssignment_2_6_1_4_1; }
+
+		//AllConstraints
+		public RuleCall getConstraintsAllConstraintsParserRuleCall_2_6_1_4_1_0() { return cConstraintsAllConstraintsParserRuleCall_2_6_1_4_1_0; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_2_6_1_4_2() { return cRightSquareBracketKeyword_2_6_1_4_2; }
+
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_6_1_4() { return cNameAssignment_2_6_1_4; }
+		public Assignment getNameAssignment_2_6_1_5() { return cNameAssignment_2_6_1_5; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_6_1_4_0() { return cNameValidIDWithKeywordsParserRuleCall_2_6_1_4_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_6_1_5_0() { return cNameValidIDWithKeywordsParserRuleCall_2_6_1_5_0; }
 
 		//("opposite" opposite=[dto::LDtoReference|LFQN])?
-		public Group getGroup_2_6_1_5() { return cGroup_2_6_1_5; }
-
-		//"opposite"
-		public Keyword getOppositeKeyword_2_6_1_5_0() { return cOppositeKeyword_2_6_1_5_0; }
-
-		//opposite=[dto::LDtoReference|LFQN]
-		public Assignment getOppositeAssignment_2_6_1_5_1() { return cOppositeAssignment_2_6_1_5_1; }
-
-		//[dto::LDtoReference|LFQN]
-		public CrossReference getOppositeLDtoReferenceCrossReference_2_6_1_5_1_0() { return cOppositeLDtoReferenceCrossReference_2_6_1_5_1_0; }
-
-		//LFQN
-		public RuleCall getOppositeLDtoReferenceLFQNParserRuleCall_2_6_1_5_1_0_1() { return cOppositeLDtoReferenceLFQNParserRuleCall_2_6_1_5_1_0_1; }
-
-		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
 		public Group getGroup_2_6_1_6() { return cGroup_2_6_1_6; }
 
+		//"opposite"
+		public Keyword getOppositeKeyword_2_6_1_6_0() { return cOppositeKeyword_2_6_1_6_0; }
+
+		//opposite=[dto::LDtoReference|LFQN]
+		public Assignment getOppositeAssignment_2_6_1_6_1() { return cOppositeAssignment_2_6_1_6_1; }
+
+		//[dto::LDtoReference|LFQN]
+		public CrossReference getOppositeLDtoReferenceCrossReference_2_6_1_6_1_0() { return cOppositeLDtoReferenceCrossReference_2_6_1_6_1_0; }
+
+		//LFQN
+		public RuleCall getOppositeLDtoReferenceLFQNParserRuleCall_2_6_1_6_1_0_1() { return cOppositeLDtoReferenceLFQNParserRuleCall_2_6_1_6_1_0_1; }
+
+		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
+		public Group getGroup_2_6_1_7() { return cGroup_2_6_1_7; }
+
 		//"properties"
-		public Keyword getPropertiesKeyword_2_6_1_6_0() { return cPropertiesKeyword_2_6_1_6_0; }
+		public Keyword getPropertiesKeyword_2_6_1_7_0() { return cPropertiesKeyword_2_6_1_7_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_2_6_1_6_1() { return cLeftParenthesisKeyword_2_6_1_6_1; }
+		public Keyword getLeftParenthesisKeyword_2_6_1_7_1() { return cLeftParenthesisKeyword_2_6_1_7_1; }
 
 		//properties+=KeyAndValue
-		public Assignment getPropertiesAssignment_2_6_1_6_2() { return cPropertiesAssignment_2_6_1_6_2; }
+		public Assignment getPropertiesAssignment_2_6_1_7_2() { return cPropertiesAssignment_2_6_1_7_2; }
 
 		//KeyAndValue
-		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_6_1_6_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_6_1_6_2_0; }
+		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_6_1_7_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_6_1_7_2_0; }
 
 		//(", " properties+=KeyAndValue)*
-		public Group getGroup_2_6_1_6_3() { return cGroup_2_6_1_6_3; }
+		public Group getGroup_2_6_1_7_3() { return cGroup_2_6_1_7_3; }
 
 		//", "
-		public Keyword getCommaSpaceKeyword_2_6_1_6_3_0() { return cCommaSpaceKeyword_2_6_1_6_3_0; }
+		public Keyword getCommaSpaceKeyword_2_6_1_7_3_0() { return cCommaSpaceKeyword_2_6_1_7_3_0; }
 
 		//properties+=KeyAndValue
-		public Assignment getPropertiesAssignment_2_6_1_6_3_1() { return cPropertiesAssignment_2_6_1_6_3_1; }
+		public Assignment getPropertiesAssignment_2_6_1_7_3_1() { return cPropertiesAssignment_2_6_1_7_3_1; }
 
 		//KeyAndValue
-		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_6_1_6_3_1_0() { return cPropertiesKeyAndValueParserRuleCall_2_6_1_6_3_1_0; }
+		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_6_1_7_3_1_0() { return cPropertiesKeyAndValueParserRuleCall_2_6_1_7_3_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_2_6_1_6_4() { return cRightParenthesisKeyword_2_6_1_6_4; }
+		public Keyword getRightParenthesisKeyword_2_6_1_7_4() { return cRightParenthesisKeyword_2_6_1_7_4; }
 
 		//mapper=LimitedMapperDtoMapper | ";"
 		public Alternatives getAlternatives_2_6_2() { return cAlternatives_2_6_2; }
@@ -1130,9 +1203,9 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//";"
 		public Keyword getSemicolonKeyword_2_6_2_1() { return cSemicolonKeyword_2_6_2_1; }
 
-		//{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity?
-		//name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
-		//(mapper=LimitedMapperDtoMapper | ";")
+		//{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity? ("["
+		//constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+		//properties+=KeyAndValue)* ")")? (mapper=LimitedMapperDtoMapper | ";")
 		public Group getGroup_2_7() { return cGroup_2_7; }
 
 		//{dto::LDtoAttribute.annotationInfo=current}
@@ -1156,53 +1229,68 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//Multiplicity
 		public RuleCall getMultiplicityMultiplicityParserRuleCall_2_7_3_0() { return cMultiplicityMultiplicityParserRuleCall_2_7_3_0; }
 
+		//("[" constraints+=AllConstraints* "]")?
+		public Group getGroup_2_7_4() { return cGroup_2_7_4; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_2_7_4_0() { return cLeftSquareBracketKeyword_2_7_4_0; }
+
+		//constraints+=AllConstraints*
+		public Assignment getConstraintsAssignment_2_7_4_1() { return cConstraintsAssignment_2_7_4_1; }
+
+		//AllConstraints
+		public RuleCall getConstraintsAllConstraintsParserRuleCall_2_7_4_1_0() { return cConstraintsAllConstraintsParserRuleCall_2_7_4_1_0; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_2_7_4_2() { return cRightSquareBracketKeyword_2_7_4_2; }
+
 		//name=ValidIDWithKeywords
-		public Assignment getNameAssignment_2_7_4() { return cNameAssignment_2_7_4; }
+		public Assignment getNameAssignment_2_7_5() { return cNameAssignment_2_7_5; }
 
 		//ValidIDWithKeywords
-		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_7_4_0() { return cNameValidIDWithKeywordsParserRuleCall_2_7_4_0; }
+		public RuleCall getNameValidIDWithKeywordsParserRuleCall_2_7_5_0() { return cNameValidIDWithKeywordsParserRuleCall_2_7_5_0; }
 
 		//("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
-		public Group getGroup_2_7_5() { return cGroup_2_7_5; }
+		public Group getGroup_2_7_6() { return cGroup_2_7_6; }
 
 		//"properties"
-		public Keyword getPropertiesKeyword_2_7_5_0() { return cPropertiesKeyword_2_7_5_0; }
+		public Keyword getPropertiesKeyword_2_7_6_0() { return cPropertiesKeyword_2_7_6_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_2_7_5_1() { return cLeftParenthesisKeyword_2_7_5_1; }
+		public Keyword getLeftParenthesisKeyword_2_7_6_1() { return cLeftParenthesisKeyword_2_7_6_1; }
 
 		//properties+=KeyAndValue
-		public Assignment getPropertiesAssignment_2_7_5_2() { return cPropertiesAssignment_2_7_5_2; }
+		public Assignment getPropertiesAssignment_2_7_6_2() { return cPropertiesAssignment_2_7_6_2; }
 
 		//KeyAndValue
-		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_7_5_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_7_5_2_0; }
+		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_7_6_2_0() { return cPropertiesKeyAndValueParserRuleCall_2_7_6_2_0; }
 
 		//(", " properties+=KeyAndValue)*
-		public Group getGroup_2_7_5_3() { return cGroup_2_7_5_3; }
+		public Group getGroup_2_7_6_3() { return cGroup_2_7_6_3; }
 
 		//", "
-		public Keyword getCommaSpaceKeyword_2_7_5_3_0() { return cCommaSpaceKeyword_2_7_5_3_0; }
+		public Keyword getCommaSpaceKeyword_2_7_6_3_0() { return cCommaSpaceKeyword_2_7_6_3_0; }
 
 		//properties+=KeyAndValue
-		public Assignment getPropertiesAssignment_2_7_5_3_1() { return cPropertiesAssignment_2_7_5_3_1; }
+		public Assignment getPropertiesAssignment_2_7_6_3_1() { return cPropertiesAssignment_2_7_6_3_1; }
 
 		//KeyAndValue
-		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_7_5_3_1_0() { return cPropertiesKeyAndValueParserRuleCall_2_7_5_3_1_0; }
+		public RuleCall getPropertiesKeyAndValueParserRuleCall_2_7_6_3_1_0() { return cPropertiesKeyAndValueParserRuleCall_2_7_6_3_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_2_7_5_4() { return cRightParenthesisKeyword_2_7_5_4; }
+		public Keyword getRightParenthesisKeyword_2_7_6_4() { return cRightParenthesisKeyword_2_7_6_4; }
 
 		//mapper=LimitedMapperDtoMapper | ";"
-		public Alternatives getAlternatives_2_7_6() { return cAlternatives_2_7_6; }
+		public Alternatives getAlternatives_2_7_7() { return cAlternatives_2_7_7; }
 
 		//mapper=LimitedMapperDtoMapper
-		public Assignment getMapperAssignment_2_7_6_0() { return cMapperAssignment_2_7_6_0; }
+		public Assignment getMapperAssignment_2_7_7_0() { return cMapperAssignment_2_7_7_0; }
 
 		//LimitedMapperDtoMapper
-		public RuleCall getMapperLimitedMapperDtoMapperParserRuleCall_2_7_6_0_0() { return cMapperLimitedMapperDtoMapperParserRuleCall_2_7_6_0_0; }
+		public RuleCall getMapperLimitedMapperDtoMapperParserRuleCall_2_7_7_0_0() { return cMapperLimitedMapperDtoMapperParserRuleCall_2_7_7_0_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_2_7_6_1() { return cSemicolonKeyword_2_7_6_1; }
+		public Keyword getSemicolonKeyword_2_7_7_1() { return cSemicolonKeyword_2_7_7_1; }
 
 		//{dto::LDtoOperation.annotationInfo=current} ("def" type=JvmTypeReference name=ValidIDWithKeywords "("
 		//(params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")" body=XExpression)
@@ -1456,24 +1544,25 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	//	{dto::LDtoInheritedReference.annotationInfo=current} ("inherit ref"
 	//	inheritedFeature=[entity::LEntityReference|ValidLFQNWithKeywords]) "mapto" type=[dto::LDto] ("properties" "("
 	//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? (mapper=DtoMapper | ";") |
-	//	{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType]
-	//	name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
-	//	{dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty" type=[common::LScalarType] name=ValidIDWithKeywords
-	//	("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";") |
-	//	{dto::LDtoAttribute.annotationInfo=current} (derived?="derived" domainDescription?="domainDescription"?
+	//	{dto::LDtoAttribute.annotationInfo=current} (transient?="transient" type=[common::LScalarType] ("["
+	//	constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+	//	properties+=KeyAndValue)* ")")? ";") | {dto::LDtoAttribute.annotationInfo=current} (dirty?="dirty"
 	//	type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
-	//	properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression) |
+	//	properties+=KeyAndValue)* ")")? ";") | {dto::LDtoAttribute.annotationInfo=current} (derived?="derived"
+	//	domainDescription?="domainDescription"? type=[common::LScalarType] name=ValidIDWithKeywords ("properties" "("
+	//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? derivedGetterExpression=XBlockExpression) |
 	//	{dto::LDtoAttribute.annotationInfo=current} (id?="id" | version?="version" | uuid?="uuid" |
 	//	domainDescription?="domainDescription" | domainKey?="domainKey") type=[common::LScalarType] multiplicity=Multiplicity?
-	//	name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")? ";" |
-	//	{dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? & lazy?="lazy"?) type=[dto::LDto]
-	//	multiplicity=Multiplicity? name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "("
-	//	properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";") |
-	//	{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity?
-	//	name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", " properties+=KeyAndValue)* ")")?
-	//	(mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current} ("def" type=JvmTypeReference
-	//	name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", " params+=FullJvmFormalParameter)*)? ")"
-	//	body=XExpression));
+	//	("[" constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+	//	properties+=KeyAndValue)* ")")? ";" | {dto::LDtoReference.annotationInfo=current} ("ref" (cascading?="cascade"? &
+	//	lazy?="lazy"?) type=[dto::LDto] multiplicity=Multiplicity? ("[" constraints+=AllConstraints* "]")?
+	//	name=ValidIDWithKeywords ("opposite" opposite=[dto::LDtoReference|LFQN])? ("properties" "(" properties+=KeyAndValue
+	//	(", " properties+=KeyAndValue)* ")")?) (mapper=LimitedMapperDtoMapper | ";") |
+	//	{dto::LDtoAttribute.annotationInfo=current} "var" type=[common::LScalarType] multiplicity=Multiplicity? ("["
+	//	constraints+=AllConstraints* "]")? name=ValidIDWithKeywords ("properties" "(" properties+=KeyAndValue (", "
+	//	properties+=KeyAndValue)* ")")? (mapper=LimitedMapperDtoMapper | ";") | {dto::LDtoOperation.annotationInfo=current}
+	//	("def" type=JvmTypeReference name=ValidIDWithKeywords "(" (params+=FullJvmFormalParameter (", "
+	//	params+=FullJvmFormalParameter)*)? ")" body=XExpression));
 	public DtoFeatureElements getDtoFeatureAccess() {
 		return pDtoFeature;
 	}
@@ -1555,6 +1644,17 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getDataTypeAccess().getRule();
 	}
 
+	//AllConstraints returns types::LDatatypeConstraint:
+	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
+	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize | DtCFuture | DtCPast;
+	public CommonGrammarGrammarAccess.AllConstraintsElements getAllConstraintsAccess() {
+		return gaCommonGrammar.getAllConstraintsAccess();
+	}
+	
+	public ParserRule getAllConstraintsRule() {
+		return getAllConstraintsAccess().getRule();
+	}
+
 	//DataTypeConstraint returns types::LDatatypeConstraint:
 	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
 	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize;
@@ -1567,7 +1667,7 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DateConstraint returns types::LDatatypeConstraint:
-	//	DtCFuture | DtCPast;
+	//	DtCFuture | DtCPast | DtCNotNull | DtCNull;
 	public CommonGrammarGrammarAccess.DateConstraintElements getDateConstraintAccess() {
 		return gaCommonGrammar.getDateConstraintAccess();
 	}
@@ -1786,34 +1886,24 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getLVisibilityAccess().getRule();
 	}
 
-	//Constraints returns types::LConstraints:
-	//	{types::LConstraints} "constraints" "{" constraints+=Constraint* "}";
-	public CommonGrammarGrammarAccess.ConstraintsElements getConstraintsAccess() {
-		return gaCommonGrammar.getConstraintsAccess();
+	//ResultFilters returns types::LResultFilters:
+	//	{types::LResultFilters} "constraints" "{" resultFilters+=ResultFilter* "}";
+	public CommonGrammarGrammarAccess.ResultFiltersElements getResultFiltersAccess() {
+		return gaCommonGrammar.getResultFiltersAccess();
 	}
 	
-	public ParserRule getConstraintsRule() {
-		return getConstraintsAccess().getRule();
+	public ParserRule getResultFiltersRule() {
+		return getResultFiltersAccess().getRule();
 	}
 
-	//Constraint returns types::LConstraint:
+	//ResultFilter returns types::LResultFilter:
 	//	AttributeMatchingConstraint;
-	public CommonGrammarGrammarAccess.ConstraintElements getConstraintAccess() {
-		return gaCommonGrammar.getConstraintAccess();
+	public CommonGrammarGrammarAccess.ResultFilterElements getResultFilterAccess() {
+		return gaCommonGrammar.getResultFilterAccess();
 	}
 	
-	public ParserRule getConstraintRule() {
-		return getConstraintAccess().getRule();
-	}
-
-	//KeyAndValue returns types::LKeyAndValue:
-	//	"key" "=" key=STRING "value" "=" value=STRING;
-	public CommonGrammarGrammarAccess.KeyAndValueElements getKeyAndValueAccess() {
-		return gaCommonGrammar.getKeyAndValueAccess();
-	}
-	
-	public ParserRule getKeyAndValueRule() {
-		return getKeyAndValueAccess().getRule();
+	public ParserRule getResultFilterRule() {
+		return getResultFilterAccess().getRule();
 	}
 
 	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
@@ -1825,6 +1915,16 @@ public class DtoGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getAttributeMatchingConstraintRule() {
 		return getAttributeMatchingConstraintAccess().getRule();
+	}
+
+	//KeyAndValue returns types::LKeyAndValue:
+	//	"key" "=" key=STRING "value" "=" value=STRING;
+	public CommonGrammarGrammarAccess.KeyAndValueElements getKeyAndValueAccess() {
+		return gaCommonGrammar.getKeyAndValueAccess();
+	}
+	
+	public ParserRule getKeyAndValueRule() {
+		return getKeyAndValueAccess().getRule();
 	}
 
 	//enum LComparatorType returns types::LComparatorType:

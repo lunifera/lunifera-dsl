@@ -31,7 +31,7 @@ import org.lunifera.dsl.semantic.common.types.LReference
 import org.lunifera.dsl.semantic.common.types.LScalarType
 import org.lunifera.dsl.semantic.common.types.LType
 import org.lunifera.dsl.semantic.common.types.LTypedPackage
-import org.lunifera.dsl.semantic.common.types.LConstraints
+import org.lunifera.dsl.semantic.common.types.LResultFilters
 
 class LEntityModel {
 	contains LTypedPackage[] packages
@@ -45,11 +45,10 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 	refers LBean superType opposite subTypes
 	contains transient JvmTypeReference superTypeJvm
 	refers LBean[] subTypes opposite superType
-	 
 	/**
  	 * Returns all features of type LOperation
  	 */
-	op OperationsList getOperations() { 
+	op OperationsList getOperations() {
 		features.filter(typeof(LOperation)).toList
 	}
 	/**
@@ -99,7 +98,6 @@ class LBean extends LClass, LScalarType, LFeaturesHolder {
 		// call for super class
 		current.superType.collectAllLunFeatures(result)
 	}
-	
 }
 
 /**
@@ -119,12 +117,11 @@ class LEntity extends LClass, LFeaturesHolder {
 	contains transient JvmTypeReference superTypeJvm
 	refers LEntity[] subTypes opposite superType
 	String persistenceUnit
-	
 	/**
  	 * Returns all features of type LOperation
  	 */
 	op OperationsList getOperations() {
-		features.filter(typeof(LOperation)).toList 
+		features.filter(typeof(LOperation)).toList
 	}
 	/**
  	 * Returns all features of type LEntityReference
@@ -173,7 +170,6 @@ class LEntity extends LClass, LFeaturesHolder {
 		// call for super class
 		current.superType.collectAllLunFeatures(result)
 	}
-	
 }
 
 type InternalEObject wraps InternalEObject
@@ -181,13 +177,10 @@ type InternalEObject wraps InternalEObject
 class LEntityPersistenceInfo extends LLazyResolver {
 	String schemaName
 	String tableName
-	
 }
 
 class LEntityColumnPersistenceInfo extends LLazyResolver {
 	String columnName
-	
-
 }
 
 interface LEntityInheritanceStrategy extends LLazyResolver {
@@ -197,14 +190,12 @@ class LTablePerClassStrategy extends LEntityInheritanceStrategy {
 	String discriminatorColumn
 	LDiscriminatorType discriminatorType
 	String discriminatorValue
-
 }
 
 class LTablePerSubclassStrategy extends LEntityInheritanceStrategy {
 	String discriminatorColumn
 	LDiscriminatorType discriminatorType
 	String discriminatorValue
-	
 }
 
 enum LDiscriminatorType {
@@ -219,70 +210,64 @@ class LEntityFeature extends LFeature {
 	op LEntity getEntity() {
 		return eContainer as LEntity
 	}
-	
 }
 
 class LEntityAttribute extends LEntityFeature, LAttribute {
-	
 	// in case that a bean has a reference to entity
 	refers LBeanReference ^opposite
-	
-	derived String typedName get 
-	{
+	derived String typedName get {
 		var result = new StringBuilder
-		if(name != null){
+		if (name != null) {
 			result.append = name
-		}else{
+		} else {
 			result.append = "empty"
 		}
-		
+
 		result.append = " : "
-		
-		if(^type != null){
+
+		if (^type != null) {
 			result.append = ^type.name
-		}else{
+		} else {
 			result.append = "undefined"
 		}
-		
-		return result.toString		
+
+		return result.toString
 	}
-	
-} 
+}
 
 class LEntityReference extends LEntityFeature, LReference {
 	refers LEntity ^type
 	contains transient JvmTypeReference typeJvm
 	refers LEntityReference ^opposite
-	contains LConstraints constraints
+	
+	// reference filters may be used by UI to filter unwanted references 
+	contains LResultFilters resultFilters
 }
 
 class LBeanFeature  extends LFeature {
 	op LBean getBean() {
 		return eContainer as LBean
 	}
-	
 }
 
 class LBeanAttribute extends LBeanFeature, LAttribute {
-	
-	derived String typedName get
-	{
+	derived String typedName get {
 		var result = new StringBuilder
-		if(name != null){
+		if (name != null) {
 			result.append = name
-		}else{
+		} else {
 			result.append = "empty"
 		}
-		
+
 		result.append = " : "
-		
-		if(^type != null){
+
+		if (^type != null) {
 			result.append = ^type.name
-		}else{
+		} else {
 			result.append = "undefined"
 		}
-		
-		return result.toString		
+
+		return result.toString
 	}
 }
 
@@ -291,7 +276,8 @@ class LBeanReference extends LBeanFeature, LReference {
 	refers LType ^type
 	refers LFeature ^opposite
 	contains transient JvmTypeReference typeJvm
-	contains LConstraints constraints
+	// reference filters may be used by UI to filter unwanted references 
+	contains LResultFilters resultFilters
 }
 
 class LIndex {
@@ -304,9 +290,8 @@ class LIndex {
  * Overwrites LOperation to add bean and entity feature as supertype
  */
 class LOperation extends org.lunifera.dsl.semantic.common.types.LOperation, LBeanFeature, LEntityFeature {
-	
 }
- 
+
 type OperationsList wraps java.util.List<LOperation>
 
 type EntityFeatureList wraps java.util.List<LEntityFeature>

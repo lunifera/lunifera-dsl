@@ -2743,10 +2743,10 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:12: ( '0x' | '0X' )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -2774,7 +2774,7 @@ public class InternalCommonGrammarLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:13: '0x'
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:13: '0x'
                     {
                     match("0x"); 
 
@@ -2782,7 +2782,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:18: '0X'
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:18: '0X'
                     {
                     match("0X"); 
 
@@ -2792,7 +2792,7 @@ public class InternalCommonGrammarLexer extends Lexer {
 
             }
 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -2830,7 +2830,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -2839,10 +2839,10 @@ public class InternalCommonGrammarLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -2860,7 +2860,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -2884,7 +2884,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8556:84: ( 'l' | 'L' )
+                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8578:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -2923,11 +2923,11 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8558:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8558:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8580:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8580:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8558:21: ( '0' .. '9' | '_' )*
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8580:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -2976,11 +2976,11 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8560:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8560:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8582:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8582:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8560:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8582:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -2989,7 +2989,7 @@ public class InternalCommonGrammarLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8560:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8582:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -3000,7 +3000,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8560:36: ( '+' | '-' )?
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8582:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -3033,7 +3033,7 @@ public class InternalCommonGrammarLexer extends Lexer {
 
             }
 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8560:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8582:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -3045,7 +3045,7 @@ public class InternalCommonGrammarLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8560:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8582:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -3069,7 +3069,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8560:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8582:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -3102,10 +3102,10 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8562:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8562:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8584:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8584:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8562:11: ( '^' )?
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8584:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -3114,7 +3114,7 @@ public class InternalCommonGrammarLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8562:11: '^'
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8584:11: '^'
                     {
                     match('^'); 
 
@@ -3132,7 +3132,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8562:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8584:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -3181,10 +3181,10 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? ) )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? ) )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
             {
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -3202,10 +3202,10 @@ public class InternalCommonGrammarLexer extends Lexer {
             }
             switch (alt15) {
                 case 1 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )?
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )?
                     {
                     match('\"'); 
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -3221,7 +3221,7 @@ public class InternalCommonGrammarLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:21: '\\\\' .
+                    	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -3229,7 +3229,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3249,7 +3249,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                         }
                     } while (true);
 
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:44: ( '\"' )?
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:44: ( '\"' )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -3258,7 +3258,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                     }
                     switch (alt12) {
                         case 1 :
-                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:44: '\"'
+                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:44: '\"'
                             {
                             match('\"'); 
 
@@ -3271,10 +3271,10 @@ public class InternalCommonGrammarLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:49: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )?
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:49: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )?
                     {
                     match('\''); 
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:54: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:54: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop13:
                     do {
                         int alt13=3;
@@ -3290,7 +3290,7 @@ public class InternalCommonGrammarLexer extends Lexer {
 
                         switch (alt13) {
                     	case 1 :
-                    	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:55: '\\\\' .
+                    	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:55: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -3298,7 +3298,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:62: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:62: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3318,7 +3318,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                         }
                     } while (true);
 
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:79: ( '\\'' )?
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:79: ( '\\'' )?
                     int alt14=2;
                     int LA14_0 = input.LA(1);
 
@@ -3327,7 +3327,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                     }
                     switch (alt14) {
                         case 1 :
-                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8564:79: '\\''
+                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8586:79: '\\''
                             {
                             match('\''); 
 
@@ -3358,12 +3358,12 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8566:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8566:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8588:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8588:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8566:24: ( options {greedy=false; } : . )*
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8588:24: ( options {greedy=false; } : . )*
             loop16:
             do {
                 int alt16=2;
@@ -3388,7 +3388,7 @@ public class InternalCommonGrammarLexer extends Lexer {
 
                 switch (alt16) {
             	case 1 :
-            	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8566:52: .
+            	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8588:52: .
             	    {
             	    matchAny(); 
 
@@ -3418,12 +3418,12 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8568:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8568:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8590:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8590:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8568:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8590:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop17:
             do {
                 int alt17=2;
@@ -3436,7 +3436,7 @@ public class InternalCommonGrammarLexer extends Lexer {
 
                 switch (alt17) {
             	case 1 :
-            	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8568:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8590:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3456,7 +3456,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8568:40: ( ( '\\r' )? '\\n' )?
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8590:40: ( ( '\\r' )? '\\n' )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -3465,9 +3465,9 @@ public class InternalCommonGrammarLexer extends Lexer {
             }
             switch (alt19) {
                 case 1 :
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8568:41: ( '\\r' )? '\\n'
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8590:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8568:41: ( '\\r' )?
+                    // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8590:41: ( '\\r' )?
                     int alt18=2;
                     int LA18_0 = input.LA(1);
 
@@ -3476,7 +3476,7 @@ public class InternalCommonGrammarLexer extends Lexer {
                     }
                     switch (alt18) {
                         case 1 :
-                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8568:41: '\\r'
+                            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8590:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3508,10 +3508,10 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8570:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8570:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8592:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8592:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8570:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8592:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt20=0;
             loop20:
             do {
@@ -3565,8 +3565,8 @@ public class InternalCommonGrammarLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8572:16: ( . )
-            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8572:18: .
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8594:16: ( . )
+            // ../org.lunifera.dsl.common.xtext/src-gen/org/lunifera/dsl/common/xtext/parser/antlr/internal/InternalCommonGrammar.g:8594:18: .
             {
             matchAny(); 
 

@@ -17,8 +17,8 @@ import org.lunifera.dsl.common.xtext.scope.CommonScopeProvider;
 import org.lunifera.dsl.common.xtext.scope.ConstraintEnumMatchingLiteralScope;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
-import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LReference;
+import org.lunifera.dsl.semantic.common.types.LResultFilters;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
@@ -49,7 +49,7 @@ public class EntityScopeProvider extends CommonScopeProvider {
 		} else if (reference == LunEntityPackage.Literals.LINDEX__FEATURES) {
 			return new IndexScope((LIndex) context);
 		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE_MATCHING_CONSTRAINT__ATTRIBUTE) {
-			if (context instanceof LConstraints) {
+			if (context instanceof LResultFilters) {
 				return new EntityConstraintAttributeScope(
 						(LReference) context.eContainer());
 			} else {
@@ -57,7 +57,8 @@ public class EntityScopeProvider extends CommonScopeProvider {
 						.eContainer().eContainer());
 			}
 		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE_MATCHING_CONSTRAINT__MATCHING_LITERAL) {
-			return new ConstraintEnumMatchingLiteralScope((LAttributeMatchingConstraint) context);
+			return new ConstraintEnumMatchingLiteralScope(
+					(LAttributeMatchingConstraint) context);
 		}
 		return super.getScope(context, reference);
 	}

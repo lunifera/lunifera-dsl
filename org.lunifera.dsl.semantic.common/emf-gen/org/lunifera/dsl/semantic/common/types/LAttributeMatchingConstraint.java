@@ -33,7 +33,7 @@ package org.lunifera.dsl.semantic.common.types;
  * @model
  * @generated
  */
-public interface LAttributeMatchingConstraint extends LConstraint {
+public interface LAttributeMatchingConstraint extends LResultFilter {
 	/**
 	 * Returns the value of the '<em><b>Attribute</b></em>' reference.
 	 * <!-- begin-user-doc -->

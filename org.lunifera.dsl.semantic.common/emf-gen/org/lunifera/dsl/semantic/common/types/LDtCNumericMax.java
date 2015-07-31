@@ -30,7 +30,7 @@ package org.lunifera.dsl.semantic.common.types;
  * @model
  * @generated
  */
-public interface LDtCNumericMax extends LDatatypeConstraint {
+public interface LDtCNumericMax extends LNumericConstraint {
 	/**
 	 * Returns the value of the '<em><b>Max</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -56,5 +56,14 @@ public interface LDtCNumericMax extends LDatatypeConstraint {
 	 * @generated
 	 */
 	void setMax(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
+	 * @generated
+	 */
+	boolean isForPrimitives();
 
 } // LDtCNumericMax

@@ -41,6 +41,7 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LAttribute#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -402,5 +403,21 @@ public interface LAttribute extends LFeature {
 	 * @generated
 	 */
 	EList<LKeyAndValue> getProperties();
+
+	/**
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LDatatypeConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraints</em>' containment reference list.
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLAttribute_Constraints()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LDatatypeConstraint> getConstraints();
 
 } // LAttribute

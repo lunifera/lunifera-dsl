@@ -30,7 +30,7 @@ package org.lunifera.dsl.semantic.common.types;
  * @model
  * @generated
  */
-public interface LDtCRegEx extends LDatatypeConstraint {
+public interface LDtCRegEx extends LStringConstraint {
 	/**
 	 * Returns the value of the '<em><b>Pattern</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -56,5 +56,14 @@ public interface LDtCRegEx extends LDatatypeConstraint {
 	 * @generated
 	 */
 	void setPattern(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
+	 * @generated
+	 */
+	boolean isForPrimitives();
 
 } // LDtCRegEx

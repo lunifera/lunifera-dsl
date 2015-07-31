@@ -201,6 +201,17 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getDataTypeAccess().getRule();
 	}
 
+	//AllConstraints returns types::LDatatypeConstraint:
+	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
+	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize | DtCFuture | DtCPast;
+	public CommonGrammarGrammarAccess.AllConstraintsElements getAllConstraintsAccess() {
+		return gaCommonGrammar.getAllConstraintsAccess();
+	}
+	
+	public ParserRule getAllConstraintsRule() {
+		return getAllConstraintsAccess().getRule();
+	}
+
 	//DataTypeConstraint returns types::LDatatypeConstraint:
 	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
 	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize;
@@ -213,7 +224,7 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DateConstraint returns types::LDatatypeConstraint:
-	//	DtCFuture | DtCPast;
+	//	DtCFuture | DtCPast | DtCNotNull | DtCNull;
 	public CommonGrammarGrammarAccess.DateConstraintElements getDateConstraintAccess() {
 		return gaCommonGrammar.getDateConstraintAccess();
 	}
@@ -432,34 +443,24 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getLVisibilityAccess().getRule();
 	}
 
-	//Constraints returns types::LConstraints:
-	//	{types::LConstraints} "constraints" "{" constraints+=Constraint* "}";
-	public CommonGrammarGrammarAccess.ConstraintsElements getConstraintsAccess() {
-		return gaCommonGrammar.getConstraintsAccess();
+	//ResultFilters returns types::LResultFilters:
+	//	{types::LResultFilters} "constraints" "{" resultFilters+=ResultFilter* "}";
+	public CommonGrammarGrammarAccess.ResultFiltersElements getResultFiltersAccess() {
+		return gaCommonGrammar.getResultFiltersAccess();
 	}
 	
-	public ParserRule getConstraintsRule() {
-		return getConstraintsAccess().getRule();
+	public ParserRule getResultFiltersRule() {
+		return getResultFiltersAccess().getRule();
 	}
 
-	//Constraint returns types::LConstraint:
+	//ResultFilter returns types::LResultFilter:
 	//	AttributeMatchingConstraint;
-	public CommonGrammarGrammarAccess.ConstraintElements getConstraintAccess() {
-		return gaCommonGrammar.getConstraintAccess();
+	public CommonGrammarGrammarAccess.ResultFilterElements getResultFilterAccess() {
+		return gaCommonGrammar.getResultFilterAccess();
 	}
 	
-	public ParserRule getConstraintRule() {
-		return getConstraintAccess().getRule();
-	}
-
-	//KeyAndValue returns types::LKeyAndValue:
-	//	"key" "=" key=STRING "value" "=" value=STRING;
-	public CommonGrammarGrammarAccess.KeyAndValueElements getKeyAndValueAccess() {
-		return gaCommonGrammar.getKeyAndValueAccess();
-	}
-	
-	public ParserRule getKeyAndValueRule() {
-		return getKeyAndValueAccess().getRule();
+	public ParserRule getResultFilterRule() {
+		return getResultFilterAccess().getRule();
 	}
 
 	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
@@ -471,6 +472,16 @@ public class DatatypeGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getAttributeMatchingConstraintRule() {
 		return getAttributeMatchingConstraintAccess().getRule();
+	}
+
+	//KeyAndValue returns types::LKeyAndValue:
+	//	"key" "=" key=STRING "value" "=" value=STRING;
+	public CommonGrammarGrammarAccess.KeyAndValueElements getKeyAndValueAccess() {
+		return gaCommonGrammar.getKeyAndValueAccess();
+	}
+	
+	public ParserRule getKeyAndValueRule() {
+		return getKeyAndValueAccess().getRule();
 	}
 
 	//enum LComparatorType returns types::LComparatorType:

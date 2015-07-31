@@ -13,7 +13,11 @@
  */
 package org.lunifera.dsl.semantic.common.types.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -143,6 +147,15 @@ public class LDtCSizeImpl extends LLazyResolverImpl implements LDtCSize {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isForPrimitives() {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -204,6 +217,20 @@ public class LDtCSizeImpl extends LLazyResolverImpl implements LDtCSize {
 				return max != MAX_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case LunTypesPackage.LDT_CSIZE___IS_FOR_PRIMITIVES:
+				return isForPrimitives();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

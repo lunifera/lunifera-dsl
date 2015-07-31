@@ -890,34 +890,24 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getLVisibilityAccess().getRule();
 	}
 
-	//Constraints returns types::LConstraints:
-	//	{types::LConstraints} "constraints" "{" constraints+=Constraint* "}";
-	public CommonGrammarGrammarAccess.ConstraintsElements getConstraintsAccess() {
-		return gaCommonGrammar.getConstraintsAccess();
+	//ResultFilters returns types::LResultFilters:
+	//	{types::LResultFilters} "constraints" "{" resultFilters+=ResultFilter* "}";
+	public CommonGrammarGrammarAccess.ResultFiltersElements getResultFiltersAccess() {
+		return gaCommonGrammar.getResultFiltersAccess();
 	}
 	
-	public ParserRule getConstraintsRule() {
-		return getConstraintsAccess().getRule();
+	public ParserRule getResultFiltersRule() {
+		return getResultFiltersAccess().getRule();
 	}
 
-	//Constraint returns types::LConstraint:
+	//ResultFilter returns types::LResultFilter:
 	//	AttributeMatchingConstraint;
-	public CommonGrammarGrammarAccess.ConstraintElements getConstraintAccess() {
-		return gaCommonGrammar.getConstraintAccess();
+	public CommonGrammarGrammarAccess.ResultFilterElements getResultFilterAccess() {
+		return gaCommonGrammar.getResultFilterAccess();
 	}
 	
-	public ParserRule getConstraintRule() {
-		return getConstraintAccess().getRule();
-	}
-
-	//KeyAndValue returns types::LKeyAndValue:
-	//	"key" "=" key=STRING "value" "=" value=STRING;
-	public CommonGrammarGrammarAccess.KeyAndValueElements getKeyAndValueAccess() {
-		return gaCommonGrammar.getKeyAndValueAccess();
-	}
-	
-	public ParserRule getKeyAndValueRule() {
-		return getKeyAndValueAccess().getRule();
+	public ParserRule getResultFilterRule() {
+		return getResultFilterAccess().getRule();
 	}
 
 	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
@@ -929,6 +919,16 @@ public class ServicesGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getAttributeMatchingConstraintRule() {
 		return getAttributeMatchingConstraintAccess().getRule();
+	}
+
+	//KeyAndValue returns types::LKeyAndValue:
+	//	"key" "=" key=STRING "value" "=" value=STRING;
+	public CommonGrammarGrammarAccess.KeyAndValueElements getKeyAndValueAccess() {
+		return gaCommonGrammar.getKeyAndValueAccess();
+	}
+	
+	public ParserRule getKeyAndValueRule() {
+		return getKeyAndValueAccess().getRule();
 	}
 
 	//enum LComparatorType returns types::LComparatorType:

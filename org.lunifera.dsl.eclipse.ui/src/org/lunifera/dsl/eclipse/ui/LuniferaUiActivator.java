@@ -13,13 +13,9 @@ package org.lunifera.dsl.eclipse.ui;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IStartup;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.util.Modules2;
-import org.lunifera.dsl.eclipse.ui.internal.guice.LuniferaUiCommonModule;
 import org.osgi.framework.BundleContext;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 
 public class LuniferaUiActivator extends AbstractUIPlugin implements IStartup {
 
@@ -35,7 +31,6 @@ public class LuniferaUiActivator extends AbstractUIPlugin implements IStartup {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		getInjector();
 	}
 
 	@Override
@@ -55,21 +50,9 @@ public class LuniferaUiActivator extends AbstractUIPlugin implements IStartup {
 		return plugin;
 	}
 
-	public Injector getInjector() {
-		if (childInjector == null) {
-
-			Module module = new LuniferaUiCommonModule(LuniferaUiActivator.getInstance());
-			Module sharedStateModule = new org.eclipse.xtext.ui.shared.SharedStateModule();
-			Module mergedModule = Modules2.mixin(module, sharedStateModule);
-			childInjector = Guice.createInjector(mergedModule);
-		}
-		return childInjector;
-	}
-
 	@Override
 	public void earlyStartup() {
-		
-		getInjector();
+
 	}
 
 	/**

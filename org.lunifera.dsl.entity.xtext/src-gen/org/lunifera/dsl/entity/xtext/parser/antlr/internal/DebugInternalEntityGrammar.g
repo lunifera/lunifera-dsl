@@ -63,19 +63,22 @@ ruleColumnPersistenceInfo :
 // Rule EntityFeature
 ruleEntityFeature :
 	ruleAnnotationDef* (
-		'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID
-		ruleColumnPersistenceInfo? (
+		'ref' 'cascade'? RULE_ID ruleMultiplicity? (
+			'[' ruleAllConstraints* ']'
+		)? ruleTRANSLATABLEID ruleColumnPersistenceInfo? (
 			'opposite' ruleLFQN
 		)? (
 			'properties' '(' ruleKeyAndValue (
 				', ' ruleKeyAndValue
 			)* ')'
 		)? (
-			ruleConstraints |
+			ruleResultFilters |
 			';'
 		) |
 		(
-			'transient' RULE_ID ruleTRANSLATABLEID (
+			'transient' RULE_ID (
+				'[' ruleAllConstraints* ']'
+			)? ruleTRANSLATABLEID (
 				'properties' '(' ruleKeyAndValue (
 					', ' ruleKeyAndValue
 				)* ')'
@@ -92,7 +95,9 @@ ruleEntityFeature :
 				'version' |
 				'domainDescription' |
 				'domainKey'
-			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID ruleColumnPersistenceInfo? (
+			) RULE_ID ruleMultiplicity? (
+				'[' ruleAllConstraints* ']'
+			)? ruleTRANSLATABLEID ruleColumnPersistenceInfo? (
 				'opposite' ruleLFQN
 			)? (
 				'properties' '(' ruleKeyAndValue (
@@ -111,18 +116,22 @@ ruleEntityFeature :
 // Rule BeanFeature
 ruleBeanFeature :
 	ruleAnnotationDef* (
-		'ref' 'cascade'? RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
+		'ref' 'cascade'? RULE_ID ruleMultiplicity? (
+			'[' ruleAllConstraints* ']'
+		)? ruleTRANSLATABLEID (
 			'opposite' ruleLFQN
 		)? (
 			'properties' '(' ruleKeyAndValue (
 				', ' ruleKeyAndValue
 			)* ')'
 		)? (
-			ruleConstraints |
+			ruleResultFilters |
 			';'
 		) |
 		(
-			'transient' RULE_ID ruleTRANSLATABLEID (
+			'transient' RULE_ID (
+				'[' ruleAllConstraints* ']'
+			)? ruleTRANSLATABLEID (
 				'properties' '(' ruleKeyAndValue (
 					', ' ruleKeyAndValue
 				)* ')'
@@ -131,7 +140,9 @@ ruleBeanFeature :
 				'var' |
 				'id' |
 				'version'
-			) RULE_ID ruleMultiplicity? ruleTRANSLATABLEID (
+			) RULE_ID ruleMultiplicity? (
+				'[' ruleAllConstraints* ']'
+			)? ruleTRANSLATABLEID (
 				'properties' '(' ruleKeyAndValue (
 					', ' ruleKeyAndValue
 				)* ')'
@@ -213,6 +224,23 @@ ruleDataType :
 	) ';'
 ;
 
+// Rule AllConstraints
+ruleAllConstraints :
+	ruleDtCAssertFalse |
+	ruleDtCAssertTrue |
+	ruleDtCDecimalMax |
+	ruleDtCDecimalMin |
+	ruleDtCDigits |
+	ruleDtCNumericMax |
+	ruleDtCNumericMin |
+	ruleDtCNotNull |
+	ruleDtCNull |
+	ruleDtCRegEx |
+	ruleDtCSize |
+	ruleDtCFuture |
+	ruleDtCPast
+;
+
 // Rule DataTypeConstraint
 ruleDataTypeConstraint :
 	ruleDtCAssertFalse |
@@ -231,7 +259,9 @@ ruleDataTypeConstraint :
 // Rule DateConstraint
 ruleDateConstraint :
 	ruleDtCFuture |
-	ruleDtCPast
+	ruleDtCPast |
+	ruleDtCNotNull |
+	ruleDtCNull
 ;
 
 // Rule BlobTypeConstraint
@@ -337,19 +367,14 @@ ruleAnnotationDef :
 	) => ruleXAnnotation )
 ;
 
-// Rule Constraints
-ruleConstraints :
-	'constraints' '{' ruleConstraint* '}'
+// Rule ResultFilters
+ruleResultFilters :
+	'constraints' '{' ruleResultFilter* '}'
 ;
 
-// Rule Constraint
-ruleConstraint :
+// Rule ResultFilter
+ruleResultFilter :
 	ruleAttributeMatchingConstraint
-;
-
-// Rule KeyAndValue
-ruleKeyAndValue :
-	'key' '=' RULE_STRING 'value' '=' RULE_STRING
 ;
 
 // Rule AttributeMatchingConstraint
@@ -360,6 +385,11 @@ ruleAttributeMatchingConstraint :
 		RULE_ID
 		) => RULE_ID )
 	) ';'
+;
+
+// Rule KeyAndValue
+ruleKeyAndValue :
+	'key' '=' RULE_STRING 'value' '=' RULE_STRING
 ;
 
 // Rule LQualifiedNameWithWildCard

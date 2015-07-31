@@ -14,7 +14,6 @@
 package org.lunifera.dsl.semantic.common.types.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

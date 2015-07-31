@@ -33,6 +33,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LDatatypeConstraint;
 import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -61,6 +62,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractAttributeImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -306,6 +308,16 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * @ordered
 	 */
 	protected EList<LKeyAndValue> properties;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LDatatypeConstraint> constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -677,6 +689,18 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LDatatypeConstraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentEList<LDatatypeConstraint>(LDatatypeConstraint.class, this, LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS);
+		}
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -686,6 +710,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return basicSetTypeJvm(null, msgs);
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -727,6 +753,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return getTypeJvm();
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
 				return getProperties();
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS:
+				return getConstraints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -783,6 +811,10 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends LDatatypeConstraint>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -837,6 +869,9 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
 				getProperties().clear();
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -877,6 +912,8 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				return typeJvm != null;
 			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -904,6 +941,7 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM: return LunTypesPackage.LATTRIBUTE__TYPE_JVM;
 				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES: return LunTypesPackage.LATTRIBUTE__PROPERTIES;
+				case LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS: return LunTypesPackage.LATTRIBUTE__CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -933,6 +971,7 @@ public abstract class LDtoAbstractAttributeImpl extends LDtoFeatureImpl implemen
 				case LunTypesPackage.LATTRIBUTE__TYPE: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE;
 				case LunTypesPackage.LATTRIBUTE__TYPE_JVM: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__TYPE_JVM;
 				case LunTypesPackage.LATTRIBUTE__PROPERTIES: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES;
+				case LunTypesPackage.LATTRIBUTE__CONSTRAINTS: return LunDtoPackage.LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS;
 				default: return -1;
 			}
 		}

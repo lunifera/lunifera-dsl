@@ -15,8 +15,8 @@ package org.lunifera.dsl.semantic.entity;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
-import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LReference;
+import org.lunifera.dsl.semantic.common.types.LResultFilters;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +29,7 @@ import org.lunifera.dsl.semantic.common.types.LReference;
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getOpposite <em>Opposite</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.LEntityReference#getResultFilters <em>Result Filters</em>}</li>
  * </ul>
  * </p>
  *
@@ -117,29 +117,29 @@ public interface LEntityReference extends LEntityFeature, LReference {
 	void setOpposite(LEntityReference value);
 
 	/**
-	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Result Filters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Constraints</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Result Filters</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constraints</em>' containment reference.
-	 * @see #setConstraints(LConstraints)
-	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntityReference_Constraints()
+	 * @return the value of the '<em>Result Filters</em>' containment reference.
+	 * @see #setResultFilters(LResultFilters)
+	 * @see org.lunifera.dsl.semantic.entity.LunEntityPackage#getLEntityReference_ResultFilters()
 	 * @model containment="true"
 	 * @generated
 	 */
-	LConstraints getConstraints();
+	LResultFilters getResultFilters();
 
 	/**
-	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getConstraints <em>Constraints</em>}' containment reference.
+	 * Sets the value of the '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getResultFilters <em>Result Filters</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Constraints</em>' containment reference.
-	 * @see #getConstraints()
+	 * @param value the new value of the '<em>Result Filters</em>' containment reference.
+	 * @see #getResultFilters()
 	 * @generated
 	 */
-	void setConstraints(LConstraints value);
+	void setResultFilters(LResultFilters value);
 
 } // LEntityReference

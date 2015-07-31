@@ -186,13 +186,22 @@ public interface LunTypesFactory extends EFactory {
 	LMultiplicity createLMultiplicity();
 
 	/**
-	 * Returns a new object of class '<em>LConstraints</em>'.
+	 * Returns a new object of class '<em>LResult Filters</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LConstraints</em>'.
+	 * @return a new object of class '<em>LResult Filters</em>'.
 	 * @generated
 	 */
-	LConstraints createLConstraints();
+	LResultFilters createLResultFilters();
+
+	/**
+	 * Returns a new object of class '<em>LAttribute Matching Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>LAttribute Matching Constraint</em>'.
+	 * @generated
+	 */
+	LAttributeMatchingConstraint createLAttributeMatchingConstraint();
 
 	/**
 	 * Returns a new object of class '<em>LDt CAssert False</em>'.
@@ -310,15 +319,6 @@ public interface LunTypesFactory extends EFactory {
 	 * @generated
 	 */
 	LDtCSize createLDtCSize();
-
-	/**
-	 * Returns a new object of class '<em>LAttribute Matching Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LAttribute Matching Constraint</em>'.
-	 * @generated
-	 */
-	LAttributeMatchingConstraint createLAttributeMatchingConstraint();
 
 	/**
 	 * Returns the package supported by this factory.

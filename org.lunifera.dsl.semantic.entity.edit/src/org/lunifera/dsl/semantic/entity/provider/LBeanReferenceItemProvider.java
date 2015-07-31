@@ -166,8 +166,9 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(LunTypesPackage.Literals.LREFERENCE__PROPERTIES);
+			childrenFeatures.add(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS);
 			childrenFeatures.add(LunEntityPackage.Literals.LBEAN_REFERENCE__TYPE_JVM);
-			childrenFeatures.add(LunEntityPackage.Literals.LBEAN_REFERENCE__CONSTRAINTS);
+			childrenFeatures.add(LunEntityPackage.Literals.LBEAN_REFERENCE__RESULT_FILTERS);
 		}
 		return childrenFeatures;
 	}
@@ -228,8 +229,9 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case LunEntityPackage.LBEAN_REFERENCE__PROPERTIES:
-			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
 			case LunEntityPackage.LBEAN_REFERENCE__CONSTRAINTS:
+			case LunEntityPackage.LBEAN_REFERENCE__TYPE_JVM:
+			case LunEntityPackage.LBEAN_REFERENCE__RESULT_FILTERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -251,6 +253,71 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LREFERENCE__PROPERTIES,
 				 LunTypesFactory.eINSTANCE.createLKeyAndValue()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCAssertFalse()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCAssertTrue()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDecimalMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDecimalMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDigits()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCFuture()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCPast()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNumericMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNumericMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNotNull()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNull()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCRegEx()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LREFERENCE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCSize()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -299,8 +366,8 @@ public class LBeanReferenceItemProvider extends LBeanFeatureItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(LunEntityPackage.Literals.LBEAN_REFERENCE__CONSTRAINTS,
-				 LunTypesFactory.eINSTANCE.createLConstraints()));
+				(LunEntityPackage.Literals.LBEAN_REFERENCE__RESULT_FILTERS,
+				 LunTypesFactory.eINSTANCE.createLResultFilters()));
 	}
 
 }

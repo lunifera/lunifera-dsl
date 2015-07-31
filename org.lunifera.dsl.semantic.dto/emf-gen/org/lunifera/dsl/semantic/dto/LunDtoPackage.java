@@ -653,13 +653,22 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES = LDTO_FEATURE_FEATURE_COUNT + 13;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS = LDTO_FEATURE_FEATURE_COUNT + 14;
+
+	/**
 	 * The number of structural features of the '<em>LDto Abstract Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_ATTRIBUTE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 14;
+	int LDTO_ABSTRACT_ATTRIBUTE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 15;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedAttributeImpl <em>LDto Inherited Attribute</em>}' class.
@@ -841,6 +850,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_INHERITED_ATTRIBUTE__PROPERTIES = LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_INHERITED_ATTRIBUTE__CONSTRAINTS = LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Inherited Feature</b></em>' reference.
@@ -1051,6 +1069,15 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_ATTRIBUTE__PROPERTIES = LDTO_ABSTRACT_ATTRIBUTE__PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ATTRIBUTE__CONSTRAINTS = LDTO_ABSTRACT_ATTRIBUTE__CONSTRAINTS;
+
+	/**
 	 * The number of structural features of the '<em>LDto Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1142,13 +1169,22 @@ public interface LunDtoPackage extends EPackage {
 	int LDTO_ABSTRACT_REFERENCE__PROPERTIES = LDTO_FEATURE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_ABSTRACT_REFERENCE__CONSTRAINTS = LDTO_FEATURE_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_REFERENCE__TYPE = LDTO_FEATURE_FEATURE_COUNT + 3;
+	int LDTO_ABSTRACT_REFERENCE__TYPE = LDTO_FEATURE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
@@ -1157,7 +1193,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_REFERENCE__TYPE_JVM = LDTO_FEATURE_FEATURE_COUNT + 4;
+	int LDTO_ABSTRACT_REFERENCE__TYPE_JVM = LDTO_FEATURE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>LDto Abstract Reference</em>' class.
@@ -1166,7 +1202,7 @@ public interface LunDtoPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LDTO_ABSTRACT_REFERENCE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 5;
+	int LDTO_ABSTRACT_REFERENCE_FEATURE_COUNT = LDTO_FEATURE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.dsl.semantic.dto.impl.LDtoInheritedReferenceImpl <em>LDto Inherited Reference</em>}' class.
@@ -1249,6 +1285,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_INHERITED_REFERENCE__PROPERTIES = LDTO_ABSTRACT_REFERENCE__PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_INHERITED_REFERENCE__CONSTRAINTS = LDTO_ABSTRACT_REFERENCE__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1376,6 +1421,15 @@ public interface LunDtoPackage extends EPackage {
 	 * @ordered
 	 */
 	int LDTO_REFERENCE__PROPERTIES = LDTO_ABSTRACT_REFERENCE__PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LDTO_REFERENCE__CONSTRAINTS = LDTO_ABSTRACT_REFERENCE__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.

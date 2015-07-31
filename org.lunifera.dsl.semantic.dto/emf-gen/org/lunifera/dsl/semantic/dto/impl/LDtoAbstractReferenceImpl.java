@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.lunifera.dsl.semantic.common.types.LDatatypeConstraint;
 import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LReference;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -48,6 +49,7 @@ import org.lunifera.dsl.semantic.dto.LunDtoPackage;
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.dto.impl.LDtoAbstractReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
  * </ul>
@@ -105,6 +107,16 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 	 * @ordered
 	 */
 	protected EList<LKeyAndValue> properties;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LDatatypeConstraint> constraints;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -204,6 +216,18 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LDatatypeConstraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentEList<LDatatypeConstraint>(LDatatypeConstraint.class, this, LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CONSTRAINTS);
+		}
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LDto getType() {
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
@@ -290,6 +314,8 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 		switch (featureID) {
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
 		}
@@ -310,6 +336,8 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				return isCascading();
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
 				return getProperties();
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CONSTRAINTS:
+				return getConstraints();
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
@@ -338,6 +366,10 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends LDatatypeConstraint>)newValue);
+				return;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				setType((LDto)newValue);
 				return;
@@ -365,6 +397,9 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
 				getProperties().clear();
 				return;
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				setType((LDto)null);
 				return;
@@ -389,6 +424,8 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				return cascading != CASCADING_EDEFAULT;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE:
 				return type != null;
 			case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__TYPE_JVM:
@@ -409,6 +446,7 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__LAZY: return LunTypesPackage.LREFERENCE__LAZY;
 				case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING: return LunTypesPackage.LREFERENCE__CASCADING;
 				case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES: return LunTypesPackage.LREFERENCE__PROPERTIES;
+				case LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CONSTRAINTS: return LunTypesPackage.LREFERENCE__CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -427,6 +465,7 @@ public abstract class LDtoAbstractReferenceImpl extends LDtoFeatureImpl implemen
 				case LunTypesPackage.LREFERENCE__LAZY: return LunDtoPackage.LDTO_ABSTRACT_REFERENCE__LAZY;
 				case LunTypesPackage.LREFERENCE__CASCADING: return LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CASCADING;
 				case LunTypesPackage.LREFERENCE__PROPERTIES: return LunDtoPackage.LDTO_ABSTRACT_REFERENCE__PROPERTIES;
+				case LunTypesPackage.LREFERENCE__CONSTRAINTS: return LunDtoPackage.LDTO_ABSTRACT_REFERENCE__CONSTRAINTS;
 				default: return -1;
 			}
 		}

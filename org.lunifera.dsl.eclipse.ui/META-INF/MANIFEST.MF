@@ -24,17 +24,4 @@ Bundle-ActivationPolicy: lazy
 Import-Package: javax.inject;version="1.0.0",
  org.slf4j;version="1.7.2"
 Export-Package: org.lunifera.dsl.eclipse.ui.perspectives;version="0.9.1";uses:="org.eclipse.ui",
- org.lunifera.dsl.eclipse.ui.preferences;version="0.9.1";uses:="org.eclipse.jface.preference,org.eclipse.ui,org.eclipse.core.runtime.preferences",
- org.lunifera.dsl.eclipse.ui.utils;version="0.9.1";
-  uses:="org.eclipse.core.runtime,
-   org.eclipse.core.resources,
-   org.osgi.framework,
-   org.eclipse.xtext.ui.util,
-   org.eclipse.xtext.ui.guice,
-   com.google.inject",
- org.lunifera.dsl.eclipse.ui.wizards;version="0.9.1";
-  uses:="org.eclipse.core.runtime,
-   org.eclipse.ui,
-   org.eclipse.core.resources,
-   org.eclipse.xtext.ui.util,
-   org.eclipse.xtext.ui.wizard"
+ org.lunifera.dsl.eclipse.ui.preferences;version="0.9.1";uses:="org.eclipse.jface.preference,org.eclipse.ui,org.eclipse.core.runtime.preferences"

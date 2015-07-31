@@ -47,7 +47,9 @@ ruleDtoFeature :
 			ruleDtoMapper |
 			';'
 		) |
-		'transient' RULE_ID ruleValidIDWithKeywords (
+		'transient' RULE_ID (
+			'[' ruleAllConstraints* ']'
+		)? ruleValidIDWithKeywords (
 			'properties' '(' ruleKeyAndValue (
 				', ' ruleKeyAndValue
 			)* ')'
@@ -68,7 +70,9 @@ ruleDtoFeature :
 			'uuid' |
 			'domainDescription' |
 			'domainKey'
-		) RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+		) RULE_ID ruleMultiplicity? (
+			'[' ruleAllConstraints* ']'
+		)? ruleValidIDWithKeywords (
 			'properties' '(' ruleKeyAndValue (
 				', ' ruleKeyAndValue
 			)* ')'
@@ -77,7 +81,9 @@ ruleDtoFeature :
 			'ref' (
 				'cascade'? |
 				'lazy'?
-			)* RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+			)* RULE_ID ruleMultiplicity? (
+				'[' ruleAllConstraints* ']'
+			)? ruleValidIDWithKeywords (
 				'opposite' ruleLFQN
 			)? (
 				'properties' '(' ruleKeyAndValue (
@@ -88,7 +94,9 @@ ruleDtoFeature :
 			ruleLimitedMapperDtoMapper |
 			';'
 		) |
-		'var' RULE_ID ruleMultiplicity? ruleValidIDWithKeywords (
+		'var' RULE_ID ruleMultiplicity? (
+			'[' ruleAllConstraints* ']'
+		)? ruleValidIDWithKeywords (
 			'properties' '(' ruleKeyAndValue (
 				', ' ruleKeyAndValue
 			)* ')'
@@ -143,6 +151,23 @@ ruleDataType :
 	) ';'
 ;
 
+// Rule AllConstraints
+ruleAllConstraints :
+	ruleDtCAssertFalse |
+	ruleDtCAssertTrue |
+	ruleDtCDecimalMax |
+	ruleDtCDecimalMin |
+	ruleDtCDigits |
+	ruleDtCNumericMax |
+	ruleDtCNumericMin |
+	ruleDtCNotNull |
+	ruleDtCNull |
+	ruleDtCRegEx |
+	ruleDtCSize |
+	ruleDtCFuture |
+	ruleDtCPast
+;
+
 // Rule DataTypeConstraint
 ruleDataTypeConstraint :
 	ruleDtCAssertFalse |
@@ -161,7 +186,9 @@ ruleDataTypeConstraint :
 // Rule DateConstraint
 ruleDateConstraint :
 	ruleDtCFuture |
-	ruleDtCPast
+	ruleDtCPast |
+	ruleDtCNotNull |
+	ruleDtCNull
 ;
 
 // Rule BlobTypeConstraint
@@ -267,14 +294,9 @@ ruleAnnotationDef :
 	) => ruleXAnnotation )
 ;
 
-// Rule Constraint
-ruleConstraint :
+// Rule ResultFilter
+ruleResultFilter :
 	ruleAttributeMatchingConstraint
-;
-
-// Rule KeyAndValue
-ruleKeyAndValue :
-	'key' '=' RULE_STRING 'value' '=' RULE_STRING
 ;
 
 // Rule AttributeMatchingConstraint
@@ -285,6 +307,11 @@ ruleAttributeMatchingConstraint :
 		RULE_ID
 		) => RULE_ID )
 	) ';'
+;
+
+// Rule KeyAndValue
+ruleKeyAndValue :
+	'key' '=' RULE_STRING 'value' '=' RULE_STRING
 ;
 
 // Rule LQualifiedNameWithWildCard

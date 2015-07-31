@@ -24,5 +24,14 @@ package org.lunifera.dsl.semantic.common.types;
  * @model
  * @generated
  */
-public interface LDtCAssertTrue extends LDatatypeConstraint {
+public interface LDtCAssertTrue extends LBooleanConstraint {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
+	 * @generated
+	 */
+	boolean isForPrimitives();
+
 } // LDtCAssertTrue

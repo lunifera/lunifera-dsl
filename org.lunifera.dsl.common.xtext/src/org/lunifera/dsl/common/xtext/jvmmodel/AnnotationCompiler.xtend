@@ -74,7 +74,7 @@ class AnnotationCompiler {
 		att.resolvedAnnotations.filter([!exclude]).map([annotation]).translateAnnotationsTo(jvmType);
 	}
 
-	def void toConstraintAnnotations(LAttribute att, JvmField jvmType) {
+	def void toDatatypeBasedConstraintAnnotations(LAttribute att, JvmField jvmType) {
 		if (att.type instanceof LDataType) {
 			val LDataType dt = att.type as LDataType;
 			for (c : dt.constraints) {

@@ -16,18 +16,16 @@
 @Ecore(nsPrefix="types")
 @Ecore(rootPackage="types")
 package org.lunifera.dsl.semantic.common.types
- 
-import xcore.lang.GenModel
+
 import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.common.types.JvmFormalParameter
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
-import org.eclipse.emf.ecore.EObject
 import org.lunifera.dsl.xtext.lazyresolver.api.EcoreUtil3
-import org.eclipse.emf.ecore.InternalEObject
-import org.eclipse.xtext.xtype.XImportSection
- 
+
 class LCommonModel extends LLazyResolver {
 	contains LTypedPackage[] packages
 }
@@ -45,16 +43,14 @@ class LPackage extends LLazyResolver {
 
 class LTypedPackage extends LPackage {
 	contains LType[] types
-	
 	op String getResourceSimpleName() {
 		val resource = eResource
-		if(resource == null){
+		if (resource == null) {
 			return ""
 		}
-		
+
 		return resource.URI.lastSegment + " - " + name
 	}
-	
 }
 
 class LImport {
@@ -119,7 +115,6 @@ enum LDateType {
 
 class LEnum extends LScalarType {
 	contains LEnumLiteral[] literals
-	
 }
 
 class LEnumLiteral extends LLazyResolver {
@@ -133,7 +128,6 @@ class LClass extends LType {
 	boolean ^abstract
 	boolean serializable
 	String shortName
-	
 }
 
 interface LFeaturesHolder {
@@ -166,8 +160,9 @@ interface LFeature extends LAnnotationTarget {
 interface LReference extends LFeature {
 	boolean lazy
 	boolean cascading
-	
 	contains LKeyAndValue[*] properties
+	// constraints for the datatype
+	contains LDatatypeConstraint[*] constraints
 }
 
 interface LAttribute extends LFeature {
@@ -190,8 +185,9 @@ interface LAttribute extends LFeature {
 	contains XExpression derivedGetterExpression
 	refers LScalarType ^type
 	contains transient JvmTypeReference typeJvm
-	
 	contains LKeyAndValue[*] properties
+	// constraints for the datatype
+	contains LDatatypeConstraint[*] constraints
 }
 
 class LKeyAndValue {
@@ -210,7 +206,6 @@ class LOperation extends LAnnotationTarget {
 	op AnnotationList getResolvedAnnotations() {
 		annotations
 	}
-	
 }
 
 class LModifier extends LLazyResolver {
@@ -289,69 +284,21 @@ enum LUpperBound {
 	ONE = 2
 }
 
-class LConstraints extends LLazyResolver {
-	contains LConstraint[*] constraints
-}
-
 interface LConstraint extends LLazyResolver{
-	 
 }
 
-interface LDatatypeConstraint extends LConstraint {
-	
+/**
+ * ResultFilters are used to filter the possible results for a reference. 
+ * May be used by UI to filter unwanted entries.
+ */
+class LResultFilters extends LLazyResolver {
+	contains LResultFilter[*] resultFilters
 }
 
-class LDtCAssertFalse extends LDatatypeConstraint {
-	
+interface LResultFilter extends LConstraint {
 }
 
-class LDtCAssertTrue extends LDatatypeConstraint {
-	
-}
-
-class LDtCDecimalMax extends LDatatypeConstraint {
-	float max	
-}
-
-class LDtCDecimalMin extends LDatatypeConstraint {
-	float min
-}
-
-class LDtCDigits extends LDatatypeConstraint {
-	int intDigits
-	int fractionDigits
-}
-
-class LDtCFuture extends LDatatypeConstraint {
-}
-
-class LDtCPast extends LDatatypeConstraint {
-}
-
-class LDtCNumericMax extends LDatatypeConstraint {
-	int max	
-}
-
-class LDtCNumericMin extends LDatatypeConstraint {
-	int min
-}
-
-class LDtCNotNull extends LDatatypeConstraint {
-}
-
-class LDtCNull extends LDatatypeConstraint {
-}
-
-class LDtCRegEx extends LDatatypeConstraint {
-	String pattern
-}
-
-class LDtCSize extends LDatatypeConstraint {
-	int min
-	int max
-}
-
-class LAttributeMatchingConstraint extends LConstraint {
+class LAttributeMatchingConstraint extends LResultFilter {
 	refers LAttribute attribute
 	LComparatorType comparatorType
 	String matchingValue
@@ -365,6 +312,134 @@ enum LComparatorType {
 	GREATER_EQ as '>='
 	LOWER_EQ as '<='
 	NOT_EQ as '<>'
+}
+
+/**
+ * DatatypeConstraints are used to create javax.validation constraint annotations.
+ */
+interface LDatatypeConstraint extends LConstraint {
+	/**
+	 * Returns true, if the constraint can be used for primitive datatypes. 
+	 */
+	op boolean isForPrimitives()
+}
+
+interface LStringConstraint extends LDatatypeConstraint {
+}
+
+interface LNumericConstraint extends LDatatypeConstraint {
+}
+
+interface LDecimalConstraint extends LDatatypeConstraint {
+}
+
+interface LDateConstraint extends LDatatypeConstraint {
+}
+
+interface LBooleanConstraint extends LDatatypeConstraint {
+}
+
+interface LBlobConstraint extends LDatatypeConstraint {
+}
+
+class LDtCAssertFalse extends LBooleanConstraint {
+	op boolean isForPrimitives() {
+		return true
+	}
+}
+
+class LDtCAssertTrue extends LBooleanConstraint {
+	op boolean isForPrimitives() {
+		return true
+	}
+}
+
+class LDtCDecimalMax extends LDecimalConstraint {
+	float max
+	
+	op boolean isForPrimitives() {
+		return true
+	}
+}
+
+class LDtCDecimalMin extends LDecimalConstraint {
+	float min
+	
+	op boolean isForPrimitives() {
+		return true
+	}
+}
+
+class LDtCDigits extends LDecimalConstraint {
+	int intDigits
+	int fractionDigits
+	
+	op boolean isForPrimitives() {
+		return true
+	}
+}
+
+class LDtCFuture extends LDateConstraint {
+	
+	op boolean isForPrimitives() {
+		return false
+	}
+}
+
+class LDtCPast extends LDateConstraint {
+	
+	op boolean isForPrimitives() {
+		return false
+	}
+}
+
+class LDtCNumericMax extends LNumericConstraint {
+	int max
+	
+	op boolean isForPrimitives() {
+		return true
+	}
+}
+
+class LDtCNumericMin extends LNumericConstraint {
+	int min
+	
+	op boolean isForPrimitives() {
+		return true
+	}
+}
+
+class LDtCNotNull extends LBlobConstraint, LDateConstraint, LStringConstraint, 
+							LBooleanConstraint, LDecimalConstraint, LNumericConstraint {
+								
+	op boolean isForPrimitives() {
+		return false
+	}
+}
+
+class LDtCNull extends LBlobConstraint, LDateConstraint, LStringConstraint, 
+							LBooleanConstraint, LDecimalConstraint, LNumericConstraint {
+								
+	op boolean isForPrimitives() {
+		return false
+	}
+}
+
+class LDtCRegEx extends LStringConstraint {
+	String pattern
+	
+	op boolean isForPrimitives() {
+		return true
+	}
+}
+
+class LDtCSize extends LStringConstraint {
+	int min
+	int max
+	
+	op boolean isForPrimitives() {
+		return true
+	}
 }
 
 type OperationsList wraps java.util.List<LOperation>

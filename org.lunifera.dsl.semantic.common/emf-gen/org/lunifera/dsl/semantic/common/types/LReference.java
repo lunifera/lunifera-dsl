@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LReference#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LReference#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.common.types.LReference#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.common.types.LReference#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,5 +102,21 @@ public interface LReference extends LFeature {
 	 * @generated
 	 */
 	EList<LKeyAndValue> getProperties();
+
+	/**
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.dsl.semantic.common.types.LDatatypeConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraints</em>' containment reference list.
+	 * @see org.lunifera.dsl.semantic.common.types.LunTypesPackage#getLReference_Constraints()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LDatatypeConstraint> getConstraints();
 
 } // LReference

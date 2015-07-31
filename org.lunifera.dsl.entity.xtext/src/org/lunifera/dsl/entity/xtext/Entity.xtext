@@ -70,13 +70,13 @@ EntityFeature returns entity::LEntityFeature:
 	{entity::LEntityFeature}
 	annotations+=AnnotationDef*
 	(({entity::LEntityReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? name=TRANSLATABLEID
+	('ref' (cascading?='cascade')? type=[entity::LEntity] multiplicity=Multiplicity? ('['constraints+=AllConstraints* ']')? name=TRANSLATABLEID
 	(persistenceInfo=ColumnPersistenceInfo)?
 	('opposite' opposite=[entity::LEntityReference|LFQN])? ('properties' '(' properties+=KeyAndValue (', '
-	properties+=KeyAndValue)* ')')? (constraints=Constraints | ';')))
+	properties+=KeyAndValue)* ')')? (resultFilters=ResultFilters | ';')))
 	|
 	({entity::LEntityAttribute.annotationInfo=current}
-	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (', '
+	((transient?='transient' type=[LScalarType] ('['constraints+=AllConstraints* ']')? name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (', '
 	properties+=KeyAndValue)* ')')? ';')
 	|
 	(derived?='derived' (domainDescription?='domainDescription')? type=[LScalarType] name=TRANSLATABLEID ('properties' '('
@@ -84,7 +84,7 @@ EntityFeature returns entity::LEntityFeature:
 	derivedGetterExpression=XBlockExpression)
 	|
 	(('var' | id?='id' | uuid?='uuid' | version?="version" | domainDescription?='domainDescription' |
-	domainKey?='domainKey') type=[LScalarType] multiplicity=Multiplicity?
+	domainKey?='domainKey') type=[LScalarType] multiplicity=Multiplicity? ('['constraints+=AllConstraints* ']')?
 	name=TRANSLATABLEID (persistenceInfo=ColumnPersistenceInfo)? ('opposite' opposite=[entity::LBeanReference|LFQN])?
 	('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?
 	';')))
@@ -98,15 +98,15 @@ BeanFeature returns entity::LBeanFeature:
 	{entity::LBeanFeature}
 	annotations+=AnnotationDef*
 	(({entity::LBeanReference.annotationInfo=current}
-	('ref' (cascading?='cascade')? type=[LType] multiplicity=Multiplicity? name=TRANSLATABLEID
+	('ref' (cascading?='cascade')? type=[LType] multiplicity=Multiplicity? ('['constraints+=AllConstraints* ']')? name=TRANSLATABLEID
 	('opposite' opposite=[LReference|LFQN])? ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)*
-	')')? (constraints=Constraints | ';')))
+	')')? (resultFilters=ResultFilters | ';')))
 	|
 	({entity::LBeanAttribute.annotationInfo=current}
-	((transient?='transient' type=[LScalarType] name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (', '
+	((transient?='transient' type=[LScalarType] ('['constraints+=AllConstraints* ']')? name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (', '
 	properties+=KeyAndValue)* ')')?)
 	|
-	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=Multiplicity?
+	(('var' | id?='id' | version?="version") type=[LScalarType] multiplicity=Multiplicity? ('['constraints+=AllConstraints* ']')?
 	name=TRANSLATABLEID ('properties' '(' properties+=KeyAndValue (', ' properties+=KeyAndValue)* ')')?
 	';')))
 	|

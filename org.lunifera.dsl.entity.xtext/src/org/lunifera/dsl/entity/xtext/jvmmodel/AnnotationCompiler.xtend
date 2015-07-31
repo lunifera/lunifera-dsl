@@ -54,9 +54,9 @@ import org.lunifera.dsl.entity.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.entity.xtext.extensions.ModelExtensions
 import org.lunifera.dsl.entity.xtext.extensions.NamingExtensions
 import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint
-import org.lunifera.dsl.semantic.common.types.LConstraints
 import org.lunifera.dsl.semantic.common.types.LDataType
 import org.lunifera.dsl.semantic.common.types.LReference
+import org.lunifera.dsl.semantic.common.types.LResultFilters
 import org.lunifera.dsl.semantic.entity.LBean
 import org.lunifera.dsl.semantic.entity.LBeanAttribute
 import org.lunifera.dsl.semantic.entity.LBeanFeature
@@ -255,9 +255,11 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			}
 		}
 
-		if (prop.constraints != null) {
-			prop.constraints.addConstraintsAnno(jvmField)
+		if (prop.resultFilters != null) {
+			prop.resultFilters.addConstraintsAnno(jvmField)
 		}
+		
+		toConstraintAnnotations(prop, jvmField)
 	}
 
 	def protected dispatch void internalProcessAnnotation(LEntityAttribute prop, JvmField jvmField) {
@@ -328,7 +330,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			}
 		}
 
-		super.toConstraintAnnotations(prop, jvmField)
+		toConstraintAnnotations(prop, jvmField)
 	}
 
 	// generate Attribute overrides
@@ -430,18 +432,10 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		}
 	}
 
-	def protected dispatch void internalProcessAnnotation(
-		LBeanAttribute prop,
-		JvmField jvmField
-	) {
-
-		prop.resolvedAnnotations.filter(
-			[
-				! exclude
-			]).map([annotation]).translateAnnotationsTo(jvmField);
+	def protected dispatch void internalProcessAnnotation(LBeanAttribute prop, JvmField jvmField) {
+		prop.resolvedAnnotations.filter([! exclude]).map([annotation]).translateAnnotationsTo(jvmField);
 
 		if (prop.transient) {
-
 			jvmField.annotations += prop.toAnnotation(typeof(Transient))
 		}
 
@@ -481,8 +475,40 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			val ann = prop.toAnnotation(typeof(ElementCollection))
 			addAnno(prop, jvmField, ann)
 		}
+
+		toConstraintAnnotations(prop, jvmField)
+	}
+  
+	def dispatch void toConstraintAnnotations(LBeanAttribute prop, JvmField jvmField) {
+		for (c : prop.constraints) {
+			c.toConstraintAnnotation(jvmField)
+		}
 		
-		super.toConstraintAnnotations(prop, jvmField)
+		if(prop.constraints.empty) {
+			super.toDatatypeBasedConstraintAnnotations(prop, jvmField)
+		}
+	}
+	 
+	def dispatch void toConstraintAnnotations(LBeanReference prop, JvmField jvmField) {
+		for (c : prop.constraints) {
+			c.toConstraintAnnotation(jvmField)
+		}
+	}
+	
+	def dispatch void toConstraintAnnotations(LEntityAttribute prop, JvmField jvmField) {
+		for (c : prop.constraints) {
+			c.toConstraintAnnotation(jvmField)
+		}
+		
+		if(prop.constraints.empty) {
+			super.toDatatypeBasedConstraintAnnotations(prop, jvmField)
+		}
+	}
+	
+	def dispatch void toConstraintAnnotations(LEntityReference prop, JvmField jvmField) {
+		for (c : prop.constraints) {
+			c.toConstraintAnnotation(jvmField)
+		}
 	}
 
 	def protected dispatch void internalProcessAnnotation(LBeanReference prop, JvmField jvmField) {
@@ -522,8 +548,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 				}
 			}
 
-			if (prop.constraints != null) {
-				prop.constraints.addConstraintsAnno(jvmField)
+			if (prop.resultFilters != null) {
+				prop.resultFilters.addConstraintsAnno(jvmField)
 			}
 
 		} else {
@@ -535,6 +561,8 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 				addAnno(prop, jvmField, prop.toAnnotation(typeof(ElementCollection)))
 			}
 		}
+		
+		toConstraintAnnotations(prop, jvmField)
 	}
 
 	def private addOneToManyAnno(LReference prop, JvmAnnotationTarget jvmAnnTarget) {
@@ -616,14 +644,14 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 		}
 	}
 
-	def void addConstraintsAnno(LConstraints constraints, JvmField jvmField) {
+	def void addConstraintsAnno(LResultFilters constraints, JvmField jvmField) {
 
 		// process the LAttributeMatchingConstraint
-		if (!constraints.constraints.filter[it instanceof LAttributeMatchingConstraint].empty) {
+		if (!constraints.resultFilters.filter[it instanceof LAttributeMatchingConstraint].empty) {
 
 			// collect all inner annotations
 			val innerAnnotations = newArrayList()
-			constraints.constraints.filter[it instanceof LAttributeMatchingConstraint].map[
+			constraints.resultFilters.filter[it instanceof LAttributeMatchingConstraint].map[
 				it as LAttributeMatchingConstraint].forEach [
 				val innerAnno = constraints.toAnnotation(typeof(TargetEnumConstraint))
 				innerAnno.addAnnAttr(it, "targetProperty", attribute.name)

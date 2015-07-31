@@ -1156,13 +1156,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_ATTRIBUTE__PROPERTIES = LENTITY_FEATURE_FEATURE_COUNT + 13;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_ATTRIBUTE__CONSTRAINTS = LENTITY_FEATURE_FEATURE_COUNT + 14;
+
+	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 14;
+	int LENTITY_ATTRIBUTE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
@@ -1171,7 +1180,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 15;
+	int LENTITY_ATTRIBUTE__TYPED_NAME = LENTITY_FEATURE_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Attribute</em>' class.
@@ -1180,7 +1189,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 16;
+	int LENTITY_ATTRIBUTE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 17;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1301,13 +1310,22 @@ public interface LunEntityPackage extends EPackage {
 	int LENTITY_REFERENCE__PROPERTIES = LENTITY_FEATURE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY_REFERENCE__CONSTRAINTS = LENTITY_FEATURE_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 3;
+	int LENTITY_REFERENCE__TYPE = LENTITY_FEATURE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
@@ -1316,7 +1334,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE__TYPE_JVM = LENTITY_FEATURE_FEATURE_COUNT + 4;
+	int LENTITY_REFERENCE__TYPE_JVM = LENTITY_FEATURE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
@@ -1325,16 +1343,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 5;
+	int LENTITY_REFERENCE__OPPOSITE = LENTITY_FEATURE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' containment reference.
+	 * The feature id for the '<em><b>Result Filters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE__CONSTRAINTS = LENTITY_FEATURE_FEATURE_COUNT + 6;
+	int LENTITY_REFERENCE__RESULT_FILTERS = LENTITY_FEATURE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Reference</em>' class.
@@ -1343,7 +1361,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_REFERENCE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 7;
+	int LENTITY_REFERENCE_FEATURE_COUNT = LENTITY_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1645,13 +1663,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_ATTRIBUTE__PROPERTIES = LBEAN_FEATURE_FEATURE_COUNT + 13;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_ATTRIBUTE__CONSTRAINTS = LBEAN_FEATURE_FEATURE_COUNT + 14;
+
+	/**
 	 * The feature id for the '<em><b>Typed Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE__TYPED_NAME = LBEAN_FEATURE_FEATURE_COUNT + 14;
+	int LBEAN_ATTRIBUTE__TYPED_NAME = LBEAN_FEATURE_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of structural features of the '<em>LBean Attribute</em>' class.
@@ -1660,7 +1687,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 15;
+	int LBEAN_ATTRIBUTE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 16;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -1772,13 +1799,22 @@ public interface LunEntityPackage extends EPackage {
 	int LBEAN_REFERENCE__PROPERTIES = LBEAN_FEATURE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LBEAN_REFERENCE__CONSTRAINTS = LBEAN_FEATURE_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 3;
+	int LBEAN_REFERENCE__TYPE = LBEAN_FEATURE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Opposite</b></em>' reference.
@@ -1787,7 +1823,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE__OPPOSITE = LBEAN_FEATURE_FEATURE_COUNT + 4;
+	int LBEAN_REFERENCE__OPPOSITE = LBEAN_FEATURE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Type Jvm</b></em>' containment reference.
@@ -1796,16 +1832,16 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 5;
+	int LBEAN_REFERENCE__TYPE_JVM = LBEAN_FEATURE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' containment reference.
+	 * The feature id for the '<em><b>Result Filters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE__CONSTRAINTS = LBEAN_FEATURE_FEATURE_COUNT + 6;
+	int LBEAN_REFERENCE__RESULT_FILTERS = LBEAN_FEATURE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>LBean Reference</em>' class.
@@ -1814,7 +1850,7 @@ public interface LunEntityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LBEAN_REFERENCE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 7;
+	int LBEAN_REFERENCE_FEATURE_COUNT = LBEAN_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>EResolve Proxy</em>' operation.
@@ -2767,15 +2803,15 @@ public interface LunEntityPackage extends EPackage {
 	EReference getLEntityReference_Opposite();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getConstraints <em>Constraints</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LEntityReference#getResultFilters <em>Result Filters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Constraints</em>'.
-	 * @see org.lunifera.dsl.semantic.entity.LEntityReference#getConstraints()
+	 * @return the meta object for the containment reference '<em>Result Filters</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LEntityReference#getResultFilters()
 	 * @see #getLEntityReference()
 	 * @generated
 	 */
-	EReference getLEntityReference_Constraints();
+	EReference getLEntityReference_ResultFilters();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LBeanFeature <em>LBean Feature</em>}'.
@@ -2862,15 +2898,15 @@ public interface LunEntityPackage extends EPackage {
 	EReference getLBeanReference_TypeJvm();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getConstraints <em>Constraints</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.lunifera.dsl.semantic.entity.LBeanReference#getResultFilters <em>Result Filters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Constraints</em>'.
-	 * @see org.lunifera.dsl.semantic.entity.LBeanReference#getConstraints()
+	 * @return the meta object for the containment reference '<em>Result Filters</em>'.
+	 * @see org.lunifera.dsl.semantic.entity.LBeanReference#getResultFilters()
 	 * @see #getLBeanReference()
 	 * @generated
 	 */
-	EReference getLBeanReference_Constraints();
+	EReference getLBeanReference_ResultFilters();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.dsl.semantic.entity.LIndex <em>LIndex</em>}'.
@@ -3541,12 +3577,12 @@ public interface LunEntityPackage extends EPackage {
 		EReference LENTITY_REFERENCE__OPPOSITE = eINSTANCE.getLEntityReference_Opposite();
 
 		/**
-		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Result Filters</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LENTITY_REFERENCE__CONSTRAINTS = eINSTANCE.getLEntityReference_Constraints();
+		EReference LENTITY_REFERENCE__RESULT_FILTERS = eINSTANCE.getLEntityReference_ResultFilters();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LBeanFeatureImpl <em>LBean Feature</em>}' class.
@@ -3619,12 +3655,12 @@ public interface LunEntityPackage extends EPackage {
 		EReference LBEAN_REFERENCE__TYPE_JVM = eINSTANCE.getLBeanReference_TypeJvm();
 
 		/**
-		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Result Filters</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LBEAN_REFERENCE__CONSTRAINTS = eINSTANCE.getLBeanReference_Constraints();
+		EReference LBEAN_REFERENCE__RESULT_FILTERS = eINSTANCE.getLBeanReference_ResultFilters();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.dsl.semantic.entity.impl.LIndexImpl <em>LIndex</em>}' class.

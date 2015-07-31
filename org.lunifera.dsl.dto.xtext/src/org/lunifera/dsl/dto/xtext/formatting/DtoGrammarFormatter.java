@@ -75,10 +75,10 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 		c.setLinewrap().around(ele.getAnnotationsAssignment_1());
 		c.setLinewrap().around(ele.getRule());
 
-//		c.setIndentationIncrement().after(
-//				ele.getLeftCurlyBracketKeyword_2_0_6());
-//		c.setIndentationDecrement().before(
-//				ele.getRightCurlyBracketKeyword_2_0_8());
+		// c.setIndentationIncrement().after(
+		// ele.getLeftCurlyBracketKeyword_2_0_6());
+		// c.setIndentationDecrement().before(
+		// ele.getRightCurlyBracketKeyword_2_0_8());
 		c.setLinewrap(2).after(ele.getRightCurlyBracketKeyword_2_1_9());
 	}
 
@@ -88,11 +88,11 @@ public class DtoGrammarFormatter extends CommonGrammarFormatter {
 		// Setting for ";"
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_0_3_1());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_5_1());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_2_1_4());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_2_1_5());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_1_5_1());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_6());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_5_7());
 		c.setNoSpace().before(ele.getSemicolonKeyword_2_6_2_1());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_7_6_1());
+		c.setNoSpace().before(ele.getSemicolonKeyword_2_7_7_1());
 
 		c.setLinewrap(1, 1, 2).around(ele.getRule());
 		c.setIndentationIncrement().before(ele.getRule());

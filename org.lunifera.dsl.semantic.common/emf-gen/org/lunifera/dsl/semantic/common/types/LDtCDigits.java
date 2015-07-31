@@ -31,7 +31,7 @@ package org.lunifera.dsl.semantic.common.types;
  * @model
  * @generated
  */
-public interface LDtCDigits extends LDatatypeConstraint {
+public interface LDtCDigits extends LDecimalConstraint {
 	/**
 	 * Returns the value of the '<em><b>Int Digits</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -83,5 +83,14 @@ public interface LDtCDigits extends LDatatypeConstraint {
 	 * @generated
 	 */
 	void setFractionDigits(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
+	 * @generated
+	 */
+	boolean isForPrimitives();
 
 } // LDtCDigits

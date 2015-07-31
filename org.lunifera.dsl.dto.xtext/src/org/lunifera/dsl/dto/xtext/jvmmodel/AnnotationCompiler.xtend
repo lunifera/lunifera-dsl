@@ -20,7 +20,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.dsl.dto.xtext.extensions.AnnotationExtension
 import org.lunifera.dsl.dto.xtext.extensions.DtoModelExtensions
 import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint
-import org.lunifera.dsl.semantic.common.types.LConstraints
+import org.lunifera.dsl.semantic.common.types.LResultFilters
 import org.lunifera.dsl.semantic.dto.LDto
 import org.lunifera.dsl.semantic.dto.LDtoAbstractAttribute
 import org.lunifera.dsl.semantic.dto.LDtoAttribute
@@ -29,13 +29,13 @@ import org.lunifera.dsl.semantic.dto.LDtoInheritedReference
 import org.lunifera.dsl.semantic.dto.LDtoReference
 import org.lunifera.dsl.semantic.entity.LBeanReference
 import org.lunifera.dsl.semantic.entity.LEntityReference
+import org.lunifera.runtime.common.annotations.Dirty
+import org.lunifera.runtime.common.annotations.Dispose
 import org.lunifera.runtime.common.annotations.DomainDescription
 import org.lunifera.runtime.common.annotations.DomainKey
 import org.lunifera.runtime.common.annotations.DomainReference
 import org.lunifera.runtime.common.annotations.TargetEnumConstraint
 import org.lunifera.runtime.common.annotations.TargetEnumConstraints
-import org.lunifera.runtime.common.annotations.Dispose
-import org.lunifera.runtime.common.annotations.Dirty
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -76,7 +76,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			field.annotations += prop.toAnnotation(typeof(Dirty))
 		}
 		
-		super.toConstraintAnnotations(prop, field)
+		super.toDatatypeBasedConstraintAnnotations(prop, field)
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoInheritedAttribute prop, JvmField field) {
@@ -90,7 +90,7 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 			field.annotations += prop.toAnnotation(typeof(DomainDescription))
 		}
 		
-		super.toConstraintAnnotations(prop.inheritedFeature, field)
+		super.toDatatypeBasedConstraintAnnotations(prop.inheritedFeature, field)
 	}
 
 	def protected dispatch void internalProcessAnnotation(LDtoInheritedReference prop, JvmField field) {
@@ -100,24 +100,24 @@ class AnnotationCompiler extends org.lunifera.dsl.common.xtext.jvmmodel.Annotati
 
 		val inheritedRef = prop.inheritedFeature
 		if (inheritedRef instanceof LEntityReference) {
-			if (inheritedRef.constraints != null) {
-				inheritedRef.constraints.addConstraintsAnno(field, prop.type)
+			if (inheritedRef.resultFilters != null) {
+				inheritedRef.resultFilters.addConstraintsAnno(field, prop.type)
 			}
 		} else if (inheritedRef instanceof LBeanReference) {
-			if (inheritedRef.constraints != null) {
-				inheritedRef.constraints.addConstraintsAnno(field, prop.type)
+			if (inheritedRef.resultFilters != null) {
+				inheritedRef.resultFilters.addConstraintsAnno(field, prop.type)
 			}
 		}
 	}
 
-	def void addConstraintsAnno(LConstraints constraints, JvmField jvmField, LDto mapsTo) {
+	def void addConstraintsAnno(LResultFilters constraints, JvmField jvmField, LDto mapsTo) {
 
 		// process the LAttributeMatchingConstraint
-		if (!constraints.constraints.filter[it instanceof LAttributeMatchingConstraint].empty) {
+		if (!constraints.resultFilters.filter[it instanceof LAttributeMatchingConstraint].empty) {
 
 			// collect all inner annotations
 			val innerAnnotations = newArrayList()
-			constraints.constraints.filter[it instanceof LAttributeMatchingConstraint].map[
+			constraints.resultFilters.filter[it instanceof LAttributeMatchingConstraint].map[
 				it as LAttributeMatchingConstraint].forEach [
 				val enumClassTypeRef = attribute.name.findReplacementEnum(mapsTo)
 				if (enumClassTypeRef != null) {

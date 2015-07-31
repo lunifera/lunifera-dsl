@@ -24,5 +24,14 @@ package org.lunifera.dsl.semantic.common.types;
  * @model
  * @generated
  */
-public interface LDtCNotNull extends LDatatypeConstraint {
+public interface LDtCNotNull extends LBlobConstraint, LDateConstraint, LStringConstraint, LBooleanConstraint, LDecimalConstraint, LNumericConstraint {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return false;'"
+	 * @generated
+	 */
+	boolean isForPrimitives();
+
 } // LDtCNotNull

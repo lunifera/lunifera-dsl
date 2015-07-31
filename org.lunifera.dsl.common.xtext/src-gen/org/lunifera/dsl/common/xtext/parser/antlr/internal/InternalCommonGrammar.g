@@ -487,6 +487,8 @@ ruleDataType returns [EObject current=null]
 
 
 
+
+
 // Entry rule entryRuleDataTypeConstraint
 entryRuleDataTypeConstraint returns [EObject current=null] 
 	:
@@ -648,6 +650,26 @@ ruleDateConstraint returns [EObject current=null]
     this_DtCPast_1=ruleDtCPast
     { 
         $current = $this_DtCPast_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDateConstraintAccess().getDtCNotNullParserRuleCall_2()); 
+    }
+    this_DtCNotNull_2=ruleDtCNotNull
+    { 
+        $current = $this_DtCNotNull_2.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDateConstraintAccess().getDtCNullParserRuleCall_3()); 
+    }
+    this_DtCNull_3=ruleDtCNull
+    { 
+        $current = $this_DtCNull_3.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -1652,23 +1674,23 @@ ruleXAnnotation
 
 
 
-// Entry rule entryRuleConstraint
-entryRuleConstraint returns [EObject current=null] 
+// Entry rule entryRuleResultFilter
+entryRuleResultFilter returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getConstraintRule()); }
-	 iv_ruleConstraint=ruleConstraint 
-	 { $current=$iv_ruleConstraint.current; } 
+	{ newCompositeNode(grammarAccess.getResultFilterRule()); }
+	 iv_ruleResultFilter=ruleResultFilter 
+	 { $current=$iv_ruleResultFilter.current; } 
 	 EOF 
 ;
 
-// Rule Constraint
-ruleConstraint returns [EObject current=null] 
+// Rule ResultFilter
+ruleResultFilter returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 
     { 
-        newCompositeNode(grammarAccess.getConstraintAccess().getAttributeMatchingConstraintParserRuleCall()); 
+        newCompositeNode(grammarAccess.getResultFilterAccess().getAttributeMatchingConstraintParserRuleCall()); 
     }
     this_AttributeMatchingConstraint_0=ruleAttributeMatchingConstraint
     { 
@@ -1677,8 +1699,6 @@ ruleConstraint returns [EObject current=null]
     }
 
 ;
-
-
 
 
 
@@ -1772,6 +1792,8 @@ ruleAttributeMatchingConstraint returns [EObject current=null]
     }
 )
 ;
+
+
 
 
 

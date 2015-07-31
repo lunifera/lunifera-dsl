@@ -90,7 +90,8 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 			case LunTypesPackage.LOPERATION: return createLOperation();
 			case LunTypesPackage.LMODIFIER: return createLModifier();
 			case LunTypesPackage.LMULTIPLICITY: return createLMultiplicity();
-			case LunTypesPackage.LCONSTRAINTS: return createLConstraints();
+			case LunTypesPackage.LRESULT_FILTERS: return createLResultFilters();
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT: return createLAttributeMatchingConstraint();
 			case LunTypesPackage.LDT_CASSERT_FALSE: return createLDtCAssertFalse();
 			case LunTypesPackage.LDT_CASSERT_TRUE: return createLDtCAssertTrue();
 			case LunTypesPackage.LDT_CDECIMAL_MAX: return createLDtCDecimalMax();
@@ -104,7 +105,6 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 			case LunTypesPackage.LDT_CNULL: return createLDtCNull();
 			case LunTypesPackage.LDT_CREG_EX: return createLDtCRegEx();
 			case LunTypesPackage.LDT_CSIZE: return createLDtCSize();
-			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT: return createLAttributeMatchingConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -347,9 +347,19 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LConstraints createLConstraints() {
-		LConstraintsImpl lConstraints = new LConstraintsImpl();
-		return lConstraints;
+	public LResultFilters createLResultFilters() {
+		LResultFiltersImpl lResultFilters = new LResultFiltersImpl();
+		return lResultFilters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LAttributeMatchingConstraint createLAttributeMatchingConstraint() {
+		LAttributeMatchingConstraintImpl lAttributeMatchingConstraint = new LAttributeMatchingConstraintImpl();
+		return lAttributeMatchingConstraint;
 	}
 
 	/**
@@ -480,16 +490,6 @@ public class LunTypesFactoryImpl extends EFactoryImpl implements LunTypesFactory
 	public LDtCSize createLDtCSize() {
 		LDtCSizeImpl lDtCSize = new LDtCSizeImpl();
 		return lDtCSize;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LAttributeMatchingConstraint createLAttributeMatchingConstraint() {
-		LAttributeMatchingConstraintImpl lAttributeMatchingConstraint = new LAttributeMatchingConstraintImpl();
-		return lAttributeMatchingConstraint;
 	}
 
 	/**

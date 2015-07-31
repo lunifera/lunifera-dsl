@@ -39,6 +39,7 @@ public class DatatypeGrammarParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getDataTypeAccess().getAlternatives_2(), "rule__DataType__Alternatives_2");
+					put(grammarAccess.getAllConstraintsAccess().getAlternatives(), "rule__AllConstraints__Alternatives");
 					put(grammarAccess.getDataTypeConstraintAccess().getAlternatives(), "rule__DataTypeConstraint__Alternatives");
 					put(grammarAccess.getDateConstraintAccess().getAlternatives(), "rule__DateConstraint__Alternatives");
 					put(grammarAccess.getBlobTypeConstraintAccess().getAlternatives(), "rule__BlobTypeConstraint__Alternatives");
@@ -121,9 +122,9 @@ public class DatatypeGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumLiteralAccess().getGroup_1_1(), "rule__EnumLiteral__Group_1_1__0");
 					put(grammarAccess.getEnumLiteralAccess().getGroup_1_1_2(), "rule__EnumLiteral__Group_1_1_2__0");
 					put(grammarAccess.getAnnotationDefAccess().getGroup(), "rule__AnnotationDef__Group__0");
-					put(grammarAccess.getConstraintsAccess().getGroup(), "rule__Constraints__Group__0");
-					put(grammarAccess.getKeyAndValueAccess().getGroup(), "rule__KeyAndValue__Group__0");
+					put(grammarAccess.getResultFiltersAccess().getGroup(), "rule__ResultFilters__Group__0");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getGroup(), "rule__AttributeMatchingConstraint__Group__0");
+					put(grammarAccess.getKeyAndValueAccess().getGroup(), "rule__KeyAndValue__Group__0");
 					put(grammarAccess.getLQualifiedNameWithWildCardAccess().getGroup(), "rule__LQualifiedNameWithWildCard__Group__0");
 					put(grammarAccess.getLQualifiedNameWithWildCardAccess().getGroup_1(), "rule__LQualifiedNameWithWildCard__Group_1__0");
 					put(grammarAccess.getLFQNAccess().getGroup(), "rule__LFQN__Group__0");
@@ -367,13 +368,13 @@ public class DatatypeGrammarParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumLiteralAccess().getNullAssignment_1_1_0(), "rule__EnumLiteral__NullAssignment_1_1_0");
 					put(grammarAccess.getEnumLiteralAccess().getValueAssignment_1_1_2_1(), "rule__EnumLiteral__ValueAssignment_1_1_2_1");
 					put(grammarAccess.getAnnotationDefAccess().getAnnotationAssignment_0(), "rule__AnnotationDef__AnnotationAssignment_0");
-					put(grammarAccess.getConstraintsAccess().getConstraintsAssignment_3(), "rule__Constraints__ConstraintsAssignment_3");
-					put(grammarAccess.getKeyAndValueAccess().getKeyAssignment_2(), "rule__KeyAndValue__KeyAssignment_2");
-					put(grammarAccess.getKeyAndValueAccess().getValueAssignment_5(), "rule__KeyAndValue__ValueAssignment_5");
+					put(grammarAccess.getResultFiltersAccess().getResultFiltersAssignment_3(), "rule__ResultFilters__ResultFiltersAssignment_3");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getAttributeAssignment_0(), "rule__AttributeMatchingConstraint__AttributeAssignment_0");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getComparatorTypeAssignment_1(), "rule__AttributeMatchingConstraint__ComparatorTypeAssignment_1");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getMatchingValueAssignment_2_0(), "rule__AttributeMatchingConstraint__MatchingValueAssignment_2_0");
 					put(grammarAccess.getAttributeMatchingConstraintAccess().getMatchingLiteralAssignment_2_1(), "rule__AttributeMatchingConstraint__MatchingLiteralAssignment_2_1");
+					put(grammarAccess.getKeyAndValueAccess().getKeyAssignment_2(), "rule__KeyAndValue__KeyAssignment_2");
+					put(grammarAccess.getKeyAndValueAccess().getValueAssignment_5(), "rule__KeyAndValue__ValueAssignment_5");
 					put(grammarAccess.getMultiplicityAccess().getLowerAssignment_1(), "rule__Multiplicity__LowerAssignment_1");
 					put(grammarAccess.getMultiplicityAccess().getUpperAssignment_2_1(), "rule__Multiplicity__UpperAssignment_2_1");
 					put(grammarAccess.getXAnnotationAccess().getAnnotationTypeAssignment_2(), "rule__XAnnotation__AnnotationTypeAssignment_2");

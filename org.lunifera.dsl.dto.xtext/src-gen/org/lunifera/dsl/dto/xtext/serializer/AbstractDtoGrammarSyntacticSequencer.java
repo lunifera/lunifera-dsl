@@ -19,6 +19,10 @@ import org.lunifera.dsl.dto.xtext.services.DtoGrammarGrammarAccess;
 public abstract class AbstractDtoGrammarSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DtoGrammarGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_DtoFeature___LeftSquareBracketKeyword_2_2_1_2_0_RightSquareBracketKeyword_2_2_1_2_2__q;
+	protected AbstractElementAlias match_DtoFeature___LeftSquareBracketKeyword_2_5_4_0_RightSquareBracketKeyword_2_5_4_2__q;
+	protected AbstractElementAlias match_DtoFeature___LeftSquareBracketKeyword_2_6_1_4_0_RightSquareBracketKeyword_2_6_1_4_2__q;
+	protected AbstractElementAlias match_DtoFeature___LeftSquareBracketKeyword_2_7_4_0_RightSquareBracketKeyword_2_7_4_2__q;
 	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a;
 	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p;
 	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a;
@@ -37,6 +41,10 @@ public abstract class AbstractDtoGrammarSyntacticSequencer extends AbstractSynta
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DtoGrammarGrammarAccess) access;
+		match_DtoFeature___LeftSquareBracketKeyword_2_2_1_2_0_RightSquareBracketKeyword_2_2_1_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDtoFeatureAccess().getLeftSquareBracketKeyword_2_2_1_2_0()), new TokenAlias(false, false, grammarAccess.getDtoFeatureAccess().getRightSquareBracketKeyword_2_2_1_2_2()));
+		match_DtoFeature___LeftSquareBracketKeyword_2_5_4_0_RightSquareBracketKeyword_2_5_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDtoFeatureAccess().getLeftSquareBracketKeyword_2_5_4_0()), new TokenAlias(false, false, grammarAccess.getDtoFeatureAccess().getRightSquareBracketKeyword_2_5_4_2()));
+		match_DtoFeature___LeftSquareBracketKeyword_2_6_1_4_0_RightSquareBracketKeyword_2_6_1_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDtoFeatureAccess().getLeftSquareBracketKeyword_2_6_1_4_0()), new TokenAlias(false, false, grammarAccess.getDtoFeatureAccess().getRightSquareBracketKeyword_2_6_1_4_2()));
+		match_DtoFeature___LeftSquareBracketKeyword_2_7_4_0_RightSquareBracketKeyword_2_7_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDtoFeatureAccess().getLeftSquareBracketKeyword_2_7_4_0()), new TokenAlias(false, false, grammarAccess.getDtoFeatureAccess().getRightSquareBracketKeyword_2_7_4_2()));
 		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a = new GroupAlias(true, true, new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
 		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p = new GroupAlias(true, false, new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
 		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
@@ -90,7 +98,15 @@ public abstract class AbstractDtoGrammarSyntacticSequencer extends AbstractSynta
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a.equals(syntax))
+			if(match_DtoFeature___LeftSquareBracketKeyword_2_2_1_2_0_RightSquareBracketKeyword_2_2_1_2_2__q.equals(syntax))
+				emit_DtoFeature___LeftSquareBracketKeyword_2_2_1_2_0_RightSquareBracketKeyword_2_2_1_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_DtoFeature___LeftSquareBracketKeyword_2_5_4_0_RightSquareBracketKeyword_2_5_4_2__q.equals(syntax))
+				emit_DtoFeature___LeftSquareBracketKeyword_2_5_4_0_RightSquareBracketKeyword_2_5_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_DtoFeature___LeftSquareBracketKeyword_2_6_1_4_0_RightSquareBracketKeyword_2_6_1_4_2__q.equals(syntax))
+				emit_DtoFeature___LeftSquareBracketKeyword_2_6_1_4_0_RightSquareBracketKeyword_2_6_1_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_DtoFeature___LeftSquareBracketKeyword_2_7_4_0_RightSquareBracketKeyword_2_7_4_2__q.equals(syntax))
+				emit_DtoFeature___LeftSquareBracketKeyword_2_7_4_0_RightSquareBracketKeyword_2_7_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a.equals(syntax))
 				emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p.equals(syntax))
 				emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -122,6 +138,38 @@ public abstract class AbstractDtoGrammarSyntacticSequencer extends AbstractSynta
 		}
 	}
 
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_DtoFeature___LeftSquareBracketKeyword_2_2_1_2_0_RightSquareBracketKeyword_2_2_1_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_DtoFeature___LeftSquareBracketKeyword_2_5_4_0_RightSquareBracketKeyword_2_5_4_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_DtoFeature___LeftSquareBracketKeyword_2_6_1_4_0_RightSquareBracketKeyword_2_6_1_4_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_DtoFeature___LeftSquareBracketKeyword_2_7_4_0_RightSquareBracketKeyword_2_7_4_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Syntax:
 	 *     ('('* ')')*

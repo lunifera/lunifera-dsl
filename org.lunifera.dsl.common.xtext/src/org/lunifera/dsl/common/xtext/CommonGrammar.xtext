@@ -43,13 +43,18 @@ DataType returns types::LDataType:
 	(asBlob?='as blob' constraints+=BlobTypeConstraint*))
 	';';
 
+AllConstraints returns types::LDatatypeConstraint:
+	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits |
+	DtCNumericMax | DtCNumericMin | DtCNotNull | DtCNull | DtCRegEx | DtCSize | DtCFuture | DtCPast
+;
+
 DataTypeConstraint returns types::LDatatypeConstraint:
 	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits |
 	DtCNumericMax | DtCNumericMin | DtCNotNull | DtCNull | DtCRegEx | DtCSize
 ;
 
 DateConstraint returns types::LDatatypeConstraint:
-	DtCFuture | DtCPast
+	DtCFuture | DtCPast | DtCNotNull | DtCNull
 ;
 
 BlobTypeConstraint returns types::LDatatypeConstraint:
@@ -132,21 +137,21 @@ AnnotationDef returns types::LAnnotationDef:
 enum LVisibility returns types::LVisibility:
 	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
 
-Constraints returns types::LConstraints:
-	{types::LConstraints}
+ResultFilters returns types::LResultFilters:
+	{types::LResultFilters}
 	'constraints' '{'
-	constraints+=Constraint*
+		resultFilters+=ResultFilter*
 	'}';
 
-Constraint returns types::LConstraint:
+ResultFilter returns types::LResultFilter:
 	AttributeMatchingConstraint;
-
-KeyAndValue returns types::LKeyAndValue:
-	'key' '=' key=STRING 'value' '=' value=STRING;
 
 AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
 	attribute=[types::LAttribute] comparatorType=LComparatorType (matchingValue=STRING | =>
 	matchingLiteral=[types::LEnumLiteral]) ';';
+
+KeyAndValue returns types::LKeyAndValue:
+	'key' '=' key=STRING 'value' '=' value=STRING;
 
 enum LComparatorType returns types::LComparatorType:
 	EQUALS='==' |

@@ -19,6 +19,12 @@ import org.lunifera.dsl.entity.xtext.services.EntityGrammarGrammarAccess;
 public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected EntityGrammarGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_BeanFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q;
+	protected AbstractElementAlias match_BeanFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q;
+	protected AbstractElementAlias match_BeanFeature___LeftSquareBracketKeyword_2_1_1_1_3_0_RightSquareBracketKeyword_2_1_1_1_3_2__q;
+	protected AbstractElementAlias match_EntityFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q;
+	protected AbstractElementAlias match_EntityFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q;
+	protected AbstractElementAlias match_EntityFeature___LeftSquareBracketKeyword_2_1_1_2_3_0_RightSquareBracketKeyword_2_1_1_2_3_2__q;
 	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a;
 	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p;
 	protected AbstractElementAlias match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a;
@@ -37,6 +43,12 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (EntityGrammarGrammarAccess) access;
+		match_BeanFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getBeanFeatureAccess().getLeftSquareBracketKeyword_2_0_1_4_0()), new TokenAlias(false, false, grammarAccess.getBeanFeatureAccess().getRightSquareBracketKeyword_2_0_1_4_2()));
+		match_BeanFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getBeanFeatureAccess().getLeftSquareBracketKeyword_2_1_1_0_2_0()), new TokenAlias(false, false, grammarAccess.getBeanFeatureAccess().getRightSquareBracketKeyword_2_1_1_0_2_2()));
+		match_BeanFeature___LeftSquareBracketKeyword_2_1_1_1_3_0_RightSquareBracketKeyword_2_1_1_1_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getBeanFeatureAccess().getLeftSquareBracketKeyword_2_1_1_1_3_0()), new TokenAlias(false, false, grammarAccess.getBeanFeatureAccess().getRightSquareBracketKeyword_2_1_1_1_3_2()));
+		match_EntityFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getEntityFeatureAccess().getLeftSquareBracketKeyword_2_0_1_4_0()), new TokenAlias(false, false, grammarAccess.getEntityFeatureAccess().getRightSquareBracketKeyword_2_0_1_4_2()));
+		match_EntityFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getEntityFeatureAccess().getLeftSquareBracketKeyword_2_1_1_0_2_0()), new TokenAlias(false, false, grammarAccess.getEntityFeatureAccess().getRightSquareBracketKeyword_2_1_1_0_2_2()));
+		match_EntityFeature___LeftSquareBracketKeyword_2_1_1_2_3_0_RightSquareBracketKeyword_2_1_1_2_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getEntityFeatureAccess().getLeftSquareBracketKeyword_2_1_1_2_3_0()), new TokenAlias(false, false, grammarAccess.getEntityFeatureAccess().getRightSquareBracketKeyword_2_1_1_2_3_2()));
 		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a = new GroupAlias(true, true, new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
 		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p = new GroupAlias(true, false, new TokenAlias(true, true, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
 		match_EnumLiteral___LeftParenthesisKeyword_1_0_0_or_RightParenthesisKeyword_1_1_1__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_1_1_1()));
@@ -90,7 +102,19 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a.equals(syntax))
+			if(match_BeanFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q.equals(syntax))
+				emit_BeanFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_BeanFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q.equals(syntax))
+				emit_BeanFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_BeanFeature___LeftSquareBracketKeyword_2_1_1_1_3_0_RightSquareBracketKeyword_2_1_1_1_3_2__q.equals(syntax))
+				emit_BeanFeature___LeftSquareBracketKeyword_2_1_1_1_3_0_RightSquareBracketKeyword_2_1_1_1_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EntityFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q.equals(syntax))
+				emit_EntityFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EntityFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q.equals(syntax))
+				emit_EntityFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EntityFeature___LeftSquareBracketKeyword_2_1_1_2_3_0_RightSquareBracketKeyword_2_1_1_2_3_2__q.equals(syntax))
+				emit_EntityFeature___LeftSquareBracketKeyword_2_1_1_2_3_0_RightSquareBracketKeyword_2_1_1_2_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a.equals(syntax))
 				emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p.equals(syntax))
 				emit_EnumLiteral___LeftParenthesisKeyword_1_0_0_a_RightParenthesisKeyword_1_1_1__p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -122,6 +146,54 @@ public abstract class AbstractEntityGrammarSyntacticSequencer extends AbstractSy
 		}
 	}
 
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_BeanFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_BeanFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_BeanFeature___LeftSquareBracketKeyword_2_1_1_1_3_0_RightSquareBracketKeyword_2_1_1_1_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_EntityFeature___LeftSquareBracketKeyword_2_0_1_4_0_RightSquareBracketKeyword_2_0_1_4_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_EntityFeature___LeftSquareBracketKeyword_2_1_1_0_2_0_RightSquareBracketKeyword_2_1_1_0_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('[' ']')?
+	 */
+	protected void emit_EntityFeature___LeftSquareBracketKeyword_2_1_1_2_3_0_RightSquareBracketKeyword_2_1_1_2_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Syntax:
 	 *     ('('* ')')*

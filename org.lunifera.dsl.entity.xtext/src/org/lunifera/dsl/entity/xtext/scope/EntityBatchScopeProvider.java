@@ -17,8 +17,8 @@ import org.lunifera.dsl.common.xtext.scope.CommonBatchScopeProvider;
 import org.lunifera.dsl.common.xtext.scope.ConstraintEnumMatchingLiteralScope;
 import org.lunifera.dsl.semantic.common.types.LAttribute;
 import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
-import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LReference;
+import org.lunifera.dsl.semantic.common.types.LResultFilters;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LBeanReference;
 import org.lunifera.dsl.semantic.entity.LEntityAttribute;
@@ -49,7 +49,7 @@ public class EntityBatchScopeProvider extends CommonBatchScopeProvider {
 		} else if (reference == LunEntityPackage.Literals.LINDEX__FEATURES) {
 			return new IndexScope((LIndex) context);
 		} else if (reference == LunTypesPackage.Literals.LATTRIBUTE_MATCHING_CONSTRAINT__ATTRIBUTE) {
-			if (context instanceof LConstraints) {
+			if (context instanceof LResultFilters) {
 				return new EntityConstraintAttributeScope(
 						(LReference) context.eContainer());
 			} else {

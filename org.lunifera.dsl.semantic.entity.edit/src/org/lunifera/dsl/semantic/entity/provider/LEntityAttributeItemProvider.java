@@ -385,6 +385,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION);
 			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM);
 			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__PROPERTIES);
+			childrenFeatures.add(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS);
 		}
 		return childrenFeatures;
 	}
@@ -468,6 +469,7 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			case LunEntityPackage.LENTITY_ATTRIBUTE__DERIVED_GETTER_EXPRESSION:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM:
 			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
+			case LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -485,6 +487,11 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
+				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -633,11 +640,6 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(LunTypesPackage.Literals.LATTRIBUTE__DERIVED_GETTER_EXPRESSION,
-				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__TYPE_JVM,
 				 TypesFactory.eINSTANCE.createJvmParameterizedTypeReference()));
 
@@ -685,6 +687,71 @@ public class LEntityAttributeItemProvider extends LEntityFeatureItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LATTRIBUTE__PROPERTIES,
 				 LunTypesFactory.eINSTANCE.createLKeyAndValue()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCAssertFalse()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCAssertTrue()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDecimalMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDecimalMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCDigits()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCFuture()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCPast()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNumericMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNumericMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNotNull()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCNull()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCRegEx()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LATTRIBUTE__CONSTRAINTS,
+				 LunTypesFactory.eINSTANCE.createLDtCSize()));
 	}
 
 	@Override

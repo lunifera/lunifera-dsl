@@ -199,6 +199,8 @@ finally {
 
 
 
+
+
 // Entry rule entryRuleDataTypeConstraint
 entryRuleDataTypeConstraint 
 :
@@ -763,33 +765,31 @@ finally {
 
 
 
-// Entry rule entryRuleConstraint
-entryRuleConstraint 
+// Entry rule entryRuleResultFilter
+entryRuleResultFilter 
 :
-{ before(grammarAccess.getConstraintRule()); }
-	 ruleConstraint
-{ after(grammarAccess.getConstraintRule()); } 
+{ before(grammarAccess.getResultFilterRule()); }
+	 ruleResultFilter
+{ after(grammarAccess.getResultFilterRule()); } 
 	 EOF 
 ;
 
-// Rule Constraint
-ruleConstraint
+// Rule ResultFilter
+ruleResultFilter
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getConstraintAccess().getAttributeMatchingConstraintParserRuleCall()); }
+{ before(grammarAccess.getResultFilterAccess().getAttributeMatchingConstraintParserRuleCall()); }
 	ruleAttributeMatchingConstraint
-{ after(grammarAccess.getConstraintAccess().getAttributeMatchingConstraintParserRuleCall()); }
+{ after(grammarAccess.getResultFilterAccess().getAttributeMatchingConstraintParserRuleCall()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
-
-
 
 
 
@@ -818,6 +818,8 @@ ruleAttributeMatchingConstraint
 finally {
 	restoreStackSize(stackSize);
 }
+
+
 
 
 
@@ -3305,6 +3307,7 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+
 rule__DataTypeConstraint__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -3396,6 +3399,18 @@ rule__DateConstraint__Alternatives
 { before(grammarAccess.getDateConstraintAccess().getDtCPastParserRuleCall_1()); }
 	ruleDtCPast
 { after(grammarAccess.getDateConstraintAccess().getDtCPastParserRuleCall_1()); }
+)
+
+    |(
+{ before(grammarAccess.getDateConstraintAccess().getDtCNotNullParserRuleCall_2()); }
+	ruleDtCNotNull
+{ after(grammarAccess.getDateConstraintAccess().getDtCNotNullParserRuleCall_2()); }
+)
+
+    |(
+{ before(grammarAccess.getDateConstraintAccess().getDtCNullParserRuleCall_3()); }
+	ruleDtCNull
+{ after(grammarAccess.getDateConstraintAccess().getDtCNullParserRuleCall_3()); }
 )
 
 ;
@@ -8257,7 +8272,6 @@ finally {
 
 
 
-
 rule__AttributeMatchingConstraint__Group__0
     @init {
 		int stackSize = keepStackSize();
@@ -8373,6 +8387,7 @@ rule__AttributeMatchingConstraint__Group__3__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
 
 
 
@@ -24123,8 +24138,6 @@ finally {
 }
 
 
-
-
 rule__AttributeMatchingConstraint__AttributeAssignment_0
     @init {
 		int stackSize = keepStackSize();
@@ -24192,6 +24205,8 @@ rule__AttributeMatchingConstraint__MatchingLiteralAssignment_2_1
 finally {
 	restoreStackSize(stackSize);
 }
+
+
 
 
 

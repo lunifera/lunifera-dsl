@@ -35,6 +35,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LDatatypeConstraint;
 import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -63,6 +64,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LBeanAttributeImpl#getTypedName <em>Typed Name</em>}</li>
  * </ul>
  * </p>
@@ -309,6 +311,16 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 	 * @ordered
 	 */
 	protected EList<LKeyAndValue> properties;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LDatatypeConstraint> constraints;
 
 	/**
 	 * The default value of the '{@link #getTypedName() <em>Typed Name</em>}' attribute.
@@ -690,6 +702,18 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LDatatypeConstraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentEList<LDatatypeConstraint>(LDatatypeConstraint.class, this, LunEntityPackage.LBEAN_ATTRIBUTE__CONSTRAINTS);
+		}
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getTypedName() {
 		StringBuilder result = new StringBuilder();
 		String _name = this.getName();
@@ -729,6 +753,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				return basicSetTypeJvm(null, msgs);
 			case LunEntityPackage.LBEAN_ATTRIBUTE__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case LunEntityPackage.LBEAN_ATTRIBUTE__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -770,6 +796,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				return getTypeJvm();
 			case LunEntityPackage.LBEAN_ATTRIBUTE__PROPERTIES:
 				return getProperties();
+			case LunEntityPackage.LBEAN_ATTRIBUTE__CONSTRAINTS:
+				return getConstraints();
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPED_NAME:
 				return getTypedName();
 		}
@@ -828,6 +856,10 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
+			case LunEntityPackage.LBEAN_ATTRIBUTE__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends LDatatypeConstraint>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -882,6 +914,9 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 			case LunEntityPackage.LBEAN_ATTRIBUTE__PROPERTIES:
 				getProperties().clear();
 				return;
+			case LunEntityPackage.LBEAN_ATTRIBUTE__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -922,6 +957,8 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				return typeJvm != null;
 			case LunEntityPackage.LBEAN_ATTRIBUTE__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case LunEntityPackage.LBEAN_ATTRIBUTE__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 			case LunEntityPackage.LBEAN_ATTRIBUTE__TYPED_NAME:
 				return TYPED_NAME_EDEFAULT == null ? getTypedName() != null : !TYPED_NAME_EDEFAULT.equals(getTypedName());
 		}
@@ -951,6 +988,7 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM: return LunTypesPackage.LATTRIBUTE__TYPE_JVM;
 				case LunEntityPackage.LBEAN_ATTRIBUTE__PROPERTIES: return LunTypesPackage.LATTRIBUTE__PROPERTIES;
+				case LunEntityPackage.LBEAN_ATTRIBUTE__CONSTRAINTS: return LunTypesPackage.LATTRIBUTE__CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -980,6 +1018,7 @@ public class LBeanAttributeImpl extends LBeanFeatureImpl implements LBeanAttribu
 				case LunTypesPackage.LATTRIBUTE__TYPE: return LunEntityPackage.LBEAN_ATTRIBUTE__TYPE;
 				case LunTypesPackage.LATTRIBUTE__TYPE_JVM: return LunEntityPackage.LBEAN_ATTRIBUTE__TYPE_JVM;
 				case LunTypesPackage.LATTRIBUTE__PROPERTIES: return LunEntityPackage.LBEAN_ATTRIBUTE__PROPERTIES;
+				case LunTypesPackage.LATTRIBUTE__CONSTRAINTS: return LunEntityPackage.LBEAN_ATTRIBUTE__CONSTRAINTS;
 				default: return -1;
 			}
 		}

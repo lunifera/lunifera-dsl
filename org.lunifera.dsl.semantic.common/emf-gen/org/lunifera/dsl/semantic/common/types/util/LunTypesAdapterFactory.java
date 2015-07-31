@@ -163,16 +163,48 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 				return createLMultiplicityAdapter();
 			}
 			@Override
-			public Adapter caseLConstraints(LConstraints object) {
-				return createLConstraintsAdapter();
-			}
-			@Override
 			public Adapter caseLConstraint(LConstraint object) {
 				return createLConstraintAdapter();
 			}
 			@Override
+			public Adapter caseLResultFilters(LResultFilters object) {
+				return createLResultFiltersAdapter();
+			}
+			@Override
+			public Adapter caseLResultFilter(LResultFilter object) {
+				return createLResultFilterAdapter();
+			}
+			@Override
+			public Adapter caseLAttributeMatchingConstraint(LAttributeMatchingConstraint object) {
+				return createLAttributeMatchingConstraintAdapter();
+			}
+			@Override
 			public Adapter caseLDatatypeConstraint(LDatatypeConstraint object) {
 				return createLDatatypeConstraintAdapter();
+			}
+			@Override
+			public Adapter caseLStringConstraint(LStringConstraint object) {
+				return createLStringConstraintAdapter();
+			}
+			@Override
+			public Adapter caseLNumericConstraint(LNumericConstraint object) {
+				return createLNumericConstraintAdapter();
+			}
+			@Override
+			public Adapter caseLDecimalConstraint(LDecimalConstraint object) {
+				return createLDecimalConstraintAdapter();
+			}
+			@Override
+			public Adapter caseLDateConstraint(LDateConstraint object) {
+				return createLDateConstraintAdapter();
+			}
+			@Override
+			public Adapter caseLBooleanConstraint(LBooleanConstraint object) {
+				return createLBooleanConstraintAdapter();
+			}
+			@Override
+			public Adapter caseLBlobConstraint(LBlobConstraint object) {
+				return createLBlobConstraintAdapter();
 			}
 			@Override
 			public Adapter caseLDtCAssertFalse(LDtCAssertFalse object) {
@@ -225,10 +257,6 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLDtCSize(LDtCSize object) {
 				return createLDtCSizeAdapter();
-			}
-			@Override
-			public Adapter caseLAttributeMatchingConstraint(LAttributeMatchingConstraint object) {
-				return createLAttributeMatchingConstraintAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -545,20 +573,6 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LConstraints <em>LConstraints</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.lunifera.dsl.semantic.common.types.LConstraints
-	 * @generated
-	 */
-	public Adapter createLConstraintsAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LConstraint <em>LConstraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -573,6 +587,48 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LResultFilters <em>LResult Filters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LResultFilters
+	 * @generated
+	 */
+	public Adapter createLResultFiltersAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LResultFilter <em>LResult Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LResultFilter
+	 * @generated
+	 */
+	public Adapter createLResultFilterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint <em>LAttribute Matching Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint
+	 * @generated
+	 */
+	public Adapter createLAttributeMatchingConstraintAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDatatypeConstraint <em>LDatatype Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -583,6 +639,90 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLDatatypeConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LStringConstraint <em>LString Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LStringConstraint
+	 * @generated
+	 */
+	public Adapter createLStringConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LNumericConstraint <em>LNumeric Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LNumericConstraint
+	 * @generated
+	 */
+	public Adapter createLNumericConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDecimalConstraint <em>LDecimal Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDecimalConstraint
+	 * @generated
+	 */
+	public Adapter createLDecimalConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LDateConstraint <em>LDate Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LDateConstraint
+	 * @generated
+	 */
+	public Adapter createLDateConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LBooleanConstraint <em>LBoolean Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LBooleanConstraint
+	 * @generated
+	 */
+	public Adapter createLBooleanConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LBlobConstraint <em>LBlob Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.lunifera.dsl.semantic.common.types.LBlobConstraint
+	 * @generated
+	 */
+	public Adapter createLBlobConstraintAdapter() {
 		return null;
 	}
 
@@ -765,20 +905,6 @@ public class LunTypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLDtCSizeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint <em>LAttribute Matching Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint
-	 * @generated
-	 */
-	public Adapter createLAttributeMatchingConstraintAdapter() {
 		return null;
 	}
 

@@ -624,12 +624,10 @@ ruleXAnnotation
 
 
 
-// Rule Constraint
-ruleConstraint :
+// Rule ResultFilter
+ruleResultFilter :
 	ruleAttributeMatchingConstraint
 ;
-
-
 
 
 
@@ -666,6 +664,8 @@ RULE_STRING
 ))	';' 
 )
 ;
+
+
 
 
 

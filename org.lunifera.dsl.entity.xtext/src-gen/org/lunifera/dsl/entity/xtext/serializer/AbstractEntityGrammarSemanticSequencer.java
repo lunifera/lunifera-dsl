@@ -65,7 +65,6 @@ import org.lunifera.dsl.entity.xtext.services.EntityGrammarGrammarAccess;
 import org.lunifera.dsl.semantic.common.types.LAnnotationDef;
 import org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint;
 import org.lunifera.dsl.semantic.common.types.LClass;
-import org.lunifera.dsl.semantic.common.types.LConstraints;
 import org.lunifera.dsl.semantic.common.types.LDataType;
 import org.lunifera.dsl.semantic.common.types.LDtCAssertFalse;
 import org.lunifera.dsl.semantic.common.types.LDtCAssertTrue;
@@ -86,6 +85,7 @@ import org.lunifera.dsl.semantic.common.types.LImport;
 import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LModifier;
 import org.lunifera.dsl.semantic.common.types.LMultiplicity;
+import org.lunifera.dsl.semantic.common.types.LResultFilters;
 import org.lunifera.dsl.semantic.common.types.LTypedPackage;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.entity.LBean;
@@ -225,7 +225,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 				else break;
 			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT:
 				if(context == grammarAccess.getAttributeMatchingConstraintRule() ||
-				   context == grammarAccess.getConstraintRule()) {
+				   context == grammarAccess.getResultFilterRule()) {
 					sequence_AttributeMatchingConstraint(context, (LAttributeMatchingConstraint) semanticObject); 
 					return; 
 				}
@@ -238,12 +238,6 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 					return; 
 				}
 				else break;
-			case LunTypesPackage.LCONSTRAINTS:
-				if(context == grammarAccess.getConstraintsRule()) {
-					sequence_Constraints(context, (LConstraints) semanticObject); 
-					return; 
-				}
-				else break;
 			case LunTypesPackage.LDATA_TYPE:
 				if(context == grammarAccess.getDataTypeRule() ||
 				   context == grammarAccess.getScalarTypeRule() ||
@@ -253,93 +247,108 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 				}
 				else break;
 			case LunTypesPackage.LDT_CASSERT_FALSE:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCAssertFalseRule()) {
 					sequence_DtCAssertFalse(context, (LDtCAssertFalse) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CASSERT_TRUE:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCAssertTrueRule()) {
 					sequence_DtCAssertTrue(context, (LDtCAssertTrue) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CDECIMAL_MAX:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCDecimalMaxRule()) {
 					sequence_DtCDecimalMax(context, (LDtCDecimalMax) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CDECIMAL_MIN:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCDecimalMinRule()) {
 					sequence_DtCDecimalMin(context, (LDtCDecimalMin) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CDIGITS:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCDigitsRule()) {
 					sequence_DtCDigits(context, (LDtCDigits) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CFUTURE:
-				if(context == grammarAccess.getDateConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDateConstraintRule() ||
 				   context == grammarAccess.getDtCFutureRule()) {
 					sequence_DtCFuture(context, (LDtCFuture) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CNOT_NULL:
-				if(context == grammarAccess.getBlobTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getBlobTypeConstraintRule() ||
 				   context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDateConstraintRule() ||
 				   context == grammarAccess.getDtCNotNullRule()) {
 					sequence_DtCNotNull(context, (LDtCNotNull) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CNULL:
-				if(context == grammarAccess.getBlobTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getBlobTypeConstraintRule() ||
 				   context == grammarAccess.getDataTypeConstraintRule() ||
+				   context == grammarAccess.getDateConstraintRule() ||
 				   context == grammarAccess.getDtCNullRule()) {
 					sequence_DtCNull(context, (LDtCNull) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CNUMERIC_MAX:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCNumericMaxRule()) {
 					sequence_DtCNumericMax(context, (LDtCNumericMax) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CNUMERIC_MIN:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCNumericMinRule()) {
 					sequence_DtCNumericMin(context, (LDtCNumericMin) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CPAST:
-				if(context == grammarAccess.getDateConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDateConstraintRule() ||
 				   context == grammarAccess.getDtCPastRule()) {
 					sequence_DtCPast(context, (LDtCPast) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CREG_EX:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCRegExRule()) {
 					sequence_DtCRegEx(context, (LDtCRegEx) semanticObject); 
 					return; 
 				}
 				else break;
 			case LunTypesPackage.LDT_CSIZE:
-				if(context == grammarAccess.getDataTypeConstraintRule() ||
+				if(context == grammarAccess.getAllConstraintsRule() ||
+				   context == grammarAccess.getDataTypeConstraintRule() ||
 				   context == grammarAccess.getDtCSizeRule()) {
 					sequence_DtCSize(context, (LDtCSize) semanticObject); 
 					return; 
@@ -380,6 +389,12 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 			case LunTypesPackage.LMULTIPLICITY:
 				if(context == grammarAccess.getMultiplicityRule()) {
 					sequence_Multiplicity(context, (LMultiplicity) semanticObject); 
+					return; 
+				}
+				else break;
+			case LunTypesPackage.LRESULT_FILTERS:
+				if(context == grammarAccess.getResultFiltersRule()) {
+					sequence_ResultFilters(context, (LResultFilters) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1641,11 +1656,18 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (
 	 *         annotationInfo=BeanFeature_LBeanAttribute_2_1_0 
 	 *         (
-	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID (properties+=KeyAndValue properties+=KeyAndValue*)?) | 
+	 *             (
+	 *                 transient?='transient' 
+	 *                 type=[LScalarType|ID] 
+	 *                 constraints+=AllConstraints* 
+	 *                 name=TRANSLATABLEID 
+	 *                 (properties+=KeyAndValue properties+=KeyAndValue*)?
+	 *             ) | 
 	 *             (
 	 *                 (id?='id' | version?='version')? 
 	 *                 type=[LScalarType|ID] 
 	 *                 multiplicity=Multiplicity? 
+	 *                 constraints+=AllConstraints* 
 	 *                 name=TRANSLATABLEID 
 	 *                 (properties+=KeyAndValue properties+=KeyAndValue*)?
 	 *             )
@@ -1674,10 +1696,11 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *             cascading?='cascade'? 
 	 *             type=[LType|ID] 
 	 *             multiplicity=Multiplicity? 
+	 *             constraints+=AllConstraints* 
 	 *             name=TRANSLATABLEID 
 	 *             opposite=[LReference|LFQN]? 
 	 *             (properties+=KeyAndValue properties+=KeyAndValue*)? 
-	 *             constraints=Constraints?
+	 *             resultFilters=ResultFilters?
 	 *         )
 	 *     )
 	 */
@@ -1770,7 +1793,13 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *     (
 	 *         annotationInfo=EntityFeature_LEntityAttribute_2_1_0 
 	 *         (
-	 *             (transient?='transient' type=[LScalarType|ID] name=TRANSLATABLEID (properties+=KeyAndValue properties+=KeyAndValue*)?) | 
+	 *             (
+	 *                 transient?='transient' 
+	 *                 type=[LScalarType|ID] 
+	 *                 constraints+=AllConstraints* 
+	 *                 name=TRANSLATABLEID 
+	 *                 (properties+=KeyAndValue properties+=KeyAndValue*)?
+	 *             ) | 
 	 *             (
 	 *                 derived?='derived' 
 	 *                 domainDescription?='domainDescription'? 
@@ -1783,6 +1812,7 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *                 (id?='id' | uuid?='uuid' | version?='version' | domainDescription?='domainDescription' | domainKey?='domainKey')? 
 	 *                 type=[LScalarType|ID] 
 	 *                 multiplicity=Multiplicity? 
+	 *                 constraints+=AllConstraints* 
 	 *                 name=TRANSLATABLEID 
 	 *                 persistenceInfo=ColumnPersistenceInfo? 
 	 *                 opposite=[LBeanReference|LFQN]? 
@@ -1813,11 +1843,12 @@ public abstract class AbstractEntityGrammarSemanticSequencer extends CommonGramm
 	 *             cascading?='cascade'? 
 	 *             type=[LEntity|ID] 
 	 *             multiplicity=Multiplicity? 
+	 *             constraints+=AllConstraints* 
 	 *             name=TRANSLATABLEID 
 	 *             persistenceInfo=ColumnPersistenceInfo? 
 	 *             opposite=[LEntityReference|LFQN]? 
 	 *             (properties+=KeyAndValue properties+=KeyAndValue*)? 
-	 *             constraints=Constraints?
+	 *             resultFilters=ResultFilters?
 	 *         )
 	 *     )
 	 */

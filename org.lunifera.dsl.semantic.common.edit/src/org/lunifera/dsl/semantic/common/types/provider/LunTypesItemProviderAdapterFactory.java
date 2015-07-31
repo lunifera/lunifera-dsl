@@ -15,12 +15,11 @@ package org.lunifera.dsl.semantic.common.types.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -36,7 +35,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 import org.lunifera.dsl.semantic.common.types.util.LunTypesAdapterFactory;
 
@@ -488,26 +486,49 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LConstraints} instances.
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LResultFilters} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LConstraintsItemProvider lConstraintsItemProvider;
+	protected LResultFiltersItemProvider lResultFiltersItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LConstraints}.
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LResultFilters}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createLConstraintsAdapter() {
-		if (lConstraintsItemProvider == null) {
-			lConstraintsItemProvider = new LConstraintsItemProvider(this);
+	public Adapter createLResultFiltersAdapter() {
+		if (lResultFiltersItemProvider == null) {
+			lResultFiltersItemProvider = new LResultFiltersItemProvider(this);
 		}
 
-		return lConstraintsItemProvider;
+		return lResultFiltersItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LAttributeMatchingConstraintItemProvider lAttributeMatchingConstraintItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLAttributeMatchingConstraintAdapter() {
+		if (lAttributeMatchingConstraintItemProvider == null) {
+			lAttributeMatchingConstraintItemProvider = new LAttributeMatchingConstraintItemProvider(this);
+		}
+
+		return lAttributeMatchingConstraintItemProvider;
 	}
 
 	/**
@@ -810,29 +831,6 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LAttributeMatchingConstraintItemProvider lAttributeMatchingConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.lunifera.dsl.semantic.common.types.LAttributeMatchingConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLAttributeMatchingConstraintAdapter() {
-		if (lAttributeMatchingConstraintItemProvider == null) {
-			lAttributeMatchingConstraintItemProvider = new LAttributeMatchingConstraintItemProvider(this);
-		}
-
-		return lAttributeMatchingConstraintItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -975,7 +973,8 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 		if (lOperationItemProvider != null) lOperationItemProvider.dispose();
 		if (lModifierItemProvider != null) lModifierItemProvider.dispose();
 		if (lMultiplicityItemProvider != null) lMultiplicityItemProvider.dispose();
-		if (lConstraintsItemProvider != null) lConstraintsItemProvider.dispose();
+		if (lResultFiltersItemProvider != null) lResultFiltersItemProvider.dispose();
+		if (lAttributeMatchingConstraintItemProvider != null) lAttributeMatchingConstraintItemProvider.dispose();
 		if (lDtCAssertFalseItemProvider != null) lDtCAssertFalseItemProvider.dispose();
 		if (lDtCAssertTrueItemProvider != null) lDtCAssertTrueItemProvider.dispose();
 		if (lDtCDecimalMaxItemProvider != null) lDtCDecimalMaxItemProvider.dispose();
@@ -989,7 +988,6 @@ public class LunTypesItemProviderAdapterFactory extends LunTypesAdapterFactory i
 		if (lDtCNullItemProvider != null) lDtCNullItemProvider.dispose();
 		if (lDtCRegExItemProvider != null) lDtCRegExItemProvider.dispose();
 		if (lDtCSizeItemProvider != null) lDtCSizeItemProvider.dispose();
-		if (lAttributeMatchingConstraintItemProvider != null) lAttributeMatchingConstraintItemProvider.dispose();
 	}
 
 }

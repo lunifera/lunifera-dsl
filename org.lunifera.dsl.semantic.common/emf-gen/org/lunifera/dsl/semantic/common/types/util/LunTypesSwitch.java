@@ -237,17 +237,34 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case LunTypesPackage.LCONSTRAINTS: {
-				LConstraints lConstraints = (LConstraints)theEObject;
-				T result = caseLConstraints(lConstraints);
-				if (result == null) result = caseLLazyResolver(lConstraints);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case LunTypesPackage.LCONSTRAINT: {
 				LConstraint lConstraint = (LConstraint)theEObject;
 				T result = caseLConstraint(lConstraint);
 				if (result == null) result = caseLLazyResolver(lConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LRESULT_FILTERS: {
+				LResultFilters lResultFilters = (LResultFilters)theEObject;
+				T result = caseLResultFilters(lResultFilters);
+				if (result == null) result = caseLLazyResolver(lResultFilters);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LRESULT_FILTER: {
+				LResultFilter lResultFilter = (LResultFilter)theEObject;
+				T result = caseLResultFilter(lResultFilter);
+				if (result == null) result = caseLConstraint(lResultFilter);
+				if (result == null) result = caseLLazyResolver(lResultFilter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT: {
+				LAttributeMatchingConstraint lAttributeMatchingConstraint = (LAttributeMatchingConstraint)theEObject;
+				T result = caseLAttributeMatchingConstraint(lAttributeMatchingConstraint);
+				if (result == null) result = caseLResultFilter(lAttributeMatchingConstraint);
+				if (result == null) result = caseLConstraint(lAttributeMatchingConstraint);
+				if (result == null) result = caseLLazyResolver(lAttributeMatchingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -259,9 +276,64 @@ public class LunTypesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LunTypesPackage.LSTRING_CONSTRAINT: {
+				LStringConstraint lStringConstraint = (LStringConstraint)theEObject;
+				T result = caseLStringConstraint(lStringConstraint);
+				if (result == null) result = caseLDatatypeConstraint(lStringConstraint);
+				if (result == null) result = caseLConstraint(lStringConstraint);
+				if (result == null) result = caseLLazyResolver(lStringConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LNUMERIC_CONSTRAINT: {
+				LNumericConstraint lNumericConstraint = (LNumericConstraint)theEObject;
+				T result = caseLNumericConstraint(lNumericConstraint);
+				if (result == null) result = caseLDatatypeConstraint(lNumericConstraint);
+				if (result == null) result = caseLConstraint(lNumericConstraint);
+				if (result == null) result = caseLLazyResolver(lNumericConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LDECIMAL_CONSTRAINT: {
+				LDecimalConstraint lDecimalConstraint = (LDecimalConstraint)theEObject;
+				T result = caseLDecimalConstraint(lDecimalConstraint);
+				if (result == null) result = caseLDatatypeConstraint(lDecimalConstraint);
+				if (result == null) result = caseLConstraint(lDecimalConstraint);
+				if (result == null) result = caseLLazyResolver(lDecimalConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LDATE_CONSTRAINT: {
+				LDateConstraint lDateConstraint = (LDateConstraint)theEObject;
+				T result = caseLDateConstraint(lDateConstraint);
+				if (result == null) result = caseLDatatypeConstraint(lDateConstraint);
+				if (result == null) result = caseLConstraint(lDateConstraint);
+				if (result == null) result = caseLLazyResolver(lDateConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LBOOLEAN_CONSTRAINT: {
+				LBooleanConstraint lBooleanConstraint = (LBooleanConstraint)theEObject;
+				T result = caseLBooleanConstraint(lBooleanConstraint);
+				if (result == null) result = caseLDatatypeConstraint(lBooleanConstraint);
+				if (result == null) result = caseLConstraint(lBooleanConstraint);
+				if (result == null) result = caseLLazyResolver(lBooleanConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LunTypesPackage.LBLOB_CONSTRAINT: {
+				LBlobConstraint lBlobConstraint = (LBlobConstraint)theEObject;
+				T result = caseLBlobConstraint(lBlobConstraint);
+				if (result == null) result = caseLDatatypeConstraint(lBlobConstraint);
+				if (result == null) result = caseLConstraint(lBlobConstraint);
+				if (result == null) result = caseLLazyResolver(lBlobConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case LunTypesPackage.LDT_CASSERT_FALSE: {
 				LDtCAssertFalse lDtCAssertFalse = (LDtCAssertFalse)theEObject;
 				T result = caseLDtCAssertFalse(lDtCAssertFalse);
+				if (result == null) result = caseLBooleanConstraint(lDtCAssertFalse);
 				if (result == null) result = caseLDatatypeConstraint(lDtCAssertFalse);
 				if (result == null) result = caseLConstraint(lDtCAssertFalse);
 				if (result == null) result = caseLLazyResolver(lDtCAssertFalse);
@@ -271,6 +343,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CASSERT_TRUE: {
 				LDtCAssertTrue lDtCAssertTrue = (LDtCAssertTrue)theEObject;
 				T result = caseLDtCAssertTrue(lDtCAssertTrue);
+				if (result == null) result = caseLBooleanConstraint(lDtCAssertTrue);
 				if (result == null) result = caseLDatatypeConstraint(lDtCAssertTrue);
 				if (result == null) result = caseLConstraint(lDtCAssertTrue);
 				if (result == null) result = caseLLazyResolver(lDtCAssertTrue);
@@ -280,6 +353,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CDECIMAL_MAX: {
 				LDtCDecimalMax lDtCDecimalMax = (LDtCDecimalMax)theEObject;
 				T result = caseLDtCDecimalMax(lDtCDecimalMax);
+				if (result == null) result = caseLDecimalConstraint(lDtCDecimalMax);
 				if (result == null) result = caseLDatatypeConstraint(lDtCDecimalMax);
 				if (result == null) result = caseLConstraint(lDtCDecimalMax);
 				if (result == null) result = caseLLazyResolver(lDtCDecimalMax);
@@ -289,6 +363,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CDECIMAL_MIN: {
 				LDtCDecimalMin lDtCDecimalMin = (LDtCDecimalMin)theEObject;
 				T result = caseLDtCDecimalMin(lDtCDecimalMin);
+				if (result == null) result = caseLDecimalConstraint(lDtCDecimalMin);
 				if (result == null) result = caseLDatatypeConstraint(lDtCDecimalMin);
 				if (result == null) result = caseLConstraint(lDtCDecimalMin);
 				if (result == null) result = caseLLazyResolver(lDtCDecimalMin);
@@ -298,6 +373,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CDIGITS: {
 				LDtCDigits lDtCDigits = (LDtCDigits)theEObject;
 				T result = caseLDtCDigits(lDtCDigits);
+				if (result == null) result = caseLDecimalConstraint(lDtCDigits);
 				if (result == null) result = caseLDatatypeConstraint(lDtCDigits);
 				if (result == null) result = caseLConstraint(lDtCDigits);
 				if (result == null) result = caseLLazyResolver(lDtCDigits);
@@ -307,6 +383,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CFUTURE: {
 				LDtCFuture lDtCFuture = (LDtCFuture)theEObject;
 				T result = caseLDtCFuture(lDtCFuture);
+				if (result == null) result = caseLDateConstraint(lDtCFuture);
 				if (result == null) result = caseLDatatypeConstraint(lDtCFuture);
 				if (result == null) result = caseLConstraint(lDtCFuture);
 				if (result == null) result = caseLLazyResolver(lDtCFuture);
@@ -316,6 +393,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CPAST: {
 				LDtCPast lDtCPast = (LDtCPast)theEObject;
 				T result = caseLDtCPast(lDtCPast);
+				if (result == null) result = caseLDateConstraint(lDtCPast);
 				if (result == null) result = caseLDatatypeConstraint(lDtCPast);
 				if (result == null) result = caseLConstraint(lDtCPast);
 				if (result == null) result = caseLLazyResolver(lDtCPast);
@@ -325,6 +403,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CNUMERIC_MAX: {
 				LDtCNumericMax lDtCNumericMax = (LDtCNumericMax)theEObject;
 				T result = caseLDtCNumericMax(lDtCNumericMax);
+				if (result == null) result = caseLNumericConstraint(lDtCNumericMax);
 				if (result == null) result = caseLDatatypeConstraint(lDtCNumericMax);
 				if (result == null) result = caseLConstraint(lDtCNumericMax);
 				if (result == null) result = caseLLazyResolver(lDtCNumericMax);
@@ -334,6 +413,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CNUMERIC_MIN: {
 				LDtCNumericMin lDtCNumericMin = (LDtCNumericMin)theEObject;
 				T result = caseLDtCNumericMin(lDtCNumericMin);
+				if (result == null) result = caseLNumericConstraint(lDtCNumericMin);
 				if (result == null) result = caseLDatatypeConstraint(lDtCNumericMin);
 				if (result == null) result = caseLConstraint(lDtCNumericMin);
 				if (result == null) result = caseLLazyResolver(lDtCNumericMin);
@@ -343,6 +423,12 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CNOT_NULL: {
 				LDtCNotNull lDtCNotNull = (LDtCNotNull)theEObject;
 				T result = caseLDtCNotNull(lDtCNotNull);
+				if (result == null) result = caseLBlobConstraint(lDtCNotNull);
+				if (result == null) result = caseLDateConstraint(lDtCNotNull);
+				if (result == null) result = caseLStringConstraint(lDtCNotNull);
+				if (result == null) result = caseLBooleanConstraint(lDtCNotNull);
+				if (result == null) result = caseLDecimalConstraint(lDtCNotNull);
+				if (result == null) result = caseLNumericConstraint(lDtCNotNull);
 				if (result == null) result = caseLDatatypeConstraint(lDtCNotNull);
 				if (result == null) result = caseLConstraint(lDtCNotNull);
 				if (result == null) result = caseLLazyResolver(lDtCNotNull);
@@ -352,6 +438,12 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CNULL: {
 				LDtCNull lDtCNull = (LDtCNull)theEObject;
 				T result = caseLDtCNull(lDtCNull);
+				if (result == null) result = caseLBlobConstraint(lDtCNull);
+				if (result == null) result = caseLDateConstraint(lDtCNull);
+				if (result == null) result = caseLStringConstraint(lDtCNull);
+				if (result == null) result = caseLBooleanConstraint(lDtCNull);
+				if (result == null) result = caseLDecimalConstraint(lDtCNull);
+				if (result == null) result = caseLNumericConstraint(lDtCNull);
 				if (result == null) result = caseLDatatypeConstraint(lDtCNull);
 				if (result == null) result = caseLConstraint(lDtCNull);
 				if (result == null) result = caseLLazyResolver(lDtCNull);
@@ -361,6 +453,7 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CREG_EX: {
 				LDtCRegEx lDtCRegEx = (LDtCRegEx)theEObject;
 				T result = caseLDtCRegEx(lDtCRegEx);
+				if (result == null) result = caseLStringConstraint(lDtCRegEx);
 				if (result == null) result = caseLDatatypeConstraint(lDtCRegEx);
 				if (result == null) result = caseLConstraint(lDtCRegEx);
 				if (result == null) result = caseLLazyResolver(lDtCRegEx);
@@ -370,17 +463,10 @@ public class LunTypesSwitch<T> extends Switch<T> {
 			case LunTypesPackage.LDT_CSIZE: {
 				LDtCSize lDtCSize = (LDtCSize)theEObject;
 				T result = caseLDtCSize(lDtCSize);
+				if (result == null) result = caseLStringConstraint(lDtCSize);
 				if (result == null) result = caseLDatatypeConstraint(lDtCSize);
 				if (result == null) result = caseLConstraint(lDtCSize);
 				if (result == null) result = caseLLazyResolver(lDtCSize);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LunTypesPackage.LATTRIBUTE_MATCHING_CONSTRAINT: {
-				LAttributeMatchingConstraint lAttributeMatchingConstraint = (LAttributeMatchingConstraint)theEObject;
-				T result = caseLAttributeMatchingConstraint(lAttributeMatchingConstraint);
-				if (result == null) result = caseLConstraint(lAttributeMatchingConstraint);
-				if (result == null) result = caseLLazyResolver(lAttributeMatchingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -704,21 +790,6 @@ public class LunTypesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LConstraints</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LConstraints</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLConstraints(LConstraints object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>LConstraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -734,6 +805,51 @@ public class LunTypesSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LResult Filters</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LResult Filters</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLResultFilters(LResultFilters object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LResult Filter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LResult Filter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLResultFilter(LResultFilter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LAttribute Matching Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LAttribute Matching Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLAttributeMatchingConstraint(LAttributeMatchingConstraint object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>LDatatype Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -745,6 +861,96 @@ public class LunTypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLDatatypeConstraint(LDatatypeConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LString Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LString Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLStringConstraint(LStringConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LNumeric Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LNumeric Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLNumericConstraint(LNumericConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LDecimal Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LDecimal Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLDecimalConstraint(LDecimalConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LDate Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LDate Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLDateConstraint(LDateConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LBoolean Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LBoolean Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLBooleanConstraint(LBooleanConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LBlob Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LBlob Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLBlobConstraint(LBlobConstraint object) {
 		return null;
 	}
 
@@ -940,21 +1146,6 @@ public class LunTypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLDtCSize(LDtCSize object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LAttribute Matching Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LAttribute Matching Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLAttributeMatchingConstraint(LAttributeMatchingConstraint object) {
 		return null;
 	}
 

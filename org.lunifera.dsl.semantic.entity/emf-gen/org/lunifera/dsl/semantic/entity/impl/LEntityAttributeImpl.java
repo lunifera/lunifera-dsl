@@ -35,6 +35,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XExpression;
 
 import org.lunifera.dsl.semantic.common.types.LAttribute;
+import org.lunifera.dsl.semantic.common.types.LDatatypeConstraint;
 import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LScalarType;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
@@ -64,6 +65,7 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityAttributeImpl#getTypedName <em>Typed Name</em>}</li>
  * </ul>
@@ -311,6 +313,16 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * @ordered
 	 */
 	protected EList<LKeyAndValue> properties;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LDatatypeConstraint> constraints;
 
 	/**
 	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
@@ -702,6 +714,18 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LDatatypeConstraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentEList<LDatatypeConstraint>(LDatatypeConstraint.class, this, LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS);
+		}
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LBeanReference getOpposite() {
 		if (opposite != null && opposite.eIsProxy()) {
 			InternalEObject oldOpposite = (InternalEObject)opposite;
@@ -779,6 +803,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return basicSetTypeJvm(null, msgs);
 			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -820,6 +846,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return getTypeJvm();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
 				return getProperties();
+			case LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS:
+				return getConstraints();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
@@ -881,6 +909,10 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends LDatatypeConstraint>)newValue);
+				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
 				setOpposite((LBeanReference)newValue);
 				return;
@@ -938,6 +970,9 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
 				getProperties().clear();
 				return;
+			case LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
 				setOpposite((LBeanReference)null);
 				return;
@@ -981,6 +1016,8 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				return typeJvm != null;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 			case LunEntityPackage.LENTITY_ATTRIBUTE__OPPOSITE:
 				return opposite != null;
 			case LunEntityPackage.LENTITY_ATTRIBUTE__TYPED_NAME:
@@ -1012,6 +1049,7 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE: return LunTypesPackage.LATTRIBUTE__TYPE;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM: return LunTypesPackage.LATTRIBUTE__TYPE_JVM;
 				case LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES: return LunTypesPackage.LATTRIBUTE__PROPERTIES;
+				case LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS: return LunTypesPackage.LATTRIBUTE__CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -1041,6 +1079,7 @@ public class LEntityAttributeImpl extends LEntityFeatureImpl implements LEntityA
 				case LunTypesPackage.LATTRIBUTE__TYPE: return LunEntityPackage.LENTITY_ATTRIBUTE__TYPE;
 				case LunTypesPackage.LATTRIBUTE__TYPE_JVM: return LunEntityPackage.LENTITY_ATTRIBUTE__TYPE_JVM;
 				case LunTypesPackage.LATTRIBUTE__PROPERTIES: return LunEntityPackage.LENTITY_ATTRIBUTE__PROPERTIES;
+				case LunTypesPackage.LATTRIBUTE__CONSTRAINTS: return LunEntityPackage.LENTITY_ATTRIBUTE__CONSTRAINTS;
 				default: return -1;
 			}
 		}

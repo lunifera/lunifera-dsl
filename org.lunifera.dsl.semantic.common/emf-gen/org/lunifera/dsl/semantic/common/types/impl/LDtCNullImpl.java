@@ -13,6 +13,10 @@
  */
 package org.lunifera.dsl.semantic.common.types.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.lunifera.dsl.semantic.common.types.LDtCNull;
@@ -45,6 +49,29 @@ public class LDtCNullImpl extends LLazyResolverImpl implements LDtCNull {
 	@Override
 	protected EClass eStaticClass() {
 		return LunTypesPackage.Literals.LDT_CNULL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isForPrimitives() {
+		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case LunTypesPackage.LDT_CNULL___IS_FOR_PRIMITIVES:
+				return isForPrimitives();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //LDtCNullImpl

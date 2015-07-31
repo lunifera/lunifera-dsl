@@ -30,9 +30,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
-import org.lunifera.dsl.semantic.common.types.LConstraints;
+import org.lunifera.dsl.semantic.common.types.LDatatypeConstraint;
 import org.lunifera.dsl.semantic.common.types.LKeyAndValue;
 import org.lunifera.dsl.semantic.common.types.LReference;
+import org.lunifera.dsl.semantic.common.types.LResultFilters;
 import org.lunifera.dsl.semantic.common.types.LunTypesPackage;
 
 import org.lunifera.dsl.semantic.entity.LEntity;
@@ -49,10 +50,11 @@ import org.lunifera.dsl.semantic.entity.LunEntityPackage;
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#isLazy <em>Lazy</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#isCascading <em>Cascading</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getTypeJvm <em>Type Jvm</em>}</li>
  *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getOpposite <em>Opposite</em>}</li>
- *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link org.lunifera.dsl.semantic.entity.impl.LEntityReferenceImpl#getResultFilters <em>Result Filters</em>}</li>
  * </ul>
  * </p>
  *
@@ -110,6 +112,16 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	protected EList<LKeyAndValue> properties;
 
 	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LDatatypeConstraint> constraints;
+
+	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,14 +152,14 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	protected LEntityReference opposite;
 
 	/**
-	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference.
+	 * The cached value of the '{@link #getResultFilters() <em>Result Filters</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConstraints()
+	 * @see #getResultFilters()
 	 * @generated
 	 * @ordered
 	 */
-	protected LConstraints constraints;
+	protected LResultFilters resultFilters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -220,6 +232,18 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			properties = new EObjectContainmentEList<LKeyAndValue>(LKeyAndValue.class, this, LunEntityPackage.LENTITY_REFERENCE__PROPERTIES);
 		}
 		return properties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LDatatypeConstraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentEList<LDatatypeConstraint>(LDatatypeConstraint.class, this, LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS);
+		}
+		return constraints;
 	}
 
 	/**
@@ -346,8 +370,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LConstraints getConstraints() {
-		return constraints;
+	public LResultFilters getResultFilters() {
+		return resultFilters;
 	}
 
 	/**
@@ -355,11 +379,11 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetConstraints(LConstraints newConstraints, NotificationChain msgs) {
-		LConstraints oldConstraints = constraints;
-		constraints = newConstraints;
+	public NotificationChain basicSetResultFilters(LResultFilters newResultFilters, NotificationChain msgs) {
+		LResultFilters oldResultFilters = resultFilters;
+		resultFilters = newResultFilters;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS, oldConstraints, newConstraints);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS, oldResultFilters, newResultFilters);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -370,18 +394,18 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConstraints(LConstraints newConstraints) {
-		if (newConstraints != constraints) {
+	public void setResultFilters(LResultFilters newResultFilters) {
+		if (newResultFilters != resultFilters) {
 			NotificationChain msgs = null;
-			if (constraints != null)
-				msgs = ((InternalEObject)constraints).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS, null, msgs);
-			if (newConstraints != null)
-				msgs = ((InternalEObject)newConstraints).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS, null, msgs);
-			msgs = basicSetConstraints(newConstraints, msgs);
+			if (resultFilters != null)
+				msgs = ((InternalEObject)resultFilters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS, null, msgs);
+			if (newResultFilters != null)
+				msgs = ((InternalEObject)newResultFilters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS, null, msgs);
+			msgs = basicSetResultFilters(newResultFilters, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS, newConstraints, newConstraints));
+			eNotify(new ENotificationImpl(this, Notification.SET, LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS, newResultFilters, newResultFilters));
 	}
 
 	/**
@@ -394,10 +418,12 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 		switch (featureID) {
 			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
 				return basicSetTypeJvm(null, msgs);
-			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
-				return basicSetConstraints(null, msgs);
+			case LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS:
+				return basicSetResultFilters(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -416,6 +442,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				return isCascading();
 			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
 				return getProperties();
+			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
+				return getConstraints();
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
@@ -424,8 +452,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			case LunEntityPackage.LENTITY_REFERENCE__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
-			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
-				return getConstraints();
+			case LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS:
+				return getResultFilters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -449,6 +477,10 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends LKeyAndValue>)newValue);
 				return;
+			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends LDatatypeConstraint>)newValue);
+				return;
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				setType((LEntity)newValue);
 				return;
@@ -458,8 +490,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			case LunEntityPackage.LENTITY_REFERENCE__OPPOSITE:
 				setOpposite((LEntityReference)newValue);
 				return;
-			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
-				setConstraints((LConstraints)newValue);
+			case LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS:
+				setResultFilters((LResultFilters)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -482,6 +514,9 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
 				getProperties().clear();
 				return;
+			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				setType((LEntity)null);
 				return;
@@ -491,8 +526,8 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 			case LunEntityPackage.LENTITY_REFERENCE__OPPOSITE:
 				setOpposite((LEntityReference)null);
 				return;
-			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
-				setConstraints((LConstraints)null);
+			case LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS:
+				setResultFilters((LResultFilters)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -512,14 +547,16 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				return cascading != CASCADING_EDEFAULT;
 			case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE:
 				return type != null;
 			case LunEntityPackage.LENTITY_REFERENCE__TYPE_JVM:
 				return typeJvm != null;
 			case LunEntityPackage.LENTITY_REFERENCE__OPPOSITE:
 				return opposite != null;
-			case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS:
-				return constraints != null;
+			case LunEntityPackage.LENTITY_REFERENCE__RESULT_FILTERS:
+				return resultFilters != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -536,6 +573,7 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				case LunEntityPackage.LENTITY_REFERENCE__LAZY: return LunTypesPackage.LREFERENCE__LAZY;
 				case LunEntityPackage.LENTITY_REFERENCE__CASCADING: return LunTypesPackage.LREFERENCE__CASCADING;
 				case LunEntityPackage.LENTITY_REFERENCE__PROPERTIES: return LunTypesPackage.LREFERENCE__PROPERTIES;
+				case LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS: return LunTypesPackage.LREFERENCE__CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -554,6 +592,7 @@ public class LEntityReferenceImpl extends LEntityFeatureImpl implements LEntityR
 				case LunTypesPackage.LREFERENCE__LAZY: return LunEntityPackage.LENTITY_REFERENCE__LAZY;
 				case LunTypesPackage.LREFERENCE__CASCADING: return LunEntityPackage.LENTITY_REFERENCE__CASCADING;
 				case LunTypesPackage.LREFERENCE__PROPERTIES: return LunEntityPackage.LENTITY_REFERENCE__PROPERTIES;
+				case LunTypesPackage.LREFERENCE__CONSTRAINTS: return LunEntityPackage.LENTITY_REFERENCE__CONSTRAINTS;
 				default: return -1;
 			}
 		}

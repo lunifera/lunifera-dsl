@@ -5858,30 +5858,30 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleAnnotationDef"
 
 
-    // $ANTLR start "entryRuleConstraint"
-    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2100:1: entryRuleConstraint returns [EObject current=null] : iv_ruleConstraint= ruleConstraint EOF ;
-    public final EObject entryRuleConstraint() throws RecognitionException {
+    // $ANTLR start "entryRuleResultFilter"
+    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2100:1: entryRuleResultFilter returns [EObject current=null] : iv_ruleResultFilter= ruleResultFilter EOF ;
+    public final EObject entryRuleResultFilter() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleConstraint = null;
+        EObject iv_ruleResultFilter = null;
 
 
         try {
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2101:2: (iv_ruleConstraint= ruleConstraint EOF )
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2102:2: iv_ruleConstraint= ruleConstraint EOF
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2101:2: (iv_ruleResultFilter= ruleResultFilter EOF )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2102:2: iv_ruleResultFilter= ruleResultFilter EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getConstraintRule()); 
+               newCompositeNode(grammarAccess.getResultFilterRule()); 
             }
-            pushFollow(FOLLOW_ruleConstraint_in_entryRuleConstraint4774);
-            iv_ruleConstraint=ruleConstraint();
+            pushFollow(FOLLOW_ruleResultFilter_in_entryRuleResultFilter4774);
+            iv_ruleResultFilter=ruleResultFilter();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleConstraint; 
+               current =iv_ruleResultFilter; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstraint4784); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleResultFilter4784); if (state.failed) return current;
 
             }
 
@@ -5895,12 +5895,12 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleConstraint"
+    // $ANTLR end "entryRuleResultFilter"
 
 
-    // $ANTLR start "ruleConstraint"
-    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2109:1: ruleConstraint returns [EObject current=null] : this_AttributeMatchingConstraint_0= ruleAttributeMatchingConstraint ;
-    public final EObject ruleConstraint() throws RecognitionException {
+    // $ANTLR start "ruleResultFilter"
+    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2109:1: ruleResultFilter returns [EObject current=null] : this_AttributeMatchingConstraint_0= ruleAttributeMatchingConstraint ;
+    public final EObject ruleResultFilter() throws RecognitionException {
         EObject current = null;
 
         EObject this_AttributeMatchingConstraint_0 = null;
@@ -5914,10 +5914,10 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
             {
             if ( state.backtracking==0 ) {
                
-                      newCompositeNode(grammarAccess.getConstraintAccess().getAttributeMatchingConstraintParserRuleCall()); 
+                      newCompositeNode(grammarAccess.getResultFilterAccess().getAttributeMatchingConstraintParserRuleCall()); 
                   
             }
-            pushFollow(FOLLOW_ruleAttributeMatchingConstraint_in_ruleConstraint4830);
+            pushFollow(FOLLOW_ruleAttributeMatchingConstraint_in_ruleResultFilter4830);
             this_AttributeMatchingConstraint_0=ruleAttributeMatchingConstraint();
 
             state._fsp--;
@@ -5944,11 +5944,11 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleConstraint"
+    // $ANTLR end "ruleResultFilter"
 
 
     // $ANTLR start "entryRuleAttributeMatchingConstraint"
-    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2132:1: entryRuleAttributeMatchingConstraint returns [EObject current=null] : iv_ruleAttributeMatchingConstraint= ruleAttributeMatchingConstraint EOF ;
+    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2130:1: entryRuleAttributeMatchingConstraint returns [EObject current=null] : iv_ruleAttributeMatchingConstraint= ruleAttributeMatchingConstraint EOF ;
     public final EObject entryRuleAttributeMatchingConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -5956,13 +5956,13 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2133:2: (iv_ruleAttributeMatchingConstraint= ruleAttributeMatchingConstraint EOF )
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2134:2: iv_ruleAttributeMatchingConstraint= ruleAttributeMatchingConstraint EOF
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2131:2: (iv_ruleAttributeMatchingConstraint= ruleAttributeMatchingConstraint EOF )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2132:2: iv_ruleAttributeMatchingConstraint= ruleAttributeMatchingConstraint EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAttributeMatchingConstraintRule()); 
             }
-            pushFollow(FOLLOW_ruleAttributeMatchingConstraint_in_entryRuleAttributeMatchingConstraint4866);
+            pushFollow(FOLLOW_ruleAttributeMatchingConstraint_in_entryRuleAttributeMatchingConstraint4864);
             iv_ruleAttributeMatchingConstraint=ruleAttributeMatchingConstraint();
 
             state._fsp--;
@@ -5970,7 +5970,7 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAttributeMatchingConstraint; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAttributeMatchingConstraint4876); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttributeMatchingConstraint4874); if (state.failed) return current;
 
             }
 
@@ -5988,7 +5988,7 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttributeMatchingConstraint"
-    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2141:1: ruleAttributeMatchingConstraint returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';' ) ;
+    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2139:1: ruleAttributeMatchingConstraint returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';' ) ;
     public final EObject ruleAttributeMatchingConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -6002,17 +6002,17 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2144:28: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';' ) )
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2145:1: ( ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';' )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2142:28: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';' ) )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2143:1: ( ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';' )
             {
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2145:1: ( ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';' )
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2145:2: ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';'
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2143:1: ( ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';' )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2143:2: ( (otherlv_0= RULE_ID ) ) ( (lv_comparatorType_1_0= ruleLComparatorType ) ) ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) ) otherlv_4= ';'
             {
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2145:2: ( (otherlv_0= RULE_ID ) )
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2146:1: (otherlv_0= RULE_ID )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2143:2: ( (otherlv_0= RULE_ID ) )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2144:1: (otherlv_0= RULE_ID )
             {
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2146:1: (otherlv_0= RULE_ID )
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2147:3: otherlv_0= RULE_ID
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2144:1: (otherlv_0= RULE_ID )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2145:3: otherlv_0= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
@@ -6021,7 +6021,7 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttributeMatchingConstraint4921); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttributeMatchingConstraint4919); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_0, grammarAccess.getAttributeMatchingConstraintAccess().getAttributeLAttributeCrossReference_0_0()); 
@@ -6033,18 +6033,18 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2158:2: ( (lv_comparatorType_1_0= ruleLComparatorType ) )
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2159:1: (lv_comparatorType_1_0= ruleLComparatorType )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2156:2: ( (lv_comparatorType_1_0= ruleLComparatorType ) )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2157:1: (lv_comparatorType_1_0= ruleLComparatorType )
             {
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2159:1: (lv_comparatorType_1_0= ruleLComparatorType )
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2160:3: lv_comparatorType_1_0= ruleLComparatorType
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2157:1: (lv_comparatorType_1_0= ruleLComparatorType )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2158:3: lv_comparatorType_1_0= ruleLComparatorType
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getAttributeMatchingConstraintAccess().getComparatorTypeLComparatorTypeEnumRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleLComparatorType_in_ruleAttributeMatchingConstraint4942);
+            pushFollow(FOLLOW_ruleLComparatorType_in_ruleAttributeMatchingConstraint4940);
             lv_comparatorType_1_0=ruleLComparatorType();
 
             state._fsp--;
@@ -6068,7 +6068,7 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2176:2: ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) )
+            // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2174:2: ( ( (lv_matchingValue_2_0= RULE_STRING ) ) | ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) ) )
             int alt30=2;
             int LA30_0 = input.LA(1);
 
@@ -6087,15 +6087,15 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
             }
             switch (alt30) {
                 case 1 :
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2176:3: ( (lv_matchingValue_2_0= RULE_STRING ) )
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2174:3: ( (lv_matchingValue_2_0= RULE_STRING ) )
                     {
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2176:3: ( (lv_matchingValue_2_0= RULE_STRING ) )
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2177:1: (lv_matchingValue_2_0= RULE_STRING )
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2174:3: ( (lv_matchingValue_2_0= RULE_STRING ) )
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2175:1: (lv_matchingValue_2_0= RULE_STRING )
                     {
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2177:1: (lv_matchingValue_2_0= RULE_STRING )
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2178:3: lv_matchingValue_2_0= RULE_STRING
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2175:1: (lv_matchingValue_2_0= RULE_STRING )
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2176:3: lv_matchingValue_2_0= RULE_STRING
                     {
-                    lv_matchingValue_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttributeMatchingConstraint4960); if (state.failed) return current;
+                    lv_matchingValue_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAttributeMatchingConstraint4958); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_matchingValue_2_0, grammarAccess.getAttributeMatchingConstraintAccess().getMatchingValueSTRINGTerminalRuleCall_2_0_0()); 
@@ -6123,13 +6123,13 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2195:6: ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) )
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2193:6: ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) )
                     {
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2195:6: ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) )
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2195:7: ( ( RULE_ID ) )=> (otherlv_3= RULE_ID )
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2193:6: ( ( ( RULE_ID ) )=> (otherlv_3= RULE_ID ) )
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2193:7: ( ( RULE_ID ) )=> (otherlv_3= RULE_ID )
                     {
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2201:1: (otherlv_3= RULE_ID )
-                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2202:3: otherlv_3= RULE_ID
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2199:1: (otherlv_3= RULE_ID )
+                    // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2200:3: otherlv_3= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
 
@@ -6138,7 +6138,7 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
                       	        }
                               
                     }
-                    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttributeMatchingConstraint5003); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttributeMatchingConstraint5001); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		newLeafNode(otherlv_3, grammarAccess.getAttributeMatchingConstraintAccess().getMatchingLiteralLEnumLiteralCrossReference_2_1_0()); 
@@ -6156,7 +6156,7 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,20,FOLLOW_20_in_ruleAttributeMatchingConstraint5016); if (state.failed) return current;
+            otherlv_4=(Token)match(input,20,FOLLOW_20_in_ruleAttributeMatchingConstraint5014); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getAttributeMatchingConstraintAccess().getSemicolonKeyword_3());
@@ -26357,13 +26357,13 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred2_InternalServicesGrammar
     public final void synpred2_InternalServicesGrammar_fragment() throws RecognitionException {   
-        // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2195:7: ( ( RULE_ID ) )
-        // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2196:1: ( RULE_ID )
+        // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2193:7: ( ( RULE_ID ) )
+        // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2194:1: ( RULE_ID )
         {
-        // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2196:1: ( RULE_ID )
-        // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2197:2: RULE_ID
+        // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2194:1: ( RULE_ID )
+        // ../org.lunifera.dsl.services.xtext/src-gen/org/lunifera/dsl/services/xtext/parser/antlr/internal/InternalServicesGrammar.g:2195:2: RULE_ID
         {
-        match(input,RULE_ID,FOLLOW_RULE_ID_in_synpred2_InternalServicesGrammar4986); if (state.failed) return ;
+        match(input,RULE_ID,FOLLOW_RULE_ID_in_synpred2_InternalServicesGrammar4984); if (state.failed) return ;
 
         }
 
@@ -32654,16 +32654,16 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleAnnotationDef_in_entryRuleAnnotationDef4668 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAnnotationDef4678 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXAnnotation_in_ruleAnnotationDef4736 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstraint_in_entryRuleConstraint4774 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstraint4784 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeMatchingConstraint_in_ruleConstraint4830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeMatchingConstraint_in_entryRuleAttributeMatchingConstraint4866 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAttributeMatchingConstraint4876 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeMatchingConstraint4921 = new BitSet(new long[]{0x0000000000000000L,0x0000000020138000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_ruleLComparatorType_in_ruleAttributeMatchingConstraint4942 = new BitSet(new long[]{0x0000000000000050L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttributeMatchingConstraint4960 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeMatchingConstraint5003 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleAttributeMatchingConstraint5016 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleResultFilter_in_entryRuleResultFilter4774 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleResultFilter4784 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeMatchingConstraint_in_ruleResultFilter4830 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeMatchingConstraint_in_entryRuleAttributeMatchingConstraint4864 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttributeMatchingConstraint4874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeMatchingConstraint4919 = new BitSet(new long[]{0x0000000000000000L,0x0000000020138000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_ruleLComparatorType_in_ruleAttributeMatchingConstraint4940 = new BitSet(new long[]{0x0000000000000050L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAttributeMatchingConstraint4958 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeMatchingConstraint5001 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_20_in_ruleAttributeMatchingConstraint5014 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLQualifiedNameWithWildCard_in_entryRuleLQualifiedNameWithWildCard5053 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleLQualifiedNameWithWildCard5064 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_ruleLQualifiedNameWithWildCard5111 = new BitSet(new long[]{0x0008000000000002L});
@@ -33279,7 +33279,7 @@ public class InternalServicesGrammarParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_145_in_ruleLowerBound21690 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_52_in_ruleUpperBound21735 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_145_in_ruleUpperBound21752 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_synpred2_InternalServicesGrammar4986 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_synpred2_InternalServicesGrammar4984 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_22_in_synpred3_InternalServicesGrammar5927 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValidID_in_synpred4_InternalServicesGrammar5956 = new BitSet(new long[]{0x0004000000000000L});
     public static final BitSet FOLLOW_50_in_synpred4_InternalServicesGrammar5962 = new BitSet(new long[]{0x0000000000000002L});

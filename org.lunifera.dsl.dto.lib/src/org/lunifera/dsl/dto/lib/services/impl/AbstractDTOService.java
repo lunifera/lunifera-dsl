@@ -12,6 +12,7 @@ package org.lunifera.dsl.dto.lib.services.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -39,6 +40,7 @@ import org.lunifera.dsl.dto.lib.IMapperAccess;
 import org.lunifera.dsl.dto.lib.MappingContext;
 import org.lunifera.dsl.dto.lib.services.DtoServiceException;
 import org.lunifera.dsl.dto.lib.services.IQuery;
+import org.lunifera.dsl.dto.lib.services.ValidationResult;
 import org.lunifera.dsl.dto.lib.services.jpa.metadata.EntityDelegate;
 import org.lunifera.runtime.common.annotations.DtoUtils;
 import org.lunifera.runtime.common.hash.HashUtil;
@@ -737,15 +739,22 @@ public abstract class AbstractDTOService<DTO, ENTITY> implements
 	}
 
 	@Override
-	public Set<ConstraintViolation<DTO>> validate(DTO object,
-			Class<?>... groups) {
+	public Set<ValidationResult> validate(DTO object, Class<?>... groups) {
 		if (valFactory == null) {
 			throw new IllegalArgumentException(
 					"No ValidatorFactory bound to service");
 		}
 
 		Validator validator = valFactory.getValidator();
-		return validator.validate(object, groups);
+		Set<ConstraintViolation<DTO>> tempResult = validator.validate(object,
+				groups);
+
+		Set<ValidationResult> result = new HashSet<ValidationResult>();
+		for (ConstraintViolation<?> violation : tempResult) {
+			result.add(new ValidationResult(violation));
+		}
+
+		return result;
 	}
 
 	private static class TransactionObserver extends SessionEventAdapter {

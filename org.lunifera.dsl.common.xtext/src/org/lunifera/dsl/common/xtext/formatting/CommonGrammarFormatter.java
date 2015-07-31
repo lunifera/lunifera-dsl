@@ -49,7 +49,7 @@ public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 		configureImportDef(c, f.getImportAccess());
 		configureDataTypeDef(c, f.getDataTypeAccess());
 		configureAnnotationDef(c, f.getAnnotationDefAccess());
-		configureConstraints(c, f.getConstraintsAccess());
+		configureConstraints(c, f.getResultFiltersAccess()); 
 		configureAttributeMatchingConstraint(c,
 				f.getAttributeMatchingConstraintAccess());
 
@@ -110,7 +110,7 @@ public class CommonGrammarFormatter extends AbstractDeclarativeFormatter {
 	}
 
 	protected void configureConstraints(FormattingConfig c,
-			CommonGrammarGrammarAccess.ConstraintsElements ele) {
+			CommonGrammarGrammarAccess.ResultFiltersElements ele) {
 
 		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_2());
 		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_4());

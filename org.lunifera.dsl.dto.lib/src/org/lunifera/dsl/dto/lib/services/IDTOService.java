@@ -14,8 +14,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import javax.validation.ConstraintViolation;
-
 public interface IDTOService<A> extends IService {
 
 	public static final int PROP_MAX_COLLECTION_CONTENT = 200;
@@ -191,7 +189,7 @@ public interface IDTOService<A> extends IService {
 	 * @throws IllegalStateException
 	 *             if no Validator is available
 	 */
-	Set<ConstraintViolation<A>> validate(A object, Class<?>... groups)
+	Set<ValidationResult> validate(A object, Class<?>... groups)
 			throws IllegalStateException;
 
 }

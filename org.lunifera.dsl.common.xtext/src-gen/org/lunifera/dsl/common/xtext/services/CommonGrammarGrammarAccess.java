@@ -275,6 +275,72 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
 	}
 
+	public class AllConstraintsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AllConstraints");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cDtCAssertFalseParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDtCAssertTrueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cDtCDecimalMaxParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cDtCDecimalMinParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cDtCDigitsParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cDtCNumericMaxParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cDtCNumericMinParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cDtCNotNullParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cDtCNullParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cDtCRegExParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
+		private final RuleCall cDtCSizeParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		private final RuleCall cDtCFutureParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
+		private final RuleCall cDtCPastParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
+		
+		//AllConstraints returns types::LDatatypeConstraint:
+		//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
+		//	DtCNotNull | DtCNull | DtCRegEx | DtCSize | DtCFuture | DtCPast;
+		public ParserRule getRule() { return rule; }
+
+		//DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin | DtCNotNull
+		//| DtCNull | DtCRegEx | DtCSize | DtCFuture | DtCPast
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//DtCAssertFalse
+		public RuleCall getDtCAssertFalseParserRuleCall_0() { return cDtCAssertFalseParserRuleCall_0; }
+
+		//DtCAssertTrue
+		public RuleCall getDtCAssertTrueParserRuleCall_1() { return cDtCAssertTrueParserRuleCall_1; }
+
+		//DtCDecimalMax
+		public RuleCall getDtCDecimalMaxParserRuleCall_2() { return cDtCDecimalMaxParserRuleCall_2; }
+
+		//DtCDecimalMin
+		public RuleCall getDtCDecimalMinParserRuleCall_3() { return cDtCDecimalMinParserRuleCall_3; }
+
+		//DtCDigits
+		public RuleCall getDtCDigitsParserRuleCall_4() { return cDtCDigitsParserRuleCall_4; }
+
+		//DtCNumericMax
+		public RuleCall getDtCNumericMaxParserRuleCall_5() { return cDtCNumericMaxParserRuleCall_5; }
+
+		//DtCNumericMin
+		public RuleCall getDtCNumericMinParserRuleCall_6() { return cDtCNumericMinParserRuleCall_6; }
+
+		//DtCNotNull
+		public RuleCall getDtCNotNullParserRuleCall_7() { return cDtCNotNullParserRuleCall_7; }
+
+		//DtCNull
+		public RuleCall getDtCNullParserRuleCall_8() { return cDtCNullParserRuleCall_8; }
+
+		//DtCRegEx
+		public RuleCall getDtCRegExParserRuleCall_9() { return cDtCRegExParserRuleCall_9; }
+
+		//DtCSize
+		public RuleCall getDtCSizeParserRuleCall_10() { return cDtCSizeParserRuleCall_10; }
+
+		//DtCFuture
+		public RuleCall getDtCFutureParserRuleCall_11() { return cDtCFutureParserRuleCall_11; }
+
+		//DtCPast
+		public RuleCall getDtCPastParserRuleCall_12() { return cDtCPastParserRuleCall_12; }
+	}
+
 	public class DataTypeConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DataTypeConstraint");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -338,12 +404,14 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cDtCFutureParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cDtCPastParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cDtCNotNullParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cDtCNullParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//DateConstraint returns types::LDatatypeConstraint:
-		//	DtCFuture | DtCPast;
+		//	DtCFuture | DtCPast | DtCNotNull | DtCNull;
 		public ParserRule getRule() { return rule; }
 
-		//DtCFuture | DtCPast
+		//DtCFuture | DtCPast | DtCNotNull | DtCNull
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//DtCFuture
@@ -351,6 +419,12 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//DtCPast
 		public RuleCall getDtCPastParserRuleCall_1() { return cDtCPastParserRuleCall_1; }
+
+		//DtCNotNull
+		public RuleCall getDtCNotNullParserRuleCall_2() { return cDtCNotNullParserRuleCall_2; }
+
+		//DtCNull
+		public RuleCall getDtCNullParserRuleCall_3() { return cDtCNullParserRuleCall_3; }
 	}
 
 	public class BlobTypeConstraintElements extends AbstractParserRuleElementFinder {
@@ -981,25 +1055,25 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAnnotationXAnnotationParserRuleCall_0_0() { return cAnnotationXAnnotationParserRuleCall_0_0; }
 	}
 
-	public class ConstraintsElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Constraints");
+	public class ResultFiltersElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ResultFilters");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cLConstraintsAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cLResultFiltersAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cConstraintsKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cConstraintsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cConstraintsConstraintParserRuleCall_3_0 = (RuleCall)cConstraintsAssignment_3.eContents().get(0);
+		private final Assignment cResultFiltersAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cResultFiltersResultFilterParserRuleCall_3_0 = (RuleCall)cResultFiltersAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Constraints returns types::LConstraints:
-		//	{types::LConstraints} "constraints" "{" constraints+=Constraint* "}";
+		//ResultFilters returns types::LResultFilters:
+		//	{types::LResultFilters} "constraints" "{" resultFilters+=ResultFilter* "}";
 		public ParserRule getRule() { return rule; }
 
-		//{types::LConstraints} "constraints" "{" constraints+=Constraint* "}"
+		//{types::LResultFilters} "constraints" "{" resultFilters+=ResultFilter* "}"
 		public Group getGroup() { return cGroup; }
 
-		//{types::LConstraints}
-		public Action getLConstraintsAction_0() { return cLConstraintsAction_0; }
+		//{types::LResultFilters}
+		public Action getLResultFiltersAction_0() { return cLResultFiltersAction_0; }
 
 		//"constraints"
 		public Keyword getConstraintsKeyword_1() { return cConstraintsKeyword_1; }
@@ -1007,70 +1081,26 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//constraints+=Constraint*
-		public Assignment getConstraintsAssignment_3() { return cConstraintsAssignment_3; }
+		//resultFilters+=ResultFilter*
+		public Assignment getResultFiltersAssignment_3() { return cResultFiltersAssignment_3; }
 
-		//Constraint
-		public RuleCall getConstraintsConstraintParserRuleCall_3_0() { return cConstraintsConstraintParserRuleCall_3_0; }
+		//ResultFilter
+		public RuleCall getResultFiltersResultFilterParserRuleCall_3_0() { return cResultFiltersResultFilterParserRuleCall_3_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
-	public class ConstraintElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Constraint");
+	public class ResultFilterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ResultFilter");
 		private final RuleCall cAttributeMatchingConstraintParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//Constraint returns types::LConstraint:
+		//ResultFilter returns types::LResultFilter:
 		//	AttributeMatchingConstraint;
 		public ParserRule getRule() { return rule; }
 
 		//AttributeMatchingConstraint
 		public RuleCall getAttributeMatchingConstraintParserRuleCall() { return cAttributeMatchingConstraintParserRuleCall; }
-	}
-
-	public class KeyAndValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "KeyAndValue");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cKeyKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cKeySTRINGTerminalRuleCall_2_0 = (RuleCall)cKeyAssignment_2.eContents().get(0);
-		private final Keyword cValueKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValueSTRINGTerminalRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
-		
-		//KeyAndValue returns types::LKeyAndValue:
-		//	"key" "=" key=STRING "value" "=" value=STRING;
-		public ParserRule getRule() { return rule; }
-
-		//"key" "=" key=STRING "value" "=" value=STRING
-		public Group getGroup() { return cGroup; }
-
-		//"key"
-		public Keyword getKeyKeyword_0() { return cKeyKeyword_0; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
-
-		//key=STRING
-		public Assignment getKeyAssignment_2() { return cKeyAssignment_2; }
-
-		//STRING
-		public RuleCall getKeySTRINGTerminalRuleCall_2_0() { return cKeySTRINGTerminalRuleCall_2_0; }
-
-		//"value"
-		public Keyword getValueKeyword_3() { return cValueKeyword_3; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_4() { return cEqualsSignKeyword_4; }
-
-		//value=STRING
-		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
-
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_5_0() { return cValueSTRINGTerminalRuleCall_5_0; }
 	}
 
 	public class AttributeMatchingConstraintElements extends AbstractParserRuleElementFinder {
@@ -1133,6 +1163,50 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 
 		//";"
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+
+	public class KeyAndValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "KeyAndValue");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cKeyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cKeySTRINGTerminalRuleCall_2_0 = (RuleCall)cKeyAssignment_2.eContents().get(0);
+		private final Keyword cValueKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValueSTRINGTerminalRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
+		
+		//KeyAndValue returns types::LKeyAndValue:
+		//	"key" "=" key=STRING "value" "=" value=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//"key" "=" key=STRING "value" "=" value=STRING
+		public Group getGroup() { return cGroup; }
+
+		//"key"
+		public Keyword getKeyKeyword_0() { return cKeyKeyword_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+
+		//key=STRING
+		public Assignment getKeyAssignment_2() { return cKeyAssignment_2; }
+
+		//STRING
+		public RuleCall getKeySTRINGTerminalRuleCall_2_0() { return cKeySTRINGTerminalRuleCall_2_0; }
+
+		//"value"
+		public Keyword getValueKeyword_3() { return cValueKeyword_3; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_4() { return cEqualsSignKeyword_4; }
+
+		//value=STRING
+		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
+
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_5_0() { return cValueSTRINGTerminalRuleCall_5_0; }
 	}
 
 	public class LQualifiedNameWithWildCardElements extends AbstractParserRuleElementFinder {
@@ -1603,6 +1677,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	private final ClassElements pClass;
 	private final ImportElements pImport;
 	private final DataTypeElements pDataType;
+	private final AllConstraintsElements pAllConstraints;
 	private final DataTypeConstraintElements pDataTypeConstraint;
 	private final DateConstraintElements pDateConstraint;
 	private final BlobTypeConstraintElements pBlobTypeConstraint;
@@ -1626,10 +1701,10 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	private final EnumLiteralElements pEnumLiteral;
 	private final AnnotationDefElements pAnnotationDef;
 	private final LVisibilityElements unknownRuleLVisibility;
-	private final ConstraintsElements pConstraints;
-	private final ConstraintElements pConstraint;
-	private final KeyAndValueElements pKeyAndValue;
+	private final ResultFiltersElements pResultFilters;
+	private final ResultFilterElements pResultFilter;
 	private final AttributeMatchingConstraintElements pAttributeMatchingConstraint;
+	private final KeyAndValueElements pKeyAndValue;
 	private final LComparatorTypeElements unknownRuleLComparatorType;
 	private final LQualifiedNameWithWildCardElements pLQualifiedNameWithWildCard;
 	private final LFQNElements pLFQN;
@@ -1655,6 +1730,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		this.pClass = new ClassElements();
 		this.pImport = new ImportElements();
 		this.pDataType = new DataTypeElements();
+		this.pAllConstraints = new AllConstraintsElements();
 		this.pDataTypeConstraint = new DataTypeConstraintElements();
 		this.pDateConstraint = new DateConstraintElements();
 		this.pBlobTypeConstraint = new BlobTypeConstraintElements();
@@ -1678,10 +1754,10 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEnumLiteral = new EnumLiteralElements();
 		this.pAnnotationDef = new AnnotationDefElements();
 		this.unknownRuleLVisibility = new LVisibilityElements();
-		this.pConstraints = new ConstraintsElements();
-		this.pConstraint = new ConstraintElements();
-		this.pKeyAndValue = new KeyAndValueElements();
+		this.pResultFilters = new ResultFiltersElements();
+		this.pResultFilter = new ResultFilterElements();
 		this.pAttributeMatchingConstraint = new AttributeMatchingConstraintElements();
+		this.pKeyAndValue = new KeyAndValueElements();
 		this.unknownRuleLComparatorType = new LComparatorTypeElements();
 		this.pLQualifiedNameWithWildCard = new LQualifiedNameWithWildCardElements();
 		this.pLFQN = new LFQNElements();
@@ -1775,6 +1851,17 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getDataTypeAccess().getRule();
 	}
 
+	//AllConstraints returns types::LDatatypeConstraint:
+	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
+	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize | DtCFuture | DtCPast;
+	public AllConstraintsElements getAllConstraintsAccess() {
+		return pAllConstraints;
+	}
+	
+	public ParserRule getAllConstraintsRule() {
+		return getAllConstraintsAccess().getRule();
+	}
+
 	//DataTypeConstraint returns types::LDatatypeConstraint:
 	//	DtCAssertFalse | DtCAssertTrue | DtCDecimalMax | DtCDecimalMin | DtCDigits | DtCNumericMax | DtCNumericMin |
 	//	DtCNotNull | DtCNull | DtCRegEx | DtCSize;
@@ -1787,7 +1874,7 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DateConstraint returns types::LDatatypeConstraint:
-	//	DtCFuture | DtCPast;
+	//	DtCFuture | DtCPast | DtCNotNull | DtCNull;
 	public DateConstraintElements getDateConstraintAccess() {
 		return pDateConstraint;
 	}
@@ -2006,34 +2093,24 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 		return getLVisibilityAccess().getRule();
 	}
 
-	//Constraints returns types::LConstraints:
-	//	{types::LConstraints} "constraints" "{" constraints+=Constraint* "}";
-	public ConstraintsElements getConstraintsAccess() {
-		return pConstraints;
+	//ResultFilters returns types::LResultFilters:
+	//	{types::LResultFilters} "constraints" "{" resultFilters+=ResultFilter* "}";
+	public ResultFiltersElements getResultFiltersAccess() {
+		return pResultFilters;
 	}
 	
-	public ParserRule getConstraintsRule() {
-		return getConstraintsAccess().getRule();
+	public ParserRule getResultFiltersRule() {
+		return getResultFiltersAccess().getRule();
 	}
 
-	//Constraint returns types::LConstraint:
+	//ResultFilter returns types::LResultFilter:
 	//	AttributeMatchingConstraint;
-	public ConstraintElements getConstraintAccess() {
-		return pConstraint;
+	public ResultFilterElements getResultFilterAccess() {
+		return pResultFilter;
 	}
 	
-	public ParserRule getConstraintRule() {
-		return getConstraintAccess().getRule();
-	}
-
-	//KeyAndValue returns types::LKeyAndValue:
-	//	"key" "=" key=STRING "value" "=" value=STRING;
-	public KeyAndValueElements getKeyAndValueAccess() {
-		return pKeyAndValue;
-	}
-	
-	public ParserRule getKeyAndValueRule() {
-		return getKeyAndValueAccess().getRule();
+	public ParserRule getResultFilterRule() {
+		return getResultFilterAccess().getRule();
 	}
 
 	//AttributeMatchingConstraint returns types::LAttributeMatchingConstraint:
@@ -2045,6 +2122,16 @@ public class CommonGrammarGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getAttributeMatchingConstraintRule() {
 		return getAttributeMatchingConstraintAccess().getRule();
+	}
+
+	//KeyAndValue returns types::LKeyAndValue:
+	//	"key" "=" key=STRING "value" "=" value=STRING;
+	public KeyAndValueElements getKeyAndValueAccess() {
+		return pKeyAndValue;
+	}
+	
+	public ParserRule getKeyAndValueRule() {
+		return getKeyAndValueAccess().getRule();
 	}
 
 	//enum LComparatorType returns types::LComparatorType:

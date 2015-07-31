@@ -137,6 +137,8 @@ ruleBlobTypeConstraint
 
 
 
+
+
 // Rule DataTypeConstraint
 ruleDataTypeConstraint :
 (	ruleDtCAssertFalse
@@ -160,7 +162,9 @@ ruleDataTypeConstraint :
 // Rule DateConstraint
 ruleDateConstraint :
 (	ruleDtCFuture
-    |	ruleDtCPast)
+    |	ruleDtCPast
+    |	ruleDtCNotNull
+    |	ruleDtCNull)
 ;
 
 
@@ -494,12 +498,10 @@ ruleXAnnotation
 
 
 
-// Rule Constraint
-ruleConstraint :
+// Rule ResultFilter
+ruleResultFilter :
 	ruleAttributeMatchingConstraint
 ;
-
-
 
 
 
@@ -536,6 +538,8 @@ RULE_STRING
 ))	';' 
 )
 ;
+
+
 
 
 
