@@ -13,15 +13,14 @@ package org.lunifera.dsl.^entity.xtext.tests.model.testcarstore2{
 	datatype datetype dateType date;
 	datatype timetype dateType time;
 	datatype bool jvmType Boolean as primitive;
-	
+
 	entity Person {
 		id long id;
 		var String firstname;
 		var String lastname;
 		var datetype birthdate;
-		var Address[1..*] address;
 	}
-	 
+
 	bean Address {
 		var String streetname;
 		var int housenumber; 

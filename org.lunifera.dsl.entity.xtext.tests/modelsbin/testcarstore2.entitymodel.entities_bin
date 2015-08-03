@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ASCII"?>
+<entity:LEntityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1" xmlns:types_1="http://www.eclipse.org/xtext/common/JavaVMTypes">
+  <packages name="org.lunifera.dsl.entity.xtext.tests.model.testcarstore2">
+    <types xsi:type="types:LDataType" name="long" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="int" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Integer#java.lang.Integer"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="String">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="datetype" date="true"/>
+    <types xsi:type="types:LDataType" name="timetype" date="true" dateType="TIME"/>
+    <types xsi:type="types:LDataType" name="bool" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Boolean#java.lang.Boolean"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="entity:LEntity" name="Person" subTypes="//@packages.0/@types.10 //@packages.0/@types.11">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="id" id="true" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="firstname" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="lastname" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="birthdate" type="//@packages.0/@types.3">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LBean" name="Address">
+      <annotationInfo xsi:type="types:LClass"/>
+      <features xsi:type="entity:LBeanAttribute" name="streetname" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+      </features>
+      <features xsi:type="entity:LBeanAttribute" name="housenumber" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+      </features>
+      <features xsi:type="entity:LBeanAttribute" name="city" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+      </features>
+      <features xsi:type="entity:LBeanAttribute" name="zipcode" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LBeanFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Manufacturer">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="id" id="true" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="name" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="address" type="//@packages.0/@types.7">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="cars" cascading="true" type="//@packages.0/@types.9" opposite="//@packages.0/@types.9/@features.4">
+        <multiplicity lower="MANY"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Car" subTypes="//@packages.0/@types.12">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="id" id="true" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="modelname" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="constructiondate" type="//@packages.0/@types.4">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="price" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="manufacturer" type="//@packages.0/@types.8" opposite="//@packages.0/@types.8/@features.3">
+        <multiplicity lower="ONE"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Customer" superType="//@packages.0/@types.6">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="isseller" type="//@packages.0/@types.5">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="isbuyer" type="//@packages.0/@types.5">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="phonenumber" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="iban" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="discount" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Employee" superType="//@packages.0/@types.6">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="employeenumber" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="employeesince" type="//@packages.0/@types.4">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="salary" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="jobdescription" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="boss" type="//@packages.0/@types.11" opposite="//@packages.0/@types.11/@features.5">
+        <multiplicity lower="ONE"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="subordinates" cascading="true" type="//@packages.0/@types.11" opposite="//@packages.0/@types.11/@features.4">
+        <multiplicity lower="MANY"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="UsedCar" superType="//@packages.0/@types.9">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="state" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="mileage" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="seller" type="//@packages.0/@types.10">
+        <multiplicity lower="ONE"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+  </packages>
+</entity:LEntityModel>

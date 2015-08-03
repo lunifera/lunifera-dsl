@@ -1,0 +1,25 @@
+package org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.*;
+	import org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.dtos.*; 
+	
+	dtoservice BaseByClassService provides BaseByClassDto {
+		mutable persistenceID TBD
+	}
+	dtoservice OneByClassService provides OneByClassDto {
+		mutable persistenceID TBD
+	}
+	dtoservice TwoByClassService provides TwoByClassDto {
+		mutable persistenceID TBD
+	}
+	dtoservice BaseBySubclassService provides BaseBySubclassDto {
+		mutable persistenceID TBD
+	}
+	dtoservice OneBySubclassService provides OneBySubclassDto {
+		mutable persistenceID TBD
+	}
+	dtoservice TwoBySubclassService provides TwoBySubclassDto {
+		mutable persistenceID TBD
+	}
+}

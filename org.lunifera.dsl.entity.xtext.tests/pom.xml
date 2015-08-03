@@ -64,22 +64,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.lunifera.tools.maven</groupId>
-				<artifactId>org.lunifera.tools.maven.plugin.entity</artifactId>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>compile</goal>
-							<!-- <goal>testCompile</goal> -->
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/src-gen</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 				<executions>
@@ -95,15 +79,63 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+						<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<configuration>
 					<includes>
-						<include>**/*Tests.java</include>
+						<include>**/*Test.class</include>
+						<include>**/*Tests.class</include>
 					</includes>
-					<failIfNoTests>true</failIfNoTests>
+					<failIfNoTests>false</failIfNoTests>
 					<showEclipseLog>true</showEclipseLog>
+					<!-- <argLine>${ui.test.vmargs}</argLine> -->
+					<bundleStartLevel>
+						<bundle>
+							<id>org.eclipse.osgi</id>
+							<level>-1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.common</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.ds</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.log</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.osgi.services</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.lunifera.dsl.entity.xtext.tests</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
+					</bundleStartLevel>
+					<dependencies>
+						<!-- Plugins -->
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.eclipse.equinox.ds</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.eclipse.equinox.util</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+					</dependencies>
+
 					<useUIHarness>false</useUIHarness>
 					<useUIThread>false</useUIThread>
 				</configuration>

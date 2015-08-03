@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dto:LDtoModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dto="http://www.lunifera.org/dsl/dto/v1" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1" xmlns:types_1="http://www.eclipse.org/xtext/common/JavaVMTypes">
+  <packages name="org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos">
+    <imports importedNamespace="org.lunifera.dsl.entity.xtext.tests.classinheritance.*"/>
+    <imports importedNamespace="org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.*"/>
+    <imports importedNamespace="org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.mapper.*"/>
+    <types xsi:type="types:LDataType" name="long">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="int" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Integer#java.lang.Integer"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="String">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="dto:LAutoInheritDto" name="BaseByClassDto" subTypes="//@packages.0/@types.4">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.3/@features.0"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.3/@features.1"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.3"/>
+    </types>
+    <types xsi:type="dto:LAutoInheritDto" name="OneByClassDto" superType="//@packages.0/@types.3" subTypes="//@packages.0/@types.5">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.4/@features.0"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.4"/>
+    </types>
+    <types xsi:type="dto:LAutoInheritDto" name="TwoByClassDto" superType="//@packages.0/@types.4">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.5/@features.0"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.5"/>
+    </types>
+    <types xsi:type="dto:LAutoInheritDto" name="BaseBySubclassDto" subTypes="//@packages.0/@types.7">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.6/@features.0"/>
+      </features>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.6/@features.1"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.6"/>
+    </types>
+    <types xsi:type="dto:LAutoInheritDto" name="OneBySubclassDto" superType="//@packages.0/@types.6" subTypes="//@packages.0/@types.8">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.7/@features.0"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.7"/>
+    </types>
+    <types xsi:type="dto:LAutoInheritDto" name="TwoBySubclassDto" superType="//@packages.0/@types.7">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.8/@features.0"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/inheritancetest.entitymodel#/0/@packages.0/@types.8"/>
+    </types>
+  </packages>
+</dto:LDtoModel>

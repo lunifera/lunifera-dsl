@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.mapper.employeedtomapper">
+       <implementation class="org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.mapper.EmployeeDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+		  </service>
+		  
+		<property name="fordto.from.entity" type="String" value="org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee"/>
+		<property name="fordto.to.dto" type="String">org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.EmployeeDto
+		org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.PersonDto
+		</property>
+
+		<property name="forentity.from.dto" type="String" value="org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.EmployeeDto"/>
+		<property name="forentity.to.entity" type="String">org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Employee
+		org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.Person
+		</property>
+		
+		<property name="service.pid" type="String" value="org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.mapper.employeedtomapper"/>
+		<reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+				cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

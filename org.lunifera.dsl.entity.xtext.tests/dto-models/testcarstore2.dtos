@@ -1,0 +1,74 @@
+/**
+ * Copyright (c) 2011 - 2014, Lunifera GmbH (Gross Enzersdorf), Loetz KG (Heidelberg)
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
+package org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos {
+	
+	/* Imports the required artifacts */
+	import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.*;
+	import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.*;
+	import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.mapper.*;
+
+	datatype long jvmType java.lang.Long as primitive;
+	datatype int jvmType java.lang.Integer as primitive;
+	datatype String jvmType java.lang.String;
+	datatype datetype dateType date;
+	datatype timetype dateType time;
+	datatype bool jvmType java.lang.Boolean as primitive;
+
+	autoDto PersonDto wraps Person {
+		inherit var id;
+		inherit var firstname;
+		inherit var lastname;
+		inherit var birthdate;
+	}
+	
+	autoDto ManufacturerDto wraps Manufacturer {
+		inherit var id;
+		inherit var name;
+		inherit var address;
+		inherit ref cars mapto CarDto;
+	}
+	
+	autoDto CarDto wraps Car {
+		inherit var id;
+		inherit var modelname;
+		inherit var constructiondate;
+		inherit var price;
+		inherit ref manufacturer mapto ManufacturerDto;
+	}
+	
+	autoDto CustomerDto extends PersonDto wraps Customer {
+		inherit var isseller;
+		inherit var isbuyer;
+		inherit var phonenumber;
+		inherit var iban;
+		inherit var discount;
+	}
+	
+	autoDto EmployeeDto extends PersonDto wraps Employee {
+		inherit var employeenumber;
+		inherit var employeesince;
+		inherit var salary;
+		inherit var jobdescription;
+		inherit ref boss mapto EmployeeDto;
+		inherit ref subordinates mapto EmployeeDto;
+	}
+	
+	autoDto UsedCarDto extends CarDto wraps UsedCar {
+		inherit var state;
+		inherit var mileage;
+		inherit ref seller mapto CustomerDto;
+	}
+	
+	autoDto AddressDto wraps Address {
+		inherit var streetname;
+		inherit var housenumber;
+		inherit var city;
+		inherit var zipcode;
+	}
+	
+}

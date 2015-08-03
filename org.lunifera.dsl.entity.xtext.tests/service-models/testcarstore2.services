@@ -1,0 +1,25 @@
+package org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.*;
+	import org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.dtos.dtos.*; 
+	
+	dtoservice PersonService provides PersonDto {
+		mutable persistenceID TBD
+	}
+	dtoservice ManufacturerService provides ManufacturerDto {
+		mutable persistenceID TBD
+	}
+	dtoservice CarService provides CarDto {
+		mutable persistenceID TBD
+	}
+	dtoservice CustomerService provides CustomerDto {
+		mutable persistenceID TBD
+	}
+	dtoservice EmployeeService provides EmployeeDto {
+		mutable persistenceID TBD
+	}
+	dtoservice UsedCarService provides UsedCarDto {
+		mutable persistenceID TBD
+	}
+}

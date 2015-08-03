@@ -54,7 +54,6 @@ Export-Package: org.lunifera.dsl.common.xtext;version="0.9.1";x-internal:=true;
    org.lunifera.dsl.common.xtext.services,
    org.antlr.runtime,
    org.eclipse.xtext.parser.antlr",
- org.lunifera.dsl.common.xtext.resource;x-internal:=true,
  org.lunifera.dsl.common.xtext.scope;version="0.9.1";x-internal:=true;
   uses:="org.eclipse.emf.ecore,
    org.lunifera.dsl.common.xtext.extensions,

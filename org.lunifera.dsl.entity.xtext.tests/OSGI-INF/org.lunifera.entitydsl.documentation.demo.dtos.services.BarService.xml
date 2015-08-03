@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.entitydsl.documentation.demo.dtos.services.barservice">
+       <implementation class="org.lunifera.entitydsl.documentation.demo.dtos.services.BarService"/>
+       <service>
+       	<provide interface="org.lunifera.dsl.dto.lib.services.IDTOService"/>
+       </service>
+       <property name="dto" type="String" value="org.lunifera.entitydsl.documentation.demo.dtos.BarDto"/>
+       <property name="service.pid" type="String" value="org.lunifera.entitydsl.documentation.demo.dtos.services.barservice"/>
+       <reference name="mapperAccess" interface="org.lunifera.dsl.dto.lib.IMapperAccess" cardinality="1..1" 
+       		policy="dynamic" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

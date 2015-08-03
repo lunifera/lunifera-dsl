@@ -1,0 +1,10 @@
+package org.lunifera.dsl.entity.xtext.tests.selfreference.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.dsl.entity.xtext.tests.selfreference.dtos.*;
+	import org.lunifera.dsl.entity.xtext.tests.selfreference.dtos.dtos.*; 
+	
+	dtoservice TreeEmployeeService provides TreeEmployeeDto {
+		mutable persistenceID TBD
+	}
+}

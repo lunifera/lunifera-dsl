@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<entity:LEntityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1" xmlns:types_1="http://www.eclipse.org/xtext/common/JavaVMTypes">
+  <packages name="org.lunifera.dsl.entity.xtext.tests.selfreference">
+    <types xsi:type="types:LDataType" name="long" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="String">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="entity:LEntity" name="TreeEmployee">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="id" id="true" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="Name" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="subordinates" cascading="true" type="//@packages.0/@types.2" opposite="//@packages.0/@types.2/@features.3">
+        <multiplicity lower="ZERO" upper="MANY"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityReference" name="boss" type="//@packages.0/@types.2">
+        <multiplicity lower="ONE"/>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+  </packages>
+</entity:LEntityModel>

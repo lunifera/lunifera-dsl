@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ASCII"?>
+<entity:LEntityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1" xmlns:types_1="http://www.eclipse.org/xtext/common/JavaVMTypes">
+  <packages name="org.lunifera.dsl.entity.xtext.tests.classinheritance">
+    <types xsi:type="types:LDataType" name="long">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="int" asPrimitive="true">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Integer#java.lang.Integer"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="String">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="entity:LEntity" name="BaseByClass" subTypes="//@packages.0/@types.4">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerClassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="id" id="true" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="version" version="true" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="OneByClass" superType="//@packages.0/@types.3" subTypes="//@packages.0/@types.5">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="name" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="TwoByClass" superType="//@packages.0/@types.4">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="stuff" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="BaseBySubclass" subTypes="//@packages.0/@types.7">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerSubclassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="id" id="true" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="version" version="true" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="OneBySubclass" superType="//@packages.0/@types.6" subTypes="//@packages.0/@types.8">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="name" type="//@packages.0/@types.2">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="TwoBySubclass" superType="//@packages.0/@types.7">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="stuff" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+  </packages>
+</entity:LEntityModel>

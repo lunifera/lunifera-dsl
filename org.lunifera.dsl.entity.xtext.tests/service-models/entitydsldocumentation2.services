@@ -1,0 +1,10 @@
+package org.lunifera.entitydsl.documentation.common.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.entitydsl.documentation.common.dtos.*;
+	import org.lunifera.entitydsl.documentation.common.dtos.dtos.*; 
+	
+	dtoservice ABarService provides ABarDto {
+		mutable persistenceID TBD
+	}
+}

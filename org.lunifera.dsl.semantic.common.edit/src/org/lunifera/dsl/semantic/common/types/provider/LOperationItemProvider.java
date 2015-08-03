@@ -208,11 +208,6 @@ public class LOperationItemProvider extends LAnnotationTargetItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(LunTypesPackage.Literals.LOPERATION__BODY,
-				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(LunTypesPackage.Literals.LOPERATION__BODY,
 				 XbaseFactory.eINSTANCE.createXIfExpression()));
 
 		newChildDescriptors.add
@@ -354,6 +349,11 @@ public class LOperationItemProvider extends LAnnotationTargetItemProvider {
 			(createChildParameter
 				(LunTypesPackage.Literals.LOPERATION__BODY,
 				 XbaseFactory.eINSTANCE.createXSynchronizedExpression()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(LunTypesPackage.Literals.LOPERATION__BODY,
+				 XAnnotationsFactory.eINSTANCE.createXAnnotation()));
 	}
 
 }

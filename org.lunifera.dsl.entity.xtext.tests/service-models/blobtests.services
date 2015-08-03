@@ -1,0 +1,10 @@
+package org.lunifera.dsl.entity.xtext.tests.blobtests.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.dsl.entity.xtext.tests.blobtests.dtos.*;
+	import org.lunifera.dsl.entity.xtext.tests.blobtests.dtos.dtos.*; 
+	
+	dtoservice FoobarService provides FoobarDto {
+		mutable persistenceID TBD
+	}
+}

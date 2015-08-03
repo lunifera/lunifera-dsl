@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.mapper.onebyclassdtomapper">
+       <implementation class="org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.mapper.OneByClassDtoMapper"/>
+       <service>
+		<provide interface="org.lunifera.dsl.dto.lib.IMapper"/>
+		  </service>
+		  
+		<property name="fordto.from.entity" type="String" value="org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClass"/>
+		<property name="fordto.to.dto" type="String">org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.OneByClassDto
+		org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.BaseByClassDto
+		</property>
+
+		<property name="forentity.from.dto" type="String" value="org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.OneByClassDto"/>
+		<property name="forentity.to.entity" type="String">org.lunifera.dsl.entity.xtext.tests.classinheritance.OneByClass
+		org.lunifera.dsl.entity.xtext.tests.classinheritance.BaseByClass
+		</property>
+		
+		<property name="service.pid" type="String" value="org.lunifera.dsl.entity.xtext.tests.classinheritance.dtos.mapper.onebyclassdtomapper"/>
+		<reference name="bind" interface="org.lunifera.dsl.dto.lib.IMapperAccess" 
+				cardinality="1..1" policy="static" bind="bindMapperAccess" unbind="unbindMapperAccess"/>
+</scr:component>

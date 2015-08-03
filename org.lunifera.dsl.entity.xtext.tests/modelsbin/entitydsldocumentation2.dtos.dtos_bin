@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dto:LDtoModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dto="http://www.lunifera.org/dsl/dto/v1" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1" xmlns:types_1="http://www.eclipse.org/xtext/common/JavaVMTypes">
+  <packages name="org.lunifera.entitydsl.documentation.common.dtos">
+    <imports importedNamespace="org.lunifera.entitydsl.documentation.common.*"/>
+    <imports importedNamespace="org.lunifera.entitydsl.documentation.common.dtos.*"/>
+    <imports importedNamespace="org.lunifera.entitydsl.documentation.common.dtos.mapper.*"/>
+    <types xsi:type="types:LDataType" name="long">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="dto:LAutoInheritDto" name="ABarDto">
+      <annotationInfo xsi:type="dto:LDto"/>
+      <features xsi:type="dto:LDtoInheritedAttribute">
+        <annotationInfo xsi:type="dto:LDtoFeature"/>
+        <inheritedFeature xsi:type="entity:LEntityAttribute" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/entitydsldocumentation2.entitymodel#/0/@packages.0/@types.1/@features.0"/>
+      </features>
+      <wrappedType href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/entitydsldocumentation2.entitymodel#/0/@packages.0/@types.1"/>
+    </types>
+  </packages>
+</dto:LDtoModel>

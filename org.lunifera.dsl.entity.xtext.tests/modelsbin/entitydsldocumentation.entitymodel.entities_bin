@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ASCII"?>
+<entity:LEntityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:entity="http://www.lunifera.org/dsl/entity/v1" xmlns:types="http://www.lunifera.org/dsl/common/types/v1" xmlns:types_1="http://www.eclipse.org/xtext/common/JavaVMTypes" xmlns:xbase="http://www.eclipse.org/xtext/xbase/Xbase">
+  <packages name="org.lunifera.entitydsl.documentation.demo">
+    <types xsi:type="types:LDataType" name="String">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="types:LDataType" name="long">
+      <jvmTypeReference xsi:type="types_1:JvmParameterizedTypeReference">
+        <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+      </jvmTypeReference>
+    </types>
+    <types xsi:type="entity:LEntity" name="Foo" subTypes="//@packages.0/@types.3">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <inheritanceStrategy xsi:type="entity:LTablePerClassStrategy"/>
+      <features xsi:type="entity:LEntityAttribute" name="id" id="true" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LEntityAttribute" name="name" type="//@packages.0/@types.0">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+    <types xsi:type="entity:LEntity" name="Bar" superType="//@packages.0/@types.2">
+      <annotationInfo xsi:type="types:LClass"/>
+      <persistenceInfo/>
+      <features xsi:type="entity:LEntityAttribute" name="number" type="//@packages.0/@types.1">
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+      <features xsi:type="entity:LOperation" name="getnumberasstring">
+        <type xsi:type="types_1:JvmParameterizedTypeReference">
+          <type xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.String#java.lang.String"/>
+        </type>
+        <body xsi:type="xbase:XBlockExpression">
+          <expressions xsi:type="xbase:XReturnExpression">
+            <expression xsi:type="xbase:XMemberFeatureCall" explicitOperationCall="true" explicitStatic="true">
+              <feature xsi:type="types_1:JvmOperation" href="java:/Objects/java.lang.Long#java.lang.Long.toString(long)"/>
+              <memberCallTarget xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+                <memberCallTarget xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types_1:JvmGenericType" href="java:/Objects/java.lang.Long#java.lang.Long"/>
+                  </memberCallTarget>
+                </memberCallTarget>
+              </memberCallTarget>
+              <memberCallArguments xsi:type="xbase:XFeatureCall">
+                <feature xsi:type="types_1:JvmField" href="platform:/resource/org.lunifera.dsl.entity.xtext.tests/models/entitydsldocumentation.entitymodel#/2/@members.1"/>
+              </memberCallArguments>
+            </expression>
+          </expressions>
+        </body>
+        <annotationInfo xsi:type="entity:LEntityFeature"/>
+      </features>
+    </types>
+  </packages>
+</entity:LEntityModel>

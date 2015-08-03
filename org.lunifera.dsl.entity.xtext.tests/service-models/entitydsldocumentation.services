@@ -1,0 +1,13 @@
+package org.lunifera.entitydsl.documentation.demo.dtos.services {
+	
+	/* Imports the original entity and dto package */
+	import org.lunifera.entitydsl.documentation.demo.dtos.*;
+	import org.lunifera.entitydsl.documentation.demo.dtos.dtos.*; 
+	
+	dtoservice FooService provides FooDto {
+		mutable persistenceID TBD
+	}
+	dtoservice BarService provides BarDto {
+		mutable persistenceID TBD
+	}
+}
