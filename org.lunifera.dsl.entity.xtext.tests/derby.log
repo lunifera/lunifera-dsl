@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Mon Aug 03 12:08:10 CEST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014e-f308-66ab-000020b34c60 
-on database directory memory:/Users/admin/git/lunifera-dsl/org.lunifera.dsl.entity.xtext.tests/model1  with class loader org.eclipse.osgi.internal.loader.EquinoxClassLoader@ae73c80[org.apache.derby:10.8.2.2_v201211210650(id=3)] 
-Loaded from file:/daten/dev/lunifera/eclipse_sr2_II/eclipse/plugins/org.apache.derby_10.8.2.2_v201211210650.jar
+Thu Aug 06 18:02:37 CEST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014f-03bf-fc54-0000198938e8 
+on database directory memory:/home/klemens/DEV/git/lunifera-dsl/org.lunifera.dsl.entity.xtext.tests/model1  with class loader sun.misc.Launcher$AppClassLoader@816f27d 
+Loaded from file:/home/klemens/workspace/aws_dsl/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/org.apache.derby_10.8.2.2/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_40-b25
-user.dir=/Users/admin/git/lunifera-dsl/org.lunifera.dsl.entity.xtext.tests
+java.runtime.version=1.8.0_51-b16
+user.dir=/home/klemens/DEV/git/lunifera-dsl/org.lunifera.dsl.entity.xtext.tests
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
