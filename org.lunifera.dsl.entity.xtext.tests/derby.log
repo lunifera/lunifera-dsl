@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Thu Aug 06 18:02:37 CEST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014f-03bf-fc54-0000198938e8 
+Fri Aug 07 12:18:37 CEST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014f-07ab-6626-0000198a5300 
 on database directory memory:/home/klemens/DEV/git/lunifera-dsl/org.lunifera.dsl.entity.xtext.tests/model1  with class loader sun.misc.Launcher$AppClassLoader@816f27d 
 Loaded from file:/home/klemens/workspace/aws_dsl/.metadata/.plugins/org.eclipse.pde.core/.external_libraries/org.apache.derby_10.8.2.2/derby.jar
 java.vendor=Oracle Corporation
