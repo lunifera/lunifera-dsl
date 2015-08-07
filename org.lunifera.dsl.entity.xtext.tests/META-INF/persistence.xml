@@ -39,7 +39,7 @@
 		<class>org.lunifera.dsl.entity.xtext.tests.model.testcarstore2.UsedCar</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:model1;create=true" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:tcs2;create=true" />
 			<property name="javax.persistence.jdbc.user" value="test" />
 			<property name="javax.persistence.jdbc.password" value="test" />
 
